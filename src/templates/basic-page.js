@@ -27,6 +27,11 @@ query($slug: String!) {
                 type: __typename
                 ...paragraphHomeHero
                 ...paragraphFullHtmlContent
+                ...paragraphSection1ColoredBoxes
+                ...paragraphSectionWithImageAndText
+                ...paragraphImageLeftTextRight
+                ...paragraphBigParagraph
+                ...paragraphImagesBoxes
             }
         }
         field_meta_tags {
