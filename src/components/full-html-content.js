@@ -9,7 +9,7 @@ const FullHTMLContent = ({node}) => (
 
 export default FullHTMLContent;
 
-export const fragemtn = graphql`
+export const fragment = graphql`
     fragment paragraphFullHtmlContent on paragraph__full_html_content {
         id
         field_full_html {
