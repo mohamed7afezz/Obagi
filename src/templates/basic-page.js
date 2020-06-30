@@ -27,7 +27,7 @@ query($slug: String!) {
                 type: __typename
                 ...paragraphHomeHero
                 ...paragraphFullHtmlContent
-                ...paragraphSection1ColoredBoxes
+                ...paragraphSectionWithColoredBoxes
                 ...paragraphSectionWithImageAndText
                 ...paragraphImageLeftTextRight
                 ...paragraphBigParagraph

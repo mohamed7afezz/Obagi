@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import Section1ColoredBoxes from '../components/section-1-colored-boxes'
+import SectionWithColoredBoxes from '../components/section-with-colored-boxes'
 
 const IndexPage = () => (
   <Layout>
@@ -17,7 +17,7 @@ const IndexPage = () => (
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    <Section1ColoredBoxes />
+    <SectionWithColoredBoxes />
   </Layout>
 )
 

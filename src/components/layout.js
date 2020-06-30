@@ -7,10 +7,12 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, withPrefix } from "gatsby"
 
 import Header from "./header"
-import "../assets/css/layout.scss"
+import '../../node_modules/bootstrap/dist/css/bootstrap.css'
+import "../assets/scss/components/layout.scss"
+import { Helmet } from "react-helmet"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -39,6 +41,9 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
+        <Helmet>
+          <script src={withPrefix('../../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
+        </Helmet>
       </div>
     </>
   )
