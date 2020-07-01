@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import '../assets/scss/components/image-left-text-right.module.scss'
 
 const ImageLeftTextRight = ({ node }) => {
     return (

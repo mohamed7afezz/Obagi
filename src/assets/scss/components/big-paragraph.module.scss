@@ -1,0 +1,39 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.subtitle {
+    margin-bottom: 40px;
+
+    @include lg-screen {
+        margin-bottom: 32px;
+    }
+}
+
+.paragraph {
+    @extend %futurapt-book;
+    @include fontStyle(32, 48);
+    margin-bottom: 42px;
+
+    @include lg-screen {
+        // @extend %futurapt-light;
+        @include fontStyle(72, 88);
+        margin-bottom: 40px;
+    }
+}
+
+.link {
+    margin-bottom: 119px;
+    @include lg-screen {
+        margin-bottom: 224px;
+    }
+}
+
+.horizontal-divider {
+    height: 12px;
+    width: 100%;
+    margin-bottom: 119px;
+    @include lg-screen {
+        height: 24px;
+        margin-bottom: 224px;
+    }
+}

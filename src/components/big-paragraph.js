@@ -1,12 +1,15 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import bigParagraphStyles from '../assets/scss/components/big-paragraph.module.scss'
 
 const BigParagraph = ({ node }) => {
     return (
-        <div>
-            <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_subtitle.processed }}></p>
-            <p dangerouslySetInnerHTML={{__html: node.field_paragraph_text.processed}}></p>
-            <Link to="#">{node.field_paragraph_button.title}</Link>
+        <div className="container">
+            <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_subtitle.processed }} className={["subtitle", bigParagraphStyles.subtitle].join(" ")}></p>
+            <p dangerouslySetInnerHTML={{__html: node.field_paragraph_text.processed}} className={bigParagraphStyles.paragraph}></p>
+            <div className={bigParagraphStyles.link}><Link to="#" className="button-link">{node.field_paragraph_button.title}</Link></div>
+            <div><Img fluid={node.relationships.field_paragraph_divider.localFile.childImageSharp.fluid} className={bigParagraphStyles.horizontalDivider}/></div>
         </div>
     )
 }
@@ -26,6 +29,17 @@ export const fragment = graphql`
     }
     field_paragraph_text {
       processed
+    }
+    relationships {
+      field_paragraph_divider {
+        localFile {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   }
 `

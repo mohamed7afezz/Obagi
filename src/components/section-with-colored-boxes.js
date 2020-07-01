@@ -1,12 +1,14 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import '../assets/scss/components/section-with-colored-boxes.module.scss'
+import coloredBoxesStyle from '../assets/scss/components/section-with-colored-boxes.module.scss'
 
 
 const SectionWithColoredBoxes = ({ node }) => {
     return (
         <div>
-            {/* <Img>{node.field_colored_boxes_image.alt}</Img> */}
+            <div><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
             <p>{node.field_colored_boxes_subtitle.processed}</p>
             <h1>{node.field_colored_boxes_title.processed}</h1>
             <p>{node.field_colored_boxes_description.processed}</p>
@@ -37,8 +39,8 @@ export const fragment = graphql`
         field_colored_boxes_image {
           localFile {
             childImageSharp {
-              original {
-                src
+              fluid {
+                ...GatsbyImageSharpFluid
               }
             }
           }

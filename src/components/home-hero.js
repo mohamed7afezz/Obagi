@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { getParagraph } from './paragraphs-helper';
+import '../assets/scss/components/home-hero.module.scss'
 
 const HomeHero = ({node}) => (
     <div style={{backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`}}>

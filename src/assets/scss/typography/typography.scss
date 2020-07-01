@@ -4,10 +4,9 @@ body {
     @extend %futurapt-book;
 }
 
-@mixin fontStyle($size, $lineHeight, $weight) {
+@mixin fontStyle($size, $lineHeight) {
     font-size: $size + px;
     line-height: $lineHeight + px;
-    font-weight: $weight;
 }
 
 %futurapt-book {
