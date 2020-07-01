@@ -8,6 +8,9 @@ p {
     margin-bottom: 0;
 }
 
+.container-fluid {
+    max-width: 1920px;
+}
 
 .subtitle {
     @extend %futurapt-bold;

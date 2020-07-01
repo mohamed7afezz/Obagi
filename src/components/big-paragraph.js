@@ -5,7 +5,7 @@ import bigParagraphStyles from '../assets/scss/components/big-paragraph.module.s
 
 const BigParagraph = ({ node }) => {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className={["col-8", "offset-2","col-md-10", "offset-md-1", "col-lg-8", "offset-lg-2", bigParagraphStyles.colPadding].join(" ")}>
           <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_subtitle.processed }} className={["subtitle", bigParagraphStyles.subtitle].join(" ")}></p>

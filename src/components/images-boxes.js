@@ -6,7 +6,7 @@ import imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scs
 
 const ImagesBoxes = ({ node }) => {
   return (
-    <div className={[imagesBoxesStyles.imageBoxes, "container"].join(" ")}>
+    <div className={[imagesBoxesStyles.imageBoxes, "container-fluid"].join(" ")}>
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
         <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5","col-lg-4", "offset-lg-2", "offset-md-1"].join(" ")}>
           <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>

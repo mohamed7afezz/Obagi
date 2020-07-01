@@ -45,6 +45,7 @@
     @include lg-screen {
         background: #132466;
         padding-left: 0;
+        margin-bottom: 196px;
         &::before {
             height: 118px;
             width: 118px;
@@ -77,6 +78,8 @@
         &::after {
             right: 0;
             bottom: 0;
+            height: 196px;
+            width: 197px;
         }
     }
 }
