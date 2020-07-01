@@ -1,6 +1,11 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.col-padding {
+    @include lg-screen {
+        padding: 0;
+    }
+}
 .subtitle {
     margin-bottom: 40px;
 
@@ -15,7 +20,9 @@
     margin-bottom: 42px;
 
     @include lg-screen {
-        // @extend %futurapt-light;
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
         @include fontStyle(72, 88);
         margin-bottom: 40px;
     }
@@ -32,8 +39,22 @@
     height: 12px;
     width: 100%;
     margin-bottom: 119px;
+    background: #132466;
+    &::before {
+        background: #ffcd00;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        content: '';
+    }
     @include lg-screen {
         height: 24px;
         margin-bottom: 224px;
+        &::before {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            content: '';
+        }
     }
 }

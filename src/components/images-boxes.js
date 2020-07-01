@@ -5,22 +5,27 @@ import '../assets/scss/components/images-boxes.module.scss'
 import imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scss'
 
 const ImagesBoxes = ({ node }) => {
-    return (
-        <div className={[imagesBoxesStyles.imageBoxes, "container"].join(" ")}>
-          <div className={imagesBoxesStyles.boxes}>
-            <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-            <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo}/></div>
-            <div><Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage}/></div>
-          </div>
-            
-          <div className={imagesBoxesStyles.boxes}>
-            <p dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-            <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo}/></div>
-            <div><Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage}/></div>
-          </div>
-            
+  return (
+    <div className={[imagesBoxesStyles.imageBoxes, "container"].join(" ")}>
+      <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
+        <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5","col-lg-4", "offset-lg-2", "offset-md-1"].join(" ")}>
+          <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
+          <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className={imagesBoxesStyles.logo}></p>
+          {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
+          <div><Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} /></div>
         </div>
-    )
+
+        <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5", "col-lg-4"].join(" ")}>
+          <p dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
+          <p dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className={imagesBoxesStyles.logo} ></p>
+          {/* <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
+          <div><Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} /></div>
+        </div>
+      </div>
+
+
+    </div>
+  )
 }
 
 export default ImagesBoxes;
@@ -36,6 +41,12 @@ export const fragment = graphql`
       alt
     }
     field_second_box_subtitle {
+      processed
+    }
+    field_first_box_title {
+      processed
+    }
+    field_second_box_title {
       processed
     }
     relationships {

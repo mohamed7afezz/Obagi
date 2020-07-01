@@ -4,14 +4,28 @@ import Img from 'gatsby-image'
 import bigParagraphStyles from '../assets/scss/components/big-paragraph.module.scss'
 
 const BigParagraph = ({ node }) => {
-    return (
-        <div className="container">
-            <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_subtitle.processed }} className={["subtitle", bigParagraphStyles.subtitle].join(" ")}></p>
-            <p dangerouslySetInnerHTML={{__html: node.field_paragraph_text.processed}} className={bigParagraphStyles.paragraph}></p>
-            <div className={bigParagraphStyles.link}><Link to="#" className="button-link">{node.field_paragraph_button.title}</Link></div>
-            <div><Img fluid={node.relationships.field_paragraph_divider.localFile.childImageSharp.fluid} className={bigParagraphStyles.horizontalDivider}/></div>
+  return (
+    <div className="container">
+      <div className="row">
+        <div className={["col-8", "offset-2","col-md-10", "offset-md-1", "col-lg-8", "offset-lg-2", bigParagraphStyles.colPadding].join(" ")}>
+          <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_subtitle.processed }} className={["subtitle", bigParagraphStyles.subtitle].join(" ")}></p>
+          <p dangerouslySetInnerHTML={{ __html: node.field_paragraph_text.processed }} className={bigParagraphStyles.paragraph}></p>
         </div>
-    )
+      </div>
+      <div className="row">
+        <div className={["col-8", "offset-2","col-md-3", "offset-md-1", "col-lg-4", "offset-lg-2", bigParagraphStyles.colPadding].join(" ")}  >
+        <div className={bigParagraphStyles.link}><Link to="#" className="button-link">{node.field_paragraph_button.title}</Link></div>
+        </div>
+      </div>
+      <div className="row">
+        <div className={["col-8", "offset-2","col-md-10", "offset-md-1", "col-lg-8", "offset-lg-2", bigParagraphStyles.colPadding].join(" ")}>
+          <div className={bigParagraphStyles.horizontalDivider} ></div>
+          {/* <div><Img fluid={node.relationships.field_paragraph_divider.localFile.childImageSharp.fluid} className={bigParagraphStyles.horizontalDivider} /></div> */}
+        </div>
+      </div>
+    </div>
+
+  )
 }
 
 export default BigParagraph;

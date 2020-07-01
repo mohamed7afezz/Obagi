@@ -7,12 +7,14 @@ import coloredBoxesStyle from '../assets/scss/components/section-with-colored-bo
 
 const SectionWithColoredBoxes = ({ node }) => {
     return (
-        <div>
-            <div><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
+        <div className={["container-fluid"].join(" ")}>
+          <div className={["row"].join(" ")}>
+          <div><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
             <p>{node.field_colored_boxes_subtitle.processed}</p>
             <h1>{node.field_colored_boxes_title.processed}</h1>
             <p>{node.field_colored_boxes_description.processed}</p>
             <Link to="#">{node.field_colored_boxes_button.title}</Link>
+          </div>
         </div>
     )
 }
