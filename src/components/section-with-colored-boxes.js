@@ -6,17 +6,23 @@ import coloredBoxesStyle from '../assets/scss/components/section-with-colored-bo
 
 
 const SectionWithColoredBoxes = ({ node }) => {
-    return (
-        <div className={["container-fluid"].join(" ")}>
-          <div className={["row"].join(" ")}>
-          <div><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
-            <p>{node.field_colored_boxes_subtitle.processed}</p>
-            <h1>{node.field_colored_boxes_title.processed}</h1>
-            <p>{node.field_colored_boxes_description.processed}</p>
-            <Link to="#">{node.field_colored_boxes_button.title}</Link>
+  return (
+    <div className="container-fluid">
+      <div className={["row", coloredBoxesStyle.bigSection].join(" ")}>
+        <div className={["col-10", "col-lg-5", coloredBoxesStyle.colPadding, coloredBoxesStyle.firstSection].join(" ")}>
+          <div className={[coloredBoxesStyle.image].join("")}><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
+        </div>
+        <div className={["col-9", "offset-2", "col-lg-7", "offset-lg-0", coloredBoxesStyle.secondSection].join(" ")}>
+          <div className={[coloredBoxesStyle.smallSection].join(" ")}>
+            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join("")}></p>
+            <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title].join("")}></h1>
+            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description].join("")}></p>
+            <div className={[coloredBoxesStyle.linkSection].join("")}><Link to="#" className={[coloredBoxesStyle.link].join("")}>{node.field_colored_boxes_button.title}</Link></div>
           </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 export default SectionWithColoredBoxes;

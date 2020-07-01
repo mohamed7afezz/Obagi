@@ -47,10 +47,14 @@ p {
     }
 
     @include md-screen {
+        display: inline-block;
+    }
+
+    @include lg-screen {
         padding: 15px 25px;
     }
     
-    @include lg-screen {
+    @include xl-screen {
         padding: 28px 92px;
     }
     
