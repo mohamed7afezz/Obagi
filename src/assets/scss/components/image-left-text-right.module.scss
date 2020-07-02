@@ -1,0 +1,92 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.col-padding {
+    padding-left: 0;
+    @include lg-screen {
+        // padding-left: 15px;
+    }
+}
+
+.col-full-padding {
+    padding: 0;
+    @include lg-screen {
+        padding: 0 0 0 15px;
+    }
+}
+
+.subtitle {
+    margin-bottom: 19px;
+
+    @include lg-screen {
+        margin-bottom: 32px;
+    }
+}
+
+.title {
+
+
+    @include lg-screen {
+
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
+.description {
+    margin: 10px 0 22px;
+
+    @include lg-screen {
+        margin: 24px 0 40px;
+    }
+}
+
+
+
+.small-section {
+    padding: 134px 79px 147px 71px;
+    background: #ffcd00;
+    position: relative;
+    z-index: -1;
+    
+    &::after {
+        width: 104px;
+        height: 105px;
+        content: '';
+        position: absolute;
+        z-index: 99;
+        background: #132466;
+        bottom: 0;
+        left: 0;
+    }
+
+    @include lg-screen {
+
+        padding: 268px 192px 434px 156px;
+
+    }
+}
+
+.image {
+    margin-bottom: -96px;
+    position: relative;
+
+    &::before {
+        width: 44px;
+        height: 44px;
+        content: '';
+        position: absolute;
+        top: -44px;
+        background: #868cd2;
+    }
+
+    @include lg-screen {
+
+        &::before {
+            top: -117px;
+            width: 117px;
+            height: 117px;
+        }
+    }
+}

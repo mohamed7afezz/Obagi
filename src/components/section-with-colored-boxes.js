@@ -14,10 +14,10 @@ const SectionWithColoredBoxes = ({ node }) => {
         </div>
         <div className={["col-9", "offset-2", "col-lg-7", "offset-lg-0", coloredBoxesStyle.secondSection].join(" ")}>
           <div className={[coloredBoxesStyle.smallSection].join(" ")}>
-            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join("")}></p>
-            <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title].join("")}></h1>
-            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description].join("")}></p>
-            <div className={[coloredBoxesStyle.linkSection].join("")}><Link to="#" className={[coloredBoxesStyle.link].join("")}>{node.field_colored_boxes_button.title}</Link></div>
+            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join(" ")}></p>
+            <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title, "title"].join(" ")}></h1>
+            <p dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description, "description"].join(" ")}></p>
+            <div className={[coloredBoxesStyle.linkSection].join("")}><Link to={node.field_colored_boxes_button.uri} className={[coloredBoxesStyle.link].join(" ")}>{node.field_colored_boxes_button.title}</Link></div>
           </div>
         </div>
       </div>

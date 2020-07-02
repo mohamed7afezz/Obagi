@@ -12,6 +12,14 @@ p {
     max-width: 1920px;
 }
 
+.title {
+    @include fontStyle(52, 64);
+
+    @include lg-screen {
+        @include fontStyle(72, 88);
+    }
+}
+
 .subtitle {
     @extend %futurapt-bold;
     @include fontStyle(16, 24);
@@ -27,7 +35,13 @@ p {
     }
 }
 
+.description {
+    @include fontStyle(18, 27);
 
+    @include lg-screen {
+        @include fontStyle(28, 48);
+    }
+}
 
 .button-link {
     border-radius: 6px;

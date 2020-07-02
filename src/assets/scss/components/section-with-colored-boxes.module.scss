@@ -71,13 +71,15 @@
         bottom: -44px;
     }
     @include lg-screen {
-        // top: 118px;
-        // left: 156px;
-        // margin-top: 118px;
+
         margin: 118px -313px 0 313px;
         &::after {
             right: 0;
             bottom: 0;
+        }
+    }
+    @include xl-screen {
+        &::after {
             height: 196px;
             width: 197px;
         }
@@ -106,12 +108,10 @@
 }
 
 .title {
-    @include fontStyle(52, 64);
     @extend %futurapt-light;
 }
 
 .description {
-    @include fontStyle(18, 27);
     margin: 18px 0 45px;
 
     @include lg-screen {

@@ -1,0 +1,73 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.col-padding {
+    padding-left: 0;
+    
+    @include lg-screen {
+        padding-right: 0;
+    }
+}
+
+.row-padding {
+    padding-top: 54px;
+}
+
+.section {
+
+}
+
+.subtitle {
+    margin: 58px 0 17px;
+
+    @include lg-screen {
+        margin: 360px 0 32px;
+    }
+}
+
+.title {
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
+.description {
+
+    margin: 9px 0 24px;
+
+    @include lg-screen {
+        margin: 16px 0 40px;
+    }
+}
+
+.link-section {
+    margin: 27px 0 128px;
+
+}
+.link-desk {
+    margin-top: 40px;
+}
+
+.text-section {
+    // position: relative;
+    // margin-top: 306px;
+    // margin-left: 196px;
+}
+
+.image {
+    margin-left: -86px;
+
+    // top: 54px;
+    // height: 100%;
+    // width: 100%;
+
+    @include lg-screen {
+        margin-left: 0;;
+        position: relative;
+        z-index: -1;
+        top: -761px;
+        margin-bottom: -761px;
+    }
+}
