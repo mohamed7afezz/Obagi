@@ -1,3 +1,75 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+h1 {
+    margin-bottom: 0;
+}
+
 .hero-box {
     border: 1px solid #fff;
+    
+    background: transparent;
+ 
+    &:hover {
+        background: rgba(19, 36, 102, 0.2);
+        border: 1px solid rgba(19, 36, 102, 0.2);
+    }
+
+}
+
+.logo {
+    color: #fff;
+    margin: 40px 0 15px;
+    position: relative;
+    z-index: 99;
+
+    @include lg-screen {
+        margin: 88px 0 25px;
+    }
+}
+
+.title {
+    @include fontStyle(40, 48);
+    padding: 0 30px;
+
+    @include lg-screen {
+        @include fontStyle(52, 64);
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        padding: 0 174px;
+    }
+}
+
+.subtitle {
+    @include fontStyle(18, 24);
+    padding: 1px 22px 15px 22px;
+
+    @include lg-screen {
+        padding: 16px 160px 32px;
+        @include fontStyle(18, 32);
+    }
+}
+
+.link-section {
+    margin: 0 41px 41px 41px;
+
+    @include lg-screen {
+        margin: 32px 0 96px;
+    }
+}
+
+.link {
+    padding: 28px 47px;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    &:hover {
+        border: 1px solid #d6d6d6;
+        background: #ffffff;
+        color: #132466;
+    }
+
+    @include lg-screen {
+        padding: 28px 62px;
+    }
 }

@@ -9,14 +9,14 @@ const ImagesBoxes = ({ node }) => {
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
         <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5","col-lg-4", "offset-lg-2", "offset-md-1"].join(" ")}>
           <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-          <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className={imagesBoxesStyles.logo}></p>
+          <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></p>
           {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
           <div><Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} /></div>
         </div>
 
         <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5", "col-lg-4"].join(" ")}>
           <p dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-          <p dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className={imagesBoxesStyles.logo} ></p>
+          <p dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></p>
           {/* <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
           <div><Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} /></div>
         </div>

@@ -18,24 +18,6 @@
     }
 }
 
-.logo {
-    margin: 0 auto;
-    margin-bottom: 41px;
-    text-align: center;
-    @include fontStyle(19, 24);
-    letter-spacing: 11px;
-    padding-left: 10px;
-    @include md-screen {
-        @include fontStyle(20, 24);
-        letter-spacing: 16px;
-        padding-left: 15px;
-    }
-
-    @include lg-screen {
-        margin-bottom: 72px;
-    }
-}
-
 
 .image-boxes {
     @include md-screen {

@@ -2,15 +2,41 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { getParagraph } from './paragraphs-helper';
-import '../assets/scss/components/home-hero.module.scss'
+import homeHero from '../assets/scss/components/home-hero.module.scss'
+import HeroBox from './hero-box'
 
-const HomeHero = ({node}) => (
-    <div style={{backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`}}>
-        <h2 dangerouslySetInnerHTML={{__html: node.field_main_header.processed}}></h2>
-        {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
-        {node.relationships.field_box.map(getParagraph)}
+const HomeHero = ({ node }) => {
+
+  function changeBackground(bg) {
+    document.getElementById("hero").style.backgroundImage = `url(${bg})`
+    console.log(bg)
+  }
+
+  return (
+    <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`}} className={["container-fluid", homeHero.heroStyle].join(" ")} id="hero">
+      <div className={["row"].join(" ")}>
+        <div className={["col"].join(" ")}>
+          <h2 dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></h2>
+          <p dangerouslySetInnerHTML={{ __html: node.field_main_subtitle.processed }} className={[homeHero.subtitle].join(" ")}></p>
+          {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
+        </div>
+      </div>
+      <div className="row">
+          {node.relationships.field_box.map((box) => {
+            console.log(box.relationships.field_background.localFile.childImageSharp.fluid.src)
+            return (
+              <div className="col-12 col-md-6 col-lg-5" key={box.id} onMouseEnter={() => {changeBackground(box.relationships.field_background.localFile.childImageSharp.fluid.src); }} onMouseLeave={() => {changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src);} }>
+                <HeroBox  node={box}  />
+              </div>
+            )
+          })}
+      </div>
     </div>
-);
+  );
+}
+
+
+
 
 export default HomeHero;
 
@@ -18,6 +44,9 @@ export const fragment = graphql`
     fragment paragraphHomeHero on paragraph__home_hero {
         id
         field_main_header {
+          processed
+        }
+        field_main_subtitle {
           processed
         }
         relationships {

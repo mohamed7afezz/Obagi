@@ -12,6 +12,23 @@ p {
     max-width: 1920px;
 }
 
+.logo {
+    margin: 0 auto;
+    margin-bottom: 41px;
+    text-align: center;
+    text-transform: uppercase;
+    @include fontStyle(19, 24);
+    letter-spacing: 11px;
+    padding-left: 10px;
+
+    @include lg-screen {
+        @include fontStyle(20, 24);
+        letter-spacing: 16px;
+        padding-left: 15px;
+        margin-bottom: 72px;
+    }
+}
+
 .title {
     @include fontStyle(52, 64);
 
@@ -51,6 +68,7 @@ p {
     color: #132466;
     letter-spacing: 1.2px;
     padding: 20px 65px;
+    text-transform: uppercase;
 
     @extend %futurapt-bold;
     @include fontStyle(12, 16);

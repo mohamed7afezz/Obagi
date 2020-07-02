@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import BoxStyle from '../assets/scss/components/hero-box.module.scss';
+import boxStyle from '../assets/scss/components/hero-box.module.scss';
 
 const HeroBox = ({ node }) => {
     let link;
@@ -9,12 +9,16 @@ const HeroBox = ({ node }) => {
         link = <Link to={node.field_link.uri}>{node.field_link.title}</Link>
     }
         
+
+    // console.log(node)
+    // 
     return (
-        <div className={BoxStyle.heroBox}>
-            <div>{node.field_name.processed}</div>
-            <div>{node.field_title.processed}</div>
-            <div>{node.field_subtitle.processed}</div>
-            {link}
+        <div className={boxStyle.heroBox} >
+            <p dangerouslySetInnerHTML={{ __html: node.field_name.processed }} className={["logo", boxStyle.logo].join(" ")}></p>
+            <h1 dangerouslySetInnerHTML={{ __html: node.field_title.processed }} className={[boxStyle.title].join(" ")}></h1>
+            <p dangerouslySetInnerHTML={{ __html: node.field_subtitle.processed }} className={[boxStyle.subtitle].join(" ")}></p>
+            <div className={boxStyle.linkSection}><Link to={node.field_link.uri} className={["button-link", boxStyle.link].join(" ")}>{node.field_link.title}</Link></div>
+            
         </div>
     );
 };
@@ -38,5 +42,16 @@ export const fragment = graphql`
         field_title {
             processed
         }
+        relationships {
+            field_background {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    src
+                  }
+                }
+              }
+            }
+          }
     }
 `;

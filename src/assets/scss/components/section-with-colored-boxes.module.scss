@@ -9,14 +9,12 @@
     
     @include lg-screen {
         background: transparent;
-        // position: relative;
     }
 }
 
 .small-section {
     @include lg-screen {
-        // margin: 0 192px 0 352px;
-        margin-left: 352px;
+        padding: 0 192px 0 352px;
     }
 }
 
@@ -32,7 +30,6 @@
     }
     @include lg-screen {
         background: #fff;
-        // position: absolute;
         &::before {
             display: none;
         }
@@ -52,6 +49,7 @@
             content: '';
             background: #ffcd00;
             position: absolute;
+            left: -118px;
         }
     }
 }
@@ -72,7 +70,7 @@
     }
     @include lg-screen {
 
-        margin: 118px -313px 0 313px;
+        margin: 118px -157px 0 157px;
         &::after {
             right: 0;
             bottom: 0;

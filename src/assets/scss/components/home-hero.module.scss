@@ -1,0 +1,37 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.hero-style {
+    color: #fff;
+    text-align: center;
+    // background-repeat: no-repeat;
+    background: no-repeat center center fixed;
+    background-size: cover;
+    padding-bottom: 65px;
+
+    @include lg-screen {
+        padding-left: 196px;
+        padding-bottom: 180px;
+    }
+}
+
+.header {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin: 248px 0 8px;
+
+
+    @include lg-screen {
+        margin: 288px 0 72px -176px;
+        padding: 0 470px;
+    }
+}
+
+.subtitle {
+    @include fontStyle(18, 24);
+    margin-bottom: 71px;
+
+    @include lg-screen {
+        display: none;
+    }
+}
