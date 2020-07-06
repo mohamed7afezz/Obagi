@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@xaviemirmon/gatsby-drupal-menus": "^1.0.3",
     "bootstrap": "^4.5.0",
     "gatsby": "^2.23.3",
     "gatsby-image": "^2.4.7",

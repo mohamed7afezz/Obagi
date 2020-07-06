@@ -48,6 +48,10 @@
 }
 .link-desk {
     margin-top: 40px;
+
+    @include lg-screen {
+        margin-bottom: 130px;
+    }
 }
 
 .text-section {

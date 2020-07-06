@@ -13,8 +13,35 @@
 }
 
 .small-section {
+    color: #fff;
+    background: #132466;
     @include lg-screen {
-        padding: 0 192px 0 352px;
+        background: #132466;
+        padding: 0 30px 244px 187px;
+
+        &::before {
+            height: 118px;
+            width: 118px;
+            content: '';
+            background: #ffcd00;
+            position: absolute;
+            left: -103px;
+        }
+
+        &::after {
+            background: #44c4d9;
+            content: '';
+            position: absolute;
+            z-index: 999;
+            left: 0;
+            bottom: 0;
+            height: 196px;
+            width: 197px;
+        }
+    }
+
+    @include xl-screen {
+            // margin-bottom: 196px;
     }
 }
 
@@ -37,51 +64,33 @@
     }
 }
 .second-section {
-    color: #fff;
-    background: #132466;
-    @include lg-screen {
-        background: #132466;
-        padding-left: 0;
-        margin-bottom: 196px;
-        &::before {
-            height: 118px;
-            width: 118px;
-            content: '';
-            background: #ffcd00;
-            position: absolute;
-            left: -118px;
-        }
-    }
+    
 }
 
 .image {
     margin-top: 44px;
     position: relative;
     z-index: 80;
+
     &::after {
         background: #44c4d9;
-        width: 104px;
-        height: 105px;
         content: '';
         position: absolute;
-        z-index: 99;
+        z-index: 999;
         right: -60px;
         bottom: -44px;
+        height: 105px;
+        width: 104px;
     }
+    
     @include lg-screen {
-
         margin: 118px -157px 0 157px;
+        
         &::after {
-            right: 0;
-            bottom: 0;
+            display: none;
         }
     }
-    @include xl-screen {
-        &::after {
-            height: 196px;
-            width: 197px;
-        }
-    }
+
 }
 
 .subtitle {
@@ -89,7 +98,7 @@
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
 
-    margin: 61px 0 9px;
+    padding: 61px 0 9px;
 
     &::before {
         width: 12px;
@@ -101,19 +110,27 @@
     }
 
     @include lg-screen {
-        margin: 158px 0 32px;
+        padding: 158px 0 32px;
+        max-width: 592px;
+        margin: 0 auto;
     }
 }
 
 .title {
     @extend %futurapt-light;
+
+    @include lg-screen {
+        max-width: 592px;
+        margin: 0 auto;
+    }
 }
 
 .description {
     margin: 18px 0 45px;
 
     @include lg-screen {
-        margin: 16px 0 40px;
+        margin: 16px auto 40px;
+        max-width: 587px;
     }
 }
 
@@ -154,6 +171,8 @@
     margin-bottom: 51px;
 
     @include lg-screen {
-        margin-bottom: 193px;
+        margin: 0 auto auto;
+        max-width: 592px;
+
     }
 }

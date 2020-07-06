@@ -9,6 +9,9 @@ h1 {
     border: 1px solid #fff;
     
     background: transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
  
     &:hover {
         background: rgba(19, 36, 102, 0.2);
@@ -16,6 +19,7 @@ h1 {
     }
 
 }
+
 
 .logo {
     color: #fff;
@@ -32,30 +36,37 @@ h1 {
     @include fontStyle(40, 48);
     padding: 0 30px;
 
+
     @include lg-screen {
         @include fontStyle(52, 64);
         font-family:  futura-pt,   sans-serif;
         font-weight: 300;
         font-style: normal;
-        padding: 0 174px;
+        padding: 0 20px;
+        max-width: 386px;
+        margin: 0 auto;
     }
 }
 
 .subtitle {
     @include fontStyle(18, 24);
-    padding: 1px 22px 15px 22px;
+    max-width: 284px;
+    margin: 0 auto;
+    padding: 1px 0 15px;
 
     @include lg-screen {
-        padding: 16px 160px 32px;
+        padding: 16px 0 32px;
         @include fontStyle(18, 32);
+        max-width: 424px;
+        margin: 0 auto;
     }
 }
 
 .link-section {
-    margin: 0 41px 41px 41px;
+    margin: auto 41px 41px 41px;
 
     @include lg-screen {
-        margin: 32px 0 96px;
+        margin: auto 0 96px;
     }
 }
 

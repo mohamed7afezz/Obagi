@@ -7,7 +7,7 @@ const ImagesBoxes = ({ node }) => {
   return (
     <div className={[imagesBoxesStyles.imageBoxes, "container-fluid"].join(" ")}>
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
-        <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5","col-lg-4", "offset-lg-2", "offset-md-1"].join(" ")}>
+        <div className={[imagesBoxesStyles.boxes, "col-12", "col-md-5", "col-lg-4", "offset-lg-2", "offset-md-1"].join(" ")}>
           <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
           <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></p>
           {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}

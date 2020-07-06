@@ -10,10 +10,31 @@
     padding-bottom: 65px;
 
     @include lg-screen {
-        padding-left: 196px;
+        // padding-left: 196px;
         padding-bottom: 180px;
+        position: relative;
+        margin-bottom: 308px;
+        &::after {
+            height: 196px;
+            width: 197px;
+            content: '';
+            background: #44c4d9;
+            position: absolute;
+            left: 0;
+            bottom: -196px;
+            z-index: 99;
+        }
     }
 }
+
+.box-margin {
+    margin-bottom: 115px;
+
+    @include md-screen {
+        margin-bottom: 0;
+    }
+}
+
 
 .header {
     @include fontStyle(40, 56);
@@ -22,8 +43,8 @@
 
 
     @include lg-screen {
-        margin: 288px 0 72px -176px;
-        padding: 0 470px;
+        margin: 288px 0 72px;
+
     }
 }
 

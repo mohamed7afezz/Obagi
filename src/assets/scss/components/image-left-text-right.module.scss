@@ -19,7 +19,8 @@
     margin-bottom: 19px;
 
     @include lg-screen {
-        margin-bottom: 32px;
+        max-width: 592px;
+        margin: 0 auto 32px;
     }
 }
 
@@ -31,6 +32,8 @@
         font-family:  futura-pt,   sans-serif;
         font-weight: 300;
         font-style: normal;
+        max-width: 592px;
+        margin: 0 auto;
     }
 }
 
@@ -38,7 +41,8 @@
     margin: 10px 0 22px;
 
     @include lg-screen {
-        margin: 24px 0 40px;
+        margin: 24px auto 40px;
+        max-width: 587px;
     }
 }
 
@@ -63,7 +67,7 @@
 
     @include lg-screen {
 
-        padding: 268px 192px 434px 156px;
+        padding: 268px 0 434px 0;
         z-index: 0;
 
     }
@@ -89,5 +93,12 @@
             width: 117px;
             height: 117px;
         }
+    }
+}
+
+.link-section {
+    @include lg-screen {
+        max-width: 592px;
+        margin: 0 auto;
     }
 }
