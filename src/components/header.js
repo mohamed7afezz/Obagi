@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import '../assets/scss/components/header.module.scss'
-import Menu from '@xaviemirmon/gatsby-drupal-menus'
+import Menu from './menu'
 
 const Header = ({ siteTitle }) => (
   <header>
