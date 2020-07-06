@@ -16,7 +16,6 @@ const BigParagraph = ({ node }) => {
       <div className="row">
         <div className={["col-8", "offset-2","col-md-10", "offset-md-1", "col-lg-8", "offset-lg-2", bigParagraphStyles.colPadding].join(" ")}>
           <div className={bigParagraphStyles.horizontalDivider} ></div>
-          {/* <div><Img fluid={node.relationships.field_paragraph_divider.localFile.childImageSharp.fluid} className={bigParagraphStyles.horizontalDivider} /></div> */}
         </div>
       </div>
     </div>
