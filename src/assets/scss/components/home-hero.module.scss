@@ -59,10 +59,13 @@
 }
 
 .scroll-button {
-    height: 48px;
-    width: 48px;
-    position: absolute;
-    bottom: 56px;
-    left: 56px;
-    scroll-behavior: smooth;
+
+    @include lg-screen {
+        height: 48px;
+        width: 48px;
+        position: absolute;
+        bottom: 56px;
+        left: 56px;
+        scroll-behavior: smooth;s
+    }
 }
