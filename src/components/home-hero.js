@@ -1,9 +1,10 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import { getParagraph } from './paragraphs-helper';
 import homeHero from '../assets/scss/components/home-hero.module.scss'
 import HeroBox from './hero-box'
+import Img from 'gatsby-image'
 
 const HomeHero = ({ node }) => {
 
@@ -30,6 +31,7 @@ const HomeHero = ({ node }) => {
             </div>
           )
         })}
+        <div><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div>
       </div>
     </div>
   );
@@ -62,6 +64,15 @@ export const fragment = graphql`
                 }
                 original {
                     src
+                }
+              }
+            }
+          }
+          field_scroll_down {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

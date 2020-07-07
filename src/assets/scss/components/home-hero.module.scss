@@ -8,6 +8,7 @@
     background: no-repeat center center fixed;
     background-size: cover;
     padding-bottom: 65px;
+    position: relative;
 
     @include lg-screen {
         // padding-left: 196px;
@@ -55,4 +56,13 @@
     @include lg-screen {
         display: none;
     }
+}
+
+.scroll-button {
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    bottom: 56px;
+    left: 56px;
+    scroll-behavior: smooth;
 }
