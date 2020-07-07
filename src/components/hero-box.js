@@ -46,7 +46,7 @@ export const fragment = graphql`
             field_background {
               localFile {
                 childImageSharp {
-                  fluid {
+                  original {
                     src
                   }
                 }
