@@ -12,6 +12,11 @@ p {
     max-width: 1920px;
 }
 
+.col-padding {
+    padding: 0;
+}
+
+
 .logo {
     margin: 0 auto;
     margin-bottom: 41px;
@@ -41,7 +46,7 @@ p {
     @extend %futurapt-bold;
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
-
+    text-transform: uppercase;
     &::before {
         width: 12px;
         height: 12px;
@@ -69,6 +74,7 @@ p {
     letter-spacing: 1.2px;
     padding: 20px 65px;
     text-transform: uppercase;
+    background: transparent;
 
     @extend %futurapt-bold;
     @include fontStyle(12, 16);
@@ -95,3 +101,45 @@ p {
     
 
 }
+
+.footer-menu {
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 40px;
+
+        li a{
+            @extend %futurapt-bold;
+            @include fontStyle(14, 16);
+            color: #132466;
+        
+            text-decoration: none;
+        }
+
+        .submenu {
+            padding-left: 0;
+        }
+
+        .submenu li {
+            margin-bottom: 8px;
+        
+            &:first-child {
+                margin-top: 19px;
+            }
+
+            a {
+                @extend %futurapt-book;
+                @include fontStyle(18, 32);
+                color: #7c858a;
+            }
+        }
+    }
+
+    
+}
+
+footer .form-group {
+    margin-bottom: 0;
+} 
+

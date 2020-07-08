@@ -1,6 +1,8 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes from "prop-types";
+import menuStyles from '../assets/scss/components/menu.module.scss'
+import footerStyles from '../assets/scss/components/footer.module.scss'
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -85,7 +87,7 @@ function generateMenu(menuLinks, menuName) {
   return menu
 }
 
-const Menu = ({menuName}) => (
+const Menu = ({menuName, menuClass}) => (
 
    <StaticQuery
       query={
@@ -114,7 +116,7 @@ const Menu = ({menuName}) => (
       `
       }
       render={data => (
-        <nav className={menuName}>
+        <nav className={menuName, menuClass}>
           <ul >
             {generateMenu(data, menuName)}
           </ul>
@@ -126,6 +128,7 @@ const Menu = ({menuName}) => (
 
 Menu.propTypes = {
   menuName: PropTypes.string,
+  menuClass: PropTypes.string,
 }
 
 Menu.defaultProps = {

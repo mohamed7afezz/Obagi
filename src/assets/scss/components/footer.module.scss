@@ -1,0 +1,181 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+// .footer-menu ul {
+//     list-style: none;
+// }
+
+// .footer-menu ul li a{
+//     @extend %futurapt-bold;
+//     @include fontStyle(14, 16);
+//     color: #132466;
+// }
+
+// .footer-menu ul li ul.submenu li a {
+//     @extend %futurapt-book;
+//     @include fontStyle(18, 32);
+//     color: #7c858a;
+// }
+
+
+// .form {
+//     display: flex;
+//     flex-direction: row;
+// }
+
+.footer-section {
+    padding-top: 40px;
+    padding-bottom: 32px;
+    
+    @include lg-screen {
+        padding-top: 57px;
+        padding-bottom: 72px;
+    }
+}
+
+.obagi-logo {
+    height: 68px;
+    width: 68px;
+    margin-bottom: 40px;
+
+    @include lg-screen {
+        height: 273px;
+        width: 273px;
+        margin-bottom: 0;
+    }
+}
+
+.form {
+
+
+
+    label {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .form-title {
+        @include fontStyle(28, 48);
+        
+    }
+
+    .form-subtitle {
+        @include fontStyle(18, 32);
+        color: #7c858a;
+        margin-bottom: 16px;
+    }
+
+    .form-box {
+
+        border: 0;
+        // border-radius: 4px;
+        @include fontStyle(12, 16);
+        letter-spacing: 1.2px;
+        @extend %futurapt-bold;
+        color: #132466;
+        opacity: 1;
+        padding-bottom: 32px;
+
+        
+
+
+        @include md-screen {
+            border: 0;
+            padding-bottom: 0;
+            height: 50%;
+        }
+    }
+
+    .form-button {
+        width: 100%;
+        margin-top: 20px;
+        background: #132466;
+        color: #ffffff;
+        &:hover {
+            background: #ffffff;
+            color: #132466;
+        }
+
+        @include md-screen {
+            background: #ffffff;
+            color: #132466;
+            padding: 16px 24px;
+            margin: 13px 16px 16px;
+            width: unset;
+
+
+            &:hover {
+                background: #132466;
+                color: #ffffff;
+            }
+        }
+    }
+
+    .button-section {
+        @include md-screen {
+            position: absolute;
+            right: 0;
+        }
+
+    }
+
+    .signup {
+        @include md-screen {
+            height: 80px;
+            width: 100%;
+            border: 1px solid #d6d6d6;
+            display: flex;
+            border-radius: 4px;
+            position: relative;
+            
+        }
+        
+    }
+
+    .input-section {
+        width: 100%;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        padding: 16px 16px 0;
+
+        @include md-screen {
+            border: 0;
+        }
+    }
+    
+    .form-email {
+        @include fontStyle(12, 16);
+        letter-spacing: 1.2px;
+        @extend %futurapt-bold;
+        color: #132466;
+        opacity: 1;
+    }
+}
+
+.social-media {
+    @include md-screen {
+        display: flex;
+    margin-top: 48px;
+    .social-icon {
+        height: 64px;
+        width: 64px;
+        margin-right: 32px;
+        text-align: center;
+        padding: 21px;
+
+
+        &:first-child {
+            margin-left: 21px;
+        }
+
+        a {
+            color: #132466;
+        }
+
+        .icon {
+            height: 21px;
+            width: 21px;
+        }
+    }
+    }
+}
