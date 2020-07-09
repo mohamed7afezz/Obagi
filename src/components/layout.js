@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql, withPrefix } from "gatsby"
 import Helmet from 'react-helmet'
 import Header from "./header"
+import Footer from './footer'
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import "../assets/scss/typography/typography.scss"
 import '../assets/scss/components/layout.scss'
@@ -49,6 +50,11 @@ const Layout = ({ children }) => {
     <div id="scripts"></div>
     
 
+        <Footer />
+        
+          <script src={withPrefix('../../node-modules/jquery/dist/jquery.js')} type="text/javascript" />
+          <script src={withPrefix('../../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
+        
       </div>
     </>
   )

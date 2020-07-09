@@ -5,6 +5,25 @@
     margin: 0;
 }
 
+.col-margin {
+    margin-bottom: 31px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.col-padding {
+    @include md-screen-only {
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
 .subtitle {
     @include fontStyle(18, 24);
     @extend %futurapt-bold;
@@ -20,39 +39,21 @@
 
 
 .image-boxes {
-    @include md-screen {
-        
-    }
+    margin-bottom: 49px;
     @include lg-screen {
-
+        margin-bottom: 224px;
     }
 }
 
 .boxes {
     border: solid 1px #132466;
     border-radius: 6px;
-    margin-bottom: 31px;
-    padding: 0;
-    &:last-child {
-        margin-bottom: 0;
-    }
-    @include md-screen {
-        margin-bottom: 0;
-        margin-right: 15px !important;
-        &:last-child {
-            margin-right: 0 !important;
-        }
 
-    }
+
     @include lg-screen {
         margin-right: 30px !important;
     }
 
-    @include md-screen-only {
-        &:first-child {
-            margin-left: 50px;
-        }
-    }
 }
 
 .box-image {

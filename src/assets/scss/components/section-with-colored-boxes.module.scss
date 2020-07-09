@@ -1,9 +1,13 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
-.col-padding {
+.col-left-padding {
     padding-left: 0;
 }
+.col-right-padding {
+    padding-right: 0;
+}
+
 .big-section {
     background: #132466;
     
@@ -63,9 +67,7 @@
         
     }
 }
-.second-section {
-    
-}
+
 
 .image {
     margin-top: 44px;
@@ -97,7 +99,7 @@
     @extend %futurapt-bold;
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
-
+    text-transform: uppercase;
     padding: 61px 0 9px;
 
     &::before {
