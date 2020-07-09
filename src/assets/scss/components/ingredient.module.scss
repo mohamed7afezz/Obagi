@@ -1,0 +1,81 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.ingredientcontent{
+    padding-top: 48px;
+    padding-bottom: 48px;
+      @include md-screen{
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
+    background-color: #44c4d9;
+}
+.expand{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold ;
+    color:#fff;
+    align-items: center;
+    text-transform: uppercase;
+    display: inline-flex;
+    margin-top: 35px;
+    @include md-screen{
+        margin-top: 40px;
+    }
+    img{
+        padding-right: 16px;
+    }
+}
+.ingredienthead{
+    color: #fff;
+    display: none;
+    @include md-screen {
+        display: block;
+    }
+}
+.ingredientimagehead{
+    display: block;
+    margin-bottom: 24px;
+    @include md-screen {
+        
+        display: none;
+    }
+}
+.ingredientcontent p {
+    color: #fff;
+
+    margin-top: 8px;
+}
+.ingredientcontent .ingredienttitle{
+    margin-top: 20px;
+    @extend %futurapt-bold ;
+    @include md-screen {
+        margin-top: 40px;  
+    }
+}
+.ingredientcontent .ftitle{
+    margin-top: 0;
+    @include md-screen {
+        margin-top: 40px;  
+    }
+}
+.ingredientcontent img{
+    max-width: 100%;
+}
+.ingredientimagehead{
+    font-size: 48px;
+    line-height: 64px;
+    color: #fff;
+}
+.ingredientorder{
+    order: -1;
+    @include md-screen {
+        order: 0;
+    }
+}
+.leftcol {
+    margin-top: 80px;
+    @include md-screen {
+        margin-top: 54px;
+    }
+}

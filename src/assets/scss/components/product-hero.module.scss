@@ -1,0 +1,234 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.product-hero {
+
+}
+.productcat{
+    @extend %futurapt-bold;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 1.6;
+color: #132466;
+padding-left: 30px;
+position:relative;
+
+}
+.productdetail{
+    order: 2;
+    margin-top: 64px;
+    @include md-screen{
+        order: 0;
+        margin-top: 50px;
+    }
+}
+.productcat:before{
+    content: "";
+   position: absolute;
+   display: block;
+   width: 12px;
+   height: 12px;
+   left: 0;
+top: 5px;
+   background-color: #44c4d9;
+    }
+.productname{
+    @extend %futurapt-bold;
+    font-size: 32px;
+    line-height: 48px;
+    color: #132466;
+    margin-top: 10px;
+}
+.productdesc{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-book;
+    margin-top: 10px;
+
+}
+.type{
+
+    margin-top: 16px;
+}
+.type {
+    p{
+        @extend %futurapt-book;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    li{
+        @extend %futurapt-book;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    ul{
+        margin-bottom: 16px;
+    }
+}
+.review{
+    align-items: center;
+}
+
+.review p{
+    @extend %futurapt-bold;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 24px;
+    @include md-screen{
+        margin-right: 32px;
+    }
+}
+.price{
+    @extend %futurapt-bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.canuse{
+font-size: 16px;
+line-height: 24px;
+margin-bottom: 16px;
+@extend %futurapt-bold;
+a{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book;
+    text-decoration: underline;
+    color: #132466;
+    margin-left: 3px;
+}
+}
+.Indications{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    @extend %futurapt-bold;
+    a{
+        font-size: 16px;
+        line-height: 24px;
+        @extend %futurapt-book;
+        text-decoration: underline;
+        color: #132466;
+        margin-left: 3px;
+    }
+}
+.quantityhead{
+font-size: 16px;
+line-height: 24px;
+margin-bottom: 10px;
+
+@extend %futurapt-bold;
+
+}
+.quantity{
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 35px;
+    @include md-screen{
+        margin-bottom: 45px;
+        flex-wrap: nowrap;
+    }
+}
+.mt-thirty{
+    margin-top: 32px;
+}
+.productHero select {
+    height: 48px;
+    border-radius: 6px;
+    border-color: #132466;
+    -webkit-appearance: none;
+    appearance: #fff;
+    -moz-appearance: #fff;
+    text-indent: 1px;
+    text-overflow: '';   
+    position: relative;
+    width: 100%;
+    padding-left: 23px;
+    @include md-screen{
+        padding-left: 30px;
+    }
+}
+.productHero .selectdiv{
+    padding: 0;
+}
+.productHero .selectdiv::after{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 8px;
+    height: 5px;
+    background:url(../../images/product-images/mobile-arrow.svg) ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 55%;
+    transform: translateY(-50%);
+    right: 15px;
+
+}
+.share{
+    padding: 0;
+    flex: 0 0 35%;
+    margin-left: 30px;
+    @include md-screen{
+margin-left: 0;
+    }
+}
+.codeoff{
+    font-size: 14px;
+    line-height: 16px;
+   margin-top: 25px;
+    border-radius: 6px;
+    padding-top: 15px;
+padding-bottom: 15px;
+    border: 1px solid #132466;
+    order: 1;
+    justify-content: space-between;
+display: flex;
+    @include md-screen{
+        order: 0;
+        margin-left: 40px;
+        margin-right: 37px;
+        margin-top: 0;
+    }
+}
+.codeoff span {
+    @extend %futurapt-bold;
+}
+.btn-cart{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    background-color: #132466;
+    font-size: 12px;
+    line-height: 16px;
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    color: #fff;
+    text-transform: uppercase;
+    display: none;
+    @include md-screen{
+        display: inline-block;
+    }
+}
+.btn-cart:hover{
+    color: #fff;
+}
+@media (max-width:768px){
+.mob-mt-twenty{
+    margin-top: 20px;
+}}
+.d-flex{
+    display: flex;
+}
+.productimage  img{
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+}
+.images{
+    margin-top: 20px;
+    @include md-screen{
+        margin-top: 32px;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

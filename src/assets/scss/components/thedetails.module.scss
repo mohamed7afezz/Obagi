@@ -1,0 +1,39 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.safe{
+    margin-bottom: 35px;
+    @extend %futurapt-book ;
+    font-size: 18px;
+    margin-top: 16px;
+    line-height: 32px;
+}
+.expand{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold ;
+    color:#132466;
+    align-items: center;
+    text-transform: uppercase;
+    display: inline-flex;
+    margin-bottom: 40px;
+    @include md-screen{
+        margin-bottom: 0;}
+}
+.expand img {
+    padding-right: 16px;
+}
+.detailHero{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
+    background-color: #edfafc;
+}
+h1{
+    font-size: 64px;
+    line-height: 72px;
+    @extend %futurapt-light ;
+}

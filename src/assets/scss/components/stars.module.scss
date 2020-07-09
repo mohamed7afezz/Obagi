@@ -1,0 +1,9 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.starsFlex{
+    display: flex;
+    align-items: center;
+}
+.total{
+    margin-left: 4px;
+}

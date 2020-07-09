@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React ,{ useEffect }  from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, withPrefix } from "gatsby"
-
+import Helmet from 'react-helmet'
 import Header from "./header"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import "../assets/scss/typography/typography.scss"
@@ -25,7 +25,17 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
+  // Similar to componentDidMount and componentDidUpdate: 
+   useEffect(() => {    
+    
+    let script = document.createElement('script');
+    script.src="https://code.jquery.com/jquery-3.5.1.min.js";
+    document.getElementById("scripts").appendChild(script);
+    let scriptbootstrap = document.createElement('script');
+    scriptbootstrap.src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js";
+    document.getElementById("scripts").appendChild(scriptbootstrap);
+      });
+ 
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
@@ -36,10 +46,9 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-        
-          <script src={withPrefix('../../node-modules/jquery/dist/jquery.js')} type="text/javascript" />
-          <script src={withPrefix('../../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
-        
+    <div id="scripts"></div>
+    
+
       </div>
     </>
   )
