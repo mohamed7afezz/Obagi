@@ -47,7 +47,7 @@ return (
                                 <div className={footerStyles.signup}>
                                     <div className={footerStyles.inputSection}>
                                         <label for="inputEmail" className={footerStyles.formEmail}>EMAIL ADDRESS</label>
-                                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" className={footerStyles.formBox}></input>
+                                        <input type="email" class={footerStyles.formBox} id="inputEmail" aria-describedby="emailHelp"></input>
                                     </div>
                                     <div className={footerStyles.buttonSection}><button type="submit" class={["button-link", footerStyles.formButton].join(" ")}>SIGN UP</button></div>
                                 </div>
