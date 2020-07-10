@@ -39,7 +39,18 @@ function createMenuHierarchy(menuData, menuName) {
   return tree
 }
 
-function buildLink(link) {
+function buildLink(link, collapseTarget) {
+  if(!collapseTarget) {
+    return ( <Link  className="single-tab" to={link.link.uri}>
+    {link.title}
+  </Link>)
+  }
+  if(collapseTarget) {
+    return ( <a  data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls="collapseExample">
+    {link.title}
+  </a>)
+  }
+
   if(!link.external && link.link.uri) {
     return ( <Link activeClassName="active" to={link.link.uri}>
       {link.title}
@@ -64,8 +75,8 @@ function buildMenu(menuArray){
     if(menuArray[item].children.length !== 0) {
       menu.push(
       <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item])}
-        <ul className="submenu">
+        {buildLink(menuArray[item], "#menuItem" + item)}
+        <ul className="collapse submenu" id={"menuItem" +  item}>
           {buildMenu(menuArray[item].children)}
         </ul>
       </li>)

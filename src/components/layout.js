@@ -42,19 +42,12 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <div>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
     <div id="scripts"></div>
     
 
         <Footer />
-        
-          <script src={withPrefix('../../node-modules/jquery/dist/jquery.js')} type="text/javascript" />
-          <script src={withPrefix('../../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
-        
+          <script src={withPrefix('../node-modules/jquery/dist/jquery.js')} type="text/javascript" />
+          <script src={withPrefix('../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
       </div>
     </>
   )

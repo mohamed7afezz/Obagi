@@ -1,0 +1,73 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.header {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    width: 100%;
+    background: #132466;
+    
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.nav-container {
+    height: 100vh;
+    overflow-y: scroll;
+
+    @include md-screen {
+        height: 100vh;
+    }
+
+}
+
+// @media screen and (min-width: 577px) {
+//     .nav-container {
+//         height: unset;
+//         overflow: hidden;
+//     }
+// }
+
+.top-nav {
+    background: #132466;
+    display: flex;
+    width: 100%;
+
+    .obagi-logo {
+        height: 100%;
+    }
+
+    .icons {
+        display: flex;
+        float: right;
+        margin: 23px 0;
+
+        .icon-img {
+            height: 20px;
+            width: 20px;
+            margin-right: 28px;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: 0;
+        }
+    }
+}
+
+.lower-section {
+
+    margin: 177px 0 37px 24px;
+
+    span {
+        margin-right: 34px;
+        a {
+            color: #ffffff;
+            @include fontStyle (12, 16);
+            letter-spacing: 1.2px;
+            @extend %futurapt-bold;
+        }
+    }
+}

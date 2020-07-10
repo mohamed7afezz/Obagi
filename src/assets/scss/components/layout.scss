@@ -143,3 +143,186 @@ footer .form-group {
     margin-bottom: 0;
 } 
 
+.nav-mobile {
+    background: #132466;
+    
+    ul {
+        padding: 0;
+        width: 100%;
+    }
+
+    ul li {
+        list-style: none;
+
+        a {
+            color: #132466;
+            background: #fff;
+            @include fontStyle(16, 24);
+            letter-spacing: 1.6px;
+            padding: 21px 0 16px 25px;
+            width: 100%;
+            display: inline-block;
+
+        }
+
+        a.collapsed {
+            color: #fff;
+            background: #132466;
+        }
+
+        &:first-child, &:nth-child(2) {
+
+            a {
+                color: #fff;
+                background: #132466;
+                @include fontStyle(19, 24);
+                letter-spacing: 7px;
+                position: relative;
+                padding-bottom: 28px;
+                padding-top: 26px;
+
+                
+            }
+            .submenu {
+                background: #132466;
+                li {
+                    a {
+                        color: #132466;
+                        background: #fff;
+                        padding-top: 17px;
+                        padding-bottom: 17px;
+                        &:first-child {
+                            padding-top: 25px;
+                            
+                        }
+                    }
+                    a.collapsed {
+                        color: #fff;
+                        background: #132466;
+                    }
+                }
+
+                .submenu {
+                    li {
+                        a {
+                            padding-top: 24px;
+                            &:first-child {
+                                padding-top: 7px;
+                            }
+                            // &:last-child {
+                            //     padding-bottom: 49px;
+                            // }
+                        }
+                    }
+                }
+            }
+
+        }
+        &:first-child {
+            margin-bottom: 0;
+
+            a {
+                border-top: 1px solid #979797;
+                border-bottom:  1px solid #979797;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 4px;
+                    height: 100%;
+                    background: #868cd2;
+                    top: 0;
+                    left: 0;
+                    z-index: 99;
+                    
+                }
+            }
+            a.collapsed {
+                border-bottom:  0;
+            }
+
+        }
+        &:nth-child(2) {
+
+            a {
+                border-top: 1px solid #979797;
+                border-bottom:  1px solid #979797;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 4px;
+                    height: 100%;
+                    background: #44c4d9;
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+        }
+
+
+    }
+
+    .submenu {
+
+
+        .submenu {
+            li {
+                a {
+                    padding-left: 40px;
+                }
+            }
+
+        }
+
+        li{
+            border: 0 !important;
+            &::before {
+                position: unset !important;
+                content: none !important;
+                width: unset !important;
+                height: unset !important;
+                background: unset !important;
+                top: unset !important;
+            }
+
+            a {
+                padding: 24px 0 24px 25px;
+                font-size: 16px !important;
+                line-height: 24px !important;
+                letter-spacing: 0 !important;
+                border: 0 !important;
+                &::before {
+                    position: unset !important;
+                    content: none !important;
+                    width: unset !important;
+                    height: unset !important;
+                    background: unset !important;
+                    top: unset !important;
+                }
+            }
+
+            &:first-child {
+                a {
+                    padding-top: 8px;
+                }
+            }
+        }
+
+    }
+
+    .submenu.collapsing, .submenu.show {
+        background: #fff;
+        color: #132466;
+    }
+
+    .single-tab {
+            background: #132466 !important;
+            color: #fff !important;
+    }
+
+}
+
+.navbar {
+    padding: 0 ;
+}
+
