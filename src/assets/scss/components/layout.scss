@@ -326,3 +326,19 @@ footer .form-group {
     padding: 0 ;
 }
 
+ .btn-link.collapsed{
+     
+    background-color: #fff !important;
+   
+    color: #132466 !important;
+   
+
+}
+.card-body{
+    padding-top: 40px;
+   
+    @include md-screen{
+        padding-bottom: 0;
+        padding-left: 0;
+    }
+}

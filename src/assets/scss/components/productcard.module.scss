@@ -1,0 +1,55 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.cardname{
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 16px 32px 24px;
+}
+.cardimg{
+    width: 100%;
+    max-width:100%;
+}
+.cardname p {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+
+}
+.productCardHero{
+    background-color: #fff;
+}
+.productCardHero .starspd{
+    padding-left: 16px;
+    padding-top: 24px;
+}
+.productcarddesc{
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold;
+}
+.productcardcon{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-bottom: 32px;
+}
+.price{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-bold;
+    padding-left: 16px;
+    padding-bottom: 10px;
+    span{
+        padding-left: 4px;
+    }
+    @include md-screen{
+        padding-bottom: 40px;
+    }
+
+}

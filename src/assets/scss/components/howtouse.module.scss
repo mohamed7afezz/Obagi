@@ -1,2 +1,134 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
+.tabs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card-header{
+    padding: 0;
+}
+.card-header .btn-link{
+    padding:16px 45px;
+    text-transform: uppercase;
+}
+ .tab {
+border: 0;
+background-color: transparent;
+@include md-screen{
+    padding-left: 0 !important;
+}
+}
+.cardhead{
+    width: 100%;
+    padding:0;
+    text-align: center;
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.cardhead .btnLink1{
+    padding:16px 0;
+    max-width: 100%;
+    box-shadow: none;
+    width: 100%;
+    background-color: #44c4d9;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    color: #fff;
+    @extend %futurapt-bold;
+    text-decoration: none;
+}
+
+.card{
+    border: 0;
+}
+.howtousecon {
+    background-color: rgba(68,196,217,.1);
+    padding-top: 48px;
+    padding-bottom: 54px;
+    
+    @include md-screen {
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
+
+}
+.allcon{
+    background-color: rgba(68,196,217,.1);
+
+}
+
+.howtousehead{
+    font-size: 48px;
+    line-height: 64px;
+    display: none;
+    @extend  %futurapt-light ;
+    @include md-screen{
+        font-size: 64px;
+        line-height: 72px;
+        display: block;
+    }
+}
+
+
+.howtouseheadimage{
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 64px;
+    display: block;
+    @extend  %futurapt-light ;
+    @include md-screen{
+        font-size: 64px;
+        line-height: 72px;
+        display: none;
+    }
+}
+.ordering{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.howtousecon {
+    .howrightcol img {
+        max-width: 100%;
+        width: 100%;
+        @include md-screen{
+        height: 100%;
+    }
+}
+}
+.tabTitle{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold;
+    padding-bottom: 8px;
+}
+.tabdesc{
+    font-size: 18px;
+    line-height: 32px;
+    padding-bottom: 54px;
+    @include md-screen {
+        padding-bottom: 112px;
+       
+    }
+}
+.howtousehead{
+        padding-top: 48px;
+       padding-bottom: 32px;
+        @include md-screen {
+            padding-top: 112px;
+           
+        }
+    }
+.howrightcol{
+    padding-left: 0;
+    padding-right: 0;
+    order: -1;
+    margin-bottom: 48px;
+    background-color: #ecf9fb;
+    @include md-screen {
+        margin-bottom: 0;
+        order: 0;
+    }
+}
