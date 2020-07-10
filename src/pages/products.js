@@ -1,9 +1,6 @@
 
 import React from "react"
 
-
-import '../../node_modules/bootstrap/dist/css/bootstrap.css'
-import "../assets/scss/typography/typography.scss"
 import '../assets/scss/components/product-hero.module.scss'
 import ProductHero from "../components/product-hero"
 import Details from "../components/thedetails"
