@@ -63,7 +63,7 @@ const Header = ({ siteTitle }) => {
 
           <div className="row">
             <div className="col col-padding">
-              <div class="collapse navbar-collapse" id="navbar">
+              <div class="collapse navbar-collapse nav-container" id="navbar">
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} />
 
                 <div className={headerStyles.lowerSection}>

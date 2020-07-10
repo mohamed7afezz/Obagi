@@ -3,7 +3,7 @@
 
 .header {
     position: fixed;
-    z-index: 99999;
+    z-index: 999;
     top: 0;
     width: 100%;
     background: #132466;
@@ -14,21 +14,11 @@
 }
 
 .nav-container {
-    height: 100vh;
+    max-height: 100vh;
     overflow-y: scroll;
 
-    @include md-screen {
-        height: 100vh;
-    }
 
 }
-
-// @media screen and (min-width: 577px) {
-//     .nav-container {
-//         height: unset;
-//         overflow: hidden;
-//     }
-// }
 
 .top-nav {
     background: #132466;
