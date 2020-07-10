@@ -1,55 +1,129 @@
 import React from 'react'
 
 import howto from '../assets/scss/components/howtouse.module.scss'
-import pluswhite from '../assets/images/product-images/plus-white.svg'
-import ingredientimg from '../assets/images/product-images/ingredient.png'
+import videoimg from '../assets/images/product-images/howtouse.png'
+
 const Howtouse = ({ node }) => {
     return (
         <div className={["container-fluid", howto.howtousecon].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>
                 <div className={["col-12", "col-lg-10", "offset-lg-1", howto.allcon].join(" ")}>
-                    <div className={["col-12", "col-lg-3", "offset-lg-1", howto.howLeftcol].join(" ")}>
-                        <h1 className={howto.howtousehead}>How to Use</h1>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"> Step 1</a>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2"> Step 2</a>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"> Step 3</a>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4"> Step 4</a>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample5" role="button" aria-expanded="false" aria-controls="multiCollapseExample5"> Step 5</a>
-                        <a className={howto.expand} data-toggle="collapse" href="#multiCollapseExample6" role="button" aria-expanded="false" aria-controls="multiCollapseExample6"> Step 6</a>
+                    <div class="row">
+                        <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
+                            <h1 className={howto.howtousehead}>How to Use</h1>
+                            <div id="accordion">
+                                <div className={["d-flex", howto.tabs].join(" ")}>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingOne">
+                                            <h5 class="mb-16">
+                                                <button className={[howto.btnLink1, "btn-link", "btn "].join(" ")} data-toggle="collapse" data-target="#stepOne" aria-expanded="true" aria-controls="stepOne">
+                                                    STEP 1
+        </button>
+                                            </h5>
+                                        </div>
 
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
+                                    </div>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6",].join(" ")}>
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingTwo">
+                                            <h5 class="mb-0">
+                                                <button className={[howto.btnLink1, "btn-link", "collapsed", "btn "].join(" ")} data-toggle="collapse" data-target="#stepTwo" aria-expanded="false" aria-controls="stepTwo">
+                                                    STEP 2
+        </button>
+                                            </h5>
+                                        </div>
+
+                                    </div>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingThree">
+                                            <h5 class=" mb-sm-16">
+                                                <button className={[howto.btnLink1, "btn-link", "collapsed", "btn "].join(" ")} data-toggle="collapse" data-target="#stepThree" aria-expanded="false" aria-controls="stepThree">
+                                                    STEP 3
+        </button>
+                                            </h5>
+                                        </div>
+
+                                    </div>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingFour">
+                                            <h5 class="mb-0">
+                                                <button className={[howto.btnLink1, "btn-link", "collapsed", "btn "].join(" ")} data-toggle="collapse" data-target="#stepFour" aria-expanded="false" aria-controls="stepFour">
+                                                    STEP 4
+        </button>
+                                            </h5>
+                                        </div>
+
+                                    </div>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingFive">
+                                            <h5 class="mb-0">
+                                                <button className={[howto.btnLink1, "btn-link", "collapsed", "btn "].join(" ")} data-toggle="collapse" data-target="#stepFive" aria-expanded="false" aria-controls="stepFive">
+                                                    STEP 5
+        </button>
+                                            </h5>
+                                        </div>
+
+                                    </div>
+                                    <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                        <div className={[howto.cardhead, "card-header"].join(" ")} id="headingSix">
+                                            <h5 class="mb-0">
+                                                <button className={[howto.btnLink1, "btn-link", "collapsed", "btn "].join(" ")} data-toggle="collapse" data-target="#stepSix" aria-expanded="true" aria-controls="stepSix">
+                                                    STEP 6
+        </button>
+                                            </h5>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+                                   <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+                                </div>
+
+                                <div id="stepTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+
+                                    <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+      
+                                </div>
+                                <div id="stepThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+
+                                    <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+
+                                </div>
+                                <div id="stepFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+
+                                    <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+
+                                </div>
+                                <div id="stepFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+
+                                    <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+
+                                </div>
+                                <div id="stepSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <p className={howto.tabTitle}>Lorem ipsum dolor sit amet</p>
+
+                                    <p className={howto.tabdesc}>     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.    </p>  </div>
+
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="collapse multi-collapse" id="multiCollapseExample2">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
+                        <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
+                            <h1 className={howto.howtouseheadimage}>How to Use</h1>
+                            <img src={videoimg}/>
                         </div>
-                        <div class="collapse multi-collapse" id="multiCollapseExample3">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
-                        </div>
-                        <div class="collapse multi-collapse" id="multiCollapseExample4">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
-                        </div>
-                        <div class="collapse multi-collapse" id="multiCollapseExample5">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
-                        </div>
-                        <div class="collapse multi-collapse" id="multiCollapseExample6">
-                            <p className={howto.safe}>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
-                        </div>
-                        <p className={[howto.howtousettitle, howto.ftitle].join(" ")}>Ingredient Name</p>
-                    </div>
-                    <div className={["col-12", "col-lg-6", "offset-lg-2", howto.howLeftcol].join(" ")}>
                     </div>
                 </div>
             </div>
