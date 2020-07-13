@@ -10,7 +10,7 @@ import Howtouse from "../components/howtouse"
 import ProductSuggestion from "../components/productsuggestion"
 import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
-import Reviews from "../components/reviews"
+
 import Layout from "../components/layout"
 const products = () => (
  
@@ -22,7 +22,7 @@ const products = () => (
       <Howtouse/>
       <Carouselproducts/>
       <Recommendedparing/>
-      <Reviews/>
+      
       <ProductSuggestion/>
         </Layout>
         
