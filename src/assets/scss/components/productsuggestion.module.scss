@@ -1,2 +1,30 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
+
+.productsuggestioncon{
+    background-color: rgba(68 , 196 , 217 ,0.1);
+    padding-top: 52px;
+    padding-bottom: 64px;
+    @include md-screen{
+    padding-top: 80px;
+    padding-bottom: 112px;
+}
+}
+.productsuggestionhead{
+    @extend %futurapt-light;
+    font-size: 48px;
+    margin-bottom: 32px;
+    line-height: 54px;
+    @include md-screen{
+        margin-bottom: 80px;
+        line-height: 64px;
+        text-align: center;
+    }
+}
+  
+
+.slickcon{
+
+
+    overflow: hidden;
+}

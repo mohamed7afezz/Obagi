@@ -1,19 +1,46 @@
 import React from 'react'
 import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
-import cardimg from "../assets/images/product-images/main-image.png"
-import smlamb from '../assets/images/product-images/smallLamb.png'
-import Stars from '../components/stars'
+import ProductCard from "../components/productcard"
+import Slider from "react-slick";
+
 const ProductSuggestion = ({ node }) => {
+    var settings = {
+    
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+               
+              }
+            },
+        ]
+      };
+      
     return (
         <div className={["container-fluid", productsuggestion.productsuggestioncon].join(" ")} >
+             <h1 className={productsuggestion.productsuggestionhead}>You Might Also Like</h1>
             <div className={["row", productsuggestion.ordering].join(" ")}>
-                <div className={["col-12", "col-lg-4", productsuggestion.allcon].join(" ")}>
+                    <div className={ productsuggestion.slickcon}>
+                     <Slider {...settings}>
+                <div className={["col-12",  productsuggestion.allcon].join(" ")}>
+                <ProductCard/>
                 </div>
-                <div className={["col-12", "col-lg-4", productsuggestion.allcon].join(" ")}>
+                <div className={["col-12",  productsuggestion.allcon].join(" ")}>
+                <ProductCard/>
                 </div>
-                <div className={["col-12", "col-lg-4", productsuggestion.allcon].join(" ")}>
+                <div className={["col-12",  productsuggestion.allcon].join(" ")}>
+                <ProductCard/>
                 </div>
+                </Slider>
             </div>
+        </div>
         </div>
     )
 }

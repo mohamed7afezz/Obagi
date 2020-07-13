@@ -16,6 +16,8 @@ import "../assets/scss/typography/typography.scss"
 import '../assets/scss/components/layout.scss'
 import NavBlocks from "../assets/scss/components/nav-blocks"
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,15 +30,7 @@ const Layout = ({ children }) => {
     }
   `)
   // Similar to componentDidMount and componentDidUpdate: 
-   useEffect(() => {    
-    
-    let script = document.createElement('script');
-    script.src="https://code.jquery.com/jquery-3.5.1.min.js";
-    document.getElementById("scripts").appendChild(script);
-    let scriptbootstrap = document.createElement('script');
-    scriptbootstrap.src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js";
-    document.getElementById("scripts").appendChild(scriptbootstrap);
-      });
+  
  
   return (
     <>
@@ -44,12 +38,11 @@ const Layout = ({ children }) => {
       {/* <NavBlocks /> */}
       <div>
         <main>{children}</main>
-    <div id="scripts"></div>
     
+  
 
         <Footer />
-          <script src={withPrefix('../node-modules/jquery/dist/jquery.js')} type="text/javascript" />
-          <script src={withPrefix('../node-modules/bootstrap/dist/js/bootstrap.js')} type="text/javascript" />
+         
       </div>
     </>
   )
