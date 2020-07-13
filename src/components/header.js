@@ -12,8 +12,15 @@ const Header = ({ siteTitle }) => {
     query {
       logo: file(relativePath: { eq: "obagi.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      logoDesk: file(relativePath: { eq: "obagi-logo.png" }) {
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -43,19 +50,21 @@ const Header = ({ siteTitle }) => {
 
   return (
     <header>
-      <div className={headerStyles.header}>
+      <div className={[headerStyles.header, "d-lg-none"].join(" ")}>
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fluid={data.logo.childImageSharp.fluid} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><Img fluid={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
-                  <div ><Link className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                  <div><Link className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                  <div><a class={[headerStyles.navButton].join(" ")} data-toggle="collapse" href="#navbar" role="button" ><Img fluid={data.menu.childImageSharp.fluid} className={headerStyles.iconImg} /></a></div>
+                  <div className={headerStyles.firstIcons}>
+                    <div ><Link className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div><Link className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                  </div>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false"  ></button>
                 </div>
               </div>
             </div>
@@ -75,7 +84,49 @@ const Header = ({ siteTitle }) => {
           </div>
         </div>
       </div>
+
+
+
+
+      <div className={["container-fluid d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
+        <div className={headerStyles.upperNav}>
+          <div className="row mr-0 ml-0">
+            <div className="col col-padding">
+              <div className={headerStyles.mainLinks}>
+                <div className={headerStyles.navSubmenu}><Link to="#">MEDICAL</Link></div>
+                <div className={headerStyles.navSubmenu}><Link to="#">CLINICAL</Link></div>
+              </div>
+            </div>
+
+            <div className={["col", headerStyles.logoSection].join(" ")}>
+              <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+            </div>
+
+            <div className="col col-padding">
+              <div className={headerStyles.navLastSection}>
+                <p><Link to="#">SIGN IN</Link></p>
+                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div className={headerStyles.lowerNav}>
+          <div className="row mr-0 ml-0">
+            <div className="col-12">
+              <Menu menuClass={`navbar nav-desk`} isExpandable={true} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </header>
+
+
   )
 }
 

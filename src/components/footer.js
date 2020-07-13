@@ -29,14 +29,14 @@ return (
                     </div>
                     <div className="col-6 col-lg-2 offset-lg-1">
                         <div className="col col-padding">
-                            <Menu menuName={`first-footer`} menuClass={`footer-menu`} />
+                            <Menu menuName={`first-footer`} menuClass={`footer-menu`} isExpandable={false} />
                         </div>
                         <div className="col col-padding">
-                            <Menu menuName={`second-footer`} menuClass={`footer-menu`} />
+                            <Menu menuName={`second-footer`} menuClass={`footer-menu`} isExpandable={false}  />
                         </div>
                     </div>
                     <div className="col-6 col-lg-2">
-                        <Menu menuName={`third-footer`} menuClass={`footer-menu`} />
+                        <Menu menuName={`third-footer`} menuClass={`footer-menu`} isExpandable={false} />
                     </div>
                     <div className="col-12 col-lg-3 offset-lg-1">
                         <form className={footerStyles.form}>

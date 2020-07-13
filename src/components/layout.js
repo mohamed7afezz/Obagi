@@ -15,6 +15,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import "../assets/scss/typography/typography.scss"
 import '../assets/scss/components/layout.scss'
 import "slick-carousel/slick/slick.css";
+import NavBlocks from "../assets/scss/components/nav-blocks"
 import "slick-carousel/slick/slick-theme.css";
 
 const Layout = ({ children }) => {
@@ -33,6 +34,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <NavBlocks /> */}
       <div>
         <main>{children}</main>
         <Footer />
