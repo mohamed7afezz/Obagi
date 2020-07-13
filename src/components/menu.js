@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes from "prop-types";
 import footerStyles from '../assets/scss/components/footer.module.scss'
 
-function createMenuHierarchy(menuData, menuName, isExpandable) {
+function createMenuHierarchy(menuData, menuName) {
   let tree = [],
      mappedArr = {},
      arrElem,
@@ -51,7 +51,7 @@ function buildLink(link, collapseTarget, isExpandable) {
       </Link>)
     }
     if (collapseTarget) {
-      return (<a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+      return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
         {link.title}
       </a>)
     }
@@ -82,7 +82,7 @@ function buildMenu(menuArray, isExpandable){
       menu.push(
       <li key={menuArray[item].drupal_id}>
         {buildLink(menuArray[item], "#menuItem" + item, isExpandable)}
-        <ul className={ isExpandable==true? "collapse submenu" : "submenu"} id={"menuItem" +  item}>
+        <ul className={"submenu " + (isExpandable=true? 'collapse' : ' ')} id={"menuItem" +  item}>
           {buildMenu(menuArray[item].children)}
         </ul>
       </li>)
