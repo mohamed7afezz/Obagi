@@ -1,0 +1,50 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.recommendedparingtitle{
+font-size: 64px;
+line-height: 72px;
+padding-top: 9px;
+padding-bottom: 21px;
+@extend %futurapt-light;
+@include md-screen {
+    padding-top: 32px;
+    padding-bottom: 24px;
+}
+}
+.recommendedparingdesc{
+    padding-bottom: 24px;
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold;
+}
+.recommendedparingsec{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-book;
+}
+.recommendedparingsec{
+    span{
+    
+    @extend %futurapt-bold;
+}
+}
+.recommendedparingLeftcol{
+    padding-top: 72px;
+    padding-bottom: 32px;
+    @include md-screen {
+        padding-top: 224px;
+        padding-bottom: 0;
+    }
+}
+.recommendedparingrightcol{
+    padding-top: 64px;
+    background-color: rgba(68 , 196 , 217 ,0.1);;
+    padding-bottom: 104px;
+    @include md-screen{
+        padding-top: 112px;
+        padding-bottom: 168px;
+    }
+}
+.howrightcol,.recommendedcon{
+   background-color: rgba(68 , 196 , 217 ,0.1);;
+}

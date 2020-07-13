@@ -1,18 +1,36 @@
 import React from 'react'
 import Productcard from '../assets/scss/components/productcard.module.scss'
-import  cardimg from "../assets/images/product-images/main-image.png"
-import smlamb from '../assets/images/product-images/smallLamb.png'
+import { useStaticQuery, graphql } from "gatsby"
+import Img from 'gatsby-image'
 import Stars from '../components/stars'
 const ProductCard = ({ node }) => {
+    const data = useStaticQuery(graphql`
+    query {
+        smlamb: file(relativePath: { eq: "product-images/smallLamb.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }`
+    )
     return ( 
         <div className={["container-fluid", Productcard.productCardHero].join(" ")}>
         <div className={["row", Productcard.Cardordering].join(" ")}>
             <div className={"col-12"}>
                 <div className={["d-flex",Productcard.cardname].join(" ")}>
                     <p>new</p>
-                    <img src={smlamb}/>
+                    <Img className={Productcard.bulp} fluid={data.smlamb.childImageSharp.fluid}/>
                 </div>
-                <img className={Productcard.cardimg}  src={cardimg}/>
+                <Img className={Productcard.cardimg} fluid={data.cardimg.childImageSharp.fluid}/>
                 <div className={Productcard.starspd}>
                 <Stars  value="5.0"/>
                 </div>

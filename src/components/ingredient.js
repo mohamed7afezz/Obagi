@@ -1,10 +1,31 @@
 import React from 'react'
+import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from "gatsby"
 
 import ingredient from '../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../assets/images/product-images/plus-white.svg'
-import ingredientimg from '../assets/images/product-images/ingredient.png'
+
 const Ingredient = ({ node }) => {
+    const data = useStaticQuery(graphql`
+    query {
+        ingredientimg: file(relativePath: { eq: "product-images/ingredient.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      pluswhite: file(relativePath: { eq: "product-images/iplus-white.svg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+      `)
     return (
+        
         <div className={["container-fluid", ingredient.ingredientcontent].join(" ")}>
         <div className={"row"}>
             <div className={["col-12", "col-lg-4", "offset-lg-1",ingredient.leftcol].join(" ")}>
@@ -23,7 +44,7 @@ const Ingredient = ({ node }) => {
                 </div>
                 <div className={["col-12", "col-lg-5", "offset-lg-1",ingredient.ingredientorder].join(" ")}>
                 <h1 className={ ingredient.ingredientimagehead}>Key Ingredients</h1>
-                    <img src={ingredientimg} alt="ingredientimg"/>
+                    <Img fluid={data.ingredientimg.childImageSharp.fluid} alt="ingredientimg"/>
                 </div>
                 </div>
                 </div>

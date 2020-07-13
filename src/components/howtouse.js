@@ -1,9 +1,21 @@
 import React from 'react'
 
 import howto from '../assets/scss/components/howtouse.module.scss'
-import videoimg from '../assets/images/product-images/howtouse.png'
-
+import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from "gatsby"
 const Howtouse = ({ node }) => {
+    const data = useStaticQuery(graphql`
+    query {
+        videoimg: file(relativePath: { eq: "product-images/howtouse.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+     
+    }`
+    )
     return (
         <div className={["container-fluid", howto.howtousecon].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>
@@ -122,7 +134,7 @@ const Howtouse = ({ node }) => {
                         </div>
                         <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>How to Use</h1>
-                            <img src={videoimg}/>
+                            <Img fluid={data.videoimg.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
                         </div>
                     </div>
                 </div>

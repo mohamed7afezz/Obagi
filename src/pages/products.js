@@ -7,7 +7,9 @@ import Details from "../components/thedetails"
 import Ingredient from "../components/ingredient"
 import Needtoknow from "../components/needtoknow"
 import Howtouse from "../components/howtouse"
-import ProductCard from "../components/productCard"
+import ProductSuggestion from "../components/productsuggestion"
+import Carouselproducts from "../components/Carouselproducts"
+import Recommendedparing from "../components/recommendedparing"
 import Layout from "../components/layout"
 const products = () => (
  
@@ -17,7 +19,9 @@ const products = () => (
       <Ingredient/>
       <Needtoknow/>
       <Howtouse/>
-      <ProductCard/>
+      <Carouselproducts/>
+      <Recommendedparing/>
+      <ProductSuggestion/>
         </Layout>
         
 )

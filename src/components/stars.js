@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 import stars from '../assets/scss/components/stars.module.scss'
-import group from '../assets/images/product-images/group.png'
+
 const Stars = ({ node,value }) => {
   return ( 
         <div >

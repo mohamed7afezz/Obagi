@@ -1,0 +1,28 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.carouselproductsead{
+font-size: 48px;
+line-height: 64px;
+@extend %futurapt-light;
+@include md-screen{
+    text-align: center;
+}
+}
+.carouselproductscon{
+    padding-top: 50px;
+    padding-bottom: 64px;
+    background-color: #44c4d9;
+ @include md-screen{
+    padding-top: 112px;
+    padding-bottom: 112px;
+}
+}
+.ordering{
+    padding-top: 32px;
+    padding-bottom: 32px;
+    @include md-screen{
+    padding-top: 64px;
+    padding-bottom: 64px;
+    }
+}
