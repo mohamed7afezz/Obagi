@@ -1,0 +1,14 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.mobreview{
+    @include md-screen{
+    display: none;
+}
+
+}
+.deskreview{
+    display: none;
+    @include md-screen{
+        display: block;
+    }
+}
