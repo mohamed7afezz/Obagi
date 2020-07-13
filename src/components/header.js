@@ -88,26 +88,34 @@ const Header = ({ siteTitle }) => {
 
 
 
-      <div className={["container-fluid d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
+      <div className={["d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
-            <div className="col col-padding">
-              <div className={headerStyles.mainLinks}>
-                <div className={headerStyles.navSubmenu}><Link to="#">MEDICAL</Link></div>
-                <div className={headerStyles.navSubmenu}><Link to="#">CLINICAL</Link></div>
-              </div>
-            </div>
+            <div className="container-fluid">
+              <div className="row mr-0 ml-0">
 
-            <div className={["col", headerStyles.logoSection].join(" ")}>
-              <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
-            </div>
 
-            <div className="col col-padding">
-              <div className={headerStyles.navLastSection}>
-                <p><Link to="#">SIGN IN</Link></p>
-                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+
+                <div className="col col-padding">
+                  <div className={headerStyles.mainLinks}>
+                    <Link to="#"  className={headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="#"  className={headerStyles.navSubmenu}>CLINICAL</Link>
+                  </div>
+                </div>
+
+                <div className={["col", headerStyles.logoSection].join(" ")}>
+                  <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                </div>
+
+                <div className="col col-padding">
+                  <div className={headerStyles.navLastSection}>
+                    <p><Link to="#">SIGN IN</Link></p>
+                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -115,9 +123,14 @@ const Header = ({ siteTitle }) => {
 
         <div className={headerStyles.lowerNav}>
           <div className="row mr-0 ml-0">
-            <div className="col-12">
-              <Menu menuClass={`navbar nav-desk`}/>
+            <div className="container-fluid">
+              <div className="row mr-0 ml-0">
+                <div className="col-12">
+                  <Menu menuClass={`navbar nav-desk`} />
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
