@@ -81,9 +81,9 @@ function buildMenu(menuArray, isExpandable){
     if(menuArray[item].children.length !== 0) {
       menu.push(
       <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item], "#menuItem" + item, isExpandable)}
-        <ul className={"submenu " + (isExpandable=true? 'collapse' : ' ')} id={"menuItem" +  item}>
-          {buildMenu(menuArray[item].children)}
+        {buildLink(menuArray[item], "#menuItem" + menuArray[item].drupal_id, isExpandable)}
+        <ul className={"submenu " + (isExpandable == true ? 'collapse' : ' ')} id={(isExpandable == true ? "menuItem" + menuArray[item].drupal_id: 'menuItem')}>
+          {buildMenu(menuArray[item].children, true)}
         </ul>
       </li>)
     } else {
@@ -151,6 +151,6 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   menuName: `main`,
-}
+ }
 
 export default Menu

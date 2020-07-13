@@ -73,7 +73,7 @@ const Header = ({ siteTitle }) => {
           <div className="row">
             <div className="col col-padding">
               <div class="collapse navbar-collapse nav-container" id="navbar">
-                <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} />
+                <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
                   <span><Link to="#">SIGN IN</Link></span>
@@ -116,7 +116,7 @@ const Header = ({ siteTitle }) => {
         <div className={headerStyles.lowerNav}>
           <div className="row mr-0 ml-0">
             <div className="col-12">
-              <Menu menuClass={`navbar nav-desk`} isExpandable={true} />
+              <Menu menuClass={`navbar nav-desk`}/>
             </div>
           </div>
         </div>
