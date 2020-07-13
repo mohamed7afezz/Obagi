@@ -40,23 +40,21 @@ function createMenuHierarchy(menuData, menuName, isExpandable) {
 
 function buildLink(link, collapseTarget, isExpandable) {
 
-  if(isExpandable==true) {
-    if(!collapseTarget) {
-      return ( <Link  className="single-tab" to={link.link.uri}>
+  if (isExpandable == false) {
+    return ( <Link to={link.link.uri}>
       {link.title}
     </Link>)
+  } else {
+    if (!collapseTarget) {
+      return (<Link className="single-tab" to={link.link.uri}>
+        {link.title}
+      </Link>)
     }
-    if(collapseTarget) {
-      return ( <a  data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-      {link.title}
-    </a>)
+    if (collapseTarget) {
+      return (<a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+        {link.title}
+      </a>)
     }
-  }
-
-  if(isExpandable==false) {
-    return ( <Link to={link.link.uri}>
-    {link.title}
-  </Link>)
   }
 
   if(!link.external && link.link.uri) {

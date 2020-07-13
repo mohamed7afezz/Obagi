@@ -91,18 +91,18 @@ const Header = ({ siteTitle }) => {
       <div className={["container-fluid d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
-            <div className="col-3 col-padding">
+            <div className="col col-padding">
               <div className={headerStyles.mainLinks}>
                 <div className={headerStyles.navSubmenu}><Link to="#">MEDICAL</Link></div>
                 <div className={headerStyles.navSubmenu}><Link to="#">CLINICAL</Link></div>
               </div>
             </div>
 
-            <div className={["col-2 offset-2", headerStyles.logoSection].join(" ")}>
+            <div className={["col", headerStyles.logoSection].join(" ")}>
               <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
             </div>
 
-            <div className="col-2 offset-3 col-padding">
+            <div className="col col-padding">
               <div className={headerStyles.navLastSection}>
                 <p><Link to="#">SIGN IN</Link></p>
                 <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>

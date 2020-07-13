@@ -238,6 +238,27 @@ footer .form-group {
                             padding-top: 25px;
                             
                         }
+
+                        &:first-child, &:nth-child(2) {
+                            &::after {
+                                position: absolute;
+                                content: '';
+                                width: 10px;
+                                height: 4px;
+                                left: 20px;
+                                top: 34px;
+                                background-image: url('../../images/path-copy.png');
+                                right: 26px;
+                                top: 36px;
+                                left: unset;
+                            }
+                            &.collapsed {
+                
+                                &::after {
+                                    background-image: url( '../../images/path-copy-down.png');
+                                }
+                            }
+                        }
                         
                     }
                     a.collapsed {
@@ -247,11 +268,15 @@ footer .form-group {
                 }
 
                 .submenu {
+                    background: #fff;
+                    
                     li {
                         a {
-                            padding-top: 24px;
+                            background: #fff !important;
+                            color: #132466 !important;
+                            padding-top: 24px !important;
                             &:first-child {
-                                padding-top: 7px;
+                                padding-top: 7px !important;
                             }
                         }
                     }
@@ -356,8 +381,7 @@ footer .form-group {
     }
 
     .submenu.collapsing, .submenu.show {
-        background: #fff;
-        color: #132466;
+
     }
 
     .single-tab {
