@@ -1,10 +1,9 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes from "prop-types";
-import menuStyles from '../assets/scss/components/menu.module.scss'
 import footerStyles from '../assets/scss/components/footer.module.scss'
 
-function createMenuHierarchy(menuData, menuName) {
+function createMenuHierarchy(menuData, menuName, isExpandable) {
   let tree = [],
      mappedArr = {},
      arrElem,
@@ -39,16 +38,25 @@ function createMenuHierarchy(menuData, menuName) {
   return tree
 }
 
-function buildLink(link, collapseTarget) {
-  if(!collapseTarget) {
-    return ( <Link  className="single-tab" to={link.link.uri}>
+function buildLink(link, collapseTarget, isExpandable) {
+
+  if(isExpandable==true) {
+    if(!collapseTarget) {
+      return ( <Link  className="single-tab" to={link.link.uri}>
+      {link.title}
+    </Link>)
+    }
+    if(collapseTarget) {
+      return ( <a  data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+      {link.title}
+    </a>)
+    }
+  }
+
+  if(isExpandable==false) {
+    return ( <Link to={link.link.uri}>
     {link.title}
   </Link>)
-  }
-  if(collapseTarget) {
-    return ( <a  data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls="collapseExample">
-    {link.title}
-  </a>)
   }
 
   if(!link.external && link.link.uri) {
@@ -66,7 +74,7 @@ function buildLink(link, collapseTarget) {
   }
 }
 
-function buildMenu(menuArray){
+function buildMenu(menuArray, isExpandable){
   if(!menuArray)  {
     return
   }
@@ -75,8 +83,8 @@ function buildMenu(menuArray){
     if(menuArray[item].children.length !== 0) {
       menu.push(
       <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item], "#menuItem" + item)}
-        <ul className="collapse submenu" id={"menuItem" +  item}>
+        {buildLink(menuArray[item], "#menuItem" + item, isExpandable)}
+        <ul className={ isExpandable==true? "collapse submenu" : "submenu"} id={"menuItem" +  item}>
           {buildMenu(menuArray[item].children)}
         </ul>
       </li>)
@@ -89,16 +97,15 @@ function buildMenu(menuArray){
 
 };
 
-function generateMenu(menuLinks, menuName) {
+function generateMenu(menuLinks, menuName, isExpandable) {
   let menu
 
   menu = createMenuHierarchy(menuLinks.allMenuLinkContentMenuLinkContent.edges, menuName)
-  menu = buildMenu(menu)
-
+  menu = buildMenu(menu, isExpandable)
   return menu
 }
 
-const Menu = ({menuName, menuClass}) => (
+const Menu = ({menuName, menuClass, isExpandable}) => (
 
    <StaticQuery
       query={
@@ -126,10 +133,11 @@ const Menu = ({menuName, menuClass}) => (
         }
       `
       }
+      
       render={data => (
         <nav className={menuName, menuClass}>
           <ul >
-            {generateMenu(data, menuName)}
+            {generateMenu(data, menuName, isExpandable)}
           </ul>
         </nav>
 
@@ -140,6 +148,7 @@ const Menu = ({menuName, menuClass}) => (
 Menu.propTypes = {
   menuName: PropTypes.string,
   menuClass: PropTypes.string,
+  isExpandable: PropTypes.bool,
 }
 
 Menu.defaultProps = {

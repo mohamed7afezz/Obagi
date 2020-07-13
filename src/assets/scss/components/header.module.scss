@@ -27,13 +27,26 @@
 
     .obagi-logo {
         height: 100%;
+        width: 129px;
     }
+
+    // .icons > div + .menu-button[aria-expanded="true"] {
+    //     display: none;
+    // }
+    // .first-icons ~ .menu-button[aria-expanded="false"] {
+    //     display: flex;
+    // }
+
 
     .icons {
         display: flex;
         float: right;
-        margin: 23px 0;
+        margin: 24px 0;
 
+
+        .first-icons {
+            display: flex;
+        }
         .icon-img {
             height: 20px;
             width: 20px;
@@ -43,8 +56,23 @@
         .nav-button {
             background: transparent;
             border: 0;
+
+
+        }
+
+        .menu-button {
+            background-image: url('../../images/menu.png');
+            background-repeat: no-repeat;
+            height: 24px;
+            width: 24px;
+        }
+        .menu-button[aria-expanded="true"] {
+            background-image: url('../../images/close.png');
+            height: 16px;
+            width: 16px;
         }
     }
+
 }
 
 .lower-section {
@@ -58,6 +86,103 @@
             @include fontStyle (12, 16);
             letter-spacing: 1.2px;
             @extend %futurapt-bold;
+        }
+    }
+}
+
+
+
+.navigation-bar-desk {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    z-index: 999999;
+    &:hover {
+
+        .lower-nav {
+            background: #ffffff;
+
+            a {
+                color: #7c858a;
+                &:hover {
+                    color: #132466;
+                }
+            }
+        }
+
+        .upper-nav {
+            background: #132466;
+        }
+
+    }
+    .upper-nav {
+
+        .main-links {
+            display: flex;
+            padding-left: 41px;
+            justify-content: center;
+            align-items: center;
+            .nav-submenu {
+                padding: 18px 30px;
+                border: 1px solid #ffffff;
+                margin: 24px 20px 24px 0;
+                &:hover {
+                    background: #ffffff;
+                    a {
+                        color: #132466;
+                    }
+                    
+                }
+                a {
+                    @include fontStyle(16, 12);
+                    letter-spacing: 6px;
+                    color: #ffffff;
+
+                    &:hover {
+                        text-decoration: none;
+                        
+                    }
+                }
+            }
+        }
+    }
+
+    .logo-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .obagi-logo {
+            height: 27px;
+            width: 108px;
+            
+        }
+    }
+
+    .nav-last-section {
+        display: flex;
+        justify-content: flex-end;
+
+        margin-right: 40px;
+        margin-top: 45px;
+
+
+        a {
+            color: #ffffff;
+            @include fontStyle(16, 24);
+            letter-spacing: 1.6px;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .nav-button {
+            margin-left: 40px;
+        }
+        .icon-img {
+            height: 20px;
+            width: 20px;
+            
         }
     }
 }

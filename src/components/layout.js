@@ -14,6 +14,7 @@ import Footer from './footer'
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import "../assets/scss/typography/typography.scss"
 import '../assets/scss/components/layout.scss'
+import NavBlocks from "../assets/scss/components/nav-blocks"
 
 
 const Layout = ({ children }) => {
@@ -40,6 +41,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <NavBlocks /> */}
       <div>
         <main>{children}</main>
     <div id="scripts"></div>
