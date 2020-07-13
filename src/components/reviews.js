@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 const Reviews = ({ node }) => {
     const data = useStaticQuery(graphql`
     query {
-        review: file(relativePath: { eq: "product-images/review.png" }) {
+        review: file(relativePath: { eq: "product-images/review-mob.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid

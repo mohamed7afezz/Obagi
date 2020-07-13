@@ -1,5 +1,5 @@
 import React from 'react'
-import carouselproducts from '../assets/scss/components/carouselproducts.module.scss'
+import carouselproduct from '../assets/scss/components/carouselproducts.module.scss'
 import ProductCard from "../components/productcard"
 import Slider from "react-slick";
 
@@ -28,18 +28,18 @@ const Carouselproducts = ({ node }) => {
       };
       
     return (
-        <div className={["container-fluid", carouselproducts.carouselproductscon].join(" ")} >
-             <h1 className={carouselproducts.carouselproductsead}>Lorem Ipsum Consectetur Elit</h1>
-            <div className={["row", carouselproducts.ordering].join(" ")}>
-                    <div className={["col-lg-8","col-12","offset-lg-2", carouselproducts.slickcon].join(" ")}>
+        <div className={["container-fluid", carouselproduct.carouselproductscon].join(" ")} >
+             <h1 className={carouselproduct.carouselproductsead}>Lorem Ipsum Consectetur Elit</h1>
+            <div className={["row", carouselproduct.ordering].join(" ")}>
+                    <div className={["col-lg-8","col-12","offset-lg-2", carouselproduct.slickcon].join(" ")}>
                      <Slider {...settings}>
-                <div className={["col-12",  carouselproducts.allcon].join(" ")}>
+                <div className={["col-12",  carouselproduct.allcon].join(" ")}>
                 <ProductCard/>
                 </div>
-                <div className={["col-12",  carouselproducts.allcon].join(" ")}>
+                <div className={["col-12",  carouselproduct.allcon].join(" ")}>
                 <ProductCard/>
                 </div>
-                <div className={["col-12",  carouselproducts.allcon].join(" ")}>
+                <div className={["col-12",  carouselproduct.allcon].join(" ")}>
                 <ProductCard/>
                 </div>
             
