@@ -65,7 +65,7 @@ const ProductHero = ({ node }) => {
                 </div>
                 <div className={["col-12", "col-lg-4", "offset-lg-1",ProductStyles.productdetail].join(" ")}>
                     <p className={ProductStyles.productcat}>CLINICAL</p>
-                    <h1 className={ProductStyles.productname}>Vitamin C + Arbutin Brightening Serum</h1>
+                    <h1 className={ProductStyles.productname}>Vitamin C Eye Brightener </h1>
                     <p className={ProductStyles.productdesc}>An eye brightener that is designed to energize tired-looking eyes and help minimize signs of aging.</p>
                     <div className={["d-flex",ProductStyles.type].join(" ")}><p>Cream</p>
                      <ul> <li>  Size 0.5 oz </li></ul></div>
