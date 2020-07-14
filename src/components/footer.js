@@ -5,7 +5,7 @@ import Menu from './menu'
 import footerStyles from '../assets/scss/components/footer.module.scss'
 import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faFacebookF, faYoutube, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faInstagramSquare, faFacebookF, faYoutube, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const Footer = ({ siteTitle }) => {
     const data = useStaticQuery(graphql`
@@ -30,6 +30,7 @@ return (
                     <div className="col-6 col-lg-2 offset-lg-1">
                         <div className="col col-padding">
                             <Menu menuName={`first-footer`} menuClass={`footer-menu`} isExpandable={false} />
+                            <div className={footerStyles.margin}></div>
                         </div>
                         <div className="col col-padding">
                             <Menu menuName={`second-footer`} menuClass={`footer-menu`} isExpandable={false}  />
@@ -38,7 +39,10 @@ return (
                     <div className="col-6 col-lg-2">
                         <Menu menuName={`third-footer`} menuClass={`footer-menu`} isExpandable={false} />
                     </div>
-                    <div className="col-12 col-lg-3 offset-lg-1">
+                    <div className="col-lg-1 d-none d-lg-block">
+                        <div className={footerStyles.verticalLine}></div>
+                    </div>
+                    <div className="col-12 col-lg-3">
                         <form className={footerStyles.form}>
                             <div class="form-group">
                                 <label htmlFor="inputEmail" className={footerStyles.formTitle}>Let’s Connect!</label>
@@ -54,7 +58,7 @@ return (
                         </form>
 
                         <div className={[footerStyles.socialMedia, "d-none d-md-flex"].join(" ")}>
-                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faInstagram} className={footerStyles.icon}/></Link></div>
+                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faInstagramSquare} className={footerStyles.icon}/></Link></div>
                             <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faFacebookF} className={footerStyles.icon}/></Link></div>
                             <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faYoutube} className={footerStyles.icon}/></Link></div>
                             <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faTwitter} className={footerStyles.icon}/></Link></div>
