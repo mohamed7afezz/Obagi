@@ -18,7 +18,6 @@ const products = () => (
       <ProductHero/>
       <Details/>
       <Ingredient/>
-      <Needtoknow/>
       <Howtouse/>
       <Beforeafter/>
 

@@ -66,14 +66,14 @@ const ProductHero = ({ node }) => {
                 <div className={["col-12", "col-lg-4", "offset-lg-1",ProductStyles.productdetail].join(" ")}>
                     <p className={ProductStyles.productcat}>CLINICAL</p>
                     <h1 className={ProductStyles.productname}>Vitamin C Eye Brightener </h1>
-                    <p className={ProductStyles.productdesc}>An eye brightener that is designed to energize tired-looking eyes and help minimize signs of aging.</p>
+                    <p className={ProductStyles.productdesc}>An eye brightener created to reduce fine lines and other signs of early aging, while energizing and recharging tired, overused eyes</p>
                     <div className={["d-flex",ProductStyles.type].join(" ")}><p>Cream</p>
                      <ul> <li>  Size 0.5 oz </li></ul></div>
                      <div className={["d-flex",ProductStyles.review].join(" ")}><Stars value="0.0"/> 
                      <p>0 Review</p></div>
                      <p className={ProductStyles.price}> <span>$60</span></p>
                      <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a> and <a href="#">Oily</a></p>
-                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a> and <a href="#">Loss of Firmness and Elasticity</a></p>
+                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Tired & Puffy Eyes</a>, <a href="#"> Fine Lines And Wrinkles</a>, <a href="#">Elasticity & Sagging Skin</a></p>
                      <p className={ProductStyles.quantityhead}>Quantity:</p> 
                      <div className={[ProductStyles.quantity,"d-flex"].join(" ")}>
                         <div className={[ProductStyles.selectdiv,"col-3"].join(" ")}>
