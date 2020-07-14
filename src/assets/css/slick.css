@@ -43,7 +43,8 @@
 
 .slick-next,
 .slick-next:hover,
-.slick-next:active {
+.slick-next:active,
+.slick-next:focus {
     background-image: url(arrow-right.svg);
     width: 80px;
     height: 80px;
@@ -55,7 +56,8 @@
 
 .slick-prev,
 .slick-prev:hover,
-.slick-prev:active {
+.slick-prev:active,
+.slick-prev:focus {
     content: " ";
     background-image: url(arrow-right.svg);
     width: 80px;
