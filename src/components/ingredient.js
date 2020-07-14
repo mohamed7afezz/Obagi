@@ -39,7 +39,7 @@ const Ingredient = ({ node }) => {
           <p className={[ingredient.ingredienttitle, ingredient.ftitle].join(" ")}>L-ascorbic Acid (Vitamin C)
 </p>
 
-          <p>Welcome to Vitamin C in its purest form—an ingredient crucial to keeping skin healthy. It defends against free radicals and photoaging (aging that comes solely from UV light, aka the sun). These properties help reduce the appearance of fine lines and wrinkles, while helping skin maintain a youthful glow. "
+          <p>Welcome to Vitamin C in its purest form—an ingredient crucial to keeping skin healthy. It defends against free radicals and photoaging (aging that comes solely from UV light, aka the sun). These properties help reduce the appearance of fine lines and wrinkles, while helping skin maintain a youthful glow.
 </p>
 
           <p className={ingredient.ingredienttitle}>All Ingredients</p>
