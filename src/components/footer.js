@@ -41,11 +41,11 @@ return (
                     <div className="col-12 col-lg-3 offset-lg-1">
                         <form className={footerStyles.form}>
                             <div class="form-group">
-                                <label for="inputEmail" className={footerStyles.formTitle}>Let’s Connect!</label>
-                                <label for="inputEmail" className={footerStyles.formSubtitle}>Receive the latest news from Obagi</label>
+                                <label htmlFor="inputEmail" className={footerStyles.formTitle}>Let’s Connect!</label>
+                                <label htmlFor="inputEmail" className={footerStyles.formSubtitle}>Receive the latest news from Obagi</label>
                                 <div className={footerStyles.signup}>
                                     <div className={footerStyles.inputSection}>
-                                        <label for="inputEmail" className={footerStyles.formEmail}>EMAIL ADDRESS</label>
+                                        <label htmlFor="inputEmail" className={footerStyles.formEmail}>EMAIL ADDRESS</label>
                                         <input type="email" class={footerStyles.formBox} id="inputEmail" aria-describedby="emailHelp"></input>
                                     </div>
                                     <div className={footerStyles.buttonSection}><button type="submit" class={["button-link", footerStyles.formButton].join(" ")}>SIGN UP</button></div>

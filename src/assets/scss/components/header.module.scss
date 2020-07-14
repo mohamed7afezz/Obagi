@@ -192,3 +192,25 @@
         }
     }
 }
+
+.navigation-bar-desk.general-nav {
+    position: relative;
+
+    .lower-nav {
+        background: #ffffff;
+
+        a {
+            color: #7c858a;
+
+            &:hover {
+                color: #132466;
+            }
+        }
+    }
+
+    .upper-nav {
+        background: #132466;
+    }
+
+
+}
