@@ -67,3 +67,6 @@
     transform: translateY(-50%) rotate(180deg);
     left: -140px;
 }
+.before-after-wrap{
+    max-width: 100%;
+}

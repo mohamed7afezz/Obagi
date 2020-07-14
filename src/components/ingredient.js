@@ -30,17 +30,9 @@ const Ingredient = ({ node }) => {
         <div className={"row"}>
             <div className={["col-12", "col-lg-4", "offset-lg-1",ingredient.leftcol].join(" ")}>
                 <h1 className={ ingredient.ingredienthead}>Key Ingredients</h1>
-                <p className={[ ingredient.ingredienttitle,ingredient.ftitle].join(" ")}>Ingredient Name</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a felis nec elit congue blandit consequat a nisl. Sed lorem justo, laoreet in nibh eu lobortis suscipit lacus. Morbi turpis ex lobortis eget nulla molestie tincidunt urna. Fusce maximus fringilla nisi vel dignissim nisl. Vivamus ultrices laoreet enim ac fermentum…</p>
-                <p className={ ingredient.ingredienttitle}>Ingredient Name</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a felis nec elit congue blandit consequat a nisl. Sed lorem justo, laoreet in nibh eu lobortis </p>
-                <a className={ingredient.expand} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><img src={pluswhite}/> All Ingredients</a>
-                     <div class="collapse multi-collapse"  id="multiCollapseExample3">
-                        <p >
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </p>
-                    </div>
-             
+             <p className={ ingredient.ingredienttitle}>All Ingredients</p>
+                <p>Water, Propylene Glycol, PEG-12 Glyceryl Dimyristate, Glycerin, PEG-7 Glyceryl Cocoate, Silica, Lactobacillus Ferment, Butylene Glycol, Carbomer, Phenoxyethanol, Triethanolamine, Betaine, Ethoxydiglycol, Pentylene Glycol, Saccharomyces Cerevisiae Extract, Panthenol, Ethylhexylglycerin, Disodium EDTA, Kinetin, Zeatin, Polyurethane-40, Ruscus Aculeatus Root Extract, Ammonium Glycyrrhizate, Rhodiola Rosea Root Extract, Tetrahexyldecyl Ascorbate, Centella Asiatica Extract, Acetyl Octapeptide-3, Camellia Cinesis Leaf (Green Tea) Extract, Hydrochloric Acid.
+                   </p>  
                 </div>
                 <div className={["col-12", "col-lg-5", "offset-lg-1",ingredient.ingredientorder].join(" ")}>
                 <h1 className={ ingredient.ingredientimagehead}>Key Ingredients</h1>
