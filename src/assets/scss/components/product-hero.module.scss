@@ -181,6 +181,9 @@ padding-bottom: 15px;
     order: 1;
     justify-content: space-between;
 display: flex;
+    @include  md-screen-only {
+        flex: 1;
+    }
     @include md-screen{
         order: 0;
         margin-left: 40px;

@@ -2,6 +2,7 @@ import React from 'react'
 import Productcard from '../assets/scss/components/productcard.module.scss'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
+import smlamb from '../assets/images/product-images/smallLamb.png'
 import Stars from '../components/stars'
 const ProductCard = ({ node }) => {
     const data = useStaticQuery(graphql`
@@ -28,7 +29,7 @@ const ProductCard = ({ node }) => {
             <div className={"col-12"}>
                 <div className={["d-flex",Productcard.cardname].join(" ")}>
                     <p>new</p>
-                    <Img className={Productcard.bulp} fluid={data.smlamb.childImageSharp.fluid}/>
+                    <img className={Productcard.bulp} src={smlamb}/>
                 </div>
                 <Img className={Productcard.cardimg} fluid={data.cardimg.childImageSharp.fluid}/>
                 <div className={Productcard.starspd}>
