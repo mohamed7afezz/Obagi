@@ -13,6 +13,7 @@ import Header from "./header"
 import Footer from './footer'
 
 
+import '../assets/scss/components/layout.scss'
 
 import NavBlocks from "../assets/scss/components/nav-blocks"
 
