@@ -5,10 +5,20 @@ import Img from 'gatsby-image'
 import Stars from '../components/stars'
 import modal from '../assets/images/product-images/modal.svg'
 import share from '../assets/images/product-images/share.svg'
+import Slider from "react-slick";
 const ProductHero = ({ node }) => {
+
+  var settings = {
+    
+    slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.slider-nav'
+  };
     const data = useStaticQuery(graphql`
     query {
-        group: file(relativePath: { eq: "product-images/group.png" }) {
+        group: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -45,6 +55,7 @@ const ProductHero = ({ node }) => {
         }
       }
     }`
+
     )
     return (
         <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
@@ -54,17 +65,16 @@ const ProductHero = ({ node }) => {
                 </div>
                 <div className={["col-12", "col-lg-4", "offset-lg-1",ProductStyles.productdetail].join(" ")}>
                     <p className={ProductStyles.productcat}>CLINICAL</p>
-                    <h1 className={ProductStyles.productname}>Retinol 0.5 Retexturizing Cream
-                    Clear FX</h1>
-                    <p className={ProductStyles.productdesc}>An elegant retinol formula that helps improve skin tone, texture, and minimize imperfections.</p>
+                    <h1 className={ProductStyles.productname}>Vitamin C + Arbutin Brightening Serum</h1>
+                    <p className={ProductStyles.productdesc}>An eye brightener that is designed to energize tired-looking eyes and help minimize signs of aging.</p>
                     <div className={["d-flex",ProductStyles.type].join(" ")}><p>Cream</p>
-                     <ul> <li>  Size 2.0 fl oz </li></ul></div>
-                     <div className={["d-flex",ProductStyles.review].join(" ")}><Stars value="5.0"/> 
+                     <ul> <li>  Size 0.5 oz </li></ul></div>
+                     <div className={["d-flex",ProductStyles.review].join(" ")}><Stars value="0.0"/> 
                      <p>2k Reviews</p></div>
-                     <p className={ProductStyles.price}>From  <span>$100</span></p>
-                     <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a>, <a href="#">Oily</a></p>
-                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Fine Lines & Wrinkles</a>, <a href="#">Dryness</a>, <a href="#">Dullness</a>, <a href="#">Uneven Texture</a></p>
-                     <p className={ProductStyles.quantityhead}>Quantity:</p>
+                     <p className={ProductStyles.price}>From  <span>$60</span></p>
+                     <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a>and <a href="#">Oily</a></p>
+                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a>and <a href="#">Loss of Firmness and Elasticity</a></p>
+                     <p className={ProductStyles.quantityhead}>Quantity:</p> 
                      <div className={[ProductStyles.quantity,"d-flex"].join(" ")}>
                         <div className={[ProductStyles.selectdiv,"col-3"].join(" ")}>
                          <select >
@@ -83,7 +93,7 @@ const ProductHero = ({ node }) => {
                      <button className={["btn", ProductStyles.btnCart].join(" ")}>Add to Bag</button>
                 </div>
                 <div className={["col-12" ,ProductStyles.images ].join(" ")}>
-                <Img fluid={data.retinol.childImageSharp.fluid}  className={["col-3","pr-0","pl-0"].join(" ")}  />
+                <Img fluid={data.group.childImageSharp.fluid}  className={["col-3","pr-0","pl-0"].join(" ")}  />
                 <Img fluid={data.vitamins.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
                 <Img fluid={data.ob.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
                 <Img fluid={data.f4.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />

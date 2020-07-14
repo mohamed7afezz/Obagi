@@ -10,7 +10,7 @@ import Howtouse from "../components/howtouse"
 import ProductSuggestion from "../components/productsuggestion"
 import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
-
+import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
 const products = () => (
  
@@ -20,9 +20,10 @@ const products = () => (
       <Ingredient/>
       <Needtoknow/>
       <Howtouse/>
+      <Beforeafter/>
+
       <Carouselproducts/>
       <Recommendedparing/>
-      
       <ProductSuggestion/>
         </Layout>
         

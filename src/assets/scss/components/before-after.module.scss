@@ -1,0 +1,106 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.beforeaftercontainer{
+    background-color: rgba(68,196,217,.1);
+
+        padding-bottom: 64px;
+        padding-top: 48px;
+        @include md-screen{
+            padding-top: 112px;
+            padding-bottom: 202px;
+        }
+}
+.beforeafterhead{
+  font-size: 48px;
+  line-height: 54px;
+  @extend %futurapt-light;
+
+  @include md-screen{
+      font-size: 64px;
+      line-height: 72px;
+  }
+}
+.tabs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card-header{
+    padding: 0;
+}
+.card-header .btn-link{
+    padding:16px 45px;
+    text-transform: uppercase;
+}
+ .tab {
+border: 0;
+background-color: transparent;
+@include md-screen{
+    padding-left: 0 !important;
+}
+}
+.cardhead{
+    width: 100%;
+    padding:0;
+    text-align: center;
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.cardhead .btnLink1{
+    padding:16px 0;
+    max-width: 100%;
+    box-shadow: none;
+    width: 100%;
+    background-color: #44c4d9;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    color: #fff;
+    @extend %futurapt-bold;
+    text-decoration: none;
+}
+
+.card{
+    border: 0;
+}
+.beforeaftersubtitle{
+    @extend %futurapt-light;
+
+    font-size: 18px;
+    line-height: 32px;
+    padding-bottom: 27px;
+    @include md-screen{
+        font-size: 28px;
+        padding-bottom: 32px;
+        line-height: 48px;
+    }
+}
+.tabTitle{
+    @extend %futurapt-bold;
+font-size: 18px;
+line-height: 32px;
+padding-bottom: 32px;
+}
+
+.box {
+    background-color: rgba(83, 208, 228, 0.1);;
+margin-bottom: 40px;
+    padding: 24px 32px;
+    h1{
+    font-size: 48px;
+    line-height: 64px;
+    @extend %futurapt-book;
+
+}
+p{
+    @extend %futurapt-book;
+  
+}
+}
+.beforeafterfooter{
+    font-size: 14px;
+    line-height: 16px;
+    @extend %futurapt-light;
+padding-bottom: 16px;
+}

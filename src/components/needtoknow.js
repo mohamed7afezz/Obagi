@@ -17,8 +17,7 @@ const Needtoknow = ({ node }) => {
                         Need to Know
                     </p>
                     <p >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a felis nec elit congue blandit consequat a nisl. Sed lorem justo, laoreet in nibh eu lobortis suscipit lacus. Morbi turpis ex lobortis eget nulla molestie tincidunt urna. Fusce maximus fringilla nisi vel dignissim nisl.
-                        </p>
+                    This advanced formula contains vitamin C and Kinetin+ Complex, nature-identical synthesized plant growth factors, to help improve the appearance of crepiness and crow’s feet. Soft focus technology creates optical diffusion to help blur the appearance of fine lines and shadows.                        </p>
                 </div>
             </div>
         </div>

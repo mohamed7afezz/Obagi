@@ -33,7 +33,7 @@ const ProductCard = ({ node }) => {
                 </div>
                 <Img className={Productcard.cardimg} fluid={data.cardimg.childImageSharp.fluid}/>
                 <div className={Productcard.starspd}>
-                <Stars  value="5.0"/>
+                <Stars  value="0.0"/>
                 </div>
                 <p className={Productcard.productcarddesc}>Lorem ipsum dolor sit amet consectetur adipiscing elit duis at pretium dolor</p>
                 <p className={Productcard.productcardcon}>Lorem ipsum dolor sit amet consectetur adipiscing elit duis at pretium dolor</p>
