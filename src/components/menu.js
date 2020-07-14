@@ -2,6 +2,8 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes from "prop-types";
 import footerStyles from '../assets/scss/components/footer.module.scss'
+// const $ = require(jQuery);
+//  onClick={_onHeaderClick}
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -71,6 +73,11 @@ function buildLink(link, collapseTarget, isExpandable) {
     </a>)
   }
 }
+
+// function _onHeaderClick(event) {
+//   event.preventDefault();
+//   $(event.currentTarget).siblings().toggle();
+// }
 
 function buildMenu(menuArray, isExpandable){
   if(!menuArray)  {

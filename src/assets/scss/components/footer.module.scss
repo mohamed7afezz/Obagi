@@ -1,32 +1,10 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
-// .footer-menu ul {
-//     list-style: none;
-// }
-
-// .footer-menu ul li a{
-//     @extend %futurapt-bold;
-//     @include fontStyle(14, 16);
-//     color: #132466;
-// }
-
-// .footer-menu ul li ul.submenu li a {
-//     @extend %futurapt-book;
-//     @include fontStyle(18, 32);
-//     color: #7c858a;
-// }
-
-
-// .form {
-//     display: flex;
-//     flex-direction: row;
-// }
-
 .footer-section {
     padding-top: 40px;
     padding-bottom: 32px;
-    
+
     @include lg-screen {
         padding-top: 57px;
         padding-bottom: 72px;
@@ -39,8 +17,8 @@
     margin-bottom: 40px;
 
     @include lg-screen {
-        height: 273px;
-        width: 273px;
+        height: 100%;
+        width: 100%;
         margin-bottom: 0;
     }
 }
@@ -56,7 +34,7 @@
 
     .form-title {
         @include fontStyle(28, 48);
-        
+
     }
 
     .form-subtitle {
@@ -76,7 +54,7 @@
         opacity: 1;
         padding-bottom: 32px;
         width: 100%;
-        
+
 
 
         @include md-screen {
@@ -85,6 +63,8 @@
             height: 50%;
             width: 65%;
         }
+
+
     }
 
     .form-button {
@@ -92,6 +72,7 @@
         margin-top: 20px;
         background: #132466;
         color: #ffffff;
+
         &:hover {
             background: #ffffff;
             color: #132466;
@@ -110,12 +91,21 @@
                 color: #ffffff;
             }
         }
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            width: 100%;
+            margin: 0;
+        }
     }
 
     .button-section {
         @include md-screen {
             position: absolute;
             right: 0;
+        }
+
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            position: unset;
+            margin-top: 10px;
         }
 
     }
@@ -128,9 +118,12 @@
             display: flex;
             border-radius: 4px;
             position: relative;
-            
+
         }
-        
+
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            flex-direction: column;
+        }
     }
 
     .input-section {
@@ -142,8 +135,11 @@
         @include md-screen {
             border: 0;
         }
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            margin-bottom: 10px;
+        }
     }
-    
+
     .form-email {
         @include fontStyle(12, 16);
         letter-spacing: 1.2px;
@@ -156,27 +152,36 @@
 .social-media {
     @include md-screen {
         display: flex;
-    margin-top: 48px;
-    .social-icon {
-        height: 64px;
-        width: 64px;
-        margin-right: 32px;
-        text-align: center;
-        padding: 21px;
+        margin-top: 48px;
+
+        .social-icon {
+            height: 64px;
+            width: 64px;
+            margin-right: 32px;
+            text-align: center;
+            padding: 21px;
 
 
-        &:first-child {
-            margin-left: 21px;
-        }
+            &:first-child {
+                margin-left: 21px;
+            }
 
-        a {
-            color: #132466;
-        }
+            a {
+                color: #132466;
+            }
 
-        .icon {
-            height: 21px;
-            width: 21px;
+            .icon {
+                height: 21px;
+                width: 21px;
+            }
         }
     }
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        .social-icon {
+            margin: 0;
+            &:first-child {
+                margin: 0;
+            }
+        }
     }
 }

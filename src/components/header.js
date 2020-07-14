@@ -49,6 +49,8 @@ const Header = ({ siteTitle }) => {
   `)
 
   return (
+
+
     <header>
       <div className={[headerStyles.header, "d-lg-none"].join(" ")}>
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
@@ -64,7 +66,7 @@ const Header = ({ siteTitle }) => {
                     <div ><Link className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <div><Link className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false"  ></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" ></button>
                 </div>
               </div>
             </div>
@@ -125,7 +127,7 @@ const Header = ({ siteTitle }) => {
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
               <div className="row mr-0 ml-0">
-                <div className="col-12">
+                <div className="col-12 col-padding">
                   <Menu menuClass={`navbar nav-desk`} />
                 </div>
               </div>
