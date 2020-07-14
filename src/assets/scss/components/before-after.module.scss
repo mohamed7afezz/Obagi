@@ -11,14 +11,22 @@
         }
 }
 .beforeafterhead{
-  font-size: 48px;
-  line-height: 54px;
+    font-size: 64px;
+    line-height: 72px;
   @extend %futurapt-light;
-
+display: none;
   @include md-screen{
-      font-size: 64px;
-      line-height: 72px;
+      display: block;
   }
+}
+.beforeafterheadmob{
+    display: block;
+    font-size: 48px;
+    line-height: 54px;
+    @extend %futurapt-light;
+    @include md-screen {
+        display: none;
+    }
 }
 .tabs{
     display: flex;
@@ -103,5 +111,5 @@ p{
     line-height: 16px;
     @extend %futurapt-light;
 padding-bottom: 16px;
-padding-bottom: 16px;
+
 }

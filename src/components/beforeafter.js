@@ -1,25 +1,16 @@
 import React from 'react'
-
-import Img from 'gatsby-image'
 import beforeafter from '../assets/scss/components/before-after.module.scss'
-import BeforeAfterReact from 'before-after-react'
-import { useStaticQuery, graphql } from "gatsby"
-import afterimg from "../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
-import beforeimg from "../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_BEFORE.jpg"
+import afterimg from "../assets/images/product-images/before-after.png"
 const Beforeafter = ({ node }) => {
-    
+   
 
     return (
         <div className={["container-fluid", beforeafter.beforeaftercontainer].join(" ")}>
             <div className={"row"}>
                 <div className={["col-12", "col-lg-5", "offset-lg-1", beforeafter.beforeafterimages].join(" ")}>
-                <BeforeAfterReact
-                secondImgSrc={beforeimg}
-firstImgSrc={afterimg} 
-
-cursor="pointer"
-containerClass="add-my-class"
-/>
+                <h1 className={beforeafter.beforeafterheadmob}>Before, Meet After</h1>
+                <img src= {afterimg}/>
+            
                 </div>
                 <div className={["col-12", "col-lg-4", "offset-lg-1", beforeafter.beforeaftercontent].join(" ")}>
                     <h1 className={beforeafter.beforeafterhead}>Before, Meet After</h1>
