@@ -71,9 +71,9 @@ const ProductHero = ({ node }) => {
                      <ul> <li>  Size 0.5 oz </li></ul></div>
                      <div className={["d-flex",ProductStyles.review].join(" ")}><Stars value="0.0"/> 
                      <p>0 Review</p></div>
-                     <p className={ProductStyles.price}>From  <span>$60</span></p>
+                     <p className={ProductStyles.price}> <span>$60</span></p>
                      <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a> and <a href="#">Oily</a></p>
-                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a>and <a href="#">Loss of Firmness and Elasticity</a></p>
+                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a> and <a href="#">Loss of Firmness and Elasticity</a></p>
                      <p className={ProductStyles.quantityhead}>Quantity:</p> 
                      <div className={[ProductStyles.quantity,"d-flex"].join(" ")}>
                         <div className={[ProductStyles.selectdiv,"col-3"].join(" ")}>
