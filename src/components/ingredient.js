@@ -8,7 +8,7 @@ import pluswhite from '../assets/images/product-images/plus-white.svg'
 const Ingredient = ({ node }) => {
   const data = useStaticQuery(graphql`
     query {
-        ingredientimg: file(relativePath: { eq: "product-images/ingredient.png" }) {
+        ingredientimg: file(relativePath: { eq: "product-images/key-ingredients.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
