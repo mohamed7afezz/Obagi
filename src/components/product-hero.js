@@ -26,14 +26,14 @@ const ProductHero = ({ node }) => {
         }
       }
       
-      retinol: file(relativePath: { eq: "product-images/2022-ob-07-0264-retinol-cream-leave-vitamins.png" }) {
+      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      vitamins: file(relativePath: { eq: "product-images/retinol-cream-leave-vitamins-2.png" }) {
+      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -65,15 +65,15 @@ const ProductHero = ({ node }) => {
                 </div>
                 <div className={["col-12", "col-lg-4", "offset-lg-1",ProductStyles.productdetail].join(" ")}>
                     <p className={ProductStyles.productcat}>CLINICAL</p>
-                    <h1 className={ProductStyles.productname}>Vitamin C + Arbutin Brightening Serum</h1>
+                    <h1 className={ProductStyles.productname}>Vitamin C Eye Brightener </h1>
                     <p className={ProductStyles.productdesc}>An eye brightener that is designed to energize tired-looking eyes and help minimize signs of aging.</p>
                     <div className={["d-flex",ProductStyles.type].join(" ")}><p>Cream</p>
                      <ul> <li>  Size 0.5 oz </li></ul></div>
                      <div className={["d-flex",ProductStyles.review].join(" ")}><Stars value="0.0"/> 
-                     <p>2k Reviews</p></div>
-                     <p className={ProductStyles.price}>From  <span>$60</span></p>
-                     <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a>and <a href="#">Oily</a></p>
-                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a>and <a href="#">Loss of Firmness and Elasticity</a></p>
+                     <p>0 Review</p></div>
+                     <p className={ProductStyles.price}> <span>$60</span></p>
+                     <p className={ProductStyles.canuse}>Skin Type: <a href="#"> Normal</a>, <a href="#">Dry</a>, <a href="#">Combination</a> and <a href="#">Oily</a></p>
+                     <p className={ProductStyles.Indications}> Skin Concerns:  <a href="#">Dark Circles</a>, <a href="#"> Fine Lines and Wrinkles</a> and <a href="#">Loss of Firmness and Elasticity</a></p>
                      <p className={ProductStyles.quantityhead}>Quantity:</p> 
                      <div className={[ProductStyles.quantity,"d-flex"].join(" ")}>
                         <div className={[ProductStyles.selectdiv,"col-3"].join(" ")}>
@@ -96,7 +96,7 @@ const ProductHero = ({ node }) => {
                 <Img fluid={data.group.childImageSharp.fluid}  className={["col-3","pr-0","pl-0"].join(" ")}  />
                 <Img fluid={data.vitamins.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
                 <Img fluid={data.ob.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
-                <Img fluid={data.f4.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
+                <Img fluid={data.retinol.childImageSharp.fluid} className={["col-3", "pr-0","pl-0"].join(" ")}  />
 
                 </div>
             </div>

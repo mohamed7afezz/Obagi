@@ -99,7 +99,7 @@ a{
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 24px;
-    @extend %futurapt-bold;
+ 
     a{
         font-size: 16px;
         line-height: 24px;
@@ -226,9 +226,20 @@ display: none;
 .images{
     display: flex;
     margin-top: 20px;
+    max-height: 82px;
     @include md-screen{
         margin-top: 32px;
         padding-right: 0;
         padding-left: 0;
+        max-height: 270px;
+    }
+}
+.images{
+    img {
+        max-height: 82px;
+        @include md-screen{
+            max-height: 270px;
+
+        }
     }
 }
