@@ -15,7 +15,7 @@ const Details = ({ node }) => {
                 <div className={["col-12", "col-lg-4", "offset-lg-1"].join(" ")}>
                     <h1>Safe</h1>
                     <p className={detailsStyles.safe}>
-                        "This hypoallergenic, cruelty-free Vitamin C Eye Brightener contains absolutely no sulfates SLS and SLES, parabens, formaldehydes, formaldehyde-releasing agents, phthalates, mineral oil, retinyl palmitate, oxybenzone, coal tar, hydroquinone, triclosan, and triclocarban. It also has less than 1% of synthetic fragrances."
+                        This hypoallergenic, cruelty-free Vitamin C Eye Brightener contains absolutely no sulfates SLS and SLES, parabens, formaldehydes, formaldehyde-releasing agents, phthalates, mineral oil, retinyl palmitate, oxybenzone, coal tar, hydroquinone, triclosan, and triclocarban. It also has less than 1% of synthetic fragrances.
                    </p>
 
                 </div>
