@@ -14,7 +14,8 @@ const HomeHero = ({ node }) => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={["container-fluid", homeHero.heroStyle].join(" ")} id="hero">
+    <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle].join(" ")} id="hero">
+      <div className="container-fluid">
       <div className={["row"].join(" ")}>
         <div className={["col col-lg-4 offset-lg-4"].join(" ")}>
           <h2 dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></h2>
@@ -31,6 +32,7 @@ const HomeHero = ({ node }) => {
           )
         })}
         <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div>
+      </div>
       </div>
     </div>
   );

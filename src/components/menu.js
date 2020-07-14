@@ -2,6 +2,8 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes from "prop-types";
 import footerStyles from '../assets/scss/components/footer.module.scss'
+// const $ = require(jQuery);
+//  onClick={_onHeaderClick}
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -72,6 +74,11 @@ function buildLink(link, collapseTarget, isExpandable) {
   }
 }
 
+// function _onHeaderClick(event) {
+//   event.preventDefault();
+//   $(event.currentTarget).siblings().toggle();
+// }
+
 function buildMenu(menuArray, isExpandable){
   if(!menuArray)  {
     return
@@ -81,9 +88,9 @@ function buildMenu(menuArray, isExpandable){
     if(menuArray[item].children.length !== 0) {
       menu.push(
       <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item], "#menuItem" + item, isExpandable)}
-        <ul className={"submenu " + (isExpandable=true? 'collapse' : ' ')} id={"menuItem" +  item}>
-          {buildMenu(menuArray[item].children)}
+        {buildLink(menuArray[item], "#menuItem" + menuArray[item].drupal_id, isExpandable)}
+        <ul className={"submenu " + (isExpandable == true ? 'collapse' : ' ')} id={(isExpandable == true ? "menuItem" + menuArray[item].drupal_id: 'menuItem')}>
+          {buildMenu(menuArray[item].children, true)}
         </ul>
       </li>)
     } else {
@@ -151,6 +158,6 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   menuName: `main`,
-}
+ }
 
 export default Menu

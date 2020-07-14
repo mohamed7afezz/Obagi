@@ -20,7 +20,7 @@ const SectionWithImageAndText = ({ node }) => {
           <div className={imageAndText.image}><Img fluid={node.relationships.field_image.localFile.childImageSharp.fluid} /></div>
         </div>
 
-        <div className={["col-8", "offset-2", "col-lg-2", "offset-lg-1", "d-lg-none"].join(" ")}>
+        <div className="col-8 offset-2 col-lg-2 offset-lg-1 d-lg-none">
           <div className={[imageAndText.linkSection].join(" ")}><Link to={node.field_text_button.uri} className={["button-link"].join(" ")}>{node.field_text_button.title}</Link></div>
         </div>
 

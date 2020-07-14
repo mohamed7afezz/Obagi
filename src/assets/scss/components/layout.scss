@@ -235,6 +235,8 @@ footer .form-group {
 
             }
 
+
+
             .submenu {
                 background: #132466;
 
@@ -279,7 +281,12 @@ footer .form-group {
                         color: #fff;
                         background: #132466;
                     }
+                    .single-tab {
+                        background: #132466;
+                        color: #fff;
+                    }
                 }
+
 
                 .submenu {
                     background: #fff;
@@ -294,9 +301,14 @@ footer .form-group {
                                 padding-top: 7px !important;
                             }
                         }
+                        .single-tab {
+                            background: #ffffff;
+                            color: #132466;
+                        }
                     }
                 }
             }
+
 
         }
 
@@ -349,12 +361,7 @@ footer .form-group {
     }
 
     .submenu {
-        li {
-            a {
-                padding-left: 25px !important;
-            }
-        }
-
+        
         .submenu {
             li {
                 a {
@@ -377,12 +384,14 @@ footer .form-group {
             }
 
             a {
-                padding: 24px 0 24px 25px;
+                padding: 24px 0 24px 25px !important;
                 font-size: 16px !important;
                 line-height: 24px !important;
                 letter-spacing: 0 !important;
                 border: 0 !important;
 
+                color: #132466;
+                background: #fff;
                 &::before {
                     position: unset !important;
                     content: none !important;
@@ -391,12 +400,20 @@ footer .form-group {
                     background: unset !important;
                     top: unset !important;
                 }
+                &.collapsed {
+                    background: #132466;
+                    color: #fff;
+                }
             }
 
             &:first-child {
                 a {
                     padding-top: 8px;
                 }
+            }
+            .single-tab {
+                background: #ffffff;
+                color: #132466;
             }
         }
 
@@ -419,6 +436,26 @@ footer .form-group {
             right: unset !important;
             background-image: unset !important;
         }
+    .submenu.collapsing, .submenu.show {
+        li {
+            a {
+            }
+        }
+    }
+
+    .single-tab {
+            background: #132466 ;
+            padding-left: 25px !important;
+            color: #fff;
+            &::after {
+                position: unset !important;
+                width: unset !important;
+                height: unset !important;
+                left: unset !important;
+                top: unset !important;
+                right: unset !important;
+                background-image: unset !important;
+            }
     }
 
 }
@@ -551,4 +588,5 @@ footer .form-group {
         }
     }
 
+}
 }

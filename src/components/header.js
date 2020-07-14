@@ -49,6 +49,8 @@ const Header = ({ siteTitle }) => {
   `)
 
   return (
+
+
     <header>
       <div className={[headerStyles.header, "d-lg-none"].join(" ")}>
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
@@ -64,7 +66,7 @@ const Header = ({ siteTitle }) => {
                     <div ><Link className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <div><Link className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false"  ></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" ></button>
                 </div>
               </div>
             </div>
@@ -73,7 +75,7 @@ const Header = ({ siteTitle }) => {
           <div className="row">
             <div className="col col-padding">
               <div class="collapse navbar-collapse nav-container" id="navbar">
-                <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} />
+                <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
                   <span><Link to="#">SIGN IN</Link></span>
@@ -88,26 +90,34 @@ const Header = ({ siteTitle }) => {
 
 
 
-      <div className={["container-fluid d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
+      <div className={["d-none d-lg-block col-padding", headerStyles.navigationBarDesk].join(" ")}>
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
-            <div className="col col-padding">
-              <div className={headerStyles.mainLinks}>
-                <div className={headerStyles.navSubmenu}><Link to="#">MEDICAL</Link></div>
-                <div className={headerStyles.navSubmenu}><Link to="#">CLINICAL</Link></div>
-              </div>
-            </div>
+            <div className="container-fluid">
+              <div className="row mr-0 ml-0">
 
-            <div className={["col", headerStyles.logoSection].join(" ")}>
-              <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
-            </div>
 
-            <div className="col col-padding">
-              <div className={headerStyles.navLastSection}>
-                <p><Link to="#">SIGN IN</Link></p>
-                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+
+                <div className="col col-padding">
+                  <div className={headerStyles.mainLinks}>
+                    <Link to="#"  className={headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="#"  className={headerStyles.navSubmenu}>CLINICAL</Link>
+                  </div>
+                </div>
+
+                <div className={["col", headerStyles.logoSection].join(" ")}>
+                  <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                </div>
+
+                <div className="col col-padding">
+                  <div className={headerStyles.navLastSection}>
+                    <p><Link to="#">SIGN IN</Link></p>
+                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -115,9 +125,14 @@ const Header = ({ siteTitle }) => {
 
         <div className={headerStyles.lowerNav}>
           <div className="row mr-0 ml-0">
-            <div className="col-12">
-              <Menu menuClass={`navbar nav-desk`} isExpandable={true} />
+            <div className="container-fluid">
+              <div className="row mr-0 ml-0">
+                <div className="col-12 col-padding">
+                  <Menu menuClass={`navbar nav-desk`} />
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
