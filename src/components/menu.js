@@ -40,19 +40,19 @@ function createMenuHierarchy(menuData, menuName) {
   return tree
 }
 
-function buildLink(link, collapseTarget, isExpandable) {
+function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
     return ( <Link to={link.link.uri}>
       {link.title}
     </Link>)
   } else {
-    if (!collapseTarget) {
-      return (<Link className="single-tab" to={link.link.uri}>
+    if (!collapseTarget && itemId) {
+      return (<Link className="single-tab" to={link.link.uri} id={itemId}>
         {link.title}
       </Link>)
     }
-    if (collapseTarget) {
+    else if (itemId && collapseTarget) {
       return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
         {link.title}
       </a>)
@@ -88,13 +88,13 @@ function buildMenu(menuArray, isExpandable){
     if(menuArray[item].children.length !== 0) {
       menu.push(
       <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item], "#menuItem" + menuArray[item].drupal_id, isExpandable)}
-        <ul className={"submenu " + (isExpandable == true ? 'collapse' : ' ')} id={(isExpandable == true ? "menuItem" + menuArray[item].drupal_id: 'menuItem')}>
+        {buildLink(menuArray[item], menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)}
+        <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : 'menuItem')}>
           {buildMenu(menuArray[item].children, true)}
         </ul>
       </li>)
     } else {
-      menu.push(<li key={menuArray[item].drupal_id}>{buildLink(menuArray[item])}</li>)
+      menu.push(<li key={menuArray[item].drupal_id}>{buildLink(menuArray[item], menuArray[item].drupal_id)}</li>)
     }
   }
 
