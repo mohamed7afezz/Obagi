@@ -42,7 +42,6 @@ const Howtouse = ({ node }) => {
                                         <p className={howto.tabTitle}>With just one pump, use your finger to gently massage the cream around the eye area during your morning and/or nightly routine </p>  </div>
                             </div>
                        </div>
-
                         </div>
                         <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>How to Use</h1>
