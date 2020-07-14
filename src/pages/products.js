@@ -22,9 +22,7 @@ const products = () => (
       <Howtouse/>
       <Beforeafter/>
 
-      <Carouselproducts/>
-      <Recommendedparing/>
-      <ProductSuggestion/>
+    
         </Layout>
         
 )
