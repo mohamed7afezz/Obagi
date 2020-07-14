@@ -54,10 +54,10 @@ return (
                         </form>
 
                         <div className={[footerStyles.socialMedia, "d-none d-md-flex"].join(" ")}>
-                            <div className={footerStyles.socialIcon}><Link href="#"><FontAwesomeIcon icon={faInstagram} className={footerStyles.icon}/></Link></div>
-                            <div className={footerStyles.socialIcon}><Link href="#"><FontAwesomeIcon icon={faFacebookF} className={footerStyles.icon}/></Link></div>
-                            <div className={footerStyles.socialIcon}><Link href="#"><FontAwesomeIcon icon={faYoutube} className={footerStyles.icon}/></Link></div>
-                            <div className={footerStyles.socialIcon}><Link href="#"><FontAwesomeIcon icon={faTwitter} className={footerStyles.icon}/></Link></div>
+                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faInstagram} className={footerStyles.icon}/></Link></div>
+                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faFacebookF} className={footerStyles.icon}/></Link></div>
+                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faYoutube} className={footerStyles.icon}/></Link></div>
+                            <div className={footerStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faTwitter} className={footerStyles.icon}/></Link></div>
                         </div>
                     </div>
                 </div>

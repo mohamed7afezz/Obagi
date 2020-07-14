@@ -163,7 +163,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
           <div className="row">
             <div className="col col-padding">
-              <div class="collapse navbar-collapse nav-container" id="navbar">
+              <div className="collapse navbar-collapse nav-container" id="navbar">
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
