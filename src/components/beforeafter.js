@@ -58,9 +58,7 @@ const Beforeafter = ({ node }) => {
                                     <p> found skin felt firmer</p>
                                     </div>
                                 </div>
-                                <p className={beforeafter.beforeafterfooter}>* Based on a 4-week double-blind consumer study of 104 women ages 18 to 61</p>
-                                <p className={beforeafter.beforeafterfooter}>† Photos have not been retouched. Results may vary.</p>
-                            </div>
+                           </div>
                         </div>
 
               </div>

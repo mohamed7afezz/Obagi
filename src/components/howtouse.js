@@ -39,7 +39,7 @@ const Howtouse = ({ node }) => {
                                 </div>
                                 <div id="stepOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        <p className={howto.tabTitle}>Apply one pump in the morning and/or evening to skin in the eye area. </p>  </div>
+                                        <p className={howto.tabTitle}>With just one pump, use your finger to gently massage the cream around the eye area during your morning and/or nightly routine </p>  </div>
                             </div>
                        </div>
 
