@@ -25,7 +25,7 @@ const Recommendedparing = ({ node }) => {
     return (
         <div className={["container-fluid", recommendedparing.recommendedcon].join(" ")} >
             <div className={["row", recommendedparing.ordering].join(" ")}>
-                <div className={["col-12", "col-lg-12",  recommendedparing.allcon].join(" ")}>
+                <div className={["col-12", "col-lg-12",  recommendedparing.allcontainer].join(" ")}>
                     <div class="row">
                         <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
                         <p className={ProductStyles.productcat}>Recomended Pairing</p>
