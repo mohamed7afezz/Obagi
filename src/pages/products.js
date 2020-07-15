@@ -12,6 +12,7 @@ import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
+import AsNavFor from "../components/slick-slider"
 const products = () => (
  
     <Layout>
@@ -21,7 +22,7 @@ const products = () => (
       <Howtouse/>
       <Beforeafter/>
 
-    
+    <AsNavFor/>
         </Layout>
         
 )

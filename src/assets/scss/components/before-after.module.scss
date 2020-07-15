@@ -1,62 +1,77 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
-.beforeaftercontainer{
-    background-color: rgba(68,196,217,.1);
 
-        padding-bottom: 64px;
-        padding-top: 48px;
-        @include md-screen{
-            padding-top: 112px;
-            padding-bottom: 202px;
-        }
+.beforeaftercontainer {
+    background-color: rgba(68, 196, 217, .1);
+
+    padding-bottom: 64px;
+  
+
+    @include md-screen {
+        padding-top: 112px;
+        padding-bottom: 202px;
+    }
 }
-.beforeafterhead{
+
+.beforeafterhead {
     font-size: 64px;
     line-height: 72px;
-  @extend %futurapt-light;
-display: none;
-  @include md-screen{
-      display: block;
-  }
+    @extend %futurapt-light;
+    display: none;
+
+    @include md-screen {
+        display: block;
+    }
 }
-.beforeafterheadmob{
+
+.beforeafterheadmob {
     display: block;
     font-size: 48px;
     line-height: 54px;
     @extend %futurapt-light;
+padding-bottom: 32px;
     @include md-screen {
         display: none;
     }
 }
-.tabs{
+
+.tabs {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
     justify-content: space-between;
 }
-.card-header{
+
+.card-header {
     padding: 0;
 }
-.card-header .btn-link{
-    padding:16px 45px;
+
+.card-header .btn-link {
+    padding: 16px 45px;
     text-transform: uppercase;
 }
- .tab {
-border: 0;
-background-color: transparent;
-@include md-screen{
-    padding-left: 0 !important;
+
+.tab {
+    border: 0;
+    background-color: transparent;
+
+    @include md-screen {
+        padding-left: 0 !important;
+    }
 }
-}
-.cardhead{
+
+.cardhead {
     width: 100%;
-    padding:0;
+    padding: 0;
     text-align: center;
     border: 0;
     box-shadow: none;
     background-color: transparent;
 }
-.cardhead .btnLink1{
-    padding:16px 0;
+
+.cardhead .btnLink1 {
+    padding: 16px 0;
     max-width: 100%;
     box-shadow: none;
     width: 100%;
@@ -69,50 +84,84 @@ background-color: transparent;
     text-decoration: none;
 }
 
-.card{
+.card {
     border: 0;
 }
-.beforeaftersubtitle{
-    @extend %futurapt-light;
+
+.beforeaftersubtitle {
+    @extend %futurapt-book;
 
     font-size: 18px;
     line-height: 32px;
     padding-bottom: 27px;
-    @include md-screen{
+padding-top: 22px;
+    @include md-screen {
+      
+        padding-top: 8px;
         font-size: 28px;
         padding-bottom: 32px;
         line-height: 48px;
+        
     }
 }
-.tabTitle{
+
+.tabTitle {
     @extend %futurapt-bold;
-font-size: 18px;
-line-height: 32px;
-padding-bottom: 32px;
+    font-size: 18px;
+    line-height: 32px;
+    padding-bottom: 32px;
 }
 
 .box {
-    background-color: rgba(83, 208, 228, 0.1);;
-margin-bottom: 40px;
-    padding: 24px 32px;
-    h1{
-    font-size: 48px;
-    line-height: 64px;
-    @extend %futurapt-book;
+    background-color: rgba(83, 208, 228, 0.1);
+    
+    margin-bottom: 18px;
+    padding: 18px;
 
+    @include md-screen {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 32px;
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 48px;
+        line-height: 64px;
+        @extend %futurapt-book;
+
+    }
+
+    p {
+        @extend %futurapt-book;
+
+    }
 }
-p{
-    @extend %futurapt-book;
-  
-}
-}
-.beforeafterfooter{
+
+.beforeafterfooter {
     font-size: 14px;
     line-height: 16px;
     @extend %futurapt-light;
-padding-bottom: 16px;
+    padding-bottom: 16px;
 
 }
+
 .beforeaftercontainer img {
     max-width: 100%;
+}
+
+.beforeafterhidedesk {
+    display: block;
+
+    @include md-screen {
+        display: none;
+    }
+}
+
+.beforeafterhidemob {
+    display: none;
+
+    @include md-screen {
+        display: block;
+    }
 }
