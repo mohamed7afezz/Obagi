@@ -30,8 +30,8 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://dev-bahi-sandbox.pantheonsite.io/`,
-        apiBase: `api`, // optional, defaults to `jsonapi`
+        baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
   
