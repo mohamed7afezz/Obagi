@@ -156,8 +156,9 @@ const ProductHero = ({ node, props }) => {
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
           <p className={ProductStyles.productcat}>CLINICAL</p>
           <h1 className={ProductStyles.productname}>Vitamin C Eye Brightener </h1>
-          <p className={ProductStyles.productdesc}>An eye brightener created to reduce fine lines and other signs of early aging, while energizing and recharging tired, overused eyes</p>
-          <div className={["d-flex", ProductStyles.type].join(" ")}><p>Cream</p>
+          <p className={ProductStyles.productdesc}>An eye brightener created to reduce fine lines and other signs of early skin aging, while energizing and recharging tired, overused eyes.
+          </p>
+          <div className={["d-flex", ProductStyles.type].join(" ")}><p>Brightening Cream</p>
             <ul> <li>  Size 0.5 oz </li></ul></div>
           <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />
             <p>0 Review</p></div>
