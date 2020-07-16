@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-
+import Img from 'gatsby-image'
 export default class AsNavFor extends Component {
   constructor(props) {
+      
     super(props);
     this.state = {
       nav1: null,
@@ -17,7 +18,8 @@ export default class AsNavFor extends Component {
     });
   }
 
-  render() {
+  render(slide1,slide2,slide3,slide4) {
+    const {myProp} = this.props;
     return (
       <div>
         <h2>Slider Syncing (AsNavFor)</h2>
@@ -26,50 +28,26 @@ export default class AsNavFor extends Component {
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
+          <div className={ "row" }>
+          <img src ={slide1}/>
+            <img src ={slide2}/>
+            <img src ={slide3}/>
+            <img src ={slide4}/>
           </div>
         </Slider>
         <h4>Second Slider</h4>
         <Slider
           asNavFor={this.state.nav1}
           ref={slider => (this.slider2 = slider)}
-          slidesToShow={3}
+          slidesToShow={4}
           swipeToSlide={true}
           focusOnSelect={true}
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
+           <div className={"row" }>
+            <img src ={this.props.slide1}/>
+            <img src ={this.props.slide2}/>
+            <img src ={this.props.slide3}/>
+            <img src ={this.props.slide4}/>
           </div>
         </Slider>
       </div>

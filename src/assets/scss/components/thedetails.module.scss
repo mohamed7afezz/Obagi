@@ -37,3 +37,11 @@ h1{
     line-height: 72px;
     @extend %futurapt-light ;
 }
+.productimage,.slick-initialized
+{
+    min-width: 1px;
+}
+.images
+{
+    min-width: 1px;
+}
