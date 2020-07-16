@@ -179,7 +179,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/homepage/' ? ' ' : ' ' + headerStyles.generalNav)].join(" ")}>
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/' ? ' ' : ' ' + headerStyles.generalNav)].join(" ")}>
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
