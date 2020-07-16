@@ -21,7 +21,7 @@ const products = () => (
       <Howtouse/>
       <Beforeafter/>
 
-    
+   
         </Layout>
         
 )

@@ -30,7 +30,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `http://dev-obagi.azurewebsites.net/api`,
+        baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },

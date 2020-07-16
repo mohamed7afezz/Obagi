@@ -70,3 +70,34 @@
 .before-after-wrap{
     max-width: 100%;
 }
+.styles_handle__33IZp::before{
+    content: "";
+    display: block;
+    width: 88px;
+    height: 88px;
+    background-image:  url(../images/product-images/group.svg) !important;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: -43px;
+}
+.styles_container__2pRR5 {
+    margin-left: auto;
+    margin-right: auto;
+}
+.beforeaftercontainer .card-body {
+    padding-bottom: 0;
+}
+.imageContainer.Active {
+    border: 2px solid #132466;
+     
+}
+@media (max-width:767px){
+    .imageContainer.Active {
+        border-radius: 6px;
+         
+    }
+}
+.productimage .slick-initialized{
+padding-bottom: 0;
+}
