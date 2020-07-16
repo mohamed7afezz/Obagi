@@ -10,6 +10,8 @@ import ImageLeftTextRight from './image-left-text-right'
 import BigParagraph from './big-paragraph'
 import ImagesBoxes from './images-boxes'
 import Details from './product-components/thedetails'
+import Ingredient from './product-components/ingredient';
+import Howtouse from './product-components/howtouse';
     
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -31,7 +33,9 @@ export const getParagraph = node => {
 }
 
 const productComponentsMap = {
-    paragraph__the_details_safe_section: Details
+    paragraph__the_details_safe_section: Details,
+    paragraph__ingredient: Ingredient,
+    paragraph__how_to_use: Howtouse
 }
 
 export const getProductParagraph = node => {

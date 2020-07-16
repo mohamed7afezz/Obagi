@@ -27,6 +27,7 @@ export default Details;
 
 export const fragment = graphql`
     fragment detailsSafeParagraph on paragraph__the_details_safe_section {
+        id
         relationships {
             field_detail_safe {
               field_sec {

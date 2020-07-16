@@ -61,6 +61,8 @@ export const productPageQuery = graphql`
                 paragraphs: field_clinical_components {
                     type: __typename
                     ...detailsSafeParagraph
+                    ...ingredientParagraph
+                    ...howToUseParagraph
                 }
             }
             
