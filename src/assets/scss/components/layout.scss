@@ -479,6 +479,7 @@ footer .form-group {
 
 .main-nav-containers {
     box-shadow: 0 4px 0 0 rgba(54, 75, 95, 0.15);
+    display: none;
 }
 
 .nav-container-desk {
@@ -543,8 +544,11 @@ footer .form-group {
     }
 }
 
-.nav-container-desk.nav-single-container {
-    max-width: 654px;
+.nav-single-container {
+    .nav-container-desk {
+        width: 654px;
+        max-width: unset;
+    }
 
     .nav-subtitle-desk {
         padding-bottom: 56px;
@@ -568,6 +572,7 @@ footer .form-group {
 
         li {
             padding: 0 40px;
+            position: relative;
 
             a {
                 color: #ffffff;
@@ -578,31 +583,33 @@ footer .form-group {
                     text-decoration: none;
                 }
             }
+            &:hover div {
+                display: block;
+            }
+
+            div {
+                display: none;
+                .dropdown-menu {
+                    font-size: unset;
+                    color: unset;
+                    text-align: unset;
+                    min-width: unset;
+                    padding: unset;
+                    list-style: unset;
+                    background-clip: unset;
+                    border: unset;
+                    margin: unset;
+                    border-radius: unset;
+                }
+            }
+            
         }
+
     }
+
+
+
 
 }
 
-
-// .dropdown {
-
-
-//     &:hover {
-//         .skin-analyzer {
-//             display: block;
-//         }
-//     }
-//     .dropdown-menu {
-//         font-size: unset;
-//         color: unset;
-//         text-align: unset;
-//         min-width: unset;
-//         padding: unset;
-//         list-style: unset;
-//         background-clip: unset;
-//         border: unset;
-//         margin: unset;
-//         border-radius: unset;
-//     }
-// }
 

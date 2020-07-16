@@ -72,7 +72,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             path: node.fields.slug,
             component: productTemp,
             context: {
-                slug: node.fields.slug
+                slug: node.fields.slug,
+                type: 'clinical'
             }
         });
     });

@@ -1,0 +1,46 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    width: 100%;
+    background: #132466;
+    color: #ffffff;
+    padding: 16px 0;
+
+    // position: relative;
+    // top: 0;
+    // bottom: 100px;
+
+
+    .column-wrapper {
+        display: flex;
+        justify-content: center;
+        .text {
+            margin-left: auto;
+            
+            @include fontStyle(16, 24);
+            a {
+                @extend %futurapt-bold;
+                color: #ffffff;
+        
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        
+    
+        .close-button {
+            margin-left: auto;
+            button {
+                background: transparent;
+                border: none;
+            }
+    
+            .close-img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
