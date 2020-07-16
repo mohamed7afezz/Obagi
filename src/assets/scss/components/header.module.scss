@@ -4,7 +4,7 @@
 .header {
     position: fixed;
     z-index: 999;
-    top: 0;
+    top: 56px;
     width: 100%;
     background: #132466;
 
@@ -213,4 +213,9 @@
     }
 
 
+}
+
+.top-styles {
+    // position: absolute;
+    top: 56px;
 }

@@ -136,18 +136,20 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     }
   `)
 
-  // const isHome = typeof window !== 'undefined' ? window.location.href.split('/')[3].toLowerCase() === 'homepage' : '';
-  // const isHome = window.location.href.split('/')[3].toLowerCase() === 'homepage';
-
-  // function removeFirstIcons() {
-  //   document.getElementById("first-icons").style.display="none";
-  // }
+  function removeFirstIcons() {
+    var x = document.getElementById("first-icons");
+    if (x.style.display === "none") {
+      x.style.display = "flex";
+    } else {
+      x.style.display = "none";
+    }
+  }
 
   return (
 
 
     <header>
-      <div className={[headerStyles.header, "d-lg-none"].join(" ")}>
+      <div className={[headerStyles.header, "d-lg-none"].join(" ")} id="mob-navigation">
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
           <div className="row">
             <div className={headerStyles.topNav}>
@@ -157,11 +159,11 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
-                  <div className={headerStyles.firstIcons}>
+                  <div className={headerStyles.firstIcons} id="first-icons">
                     <div ><Link to="#"className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <div><Link to="#" className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" ></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => {removeFirstIcons()}}></button>
                 </div>
               </div>
             </div>
@@ -185,7 +187,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/homepage/' ? ' ' : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
