@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes, { func } from "prop-types";
+import Img from 'gatsby-image'
 // import { info } from "node-sass";
 
 let megaMenuBlocks = [];
@@ -17,7 +18,10 @@ function getBlock(item) {
 
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
     console.log(blockIndex);
-return <div><div dangerouslySetInnerHTML={{__html: megaMenuBlocks[blockIndex].body.processed}}></div>{megaMenuBlocks[blockIndex].children.fluid}</div>
+    return <div>
+        <div dangerouslySetInnerHTML={{__html: megaMenuBlocks[blockIndex].body.processed}}></div>
+        <div class="nav-img-desk"><Img fluid={megaMenuBlocks[blockIndex].relationships.field_image.localFile? megaMenuBlocks[blockIndex].relationships.field_image.localFile.childImageSharp.fluid : ' ' }/></div>
+    </div>
 }
 
 function createMenuHierarchy(menuData, menuName) {
@@ -128,11 +132,14 @@ const MegaMenu = ({menuName, menuClass, isExpandable}) => (
                             body {
                                 processed
                             }
-                            children {
-                                ... on ImageSharp {
-                                  id
-                                  fluid {
-                                    ...GatsbyImageSharpFluid
+                            relationships {
+                                field_image {
+                                  localFile {
+                                    childImageSharp {
+                                      fluid {
+                                        ...GatsbyImageSharpFluid
+                                      }
+                                    }
                                   }
                                 }
                               }
