@@ -138,6 +138,11 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
   // const isHome = typeof window !== 'undefined' ? window.location.href.split('/')[3].toLowerCase() === 'homepage' : '';
   // const isHome = window.location.href.split('/')[3].toLowerCase() === 'homepage';
+
+  // function removeFirstIcons() {
+  //   document.getElementById("first-icons").style.display="none";
+  // }
+
   return (
 
 
@@ -218,12 +223,12 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             <div className="container-fluid">
               <div className="row mr-0 ml-0">
                 <div className="col-12 col-padding">
-                  <div className="dropdown">
+                  {/* <div className="dropdown"> */}
 
                     <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
 
 
-
+{/* 
                     <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">
                       <div className="d-flex">
                         <div class="container-fluid d-lg-block nav-container-desk">
@@ -391,7 +396,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                     </div>
 
 
-                  </div>
+                  </div> */}
 
                 </div>
               </div>

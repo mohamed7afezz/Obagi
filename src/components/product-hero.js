@@ -63,43 +63,75 @@ const ProductHero = ({ node, props }) => {
       },
   ]
   }
+
+  
   function slickGoToslide(int) {
-   slider1.current.slickGoTo(int)
+   slider1.current.slickGoTo(int);
+  
   }
   const data = useStaticQuery(graphql`
     query {
 
       
-      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
+      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fixed(width: 480, height: 270) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
+      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fixed(width: 480, height: 270) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
       ob: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fixed(width: 480, height: 270) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      f4: file(relativePath: { eq: "product-images/f4.png" }) {
+      f4: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
+        childImageSharp {
+          fixed(width: 480, height: 270) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      retinol1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
           }
         }
       }
-    }`
+      vitamins1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      ob1: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      f41: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
 
+    }`
+    
   )
     
   return (
@@ -107,17 +139,26 @@ const ProductHero = ({ node, props }) => {
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
           <Slider ref={slider => (slider1.current = slider)}  {...SliderSetting}>
-            <img src={group} />
-            <img src={f4} />
-            <img src={vitamins} />
-            <img src={ob} />
+   
+          <Img  fluid={data.retinol1.childImageSharp.fluid}/>
+
+     
+          <Img  fluid={data.vitamins1.childImageSharp.fluid}/>
+
+ 
+          <Img  fluid={data.ob1.childImageSharp.fluid}/>
+
+          <Img  fluid={data.f41.childImageSharp.fluid}/>
+
+     
           </Slider>
         </div>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
           <p className={ProductStyles.productcat}>CLINICAL</p>
           <h1 className={ProductStyles.productname}>Vitamin C Eye Brightener </h1>
-          <p className={ProductStyles.productdesc}>An eye brightener created to reduce fine lines and other signs of early aging, while energizing and recharging tired, overused eyes</p>
-          <div className={["d-flex", ProductStyles.type].join(" ")}><p>Cream</p>
+          <p className={ProductStyles.productdesc}>An eye brightener created to reduce fine lines and other signs of early skin aging, while energizing and recharging tired, overused eyes.
+          </p>
+          <div className={["d-flex", ProductStyles.type].join(" ")}><p>Brightening Cream</p>
             <ul> <li>  Size 0.5 oz </li></ul></div>
           <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />
             <p>0 Review</p></div>
@@ -144,25 +185,25 @@ const ProductHero = ({ node, props }) => {
         </div>
         <div className={["col-12", ProductStyles.images].join(" ")} ref={slider => (slider2.current = slider)} {...HeroSettings}>
 
-            <div className={["imageContainer",ProductStyles.imageContainer,"Active"].join(" ")}>
-            <img onClick={() => slickGoToslide(0)
-              
-            } src={group} />
-            </div>
-            <div className={["imageContainer",ProductStyles.imageContainer,].join(" ")}>
+            <div onClick={() => slickGoToslide(0)} className={["imageContainer",ProductStyles.imageContainer,"Active"].join(" ")}>
+          
+            <Img  fixed={data.retinol.childImageSharp.fixed}/>
 
-            <img onClick={() => slickGoToslide(1)
-            } src={f4} />
             </div>
-            <div className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
+            <div onClick={() => slickGoToslide(1) } className={["imageContainer",ProductStyles.imageContainer,].join(" ")}>
 
-            <img onClick={() => slickGoToslide(2)
-            } src={vitamins} />
+            <Img  fixed={data.vitamins.childImageSharp.fixed}/>
+
             </div>
-            <div className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
+            <div onClick={() => slickGoToslide(2)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
 
-            <img onClick={() => slickGoToslide(3)
-            } src={ob} />
+            <Img  fixed={data.ob.childImageSharp.fixed}/>
+
+            </div>
+            <div onClick={() => slickGoToslide(3)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
+
+            <Img  fixed={data.f4.childImageSharp.fixed}/>
+
         </div>
         </div>
       </div>
