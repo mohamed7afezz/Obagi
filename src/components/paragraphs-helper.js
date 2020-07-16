@@ -21,9 +21,21 @@ const componentsMap = {
     paragraph__section_with_colored_boxes: SectionWithColoredBoxes,
 }
 
+const productComponentsMap = {
+    
+}
+
 export const getParagraph = node => {
     if (componentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = componentsMap[node.type];
+        return <ParagraphComponent key={node.id} node={node} />;
+    }
+    return <p key={node.id}>Unknown type {node.__typename}</p>;
+}
+
+export const getProductParagraph = node => {
+    if (productComponentsMap.hasOwnProperty(node.type)) {
+        const ParagraphComponent = productComponentsMap[node.type];
         return <ParagraphComponent key={node.id} node={node} />;
     }
     return <p key={node.id}>Unknown type {node.__typename}</p>;
