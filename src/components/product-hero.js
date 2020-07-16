@@ -15,11 +15,7 @@ import $ from 'jquery';
 
 const ProductHero = ({ node, props }) => {
   
-  $('.imageContainer').on('click',function(){
-    $(this).siblings().removeClass('Active')
-    $(this).addClass('Active')
-   
-  })
+ 
   const [state, setState] = useState({
     nav1: null,
     nav2: null
