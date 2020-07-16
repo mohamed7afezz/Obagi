@@ -9,6 +9,7 @@ import SectionWithImageAndText from './section-with-image-and-text'
 import ImageLeftTextRight from './image-left-text-right'
 import BigParagraph from './big-paragraph'
 import ImagesBoxes from './images-boxes'
+import Details from './product-components/thedetails'
     
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -21,10 +22,6 @@ const componentsMap = {
     paragraph__section_with_colored_boxes: SectionWithColoredBoxes,
 }
 
-const productComponentsMap = {
-    
-}
-
 export const getParagraph = node => {
     if (componentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = componentsMap[node.type];
@@ -33,7 +30,12 @@ export const getParagraph = node => {
     return <p key={node.id}>Unknown type {node.__typename}</p>;
 }
 
+const productComponentsMap = {
+    paragraph__the_details_safe_section: Details
+}
+
 export const getProductParagraph = node => {
+    console.log('hafez')
     if (productComponentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = productComponentsMap[node.type];
         return <ParagraphComponent key={node.id} node={node} />;

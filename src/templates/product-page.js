@@ -2,17 +2,18 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 
-import { getParagraph } from "../components/paragraphs-helper";
+import { getProductParagraph } from "../components/paragraphs-helper";
+
 import ProductHero from '../components/product-components/product-hero';
 
 const ProductPage = ({data}) => {
 
-    // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
+    const paragraphs = data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph);
 
     return (
         <Layout>
             <ProductHero node={data.nodeClinicalProduct} />
-            {/* {paragraphs} */}
+            {paragraphs}
         </Layout>
     )
 }
@@ -55,6 +56,11 @@ export const productPageQuery = graphql`
                     path {
                         alias
                     }
+                }
+
+                paragraphs: field_clinical_components {
+                    type: __typename
+                    ...detailsSafeParagraph
                 }
             }
             
