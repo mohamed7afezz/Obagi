@@ -101,3 +101,7 @@
 .productimage .slick-initialized{
 padding-bottom: 0;
 }
+.imageContainer .gatsby-image-wrapper{
+    
+    max-width: 100%;
+}
