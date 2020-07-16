@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
+import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 
 const Header = ({ siteTitle }) => {
@@ -179,7 +180,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/homepage/' ? ' ' : ' ' + headerStyles.generalNav)].join(" ")}>
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/homepage/' ? ' ' : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
@@ -217,13 +218,13 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             <div className="container-fluid">
               <div className="row mr-0 ml-0">
                 <div className="col-12 col-padding">
-                  {/* <div className="dropdown"> */}
+                  <div className="dropdown">
 
-                    <Menu menuClass={`navbar nav-desk`} isExpandable={true} />
+                    <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
 
 
 
-                    {/* <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">
+                    <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">
                       <div className="d-flex">
                         <div class="container-fluid d-lg-block nav-container-desk">
                           <div class="row">
@@ -355,11 +356,11 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-                    <div className="main-nav-containers dropdown-menu skin-analyzer">
-                      <div class="container-fluid nav-container-desk  nav-single-container">
+                    <div className="main-nav-containers dropdown-menu skin-analyzer nav-single-container">
+                      <div class="container-fluid nav-container-desk ">
                         <div class="row">
                           <div class="col-12">
-
+                            
                             <p class="nav-title-desk">Skinanalyzer</p>
 
                             <p class="nav-subtitle-desk">Find the best Obagi solution for you.</p>
@@ -387,10 +388,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                           <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                         </div>
                       </div>
-                    </div> */}
+                    </div>
 
 
-                  {/* </div> */}
+                  </div>
 
                 </div>
               </div>
@@ -400,7 +401,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
         </div>
       </div>
 
-      {/* navBlocks */}
+    
 
 
 

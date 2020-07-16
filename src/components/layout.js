@@ -11,6 +11,7 @@ import { useStaticQuery, graphql, withPrefix } from "gatsby"
 import Helmet from 'react-helmet'
 import Header from "./header"
 import Footer from './footer'
+import AboveHeader from './above-header'
 
 
 import '../assets/scss/components/layout.scss'
@@ -32,6 +33,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <AboveHeader />
       <Header siteTitle={data.site.siteMetadata.title} />
       {/* <NavBlocks /> */}
       <div>

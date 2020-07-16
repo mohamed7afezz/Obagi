@@ -1,9 +1,24 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
-import PropTypes from "prop-types";
-import footerStyles from '../assets/scss/components/footer.module.scss'
-// const $ = require(jQuery);
-//  onClick={_onHeaderClick}
+import PropTypes, { func } from "prop-types";
+// import { info } from "node-sass";
+
+let megaMenuBlocks = [];
+function fillMegaMenuBlocksArr(data){
+    megaMenuBlocks = data.allBlockContentMegaMenuItems.edges.map(({ node }) => node);
+    // console.log(megaMenuBlocks); 
+}
+
+function getBlock(item) {
+    let block;
+
+    // console.log(item);
+    // console.log(megaMenuBlocks);
+
+    let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
+    console.log(blockIndex);
+return <div><div dangerouslySetInnerHTML={{__html: megaMenuBlocks[blockIndex].body.processed}}></div>{megaMenuBlocks[blockIndex].children.fluid}</div>
+}
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -74,10 +89,6 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
   }
 }
 
-// function _onHeaderClick(event) {
-//   event.preventDefault();
-//   $(event.currentTarget).siblings().toggle();
-// }
 
 function buildMenu(menuArray, isExpandable){
   if(!menuArray)  {
@@ -85,17 +96,11 @@ function buildMenu(menuArray, isExpandable){
   }
   let menu = []
   for(let item in menuArray) {
-    if(menuArray[item].children.length !== 0) {
-      menu.push(
-      <li key={menuArray[item].drupal_id}>
-        {buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)}
-        <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : 'menuItem')}>
-          {buildMenu(menuArray[item].children, true)}
-        </ul>
-      </li>)
-    } else {
-      menu.push(<li key={menuArray[item].drupal_id}>{buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)}</li>)
-    }
+    menu.push(
+        <li key={menuArray[item].drupal_id}>
+          {buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)}
+          {getBlock(menuArray[item])}
+        </li>)
   }
 
   return menu
@@ -110,37 +115,55 @@ function generateMenu(menuLinks, menuName, isExpandable) {
   return menu
 }
 
-const Menu = ({menuName, menuClass, isExpandable}) => (
+const MegaMenu = ({menuName, menuClass, isExpandable}) => (
 
    <StaticQuery
-      query={
-        graphql`
-        query MenuQuery {
-          allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
-            edges {
-              node {
-                enabled
-                title
-                expanded
-                external
-                langcode
-                weight
-                link {
-                  uri
+        query={ graphql`
+            query {
+                allBlockContentMegaMenuItems {
+                    edges {
+                        node {
+                            id
+                            info
+                            body {
+                                processed
+                            }
+                            children {
+                                ... on ImageSharp {
+                                  id
+                                  fluid {
+                                    ...GatsbyImageSharpFluid
+                                  }
+                                }
+                              }
+                        }
+                    }
                 }
-                drupal_parent_menu_item
-                bundle
-                drupal_id
-                menu_name
-              }
+                allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
+                    edges {
+                      node {
+                            enabled
+                            title
+                            expanded
+                            external
+                            langcode
+                            weight
+                            link {
+                                uri
+                            }
+                            drupal_parent_menu_item
+                            bundle
+                            drupal_id
+                            menu_name
+                      }
+                    }
+                  }
             }
-          }
-        }
-      `
-      }
+        `}
       
       render={data => (
         <nav className={menuName, menuClass}>
+            {fillMegaMenuBlocksArr(data)}
           <ul >
             {generateMenu(data, menuName, isExpandable)}
           </ul>
@@ -150,14 +173,14 @@ const Menu = ({menuName, menuClass, isExpandable}) => (
    />
 )
 
-Menu.propTypes = {
+MegaMenu.propTypes = {
   menuName: PropTypes.string,
   menuClass: PropTypes.string,
   isExpandable: PropTypes.bool,
 }
 
-Menu.defaultProps = {
+MegaMenu.defaultProps = {
   menuName: `main`,
  }
 
-export default Menu
+export default MegaMenu
