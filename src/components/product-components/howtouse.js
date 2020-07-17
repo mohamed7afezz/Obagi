@@ -10,9 +10,10 @@ const Howtouse = ({ node }) => {
             <div className={["row", howto.ordering].join(" ")}>
                 <div className={["col-12", "col-lg-10", "offset-lg-1", howto.allcon].join(" ")}>
                     <div class="row">
-                        <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
+
+                            <div id="accordion" className={['col-12','d-flex'].join(" ")}>
+                            <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
                             <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
-                            <div id="accordion">
                                 {/* steps btns */}
                                 <div className={["d-flex", howto.tabs].join(" ")}>
                                     {
@@ -41,7 +42,7 @@ const Howtouse = ({ node }) => {
                                
                             </div>
 
-                        </div>
+                     
 
                         <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
@@ -49,9 +50,11 @@ const Howtouse = ({ node }) => {
                             {/* steps image */}
                             {
                                 node.relationships.field_step_paragragh.map((item,index)=> (  
-                                    <div style={{width:'100%'}}  id={'step1'+index} class={index==0?'collapse show':'collapse'} aria-labelledby={'heading'+index} data-parent="#accordion">
+                                    <div style={{width:'100%'}}  id={'step'+index} class={index==0?'collapse  show':'collapse '} aria-labelledby={'heading'+index} data-parent="#accordion">
+
+                                         <div  class="card-body ">
                                         <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
-                                
+                                        </div>  
                                     </div>  
                                  ))
                             }
@@ -59,6 +62,7 @@ const Howtouse = ({ node }) => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
