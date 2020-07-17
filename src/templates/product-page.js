@@ -63,6 +63,7 @@ export const productPageQuery = graphql`
                     ...detailsSafeParagraph
                     ...ingredientParagraph
                     ...howToUseParagraph
+                    ...beforeAfterParagraph
                 }
             }
             

@@ -1,0 +1,166 @@
+import React , {useEffect} from 'react'
+import beforeafter from '../../assets/scss/components/before-after.module.scss'
+import beforeimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_BEFORE.jpg"
+import afterimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
+import Beforeafterimages from "./beforeafterimages"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from 'gatsby-image'
+
+const Beforeafter = ({ node }) => {
+    console.log('bahi', node);
+    const data = useStaticQuery(graphql`
+    query {
+        afterimg: file(relativePath: { eq: "product-images/smallLamb.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+          fixed(width: 744) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+          fixed(width: 744) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }`
+    )
+    return (
+        <div className={["container-fluid","beforeaftercontainer", beforeafter.beforeaftercontainer].join(" ")}>
+            <div className={"row"}>
+                <div className={["col-12", "col-lg-5", "offset-lg-1", beforeafter.beforeafterimages].join(" ")}>
+                    <h1 className={beforeafter.beforeafterheadmob} dangerouslySetInnerHTML={{__html: node.field_before_meet_after.processed}}></h1>
+                    {
+                        node.relationships.field_before_meet_after_example.map(item => (
+                            <Beforeafterimages 
+                                beforeimage={item.relationships.field_before_image.localFile.childImageSharp.original.src} 
+                                afterimage={item.relationships.field_after_im.localFile.childImageSharp.original.src}
+                            />
+                        ))
+                    }
+                    
+                </div>
+           
+                <div className={["col-12", "col-lg-4", "offset-lg-1", beforeafter.beforeaftercontent].join(" ")}>
+                    <h1 className={beforeafter.beforeafterhead} dangerouslySetInnerHTML={{__html: node.field_before_meet_after.processed}}></h1>
+                    <p className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{__html: node.field_before_meet_after_subtitle.processed}}></p>
+                    <div id="accordion">
+                        <div className={["row", beforeafter.tabs].join(" ")}>
+                            {
+                                node.relationships.field_before_meet_after_example.map((item, index) => (
+                                    <div className={[beforeafter.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                        <div className={[beforeafter.cardhead, "card-header"].join(" ")} id="headingOne">
+                                            <h5 class="mb-16">
+                                                <button className={[beforeafter.btnLink1, "btn-link", "btn "].join(" ")} data-target="#ExampleOne" aria-expanded="true" aria-controls="ExampleOne">
+                                                    <span dangerouslySetInnerHTML={{__html: item.field_example_title.processed}}></span>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        {/* Example content - Boxes */}
+                        {
+                            node.relationships.field_before_meet_after_example.map((item, index) => (
+                                <div id="ExampleOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p className={beforeafter.tabTitle} dangerouslySetInnerHTML={{__html: item.field_study_type.processed}}></p>
+                                        <div className={["row", beforeafter.boxes].join(" ")}>
+                                            {/* Boxes */}
+                                            {
+                                                item.relationships.field_boxes.map(item => (
+                                                    <div className={[beforeafter.box, "col-5"].join(" ")}>
+                                                        <h1 dangerouslySetInnerHTML={{__html: item.field_percentage.processed}}></h1>
+                                                        <p dangerouslySetInnerHTML={{__html: item.field_box_des.processed}}></p>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                        {
+                                            item.field_before_after_footnote.map(footNote => (
+                                                <p className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{__html: footNote.processed}}></p>
+                                            ))
+                                        }
+                                        
+                                    </div>
+                                </div>
+                            ))
+                        }
+
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    )
+}
+export default Beforeafter;
+
+export const fragment = graphql`
+    fragment beforeAfterParagraph on paragraph__before_after {
+        id
+        field_before_meet_after {
+            processed
+        }
+        field_before_meet_after_subtitle {
+            processed
+        }
+        relationships {
+            field_before_meet_after_example {
+                field_example_title {
+                    processed
+                }
+                field_study_type {
+                    processed
+                }
+                field_before_after_footnote {
+                    processed
+                }
+                relationships {
+                    field_boxes {
+                        field_box_des {
+                            processed
+                        }
+                        field_percentage {
+                            processed
+                        }
+                    }
+                    field_before_image {
+                        localFile {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid
+                                }
+                                original {
+                                    src
+                                }
+                            }
+                        }
+                    }
+                    field_after_im {
+                        localFile {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid
+                                }
+                                original {
+                                    src
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
