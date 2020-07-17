@@ -97,6 +97,10 @@
         border-radius: 6px;
          
     }
+    #accordion.d-flex{
+        flex-direction: column;
+    }
+   
 }
 .productimage .slick-initialized{
 padding-bottom: 0;
@@ -104,4 +108,9 @@ padding-bottom: 0;
 .imageContainer .gatsby-image-wrapper{
     
     max-width: 100%;
+}
+@media (min-width:768px){
+    .collapsemobile{
+        width: 100%;
+    }
 }
