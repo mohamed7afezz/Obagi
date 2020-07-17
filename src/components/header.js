@@ -161,7 +161,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
                     <div ><Link to="#"className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                    <div><Link to="#" className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.cartWrapper}><Link to="#" className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /><p className={headerStyles.cartCounter}>1</p></Link></div>
                   </div>
                   <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => {removeFirstIcons()}}></button>
                 </div>
@@ -210,7 +210,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                   <div className={headerStyles.navLastSection}>
                     <p><Link to="#">SIGN IN</Link></p>
                     <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.navButton}><div className={headerStyles.cartWrapper}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /><p className={headerStyles.cartCounter}>1</p></Link></div></div>
                   </div>
                 </div>
               </div>

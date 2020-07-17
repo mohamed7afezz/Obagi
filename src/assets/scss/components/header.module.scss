@@ -190,6 +190,10 @@
             width: 20px;
 
         }
+
+        .cart-counter {
+            top: 0;
+        }
     }
 }
 
@@ -218,4 +222,16 @@
 .top-styles {
     // position: absolute;
     top: 56px;
+}
+
+.cart-wrapper {
+    position: relative;
+
+    .cart-counter {
+        position: absolute;
+        color: #ffffff;
+        top: 5px;
+        left: 7px;
+        font-size: 10px;
+    }
 }
