@@ -479,23 +479,22 @@ footer .form-group {
 
 .main-nav-containers {
     box-shadow: 0 4px 0 0 rgba(54, 75, 95, 0.15);
-    transform: translate(-35%, 0);
+    transform: translate(-50%, 0);
     position: absolute;
     background: #fff;
-    margin-top: 20px;
-    max-width: 100%;
+    width: 100%;
     flex-wrap: wrap;
-
+    left: 50%;
+    max-width: 1532px;
 }
 
 .nav-container-desk {
-    max-width: 100%;
-    max-height: 100%;
-    width: 383px;
     margin: 0;
     padding: 0 16px 16px;
     position: relative;
+    width: 383px;
     flex: 1;
+    max-width: 383px;
 
     &:after {
         position: absolute;
@@ -579,10 +578,9 @@ footer .form-group {
 
 
         li {
-            margin: 20px 40px;
-
-
             a {
+                padding: 20px 40px;
+                display: inline-block;
                 color: #ffffff;
                 @include fontStyle(16, 24);
                 letter-spacing: 1.6px;
