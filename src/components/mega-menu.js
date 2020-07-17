@@ -19,11 +19,14 @@ function getBlock(item) {
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
     console.log(megaMenuBlocks[blockIndex]);
     console.log(blockIndex);
-    // return megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
-    //     <div>
-            
-    //     </div>
-    // ))
+    return megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
+              <div className="nav-container-desk">
+                {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
+                {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
+                {item.relationships.field_mega_block_image.localFile? <div><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
+                {item.relationships.field_mega_block_arrow_image? <div><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
+              </div>
+    ))
 }
 
 function createMenuHierarchy(menuData, menuName) {
@@ -105,7 +108,7 @@ function buildMenu(menuArray, isExpandable){
     menu.push(
         <li key={menuArray[item].drupal_id}>
           {buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)}
-          {getBlock(menuArray[item])}
+          <div className="d-flex main-nav-containers">{getBlock(menuArray[item])}</div>
         </li>)
   }
 
@@ -152,8 +155,8 @@ const MegaMenu = ({menuName, menuClass, isExpandable}) => (
                                         field_mega_block_arrow_image {
                                         localFile {
                                             childImageSharp {
-                                                fluid {
-                                                    ...GatsbyImageSharpFluid
+                                                fixed {
+                                                    ...GatsbyImageSharpFixed
                                                 }
                                             }
                                         }
