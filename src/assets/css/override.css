@@ -114,3 +114,13 @@ padding-bottom: 0;
         width: 100%;
     }
 }
+
+.collapsed .readLess {
+    display: none;
+}
+.collapsed.expand .readMore{
+    display: inline-block;
+}
+.expand .readMore{
+    display: none;
+}

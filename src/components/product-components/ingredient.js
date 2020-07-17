@@ -1,12 +1,12 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 import ingredient from '../../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../../assets/images/product-images/plus-white.svg'
 
 const Ingredient = ({ node }) => {
-  
+  console.log("hassan" , node)
   const data = node.relationships;
   return (
 
@@ -19,11 +19,30 @@ const Ingredient = ({ node }) => {
               <div>
                 <p className={[ingredient.ingredienttitle, ingredient.ftitle].join(" ")}>{item.field_subtitle_}</p>
                 <div dangerouslySetInnerHTML={{__html:item.field_subtitledescrip.processed}}></div>
-              
+               
+
               </div>
             ))
           }
+         { 
+             data.field_read_more.map(item => (
+               <div>
+                <div class="collapse multi-collapse"  id="multiCollapseExample3">  
+                 <p className={[ingredient.ingredienttitle, ingredient.ftitle].join(" ")} dangerouslySetInnerHTML={{__html:item.field_re.processed}} ></p>
+                 <div  dangerouslySetInnerHTML={{__html:item.field_read_more_content.processed}} ></div>   
 
+               </div>
+                 <a className={[ingredient.expand,"expand"].join(" ")} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3">
+                   <span class="readMore">
+                   <img src={pluswhite}/> Read More
+                   </span>
+                   <span class="readLess">
+                   <img src={pluswhite}/> Read less
+                   </span>
+                   </a>
+                 </div>
+            ))
+          }
         </div>
         <div className={["col-12", "col-lg-5", "offset-lg-1", ingredient.ingredientorder].join(" ")}>
           <h1 className={ingredient.ingredientimagehead}>{node.field_ingredienthead.processed}</h1>
@@ -57,6 +76,14 @@ export const fragment = graphql`
           processed
         }
         field_subtitle_
+      }
+      field_read_more {
+        field_re {
+          processed
+        }
+        field_read_more_content {
+          processed
+        }
       }
     }
     field_ingredienthead {
