@@ -50,7 +50,7 @@ const Beforeafter = ({ node }) => {
            
                 <div className={["col-12", "col-lg-4", "offset-lg-1", beforeafter.beforeaftercontent].join(" ")}>
                     <h1 className={beforeafter.beforeafterhead} dangerouslySetInnerHTML={{__html: node.field_before_meet_after.processed}}></h1>
-                    <p className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{__html: node.field_before_meet_after_subtitle.processed}}></p>
+                    <div className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{__html: node.field_before_meet_after_subtitle.processed}}></div>
                     <div id="accordion">
                         <div className={["row", beforeafter.tabs].join(" ")}>
                             {
@@ -72,21 +72,21 @@ const Beforeafter = ({ node }) => {
                             node.relationships.field_before_meet_after_example.map((item, index) => (
                                 <div id="ExampleOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        <p className={beforeafter.tabTitle} dangerouslySetInnerHTML={{__html: item.field_study_type.processed}}></p>
+                                        <div className={beforeafter.tabTitle} dangerouslySetInnerHTML={{__html: item.field_study_type.processed}}></div>
                                         <div className={["row", beforeafter.boxes].join(" ")}>
                                             {/* Boxes */}
                                             {
                                                 item.relationships.field_boxes.map(item => (
                                                     <div className={[beforeafter.box, "col-5"].join(" ")}>
                                                         <h1 dangerouslySetInnerHTML={{__html: item.field_percentage.processed}}></h1>
-                                                        <p dangerouslySetInnerHTML={{__html: item.field_box_des.processed}}></p>
+                                                        <div dangerouslySetInnerHTML={{__html: item.field_box_des.processed}}></div>
                                                     </div>
                                                 ))
                                             }
                                         </div>
                                         {
                                             item.field_before_after_footnote.map(footNote => (
-                                                <p className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{__html: footNote.processed}}></p>
+                                                <div className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{__html: footNote.processed}}></div>
                                             ))
                                         }
                                         

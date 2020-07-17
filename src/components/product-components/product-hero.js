@@ -118,7 +118,7 @@ const ProductHero = ({ node, props }) => {
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
           <p className={ProductStyles.productcat}>CLINICAL</p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
-          <p className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: node.field_clinical_description.processed}}></p>
+          <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: node.field_clinical_description.processed}}></div>
           <div className={["d-flex", ProductStyles.type].join(" ")}><p>{node.field_clinical_medical_type}</p>
             <ul> <li>  Size {node.field_clinical_weight} oz </li></ul></div>
           <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />

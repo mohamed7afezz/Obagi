@@ -18,7 +18,7 @@ const Ingredient = ({ node }) => {
             data.field_ingredientdescription.map(item => (
               <div>
                 <p className={[ingredient.ingredienttitle, ingredient.ftitle].join(" ")}>{item.field_subtitle_}</p>
-                <p dangerouslySetInnerHTML={{__html:item.field_subtitledescrip.processed}}></p>
+                <div dangerouslySetInnerHTML={{__html:item.field_subtitledescrip.processed}}></div>
               
               </div>
             ))

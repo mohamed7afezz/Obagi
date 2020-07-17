@@ -34,7 +34,7 @@ const Howtouse = ({ node }) => {
                                     node.relationships.field_step_paragragh.map((item,index)=> ( 
                                          <div id={'step'+index} class={index==0?'collapse show':'collapse'} aria-labelledby={'heading'+index} data-parent="#accordion">
                                             <div class="card-body">
-                                                <p className={howto.tabdesc} dangerouslySetInnerHTML={{__html:item.field_step_all_content.processed}}></p>
+                                                <div className={howto.tabdesc} dangerouslySetInnerHTML={{__html:item.field_step_all_content.processed}}></div>
                                             </div>
                                         </div>
                                     ))
