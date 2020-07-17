@@ -509,7 +509,7 @@ footer .form-group {
     .nav-title-desk {
         @include fontStyle (24, 40);
         padding-left: 40px;
-        padding-top: 28px;
+        padding-top: 48px;
         padding-bottom: 8px;
         position: relative;
 
@@ -518,7 +518,7 @@ footer .form-group {
             content: '';
             height: 8px;
             width: 8px;
-            top: 44px;
+            top: 64px;
             left: 16px;
             background: #132466;
         }
@@ -532,7 +532,7 @@ footer .form-group {
 
     .nav-arrow-desk {
         position: absolute;
-        bottom: 8px;
+        bottom: 28px;
         right: 23px;
         z-index: 9999;
         width: 16px;
