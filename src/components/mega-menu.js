@@ -23,8 +23,8 @@ function getBlock(item) {
               <div className="nav-container-desk">
                 {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
                 {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
-                {item.relationships.field_mega_block_image.localFile? <div><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
-                {item.relationships.field_mega_block_arrow_image? <div><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
+                {item.relationships.field_mega_block_image.localFile? <div class="nav-img-desk"><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
+                {item.relationships.field_mega_block_arrow_image? <div class="nav-arrow-desk"><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
               </div>
     ))
 }
