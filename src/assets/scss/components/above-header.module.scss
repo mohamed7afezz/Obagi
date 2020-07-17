@@ -15,10 +15,11 @@
     .column-wrapper {
         display: flex;
         justify-content: center;
+        text-align: center;
         .text {
             margin-left: auto;
             
-            @include fontStyle(16, 24);
+            @include fontStyle(14, 22);
             a {
                 @extend %futurapt-bold;
                 color: #ffffff;
@@ -26,6 +27,9 @@
                 &:hover {
                     text-decoration: none;
                 }
+            }
+            @include md-screen {
+                @include fontStyle(16, 24);
             }
         }
         

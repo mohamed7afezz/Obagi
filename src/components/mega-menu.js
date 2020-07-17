@@ -20,7 +20,7 @@ function getBlock(item) {
     console.log(blockIndex);
     return <div>
         <div dangerouslySetInnerHTML={{__html: megaMenuBlocks[blockIndex].body.processed}}></div>
-        <div class="nav-img-desk"><Img fluid={megaMenuBlocks[blockIndex].relationships.field_image.localFile? megaMenuBlocks[blockIndex].relationships.field_image.localFile.childImageSharp.fluid : ' ' }/></div>
+        {/* <div class="nav-img-desk"><Img fluid={megaMenuBlocks[blockIndex].relationships.field_image.localFile? megaMenuBlocks[blockIndex].relationships.field_image.localFile.childImageSharp.fluid : ' ' }/></div> */}
     </div>
 }
 
