@@ -12,6 +12,7 @@ import ImagesBoxes from './images-boxes'
 import Details from './product-components/thedetails'
 import Ingredient from './product-components/ingredient';
 import Howtouse from './product-components/howtouse';
+import Beforeafter from './product-components/beforeafter';
     
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -35,7 +36,8 @@ export const getParagraph = node => {
 const productComponentsMap = {
     paragraph__the_details_safe_section: Details,
     paragraph__ingredient: Ingredient,
-    paragraph__how_to_use: Howtouse
+    paragraph__how_to_use: Howtouse,
+    paragraph__before_after: Beforeafter
 }
 
 export const getProductParagraph = node => {

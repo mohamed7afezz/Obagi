@@ -18,6 +18,9 @@ const AboveHeader = () => {
 
     function closeNotification() {
         document.getElementById("notification").style.display = "none";
+        document.getElementById("desk-navigation").style.top="0";
+        document.getElementById("mob-navigation").style.top="0";
+        
     }
 
     return (
