@@ -6,11 +6,19 @@
     background: #132466;
     color: #ffffff;
     padding: 16px 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
 
     // position: relative;
     // top: 0;
     // bottom: 100px;
 
+    @include lg-screen {
+        position: unset;
+        top: unset;
+        z-index: unset;
+    }
 
     .column-wrapper {
         display: flex;

@@ -14,14 +14,16 @@ function getBlock(item) {
     let block;
 
     // console.log(item);
-    // console.log(megaMenuBlocks);
+
 
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
+    console.log(megaMenuBlocks[blockIndex]);
     console.log(blockIndex);
-    return <div>
-        <div dangerouslySetInnerHTML={{__html: megaMenuBlocks[blockIndex].body.processed}}></div>
-        {/* <div class="nav-img-desk"><Img fluid={megaMenuBlocks[blockIndex].relationships.field_image.localFile? megaMenuBlocks[blockIndex].relationships.field_image.localFile.childImageSharp.fluid : ' ' }/></div> */}
-    </div>
+    // return megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
+    //     <div>
+            
+    //     </div>
+    // ))
 }
 
 function createMenuHierarchy(menuData, menuName) {
@@ -129,20 +131,36 @@ const MegaMenu = ({menuName, menuClass, isExpandable}) => (
                         node {
                             id
                             info
-                            body {
-                                processed
-                            }
                             relationships {
-                                field_image {
-                                  localFile {
-                                    childImageSharp {
-                                      fluid {
-                                        ...GatsbyImageSharpFluid
-                                      }
+                                field_mega_block {
+                                    field_mega_block_title {
+                                        processed
                                     }
-                                  }
+                                    field_mega_block_subtitle {
+                                        processed
+                                    }
+                                    relationships {
+                                        field_mega_block_image {
+                                        localFile {
+                                            childImageSharp {
+                                                fluid {
+                                                    ...GatsbyImageSharpFluid
+                                                }
+                                            }
+                                        }
+                                        }
+                                        field_mega_block_arrow_image {
+                                        localFile {
+                                            childImageSharp {
+                                                fluid {
+                                                    ...GatsbyImageSharpFluid
+                                                }
+                                            }
+                                        }
+                                        }
+                                    }
                                 }
-                              }
+                            }
                         }
                     }
                 }
