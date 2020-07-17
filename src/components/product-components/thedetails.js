@@ -13,7 +13,7 @@ const Details = ({ node }) => {
                     <div className={["col-12", "col-lg-4", "offset-lg-1"].join(" ")}>
                         <div className={detailsStyles.detail}>
                             <h1 dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></h1>
-                            <p className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription.processed}}></p>
+                            <div className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription.processed}}></div>
                         </div>
                     </div>
                    ))
