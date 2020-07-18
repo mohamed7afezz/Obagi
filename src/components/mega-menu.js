@@ -19,14 +19,22 @@ function getBlock(item) {
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
     console.log(megaMenuBlocks[blockIndex]);
     console.log(blockIndex);
-    return megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
-      <div className="nav-container-desk">
-        {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
-        {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
-        {item.relationships.field_mega_block_image.localFile? <div style={{width: '100%'}}><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
-        {item.relationships.field_mega_block_arrow_image? <div><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
-      </div>
-    ))
+    let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length>4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
+     
+
+    return <div className="d-flex main-nav-containers" style={{maxWidth:(numberOfitems/4*100)+'%'}}>
+      {
+        megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
+          <div className="nav-container-desk">
+            {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
+            {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
+            {item.relationships.field_mega_block_image.localFile? <div style={{width: '100%'}}><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
+            {item.relationships.field_mega_block_arrow_image? <div><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
+          
+          </div>
+        ))
+      }
+    </div>
 }
 
 function createMenuHierarchy(menuData, menuName) {
@@ -108,7 +116,7 @@ function buildMenu(menuArray, isExpandable){
     menu.push(
         <li key={menuArray[item].drupal_id}>
           {buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)}
-          <div className="d-flex main-nav-containers">{getBlock(menuArray[item])}</div>
+          {getBlock(menuArray[item])}
         </li>)
   }
 
