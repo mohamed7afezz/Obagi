@@ -34,15 +34,20 @@ const Beforeafter = ({ node }) => {
     )
     return (
         <div className={["container-fluid","beforeaftercontainer", beforeafter.beforeaftercontainer].join(" ")}>
-            <div className={"row"}>
+            <div id="accordion1" className={"row"}>
+           
                 <div className={["col-12", "col-lg-5", "offset-lg-1", beforeafter.beforeafterimages].join(" ")}>
                     <h1 className={beforeafter.beforeafterheadmob} dangerouslySetInnerHTML={{__html: node.field_before_meet_after.processed}}></h1>
                     {
-                        node.relationships.field_before_meet_after_example.map(item => (
+                        node.relationships.field_before_meet_after_example.map((item, index)=> (
+                            <div id={"Example"+index} class={index==0?'collapse  show':'collapse '} aria-labelledby={"heading1" + index} data-parent="#accordion1">
+                                  <div  class="card-body ">
                             <Beforeafterimages 
                                 beforeimage={item.relationships.field_before_image.localFile.childImageSharp.original.src} 
                                 afterimage={item.relationships.field_after_im.localFile.childImageSharp.original.src}
                             />
+                            </div>
+                            </div>
                         ))
                     }
                     
@@ -51,14 +56,14 @@ const Beforeafter = ({ node }) => {
                 <div className={["col-12", "col-lg-4", "offset-lg-1", beforeafter.beforeaftercontent].join(" ")}>
                     <h1 className={beforeafter.beforeafterhead} dangerouslySetInnerHTML={{__html: node.field_before_meet_after.processed}}></h1>
                     <div className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{__html: node.field_before_meet_after_subtitle.processed}}></div>
-                    <div id="accordion">
+              
                         <div className={["row", beforeafter.tabs].join(" ")}>
                             {
                                 node.relationships.field_before_meet_after_example.map((item, index) => (
                                     <div className={[beforeafter.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
-                                        <div className={[beforeafter.cardhead, "card-header"].join(" ")} id="headingOne">
+                                        <div className={[beforeafter.cardhead, "card-header"].join(" ")}  id={'heading1'+index}>
                                             <h5 class="mb-16">
-                                                <button className={[beforeafter.btnLink1, "btn-link", "btn "].join(" ")} data-target="#ExampleOne" aria-expanded="true" aria-controls="ExampleOne">
+                                            <button className={[beforeafter.btnLink1, "btn-link", "btn ",index==0?'':'collapsed'].join(" ")} data-toggle="collapse" data-target={'#Example'+index} aria-expanded={index==0?'true':'false'} aria-controls={'Example'+index}>
                                                     <span dangerouslySetInnerHTML={{__html: item.field_example_title.processed}}></span>
                                                 </button>
                                             </h5>
@@ -70,7 +75,7 @@ const Beforeafter = ({ node }) => {
                         {/* Example content - Boxes */}
                         {
                             node.relationships.field_before_meet_after_example.map((item, index) => (
-                                <div id="ExampleOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div id={"Example"+index} class={index==0?'collapse  show':'collapse '} aria-labelledby={"heading1" +index} data-parent="#accordion1">
                                     <div class="card-body">
                                         <div className={beforeafter.tabTitle} dangerouslySetInnerHTML={{__html: item.field_study_type.processed}}></div>
                                         <div className={["row", beforeafter.boxes].join(" ")}>
@@ -94,13 +99,11 @@ const Beforeafter = ({ node }) => {
                                 </div>
                             ))
                         }
-
-                        
+                     
                     </div>
 
                 </div>
             </div>
-        </div>
 
     )
 }

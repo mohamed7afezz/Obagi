@@ -51,8 +51,6 @@ const ProductHero = ({ node, props }) => {
       document.querySelector('.myslickactive').classList.remove('myslickactive');
     
      document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
-      console.log("Hassan Current" , current);
-      console.log("Hassan next " , next)
     },
     responsive: [
       {          
