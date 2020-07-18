@@ -19,10 +19,10 @@ function getBlock(item) {
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
     console.log(megaMenuBlocks[blockIndex]);
     console.log(blockIndex);
-    let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length>4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
-     
+    let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length > 4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
+    let maxwidthVar = numberOfitems==1? 654:(numberOfitems*383);
 
-    return <div className="d-flex main-nav-containers" style={{maxWidth:(numberOfitems*383)+'px'}}>
+    return <div className="d-flex main-nav-containers" style={{maxWidth:maxwidthVar+'px'}}>
       {
         megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
           <div className="nav-container-desk">
