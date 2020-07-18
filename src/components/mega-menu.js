@@ -22,7 +22,7 @@ function getBlock(item) {
     let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length>4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
      
 
-    return <div className="d-flex main-nav-containers" style={{maxWidth:(numberOfitems/4*100)+'%'}}>
+    return <div className="d-flex main-nav-containers" style={{maxWidth:(numberOfitems*383)+'px'}}>
       {
         megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
           <div className="nav-container-desk">
