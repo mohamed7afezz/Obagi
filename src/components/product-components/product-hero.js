@@ -37,15 +37,7 @@ const ProductHero = ({ node, props }) => {
     nav2
   } = state;
 
-  const HeroSettings = {
-    infinite: true,
-    speed: 500,
-    arrows: false,
-    slidesToShow: 4,
-    afterChange: () =>
-      this.setState(state => ({ updateCount: state.updateCount + 1 })),
-    beforeChange: (current, next) => this.setState({ slideIndex: next })
-  };
+
 
 
 
@@ -55,6 +47,13 @@ const ProductHero = ({ node, props }) => {
     slidesToShow: 1,
     arrows: false,
     dots : true,
+    beforeChange: (current, next) => {
+      document.querySelector('.myslickactive').classList.remove('myslickactive');
+    
+     document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
+      console.log("Hassan Current" , current);
+      console.log("Hassan next " , next)
+    },
     responsive: [
       {          
         breakpoint: 1024,
@@ -64,6 +63,23 @@ const ProductHero = ({ node, props }) => {
       },
   ]
   }
+  
+    // function revertborder(){
+        
+    //  var divs = document.querySelector('.myslickactive img');
+
+
+    //  var divattr =divs.getAttribute("data-arrange")
+    //  var secslide =document.querySelectorAll('.imageContainer')
+    //  secslide.forEach(element => {
+    //   if (divattr == element.getAttribute("data-arrange")) {
+    //     secslide.addClass('myslickactive')
+    //     console.log("secslide")
+    //    }
+    //   });
+    
+    
+    // }
   function slickGoToslide(int) {
    slider1.current.slickGoTo(int)
   }
@@ -106,11 +122,11 @@ const ProductHero = ({ node, props }) => {
   return (
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
-        <div className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
-          <Slider ref={slider => (slider1.current = slider)}  {...SliderSetting}>
+        <div  className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
+          <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
-                  node.relationships.field_clinical_image.map(item => {
-                      return <Img fluid={item.localFile.childImageSharp.fluid} />
+                  node.relationships.field_clinical_image.map((item,index) => {
+                      return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
                   })
               }
           </Slider>
@@ -152,12 +168,12 @@ const ProductHero = ({ node, props }) => {
           </div>
           <button className={["btn", ProductStyles.btnCart].join(" ")}>Add to Bag</button>
         </div>
-        <div className={["col-12", ProductStyles.images].join(" ")} ref={slider => (slider2.current = slider)} {...HeroSettings}>
+        <div id="product-hero-slick" className={["col-12", ProductStyles.images].join(" ")}>
             
             {
                 node.relationships.field_clinical_image.map((item, index) => {
-                    return <div className={["imageContainer",ProductStyles.imageContainer].join(" ")} onClick={() => slickGoToslide(index) }>
-                        <Img fluid={item.localFile.childImageSharp.fluid} />
+                    return <div data-arrange={index} className={[index==0?'myslickactive':' ',"imageContainer",ProductStyles.imageContainer].join(" ")} onClick={() => {slickGoToslide(index);} }>
+                       <img className={["col-3","pr-0","pl-0"].join(" ")} src={item.localFile.childImageSharp.original.src} />
                     </div>
                 })
             }

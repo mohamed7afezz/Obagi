@@ -227,6 +227,7 @@ display: none;
   display:flex;
     margin-top: 35px;
     max-height: 82px;
+    overflow: hidden;
     @include md-screen{
         margin-top: 32px;
         padding-right: 0;
@@ -236,10 +237,10 @@ display: none;
 }
 .images{
     img {
-        max-height: 82px;
+        transform: translateY(-30%) scale(1.5);
         max-width: 100%;
         @include md-screen{
-            max-height: 270px;
+          
 
         }
     }
@@ -247,8 +248,8 @@ display: none;
 .imageContainer {
     flex:0 0 25%;
     max-width: 25%;
-}
-.imageContainer{
+    max-height: 270px;
+    overflow: hidden;
     border:  2px solid transparent;
 }
 
@@ -257,4 +258,11 @@ display: none;
     @include md-screen{
         margin-bottom: 0;
     }
+}
+@include md-screen{}
+.imageContainer >div > div {
+    display: none;
+}
+.imageContainer >div >img{
+    position: relative !important;
 }

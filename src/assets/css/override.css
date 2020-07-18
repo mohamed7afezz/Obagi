@@ -88,12 +88,12 @@
 .beforeaftercontainer .card-body {
     padding-bottom: 0;
 }
-.imageContainer.Active {
+.imageContainer.myslickactive {
     border: 2px solid #132466;
      
 }
 @media (max-width:767px){
-    .imageContainer.Active {
+    .imageContainer.myslickactive {
         border-radius: 6px;
          
     }
@@ -123,4 +123,13 @@ padding-bottom: 0;
 }
 .expand .readMore{
     display: none;
+}
+.slick-initialized .slick-slide {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.productimage  .slick-initialized .slick-track {
+    display: flex;
+    align-items: center;
 }

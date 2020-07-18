@@ -42,12 +42,9 @@ export const productPageQuery = graphql`
                 field_clinical_image {
                     localFile {
                         childImageSharp {
-                            fluid {
-                                ...GatsbyImageSharpFluid
-                            }
-                            fixed(width: 587) {
-                                ...GatsbyImageSharpFixed
-                            }
+                        original {
+                                src
+                           }
                         }
                     }
                 }
