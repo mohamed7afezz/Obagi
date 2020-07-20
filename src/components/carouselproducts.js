@@ -28,7 +28,7 @@ const Carouselproducts = ({ node }) => {
       };
       
     return (
-        <div className={["container-fluid", carouselproduct.carouselproductscon].join(" ")} >
+        <div className={["container-fluid","carouselproductscon", carouselproduct.carouselproductscon].join(" ")} >
              <h1 className={carouselproduct.carouselproductsead}>Lorem Ipsum Consectetur Elit</h1>
             <div className={["row", carouselproduct.ordering].join(" ")}>
                     <div className={["col-lg-8","col-12","offset-lg-2", carouselproduct.slickcon].join(" ")}>

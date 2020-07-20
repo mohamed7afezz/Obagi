@@ -643,3 +643,21 @@ footer .form-group {
 
 
 }
+
+
+.pathtitle{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    @include md-screen {
+        padding-left: 40px;
+        padding-bottom: 64px;
+    }
+  
+
+}
+.nodeMedical {
+    color: #132466;
+}

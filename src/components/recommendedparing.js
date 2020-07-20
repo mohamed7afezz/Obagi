@@ -23,7 +23,7 @@ const Recommendedparing = ({ node }) => {
         ]
       };
     return (
-        <div className={["container-fluid", recommendedparing.recommendedcon].join(" ")} >
+        <div className={["container-fluid", recommendedparing.recommendedcon,"recommendedcon"].join(" ")} >
             <div className={["row", recommendedparing.ordering].join(" ")}>
                 <div className={["col-12", "col-lg-12",  recommendedparing.allcontainer].join(" ")}>
                     <div class="row">
@@ -33,7 +33,7 @@ const Recommendedparing = ({ node }) => {
                         <p className={recommendedparing.recommendedparingdesc}>Recomended pairing with Nu-Derm Clear FX is a sunscreen lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur ultricies ipsum quis.</p>
                         <p className={recommendedparing.recommendedparingsec}><span>Why</span>: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae…</p>
                         </div>
-                        <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol].join(" ")}>
+                        <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol,"recommendedparingrightcol"].join(" ")}>
                             <div className={[recommendedparing.parseing, "col-lg-6","offset-lg-3"].join(" ")}>
                                 
                         <Slider {...settings}>

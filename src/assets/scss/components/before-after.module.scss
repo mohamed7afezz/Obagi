@@ -69,17 +69,26 @@ padding-bottom: 32px;
     box-shadow: none;
     background-color: transparent;
 }
-
-.cardhead .btnLink1 {
-    padding: 16px 0;
-    max-width: 100%;
-    box-shadow: none;
+.cardhead .btnLink1{
+    padding: 0;
+    border: 0;
     width: 100%;
+    text-decoration: none;
+    box-shadow: none;
     background-color: #44c4d9;
+    color: #fff;
+
+}
+.cardhead .btnLink1 span {
+    padding: 16px 0;
+    display: inline-block;
+    max-width: 100%;
+   
+    width: 100%;
+  
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 1.2px;
-    color: #fff;
     @extend %futurapt-bold;
     text-decoration: none;
 }

@@ -10,7 +10,7 @@ const Ingredient = ({ node }) => {
   const data = node.relationships;
   return (
 
-    <div className={["container-fluid", ingredient.ingredientcontent].join(" ")}>
+    <div className={["container-fluid", ingredient.ingredientcontent,"ingredientcontent"].join(" ")}>
       <div className={"row"}>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ingredient.leftcol].join(" ")}>
           <h1 className={ingredient.ingredienthead}>{node.field_ingredienthead.processed}</h1>
