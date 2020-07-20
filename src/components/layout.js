@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
 
   return (
-    <>
+    <div className="nodeMedical">
       <AboveHeader />
       <Header siteTitle={data.site.siteMetadata.title} />
       {/* <NavBlocks /> */}
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
         <Footer />
       </div>
 
-    </>
+    </div>
   )
 }
 

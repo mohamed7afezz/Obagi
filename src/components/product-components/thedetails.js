@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 const Details = ({ node }) => {
     const data = node.relationships;
     return (
-        <div className={["container-fluid", detailsStyles.detailHero].join(" ")}>
+        <div className={["container-fluid", "detailHero" ,detailsStyles.detailHero].join(" ")}>
             <div className={"row"}>
                {
                    data.field_detail_safe.map(item => (

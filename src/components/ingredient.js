@@ -26,7 +26,7 @@ const Ingredient = ({ node }) => {
       `)
   return (
 
-    <div className={["container-fluid", ingredient.ingredientcontent].join(" ")}>
+    <div className={["container-fluid", ingredient.ingredientcontent,"ingredientcontent"].join(" ")}>
       <div className={"row"}>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ingredient.leftcol].join(" ")}>
           <h1 className={ingredient.ingredienthead}>Key Ingredients</h1>

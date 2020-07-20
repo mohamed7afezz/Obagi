@@ -12,11 +12,12 @@ import vitamins from '../../assets/images/product-images/Clinical-VitaminCEyeBri
 import f4 from '../../assets/images/product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg'
 import ob from '../../assets/images/product-images/2019-ob-08-retinol-0110-3.png'
 import $ from 'jquery';
-
+import { useLocation } from "@reach/router"
 
 const ProductHero = ({ node, props }) => {
-  
- console.log(node)
+  const location1 = useLocation();
+  const path =location1.pathname
+const path1 = path.split('/')
   const [state, setState] = useState({
     nav1: null,
     nav2: null
@@ -120,8 +121,11 @@ const ProductHero = ({ node, props }) => {
   return (
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
+        <div className={["pathname","col-12"].join(" ")}>
+           <p className="pathtitle">Home/{path1[1]}/{node.title}</p>
+        </div>
         <div  className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
-          <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
+        <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   node.relationships.field_clinical_image.map((item,index) => {
                       return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
@@ -130,7 +134,7 @@ const ProductHero = ({ node, props }) => {
           </Slider>
         </div>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
-          <p className={ProductStyles.productcat}>CLINICAL</p>
+          <p className={[ProductStyles.productcat,"productcat"].join(" ")}>CLINICAL</p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
           <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: node.field_clinical_description.processed}}></div>
           <div className={["d-flex", ProductStyles.type].join(" ")}><p>{node.field_clinical_medical_type}</p>
