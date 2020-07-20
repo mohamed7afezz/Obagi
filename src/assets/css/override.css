@@ -175,4 +175,5 @@ height: 100%;
 }
 .opacityzero{
     opacity: 0;
+    z-index: -1;
 }
