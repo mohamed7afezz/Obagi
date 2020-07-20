@@ -14,8 +14,17 @@ import ob from '../../assets/images/product-images/2019-ob-08-retinol-0110-3.png
 import $ from 'jquery';
 
 
-const ProductHero = ({ node, props }) => {
-  
+const ProductHero = ({ data, nodeType }) => {
+console.log("hafezz",nodeType);
+const isClincal = nodeType == "clinical";
+let node = isClincal? data.nodeClinicalProduct :  data.nodeMedicalProduct;
+let field_image = isClincal? node.relationships.field_clinical_image : node.relationships.field_medical_image;
+let field_description = isClincal? node.field_clinical_description.processed : node.field_medical_description.processed;
+let field_medical_type = isClincal? node.field_clinical_medical_type : node.field_medical_type;
+let field_weight = isClincal? node.field_clinical_weight : node.field_medical_weight;
+let field_price = isClincal? node.field_clinical_price : node.field_medical_price;
+let field_skin_type = isClincal? node.relationships.field_clinical_skin_type: node.relationships.field_medical_skin_type;
+let field_skin_concern = isClincal? node.relationships.field_clinical_skin_concern : node.relationships.field_medical_skin_concern;
  console.log(node)
   const [state, setState] = useState({
     nav1: null,
@@ -81,71 +90,37 @@ const ProductHero = ({ node, props }) => {
   function slickGoToslide(int) {
    slider1.current.slickGoTo(int)
   }
-  const data = useStaticQuery(graphql`
-    query {
+ 
 
-      
-      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      ob: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      f4: file(relativePath: { eq: "product-images/f4.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }`
-
-  )
-    
   return (
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div  className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
           <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
-                  node.relationships.field_clinical_image.map((item,index) => {
+                  field_image.map((item,index) => {
                       return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
                   })
               }
           </Slider>
         </div>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
-          <p className={ProductStyles.productcat}>CLINICAL</p>
+          <p className={ProductStyles.productcat}>{nodeType}</p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
-          <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: node.field_clinical_description.processed}}></div>
-          <div className={["d-flex", ProductStyles.type].join(" ")}><p>{node.field_clinical_medical_type}</p>
-            <ul> <li>  Size {node.field_clinical_weight} oz </li></ul></div>
+          <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: field_description}}></div>
+          <div className={["d-flex", ProductStyles.type].join(" ")}><p>{field_medical_type}</p>
+            <ul> <li>  Size {field_weight} oz </li></ul></div>
           <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />
             <p>0 Review</p></div>
-          <p className={ProductStyles.price}> <span>${node.field_clinical_price}</span></p>
+          <p className={ProductStyles.price}> <span>${field_price}</span></p>
           <p className={ProductStyles.canuse}>
-              Skin Type: {node.relationships.field_clinical_skin_type.map((item, index) => {
-                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_clinical_skin_type.length - 1? '' : ', '}</span>
+              Skin Type: {field_skin_type.map((item, index) => {
+                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_type.length - 1? '' : ', '}</span>
               })} 
           </p>
           <p className={ProductStyles.Indications}> 
-            Skin Concerns: {node.relationships.field_clinical_skin_concern.map((item, index) => {
-                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_clinical_skin_concern.length - 1? '' : ', '}</span>
+            Skin Concerns: {field_skin_concern.map((item, index) => {
+                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_concern.length - 1? '' : ', '}</span>
               })} 
           </p>
           <p className={ProductStyles.quantityhead}>Quantity:</p>
@@ -169,7 +144,7 @@ const ProductHero = ({ node, props }) => {
         <div id="product-hero-slick" className={["col-12", ProductStyles.images].join(" ")}>
             
             {
-                node.relationships.field_clinical_image.map((item, index) => {
+                field_image.map((item, index) => {
                     return <div data-arrange={index} className={[index==0?'myslickactive':' ',"imageContainer",ProductStyles.imageContainer].join(" ")} onClick={() => {slickGoToslide(index);} }>
                        <img className={["col-3","pr-0","pl-0"].join(" ")} src={item.localFile.childImageSharp.original.src} />
                     </div>

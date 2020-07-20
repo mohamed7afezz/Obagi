@@ -45,7 +45,6 @@ const productComponentsMap = {
 // const clinical
 
 export const getProductParagraph = node => {
-    console.log('hafez')
     if (productComponentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = productComponentsMap[node.type];
         return <ParagraphComponent key={node.id} node={node} />;

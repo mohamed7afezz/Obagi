@@ -53,6 +53,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
                         drupal_internal__nid
                     }
                 }
+            },
+            allNodeMedicalProduct {
+                edges {
+                    node {
+                        fields {
+                            slug
+                        }
+                        drupal_internal__nid
+                    }
+                }
             }
         }
     `);
@@ -73,7 +83,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productTemp,
             context: {
                 slug: node.fields.slug,
-                type: 'clinical'
+                nodetype: 'clinical'
+            }
+        });
+    });
+
+    result.data.allNodeMedicalProduct.edges.forEach(({ node }) => {
+        createPage({
+            path: node.fields.slug,
+            component: productTemp,
+            context: {
+                slug: node.fields.slug,
+                nodetype: 'medical'
             }
         });
     });

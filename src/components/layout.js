@@ -18,7 +18,7 @@ import '../assets/scss/components/layout.scss'
 
 import NavBlocks from "../assets/scss/components/nav-blocks"
 
-const Layout = ({ children }) => {
+const Layout = ({ children,customClass }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
       <AboveHeader />
       <Header siteTitle={data.site.siteMetadata.title} />
       {/* <NavBlocks /> */}
-      <div>
+      <div className={customClass}>
         <main>{children}</main>
         <Footer />
       </div>
