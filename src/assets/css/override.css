@@ -205,16 +205,15 @@ height: 100%;
 .nodeMedical .medicalclinical{
     display: block;
 }
-.nodeMedical .box ,.nodeMedical .howtousecon,.nodeMedical .beforeaftercontainer {
+.nodeMedical .box ,.nodeMedical .howtousecon,
+.nodeMedical .beforeaftercontainer,.nodeMedical .recommendedcon,
+.nodeMedical .allcon,.nodeMedical .recommendedparingrightcol,.nodeMedical .productsuggestioncon {
     background-color: rgba(134 ,140 , 210, 0.1) !important;
 }
-.nodeMedical .allcon{
-    background-color: rgba(134 ,140 , 210, 0.1);
 
-}
 .nodeMedical .howrightcol{
     background-color: #e7e9f6;
 }
-.nodeMedical .collapsebtn,.nodeMedical .collapsebtn1 {
+.nodeMedical .collapsebtn,.nodeMedical .collapsebtn1 ,.nodeMedical .carouselproductscon{
     background-color: rgb(134 ,140 , 210) !important;
 }
