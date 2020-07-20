@@ -651,6 +651,7 @@ footer .form-group {
     @extend %futurapt-book;
     padding-bottom: 12px;
     padding-left: 24px;
+    text-transform: capitalize;
     @include md-screen {
         padding-left: 40px;
         padding-bottom: 64px;

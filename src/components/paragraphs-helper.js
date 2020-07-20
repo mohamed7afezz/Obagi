@@ -10,10 +10,11 @@ import ImageLeftTextRight from './image-left-text-right'
 import BigParagraph from './big-paragraph'
 import ImagesBoxes from './images-boxes'
 import Details from './product-components/thedetails'
+import Needtoknow from './product-components/needtoknow'
 import Ingredient from './product-components/ingredient';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
-import Featured from './featured'
+import Featured from './featured';
 
 
 const componentsMap = {
@@ -39,8 +40,9 @@ export const getParagraph = node => {
 const productComponentsMap = {
     paragraph__the_details_safe_section: Details,
     paragraph__ingredient: Ingredient,
+    paragraph__need_to_know: Needtoknow,
     paragraph__how_to_use: Howtouse,
-    paragraph__before_after: Beforeafter
+    paragraph__before_after: Beforeafter,
 }
 
 // const clinical
