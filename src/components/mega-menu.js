@@ -21,6 +21,7 @@ function getBlock(item) {
     console.log(blockIndex);
     let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length > 4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
     let maxwidthVar = numberOfitems==1? 654:(numberOfitems*383);
+    // let widthVar = ((maxwidthVar/1920)*100);
 
     return <div className="d-flex main-nav-containers" style={{maxWidth:maxwidthVar+'px'}}>
       {
@@ -29,7 +30,7 @@ function getBlock(item) {
             {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
             {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
             {item.relationships.field_mega_block_image.localFile? <div style={{width: '100%'}}><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
-            {item.relationships.field_mega_block_arrow_image? <div><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
+            {item.relationships.field_mega_block_arrow_image? <div className="nav-arrow-desk"><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
           
           </div>
         ))

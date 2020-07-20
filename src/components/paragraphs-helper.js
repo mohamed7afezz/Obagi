@@ -13,7 +13,9 @@ import Details from './product-components/thedetails'
 import Ingredient from './product-components/ingredient';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
-    
+import Featured from './featured'
+
+
 const componentsMap = {
     paragraph__home_hero: HomeHero,
     paragraph__full_html_content: FullHTMLContent,
@@ -39,6 +41,8 @@ const productComponentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter
 }
+
+// const clinical
 
 export const getProductParagraph = node => {
     console.log('hafez')
