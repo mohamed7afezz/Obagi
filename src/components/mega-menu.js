@@ -30,8 +30,7 @@ function getBlock(item) {
             {item.field_mega_block_title? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_title.processed}}></div> : ''}
             {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
             {item.relationships.field_mega_block_image.localFile? <div style={{width: '100%'}}><Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/></div> : ''}
-            {item.relationships.field_mega_block_arrow_image? <div className="nav-arrow-desk"><Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/></div> : ''}
-          
+            <div className="nav-arrow-desk"><Link to={item.relationships.field_mega_block_link? item.relationships.field_mega_block_link.uri : ''}>{item.relationships.field_mega_block_arrow_image? <Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/> : ''}</Link></div>
           </div>
         ))
       }
@@ -150,6 +149,9 @@ const MegaMenu = ({menuName, menuClass, isExpandable}) => (
                                     }
                                     field_mega_block_subtitle {
                                         processed
+                                    }
+                                    field_mega_block_link {
+                                      uri
                                     }
                                     relationships {
                                         field_mega_block_image {

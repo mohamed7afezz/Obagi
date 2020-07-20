@@ -25,6 +25,7 @@ const componentsMap = {
     paragraph__big_paragraph: BigParagraph,
     paragraph__images_boxes: ImagesBoxes,
     paragraph__section_with_colored_boxes: SectionWithColoredBoxes,
+    paragraph__featured_section: Featured,
 }
 
 export const getParagraph = node => {

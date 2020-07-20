@@ -32,6 +32,7 @@ query($slug: String!) {
                 ...paragraphImageLeftTextRight
                 ...paragraphBigParagraph
                 ...paragraphImagesBoxes
+                ...paragraphFeaturedSection
             }
         }
         field_meta_tags {
