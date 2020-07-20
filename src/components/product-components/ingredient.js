@@ -32,7 +32,7 @@ const Ingredient = ({ node }) => {
                  <div  dangerouslySetInnerHTML={{__html:item.field_read_more_content.processed}} ></div>   
 
                </div>
-                 <a className={[ingredient.expand,"expand"].join(" ")} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3">
+                 <a className={[ingredient.expand,"expand","readmorefix"].join(" ")} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3">
                    <span class="readMore">
                    <img src={pluswhite}/> Read More
                    </span>
