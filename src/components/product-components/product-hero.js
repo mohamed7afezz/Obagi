@@ -1,31 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import ProductStyles from '../../assets/scss/components/product-hero.module.scss'
 import Img from 'gatsby-image'
 import Stars from '../../components/stars'
 import modal from '../../assets/images/product-images/modal.svg'
 import share from '../../assets/images/product-images/share.svg'
 import Slider from "react-slick";
-import AsNavFor from "../../components/slick-slider"
-import group from '../../assets/images/product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png'
-import vitamins from '../../assets/images/product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg'
-import f4 from '../../assets/images/product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg'
-import ob from '../../assets/images/product-images/2019-ob-08-retinol-0110-3.png'
-import $ from 'jquery';
 import { useLocation } from "@reach/router"
-
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
+import InnerImageZoom from 'react-inner-image-zoom'
 const ProductHero = ({ node, props }) => {
   const location1 = useLocation();
   const path =location1.pathname
-const path1 = path.split('/')
+  const path1 = path.split('/')
   const [state, setState] = useState({
     nav1: null,
     nav2: null
   });
-
   const slider1 = useRef();
   const slider2 = useRef();
-
   useEffect(() => {
     setState({
       nav1: slider1.current,
@@ -37,11 +30,6 @@ const path1 = path.split('/')
     nav1,
     nav2
   } = state;
-
-
-
-
-
   const SliderSetting = {
     infinite: true,
     speed: 500,
@@ -49,9 +37,8 @@ const path1 = path.split('/')
     arrows: false,
     dots : true,
     beforeChange: (current, next) => {
-      document.querySelector('.myslickactive').classList.remove('myslickactive');
-    
-     document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
+      document.querySelector('.myslickactive').classList.remove('myslickactive'); 
+      document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
     },
     responsive: [
       {          
@@ -63,60 +50,9 @@ const path1 = path.split('/')
   ]
   }
   
-    // function revertborder(){
-        
-    //  var divs = document.querySelector('.myslickactive img');
-
-
-    //  var divattr =divs.getAttribute("data-arrange")
-    //  var secslide =document.querySelectorAll('.imageContainer')
-    //  secslide.forEach(element => {
-    //   if (divattr == element.getAttribute("data-arrange")) {
-    //     secslide.addClass('myslickactive')
-    //     console.log("secslide")
-    //    }
-    //   });
-    
-    
-    // }
   function slickGoToslide(int) {
    slider1.current.slickGoTo(int)
   }
-  const data = useStaticQuery(graphql`
-    query {
-
-      
-      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      ob: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      f4: file(relativePath: { eq: "product-images/f4.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }`
-
-  )
     
   return (
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
@@ -128,7 +64,9 @@ const path1 = path.split('/')
         <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   node.relationships.field_clinical_image.map((item,index) => {
-                      return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
+                      return <div data-arrange={index}   >
+                        <InnerImageZoom src={item.localFile.childImageSharp.original.src} />
+                        </div>
                   })
               }
           </Slider>
@@ -162,6 +100,10 @@ const path1 = path.split('/')
                 <option>4</option>
                 <option>5</option>
                 <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
               </select>
             </div>
             <div className={["col-12", "col-lg-6", ProductStyles.codeoff].join(" ")}> <p >Apply 20% off with code <span>Covid </span></p>   <img src={modal} /> </div>
