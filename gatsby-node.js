@@ -16,7 +16,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
     if (node.internal.type === "node__page" || 
         node.internal.type === "node__clinical_product" || 
         node.internal.type === "node__medical_product") {
-        const slug = `${node.path.alias || node.drupal_internal__nid}/`;
+        const slug = `${node.path.alias || node.drupal_internal__nid}`;
         createNodeField({
             node,
             name: `slug`,
