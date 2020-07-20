@@ -187,33 +187,33 @@ height: 100%;
     opacity: 0;
     z-index: -9;
 }
-.nodeMedical .productcat:before{
+.node-medical .productcat:before{
     background-color: #868cd2;
 }
-.nodeMedical .detailHero{
+.node-medical .detailHero{
     background-color: rgba(134 ,140 , 210, 0.1);
 }
-.nodeMedical .ingredientcontent{
+.node-medical .ingredientcontent{
     background-color: rgb(134 ,140 , 210);
 }
-.nodeMedical .imgcolclinical{
+.node-medical .imgcolclinical{
     display: none;
 }
 .medicalclinical{
     display: none;
 }
-.nodeMedical .medicalclinical{
+.node-medical .medicalclinical{
     display: block;
 }
-.nodeMedical .box ,.nodeMedical .howtousecon,
-.nodeMedical .beforeaftercontainer,.nodeMedical .recommendedcon,
-.nodeMedical .allcon,.nodeMedical .recommendedparingrightcol,.nodeMedical .productsuggestioncon {
+.node-medical .box ,.node-medical .howtousecon,
+.node-medical .beforeaftercontainer,.node-medical .recommendedcon,
+.node-medical .allcon,.node-medical .recommendedparingrightcol,.node-medical .productsuggestioncon {
     background-color: rgba(134 ,140 , 210, 0.1) !important;
 }
 
-.nodeMedical .howrightcol{
+.node-medical .howrightcol{
     background-color: #e7e9f6;
 }
-.nodeMedical .collapsebtn,.nodeMedical .collapsebtn1 ,.nodeMedical .carouselproductscon{
+.node-medical .collapsebtn,.node-medical .collapsebtn1 ,.node-medical .carouselproductscon{
     background-color: rgb(134 ,140 , 210) !important;
 }

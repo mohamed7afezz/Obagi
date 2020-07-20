@@ -1,39 +1,48 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+import featuredStyles from '../assets/scss/components/featured.module.scss'
 
-const Featured = () => {
+
+const Featured = ({ node }) => {
 
     return(
         <div className="container-fluid">
-            {/* <div>{data.allParagraphFeaturedSection.edges.node.field_featured_title.processed}</div> */}
+          <div className="row">
+            <div className={["col-lg-10", featuredStyles.wrapper].join(" ")}>
+              <div className="col-lg-3">
+                {/* <div dangerouslySetInnerHTML={{__html: node.field_featured_title.processed}}></div>
+                <div dangerouslySetInnerHTML={{__html: node.field_featured_description.processed}}></div>
+                <div><Link to={node.field_featured_button.uri}>{node.field_featured_button.title}</Link></div> */}
+              </div>
+            </div>
+          </div>
         </div>
     )
 }
 
 export default Featured
 
-export const data = graphql`
-    query {
-        allParagraphFeaturedSection {
-            edges {
-              node {
-                field_featured_button {
-                  title
-                  uri
-                }
-                field_featured_description {
-                  processed
-                }
-                field_featured_title {
-                  processed
-                }
-                field_image_right
-                id
-              }
-            }
+export const fragment = graphql`
+    fragment paragraphFeaturedSection on paragraph__featured_section {
+          id
+          field_featured_button {
+            title
+            uri
+          }
+          field_featured_description {
+            processed
+          }
+          field_featured_title {
+            processed
+          }
+          field_image_right
           
+          relationships {
+            field_issues_categories {
+              name
+            }
+          }
         }
-    }
-
+      
 `;
 
