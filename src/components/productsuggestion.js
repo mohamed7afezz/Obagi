@@ -25,7 +25,7 @@ const ProductSuggestion = ({ node }) => {
       };
       
     return (
-        <div className={["container-fluid", productsuggestion.productsuggestioncon].join(" ")} >
+        <div className={["container-fluid", productsuggestion.productsuggestioncon,"productsuggestioncon"].join(" ")} >
              <h1 className={productsuggestion.productsuggestionhead}>You Might Also Like</h1>
             <div className={["row", productsuggestion.ordering].join(" ")}>
                     <div className={ productsuggestion.slickcon}>

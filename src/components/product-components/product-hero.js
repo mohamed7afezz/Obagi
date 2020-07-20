@@ -12,20 +12,24 @@ import vitamins from '../../assets/images/product-images/Clinical-VitaminCEyeBri
 import f4 from '../../assets/images/product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg'
 import ob from '../../assets/images/product-images/2019-ob-08-retinol-0110-3.png'
 import $ from 'jquery';
-
+import { useLocation } from "@reach/router"
 
 const ProductHero = ({ data, nodeType }) => {
-console.log("hafezz",nodeType);
-const isClincal = nodeType == "clinical";
-let node = isClincal? data.nodeClinicalProduct :  data.nodeMedicalProduct;
-let field_image = isClincal? node.relationships.field_clinical_image : node.relationships.field_medical_image;
-let field_description = isClincal? node.field_clinical_description.processed : node.field_medical_description.processed;
-let field_medical_type = isClincal? node.field_clinical_medical_type : node.field_medical_type;
-let field_weight = isClincal? node.field_clinical_weight : node.field_medical_weight;
-let field_price = isClincal? node.field_clinical_price : node.field_medical_price;
-let field_skin_type = isClincal? node.relationships.field_clinical_skin_type: node.relationships.field_medical_skin_type;
-let field_skin_concern = isClincal? node.relationships.field_clinical_skin_concern : node.relationships.field_medical_skin_concern;
- console.log(node)
+  
+  const isClincal = nodeType == "clinical";
+  let node = isClincal? data.nodeClinicalProduct :  data.nodeMedicalProduct;
+  let field_image = isClincal? node.relationships.field_clinical_image : node.relationships.field_medical_image;
+  let field_description = isClincal? node.field_clinical_description.processed : node.field_medical_description.processed;
+  let field_medical_type = isClincal? node.field_clinical_medical_type : node.field_medical_type;
+  let field_weight = isClincal? node.field_clinical_weight : node.field_medical_weight;
+  let field_price = isClincal? node.field_clinical_price : node.field_medical_price;
+  let field_skin_type = isClincal? node.relationships.field_clinical_skin_type: node.relationships.field_medical_skin_type;
+  let field_skin_concern = isClincal? node.relationships.field_clinical_skin_concern : node.relationships.field_medical_skin_concern;
+
+
+  const location1 = useLocation();
+  const path =location1.pathname
+  const path1 = path.split('/')
   const [state, setState] = useState({
     nav1: null,
     nav2: null
@@ -95,8 +99,11 @@ let field_skin_concern = isClincal? node.relationships.field_clinical_skin_conce
   return (
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
+        <div className={["pathname","col-12"].join(" ")}>
+           <p className="pathtitle">Home/{path1[1]}/{node.title}</p>
+        </div>
         <div  className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
-          <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
+        <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   field_image.map((item,index) => {
                       return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
@@ -105,7 +112,7 @@ let field_skin_concern = isClincal? node.relationships.field_clinical_skin_conce
           </Slider>
         </div>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ProductStyles.productdetail].join(" ")}>
-          <p className={ProductStyles.productcat}>{nodeType}</p>
+          <p className={[ProductStyles.productcat,"productcat"].join(" ")}>{nodeType}</p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
           <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: field_description}}></div>
           <div className={["d-flex", ProductStyles.type].join(" ")}><p>{field_medical_type}</p>

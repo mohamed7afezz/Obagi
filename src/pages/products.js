@@ -15,12 +15,16 @@ import Layout from "../components/layout"
 const products = () => (
  
     <Layout>
-      <ProductHero/>
+        <ProductHero/>
       <Details/>
       <Ingredient/>
+      <Needtoknow/>
       <Howtouse/>
       <Beforeafter/>
 
+      <Carouselproducts/>
+      <Recommendedparing/>
+      <ProductSuggestion/>
    
         </Layout>
         

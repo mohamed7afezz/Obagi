@@ -181,3 +181,39 @@ height: 100%;
     opacity: 0;
     z-index: -1;
 }
+.showimg{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    z-index: -9;
+}
+.nodeMedical .productcat:before{
+    background-color: #868cd2;
+}
+.nodeMedical .detailHero{
+    background-color: rgba(134 ,140 , 210, 0.1);
+}
+.nodeMedical .ingredientcontent{
+    background-color: rgb(134 ,140 , 210);
+}
+.nodeMedical .imgcolclinical{
+    display: none;
+}
+.medicalclinical{
+    display: none;
+}
+.nodeMedical .medicalclinical{
+    display: block;
+}
+.nodeMedical .box ,.nodeMedical .howtousecon,
+.nodeMedical .beforeaftercontainer,.nodeMedical .recommendedcon,
+.nodeMedical .allcon,.nodeMedical .recommendedparingrightcol,.nodeMedical .productsuggestioncon {
+    background-color: rgba(134 ,140 , 210, 0.1) !important;
+}
+
+.nodeMedical .howrightcol{
+    background-color: #e7e9f6;
+}
+.nodeMedical .collapsebtn,.nodeMedical .collapsebtn1 ,.nodeMedical .carouselproductscon{
+    background-color: rgb(134 ,140 , 210) !important;
+}
