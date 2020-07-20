@@ -2,13 +2,19 @@ import React from 'react'
 
 import howto from '../../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
+import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
 import { useStaticQuery, graphql } from "gatsby"
 const Howtouse = ({ node }) => {
-    
-    return (
+  
+function playvideo(event){
+    event.target.closest('.img-wrap').classList.add('opacityzero');
+    event.preventDefault();
+}
+
+return (
         <div className={["container-fluid", howto.howtousecon].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>
-                <div className={["col-12", "col-lg-10", "offset-lg-1", howto.allcon].join(" ")}>
+                <div className={["col-12", "col-lg-10", "offset-lg-1","allcon", howto.allcon].join(" ")}>
                     <div class="row">
 
                             <div id="accordion" className={['col-12','d-flex'].join(" ")}>
@@ -21,7 +27,7 @@ const Howtouse = ({ node }) => {
                                             <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
                                                 <div className={[howto.cardhead, "card-header"].join(" ")} id={'heading'+index}>
                                                     <h5 class="mb-16">
-                                                        <button className={[howto.btnLink1, "btn-link", "btn ",index==0?'':'collapsed'].join(" ")} data-toggle="collapse" data-target={'#step'+index} aria-expanded={index==0?'true':'false'} aria-controls={'step'+index}>{item.field_step_title.processed}</button>
+                                                        <button    className={[howto.btnLink1, "btn-link", "btn ",index==0?'':'collapsed'].join(" ")} data-toggle="collapse" data-target={'#step'+index} aria-expanded={index==0?'true':'false'} aria-controls={'step'+index}>{item.field_step_title.processed}</button>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -44,7 +50,7 @@ const Howtouse = ({ node }) => {
 
                      
 
-                        <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
+                        <div className={["col-12", "col-lg-6", "offset-lg-1", "howrightcol" ,howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
                             
                             {/* steps image */}
@@ -53,7 +59,20 @@ const Howtouse = ({ node }) => {
                                     <div style={{width:'100%'}}  id={'step'+index} class={index==0?'collapse  show':'collapse '} aria-labelledby={'heading'+index} data-parent="#accordion">
 
                                          <div  class="card-body ">
-                                        <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
+                                         {item.relationships.field_step_image?
+                                         <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
+                                         :
+                                         <div className="video-wrapper">
+                                         <iframe   src={item.relationships.field_video.field_video_link}></iframe>
+                                         <div className="img-wrap">
+                                             <a onClick={(e) => {playvideo(e)} } href="#" class="playbtn">
+                                             <img class="playbtnimg" src={playbtnimg} alt="videomsg"/>
+                                             </a>
+                                         <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
+                                         </div>
+                                         </div>
+                                            }
+                                        
                                         </div>  
                                     </div>  
                                  ))
@@ -83,6 +102,20 @@ export const fragment = graphql`
                     processed
                 }
                 relationships {
+                    field_video {
+                        relationships {
+                          field_video_poster {
+                            localFile {
+                              childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid
+                                }
+                              }
+                            }
+                          }
+                        }
+                        field_video_link
+                      }
                     field_step_image {
                         localFile {
                             childImageSharp {

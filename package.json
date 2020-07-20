@@ -21,6 +21,7 @@
     "gatsby-plugin-sharp": "^2.6.11",
     "gatsby-source-drupal": "^3.5.13",
     "gatsby-source-filesystem": "^2.3.11",
+    "gatsby-source-vimeo-all": "0.0.18",
     "gatsby-transformer-sharp": "^2.5.5",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
