@@ -7,7 +7,7 @@ import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, nodeType }) => {
 
   const location = useLocation();
   // console.log(location.pathname);
@@ -227,8 +227,13 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className="col-12 col-padding">
                   {/* <div className="dropdown"> */}
 
-                    <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
+                    {/* <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
+                    <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
+                    <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/> */}
 
+                    {nodeType? (nodeType === 'clinical'? <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
+                        : <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/>) 
+                        : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
 
 {/* 
                     <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">

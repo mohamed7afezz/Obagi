@@ -12,7 +12,7 @@ const ProductPage = props => {
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 
    return (
-       <Layout customClass={"node-"+props.pageContext.nodetype}>
+       <Layout customClass={props.pageContext.nodetype}>
            <ProductHero data={data} nodeType={props.pageContext.nodetype} />
            {paragraphs}
        </Layout>
