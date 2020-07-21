@@ -655,10 +655,10 @@ footer .form-group {
     @include md-screen {
         padding-left: 40px;
         padding-bottom: 64px;
+        color: #132466;
     }
-  
+    a{
+        color: #132466;
+    }
 
-}
-.nodeMedical {
-    color: #132466;
 }

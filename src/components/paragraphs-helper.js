@@ -14,6 +14,7 @@ import Needtoknow from './product-components/needtoknow'
 import Ingredient from './product-components/ingredient';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
+import RecommendedParing from './product-components/recommendedparing'
 import Featured from './featured';
 
 
@@ -43,6 +44,7 @@ const productComponentsMap = {
     paragraph__need_to_know: Needtoknow,
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter,
+    paragraph__recomended_paring : RecommendedParing,
 }
 
 // const clinical

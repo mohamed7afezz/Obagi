@@ -69,7 +69,7 @@ top: 5px;
 }
 
 .review p{
-    @extend %futurapt-bold;
+ 
     font-size: 14px;
     line-height: 16px;
     margin-left: 24px;
@@ -266,4 +266,12 @@ display: none;
 }
 .imageContainer >div >img{
     position: relative !important;
+}
+.type .producttype,.reviewsnumber,.type li,.canuse ,.Indications,.quantityhead{
+
+    @extend %futurapt-medium ;
+      
+}
+.canusedata,.Indicationsdata{
+    @extend %futurapt-book ;
 }

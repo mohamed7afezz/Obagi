@@ -47,30 +47,9 @@ const Beforeafter = ({ node }) => {
             
         }
     }
-    const data = useStaticQuery(graphql`
-    query {
-        afterimg: file(relativePath: { eq: "product-images/smallLamb.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-          fixed(width: 744) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-          fixed(width: 744) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }`
-    )
+  
+    
+    
     return (
         <div className={["container-fluid","beforeaftercontainer", beforeafter.beforeaftercontainer].join(" ")}>
             <div  className={"row"}>

@@ -11,7 +11,7 @@ const Ingredient = ({ node }) => {
   return (
 
     <div className={["container-fluid", ingredient.ingredientcontent,"ingredientcontent"].join(" ")}>
-      <div className={"row"}>
+      <div className={["row","mobdcol"].join(" ")}>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ingredient.leftcol].join(" ")}>
           <h1 className={ingredient.ingredienthead}>{node.field_ingredienthead.processed}</h1>
           {
@@ -26,21 +26,13 @@ const Ingredient = ({ node }) => {
           }
          { 
              data.field_read_more.map(item => (
-               <div>
-                <div class="collapse multi-collapse"  id="multiCollapseExample3">  
-                 <p className={[ingredient.ingredienttitle, ingredient.ftitle].join(" ")} dangerouslySetInnerHTML={{__html:item.field_re.processed}} ></p>
+                <div>
+                  <img src={pluswhite}/>  <div className={[ingredient.ingredienttitle,ingredient.expand,"expand","readmorefix", ingredient.ftitle].join(" ")}  data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3" dangerouslySetInnerHTML={{__html:item.field_re.processed}} >
+                </div>      
+               <div class="collapse multi-collapse"  id="multiCollapseExample3">    
                  <div  dangerouslySetInnerHTML={{__html:item.field_read_more_content.processed}} ></div>   
-
-               </div>
-                 <a className={[ingredient.expand,"expand","readmorefix"].join(" ")} data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3">
-                   <span class="readMore">
-                   <img src={pluswhite}/> Read More
-                   </span>
-                   <span class="readLess">
-                   <img src={pluswhite}/> Read less
-                   </span>
-                   </a>
                  </div>
+               </div>
             ))
           }
         </div>
