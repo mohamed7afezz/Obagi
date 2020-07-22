@@ -3,13 +3,45 @@ import React from 'react'
 import howto from '../../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
 import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
+import Player from '@vimeo/player';
 import { useStaticQuery, graphql } from "gatsby"
+  
+
+function playvideo(event){
+    let iframeContainer, player, playerOpts = {
+        url: ''
+    }
+    console.log("hassan",)
+    let url = event.target.parentNode.getAttribute("href")
+    console.log(url)
+    playerOpts.url = url
+    console.log(playerOpts.url )
+    if (!playerOpts.url.indexOf('youtube') > -1) {
+        document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      console.log(document.querySelector('.video-popup-wrap'))
+        return;
+    }
+  
+    player = new Player.Vimeo(document.querySelector('#VideoPopUp iframe'), playerOpts);
+
+    player.play();
+
+}
+function SetVideoTime(time, video, endTime) {
+    video.setCurrentTime(time);
+    if (endTime) {
+        video.on('timeupdate', function (data) {
+            if (data.seconds > endTime) {
+                video.pause();
+                video.off('timeupdate');
+            }
+        })
+    }
+}
+
 const Howtouse = ({ node }) => {
   
-function playvideo(event){
-    event.target.closest('.img-wrap').classList.add('opacityzero');
-    event.preventDefault();
-}
+
     function hcollapse(e){
         var $collapsedata = document.querySelectorAll('.allstep')
         var $collapsebtn=document.querySelectorAll('.collapsebtn')
@@ -49,7 +81,8 @@ return (
                                 {/* steps btns */}
                                 <div className={["d-flex", howto.tabs].join(" ")}>
                                     {
-                                        node.relationships.field_step_paragragh.map((item,index)=> (
+                                        node.relationships.field_step_paragragh.length>1?node.relationships.field_step_paragragh.map((item,index)=> (
+                                            
                                             <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
                                                 <div className={[howto.cardhead, "card-header"].join(" ")} >
                                                     <h5 class="mb-16">
@@ -57,7 +90,8 @@ return (
                                                     </h5>
                                                 </div>
                                             </div>
-                                        ))
+                                        )):''
+                                        
                                     }     
                                 </div>
 
@@ -89,9 +123,9 @@ return (
                                          <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />
                                          :
                                          <div className="video-wrapper">
-                                         <iframe   src={item.relationships.field_video.field_video_link}></iframe>
+
                                          <div className="img-wrap">
-                                             <a onClick={(e) => {playvideo(e)} } href="#" class="playbtn">
+                                             <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => {playvideo(e)} } href={item.relationships.field_video.field_video_link} class="playbtn">
                                              <img class="playbtnimg" src={playbtnimg} alt="videomsg"/>
                                              </a>
                                          <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0","pl-0"].join(" ")}  />

@@ -107,9 +107,11 @@ const Beforeafter = ({ node }) => {
                                             }
                                         </div>
                                         {
-                                            item.field_before_after_footnote.map(footNote => (
-                                                <div className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{__html: footNote.processed}}></div>
-                                            ))
+                                            item.field_before_after_footnote.map((footNote,index) => (
+                                                index==0?<div className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{__html: footNote.processed}}></div>
+                                            :
+                                            ""
+                                                ))
                                         }
                                         
                                     </div>
