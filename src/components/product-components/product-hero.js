@@ -91,14 +91,8 @@ const ProductHero = ({ data, nodeType }) => {
           <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: field_description}}></div>
           <div className={["d-flex", ProductStyles.type].join(" ")}><p className={ProductStyles.producttype}>{field_medical_type}</p>
             <ul> <li>  Size {field_weight} oz </li></ul></div>
-          {/* <div className={["d-flex", ProductStyles.review].join(" ")}>
-            {
-                fetch('https://dev-obagi.azurewebsites.net/api/api/v1/get_product_reviews/112')
-                .then(response => response.json())
-                .then(data.map((item) => { return  <Stars value={item.rating} />}))
-           
-            
-            }<p className={ProductStyles.reviewsnumber}>0 Review</p></div> */}
+            <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />
+            <p>0 Review</p></div>
           <p className={ProductStyles.price}> <span>${field_price}</span></p>
           <p className={ProductStyles.canuse}>
               Skin Type: {field_skin_type.map((item, index) => {
