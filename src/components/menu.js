@@ -5,11 +5,22 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 // const $ = require(jQuery);
 //  onClick={_onHeaderClick}
 
+// function parentHasClass(element, classname) {
+//   if (element.className.split(' ').indexOf(classname)>=0) return true;
+//   return element.parentNode && parentHasClass(element.parentNode, classname);
+
+// }
+
 function addStyles(e) {
   document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.add("not-selected"));
-  let selected = e.target;
-  selected.classList.remove("not-selected")
-  selected.classList.add("selected");
+  
+  if(e.target.closest(".submenu > li > a")) {
+    let selected = e.target.closest(".submenu > li > a");
+    selected.classList.remove("not-selected");
+    selected.classList.add("selected");
+  }
+
+
 }
 
 function removeStyles() {

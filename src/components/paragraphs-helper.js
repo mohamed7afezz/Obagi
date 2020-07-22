@@ -16,7 +16,8 @@ import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
 import RecommendedParing from './product-components/recommendedparing'
 import YouMightAlsoLike from './product-components/productsuggestion'
-import Featured from './featured';
+import Featured from './featured'
+import HeroSlider from './hero-slider'
 
 
 const componentsMap = {
@@ -29,6 +30,7 @@ const componentsMap = {
     paragraph__images_boxes: ImagesBoxes,
     paragraph__section_with_colored_boxes: SectionWithColoredBoxes,
     paragraph__featured_section: Featured,
+    paragraph__hero_slider: HeroSlider,
 }
 
 export const getParagraph = node => {

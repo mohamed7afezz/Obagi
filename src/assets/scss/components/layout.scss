@@ -4,6 +4,11 @@
 body {
     color: #132466;
     position: relative;
+    margin-top: 128px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
 }
 
 p {
@@ -767,4 +772,17 @@ footer .form-group {
 
 .not-selected {
     color: #7c858a !important;
+}
+
+.active-submenu {
+    background: #fff;
+    color: #132466;
+}
+
+.body-small-margin {
+    margin-top: 72px;
+    
+    @include lg-screen {
+        margin-top: 0;
+    }
 }
