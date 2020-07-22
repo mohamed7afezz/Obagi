@@ -73,13 +73,14 @@ const ProductHero = ({ data, nodeType }) => {
     <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname","col-12"].join(" ")}>
-           <p className="pathtitle">Home/{path1[1]}/{node.title}</p>
+           <p className="pathtitle"><Link to="/homepage"> Home </Link>/ <Link to={`/${nodeType}`}> {nodeType} </Link>/ {node.title}</p>
         </div>
         <div  className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
         <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   field_image.map((item,index) => {
-                      return <img data-arrange={index}  src={item.localFile.childImageSharp.original.src} />
+                      return <div data-arrange={index}> <InnerImageZoom src={item.localFile.childImageSharp.original.src}/></div> 
+                 
                   })
               }
           </Slider>
@@ -88,19 +89,25 @@ const ProductHero = ({ data, nodeType }) => {
           <p className={[ProductStyles.productcat,"productcat"].join(" ")}>{nodeType}</p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
           <div className={ProductStyles.productdesc} dangerouslySetInnerHTML={{__html: field_description}}></div>
-          <div className={["d-flex", ProductStyles.type].join(" ")}><p>{field_medical_type}</p>
+          <div className={["d-flex", ProductStyles.type].join(" ")}><p className={ProductStyles.producttype}>{field_medical_type}</p>
             <ul> <li>  Size {field_weight} oz </li></ul></div>
-          <div className={["d-flex", ProductStyles.review].join(" ")}><Stars value="0.0" />
-            <p>0 Review</p></div>
+          {/* <div className={["d-flex", ProductStyles.review].join(" ")}>
+            {
+                fetch('https://dev-obagi.azurewebsites.net/api/api/v1/get_product_reviews/112')
+                .then(response => response.json())
+                .then(data.map((item) => { return  <Stars value={item.rating} />}))
+           
+            
+            }<p className={ProductStyles.reviewsnumber}>0 Review</p></div> */}
           <p className={ProductStyles.price}> <span>${field_price}</span></p>
           <p className={ProductStyles.canuse}>
               Skin Type: {field_skin_type.map((item, index) => {
-                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_type.length - 1? '' : ', '}</span>
+                  return <span className={ProductStyles.canusedata}><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_type.length - 1? '' : ', '}</span>
               })} 
           </p>
           <p className={ProductStyles.Indications}> 
             Skin Concerns: {field_skin_concern.map((item, index) => {
-                  return <span><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_concern.length - 1? '' : ', '}</span>
+                  return <span className={ProductStyles.Indicationsdata}><Link to={item.path.alias}> {item.name}</Link>{index === field_skin_concern.length - 1? '' : ', '}</span>
               })} 
           </p>
           <p className={ProductStyles.quantityhead}>Quantity:</p>

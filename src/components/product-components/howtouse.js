@@ -43,7 +43,7 @@ return (
                 <div className={["col-12", "col-lg-10", "offset-lg-1","allcon", howto.allcon].join(" ")}>
                     <div class="row">
 
-                            <div id="accordion" className={['col-12','d-flex'].join(" ")}>
+                            <div id="accordion" className={['col-12','d-flex',"mobflexwrap"].join(" ")}>
                             <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
                             <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
                                 {/* steps btns */}
