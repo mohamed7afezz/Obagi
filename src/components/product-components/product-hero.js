@@ -79,7 +79,7 @@ const ProductHero = ({ data, nodeType }) => {
         <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   field_image.map((item,index) => {
-                      return <div data-arrange={index}> <InnerImageZoom src={item.localFile.childImageSharp.original.src}/></div> 
+                      return <div data-arrange={index}> <InnerImageZoom fullscreenOnMobile={true} src={item.localFile.childImageSharp.original.src}/></div> 
                  
                   })
               }

@@ -37,11 +37,8 @@ export const fragment = graphql`
           }
           field_image_right
           
-          relationships {
-            field_issues_categories {
-              name
-            }
-          }
+       
+          
         }
       
 `;

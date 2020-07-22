@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 
 import howto from '../../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
@@ -6,6 +6,8 @@ import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';
 import { useStaticQuery, graphql } from "gatsby"
   
+
+ 
 
 function playvideo(event){
     let iframeContainer, player, playerOpts = {
@@ -69,6 +71,7 @@ const Howtouse = ({ node }) => {
             }
         }
     }
+   
 return (
         <div className={["container-fluid", howto.howtousecon,"howtousecon"].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>

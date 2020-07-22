@@ -1,6 +1,17 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
+
+
+// Wrap the require in check for window
 
 const Popup = ({ node, props }) => {
+ 
+if (typeof window !== `undefined`) {
+  const $ = require('jquery');
+  $('#VideoPopUp').on('hide.bs.modal', function(e) {    
+    $('#VideoPopUp  iframe').remove()
+ 
+});
+}
     return(
 
 <div class="modal fade" id="VideoPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -23,5 +34,6 @@ const Popup = ({ node, props }) => {
   </div>
 </div>
     )
+    
 }
 export default Popup
