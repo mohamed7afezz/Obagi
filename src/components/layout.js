@@ -17,6 +17,7 @@ import AboveHeader from './above-header'
 import '../assets/scss/components/layout.scss'
 
 import NavBlocks from "../assets/scss/components/nav-blocks"
+import Popup from "./videopopup"
 
 const Layout = ({ children,customClass }) => {
   const data = useStaticQuery(graphql`
@@ -39,6 +40,7 @@ const Layout = ({ children,customClass }) => {
       <div className={customClass}>
         <main>{children}</main>
         <Footer />
+        <Popup/>
       </div>
 
     </>

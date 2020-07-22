@@ -650,6 +650,7 @@ footer .form-group {
     line-height: 24px;
     @extend %futurapt-book;
     padding-bottom: 12px;
+    padding-top: 14px;
     padding-left: 24px;
     text-transform: capitalize;
     @include md-screen {

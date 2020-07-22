@@ -34,14 +34,7 @@ module.exports = {
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
-    {
-      resolve: 'gatsby-source-vimeo-all',
-      options: {
-        clientId: '4eb6528a5dde1764deb894303930b052e9b9c07a',
-        clientSecret: 'WaTuEEjMhXW7UZZG+vhAu8Q9swmHI0cRKV3JybDr9bbK+CZTzclWtTfNd6QB+RVwkcRtl9BPLIC7DUdgG2KJFuuyeUnTC5SBFjNqMPYAaeVXmyVod32RRuXqjFlPrqM5',
-        accessToken: 'da9b94dc1f02816a55e2e62f28fe8e3f'
-      }
-    },
+  
 
     'gatsby-plugin-sass',
     `gatsby-plugin-fontawesome-css`,
