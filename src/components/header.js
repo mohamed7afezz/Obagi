@@ -197,8 +197,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.mainLinks}>
-                    <Link to="#" className={headerStyles.navSubmenu}>MEDICAL</Link>
-                    <Link to="#" className={headerStyles.navSubmenu}>CLINICAL</Link>
+                    <Link to="#" className={nodeType? (nodeType === 'medical'? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="#" className={nodeType? (nodeType === 'clinical'? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
                   </div>
                 </div>
 

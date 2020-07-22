@@ -12,7 +12,8 @@ const Featured = ({ node }) => {
               <div className="col-lg-3">
                 {/* <div dangerouslySetInnerHTML={{__html: node.field_featured_title.processed}}></div>
                 <div dangerouslySetInnerHTML={{__html: node.field_featured_description.processed}}></div>
-                <div><Link to={node.field_featured_button.uri}>{node.field_featured_button.title}</Link></div> */}
+                <div><Link to={node.field_featured_button.uri}>{node.field_featured_button.title}</Link></div>
+                <div>{node.relationships.field_issues_categories.taxonomy_term__clinical_categories.name}</div> */}
               </div>
             </div>
           </div>
@@ -39,10 +40,22 @@ export const fragment = graphql`
           
           relationships {
             field_issues_categories {
-              name
+              ... on taxonomy_term__clinical_categories {
+                id
+                name
+              }
+              ... on taxonomy_term__clinical_skin_concern {
+                id
+                name
+              }
+              ... on taxonomy_term__medical_categories {
+                id
+                name
+              }
             }
           }
         }
+      
       
 `;
 
