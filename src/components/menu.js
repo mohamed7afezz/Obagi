@@ -5,6 +5,18 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 // const $ = require(jQuery);
 //  onClick={_onHeaderClick}
 
+function addStyles(e) {
+  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.add("not-selected"));
+  let selected = e.target;
+  selected.classList.remove("not-selected")
+  selected.classList.add("selected");
+}
+
+function removeStyles() {
+  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.remove("selected"));
+  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.remove("not-selected"));
+}
+
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
      mappedArr = {},
@@ -48,7 +60,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     </Link>)
   } else {
     if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri} id={itemId}>
+      return (<Link className="single-tab" to={link.link.uri} id={itemId} onMouseEnter={(e) => {addStyles(e);}} onMouseLeave={() => {removeStyles();}}>
         {link.title}
       </Link>)
     }

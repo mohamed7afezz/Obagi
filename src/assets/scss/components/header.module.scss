@@ -109,10 +109,11 @@
             background: #ffffff;
 
             a {
-                color: #7c858a;
+                // color: #7c858a;
 
                 &:hover {
-                    color: #132466;
+                    // color: #132466;
+                    text-decoration: none;
                 }
             }
         }
@@ -204,10 +205,11 @@
         background: #ffffff;
 
         a {
-            color: #7c858a;
+            // color: #7c858a;
 
             &:hover {
-                color: #132466;
+                // color: #132466;
+                text-decoration: none;
             }
         }
     }

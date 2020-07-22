@@ -528,6 +528,15 @@ footer .form-group {
         @include fontStyle(16, 24);
         color: #7c858a;
         padding: 0 16px 32px;
+        max-height: 80px;
+    }
+
+    .nav-img-desk {
+        height: 100%;
+
+        .gatsby-image-wrapper {
+            height: 100%;
+        }
     }
 
     .nav-arrow-desk {
@@ -569,6 +578,20 @@ footer .form-group {
 .nav-desk {
     width: 100%;
 
+    &:hover {
+        ul {
+            li {
+                a {
+                    color: #7c858a;
+
+                    &:hover {
+                        color: #132466;
+                    }
+                }
+            }
+        }
+    }
+
     ul {
         display: flex;
         list-style: none;
@@ -586,13 +609,14 @@ footer .form-group {
                 color: #ffffff;
                 @include fontStyle(16, 24);
                 letter-spacing: 1.6px;
-
+                
                 &:hover {
                     text-decoration: none;
                 }
             }
-            &:hover div {
-                display: block;
+            &:hover .nav-container-desk {
+                display: flex;
+                flex-direction: column;
             }
 
             @media only screen and (min-width: 992px) and (max-width: 1500px) {
@@ -612,7 +636,7 @@ footer .form-group {
                 }
             }
 
-            div {
+            .nav-container-desk {
                 display: none;
                 &.dropdown-menu {
                     font-size: unset;
@@ -662,4 +686,85 @@ footer .form-group {
         color: #132466;
     }
 
+}
+.nodeMedical {
+    color: #132466;
+}
+
+.clinical-nav {
+    ul {
+        display: flex;
+        list-style: none;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 20px 0;
+
+        li {
+            margin: 0 30px;
+            padding: 0 10px;
+
+            a {
+                @include fontStyle(16,24);
+                letter-spacing: 1.6px;
+                color: #7c858a;
+
+                &:hover {
+                    color: #132466;
+                }
+            }
+            .submenu {
+                display: none;
+                padding: 0;
+                position: absolute;
+                background: #fff;
+                width: 274px;
+                padding: 52px 0 32px 56px;
+                transform: translate(-30%, 0);
+                li {
+                    margin: 0;
+                    padding: 0 0 16px;
+
+                    a {
+                        color: #132466;
+                        letter-spacing: 0;
+                    }
+
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+
+            }
+            &:hover {
+                .submenu {
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+}
+
+.selected {
+    position: relative;
+    &:hover {
+        color: #132466;
+
+
+        &::before {
+            height: 8px;
+            width: 8px;
+            content: '';
+            background: #132466;
+            position: absolute;
+            left: -20px;
+            top: 7px;
+        }
+    }
+}
+
+.not-selected {
+    color: #7c858a !important;
 }
