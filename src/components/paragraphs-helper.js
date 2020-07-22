@@ -15,6 +15,7 @@ import Ingredient from './product-components/ingredient';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
 import RecommendedParing from './product-components/recommendedparing'
+import YouMightAlsoLike from './product-components/productsuggestion'
 import Featured from './featured';
 
 
@@ -45,6 +46,7 @@ const productComponentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter,
     paragraph__recomended_paring : RecommendedParing,
+    paragraph__you_might_also_like : YouMightAlsoLike,
 }
 
 // const clinical

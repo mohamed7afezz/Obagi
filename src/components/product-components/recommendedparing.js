@@ -38,15 +38,15 @@ const Recommendedparing = ({ node }) => {
                             <div className={[recommendedparing.parseing, "col-lg-6","offset-lg-3"].join(" ")}>
                                 
                         <Slider {...settings}>
+            {
+                        node.relationships.field_croduct_card.map((item, index)=> (
                 <div className={["col-12",  recommendedparing.allcon].join(" ")}>
-                <ProductCard/>
+                 
+                <ProductCard producttitle={item.title} productdescription={{__html:item.field_clinical_description.processed}} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} rate="5" />
+                
                 </div>
-                <div className={["col-12",  recommendedparing.allcon].join(" ")}>
-                <ProductCard/>
-                </div>
-                <div className={["col-12",  recommendedparing.allcon].join(" ")}>
-                <ProductCard/>
-                </div>
+                ))
+             } 
                 </Slider> 
                 </div>
                         </div>
@@ -60,11 +60,32 @@ export default Recommendedparing;
 
 export const fragment = graphql`
     fragment recommendedParingParagrapgh on paragraph__recomended_paring {
-        id
-        field_product_description
-        field_product_inform
-        field_product_type
-        field_question
-        field_section_title
+      id
+      field_product_description
+      field_product_inform
+      field_product_type
+      field_question
+      field_section_title
+      relationships {
+          field_croduct_card {
+              id
+              title
+              field_clinical_price
+              field_clinical_description {
+                processed
+              }
+              relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                    }
+                  }
+                }
+              }
+            }
+          }
     }
 `;
