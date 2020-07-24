@@ -17,12 +17,12 @@ const ProductHero = ({ data, nodeType }) => {
   let node = isClincal? data.nodeClinicalProduct :  data.nodeMedicalProduct;
   let field_image = isClincal? node.relationships.field_clinical_image : node.relationships.field_medical_image;
   let field_description = isClincal? node.field_clinical_description.processed : node.field_medical_description.processed;
-  let field_medical_type = isClincal? node.field_clinical_medical_type : node.field_medical_type;
+  let field_medical_type = isClincal? node.field_clinical_medical_type : node.relationships.field_medical_product_lines.name;
   let field_weight = isClincal? node.field_clinical_weight : node.field_medical_weight;
   let field_price = isClincal? node.field_clinical_price : node.field_medical_price;
   let field_skin_type = isClincal? node.relationships.field_clinical_skin_type: node.relationships.field_medical_skin_type;
   let field_skin_concern = isClincal? node.relationships.field_clinical_skin_concern : node.relationships.field_medical_skin_concern;
-
+  
 
   const location1 = useLocation();
   const path =location1.pathname

@@ -34,6 +34,7 @@ export const productPageQuery = graphql`
             field_clinical_description {
                 processed
             }
+            
             relationships {
                 field_clinical_skin_concern {
                     name
@@ -41,6 +42,7 @@ export const productPageQuery = graphql`
                         alias
                     }
                 }
+
                 field_clinical_image {
                     localFile {
                         childImageSharp {
@@ -78,6 +80,9 @@ export const productPageQuery = graphql`
                 processed
             }
             relationships {
+                field_medical_product_lines {
+                    name
+                  }
                 field_medical_skin_concern {
                     name
                     path {
