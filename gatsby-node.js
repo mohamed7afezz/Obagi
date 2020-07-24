@@ -69,7 +69,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     
     result.data.allNodePage.edges.forEach(({ node }) => {
         createPage({
-            path: node.fields.slug === '/homepage/' ? '/' : node.fields.slug,
+            path: node.fields.slug === '/homepage' ? '/' : node.fields.slug,
             component: temp,
             context: {
                 slug: node.fields.slug
