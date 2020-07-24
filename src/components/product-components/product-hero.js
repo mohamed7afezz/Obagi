@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import { useLocation } from "@reach/router"
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
 import InnerImageZoom from 'react-inner-image-zoom'
-
+import Zoom from 'react-img-zoom'
 
 const ProductHero = ({ data, nodeType }) => {
   
@@ -79,8 +79,25 @@ const ProductHero = ({ data, nodeType }) => {
         <Slider  ref={slider => (slider1.current = slider)}  {...SliderSetting}>
               {
                   field_image.map((item,index) => {
-                      return <div data-arrange={index}> <InnerImageZoom fullscreenOnMobile={true} src={item.localFile.childImageSharp.original.src}/></div> 
-                 
+                      return(
+                        <React.Fragment>
+                   <div class="zoom-mobile" data-arrange={index}> 
+                   <InnerImageZoom src={item.localFile.childImageSharp.original.src}/>
+                   </div> 
+                      <div class="zoom-desk" data-arrange={index}> 
+                   
+                    
+                      
+                         
+                      <Zoom
+                        img={item.localFile.childImageSharp.original.src}
+                        zoomScale={1.5}
+                        width={590 }
+                        height={500}
+                      />
+                     </div> 
+                     </React.Fragment>
+                      )
                   })
               }
           </Slider>

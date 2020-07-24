@@ -1,0 +1,70 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+
+.type {
+    @extend %futurapt-bold;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.6px;
+    color: #132466;
+    padding-left: 30px;
+    position:relative;
+    padding-bottom: 24px;
+    @include md-screen{
+        padding-bottom: 40px;
+    }
+}
+.type:before{
+    content: "";
+   position: absolute;
+   display: block;
+   width: 12px;
+   height: 12px;
+   left: 0;
+top: 5px;
+   background-color: #44c4d9;
+    }
+.collectionhero {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), #5b8ca4);
+}
+.collectiontitle{
+    font-size: 36px;
+    line-height: 46px;
+    @extend %futurapt-light;
+    @include md-screen{
+        font-size: 64px;
+        line-height: 72px;
+        padding-bottom: 14px;
+    }
+}
+.collectiondescription{
+    font-size: 18px;
+    line-height: 27px;
+    @include md-screen{    
+    font-size: 28px;
+    
+    line-height: 40px;
+    }
+}
+.Collectionheroleftcol{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 120px;
+        padding-bottom: 112px;
+    }
+}
+.allheight{
+    height: 100%;
+ 
+}
+.Collectionherorightcol{
+    max-width: 100%;
+    overflow: hidden;
+    order: -1;
+    @include md-screen{
+        order: 2;
+    }
+}

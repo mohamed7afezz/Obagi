@@ -8,6 +8,7 @@ import ProductHero from '../components/product-components/product-hero';
 
 const ProductPage = props => {
     let data = props.data;
+    console.log("hafezz",props)
     const paragraphs = props.pageContext.nodetype== "clinical"?
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 

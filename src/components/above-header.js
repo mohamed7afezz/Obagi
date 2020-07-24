@@ -5,15 +5,15 @@ import aboveHeader from '../assets/scss/components/above-header.module.scss'
 const AboveHeader = () => {
 
     const data = useStaticQuery(graphql`
-    query {
-      close: file(relativePath: { eq: "close.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      query {
+        close: file(relativePath: { eq: "close.png" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
-    }
     `)
 
     function closeNotification() {
