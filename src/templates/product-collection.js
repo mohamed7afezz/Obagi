@@ -11,7 +11,7 @@ const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     console.log('propsing',props)
     return (
-        <Layout >
+        <Layout nodeType={props.pageContext.nodetype} menuType="absolute">
           {
               props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_paraprapgh_taxonomy?   
               <CollectionHero node={props.data}/>

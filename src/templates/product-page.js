@@ -13,7 +13,7 @@ const ProductPage = props => {
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 
    return (
-       <Layout customClass={props.pageContext.nodetype}>
+       <Layout nodeType={props.pageContext.nodetype} menuType="relative">
            <ProductHero data={data} nodeType={props.pageContext.nodetype} />
            {paragraphs}
        </Layout>
@@ -76,13 +76,11 @@ export const productPageQuery = graphql`
             field_medical_id
             field_medical_type
             field_medical_weight
+            field_medical_form_list
             field_medical_description {
                 processed
             }
             relationships {
-                field_medical_product_lines {
-                    name
-                  }
                 field_medical_skin_concern {
                     name
                     path {
