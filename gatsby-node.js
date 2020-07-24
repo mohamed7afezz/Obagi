@@ -15,8 +15,10 @@ module.exports.onCreateNode = ({ node, actions }) => {
     // create slug for each node
     if (node.internal.type === "node__page" || 
         node.internal.type === "node__clinical_product" || 
-        node.internal.type === "node__medical_product") {
-        const slug = `${node.path.alias || node.drupal_internal__nid}`;
+        node.internal.type === "node__medical_product"  ||
+        node.internal.type === "taxonomy_term__clinical_skin_concern"
+        ) {
+        const slug = `${node.path.alias}`;
         createNodeField({
             node,
             name: `slug`,
@@ -30,7 +32,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     // 1- get path to template
     const temp = path.resolve('./src/templates/basic-page.js');
     const productTemp = path.resolve('./src/templates/product-page.js');
-
+    const productCollectionTemp = path.resolve('./src/templates/product-collection.js');
     // 2- get data from node
     const result = await graphql(`
         {
@@ -62,6 +64,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
                         }
                         drupal_internal__nid
                     }
+                }
+            },
+            allTaxonomyTermClinicalSkinConcern {
+                edges {
+                  node {
+                    fields {
+                      slug
+                    }
+                  }
                 }
             }
         }
@@ -95,6 +106,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.fields.slug,
                 nodetype: 'medical'
+            }
+        });
+    });
+
+    result.data.allTaxonomyTermClinicalSkinConcern.edges.forEach(({ node }) => {
+        createPage({
+            path: node.fields.slug,
+            component: productCollectionTemp,
+            context: {
+                slug: node.fields.slug,
+                nodetype: 'clinical'
             }
         });
     });

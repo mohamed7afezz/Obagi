@@ -31,6 +31,7 @@
     "react-before-after-slider": "^1.0.4",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-img-zoom": "^0.1.0",
     "react-inner-image-zoom": "^1.1.1",
     "react-slick": "^0.26.1",
     "slick-carousel": "^1.8.1"
