@@ -36,8 +36,8 @@ const ProductCard = ({ node,producttitle ,productdescription,productimage, price
                 <Stars  value={rate}/>
                 </div>
                 <p className={Productcard.productcarddesc}>{producttitle}</p>
-                  <p className={Productcard.productcardcon} dangerouslySetInnerHTML={productdescription}></p>
-                <p className={Productcard.price}><span> {price}</span></p>
+                  <div className={Productcard.productcardcon} dangerouslySetInnerHTML={productdescription}></div>
+                <p className={Productcard.price}> {price}</p>
                 </div>
                 </div>
                 </div>

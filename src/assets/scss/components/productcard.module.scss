@@ -51,9 +51,7 @@
     @extend %futurapt-bold;
     padding-left: 16px;
     padding-bottom: 10px;
-    span{
-        padding-left: 4px;
-    }
+    
     @include md-screen{
         padding-bottom: 40px;
     }
