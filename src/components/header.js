@@ -7,7 +7,7 @@ import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 
-const Header = ({ siteTitle, nodeType }) => {
+const Header = ({ siteTitle, nodeType,menuType }) => {
 
   const location = useLocation();
   // console.log(location.pathname);
@@ -187,7 +187,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (location.pathname==='/' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (menuType==='absolute' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">

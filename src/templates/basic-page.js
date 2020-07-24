@@ -8,7 +8,7 @@ import { getParagraph } from '../components/paragraphs-helper';
 const BasicPageTemp = ({ data }) => {
     const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     return (
-        <Layout>
+        <Layout menuType="absolute">
             {/* <SEO title={data.nodePage.field_meta_tags.title} description={data.nodePage.field_meta_tags.description}/> */}
             {paragraphs}
         </Layout>

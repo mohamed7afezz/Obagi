@@ -19,7 +19,7 @@ import '../assets/scss/components/layout.scss'
 import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 
-const Layout = ({ children,customClass}) => {
+const Layout = ({ children,nodeType,menuType}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,14 +30,12 @@ const Layout = ({ children,customClass}) => {
     }
   `)
   // Similar to componentDidMount and componentDidUpdate: 
-
-    console.log('ashraqat', customClass);
   return (
     <>
       <AboveHeader />
-      <Header siteTitle={data.site.siteMetadata.title} nodeType={customClass} />
+      <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
       {/* <NavBlocks /> */}
-      <div className={"node-" + customClass}>
+      <div className={"node-" + nodeType}>
         <main>{children}</main>
         <Footer />
         <Popup/>

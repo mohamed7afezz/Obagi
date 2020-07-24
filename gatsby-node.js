@@ -83,7 +83,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             path: node.fields.slug === '/homepage' ? '/' : node.fields.slug,
             component: temp,
             context: {
-                slug: node.fields.slug
+                slug: node.fields.slug,
+                nodetype: 'basic'
             }
         });
     });

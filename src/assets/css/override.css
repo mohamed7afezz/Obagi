@@ -102,11 +102,14 @@
     margin-right: 0;
     }
  
-    .Collectionherorightcol,.collectionFooterleftcol,.collectionFooterRightcol,.Collectionheroleftcol{
+    .Collectionherorightcol,.collectionFooterleftcol,.collectionFooterRightcol{
         padding-left: 0;
         padding-right: 0;
        
     }
+}
+.Collectionherorightcol{
+    padding-right: 0;
 }
 .productimage .slick-initialized{
 padding-bottom: 0;
