@@ -1,3 +1,50 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.subtitle {
+    padding: 41px 0 7px;
+
+    @include lg-screen {
+        padding: 264px 0 40px;
+    }
+}
+
+.title {
+    @extend %futurapt-light;
+    font-size: 40px;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+    }
+}
+
+.description {
+    @include fontStyle(18, 27);
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        font-family:  futura-pt,   sans-serif; 
+        font-weight:  300; 
+        font-style:  normal;
+    }
+}
+.link-section {
+    margin: 33px 0 48px;
+
+    @include lg-screen {
+        margin: 40px 0 192px;
+    }
+}
+.text-wrapper {
+    // mix-blend-mode: multiply;
+    background-image: linear-gradient(to top, rgba(91, 140, 164, 0) 42%, #5b8ca4);
+}
+
+// .slide-wrapper {
+//     display: flex;
+//     flex-direction: column;
+
+//     @include lg-screen {
+//         flex-direction: row-reverse;
+//     }
+// }

@@ -23,6 +23,13 @@ p {
     padding: 0;
 }
 
+.col-right-padding {
+    padding-right: 0;
+}
+
+.col-left-padding {
+    padding-left: 0;
+}
 
 .logo {
     margin: 0 auto;
@@ -784,5 +791,11 @@ footer .form-group {
     
     @include lg-screen {
         margin-top: 0;
+    }
+}
+
+.hero-slider {
+    .slick-initialized .slick-slide {
+        padding: 0;
     }
 }
