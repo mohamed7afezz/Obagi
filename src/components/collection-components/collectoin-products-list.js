@@ -1,13 +1,12 @@
-import React, { useState ,useReact}  from 'react'
+import React, { useState ,useReact,useEffect}  from 'react'
 import { graphql } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 const Collectionproducts = ({ node }) => {
   console.log("Hmotawe", node)
+  
   const allPosts = node.taxonomyTermClinicalSkinConcern.relationships
   const emptyQuery = ""
-  const posts1 = node.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product
-
   const [state, setState] = useState({
 
     filteredData: [],
@@ -41,12 +40,14 @@ const Collectionproducts = ({ node }) => {
       filteredData, // with filtered data from posts.filter(post => (//filteredData)) above
 
     })
+   
+    console.log(posts1)
   }
+ 
   const { filteredData, query } = state
 
   const hasSearchResults = filteredData && query !== emptyQuery
-
-  const posts = hasSearchResults ? filteredData : allPosts
+  const posts1 = hasSearchResults ? filteredData : node.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product
 
 
   return (
@@ -59,10 +60,7 @@ const Collectionproducts = ({ node }) => {
           {/* <select name='filter by'>
             <option>All</option>
           </select> */}
-          {
-            node.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product.map(filtering => { const title = filtering.title })
-
-          }
+    
           <input
             type="text"
             aria-label="Search"

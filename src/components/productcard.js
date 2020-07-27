@@ -28,7 +28,7 @@ const ProductCard = ({ node,producttitle ,productdescription,productimage, price
         <div className={["row", Productcard.Cardordering].join(" ")}>
             <div className={"col-12"}>
                 <div className={["d-flex",Productcard.cardname].join(" ")}>
-                    <p>new</p>
+                   
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div>
                 <Img className={Productcard.cardimg} fluid={productimage}/>
@@ -37,7 +37,7 @@ const ProductCard = ({ node,producttitle ,productdescription,productimage, price
                 </div>
                 <p className={Productcard.productcarddesc}>{producttitle}</p>
                   <div className={Productcard.productcardcon} dangerouslySetInnerHTML={productdescription}></div>
-                <p className={Productcard.price}> {price}</p>
+                <p className={Productcard.price}>$ {price}</p>
                 </div>
                 </div>
                 </div>
