@@ -795,7 +795,17 @@ footer .form-group {
 }
 
 .hero-slider {
-    .slick-initialized .slick-slide {
+    .slick-initialized {
         padding: 0;
+
+        .slick-slide {
+            padding: 0;
+        }
+    }
+
+    .slick-dots {
+        width: unset;
+        bottom: 76px;
+        right: 77px;
     }
 }

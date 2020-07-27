@@ -2,5 +2,47 @@
 @import '../grid/grid.scss';
 
 .wrapper {
-    background: #44c4d9;
+    background: #edfafc;
+    padding-top: 48px;
+}
+
+.text-wrapper {
+    // padding: 24px 16px 41px;
+    padding: 0 16px;
+    background: #d6f4f7;
+}
+
+.subtitle {
+    padding: 24px 0 18px;
+    &::before {
+        background: #ffcd00;
+    }
+}
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(40, 56);
+    padding-bottom: 1px;
+}
+
+.products {
+    @extend %futurapt-medium;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+}
+
+.description {
+    @include fontStyle(16, 24);
+    padding: 19px 0 15px;
+}
+
+.perfect {
+    @extend %futurapt-bold;
+    @include fontStyle(16, 24);
+    letter-spacing: 1.6px;
+    display: flex;
+}
+
+.link-section {
+    padding: 32px 0 41px;
 }

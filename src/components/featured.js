@@ -5,20 +5,25 @@ import featuredStyles from '../assets/scss/components/featured.module.scss'
 
 const Featured = ({ node }) => {
 
-    return(
-        <div className="container-fluid">
-          <div className="row">
-            <div className={["col-lg-10", featuredStyles.wrapper].join(" ")}>
-              <div className="col-lg-3">
-                {/* <div dangerouslySetInnerHTML={{__html: node.field_featured_title.processed}}></div>
-                <div dangerouslySetInnerHTML={{__html: node.field_featured_description.processed}}></div>
-                <div><Link to={node.field_featured_button.uri}>{node.field_featured_button.title}</Link></div>
-                <div>{node.relationships.field_issues_categories.taxonomy_term__clinical_categories.name}</div> */}
-              </div>
-            </div>
+  return (
+    <div className={["container-fluid", featuredStyles.wrapper].join(" ")}>
+      <div className="row">
+        {/* <div className="col-12">
+            </div> */}
+        <div className="col-12">
+          <div className={featuredStyles.textWrapper}>
+            <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+            <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>)</div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
+            <div className={featuredStyles.perfect}>PERFECT FOR: <span>{node.relationships.field_issues_categories.taxonomy_term__clinical_categories.name}</span></div>
+            <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri} className="button-link">{node.field_featured_button.title}</Link></div>
+            {/* <div></div> */}
           </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 export default Featured

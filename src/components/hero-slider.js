@@ -44,7 +44,6 @@ const HeroSlider = ({ node }) => {
                                             <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
                                             <div dangerouslySetInnerHTML={{ __html: node.field_slider_subtitle.processed }} className={[heroSlider.description].join(" ")}></div>
                                             <div className={heroSlider.linkSection}><Link to={node.field_slider_button.uri} className="button-link">{node.field_slider_button.title}</Link></div>
-                                            {/* <div className="d-none d-lg-block"><Link to="#"><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link></div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -52,19 +51,23 @@ const HeroSlider = ({ node }) => {
                                 <div className="d-none d-lg-block">
                                     <div className="row">
 
-                                    {/* <div className={heroSlider.textWrapper}> */}
                                             <div className={["col-lg-5", heroSlider.textWrapper].join(" ")}>
-                                                <div className="col-11 offset-1 col-right-padding">
-                                                <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
-                                                <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
-                                                <div dangerouslySetInnerHTML={{ __html: node.field_slider_subtitle.processed }} className={[heroSlider.description].join(" ")}></div>
-                                                <div className={heroSlider.linkSection}><Link to={node.field_slider_button.uri} className="button-link">{node.field_slider_button.title}</Link></div>
-                                                {/* <div className="d-none d-lg-block"><Link to="#"><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link></div> */}
+                                                <div className="col-8 offset-2 col-right-padding">
+                                                    <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
+                                                    <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
+                                                    <div dangerouslySetInnerHTML={{ __html: node.field_slider_subtitle.processed }} className={[heroSlider.description].join(" ")}></div>
+                                                    <div className={heroSlider.linkSection}><Link to={node.field_slider_button.uri} className={["button-link", heroSlider.link].join(" ")}>{node.field_slider_button.title}</Link></div>
+                                                </div>
+                                                <div className={["d-none d-lg-block", heroSlider.blueSection].join(" ")}>
+                                                    <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link>
                                                 </div>
                                             </div>
-                                        {/* </div> */}
-                                        <div className="col-md-7 col-padding">
-                                            <div><Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} /></div>
+                                        <div className="col-lg-7 col-padding">
+                                            <div className={heroSlider.sliderImg}>
+                                                <Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} />
+                                                <div className={heroSlider.sliderLogo}></div>
+                                            </div>
+                                            
                                         </div>
 
                                     </div>
