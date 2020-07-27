@@ -1,3 +1,67 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.collectionList{
+    background-color: rgba(68 , 196 , 217 , 0.1) ;
+    padding-top: 101px;
+    padding-bottom: 25px;
+    @include md-screen {
+        padding-top: 108px;
+        padding-bottom: 128px;
+    }
+}
+.productview{
+    padding-bottom: 25px;
+    @include md-screen {
+        padding-bottom: 40px;
+    }
+}
+.filter{
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-medium;
+
+}
+.Collectionfilter select{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 13px;
+    @extend %futurapt-medium;
+    color: #132466;
+     -webkit-appearance: none;
+    appearance: rgba(68 , 196 , 217 , 0.1) ;;
+    -moz-appearance: rgba(68 , 196 , 217 , 0.1) ;;
+    text-indent: 1px;
+    text-overflow: '';
+    border-radius: 6px;
+    border-color: #132466;
+    background: rgba(68 , 196 , 217 , 0.0) ;;
+    position: relative;
+    option{
+        background-color: #132466;
+        color: #fff;
+        height: 60px;
+    }
+   
+}
+.Collectionfilter{
+    padding-bottom: 24px;
+    @include md-screen{
+        padding-bottom: 0;
+    }
+}
+.Collectionfilter select::after{
+    position: absolute;
+    display: block;
+    content: " ";
+    width: 8px;
+    height: 5px;
+    background:url(../../images/product-images/mobile-arrow.svg) ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 55%;
+    transform: translateY(-50%);
+    right: 15px;
+}
