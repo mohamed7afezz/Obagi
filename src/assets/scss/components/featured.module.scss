@@ -17,23 +17,42 @@
     &::before {
         background: #ffcd00;
     }
+
+    @include lg-screen {
+        padding: 200px 0 44px;
+    }
 }
 
 .title {
     @extend %futurapt-light;
     @include fontStyle(40, 56);
     padding-bottom: 1px;
+
+    @include lg-screen {
+        padding-bottom: 16px;
+        @include fontStyle(64, 72);
+    }
 }
 
 .products {
     @extend %futurapt-medium;
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
+
+    @include lg-screen {
+        @include fontStyle(16, 24);
+        letter-spacing: 1.6px;
+    }
 }
 
 .description {
     @include fontStyle(16, 24);
     padding: 19px 0 15px;
+
+    @include lg-screen {
+        @include fontStyle(18, 32);
+        padding: 24px 0 32px
+    }
 }
 
 .perfect {
@@ -45,13 +64,44 @@
 
 .category {
     text-decoration: underline;
-    @include fontStyle(16, 24);
+    letter-spacing: 0;
+    @extend %futurapt-book;
+    a {
+        color: #132466;
+    }
 }
 
 .link-section {
     padding: 32px 0 41px;
+
+    @include lg-screen {
+        padding: 48px 0 195px;
+    }
+}
+
+.link {
+    padding: 24px 74px;
 }
 
 .container-wrapper {
     background: #ebfafc;
+    padding-top: 161px;
+}
+
+.columns-wrapper {
+    background: #44c4d9;
+}
+
+.play {
+    height: 128px;
+    width: 128px;
+}
+
+.view {
+    text-decoration: underline;
+    padding-left: 28px;
+
+    a {
+        color: #132466;
+    }
 }
