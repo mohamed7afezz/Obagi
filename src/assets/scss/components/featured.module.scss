@@ -43,6 +43,11 @@
     display: flex;
 }
 
+.category {
+    text-decoration: underline;
+    @include fontStyle(16, 24);
+}
+
 .link-section {
     padding: 32px 0 41px;
 }
