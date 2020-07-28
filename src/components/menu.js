@@ -12,9 +12,9 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 // }
 
 function addStyles(e) {
-  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.add("not-selected"));
+  document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
   
-  if(e.target.closest(".submenu > li > a")) {
+  if(e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
     let selected = e.target.closest(".submenu > li > a");
     selected.classList.remove("not-selected");
     selected.classList.add("selected");
@@ -24,8 +24,8 @@ function addStyles(e) {
 }
 
 function removeStyles() {
-  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.remove("selected"));
-  document.querySelectorAll(".submenu a").forEach(Elem => Elem.classList.remove("not-selected"));
+  document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.remove("selected"));
+  document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 function createMenuHierarchy(menuData, menuName) {

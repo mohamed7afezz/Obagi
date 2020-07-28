@@ -116,11 +116,22 @@
                     text-decoration: none;
                 }
             }
+
+            li {
+                ul {
+                    li {
+                        a {
+                            color: #132466;
+                        }
+                    }
+                }
+            }
         }
 
         .upper-nav {
             background: #132466;
         }
+
 
     }
 
@@ -208,7 +219,7 @@
             // color: #7c858a;
 
             &:hover {
-                // color: #132466;
+                color: #132466;
                 text-decoration: none;
             }
         }
@@ -218,6 +229,8 @@
         background: #132466;
     }
 
+
+    
 
 }
 

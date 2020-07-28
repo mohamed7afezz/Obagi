@@ -231,8 +231,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                     <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
                     <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/> */}
 
-                    {nodeType? (nodeType === 'clinical'? <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
-                        : <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/>) 
+                    {nodeType? (nodeType === 'clinical'? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`}/>
+                        : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`}/>) 
                         : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
 
 {/* 
