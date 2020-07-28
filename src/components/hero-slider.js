@@ -66,7 +66,7 @@ const HeroSlider = ({ node }) => {
                                         <div className="col-lg-7 col-padding">
                                             <div className={heroSlider.sliderImg}>
                                                 <Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} />
-                                                <div className={heroSlider.sliderLogo}>{Logo}</div>
+                                                <div className={heroSlider.sliderLogo}><img src={Logo}/></div>
                                             </div>
                                             
                                         </div>
@@ -111,7 +111,7 @@ const HeroSlider = ({ node }) => {
                                         <div className="col-lg-7 col-padding">
                                             <div className={heroSlider.sliderImg}>
                                                 <Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} />
-                                                <div className={heroSlider.sliderLogo}>{Logo}</div>
+                                                <div className={heroSlider.sliderLogo}><img src={Logo} alt="obagi logo"/></div>
                                             </div>
                                             
                                         </div>
