@@ -30,8 +30,11 @@ const HeroSlider = ({ node }) => {
 
     return (
         <div className="hero-slider">
-            <div className="container-fluid">
-                <div className="row">
+            <div className={heroSlider.textWrapper}>
+
+
+            <div className="container-fluid pl-0 pr-0">
+                <div className={["row mr-0 ml-0", heroSlider.rowWrapper].join(" ")}>
                     <div style={{ width: "100%" }}>
                         <Slider {...SliderSetting}>
                             <div>
@@ -50,23 +53,19 @@ const HeroSlider = ({ node }) => {
                                 </div>
 
                                 <div className="d-none d-lg-block">
-                                    <div className="row">
+                                    <div className="row mr-0 ml-0">
 
-                                            <div className={["col-lg-5", heroSlider.textWrapper].join(" ")}>
+                                            <div className={["col-lg-5"].join(" ")}>
                                                 <div className="col-8 offset-2 col-right-padding">
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_slider_subtitle.processed }} className={[heroSlider.description].join(" ")}></div>
                                                     <div className={heroSlider.linkSection}><Link to={node.field_slider_button.uri} className={["button-link", heroSlider.link].join(" ")}>{node.field_slider_button.title}</Link></div>
                                                 </div>
-                                                <div className={["d-none d-lg-block", heroSlider.blueSection].join(" ")}>
-                                                    <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link>
-                                                </div>
                                             </div>
                                         <div className="col-lg-7 col-padding">
                                             <div className={heroSlider.sliderImg}>
                                                 <Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} />
-                                                <div className={heroSlider.sliderLogo}><img src={Logo}/></div>
                                             </div>
                                             
                                         </div>
@@ -95,23 +94,19 @@ const HeroSlider = ({ node }) => {
                                 </div>
 
                                 <div className="d-none d-lg-block">
-                                    <div className="row">
+                                    <div className="row mr-0 ml-0">
 
-                                            <div className={["col-lg-5", heroSlider.textWrapper].join(" ")}>
+                                            <div className={["col-lg-5"].join(" ")}>
                                                 <div className="col-8 offset-2 col-right-padding">
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
                                                     <div dangerouslySetInnerHTML={{ __html: node.field_slider_subtitle.processed }} className={[heroSlider.description].join(" ")}></div>
                                                     <div className={heroSlider.linkSection}><Link to={node.field_slider_button.uri} className={["button-link", heroSlider.link].join(" ")}>{node.field_slider_button.title}</Link></div>
                                                 </div>
-                                                <div className={["d-none d-lg-block", heroSlider.blueSection].join(" ")}>
-                                                    <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link>
-                                                </div>
                                             </div>
                                         <div className="col-lg-7 col-padding">
                                             <div className={heroSlider.sliderImg}>
                                                 <Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} />
-                                                <div className={heroSlider.sliderLogo}><img src={Logo} alt="obagi logo"/></div>
                                             </div>
                                             
                                         </div>
@@ -124,9 +119,14 @@ const HeroSlider = ({ node }) => {
                         </Slider>
                     </div>
 
-
+                    <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
+                        <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link>
+                        <div className={heroSlider.sliderLogo}><img src={Logo} alt="obagi logo"/></div>
+                        <div className={heroSlider.yellowSquare}></div>
+                    </div>
 
                 </div>
+            </div>
             </div>
         </div>
     )

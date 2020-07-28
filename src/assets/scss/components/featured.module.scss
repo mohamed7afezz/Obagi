@@ -10,6 +10,8 @@
     // padding: 24px 16px 41px;
     padding: 0 16px;
     background: #d6f4f7;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 .subtitle {
@@ -38,6 +40,12 @@
     @extend %futurapt-medium;
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
+    a {
+        color: #132466;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 
     @include lg-screen {
         @include fontStyle(16, 24);
@@ -60,14 +68,20 @@
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .category {
     text-decoration: underline;
     letter-spacing: 0;
     @extend %futurapt-book;
+    padding-left: 6px;
     a {
         color: #132466;
+    }
+
+    @include lg-screen {
+        padding-left: 8px;
     }
 }
 
@@ -86,10 +100,32 @@
 .container-wrapper {
     background: #ebfafc;
     padding-top: 161px;
+
+
 }
 
 .columns-wrapper {
     background: #d6f4f7;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.image-left {
+    .columns-wrapper {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .image-wrap > div{
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 }
 
 .play {
@@ -103,5 +139,25 @@
 
     a {
         color: #132466;
+    }
+}
+
+.image-wrap {
+    position: relative !important;
+    width: auto !important;
+
+    // .gatsby-image-wrapper {
+    //     height: 100%;
+    // }
+
+}
+.image-wrap > div{
+    height: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    @include lg-screen {
+        border-top-left-radius: unset;
+        border-bottom-right-radius: 6px;
     }
 }

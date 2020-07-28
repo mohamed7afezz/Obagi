@@ -7,7 +7,7 @@ import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 
-const Header = ({ siteTitle, nodeType,menuType }) => {
+const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const location = useLocation();
   // console.log(location.pathname);
@@ -160,10 +160,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div ><Link to="#"className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div ><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <div className={headerStyles.cartWrapper}><Link to="#" className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /><p className={headerStyles.cartCounter}>1</p></Link></div>
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => {removeFirstIcons()}}></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons() }}></button>
                 </div>
               </div>
             </div>
@@ -181,13 +181,24 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
               </div>
             </div>
           </div>
+
+          <div className={headerStyles.categorySection}>
+            <div className="row">
+              <div className="col-6 col-md-3 offset-md-3">
+                <Link to="#"><div className={nodeType ? (nodeType === 'medical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
+              </div>
+              <div className="col-6 col-md-3">
+                <Link to="#"><div className={nodeType ? (nodeType === 'clinical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk , (menuType==='absolute' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
@@ -197,8 +208,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.mainLinks}>
-                    <Link to="#" className={nodeType? (nodeType === 'medical'? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
-                    <Link to="#" className={nodeType? (nodeType === 'clinical'? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
+                    <Link to="#" className={nodeType ? (nodeType === 'medical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="#" className={nodeType ? (nodeType === 'clinical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
                   </div>
                 </div>
 
@@ -227,15 +238,15 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className="col-12 col-padding">
                   {/* <div className="dropdown"> */}
 
-                    {/* <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
+                  {/* <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
                     <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
                     <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/> */}
 
-                    {nodeType? (nodeType === 'clinical'? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`}/>
-                        : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`}/>) 
-                        : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
+                  {nodeType ? (nodeType === 'clinical' ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
+                    : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />)
+                    : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
 
-{/* 
+                  {/* 
                     <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">
                       <div className="d-flex">
                         <div class="container-fluid d-lg-block nav-container-desk">
@@ -413,7 +424,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
         </div>
       </div>
 
-    
+
 
 
 

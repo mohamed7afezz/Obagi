@@ -32,7 +32,7 @@
     margin: 33px 0 48px;
 
     @include lg-screen {
-        margin: 40px 0 192px;
+        margin: 40px 0 352px;
     }
 }
 
@@ -60,6 +60,9 @@
 // }
 
 .blue-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     padding: 56px 0 56px 56px;
     background: #132466;
     width: 100%;
@@ -67,22 +70,29 @@
 
 .slider-img {
     position: relative;
-
-    &::before {
-        position: absolute;
-        content: '';
-        height: 40px;
-        width: 40px;
-        background: #ffcd00;
-        bottom: 0;
-        z-index: 999;
-        left: 234px;
-    }
+    height: 100%;
 }
+
+.slider-img > div {
+    height: 100%;
+}
+
 .slider-logo {
     position: absolute;
     background: #44c4d9;
     padding: 34px 40px 40px 34px;
     bottom: 0;
-    left: -40px;
+    right: -234px;
+}
+
+.row-wrapper {
+    position: relative;
+}
+.yellow-square {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background: #ffcd00;
+    bottom: 0;
+    right: -274px;
 }

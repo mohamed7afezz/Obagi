@@ -94,6 +94,23 @@
 }
 
 
+.category-section {
+    padding-bottom: 17px;
+    text-align: center;
+
+    .category {
+        padding: 15px 0;
+        border: 1px solid #ffffff;
+        @include fontStyle(13, 8);
+        letter-spacing: 6px;
+        color: #ffffff;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+
 
 .navigation-bar-desk {
     background: transparent;
@@ -255,3 +272,4 @@
     background: #fff;
     color: #132466 !important;
 }
+
