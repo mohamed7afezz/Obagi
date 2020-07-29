@@ -42,7 +42,7 @@ const Featured = ({ node }) => {
                 <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>
-                {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : ''}
+                {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ const Featured = ({ node }) => {
                   <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
                     <img class={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>
-                  {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : ''}
+                  {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ const Featured = ({ node }) => {
                     <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
                       <img class={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : ''}
+                    {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:''} /> : ''}
                   </div>
                 </div>
               </div>

@@ -19,9 +19,9 @@ const Needtoknow = ({ node }) => {
                 </div>
                 <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
                     <p className={needtoknow.needtoknowtitle} > 
-                       {node.field_need_to_know_title.processed}
+                       {node.field_need_to_know_title?node.field_need_to_know_title.processed :''}
                     </p>
-                    <div  dangerouslySetInnerHTML={{__html:node. field_need_to_know_description.processed}}></div>
+                    <div  dangerouslySetInnerHTML={{__html:node.field_need_to_know_description?node.field_need_to_know_description.processed:''}}></div>
           </div>
         </div>
         </div>
