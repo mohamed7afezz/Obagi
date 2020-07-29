@@ -60,8 +60,8 @@ const Beforeafter = ({ node }) => {
                         node.relationships.field_before_meet_after_example.map((item, index) => (
                             <div id={"Example" + index} class={index == 0 ? 'beforeimgs ' : ' beforeimgs showimg'}>
                                 <Beforeafterimages
-                                    beforeimage={item.relationships.field_before_image.localFile.childImageSharp.original.src}
-                                    afterimage={item.relationships.field_after_im.localFile.childImageSharp.original.src}
+                                    beforeimage={item.relationships.field_before_image?item.relationships.field_before_image.localFile.childImageSharp.original.src:item.relationships.field_after_im.localFile.childImageSharp.original.src}
+                                    afterimage={item.relationships.field_after_im?item.relationships.field_after_im.localFile.childImageSharp.original.src:item.relationships.field_before_image.localFile.childImageSharp.original.src}
                                 />
 
                             </div>
@@ -100,8 +100,8 @@ const Beforeafter = ({ node }) => {
                                         {
                                             item.relationships.field_boxes.map(item => (
                                                 <div className={[beforeafter.box, "box", "col-5"].join(" ")}>
-                                                    <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage.processed }}></h1>
-                                                    <div dangerouslySetInnerHTML={{ __html: item.field_box_des.processed }}></div>
+                                                    <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage?item.field_percentage.processed:'' }}></h1>
+                                                    <div dangerouslySetInnerHTML={{ __html: item.field_box_des?item.field_box_des.processed:'' }}></div>
                                                 </div>
                                             ))
                                         }

@@ -23,6 +23,7 @@
     "gatsby-source-drupal": "^3.5.13",
     "gatsby-source-filesystem": "^2.3.11",
     "gatsby-transformer-sharp": "^2.5.5",
+    "isotope-layout": "^3.0.6",
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
