@@ -154,7 +154,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fluid={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
@@ -214,7 +214,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 </div>
 
                 <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img fluid={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
                 </div>
 
                 <div className="col col-padding">
