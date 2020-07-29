@@ -11,20 +11,15 @@ const Collectionproducts = ({ node }) => {
     <div className={["container-fluid", productsliststyle.collectionList, "collectionhero"].join(" ")}>
       <div className={["row", productsliststyle.Collectionfiltercontainer].join('')}>
         <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
-        <div id="filters">
-              <div class="ui-group">  
-
-                <div class="button-group js-radio-button-group" data-filter-group="color">
-                <button class="button is-checked" data-filter="">any</button>
-                <button class="button" data-filter=".red">red</button>
-                <button class="button" data-filter=".blue">blue</button>
-                <button class="button" data-filter=".yellow">yellow</button>
-              </div>
-            </div>
-        </div>
+        <label className={productsliststyle.filter}>Filtr by:</label>
+          <select name='sort by'>
+            <option value="Newest">All</option>
+            <option value="low">Price :Low - Heigh</option>
+            <option value="high">Price :Heigh - Low</option>
+          </select>
         </div>
         <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
-        <label className={productsliststyle.filter}>Filtr by:</label>
+        <label className={productsliststyle.filter}>sort by:</label>
           <select name='sort by'>
             <option value="Newest">All</option>
             <option value="low">Price :Low - Heigh</option>
