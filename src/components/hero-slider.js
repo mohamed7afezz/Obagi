@@ -136,7 +136,7 @@ export default HeroSlider
 
 export const fragment = graphql`
     fragment paragraphHeroSlider on paragraph__hero_slider {
-            id
+        id
             field_type {
                 processed
             }

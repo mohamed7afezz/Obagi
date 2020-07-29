@@ -9,23 +9,18 @@ const Collectionproducts = ({ node }) => {
   return (
 
     <div className={["container-fluid", productsliststyle.collectionList, "collectionhero"].join(" ")}>
-      <div className={["row", productsliststyle.Collectionfiltercontainer].join('')}>
+      <div className={["row", productsliststyle.Collectionfiltercontainer,'pb-20'].join(' ')}>
+        <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
+        </div>
         <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
         <label className={productsliststyle.filter}>Filtr by:</label>
-          <select name='sort by'>
+        <p>
+          <select class="filters-select" name='sort by'>
             <option value="Newest">All</option>
             <option value="low">Price :Low - Heigh</option>
             <option value="high">Price :Heigh - Low</option>
           </select>
-        </div>
-        <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
-        <label className={productsliststyle.filter}>sort by:</label>
-          <select name='sort by'>
-            <option value="Newest">All</option>
-            <option value="low">Price :Low - Heigh</option>
-            <option value="high">Price :Heigh - Low</option>
-          </select>
-        </div>
+          </p></div>
       </div>
       <div className={["row", productsliststyle.CollectionListcontainer].join('')}>
            

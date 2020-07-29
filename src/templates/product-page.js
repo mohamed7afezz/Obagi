@@ -65,6 +65,7 @@ export const productPageQuery = graphql`
                     ...ingredientParagraph
                     ...howToUseParagraph
                     ...beforeAfterParagraph
+                    ...needToKnowParagrapgh
                 }
             }
             
