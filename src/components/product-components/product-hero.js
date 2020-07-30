@@ -14,6 +14,7 @@ import Zoom from 'react-img-zoom'
 const ProductHero = ({ data, nodeType }) => {
   
   const isClincal = nodeType == "clinical";
+  
   let node = isClincal? data.nodeClinicalProduct :  data.nodeMedicalProduct;
   let field_image = isClincal? node.relationships.field_clinical_image : node.relationships.field_medical_image;
   let field_description = isClincal? node.field_clinical_description.processed : node.field_medical_description.processed;

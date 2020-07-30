@@ -12,11 +12,37 @@ const ProductPage = props => {
     console.log("hafezz",props)
     const paragraphs = props.pageContext.nodetype== "clinical"?
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
-
+  //  localStorage.setItem(JSON.stringify(props.data.nodeClinicalProduct.title), JSON.stringify(props.path));
+  
+  if (localStorage.getItem("hassan1") === null){
+let i =[{title:props.data.nodeClinicalProduct.title,
+                describe:props.data.nodeClinicalProduct.field_clinical_description.processed,
+                Image:props.data.nodeClinicalProduct.relationships.field_clinical_image[0].localFile.childImageSharp.fluid,
+                price:props.data.nodeClinicalProduct.field_clinical_price,  
+        }]
+    localStorage.setItem("hassan1", JSON.stringify(i));
+  }
+  else{
+    let x =JSON.parse( localStorage.getItem("hassan1"));
+    
+  
+        if (x.some(item => item.title !== props.data.nodeClinicalProduct.title)) {             
+        
+           x.push({title:props.data.nodeClinicalProduct.title,
+                describe:props.data.nodeClinicalProduct.field_clinical_description.processed,
+                Image:props.data.nodeClinicalProduct.relationships.field_clinical_image[0].localFile.childImageSharp.fluid,
+                price:props.data.nodeClinicalProduct.field_clinical_price,  
+                
+        })
+        localStorage.setItem("hassan1", JSON.stringify(x));
+        
+    }
+}
    return (
      <TempContext.Consumer>
        {(value) => {
          console.log("bahi", value)
+         console.log("localData", data)
          return (
            <Layout nodeType={props.pageContext.nodetype} menuType="relative">
              <ProductHero data={data} nodeType={props.pageContext.nodetype} />
@@ -57,6 +83,9 @@ export const productPageQuery = graphql`
                         original {
                                 src
                            }
+                           fluid {
+                            ...GatsbyImageSharpFluid
+                        }
                         }
                     }
                 }

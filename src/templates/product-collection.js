@@ -11,6 +11,8 @@ import TempContext from '../providers/latestview-provider';
 const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     console.log('propsing',props)
+
+   
     return (
         <TempContext.Consumer>
             {(value) => {
