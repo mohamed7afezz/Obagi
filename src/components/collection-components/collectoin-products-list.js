@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 
-const isotope = require('isotope-layout');
+// const isotope = require('isotope-layout');
 
 
 
@@ -13,25 +13,25 @@ const Collectionproducts = ({ node }) => {
 
   
 
-  useEffect(() => {
-    const filterValSelect = document.getElementById('product-filter');
-    const iso = new isotope('.products-list', {
-      itemSelector: '.product-element',
-      layoutMode: 'fitRows',
-      filter: (item) => {
-        const filterVal = filterValSelect.options[filterValSelect.selectedIndex].value;
-        console.log('bahi', filterVal);
-        if(filterVal === 'All' || filterVal == undefined) {
-          return true;
-        }
-        return item.dataset.ingrediant === filterVal;
-      }
-    })
+  // useEffect(() => {
+  //   const filterValSelect = document.getElementById('product-filter');
+  //   const iso = new isotope('.products-list', {
+  //     itemSelector: '.product-element',
+  //     layoutMode: 'fitRows',
+  //     filter: (item) => {
+  //       const filterVal = filterValSelect.options[filterValSelect.selectedIndex].value;
+  //       console.log('bahi', filterVal);
+  //       if(filterVal === 'All' || filterVal == undefined) {
+  //         return true;
+  //       }
+  //       return item.dataset.ingrediant === filterVal;
+  //     }
+  //   })
 
-    document.querySelector('#product-filter').addEventListener( 'change', function( event ) {
-      iso.arrange();
-    });
-  })
+  //   document.querySelector('#product-filter').addEventListener( 'change', function( event ) {
+  //     iso.arrange();
+  //   });
+  // })
   
   
 

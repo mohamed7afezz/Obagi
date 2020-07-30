@@ -82,7 +82,7 @@ const ProductHero = ({ data, nodeType }) => {
                       return(
                         <React.Fragment>
                    <div class="zoom-mobile" data-arrange={index}> 
-                   <InnerImageZoom src={item.localFile.childImageSharp.original.src}/>
+                   {item.localFile ? <InnerImageZoom src={item.localFile.childImageSharp.original.src}/> : ''}
                    </div> 
                       <div class="zoom-desk" data-arrange={index}> 
                    
