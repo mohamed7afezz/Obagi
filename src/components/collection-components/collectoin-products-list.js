@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 
-// const isotope = require('isotope-layout');
+
 
 
 
@@ -13,25 +13,26 @@ const Collectionproducts = ({ node }) => {
 
   
 
-  // useEffect(() => {
-  //   const filterValSelect = document.getElementById('product-filter');
-  //   const iso = new isotope('.products-list', {
-  //     itemSelector: '.product-element',
-  //     layoutMode: 'fitRows',
-  //     filter: (item) => {
-  //       const filterVal = filterValSelect.options[filterValSelect.selectedIndex].value;
-  //       console.log('bahi', filterVal);
-  //       if(filterVal === 'All' || filterVal == undefined) {
-  //         return true;
-  //       }
-  //       return item.dataset.ingrediant === filterVal;
-  //     }
-  //   })
+  useEffect(() => {
+    const isotope = require('isotope-layout');
+    const filterValSelect = document.getElementById('product-filter');
+    const iso = new isotope('.products-list', {
+      itemSelector: '.product-element',
+      layoutMode: 'fitRows',
+      filter: (item) => {
+        const filterVal = filterValSelect.options[filterValSelect.selectedIndex].value;
+        console.log('bahi', filterVal);
+        if(filterVal === 'All' || filterVal == undefined) {
+          return true;
+        }
+        return item.dataset.ingrediant === filterVal;
+      }
+    })
 
-  //   document.querySelector('#product-filter').addEventListener( 'change', function( event ) {
-  //     iso.arrange();
-  //   });
-  // })
+    document.querySelector('#product-filter').addEventListener( 'change', function( event ) {
+      iso.arrange();
+    });
+  })
   
   
 
@@ -73,15 +74,9 @@ const Collectionproducts = ({ node }) => {
             return (
 
               <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
-              {
-                
-               
-                  index > 1 ? 
-                  <ProductCard  producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0]?item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''} price={item.field_clinical_price} rate="5" />
-                   :
-                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0]?item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''} price={item.field_clinical_price} rate="5" />
-              }
-
+   
+                 <ProductCard  producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0]?item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''} price={item.field_clinical_price} rate="0" />
+            
               </div>
             
             )
