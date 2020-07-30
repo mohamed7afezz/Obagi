@@ -40,7 +40,6 @@ const componentsMap = {
 export const getParagraph = node => {
     if (componentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = componentsMap[node.type];
-        console.log('bahi', node.id, node.type);
         return <ParagraphComponent key={node.id} node={node} />;
     }
     return <p key={node.id}>Unknown type {node.__typename}</p>;
@@ -61,7 +60,6 @@ const productComponentsMap = {
 export const getProductParagraph = node => {
     if (productComponentsMap.hasOwnProperty(node.type)) {
         const ParagraphComponent = productComponentsMap[node.type];
-        console.log('bahi', node.id, node.type, node);
         return <ParagraphComponent key={node.id} node={node} />;
     }
     return <p key={node.id}>Unknown type {node.__typename}</p>;

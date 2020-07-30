@@ -25,7 +25,7 @@ const products = () => (
       <Carouselproducts/>
       <Recommendedparing/>
       <ProductSuggestion/>
-   
+      
         </Layout>
         
 )

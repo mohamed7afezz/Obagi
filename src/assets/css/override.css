@@ -251,10 +251,10 @@ height: 100%;
 .iiz__btn.iiz__hint{
     top: 10px;
 }
-.iiz  {
+.productHero .iiz  {
     cursor: url(../images/product-images/PlusCurser.svg), auto !important;
 }
-.slick-slide >div >div {
+.productHero .slick-slide >div >div {
     cursor: url(../images/product-images/PlusCurser.svg), auto !important;
 }
 .zoom-desk,.zoom-mobile{
@@ -326,3 +326,15 @@ display: block;
     .pb-20{
         padding-bottom: 20px;
     }
+    .product-element{
+        min-height: 712px;
+   
+    }
+   .product-element >div{
+   
+        height: 712px;
+    
+   } 
+   .d-none{
+       display: none;
+   }

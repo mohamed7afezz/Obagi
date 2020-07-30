@@ -70,7 +70,7 @@ const ProductHero = ({ data, nodeType }) => {
  
 
   return (
-    <div className={["container-fluid", ProductStyles.productHero].join(" ")}>
+    <div className={["container-fluid", ProductStyles.productHero,'productHero'].join(" ")}>
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname","col-12"].join(" ")}>
            <p className="pathtitle"><Link to="/homepage"> Home </Link>/ <Link to={`/${nodeType}`}> {nodeType} </Link>/ {node.title}</p>
