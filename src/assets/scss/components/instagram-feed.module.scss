@@ -1,2 +1,115 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
+
+.title {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    padding-top: 80px;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+        text-align: center;
+    }
+}
+
+.subtitle {
+    @include fontStyle(18, 32);
+    padding: 16px 0 48px;
+
+    @include lg-screen {
+
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+
+        @include fontStyle(24, 40);
+        text-align: center;
+
+        padding-bottom: 5px 0 32px;
+    }
+}
+
+.username {
+    @include lg-screen {
+        @include fontStyle(18, 32);
+    }
+}
+
+.image {
+    padding-bottom: 24px;
+
+    &:last-child {
+        padding-bottom: 48px;
+    }
+
+    @include lg-screen {
+        padding-bottom: 0;
+    }
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.image-icon {
+    position: absolute;
+    bottom: 24px;
+    right: 18px;
+    color: #ffffff;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px !important;
+
+    @include lg-screen {
+        bottom: 30px;
+        right: 30px;
+        height: 39px;
+        width: 39px !important;
+    }
+}
+
+
+.footnote {
+    @include fontStyle(16, 22);
+    text-align: center;
+    padding-bottom: 16px;
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+
+        padding-top: 60px;
+        padding-bottom: 25px
+    }
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 82px;
+
+    @include lg-screen {
+        padding-bottom: 161px;
+    }
+}
+
+.social-icon {
+    margin-right: 22px;
+
+    @include lg-screen {
+        margin-right: 38px;
+    }
+}
+
+.icon {
+    color: #132466;
+    height: 29px;
+    width: 29px !important;
+
+    @include lg-screen {
+        height: 51px;
+        width: 51px !important;
+    }
+}

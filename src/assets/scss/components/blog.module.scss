@@ -1,0 +1,68 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background: #00c7d8;
+    color: #ffffff;
+    padding: 79px 0 32px;
+
+    @include lg-screen {
+        padding: 80px 0;
+    }
+}
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(48, 64);
+
+    @include lg-screen {
+        @include fontStyle(48, 64);
+        text-align: center;
+    }
+}
+
+.subtitle {
+    @include fontStyle(18, 32);
+    padding: 16px 0 48px;
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        text-align: center;
+        padding: 16px 0 80px;
+    }
+}
+
+.card-title {
+    @include fontStyle(36, 46);
+    padding: 24px 0 16px;
+
+    @include lg-screen {
+        font-size: 36px;
+    }
+}
+
+.card-desc {
+    @include fontStyle(18, 27);
+
+    @include lg-screen {
+        @include fontStyle(18, 32);
+    }
+}
+
+.read-more {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 0;
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    margin: 24px 0 48px;
+
+    @include lg-screen {
+        margin: 24px 0 0;
+    }
+}

@@ -10,7 +10,7 @@ const SectionWithColoredBoxes = ({ node }) => {
     <div className="container-fluid" id="colored-boxes">
       <div className={["row", coloredBoxesStyle.bigSection].join(" ")}>
         <div className={["col-10", "col-lg-5", coloredBoxesStyle.colLeftPadding, coloredBoxesStyle.firstSection].join(" ")}>
-          <div className={coloredBoxesStyle.image}><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div>
+        {node.relationships.field_colored_boxes_image.localFile? <div className={coloredBoxesStyle.image}><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div> : ''}
         </div>
         <div className={["col-9", "offset-2", "col-lg-7", "offset-lg-0", coloredBoxesStyle.colRightPadding].join(" ")}>
           <div className={[coloredBoxesStyle.smallSection].join(" ")}>

@@ -7,8 +7,11 @@ import { getParagraph } from '../components/paragraphs-helper';
 
 const BasicPageTemp = ({ data }) => {
     const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
+    let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
+    
+    console.log('menu', data)
     return (
-        <Layout menuType="absolute">
+        <Layout menuType = {menutype}>
             {/* <SEO title={data.nodePage.field_meta_tags.title} description={data.nodePage.field_meta_tags.description}/> */}
             {paragraphs}
         </Layout>
@@ -34,6 +37,8 @@ query($slug: String!) {
                 ...paragraphImagesBoxes
                 ...paragraphFeaturedSection
                 ...paragraphHeroSlider
+                ...paragraphInstagramFeed
+                ...paragraphBlog
             }
         }
         field_meta_tags {
@@ -41,6 +46,7 @@ query($slug: String!) {
             keywords
             title
         }
+        field_menu_type
     }
 }
 `;

@@ -18,6 +18,8 @@ import RecommendedParing from './product-components/recommendedparing'
 import YouMightAlsoLike from './product-components/productsuggestion'
 import Featured from './featured'
 import HeroSlider from './hero-slider'
+import InstagramFeed from './instagram-feed'
+import Blog from './blog';
 
 
 const componentsMap = {
@@ -31,6 +33,8 @@ const componentsMap = {
     paragraph__section_with_colored_boxes: SectionWithColoredBoxes,
     paragraph__featured_section: Featured,
     paragraph__hero_slider: HeroSlider,
+    paragraph__instagram_feed: InstagramFeed,
+    paragraph__blog: Blog,
 }
 
 export const getParagraph = node => {
