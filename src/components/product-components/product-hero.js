@@ -88,13 +88,14 @@ const ProductHero = ({ data, nodeType }) => {
                    
                     
                       
-                         
+                      {item.localFile? 
                       <Zoom
                         img={item.localFile.childImageSharp.original.src}
                         zoomScale={1.5}
                         width={590 }
                         height={500}
                       />
+                      : '' }
                      </div> 
                      </React.Fragment>
                       )
@@ -148,7 +149,7 @@ const ProductHero = ({ data, nodeType }) => {
             {
                 field_image.map((item, index) => {
                     return <div data-arrange={index} className={[index==0?'myslickactive':' ',"imageContainer",ProductStyles.imageContainer].join(" ")} onClick={() => {slickGoToslide(index);} }>
-                       <img className={["col-3","pr-0","pl-0"].join(" ")} src={item.localFile.childImageSharp.original.src} />
+                        {item.localFile? <img className={["col-3","pr-0","pl-0"].join(" ")} src={item.localFile.childImageSharp.original.src} /> : ''}
                     </div>
                 })
             }

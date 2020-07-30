@@ -133,7 +133,7 @@ const Howtouse = ({ node }) => {
                                                             </a>
                                                             {
                                                                 item.relationships.field_video.relationships.field_video_poster?
-                                                                    <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                    (item.relationships.field_video.relationships.field_video_poster.localFile? <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} /> : '' )
                                                                     : 
                                                                     ''
                                                             }
