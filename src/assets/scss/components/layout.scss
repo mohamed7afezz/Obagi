@@ -828,6 +828,7 @@ footer .form-group {
 
 .step-title {
     @include fontStyle(16, 24);
+    @extend %futurapt-bold;
     
     @include lg-screen {
 
