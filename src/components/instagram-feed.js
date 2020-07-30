@@ -9,6 +9,18 @@ import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg
 
 const InstagramFeed = ({ node }) => {
     console.log('ashraqat', node.relationships)
+
+    // if (typeof window !== `undefined`) {
+    //     const $ = require('jquery');
+
+    //     $(window).on('load', function(){
+    //         $.instagramFeed({
+    //           'username': 'obagiclinical',
+    //           'container': "#instagram-feed-demo"
+    //         });
+    //       });
+    //   }
+
     return (
         <div>
             <div className="container-fluid">
