@@ -6,7 +6,9 @@
 .slick-dots {
     bottom: 0;
 }
-
+.productimage .slick-dots {
+    bottom: -70px;
+}
 .slick-dots li button::before {
     font-family: 'slick';
     font-size: 6px;
@@ -327,12 +329,12 @@ display: block;
         padding-bottom: 20px;
     }
     .product-element{
-        min-height: 712px;
+        min-height: 652px;
    
     }
    .product-element >div{
    
-        height: 712px;
+        height: 652px;
     
    } 
    .d-none{

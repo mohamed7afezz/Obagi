@@ -126,19 +126,17 @@ const Howtouse = ({ node }) => {
                                                     <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                     :
                                                     <div className="video-wrapper">
-
-                                                        <div className="img-wrap">
-                                                            <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
-                                                                <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
-                                                            </a>
-                                                            {
-                                                                item.relationships.field_video.relationships.field_video_poster?
-                                                                    <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
-                                                                    : 
-                                                                    ''
-                                                            }
-                                                            
-                                                        </div>
+                                                       {
+                                                         item.relationships.field_video.relationships.field_video_poster?
+                                                              <div className="img-wrap">
+                                                                   <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
+                                                                       <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                                                                   </a>                                                     
+                                                                   <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />       
+                                                               </div>  
+                                                          : 
+                                                          ''   
+                                                         }
                                                     </div>
                                                 }
 
