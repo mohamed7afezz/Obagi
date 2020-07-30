@@ -1,10 +1,11 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
 import { getProductParagraph } from "../components/paragraphs-helper";
 
 import ProductHero from '../components/product-components/product-hero';
+import TempContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
     let data = props.data;
@@ -13,10 +14,17 @@ const ProductPage = props => {
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 
    return (
-       <Layout nodeType={props.pageContext.nodetype} menuType="relative">
-           <ProductHero data={data} nodeType={props.pageContext.nodetype} />
-           {paragraphs}
-       </Layout>
+     <TempContext.Consumer>
+       {(value) => {
+         console.log("bahi", value)
+         return (
+           <Layout nodeType={props.pageContext.nodetype} menuType="relative">
+             <ProductHero data={data} nodeType={props.pageContext.nodetype} />
+             {paragraphs}
+           </Layout>
+         )
+       }}
+     </TempContext.Consumer>
    )
 }
 
