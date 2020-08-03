@@ -39,14 +39,14 @@ const Recommendedparing = ({ node }) => {
 
                 <Slider {...settings}>
                   {
-                    node.relationships.field_croduct_card.map((item, index) => (
+                    node.relationships? node.relationships.field_croduct_card.map((item, index) => (
                       <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
                         <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} rate="5" />
 
                       </div>
                     ))
-                  }
+                  : ''}
 
                 </Slider>
               </div>

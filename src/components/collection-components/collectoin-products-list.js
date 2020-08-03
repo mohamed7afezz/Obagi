@@ -75,7 +75,7 @@ const Collectionproducts = ({ node }) => {
 
               <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
    
-                 <ProductCard  producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0]?item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''} price={item.field_clinical_price} rate="0" />
+                 <ProductCard  producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0]? (item.relationships.field_clinical_image[0].localFile? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''):''} price={item.field_clinical_price} rate="0" />
             
               </div>
             
