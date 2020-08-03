@@ -75,13 +75,15 @@
 }
 
 .card-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-radius: 6px;
-
-    &:hover {
-        background: #ffffff;
-        box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+    @include lg-screen {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-radius: 6px;
+    
+        &:hover {
+            background: #ffffff;
+            box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+        }
     }
 }
