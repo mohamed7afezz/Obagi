@@ -340,3 +340,7 @@ display: block;
    .d-none{
        display: none;
    }
+
+   .hero-slider.medical-slider .slick-dots li.slick-active button::before {
+        background-color: #00c7d8;
+   }

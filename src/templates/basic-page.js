@@ -39,8 +39,8 @@ query($slug: String!) {
                 ...paragraphFeaturedSection
                 ...paragraphHeroSlider
                 ...paragraphInstagramFeed
-                ...paragraphBlog
                 ...howToUseParagraph
+                ...paragraphServicesParagraph
             }
         }
         field_meta_tags {

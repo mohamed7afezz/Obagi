@@ -1,0 +1,87 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background: rgba(134, 140, 210, 0.1);
+    padding: 80px 0 32px;
+
+    @include lg-screen {
+        padding: 84px 0 112px;
+    }
+
+}
+
+.subtitle {
+    margin-bottom: 16px;
+    &::before {
+        background: #868cd2;
+    }
+
+    @include lg-screen {
+        margin: 56px 0 54px 48px;
+    }
+}
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(40, 56);
+    padding: 24px 0 16px;
+
+    @include lg-screen {
+        @include fontStyle(48, 64);
+        padding: 48px 48px 16px;
+    }
+}
+
+.description {
+    @include fontStyle(18, 32);
+
+    @include lg-screen {
+        padding: 0 48px;
+    }
+
+}
+
+.link {
+    display: inline-block;
+    padding: 24px 78px;
+    margin: 40px 41px 48px;
+
+    @include lg-screen {
+        margin: 40px 48px 48px;
+        padding: 24px 93px;
+    }
+}
+
+.image {
+    position: relative;
+    &::after {
+        content: '';
+        height: 24px;
+        width: 24px;
+        background: #44c4d9;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+}
+
+.special-image {
+    &::after {
+        left: unset;
+        right: 0;
+    }
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 6px;
+
+    &:hover {
+        background: #ffffff;
+        box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+    }
+}

@@ -66,12 +66,12 @@ function createMenuHierarchy(menuData, menuName) {
 function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
-    return ( <Link to={link.link.uri}>
+    return ( <Link to={link.link.uri.replace('internal:', '')}>
       {link.title}
     </Link>)
   } else {
     if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri} id={itemId} onMouseEnter={(e) => {addStyles(e);}} onMouseLeave={() => {removeStyles();}}>
+      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => {addStyles(e);}} onMouseLeave={() => {removeStyles();}}>
         {link.title}
       </Link>)
     }
