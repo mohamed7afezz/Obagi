@@ -105,10 +105,12 @@ background-color: transparent;
     font-size: 18px;
     line-height: 32px;
     padding-bottom: 54px;
+
     @include md-screen {
         padding-bottom: 112px;
        
     }
+
 }
 .howtousehead{
         padding-top: 48px;

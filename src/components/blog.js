@@ -7,9 +7,9 @@ import blogStyles from '../assets/scss/components/blog.module.scss'
 const Blog = ({ node }) => {
 
     console.log('node',node.relationships.field_card)
-    function expand() {
-        let moreText = document.getElementById("blog-more");
-        let btnText = document.getElementById("readBtn");
+    function expand(index) {
+        let moreText = document.getElementById("blog-more" + index);
+        let btnText = document.getElementById("readBtn" + index);
 
         if (moreText.style.display === "none") {
             btnText.innerHTML = "Read less";
@@ -31,7 +31,7 @@ const Blog = ({ node }) => {
                         </div>
                     </div>
                     <div className="row">
-                        {node.relationships.field_card.map((item) => {
+                        {node.relationships.field_card.map((item, index) => {
                             return (
                                 <div className="col-12 col-lg-3">
                                     {item.relationships.field_card_image.localFile ? <div className={blogStyles.cardImage}><Img fluid={item.relationships.field_card_image.localFile.childImageSharp.fluid} /></div> : ''}
@@ -39,10 +39,10 @@ const Blog = ({ node }) => {
                                     {item.field_card_description ?
                                         <div className={blogStyles.cardDesc}>
                                             <span dangerouslySetInnerHTML={{ __html: item.field_card_description.processed + ' ' }}></span>
-                                            {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id="blog-more"></span> : ''}
+                                            {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id={"blog-more" + index}></span> : ''}
                                         </div>
                                         : ''}
-                                    <button type="button" id="readBtn" className={blogStyles.readMore} onClick={(e) => { expand(e); }}>Read More</button>
+                                    <button type="button" id={"readBtn" + index} className={blogStyles.readMore} onClick={() => { expand(index); }}>Read More</button>
                                 </div>
                             )
                         })}

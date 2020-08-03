@@ -35,6 +35,7 @@ const componentsMap = {
     paragraph__hero_slider: HeroSlider,
     paragraph__instagram_feed: InstagramFeed,
     paragraph__blog: Blog,
+    paragraph__how_to_use: Howtouse,
 }
 
 export const getParagraph = node => {

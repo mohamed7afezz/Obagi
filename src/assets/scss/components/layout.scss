@@ -4,7 +4,7 @@
 body {
     color: #132466;
     position: relative;
-    margin-top: 128px;
+    margin-top: 192.5px;
 
     @include lg-screen {
         margin-top: 0;
@@ -759,6 +759,18 @@ footer .form-group {
 
 }
 
+.absolute-extended {
+    .extended-nav {
+        ul {
+            li {
+                a {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
 .selected {
     position: relative;
     &:hover {
@@ -812,4 +824,14 @@ footer .form-group {
 
 #blog-more {
     display: none;
+}
+
+.step-title {
+    @include fontStyle(16, 24);
+    @extend %futurapt-bold;
+    
+    @include lg-screen {
+
+        @include fontStyle(16, 24);
+    }
 }

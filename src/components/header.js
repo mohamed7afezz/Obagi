@@ -185,10 +185,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           <div className={headerStyles.categorySection}>
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
-                <Link to="#"><div className={nodeType ? (nodeType === 'medical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
+                <Link to="/medical"><div className={nodeType ? (nodeType === 'medical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
               </div>
               <div className="col-6 col-md-3">
-                <Link to="#"><div className={nodeType ? (nodeType === 'clinical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
+                <Link to="/clinical"><div className={nodeType ? (nodeType === 'clinical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? ' ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
@@ -208,8 +208,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.mainLinks}>
-                    <Link to="#" className={nodeType ? (nodeType === 'medical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
-                    <Link to="#" className={nodeType ? (nodeType === 'clinical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
+                    <Link to="/medical" className={nodeType ? (nodeType === 'medical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="/clinical" className={nodeType ? (nodeType === 'clinical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
                   </div>
                 </div>
 
