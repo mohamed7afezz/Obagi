@@ -822,10 +822,6 @@ footer .form-group {
     }
 }
 
-#blog-more {
-    display: none;
-}
-
 .step-title {
     @include fontStyle(16, 24);
     @extend %futurapt-bold;

@@ -354,3 +354,7 @@ display: block;
        height: 100%;
    }
 }
+
+   .hero-slider.medical-slider .slick-dots li.slick-active button::before {
+        background-color: #00c7d8;
+   }

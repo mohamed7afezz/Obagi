@@ -27,10 +27,12 @@ const HeroSlider = ({ node }) => {
         ]
     }
 
+    let pageType = node.field_page_type
 
     return (
-        <div className="hero-slider">
-            <div className={heroSlider.textWrapper}>
+
+        <div className={pageType === 'medical'? "hero-slider medical-slider" : 'hero-slider'}>
+            <div className={pageType? (pageType === 'clinical'? heroSlider.textWrapperClinical : pageType === 'medical'? heroSlider.textWrapperMedical : '') : ''}>
 
 
             <div className="container-fluid pl-0 pr-0">
@@ -42,7 +44,7 @@ const HeroSlider = ({ node }) => {
                                     <div className="col-12 col-lg-7 col-padding">
                                         <div><Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} /></div>
                                     </div>
-                                    <div className={heroSlider.textWrapper}>
+                                    <div className={pageType? (pageType === 'clinical'? heroSlider.textWrapperClinical : pageType === 'medical'? heroSlider.textWrapperMedical : '') : ''}>
                                         <div className="col-12 col-lg-4">
                                             <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
                                             <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
@@ -51,7 +53,7 @@ const HeroSlider = ({ node }) => {
                                         </div>
                                     </div>
                                 </div>
-
+                            
                                 <div className="d-none d-lg-block">
                                     <div className="row mr-0 ml-0">
 
@@ -83,7 +85,7 @@ const HeroSlider = ({ node }) => {
                                     <div className="col-12 col-lg-7 col-padding">
                                         <div><Img fluid={node.relationships.field_slider_image.localFile.childImageSharp.fluid} /></div>
                                     </div>
-                                    <div className={heroSlider.textWrapper}>
+                                    <div className={pageType? (pageType === 'clinical'? heroSlider.textWrapperClinical : pageType === 'medical'? heroSlider.textWrapperMedical : '') : ''}>
                                         <div className="col-12 col-lg-4">
                                             <div dangerouslySetInnerHTML={{ __html: node.field_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div>
                                             <div dangerouslySetInnerHTML={{ __html: node.field_slider_title.processed }} className={[heroSlider.title].join(" ")}></div>
@@ -121,8 +123,8 @@ const HeroSlider = ({ node }) => {
 
                     <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
                         <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link>
-                        <div className={heroSlider.sliderLogo}><img src={Logo} alt="obagi logo"/></div>
-                        <div className={heroSlider.yellowSquare}></div>
+                        <div className={pageType? (pageType === 'clinical'? heroSlider.clinicalLogo + ' ' + heroSlider.sliderLogo  : pageType === 'medical'? heroSlider.medicalLogo + ' ' + heroSlider.sliderLogo  : '') : ''}><img src={Logo} alt="obagi logo"/></div>
+                        <div className={pageType? (pageType === 'clinical'? heroSlider.yellowSquare + ' ' +  heroSlider.clinicalSquare: pageType === 'medical'? heroSlider.yellowSquare + ' ' +  heroSlider.medicalSquare: '') : ''}></div>
                     </div>
 
                 </div>
@@ -150,6 +152,7 @@ export const fragment = graphql`
                 title
                 uri
             }
+            field_page_type
             relationships {
                 field_slider_image {
                     localFile {

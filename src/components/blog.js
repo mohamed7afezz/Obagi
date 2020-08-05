@@ -39,7 +39,7 @@ const Blog = ({ node }) => {
                                     {item.field_card_description ?
                                         <div className={blogStyles.cardDesc}>
                                             <span dangerouslySetInnerHTML={{ __html: item.field_card_description.processed + ' ' }}></span>
-                                            {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id={"blog-more" + index}></span> : ''}
+                                            {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id={"blog-more" + index} style={{display: "none"}}></span> : ''}
                                         </div>
                                         : ''}
                                     <button type="button" id={"readBtn" + index} className={blogStyles.readMore} onClick={() => { expand(index); }}>Read More</button>

@@ -40,13 +40,23 @@
     padding: 24px 53px;
 }
 
-.text-wrapper {
+.text-wrapper-clinical {
     mix-blend-mode: multiply;
     background-image: linear-gradient(to top, rgba(91, 140, 164, 0) 42%, rgba(91, 140, 164, 0.18));
 
     @include lg-screen {
         mix-blend-mode: multiply;
         background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+    }
+}
+
+.text-wrapper-medical {
+    mix-blend-mode: multiply;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 42%, rgba(81, 87, 162, 0.65));
+
+    @include lg-screen {
+        mix-blend-mode: multiply;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
     }
 }
 
@@ -79,10 +89,17 @@
 
 .slider-logo {
     position: absolute;
-    background: #44c4d9;
     padding: 34px 40px 40px 34px;
     bottom: 0;
     right: -234px;
+}
+
+.clinical-logo {
+    background: #44c4d9;
+}
+
+.medical-logo {
+    background: #8389cd;
 }
 
 .row-wrapper {
@@ -92,7 +109,14 @@
     position: absolute;
     height: 40px;
     width: 40px;
-    background: #ffcd00;
     bottom: 0;
     right: -274px;
+}
+
+.clinical-square {
+    background: #ffcd00;
+}
+
+.medical-square {
+    background: #00c7d8;
 }

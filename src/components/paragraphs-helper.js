@@ -20,7 +20,8 @@ import  YouMayLike  from "./product-components/youmightlike";
 import Featured from './featured'
 import HeroSlider from './hero-slider'
 import InstagramFeed from './instagram-feed'
-import Blog from './blog';
+import Blog from './blog'
+import Services from './services'
 
 
 const componentsMap = {
@@ -35,8 +36,8 @@ const componentsMap = {
     paragraph__featured_section: Featured,
     paragraph__hero_slider: HeroSlider,
     paragraph__instagram_feed: InstagramFeed,
-    paragraph__blog: Blog,
     paragraph__how_to_use: Howtouse,
+    paragraph__services_paragraph: Services,
 }
 
 export const getParagraph = node => {
