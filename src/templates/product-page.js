@@ -130,12 +130,9 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
-<<<<<<< HEAD
                     ...recommendedMedicalParingParagrapgh
                     ...youMightAlsoLikeMedicalParagrapgh
-=======
   
->>>>>>> d39f10bf183206d3f00f2154c8fe8b82173e3079
                 }
             }
             

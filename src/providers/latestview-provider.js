@@ -1,9 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 const ViewedProductsContext = createContext();
-
-let clinicalProducts = localStorage.getItem('clinicalViewedProducts')? JSON.parse(localStorage.getItem('clinicalViewedProducts')) : [];
-let medicalProducts = localStorage.getItem('medicalViewedProducts')? JSON.parse(localStorage.getItem('medicalViewedProducts')) : [];
+ let clinicalProducts= [];
+ let medicalProducts =[];
+if (typeof window !== `undefined`) {
+ clinicalProducts = localStorage.getItem('clinicalViewedProducts')? JSON.parse(localStorage.getItem('clinicalViewedProducts')) : [];
+ medicalProducts = localStorage.getItem('medicalViewedProducts')? JSON.parse(localStorage.getItem('medicalViewedProducts')) : [];
+}
 
 export const ViewedProductsProvider = ({children}) => {
     const [clinicalViewedProducts, setClinicalViewedProducts] = useState(clinicalProducts);

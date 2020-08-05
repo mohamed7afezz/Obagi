@@ -140,7 +140,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
     result.data.allTaxonomyTermClinicalSkinConcern.edges.forEach(({ node }) => {
         createPage({
-            path: node.fields.slug,
+            path: node.fields.slug ,
             component: productCollectionTemp,
             context: {
                 slug: node.fields.slug,
@@ -150,7 +150,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     });
     result.data.allTaxonomyTermClinicalCategories.edges.forEach(({ node }) => {
         createPage({
-            path: node.path.alias,
+            path:   node.path.alias ,
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
