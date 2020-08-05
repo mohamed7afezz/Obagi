@@ -119,8 +119,7 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
-                    ...recommendedParingParagrapgh
-                    ...youMightAlsoLikeParagrapgh
+  
                 }
             }
             

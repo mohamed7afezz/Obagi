@@ -58,35 +58,3 @@ const Recommendedparing = ({ node }) => {
   )
 }
 export default Recommendedparing;
-
-export const fragment = graphql`
-    fragment recommendedParingParagrapgh on paragraph__recomended_paring {
-      id
-      field_product_description
-      field_product_inform
-      field_product_type
-      field_question
-      field_section_title
-      relationships {
-          field_croduct_card {
-              id
-              title
-              field_clinical_price
-              field_clinical_description {
-                processed
-              }
-              relationships {
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                    }
-                  }
-                }
-              }
-            }
-          }
-    }
-`;
