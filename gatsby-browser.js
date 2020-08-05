@@ -15,9 +15,9 @@ import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 import React from 'react';
-import { TempProvider } from './src/providers/latestview-provider';
+import { ViewedProductsProvider } from './src/providers/latestview-provider';
 export const wrapRootElement = ({ element }) => (
-  <TempProvider>
+  <ViewedProductsProvider>
       {element}
-  </TempProvider>
+  </ViewedProductsProvider>
 );

@@ -26,18 +26,30 @@ const ProductCard = ({ node,producttitle ,productdescription,productimage, price
     return ( 
         <div className={["container-fluid", Productcard.productCardHero].join(" ")}>
         <div className={["row", Productcard.Cardordering].join(" ")}>
-            <div className={"col-12"}>
+            <div className={["col-12",Productcard.cardContainer].join(" ")}>
                 {/* <div className={["d-flex",Productcard.cardname].join(" ")}>
                     <p>new</p>
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
-                <Img className={Productcard.cardimg} fluid={productimage}/>
+                {
+                  productimage? <Img className={Productcard.cardimg} fluid={productimage}/> : ''
+                }
+                
                 <div className={Productcard.starspd}>
+                  
                 <Stars  value={rate}/>
                 </div>
-                <p className={Productcard.productcarddesc}>{producttitle}</p>
+                {producttitle?
+                <p className={Productcard.productcarddesc}>{producttitle}</p>:''
+                }
+                {productdescription?
                   <div className={Productcard.productcardcon} dangerouslySetInnerHTML={productdescription}></div>
-                <p className={Productcard.price}>$ {price}</p>
+                  :
+                  ''
+                }
+                {price?
+                <p className={Productcard.price}>$ <span className="prod-price">{price}</span></p>:''
+              }
                 </div>
                 </div>
                 </div>

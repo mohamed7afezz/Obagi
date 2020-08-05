@@ -4,6 +4,7 @@ import Collectionfooterstyle from "../../assets/scss/components/collectionfooter
 import Img from 'gatsby-image'
 const CollectionFooter = ({ info, blockName })=> {
   console.log('kkk',blockName);
+  
   const FooterBlockList = useStaticQuery(graphql`
     query{
       allBlockContentTaxonomyFooterBlock {
@@ -59,7 +60,7 @@ const CollectionFooter = ({ info, blockName })=> {
 
 return (
     
-    <div className={["container-fluid", Collectionfooterstyle.collectionfooter,"collectionhero"].join(" ")}>
+    <div className={["container-fluid", Collectionfooterstyle.collectionfooter,"collectionhero","collectionfooter"].join(" ")}>
         <div className={"row"}>
           <div className={["col-12","col-lg-10",'row',"offset-lg-1",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 

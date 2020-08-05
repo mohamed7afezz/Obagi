@@ -1,56 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
 import { getProductParagraph } from "../components/paragraphs-helper";
 
 import ProductHero from '../components/product-components/product-hero';
-import TempContext from '../providers/latestview-provider';
+import ViewedProductsContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
     let data = props.data;
     console.log("hafezz",props)
-    const paragraphs = props.pageContext.nodetype== "clinical"?
+    const nodeType = props.pageContext.nodetype;
+    const product = nodeType === 'clinical'? data.nodeClinicalProduct : data.nodeMedicalProduct;
+    const storageName = nodeType === 'clinical'? 'clinicalViewedProducts' : 'medicalViewedProducts';
+
+    const paragraphs = nodeType === 'clinical'?
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
-  //  localStorage.setItem(JSON.stringify(props.data.nodeClinicalProduct.title), JSON.stringify(props.path));
-  
-  if (localStorage.getItem("hassan1") === null){
-let i =[{title:props.data.nodeClinicalProduct.title,
-                describe:props.data.nodeClinicalProduct.field_clinical_description.processed,
-                Image:props.data.nodeClinicalProduct.relationships.field_clinical_image[0].localFile.childImageSharp.fluid,
-                price:props.data.nodeClinicalProduct.field_clinical_price,  
-        }]
-    localStorage.setItem("hassan1", JSON.stringify(i));
-  }
-  else{
-    let x =JSON.parse( localStorage.getItem("hassan1"));
     
-  
-        if (x.some(item => item.title !== props.data.nodeClinicalProduct.title)) {             
-        
-           x.push({title:props.data.nodeClinicalProduct.title,
-                describe:props.data.nodeClinicalProduct.field_clinical_description.processed,
-                Image:props.data.nodeClinicalProduct.relationships.field_clinical_image[0].localFile.childImageSharp.fluid,
-                price:props.data.nodeClinicalProduct.field_clinical_price,  
-                
-        })
-        localStorage.setItem("hassan1", JSON.stringify(x));
-        
-    }
-}
+    const viewedProducts = useContext(ViewedProductsContext);
+    viewedProducts.updateProductsViewedStorage(storageName, nodeType, product);
+
    return (
-     <TempContext.Consumer>
+     <ViewedProductsContext.Consumer>
        {(value) => {
-         console.log("bahi", value)
-         console.log("localData", data)
          return (
-           <Layout nodeType={props.pageContext.nodetype} menuType="relative">
-             <ProductHero data={data} nodeType={props.pageContext.nodetype} />
+           <Layout nodeType={nodeType} menuType="relative">
+             <ProductHero data={data} nodeType={nodeType} />
              {paragraphs}
            </Layout>
          )
        }}
-     </TempContext.Consumer>
+     </ViewedProductsContext.Consumer>
    )
 }
 
@@ -103,6 +83,8 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
+                    ...recommendedParingParagrapgh
+                    ...youMightAlsoLikeParagrapgh
                 }
             }
             
@@ -148,8 +130,8 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
-                    ...recommendedParingParagrapgh
-                    ...youMightAlsoLikeParagrapgh
+                    ...recommendedMedicalParingParagrapgh
+                    ...youMightAlsoLikeMedicalParagrapgh
                 }
             }
             

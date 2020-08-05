@@ -328,15 +328,29 @@ display: block;
     .pb-20{
         padding-bottom: 20px;
     }
-    .product-element{
-        min-height: 652px;
    
-    }
-   .product-element >div{
-   
-        height: 652px;
-    
-   } 
    .d-none{
        display: none;
    }
+   .node-medicalConcerntype .medical-bg ,.node-medicalCategoriestype .medical-bg{
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) , rgba(81, 87, 162, 0.65) );
+   }
+   .node-medicalConcerntype .collectionList,
+   .node-medicalCategoriestype .collectionList {
+       background-color: rgba(19, 36, 102,0.1);
+   }  
+   .node-medicalConcerntype .collectionfooter,
+   .node-medicalCategoriestype .collectionfooter{
+    background-color: #868cd2
+   }
+   @media (min-width:1024px){
+   .equalheight .slick-track{
+       display: flex;
+   }
+   .equalheight .slick-initialized .slick-slide{
+       height: auto;
+   }
+   .equalheight .slick-initialized .slick-slide >div, .equalheight .slick-initialized .slick-slide >div>div {
+       height: 100%;
+   }
+}

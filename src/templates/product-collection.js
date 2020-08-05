@@ -5,39 +5,20 @@ import Layout from '../components/layout';
 import CollectionHero from '../components/collection-components/collection-hero'
 import CollectionFooter from '../components/collection-components/collection-footer'
 import CollectionProducts from '../components/collection-components/collectoin-products-list'
-import TempContext from '../providers/latestview-provider';
+
 // import { getParagraph } from '../components/paragraphs-helper';
 
 const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
-    console.log('propsing',props)
+    console.log('hassanPropsing',props)
 
    
     return (
-        <TempContext.Consumer>
-            {(value) => {
-                console.log('bahi', value);
-                
-                return (
-                    <Layout nodeType={props.pageContext.nodetype} menuType="absolute">
-                        {
-                            props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_paraprapgh_taxonomy?   
-                                <CollectionHero node={props.data}/>
-                                :
-                                ""
-                        }
-                        {
-                            props.data.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product?  
-                                <CollectionProducts node={props.data}/>
-                                :
-                                ""
-                        }
-                        <CollectionFooter node={props.data} blockName={props.data.taxonomyTermClinicalSkinConcern.name}/>
-                    </Layout>
-                )
-            }}
-            
-        </TempContext.Consumer>
+      <Layout nodeType={props.pageContext.nodetype +'type'} menuType="absolute">            
+        <CollectionHero node={props}/>                                   
+        <CollectionProducts node={props}/>
+        <CollectionFooter node={props.data} blockName={props.data}/>
+      </Layout>
     )
 }
 export default ClinicalCollectionTemp
@@ -53,6 +34,177 @@ export const productPageQuery = graphql`
                 }
             }
         },
-        
+        taxonomyTermClinicalCategories(path: {alias: {eq: $slug}}) {
+            name
+            id
+            relationships {
+                node__clinical_product {        
+                    field_clinical_description {
+                      processed
+                    }
+                    field_clinical_price
+                    title
+                    relationships {
+                        field_clinical_components {
+                          ... on paragraph__ingredient {
+                            
+                           relationships {
+                            field_read_more {
+                              field_read_more_content {
+                                processed
+                              }
+                            }
+                          }
+                         }
+                       }
+                      
+                      field_clinical_image {
+                        localFile {
+                          childImageSharp {
+                            fluid {
+                              ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                field_hero_categories_taxonomy {
+                field_taxonomy_hero_para_title
+                field_taxonomy_hero_para_desc
+                field_taxonomy_hero_paraprapgh_t
+                relationships {
+                  field_taxonomy_hero_paraprapgh_i {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            field_taxonomy_footer_category {
+                settings {
+                  label
+                }
+            }
+        },
+        taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
+            name
+            relationships {
+                node__medical_product {
+                  field_medical_is_system
+                    field_medical_description {
+                      processed
+                    }
+                    field_medical_price
+                    title
+                    relationships {
+                      field_medical_components {
+                        ... on paragraph__ingredient {
+                          id
+                          relationships {
+                            field_read_more {
+                              field_read_more_content {
+                                processed
+                              }
+                            }
+                          }
+                        }
+                      }
+                      field_medical_image {
+                        localFile {
+                          childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                field_hero_taxonomy {
+                  field_taxonomy_hero_para_title
+                  field_taxonomy_hero_para_desc
+                  field_taxonomy_hero_paraprapgh_t
+                  relationships {
+                    field_taxonomy_hero_paraprapgh_i {
+                      localFile {
+                        childImageSharp {
+                          fluid {
+                              ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            field_taxonomy_footer_medical {
+                settings {
+                  label
+                }
+            }
+        },
+        taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
+            name
+            relationships {
+                node__medical_product {
+                    field_medical_is_system
+                    field_medical_description {
+                      processed
+                    }
+                    field_medical_price
+                    title
+                    relationships {
+                      field_medical_components {
+                        ... on paragraph__ingredient {
+                          id
+                          relationships {
+                            field_read_more {
+                              field_read_more_content {
+                                processed
+                              }
+                            }
+                          }
+                        }
+                      }
+                      field_medical_image {
+                        localFile {
+                          childImageSharp {
+                            fluid {
+                                ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                field_hero_category_taxonomy {
+                  field_taxonomy_hero_para_title
+                  field_taxonomy_hero_para_desc
+                  field_taxonomy_hero_paraprapgh_t
+                  relationships {
+                    field_taxonomy_hero_paraprapgh_i {
+                      localFile {
+                        childImageSharp {
+                          fluid {
+                              ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            field_taxonomy_medical_footer {
+                settings {
+                  label
+                }
+            }
+        },
     }
 `;

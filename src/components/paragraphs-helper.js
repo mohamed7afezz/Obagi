@@ -16,6 +16,7 @@ import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
 import RecommendedParing from './product-components/recommendedparing'
 import YouMightAlsoLike from './product-components/productsuggestion'
+import  YouMayLike  from "./product-components/youmightlike";
 import Featured from './featured'
 import HeroSlider from './hero-slider'
 import InstagramFeed from './instagram-feed'
@@ -53,7 +54,7 @@ const productComponentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter,
     paragraph__recomended_paring : RecommendedParing,
-    paragraph__you_might_also_like : YouMightAlsoLike,
+    paragraph__you_might_also_like : YouMayLike,
 }
 
 // const clinical

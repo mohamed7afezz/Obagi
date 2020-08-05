@@ -1,26 +1,61 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-const TempContext = createContext();
+const ViewedProductsContext = createContext();
 
-let temp = 'bahi';
+let clinicalProducts = localStorage.getItem('clinicalViewedProducts')? JSON.parse(localStorage.getItem('clinicalViewedProducts')) : [];
+let medicalProducts = localStorage.getItem('medicalViewedProducts')? JSON.parse(localStorage.getItem('medicalViewedProducts')) : [];
 
-export const TempProvider = ({children}) => {
-    const [tempState, setTempState] = useState(temp);
+export const ViewedProductsProvider = ({children}) => {
+    const [clinicalViewedProducts, setClinicalViewedProducts] = useState(clinicalProducts);
+    const [medicalViewedProducts, setMedicalViewedProducts] = useState(medicalProducts);
 
-    const updateTemp = (val) => {
-        setTempState(val);
-        privateFn();
+    function updateProductsViewedStorage(storageName, type, product) {
+        let viewedProducts = [];
+        // 0- get data from localStorage if exisit
+        if(localStorage.getItem(storageName)) {
+            viewedProducts = JSON.parse(localStorage.getItem(storageName));
+            console.log('bahiii storage', viewedProducts);
+        }
+        // 1- check if it is in array
+        console.log('bahiii', product);
+        let isExisit = viewedProducts.some(item => {
+            return item.title === product.title;
+        });
+        console.log('bahiii', isExisit)
+        // 2- remove from array and it to first index if exisit else add to first index
+        if(isExisit) {
+            // remove and update position
+            // a. get position
+            let positionIndex = viewedProducts.findIndex(item => {
+                return item.title === product.title;
+            }) 
+            // b. update position
+            viewedProducts.splice(positionIndex, 1);
+            viewedProducts.splice(0, 0, product);
+        } else {
+            // push to array at firsit position
+            viewedProducts.splice(0,0, product);
+            if(viewedProducts.length > 4) {
+                viewedProducts.pop();
+            }
+        }
+        // 3- update localStorage
+        localStorage.setItem(storageName, JSON.stringify(viewedProducts));
+
+        // if(type == 'clincial') {
+        //     setClinicalViewedProducts(viewedProducts)
+        // } else {
+        //     setMedicalViewedProducts(viewedProducts)
+        // }
     }
 
-    const privateFn = () => {
-        console.log('You can\'t call me out side the provider')
-    }
+    
 
     return (
-        <TempContext.Provider value={{tempState, updateTemp}}>
+        <ViewedProductsContext.Provider value={{clinicalViewedProducts, medicalViewedProducts, updateProductsViewedStorage}}>
             {children}
-        </TempContext.Provider>
+        </ViewedProductsContext.Provider>
     )
 }
 
-export default TempContext;
+export default ViewedProductsContext;

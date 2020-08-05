@@ -1,6 +1,9 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.CollectionListcontainer { 
+    height: auto !important;
+}
 .collectionList{
     background-color: rgba(68 , 196 , 217 , 0.1) ;
     padding-top: 101px;
@@ -10,11 +13,16 @@
         padding-bottom: 128px;
     }
 }
+
 .productview{
     padding-bottom: 25px;
     @include md-screen {
         padding-bottom: 40px;
     }
+
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
 }
 .filter{
     display: block;

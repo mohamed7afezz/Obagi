@@ -74,7 +74,34 @@ module.exports.createPages = async ({ graphql, actions }) => {
                     }
                   }
                 }
-            }
+            },
+            allTaxonomyTermClinicalCategories {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
+              allTaxonomyTermMedicalCategories {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
+              allTaxonomyTermMedicalSkinConcern {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              }
         }
     `);
     
@@ -117,7 +144,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.fields.slug,
-                nodetype: 'clinical'
+                nodetype: 'clinicalConcern'
+            }
+        });
+    });
+    result.data.allTaxonomyTermClinicalCategories.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'clinicalCategories'
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalSkinConcern.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'medicalConcern'
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalCategories.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'medicalCategories'
             }
         });
     });

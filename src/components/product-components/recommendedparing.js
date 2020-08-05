@@ -5,7 +5,11 @@ import ProductStyles from '../../assets/scss/components/product-hero.module.scss
 import Slider from "react-slick";
 
 const Recommendedparing = ({ node }) => {
-  console.log('recommended', node)
+  console.log('HASSannn', node)
+  if (node.parent_field_name === 'field_medical_components') {
+    var checkCardType 
+  }
+  
   var settings = {
 
     dots: true,
@@ -27,32 +31,55 @@ const Recommendedparing = ({ node }) => {
     <div className={["container-fluid", recommendedparing.recommendedcon, "recommendedcon"].join(" ")} >
       <div className={["row", recommendedparing.ordering].join(" ")}>
         <div className={["col-12", "col-lg-12", recommendedparing.allcontainer].join(" ")}>
-          <div class="row">
-            <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
-              <p className={ProductStyles.productcat}>{node.field_section_title}</p>
-              <h1 className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</h1>
-              <p className={recommendedparing.recommendedparingdesc}>{node.field_product_description}</p>
-              <p className={recommendedparing.recommendedparingsec}><span>{node.field_question}</span> {node.field_product_inform}</p>
-            </div>
-            <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
-              <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
+     <div class="row">
 
-                <Slider {...settings}>
-                  {
-                    node.relationships.field_croduct_card.map((item, index) => (
-                      <div className={["col-12", recommendedparing.allcon].join(" ")}>
+      <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
 
-                        <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} rate="5" />
+        <p className={ProductStyles.productcat}>{node.field_section_title}</p>
+        <h1 className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</h1>
+        <p className={recommendedparing.recommendedparingdesc}>{node.field_product_description}</p>
+        <p className={recommendedparing.recommendedparingsec}><span>{node.field_question}</span> {node.field_product_inform}</p>
+      </div>
+      {node.parent_field_name === 'field_medical_components'?
+         
+         <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
+         <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
+ 
+           <Slider {...settings}>
+             {
+               node.relationships.field_croduct_card.map((item, index) => (
+                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
+ 
+                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} price={item.field_medical_price} rate="5" />
+ 
+                 </div>
+               ))
+             }
+ 
+           </Slider>
+           </div>
+           </div>
+     : 
+      <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
+        <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
 
-                      </div>
-                    ))
-                  }
+          <Slider {...settings}>
+            {
+              node.relationships.field_croduct_card.map((item, index) => (
+                <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-                </Slider>
-              </div>
-            </div>
-          </div>
+                  <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} rate="5" />
+
+                </div>
+              ))
+            }
+
+          </Slider>
         </div>
+      </div>
+}
+    </div>  
+      </div>
       </div>
     </div>
   )
@@ -60,17 +87,16 @@ const Recommendedparing = ({ node }) => {
 export default Recommendedparing;
 
 export const fragment = graphql`
-    fragment recommendedParingParagrapgh on paragraph__recomended_paring {
-      id
-      field_product_description
-      field_product_inform
-      field_product_type
-      field_question
-      field_section_title
-      relationships {
+fragment recommendedParingParagrapgh on paragraph__recomended_paring {
+        id
+        relationships {
           field_croduct_card {
+            ... on node__clinical_product {
               id
               title
+              path {
+                alias
+              }
               field_clinical_price
               field_clinical_description {
                 processed
@@ -81,12 +107,60 @@ export const fragment = graphql`
                     childImageSharp {
                       fluid {
                         ...GatsbyImageSharpFluid
-                    }
+                      }
                     }
                   }
                 }
               }
             }
           }
-    }
+        }
+        field_section_title
+        field_question
+        field_product_type
+        field_product_inform
+        field_product_description
+        parent_field_name
+  
+}
+fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
+  
+          id
+          parent_field_name
+          field_section_title
+          field_question
+          field_product_type
+          field_product_inform
+          field_product_description
+          relationships {
+            field_croduct_card {
+              ... on node__medical_product {
+                id
+                path {
+                  alias
+                }
+                fields {
+                  slug
+                }
+                title
+                field_medical_price
+                relationships {
+                  field_medical_image {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+                field_medical_description {
+                  processed
+                }
+              }
+            }
+          }
+        }
+ 
 `;
