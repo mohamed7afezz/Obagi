@@ -106,7 +106,7 @@ const Collectionproducts = ({ node }) => {
           </select>
         </div>
         <div className={["col-12", "col-lg-2", productsliststyle.Collectionfilter, "Collectionfilter"].join(' ')}>
-          <label className={productsliststyle.filter}>sort by:</label>
+          <label className={productsliststyle.filter}>Sort by:</label>
           <select class="filters-select sort-price" name='sort by'>
             <option value="low" selected>Price :Low - High</option>
             <option value="high">Price :High - Low</option>
@@ -146,12 +146,12 @@ const Collectionproducts = ({ node }) => {
                     :
                     <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
                       {node.pageContext.nodetype == 'clinicalConcern' ?
-                        <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
+                        <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
                         :
                         node.pageContext.nodetype == 'clinicalCategories' ?
-                          <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
+                          <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
                           :
-                          <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
+                          <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
   
                       }
                       <div class="d-none ingredient" dangerouslySetInnerHTML={{__html: ingredient}}></div>
@@ -180,6 +180,9 @@ fragment collectionproducts on  taxonomy_term__clinical_skin_concern {
       field_clinical_description {
         processed
       }
+      path {
+        alias
+      } 
       field_clinical_price
       title
       relationships {
