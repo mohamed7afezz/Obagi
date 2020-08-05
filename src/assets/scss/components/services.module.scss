@@ -36,9 +36,12 @@
 .description {
     @include fontStyle(18, 32);
 
+    @include md-screen {
+        margin-top: auto;
+    }
     @include lg-screen {
         padding: 0 48px;
-        margin-top: auto;
+
     }
 
 }
@@ -55,7 +58,7 @@
 }
 
 .button-wrapper {
-    @include lg-screen {
+    @include md-screen {
         margin-top: auto;
     }
 }
@@ -82,10 +85,12 @@
 }
 
 .card-wrapper {
-    @include lg-screen {
+    @include md-screen {
+        height: 100%;
         display: flex;
         flex-direction: column;
-        height: 100%;
+    }
+    @include lg-screen {
         border-radius: 6px;
     
         &:hover {

@@ -39,7 +39,7 @@ const Featured = ({ node }) => {
             <div className="video-wrapper">
 
               <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
+                <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>
                 {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
@@ -70,7 +70,7 @@ const Featured = ({ node }) => {
               <div className="col-lg-7 offset-lg-2">
                 <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to="#">VIEW ALL</Link></span></div>
+                <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri}>VIEW ALL</Link></span></div>
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                 <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
@@ -82,8 +82,8 @@ const Featured = ({ node }) => {
             <div className={["col-lg-5", "col-right-padding", "pl-0", featuredStyles.columnsWrapper].join(" ")}>
               <div className="video-wrapper">
                 <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                  <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
-                    <img class={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                  <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                    <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>
                   {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
                 </div>
@@ -100,8 +100,8 @@ const Featured = ({ node }) => {
               <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
                 <div className="video-wrapper">
                   <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                    <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} class="playbtn">
-                      <img class={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                    <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                      <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
                     {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:''} /> : ''}
                   </div>
@@ -112,7 +112,7 @@ const Featured = ({ node }) => {
                 <div className="col-lg-7 offset-lg-2">
                   <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                  <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to="#">VIEW ALL</Link></span></div>
+                  <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri}>VIEW ALL</Link></span></div>
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                   <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>

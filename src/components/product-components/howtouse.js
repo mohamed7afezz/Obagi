@@ -71,81 +71,152 @@ const Howtouse = ({ node }) => {
             }
         }
     }
-
+    console.log("right", node.field_media_right)
     return (
         <div className={["container-fluid", howto.howtousecon, "howtousecon"].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>
                 <div className={["col-12", "col-lg-10", "offset-lg-1", "allcon", howto.allcon].join(" ")}>
                     <div class="row">
 
-                        <div id="accordion" className={['col-12', 'd-flex', "mobflexwrap"].join(" ")}>
-                            <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
-                                <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
-                                {/* steps btns */}
-                                <div className={["d-flex", howto.tabs].join(" ")}>
-                                    {
-                                        node.relationships.field_step_paragragh.length > 1 ? node.relationships.field_step_paragragh.map((item, index) => (
+                        {node.field_media_right == false ?
+                            <div id="accordion" className="col-12 d-flex mobflexwrap">
+                                <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
+                                    <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
+                                    {/* steps btns */}
+                                    <div className={["d-flex", howto.tabs].join(" ")}>
+                                        {
+                                            node.relationships.field_step_paragragh.length > 1 ? node.relationships.field_step_paragragh.map((item, index) => (
 
-                                            <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
-                                                <div className={[howto.cardhead, "card-header"].join(" ")} >
-                                                    <h5 class="mb-16">
-                                                        <button onClick={(e) => { hcollapse(e); }} className={[howto.btnLink1, "collapsebtn", "btn-link", "btn ", index == 0 ? '' : 'collapsed'].join(" ")} data-target={'step' + index}>{item.field_step_title.processed}</button>
-                                                    </h5>
+                                                <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                                    <div className={[howto.cardhead, "card-header"].join(" ")} >
+                                                        <h5 class="mb-16">
+                                                            <button onClick={(e) => { hcollapse(e); }} className={[howto.btnLink1, "collapsebtn", "btn-link", "btn ", index == 0 ? '' : 'collapsed'].join(" ")} data-target={'step' + index}>{item.field_step_title.processed}</button>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            )) : ''
+
+                                        }
+                                    </div>
+
+                                    {/* steps card */}
+                                    {
+                                        node.relationships.field_step_paragragh.map((item, index) => (
+                                            <div id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'} >
+                                                <div class="card-body">
+                                                    <div className={howto.tabdesc} dangerouslySetInnerHTML={{ __html: item.field_step_all_content.processed }}></div>
                                                 </div>
                                             </div>
-                                        )) : ''
-
+                                        ))
                                     }
+
                                 </div>
 
-                                {/* steps card */}
-                                {
-                                    node.relationships.field_step_paragragh.map((item, index) => (
-                                        <div id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'} >
-                                            <div class="card-body">
-                                                <div className={howto.tabdesc} dangerouslySetInnerHTML={{ __html: item.field_step_all_content.processed }}></div>
+
+
+                                <div className={["col-12", "col-lg-6", "offset-lg-1", "howrightcol", howto.howrightcol].join(" ")}>
+                                    <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
+
+                                    {/* steps image */}
+                                    {
+                                        node.relationships.field_step_paragragh.map((item, index) => (
+                                            <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
+
+                                                <div class="card-body ">
+                                                    {item.relationships.field_step_image ?
+                                                        <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                        :
+                                                        <div className="video-wrapper">
+                                                            {
+                                                                item.relationships.field_video.relationships.field_video_poster ?
+                                                                    <div className="img-wrap">
+                                                                        <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
+                                                                            <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                                                                        </a>
+                                                                        <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                    </div>
+                                                                    :
+                                                                    ''
+                                                            }
+                                                        </div>
+                                                    }
+
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))
-                                }
-
+                                        ))
+                                    }
+                                </div>
                             </div>
+                            : 
 
+                            // IMAGE LEFT 
 
+                            <div id="accordion" className="col-12 d-flex mobflexwrap pl-0">
+                                <div className={["col-12", "col-lg-6", "howrightcol", howto.howrightcol].join(" ")}>
+                                    <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
 
-                            <div className={["col-12", "col-lg-6", "offset-lg-1", "howrightcol", howto.howrightcol].join(" ")}>
-                                <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
+                                    {/* steps image */}
+                                    {
+                                        node.relationships.field_step_paragragh.map((item, index) => (
+                                            <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
 
-                                {/* steps image */}
-                                {
-                                    node.relationships.field_step_paragragh.map((item, index) => (
-                                        <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
+                                                <div class="card-body ">
+                                                    {item.relationships.field_step_image ?
+                                                        <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                        :
+                                                        <div className="video-wrapper">
+                                                            {
+                                                                item.relationships.field_video.relationships.field_video_poster ?
+                                                                    <div className="img-wrap">
+                                                                        <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
+                                                                            <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                                                                        </a>
+                                                                        <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                    </div>
+                                                                    :
+                                                                    ''
+                                                            }
+                                                        </div>
+                                                    }
 
-                                            <div class="card-body ">
-                                                {item.relationships.field_step_image ?
-                                                    <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
-                                                    :
-                                                    <div className="video-wrapper">
-                                                       {
-                                                         item.relationships.field_video.relationships.field_video_poster?
-                                                              <div className="img-wrap">
-                                                                   <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
-                                                                       <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
-                                                                   </a>                                                     
-                                                                   <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />       
-                                                               </div>  
-                                                          : 
-                                                          ''   
-                                                         }
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
+                                    <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
+                                    {/* steps btns */}
+                                    <div className={["d-flex", howto.tabs].join(" ")}>
+                                        {
+                                            node.relationships.field_step_paragragh.length > 1 ? node.relationships.field_step_paragragh.map((item, index) => (
+
+                                                <div className={[howto.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
+                                                    <div className={[howto.cardhead, "card-header"].join(" ")} >
+                                                        <h5 class="mb-16">
+                                                            <button onClick={(e) => { hcollapse(e); }} className={[howto.btnLink1, "collapsebtn", "btn-link", "btn ", index == 0 ? '' : 'collapsed'].join(" ")} data-target={'step' + index}>{item.field_step_title.processed}</button>
+                                                        </h5>
                                                     </div>
-                                                }
+                                                </div>
+                                            )) : ''
 
+                                        }
+                                    </div>
+
+                                    {/* steps card */}
+                                    {
+                                        node.relationships.field_step_paragragh.map((item, index) => (
+                                            <div id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'} >
+                                                <div class="card-body">
+                                                    <div className={howto.tabdesc} dangerouslySetInnerHTML={{ __html: item.field_step_all_content.processed }}></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
+                                        ))
+                                    }
+
+                                </div>
+
+                            </div>}
                     </div>
                 </div>
             </div>
@@ -157,6 +228,7 @@ export default Howtouse
 export const fragment = graphql`
     fragment howToUseParagraph on paragraph__how_to_use {
         id
+        field_media_right
         field_how_to_use_title {
             processed
         }

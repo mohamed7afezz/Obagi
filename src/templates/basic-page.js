@@ -41,6 +41,7 @@ query($slug: String!) {
                 ...paragraphInstagramFeed
                 ...howToUseParagraph
                 ...paragraphServicesParagraph
+                ...paragraphTrending
             }
         }
         field_meta_tags {

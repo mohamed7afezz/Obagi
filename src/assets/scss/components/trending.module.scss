@@ -1,0 +1,84 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background: rgba(134, 140, 210, 0.1);
+    padding-top: 80px;
+
+    @include lg-screen {
+        padding-top: 130px;
+    }
+}
+
+.card-wrapper {
+    background: #ffffff;
+    border-radius: 6px;
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        position: relative;
+        &:hover {
+            box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+            
+            .lower-card {
+                background: #868cd2;
+                color: #ffffff;
+                .link {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+.subtitle {
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 20px 0 11px 24px;
+
+    @include lg-screen {
+        position: absolute;
+        top: 29px;
+        left: 24px;
+        z-index: 99;
+    }
+}
+
+.title {
+    @include fontStyle(32, 38);
+    @extend %futurapt-light;
+    text-transform: uppercase;
+    padding-left: 24px;
+
+    @include lg-screen {
+        @include fontStyle(32, 48);
+        text-align: center;
+        padding-left: 0;
+        padding-bottom: 56px;
+    }
+}
+
+.link {
+    display: inline-block;
+    padding: 24px 92px;
+    margin: 11px 41px 40px;
+
+    @include lg-screen {
+        text-align: center;
+        color: #132466;
+        padding: 64px 0 24px;
+        margin: 0;
+        display: block;
+        @include fontStyle(18, 24);
+        letter-spacing: 1.8px;
+        font-family:  futura-pt-bold,   sans-serif; 
+        font-weight:  700; 
+        font-style:  normal;
+        text-transform: uppercase;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

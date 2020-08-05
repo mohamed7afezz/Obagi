@@ -22,6 +22,7 @@ import HeroSlider from './hero-slider'
 import InstagramFeed from './instagram-feed'
 import Blog from './blog'
 import Services from './services'
+import Trending from './trending'
 
 
 const componentsMap = {
@@ -38,6 +39,7 @@ const componentsMap = {
     paragraph__instagram_feed: InstagramFeed,
     paragraph__how_to_use: Howtouse,
     paragraph__services_paragraph: Services,
+    paragraph__trending: Trending,
 }
 
 export const getParagraph = node => {
