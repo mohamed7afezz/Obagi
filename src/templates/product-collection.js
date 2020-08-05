@@ -164,6 +164,9 @@ export const productPageQuery = graphql`
                     }
                     field_medical_price
                     title
+                    path {
+                      alias
+                    }
                     relationships {
                       field_medical_components {
                         ... on paragraph__ingredient {
