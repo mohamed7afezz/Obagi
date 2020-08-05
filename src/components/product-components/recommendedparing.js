@@ -49,7 +49,7 @@ const Recommendedparing = ({ node }) => {
                node.relationships.field_croduct_card.map((item, index) => (
                  <div className={["col-12", recommendedparing.allcon].join(" ")}>
  
-                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} price={item.field_medical_price} rate="5" />
+                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed? item.field_medical_description.processed : '' }} productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} price={item.field_medical_price} rate="5" />
  
                  </div>
                ))
