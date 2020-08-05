@@ -23,7 +23,7 @@ const CollectionHero = ({node,nodetype}) => {
         <div className={["col-12","col-lg-3","offset-lg-1",Collectionherostyle.Collectionheroleftcol,"Collectionheroleftcol"].join(' ')}>
           {
           checkTaxonomy.relationships.field_hero_paraprapgh_taxonomy?
-          <p className= {Collectionherostyle.type} > {checkTaxonomy.relationships.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_paraprapgh_t}</p>
+          <p className= {[Collectionherostyle.type, node.pageContext.nodetype.includes('medical')? 'medical': ''].join(' ')} > {checkTaxonomy.relationships.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_paraprapgh_t}</p>
           :
           ""
           }

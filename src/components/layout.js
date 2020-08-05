@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect } from "react"
-import PropTypes from "prop-types"
+import PropTypes, { node } from "prop-types"
 import { useStaticQuery, graphql, withPrefix } from "gatsby"
 import Helmet from 'react-helmet'
 import Header from "./header"
@@ -35,7 +35,7 @@ const Layout = ({ children,nodeType,menuType}) => {
       <AboveHeader />
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
       {/* <NavBlocks /> */}
-      <div className={"node-" + nodeType}>
+      <div className={`node-${nodeType}`}>
         <main>{children}</main>
         <Footer />
         <Popup/>

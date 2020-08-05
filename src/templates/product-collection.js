@@ -13,7 +13,7 @@ const ClinicalCollectionTemp = props  => {
 
    
     return (
-      <Layout nodeType={props.pageContext.nodetype +'type'} menuType="absolute">            
+      <Layout nodeType={props.pageContext.nodetype} menuType="absolute">            
         <CollectionHero node={props}/>                                   
         <CollectionProducts node={props}/>
         <CollectionFooter node={props.data} blockName={props.data}/>

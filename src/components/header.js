@@ -184,10 +184,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           <div className={headerStyles.categorySection}>
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
-                <Link to="/medical"><div className={nodeType ? (nodeType === 'medical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
+                <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
               </div>
               <div className="col-6 col-md-3">
-                <Link to="/clinical"><div className={nodeType ? (nodeType === 'clinical' ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
+                <Link to="/clinical"><div className={nodeType ? (nodeType.includes('clinical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
               </div>
             </div>
           </div>
@@ -207,8 +207,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.mainLinks}>
-                    <Link to="/medical" className={nodeType ? (nodeType === 'medical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
-                    <Link to="/clinical" className={nodeType ? (nodeType === 'clinical' ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
+                    <Link to="/medical" className={nodeType ? (nodeType.includes('medical') ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
+                    <Link to="/clinical" className={nodeType ? (nodeType.includes('clinical') ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
                   </div>
                 </div>
 
@@ -241,7 +241,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                     <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
                     <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/> */}
 
-                  {nodeType ? (nodeType === 'clinical' ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
+                  {nodeType ? (nodeType.includes('clinical') ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
                     : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />)
                     : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
 
