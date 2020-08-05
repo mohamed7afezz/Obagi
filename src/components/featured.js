@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import featuredStyles from '../assets/scss/components/featured.module.scss'
 import Img from 'gatsby-image'
 import Player from '@vimeo/player'
@@ -28,7 +28,40 @@ function playvideo(event) {
 }
 
 const Featured = ({ node }) => {
-  console.log('ash', node)
+
+  const data = useStaticQuery(graphql`
+      query MyQuery {
+        allTaxonomyTermClinicalGroups {
+          edges {
+            node {
+              name
+              path {
+                alias
+              }
+              relationships {
+                node__clinical_product {
+                  path {
+                    alias
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+`)
+
+console.log('data', data.allTaxonomyTermClinicalGroups)
+let currentName = node.field_featured_title.processed;
+let productCount = 0;
+let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
+  console.log('name',item.node.name.split(' ')[0], currentName)
+  return currentName.includes(item.node.name.split(' ')[0])
+})[0];
+console.log('name',taxonomy)
+productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
   return (
 
     <div>
@@ -50,19 +83,19 @@ const Featured = ({ node }) => {
             <div className={featuredStyles.textWrapper}>
               <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-              <div className={featuredStyles.products}><Link to="#">PRODUCTS (<span className={featuredStyles.productsNo}>18</span>)</Link></div>
+              <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} >PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>)</Link></div>
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
               <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
-              <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri} className="button-link">{node.field_featured_button.title}</Link></div>
+              <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div>
             </div>
           </div>
         </div>
       </div>
 
 
-      {node.field_image_right == true ? <div className={featuredStyles.containerWrapper}>
+      {node.field_image_right == true ? <div className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
         <div className="container-fluid d-none d-lg-block">
           <div className="row">
 
@@ -70,12 +103,12 @@ const Featured = ({ node }) => {
               <div className="col-lg-7 offset-lg-2">
                 <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri}>VIEW ALL</Link></span></div>
+                <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                 <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
-                <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
+                <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
               </div>
             </div>
 
@@ -93,7 +126,7 @@ const Featured = ({ node }) => {
         </div>
       </div>
         :
-        <div className={featuredStyles.containerWrapper}>
+        <div className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
           <div className="container-fluid d-none d-lg-block">
             <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
@@ -112,12 +145,12 @@ const Featured = ({ node }) => {
                 <div className="col-lg-7 offset-lg-2">
                   <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                  <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>18</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri}>VIEW ALL</Link></span></div>
+                  <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                   <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
-                  <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
+                  <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
                 </div>
               </div>
 
@@ -180,4 +213,6 @@ export const fragment = graphql`
       
       
 `;
+
+
 

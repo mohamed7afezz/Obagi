@@ -86,8 +86,8 @@ const HeroSlider = ({ node }) => {
                         </div>
 
                         <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
-                            {node.relationships.field_slider_scroll_down? <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : ''}
-                            {node.relationships.field_obagi_logo? <div className={heroSlider.sliderLogo}><Img fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : ''}
+                            {node.relationships.field_slider_scroll_down? (node.relationships.field_slider_scroll_down.localFile? <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
+                            {node.relationships.field_obagi_logo? (node.relationships.field_obagi_logo.localFile? <div className={heroSlider.sliderLogo}><Img fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : '') : ''}
                         </div>
 
                     </div>
