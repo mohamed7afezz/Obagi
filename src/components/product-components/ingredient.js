@@ -6,7 +6,7 @@ import ingredient from '../../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../../assets/images/product-images/plus-white.svg'
 
 const Ingredient = ({ node }) => {
-  console.log("hassan" , node)
+ 
   const data = node.relationships;
   return (
 

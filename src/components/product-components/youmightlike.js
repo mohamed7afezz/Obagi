@@ -4,7 +4,6 @@ import ProductCard from "../../components/productcard"
 import Slider from "react-slick"
 import { useStaticQuery, graphql } from "gatsby"
 const YouMayLike = ({ node }) => {
-    console.log('hassan1',node)
   var settings = {
     infinite: true,
     speed: 500,

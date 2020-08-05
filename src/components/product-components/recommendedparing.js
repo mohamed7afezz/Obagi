@@ -5,7 +5,6 @@ import ProductStyles from '../../assets/scss/components/product-hero.module.scss
 import Slider from "react-slick";
 
 const Recommendedparing = ({ node }) => {
-  console.log('HASSannn', node)
   if (node.parent_field_name === 'field_medical_components') {
     var checkCardType 
   }

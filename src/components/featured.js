@@ -9,7 +9,7 @@ function playvideo(event) {
   let iframeContainer, player, playerOpts = {
     url: ''
   }
-  console.log("hassan",)
+  
   let url = event.target.parentNode.getAttribute("href")
   console.log(url)
   playerOpts.url = url

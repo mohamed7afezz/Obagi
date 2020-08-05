@@ -10,7 +10,6 @@ import CollectionProducts from '../components/collection-components/collectoin-p
 
 const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
-    console.log('hassanPropsing',props)
 
    
     return (

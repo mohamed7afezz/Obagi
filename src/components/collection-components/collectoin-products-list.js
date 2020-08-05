@@ -10,7 +10,7 @@ function took() {
 
 
 const Collectionproducts = ({ node }) => {
-  console.log("Hmotawexxx", node)
+
 
 
   if (node.pageContext.nodetype == 'clinicalConcern') {
@@ -26,7 +26,7 @@ const Collectionproducts = ({ node }) => {
   else {
     var checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships.node__medical_product;
   }
-  console.log('hassan22', checkTaxonomy)
+
   useEffect(() => {
     const isotope = require('isotope-layout');
     const filterValSelect = document.getElementById('product-filter');
