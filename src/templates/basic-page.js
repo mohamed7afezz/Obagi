@@ -10,7 +10,6 @@ const BasicPageTemp = ({ data }) => {
     let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
     let pageType = data.nodePage.field_page_type ? (data.nodePage.field_page_type === 'clinical' ? 'clinical' : 'medical') : '';
     
-    console.log('menu', data)
     return (
         <Layout menuType = {menutype} nodeType={pageType}>
             {/* <SEO title={data.nodePage.field_meta_tags.title} description={data.nodePage.field_meta_tags.description}/> */}

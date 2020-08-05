@@ -17,7 +17,7 @@ export function beforeAfter (container) {
 }
 
 function drags(dragElement, resizeElement, container) {
-    console.log(container)
+    
     // Initialize the dragging event on mousedown.
     dragElement.on('mousedown.ba-events touchstart.ba-events', function (e) {
     

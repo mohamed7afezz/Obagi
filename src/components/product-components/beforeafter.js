@@ -39,7 +39,6 @@ const Beforeafter = ({ node }) => {
 
             }
             if (e.target.getAttribute('data-target') == elementid) {
-                console.log('test')
                 element.classList.add("show");
 
 

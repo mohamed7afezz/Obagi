@@ -9,8 +9,6 @@ const HeroBox = ({ node }) => {
         link = <Link to={node.field_link.uri}>{node.field_link.title}</Link>
     }
         
-
-    // console.log(node)
     // 
     return (
         <div className={boxStyle.heroBox} >

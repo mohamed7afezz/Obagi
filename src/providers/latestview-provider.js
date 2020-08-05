@@ -3,10 +3,10 @@ import React, { createContext, useState, useEffect } from 'react';
 const ViewedProductsContext = createContext();
  let clinicalProducts= [];
  let medicalProducts =[];
-if (typeof window !== `undefined`) {
- clinicalProducts = localStorage.getItem('clinicalViewedProducts')? JSON.parse(localStorage.getItem('clinicalViewedProducts')) : [];
- medicalProducts = localStorage.getItem('medicalViewedProducts')? JSON.parse(localStorage.getItem('medicalViewedProducts')) : [];
-}
+// if (typeof window != undefined) {
+//  clinicalProducts = localStorage.getItem('clinicalViewedProducts')? JSON.parse(localStorage.getItem('clinicalViewedProducts')) : [];
+//  medicalProducts = localStorage.getItem('medicalViewedProducts')? JSON.parse(localStorage.getItem('medicalViewedProducts')) : [];
+// }
 
 export const ViewedProductsProvider = ({children}) => {
     const [clinicalViewedProducts, setClinicalViewedProducts] = useState(clinicalProducts);
@@ -15,16 +15,15 @@ export const ViewedProductsProvider = ({children}) => {
     function updateProductsViewedStorage(storageName, type, product) {
         let viewedProducts = [];
         // 0- get data from localStorage if exisit
-        if(localStorage.getItem(storageName)) {
-            viewedProducts = JSON.parse(localStorage.getItem(storageName));
-            console.log('bahiii storage', viewedProducts);
-        }
+        // if(typeof window != undefined && localStorage.getItem(storageName)) {
+        //     viewedProducts = JSON.parse(localStorage.getItem(storageName));
+        // }
+
         // 1- check if it is in array
-        console.log('bahiii', product);
         let isExisit = viewedProducts.some(item => {
             return item.title === product.title;
         });
-        console.log('bahiii', isExisit)
+        
         // 2- remove from array and it to first index if exisit else add to first index
         if(isExisit) {
             // remove and update position
@@ -43,7 +42,9 @@ export const ViewedProductsProvider = ({children}) => {
             }
         }
         // 3- update localStorage
-        localStorage.setItem(storageName, JSON.stringify(viewedProducts));
+        // if(typeof window != undefined) {
+        //     localStorage.setItem(storageName, JSON.stringify(viewedProducts));
+        // }
 
         // if(type == 'clincial') {
         //     setClinicalViewedProducts(viewedProducts)

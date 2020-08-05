@@ -10,7 +10,6 @@ import { useLocation } from "@reach/router"
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const location = useLocation();
-  // console.log(location.pathname);
 
   const data = useStaticQuery(graphql`
     query {

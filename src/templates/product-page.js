@@ -9,7 +9,6 @@ import ViewedProductsContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
     let data = props.data;
-    console.log("hafezz",props)
     const nodeType = props.pageContext.nodetype;
     const product = nodeType === 'clinical'? data.nodeClinicalProduct : data.nodeMedicalProduct;
     const storageName = nodeType === 'clinical'? 'clinicalViewedProducts' : 'medicalViewedProducts';

@@ -120,8 +120,6 @@ const Collectionproducts = ({ node }) => {
           checkTaxonomy ?
 
             checkTaxonomy.map((item, index) => {
-
-              console.log('hassssssan', item)
               let ingredient = '';
               if(node.pageContext.nodetype == 'clinicalConcern') {
                 ingredient  = item.relationships.field_clinical_components.filter(comp => {
