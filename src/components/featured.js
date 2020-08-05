@@ -26,7 +26,6 @@ function playvideo(event) {
 }
 
 const Featured = ({ node }) => {
-<<<<<<< HEAD
 
   const data = useStaticQuery(graphql`
       query MyQuery {
@@ -61,8 +60,6 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
 })[0];
 console.log('name',taxonomy)
 productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
-=======
->>>>>>> 6fa9fe5e1d66b6eadb07cc01493b8eea6ec052c9
   return (
 
     <div>
