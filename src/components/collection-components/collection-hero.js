@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import Collectionherostyle from '../../assets/scss/components/collection-hero.module.scss'
 import Img from 'gatsby-image'
 const CollectionHero = ({node,nodetype}) => {
-  console.log("Hero", node.pageContext.nodetype , node.data)
   if (node.pageContext.nodetype == 'clinicalConcern') {
     var checkTaxonomy =node.data.taxonomyTermClinicalSkinConcern;
   }
@@ -16,7 +15,6 @@ const CollectionHero = ({node,nodetype}) => {
   else{
     var checkTaxonomy =node.data.taxonomyTermMedicalCategories;
   }
-  console.log('Hero', checkTaxonomy);
   return (
 
     <div className={["container-fluid", Collectionherostyle.collectionhero,"collectionhero","medical-bg"].join(" ")}>

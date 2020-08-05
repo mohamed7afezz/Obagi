@@ -9,7 +9,6 @@ import ViewedProductsContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
     let data = props.data;
-    console.log("hafezz",props)
     const nodeType = props.pageContext.nodetype;
     const product = nodeType === 'clinical'? data.nodeClinicalProduct : data.nodeMedicalProduct;
     const storageName = nodeType === 'clinical'? 'clinicalViewedProducts' : 'medicalViewedProducts';
@@ -17,8 +16,8 @@ const ProductPage = props => {
     const paragraphs = nodeType === 'clinical'?
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
     
-    const viewedProducts = useContext(ViewedProductsContext);
-    viewedProducts.updateProductsViewedStorage(storageName, nodeType, product);
+    // const viewedProducts = useContext(ViewedProductsContext);
+    // viewedProducts.updateProductsViewedStorage(storageName, nodeType, product);
 
    return (
      <ViewedProductsContext.Consumer>

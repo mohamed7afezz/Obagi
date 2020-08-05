@@ -14,13 +14,11 @@ function playvideo(event) {
         url: ''
     }
     
-    let url = event.target.parentNode.getAttribute("href")
-    console.log(url)
-    playerOpts.url = url
-    console.log(playerOpts.url)
+    let url = event.target.parentNode.getAttribute("href");
+    playerOpts.url = url;
     if (!playerOpts.url.indexOf('youtube') > -1) {
         document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        console.log(document.querySelector('.video-popup-wrap'))
+        
         return;
     }
 
@@ -71,7 +69,7 @@ const Howtouse = ({ node }) => {
             }
         }
     }
-    console.log("right", node.field_media_right)
+    
     return (
         <div className={["container-fluid", howto.howtousecon, "howtousecon"].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>

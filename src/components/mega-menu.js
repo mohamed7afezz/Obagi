@@ -7,18 +7,13 @@ import Img from 'gatsby-image'
 let megaMenuBlocks = [];
 function fillMegaMenuBlocksArr(data){
     megaMenuBlocks = data.allBlockContentMegaMenuItems.edges.map(({ node }) => node);
-    // console.log(megaMenuBlocks); 
 }
 
 function getBlock(item) {
     let block;
 
-    // console.log(item);
-
-
     let blockIndex = megaMenuBlocks.findIndex(data => data.info.toLowerCase() === item.title.toLowerCase());
-    console.log(megaMenuBlocks[blockIndex]);
-    console.log(blockIndex);
+    
     let numberOfitems = megaMenuBlocks[blockIndex].relationships.field_mega_block.length > 4? 4 : megaMenuBlocks[blockIndex].relationships.field_mega_block.length;
     let maxwidthVar = numberOfitems==1? 654:(numberOfitems*383);
     // let widthVar = ((maxwidthVar/1920)*100);

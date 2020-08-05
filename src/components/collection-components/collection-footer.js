@@ -3,7 +3,6 @@ import { useStaticQuery,graphql } from "gatsby"
 import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
 import Img from 'gatsby-image'
 const CollectionFooter = ({ info, blockName })=> {
-  console.log('kkk',blockName);
   
   const FooterBlockList = useStaticQuery(graphql`
     query{
@@ -37,8 +36,6 @@ const CollectionFooter = ({ info, blockName })=> {
     }
   `);
 
-  console.log("ssss",FooterBlockList)
-
   let getdata;
 
   for (let i = 0; i < FooterBlockList.allBlockContentTaxonomyFooterBlock.edges.length; i++) {
@@ -48,8 +45,6 @@ const CollectionFooter = ({ info, blockName })=> {
       break;
     }
   }
-
-  console.log('ssss',getdata)
 
   if (typeof window !== `undefined`) {
     

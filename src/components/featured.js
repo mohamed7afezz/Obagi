@@ -10,13 +10,11 @@ function playvideo(event) {
     url: ''
   }
   
-  let url = event.target.parentNode.getAttribute("href")
-  console.log(url)
-  playerOpts.url = url
-  console.log(playerOpts.url)
+  let url = event.target.parentNode.getAttribute("href");  
+  playerOpts.url = url;
   if (!playerOpts.url.indexOf('youtube') > -1) {
     document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    console.log(document.querySelector('.video-popup-wrap'))
+    
     return;
   }
 
@@ -28,6 +26,7 @@ function playvideo(event) {
 }
 
 const Featured = ({ node }) => {
+<<<<<<< HEAD
 
   const data = useStaticQuery(graphql`
       query MyQuery {
@@ -62,6 +61,8 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
 })[0];
 console.log('name',taxonomy)
 productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
+=======
+>>>>>>> 6fa9fe5e1d66b6eadb07cc01493b8eea6ec052c9
   return (
 
     <div>

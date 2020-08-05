@@ -9,7 +9,6 @@ const Popup = ({ node, props }) => {
     var myModalEl = document.getElementById('VideoPopUp')
     myModalEl.addEventListener('hidden.bs.modal', function (e) {
       // do something...
-      console.log('bahiii', 'close video');
       document.querySelector('#VideoPopUp .video-popup-wrap').innerHTML = null;
     })
   })

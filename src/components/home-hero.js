@@ -9,8 +9,7 @@ import Img from 'gatsby-image'
 const HomeHero = ({ node }) => {
 
   function changeBackground(bg) {
-    document.getElementById("hero").style.backgroundImage = `url(${bg})`
-    console.log(bg)
+    document.getElementById("hero").style.backgroundImage = `url(${bg})`;
   }
 
   return (

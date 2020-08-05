@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 import servicesStyles from '../assets/scss/components/services.module.scss'
 
 const Services = ({ node }) => {
-    console.log("service", node)
     return (
         <div>
             <div className={servicesStyles.wrapper}>

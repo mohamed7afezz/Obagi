@@ -6,7 +6,6 @@ import lightblub from '../../assets/images/product-images/light-bulb-icon.svg'
 import blueblub from '../../assets/images/product-images/bluelamb.svg'
 
 const Needtoknow = ({ node }) => {
-    console.log("needtoknow" , node)
     return (
         <div className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
 

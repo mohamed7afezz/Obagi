@@ -5,8 +5,6 @@ import blogStyles from '../assets/scss/components/blog.module.scss'
 
 
 const Blog = ({ node }) => {
-
-    console.log('node',node.relationships.field_card)
     function expand(index) {
         let moreText = document.getElementById("blog-more" + index);
         let btnText = document.getElementById("readBtn" + index);
