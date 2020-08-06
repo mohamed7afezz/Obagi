@@ -116,7 +116,7 @@ const Collectionproducts = ({ node ,nodetype}) => {
       <div className={["row products-list", productsliststyle.CollectionListcontainer].join(' ')}>
 
         {
-          checkTaxonomy !== 'To Be Changed' ?
+          checkTaxonomy == 'To Be Changed' ?
 
             checkTaxonomy.map((item, index) => {
               let ingredient = '';
