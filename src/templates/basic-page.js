@@ -41,6 +41,7 @@ query($slug: String!) {
                 ...howToUseParagraph
                 ...paragraphServicesParagraph
                 ...paragraphTrending
+                ...paragraphSolutions
             }
         }
         field_meta_tags {

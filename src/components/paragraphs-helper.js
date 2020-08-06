@@ -23,6 +23,7 @@ import InstagramFeed from './instagram-feed'
 import Blog from './blog'
 import Services from './services'
 import Trending from './trending'
+import Solutions from './solutions';
 
 
 const componentsMap = {
@@ -40,6 +41,7 @@ const componentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__services_paragraph: Services,
     paragraph__trending: Trending,
+    paragraph__solutions: Solutions,
 }
 
 export const getParagraph = node => {
