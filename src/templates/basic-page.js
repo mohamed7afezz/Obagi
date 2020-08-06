@@ -44,6 +44,7 @@ query($slug: String!) {
                 ...vocabularySkinConcerHero
                 ...vocabularySkinConcerList
                 ...paragraphSolutions
+                ...paragraphProductLine
             }
         }
         field_meta_tags {

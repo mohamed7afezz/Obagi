@@ -1,0 +1,91 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    padding: 80px 0;
+    background: rgba(134, 140, 210, 0.1);
+}
+
+.wrapper-title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    text-align: center;
+    padding-bottom: 39px;
+}
+
+.tab {
+    cursor: pointer;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    color: #132466;
+    padding: 14px 0;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    position: relative;
+    margin-right: 24px;
+    margin-bottom: 35px;
+ 
+
+    &:hover {
+        box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+    }
+
+
+}
+
+.card-wrapper {
+    background: #868cd5;
+    border-radius: 6px;
+    padding: 53px 16px 48px;
+    color: #ffffff;
+}
+
+.card-title {
+
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    padding: 18px 0 6px;
+}
+
+.products {
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+}
+
+.description {
+    @include fontStyle(16, 24);
+    padding: 22px 0 20px;
+}
+
+.perfect {
+    
+    @extend %futurapt-bold;
+    @include fontStyle(14, 16);
+
+}
+
+.category {
+    padding-left: 8px;
+
+    a {
+        color: #ffffff;
+        text-decoration: underline;
+        @extend %futurapt-book;
+    }
+}
+
+.image-wrapper {
+    padding: 44px 37px 35px;
+}
+
+.link {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 24px 67px;
+
+    &:hover {
+        border: 1px solid #132466;
+    }
+}

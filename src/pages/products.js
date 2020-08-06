@@ -12,7 +12,7 @@ import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
-import ProductLines from '../components/product-lines'
+import ProductLine from '../components/product-line'
 const products = () => (
  
     <Layout>
@@ -27,7 +27,7 @@ const products = () => (
       <Recommendedparing/>
       <ProductSuggestion/> */}
 
-      <ProductLines />
+      <ProductLine />
       
         </Layout>
         
