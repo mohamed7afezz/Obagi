@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
@@ -16,21 +16,15 @@ const ProductPage = props => {
     const paragraphs = nodeType === 'clinical'?
     data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
     
-    // const viewedProducts = useContext(ViewedProductsContext);
-    // viewedProducts.updateProductsViewedStorage(storageName, nodeType, product);
+    const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
+    updateProductsViewedStorage(storageName, nodeType, product);
 
-   return (
-     <ViewedProductsContext.Consumer>
-       {(value) => {
-         return (
-           <Layout nodeType={nodeType} menuType="relative">
-             <ProductHero data={data} nodeType={nodeType} />
-             {paragraphs}
-           </Layout>
-         )
-       }}
-     </ViewedProductsContext.Consumer>
-   )
+    return (
+        <Layout nodeType={nodeType} menuType="relative">
+          <ProductHero data={data} nodeType={nodeType} />
+          {paragraphs}
+        </Layout>
+    )
 }
 
 export default ProductPage;
