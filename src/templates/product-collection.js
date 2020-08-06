@@ -41,6 +41,9 @@ export const productPageQuery = graphql`
                     field_clinical_description {
                       processed
                     }
+                    path {
+                      alias
+                    } 
                     field_clinical_price
                     title
                     relationships {
@@ -99,6 +102,9 @@ export const productPageQuery = graphql`
                     field_medical_description {
                       processed
                     }
+                    path {
+                      alias
+                    } 
                     field_medical_price
                     title
                     relationships {
@@ -158,6 +164,9 @@ export const productPageQuery = graphql`
                     }
                     field_medical_price
                     title
+                    path {
+                      alias
+                    }
                     relationships {
                       field_medical_components {
                         ... on paragraph__ingredient {
