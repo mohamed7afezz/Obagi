@@ -12,7 +12,12 @@ const Details = ({ node }) => {
                    data.field_detail_safe.map(item => (
                     <div className={["col-12", "col-lg-4", "offset-lg-1"].join(" ")}>
                         <div className={detailsStyles.detail}>
-                            <h1 dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></h1>
+                            {
+                            item.field_sec?
+                                <h1 dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></h1>
+                            :
+                                ''
+                            }
                             <div className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription.processed}}></div>
                         </div>
                     </div>
