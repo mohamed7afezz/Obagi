@@ -61,10 +61,10 @@ const ProductHero = ({ data, nodeType }) => {
     arrows: false,
     dots: true,
     beforeChange: (current, next) => {
-      document.querySelector(".myslickactive").classList.remove("myslickactive")
-      document
-        .querySelectorAll("#product-hero-slick .imageContainer")
-        [next].classList.add("myslickactive")
+      if(document.querySelector(".myslickactive") != null){
+        document.querySelector(".myslickactive").classList.remove("myslickactive")
+        document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add("myslickactive")
+      }
     },
     responsive: [
       {
