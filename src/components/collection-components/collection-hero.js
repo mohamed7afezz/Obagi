@@ -15,7 +15,6 @@ const CollectionHero = ({ node, nodetype }) => {
   } else {
     // listing pages
     checkTaxonomy = node;
-    console.log('bahii', node)
   }
   
   return (

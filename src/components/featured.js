@@ -51,14 +51,13 @@ const Featured = ({ node }) => {
 
 `)
 
-console.log('data', data.allTaxonomyTermClinicalGroups)
+
 let currentName = node.field_featured_title.processed;
 let productCount = 0;
 let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
-  console.log('name',item.node.name.split(' ')[0], currentName)
   return currentName.includes(item.node.name.split(' ')[0])
 })[0];
-console.log('name',taxonomy)
+
 productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
   return (
 
