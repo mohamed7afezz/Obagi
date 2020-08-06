@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+import React from 'react';
+import { ViewedProductsProvider } from './src/providers/latestview-provider';
+export const wrapRootElement = ({ element }) => (
+  <ViewedProductsProvider>
+    {element}
+  </ViewedProductsProvider>
+);

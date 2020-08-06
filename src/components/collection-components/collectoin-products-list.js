@@ -4,26 +4,24 @@ import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 
 
+const Collectionproducts = ({ node, nodetype }) => {
+  let checkTaxonomy;
+  let pageNodeType = nodetype? nodetype : '';
 
-const Collectionproducts = ({ node ,nodetype}) => {
-  console.log('hassan',node)
-
-
-  if (nodetype == 'clinicalConcern') {
-    var checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product;
+  if (pageNodeType == 'clinicalConcern') {
+    checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships.node__clinical_product;
 
   }
-  else if (nodetype == 'clinicalCategories') {
-    var checkTaxonomy = node.data.taxonomyTermClinicalCategories.relationships.node__clinical_product;
+  else if (pageNodeType == 'clinicalCategories') {
+    checkTaxonomy = node.data.taxonomyTermClinicalCategories.relationships.node__clinical_product;
   }
-  else if (nodetype == 'medicalConcern') {
-    var checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships.node__medical_product;
+  else if (pageNodeType == 'medicalConcern') {
+    checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships.node__medical_product;
   }
-  else if(nodetype == 'medicalCategories') {
-    var checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships.node__medical_product;
-  }
-  else{
-    var checkTaxonomy = node
+  else  if (pageNodeType == 'medicalCategories') {
+    checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships.node__medical_product;
+  } else {
+    checkTaxonomy = node;
   }
 
   useEffect(() => {
@@ -116,11 +114,11 @@ const Collectionproducts = ({ node ,nodetype}) => {
       <div className={["row products-list", productsliststyle.CollectionListcontainer].join(' ')}>
 
         {
-          checkTaxonomy == 'To Be Changed' ?
+          checkTaxonomy && (pageNodeType.includes('clinicalConcern') || pageNodeType.includes('clinicalCategories') || pageNodeType.includes('medicalConcern') || pageNodeType.includes('medicalCategories'))?
 
             checkTaxonomy.map((item, index) => {
               let ingredient = '';
-              if(node.pageContext.nodetype == 'clinicalConcern') {
+              if(pageNodeType == 'clinicalConcern') {
                 ingredient  = item.relationships.field_clinical_components.filter(comp => {
                   return comp.__typename == 'paragraph__ingredient';
                 })[0].relationships.field_read_more[0].field_read_more_content.processed;
@@ -131,68 +129,51 @@ const Collectionproducts = ({ node ,nodetype}) => {
                   {
                     item.field_medical_is_system ?
                     <div className={["col-12 col-lg-6 col-md-6 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
-                      {node.pageContext.nodetype == 'clinicalConcern' ?
+                      {pageNodeType == 'clinicalConcern' ?
                         <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
                         :
-                        node.pageContext.nodetype == 'clinicalCategories' ?
+                        pageNodeType == 'clinicalCategories' ?
                           <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
-                          : 
-                           node.pageContext.nodetype == 'medicalCategories' ?
+                          :
                           <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
-                          : 
-                          node.pageContext.nodetype == 'medicalConcern' ?
-                          <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
-                          : 
-                       ''
+  
                       }
                       <div class="d-none ingredient" dangerouslySetInnerHTML={{__html: ingredient}}></div>
                     </div>
                     :
                     <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
-                    {node.pageContext.nodetype == 'clinicalConcern' ?
-                      <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
-                      :
-                      node.pageContext.nodetype == 'clinicalCategories' ?
-                        <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
-                        : 
-                         node.pageContext.nodetype == 'medicalCategories' ?
-                        <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
-                        : 
-                        node.pageContext.nodetype == 'medicalConcern' ?
-                        <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
-                        : 
-                        node.relationships.field_vocabularies.map(item =>(
-                          item.relationships.node__clinical_product?
-                          item.relationships.node__clinical_product.map(product=>(
-                            <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />  
-                          ))
-                          
-                            :
-                            ''
-                        ))
-                    }
-                    <div class="d-none ingredient" dangerouslySetInnerHTML={{__html: ingredient}}></div>
-                  </div>
+                      {pageNodeType == 'clinicalConcern' ?
+                        <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
+                        :
+                        pageNodeType == 'clinicalCategories' ?
+                          <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[0] ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="0" />
+                          :
+                          <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed }} productimage={item.relationships.field_medical_image[0] ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_medical_price} rate="0" />
+  
+                      }
+                      <div class="d-none ingredient" dangerouslySetInnerHTML={{__html: ingredient}}></div>
+                    </div>
                   }
                   
                 </>
               )
             }
 
-            ) :    node.relationships.field_vocabularies.map(item =>(
-              item.relationships.node__clinical_product?
-              item.relationships.node__clinical_product.map((product, index)=>{
-                console.log('habl',product)
-               return (
-               <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
-
-               <ProductCard producttitle={product.title} productdescription={{ __html: product.field_clinical_description.processed }} productimage={product.relationships.field_clinical_image[index] ? product.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} price={product.field_clinical_price} rate="0" />  
-                </div>)
-              })
-              
-                :
-                ''
-            ))
+            ) : (checkTaxonomy? (
+              checkTaxonomy.relationships.field_vocabularies.map(item =>(
+                item.relationships.node__clinical_product?
+                item.relationships.node__clinical_product.map((product, index)=>{
+                 return (
+                 <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
+  
+                 <ProductCard producttitle={product.title} productdescription={{ __html: product.field_clinical_description.processed }} productimage={product.relationships.field_clinical_image[index] ? product.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} price={product.field_clinical_price} rate="0" />  
+                  </div>)
+                })
+                
+                  :
+                  ''
+              ))
+            ) : "")
 
         }
 
@@ -243,44 +224,43 @@ fragment collectionproducts on  taxonomy_term__clinical_skin_concern {
   }
 }
 fragment vocabularySkinConcerList on paragraph__vocabularies {
-       id
-       relationships {
-         field_vocabularies {
-           relationships {
-             node__clinical_product {
-               title
-               field_clinical_description {
-                 processed
-               }
-               field_clinical_price
-               relationships {
-                 field_clinical_image {
-                   localFile {
-                     childImageSharp {
-                       fluid {
-                        ...GatsbyImageSharpFluid
+  id
+  relationships {
+    field_vocabularies {
+      relationships {
+        node__clinical_product {
+          title
+          field_clinical_description {
+            processed
+          }
+          field_clinical_price
+          relationships {
+            field_clinical_image {
+              localFile {
+                childImageSharp {
+                  fluid {
+                   ...GatsbyImageSharpFluid
 
-                       }
-                     }
-                   }
-                 }
-                 field_clinical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
                   }
                 }
+              }
+            }
+            field_clinical_components {
+             ... on paragraph__ingredient {
+               id
+               relationships {
+                 field_read_more {
+                   field_read_more_content {
+                     processed
+                   }
+                 }
                }
              }
            }
-         }
-       }
-     }
-
+          }
+        }
+      }
+    }
+  }
+}
 `;
