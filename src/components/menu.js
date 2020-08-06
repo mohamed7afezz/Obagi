@@ -32,8 +32,8 @@ function createMenuHierarchy(menuData, menuName) {
   let tree = [],
      mappedArr = {},
      arrElem,
-     mappedElem
-
+     mappedElem;
+     
   // First map the nodes of the array to an object -> create a hash table.
   for (let i = 0, len = menuData.length; i < len; i++) {
     arrElem = menuData[i].node
@@ -52,6 +52,7 @@ function createMenuHierarchy(menuData, menuName) {
       mappedElem = mappedArr[id]
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
+        console.log('bahii', mappedArr, mappedElem.drupal_parent_menu_item)
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }
       // If the element is at the root level, add it to first level elements array.

@@ -13,6 +13,7 @@ import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
 import ProductLines from '../components/product-lines'
+import YourBag from "../components/bag"
 const products = () => (
  
     <Layout>
@@ -26,9 +27,9 @@ const products = () => (
       <Carouselproducts/>
       <Recommendedparing/>
       <ProductSuggestion/> */}
-
-      <ProductLines />
-      
+ 
+      {/* <ProductLines /> */}
+      <YourBag/>
         </Layout>
         
 )
