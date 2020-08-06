@@ -388,5 +388,31 @@
 }
 
 .hero-slider.medical-slider .slick-dots li.slick-active button::before {
-  background-color: #00c7d8;
+    background-color: #00c7d8;
+}
+
+.tab-slider {
+    padding-bottom: 0;
+}
+/* .slick-slider.tab-slider.slick-initialized .slick-slide {
+    width: 212px !important; 
+} */
+
+.tab-slider .slick-active .line-tab {
+    background: #132466;
+    color: #fff;
+    box-shadow: unset;
+}
+
+.tab-slider .slick-active .line-tab::after {
+        content: '';
+        width: 24px;
+        height: 24px;
+        background: #132466;
+        position: absolute;
+        bottom: -2px;
+        right: 45%;
+        display: inline-block;
+        transform: rotate(-315deg);
+        z-index: -1;
 }
