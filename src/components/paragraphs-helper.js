@@ -23,7 +23,8 @@ import InstagramFeed from './instagram-feed'
 import Blog from './blog'
 import Services from './services'
 import Trending from './trending'
-
+import CollectionHero from './collection-components/collection-hero';
+import Collectionproducts from './collection-components/collectoin-products-list' ;
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -40,6 +41,8 @@ const componentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__services_paragraph: Services,
     paragraph__trending: Trending,
+    paragraph__taxonomy_hero_paraprapgh: CollectionHero,
+    paragraph__vocabularies: Collectionproducts,
 }
 
 export const getParagraph = node => {

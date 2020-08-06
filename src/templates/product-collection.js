@@ -14,8 +14,8 @@ const ClinicalCollectionTemp = props  => {
    
     return (
       <Layout nodeType={props.pageContext.nodetype} menuType="absolute">            
-        <CollectionHero node={props}/>                                   
-        <CollectionProducts node={props}/>
+        <CollectionHero node={props} nodetype={props.pageContext.nodetype}/>                                   
+        <CollectionProducts node={props} nodetype={props.pageContext.nodetype}/>
         <CollectionFooter node={props.data} blockName={props.data}/>
       </Layout>
     )

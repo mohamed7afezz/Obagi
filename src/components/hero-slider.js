@@ -48,7 +48,7 @@ const HeroSlider = ({ node }) => {
                                                 </div>
                                                 <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
                                                     <div className="col-12 col-lg-4">
-                                                        {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div> : ''}
+                                                        {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical')? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                         {item.field_slide_title? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : '' }
                                                         {item.field_slide_subtitle? <div dangerouslySetInnerHTML={{ __html: item.field_slide_subtitle.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
                                                         {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri} className="button-link">{item.field_slide_button.title}</Link></div> : ''}
@@ -61,7 +61,7 @@ const HeroSlider = ({ node }) => {
 
                                                     <div className={["col-lg-5"].join(" ")}>
                                                         <div className="col-8 offset-2 col-right-padding">
-                                                            {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle].join(" ")}></div> : '' }
+                                                            {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical')? heroSlider.medical : ''].join(" ")}></div> : '' }
                                                             {item.field_slide_title? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : '' }
                                                             {item.field_slide_subtitle? <div dangerouslySetInnerHTML={{ __html: item.field_slide_subtitle.processed }} className={[heroSlider.description].join(" ")}></div> : '' }
                                                             {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri} className={["button-link", heroSlider.link].join(" ")}>{item.field_slide_button.title}</Link></div> : '' }

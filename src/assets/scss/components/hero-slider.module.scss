@@ -9,6 +9,10 @@
     }
 }
 
+.medical.subtitle:before {
+    background-color: #868cd2;
+}
+
 .title {
     @extend %futurapt-light;
     font-size: 40px;
