@@ -12,19 +12,22 @@ import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
+import ProductLines from '../components/product-lines'
 const products = () => (
  
     <Layout>
-        <ProductHero/>
+        {/* <ProductHero/>
       <Details/>
       <Ingredient/>
-      <Needtoknow/>
+      <Needtoknow/> */}
       <Howtouse/>
-      <Beforeafter/>
+      {/* <Beforeafter/>
 
       <Carouselproducts/>
       <Recommendedparing/>
-      <ProductSuggestion/>
+      <ProductSuggestion/> */}
+
+      <ProductLines />
       
         </Layout>
         

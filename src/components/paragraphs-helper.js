@@ -25,6 +25,8 @@ import Services from './services'
 import Trending from './trending'
 import CollectionHero from './collection-components/collection-hero';
 import Collectionproducts from './collection-components/collectoin-products-list' ;
+import Solutions from './solutions';
+
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -43,6 +45,7 @@ const componentsMap = {
     paragraph__trending: Trending,
     paragraph__taxonomy_hero_paraprapgh: CollectionHero,
     paragraph__vocabularies: Collectionproducts,
+    paragraph__solutions: Solutions,
 }
 
 export const getParagraph = node => {

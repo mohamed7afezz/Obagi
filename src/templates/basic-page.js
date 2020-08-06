@@ -43,6 +43,7 @@ query($slug: String!) {
                 ...paragraphTrending
                 ...vocabularySkinConcerHero
                 ...vocabularySkinConcerList
+                ...paragraphSolutions
             }
         }
         field_meta_tags {

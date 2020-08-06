@@ -1,0 +1,112 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background: rgba(134, 140, 210, 0.1);
+    color: #ffffff;
+
+    @include lg-screen {
+        background: #868cd2;
+        padding: 112px 0;
+    }
+}
+
+.container-wrapper {
+    background: #868cd2;
+    padding: 48px 16px;
+    border-radius: 6px;   
+}
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    padding-bottom: 40px;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+        padding-bottom: 40px;
+    }
+}
+
+.solution-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    @include lg-screen {
+        margin-bottom: 32px;
+
+        &:hover {
+            .icon-wrapper {
+                background: #00c7d8;
+                border-radius: 6px;
+            }
+
+            .solution {
+                position: relative;
+                &:before {
+                    position: absolute;
+                    background-repeat: no-repeat;
+                    content: '';
+                    background-image: url('../../images/small-right.png');
+                    left: -48px;
+                    top: 50%;
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+        }
+    }
+}
+
+.icon-wrapper {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-right: 20px;
+
+    @include lg-screen {
+        margin-right: 96px;
+        border-radius: unset;
+        border: unset;
+        padding: 28px 26px 27px 27px;
+    }
+}
+
+.solution {
+    color: #ffffff;
+    @extend %futurapt-light;
+    @include fontStyle(24, 40);
+
+    @include lg-screen {
+        @include fontStyle(40, 56);
+    }
+}
+
+.link {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    display: inline-block;
+    padding: 16px 31px 16px 33px;
+
+    &:hover {
+        border: 1px solid #132466;
+    }
+
+    @include lg-screen {
+        padding: 24px 31px 24px 32px;
+    }
+}
+
+.link-section {
+    padding: 20px 40px 0 42px;
+
+    @include lg-screen {
+        padding: 0;
+    }
+}
