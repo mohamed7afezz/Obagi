@@ -18,6 +18,16 @@ const YourBag = ({ node }) => {
       }
     }
   `)
+      function togglebag(e){
+        document.querySelector('.bagDataConten').classList.toggle("Showshipping");
+      }
+      function coupon(e){
+        document.querySelector('.bagDataConten').classList.toggle("showCoupon");
+      }
+      function apply(e){
+        document.querySelector('.bagDataConten').classList.toggle("applied");
+        e.preventDefault();
+      }
   return (
     <div
       className={[
@@ -31,16 +41,16 @@ const YourBag = ({ node }) => {
         <div className={["offset-lg-1", "col-md-7"].join(" ")}>
           <div className={"productInBag"}>
             <div className={["row", "alignFlex"].join(" ")}>
-              <div class='hide-desk col-4'>
-              
-                  <Img
-                    className={BagStyle.prodThumb}
-                    fluid={data.prouduct.childImageSharp.fluid}
-                  />
-                
+              <div class="hide-desk col-4">
+                <Img
+                  className={BagStyle.prodThumb}
+                  fluid={data.prouduct.childImageSharp.fluid}
+                />
               </div>
-              <div  className={["row", "alignFlex",'col-lg-12'].join(" ")}>
-                <div className={["col-md-2",'hide-tabmob'].join(' ')}>
+              <div
+                className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
+              >
+                <div className={["col-md-2", "hide-tabmob"].join(" ")}>
                   <Img
                     className={BagStyle.prodThumb}
                     fluid={data.prouduct.childImageSharp.fluid}
@@ -55,7 +65,7 @@ const YourBag = ({ node }) => {
                 <div className={"col-md-2"}>
                   <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
                 </div>
-                <div className={"col-md-2"}>
+                <div class="col-md-2 col-6">
                   <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
                     <button className={["btn", BagStyle.minus].join(" ")}>
                       <img className={BagStyle.plusicon} src={minusicon} />
@@ -67,7 +77,7 @@ const YourBag = ({ node }) => {
                     </button>
                   </div>
                 </div>
-                <div className={"col-md-1"}>
+                <div class="col-md-1 col-3">
                   <p
                     className={[
                       BagStyle.bagProudctPrice,
@@ -77,7 +87,7 @@ const YourBag = ({ node }) => {
                     $24.00
                   </p>
                 </div>
-                <div className={"col-md-1"}>
+                <div class="col-md-1 col-3">
                   <button className={["btn", BagStyle.action].join(" ")}>
                     {" "}
                     Remove{" "}
@@ -94,33 +104,85 @@ const YourBag = ({ node }) => {
             BagStyle.bagDataContainer,
           ].join(" ")}
         >
-          <div className={["bagDataContent", BagStyle.content].join(" ")}>
+          <div class='bagDataConten'>
             <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
               <span className={BagStyle.bagtitles}>
                 <strong>Subtotal</strong>
               </span>{" "}
               <span>$24.00</span>
             </p>
-            <p className={[BagStyle.Shipping, "d-flex"].join(" ")}>
-              <span className={BagStyle.bagtitles}>
-                <strong>Est. Shipping</strong>
-              </span>
-              <span span>
-                <button className={["btn", BagStyle.Shippingbtn].join(" ")}>
-                  Add Info
-                </button>
-              </span>
-            </p>
-            <p className={[BagStyle.Coupon, "d-flex"].join(" ")}>
+            <div>
+              <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>
+                <span className={BagStyle.bagtitles}>
+                  <strong>Est. Shipping</strong>
+                </span>
+                <span >
+                  <button onClick={(e) => togglebag(e)} className={["btn", BagStyle.Shippingbtn,"Shippingbtn","ShowBag"].join(" ")}>
+                    Add Info
+                  </button>
+                  <button onClick={(e) => togglebag(e)} className={["btn", BagStyle.Shippingbtn,"RemoveBag"].join(" ")}>
+                    Remove
+                  </button>
+                </span>
+              </div>
+              <div className={"showinfp"}>
+                <div className={BagStyle.bagSelectContainer}>
+                  <label>Country</label>
+                  <select className={BagStyle.bagSelect} name="Country">
+                    <option vlaue="All">Select</option>
+                    <option value="Hyaluronic Acid">Hyaluronic Acid</option>
+                  </select>
+                </div>
+                <div className={BagStyle.bagSelectContainer}>
+                  <label>State/Province</label>
+                  <select className={BagStyle.bagSelect} name="Country">
+                    <option vlaue="All">Select</option>
+                    <option value="Hyaluronic Acid">Hyaluronic Acid</option>
+                  </select>
+                </div>
+                <div className={BagStyle.baginputtext}>
+                <label>Suburb/City</label>
+                <input type="text" name="Suburb/City"/>
+                </div>
+                <div className={BagStyle.baginputtext}>
+                <label>Zip Code</label>
+                <input type="text" name="Zip Code"/>
+                </div>
+                <button className={["btn", BagStyle.shippingbtn].join(" ")}>Estimate Shipping</button>
+              </div>
+            </div>
+            <div className={'couponContainer'}>
+            <div className={[BagStyle.Coupon,"Coupon", "d-flex"].join(" ")}>
               <span className={BagStyle.bagtitles}>
                 <strong>Coupon Code</strong>
               </span>
-              <span span>
-                <button className={["btn", BagStyle.Couponbtn].join(" ")}>
+              <span >
+                <button onClick={(e) => coupon(e)} className={["btn",'addCoupon', BagStyle.Couponbtn].join(" ")}>
                   Add Coupon
                 </button>
+                <button onClick={(e) => coupon(e)} className={["btn","removeCoupon", BagStyle.Couponbtn].join(" ")}>
+                 Cancel
+                </button>
+               
               </span>
-            </p>
+              <span className={'aplliedDiscound'}>15% OFF APPLIED</span>
+            </div>
+            <div className={["CouponCode",BagStyle.CouponCode].join(" ")}>
+              <div className={BagStyle.couponBorder}>
+               <label>Enter Coupon Code</label>
+                <input type="text" name="Enter Coupon Code"/>
+                </div>
+                <button className={["btn", BagStyle.shippingbtn].join(" ")}>Apply Code</button>
+            </div>
+            <div className={[BagStyle.discoundapplied, "d-flex","discoundapplied"].join(" ")}>
+                <span className={BagStyle.discoundtitle}>
+                  <strong>Discount</strong>
+                </span>
+                <span >
+                  - $15.00
+                </span>
+              </div>
+          </div>
           </div>
           <div className={[BagStyle.subtotaldata, "subtotaldata"].join(" ")}>
             <p
@@ -137,7 +199,7 @@ const YourBag = ({ node }) => {
                 <strong>$24.00</strong>
               </span>
             </p>
-            <a className={BagStyle.Checkout} href="#">
+            <a className={BagStyle.Checkout} onClick={(e) => apply(e)} href="#">
               Checkout
             </a>
           </div>
