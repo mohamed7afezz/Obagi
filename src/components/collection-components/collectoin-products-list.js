@@ -5,7 +5,7 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 
 
 const Collectionproducts = ({ node, nodetype }) => {
-  console.log("7assan",node)
+ 
   let checkTaxonomy;
   let pageNodeType = nodetype? nodetype : '';
 
