@@ -52,7 +52,7 @@ function createMenuHierarchy(menuData, menuName) {
       mappedElem = mappedArr[id]
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
-        console.log('bahii', mappedArr, mappedElem.drupal_parent_menu_item)
+       
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }
       // If the element is at the root level, add it to first level elements array.
