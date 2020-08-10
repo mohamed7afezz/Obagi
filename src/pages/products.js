@@ -14,7 +14,7 @@ import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
 
 import YourBag from "../components/bag"
-
+import Showbag from "../components/showbag"
 const products = () => (
  
     <Layout>
@@ -22,7 +22,7 @@ const products = () => (
       <Details/>
       <Ingredient/>
       <Needtoknow/> */}
-      <Howtouse/>
+        <Showbag/>
       {/* <Beforeafter/>
 
       <Carouselproducts/>

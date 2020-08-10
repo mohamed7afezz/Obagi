@@ -1,0 +1,131 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.empatyTitle{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold ;
+    padding-bottom: 24px;
+    color: #132466;
+    text-align: center;
+}
+.empatyLink{
+    color: #132466;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold ;
+    font-size: 12px;
+    line-height: 16px;
+    width: 100%;
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 26px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #132466;
+}
+.prodThumb{
+    width: 100%;
+   min-width: 98px;
+   min-height: 78px;
+      height: 100%;
+      @include md-screen{
+        min-width: 117px;
+        min-height: 88px;
+      }
+  }
+  .BagProductDesc{
+      font-size: 14px;
+      color: #132466;
+      line-height: 16px;
+      @extend %futurapt-medium ;
+  }
+  .BagProductDesc,.Price{
+      font-size: 14px;
+      line-height: 16px;
+      @extend %futurapt-medium ;
+      color: #132466; 
+  }
+  .left{
+      justify-content: space-between;
+      align-items: center;
+  }
+  .productCounter{
+      width: 100%;
+  }
+  .BagProductLink{
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      @extend %futurapt-bold ;
+      color: #132466;
+      border : 1px solid #132466;
+      border-radius: 6px;
+      padding: 8px 12px;
+  }
+  .BagProductDesc{
+     text-align: left;
+      padding-bottom: 18px;
+        @include md-screen{
+            padding-bottom: 22px;
+        }
+  }
+  .selectedproductsCard{
+      padding-bottom: 16px;
+  }
+  .prouductCard{
+      padding-bottom: 25px;
+      padding-top: 25px;
+      margin-bottom: 15px;
+      background-color: #ffffff;
+  }
+ 
+.actions{
+    background-color: transparent;
+}
+.shoppingBag{
+    font-size: 18px;
+    line-height: 32px;
+    color: #132466;
+    @extend %futurapt-bold ;
+}
+.viewcart{
+    background-color: transparent;
+    box-shadow: none;
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 16px;
+    outline: 0;
+  border: 0;
+    color: #132466;
+  }
+  .removebtn{
+      font-size: 14px;
+      line-height: 16px;
+      color: #132466;
+      text-decoration: underline;
+  }
+ 
+  .Subtotal{
+      font-size: 16px;
+      line-height: 24px;
+      color: #132466;
+      @extend %futurapt-bold ;
+  }
+  .total{
+    border-top: 1px solid #d6d6d6;
+      padding-top: 24px;
+      padding-bottom: 24px;
+  }
+  .selectedproductsCard{
+      padding-top: 24px;
+  }
+  .footnote{
+      font-size: 14px;
+      line-height: 16px;
+      color: #7c858a;
+      text-align: center;
+      @extend %futurapt-book ;
+        padding-top: 16px;
+        @include md-screen{
+            padding-top: 24px;
+        }
+  }

@@ -156,9 +156,39 @@
 .howrightcol .card-body {
   padding: 0;
 }
+.modal-body {
+  padding-bottom: 0;
+}
+#mob-navigation{
+  z-index: 999999;
+}
+#desk-navigation {
+  position: relative;
+  z-index: 999999991;
+}
 @media (max-width: 768px) {
   .applied .discoundapplied{
   padding-bottom: 25px;
+  }
+  #Showbag .modal-data{
+    margin: 0;
+  }
+
+  #Showbag{
+    padding-left: 0;
+    height: 77vh;
+    top: 190px;
+  }
+  .body-small-margin #Showbag{
+    top: 135px;
+  }
+  #Showbag .empatyState{
+    padding-bottom: 135px;
+    padding-top: 90px;
+  }
+ 
+  #Showbag .modal-header{
+border: 0;
   }
   .allcon #accordion {
     padding-left: 0;
@@ -175,6 +205,90 @@
   .mobflexwrap {
     flex-wrap: wrap;
   }
+}
+#Showbag .modal-footer{
+  padding: 24px;
+}
+.empatyState{
+  display: none;
+}
+.selectedproductsCard{
+  display: block;
+}
+.isempty .empatyState{
+  display: block;
+}
+.w100{
+  width: 100%;
+}
+.isempty .selectedproductsCard{
+  display: none;
+}
+#Showbag .modal-header{
+  display: flex;
+  background-color: #f8f8f8;
+  align-items: center;
+}
+#Showbag .modal-body {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width:1024px){
+#notification{
+  z-index: 999999999;
+  position: relative;
+}
+#Showbag{
+  z-index: 99999999;
+  padding-top: 154px;
+  height: 100vh;
+  margin-bottom: 0;
+  padding-top: 217px;
+padding-left: 27px;
+}  
+.body-small-margin #Showbag{
+  padding-top: 154px;
+}
+#Showbag .modal-header{
+  border: 0;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+}
+#Showbag .modal-footer{
+  border: 0;
+  padding:40px;
+  background-color: #f8f8f8;
+}
+
+.isempty .modal-body{
+  margin-left: 40px;
+margin-right: 40px;
+text-align: center;
+}
+
+#Showbag .modal-header .close{
+  padding-left: 32px;
+}
+#Showbag .empatyState{
+  padding-top: 90px;
+  
+padding-bottom: 134px;
+
+ }
+
+#Showbag .modal-data{
+  height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 }
 @media (max-width: 1024px) {
   .hide-tabmob{
@@ -223,6 +337,12 @@
   .howrightcol .gatsby-image-wrapper {
     height: 100%;
     width: auto;
+  }
+  .isempty .modal-body{
+    margin-left: 40px;
+  margin-right: 40px;
+  text-align: center;
+
   }
   .allcon #accordion {
     padding-right: 0;
@@ -319,6 +439,7 @@
   .zoom-mobile {
     display: block;
   }
+  
   .productInBag {
     padding: 25px 16px;
 
@@ -328,6 +449,7 @@
   .hide-desk{
     display: none;
   }
+
 }
 @media (min-width: 768px) {
   .zoom-desk {
@@ -424,6 +546,10 @@
   .equalheight .slick-initialized .slick-slide > div,
   .equalheight .slick-initialized .slick-slide > div > div {
     height: 100%;
+  }
+  #Showbag .empatyState{
+    padding-bottom: 395px;
+    padding-top: 270px;
   }
 }
 

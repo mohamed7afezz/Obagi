@@ -5,6 +5,7 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 
 
 const Collectionproducts = ({ node, nodetype }) => {
+  console.log("7assan",node)
   let checkTaxonomy;
   let pageNodeType = nodetype? nodetype : '';
 
@@ -227,39 +228,139 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
   id
   relationships {
     field_vocabularies {
+ ... on taxonomy_term__clinical_categories {
+  id
+  path {
+    alias
+  }
+  relationships {
+    node__clinical_product {
+      title
+      field_clinical_description {
+        processed
+      }
+      field_clinical_price
       relationships {
-        node__clinical_product {
-          title
-          field_clinical_description {
-            processed
-          }
-          field_clinical_price
-          relationships {
-            field_clinical_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                   ...GatsbyImageSharpFluid
-
-                  }
-                }
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
               }
             }
-            field_clinical_components {
-             ... on paragraph__ingredient {
-               id
-               relationships {
-                 field_read_more {
-                   field_read_more_content {
-                     processed
-                   }
-                 }
-               }
-             }
-           }
           }
         }
       }
+    }
+  }
+}
+... on taxonomy_term__medical_categories {
+  id
+  name
+  path {
+    alias
+  }
+  relationships {
+    node__medical_product {
+      field_medical_description {
+        processed
+      }
+      field_medical_price
+      title
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+... on taxonomy_term__medical_product_lines {
+  id
+  name
+  path {
+    alias
+  }
+  relationships {
+    node__medical_product {
+      field_medical_description {
+        processed
+      }
+      field_medical_price
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+... on taxonomy_term__medical_skin_concern {
+  id
+  name
+  relationships {
+    node__medical_product {
+      title
+      field_medical_description {
+        processed
+      }
+      field_medical_price
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  path {
+    alias
+  }
+}
+... on taxonomy_term__clinical_skin_concern {
+  id
+  name
+  relationships {
+    node__clinical_product {
+      field_clinical_price
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  path {
+    alias
+  }
+}
     }
   }
 }
