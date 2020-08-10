@@ -245,7 +245,7 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
           localFile {
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -272,7 +272,7 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
           localFile {
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -298,7 +298,7 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
           localFile {
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -322,7 +322,7 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
           localFile {
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -352,7 +352,7 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
           localFile {
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
