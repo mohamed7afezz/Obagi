@@ -112,16 +112,16 @@ const ProductLine = ({ node }) => {
 
 `)
 
-    console.log('data', data.allTaxonomyTermMedicalProductLines)
+    
     let currentName = node.relationships.field_line_card.map(item => {
         return item.field_line_title
     })
     let productCount = 0;
     let taxonomy = data.allTaxonomyTermMedicalProductLines.edges.filter(item => {
-        console.log('name', item.node.name.split(' ')[0], currentName)
+  
         return currentName.includes(item.node.name.split(' ')[0])
     })[0];
-    console.log('name', taxonomy)
+  
     productCount = taxonomy ? (taxonomy.node.relationships.node__medical_product ? taxonomy.node.relationships.node__medical_product.length : 0) : 0;
 
     

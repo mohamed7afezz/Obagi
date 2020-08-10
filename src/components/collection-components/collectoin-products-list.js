@@ -5,7 +5,7 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 
 
 const Collectionproducts = ({ node, nodetype }) => {
- 
+  console.log("7assan",node)
   let checkTaxonomy;
   let pageNodeType = nodetype? nodetype : '';
 
@@ -24,7 +24,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   } else {
     checkTaxonomy = node;
   }
-
+  console.log("7assan1",checkTaxonomy)
   useEffect(() => {
     const isotope = require('isotope-layout');
     const filterValSelect = document.getElementById('product-filter');
@@ -341,6 +341,9 @@ fragment vocabularySkinConcerList on paragraph__vocabularies {
     node__clinical_product {
       field_clinical_price
       title
+      field_clinical_description {
+        processed
+      }
       path {
         alias
       }
