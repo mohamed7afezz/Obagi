@@ -163,7 +163,6 @@
   z-index: 999999;
 }
 #desk-navigation {
-  position: relative;
   z-index: 999999991;
 }
 @media (max-width: 768px) {
@@ -234,7 +233,9 @@ border: 0;
   padding-left: 0;
   padding-right: 0;
 }
-
+#Showbag{
+  padding-right: 0 !important;
+}
 @media (min-width:1024px){
 #notification{
   z-index: 999999999;
