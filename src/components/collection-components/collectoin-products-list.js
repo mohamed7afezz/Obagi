@@ -326,6 +326,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                             data-ingrediant={`vitamin-c-${index}`}
                           >
                             <ProductCard
+                              productLink={product.path.alias}
                               producttitle={product.title}
                               productdescription={{
                                 __html:
@@ -333,10 +334,10 @@ const Collectionproducts = ({ node, nodetype }) => {
                               }}
                               productimage={
                                 product.relationships.field_clinical_image[
-                                  index
+                                  0
                                 ]
                                   ? product.relationships.field_clinical_image[
-                                      index
+                                      0
                                     ].localFile.childImageSharp.fluid
                                   : ""
                               }
@@ -367,15 +368,16 @@ const Collectionproducts = ({ node, nodetype }) => {
                           data-ingrediant={`vitamin-c-${index}`}
                         >
                           <ProductCard
+                            productLink={product.path.alias}
                             producttitle={product.title}
                             productdescription={{
                               __html:
                                 product.field_medical_description.processed,
                             }}
                             productimage={
-                              product.relationships.field_medical_image[index]
+                              product.relationships.field_medical_image[0]
                                 ? product.relationships.field_medical_image[
-                                    index
+                                    0
                                   ].localFile.childImageSharp.fluid
                                 : ""
                             }
