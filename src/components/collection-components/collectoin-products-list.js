@@ -4,7 +4,7 @@ import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 
 const Collectionproducts = ({ node, nodetype }) => {
-  console.log("7assan", node)
+  
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
@@ -25,12 +25,15 @@ const Collectionproducts = ({ node, nodetype }) => {
     checkTaxonomy =
       node.data.taxonomyTermMedicalCategories.relationships
         .node__medical_product
+  }else if (pageNodeType == "clnicalGroups"){
+    checkTaxonomy =
+    node.data.taxonomyTermClinicalGroups.relationships
+      .node__clinical_product
   } else {
     checkTaxonomy = node
   }
-  console.log("7assan1", checkTaxonomy)
   function checkProductExisitance(product) {
-    console.log("7assan2",product)
+   
     return products.some(item => product.path.alias == item.path.alias)
   }
   useEffect(() => {
@@ -165,10 +168,11 @@ const Collectionproducts = ({ node, nodetype }) => {
         (pageNodeType.includes("clinicalConcern") ||
           pageNodeType.includes("clinicalCategories") ||
           pageNodeType.includes("medicalConcern") ||
-          pageNodeType.includes("medicalCategories"))
+          pageNodeType.includes("medicalCategories") ||
+          pageNodeType.includes("clnicalGroups"))
           ? checkTaxonomy.map((item, index) => {
               let ingredient = ""
-              if (pageNodeType == "clinicalConcern") {
+              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups") {
                 ingredient = item.relationships.field_clinical_components.filter(
                   comp => {
                     return comp.__typename == "paragraph__ingredient"
@@ -191,6 +195,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
+                        productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
                             __html: item.field_clinical_description.processed,
@@ -206,6 +211,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                         />
                       ) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
+                        productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
                             __html: item.field_clinical_description.processed,
@@ -221,6 +227,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                         />
                       ) : (
                         <ProductCard
+                        productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
                             __html: item.field_medical_description.processed,
@@ -266,7 +273,21 @@ const Collectionproducts = ({ node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                         />
-                      ) : pageNodeType == "clinicalCategories" ? (
+                      ) : pageNodeType == "clnicalGroups" ? ( <ProductCard
+                        productLink={item.path.alias}
+                          producttitle={item.title}
+                          productdescription={{
+                            __html: item.field_clinical_description.processed,
+                          }}
+                          productimage={
+                            item.relationships.field_clinical_image[0]
+                              ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp.fluid
+                              : ""
+                          }
+                          price={item.field_clinical_price}
+                          rate="0"
+                        />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                           productLink={item.path.alias}
                           producttitle={item.title}

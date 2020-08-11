@@ -153,8 +153,8 @@ export const productPageQuery = graphql`
                   label
                 }
             }
-        },
-        taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
+      },
+         taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
             relationships {
                 node__medical_product {
@@ -213,6 +213,48 @@ export const productPageQuery = graphql`
                   label
                 }
             }
+         },
+        taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
+          id
+          name
+          path {
+            alias
+          }
+          relationships {
+            node__clinical_product {
+              field_clinical_description {
+                processed
+              }
+              path {
+                alias
+              }
+              field_clinical_price
+              title
+              relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
     }
 `;
