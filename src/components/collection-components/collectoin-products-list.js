@@ -161,7 +161,9 @@ const Collectionproducts = ({ node, nodetype }) => {
             }
 
             ) : (checkTaxonomy? (
+            
               checkTaxonomy.relationships.field_vocabularies.map(item =>(
+             
                 item.relationships.node__clinical_product?
                 item.relationships.node__clinical_product.map((product, index)=>{
                  return (
@@ -170,10 +172,18 @@ const Collectionproducts = ({ node, nodetype }) => {
                  <ProductCard producttitle={product.title} productdescription={{ __html: product.field_clinical_description.processed }} productimage={product.relationships.field_clinical_image[index] ? product.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} price={product.field_clinical_price} rate="0" />  
                   </div>)
                 })
-                
                   :
-                  ''
-              ))
+                  item.relationships.node__medical_product?
+                  item.relationships.node__medical_product.map((product, index)=>{
+                    return (
+                      <div className={["col-12 col-lg-3 col-md-4 product-element", `vitamin-c-${index}`, productsliststyle.productview, "productview"].join(' ')} data-ingrediant={`vitamin-c-${index}`}>
+       
+                      <ProductCard producttitle={product.title} productdescription={{ __html: product.field_medical_description.processed }} productimage={product.relationships.field_medical_image[index] ? product.relationships.field_medical_image[index].localFile.childImageSharp.fluid : ''} price={product.field_medical_price} rate="0" />  
+                       </div>)
+                     })
+                  :
+                  ""
+               ))
             ) : "")
 
         }
