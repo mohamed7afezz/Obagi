@@ -18,7 +18,8 @@ const ProductLine = ({ node }) => {
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
-    })
+    });
+    document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
   }, [])
 
   const { nav1, nav2 } = state
@@ -113,7 +114,7 @@ const ProductLine = ({ node }) => {
     progressbarContainer.innerHTML= "";
     document
       .querySelectorAll(".line-tab ")
-      .forEach(Elem =>{
+      .forEach((Elem) =>{
         progressbarContainer.innerHTML  += '<li></li>';
         Elem.classList.remove("active")})
       
