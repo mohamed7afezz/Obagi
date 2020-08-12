@@ -30,11 +30,14 @@ const Collectionproducts = ({ node, nodetype }) => {
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
   }else if(pageNodeType == 'medicalLine'){
-    console.log('hassan',node) 
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
-       .node__medical_product
-       
+      .node__medical_product     
+  }else if(pageNodeType == 'skinType'){
+    console.log('hassan',node)
+    checkTaxonomy =
+    node.data.taxonomyTermClinicalSkinType.relationships
+      .node__clinical_product     
   } else {
     checkTaxonomy = node
   }
@@ -175,11 +178,13 @@ const Collectionproducts = ({ node, nodetype }) => {
           pageNodeType.includes("clinicalCategories") ||
           pageNodeType.includes("medicalConcern") ||
           pageNodeType.includes("medicalCategories") ||
-          pageNodeType.includes("clnicalGroups")) ||
-          pageNodeType.includes("medicalLine")
+          pageNodeType.includes("clnicalGroups") ||
+          pageNodeType.includes("medicalLine") ||
+          pageNodeType.includes("skinType")
+          )
           ? checkTaxonomy.map((item, index) => {
               let ingredient = ""
-              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups") {
+              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups"||"medicalLine") {
                 ingredient = item.relationships.field_clinical_components.filter(
                   comp => {
                     return comp.__typename == "paragraph__ingredient"
@@ -281,6 +286,36 @@ const Collectionproducts = ({ node, nodetype }) => {
                           rate="0"
                         />
                       ) : pageNodeType == "clnicalGroups" ? ( <ProductCard
+                        productLink={item.path.alias}
+                          producttitle={item.title}
+                          productdescription={{
+                            __html: item.field_clinical_description.processed,
+                          }}
+                          productimage={
+                            item.relationships.field_clinical_image[0]
+                              ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp.fluid
+                              : ""
+                          }
+                          price={item.field_clinical_price}
+                          rate="0"
+                        />) : pageNodeType == "clinicalCategories" ? (
+                        <ProductCard
+                          productLink={item.path.alias}
+                          producttitle={item.title}
+                          productdescription={{
+                            __html: item.field_clinical_description.processed,
+                          }}
+                          productimage={
+                            item.relationships.field_clinical_image[0]
+                              ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp.fluid
+                              : ""
+                          }
+                          price={item.field_clinical_price}
+                          rate="0"
+                        />
+                      ) : pageNodeType == "skinType" ? ( <ProductCard
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{

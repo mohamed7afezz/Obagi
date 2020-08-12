@@ -214,6 +214,47 @@ export const productPageQuery = graphql`
                 }
             }
          },
+         taxonomyTermClinicalSkinType(path: {alias: {eq: $slug}}) {
+          name
+          path {
+            alias
+          }
+          relationships {
+            node__clinical_product {
+              field_clinical_description {
+                processed
+              }
+              path {
+                alias
+              }
+              field_clinical_price
+              title
+              relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
           relationships {
             node__medical_product {
@@ -255,7 +296,7 @@ export const productPageQuery = graphql`
                                   localFile {
                                     childImageSharp {
                                       fluid {
-                                        src
+                                        ...GatsbyImageSharpFluid
                                       }
                                     }
                                   }
