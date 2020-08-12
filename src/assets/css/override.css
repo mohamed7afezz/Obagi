@@ -692,3 +692,8 @@ padding-bottom: 134px;
     display: none !important;
   }
 }
+.comingSoon {
+  padding-top: 160px;
+  text-align: center;
+  padding-bottom: 160px;
+}
