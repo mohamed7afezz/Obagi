@@ -34,7 +34,6 @@ const Collectionproducts = ({ node, nodetype }) => {
     node.data.taxonomyTermMedicalProductLines.relationships
       .node__medical_product     
   }else if(pageNodeType == 'skinType'){
-    console.log('hassan',node)
     checkTaxonomy =
     node.data.taxonomyTermClinicalSkinType.relationships
       .node__clinical_product     
@@ -184,7 +183,7 @@ const Collectionproducts = ({ node, nodetype }) => {
           )
           ? checkTaxonomy.map((item, index) => {
               let ingredient = ""
-              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups"||"medicalLine") {
+              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups"|| pageNodeType == "skinType") {
                 ingredient = item.relationships.field_clinical_components.filter(
                   comp => {
                     return comp.__typename == "paragraph__ingredient"
