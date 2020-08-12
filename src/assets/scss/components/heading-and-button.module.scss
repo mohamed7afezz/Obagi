@@ -1,0 +1,23 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.heading {
+    @include fontStyle(36, 60);
+    @extend %futurapt-light;
+    text-align: center;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+    }
+}
+
+.link {
+    padding: 24px 0;
+    margin: 40px 0 100px;
+
+    @include lg-screen {
+        display: block;
+        height: 100%;
+        margin: 45px 0 224px;
+    }
+}
