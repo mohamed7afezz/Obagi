@@ -520,6 +520,45 @@ export const fragment = graphql`
             }
           }
         }
+        ... on taxonomy_term__medical_product_lines {
+          id
+          name
+          relationships {
+            node__medical_product {
+              field_medical_description {
+                processed
+              }
+              title
+              path {
+                alias
+              }
+              field_medical_price
+              relationships {
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        src
+                      }
+                    }
+                  }
+                }
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_re {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         ... on taxonomy_term__medical_categories {
           id
           name

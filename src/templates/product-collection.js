@@ -240,6 +240,34 @@ export const productPageQuery = graphql`
                     }
                   }
                 }
+                field_medical_product_lines {
+                  relationships {
+                    node__medical_product {
+                      relationships {
+                        field_medical_categories {
+                          relationships {
+                            field_hero_category_taxonomy {
+                              field_taxonomy_hero_para_desc
+                              field_taxonomy_hero_para_title
+                              field_taxonomy_hero_paraprapgh_t
+                              relationships {
+                                field_taxonomy_hero_paraprapgh_i {
+                                  localFile {
+                                    childImageSharp {
+                                      fluid {
+                                        src
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
