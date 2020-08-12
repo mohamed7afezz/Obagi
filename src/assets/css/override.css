@@ -96,6 +96,10 @@
   display: none !important;
 }
 @media (max-width: 767px) {
+  
+  .tab-slider .slick-dots {
+    display: none !important;
+  }
   .CollectionListcontainer {
     padding-bottom: 24px;
   }
@@ -127,6 +131,10 @@
   max-width: 100%;
 }
 @media (min-width: 768px) {
+  .tab-slider .slick-active .line-tab{
+
+    margin-bottom: 56px;
+  }
   .collapsemobile {
     width: 100%;
   }
@@ -166,8 +174,18 @@
   z-index: 999999991;
 }
 @media (max-width: 768px) {
+  
+.bigSliderContainer .slick-dots{
+  bottom: -54px;
+}
   .applied .discoundapplied{
   padding-bottom: 25px;
+  }
+  .productInlineSlider{
+    display: none;
+  }
+  .bigSliderContainer .slick-initialized{
+    padding-bottom: 0;
   }
   #Showbag .modal-data{
     margin: 0;
@@ -236,11 +254,17 @@ border: 0;
 #Showbag{
   padding-right: 0 !important;
 }
+
+.bigSliderContainer .slick-dots li.slick-active button::before {
+  background-color: #44c4d9;
+  opacity: 1;
+}
 @media (min-width:1024px){
 #notification{
   z-index: 999999999;
   position: relative;
 }
+
 #Showbag{
   z-index: 99999999;
   padding-top: 154px;
@@ -251,6 +275,58 @@ padding-left: 27px;
 }  
 .body-small-margin #Showbag{
   padding-top: 154px;
+}
+.desk-pr-0{
+  padding-right: 0;
+}
+.desk-pl-0{
+  padding-left: 0;
+}
+.pt-45{
+  padding-top: 45px;
+}
+.bigSliderContainer .productInlineSlider .slick-prev,.bigSliderContainer .productInlineSlider .slick-prev:hover,
+.bigSliderContainer .productInlineSlider .slick-prev:active,.bigSliderContainer .productInlineSlider .slick-prev:focus{
+  left: 36%;
+  bottom: 54px;
+  transform: none;
+  top: auto;
+  width: 15px;
+  height: 15px;
+  background-image: url(tringle-arrow.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bigSliderContainer .slick-next,.bigSliderContainer .slick-next:hover,
+.bigSliderContainer .slick-next:active,.bigSliderContainer .slick-next:focus{
+right: -8%;
+}
+.bigSliderContainer .slick-prev,.bigSliderContainer .slick-prev:hover,
+.bigSliderContainer .slick-prev:active,.bigSliderContainer .slick-prev:focus{
+  left: -8%;
+}
+.tab-slider .slick-dots {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 56px;
+  position: relative;
+}
+.bigSliderContainer .productInlineSlider  .slick-next,
+.bigSliderContainer .productInlineSlider  .slick-next:hover,
+.bigSliderContainer .productInlineSlider  .slick-next:active,
+.bigSliderContainer .productInlineSlider  .slick-next:focus {
+  background-image: url(tringle-arrow.svg);
+  transform: rotate(180deg);
+  right:  40%;
+  bottom: 54px;
+  top: auto;
+  width: 15px;
+  height: 15px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bigSliderContainer .productInlineSlider .slick-initialized{
+  padding-bottom: 110px;
 }
 #Showbag .modal-header{
   border: 0;
@@ -554,24 +630,51 @@ padding-bottom: 134px;
   }
 }
 
-.hero-slider.medical-slider .slick-dots li.slick-active button::before {
+.hero-slider.medical-slider .slick-dots li.active button::before {
     background-color: #00c7d8;
 }
 
 .tab-slider {
     padding-bottom: 0;
 }
+.tab-slider .slick-dots{
+  display: flex !important;
+  justify-content: flex-start;
+  
+}
+.tab-slider .slick-dots li{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 8px;
+  background-color: #fff;
+}
+.tab-slider .slick-dots li.slick-data-active{
+  background-color: #132466;
+}
+
+.slick-dots li:last-child{
+  border-bottom-right-radius: 128px;
+  border-top-right-radius: 128px;
+}
+.slick-dots li:first-child{
+  border-bottom-left-radius: 128px;
+  border-top-left-radius: 128px;
+}
+.tab-slider .slick-dots button{
+  display: none !important;
+}
 /* .slick-slider.tab-slider.slick-initialized .slick-slide {
     width: 212px !important; 
 } */
 
-.tab-slider .slick-active .line-tab {
+.line-tab.active {
     background: #132466;
     color: #fff;
     box-shadow: unset;
 }
 
-.tab-slider .slick-active .line-tab::after {
+.tab-slider .active.line-tab::after {
         content: '';
         width: 24px;
         height: 24px;
@@ -582,4 +685,10 @@ padding-bottom: 134px;
         display: inline-block;
         transform: rotate(-315deg);
         z-index: -1;
+}
+@media (max-width: 767px) {
+  
+  .tab-slider .slick-dots {
+    display: none !important;
+  }
 }

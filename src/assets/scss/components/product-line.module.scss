@@ -4,6 +4,11 @@
 .wrapper {
     padding: 80px 0;
     background: rgba(134, 140, 210, 0.1);
+    padding-bottom: 130px;
+    @include md-screen{
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
 }
 
 .wrapper-title {
@@ -12,7 +17,12 @@
     text-align: center;
     padding-bottom: 39px;
 }
-
+.sliderFlex{
+    display: flex !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: rgba(134 , 140 , 210 , 0.1);
+}
 .tab {
     cursor: pointer;
     @extend %futurapt-bold;
@@ -34,27 +44,59 @@
 
 
 }
-
+.leftSliderwapper{
+    @include md-screen{ 
+     padding-top: 120px;
+ }
+ }
+ .productInlineSlider{
+   
+}
+.subtitle{
+    @include md-screen{
+        padding-left: 40px;
+    }
+}
 .card-wrapper {
+   
     background: #868cd5;
     border-radius: 6px;
     padding: 53px 16px 48px;
     color: #ffffff;
+    @include md-screen{
+        padding-top: 40px;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .card-title {
-
+    @include md-screen{
+        padding-bottom: 16px;
+        padding-top: 0;
+    }
     @extend %futurapt-light;
     @include fontStyle(32, 48);
     padding: 18px 0 6px;
 }
 
 .products {
+    
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
+    @extend %futurapt-medium;
+    @include md-screen{
+        @include fontStyle (16,24);
+        letter-spacing:1.6px;
+    }
 }
 
 .description {
+    @include md-screen {
+        padding-bottom: 32px;
+        padding-top: 24px;
+        @include fontStyle(18,32)
+    }
     @include fontStyle(16, 24);
     padding: 22px 0 20px;
 }
@@ -63,7 +105,11 @@
     
     @extend %futurapt-bold;
     @include fontStyle(14, 16);
+    @include md-screen{
+        padding-bottom: 45px;
+        @include fontStyle(16,24)
 
+    }
 }
 
 .category {
@@ -78,6 +124,9 @@
 
 .image-wrapper {
     padding: 44px 37px 35px;
+    @include md-screen{
+        display: none;
+    }
 }
 
 .link {

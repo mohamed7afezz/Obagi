@@ -32,63 +32,91 @@ const ProductLine = ({ node }) => {
       this.setState(state => ({ updateCount: state.updateCount + 1 })),
     beforeChange: (current, next) => this.setState({ slideIndex: next }),
   }
-  const SliderSetting1= {
+
+  const SliderSetting = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    arrows: true,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          dots: false,
+          arrows: false,
+        },
+      },
+    ],
+  }
+  
+  const SliderSetting2 = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    arrows: false,
+    arrows: true,
     dots: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
+          dots: false,
+          arrows: false,
+        },
+      },
+    ],
+    
+  }
+  const TabSliderSetting = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3.5,
+    arrows: false,
+    dots: true,
+    
+    responsive: [
+      {
+        
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1.5,
           dots: true,
           arrows: false,
         },
       },
     ],
   }
-  const SliderSetting = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    arrows: true,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          dots: false,
-          arrows: false,
-        },
-      },
-    ],
-  }
-  const TabSliderSetting = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1.5,
-    arrows: true,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          dots: false,
-          arrows: false,
-        },
-      },
-    ],
-  }
 
-  function slickGoToslide(int) {
+  function slickGoToslide(e,int) {
     slider1.current.slickGoTo(int)
+    addActiveClass(e)
+    
+    let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
+
+    progressbar.forEach((activeLi,index) =>{
+      activeLi.classList.remove("slick-data-active") } )
+    
+    progressbar.forEach((activeLi,index) =>{
+     
+      if (index <= int) {
+        activeLi.classList.add('slick-data-active')
+      }
+     
+    })
   }
+ 
+
 
   function addActiveClass(e) {
+ 
+    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
+    progressbarContainer.innerHTML= "";
     document
-      .querySelectorAll(".tab")
-      .forEach(Elem => Elem.classList.remove("active"))
+      .querySelectorAll(".line-tab ")
+      .forEach(Elem =>{
+        progressbarContainer.innerHTML  += '<li></li>';
+        Elem.classList.remove("active")})
+      
     let active = e.target
     active.classList.add("active")
   }
@@ -145,7 +173,8 @@ const ProductLine = ({ node }) => {
               ""
             )}
           </div>
-
+         
+           <div className={["col-lg-10","offset-lg-1","col-12"].join(" ")}>
           <div style={{ width: "100%" }}>
             <Slider
               ref={slider => (slider1.current = slider)}
@@ -154,7 +183,8 @@ const ProductLine = ({ node }) => {
             >
               {node.relationships.field_line_card
                 ? node.relationships.field_line_card.map((item, index) => {
-                    return (
+ 
+                  return (
                       <div>
                         <div className="col-12 p-0">
                           <div className={lineStyles.tabWrapper}>
@@ -163,8 +193,8 @@ const ProductLine = ({ node }) => {
                                 dangerouslySetInnerHTML={{
                                   __html: item.field_tab_title.processed,
                                 }}
-                                onClick={() => slickGoToslide(index)}
-                                className={[lineStyles.tab, "line-tab"].join(
+                                onClick={(e) => slickGoToslide(e,index)}
+                                className={[lineStyles.tab, "line-tab", index == 0 ?'active' : ""].join(
                                   " "
                                 )}
                               ></div>
@@ -179,141 +209,152 @@ const ProductLine = ({ node }) => {
                 : ""}
             </Slider>
           </div>
-        
-            <div className={["col-10","offset-lg-1","row"].join(" ")}>
-                <div className={["col-md-6","col-12"].join(" ")}>
-                    <div style={{ width: "100%" }}>
-                        <Slider
-                        ref={slider => (slider1.current = slider)}
-                        {...SliderSetting1}
-                        >
-                        {node.relationships.field_line_card
-                            ? node.relationships.field_line_card.map((item, index) => {
-                                return (
-                                <div>
-                                    <div
-                                    className={[
-                                        "col-12",
-                                        lineStyles.cardWrapper,
-                                    ].join(" ")}
-                                    >
-                                    {item.field_card_subtitle ? (
-                                        <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: item.field_card_subtitle.processed,
-                                        }}
-                                        className="subtitle"
-                                        ></div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    {item.field_line_title ? (
-                                        <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: item.field_line_title.processed,
-                                        }}
-                                        className={lineStyles.cardTitle}
-                                        ></div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    <div className={lineStyles.products}>
-                                        PRODUCTS (
-                                        <span className={lineStyles.productsNo}>
-                                        {productCount}
-                                        </span>
-                                        )
-                                    </div>
-                                    {item.field_line_description ? (
-                                        <div
-                                        dangerouslySetInnerHTML={{
-                                            __html:
-                                            item.field_line_description.processed,
-                                        }}
-                                        className={lineStyles.description}
-                                        ></div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    <div className={lineStyles.perfect}>
-                                        PERFECT FOR:{" "}
-                                        {item.relationships.field_line_category.map(
-                                        (item, index, array) => {
-                                            return (
-                                            <span className={lineStyles.category}>
-                                                <Link to="#"> {item.name}</Link>
-                                                {index === array.length - 1 ? "" : ", "}
-                                            </span>
-                                            )
-                                        }
-                                        )}
-                                    </div>
-                                    {item.relationships.field_line_image.localFile ? (
-                                        <div className={lineStyles.imageWrapper}>
-                                        <Img
-                                            fluid={
-                                            item.relationships.field_line_image
-                                                .localFile.childImageSharp.fluid
-                                            }
-                                        />
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    {item.field_line_link ? (
-                                        <div>
-                                        <Link
-                                            to={item.field_line_link.uri}
-                                            className={[
-                                            "button-link",
-                                            lineStyles.link,
-                                            ].join(" ")}
-                                        >
-                                            {item.field_line_link.title}
-                                        </Link>
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    </div>
-                                </div>
-                                )
-                            })
-                            : ""}
-                        </Slider>
-                    </div>
-                </div>
-                <div className={["col-md-4","col-12","offset-lg-1"].join(" ")}>
-                <div className={ productsuggestion.slickcon}>
-                     <Slider {...SliderSetting}>
-                         {
-                             node.relationships.field_line_card
-                             ? node.relationships.field_line_card.map((item, index) => {
-                                 return ( <div className={["col-12",  productsuggestion.allcon].join(" ")}>
-                                 <ProductCard   producttitle={item.name}
-                              productdescription={{
-                                __html:
-                                 node.field_product_line_title.processed,
-                              }}
-                              productimage={
-                                item.relationships.field_line_image
-                                .localFile.childImageSharp.fluid
-                              }
-                              price={item.name}
-                              rate="0"/>
-                                 </div>)
-                         })
-                         :
-                         ""
-                        }
-           
-                </Slider>
-            </div>
-                </div>   
-            </div>
           </div>
-    
-
+         
+          <div className={["col-lg-10","col-12","offset-lg-1","pr-0","pl-0"].join(" ")}>
+         <div className={["col-12","desk-pr-0","desk-pl-0","bigSliderContainer"].join(" ")}>
+          <div  style={{ width: "100%" }}>
+            <Slider
+              ref={slider => (slider1.current = slider)}
+              {...SliderSetting}
+            >
+              {node.relationships.field_line_card
+                ? node.relationships.field_line_card.map((item, index) => {
+                    return (
+                      <div className={["row",lineStyles.sliderFlex].join(" ")}>
+                        <div
+                          className={["col-12","col-lg-6", lineStyles.cardWrapper].join(
+                            " "
+                          )}
+                        >
+                          {item.field_card_subtitle ? (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: item.field_card_subtitle.processed,
+                              }}
+                              className={["subtitle",lineStyles.subtitle].join(" ")}
+                            ></div>
+                          ) : (
+                            ""
+                          )}
+                          <div className={["offset-lg-2","col-lg-8","pr-0","pl-0",lineStyles.leftSliderwapper].join(" ")}>
+                          {item.field_line_title ? (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: item.field_line_title.processed,
+                              }}
+                              className={lineStyles.cardTitle}
+                            ></div>
+                          ) : (
+                            ""
+                          )}
+                          <div className={lineStyles.products}>
+                            PRODUCTS (
+                            <span className={lineStyles.productsNo}>
+                              {productCount}
+                            </span>
+                            )
+                          </div>
+                          {item.field_line_description ? (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: item.field_line_description.processed,
+                              }}
+                              className={lineStyles.description}
+                            ></div>
+                          ) : (
+                            ""
+                          )}
+                          <div className={lineStyles.perfect}>
+                            PERFECT FOR:{" "}
+                            {item.relationships.field_line_category.map(
+                              (item, index, array) => {
+                                return (
+                                  <span className={lineStyles.category}>
+                                    <Link to="#"> {item.name}</Link>
+                                    {index === array.length - 1 ? "" : ", "}
+                                  </span>
+                                )
+                              }
+                            )}
+                          </div>
+                          {item.relationships.field_line_image.localFile ? (
+                            <div className={lineStyles.imageWrapper}>
+                              <Img
+                                fluid={
+                                  item.relationships.field_line_image.localFile
+                                    .childImageSharp.fluid
+                                }
+                              />
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          {item.field_line_link ? (
+                            <div>
+                              <Link
+                                to={item.field_line_link.uri}
+                                className={[
+                                  "button-link",
+                                  lineStyles.link,
+                                ].join(" ")}
+                              >
+                                {item.field_line_link.title}
+                              </Link>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        </div>
+                        <div
+                          className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider,"productInlineSlider"].join(" ")}
+                        >
+                          <div className={[productsuggestion.slickcon,"pt-45"].join(" ")}>
+                            <Slider   {...SliderSetting2}>
+                              {node.relationships.field_line_card
+                                ? node.relationships.field_line_card.map(
+                                    (item, index) => {
+                                      return (
+                                        <div
+                                          className={[
+                                            "col-12",
+                                            productsuggestion.allcon,
+                                          ].join(" ")}
+                                        >
+                                          <ProductCard
+                                            producttitle= {node.field_product_line_title
+                                              .processed}
+                                            productdescription={{
+                                             
+                                                __html: item.field_line_description.processed,
+                                              }}
+                                            productimage={
+                                              item.relationships
+                                                .field_line_image.localFile
+                                                .childImageSharp.fluid
+                                            }
+                                            price="65"
+                                            rate="0"
+                                          />
+                                        </div>
+                                      )
+                                    }
+                                  )
+                                : ""}
+                            </Slider>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })
+                : ""}
+            </Slider>
+          </div>
+        </div>
+        </div>
+        </div>
+        
         {/* <div className={[lineStyles.wrapper].join(" ")}>
                             <div onClick={() => slickGoToslide(0)} className="active">Nu-Derm®</div>
                             <div onClick={() => slickGoToslide(1)}>ELASTIderm®</div>
