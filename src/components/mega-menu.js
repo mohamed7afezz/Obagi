@@ -7,7 +7,15 @@ import Img from 'gatsby-image'
 let megaMenuBlocks = [];
 function fillMegaMenuBlocksArr(data){
     megaMenuBlocks = data.allBlockContentMegaMenuItems.edges.map(({ node }) => node);
+    console.log('hassan',megaMenuBlocks[0].relationships.field_mega_block)
+
 }
+function fixlink(changelink) {
+
+        
+  return ( changelink.uri.replace('internal:', '') )
+}
+
 
 function getBlock(item) {
     let block;
@@ -26,7 +34,7 @@ function getBlock(item) {
             {item.field_mega_block_subtitle? <div dangerouslySetInnerHTML={{__html: item.field_mega_block_subtitle.processed}}></div> : ''}
             {item.relationships.field_mega_block_image?<div style={{width: '100%'}} className="nav-img-desk">
               {item.relationships.field_mega_block_image.localFile ? <Img fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid}/> : ''}</div> : ''}
-            <div className="nav-arrow-desk"><Link to={item.relationships.field_mega_block_link? item.relationships.field_mega_block_link.uri : ''}>{item.relationships.field_mega_block_arrow_image.localFile? <Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/> : ''}</Link></div>
+            <div className="nav-arrow-desk"><Link to={item.field_mega_block_link? fixlink(item.field_mega_block_link) : ''}>{item.relationships.field_mega_block_arrow_image.localFile? <Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed}/> : ''}</Link></div>
           </div>
         ))
       }

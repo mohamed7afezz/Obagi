@@ -4,7 +4,11 @@ import Img from 'gatsby-image'
 import solutionsStyles from '../assets/scss/components/solutions.module.scss'
 
 const Solutions = ({ node }) => {
+    function fixlink(changelink) {
 
+        
+        return ( changelink.uri.replace('internal:', '') )
+  }
     return (
         <div className={solutionsStyles.wrapper}>
             <div className="container-fluid">
@@ -15,14 +19,14 @@ const Solutions = ({ node }) => {
                             {node.relationships.field_solution_box ? node.relationships.field_solution_box.map((item, index) => {
                                 return (
                                     <div>
-                                        <Link to={item.field_solution_link.uri} className={solutionsStyles.solutionWrapper}>
+                                        <Link to={fixlink(item.field_solution_link)} className={solutionsStyles.solutionWrapper}>
                                             {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img fixed={item.relationships.field_problem_icon.localFile.childImageSharp.fixed} /></div> : '') : ''}
                                             {item.field_solution_name ? <div dangerouslySetInnerHTML={{ __html: item.field_solution_name.processed }} className={solutionsStyles.solution}></div> : ''}
                                         </Link>
                                     </div>
                                 )
                             }) : ''}
-                            {node.field_solutions_paragraph_button ? <div className={solutionsStyles.linkSection}><Link to={node.field_solutions_paragraph_button.uri} className={["button-link", solutionsStyles.link].join(" ")}>{node.field_solutions_paragraph_button.title}</Link></div> : ''}
+                            {node.field_solutions_paragraph_button ? <div className={solutionsStyles.linkSection}><Link to={fixlink(node.field_solutions_paragraph_button)} className={["button-link", solutionsStyles.link].join(" ")}>{node.field_solutions_paragraph_button.title}</Link></div> : ''}
                         </div>
                     </div>
 
@@ -30,14 +34,14 @@ const Solutions = ({ node }) => {
 
                     <div className="col-lg-5 pl-0 offset-lg-1 d-none d-lg-block">
                             {node.field_solutions_paragraph_title ? <div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></div> : ''}
-                            {node.field_solutions_paragraph_button ? <div className={solutionsStyles.linkSection}><Link to={node.field_solutions_paragraph_button.uri} className={["button-link", solutionsStyles.link].join(" ")}>{node.field_solutions_paragraph_button.title}</Link></div> : ''}
+                            {node.field_solutions_paragraph_button ? <div className={solutionsStyles.linkSection}><Link to={fixlink(node.field_solutions_paragraph_button)} className={["button-link", solutionsStyles.link].join(" ")}>{node.field_solutions_paragraph_button.title}</Link></div> : ''}
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 d-none d-lg-block">
                         {node.relationships.field_solution_box ? node.relationships.field_solution_box.map((item, index) => {
                             return (
                                 <div>
-                                    <Link to={item.field_solution_link.uri} className={solutionsStyles.solutionWrapper}>
+                                    <Link to={fixlink(item.field_solution_link)} className={solutionsStyles.solutionWrapper}>
                                         {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img fixed={item.relationships.field_problem_icon.localFile.childImageSharp.fixed} /></div> : '') : ''}
                                         <div className={solutionsStyles.arrow}></div>
                                         {item.field_solution_name ? <div dangerouslySetInnerHTML={{ __html: item.field_solution_name.processed }} className={solutionsStyles.solution}></div> : ''}

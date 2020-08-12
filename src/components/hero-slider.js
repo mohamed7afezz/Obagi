@@ -29,6 +29,13 @@ const HeroSlider = ({ node }) => {
 
     let pageType = node.field_page_type
 
+    function fixlink(changelink) {
+
+        
+          return ( <Link className={["button-link", heroSlider.link].join(" ")} to={changelink.field_slide_button.uri.replace('internal:', '')}>
+            {changelink.field_slide_button.title}
+          </Link>)
+    }
     return (
 
         <div className={pageType === 'medical' ? "hero-slider medical-slider" : 'hero-slider'}>
@@ -64,7 +71,7 @@ const HeroSlider = ({ node }) => {
                                                             {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical')? heroSlider.medical : ''].join(" ")}></div> : '' }
                                                             {item.field_slide_title? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : '' }
                                                             {item.field_sli? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : '' }
-                                                            {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri} className={["button-link", heroSlider.link].join(" ")}>{item.field_slide_button.title}</Link></div> : '' }
+                                                            {item.field_slide_button? <div className={heroSlider.linkSection}>{fixlink(item)}</div> : '' }
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-7 col-padding">
