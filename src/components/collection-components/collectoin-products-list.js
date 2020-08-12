@@ -27,8 +27,14 @@ const Collectionproducts = ({ node, nodetype }) => {
         .node__medical_product
   }else if (pageNodeType == "clnicalGroups"){
     checkTaxonomy =
-    node.data.taxonomyTermClinicalGroups.relationships
-      .node__clinical_product
+   node.data.taxonomyTermClinicalGroups.relationships
+      .node__clinical_product 
+  }else if(pageNodeType == 'medicalLine'){
+    console.log('hassan',node) 
+    checkTaxonomy =
+    node.data.taxonomyTermMedicalProductLines.relationships
+       .node__medical_product
+       
   } else {
     checkTaxonomy = node
   }
@@ -169,7 +175,8 @@ const Collectionproducts = ({ node, nodetype }) => {
           pageNodeType.includes("clinicalCategories") ||
           pageNodeType.includes("medicalConcern") ||
           pageNodeType.includes("medicalCategories") ||
-          pageNodeType.includes("clnicalGroups"))
+          pageNodeType.includes("clnicalGroups")) ||
+          pageNodeType.includes("medicalLine")
           ? checkTaxonomy.map((item, index) => {
               let ingredient = ""
               if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups") {

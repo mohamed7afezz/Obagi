@@ -707,6 +707,9 @@ padding-bottom: 134px;
   display: block;
 
 }
+.nav-img-desk .d-block{
+  padding: 0 !important;
+}
 .titleLink{
   padding: 0 !important;
   color: #132466 !important;

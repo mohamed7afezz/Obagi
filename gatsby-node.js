@@ -111,7 +111,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
              },
-
+            allTaxonomyTermMedicalProductLines{
+              edges {
+                  node {
+                    path {
+                      alias
+                    }
+                 }
+               }
+             },
         }
     `);
     
@@ -195,6 +203,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'clnicalGroups'
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalProductLines.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'medicalLine'
             }
         });
     });

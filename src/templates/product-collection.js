@@ -214,6 +214,49 @@ export const productPageQuery = graphql`
                 }
             }
          },
+         taxonomyTermMedicalProductLines {
+          relationships {
+            node__medical_product {
+              id
+              field_medical_is_system
+              field_medical_description {
+                processed
+              }
+              field_medical_price
+              title
+              path {
+                alias
+              }
+              relationships {
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          path {
+            alias
+          }
+          name
+        },
         taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
           id
           name
