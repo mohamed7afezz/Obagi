@@ -111,15 +111,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
              },
-            allTaxonomyTermMedicalProductLines{
-              edges {
+             allTaxonomyTermMedicalProductLines {
+                edges {
                   node {
                     path {
                       alias
                     }
-                 }
-               }
-             },
+                  }
+                }
+              }
         }
     `);
     

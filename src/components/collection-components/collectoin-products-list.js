@@ -494,6 +494,29 @@ export const fragment = graphql`
                   }
                 }
               }
+              relationships {
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+      
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -601,6 +624,29 @@ export const fragment = graphql`
                 alias
               }
               relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+              relationships {
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+      
                 field_clinical_image {
                   localFile {
                     childImageSharp {

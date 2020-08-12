@@ -19,6 +19,13 @@ const ProductLine = ({ node }) => {
       nav1: slider1.current,
       nav2: slider2.current,
     });
+  
+    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
+    progressbarContainer.innerHTML= "";
+    document
+    .querySelectorAll(".line-tab ")
+    .forEach((Elem) =>{
+      progressbarContainer.innerHTML  += '<li></li>'; })
     document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
   }, [])
 
@@ -109,13 +116,10 @@ const ProductLine = ({ node }) => {
 
 
   function addActiveClass(e) {
- 
-    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
-    progressbarContainer.innerHTML= "";
+
     document
       .querySelectorAll(".line-tab ")
       .forEach((Elem) =>{
-        progressbarContainer.innerHTML  += '<li></li>';
         Elem.classList.remove("active")})
       
     let active = e.target

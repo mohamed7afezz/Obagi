@@ -214,7 +214,7 @@ export const productPageQuery = graphql`
                 }
             }
          },
-         taxonomyTermMedicalProductLines {
+         taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
           relationships {
             node__medical_product {
               id
