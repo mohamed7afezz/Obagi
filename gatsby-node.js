@@ -111,7 +111,24 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
              },
-
+            allTaxonomyTermMedicalProductLines {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
+            allTaxonomyTermClinicalSkinType {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+            },
         }
     `);
     
@@ -195,6 +212,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'clnicalGroups'
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalProductLines.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'medicalLine'
+            }
+        });
+    });
+    result.data.allTaxonomyTermClinicalSkinType.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'skinType'
             }
         });
     });

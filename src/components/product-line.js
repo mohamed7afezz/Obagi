@@ -18,7 +18,15 @@ const ProductLine = ({ node }) => {
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
-    })
+    });
+  
+    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
+    progressbarContainer.innerHTML= "";
+    document
+    .querySelectorAll(".line-tab ")
+    .forEach((Elem) =>{
+      progressbarContainer.innerHTML  += '<li></li>'; })
+    document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
   }, [])
 
   const { nav1, nav2 } = state
@@ -108,13 +116,10 @@ const ProductLine = ({ node }) => {
 
 
   function addActiveClass(e) {
- 
-    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
-    progressbarContainer.innerHTML= "";
+
     document
       .querySelectorAll(".line-tab ")
-      .forEach(Elem =>{
-        progressbarContainer.innerHTML  += '<li></li>';
+      .forEach((Elem) =>{
         Elem.classList.remove("active")})
       
     let active = e.target

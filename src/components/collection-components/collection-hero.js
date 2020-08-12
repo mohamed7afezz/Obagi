@@ -12,6 +12,15 @@ const CollectionHero = ({ node, nodetype }) => {
     checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships
   } else if (nodetype == "medicalCategories") {
     checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships
+  }else if (nodetype == "clnicalGroups"){
+    checkTaxonomy =
+   node.data.taxonomyTermClinicalGroups.relationships
+      .node__clinical_product 
+  } else if(nodetype == 'medicalLine'){
+    checkTaxonomy =
+    node.data.taxonomyTermMedicalProductLines.relationships
+       .node__medical_product
+       
   } else {
     // listing pages
     checkTaxonomy = node;

@@ -27,8 +27,16 @@ const Collectionproducts = ({ node, nodetype }) => {
         .node__medical_product
   }else if (pageNodeType == "clnicalGroups"){
     checkTaxonomy =
-    node.data.taxonomyTermClinicalGroups.relationships
-      .node__clinical_product
+   node.data.taxonomyTermClinicalGroups.relationships
+      .node__clinical_product 
+  }else if(pageNodeType == 'medicalLine'){
+    checkTaxonomy =
+    node.data.taxonomyTermMedicalProductLines.relationships
+      .node__medical_product     
+  }else if(pageNodeType == 'skinType'){
+    checkTaxonomy =
+    node.data.taxonomyTermClinicalSkinType.relationships
+      .node__clinical_product     
   } else {
     checkTaxonomy = node
   }
@@ -169,10 +177,13 @@ const Collectionproducts = ({ node, nodetype }) => {
           pageNodeType.includes("clinicalCategories") ||
           pageNodeType.includes("medicalConcern") ||
           pageNodeType.includes("medicalCategories") ||
-          pageNodeType.includes("clnicalGroups"))
+          pageNodeType.includes("clnicalGroups") ||
+          pageNodeType.includes("medicalLine") ||
+          pageNodeType.includes("skinType")
+          )
           ? checkTaxonomy.map((item, index) => {
               let ingredient = ""
-              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups") {
+              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups"|| pageNodeType == "skinType") {
                 ingredient = item.relationships.field_clinical_components.filter(
                   comp => {
                     return comp.__typename == "paragraph__ingredient"
@@ -274,6 +285,36 @@ const Collectionproducts = ({ node, nodetype }) => {
                           rate="0"
                         />
                       ) : pageNodeType == "clnicalGroups" ? ( <ProductCard
+                        productLink={item.path.alias}
+                          producttitle={item.title}
+                          productdescription={{
+                            __html: item.field_clinical_description.processed,
+                          }}
+                          productimage={
+                            item.relationships.field_clinical_image[0]
+                              ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp.fluid
+                              : ""
+                          }
+                          price={item.field_clinical_price}
+                          rate="0"
+                        />) : pageNodeType == "clinicalCategories" ? (
+                        <ProductCard
+                          productLink={item.path.alias}
+                          producttitle={item.title}
+                          productdescription={{
+                            __html: item.field_clinical_description.processed,
+                          }}
+                          productimage={
+                            item.relationships.field_clinical_image[0]
+                              ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp.fluid
+                              : ""
+                          }
+                          price={item.field_clinical_price}
+                          rate="0"
+                        />
+                      ) : pageNodeType == "skinType" ? ( <ProductCard
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -487,9 +528,71 @@ export const fragment = graphql`
                   }
                 }
               }
+              relationships {
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+      
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
+        ... on taxonomy_term__medical_product_lines {
+          id
+          name
+          relationships {
+            node__medical_product {
+              field_medical_description {
+                processed
+              }
+              title
+              path {
+                alias
+              }
+              field_medical_price
+              relationships {
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        src
+                      }
+                    }
+                  }
+                }
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_re {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         ... on taxonomy_term__medical_categories {
           id
           name
@@ -594,6 +697,29 @@ export const fragment = graphql`
                 alias
               }
               relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+              relationships {
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+      
                 field_clinical_image {
                   localFile {
                     childImageSharp {

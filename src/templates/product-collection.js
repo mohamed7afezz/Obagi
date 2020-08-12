@@ -214,6 +214,118 @@ export const productPageQuery = graphql`
                 }
             }
          },
+         taxonomyTermClinicalSkinType(path: {alias: {eq: $slug}}) {
+          name
+          path {
+            alias
+          }
+          relationships {
+            node__clinical_product {
+              field_clinical_description {
+                processed
+              }
+              path {
+                alias
+              }
+              field_clinical_price
+              title
+              relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+                field_clinical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+         taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
+          relationships {
+            node__medical_product {
+              id
+              field_medical_is_system
+              field_medical_description {
+                processed
+              }
+              field_medical_price
+              title
+              path {
+                alias
+              }
+              relationships {
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
+                field_medical_product_lines {
+                  relationships {
+                    node__medical_product {
+                      relationships {
+                        field_medical_categories {
+                          relationships {
+                            field_hero_category_taxonomy {
+                              field_taxonomy_hero_para_desc
+                              field_taxonomy_hero_para_title
+                              field_taxonomy_hero_paraprapgh_t
+                              relationships {
+                                field_taxonomy_hero_paraprapgh_i {
+                                  localFile {
+                                    childImageSharp {
+                                      fluid {
+                                        ...GatsbyImageSharpFluid
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          path {
+            alias
+          }
+          name
+        },
         taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
           id
           name
