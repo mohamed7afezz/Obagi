@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+    - master
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: 10.x
+      displayName: Install Node.js
+    - task: CmdLine@2
+      displayName: npm install and build
+      inputs:
+        script: >
+          npm install
+
+          npm install -g gatsby-cli
+
+          gatsby build
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: public/
+        Contents: '**'
+        TargetFolder: $(build.artifactstagingdirectory)
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Artifact
+      inputs:
+        PathtoPublish: $(build.artifactstagingdirectory)
+        ArtifactName: drop
+        publishLocation: Container
+    - task: FtpUpload@2
+      inputs:
+        credentialsOption: inputs
+        serverUrl: ftps://waws-prod-dm1-121.ftp.azurewebsites.windows.net
+        username: test-obagi\$test-obagi
+        password: t1wnEvT3M5tpE0EyAK6xiGQDxEGSxTNpNMYDvc5xWWPjaXiAgNzuhBmf8l3k
+        rootDirectory: $(build.artifactstagingdirectory)
+        filePatterns: '**'
+        remoteDirectory: /site/wwwroot/storefront 
+        clean: false
+        cleanContents: false
+        preservePaths: true
+        trustSSL: false
