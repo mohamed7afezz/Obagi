@@ -27,6 +27,9 @@ import CollectionHero from './collection-components/collection-hero';
 import Collectionproducts from './collection-components/collectoin-products-list' ;
 import Solutions from './solutions';
 import ProductLine from './product-line';
+import CareersHero from './careers-hero';
+import Article from './article';
+import HeadingAndButton from './heading-and-button';
 
 
 const componentsMap = {
@@ -48,6 +51,9 @@ const componentsMap = {
     paragraph__vocabularies: Collectionproducts,
     paragraph__solutions: Solutions,
     paragraph__product_line: ProductLine,
+    paragraph__careers_hero: CareersHero,
+    paragraph__article : Article,
+    paragraph__heading_and_button: HeadingAndButton,
 }
 
 export const getParagraph = node => {

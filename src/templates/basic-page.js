@@ -45,6 +45,10 @@ query($slug: String!) {
                 ...vocabulariesList
                 ...paragraphSolutions
                 ...paragraphProductLine
+                ...paragraphCareersHero
+                ...paragraphArticle
+                ...paragraphHeadingAndButton
+
             }
         }
         field_meta_tags {

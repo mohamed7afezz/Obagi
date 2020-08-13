@@ -1,0 +1,53 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.headline {
+    @extend %futurapt-light;
+    @include fontStyle(36, 46);
+    padding-top: 42px;
+
+    @include lg-screen {
+        padding: 242px 0 40px;
+        @include fontStyle(72, 88);
+        color: #ffffff;
+    }
+}
+
+.description {
+    @include fontStyle(18, 27);
+    padding-bottom: 68px;
+
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+
+        @include fontStyle(32, 48);
+        color: #ffffff;
+        padding-bottom: 56px;
+    }
+}
+
+.link {
+    @include lg-screen {
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        padding: 28px 43px;
+        margin-bottom: 102px;
+        &:hover {
+            border: 1px solid #132466;
+        }
+    }
+}
+
+.image {
+    @include lg-screen{
+        height: 100%;
+    }
+}
+
+.image-wrapper {
+    @include lg-screen{
+        height: 100%;
+    }
+}

@@ -87,7 +87,7 @@ p {
     text-align: center;
     color: #132466;
     letter-spacing: 1.2px;
-    padding: 20px 65px;
+    padding: 20px 0;
     text-transform: uppercase;
     background: transparent;
 
@@ -799,7 +799,7 @@ footer .form-group {
 }
 
 .body-small-margin {
-    margin-top: 129px;
+    margin-top: 136.5px;
     
     @include lg-screen {
         margin-top: 0;
