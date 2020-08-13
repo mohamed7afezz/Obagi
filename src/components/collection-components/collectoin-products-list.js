@@ -2,13 +2,14 @@ import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
+import {CustomSelect} from '../../assets/js/custom-select'
 
 const Collectionproducts = ({ node, nodetype }) => {
-  
+  console.log('hassan',node)
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
-
+  console.log('bahiii', pageNodeType)
   if (pageNodeType == "clinicalConcern") {
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinConcern.relationships
@@ -25,7 +26,7 @@ const Collectionproducts = ({ node, nodetype }) => {
     checkTaxonomy =
       node.data.taxonomyTermMedicalCategories.relationships
         .node__medical_product
-  }else if (pageNodeType == "clnicalGroups"){
+  }else if (pageNodeType == "clinicalGroups"){
     checkTaxonomy =
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
@@ -33,10 +34,14 @@ const Collectionproducts = ({ node, nodetype }) => {
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
       .node__medical_product     
-  }else if(pageNodeType == 'skinType'){
+  }else if(pageNodeType == 'skinClinicalType'){
     checkTaxonomy =
     node.data.taxonomyTermClinicalSkinType.relationships
       .node__clinical_product     
+  }else if(pageNodeType == 'skinMedicalType'){
+    checkTaxonomy =
+    node.data.taxonomyTermMedicalSkinType.relationships
+      .node__medical_product    
   } else {
     checkTaxonomy = node
   }
@@ -44,9 +49,37 @@ const Collectionproducts = ({ node, nodetype }) => {
    
     return products.some(item => product.path.alias == item.path.alias)
   }
+
+  function getIngredient (item) {
+    if (item.relationships.field_clinical_components) {
+      return item.relationships.field_clinical_components.filter(
+        comp => {
+          return comp.__typename == "paragraph__ingredient"
+        }
+      )[0].relationships.field_read_more[0].field_read_more_content
+        .processed;
+    } 
+    return item.relationships.field_medical_components.filter(
+     
+      comp => {
+        
+        return comp.__typename == "paragraph__ingredient"
+      }
+    )[0]?item.relationships.field_medical_components.filter(
+     
+      comp => {
+          console.log('hassan22',comp)
+        return comp.__typename == "paragraph__ingredient"
+      }
+    )[0].relationships.field_read_more[0].field_read_more_content
+      .processed:''
+  }
   useEffect(() => {
+    if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
+      CustomSelect();
+    }
     const isotope = require("isotope-layout")
-    const filterValSelect = document.getElementById("product-filter")
+    const filterValSelect = document.querySelector("#product-filter")
     const sortPriceSelect = document.querySelector(".sort-price")
     let sortAsc =
       sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
@@ -82,6 +115,7 @@ const Collectionproducts = ({ node, nodetype }) => {
 
     //filter
     filterValSelect.addEventListener("change", function (event) {
+      console.log('bahii filter')
       sortAsc =
         sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
           ? true
@@ -132,22 +166,25 @@ const Collectionproducts = ({ node, nodetype }) => {
           ].join(" ")}
         >
           <label className={productsliststyle.filter}>Filter by:</label>
-          <select id="product-filter" name="filter by">
-            <option vlaue="All">All</option>
-            <option value="Hyaluronic Acid">Hyaluronic Acid</option>
-            <option value="Retinol">Retinol</option>
-            <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-            <option value="Arbutin">Arbutin</option>
-            <option value="Vitamin C">Vitamin C</option>
-            <option value="Salicylic Acid">Salicylic Acid</option>
-            <option value="Hydroquinone*">Hydroquinone*</option>
-            <option value="Cleanser">Cleanser</option>
-            <option value="Toner">Toner</option>
-            <option value="Serum">Serum</option>
-            <option value="Lotion/Cream">Lotion/Cream</option>
-            <option value="Mask">Mask</option>
-            <option value="Peptides">Peptides</option>
-          </select>
+          <div className="custom-select">
+            <select id="product-filter" name="filter by">
+              <option vlaue="All">All</option>
+              <option vlaue="All">All</option>
+              <option value="Hyaluronic Acid">Hyaluronic Acid</option>
+              <option value="Retinol">Retinol</option>
+              <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
+              <option value="Arbutin">Arbutin</option>
+              <option value="Vitamin C">Vitamin C</option>
+              <option value="Salicylic Acid">Salicylic Acid</option>
+              <option value="Hydroquinone*">Hydroquinone*</option>
+              <option value="Cleanser">Cleanser</option>
+              <option value="Toner">Toner</option>
+              <option value="Serum">Serum</option>
+              <option value="Lotion/Cream">Lotion/Cream</option>
+              <option value="Mask">Mask</option>
+              <option value="Peptides">Peptides</option>
+            </select>
+          </div>
         </div>
         <div
           className={[
@@ -158,12 +195,17 @@ const Collectionproducts = ({ node, nodetype }) => {
           ].join(" ")}
         >
           <label className={productsliststyle.filter}>Sort by:</label>
+          <div className="custom-select">
           <select class="filters-select sort-price" name="sort by">
-            <option value="low" selected>
+            <option value="low" >
+              Price :Low - High
+            </option>
+            <option value="low" >
               Price :Low - High
             </option>
             <option value="high">Price :High - Low</option>
           </select>
+        </div>
         </div>
       </div>
       <div
@@ -173,24 +215,12 @@ const Collectionproducts = ({ node, nodetype }) => {
         ].join(" ")}
       >
         {checkTaxonomy &&
-        (pageNodeType.includes("clinicalConcern") ||
-          pageNodeType.includes("clinicalCategories") ||
-          pageNodeType.includes("medicalConcern") ||
-          pageNodeType.includes("medicalCategories") ||
-          pageNodeType.includes("clnicalGroups") ||
-          pageNodeType.includes("medicalLine") ||
-          pageNodeType.includes("skinType")
+        (pageNodeType.toLowerCase().includes('clinical') || 
+          pageNodeType.toLowerCase().includes('medical')
           )
           ? checkTaxonomy.map((item, index) => {
-              let ingredient = ""
-              if (pageNodeType == "clinicalConcern" || pageNodeType == "clinicalCategories" || pageNodeType == "clnicalGroups"|| pageNodeType == "skinType") {
-                ingredient = item.relationships.field_clinical_components.filter(
-                  comp => {
-                    return comp.__typename == "paragraph__ingredient"
-                  }
-                )[0].relationships.field_read_more[0].field_read_more_content
-                  .processed
-              }
+              let ingredient = getIngredient(item);
+              
 
               return (
                 <>
@@ -284,7 +314,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                         />
-                      ) : pageNodeType == "clnicalGroups" ? ( <ProductCard
+                      ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -314,21 +344,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                         />
-                      ) : pageNodeType == "skinType" ? ( <ProductCard
-                        productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description.processed,
-                          }}
-                          productimage={
-                            item.relationships.field_clinical_image[0]
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                        />) : pageNodeType == "clinicalCategories" ? (
+                      )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
                           productLink={item.path.alias}
                           producttitle={item.title}
@@ -344,7 +360,8 @@ const Collectionproducts = ({ node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                         />
-                      ) : (
+                       
+                      ): (
                         <ProductCard
                           productLink={item.path.alias}
                           producttitle={item.title}
@@ -375,6 +392,10 @@ const Collectionproducts = ({ node, nodetype }) => {
               item.relationships.node__clinical_product
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
+                      
+                      let ingredient = getIngredient(product);
+                      
+                      console.log('bahiii', ingredient)
                       if (!checkProductExisitance(product)) {
                         products.push(product)
                         return (
@@ -406,6 +427,10 @@ const Collectionproducts = ({ node, nodetype }) => {
                               price={product.field_clinical_price}
                               rate="0"
                             />
+                            <div
+                              class="d-none ingredient"
+                              dangerouslySetInnerHTML={{ __html: ingredient }}
+                            ></div>
                           </div>
                         )
                       }
@@ -417,7 +442,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                     (product, index) => {
                       if (!checkProductExisitance(product)) {
                         products.push(product)
-                       
+                        let ingredient = getIngredient(product);
                       // Back Here Agian same As 168
                       return (
                         <div
@@ -446,7 +471,12 @@ const Collectionproducts = ({ node, nodetype }) => {
                             price={product.field_medical_price}
                             rate="0"
                           />
+                           <div
+                        class="d-none ingredient"
+                        dangerouslySetInnerHTML={{ __html: ingredient }}
+                      ></div>
                         </div>
+                        
                       )
                     }
                   }
@@ -498,7 +528,7 @@ export const fragment = graphql`
       }
     }
   }
-  fragment vocabularySkinConcerList on paragraph__vocabularies {
+  fragment vocabulariesList on paragraph__vocabularies {
     id
     relationships {
       field_vocabularies {
@@ -582,7 +612,7 @@ export const fragment = graphql`
                     id
                     relationships {
                       field_read_more {
-                        field_re {
+                        field_read_more_content {
                           processed
                         }
                       }
@@ -619,6 +649,18 @@ export const fragment = graphql`
                     }
                   }
                 }
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -640,6 +682,18 @@ export const fragment = graphql`
               }
               field_medical_price
               relationships {
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -667,6 +721,18 @@ export const fragment = graphql`
               }
               field_medical_price
               relationships {
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
+                      }
+                    }
+                  }
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {

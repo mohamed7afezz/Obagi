@@ -97,6 +97,7 @@ const ProductLine = ({ node }) => {
 
   function slickGoToslide(e,int) {
     slider1.current.slickGoTo(int)
+    
     addActiveClass(e)
     
     let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
@@ -182,7 +183,7 @@ const ProductLine = ({ node }) => {
            <div className={["col-lg-10","offset-lg-1","col-12"].join(" ")}>
           <div style={{ width: "100%" }}>
             <Slider
-              ref={slider => (slider1.current = slider)}
+              ref={slider => (slider2.current = slider)}
               {...TabSliderSetting}
               className="tab-slider"
             >

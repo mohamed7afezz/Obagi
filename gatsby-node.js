@@ -129,6 +129,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
             },
+            allTaxonomyTermMedicalSkinType {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
         }
     `);
     
@@ -171,7 +180,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.fields.slug,
-                nodetype: 'clinicalConcern'
+                nodetype: 'clinicalConcern',
+                checktaxonomyType: 'clinical'
             }
         });
     });
@@ -181,7 +191,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'clinicalCategories'
+                nodetype: 'clinicalCategories',
+                checktaxonomyType: 'clinical'
             }
         });
     });
@@ -191,7 +202,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'medicalConcern'
+                nodetype: 'medicalConcern',
+                checktaxonomyType: 'medical'
             }
         });
     });
@@ -201,7 +213,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'medicalCategories'
+                nodetype: 'medicalCategories',
+                checktaxonomyType: 'medical'
+
             }
         });
     });
@@ -211,7 +225,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'clnicalGroups'
+                nodetype: 'clinicalGroups',
+                checktaxonomyType: 'clinical'
+
             }
         });
     });
@@ -221,7 +237,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'medicalLine'
+                nodetype: 'medicalLine',
+                checktaxonomyType: 'medical'
             }
         });
     });
@@ -231,7 +248,20 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productCollectionTemp,
             context: {
                 slug: node.path.alias,
-                nodetype: 'skinType'
+                nodetype: 'skinClinicalType',
+                checktaxonomyType: 'clinical'
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalSkinType.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'skinMedicalType',
+                checktaxonomyType: 'medical'
+
             }
         });
     });

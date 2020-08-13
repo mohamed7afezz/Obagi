@@ -12,7 +12,7 @@ const CollectionHero = ({ node, nodetype }) => {
     checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships
   } else if (nodetype == "medicalCategories") {
     checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships
-  }else if (nodetype == "clnicalGroups"){
+  }else if (nodetype == "clinicalGroups"){
     checkTaxonomy =
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 

@@ -10,12 +10,12 @@ import CollectionProducts from '../components/collection-components/collectoin-p
 
 const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
-
+  
    
     return (
-      <Layout nodeType={props.pageContext.nodetype} menuType="absolute">            
+      <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
         <CollectionHero node={props} nodetype={props.pageContext.nodetype}/>                                   
-        <CollectionProducts node={props} nodetype={props.pageContext.nodetype}/>
+        <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
         <CollectionFooter node={props.data} blockName={props.data}/>
       </Layout>
     )
@@ -153,6 +153,47 @@ export const productPageQuery = graphql`
                   label
                 }
             }
+      },
+      taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
+        name
+        id
+        path {
+          alias
+        }
+        relationships {
+          node__medical_product {
+            title
+            path {
+              alias
+            }
+            relationships {
+              field_medical_components {
+                ... on paragraph__ingredient {
+                  relationships {
+                    field_read_more {
+                      field_read_more_content {
+                        processed
+                      }
+                    }
+                  }
+                }
+              }
+              field_medical_image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            field_medical_price
+            field_medical_description {
+              processed
+            }
+          }
+        }
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name

@@ -31,29 +31,6 @@
     @extend %futurapt-medium;
 
 }
-.Collectionfilter select{
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 13px;
-    @extend %futurapt-medium;
-    color: #132466;
-     -webkit-appearance: none;
-    appearance: rgba(68 , 196 , 217 , 0.1) ;;
-    -moz-appearance: rgba(68 , 196 , 217 , 0.1) ;;
-    text-indent: 1px;
-    text-overflow: '';
-    border-radius: 6px;
-    border-color: #132466;
-    background: rgba(68 , 196 , 217 , 0.0) ;;
-    position: relative;
-    option{
-        background-color: #132466;
-        color: #fff;
-        height: 60px;
-    }
-   
-}
 .Collectionfilter{
     padding-bottom: 24px;
     @include md-screen{

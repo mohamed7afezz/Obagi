@@ -1,3 +1,5 @@
+@import 'custom-select.css';
+
 .slick-initialized {
   padding-bottom: 47px;
 }
@@ -728,4 +730,50 @@ padding-bottom: 134px;
   top: 17px !important;
   left: 16px;
   background: #132466;
+}
+#product-filter,.filters-select {
+  position: absolute;
+  opacity: 0;
+  z-index: -99;
+}
+.collectionList .custom-select {
+  padding: 0;
+  height: auto;
+  background: transparent;
+}
+.collectionList .select-selected{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  background-color: transparent;
+  color: #132466;
+  border: 1px solid #132466;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family:  futura-pt-Medium,   sans-serif; 
+  font-weight:  500; 
+  font-style:  normal;
+}
+.select-items div, .select-selected {
+  
+  padding: 15px 16px;
+}
+.collectionList .select-selected::after{
+  background-image: url(mobileArrow.svg);
+  border: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-repeat: no-repeat;
+  transition: all ease 300ms;
+  
+}
+.collectionList .select-selected.select-arrow-active::after {
+  transform: translate(-3px,-10px) rotate(-180deg);
+  transition: all ease 300ms;
+}
+.collectionList .select-items{
+  background-color: #132466;
 }
