@@ -260,7 +260,28 @@ export const productPageQuery = graphql`
           path {
             alias
           }
+          field_taxonomy_footer_skin_type {
+            settings {
+              label
+            }
+          }
           relationships {
+            field_hero_taxonomy_skintype {
+              field_taxonomy_hero_paraprapgh_t
+              field_taxonomy_hero_para_title
+              field_taxonomy_hero_para_desc
+              relationships {
+                field_taxonomy_hero_paraprapgh_i {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
             node__clinical_product {
               field_clinical_description {
                 processed

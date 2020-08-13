@@ -6,41 +6,15 @@ import lineStyles from "../assets/scss/components/product-line.module.scss"
 import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
 import ProductCard from "../components/productcard"
 const ProductLine = ({ node }) => {
-  const [state, setState] = useState({
-    nav1: null,
-    nav2: null,
-  })
+  const [nav1, setNav1] = React.useState(null)
+  const [nav2, setNav2] = React.useState(null)
+    let slider1 = []
+    let slider2 = []
 
-  const slider1 = useRef()
-  const slider2 = useRef()
-
-  useEffect(() => {
-    setState({
-      nav1: slider1.current,
-      nav2: slider2.current,
-    });
-  
-    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
-    progressbarContainer.innerHTML= "";
-    document
-    .querySelectorAll(".line-tab ")
-    .forEach((Elem) =>{
-      progressbarContainer.innerHTML  += '<li></li>'; })
-    document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
-  }, [])
-
-  const { nav1, nav2 } = state
-
-  const HeroSettings = {
-    infinite: true,
-    speed: 500,
-    arrows: false,
-    slidesToShow: 4,
-    afterChange: () =>
-      this.setState(state => ({ updateCount: state.updateCount + 1 })),
-    beforeChange: (current, next) => this.setState({ slideIndex: next }),
-  }
-
+    React.useEffect(() => {
+        setNav1(slider1)
+        setNav2(slider2)
+    }, [slider1, slider2])
   const SliderSetting = {
     infinite: false,
     speed: 500,
@@ -56,10 +30,24 @@ const ProductLine = ({ node }) => {
         },
       },
     ],
+  //   beforeChange: (current, next) => {
+  //  let tabsstate=   document
+  //     .querySelectorAll(".line-tab ");
+     
+  //     let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
+  //     tabsstate.forEach((activetab,index) =>{
+
+  //       if (index == current +1) {
+  //         activetab.classList.add('active')
+  //       }else{
+  //         activetab.classList.remove('active')
+  //       }
+  //     })
+  //   },
   }
   
   const SliderSetting2 = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     arrows: true,
@@ -93,8 +81,9 @@ const ProductLine = ({ node }) => {
         },
       },
     ],
+   
   }
-
+  
   function slickGoToslide(e,int) {
     slider1.current.slickGoTo(int)
     
@@ -113,7 +102,35 @@ const ProductLine = ({ node }) => {
      
     })
   }
- 
+  function slickGoToslide(e,int) {
+    slider1.slickGoTo(int)
+    
+    addActiveClass(e)
+    
+    let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
+
+    progressbar.forEach((activeLi,index) =>{
+      activeLi.classList.remove("slick-data-active") } )
+    
+    progressbar.forEach((activeLi,index) =>{
+     
+      if (index <= int) {
+        activeLi.classList.add('slick-data-active')
+      }
+     
+    })
+  }
+  useEffect(() => {
+  
+    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
+    progressbarContainer.innerHTML= "";
+    document
+    .querySelectorAll(".line-tab ")
+    .forEach((Elem) =>{
+      progressbarContainer.innerHTML  += '<li></li>'; })
+    document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
+  }, [])
+
 
 
   function addActiveClass(e) {
@@ -183,7 +200,8 @@ const ProductLine = ({ node }) => {
            <div className={["col-lg-10","offset-lg-1","col-12"].join(" ")}>
           <div style={{ width: "100%" }}>
             <Slider
-              ref={slider => (slider2.current = slider)}
+              asNavFor={nav2}
+              ref={slider => (slider1 = slider)}
               {...TabSliderSetting}
               className="tab-slider"
             >
@@ -221,8 +239,9 @@ const ProductLine = ({ node }) => {
          <div className={["col-12","desk-pr-0","desk-pl-0","bigSliderContainer"].join(" ")}>
           <div  style={{ width: "100%" }}>
             <Slider
-              ref={slider => (slider1.current = slider)}
-              {...SliderSetting}
+               {...SliderSetting}
+              asNavFor={nav1}
+              ref={slider => (slider2 = slider)}
             >
               {node.relationships.field_line_card
                 ? node.relationships.field_line_card.map((item, index) => {

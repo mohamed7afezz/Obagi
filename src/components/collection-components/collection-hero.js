@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype }) => {
+  console.log('hassan222',node,nodetype)
   let checkTaxonomy;
   if (nodetype == "clinicalConcern") {
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -17,9 +18,14 @@ const CollectionHero = ({ node, nodetype }) => {
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
   } else if(nodetype == 'medicalLine'){
+    //////////// tO BE CHANGED //////////
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
        .node__medical_product
+       
+  } else if (nodetype == 'skinClinicalType'){
+    checkTaxonomy =
+    node.data.taxonomyTermClinicalSkinType.relationships
        
   } else {
     // listing pages
@@ -174,6 +180,83 @@ const CollectionHero = ({ node, nodetype }) => {
                     className={Collectionherostyle.allheight}
                     fluid={
                       checkTaxonomy.field_hero_categories_taxonomy
+                        .relationships.field_taxonomy_hero_paraprapgh_i
+                        .localFile.childImageSharp.fluid
+                    }
+                  />
+                ) : (
+                  ""
+                )
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      ) :  nodetype == 'skinClinicalType'? (
+        <div className={"row"}>
+          <div
+            className={[
+              "col-12",
+              "col-lg-3",
+              "offset-lg-1",
+              Collectionherostyle.Collectionheroleftcol,
+              "Collectionheroleftcol",
+            ].join(" ")}
+          >
+            {checkTaxonomy.field_hero_taxonomy_skintype ? (
+              <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
+                {" "}
+                {
+                  checkTaxonomy.field_hero_taxonomy_skintype
+                    .field_taxonomy_hero_paraprapgh_t
+                }
+              </p>
+            ) : (
+              ""
+            )}
+
+            {checkTaxonomy.field_hero_taxonomy_skintype ? (
+              <h1 className={Collectionherostyle.collectiontitle}>
+                {
+                  checkTaxonomy.field_hero_taxonomy_skintype
+                    .field_taxonomy_hero_para_title
+                }
+              </h1>
+            ) : (
+              ""
+            )}
+            {checkTaxonomy.field_hero_taxonomy_skintype ? (
+              <p className={Collectionherostyle.collectiondescription}>
+                {
+                  checkTaxonomy.field_hero_taxonomy_skintype
+                    .field_taxonomy_hero_para_desc
+                }
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          {checkTaxonomy.field_hero_taxonomy_skintype ? (
+            <div
+              className={[
+                "col-lg-7",
+                "offset-lg-1",
+                "col-12",
+                Collectionherostyle.Collectionherorightcol,
+                "Collectionherorightcol",
+              ].join(" ")}
+            >
+              {checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                .field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                  .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                  <Img
+                    className={Collectionherostyle.allheight}
+                    fluid={
+                      checkTaxonomy.field_hero_taxonomy_skintype
                         .relationships.field_taxonomy_hero_paraprapgh_i
                         .localFile.childImageSharp.fluid
                     }
