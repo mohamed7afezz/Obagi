@@ -777,3 +777,9 @@ padding-bottom: 134px;
 .collectionList .select-items{
   background-color: #132466;
 }
+.bigSliderContainer .slick-disabled{
+  display: none !important;
+}
+.bigSliderContainer .productInlineSlider .slick-disabled{
+  display: block !important;
+}
