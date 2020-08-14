@@ -4,63 +4,63 @@ import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 
 const FaqWrapper = ({ node }) => {
 
-  console.log('node', node.relationships.field_faq_section)
+  // console.log('node', node.relationships.field_faq_section)
 
 
-  let list = node.relationships.field_faq_section;
-  let pageList = new Array();
-  let currentPage = 1;
-  let numberPerPage = 2;
-  let numberOfPages = 3;
+  // let list = node.relationships.field_faq_section;
+  // let pageList = new Array();
+  // let currentPage = 1;
+  // let numberPerPage = 2;
+  // let numberOfPages = 3;
 
-  function load() {
-    getNumberOfPages();
-    loadList();
-  }
-  function getNumberOfPages() {
-    return Math.ceil(list.length / numberPerPage);
-  }
-  function nextPage() {
-    currentPage += 1;
-    loadList();
-  }
-  function previousPage() {
-    currentPage -= 1;
-    loadList();
-  }
-  function firstPage() {
-    currentPage = 1;
-    loadList();
-  }
-  function lastPage() {
-    currentPage = numberOfPages;
-    loadList();
-  }
-  function loadList() {
-    var begin = ((currentPage - 1) * numberPerPage);
-    var end = begin + numberPerPage;
+  // function load() {
+  //   getNumberOfPages();
+  //   loadList();
+  // }
+  // function getNumberOfPages() {
+  //   return Math.ceil(list.length / numberPerPage);
+  // }
+  // function nextPage() {
+  //   currentPage += 1;
+  //   loadList();
+  // }
+  // function previousPage() {
+  //   currentPage -= 1;
+  //   loadList();
+  // }
+  // function firstPage() {
+  //   currentPage = 1;
+  //   loadList();
+  // }
+  // function lastPage() {
+  //   currentPage = numberOfPages;
+  //   loadList();
+  // }
+  // function loadList() {
+  //   var begin = ((currentPage - 1) * numberPerPage);
+  //   var end = begin + numberPerPage;
 
-    pageList = list.slice(begin, end);
-    drawList();    // draws out our data
-    check();         // determines the states of the pagination buttons
-  }
-  function drawList() {
-    document.getElementById("list").innerHTML = "";
+  //   pageList = list.slice(begin, end);
+  //   drawList();    // draws out our data
+  //   check();         // determines the states of the pagination buttons
+  // }
+  // function drawList() {
+  //   document.getElementById("list").innerHTML = "";
 
-    for (let r = 0; r < pageList.length; r++) {
-      document.getElementById("list").innerHTML += pageList[r] + "";
-    }
-  }
-  function check() {
-    document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
-    document.getElementById("previous").disabled = currentPage == 1 ? true : false;
-    document.getElementById("first").disabled = currentPage == 1 ? true : false;
-    document.getElementById("last").disabled = currentPage == numberOfPages ? true : false;
-  }
+  //   for (let r = 0; r < pageList.length; r++) {
+  //     document.getElementById("list").innerHTML += pageList[r] + "";
+  //   }
+  // }
+  // function check() {
+  //   document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
+  //   document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+  //   document.getElementById("first").disabled = currentPage == 1 ? true : false;
+  //   document.getElementById("last").disabled = currentPage == numberOfPages ? true : false;
+  // }
 
-  window.addEventListener('load', load);
+  // window.addEventListener('load', load);
 
-  console.log("list", list);
+  // console.log("list", list);
 
   return (
     <div className={faqStyles.wrapper}>
