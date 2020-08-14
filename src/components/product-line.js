@@ -30,20 +30,38 @@ const ProductLine = ({ node }) => {
         },
       },
     ],
-  //   beforeChange: (current, next) => {
-  //  let tabsstate=   document
-  //     .querySelectorAll(".line-tab ");
+    beforeChange: (current, next) => {
+      let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
+       
+      
+      progressbar.forEach((activeLi,index) =>{
+       
+        if (index == next) {
+          activeLi.classList.add('slick-data-active')
+        }else if (index > next){
+          progressbar[index].classList.remove('slick-data-active')
+          
+        }
+    
+         
+        
+       
+      })
+      
+   let tabsstate=   document
+      .querySelectorAll(".line-tab ");
+      let i = current;
+      tabsstate.forEach((activetab,index) =>{
+      
+        if (index == next) {
+          activetab.classList.add('active')
+        }
+        else{
+          activetab.classList.remove('active')
+        }
      
-  //     let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
-  //     tabsstate.forEach((activetab,index) =>{
-
-  //       if (index == current +1) {
-  //         activetab.classList.add('active')
-  //       }else{
-  //         activetab.classList.remove('active')
-  //       }
-  //     })
-  //   },
+      })
+    },
   }
   
   const SliderSetting2 = {
@@ -248,7 +266,7 @@ const ProductLine = ({ node }) => {
                     return (
                       <div className={["row",lineStyles.sliderFlex].join(" ")}>
                         <div
-                          className={["col-12","col-lg-6", lineStyles.cardWrapper].join(
+                          className={["col-12","col-lg-6", lineStyles.cardWrapper,"cardWrapper"].join(
                             " "
                           )}
                         >
