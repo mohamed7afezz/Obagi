@@ -1,0 +1,32 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(36, 46);
+    text-align: center;
+    padding: 65px 0 16px;
+    color: #ffffff;
+
+    @include lg-screen {
+        @include fontStyle(72, 88);
+        padding: 242px 0 40px;
+    }
+}
+
+.description {
+    @include fontStyle(18, 27);
+    text-align: center;
+    color: #ffffff;
+    padding-bottom: 65px;
+
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+
+        @include fontStyle(32, 48);
+        padding-bottom: 111px;
+    }
+}

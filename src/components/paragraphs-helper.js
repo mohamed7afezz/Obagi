@@ -30,6 +30,8 @@ import ProductLine from './product-line';
 import CareersHero from './careers-hero';
 import Article from './article';
 import HeadingAndButton from './heading-and-button';
+import FaqHero from './faq-hero';
+import FaqWrapper from './faq-wrapper';
 
 
 const componentsMap = {
@@ -54,6 +56,8 @@ const componentsMap = {
     paragraph__careers_hero: CareersHero,
     paragraph__article : Article,
     paragraph__heading_and_button: HeadingAndButton,
+    paragraph__faq_hero: FaqHero,
+    paragraph__faq_wrapper: FaqWrapper,
 }
 
 export const getParagraph = node => {

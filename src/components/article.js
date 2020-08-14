@@ -4,8 +4,8 @@ import articleStyles from '../assets/scss/components/article.module.scss'
 
 const Article = ({ node }) => {
     return (
-        <div className={articleStyles.wrapper}>
-            <div className="container-fluid">
+        <div>
+            <div className={["container-fluid", articleStyles.wrapper].join(" ")}>
                 <div className="row">
                     <div className="col-12 col-lg-8 offset-lg-2">
                         {node.field_article_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_article_headline.processed }} className={articleStyles.headline}></div> : ''}
