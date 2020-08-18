@@ -3,7 +3,27 @@
 
 
 .wrapper {
-    @include lg-screen {}
+    @include lg-screen {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            height: 116px;
+            width: 116px;
+            background: #132466;
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            height: 116px;
+            width: 116px;
+            background: #ffcd00;
+            top: 116px;
+            left: 0;
+        }
+    }
 }
 
 .headline {

@@ -188,8 +188,8 @@ footer .form-group {
                 content: '';
                 width: 10px;
                 height: 4px;
-                left: 20px;
-                top: 34px;
+                // left: 20px;
+                // top: 34px;
                 background-image: url('../../images/path-copy.png');
                 right: 26px;
                 top: 36px;
@@ -838,3 +838,60 @@ footer .form-group {
 //         width: 212px !important;
 //     }
 // }
+
+.faq-wrapper {
+    .pagination {
+        margin: 80px 0 0;
+        .page-item .page-link {
+            color: #132466;
+            @extend %futurapt-medium;
+            @include fontStyle(14, 16);
+            border: 1px solid #d6d6d6;
+            border-radius: 6px;
+            margin-right: 16px;
+            
+            &:focus {
+                box-shadow: unset;
+                background: #132466;
+                color: #ffffff;
+                border: 1px solid #132466;
+                
+            }
+
+            &:hover {
+                border: 1px solid #132466;
+                background: unset;
+                color: #132466;
+            }
+        }
+
+        .page-item:last-child .page-link {
+            margin-right: 0;
+        }
+
+        .page-item:first-child .page-link, .page-item:last-child .page-link {
+            border: unset;
+        }
+
+        @include lg-screen {
+            margin: 160px 0 0;
+        }
+    }
+
+
+
+    .faq-sign {
+        position: absolute;
+        content: '';
+        width: 24px;
+        height: 24px;
+        right: 0;
+        top: 55px;
+        background-image: url('../../images/minus.png');
+        
+
+        &.collapsed {
+            background-image: url('../../images/plus.png');
+        }
+    }
+}

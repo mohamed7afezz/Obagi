@@ -30,6 +30,8 @@ import ProductLine from './product-line';
 import CareersHero from './careers-hero';
 import Article from './article';
 import HeadingAndButton from './heading-and-button';
+import FaqHero from './faq-hero';
+import FaqWrapper from './faq-wrapper';
 
 
 const componentsMap = {
@@ -61,6 +63,8 @@ const componentsMap = {
     paragraph__before_after: Beforeafter,
     paragraph__recomended_paring : RecommendedParing,
     paragraph__you_might_also_like : YouMayLike,
+    paragraph__faq_hero: FaqHero,
+    paragraph__faq_wrapper: FaqWrapper,
 }
 
 export const getParagraph = node => {

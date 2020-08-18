@@ -48,6 +48,8 @@ query($slug: String!) {
                 ...paragraphCareersHero
                 ...paragraphArticle
                 ...paragraphHeadingAndButton
+                ...paragraphFaqHero
+                ...paragraphFaqWrapper
 
             }
         }

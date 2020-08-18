@@ -1,0 +1,107 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    padding-bottom: 128px;
+
+    @include lg-screen {
+        padding: 32px 0 220px;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            height: 116px;
+            width: 116px;
+            background: #132466;
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            height: 116px;
+            width: 116px;
+            background: #ffcd00;
+            top: 116px;
+            left: 0;
+        }
+    }
+}
+
+.title {
+    @extend %futurapt-light;
+    font-size: 32px;
+    padding: 64px 0;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+        padding: 200px 0 100px;
+    }
+}
+
+.question {
+    font-size: 24px;
+    margin: 48px 0;
+    display: inline-block;
+    color: #132466;
+
+    &:hover {
+        text-decoration: none;
+        color: #132466;
+    }
+
+
+    @include lg-screen {
+        @include fontStyle(40, 56);
+        margin: 40px 0 ;
+    }
+}
+
+.question[aria-expanded="true"] {
+    margin-bottom: 27px;
+
+    @include lg-screen {
+        margin-bottom: 40px;
+    }
+}
+
+.sign {
+
+}
+
+.qa-wrapper {
+    position: relative;
+    border-bottom: 1px solid rgba(19, 36, 103, 0.2);
+}
+
+.last-section {
+    .last-qa-wrapper {
+        border-bottom: 0;
+    }
+}
+
+.answer {
+    @include fontStyle(16, 32);
+    padding-bottom: 45px;
+
+    a {
+        font-family: FuturaPT-Demi;
+        color: #132466;
+        &:hover {
+            text-decoration: none;
+            color: #132466;
+        }
+    }
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        padding-bottom: 40px;
+
+        a {
+            font-family:  futura-pt-Medium,   sans-serif; 
+            font-weight:  500; 
+            font-style:  normal;
+
+        }
+    }
+}
