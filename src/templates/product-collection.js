@@ -161,6 +161,22 @@ export const productPageQuery = graphql`
           alias
         }
         relationships {
+              field_hero_parag_taxonomy {
+                field_taxonomy_hero_para_title
+                field_taxonomy_hero_paraprapgh_t
+                field_taxonomy_hero_para_desc
+                relationships {
+                  field_taxonomy_hero_paraprapgh_i {
+                    localFile {
+                      childImageSharp {
+                        fluid (quality: 100) {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+              }
           node__medical_product {
             title
             path {
@@ -181,7 +197,7 @@ export const productPageQuery = graphql`
               field_medical_image {
                 localFile {
                   childImageSharp {
-                    fluid {
+                    fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -224,8 +240,8 @@ export const productPageQuery = graphql`
                       field_medical_image {
                         localFile {
                           childImageSharp {
-                            fluid {
-                                ...GatsbyImageSharpFluid
+                            fluid (quality: 100) {
+                              ...GatsbyImageSharpFluid
                             }
                           }
                         }
@@ -240,8 +256,8 @@ export const productPageQuery = graphql`
                     field_taxonomy_hero_paraprapgh_i {
                       localFile {
                         childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
+                          fluid (quality: 100) {
+                            ...GatsbyImageSharpFluid
                           }
                         }
                       }
@@ -274,7 +290,7 @@ export const productPageQuery = graphql`
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -295,7 +311,7 @@ export const productPageQuery = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -319,6 +335,22 @@ export const productPageQuery = graphql`
         },
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
           relationships {
+            field_hero_productline_taxonomy {
+              field_taxonomy_hero_paraprapgh_t
+              field_taxonomy_hero_para_title
+              field_taxonomy_hero_para_desc
+              relationships {
+                field_taxonomy_hero_paraprapgh_i {
+                  localFile {
+                    childImageSharp {
+                      fluid (quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
             node__medical_product {
               id
               field_medical_is_system
@@ -343,34 +375,7 @@ export const productPageQuery = graphql`
                     }
                   }
                 }
-                field_medical_product_lines {
-                  relationships {
-                    node__medical_product {
-                      relationships {
-                        field_medical_categories {
-                          relationships {
-                            field_hero_category_taxonomy {
-                              field_taxonomy_hero_para_desc
-                              field_taxonomy_hero_para_title
-                              field_taxonomy_hero_paraprapgh_t
-                              relationships {
-                                field_taxonomy_hero_paraprapgh_i {
-                                  localFile {
-                                    childImageSharp {
-                                      fluid {
-                                        ...GatsbyImageSharpFluid
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+            
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -387,6 +392,11 @@ export const productPageQuery = graphql`
             alias
           }
           name
+          field_taxonomy_line_footer {
+            settings {
+              label
+            }
+          }
         },
         taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
           id

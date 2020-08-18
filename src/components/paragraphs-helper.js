@@ -54,6 +54,13 @@ const componentsMap = {
     paragraph__careers_hero: CareersHero,
     paragraph__article : Article,
     paragraph__heading_and_button: HeadingAndButton,
+    paragraph__the_details_safe_section: Details,
+    paragraph__ingredient: Ingredient,
+    paragraph__need_to_know: Needtoknow,
+    paragraph__how_to_use: Howtouse,
+    paragraph__before_after: Beforeafter,
+    paragraph__recomended_paring : RecommendedParing,
+    paragraph__you_might_also_like : YouMayLike,
 }
 
 export const getParagraph = node => {
@@ -64,21 +71,11 @@ export const getParagraph = node => {
     return <p key={node.id}>Unknown type {node.__typename}</p>;
 }
 
-const productComponentsMap = {
-    paragraph__the_details_safe_section: Details,
-    paragraph__ingredient: Ingredient,
-    paragraph__need_to_know: Needtoknow,
-    paragraph__how_to_use: Howtouse,
-    paragraph__before_after: Beforeafter,
-    paragraph__recomended_paring : RecommendedParing,
-    paragraph__you_might_also_like : YouMayLike,
-}
-
 // const clinical
 
 export const getProductParagraph = node => {
-    if (productComponentsMap.hasOwnProperty(node.type)) {
-        const ParagraphComponent = productComponentsMap[node.type];
+    if (componentsMap.hasOwnProperty(node.type)) {
+        const ParagraphComponent = componentsMap[node.type];
         return <ParagraphComponent key={node.id} node={node} />;
     }
     return <p key={node.id}>Unknown type {node.__typename}</p>;

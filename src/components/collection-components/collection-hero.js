@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype }) => {
-  console.log('hassan222',node,nodetype)
+  
   let checkTaxonomy;
   if (nodetype == "clinicalConcern") {
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -18,15 +18,17 @@ const CollectionHero = ({ node, nodetype }) => {
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
   } else if(nodetype == 'medicalLine'){
-    //////////// tO BE CHANGED //////////
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
-       .node__medical_product
-       
   } else if (nodetype == 'skinClinicalType'){
     checkTaxonomy =
     node.data.taxonomyTermClinicalSkinType.relationships
        
+  } else if (nodetype == 'skinMedicalType'){
+   
+    checkTaxonomy =
+    node.data.taxonomyTermMedicalSkinType.relationships;
+    console.log('hassan',checkTaxonomy)
   } else {
     // listing pages
     checkTaxonomy = node;
@@ -195,6 +197,83 @@ const CollectionHero = ({ node, nodetype }) => {
             ""
           )}
         </div>
+      ) : nodetype == "medicalLine" ? (
+        <div className={"row"}>
+          <div
+            className={[
+              "col-12",
+              "col-lg-3",
+              "offset-lg-1",
+              Collectionherostyle.Collectionheroleftcol,
+              "Collectionheroleftcol",
+            ].join(" ")}
+          >
+            {checkTaxonomy.field_hero_categories_taxonomy ? (
+              <p className={Collectionherostyle.type}>
+                {" "}
+                {
+                  checkTaxonomy.field_hero_productline_taxonomy
+                    .field_taxonomy_hero_paraprapgh_t
+                }
+              </p>
+            ) : (
+              ""
+            )}
+
+            {checkTaxonomy.field_hero_productline_taxonomy ? (
+              <h1 className={Collectionherostyle.collectiontitle}>
+                {
+                  checkTaxonomy.field_hero_productline_taxonomy
+                    .field_taxonomy_hero_para_title
+                }
+              </h1>
+            ) : (
+              ""
+            )}
+            {checkTaxonomy.field_hero_productline_taxonomy ? (
+              <p className={Collectionherostyle.collectiondescription}>
+                {
+                  checkTaxonomy.field_hero_productline_taxonomy
+                    .field_taxonomy_hero_para_desc
+                }
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          {checkTaxonomy.field_hero_productline_taxonomy ? (
+            <div
+              className={[
+                "col-lg-7",
+                "offset-lg-1",
+                "col-12",
+                Collectionherostyle.Collectionherorightcol,
+                "Collectionherorightcol",
+              ].join(" ")}
+            >
+              {checkTaxonomy.field_hero_productline_taxonomy
+                .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_productline_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+                  <Img
+                    className={Collectionherostyle.allheight}
+                    fluid={
+                      checkTaxonomy.field_hero_productline_taxonomy
+                        .relationships.field_taxonomy_hero_paraprapgh_i
+                        .localFile.childImageSharp.fluid
+                    }
+                  />
+                ) : (
+                  ""
+                )
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       ) :  nodetype == 'skinClinicalType'? (
         <div className={"row"}>
           <div
@@ -257,6 +336,83 @@ const CollectionHero = ({ node, nodetype }) => {
                     className={Collectionherostyle.allheight}
                     fluid={
                       checkTaxonomy.field_hero_taxonomy_skintype
+                        .relationships.field_taxonomy_hero_paraprapgh_i
+                        .localFile.childImageSharp.fluid
+                    }
+                  />
+                ) : (
+                  ""
+                )
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      ) :  nodetype == 'skinMedicalType'? (
+        <div className={"row"}>
+          <div
+            className={[
+              "col-12",
+              "col-lg-3",
+              "offset-lg-1",
+              Collectionherostyle.Collectionheroleftcol,
+              "Collectionheroleftcol",
+            ].join(" ")}
+          >
+            {checkTaxonomy.field_hero_parag_taxonomy ? (
+              <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
+                {" "}
+                {
+                  checkTaxonomy.field_hero_parag_taxonomy
+                    .field_taxonomy_hero_paraprapgh_t
+                }
+              </p>
+            ) : (
+              ""
+            )}
+
+            {checkTaxonomy.field_hero_parag_taxonomy ? (
+              <h1 className={Collectionherostyle.collectiontitle}>
+                {
+                  checkTaxonomy.field_hero_parag_taxonomy
+                    .field_taxonomy_hero_para_title
+                }
+              </h1>
+            ) : (
+              ""
+            )}
+            {checkTaxonomy.field_hero_parag_taxonomy ? (
+              <p className={Collectionherostyle.collectiondescription}>
+                {
+                  checkTaxonomy.field_hero_parag_taxonomy
+                    .field_taxonomy_hero_para_desc
+                }
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          {checkTaxonomy.field_hero_parag_taxonomy ? (
+            <div
+              className={[
+                "col-lg-7",
+                "offset-lg-1",
+                "col-12",
+                Collectionherostyle.Collectionherorightcol,
+                "Collectionherorightcol",
+              ].join(" ")}
+            >
+              {checkTaxonomy.field_hero_parag_taxonomy.relationships
+                .field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_parag_taxonomy.relationships
+                  .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                  <Img
+                    className={Collectionherostyle.allheight}
+                    fluid={
+                      checkTaxonomy.field_hero_parag_taxonomy
                         .relationships.field_taxonomy_hero_paraprapgh_i
                         .localFile.childImageSharp.fluid
                     }
@@ -514,7 +670,7 @@ export const fragment = graphql`
           field_taxonomy_hero_paraprapgh_i {
             localFile {
               childImageSharp {
-                fluid {
+                fluid (quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
                 original {
@@ -540,7 +696,7 @@ export const fragment = graphql`
             original {
               src
             }
-            fluid {
+            fluid (quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

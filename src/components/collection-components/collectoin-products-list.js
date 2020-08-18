@@ -5,7 +5,7 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 import {CustomSelect} from '../../assets/js/custom-select'
 
 const Collectionproducts = ({ node, nodetype }) => {
-  console.log('hassan',node)
+
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
@@ -68,7 +68,7 @@ const Collectionproducts = ({ node, nodetype }) => {
     )[0]?item.relationships.field_medical_components.filter(
      
       comp => {
-          console.log('hassan22',comp)
+        
         return comp.__typename == "paragraph__ingredient"
       }
     )[0].relationships.field_read_more[0].field_read_more_content

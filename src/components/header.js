@@ -6,7 +6,7 @@ import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
-
+import CartContext from '../providers/cart-provider';
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const location = useLocation();
@@ -160,7 +160,22 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
                     <div ><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                    <div className={headerStyles.cartWrapper}><Link to="#" className={headerStyles.navButton}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /><p className={headerStyles.cartCounter}>1</p></Link></div>
+                    <CartContext.Consumer>
+                      {value => {
+                        return (
+                          <div className={headerStyles.cartWrapper}>
+                            <Link to="/cart" className={headerStyles.navButton}>
+                            <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                            {value &&
+                              value.state.cart &&
+                              value.state.cart.numberItems > 0 && (
+                                <p className={headerStyles.cartCounter}>{value.state.cart.numberItems}</p>
+                              )}
+                          </Link></div>
+                        );
+                      }}
+                    </CartContext.Consumer>
+                    
                   </div>
                   <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons() }}></button>
                 </div>
@@ -220,7 +235,21 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                   <div className={headerStyles.navLastSection}>
                     <p><Link to="#">SIGN IN</Link></p>
                     <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
-                    <div className={headerStyles.navButton}><div className={headerStyles.cartWrapper}><Link to="#" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} /><p className={headerStyles.cartCounter}>1</p></Link></div></div>
+                    <CartContext.Consumer>
+                      {value => {
+                        return (
+                            <div className={headerStyles.navButton}>
+                              <div className={headerStyles.cartWrapper}>
+                                <Link to="/cart" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                                {value &&
+                                value.state.cart &&
+                                value.state.cart.numberItems > 0 && (
+                                  <p className={headerStyles.cartCounter}>{value.state.cart.numberItems}</p>
+                                )}
+                          </Link></div></div>
+                        );
+                      }}
+                    </CartContext.Consumer>
                   </div>
                 </div>
               </div>

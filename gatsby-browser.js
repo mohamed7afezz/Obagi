@@ -16,8 +16,14 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 import React from 'react';
 import { ViewedProductsProvider } from './src/providers/latestview-provider';
+import { CartProvider } from "./src/providers/cart-provider";
+import Showbag from './src/components/showbag';
 export const wrapRootElement = ({ element }) => (
   <ViewedProductsProvider>
-    {element}
+    <CartProvider>
+      <Showbag>
+        {element}
+      </Showbag>
+    </CartProvider>
   </ViewedProductsProvider>
 );

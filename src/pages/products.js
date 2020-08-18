@@ -22,7 +22,7 @@ const products = () => (
       <Details/>
       <Ingredient/>
       <Needtoknow/> */}
-        <Showbag/>
+        {/* <Showbag/> */}
       {/* <Beforeafter/>
 
       <Carouselproducts/>
