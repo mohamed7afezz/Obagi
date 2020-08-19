@@ -195,6 +195,8 @@ footer .form-group {
                 right: 26px;
                 top: 36px;
                 left: unset;
+                transform: rotate(0);
+                transition: all ease 300ms;
             }
 
             &.collapsed {
@@ -204,7 +206,18 @@ footer .form-group {
                 // border-bottom: 2px solid rgba(124,133,138,0.15);
 
                 &::after {
-                    background-image: url('../../images/path-copy-down.png');
+                               position: absolute;
+                content: '';
+                width: 10px;
+                height: 4px;
+                // left: 20px;
+                // top: 34px;
+                background-image: url('../../images/path-copy.png');
+                right: 26px;
+                top: 36px;
+                left: unset;
+                transform: rotate(180deg);
+                transition: all ease 300ms;
                 }
             }
 
@@ -234,7 +247,8 @@ footer .form-group {
                     left: 20px;
                     top: 34px;
                     background-image: url('../../images/small-left.png');
-
+                    transform: none;
+                    transition: none;
                 }
 
                 &.collapsed {
@@ -247,7 +261,8 @@ footer .form-group {
                         top: 36px;
                         width: 6px;
                         height: 8px;
-
+                        transform: none;
+                        transition: none;
                     }
 
 
@@ -421,7 +436,7 @@ footer .form-group {
                 padding: 0 0 24px 25px !important;
                 font-size: 16px !important;
                 line-height: 24px !important;
-                letter-spacing: 0 !important;
+                letter-spacing: 1.6px !important;
                 // border: 0 !important;
                 color: #132466;
                 background: #fff;

@@ -268,9 +268,24 @@
         font-size: 10px;
     }
 }
-
+.overveiw{
+    justify-content: space-between;
+}
 .active-submenu {
     background: #fff;
     color: #132466 !important;
 }
 
+.lowerSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.spacebetween{
+   img{
+       max-width: 24px;
+       max-height: 24px;;
+   }
+    align-items: center;
+}
