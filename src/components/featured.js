@@ -58,6 +58,8 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
   return currentName.includes(item.node.name.split(' ')[0])
 })[0];
 
+console.log('current', currentName)
+
 productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
   return (
 

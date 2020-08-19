@@ -184,19 +184,24 @@ const ProductLine = ({ node }) => {
     }
   `)
 
-  let currentName = node.relationships.field_line_card.map(item => {
-    return item.field_line_title
+  let systemName = data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
+    return (item.node.name)
   })
+
   let productCount = 0
-  let taxonomy = data.allTaxonomyTermMedicalProductLines.edges.filter(item => {
-    return currentName.includes(item.node.name.split(" ")[0])
+  let taxonomy = data.allTaxonomyTermMedicalProductLines.edges.filter((item) => {
+    return systemName.includes(item.node.name.split(" ")[0])
   })[0]
 
   productCount = taxonomy
     ? taxonomy.node.relationships.node__medical_product
       ? taxonomy.node.relationships.node__medical_product.length
       : 0
-    : 0
+    : 0;
+
+
+    console.log('count', productCount, taxonomy, systemName)
+
 
   return (
     <div className={[lineStyles.wrapper, "product-line"].join(" ")}>
@@ -232,14 +237,11 @@ const ProductLine = ({ node }) => {
                           <div className={lineStyles.tabWrapper}>
                             {item.field_tab_title ? (
                               <div
-                                dangerouslySetInnerHTML={{
-                                  __html: item.field_tab_title.processed,
-                                }}
                                 onClick={(e) => slickGoToslide(e,index)}
                                 className={[lineStyles.tab, "line-tab", index == 0 ?'active' : ""].join(
                                   " "
                                 )}
-                              ></div>
+                                >{systemName[index]}</div>
                             ) : (
                               ""
                             )}
@@ -283,11 +285,8 @@ const ProductLine = ({ node }) => {
                           <div className={["offset-lg-2","col-lg-8","pr-0","pl-0",lineStyles.leftSliderwapper].join(" ")}>
                           {item.field_line_title ? (
                             <div
-                              dangerouslySetInnerHTML={{
-                                __html: item.field_line_title.processed,
-                              }}
                               className={lineStyles.cardTitle}
-                            ></div>
+                            >{systemName[index]}</div>
                           ) : (
                             ""
                           )}
