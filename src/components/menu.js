@@ -79,6 +79,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     else if (itemId && collapseTarget) {
       return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
         {link.title}
+        {/* <Link to={link.link.uri}>Overview</Link> */}
       </a>)
     }
   }
@@ -109,7 +110,9 @@ function buildMenu(menuArray, isExpandable, menuName){
   }
   let menu = []
   for(let item in menuArray) {
+    console.log('ashraqat',menuName, menuArray[item])
     if(menuArray[item].children.length !== 0) {
+      
       menu.push(
       <li key={menuArray[item].drupal_id}>
         {
@@ -119,7 +122,7 @@ function buildMenu(menuArray, isExpandable, menuName){
             buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
         }
         <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : 'menuItem')}>
-          {buildMenu(menuArray[item].children, true)}
+          {buildMenu(menuArray[item].children, true, menuName)}
         </ul>
       </li>)
     } else {

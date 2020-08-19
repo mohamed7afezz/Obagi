@@ -79,13 +79,13 @@
 
 .lower-section {
 
-    margin: 177px 0 37px 24px;
+    padding: 177px 0 37px 24px;
 
     span {
         margin-right: 34px;
 
         a {
-            color: #ffffff;
+            color: #132466;
             @include fontStyle (12, 16);
             letter-spacing: 1.2px;
             @extend %futurapt-bold;
@@ -97,6 +97,7 @@
 .category-section {
     padding-bottom: 17px;
     text-align: center;
+    background: #132466;
 
     .category {
         padding: 15px 0;

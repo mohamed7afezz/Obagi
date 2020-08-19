@@ -15,6 +15,7 @@ import Layout from "../components/layout"
 
 import YourBag from "../components/bag"
 import Showbag from "../components/showbag"
+import Search from "../components/search"
 const products = () => (
  
     <Layout>
@@ -32,7 +33,7 @@ const products = () => (
       <YourBag/>
 
       {/* <ProductLine /> */}
-      
+      <Search />
         </Layout>
         
 )
