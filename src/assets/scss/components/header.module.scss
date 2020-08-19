@@ -278,14 +278,31 @@
 
 .lowerSection{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 165px;
+    a{
+        color: #132466;
+        font-size: 14px;
+        line-height: 16px;
+        @extend %futurapt-medium;
+ 
+    }
 }
 .spacebetween{
+    margin-right: 48px;
    img{
        max-width: 24px;
        max-height: 24px;;
+       margin-right:12px;
    }
     align-items: center;
+    padding-right: 0;
+   
+        a{
+        color: #132466;
+        font-size: 14px;
+        line-height: 16px;
+    }
 }

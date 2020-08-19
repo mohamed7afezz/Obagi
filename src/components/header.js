@@ -191,7 +191,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className={headerStyles.lowerSection}>
                   <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human}/><Link to="#">Welcome, Celia</Link></span>
-                  <span><Link to="#">ACCESS PREMIER POINTS</Link></span>
+                  <span><Link to="#">PREMIER POINTS</Link></span>
                 </div>
               </div>
             </div>
