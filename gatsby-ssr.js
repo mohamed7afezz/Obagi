@@ -12,9 +12,7 @@ import Showbag from './src/components/showbag';
 export const wrapRootElement = ({ element }) => (
   <ViewedProductsProvider>
     <CartProvider>
-      <Showbag>
-        {element}
-      </Showbag>
+      {element}
     </CartProvider>
   </ViewedProductsProvider>
 );

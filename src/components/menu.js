@@ -110,10 +110,12 @@ function buildMenu(menuArray, isExpandable, menuName){
   let menu = []
   for(let item in menuArray) {
     if(menuArray[item].children.length !== 0) {
+      
       menu.push(
       <li key={menuArray[item].drupal_id}>
         {
-          menuName=='main-nav-mobile'?
+         
+          menuName =='main-nav-mobile'?
             buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)
           :
             buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)

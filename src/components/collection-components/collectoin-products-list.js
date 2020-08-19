@@ -9,7 +9,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
-  console.log('bahiii', pageNodeType)
+  
   if (pageNodeType == "clinicalConcern") {
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinConcern.relationships
@@ -115,7 +115,6 @@ const Collectionproducts = ({ node, nodetype }) => {
 
     //filter
     filterValSelect.addEventListener("change", function (event) {
-      console.log('bahii filter')
       sortAsc =
         sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
           ? true
@@ -249,7 +248,9 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />
+                        
                       ) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                         productLink={item.path.alias}
@@ -265,6 +266,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />
                       ) : (
                         <ProductCard
@@ -313,6 +315,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />
                       ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productLink={item.path.alias}
@@ -329,6 +332,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                           productLink={item.path.alias}
@@ -344,6 +348,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
@@ -360,6 +365,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }
                           price={item.field_clinical_price}
                           rate="0"
+                          productId={item.field_clinical_id}
                         />
                        
                       ): (
@@ -396,7 +402,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                       
                       let ingredient = getIngredient(product);
                       
-                      console.log('bahiii', ingredient)
+                      
                       if (!checkProductExisitance(product)) {
                         products.push(product)
                         return (
@@ -427,6 +433,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                               }
                               price={product.field_clinical_price}
                               rate="0"
+                              productId={item.field_clinical_id}
                             />
                             <div
                               class="d-none ingredient"
@@ -495,6 +502,7 @@ export const fragment = graphql`
   fragment collectionproducts on taxonomy_term__clinical_skin_concern {
     relationships {
       node__clinical_product {
+        field_clinical_id
         field_clinical_description {
           processed
         }
@@ -540,6 +548,7 @@ export const fragment = graphql`
           }
           relationships {
             node__clinical_product {
+              field_clinical_id
               title
               field_clinical_description {
                 processed
@@ -755,6 +764,7 @@ export const fragment = graphql`
           name
           relationships {
             node__clinical_product {
+              field_clinical_id
               field_clinical_price
               title
               field_clinical_description {

@@ -273,7 +273,10 @@ border: 0;
   height: 100vh;
   margin-bottom: 0;
   padding-top: 217px;
-padding-left: 27px;
+  padding-left: 27px;
+  position: fixed;
+  top: 0;
+  right: 0;
 }  
 .body-small-margin #Showbag{
   padding-top: 154px;
@@ -782,4 +785,7 @@ padding-bottom: 134px;
 }
 .bigSliderContainer .productInlineSlider .slick-disabled{
   display: block !important;
+}
+.productimage .slick-dots {
+  bottom: -26px;
 }

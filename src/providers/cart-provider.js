@@ -7,11 +7,11 @@ let cartId = undefined;
 if (typeof window !== "undefined") {
     cartId = window.localStorage.getItem('cartId')? JSON.parse(window.localStorage.getItem('cartId')) : undefined;
 }
-console.log("hafez",cartId);
+
 const CartContext = createContext();
 
 const initialState = {
-  cartLoading: false,
+  cartLoading: true,
   cartError: false,
   cart: {
     currency: {
@@ -37,10 +37,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const fetchCart = () => {
-    if(!cartId)
-       return;
+    if(!cartId) {
+      setState({ ...state, cartLoading: false})
+      return;
+    }
 
-    console.log("hafez","fetchCart")
     fetch(`${baseUrl}bigcommerce/v1/cart/${cartId}`, {
       credentials: 'same-origin',
       mode: 'cors'
@@ -58,17 +59,14 @@ export const CartProvider = ({ children }) => {
   useEffect(() => fetchCart(), []);
 
   const refreshCart = response => {
-      console.log("hafez refreshCart",state)
+    
     if (response.status === 204 || response.status === 404) {
       setState({ ...state, cartLoading: false });
     } else {
       const lineItems = response.data.line_items;
       const cartAmount = response.data.cart_amount;
       const currency = response.data.currency;
-      console.log("hafez refreshCart",lineItems.physical_items.length +
-      lineItems.digital_items.length +
-      lineItems.custom_items.length +
-      lineItems.gift_certificates.length)
+      
       setState({
         ...state,
         cartLoading: false,

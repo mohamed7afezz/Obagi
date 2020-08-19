@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useContext } from "react"
 import { Link } from "gatsby"
 import ProductStyles from "../../assets/scss/components/product-hero.module.scss"
 import Img from "gatsby-image"
@@ -10,11 +10,17 @@ import { useLocation } from "@reach/router"
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css"
 import InnerImageZoom from "react-inner-image-zoom"
 import Zoom from "react-img-zoom"
+import CartContext from "../../providers/cart-provider"
 
-const ProductHero = ({ data, nodeType }) => {
+const ProductHero = ({ data, nodeType, }) => {
   const isClincal = nodeType == "clinical"
 
-  let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
+  let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct;
+
+  
+  let productId = isClincal? node.field_clinical_id : node.field_medical_id;
+
+
   let field_image = isClincal
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
@@ -80,6 +86,10 @@ const ProductHero = ({ data, nodeType }) => {
     slider1.current.slickGoTo(int)
   }
 
+  const value = useContext(CartContext);
+  const addToCart = value && value.addToCart;
+  const addingToCart = value && value.state.addingToCart;
+
   return (
     <div
       className={[
@@ -122,8 +132,8 @@ const ProductHero = ({ data, nodeType }) => {
                       <Zoom
                         img={item.localFile.childImageSharp.original.src}
                         zoomScale={1.5}
-                        width={590}
-                        height={500}
+                        width={587}
+                        height={615}
                       />
                     ) : (
                       ""
@@ -221,8 +231,8 @@ const ProductHero = ({ data, nodeType }) => {
               <img src={share} /> Share{" "}
             </p>
           </div>
-          <button className={["btn", ProductStyles.btnCart].join(" ")}>
-            Add to Bag
+          <button className={["btn", ProductStyles.btnCart].join(" ")} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
+            {addingToCart === productId ? 'Adding to Bag' : "Add to Bag"}
           </button>
         </div>
         <div

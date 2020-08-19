@@ -1,9 +1,10 @@
-import React from "react"
+import React, {useContext} from "react"
 import Productcard from "../assets/scss/components/productcard.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"
 import Stars from "../components/stars"
+import CartContext from "../providers/cart-provider"
 const ProductCard = ({
   node,
   producttitle,
@@ -11,8 +12,13 @@ const ProductCard = ({
   productimage,
   price,
   rate,
-  productLink
+  productLink,
+  productId
 }) => {
+  const value = useContext(CartContext);
+  const addToCart = value && value.addToCart;
+  const addingToCart = value && value.state.addingToCart;
+
   const data = useStaticQuery(graphql`
     query {
       smlamb: file(relativePath: { eq: "product-images/smallLamb.png" }) {
@@ -66,9 +72,10 @@ const ProductCard = ({
               $ <span className="prod-price">{price}</span>
             </p>
 
-            <Link to="#" className={Productcard.addtocart}>
-              Add to Bag
-            </Link>
+            <button className={Productcard.addtocart} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
+              
+              {addingToCart === productId ? 'Adding to Bag' : "Add to Bag"}
+            </button>
           </div>
         ) : (
           ""

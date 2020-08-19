@@ -18,6 +18,7 @@ import '../assets/scss/components/layout.scss'
 
 import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
+import Showbag from "./showbag"
 
 const Layout = ({ children,nodeType,menuType}) => {
   const data = useStaticQuery(graphql`
@@ -37,6 +38,7 @@ const Layout = ({ children,nodeType,menuType}) => {
       {/* <NavBlocks /> */}
       <div className={`node-${nodeType}`}>
         <main>{children}</main>
+        <Showbag />
         <Footer />
         <Popup/>
       </div>

@@ -32,7 +32,6 @@ const ProductLine = ({ node }) => {
     ],
     beforeChange: (current, next) => {
       let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
-       console.log(next)
       
       progressbar.forEach((activeLi,index) =>{
        

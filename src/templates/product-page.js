@@ -19,7 +19,6 @@ const ProductPage = props => {
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
 
-    console.log('bahii', data)
     return (
         <Layout nodeType={nodeType} menuType="relative">
           <ProductHero data={data} nodeType={nodeType} />

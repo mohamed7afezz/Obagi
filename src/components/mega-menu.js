@@ -7,7 +7,6 @@ import Img from 'gatsby-image'
 let megaMenuBlocks = [];
 function fillMegaMenuBlocksArr(data){
     megaMenuBlocks = data.allBlockContentMegaMenuItems.edges.map(({ node }) => node);
-    console.log('hassan',megaMenuBlocks[0].relationships.field_mega_block)
 
 }
 function fixlink(changelink) {

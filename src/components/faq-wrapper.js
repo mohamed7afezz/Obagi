@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
+import Paginator from './paginator'
+import FaqRow from './faq-row'
 
 const FaqWrapper = ({ node }) => {
 
@@ -64,6 +66,7 @@ const FaqWrapper = ({ node }) => {
 
   return (
     <div className={faqStyles.wrapper}>
+      <Paginator rowComponent={FaqRow} pagerData="bahi" />
       <div className="container-fluid faq-wrapper">
         <div className="row">
           <div className="col-12 col-lg-9 offset-lg-2">

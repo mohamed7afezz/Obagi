@@ -28,7 +28,6 @@ const CollectionHero = ({ node, nodetype }) => {
    
     checkTaxonomy =
     node.data.taxonomyTermMedicalSkinType.relationships;
-    console.log('hassan',checkTaxonomy)
   } else {
     // listing pages
     checkTaxonomy = node;

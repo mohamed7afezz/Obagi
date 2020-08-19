@@ -1,4 +1,4 @@
-export default class Pager {
+export class Pager {
     /**
     * @param data array
     * @param rowsPerPage number of rows to show per page
@@ -14,7 +14,7 @@ export default class Pager {
             }
             return pageData
         })
-        console.log(this.pagerData);
+        // console.log(this.pagerData);
     }
 
     init() {
