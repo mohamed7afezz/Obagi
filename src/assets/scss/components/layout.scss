@@ -193,8 +193,9 @@ footer .form-group {
                 // top: 34px;
                 background-image: url('../../images/path-copy.png');
                 right: 26px;
-                top: 36px;
+                top: 32px;
                 left: unset;
+                transform: unset;
             }
 
             &.collapsed {
@@ -204,7 +205,8 @@ footer .form-group {
                 // border-bottom: 2px solid rgba(124,133,138,0.15);
 
                 &::after {
-                    background-image: url('../../images/path-copy-down.png');
+                    background-image: url('../../images/path-copy.png');
+                    transform: rotate(180deg);
                 }
             }
 
@@ -219,35 +221,41 @@ footer .form-group {
 
             a {
                 color: #fff;
-                @include fontStyle(19, 24);
-                letter-spacing: 7px;
+                @include fontStyle(16, 24);
+                letter-spacing: 6px;
                 position: relative;
-                padding-bottom: 28px;
-                padding-top: 26px;
-                padding-left: 56px;
+                padding-bottom: 24px;
+                padding-top: 24px;
+                padding-left: 48px;
 
                 &::after {
                     position: absolute;
                     content: '';
-                    width: 20px;
-                    height: 10px;
-                    left: 20px;
-                    top: 34px;
-                    background-image: url('../../images/small-left.png');
+                    width: 8px;
+                    height: 8px;
+                    left: 26px;
+                    top: 32px;
+                    background-image: url('../../images/path-copy-2.png');
+                    background-repeat: no-repeat;
+                    transform: rotate(180deg); 
 
                 }
 
                 &.collapsed {
-                    padding-left: 25px;
+                    padding-left: 24px;
                     background: #132466;
                     &::after {
                         background-image: url('../../images/path-copy-2.png');
                         left: unset;
                         right: 26px;
-                        top: 36px;
+                        top: 32px;
                         width: 6px;
                         height: 8px;
+                        transform: unset;
 
+                    }
+                    .overview {
+                        display: none !important;
                     }
 
 
@@ -285,14 +293,17 @@ footer .form-group {
                                 top: 34px;
                                 background-image: url('../../images/path-copy.png');
                                 right: 26px;
-                                top: 36px;
+                                top: 32px;
                                 left: unset;
+                                transform: unset;
                             }
 
                             &.collapsed {
 
                                 &::after {
-                                    background-image: url('../../images/path-copy-down.png');
+                                    background-image: url('../../images/path-copy.png');
+                                    transform: rotate(180deg); 
+
                                 }
                             }
                         }
@@ -489,6 +500,30 @@ footer .form-group {
     }
 
 
+}
+.overview {
+    background: unset !important;
+    border: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 139px !important;
+    display: inline !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    letter-spacing: 0 !important;
+    text-decoration: underline;
+    // position: absolute !important;
+    // right: 24px;
+    // top: 24px;
+    &::before {
+        position: unset !important;
+        background: unset !important;
+    }
+
+    &::after {
+        position: unset !important;
+    }
 }
 
 .navbar {
@@ -926,4 +961,8 @@ footer .form-group {
             background-image: url('../../images/plus.png');
         }
     }
+}
+
+.cat-display {
+    display: none;
 }

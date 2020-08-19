@@ -64,6 +64,8 @@ function createMenuHierarchy(menuData, menuName) {
   return tree
 }
 
+
+
 function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
@@ -79,7 +81,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     else if (itemId && collapseTarget) {
       return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
         {link.title}
-        {/* <Link to={link.link.uri}>Overview</Link> */}
+        {link.expanded == true? <Link to={link.link.uri} className="overview">Overview</Link> : ''}
       </a>)
     }
   }
@@ -97,6 +99,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       {link.title}
     </a>)
   }
+
 }
 
 // function _onHeaderClick(event) {
@@ -110,7 +113,6 @@ function buildMenu(menuArray, isExpandable, menuName){
   }
   let menu = []
   for(let item in menuArray) {
-    console.log('ashraqat',menuName, menuArray[item])
     if(menuArray[item].children.length !== 0) {
       
       menu.push(
@@ -182,6 +184,8 @@ const Menu = ({menuName, menuClass, isExpandable}) => (
       )}
    />
 )
+
+
 
 Menu.propTypes = {
   menuName: PropTypes.string,

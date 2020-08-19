@@ -144,6 +144,28 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     }
   }
 
+  function removeCategory() {
+    var nav = document.getElementById("navbar");
+    var cat = document.getElementById("category-section");
+
+    cat.classList.remove("cat-display");
+
+    if (nav.style.display !== "none" && cat.style.display === "none") {
+      cat.classList.remove("cat-display");
+    } else if (nav.style.display === "none" && cat.style.display !== "none"){
+      cat.classList.add("cat-display");
+    }
+  }
+
+  // function addCategory() {
+  //   // var navbar = document.getElementById("navbar");
+  //   var category = document.getElementById("category-section");
+
+  //   if (category.style.display === "none" && category.style.display !== "none"){
+  //     category.style.display = "block";
+  //   }
+  // }
+
   return (
 
 
@@ -177,7 +199,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                     </CartContext.Consumer>
                     
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons() }}></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory();}}></button>
                 </div>
               </div>
             </div>
@@ -196,7 +218,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             </div>
           </div>
 
-          <div className={headerStyles.categorySection}>
+          <div className={headerStyles.categorySection} id="category-section">
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
