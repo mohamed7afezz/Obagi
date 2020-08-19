@@ -7,6 +7,7 @@ import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 import CartContext from '../providers/cart-provider';
+import human from '../assets/images/Human.png'
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const location = useLocation();
@@ -211,8 +212,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
-                  <span><Link to="#">SIGN IN</Link></span>
-                  <span><Link to="#">ACCESS PREMIER POINTS</Link></span>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human}/><Link to="#">Welcome, Celia</Link></span>
+                  <span><Link to="#">PREMIER POINTS</Link></span>
                 </div>
               </div>
             </div>

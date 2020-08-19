@@ -195,7 +195,8 @@ footer .form-group {
                 right: 26px;
                 top: 32px;
                 left: unset;
-                transform: unset;
+                transform: rotate(0);
+                transition: all ease 300ms;
             }
 
             &.collapsed {
@@ -207,6 +208,7 @@ footer .form-group {
                 &::after {
                     background-image: url('../../images/path-copy.png');
                     transform: rotate(180deg);
+                    transition: all ease 300ms;
                 }
             }
 
@@ -251,8 +253,8 @@ footer .form-group {
                         top: 32px;
                         width: 6px;
                         height: 8px;
-                        transform: unset;
-
+                        transform: none;
+                        transition: none;
                     }
                     .overview {
                         display: none !important;
@@ -418,7 +420,7 @@ footer .form-group {
 
         li {
             // border: 0 !important;
-
+           
             &::before {
                 position: unset !important;
                 content: none !important;
@@ -432,7 +434,7 @@ footer .form-group {
                 padding: 0 0 24px 25px !important;
                 font-size: 16px !important;
                 line-height: 24px !important;
-                letter-spacing: 0 !important;
+                letter-spacing: 1.6px !important;
                 // border: 0 !important;
                 color: #132466;
                 background: #fff;

@@ -13,8 +13,6 @@ import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
 
-import YourBag from "../components/bag"
-import Showbag from "../components/showbag"
 import Search from "../components/search"
 const products = () => (
  
@@ -30,7 +28,6 @@ const products = () => (
       <Recommendedparing/>
       <ProductSuggestion/> */}
  
-      <YourBag/>
 
       {/* <ProductLine /> */}
       <Search />
