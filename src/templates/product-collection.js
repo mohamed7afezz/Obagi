@@ -37,7 +37,8 @@ export const productPageQuery = graphql`
             name
             id
             relationships {
-                node__clinical_product {        
+                node__clinical_product {     
+                    field_clinical_id   
                     field_clinical_description {
                       processed
                     }
@@ -99,6 +100,7 @@ export const productPageQuery = graphql`
             relationships {
                 node__medical_product {
                   field_medical_is_system
+                  field_medical_id
                     field_medical_description {
                       processed
                     }
@@ -205,6 +207,7 @@ export const productPageQuery = graphql`
               }
             }
             field_medical_price
+            field_medical_id
             field_medical_description {
               processed
             }
@@ -216,6 +219,7 @@ export const productPageQuery = graphql`
             relationships {
                 node__medical_product {
                     field_medical_is_system
+                    field_medical_id
                     field_medical_description {
                       processed
                     }
@@ -299,6 +303,7 @@ export const productPageQuery = graphql`
               }
             }
             node__clinical_product {
+              field_clinical_id
               field_clinical_description {
                 processed
               }
@@ -354,6 +359,7 @@ export const productPageQuery = graphql`
             node__medical_product {
               id
               field_medical_is_system
+              field_medical_id
               field_medical_description {
                 processed
               }
@@ -406,6 +412,7 @@ export const productPageQuery = graphql`
           }
           relationships {
             node__clinical_product {
+              field_clinical_id
               field_clinical_description {
                 processed
               }

@@ -99,7 +99,7 @@ const Notification = ({ id, text, type }) => {
                 </p>
               </div>
               <div
-                className={["col-12", "d-flex", ShowBagStyle.left].join(
+                className={["col-12", "d-flex", ShowBagStyle.left ].join(
                   " "
                 )}
               >

@@ -59,6 +59,12 @@
   .productCounter{
       width: 100%;
   }
+  .final{
+      padding: 16px 23px ;
+      @include md-screen{
+          padding: 24px 40px;
+      }
+  }
   .BagProductLink{
       font-size: 12px;
       line-height: 16px;
@@ -126,6 +132,7 @@
   }
   .selectedproductsCard{
       padding-top: 24px;
+      padding-left: 40px;
   }
   .footnote{
       font-size: 14px;

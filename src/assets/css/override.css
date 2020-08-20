@@ -372,6 +372,10 @@ padding-bottom: 134px;
 }
 
 }
+#Showbag  .modal-content{
+  border: 0;
+  border-radius: 0;
+}
 @media (max-width: 1024px) {
   .centeralign.d-flex{
     display: none;
