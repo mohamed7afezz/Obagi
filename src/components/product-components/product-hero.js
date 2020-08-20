@@ -17,7 +17,7 @@ import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
   const isClincal = nodeType == "clinical"
-
+  console.log("hassan",data)
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
   let productId = isClincal ? node.field_clinical_id : node.field_medical_id
@@ -43,6 +43,9 @@ const ProductHero = ({ data, nodeType }) => {
   let field_skin_concern = isClincal
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
+    let field_info = isClincal
+    ? node.field_clinical_info
+    : node.field_medical_info
 
   const location1 = useLocation()
   const path = location1.pathname
@@ -53,11 +56,18 @@ const ProductHero = ({ data, nodeType }) => {
   })
   const slider1 = useRef()
   const slider2 = useRef()
-  function showpopover(){
-
-      document.querySelector('.popcontent').classList.add('show')
-   
+    // document.querySelector('body').addEventListener('click',function(){
+    //   if (document.querySelector('.popoverContainer').classList.contains('show')) {
+    //     document.querySelector('.popoverContainer').classList.remove('show')
+    //   }
+    // })
+  function showpopover(e){
+     
+      
+    document.querySelector('.popoverContainer').classList.toggle('show')
+    
   }
+
   useEffect(() => {
  
     setState({
@@ -252,25 +262,21 @@ const ProductHero = ({ data, nodeType }) => {
             >
               {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
             </button>
-            <div className={ProductStyles.popoverContainer}>
+           {field_info?
+            <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
               <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
-                Not available in select states including MA, MT, NH, NY, and TX,
-                due to state regulations regarding the ability of physicians to
-                dispense prescription drug products in their offices. For an
-                effective, cosmetic skin-brightening option, learn about the
-                Obagi Nu-Derm Fx™ System. [Not on all RX Products] Due to the
-                strength of this product, it is available only through
-                physicians, medical spas, and other skin care professionals.
+              {field_info}
               </p>
 
-              <button  onClick={() => { showpopover() }} className={[ProductStyles.popover,"popover"].join(" ")}>
-                <img src={info} className={ProductStyles.info} />
+              <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
+                <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
                 <img
                   src={infoselected}
-                  className={ProductStyles.infoselected}
+                  className={[ProductStyles.infoselected,"infoselected"].join(" ")}
                 />
               </button>
             </div>
+            :""}
           </div>
         </div>
         <div

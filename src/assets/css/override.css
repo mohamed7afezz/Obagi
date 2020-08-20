@@ -561,7 +561,6 @@ padding-bottom: 134px;
   top: 5px !important;
 }
 .locker{
- 
   background-color: transparent;
   border: 0;
 
@@ -577,7 +576,7 @@ button:focus{
   position: absolute;
   width: 32px;
   height: 32px;
-  opacity: 0.3;
+  opacity: 1;
   right: 41px;
   top: 24px;
 }
@@ -590,7 +589,7 @@ button:focus{
   content: ' ';
   height: 33px;
   width: 2px;
-  background-color: #333;
+  background-color: #132466;
 }
 .modal-header .close:before {
   transform: rotate(45deg);
@@ -918,6 +917,12 @@ height: 545px;
 .productimage .slick-dots {
   bottom: -26px;
 }
-.popcontent.show{
+.show .popcontent{
   display: block;
+}
+.show .infoselected{
+  display: block;
+}
+.show .info{
+  display: none;
 }
