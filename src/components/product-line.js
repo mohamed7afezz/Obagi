@@ -200,7 +200,7 @@ const ProductLine = ({ node }) => {
     : 0;
 
 
-    console.log('count', productCount, taxonomy, systemName)
+    //console.log('count', productCount, taxonomy, systemName)
 
 
   return (

@@ -187,7 +187,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
-                            <Link to="/cart" className={headerStyles.navButton}>
+                            <Link to="#" onClick={() => value.addNotification('Item added successfully')} className={headerStyles.navButton}>
                             <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                             {value &&
                               value.state.cart &&
@@ -263,7 +263,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                         return (
                             <div className={headerStyles.navButton}>
                               <div className={headerStyles.cartWrapper}>
-                                <Link to="/cart" ><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                                <Link to="#"  onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
                                 value.state.cart &&
                                 value.state.cart.numberItems > 0 && (
