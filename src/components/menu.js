@@ -12,10 +12,9 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 // }
 
 function addStyles(e) {
-  document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
-  
   if(e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
-    let selected = e.target.closest(".submenu > li > a");
+    document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
+    let selected = e.target.closest(".extended-nav > ul > li > .submenu > li > a");
     selected.classList.remove("not-selected");
     selected.classList.add("selected");
   }
@@ -27,6 +26,26 @@ function removeStyles() {
   document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.remove("selected"));
   document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.remove("not-selected"));
 }
+
+function addMainStyles(e) {
+
+
+  if(e.target.closest(".extended-nav > ul > li > a")) {
+    document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
+    document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
+    let selected = e.target.closest(".extended-nav > ul > li > a");
+    selected.classList.remove("not-selected");
+    selected.classList.add("hovered");
+  }
+
+}
+
+function removeMainStyles() {
+  document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
+}
+
+
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -74,7 +93,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     </Link>)
   } else {
     if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => {addStyles(e);}} onMouseLeave={() => {removeStyles();}}>
+      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => {addStyles(e); addMainStyles(e);}} onMouseLeave={() => {removeStyles(); removeMainStyles();}}>
         {link.title}
       </Link>)
     }
@@ -124,7 +143,7 @@ function buildMenu(menuArray, isExpandable, menuName){
           :
             buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
         }
-        <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : 'menuItem')}>
+        <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
           {buildMenu(menuArray[item].children, true, menuName)}
         </ul>
       </li>)

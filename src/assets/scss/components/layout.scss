@@ -240,6 +240,7 @@ footer .form-group {
                     background-image: url('../../images/path-copy-2.png');
                     background-repeat: no-repeat;
                     transform: rotate(180deg); 
+                    transition: all ease 300ms;
 
                 }
 
@@ -254,7 +255,7 @@ footer .form-group {
                         width: 6px;
                         height: 8px;
                         transform: none;
-                        transition: none;
+                        transition: all ease 300ms;
                     }
                     .overview {
                         display: none !important;
@@ -431,7 +432,7 @@ footer .form-group {
             }
 
             a {
-                padding: 0 0 24px 25px !important;
+                padding: 0 0 24px 24px !important;
                 font-size: 16px !important;
                 line-height: 24px !important;
                 letter-spacing: 1.6px !important;
@@ -526,6 +527,65 @@ footer .form-group {
     &::after {
         position: unset !important;
     }
+}
+
+#menuItem8ea8c55d-aa04-41ef-84c1-575d1f02e82b {
+    li {
+        a {
+            @extend %futurapt-bold;
+            border-top: 0;
+            letter-spacing: 0 !important;
+            padding-left: 40px !important;
+            // margin-left: 40px;
+            // margin-right: 40px;
+
+            &::after {
+                position: unset;
+            }
+            
+        }
+
+        &:first-child {
+            .submenu {
+                li {
+                    border: 0;
+                    padding-top: 0;
+                    // padding-left: 40px !important;
+                }
+            }
+        }
+        &:last-child {       
+            border-top: 1px solid rgba(124,133,138,0.15);
+            margin-left: 40px;
+            margin-right: 40px;
+            padding-top: 23px;
+
+            a {
+                padding-left: 0 !important;
+            }
+            .submenu {
+                li {
+                    border-top: 0;
+                    margin: 0;
+                    padding-top: 0;
+                }
+            }
+        }
+
+
+        .submenu {
+            a {
+                @extend %futurapt-book;
+            }
+        }
+    }
+    
+    #menuItem8ff9accc-b6f9-437d-a89c-d36ba1c31c19, #menuItem5d22b852-a31f-487f-a253-3cd7abf991c2 {
+        display: block;
+
+    }
+
+
 }
 
 .navbar {
@@ -821,6 +881,11 @@ footer .form-group {
                 .submenu {
                     display: block;
                 }
+
+                #b27ee253-0ae4-4f98-a695-f3e5c3458f0b {
+                    display: flex;
+                    justify-content: space-between;
+                }
             }
         }
 
@@ -860,6 +925,10 @@ footer .form-group {
 
 .not-selected {
     color: #7c858a !important;
+}
+
+.hovered {
+    color: #132466;
 }
 
 .active-submenu {
@@ -967,4 +1036,11 @@ footer .form-group {
 
 .cat-display {
     display: none;
+}
+
+#itemLinke403eed0-a9b3-4ec6-bc3c-d5ffb1e4974b, #itemLinkffd3f765-e9bf-4131-b64a-d6243f8132ab {
+    @extend %futurapt-bold;
+    &:before {
+        content: none;
+    }
 }

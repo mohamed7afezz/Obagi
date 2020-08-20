@@ -4,6 +4,22 @@ import PropTypes, { func } from "prop-types";
 import Img from 'gatsby-image'
 // import { info } from "node-sass";
 
+function addMainStyles(e) {
+  document.querySelectorAll(".absolute-extended .nav-desk a.collapsed").forEach(Elem => Elem.classList.add("not-selected"));
+
+  if(e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > li > a.collapsed")) {
+    let selected = e.target.closest("nav > ul > li > a.collapsed");
+    selected.classList.remove("not-selected");
+    selected.classList.add("hovered");
+  }
+
+}
+
+function removeMainStyles() {
+  document.querySelectorAll(".absolute-extended .nav-desk a").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".absolute-extended .nav-desk a").forEach(Elem => Elem.classList.remove("not-selected"));
+}
+
 let megaMenuBlocks = [];
 function fillMegaMenuBlocksArr(data){
     megaMenuBlocks = data.allBlockContentMegaMenuItems.edges.map(({ node }) => node);
@@ -88,7 +104,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       </Link>)
     }
     else if (itemId && collapseTarget) {
-      return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+      return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onMouseEnter={(e) => {addMainStyles(e);}} onMouseLeave={() => {removeMainStyles();}}>
         {link.title}
       </a>)
     }
