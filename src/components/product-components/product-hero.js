@@ -210,7 +210,7 @@ const ProductHero = ({ data, nodeType }) => {
           <p className={ProductStyles.quantityhead}>Quantity:</p>
           <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
             <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
-              <select>
+              <select id="quantityBox">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -244,7 +244,10 @@ const ProductHero = ({ data, nodeType }) => {
           <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>
             <button
               className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-              onClick={() => addToCart(productId)}
+              onClick={() => {
+                let quantity = document.querySelector("#quantityBox").value;
+                addToCart(productId,false,quantity);
+              }}
               disabled={addingToCart === productId}
             >
               {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}

@@ -8,7 +8,7 @@ const Showbag = () => {
   const value = useContext(CartContext);
   const notifications = value && value.notifications;
   const hasNotifications = Array.isArray(notifications) && notifications.length;
-  
+  console.log("hafezz",notifications)
   return hasNotifications ? (
     <section className="Notify">
       {notifications.map(note => (
@@ -62,8 +62,9 @@ const Notification = ({ id, text, type }) => {
               ].join(" ")}
             >
               <p className={ShowBagStyle.shoppingBag}>
-                {" "}
-                Shopping Bag (2)
+                Shopping Bag ({value &&
+                        value.state.cart &&
+                        value.state.cart.numberItems})
               </p>
               <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => removeNotification(id)}>
                 View Full Cart
