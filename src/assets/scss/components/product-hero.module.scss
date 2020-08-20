@@ -205,9 +205,60 @@ display: none;
     color: #fff;
     text-transform: uppercase;
     display: none;
+    max-width: 90%;
     @include md-screen{
         display: inline-block;
     }
+}
+.popover{
+    background-color: transparent;
+    border: 0;
+    position: relative;
+    outline: 0;
+ 
+    &:focus{
+        border: 0;
+        outline: 0;
+        .infoselected{
+            display: block;
+        }
+        .info {
+            display: none;
+        }
+      
+    }
+}
+.popcontent{
+    display: none;
+}
+.popcontent{
+    position: absolute;
+    bottom: 80px;
+    width: 275px;
+    color: #fff;
+    background-color: #132466;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 5px;
+    right: -75px;
+    &::after{
+        content: " ";
+        width: 20px;
+        clip-path: polygon(0 0, 0% 100%, 100% 0);
+        height: 20px;
+        display: block;
+        background-color: #132466;
+        bottom: -20px;
+       left: 57%;
+        background-color: #132466;
+        position: absolute;
+    }
+}
+.infoselected{
+    display: none;
+}
+.centeralign{
+    align-items: center;
 }
 .btn-cart:hover{
     color: #fff;

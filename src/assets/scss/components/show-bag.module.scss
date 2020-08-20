@@ -37,6 +37,14 @@
       color: #132466;
       line-height: 16px;
       @extend %futurapt-medium ;
+      max-width: 250px;
+  }
+  .subcontainer{
+      padding: 24px 16px;
+      @include md-screen{
+          padding-left: 16px;
+          padding-right: 16px;
+      }
   }
   .BagProductDesc,.Price{
       font-size: 14px;
@@ -70,6 +78,7 @@
   }
   .selectedproductsCard{
       padding-bottom: 16px;
+      align-items: center;
   }
   .prouductCard{
       padding-bottom: 25px;

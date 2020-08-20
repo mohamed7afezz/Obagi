@@ -10,8 +10,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "slick-carousel/slick/slick.css";
 import './src/assets/css/override.css';
-import "popper.js/dist/popper.min.js";
+
 import "jquery/dist/jquery.min.js";
+import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 import React from 'react';

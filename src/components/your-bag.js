@@ -233,7 +233,7 @@ const YourBag = props => {
                   "bagDataContainer",
                   BagStyle.bagDataContainer,
                 ].join(" ")}
-              >
+              ><div className={BagStyle.giveBorder}>
                 <div class="bagDataConten">
                   <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
                     <span className={BagStyle.bagtitles}>
@@ -393,6 +393,7 @@ const YourBag = props => {
                     </form>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         )

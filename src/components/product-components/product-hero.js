@@ -11,15 +11,16 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.css"
 import InnerImageZoom from "react-inner-image-zoom"
 import Zoom from "react-img-zoom"
 import CartContext from "../../providers/cart-provider"
+import info from "../../assets/images/info.svg"
+import infoselected from "../../assets/images/info-selected.svg"
+import { func } from "prop-types"
 
-const ProductHero = ({ data, nodeType, }) => {
+const ProductHero = ({ data, nodeType }) => {
   const isClincal = nodeType == "clinical"
 
-  let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct;
+  let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
-  
-  let productId = isClincal? node.field_clinical_id : node.field_medical_id;
-
+  let productId = isClincal ? node.field_clinical_id : node.field_medical_id
 
   let field_image = isClincal
     ? node.relationships.field_clinical_image
@@ -52,13 +53,18 @@ const ProductHero = ({ data, nodeType, }) => {
   })
   const slider1 = useRef()
   const slider2 = useRef()
+  function showpopover(){
+
+      document.querySelector('.popcontent').classList.add('show')
+   
+  }
   useEffect(() => {
+ 
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
     })
   }, [])
-
   const { nav1, nav2 } = state
   const SliderSetting = {
     infinite: true,
@@ -67,9 +73,13 @@ const ProductHero = ({ data, nodeType, }) => {
     arrows: false,
     dots: true,
     beforeChange: (current, next) => {
-      if(document.querySelector(".myslickactive") != null){
-        document.querySelector(".myslickactive").classList.remove("myslickactive")
-        document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add("myslickactive")
+      if (document.querySelector(".myslickactive") != null) {
+        document
+          .querySelector(".myslickactive")
+          .classList.remove("myslickactive")
+        document
+          .querySelectorAll("#product-hero-slick .imageContainer")
+          [next].classList.add("myslickactive")
       }
     },
     responsive: [
@@ -85,10 +95,10 @@ const ProductHero = ({ data, nodeType, }) => {
   function slickGoToslide(int) {
     slider1.current.slickGoTo(int)
   }
-
-  const value = useContext(CartContext);
-  const addToCart = value && value.addToCart;
-  const addingToCart = value && value.state.addingToCart;
+  
+  const value = useContext(CartContext)
+  const addToCart = value && value.addToCart
+  const addingToCart = value && value.state.addingToCart
 
   return (
     <div
@@ -231,9 +241,34 @@ const ProductHero = ({ data, nodeType, }) => {
               <img src={share} /> Share{" "}
             </p>
           </div>
-          <button className={["btn", ProductStyles.btnCart].join(" ")} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
-            {addingToCart === productId ? 'Adding to Bag' : "Add to Bag"}
-          </button>
+          <div className={["d-flex",ProductStyles.centeralign].join(" ")}>
+            <button
+              className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+              onClick={() => addToCart(productId)}
+              disabled={addingToCart === productId}
+            >
+              {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+            </button>
+            <div className={ProductStyles.popoverContainer}>
+              <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
+                Not available in select states including MA, MT, NH, NY, and TX,
+                due to state regulations regarding the ability of physicians to
+                dispense prescription drug products in their offices. For an
+                effective, cosmetic skin-brightening option, learn about the
+                Obagi Nu-Derm Fx™ System. [Not on all RX Products] Due to the
+                strength of this product, it is available only through
+                physicians, medical spas, and other skin care professionals.
+              </p>
+
+              <button  onClick={() => { showpopover() }} className={[ProductStyles.popover,"popover"].join(" ")}>
+                <img src={info} className={ProductStyles.info} />
+                <img
+                  src={infoselected}
+                  className={ProductStyles.infoselected}
+                />
+              </button>
+            </div>
+          </div>
         </div>
         <div
           id="product-hero-slick"
