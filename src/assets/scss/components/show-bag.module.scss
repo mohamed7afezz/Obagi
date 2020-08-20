@@ -68,6 +68,7 @@
   .BagProductLink{
       font-size: 12px;
       line-height: 16px;
+      background-color: transparent;
       letter-spacing: 1.2px;
       @extend %futurapt-bold ;
       color: #132466;
@@ -110,6 +111,7 @@
     line-height: 16px;
     outline: 0;
   border: 0;
+  margin-right: 64px;
     color: #132466;
   }
   .removebtn{
@@ -117,6 +119,8 @@
       line-height: 16px;
       color: #132466;
       text-decoration: underline;
+      background-color: transparent;
+      border: 0;
   }
  
   .Subtotal{
@@ -132,7 +136,14 @@
   }
   .selectedproductsCard{
       padding-top: 24px;
-      padding-left: 40px;
+      padding-left: 24px;
+      padding-right: 24px;
+      @include md-screen{
+        padding-left: 40px;
+      }
+  }
+  .removepadding{
+      
   }
   .footnote{
       font-size: 14px;

@@ -76,7 +76,7 @@ const Notification = ({ id, text, type }) => {
               aria-label="Close"
               onClick={() => removeNotification(id)}
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&nbsp;</span>
             </button>
           </div>
         </div>
@@ -91,7 +91,7 @@ const Notification = ({ id, text, type }) => {
                 fluid={data.prouduct.childImageSharp.fluid}
               />
             </div>
-            <div className={["col-8", ShowBagStyle.removepadding].join(" ")}>
+            <div className={["col-8", ShowBagStyle.removepadding,"removepadding"].join(" ")}>
               <div className={"col-12"}>
                 <p className={ShowBagStyle.BagProductDesc}>
                   Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum
@@ -104,7 +104,7 @@ const Notification = ({ id, text, type }) => {
                 )}
               >
                 <p className={ShowBagStyle.Price}>$8.00</p>
-                <a className={ShowBagStyle.BagProductLink}>Add to Bag</a>
+                <button className={ShowBagStyle.BagProductLink}>Add to Bag</button>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ const Notification = ({ id, text, type }) => {
                 fluid={data.prouduct.childImageSharp.fluid}
               />
             </div>
-            <div className={["col-8", ShowBagStyle.removepadding].join(" ")}>
+            <div className={["col-8", ShowBagStyle.removepadding,"removepadding"].join(" ")}>
               <div className={"col-12"}>
                 <p className={ShowBagStyle.BagProductDesc}>
                   Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum
@@ -129,7 +129,7 @@ const Notification = ({ id, text, type }) => {
                 )}
               >
                 <p className={ShowBagStyle.Price}>$8.00</p>
-                <a className={ShowBagStyle.BagProductLink}>Add to Bag</a>
+                <button className={ShowBagStyle.BagProductLink}>Add to Bag</button>
               </div>
             </div>
           </div>
