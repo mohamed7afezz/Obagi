@@ -241,7 +241,7 @@ const ProductHero = ({ data, nodeType }) => {
               <img src={share} /> Share{" "}
             </p>
           </div>
-          <div className={["d-flex",ProductStyles.centeralign].join(" ")}>
+          <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>
             <button
               className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
               onClick={() => addToCart(productId)}

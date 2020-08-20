@@ -373,6 +373,9 @@ padding-bottom: 134px;
 
 }
 @media (max-width: 1024px) {
+  .centeralign.d-flex{
+    display: none;
+  }
   .hide-tabmob{
     display: none;
   }
