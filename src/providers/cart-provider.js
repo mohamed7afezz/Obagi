@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
   const [notifications, updateNotifications] = useState([]);
 
   const addNotification = (text, type = 'notify') => {
-    updateNotifications([...notifications, { text, type, id: Date.now() }]);
+    updateNotifications([...notifications, { text, type, id: "FIX_ID" }]);
   };
 
   const removeNotification = id => {
@@ -146,11 +146,11 @@ export const CartProvider = ({ children }) => {
 
   const updateItemInCart = (itemId, updatedItemData) => {
     fetch(
-      `/.netlify/functions/bigcommerce?endpoint=carts/items&itemId=${itemId}`,
+      `${baseUrl}bigcommerce/v1/cart/${cartId}/${itemId}`,
       {
         credentials: 'same-origin',
-        mode: 'same-origin',
-        method: 'put',
+        mode: 'cors',
+        method: 'post',
         body: JSON.stringify(updatedItemData)
       }
     )
@@ -165,17 +165,21 @@ export const CartProvider = ({ children }) => {
 
   const removeItemFromCart = itemId => {
     fetch(
-      `${baseUrl}bigcommerce/v1/cart/${cartId}/${itemId}`,
+      `${baseUrl}bigcommerce/v1/cart_delete/${cartId}/${itemId}`,
       {
         credentials: 'same-origin',
         mode: 'cors',
-        method: 'delete'
+        method: 'post'
       }
     )
       .then(res => {
         // addNotification('Item removed successfully');
         if (res.status === 204) {
-          setState(initialState);
+          cartId = undefined;
+          if (typeof window !== "undefined") {
+            window.localStorage.removeItem('cartId')
+          }
+          setState({ ...initialState, cartLoading: false });
           return;
         }
         // addNotification('Item removed successfully');

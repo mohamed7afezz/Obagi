@@ -6,69 +6,123 @@ import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import plusicon from "../assets/images/product-images/plus1.svg"
 import minusicon from "../assets/images/product-images/minus.svg"
 import Img from "gatsby-image"
+import Loader from "./Cart/Loader"
 
 import CartContext from "../providers/cart-provider"
+const AdjustItem = props => {
+  const { item, updatingItem, cartType } = props;
+  let minusBtn, plusBtn;
 
-const StandardItem = props => {
-  const { items } = props
-  const cartType = props.cartType
-  let itemImage
+ 
+    minusBtn = (
+      <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
+        <img className={BagStyle.plusicon} src={minusicon} />
+      </button>
+    )
+
+    plusBtn = (
+      <button onClick={() => props.updateCartItemQuantity(item, 'plus')} className={["btn", BagStyle.add].join(" ")}>
+       <img className={BagStyle.plusicon} src={plusicon} />
+     </button>
+    )
   
+
   return (
     <>
-      {items.map(item => {
-        return (
-          <div className={"productInBag"}>
-            <div className={["row", "alignFlex"].join(" ")}>
-              <div class="hide-desk col-4">
+      {minusBtn}
+      {updatingItem === item.id ? <Loader /> : <p className={BagStyle.productcount}>{item.quantity}</p>}
+      {plusBtn}
+     
+    </>
+  );
+};
+const StandardItem = props => {
+  const { items, cartType } = props
+  let itemImage
+ 
+  let itemsContent = items.map(item => {
+    if(cartType == "overlay"){
+      return (
+        <>
+            <div className={["row", ShowBagStyle.selectedproductsCard].join(" ")}>
+              <div className={"col-4"}>
                 <img src={item.image_url} alt={`${item.name}`} />
               </div>
-              <div
-                className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
-              >
-                <div className={["col-md-2", "hide-tabmob"].join(" ")}>
-                  <img src={item.image_url} alt={`${item.name}`} />
+              <div className={["col-8", ShowBagStyle.removepadding].join(" ")}>
+                <div className={["col-12", "row"].join(" ")}>
+                  <p className={ShowBagStyle.BagProductDesc}>{item.name}</p>
                 </div>
-                <div className={"col-md-4"}>
-                  <p className={BagStyle.prouductBagDesc}>{item.name}</p>
-                </div>
-                <div className={"col-md-2"}>
-                  <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
-                </div>
-                <div class="col-md-2 col-6">
-                  <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
-                    <button className={["btn", BagStyle.minus].join(" ")}>
-                      <img className={BagStyle.plusicon} src={minusicon} />
-                    </button>{" "}
-                    <p className={BagStyle.productcount}>1</p>
-                    <button className={["btn", BagStyle.add].join(" ")}>
-                      {" "}
-                      <img className={BagStyle.plusicon} src={plusicon} />{" "}
-                    </button>
+    
+                <div className={["col-12", "row", "d-flex", ShowBagStyle.left].join(" ")}>
+                  <div className={["d-flex", ShowBagStyle.left, "col-10", "pl-0"].join(" ")}>
+                    <div className={[BagStyle.bagCount, "d-flex", "col-8"].join(" ")}>
+                      <AdjustItem {...props} item={item} cartType={cartType} />
+                    </div>
+                    <a href="#" onClick={() => props.removeItemFromCart(item.id)}
+                      className={[ShowBagStyle.removebtn, "col-4"].join(" ")}
+                    >
+                      Remove
+                    </a>
                   </div>
-                </div>
-                <div class="col-md-1 col-3">
-                  <p
-                    className={[
-                      BagStyle.bagProudctPrice,
-                      "bagProudctPrice",
-                    ].join(" ")}
-                  >
-                    ${item.list_price}
-                  </p>
-                </div>
-                <div class="col-md-1 col-3">
-                  <button className={["btn", BagStyle.action].join(" ")}>
-                    {" "}
-                    Remove{" "}
-                  </button>
+                  <p className={[ShowBagStyle.Price, "col-2"].join(" ")}>{item.list_price}</p>
                 </div>
               </div>
             </div>
+            
+          </>
+      )
+    }else{
+      return (
+        <div className={"productInBag"}>
+          <div className={["row", "alignFlex"].join(" ")}>
+            <div class="hide-desk col-4">
+              <img src={item.image_url} alt={`${item.name}`} />
+            </div>
+            <div
+              className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
+            >
+              <div className={["col-md-2", "hide-tabmob"].join(" ")}>
+                <img src={item.image_url} alt={`${item.name}`} />
+              </div>
+              <div className={"col-md-4"}>
+                <p className={BagStyle.prouductBagDesc}>{item.name}</p>
+              </div>
+              <div className={"col-md-2"}>
+                <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
+              </div>
+              <div class="col-md-2 col-6">
+                <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
+                  <AdjustItem {...props} item={item} cartType={cartType} />
+                </div>
+              </div>
+              <div class="col-md-1 col-3">
+                <p
+                  className={[
+                    BagStyle.bagProudctPrice,
+                    "bagProudctPrice",
+                  ].join(" ")}
+                >
+                  ${item.list_price}
+                </p>
+              </div>
+              <div class="col-md-1 col-3">
+                <button onClick={() => props.removeItemFromCart(item.id)} className={["btn", BagStyle.action].join(" ")}>
+                  Remove
+                </button>
+              </div>
+            </div>
           </div>
-        )
-      })}
+        </div>
+      )
+    }
+    
+  })
+  
+  return (
+    <>
+      {itemsContent}
     </>
+   
   )
 }
 const YourBag = props => {
@@ -109,78 +163,50 @@ const YourBag = props => {
     e.preventDefault()
   }
   let bagContent
-  if (cartType == "overlay") {
-    bagContent = (
-      <>
-        <div className={["row", ShowBagStyle.selectedproductsCard].join(" ")}>
-          <div className={"col-4"}>
-            <Img
-              className={ShowBagStyle.prodThumb}
-              fluid={data.prouduct.childImageSharp.fluid}
+  //check if cart is  sill loading
+  if (!state.cartLoading) {
+    //if cart finish is loading >> check if cart have items
+    if (numberItems > 0) {
+      //if cart finish is loading >> if cart have items >> check type of cart
+      if (cartType == "overlay") {
+        //showpage content
+        bagContent = (
+          <>
+            <StandardItem
+              currency={currency}
+              updatingItem={updatingItem}
+              updateCartItemQuantity={updateCartItemQuantity}
+              removeItemFromCart={removeItemFromCart}
+              items={lineItems.physical_items}
+              cartType={cartType}
             />
-          </div>
-          <div className={["col-8", ShowBagStyle.removepadding].join(" ")}>
-            <div className={["col-12", "row"].join(" ")}>
-              <p className={ShowBagStyle.BagProductDesc}>
-                Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum Dolor Sit
-                Amet Consectetur
-              </p>
-            </div>
-
-            <div
-              className={["col-12", "row", "d-flex", ShowBagStyle.left].join(
-                " "
-              )}
-            >
-              <div
-                className={["d-flex", ShowBagStyle.left, "col-10", "pl-0"].join(
-                  " "
-                )}
-              >
+            <div className={ShowBagStyle.final}>
                 <div
-                  className={[BagStyle.bagCount, "d-flex", "col-8"].join(" ")}
+                  className={[ShowBagStyle.total, "d-flex", ShowBagStyle.left].join(
+                    " "
+                  )}
                 >
-                  <button className={["btn", BagStyle.minus].join(" ")}>
-                    <img className={BagStyle.plusicon} src={minusicon} />
-                  </button>{" "}
-                  <p className={BagStyle.productcount}>1</p>
-                  <button className={["btn", BagStyle.add].join(" ")}>
-                    {" "}
-                    <img className={BagStyle.plusicon} src={plusicon} />{" "}
-                  </button>
+                  <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
+                  <p className={ShowBagStyle.Subtotal}>${cartAmount}</p>
                 </div>
-                <a
-                  href="#"
-                  className={[ShowBagStyle.removebtn, "col-4"].join(" ")}
-                >
-                  Remove
-                </a>
-              </div>
-              <p className={[ShowBagStyle.Price, "col-2"].join(" ")}>$8.00</p>
+                <form
+                  action={redirectUrls.checkout_url}
+                  method="post"
+                  encType="multipart/form-data">
+                  <button
+                    className={BagStyle.Checkout}
+                    type="submit">
+                    Checkout
+                  </button>
+                </form>
+                <p className={ShowBagStyle.footnote}>
+                  Shipping and taxes calculated at checkout.
+                </p>
             </div>
-          </div>
-        </div>
-        <div className={ShowBagStyle.final}>
-          <div
-            className={[ShowBagStyle.total, "d-flex", ShowBagStyle.left].join(
-              " "
-            )}
-          >
-            <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
-            <p className={ShowBagStyle.Subtotal}>$24.00</p>
-          </div>
-          <a className={BagStyle.Checkout} href="#">
-            Checkout
-          </a>
-          <p className={ShowBagStyle.footnote}>
-            Shipping and taxes calculated at checkout.
-          </p>
-        </div>
-      </>
-    )
-  } else {
-    if (!state.cartLoading) {
-      if (numberItems > 0) {
+          </>
+        )
+      } else {
+        //ful cart page
         bagContent = (
           <div
             className={[
@@ -212,8 +238,8 @@ const YourBag = props => {
                   <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
                     <span className={BagStyle.bagtitles}>
                       <strong>Subtotal</strong>
-                    </span>{" "}
-                    <span>$24.00</span>
+                    </span>
+                    <span>${cartAmount}</span>
                   </p>
                   <div>
                     <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>
@@ -352,48 +378,27 @@ const YourBag = props => {
                       <strong>Subtotal</strong>
                     </span>{" "}
                     <span>
-                      <strong>$24.00</strong>
+                      <strong>${cartAmount}</strong>
                     </span>
                   </p>
-                  <a
-                    className={BagStyle.Checkout}
-                    onClick={e => apply(e)}
-                    href="#"
-                  >
-                    Checkout
-                  </a>
+                    <form
+                      action={redirectUrls.checkout_url}
+                      method="post"
+                      encType="multipart/form-data">
+                      <button
+                        className={BagStyle.Checkout}
+                        type="submit">
+                        Checkout
+                      </button>
+                    </form>
                 </div>
               </div>
             </div>
           </div>
         )
-      } else {
-        bagContent = (
-          <div
-            className={[
-              "container-fluid",
-              "BagContainer",
-              BagStyle.BagContainer,
-            ].join(" ")}
-          >
-            <h2 className={BagStyle.bagHead}>Your Bag</h2>
-            <div>
-              <p
-                className={ShowBagStyle.empatyTitle}
-              >
-                Looks like your bag is empty!
-              </p>
-              <Link
-                className={ShowBagStyle.empatyLink}
-                href="#"
-              >
-                Continue Shopping
-              </Link>
-            </div>
-          </div>
-        )
       }
     } else {
+      //if cart have no items show empty cart
       bagContent = (
         <div
           className={[
@@ -404,13 +409,39 @@ const YourBag = props => {
         >
           <h2 className={BagStyle.bagHead}>Your Bag</h2>
           <div>
-            <p className={ShowBagStyle.empatyTitle}>
-              Loading Bag!
+            <p
+              className={ShowBagStyle.empatyTitle}
+            >
+              Looks like your bag is empty!
             </p>
+            <Link
+              className={ShowBagStyle.empatyLink}
+              href="#"
+            >
+              Continue Shopping
+            </Link>
           </div>
         </div>
       )
     }
+  } else {
+    //message to show if cart is loading..
+    bagContent = (
+      <div
+        className={[
+          "container-fluid",
+          "BagContainer",
+          BagStyle.BagContainer,
+        ].join(" ")}
+      >
+        <h2 className={BagStyle.bagHead}>Your Bag</h2>
+        <div>
+          <p className={ShowBagStyle.empatyTitle}>
+            Loading Bag..
+          </p>
+        </div>
+      </div>
+    )
   }
   return <>{bagContent}</>
 }
