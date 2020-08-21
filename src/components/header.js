@@ -146,15 +146,11 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
   }
 
   function removeCategory() {
-    var nav = document.getElementById("navbar");
-    var cat = document.getElementById("category-section");
-
-    cat.classList.remove("cat-display");
-
-    if (nav.style.display !== "none" && cat.style.display === "none") {
-      cat.classList.remove("cat-display");
-    } else if (nav.style.display === "none" && cat.style.display !== "none"){
-      cat.classList.add("cat-display");
+    var y = document.getElementById("category-section");
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
     }
   }
 
@@ -219,7 +215,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             </div>
           </div>
 
-          <div className={headerStyles.categorySection} id="category-section">
+          <div className={headerStyles.categorySection} id="category-section" style={{display: "block"}}>
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>

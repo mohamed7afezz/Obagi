@@ -173,11 +173,35 @@ const ProductLine = ({ node }) => {
             }
             relationships {
               node__medical_product {
+                title
+                field_medical_price
+                field_medical_id
                 path {
                   alias
                 }
+                field_medical_description {
+                  processed
+                }
+                relationships {
+                  field_medical_image {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
+          }
+        }
+      }
+      image: file(relativePath: { eq: "252x193.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -188,19 +212,20 @@ const ProductLine = ({ node }) => {
     return (item.node.name)
   })
 
-  let productCount = 0
-  let taxonomy = data.allTaxonomyTermMedicalProductLines.edges.filter((item) => {
-    return systemName.includes(item.node.name.split(" ")[0])
-  })[0]
 
-  productCount = taxonomy
-    ? taxonomy.node.relationships.node__medical_product
-      ? taxonomy.node.relationships.node__medical_product.length
-      : 0
-    : 0;
+  // let productCount = 0
+  // let taxonomy = data.allTaxonomyTermMedicalProductLines.edges.filter((item) => {
+  //   return systemName.includes(item.node.name)
+  // })[0]
+
+  // productCount = taxonomy
+  //   ? taxonomy.node.relationships.node__medical_product
+  //     ? taxonomy.node.relationships.node__medical_product.length
+  //     : 0
+  //   : 0;
 
 
-    //console.log('count', productCount, taxonomy, systemName)
+  //   console.log('count', productCount, taxonomy)
 
 
   return (
@@ -228,20 +253,20 @@ const ProductLine = ({ node }) => {
               {...TabSliderSetting}
               className="tab-slider"
             >
-              {node.relationships.field_line_card
-                ? node.relationships.field_line_card.map((item, index) => {
+              {data.allTaxonomyTermMedicalProductLines.edges
+                ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
  
                   return (
                       <div>
                         <div className="col-12 p-0">
                           <div className={lineStyles.tabWrapper}>
-                            {item.field_tab_title ? (
+                            {item.node.name ? (
                               <div
                                 onClick={(e) => slickGoToslide(e,index)}
                                 className={[lineStyles.tab, "line-tab", index == 0 ?'active' : ""].join(
                                   " "
                                 )}
-                                >{systemName[index]}</div>
+                                >{item.node.name}</div>
                             ) : (
                               ""
                             )}
@@ -263,8 +288,8 @@ const ProductLine = ({ node }) => {
               asNavFor={nav1}
               ref={slider => (slider2 = slider)}
             >
-              {node.relationships.field_line_card
-                ? node.relationships.field_line_card.map((item, index) => {
+              {data.allTaxonomyTermMedicalProductLines
+                ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
                     return (
                       <div className={["row",lineStyles.sliderFlex].join(" ")}>
                         <div
@@ -272,76 +297,66 @@ const ProductLine = ({ node }) => {
                             " "
                           )}
                         >
-                          {item.field_card_subtitle ? (
                             <div
-                              dangerouslySetInnerHTML={{
-                                __html: item.field_card_subtitle.processed,
-                              }}
                               className={["subtitle",lineStyles.subtitle].join(" ")}
-                            ></div>
-                          ) : (
-                            ""
-                          )}
+                            >FEATURED</div>
+
                           <div className={["offset-lg-2","col-lg-8","pr-0","pl-0",lineStyles.leftSliderwapper].join(" ")}>
-                          {item.field_line_title ? (
+                          {item.node.name ? (
                             <div
                               className={lineStyles.cardTitle}
-                            >{systemName[index]}</div>
+                            >{item.node.name}</div>
                           ) : (
                             ""
                           )}
                           <div className={lineStyles.products}>
                             PRODUCTS (
                             <span className={lineStyles.productsNo}>
-                              {productCount}
+                              {item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0'}
                             </span>
                             )
                           </div>
-                          {item.field_line_description ? (
                             <div
-                              dangerouslySetInnerHTML={{
-                                __html: item.field_line_description.processed,
-                              }}
                               className={lineStyles.description}
-                            ></div>
-                          ) : (
-                            ""
-                          )}
+                            >
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.
+                            </div>
+
                           <div className={lineStyles.perfect}>
                             PERFECT FOR:{" "}
-                            {item.relationships.field_line_category.map(
+                            {/* {node.relationships.field_line_card.relationships.field_line_category.map(
                               (item, index, array) => {
-                                return (
+                                return ( */}
                                   <span className={lineStyles.category}>
-                                    <Link to="#"> {item.name}</Link>
-                                    {index === array.length - 1 ? "" : ", "}
+                                    <Link to="#">Anti-Aging, </Link>
+                                    <Link to="#"> Breakouts</Link>
+                                    {/* {index === array.length - 1 ? "" : ", "} */}
                                   </span>
-                                )
+                                {/* )
                               }
-                            )}
+                            )} */}
                           </div>
-                          {item.relationships.field_line_image.localFile ? (
+                          {/* {node.relationships.field_line_card.relationships.field_line_image.localFile ? ( */}
                             <div className={lineStyles.imageWrapper}>
                               <Img
                                 fluid={
-                                  item.relationships.field_line_image.localFile
-                                    .childImageSharp.fluid
+                                  data.image.childImageSharp.fluid
                                 }
                               />
                             </div>
-                          ) : (
+                          {/* ) : (
                             ""
-                          )}
-                          {item.field_line_link ? (
+                          )} */}
+                          {item.node.path.alias ? (
                             <div>
                               <Link
-                                to={item.field_line_link.uri}
+                                to={item.node.path.alias}
                                 className={[
                                   "button-link",
                                   lineStyles.link,
                                 ].join(" ")}
                               >
-                                {item.field_line_link.title}
+                                {"Shop " + systemName[index]}
                               </Link>
                             </div>
                           ) : (
@@ -352,10 +367,11 @@ const ProductLine = ({ node }) => {
                         <div
                           className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider,"productInlineSlider"].join(" ")}
                         >
+                          {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
                           <div className={[productsuggestion.slickcon,"pt-45"].join(" ")}>
                             <Slider   {...SliderSetting2}>
-                              {node.relationships.field_line_card
-                                ? node.relationships.field_line_card.map(
+                              {item.node.relationships.node__medical_product
+                                ? item.node.relationships.node__medical_product.map(
                                     (item, index) => {
                                       return (
                                         <div
@@ -365,19 +381,22 @@ const ProductLine = ({ node }) => {
                                           ].join(" ")}
                                         >
                                           <ProductCard
-                                            producttitle= {node.field_product_line_title
-                                              .processed}
+                                            productLink={item.path.alias}
+                                            producttitle= {item.title}
                                             productdescription={{
                                              
-                                                __html: item.field_line_description.processed,
+                                                __html: item.field_medical_description.processed
                                               }}
                                             productimage={
-                                              item.relationships
-                                                .field_line_image.localFile
-                                                .childImageSharp.fluid
+                                              item.relationships.field_medical_image[0]
+                                                ? (item.relationships.field_medical_image[0]
+                                                    .localFile? item.relationships.field_medical_image[0]
+                                                    .localFile.childImageSharp.fluid : '')
+                                                : ""
                                             }
-                                            price="65"
+                                            price={item.field_medical_price}
                                             rate="0"
+                                            productId={item.field_medical_id}
                                           />
                                         </div>
                                       )
@@ -396,38 +415,7 @@ const ProductLine = ({ node }) => {
         </div>
         </div>
         </div>
-        
-        {/* <div className={[lineStyles.wrapper].join(" ")}>
-                            <div onClick={() => slickGoToslide(0)} className="active">Nu-Derm®</div>
-                            <div onClick={() => slickGoToslide(1)}>ELASTIderm®</div>
-                            <div onClick={() => slickGoToslide(2)}>Hydrate®</div>
-                            <div onClick={() => slickGoToslide(3)}>KeraPhine®</div>
-                            <div onClick={() => slickGoToslide(4)}>Nu-Derm®</div>
-                            <div onClick={() => slickGoToslide(5)}>Daily Hydro-Drops™</div>
-                            <div onClick={() => slickGoToslide(6)}>Daily Hydro-Drops™</div>
-                            <div onClick={() => slickGoToslide(7)}>Daily Hydro-Drops™</div>
-                            <div onClick={() => slickGoToslide(8)}>Daily Hydro-Drops™</div>
-                            <div onClick={() => slickGoToslide(9)}>Daily Hydro-Drops™</div>
-                        </div>
-
-                        <div className={lineStyles.progressBar}><div className={lineStyles.progress}></div></div> */}
       </div>
-      {/* <div className="row">
-                <div className="col-12">
-                    <Slider ref={slider => (slider1.current = slider)} {...SliderSetting}>
-                        <div className={lineStyles.blue}>Nu-Derm®</div>
-                        <div className={lineStyles.green}>ELASTIderm®</div>
-                        <div className={lineStyles.red}>Hydrate®</div>
-                        <div className={lineStyles.black}>KeraPhine®</div>
-                        <div className={lineStyles.purple}>Nu-Derm®</div>
-                        <div className={lineStyles.pink}>Daily Hydro-Drops™</div>
-                        <div className={lineStyles.grey}>Daily Hydro-Drops™</div>
-                        <div className={lineStyles.beige}>Daily Hydro-Drops™</div>
-                        <div className={lineStyles.maroon}>Daily Hydro-Drops™</div>
-                        <div className={lineStyles.yellow}>Daily Hydro-Drops™</div>
-                    </Slider>
-                </div>
-            </div> */}
     </div>
   )
 }
