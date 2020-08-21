@@ -367,6 +367,7 @@ const ProductLine = ({ node }) => {
                         <div
                           className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider,"productInlineSlider"].join(" ")}
                         >
+                          {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
                           <div className={[productsuggestion.slickcon,"pt-45"].join(" ")}>
                             <Slider   {...SliderSetting2}>
                               {item.node.relationships.node__medical_product
@@ -386,12 +387,13 @@ const ProductLine = ({ node }) => {
                                              
                                                 __html: item.field_medical_description.processed
                                               }}
-                                            // productimage={
-                                            //   item.relationships.field_medical_image[0]
-                                            //     ? item.relationships.field_medical_image[0]
-                                            //         .localFile.childImageSharp.fluid
-                                            //     : ""
-                                            // }
+                                            productimage={
+                                              item.relationships.field_medical_image[0]
+                                                ? (item.relationships.field_medical_image[0]
+                                                    .localFile? item.relationships.field_medical_image[0]
+                                                    .localFile.childImageSharp.fluid : '')
+                                                : ""
+                                            }
                                             price={item.field_medical_price}
                                             rate="0"
                                             productId={item.field_medical_id}

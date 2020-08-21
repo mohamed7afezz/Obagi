@@ -1123,3 +1123,15 @@ footer .form-group {
     padding-top: 16px;
     position: relative;
 }
+
+.product-line {
+    .productInlineSlider {
+        position: relative;
+
+        .product-slider-pager {
+            position: absolute;
+            bottom: 49px;
+            left: 162px;
+        }
+    }
+}
