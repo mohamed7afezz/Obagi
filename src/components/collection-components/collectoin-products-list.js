@@ -435,7 +435,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                               }
                               price={product.field_clinical_price}
                               rate="0"
-                              productId={item.field_clinical_id}
+                              productId={product.field_clinical_id}
                             />
                             <div
                               class="d-none ingredient"
@@ -480,7 +480,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                             }
                             price={product.field_medical_price}
                             rate="0"
-                            productId={item.field_medical_id}
+                            productId={product.field_medical_id}
                           />
                            <div
                         class="d-none ingredient"

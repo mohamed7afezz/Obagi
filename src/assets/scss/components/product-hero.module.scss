@@ -215,16 +215,14 @@ display: none;
     border: 0;
     position: relative;
     outline: 0;
- 
+    &:active{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
     &:focus{
         border: 0;
         outline: 0;
-        .infoselected{
-            display: block;
-        }
-        .info {
-            display: none;
-        }
+      
       
     }
 }

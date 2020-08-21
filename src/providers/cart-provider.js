@@ -29,11 +29,11 @@ export const CartProvider = ({ children }) => {
   const [notifications, updateNotifications] = useState([]);
 
   const addNotification = (text, type = 'notify') => {
-    updateNotifications([...notifications, { text, type, id: "FIX_ID" }]);
+    updateNotifications([...notifications, { text, type, id: Date.now() }]);
   };
 
   const removeNotification = id => {
-    updateNotifications(notifications.filter(ntfy => ntfy.id !== id));
+    updateNotifications([]);
   };
 
   const fetchCart = () => {
@@ -87,7 +87,8 @@ export const CartProvider = ({ children }) => {
     
   };
 
-  const addToCart = (productId, retry) => {
+  const addToCart = (productId ,retry, quantity) => {
+    
     setState({ ...state, addingToCart: productId });
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
     if(cartId) {
@@ -100,7 +101,7 @@ export const CartProvider = ({ children }) => {
       body: JSON.stringify({
         line_items: [
           {
-            quantity: 1,
+            quantity: (typeof(quantity)==='undefined')? 1 : quantity,
             product_id: parseInt(productId, 10)
           }
         ]
@@ -110,10 +111,11 @@ export const CartProvider = ({ children }) => {
       .then(({ response, status }) => {
         if (status === 404 && !retry) {
           // re create a cart if cart was destroyed
-          return fetch(`${baseUrl}bigcommerce/v1/cart`, {
-            credentials: 'same-origin',
-            mode: 'cors'
-          }).then(() => addToCart(productId, true));
+          cartId = undefined;
+          if (typeof window !== "undefined") {
+            window.localStorage.removeItem('cartId')
+          }
+          addToCart(productId, true, quantity);
         }
         status < 300 && addNotification('Item added successfully');
 
@@ -121,7 +123,9 @@ export const CartProvider = ({ children }) => {
         const cartAmount = response.data.cart_amount;
         const currency = response.data.currency;
         cartId = response.data.id;
-        window.localStorage.setItem('cartId', JSON.stringify(cartId));
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem('cartId', JSON.stringify(cartId));
+        }
         setState({
           ...state,
           addingToCart: false,
@@ -165,7 +169,7 @@ export const CartProvider = ({ children }) => {
 
   const removeItemFromCart = itemId => {
     fetch(
-      `${baseUrl}bigcommerce/v1/cart_delete/${cartId}/${itemId}`,
+      `${baseUrl}bigcommerce/v1/delete_item/${cartId}/${itemId}`,
       {
         credentials: 'same-origin',
         mode: 'cors',

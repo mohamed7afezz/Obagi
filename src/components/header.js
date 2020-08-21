@@ -183,14 +183,14 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
-                            <Link to="#" onClick={() => value.addNotification('Item added successfully')} className={headerStyles.navButton}>
+                            <button to="#" className={'locker'} onClick={() => value.addNotification('Item added successfully')} className={headerStyles.navButton}>
                             <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                             {value &&
                               value.state.cart &&
                               value.state.cart.numberItems > 0 && (
-                                <p className={headerStyles.cartCounter}>{value.state.cart.numberItems}</p>
+                                <p className={[headerStyles.cartCounter,"cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
                               )}
-                          </Link></div>
+                          </button></div>
                         );
                       }}
                     </CartContext.Consumer>
@@ -259,13 +259,13 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                         return (
                             <div className={headerStyles.navButton}>
                               <div className={headerStyles.cartWrapper}>
-                                <Link to="#"  onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                                <button to="#" className={'locker'}  onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
                                 value.state.cart &&
                                 value.state.cart.numberItems > 0 && (
-                                  <p className={headerStyles.cartCounter}>{value.state.cart.numberItems}</p>
+                                  <p className={[headerStyles.cartCounter,"cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
                                 )}
-                          </Link></div></div>
+                          </button></div></div>
                         );
                       }}
                     </CartContext.Consumer>

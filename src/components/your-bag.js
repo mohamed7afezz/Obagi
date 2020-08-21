@@ -44,27 +44,27 @@ const StandardItem = props => {
     if(cartType == "overlay"){
       return (
         <>
-            <div className={["row", ShowBagStyle.selectedproductsCard].join(" ")}>
-              <div className={"col-4"}>
+            <div className={["row", ShowBagStyle.selectedproductsCard,"selectedproductsCard"].join(" ")}>
+              <div className={["col-4","mob-pl-0"].join(" ")}>
                 <img src={item.image_url} alt={`${item.name}`} />
               </div>
-              <div className={["col-8", ShowBagStyle.removepadding].join(" ")}>
-                <div className={["col-12", "row"].join(" ")}>
+              <div className={["col-8", "mob-pr-0"].join(" ")}>
+                <div className={"w-100"}>
                   <p className={ShowBagStyle.BagProductDesc}>{item.name}</p>
                 </div>
     
-                <div className={["col-12", "row", "d-flex", ShowBagStyle.left].join(" ")}>
-                  <div className={["d-flex", ShowBagStyle.left, "col-10", "pl-0"].join(" ")}>
-                    <div className={[BagStyle.bagCount, "d-flex", "col-8"].join(" ")}>
+                <div className={["col-12", "row", "d-flex", ShowBagStyle.left,"mobsetpadding"].join(" ")}>
+                  <div className={["d-flex", ShowBagStyle.left, "col-9", "pl-0"].join(" ")}>
+                    <div className={[BagStyle.bagCount, "d-flex", "col-lg-8","col-lg-6"].join(" ")}>
                       <AdjustItem {...props} item={item} cartType={cartType} />
                     </div>
-                    <a href="#" onClick={() => props.removeItemFromCart(item.id)}
+                    <button href="#" onClick={() => props.removeItemFromCart(item.id)}
                       className={[ShowBagStyle.removebtn, "col-4"].join(" ")}
                     >
                       Remove
-                    </a>
+                    </button>
                   </div>
-                  <p className={[ShowBagStyle.Price, "col-2"].join(" ")}>{item.list_price}</p>
+                  <p className={[ShowBagStyle.Price, "col-3","mob-pr-0","mob-text-center"].join(" ")}>{item.list_price}</p>
                 </div>
               </div>
             </div>

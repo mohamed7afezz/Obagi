@@ -161,6 +161,12 @@ color: #132466;
         text-decoration: none;
     }
 }
+.fixpadding{
+    padding: 16px 23px ;
+    @include md-screen{
+        padding: 24px 40px;
+    }
+}
 .SubtotalFinal{
     margin-bottom: 20px;
     font-size: 18px;
