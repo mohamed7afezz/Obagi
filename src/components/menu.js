@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 import footerStyles from '../assets/scss/components/footer.module.scss'
 // const $ = require(jQuery);
 //  onClick={_onHeaderClick}
@@ -13,7 +13,11 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 
 function addStyles(e) {
   if(e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
-    document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
+    
+    if(!e.target.closest(".extended-nav > ul > li > .submenu > li > a")){
+      document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
+    }
+
     let selected = e.target.closest(".extended-nav > ul > li > .submenu > li > a");
     selected.classList.remove("not-selected");
     selected.classList.add("selected");
@@ -45,6 +49,14 @@ function removeMainStyles() {
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
+function addOverview() {
+  var x = document.getElementById("overview-sec");
+  if (x.style.display === "none") {
+    x.style.display = "inline-block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
 
 function createMenuHierarchy(menuData, menuName) {
@@ -98,10 +110,29 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       </Link>)
     }
     else if (itemId && collapseTarget) {
-      return (<a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-        {link.title}
-        {link.expanded == true? <Link to={link.link.uri} className="overview">Overview</Link> : ''}
-      </a>)
+      
+      if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
+        return (
+          <>
+            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={"mc" + collapseTarget.slice(1)} onClick={(e) => {addOverview(e);}}>
+              {link.title}
+            </a>
+            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id="overview-sec" style={{display: "none"}}>Overview</Link> : ''}
+          </>
+        )
+      } else {
+        return (
+          <>
+            <Link to={link.link.uri.replace('internal:', '')}>
+              {link.title}
+
+            </Link>
+            {/* <span className=""> */}
+              <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
+            {/* </span> */}
+          </>
+        )
+      }
     }
   }
 
@@ -133,7 +164,7 @@ function buildMenu(menuArray, isExpandable, menuName){
   let menu = []
   for(let item in menuArray) {
     if(menuArray[item].children.length !== 0) {
-      
+      // className={isExpandable == true? "collapsed" : ''} data-toggle={isExpandable == true? "collapse" : ''} href={isExpandable == true? collapseTarget : ''} role={isExpandable == true? "button" : ''} aria-expanded={isExpandable == true? "false" : ''} aria-controls={isExpandable == true?  collapseTarget : ''}
       menu.push(
       <li key={menuArray[item].drupal_id}>
         {

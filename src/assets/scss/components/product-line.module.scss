@@ -22,6 +22,11 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
     background-color: rgba(134 , 140 , 210 , 0.1);
+
+    @include lg-screen {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
 }
 .tab {
     cursor: pointer;
@@ -67,6 +72,11 @@
         padding-top: 40px;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    @include lg-screen {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 
