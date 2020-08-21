@@ -84,7 +84,7 @@ const Notification = ({ id, text, type }) => {
         <div class="modal-body ">
           <YourBag cartType="overlay"/>
         </div>
-        <div class="modal-footer">
+        {/* <div class="modal-footer">
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
               <Img
@@ -134,7 +134,7 @@ const Notification = ({ id, text, type }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

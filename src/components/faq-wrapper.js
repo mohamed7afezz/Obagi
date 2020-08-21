@@ -66,71 +66,17 @@ const FaqWrapper = ({ node }) => {
 
   return (
     <div className={faqStyles.wrapper}>
-      <Paginator rowComponent={FaqRow} pagerData="bahi" />
       <div className="container-fluid faq-wrapper">
         <div className="row">
           <div className="col-12 col-lg-9 offset-lg-2">
             <div id="list">
               {node.relationships.field_faq_section ?
-                node.relationships.field_faq_section.map((item, index, array) => {
-                  return (
-                    <div className={index == node.relationships.field_faq_section.length - 1 ? faqStyles.lastSection : ''}>
-                      {item.field_faq_title ? <div dangerouslySetInnerHTML={{ __html: item.field_faq_title.processed }} className={faqStyles.title}></div> : ''}
-
-                      {item.relationships.field_question_and_answer ? item.relationships.field_question_and_answer.map((item, index, array) => {
-                        return (
-                          <div id={"accordion" + index} className={index == array.length - 1 ? faqStyles.qaWrapper + ' ' + faqStyles.lastQaWrapper : faqStyles.qaWrapper}>
-                            <div className="row">
-                              <div className="col-11">
-                                <div className={index == array.length - 1 ? faqStyles.quesWrapper + ' ' + faqStyles.lastQWrapper : faqStyles.quesWrapper}>
-                                  {item.field_question_title ? <a data-toggle="collapse" href={"#collapse" + index} role="button" aria-expanded={index == 0 ? "true" : "false"} aria-controls={"collapse" + index} className={index ==0? faqStyles.question : faqStyles.question + ' collapsed'}><div dangerouslySetInnerHTML={{ __html: item.field_question_title.processed }}></div></a> : ''}
-                                </div>
-
-                                {item.field_answer ? <div dangerouslySetInnerHTML={{ __html: item.field_answer.processed }} className={index == 0 ? faqStyles.answer + " collapse show" : faqStyles.answer + " collapse"} id={"collapse" + index}></div> : ''}
-                              </div>
-                            </div>
-                            <a className={index== 0? faqStyles.sign + " faq-sign" : faqStyles.sign + " faq-sign collapsed"} data-toggle="collapse" href={"#collapse" + index} role="button" aria-expanded={index == 0 ? "true" : "false"} aria-controls={"collapse" + index}></a>
-                          </div>
-                        )
-                      }) : ''}
-
-
-                    </div>
-                  )
-                })
+                <Paginator pagerData={node.relationships.field_faq_section} rowComponent={FaqRow} rowsPerPage={2} />
                 : ''}
             </div>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
-            <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-                {/* 
-                <input type="button" id="first" onclick={() => firstPage()} value="first" />
-                <input type="button" id="next" onclick={() => nextPage()} value="next" />
-                <input type="button" id="previous" onclick={() => previousPage()} value="previous" />
-                <input type="button" id="last" onclick={() => lastPage()} value="last" /> */}
-              </ul>
-            </nav>
-          </div>
-        </div>
       </div>
     </div>
   )
