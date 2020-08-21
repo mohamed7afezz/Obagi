@@ -13,12 +13,11 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 
 function addStyles(e) {
   if(e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
-    
-    if(!e.target.closest(".extended-nav > ul > li > .submenu > li > a")){
-      document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
-    }
+
+    document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
 
     let selected = e.target.closest(".extended-nav > ul > li > .submenu > li > a");
+    
     selected.classList.remove("not-selected");
     selected.classList.add("selected");
   }
