@@ -1006,6 +1006,17 @@ footer .form-group {
     }
 }
 
+.body-search-margin {
+    margin-top: 78.5px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+.body-search-notif {
+    margin-top: 134.5px;
+}
 .hero-slider {
     .slick-initialized {
         padding: 0;

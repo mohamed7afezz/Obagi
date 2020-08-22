@@ -20,7 +20,15 @@ const AboveHeader = () => {
       document.getElementById("notification").style.display = "none";
       document.getElementById("desk-navigation").style.top="0";
       document.getElementById("mob-navigation").style.top="0";
-      document.querySelector("body").classList.add("body-small-margin");
+      document.getElementById("search-wrapper").style.top="0";
+
+      if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none") {
+        document.querySelector("body").classList.add("body-small-margin");
+        
+      } else {
+        document.querySelector("body").classList.remove("body-search-notif");
+        document.querySelector("body").classList.add("body-search-margin");
+      }
 
     }
 

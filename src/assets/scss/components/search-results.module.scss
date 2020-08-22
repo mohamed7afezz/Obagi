@@ -1,0 +1,124 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.results {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    text-align: center;
+    padding-top: 57px;
+
+    @include lg-screen {
+        @include fontStyle(72, 88);
+        padding-top: 79px;
+    }
+}
+
+
+.selected {
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif; 
+        font-weight:  400; 
+        font-style:  normal;
+    }
+}
+
+.footnote {
+    @extend %futurapt-light;
+    @include fontStyle(18, 32);
+    text-align: center;
+    color: #7c858a;
+
+    @include lg-screen {
+        @include fontStyle(28, 48);
+        font-family:  futura-pt,   sans-serif; 
+        font-weight:  400; 
+        font-style:  normal;
+
+        padding-top: 3px;
+    }
+}
+
+.buttons-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+    margin: 57px 0 24px;
+
+    @include lg-screen {
+        margin: 72px 0 40px;
+    }
+}
+
+.type-button {
+    text-align: center;
+    width: 50%;
+
+    &:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    &:hover {
+        background: #00c7d8;
+        a {
+            color: #ffffff;
+        }
+    }
+
+    a {
+        padding: 15px 0;
+        color: #132466;
+        @extend %futurapt-bold;
+        letter-spacing: 1.8px;
+        display: block;
+        width: 100%;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.filter{
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-medium;
+
+    @include lg-screen {
+        width: 30%;
+        margin-bottom: 0;
+    }
+}
+.Collectionfilter{
+    padding-bottom: 24px;
+    @include md-screen{
+        padding-bottom: 0;
+    }
+    @include lg-screen {
+        display: flex;
+        align-items: center;
+        margin: 72px 0 40px auto;
+    }
+}
+.Collectionfilter select::after{
+    position: absolute;
+    display: block;
+    content: " ";
+    width: 8px;
+    height: 5px;
+    background:url(../../images/product-images/mobile-arrow.svg) ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 55%;
+    transform: translateY(-50%);
+    right: 15px;
+}
+.custom {
+    // width: unset;
+}

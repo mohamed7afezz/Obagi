@@ -12,6 +12,7 @@ import Carouselproducts from "../components/carouselproducts"
 import Recommendedparing from "../components/recommendedparing"
 import Beforeafter from "../components/beforeafter"
 import Layout from "../components/layout"
+import SearchResults from '../components/search-results'
 
 import Search from "../components/search"
 const products = () => (
@@ -30,7 +31,7 @@ const products = () => (
  
 
       {/* <ProductLine /> */}
-      <Search />
+      <SearchResults />
         </Layout>
         
 )

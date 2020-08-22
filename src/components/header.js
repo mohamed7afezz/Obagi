@@ -1,6 +1,6 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import PropTypes from "prop-types"
+import PropTypes, { func } from "prop-types"
 import React from "react"
 import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
@@ -8,6 +8,8 @@ import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
 import CartContext from '../providers/cart-provider';
 import human from '../assets/images/Human.png'
+import Search from './search'
+
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const location = useLocation();
@@ -32,6 +34,20 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      searchIcon: file(relativePath: { eq: "search.png" }) {
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      close: file(relativePath: { eq: "close.png" }) {
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -154,14 +170,75 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     }
   }
 
-  // function addCategory() {
-  //   // var navbar = document.getElementById("navbar");
-  //   var category = document.getElementById("category-section");
 
-  //   if (category.style.display === "none" && category.style.display !== "none"){
-  //     category.style.display = "block";
-  //   }
-  // }
+  function openSearch() {
+    var search = document.getElementById("search-wrapper");
+    var nav = document.getElementById("mob-navigation");
+    var not = document.getElementById("notification");
+    var body = document.querySelector("body");
+
+    if (search.style.display === "none" && not.style.display !== "none") {
+
+      search.style.display = "block";
+      nav.style.display = "none";
+      body.classList.remove("body-small-margin");
+      body.classList.add("body-search-notif");
+
+    } else if (search.style.display === "none" && not.style.display === "none") {
+      search.style.display = "block";
+      nav.style.display = "none";
+      body.classList.remove("body-small-margin");
+      body.classList.add("body-search-margin");
+      // body.classList.remove("body-search-notif");
+    } else if (search.style.display !== "none" && not.style.display !== "none") {
+      search.style.display = "none";
+      nav.style.display = "block";
+      body.classList.remove("body-search-margin");
+      body.classList.remove("body-search-notif");
+      body.classList.remove("body-small-margin");
+    }
+    else {
+      search.style.display = "none";
+      nav.style.display = "block";
+      body.classList.remove("body-search-margin");
+      body.classList.remove("body-search-notif");
+      body.classList.add("body-small-margin");
+      
+    }
+  }
+
+  function deskOpenSearch() {
+    var search = document.getElementById("search-wrapper");
+    var not = document.getElementById("notification");
+    var body = document.querySelector("body");
+    var deskNav = document.getElementById("desk-navigation");
+
+    if (search.style.display === "none" && not.style.display !== "none" && menuType === "absolute") {
+
+      search.style.display = "block";
+      deskNav.classList.remove("d-lg-block");
+
+    } else if (search.style.display === "none" && not.style.display !== "none" && menuType === "relative") {
+
+      search.style.display = "block";
+      deskNav.classList.remove("d-lg-block");
+      search.style.position = "relative";
+
+    } else if (search.style.display === "none" && not.style.display === "none" && menuType === "absolute") {
+      search.style.display = "block";
+      deskNav.classList.remove("d-lg-block");
+    } else if (search.style.display === "none" && not.style.display === "none" && menuType === "relative") {
+
+      search.style.display = "block";
+      deskNav.classList.remove("d-lg-block");
+      search.style.position = "relative";
+
+    }
+    else {
+      search.style.display = "none";
+      deskNav.classList.add("d-lg-block");
+    }
+  }
 
   return (
 
@@ -178,29 +255,30 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div ><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
                             <button to="#" className={'locker'} onClick={() => value.addNotification('Item added successfully')} className={headerStyles.navButton}>
-                            <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
-                            {value &&
-                              value.state.cart &&
-                              value.state.cart.numberItems > 0 && (
-                                <p className={[headerStyles.cartCounter,"cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
-                              )}
-                          </button></div>
+                              <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              {value &&
+                                value.state.cart &&
+                                value.state.cart.numberItems > 0 && (
+                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                                )}
+                            </button></div>
                         );
                       }}
                     </CartContext.Consumer>
-                    
+
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory();}}></button>
+                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
                 </div>
               </div>
             </div>
           </div>
+
 
           <div className="row">
             <div className="col col-padding">
@@ -208,14 +286,14 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human}/><Link to="#">Welcome, Celia</Link></span>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} /><Link to="#">Welcome, Celia</Link></span>
                   <span><Link to="#">PREMIER POINTS</Link></span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={headerStyles.categorySection} id="category-section" style={{display: "block"}}>
+          <div className={headerStyles.categorySection} id="category-section" style={{ display: "block" }}>
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
@@ -229,6 +307,31 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
       </div>
 
 
+      <div className={headerStyles.searchWrapper} id="search-wrapper" style={{ display: "none" }}>
+        <div className={headerStyles.relativeSearch}>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12 col-lg-10 offset-lg-1">
+                <div className={headerStyles.searchSection}>
+                  <div className={headerStyles.searchIcon}><Img fixed={data.searchIcon.childImageSharp.fixed} /></div>
+                  <input type="search" className={headerStyles.searchInput}></input>
+                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
+                  <button className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
+                </div>
+              </div>
+            </div>
+
+
+              <div className={["row", headerStyles.searchResultWrapper].join(" ")}>
+                <div className="col-12 col-lg-10 offset-lg-1">
+                  <div className={headerStyles.results}>
+                    <Search />
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
 
 
       <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
@@ -253,19 +356,19 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className="col col-padding">
                   <div className={headerStyles.navLastSection}>
                     <p><Link to="#">SIGN IN</Link></p>
-                    <div className={headerStyles.navButton}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
-                            <div className={headerStyles.navButton}>
-                              <div className={headerStyles.cartWrapper}>
-                                <button to="#" className={'locker'}  onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                          <div className={headerStyles.navButton}>
+                            <div className={headerStyles.cartWrapper}>
+                              <button to="#" className={'locker'} onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
-                                value.state.cart &&
-                                value.state.cart.numberItems > 0 && (
-                                  <p className={[headerStyles.cartCounter,"cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
-                                )}
-                          </button></div></div>
+                                  value.state.cart &&
+                                  value.state.cart.numberItems > 0 && (
+                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                                  )}
+                              </button></div></div>
                         );
                       }}
                     </CartContext.Consumer>

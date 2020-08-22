@@ -1,6 +1,34 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
-.top-search {
-    background: #132466;
+.result {
+    position: relative;
+    padding: 12px 0 14px;
+    border-bottom: 1px solid rgba(19,36,102,0.2);
+    a {
+        @include fontStyle(18, 24);
+        // font-family: FuturaPT;
+        // font-weight: 300;
+        // font-style: normal;
+
+        @extend %futurapt-light;
+        color: #132466;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.type-color {
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    background: #868cd2;
+    right: 0;
+    top: 21px;
 }
