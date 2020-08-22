@@ -152,7 +152,7 @@ const ProductHero = ({ data, nodeType }) => {
                       <Zoom
                         img={item.localFile.childImageSharp.original.src}
                         zoomScale={1.5}
-                        width={587}
+                        width={745}
                         height={615}
                       />
                     ) : (
