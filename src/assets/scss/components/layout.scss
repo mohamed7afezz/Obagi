@@ -1050,7 +1050,7 @@ footer .form-group {
             border-radius: 6px;
             margin-right: 16px;
             
-            &:focus {
+            &.active {
                 box-shadow: unset;
                 background: #132466;
                 color: #ffffff;

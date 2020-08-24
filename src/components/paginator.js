@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
+    const [currPage, updateCurrPage] = useState(1);
+
     const Row = rowComponent;
     const pager = constructPagerData(pagerData, rowsPerPage);
 
@@ -26,8 +28,28 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
         return pagerData;
     }
 
-    function gotoPage(pageNumber) {
-        // document.querySelector()
+    function gotoPage(e, pageNumber) {
+        e.preventDefault();
+        document.querySelectorAll('.pages-wrapper .page').forEach(link => link.classList.add('d-none'));
+        document.querySelector(`.pages-wrapper .page-${pageNumber}`).classList.remove('d-none');
+
+        document.querySelectorAll('.pager-wrapper .page-link').forEach(link => link.classList.remove('active'));
+        document.querySelector(`.pager-wrapper .page-link-${pageNumber}`).classList.add('active');
+        updateCurrPage(currPage + 1);
+    }
+
+    function prevPage(e) {
+        e.preventDefault();
+        if(currPage > 1) {
+            gotoPage(e, currPage - 1);
+        }        
+    }
+
+    function nextPage(e) {
+        e.preventDefault();
+        if(currPage < pager.length) {
+            gotoPage(e, currPage  + 1);
+        }
     }
 
     return (
@@ -52,8 +74,8 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
                 {/* pages navigator */}
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item d-none">
-                            <a class="page-link" href="prev" aria-label="Previous">
+                        <li className={`page-item ${currPage == 1? 'd-none' : ''}`}>
+                            <a class="page-link prev-link d-none" href="prev" aria-label="Previous" onClick={(e) => {prevPage(e)}}>
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                             </a>
@@ -61,12 +83,12 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
                         
                         {
                             pager.map((item, index) => {
-                                return <li class="page-item"><a class="page-link" href={`${index + 1}`} onClick={(e) => {}}>{index + 1}</a></li>
+                                return <li class="page-item"><a className={`page-link page-link-${index + 1} ${(index > 0? '' : 'active')}`} href={`${index + 1}`} onClick={(e) => {gotoPage(e, index + 1)}}>{index + 1}</a></li>
                             })
                         }
                         
                         <li class="page-item">
-                            <a class="page-link" href="next" aria-label="Next">
+                            <a class="page-link next-link" href="next" aria-label="Next" onClick={(e) => {nextPage(e)}}>
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                             </a>
