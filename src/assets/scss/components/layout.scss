@@ -1163,3 +1163,50 @@ footer .form-group {
         }
     }
 }
+
+.show-account-wrapper {
+    position: absolute;
+    z-index: 9999999999999;
+    right: 0;
+    top: 154px;
+    height: 100vh;
+    width: 315px;
+    background: #fff;
+    padding: 24px 40px 0 28px;
+
+    .modal-header, .modal-content {
+        border: 0;
+    }
+    .modal-header, .modal-body {
+        padding: 0;
+    }
+}
+
+.show-account-wrapper .account-title {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+}
+
+.show-account-wrapper .close {
+
+    padding: 0;
+    right: 0;
+}
+
+.show-account-wrapper .close::after, .show-account-wrapper .close::before {
+    height: 16px;
+}
+
+.show-account-wrapper .links-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-account-wrapper .links-wrapper a {
+    @include fontStyle(18, 32);
+    margin-top: 24px;
+    color: #132466;
+     &:hover {
+         text-decoration: none;
+     }
+}

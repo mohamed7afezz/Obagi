@@ -9,6 +9,7 @@ import { useLocation } from "@reach/router"
 import CartContext from '../providers/cart-provider';
 import human from '../assets/images/Human.png'
 import Search from './search'
+import ShowAccount from './show-account'
 
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
@@ -241,6 +242,16 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     }
   }
 
+
+  function showAccount () {
+    var acc = document.getElementById("account-block");
+    if (acc.style.display === "none") {
+      acc.style.display = "block";
+    } else {
+      acc.style.display = "none";
+    }
+  }
+
   return (
 
 
@@ -356,7 +367,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.navLastSection}>
-                    <p><Link to="#">SIGN IN</Link></p>
+                    <p onClick={() => { showAccount(); }}><Link to="#">SIGN IN</Link></p>
                     <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
@@ -387,185 +398,11 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             <div className="container-fluid">
               <div className="row mr-0 ml-0">
                 <div className="col-12 col-padding">
-                  {/* <div className="dropdown"> */}
-
-                  {/* <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />
-                    <Menu menuName={`clinical-navigation`} menuClass={`navbar clinical-nav`}/>
-                    <Menu menuName={`medical-navigation`} menuClass={`navbar clinical-nav`}/> */}
 
                   {nodeType ? (nodeType.includes('clinical') ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
                     : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />)
                     : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />)}
 
-                  {/* 
-                    <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">
-                      <div className="d-flex">
-                        <div class="container-fluid d-lg-block nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Obagi Medical</p>
-
-                              <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday skincare</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.medical.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="container-fluid nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Obagi Clinical</p>
-
-                              <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday skincare</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.clinical.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-
-                    <div className="main-nav-containers dropdown-menu our-science" aria-labelledby="">
-                      <div className="d-flex">
-                        <div class="container-fluid d-lg-block nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Our Story</p>
-
-                              <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday skincare</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.ourstory.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="container-fluid nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Innovation</p>
-
-                              <p class="nav-subtitle-desk">With on-going research and development Obagi continues to push the future of skincare.</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.innovation.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="container-fluid d-lg-block nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Skincare 101</p>
-
-                              <p class="nav-subtitle-desk">Get the basics down of how to take care of your skin with the best scientifically proven products.</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.skincare.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="container-fluid d-lg-block nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Skinclusion</p>
-
-                              <p class="nav-subtitle-desk">be conscious, be fearless, be beautiful. Skincare for all!</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.istocksmall.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div className="main-nav-containers dropdown-menu community" aria-labelledby="">
-                      <div className="d-flex">
-                        <div class="container-fluid d-lg-block nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Obagi Blog</p>
-
-                              <p class="nav-subtitle-desk">Lorem ipsum dolor sit amet, consectetur adipiscing elit proin iaculis purus eu enim consectetur sit.</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.blog.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="container-fluid nav-container-desk">
-                          <div class="row">
-                            <div class="col-12">
-                              <p class="nav-title-desk">Press Releases</p>
-
-                              <p class="nav-subtitle-desk">Lorem ipsum dolor sit amet, consectetur adipiscing elit proin iaculis purus eu enim consectetur sit.</p>
-
-                              <div class="nav-img-desk"><Img fluid={data.press.childImageSharp.fluid} /></div>
-
-                              <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-                    <div className="main-nav-containers dropdown-menu skin-analyzer nav-single-container">
-                      <div class="container-fluid nav-container-desk ">
-                        <div class="row">
-                          <div class="col-12">
-                            
-                            <p class="nav-title-desk">Skinanalyzer</p>
-
-                            <p class="nav-subtitle-desk">Find the best Obagi solution for you.</p>
-
-                            <div class="nav-img-desk"><Img fluid={data.istock.childImageSharp.fluid} /></div>
-
-                            <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-
-                    <div class="container-fluid nav-container-desk nav-single-container dropdown-menu skinclusion">
-                      <div class="row">
-                        <div class="col-12">
-
-                          <div class="nav-title-img"><Img fluid={data.skinclusion.childImageSharp.fluid} /></div>
-
-                          <div class="nav-img-desk"><Img fluid={data.istock.childImageSharp.fluid} /></div>
-
-                          <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                  </div> */}
 
                 </div>
               </div>
@@ -575,7 +412,9 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
         </div>
       </div>
 
-
+      <div id="account-block" style={{display: "none"}}>
+        <ShowAccount />
+      </div>
 
 
 

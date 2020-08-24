@@ -21,6 +21,7 @@ const AboveHeader = () => {
       document.getElementById("desk-navigation").style.top="0";
       document.getElementById("mob-navigation").style.top="0";
       document.getElementById("search-wrapper").style.top="0";
+      document.getElementById("show-account").style.top="98px";
 
       if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none") {
         document.querySelector("body").classList.add("body-small-margin");
