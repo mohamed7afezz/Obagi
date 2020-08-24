@@ -1,0 +1,44 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+
+.wrapper {
+    padding: 94px 0 64px;
+}
+
+.title {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+.review-button {
+    width: 100%;
+    margin-top: 32px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    svg {
+        height: 1.5em;
+        width: 1.5em;
+    }
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 0 32px;
+}
+
+.review-number {
+    @include fontStyle(18, 32);
+}
+
+.hide {
+    @include fontStyle(14, 16);
+    text-decoration: underline;
+    cursor: pointer;
+}

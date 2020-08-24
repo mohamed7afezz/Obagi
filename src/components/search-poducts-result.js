@@ -1,52 +1,19 @@
 import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import ProductCard from "../../components/productcard"
-import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
-import {CustomSelect} from '../../assets/js/custom-select'
+import { graphql, useStaticQuery } from "gatsby"
+import ProductCard from "../components/productcard"
+import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import {CustomSelect} from '../assets/js/custom-select'
 
-const Collectionproducts = ({ node, nodetype }) => {
+const SearchProductsResult = ({ searchResult, node, nodetype }) => {
 
-  console.log('ashraqat', node.data)
+
 
   let products = []
-  let checkTaxonomy
+  let checkTaxonomy = searchResult
   let pageNodeType = nodetype ? nodetype : ""
   
-  if (pageNodeType == "clinicalConcern") {
-    checkTaxonomy =
-      node.data.taxonomyTermClinicalSkinConcern.relationships
-        .node__clinical_product
-  } else if (pageNodeType == "clinicalCategories") {
-    checkTaxonomy =
-      node.data.taxonomyTermClinicalCategories.relationships
-        .node__clinical_product
-  } else if (pageNodeType == "medicalConcern") {
-    checkTaxonomy =
-      node.data.taxonomyTermMedicalSkinConcern.relationships
-        .node__medical_product
-  } else if (pageNodeType == "medicalCategories") {
-    checkTaxonomy =
-      node.data.taxonomyTermMedicalCategories.relationships
-        .node__medical_product
-  }else if (pageNodeType == "clinicalGroups"){
-    checkTaxonomy =
-   node.data.taxonomyTermClinicalGroups.relationships
-      .node__clinical_product 
-  }else if(pageNodeType == 'medicalLine'){
-    checkTaxonomy =
-    node.data.taxonomyTermMedicalProductLines.relationships
-      .node__medical_product     
-  }else if(pageNodeType == 'skinClinicalType'){
-    checkTaxonomy =
-    node.data.taxonomyTermClinicalSkinType.relationships
-      .node__clinical_product     
-  }else if(pageNodeType == 'skinMedicalType'){
-    checkTaxonomy =
-    node.data.taxonomyTermMedicalSkinType.relationships
-      .node__medical_product    
-  } else {
-    checkTaxonomy = node
-  }
+
+  
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)
@@ -501,7 +468,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   )
 }
 
-export default Collectionproducts
+export default SearchProductsResult
 export const fragment = graphql`
   fragment collectionproducts on taxonomy_term__clinical_skin_concern {
     relationships {
