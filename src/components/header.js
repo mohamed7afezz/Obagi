@@ -217,6 +217,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
+      search.classList.add("search-margin");
 
     } else if (search.style.display === "none" && not.style.display !== "none" && menuType === "relative") {
 
@@ -334,7 +335,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
       </div>
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
+      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' relative-general-nav ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
@@ -394,7 +395,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                   {nodeType ? (nodeType.includes('clinical') ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
                     : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />)
-                    : <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} />}
+                    : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />)}
 
                   {/* 
                     <div className="main-nav-containers dropdown-menu our-products" aria-labelledby="9a2deb7f-423d-433b-a7d8-3da710e0ad86">

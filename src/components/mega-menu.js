@@ -6,8 +6,10 @@ import Img from 'gatsby-image'
 
 function addMainStyles(e) {
   document.querySelectorAll(".absolute-extended .nav-desk a.collapsed").forEach(Elem => Elem.classList.add("not-selected"));
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk a.collapsed").forEach(Elem => Elem.classList.add("not-selected"));
 
-  if(e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > li > a.collapsed")) {
+
+  if(e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > li > a.collapsed") || (e.target.closest(".relative-general-nav > div > div > div > div > div > nav > ul > li > a.collapsed")) ) {
     let selected = e.target.closest("nav > ul > li > a.collapsed");
     selected.classList.remove("not-selected");
     selected.classList.add("hovered");
@@ -18,6 +20,9 @@ function addMainStyles(e) {
 function removeMainStyles() {
   document.querySelectorAll(".absolute-extended .nav-desk a").forEach(Elem => Elem.classList.remove("hovered"));
   document.querySelectorAll(".absolute-extended .nav-desk a").forEach(Elem => Elem.classList.remove("not-selected"));
+
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk a").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk a").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 let megaMenuBlocks = [];

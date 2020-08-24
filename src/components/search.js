@@ -8,11 +8,17 @@ const Search = () => {
         <div>
             <div className={searchStyles.result}>
                 <Link to="#">Obagi-C Cleansing Gel</Link>
-                <div className={searchStyles.typeColor}></div>
+                <div className={searchStyles.typeSection}>
+                    <div className={searchStyles.typeColor}></div>
+                    <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Medical</div>
+                </div>
             </div>
             <div className={searchStyles.result}>
                 <Link to="#">Obagi-C Cleansing Gel</Link>
-                <div className={searchStyles.typeColor}></div>
+                <div className={searchStyles.typeSection}>
+                    <div className={searchStyles.typeColor}></div>
+                    <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Medical</div>
+                </div>
             </div>
         </div>
     )

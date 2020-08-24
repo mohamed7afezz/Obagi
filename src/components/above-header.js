@@ -28,6 +28,7 @@ const AboveHeader = () => {
       } else {
         document.querySelector("body").classList.remove("body-search-notif");
         document.querySelector("body").classList.add("body-search-margin");
+        document.getElementById("search-wrapper").classList.remove("search-margin");
       }
 
     }

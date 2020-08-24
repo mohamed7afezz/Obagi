@@ -3,6 +3,8 @@
 
 .result {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     padding: 12px 0 14px;
     border-bottom: 1px solid rgba(19,36,102,0.2);
     a {
@@ -22,13 +24,38 @@
     &:last-child {
         border-bottom: 0;
     }
+
+    @include lg-screen {
+        padding: 38px 0 6px;
+        a {
+            @include fontStyle(32, 48);
+        }
+        
+    }
+}
+
+.type-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .type-color {
-    position: absolute;
     height: 8px;
     width: 8px;
     background: #868cd2;
-    right: 0;
-    top: 21px;
+
+    @include lg-screen {
+        height: 12px;
+        width: 12px;
+        margin-right: 16px;
+    }
+}
+
+.type-text {
+    margin-right: 14px;
+    @include fontStyle(18, 24);
+    @extend %futurapt-bold;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
 }

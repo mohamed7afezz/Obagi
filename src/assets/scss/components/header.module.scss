@@ -384,4 +384,8 @@
 
 .results {
     padding: 23px 24px 22px;
+
+    @include lg-screen {
+        padding: 48px 0 95px;
+    }
 }
