@@ -20,28 +20,28 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
   }
 
   function getIngredient (item) {
-    if (item.relationships.field_clinical_components) {
-      return item.relationships.field_clinical_components.filter(
-        comp => {
-          return comp.__typename == "paragraph__ingredient"
-        }
-      )[0].relationships.field_read_more[0].field_read_more_content
-        .processed;
-    } 
-    return item.relationships.field_medical_components.filter(
+    // if (item.relationships.field_clinical_components) {
+    //   return item.relationships.field_clinical_components.filter(
+    //     comp => {
+    //       return comp.__typename == "paragraph__ingredient"
+    //     }
+    //   )[0].relationships.field_read_more[0].field_read_more_content
+    //     .processed;
+    // } 
+    // return item.relationships.field_medical_components.filter(
      
-      comp => {
+    //   comp => {
         
-        return comp.__typename == "paragraph__ingredient"
-      }
-    )[0]?item.relationships.field_medical_components.filter(
+    //     return comp.__typename == "paragraph__ingredient"
+    //   }
+    // )[0]?item.relationships.field_medical_components.filter(
      
-      comp => {
+    //   comp => {
         
-        return comp.__typename == "paragraph__ingredient"
-      }
-    )[0].relationships.field_read_more[0].field_read_more_content
-      .processed:''
+    //     return comp.__typename == "paragraph__ingredient"
+    //   }
+    // )[0].relationships.field_read_more[0].field_read_more_content
+    //   .processed:''
   }
   useEffect(() => {
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {

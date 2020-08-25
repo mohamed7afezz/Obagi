@@ -5,26 +5,19 @@ import Img from "gatsby-image"
 const ShowAccount = () => {
 
 
-    function showAccount () {
-        var acc = document.getElementById("account-block");
-        if (acc.style.display === "none") {
-          acc.style.display = "block";
-        } else {
-          acc.style.display = "none";
-        }
-      }
 
     return (
 
-        <div className="show-account-wrapper" id="show-account">
-            <div className="modal-dialog modal-data m-0" role="document">
-                <div className="modal-content">
+    
+        <div class="modal fade" id="show-account" >
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
                     <div className="modal-header">
                         <div className="d-flex w100">
                             <div className="d-flex">
                                 <div className="account-title">Your Account</div>
                             </div>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => {showAccount();}}><span aria-hidden="true">&nbsp;</span></button>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&nbsp;</span></button>
                         </div>
                     </div>
                     <div className="modal-body links-wrapper">

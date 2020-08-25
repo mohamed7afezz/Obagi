@@ -16,9 +16,11 @@ import SearchResults from '../components/search-results'
 
 import Search from "../components/search"
 import Reviews from "../components/reviews"
+import ShowAccount from "../components/show-account"
 const products = () => (
  
     <Layout>
+      <ShowAccount/>
         {/* <ProductHero/>
       <Details/>
       <Ingredient/>
@@ -32,8 +34,8 @@ const products = () => (
  
 
       {/* <ProductLine /> */}
-      <SearchResults />
-      <Reviews />
+      {/* <SearchResults />
+      <Reviews /> */}
         </Layout>
         
 )
