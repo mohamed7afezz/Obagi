@@ -4,15 +4,27 @@
 body {
     color: #132466;
     position: relative;
-    margin-top: 192.5px;
+    // margin-top: 192.5px;
 
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
+}
+.node-home{
+    margin-top: 192.5px;
     @include lg-screen {
         margin-top: 0;
     }
 }
-
 p {
     margin-bottom: 0;
+}
+.node-medical, .node-clinical{
+   
+    margin-top:  135.5px;
+    @include lg-screen {
+        margin-top: 0;
+    }
 }
 
 .container-fluid {

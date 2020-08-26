@@ -21,6 +21,9 @@ import Popup from "./videopopup"
 import Showbag from "./bag-preview"
 
 const Layout = ({ children,nodeType,menuType}) => {
+  if(!nodeType){
+    nodeType='home';
+  }
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,18 +35,18 @@ const Layout = ({ children,nodeType,menuType}) => {
   `)
   // Similar to componentDidMount and componentDidUpdate: 
   return (
-    <>
+    <div className={`node-${nodeType}`}>
       <AboveHeader />
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
       {/* <NavBlocks /> */}
-      <div className={`node-${nodeType}`}>
+      <div>
         <main>{children}</main>
         <Showbag />
         <Footer />
         <Popup/>
       </div>
 
-    </>
+    </div>
   )
 }
 
