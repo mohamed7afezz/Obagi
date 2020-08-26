@@ -1222,3 +1222,58 @@ footer .form-group {
          text-decoration: none;
      }
 }
+
+.account-tab-slider {
+    padding: 0;
+}
+
+.account-tab-slider .account-tab {
+    @include fontStyle(18, 32);
+    color: #7c858a;
+}
+
+.account-tab-slider .account-tab.active {
+    color: #132466;
+}
+
+.account-tab-slider .slick-initialized .slick-slide {
+    padding: 0;
+}
+
+.my-account .list-group-item {
+    @include fontStyle(18, 32);
+    color: #7c858a;
+    border: 0;
+    padding: 0;
+    margin-bottom: 16px;
+
+    &:first-child {
+        margin-top: 39.5px
+    }
+
+    &:hover {
+        background: transparent;
+    }
+}
+
+
+.my-account .list-group-item.active {
+    color: #132466;
+    background: transparent;
+    margin-top: 0;
+    border-top-width: 0;
+
+    &:first-child {
+        margin-top: 39.5px;
+    }
+
+}
+
+.my-account .list-group {
+    border-right: 1px solid #d6d6d6;
+    border-radius: 0;
+}
+
+.my-account .list-wrapper {
+    margin-bottom: 112px;
+}

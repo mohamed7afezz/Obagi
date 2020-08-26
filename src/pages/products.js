@@ -17,6 +17,7 @@ import SearchResults from '../components/search-results'
 import Search from "../components/search"
 import Reviews from "../components/reviews"
 import ShowAccount from "../components/show-account"
+import MyAccount from "../components/my-account"
 const products = () => (
  
     <Layout>
@@ -36,6 +37,7 @@ const products = () => (
       {/* <ProductLine /> */}
       {/* <SearchResults />
       <Reviews /> */}
+      <MyAccount />
         </Layout>
         
 )

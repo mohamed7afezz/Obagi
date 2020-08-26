@@ -1,0 +1,122 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.title {
+    @extend %futurapt-light;
+    @include fontStyle(28, 48);
+    text-align: center;
+    padding: 20px 0;
+
+    @include lg-screen {
+        text-align: left;
+        padding: 56px 0 39.5px;
+        @include fontStyle(52, 64);
+        border-bottom: 1px solid #d6d6d6;
+    }
+}
+
+.tab-slider-wrapper {
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 15px 0 16px;
+}
+
+.top-half {
+    margin: 24px 0;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    text-align: center;
+    padding: 32px 24.5px 40px;
+
+    @include lg-screen {
+        padding: 28px 0 40px;
+        margin: 32px 0 24px;
+    }
+}
+
+.top-half-text {
+    @extend %futurapt-light;
+    @include fontStyle(28, 48);
+
+    @include lg-screen {
+        @include fontStyle(28, 48);
+        padding-bottom: 12px;
+    }
+}
+
+.top-half-link {
+    @include fontStyle(16, 24);
+    text-decoration: underline;
+    color: #132466;
+    &:hover {
+        text-decoration: underline;
+        color: #132466;
+    }
+}
+
+.second-title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    margin-top: 31.5px;
+
+}
+
+.bottom-half {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    width: 100%;
+
+    padding: 24px 0 32px 39px;
+    margin-left: -1px;
+    color: #ffffff;
+}
+
+.bottom-title {
+    @extend %futurapt-bold;
+    @include fontStyle(18, 32);
+    padding-bottom: 4px;
+    
+}
+
+.bottom-text {
+    @include fontStyle(18, 32);
+    @extend %futurapt-light;
+    padding-bottom: 8px;
+}
+
+.bottom-link {
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    color: #ffffff;
+
+    &:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+
+.cs-title {
+    margin-top: 112px;
+    padding: 39px 0 8px;
+    border-top: 1px solid #d6d6d6;
+
+    @include fontStyle(24, 40);
+
+}
+
+.cs-text {
+    @include fontStyle(18, 32);
+    @extend %futurapt-light;
+    margin-right: 24px;
+}
+
+.mail {
+    color: #132466;
+    text-decoration: underline;
+
+    &:hover {
+        color: #132466;
+    }
+}

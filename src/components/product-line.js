@@ -8,13 +8,13 @@ import ProductCard from "../components/productcard"
 const ProductLine = ({ node }) => {
   const [nav1, setNav1] = React.useState(null)
   const [nav2, setNav2] = React.useState(null)
-    let slider1 = []
-    let slider2 = []
+  let slider1 = []
+  let slider2 = []
 
-    React.useEffect(() => {
-        setNav1(slider1)
-        setNav2(slider2)
-    }, [slider1, slider2])
+  React.useEffect(() => {
+    setNav1(slider1)
+    setNav2(slider2)
+  }, [slider1, slider2])
   const SliderSetting = {
     infinite: false,
     speed: 500,
@@ -31,39 +31,39 @@ const ProductLine = ({ node }) => {
       },
     ],
     beforeChange: (current, next) => {
-      let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
-      
-      progressbar.forEach((activeLi,index) =>{
-       
+      let progressbar = document.querySelectorAll('.tab-slider .slick-dots li');
+
+      progressbar.forEach((activeLi, index) => {
+
         if (index <= next) {
           activeLi.classList.add('slick-data-active')
-          
-        }else if (index > next){
+
+        } else if (index > next) {
           progressbar[index].classList.remove('slick-data-active')
-          
+
         }
-    
-         
-        
-       
+
+
+
+
       })
-      
-   let tabsstate=   document
-      .querySelectorAll(".line-tab ");
+
+      let tabsstate = document
+        .querySelectorAll(".line-tab ");
       let i = current;
-      tabsstate.forEach((activetab,index) =>{
-      
+      tabsstate.forEach((activetab, index) => {
+
         if (index == next) {
           activetab.classList.add('active')
         }
-        else{
+        else {
           activetab.classList.remove('active')
         }
-     
+
       })
     },
   }
-  
+
   const SliderSetting2 = {
     infinite: false,
     speed: 500,
@@ -79,7 +79,7 @@ const ProductLine = ({ node }) => {
         },
       },
     ],
-    
+
   }
   const TabSliderSetting = {
     infinite: false,
@@ -87,10 +87,10 @@ const ProductLine = ({ node }) => {
     slidesToShow: 3.5,
     arrows: false,
     dots: true,
-    
+
     responsive: [
       {
-        
+
         breakpoint: 1024,
         settings: {
           slidesToShow: 1.5,
@@ -99,53 +99,56 @@ const ProductLine = ({ node }) => {
         },
       },
     ],
-   
-  }
-  
-  function slickGoToslide(e,int) {
-    slider1.current.slickGoTo(int)
-    
-    addActiveClass(e)
-    
-    let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
 
-    progressbar.forEach((activeLi,index) =>{
-      activeLi.classList.remove("slick-data-active") } )
-    
-    progressbar.forEach((activeLi,index) =>{
-     
+  }
+
+  function slickGoToslide(e, int) {
+    slider1.current.slickGoTo(int)
+
+    addActiveClass(e)
+
+    let progressbar = document.querySelectorAll('.tab-slider .slick-dots li');
+
+    progressbar.forEach((activeLi, index) => {
+      activeLi.classList.remove("slick-data-active")
+    })
+
+    progressbar.forEach((activeLi, index) => {
+
       if (index <= int) {
         activeLi.classList.add('slick-data-active')
       }
-     
+
     })
   }
-  function slickGoToslide(e,int) {
+  function slickGoToslide(e, int) {
     slider1.slickGoTo(int)
-    
-    addActiveClass(e)
-    
-    let progressbar =  document.querySelectorAll('.tab-slider .slick-dots li');
 
-    progressbar.forEach((activeLi,index) =>{
-      activeLi.classList.remove("slick-data-active") } )
-    
-    progressbar.forEach((activeLi,index) =>{
-     
+    addActiveClass(e)
+
+    let progressbar = document.querySelectorAll('.tab-slider .slick-dots li');
+
+    progressbar.forEach((activeLi, index) => {
+      activeLi.classList.remove("slick-data-active")
+    })
+
+    progressbar.forEach((activeLi, index) => {
+
       if (index <= int) {
         activeLi.classList.add('slick-data-active')
       }
-     
+
     })
   }
   useEffect(() => {
-  
-    let progressbarContainer =  document.querySelector('.tab-slider .slick-dots');
-    progressbarContainer.innerHTML= "";
+
+    let progressbarContainer = document.querySelector('.tab-slider .slick-dots');
+    progressbarContainer.innerHTML = "";
     document
-    .querySelectorAll(".line-tab ")
-    .forEach((Elem) =>{
-      progressbarContainer.innerHTML  += '<li></li>'; })
+      .querySelectorAll(".line-tab ")
+      .forEach((Elem) => {
+        progressbarContainer.innerHTML += '<li></li>';
+      })
     document.querySelector('.tab-slider .slick-dots li:first-child').classList.add('slick-data-active')
   }, [])
 
@@ -155,9 +158,10 @@ const ProductLine = ({ node }) => {
 
     document
       .querySelectorAll(".line-tab ")
-      .forEach((Elem) =>{
-        Elem.classList.remove("active")})
-      
+      .forEach((Elem) => {
+        Elem.classList.remove("active")
+      })
+
     let active = e.target
     active.classList.add("active")
   }
@@ -241,137 +245,137 @@ const ProductLine = ({ node }) => {
                 className={lineStyles.wrapperTitle}
               ></div>
             ) : (
-              ""
-            )}
+                ""
+              )}
           </div>
-         
-           <div className={["col-lg-10","offset-lg-1","col-12"].join(" ")}>
-          <div style={{ width: "100%" }}>
-            <Slider
-              asNavFor={nav2}
-              ref={slider => (slider1 = slider)}
-              {...TabSliderSetting}
-              className="tab-slider"
-            >
-              {data.allTaxonomyTermMedicalProductLines.edges
-                ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
- 
-                  return (
+
+          <div className={["col-lg-10", "offset-lg-1", "col-12"].join(" ")}>
+            <div style={{ width: "100%" }}>
+              <Slider
+                asNavFor={nav2}
+                ref={slider => (slider1 = slider)}
+                {...TabSliderSetting}
+                className="tab-slider"
+              >
+                {data.allTaxonomyTermMedicalProductLines.edges
+                  ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
+
+                    return (
                       <div>
                         <div className="col-12 p-0">
                           <div className={lineStyles.tabWrapper}>
                             {item.node.name ? (
                               <div
-                                onClick={(e) => slickGoToslide(e,index)}
-                                className={[lineStyles.tab, "line-tab", index == 0 ?'active' : ""].join(
+                                onClick={(e) => slickGoToslide(e, index)}
+                                className={[lineStyles.tab, "line-tab", index == 0 ? 'active' : ""].join(
                                   " "
                                 )}
-                                >{item.node.name}</div>
+                              >{item.node.name}</div>
                             ) : (
-                              ""
-                            )}
+                                ""
+                              )}
                           </div>
                         </div>
                       </div>
                     )
                   })
-                : ""}
-            </Slider>
+                  : ""}
+              </Slider>
+            </div>
           </div>
-          </div>
-         
-          <div className={["col-lg-10","col-12","offset-lg-1","pr-0","pl-0"].join(" ")}>
-         <div className={["col-12","desk-pr-0","desk-pl-0","bigSliderContainer"].join(" ")}>
-          <div  style={{ width: "100%" }}>
-            <Slider
-               {...SliderSetting}
-              asNavFor={nav1}
-              ref={slider => (slider2 = slider)}
-            >
-              {data.allTaxonomyTermMedicalProductLines
-                ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-                    return (
-                      <div className={["row",lineStyles.sliderFlex].join(" ")}>
-                        <div
-                          className={["col-12","col-lg-6", lineStyles.cardWrapper,"cardWrapper"].join(
-                            " "
-                          )}
-                        >
+
+          <div className={["col-lg-10", "col-12", "offset-lg-1", "pr-0", "pl-0"].join(" ")}>
+            <div className={["col-12", "desk-pr-0", "desk-pl-0", "bigSliderContainer"].join(" ")}>
+              <div style={{ width: "100%" }}>
+                <Slider
+                  {...SliderSetting}
+                  asNavFor={nav1}
+                  ref={slider => (slider2 = slider)}
+                >
+                  {data.allTaxonomyTermMedicalProductLines
+                    ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
+                      return (
+                        <div className={["row", lineStyles.sliderFlex].join(" ")}>
+                          <div
+                            className={["col-12", "col-lg-6", lineStyles.cardWrapper, "cardWrapper"].join(
+                              " "
+                            )}
+                          >
                             <div
-                              className={["subtitle",lineStyles.subtitle].join(" ")}
+                              className={["subtitle", lineStyles.subtitle].join(" ")}
                             >FEATURED</div>
 
-                          <div className={["offset-lg-2","col-lg-8","pr-0","pl-0",lineStyles.leftSliderwapper].join(" ")}>
-                          {item.node.name ? (
-                            <div
-                              className={lineStyles.cardTitle}
-                            >{item.node.name}</div>
-                          ) : (
-                            ""
-                          )}
-                          <div className={lineStyles.products}>
-                            PRODUCTS (
+                            <div className={["offset-lg-2", "col-lg-8", "pr-0", "pl-0", lineStyles.leftSliderwapper].join(" ")}>
+                              {item.node.name ? (
+                                <div
+                                  className={lineStyles.cardTitle}
+                                >{item.node.name}</div>
+                              ) : (
+                                  ""
+                                )}
+                              <div className={lineStyles.products}>
+                                PRODUCTS (
                             <span className={lineStyles.productsNo}>
-                              {item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0'}
-                            </span>
+                                  {item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : '0'}
+                                </span>
                             )
                           </div>
-                            <div
-                              className={lineStyles.description}
-                            >
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.
+                              <div
+                                className={lineStyles.description}
+                              >
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.
                             </div>
 
-                          <div className={lineStyles.perfect}>
-                            PERFECT FOR:{" "}
-                            {/* {node.relationships.field_line_card.relationships.field_line_category.map(
+                              <div className={lineStyles.perfect}>
+                                PERFECT FOR:{" "}
+                                {/* {node.relationships.field_line_card.relationships.field_line_category.map(
                               (item, index, array) => {
                                 return ( */}
-                                  <span className={lineStyles.category}>
-                                    <Link to="#">Anti-Aging, </Link>
-                                    <Link to="#"> Breakouts</Link>
-                                    {/* {index === array.length - 1 ? "" : ", "} */}
-                                  </span>
+                                <span className={lineStyles.category}>
+                                  <Link to="#">Anti-Aging, </Link>
+                                  <Link to="#"> Breakouts</Link>
+                                  {/* {index === array.length - 1 ? "" : ", "} */}
+                                </span>
                                 {/* )
                               }
                             )} */}
-                          </div>
-                          {/* {node.relationships.field_line_card.relationships.field_line_image.localFile ? ( */}
-                            <div className={lineStyles.imageWrapper}>
-                              <Img
-                                fluid={
-                                  data.image.childImageSharp.fluid
-                                }
-                              />
-                            </div>
-                          {/* ) : (
+                              </div>
+                              {/* {node.relationships.field_line_card.relationships.field_line_image.localFile ? ( */}
+                              <div className={lineStyles.imageWrapper}>
+                                <Img
+                                  fluid={
+                                    data.image.childImageSharp.fluid
+                                  }
+                                />
+                              </div>
+                              {/* ) : (
                             ""
                           )} */}
-                          {item.node.path.alias ? (
-                            <div>
-                              <Link
-                                to={item.node.path.alias}
-                                className={[
-                                  "button-link",
-                                  lineStyles.link,
-                                ].join(" ")}
-                              >
-                                {"Shop " + systemName[index]}
-                              </Link>
+                              {item.node.path.alias ? (
+                                <div>
+                                  <Link
+                                    to={item.node.path.alias}
+                                    className={[
+                                      "button-link",
+                                      lineStyles.link,
+                                    ].join(" ")}
+                                  >
+                                    {"Shop " + systemName[index]}
+                                  </Link>
+                                </div>
+                              ) : (
+                                  ""
+                                )}
                             </div>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                        </div>
-                        <div
-                          className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider,"productInlineSlider"].join(" ")}
-                        >
-                          {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
-                          <div className={[productsuggestion.slickcon,"pt-45"].join(" ")}>
-                            <Slider   {...SliderSetting2}>
-                              {item.node.relationships.node__medical_product
-                                ? item.node.relationships.node__medical_product.map(
+                          </div>
+                          <div
+                            className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider, "productInlineSlider"].join(" ")}
+                          >
+                            {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
+                            <div className={[productsuggestion.slickcon, "pt-45"].join(" ")}>
+                              <Slider   {...SliderSetting2}>
+                                {item.node.relationships.node__medical_product
+                                  ? item.node.relationships.node__medical_product.map(
                                     (item, index) => {
                                       return (
                                         <div
@@ -382,15 +386,15 @@ const ProductLine = ({ node }) => {
                                         >
                                           <ProductCard
                                             productLink={item.path.alias}
-                                            producttitle= {item.title}
+                                            producttitle={item.title}
                                             productdescription={{
-                                             
-                                                __html: item.field_medical_description.processed
-                                              }}
+
+                                              __html: item.field_medical_description.processed
+                                            }}
                                             productimage={
                                               item.relationships.field_medical_image[0]
                                                 ? (item.relationships.field_medical_image[0]
-                                                    .localFile? item.relationships.field_medical_image[0]
+                                                  .localFile ? item.relationships.field_medical_image[0]
                                                     .localFile.childImageSharp.fluid : '')
                                                 : ""
                                             }
@@ -402,18 +406,18 @@ const ProductLine = ({ node }) => {
                                       )
                                     }
                                   )
-                                : ""}
-                            </Slider>
+                                  : ""}
+                              </Slider>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )
-                  })
-                : ""}
-            </Slider>
+                      )
+                    })
+                    : ""}
+                </Slider>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
         </div>
       </div>
     </div>
