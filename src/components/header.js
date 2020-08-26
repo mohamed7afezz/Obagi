@@ -370,7 +370,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.navLastSection}>
-                    <p onClick={() => { showAccount(); }}><Link to="#">SIGN IN</Link></p>
+                    <p><button type="button" data-toggle="modal" data-target="#show-account">SIGN IN</button></p>
                     <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
@@ -414,10 +414,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           </div>
         </div>
       </div>
-
-      <div id="account-block" style={{display: "none"}}>
+      
         <ShowAccount />
-      </div>
 
 
 

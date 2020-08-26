@@ -1265,3 +1265,63 @@ footer .form-group {
 .my-account .list-wrapper {
     margin-bottom: 112px;
 }
+
+.show-account {
+    z-index: 999999999999;
+    max-width: 315px;
+    right: 0;
+    left: unset;
+    top: 154px;
+}
+
+.show-account .modal-dialog {
+    margin: 0;
+    max-width: 315px;
+}
+
+.show-account .modal-content {
+    border: 0;
+    border-radius: 0;
+    padding-left: 28px;
+}
+
+.show-account .modal-header {
+    border: 0;
+    border-radius: 0;
+    padding: 24px 0;
+}
+
+.show-account .modal-header .account-title {
+    @extend %futurapt-bold;
+    @include fontStyle(18, 32);
+
+}
+
+.show-account .modal-header .close {
+    height: 16px;
+    width: 16px;
+    top: 50px;
+    right: 57px;
+}
+
+.show-account .modal-header .close::before, .close::after {
+    height: 16px;
+    width: 1px;
+}
+
+.show-account .modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.show-account .modal-body a {
+    @include fontStyle(18, 32);
+    color: #132466;
+    margin-bottom: 24px;
+
+    &:hover {
+        color: #132466;
+        text-decoration: none;
+    }
+}

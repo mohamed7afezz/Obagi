@@ -9,7 +9,7 @@ const ShowAccount = () => {
     return (
 
     
-        <div class="modal fade" id="show-account" >
+        <div class="modal fade show-account" id="show-account" >
         <div class="modal-dialog " role="document">
           <div class="modal-content">
                     <div className="modal-header">
