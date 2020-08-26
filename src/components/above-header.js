@@ -23,13 +23,22 @@ const AboveHeader = () => {
       document.getElementById("search-wrapper").style.top="0";
       document.getElementById("show-account").style.top="98px";
 
-      if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none") {
-        document.querySelector("body").classList.add("body-small-margin");
+      if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none" && document.querySelector(".node-home")) {
+        document.querySelector(".node-home").style.marginTop = "135.5px"
         
-      } else {
-        document.querySelector("body").classList.remove("body-search-notif");
-        document.querySelector("body").classList.add("body-search-margin");
-        document.getElementById("search-wrapper").classList.remove("search-margin");
+      } else if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none" && document.querySelector(".node-clinical")) {
+        document.querySelector(".node-clinical").style.marginTop = "79.5px";
+        
+      }  else if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none" && document.querySelector(".node-medical")) {
+        document.querySelector(".node-medical").style.marginTop = "79.5px";
+        
+      }
+       else if(document.querySelector(".node-medical") || document.querySelector(".node-clinical")){
+        document.querySelector(".node-medical").style.marginTop = "77.5px";
+        document.querySelector(".node-clinical").style.marginTop = "77.5px";
+      }
+      else {
+        document.querySelector(".node-home").style.marginTop = "135.5px"
       }
 
     }

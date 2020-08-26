@@ -178,32 +178,29 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     var not = document.getElementById("notification");
     var body = document.querySelector("body");
 
-    if (search.style.display === "none" && not.style.display !== "none") {
+    if ((search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) || (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-medical")))  {
 
       search.style.display = "block";
       nav.style.display = "none";
-      body.classList.remove("body-small-margin");
-      body.classList.add("body-search-notif");
+    document.querySelector(".node-clinical").style.marginTop= "134.5px";
+    document.querySelector(".node-medical").style.marginTop= "134.5px";
+
 
     } else if (search.style.display === "none" && not.style.display === "none") {
       search.style.display = "block";
       nav.style.display = "none";
-      body.classList.remove("body-small-margin");
-      body.classList.add("body-search-margin");
+
+
       // body.classList.remove("body-search-notif");
     } else if (search.style.display !== "none" && not.style.display !== "none") {
       search.style.display = "none";
       nav.style.display = "block";
-      body.classList.remove("body-search-margin");
-      body.classList.remove("body-search-notif");
-      body.classList.remove("body-small-margin");
+
     }
     else {
       search.style.display = "none";
       nav.style.display = "block";
-      body.classList.remove("body-search-margin");
-      body.classList.remove("body-search-notif");
-      body.classList.add("body-small-margin");
+
       
     }
   }
@@ -306,9 +303,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           </div>
 
 
-          {/* style={{ display: (nodeType ? (nodeType.includes('medical') ? "none" : "block") : "block") }} */}
 
-          <div className={headerStyles.categorySection} id="category-section" style={{display: "block"}} >
+          <div className={headerStyles.categorySection} id="category-section" style={{ display: (nodeType ? (nodeType.includes('medical') || nodeType.includes('clinical') ? "none" : "block") : "block") }} >
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
