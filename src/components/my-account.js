@@ -4,6 +4,9 @@ import Img from 'gatsby-image'
 import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 import Slider from "react-slick"
 import Stars from './stars'
+import OrderNoHistory from "./order-no-history"
+import OrderHistoryRow from "./order-history-row"
+import OrderHistory from "./order-history"
 
 const MyAccount = ({ node }) => {
 
@@ -196,16 +199,8 @@ const MyAccount = ({ node }) => {
                 <div className="col-12">
                     <Slider {...SliderSetting} asNavFor={nav1} ref={slider => (slider2 = slider)}>
                         <div>
-                            <div className={myAccountStyles.topHalf}>
-                                <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
-                                <Link to="#" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
-                            </div>
-
-                            <div className={myAccountStyles.bottomHalf}>
-                                <div>Try our Skinanalyzer</div>
-                                <div>Find the best Obagi solution for you</div>
-                                <div>TAKE THE QUIZ</div>
-                            </div>
+                            <OrderNoHistory />
+                            <OrderHistory />
                         </div>
 
                         <div>
@@ -271,24 +266,8 @@ const MyAccount = ({ node }) => {
                             <div className="tab-pane active" id="home" role="tabpanel">
 
                                 <div className={myAccountStyles.secondTitle}>Order History</div>
-                                <div className={myAccountStyles.topHalf}>
-                                    <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
-                                    <Link to="#" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
-                                </div>
-                                <div className="row">
-                                    <div className="col-4 pr-0">
-                                        <div className={myAccountStyles.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
-                                    </div>
-                                    <div className="col-8 pl-0">
-                                        <div className="d-flex align-items-center h-100">
-                                            <div className={myAccountStyles.bottomHalf}>
-                                                <div className={myAccountStyles.bottomTitle}>Try our Skinanalyzer</div>
-                                                <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
-                                                <Link to="#" className={myAccountStyles.bottomLink}>TAKE THE QUIZ</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <OrderNoHistory />
+                                <OrderHistory />
                             </div>
 
                             <div className="tab-pane" id="profile" role="tabpanel">KSJD;SKDLJS;LDKAS;DLSKAD</div>

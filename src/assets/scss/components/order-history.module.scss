@@ -1,0 +1,7 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.orders-count {
+    @include fontStyle(16, 24);
+    padding: 24px 0;
+}

@@ -48,12 +48,25 @@ function removeMainStyles() {
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
-function addOverview() {
-  var x = document.getElementById("overview-sec");
-  if (x.style.display === "none") {
-    x.style.display = "inline-block";
-  } else {
-    x.style.display = "none";
+function addOverview(e) {
+  var medicalLink = document.getElementById("medicalLink");
+  var clinicalLink = document.getElementById("clinicalLink");
+
+  var medicalOV = document.getElementById("overview-medicalLink");
+  var clinicalOV = document.getElementById("overview-clinicalLink")
+
+  if(e.target === medicalLink) {
+    if (medicalOV.style.display === "none") {
+      medicalOV.style.display = "inline-block";
+    } else {
+      medicalOV.style.display = "none";
+    }
+  } else if (e.target === clinicalLink) {
+    if (clinicalOV.style.display === "none") {
+      clinicalOV.style.display = "inline-block";
+    } else {
+      clinicalOV.style.display = "none";
+    }
   }
 }
 
@@ -111,12 +124,13 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     else if (itemId && collapseTarget) {
       
       if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
+        let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
         return (
           <>
-            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={"mc" + collapseTarget.slice(1)} onClick={(e) => {addOverview(e);}}>
+            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => {addOverview(e);}}>
               {link.title}
             </a>
-            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id="overview-sec" style={{display: "none"}}>Overview</Link> : ''}
+            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{display: "none"}}>Overview</Link> : ''}
           </>
         )
       } else {

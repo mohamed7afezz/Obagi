@@ -27,6 +27,39 @@ p {
     }
 }
 
+.node-big-general-margin {
+    margin-top: 79.5px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+.node-big-home-margin {
+    margin-top: 136.5px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+.node-general-margin {
+    margin-top: 77.5px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+.node-home-margin {
+    margin-top: 135.5px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+
 .container-fluid {
     max-width: 1920px;
 }
@@ -594,6 +627,10 @@ footer .form-group {
 
     &::after {
         position: unset !important;
+    }
+
+    &:hover {
+        text-decoration: underline !important;
     }
 }
 
@@ -1240,6 +1277,21 @@ footer .form-group {
     padding: 0;
 }
 
+.my-account {
+    padding-bottom: 24px;
+
+    @include lg-screen {
+        padding-bottom: 0;
+    }
+}
+
+.my-account .slick-slider.slick-initialized {
+    padding-bottom: 0;
+}
+// .my-account .slick-initialized .slick-slide {
+//     padding: 0;
+// }
+
 .my-account .list-group-item {
     @include fontStyle(18, 32);
     color: #7c858a;
@@ -1278,6 +1330,7 @@ footer .form-group {
     margin-bottom: 112px;
 }
 
+
 .show-account {
     z-index: 999999999999;
     max-width: 315px;
@@ -1295,6 +1348,7 @@ footer .form-group {
     border: 0;
     border-radius: 0;
     padding-left: 28px;
+    height: 100vh;
 }
 
 .show-account .modal-header {
@@ -1310,10 +1364,11 @@ footer .form-group {
 }
 
 .show-account .modal-header .close {
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
     top: 50px;
     right: 57px;
+    padding: 0;
 }
 
 .show-account .modal-header .close::before, .close::after {
@@ -1331,7 +1386,7 @@ footer .form-group {
     @include fontStyle(18, 32);
     color: #132466;
     margin-bottom: 24px;
-
+    display: inline-block;
     &:hover {
         color: #132466;
         text-decoration: none;

@@ -63,26 +63,46 @@
 
 .bottom-half {
     background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
+    
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
     width: 100%;
 
-    padding: 24px 0 32px 39px;
-    margin-left: -1px;
+    padding: 24px 0 0 24px;
+    
     color: #ffffff;
+
+    @include lg-screen{
+        margin-left: -1px;
+        padding: 24px 0 32px 39px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 
 .bottom-title {
     @extend %futurapt-bold;
     @include fontStyle(18, 32);
-    padding-bottom: 4px;
+    
+    @include lg-screen {
+        padding-bottom: 4px;
+    }
     
 }
 
 .bottom-text {
     @include fontStyle(18, 32);
     @extend %futurapt-light;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
+
+    @include lg-screen {
+        padding-bottom: 8px;
+
+    }
 }
 
 .bottom-link {
@@ -119,4 +139,16 @@
     &:hover {
         color: #132466;
     }
+}
+
+.image {
+        top: 40px;
+        margin-bottom: 40px;
+        right: 12px;
+        position: relative;
+
+        @include lg-screen {
+            position: unset;
+            margin-bottom: 0;
+        }
 }
