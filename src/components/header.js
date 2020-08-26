@@ -178,23 +178,83 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     var not = document.getElementById("notification");
     var body = document.querySelector("body");
 
-    if ((search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) || (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-medical")))  {
+    if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical"))  {
 
       search.style.display = "block";
       nav.style.display = "none";
-    document.querySelector(".node-clinical").style.marginTop= "134.5px";
-    document.querySelector(".node-medical").style.marginTop= "134.5px";
+      document.querySelector(".node-clinical").style.marginTop= "134.5px";
 
 
-    } else if (search.style.display === "none" && not.style.display === "none") {
+    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-medical"))  {
+
       search.style.display = "block";
       nav.style.display = "none";
+      document.querySelector(".node-medical").style.marginTop= "134.5px";
+
+    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-home"))  {
+
+      search.style.display = "block";
+      nav.style.display = "none";
+      document.querySelector(".node-home").style.marginTop= "134.5px";
+
+
+    } 
+    
+    else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-home")) {
+      search.style.display = "block";
+      nav.style.display = "none";
+      document.querySelector(".node-home").style.marginTop= "78.5px";
 
 
       // body.classList.remove("body-search-notif");
-    } else if (search.style.display !== "none" && not.style.display !== "none") {
+    }    else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-clinical")) {
+      search.style.display = "block";
+      nav.style.display = "none";
+      document.querySelector(".node-clinical").style.marginTop= "78.5px";
+
+
+      // body.classList.remove("body-search-notif");
+    }     else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-medical")) {
+      search.style.display = "block";
+      nav.style.display = "none";
+      document.querySelector(".node-medical").style.marginTop= "78.5px";
+
+
+      // body.classList.remove("body-search-notif");
+    }
+     else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-home")) {
       search.style.display = "none";
       nav.style.display = "block";
+      document.querySelector(".node-home").style.marginTop= "192.5px";
+
+    }
+    else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) {
+      search.style.display = "none";
+      nav.style.display = "block";
+      document.querySelector(".node-clinical").style.marginTop= "135.5px";
+
+    }
+    else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-medical")) {
+      search.style.display = "none";
+      nav.style.display = "block";
+      document.querySelector(".node-medical").style.marginTop= "135.5px";
+
+    }    else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-home")) {
+      search.style.display = "none";
+      nav.style.display = "block";
+      document.querySelector(".node-home").style.marginTop= "136.5px";
+
+    }
+    else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-medical")) {
+      search.style.display = "none";
+      nav.style.display = "block";
+      document.querySelector(".node-medical").style.marginTop= "79.5px";
+
+    }
+    else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-clinical")) {
+      search.style.display = "none";
+      nav.style.display = "block";
+      document.querySelector(".node-clinical").style.marginTop= "79.5px";
 
     }
     else {
