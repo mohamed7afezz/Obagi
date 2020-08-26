@@ -38,19 +38,24 @@ const AdjustItem = props => {
 };
 const StandardItem = props => {
   const { items, cartType } = props
+
   let itemImage
  
   let itemsContent = items.map(item => {
+    console.log('hassan',item)
+    var producturl= item.url.split(".com")
     if(cartType == "overlay"){
       return (
         <>
             <div className={["row", ShowBagStyle.selectedproductsCard,"selectedproductsCard"].join(" ")}>
               <div className={["col-4","mob-pl-0"].join(" ")}>
+                <Link href={`${producturl[1]}`}>
                 <img src={item.image_url} alt={`${item.name}`} />
+                </Link>
               </div>
               <div className={["col-8", "mob-pr-0"].join(" ")}>
                 <div className={"w-100"}>
-                  <p className={ShowBagStyle.BagProductDesc}>{item.name}</p>
+                  <p className={ShowBagStyle.BagProductDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
                 </div>
     
                 <div className={["col-12", "row", "d-flex", ShowBagStyle.left,"mobsetpadding"].join(" ")}>
@@ -76,16 +81,20 @@ const StandardItem = props => {
         <div className={"productInBag"}>
           <div className={["row", "alignFlex"].join(" ")}>
             <div class="hide-desk col-4">
+            <Link to={`${producturl[1]}`}>
               <img src={item.image_url} alt={`${item.name}`} />
+              </Link>
             </div>
             <div
               className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
             >
               <div className={["col-md-2", "hide-tabmob"].join(" ")}>
+              <Link to={`${producturl[1]}`}>
                 <img src={item.image_url} alt={`${item.name}`} />
+              </Link>
               </div>
               <div className={"col-md-4"}>
-                <p className={BagStyle.prouductBagDesc}>{item.name}</p>
+                <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
               </div>
               <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
@@ -217,7 +226,7 @@ const YourBag = props => {
           >
             <h2 className={BagStyle.bagHead}>Your Bag</h2>
             <div className={"row"}>
-              <div className={["offset-lg-1", "col-md-7"].join(" ")}>
+              <div className={["offset-lg-1", "col-lg-7"].join(" ")}>
                 <StandardItem
                   currency={currency}
                   updatingItem={updatingItem}
@@ -229,7 +238,7 @@ const YourBag = props => {
               </div>
               <div
                 className={[
-                  "col-md-3",
+                  "col-lg-3",
                   "bagDataContainer",
                   BagStyle.bagDataContainer,
                 ].join(" ")}
@@ -409,7 +418,7 @@ const YourBag = props => {
           ].join(" ")}
         >
           <h2 className={BagStyle.bagHead}>Your Bag</h2>
-          <div>
+          <div className={'yourbagpadding'}>
             <p
               className={ShowBagStyle.empatyTitle}
             >
