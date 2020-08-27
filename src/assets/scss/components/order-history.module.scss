@@ -5,3 +5,68 @@
     @include fontStyle(16, 24);
     padding: 24px 0;
 }
+
+.table {
+    width: 100%;
+    border-spacing: 0 16px;
+    border-collapse: separate;
+    margin: -16px 0;
+
+
+    
+}
+
+.tHead {
+    background: #f8f8f8;
+
+}
+
+.table th, table td {
+    @include fontStyle(16, 24);
+    @extend %futurapt-book;
+
+}
+
+.table th {
+    padding: 16px 24px;
+}
+
+.table td {
+    padding: 24px;
+}
+
+.table td:last-child {
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 6px; 
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 6px;
+}
+
+tr:first-child td:first-child {
+    border-top-left-radius: 6px; 
+}
+
+tr:first-child td:last-child {
+    border-top-right-radius: 6px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 6px; 
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 6px; 
+}
+
+.table tbody tr {
+    outline: 1px solid #d6d6d6;
+    border-radius: 6px;
+}

@@ -6,7 +6,7 @@ import orderHistoryRowStyles from '../assets/scss/components/order-history-row.m
 const OrderHistoryRow = ({ node }) => {
 
     return (
-        <div>
+        <>
             <div className={["d-lg-none", orderHistoryRowStyles.orderWrapper].join(" ")}>
                 <div className={orderHistoryRowStyles.tableHeader}>
                     <div>Order#</div>
@@ -37,7 +37,25 @@ const OrderHistoryRow = ({ node }) => {
                     </div>
                 </div>
             </div>
-        </div>
+
+            <tr className={["d-none d-lg-table-row"].join(" ")}>
+                <th scope="row">OB1097263894</th>
+                <td>Jul 29, 2020</td>
+                <td>Jul 29, 2020</td>
+                <td>1</td>
+                <td>$24.00</td>
+                <td>In-Progress</td>
+            </tr>
+
+            <tr className={["d-none d-lg-table-row"].join(" ")}>
+                <th scope="row">OB1097263894</th>
+                <td>Jul 29, 2020</td>
+                <td>Jul 29, 2020</td>
+                <td>1</td>
+                <td>$24.00</td>
+                <td>In-Progress</td>
+            </tr>
+        </>
     )
 }
 

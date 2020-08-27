@@ -300,14 +300,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
   }
 
 
-  function showAccount () {
-    var acc = document.getElementById("account-block");
-    if (acc.style.display === "none") {
-      acc.style.display = "block";
-    } else {
-      acc.style.display = "none";
-    }
-  }
+  console.log("node", nodeType)
 
   return (
 
@@ -459,7 +452,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <div className="col-12 col-padding">
 
                   {nodeType ? (nodeType.includes('clinical') ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
-                    : <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />)
+                    : nodeType.includes('medical') ? <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} /> 
+                    : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />))
                     : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />)}
 
 

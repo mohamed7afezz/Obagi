@@ -265,8 +265,11 @@ const MyAccount = ({ node }) => {
 
                             <div className="tab-pane active" id="home" role="tabpanel">
 
-                                <div className={myAccountStyles.secondTitle}>Order History</div>
-                                <OrderNoHistory />
+                                <div className={myAccountStyles.secondTitleWrapper}>
+                                    <div className={myAccountStyles.secondTitle}>Order History</div>
+                                    <div className={myAccountStyles.ordersCount}>45 Orders</div>
+                                </div>
+                                {/* <OrderNoHistory /> */}
                                 <OrderHistory />
                             </div>
 

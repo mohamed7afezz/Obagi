@@ -30,7 +30,7 @@
 
     @include lg-screen {
         padding: 28px 0 40px;
-        margin: 32px 0 24px;
+        margin: 0 0 24px;
     }
 }
 
@@ -54,11 +54,22 @@
     }
 }
 
+.second-title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .second-title {
     @extend %futurapt-light;
     @include fontStyle(32, 48);
     margin-top: 31.5px;
+    margin-bottom: 32px;
 
+}
+
+.orders-count {
+    @include fontStyle(16, 24);
 }
 
 .bottom-half {
@@ -135,7 +146,7 @@
 .mail {
     color: #132466;
     text-decoration: underline;
-
+    white-space: nowrap;
     &:hover {
         color: #132466;
     }
