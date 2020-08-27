@@ -17,56 +17,64 @@
 }
 
 .tHead {
-    background: #f8f8f8;
+
 
 }
 
 .table th, table td {
     @include fontStyle(16, 24);
     @extend %futurapt-book;
+    height: 100%;
 
 }
 
 .table th {
     padding: 16px 24px;
+    background: #f8f8f8;
 }
 
 .table td {
     padding: 24px;
+    border: 1px solid #d6d6d6;
+    border-right: 0;
+    border-left: 0;
 }
 
-.table td:last-child {
+.table td:nth-last-child(2) {
     @extend %futurapt-bold;
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
     text-transform: uppercase;
 }
 
-tr:first-child th:first-child {
-    border-top-left-radius: 6px; 
+.table td:last-child {
+    background-image: url('../../images/path-copy.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    // transform: rotate(90deg);
+    // transition: all ease 300ms;
 }
 
-tr:first-child th:last-child {
+
+td:first-child{
+    border-left: 1px solid #d6d6d6;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+td:last-child {
+    border-right: 1px solid #d6d6d6;
     border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
-tr:first-child td:first-child {
-    border-top-left-radius: 6px; 
+th:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
-tr:first-child td:last-child {
+th:last-child {
     border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
-tr:last-child td:first-child {
-    border-bottom-left-radius: 6px; 
-}
-
-tr:last-child td:last-child {
-    border-bottom-right-radius: 6px; 
-}
-
-.table tbody tr {
-    outline: 1px solid #d6d6d6;
-    border-radius: 6px;
-}

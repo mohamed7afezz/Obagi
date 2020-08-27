@@ -18,6 +18,8 @@ import Search from "../components/search"
 import Reviews from "../components/reviews"
 import ShowAccount from "../components/show-account"
 import MyAccount from "../components/my-account"
+import OrderDetails from '../components/order-details'
+
 const products = () => (
  
     <Layout>
@@ -35,9 +37,10 @@ const products = () => (
  
 
       {/* <ProductLine /> */}
-      {/* <SearchResults />
-      <Reviews /> */}
-      <MyAccount />
+      {/* <SearchResults /> */}
+      {/* <Reviews />  */}
+      {/* <MyAccount /> */}
+      <OrderDetails />
         </Layout>
         
 )

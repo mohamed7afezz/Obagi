@@ -1,0 +1,175 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+
+    @include lg-screen {
+        margin-top: 56px;
+    }
+}
+
+.heading {
+    @extend %futurapt-light;
+    @include fontStyle(28, 48);
+
+    @include lg-screen {
+        @include fontStyle(52, 64);
+    }
+}
+
+.accountLink {
+    @include fontStyle(14, 16);
+    text-decoration: underline;
+    color: #132466;
+
+    &:hover {
+        color: #132466;
+    }
+
+    @include lg-screen {
+        @include fontStyle(12, 16);
+        letter-spacing: 1.2px;
+        text-decoration: none;
+        font-family:  futura-pt-bold,   sans-serif; 
+        font-weight:  700; 
+        font-style:  normal;
+        text-align: center;
+        padding: 24px 30px;
+        border: 1px solid #132466;
+        border-radius: 6px;
+
+        &:hover {
+            text-decoration: none;
+            background: #132466;
+            color: #ffffff;
+        }
+    }
+}
+
+.orderNumber {
+    @include fontStyle(18, 32);
+    @extend %futurapt-light;
+
+    @include lg-screen {
+        @include fontStyle(24, 48);
+        margin-bottom: 32px;
+    }
+}
+
+.accordion {
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    margin: 24px 0 25px;
+}
+
+.accordionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.itemsCount {
+    @extend %futurapt-bold;
+    @include fontStyle(16, 24);
+}
+
+.accordionButton {
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+    color: #132466;
+}
+
+.details-header {
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.details-title {
+    @extend %futurapt-bold;
+    @include fontStyle(18, 32);
+}
+
+.print {
+    @include fontStyle(14, 16);
+    text-decoration: underline;
+    color: #132466;
+
+    &:hover {
+        color: #132466;
+    }
+}
+
+.detail-part {
+    padding: 0 9px;
+    margin-bottom: 24px;
+    @include fontStyle(16, 24);
+
+    p:first-child {
+        padding-bottom: 8px;
+    }
+}
+
+
+.warning {
+    color: #ff3737;
+}
+
+.total-wrapper {
+    padding: 24px 0;
+    margin: 0 9px;
+    border-top: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include fontStyle(18, 32);
+
+}
+
+.total-price {
+    @extend %futurapt-bold;
+}
+
+.order-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    padding: 16px 0;
+    background: #132466;
+    border-radius: 6px;
+    border: 1px solid #132466;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+
+    &:hover {
+        background: #ffffff;
+        color: #132466;
+        text-decoration: none;
+    }
+}
+
+.order-arrow {
+    position: absolute;
+    top: 24px;
+    left: -27px;
+    background-image: url('../../images/chevron-left-large.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 16px;
+    width: 16px;
+}
