@@ -27,6 +27,15 @@ export const productPageQuery = graphql`
             name
             ...collectionhero
             ...collectionproducts
+            relationships {
+              node__clinical_product {
+            relationships {
+              field_clinical_ingredients {
+                name
+              }
+            }
+          }
+        }
             field_taxonomy_footer {
                 settings {
                   label
@@ -48,6 +57,9 @@ export const productPageQuery = graphql`
                     field_clinical_price
                     title
                     relationships {
+                      field_clinical_ingredients {
+                        name
+                      }
                         field_clinical_components {
                           ... on paragraph__ingredient {
                             
@@ -94,7 +106,72 @@ export const productPageQuery = graphql`
                   label
                 }
             }
-        },
+        },   
+           taxonomyTermClinicalIngredients(path: {alias: {eq: $slug}}) {
+          name
+          id
+          relationships {
+              node__clinical_product {     
+                  field_clinical_id   
+                  field_clinical_description {
+                    processed
+                  }
+                  path {
+                    alias
+                  } 
+                  field_clinical_price
+                  title
+                  relationships {
+                    field_clinical_ingredients {
+                      name
+                    }
+                      field_clinical_components {
+                        ... on paragraph__ingredient {
+                          
+                         relationships {
+                          field_read_more {
+                            field_read_more_content {
+                              processed
+                            }
+                          }
+                        }
+                       }
+                     }
+                    
+                    field_clinical_image {
+                      localFile {
+                        childImageSharp {
+                          fluid {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+               field_hero_ingredients_taxonomy {
+              field_taxonomy_hero_para_title
+              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_paraprapgh_t
+              relationships {
+                field_taxonomy_hero_paraprapgh_i {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                          ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          field_taxonomy_ingredient_footer {
+              settings {
+                label
+              }
+          }
+      },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
             relationships {
@@ -107,9 +184,13 @@ export const productPageQuery = graphql`
                     path {
                       alias
                     } 
+                    
                     field_medical_price
                     title
                     relationships {
+                      field_medical_ingredients {
+                        name
+                      }
                       field_medical_components {
                         ... on paragraph__ingredient {
                           id
@@ -156,6 +237,71 @@ export const productPageQuery = graphql`
                 }
             }
       },
+      
+      taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
+        name
+        relationships {
+            node__medical_product {
+              field_medical_is_system
+              field_medical_id
+                field_medical_description {
+                  processed
+                }
+                path {
+                  alias
+                } 
+                field_medical_price
+                title
+                relationships {
+                  field_medical_ingredients {
+                    name
+                  }
+                  field_medical_components {
+                    ... on paragraph__ingredient {
+                      id
+                      relationships {
+                        field_read_more {
+                          field_read_more_content {
+                            processed
+                          }
+                        }
+                      }
+                    }
+                  }
+                  field_medical_image {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              field_hero_clinical_ing_taxonomy {
+              field_taxonomy_hero_para_title
+              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_paraprapgh_t
+              relationships {
+                field_taxonomy_hero_paraprapgh_i {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                          ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          field_taxonomy_ing_footer {
+            settings {
+              label
+            }
+        }
+  },
       taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
         name
         id
@@ -185,6 +331,9 @@ export const productPageQuery = graphql`
               alias
             }
             relationships {
+              field_medical_ingredients {
+                name
+              }
               field_medical_components {
                 ... on paragraph__ingredient {
                   relationships {
@@ -229,6 +378,9 @@ export const productPageQuery = graphql`
                       alias
                     }
                     relationships {
+                      field_medical_ingredients {
+                        name
+                      }
                       field_medical_components {
                         ... on paragraph__ingredient {
                           id
@@ -322,7 +474,11 @@ export const productPageQuery = graphql`
                     }
                   }
                 }
+                field_clinical_ingredients {
+                  name
+                }
                 field_clinical_components {
+                  
                   ... on paragraph__ingredient {
                     id
                     relationships {
@@ -369,6 +525,9 @@ export const productPageQuery = graphql`
                 alias
               }
               relationships {
+                field_medical_ingredients {
+                  name
+                }
                 field_medical_components {
                   ... on paragraph__ingredient {
                     id
@@ -430,6 +589,9 @@ export const productPageQuery = graphql`
                       }
                     }
                   }
+                }
+                field_clinical_ingredients {
+                  name
                 }
                 field_clinical_components {
                   ... on paragraph__ingredient {

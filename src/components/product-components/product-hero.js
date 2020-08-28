@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import ProductStyles from "../../assets/scss/components/product-hero.module.scss"
 import Img from "gatsby-image"
 import Stars from "../../components/stars"
-import modal from "../../assets/images/product-images/modal.svg"
+import modal from "../../assets/images/diamond.png"
 import share from "../../assets/images/product-images/share.svg"
 import Slider from "react-slick"
 import { useLocation } from "@reach/router"
@@ -46,7 +46,9 @@ const ProductHero = ({ data, nodeType }) => {
     let field_info = isClincal
     ? node.field_clinical_info
     : node.field_medical_info
-
+  let feild_preimer = isClincal
+    ? node.field_clinical_premier_points
+    : node.field_medical_premier_points
   const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
@@ -238,17 +240,17 @@ const ProductHero = ({ data, nodeType }) => {
                 " "
               )}
             >
-              {" "}
+           <img src={modal} />  
               <p>
-                Apply 20% off with code <span>Covid </span>
-              </p>{" "}
-              <img src={modal} />{" "}
+               Earn ${feild_preimer} Premier Points 
+              </p>
+              
             </div>
             <p
               className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
             >
-              {" "}
-              <img src={share} /> Share{" "}
+            
+              <img src={share} /> Share
             </p>
           </div>
           <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>

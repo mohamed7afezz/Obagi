@@ -508,7 +508,7 @@ export const fragment = graphql`
       }
     }
   }
-  fragment vocabulariesList on paragraph__vocabularies {
+  fragment vocabulariesList1 on paragraph__vocabularies {
     id
     relationships {
       field_vocabularies {
@@ -557,6 +557,46 @@ export const fragment = graphql`
                     childImageSharp {
                       fluid {
                         ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        ... on taxonomy_term__medical_ingredients {
+          id
+          name
+          relationships {
+            node__medical_product {
+              field_medical_id
+              field_medical_description {
+                processed
+              }
+              title
+              path {
+                alias
+              }
+              field_medical_price
+              relationships {
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      fluid {
+                        src
+                      }
+                    }
+                  }
+                }
+                field_medical_components {
+                  ... on paragraph__ingredient {
+                    id
+                    relationships {
+                      field_read_more {
+                        field_read_more_content {
+                          processed
+                        }
                       }
                     }
                   }

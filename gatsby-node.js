@@ -138,6 +138,24 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               },
+              allTaxonomyTermClinicalIngredients {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
+              allTaxonomyTermMedicalIngredients {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                  }
+                }
+              },
         }
     `);
     
@@ -260,6 +278,30 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'skinMedicalType',
+                checktaxonomyType: 'medical'
+
+            }
+        });
+    });
+    result.data.allTaxonomyTermClinicalIngredients.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'ClinicalIngredients',
+                checktaxonomyType: 'clinical'
+
+            }
+        });
+    });
+    result.data.allTaxonomyTermMedicalIngredients.edges.forEach(({ node }) => {
+        createPage({
+            path: node.path.alias,
+            component: productCollectionTemp,
+            context: {
+                slug: node.path.alias,
+                nodetype: 'MedicalIngredients',
                 checktaxonomyType: 'medical'
 
             }
