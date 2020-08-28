@@ -5,7 +5,7 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 import {CustomSelect} from '../../assets/js/custom-select'
 
 const Collectionproducts = ({ node, nodetype }) => {
-  let getdata="";
+ 
   console.log('ashraqat', node)
 
   let products = []
@@ -61,15 +61,19 @@ const Collectionproducts = ({ node, nodetype }) => {
   }
 
   function getIngredient (item) {
-   
-    if (item.relationships.field_clinical_components && item.field_clinical_ingredients) {
-      
-      getdata=getdata +  item.field_clinical_ingredients.map(getname => getname.name).toString();
+    let getdata="";
+    if (item.relationships.field_clinical_ingredients  ) {
+      if (!getdata.includes(item.relationships.field_clinical_ingredients.map(getname => getname.name).toString())) {
+        getdata= getdata +  item.relationships.field_clinical_ingredients.map(getname => getname.name).toString();
         return getdata
+      }
+
     } 
     if (item.relationships.field_medical_ingredients) {
-      getdata=getdata + item.relationships.field_medical_ingredients.map(getname => getname.name).toString();
+      if (!getdata.includes(item.relationships.field_medical_ingredients.map(getname => getname.name).toString())) {
+      getdata= getdata + " "+ item.relationships.field_medical_ingredients.map(getname => getname.name).toString();
       return getdata
+      }
     }
    
 
