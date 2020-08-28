@@ -62,13 +62,16 @@ const Collectionproducts = ({ node, nodetype }) => {
 
   function getIngredient (item) {
    
-    if (item.relationships.field_clinical_components) {
+    if (item.relationships.field_clinical_components && item.field_clinical_ingredients) {
       
       getdata=getdata +  item.field_clinical_ingredients.map(getname => getname.name).toString();
         return getdata
     } 
-    getdata=getdata + item.relationships.field_medical_ingredients.map(getname => getname.name).toString();
-    return getdata
+    if (item.relationships.field_medical_ingredients) {
+      getdata=getdata + item.relationships.field_medical_ingredients.map(getname => getname.name).toString();
+      return getdata
+    }
+   
 
   }
   useEffect(() => {
