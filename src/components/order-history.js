@@ -24,6 +24,7 @@ const OrderHistory = ({ node }) => {
                             <th scope="col">Items</th>
                             <th scope="col">Total</th>
                             <th scope="col">Status</th>
+                            <th></th>
                         </tr>
                     </thead>
 

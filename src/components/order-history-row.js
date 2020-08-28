@@ -39,21 +39,23 @@ const OrderHistoryRow = ({ node }) => {
             </div>
 
             <tr className={["d-none d-lg-table-row"].join(" ")}>
-                <th scope="row">OB1097263894</th>
+                <td scope="row">OB1097263894</td>
                 <td>Jul 29, 2020</td>
                 <td>Jul 29, 2020</td>
                 <td>1</td>
                 <td>$24.00</td>
                 <td>In-Progress</td>
+                <td></td>
             </tr>
 
             <tr className={["d-none d-lg-table-row"].join(" ")}>
-                <th scope="row">OB1097263894</th>
+                <td scope="row">OB1097263894</td>
                 <td>Jul 29, 2020</td>
                 <td>Jul 29, 2020</td>
                 <td>1</td>
                 <td>$24.00</td>
                 <td>In-Progress</td>
+                <td></td>
             </tr>
         </>
     )

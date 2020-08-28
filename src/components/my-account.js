@@ -7,6 +7,7 @@ import Stars from './stars'
 import OrderNoHistory from "./order-no-history"
 import OrderHistoryRow from "./order-history-row"
 import OrderHistory from "./order-history"
+import OrderDetails from "./order-details"
 
 const MyAccount = ({ node }) => {
 
@@ -199,8 +200,9 @@ const MyAccount = ({ node }) => {
                 <div className="col-12">
                     <Slider {...SliderSetting} asNavFor={nav1} ref={slider => (slider2 = slider)}>
                         <div>
-                            <OrderNoHistory />
-                            <OrderHistory />
+                            {/* <OrderNoHistory />
+                            <OrderHistory /> */}
+                            
                         </div>
 
                         <div>
