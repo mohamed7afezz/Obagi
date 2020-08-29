@@ -1,15 +1,24 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.order-details-wrapper {
+    
+    @include lg-screen {
+        margin-bottom: 72px;
+    }
+}
+
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    padding-right: 10px;
     position: relative;
 
     @include lg-screen {
         margin-top: 56px;
+        padding-right: 0;
     }
 }
 
@@ -22,7 +31,7 @@
     }
 }
 
-.accountLink {
+.account-link {
     @include fontStyle(14, 16);
     text-decoration: underline;
     color: #132466;
@@ -86,14 +95,28 @@
     color: #132466;
 }
 
+
+.order-wrapper {
+
+    @include lg-screen {
+        border: 1px solid #d6d6d6;
+        border-radius: 6px;
+    }
+}
+
 .details-header {
     border-top: 1px solid #d6d6d6;
     border-bottom: 1px solid #d6d6d6;
-    padding: 16px 24px;
+    padding: 16px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin: 0 -15px 24px;
+
+    @include lg-screen {
+        border-top: 0;
+        margin: 0 0 24px;
+    }
 }
 
 .details-title {
@@ -112,12 +135,16 @@
 }
 
 .detail-part {
-    padding: 0 9px;
     margin-bottom: 24px;
     @include fontStyle(16, 24);
 
     p:first-child {
         padding-bottom: 8px;
+    }
+
+    @include lg-screen {
+        padding: 0 24px;
+
     }
 }
 
@@ -128,12 +155,15 @@
 
 .total-wrapper {
     padding: 24px 0;
-    margin: 0 9px;
     border-top: 1px solid #d6d6d6;
     display: flex;
     justify-content: space-between;
     align-items: center;
     @include fontStyle(18, 32);
+
+    @include lg-screen {
+        margin: 0 24px;
+    }
 
 }
 
@@ -154,12 +184,24 @@
     border-radius: 6px;
     border: 1px solid #132466;
     text-transform: uppercase;
-    margin-bottom: 24px;
 
     &:hover {
         background: #ffffff;
         color: #132466;
         text-decoration: none;
+    }
+
+    @include lg-screen {
+        padding: 24px 0;
+        display: inline-block;
+    }
+}
+
+.order-button-section {
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        margin: 0 24px 24px;
     }
 }
 
@@ -172,4 +214,79 @@
     background-position: center;
     height: 16px;
     width: 16px;
+}
+
+.product-wrapper {
+
+    display: flex;
+    align-items: center;
+    padding: 24px 15px 24px 0;
+
+
+
+    @include lg-screen {
+        border: 1px solid #d6d6d6;
+        border-radius: 6px;
+        padding: 25px 24px 38px;
+        margin-bottom: 16px;
+
+        @include fontStyle(16, 24);
+    }
+}
+
+.product-info-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    padding-left: 16px;
+
+    @extend %futurapt-medium;
+
+    @include lg-screen {
+        flex-direction: row;
+        padding: 0;
+    }
+}
+
+.product-image {
+    margin-right: 15px;
+}
+
+.product-name {
+
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif; 
+        font-weight:  400; 
+        font-style:  normal;
+        max-width: 445px;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+.price-and-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.product-quantity {
+
+
+    @include lg-screen {
+        margin-left: auto;
+        margin-right: 96px;
+    }
+}
+
+.product-price {
+
+    @include lg-screen {
+        margin-right: auto;
+    }
 }

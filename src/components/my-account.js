@@ -8,6 +8,8 @@ import OrderNoHistory from "./order-no-history"
 import OrderHistoryRow from "./order-history-row"
 import OrderHistory from "./order-history"
 import OrderDetails from "./order-details"
+import AddressBox from './address-box'
+import AddressModal from './address-modal'
 
 const MyAccount = ({ node }) => {
 
@@ -200,54 +202,30 @@ const MyAccount = ({ node }) => {
                 <div className="col-12">
                     <Slider {...SliderSetting} asNavFor={nav1} ref={slider => (slider2 = slider)}>
                         <div>
-                            {/* <OrderNoHistory />
-                            <OrderHistory /> */}
-                            
+                            {/* <OrderNoHistory /> */}
+                            <OrderHistory />
+
                         </div>
 
                         <div>
-                            <div className={myAccountStyles.topHalf}>
-                                <div>Looks like you haven't placed and order.</div>
-                                <div>Continue Shopping</div>
-                            </div>
+                            <AddressBox />
 
-                            <div className={myAccountStyles.bottomHalf}>
-                                <div>Try our Skinanalyzer</div>
-                                <div>Find the best Obagi solution for you</div>
-                                <div>TAKE THE QUIZ</div>
-                            </div>
+                            <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal">Add Address</button>
+                           
                         </div>
 
                         <div>
-                            <div className={myAccountStyles.topHalf}>
-                                <div>Looks like you haven't placed and order.</div>
-                                <div>Continue Shopping</div>
-                            </div>
 
-                            <div className={myAccountStyles.bottomHalf}>
-                                <div>Try our Skinanalyzer</div>
-                                <div>Find the best Obagi solution for you</div>
-                                <div>TAKE THE QUIZ</div>
-                            </div>
                         </div>
 
                         <div>
-                            <div className={myAccountStyles.topHalf}>
-                                <div>Looks like you haven't placed and order.</div>
-                                <div>Continue Shopping</div>
-                            </div>
 
-                            <div className={myAccountStyles.bottomHalf}>
-                                <div>Try our Skinanalyzer</div>
-                                <div>Find the best Obagi solution for you</div>
-                                <div>TAKE THE QUIZ</div>
-                            </div>
                         </div>
 
                     </Slider>
                 </div>
             </div>
-
+            <AddressModal />
             <div className="d-none d-lg-block list-wrapper">
                 <div className="row">
 
@@ -264,7 +242,7 @@ const MyAccount = ({ node }) => {
 
                     <div className="col-lg-8">
                         <div className="tab-content">
-
+                            
                             <div className="tab-pane active" id="home" role="tabpanel">
 
                                 <div className={myAccountStyles.secondTitleWrapper}>
@@ -275,7 +253,15 @@ const MyAccount = ({ node }) => {
                                 <OrderHistory />
                             </div>
 
-                            <div className="tab-pane" id="profile" role="tabpanel">KSJD;SKDLJS;LDKAS;DLSKAD</div>
+                            <div className="tab-pane" id="profile" role="tabpanel">
+                                <div className={myAccountStyles.secondTitleWrapper}>
+                                    <div className={myAccountStyles.secondTitle}>Address Book</div>
+                                    <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal">Add Address</button>
+                                </div>
+
+                                <AddressBox />
+
+                            </div>
                             <div className="tab-pane" id="messages" role="tabpanel">KJSDLKSJDLKASJDLAKSDJ</div>
                             <div className="tab-pane" id="settings" role="tabpanel">LKJSDLKSJDLASKJDASLKD</div>
                         </div>

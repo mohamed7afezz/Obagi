@@ -39,8 +39,8 @@ const products = () => (
       {/* <ProductLine /> */}
       {/* <SearchResults /> */}
       {/* <Reviews />  */}
-      {/* <MyAccount /> */}
-      <OrderDetails />
+      <MyAccount />
+      {/* <OrderDetails /> */}
         </Layout>
         
 )

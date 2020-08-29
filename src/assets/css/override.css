@@ -576,8 +576,9 @@ padding-bottom: 134px;
 
 }
 .locker p {
-  left: 15px !important;
-  top: 5px !important;
+  left: 1px !important;
+  top: 0 !important;
+  width: 100%;
 }
 button:focus{
  outline: 0;
