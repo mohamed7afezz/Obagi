@@ -1371,7 +1371,7 @@ footer .form-group {
     padding: 0;
 }
 
-.show-account .modal-header .close::before, .close::after {
+.show-account .modal-header .close::before, .show-account .modal-header .close::after {
     height: 16px;
     width: 1px;
 }
@@ -1390,5 +1390,202 @@ footer .form-group {
     &:hover {
         color: #132466;
         text-decoration: none;
+    }
+}
+
+
+.address-modal {
+    z-index: 99999999999999999;
+    padding: 0 !important;
+}
+
+.address-modal .modal-dialog {
+    // height: 100%;
+    width: 100%;
+    margin: 0;
+    @include lg-screen {
+        max-width: 980px;
+        max-height: 760px;
+        margin: 216px auto auto;
+    }
+}
+
+.address-modal .modal-content {
+    // height: 100%;
+    padding: 80px 24px 24px;
+
+    @include lg-screen {
+        padding: 80px 40px;
+    }
+
+
+}
+
+.address-modal .modal-header {
+    border: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: 32px;
+    }
+}
+
+.address-modal .modal-body {
+    padding: 0;
+}
+
+.address-modal .modal-header .close {
+    top: 20px;
+    right: 37px;
+
+    @include lg-screen {
+        top: 40px;
+        right: 50px;
+    }
+}
+
+.address-modal .modal-header .close::before, .address-modal .modal-header .close::after {
+    width: 1px;
+}
+
+.address-modal .modal-title {
+
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    margin-bottom: 8px;
+
+
+    @include lg-screen {
+        margin-left: 228.5px;
+        @include fontStyle(52, 64);
+    }
+}
+
+.address-modal .modal-title-footnote {
+    @include fontStyle(16, 24);
+    color: #7c858a;
+}
+
+.address-modal .form-group {
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    padding: 16px 16px 12px;
+    box-shadow: 0 0 5px 0 rgba(103, 113, 119, 0.25);
+
+    @include lg-screen {
+        width: 50%;
+
+        &:first-child {
+            margin-right: 24px;
+        }
+    }
+}
+
+.address-modal .form-label {
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.address-modal .form-control {
+    border: 0;
+    padding: 0;
+    @include fontStyle(18, 32);
+    color: #132466;
+    border: 0;
+    height: auto;
+    border-radius: 0;
+
+    &:focus {
+        box-shadow: unset;
+        border-color: unset;
+    }
+
+    &::placeholder {
+        color: rgba(19,36,102,0.8);
+    }
+
+}
+
+.address-modal .select-group {
+    border: 0;
+    box-shadow: unset;
+    padding: 0;
+}
+
+.address-modal .select-group .form-label{
+    margin-bottom: 8px;
+    color: #1a1919;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.address-modal .select-group .select-wrapper {
+    
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    padding: 0;
+    height: auto;
+}
+
+.address-modal .select-group .select-selected, .address-modal .select-items div {
+    padding: 20px 16px;
+    @include fontStyle(14, 16);
+    color: #677177;
+    border: 0;
+    border-radius: 4px;
+
+}
+
+
+
+.address-modal .select-group .select-wrapper .form-control{
+    
+    display: none;
+}
+
+
+.address-modal .modal-footer {
+    padding: 0;
+    border: 0
+}
+
+.address-modal .modal-button {
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    color: #fff;
+    background: #132466;
+    display: block;
+    width: 100%;
+    padding: 16px 0 ;
+    border: 1px solid #132466;
+    border-radius: 6px;
+    text-transform: uppercase;
+    margin: 8px 0 0;
+
+    &:hover {
+        background: #fff;
+        color: #132466;
+    }
+
+    @include lg-screen {
+        margin: 48px auto auto;
+        width: auto;
+        padding: 24px 111px 24px 112px;
+    }
+}
+
+.address-modal .group-wrapper {
+    @include lg-screen {
+        display: flex;
     }
 }

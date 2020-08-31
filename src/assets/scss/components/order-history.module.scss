@@ -3,7 +3,7 @@
 
 .orders-count {
     @include fontStyle(16, 24);
-    padding: 24px 0;
+    padding-bottom: 24px;
 }
 
 .table {
@@ -48,11 +48,18 @@
 }
 
 .table td:last-child {
-    background-image: url('../../images/path-copy.png');
+
+    background-image: url('../../images/path-copy-right.png');
     background-repeat: no-repeat;
     background-position: center;
-    // transform: rotate(90deg);
-    // transition: all ease 300ms;
+
+    button {
+        border: 0;
+        background-color: transparent;
+        height: 24px;
+        width: 16px;
+        display: block;
+    }
 }
 
 

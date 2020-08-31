@@ -19,10 +19,11 @@
     border-top: 1px solid #d6d6d6;
     border-bottom: 1px solid #d6d6d6;
     padding: 15px 0 16px;
+    margin-bottom: 24px;
 }
 
 .top-half {
-    margin: 24px 0;
+    margin-bottom: 24px;
     border: 1px solid #d6d6d6;
     border-radius: 6px;
     text-align: center;
@@ -58,13 +59,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 31.5px;
+    margin-bottom: 32px;
 }
 
 .second-title {
     @extend %futurapt-light;
     @include fontStyle(32, 48);
-    margin-top: 31.5px;
-    margin-bottom: 32px;
+
 
 }
 
@@ -162,4 +164,33 @@
             position: unset;
             margin-bottom: 0;
         }
+}
+
+.address-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    padding: 16px 0;
+    background: #132466;
+    border-radius: 6px;
+    border: 1px solid #132466;
+    text-transform: uppercase;
+    margin-top: 8px;
+
+    &:hover {
+        background: #ffffff;
+        color: #132466;
+        text-decoration: none;
+    }
+
+    @include lg-screen {
+        margin: 0;
+        padding: 16px 32px;
+        width: unset;
+        display: inline-block;
+    }
 }

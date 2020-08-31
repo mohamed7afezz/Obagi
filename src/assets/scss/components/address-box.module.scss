@@ -1,0 +1,49 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.box-wrapper {
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #d6d6d6;
+    @include fontStyle(18, 32);
+
+    @include lg-screen {
+        padding: 16px 24px;
+    }
+}
+
+.header-button {
+    @include fontStyle(16, 24);
+    color: #132466;
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+    padding: 0;
+    margin-left: 24px;
+}
+
+.info-wrapper {
+    padding: 23px 16px 24px;
+    @include fontStyle(16, 24);
+
+    p {
+        margin-bottom: 8px;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    @include lg-screen {
+        padding: 23px 24px 24px;
+    }
+}
+

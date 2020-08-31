@@ -45,7 +45,7 @@ const OrderHistoryRow = ({ node }) => {
                 <td>1</td>
                 <td>$24.00</td>
                 <td>In-Progress</td>
-                <td></td>
+                <td><button type="button"></button></td>
             </tr>
 
             <tr className={["d-none d-lg-table-row"].join(" ")}>
@@ -55,7 +55,7 @@ const OrderHistoryRow = ({ node }) => {
                 <td>1</td>
                 <td>$24.00</td>
                 <td>In-Progress</td>
-                <td></td>
+                <td><button type="button"></button></td>
             </tr>
         </>
     )
