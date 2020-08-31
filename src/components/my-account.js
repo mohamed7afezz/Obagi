@@ -200,8 +200,8 @@ const MyAccount = ({ node }) => {
                 <div className="col-12">
                     <Slider {...SliderSetting} asNavFor={nav1} ref={slider => (slider2 = slider)}>
                         <div>
-                            {/* <OrderNoHistory />
-                            <OrderHistory /> */}
+                            <OrderNoHistory />
+                            {/* <OrderHistory /> */}
                             
                         </div>
 
@@ -271,8 +271,8 @@ const MyAccount = ({ node }) => {
                                     <div className={myAccountStyles.secondTitle}>Order History</div>
                                     <div className={myAccountStyles.ordersCount}>45 Orders</div>
                                 </div>
-                                {/* <OrderNoHistory /> */}
-                                <OrderHistory />
+                                <OrderNoHistory />
+                                {/* <OrderHistory /> */}
                             </div>
 
                             <div className="tab-pane" id="profile" role="tabpanel">KSJD;SKDLJS;LDKAS;DLSKAD</div>

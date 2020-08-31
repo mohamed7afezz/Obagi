@@ -171,21 +171,12 @@ const Collectionproducts = ({ node, nodetype }) => {
           <label className={productsliststyle.filter}>Filter by:</label>
           <div className="custom-select">
             <select id="product-filter" name="filter by">
+              
               <option vlaue="All">All</option>
               <option vlaue="All">All</option>
-              <option value="Hyaluronic Acid">Hyaluronic Acid</option>
-              <option value="Retinol">Retinol</option>
-              <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-              <option value="Arbutin">Arbutin</option>
-              <option value="Vitamin C">Vitamin C</option>
-              <option value="Salicylic Acid">Salicylic Acid</option>
-              <option value="Hydroquinone*">Hydroquinone*</option>
-              <option value="Cleanser">Cleanser</option>
-              <option value="Toner">Toner</option>
-              <option value="Serum">Serum</option>
-              <option value="Lotion/Cream">Lotion/Cream</option>
-              <option value="Mask">Mask</option>
-              <option value="Peptides">Peptides</option>
+             { (pageNodeType.toLowerCase().includes('clinical'))? 
+             "":
+              "" }
             </select>
           </div>
         </div>
