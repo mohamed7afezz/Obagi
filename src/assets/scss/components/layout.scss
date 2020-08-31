@@ -1396,17 +1396,29 @@ footer .form-group {
 
 .address-modal {
     z-index: 99999999999999999;
+    padding: 0 !important;
 }
 
 .address-modal .modal-dialog {
     // height: 100%;
     width: 100%;
     margin: 0;
+    @include lg-screen {
+        max-width: 980px;
+        max-height: 760px;
+        margin: 216px auto auto;
+    }
 }
 
 .address-modal .modal-content {
     // height: 100%;
     padding: 80px 24px 24px;
+
+    @include lg-screen {
+        padding: 80px 40px;
+    }
+
+
 }
 
 .address-modal .modal-header {
@@ -1415,6 +1427,12 @@ footer .form-group {
     flex-direction: column;
     align-items: center;
     margin-bottom: 24px;
+
+    @include lg-screen {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: 32px;
+    }
 }
 
 .address-modal .modal-body {
@@ -1424,6 +1442,11 @@ footer .form-group {
 .address-modal .modal-header .close {
     top: 20px;
     right: 37px;
+
+    @include lg-screen {
+        top: 40px;
+        right: 50px;
+    }
 }
 
 .address-modal .modal-header .close::before, .address-modal .modal-header .close::after {
@@ -1437,6 +1460,10 @@ footer .form-group {
     margin-bottom: 8px;
 
 
+    @include lg-screen {
+        margin-left: 228.5px;
+        @include fontStyle(52, 64);
+    }
 }
 
 .address-modal .modal-title-footnote {
@@ -1449,6 +1476,14 @@ footer .form-group {
     border-radius: 4px;
     padding: 16px 16px 12px;
     box-shadow: 0 0 5px 0 rgba(103, 113, 119, 0.25);
+
+    @include lg-screen {
+        width: 50%;
+
+        &:first-child {
+            margin-right: 24px;
+        }
+    }
 }
 
 .address-modal .form-label {
@@ -1456,7 +1491,7 @@ footer .form-group {
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
     margin-bottom: 4px;
-
+    text-transform: uppercase;
     display: block;
 }
 
@@ -1466,7 +1501,7 @@ footer .form-group {
     @include fontStyle(18, 32);
     color: #132466;
     border: 0;
-    height: 100%;
+    height: auto;
     border-radius: 0;
 
     &:focus {
@@ -1475,8 +1510,9 @@ footer .form-group {
     }
 
     &::placeholder {
-        color: #132466;
+        color: rgba(19,36,102,0.8);
     }
+
 }
 
 .address-modal .select-group {
@@ -1489,20 +1525,33 @@ footer .form-group {
     margin-bottom: 8px;
     color: #1a1919;
     letter-spacing: 0;
+    text-transform: none;
 }
 
 .address-modal .select-group .select-wrapper {
-    padding: 20px 16px;
-
+    
     border: 1px solid #d6d6d6;
     border-radius: 4px;
+    padding: 0;
+    height: auto;
 }
 
-.address-modal .select-group select {
-
+.address-modal .select-group .select-selected, .address-modal .select-items div {
+    padding: 20px 16px;
     @include fontStyle(14, 16);
     color: #677177;
+    border: 0;
+    border-radius: 4px;
+
 }
+
+
+
+.address-modal .select-group .select-wrapper .form-control{
+    
+    display: none;
+}
+
 
 .address-modal .modal-footer {
     padding: 0;
@@ -1526,5 +1575,17 @@ footer .form-group {
     &:hover {
         background: #fff;
         color: #132466;
+    }
+
+    @include lg-screen {
+        margin: 48px auto auto;
+        width: auto;
+        padding: 24px 111px 24px 112px;
+    }
+}
+
+.address-modal .group-wrapper {
+    @include lg-screen {
+        display: flex;
     }
 }

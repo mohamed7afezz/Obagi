@@ -191,10 +191,10 @@ const MyAccount = ({ node }) => {
                 <div className="col-12 p-0">
                     <div className={myAccountStyles.tabSliderWrapper}>
                         <Slider asNavFor={nav2} ref={slider => (slider1 = slider)} {...TabSliderSetting} className="account-tab-slider">
-                            <div className="active account-tab" onClick={(e) => slickGoToslide(e)}>Order History</div>
-                            <div className="account-tab" onClick={(e) => slickGoToslide(e)}>Address Book</div>
-                            <div className="account-tab" onClick={(e) => slickGoToslide(e)}>Account Settings</div>
-                            <div className="account-tab" onClick={(e) => slickGoToslide(e)}>Premier Points</div>
+                            <div className="active account-tab" onClick={(e) => slickGoToslide(e, 0)}>Order History</div>
+                            <div className="account-tab" onClick={(e) => slickGoToslide(e, 1)}>Address Book</div>
+                            <div className="account-tab" onClick={(e) => slickGoToslide(e, 2)}>Account Settings</div>
+                            <div className="account-tab" onClick={(e) => slickGoToslide(e, 3)}>Premier Points</div>
                         </Slider>
                     </div>
                 </div>
@@ -202,8 +202,8 @@ const MyAccount = ({ node }) => {
                 <div className="col-12">
                     <Slider {...SliderSetting} asNavFor={nav1} ref={slider => (slider2 = slider)}>
                         <div>
-                            {/* <OrderNoHistory /> */}
-                            <OrderHistory />
+                            <OrderNoHistory />
+                            {/* <OrderHistory /> */}
 
                         </div>
 

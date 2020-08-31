@@ -281,8 +281,9 @@ const Collectionproducts = ({ node, nodetype }) => {
                           }}
                           productimage={
                             item.relationships.field_medical_image[0]
-                              ? item.relationships.field_medical_image[0]
-                                  .localFile.childImageSharp.fluid
+                              ? (item.relationships.field_medical_image[0]
+                                  .localFile? item.relationships.field_medical_image[0]
+                                  .localFile.childImageSharp.fluid : '')
                               : ""
                           }
                           price={item.field_medical_price}

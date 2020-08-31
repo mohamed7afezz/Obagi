@@ -955,3 +955,31 @@ height: 545px;
     min-width: 500px;
 }
 }
+
+.address-modal .select-selected{
+  position: relative;
+  background-color: #fff;
+}
+
+.address-modal .select-selected::after{
+  background-image: url(../images/path-copy.png);
+  border: 0;
+  top: 24px;
+  right: 16px;
+  transform: rotate(180deg);
+  width: 10px;
+  height: 8px;
+  background-repeat: no-repeat;
+  transition: all ease 300ms;
+ 
+  
+}
+.address-modal .select-selected.select-arrow-active::after {
+  transform: rotate(0);
+  transition: all ease 300ms;
+}
+
+.address-modal .select-items {
+  background-color: #fff;
+ 
+}
