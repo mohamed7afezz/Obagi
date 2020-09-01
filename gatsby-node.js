@@ -31,8 +31,8 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
 
   
-  if (page.path.match(/^\/signin/)) {
-    page.matchPath = "/signin/*"
+  if (page.path.match(/^\/my-account/)) {
+    page.matchPath = "/my-account/*"
 
     // Update the page.
     createPage(page)

@@ -10,6 +10,7 @@ import CartContext from '../providers/cart-provider';
 import human from '../assets/images/Human.png'
 import Search from './search'
 import ShowAccount from './show-account'
+import { isLoggedIn } from '../services/auth'
 
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
@@ -419,7 +420,16 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className="col col-padding">
                   <div className={headerStyles.navLastSection}>
-                    <p><button type="button" data-toggle="modal" data-target="#show-account">SIGN IN</button></p>
+                    <p>
+                      {
+                        isLoggedIn()?
+                          <button type="button" data-toggle="modal" data-target="#show-account">
+                            person icon
+                          </button>
+                          :
+                          <Link to="/my-account/signin">SIGN IN</Link>
+                      }
+                    </p>
                     <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
@@ -464,8 +474,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
           </div>
         </div>
       </div>
-      
-        <ShowAccount />
+     
+
+      {isLoggedIn()? <ShowAccount />: ''}
+
 
 
 

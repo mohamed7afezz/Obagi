@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   render() {
     if (isLoggedIn()) {
-      navigate(`/signin/MyAccount`)
+      navigate(`/my-account`)
     }
 
     return (
@@ -31,7 +31,7 @@ class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/signin/MyAccount`)
+            navigate(`/my-account/signin`)
           }}
         >
           <label>

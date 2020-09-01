@@ -9,7 +9,7 @@ import OrderHistoryRow from "./order-history-row"
 import OrderHistory from "./order-history"
 import OrderDetails from "./order-details"
 
-const MyAccount = ({ node }) => {
+const UserAccount = ({ node, children }) => {
 
 
 
@@ -265,19 +265,7 @@ const MyAccount = ({ node }) => {
                     <div className="col-lg-8">
                         <div className="tab-content">
 
-                            <div className="tab-pane active" id="home" role="tabpanel">
-
-                                <div className={myAccountStyles.secondTitleWrapper}>
-                                    <div className={myAccountStyles.secondTitle}>Order History</div>
-                                    <div className={myAccountStyles.ordersCount}>45 Orders</div>
-                                </div>
-                                <OrderNoHistory />
-                                {/* <OrderHistory /> */}
-                            </div>
-
-                            <div className="tab-pane" id="profile" role="tabpanel">KSJD;SKDLJS;LDKAS;DLSKAD</div>
-                            <div className="tab-pane" id="messages" role="tabpanel">KJSDLKSJDLKASJDLAKSDJ</div>
-                            <div className="tab-pane" id="settings" role="tabpanel">LKJSDLKSJDLASKJDASLKD</div>
+                            {children}
                         </div>
                     </div>
                 </div>
@@ -287,4 +275,4 @@ const MyAccount = ({ node }) => {
 
     )
 }
-export default MyAccount;
+export default UserAccount;
