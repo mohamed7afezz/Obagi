@@ -27,8 +27,20 @@ module.exports.onCreateNode = ({ node, actions }) => {
     }
 }
 
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+
+  
+  if (page.path.match(/^\/signin/)) {
+    page.matchPath = "/signin/*"
+
+    // Update the page.
+    createPage(page)
+  }
+}
 module.exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
+ 
     // 1- get path to template
     const temp = path.resolve('./src/templates/basic-page.js');
     const productTemp = path.resolve('./src/templates/product-page.js');
