@@ -172,7 +172,7 @@ const Collectionproducts = ({ node, nodetype }) => {
         >
           <label className={productsliststyle.filter}>Filter by:</label>
           <div className="custom-select">
-fixe            {pageNodeType||node.relationships.field_vocabularies?pageNodeType.toLowerCase().includes('medical')||node.relationships.field_vocabularies[0].__typename.toLowerCase().includes('medical')?
+fixe            {pageNodeType||node.relationships?pageNodeType.toLowerCase().includes('medical')||node.relationships.field_vocabularies[0].__typename.toLowerCase().includes('medical')?
           <select id="product-filter" name="filter by">
               
               <option vlaue="All">All</option>
