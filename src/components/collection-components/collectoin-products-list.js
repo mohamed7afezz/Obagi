@@ -172,7 +172,7 @@ const Collectionproducts = ({ node, nodetype }) => {
         >
           <label className={productsliststyle.filter}>Filter by:</label>
           <div className="custom-select">
-            {pageNodeType.toLowerCase().includes('medical')?
+            {pageNodeType?pageNodeType.toLowerCase().includes('medical')?
           <select id="product-filter" name="filter by">
               
               <option vlaue="All">All</option>
@@ -206,7 +206,18 @@ const Collectionproducts = ({ node, nodetype }) => {
                 <option value="Vitamin C">Vitamin C</option>
                 <option value="Salicylic Acid">Salicylic Acid</option>
               </select>
-}
+  :  <select id="product-filter" name="filter by">
+                
+  <option vlaue="All">All</option>
+  <option vlaue="All">All</option>
+  <option value="Arbutin">Arbutin</option>
+  <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
+  <option value="Kinetin ">Kinetin </option>
+  <option value="Lactic Acid">Lactic Acid</option>
+  <option value="Retinol">Retinol</option>
+  <option value="Vitamin C">Vitamin C</option>
+  <option value="Salicylic Acid">Salicylic Acid</option>
+</select>}
           </div>
         </div>
         <div
