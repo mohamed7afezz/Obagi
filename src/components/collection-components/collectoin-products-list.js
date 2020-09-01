@@ -172,7 +172,7 @@ const Collectionproducts = ({ node, nodetype }) => {
         >
           <label className={productsliststyle.filter}>Filter by:</label>
           <div className="custom-select">
-fixe            {pageNodeType||node.relationships?pageNodeType.toLowerCase().includes('medical')||node.relationships.field_vocabularies[0].__typename.toLowerCase().includes('medical')?
+            {pageNodeType.toLowerCase().includes('medical')?
           <select id="product-filter" name="filter by">
               
               <option vlaue="All">All</option>
@@ -205,26 +205,6 @@ fixe            {pageNodeType||node.relationships?pageNodeType.toLowerCase().inc
                 <option value="Retinol">Retinol</option>
                 <option value="Vitamin C">Vitamin C</option>
                 <option value="Salicylic Acid">Salicylic Acid</option>
-              </select>
-              :  <select id="product-filter" name="filter by">
-              
-              <option vlaue="All">All</option>
-              <option vlaue="All">All</option>
-              <option value="Aloe">Aloe</option>
-              <option value="Antioxidants">Antioxidants</option>
-              <option value="Arbutin">Arbutin</option>
-              <option value="Benzoyl Peroxide">Benzoyl Peroxide</option>
-              <option value="Caffeine ">Caffeine </option>
-              <option value="Glycerin ">Glycerin </option>
-              <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-              <option value="Hyaluronic Acid">Hyaluronic Acid</option>
-              <option value="Hydroquinone  ">Hydroquinone  </option>
-              <option value="Retinol">Retinol</option>
-              <option value="Salicylic Acid">Salicylic Acid</option>
-              <option value="Tretinoin">Tretinoin</option>
-              <option value="Vitamin C">Vitamin C</option>
-              <option value="Witch Hazel">Witch Hazel</option>
-              <option value="Zinc Oxide*">Zinc Oxide</option>
               </select>
 }
           </div>
