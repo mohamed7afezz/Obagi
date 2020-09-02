@@ -193,8 +193,9 @@ p {
 
             a {
                 @extend %futurapt-book;
-                @include fontStyle(18, 32);
-                color: #7c858a;
+                @include fontStyle(16, 24);
+                color: #132466;
+                
             }
         }
     }
@@ -397,6 +398,9 @@ footer .form-group {
                         background: #fff;
                         border-top: 1px solid rgba(124,133,138,0.15);
                         // border-bottom: 1px solid rgba(124,133,138,0.15);
+                        font-size: 14px;
+                        line-height: 16px;
+                        @extend %futurapt-bold;
                     }
                     
                 }
