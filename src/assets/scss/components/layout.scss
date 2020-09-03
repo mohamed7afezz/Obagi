@@ -162,6 +162,12 @@ p {
 
 }
 
+.footer-menus-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .footer-menu {
 
     ul {

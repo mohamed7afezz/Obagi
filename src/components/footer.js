@@ -105,31 +105,41 @@ const Footer = ({ siteTitle }) => {
               </div>
             </div>
             <div className={["col-12 col-md-6 col-lg-2 offset-lg-1", footerStyles.secondCol].join(" ")}>
-                <div className="col-12 col-padding">
-                  <Menu
-                    menuName={`first-footer`}
-                    menuClass={`footer-menu`}
-                    isExpandable={size.width < mediumScreen ? true : false}
-                  />
+              <div className="footer-menus-wrapper">
+                <Menu
+                  menuName={`second-footer`}
+                  menuClass={`footer-menu`}
+                  isExpandable={size.width < mediumScreen ? true : false}
+                />
+{/* 
+                <div className={footerStyles.margin}></div> */}
+        
+                <Menu
+                  menuName={`first-footer`}
+                  menuClass={`footer-menu mt-md-auto`}
+                  isExpandable={size.width < mediumScreen ? true : false}
+                />
 
-                  <div className={footerStyles.margin}></div>
-                </div>
-                <div className="col-12 col-padding">
-                  <Menu
-                    menuName={`second-footer`}
-                    menuClass={`footer-menu`}
-                    isExpandable={size.width < mediumScreen ? true : false}
-                  />
-
-                </div>
+              </div>
 
             </div>
             <div className={["col-12 col-md-6 col-lg-2", footerStyles.thirdCol].join(" ")}>
-              <Menu
-                menuName={`third-footer`}
-                menuClass={`footer-menu`}
-                isExpandable={size.width < mediumScreen ? true : false}
-              />
+              <div className="footer-menus-wrapper">
+                <Menu
+                  menuName={`third-footer`}
+                  menuClass={`footer-menu`}
+                  isExpandable={size.width < mediumScreen ? true : false}
+                />
+
+                <div className={footerStyles.margin}></div>
+          
+                  <Menu
+                    menuName={`fourth-footer`}
+                    menuClass={`footer-menu`}
+                    isExpandable={size.width < mediumScreen ? true : false}
+                  />
+
+                </div>
             </div>
             {/* <div className="col-lg-1 d-none d-lg-block">
                         <div className={footerStyles.verticalLine}></div>
