@@ -42,7 +42,6 @@ const StandardItem = props => {
   let itemImage
  
   let itemsContent = items.map(item => {
-    console.log('hassan',item)
     var producturl= item.url.split(".com")
     if(cartType == "overlay"){
       return (

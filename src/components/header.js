@@ -1,7 +1,7 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes, { func } from "prop-types"
-import React from "react"
+import React, { useContext } from "react"
 import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
 import MegaMenu from './mega-menu'
@@ -11,8 +11,11 @@ import human from '../assets/images/Human.png'
 import Search from './search'
 import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
+import UserContext from '../providers/user-provider'
 
 const Header = ({ siteTitle, nodeType, menuType }) => {
+
+  const {user} = useContext(UserContext);
 
   const location = useLocation();
 
@@ -301,7 +304,6 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
   }
 
 
-  console.log("node", nodeType)
 
   return (
 
@@ -422,7 +424,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                   <div className={headerStyles.navLastSection}>
                     <p>
                       {
-                        isLoggedIn()?
+                        user?
                           <button type="button" data-toggle="modal" data-target="#show-account">
                             person icon
                           </button>

@@ -18,11 +18,14 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import React from 'react';
 import { ViewedProductsProvider } from './src/providers/latestview-provider';
 import { CartProvider } from "./src/providers/cart-provider";
+import { UserProvider } from './src/providers/user-provider';
 
 export const wrapRootElement = ({ element }) => (
-  <ViewedProductsProvider>
-    <CartProvider>
-        {element}
-    </CartProvider>
-  </ViewedProductsProvider>
+  <UserProvider>
+    <ViewedProductsProvider>
+      <CartProvider>
+          {element}
+      </CartProvider>
+    </ViewedProductsProvider>
+  </UserProvider>
 );

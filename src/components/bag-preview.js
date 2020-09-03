@@ -8,7 +8,7 @@ const Showbag = () => {
   const value = useContext(CartContext);
   const notifications = value && value.notifications;
   const hasNotifications = Array.isArray(notifications) && notifications.length;
-  console.log("hafezz",notifications)
+  
   return hasNotifications ? (
     <section className="Notify">
       {notifications.map(note => (

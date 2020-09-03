@@ -16,8 +16,7 @@ import infoselected from "../../assets/images/info-selected.svg"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
-  const isClincal = nodeType == "clinical"
-  console.log("hassan",data)
+  const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
   let productId = isClincal ? node.field_clinical_id : node.field_medical_id

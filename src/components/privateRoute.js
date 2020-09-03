@@ -1,9 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { navigate } from "gatsby"
 import { isLoggedIn } from "../services/auth"
+import UserContext from "../providers/user-provider"
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
-  if (!isLoggedIn() && location.pathname !== `/my-account/signin`) {
+
+  const {user} = useContext(UserContext);
+
+  if (!user && location.pathname !== `/my-account/signin`) {
     navigate("/my-account/signin")
     return null
   }

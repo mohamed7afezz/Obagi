@@ -5,8 +5,6 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 import {CustomSelect} from '../../assets/js/custom-select'
 
 const Collectionproducts = ({ node, nodetype }) => {
- 
-  console.log('ashraqat', node)
 
   let products = []
   let checkTaxonomy

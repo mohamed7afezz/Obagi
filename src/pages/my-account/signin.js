@@ -5,7 +5,7 @@ import Layout from '../../components/layout'
 export default function Signin() {
     return (
         <Layout>
-            <Login path="/signin/login" />
+            
         </Layout>
     )
 }
