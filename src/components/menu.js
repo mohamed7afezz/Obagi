@@ -12,12 +12,12 @@ import footerStyles from '../assets/scss/components/footer.module.scss'
 // }
 
 function addStyles(e) {
-  if(e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
+  if (e.target.closest(".extended-nav > ul > li > .submenu > li > a")) {
 
     document.querySelectorAll(".extended-nav .submenu a").forEach(Elem => Elem.classList.add("not-selected"));
 
     let selected = e.target.closest(".extended-nav > ul > li > .submenu > li > a");
-    
+
     selected.classList.remove("not-selected");
     selected.classList.add("selected");
   }
@@ -33,7 +33,7 @@ function removeStyles() {
 function addMainStyles(e) {
 
 
-  if(e.target.closest(".extended-nav > ul > li > a")) {
+  if (e.target.closest(".extended-nav > ul > li > a")) {
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
     document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
     let selected = e.target.closest(".extended-nav > ul > li > a");
@@ -55,7 +55,7 @@ function addOverview(e) {
   var medicalOV = document.getElementById("overview-medicalLink");
   var clinicalOV = document.getElementById("overview-clinicalLink")
 
-  if(e.target === medicalLink) {
+  if (e.target === medicalLink) {
     if (medicalOV.style.display === "none") {
       medicalOV.style.display = "inline-block";
     } else {
@@ -73,10 +73,10 @@ function addOverview(e) {
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
-     mappedArr = {},
-     arrElem,
-     mappedElem;
-     
+    mappedArr = {},
+    arrElem,
+    mappedElem;
+
   // First map the nodes of the array to an object -> create a hash table.
   for (let i = 0, len = menuData.length; i < len; i++) {
     arrElem = menuData[i].node
@@ -95,7 +95,7 @@ function createMenuHierarchy(menuData, menuName) {
       mappedElem = mappedArr[id]
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
-       
+
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }
       // If the element is at the root level, add it to first level elements array.
@@ -112,25 +112,25 @@ function createMenuHierarchy(menuData, menuName) {
 function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
-    return ( <Link to={link.link.uri.replace('internal:', '')}>
+    return (<Link to={link.link.uri.replace('internal:', '')}>
       {link.title}
     </Link>)
   } else {
     if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => {addStyles(e); addMainStyles(e);}} onMouseLeave={() => {removeStyles(); removeMainStyles();}}>
+      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
         {link.title}
       </Link>)
     }
-    else if (itemId && collapseTarget) {
-      
+    else if (itemId && collapseTarget && isExpandable) {
+
       if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
         let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
         return (
           <>
-            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => {addOverview(e);}}>
+            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
               {link.title}
             </a>
-            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{display: "none"}}>Overview</Link> : ''}
+            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
           </>
         )
       } else {
@@ -141,24 +141,32 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 
             </Link>
             {/* <span className=""> */}
-              <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
+            <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
             {/* </span> */}
           </>
         )
       }
+    } else {
+      return (
+        <>
+          <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+          {link.title}
+          </a>
+        </>
+      )
     }
   }
 
-  if(!link.external && link.link.uri) {
-    return ( <Link activeClassName="active" to={link.link.uri}>
+  if (!link.external && link.link.uri) {
+    return (<Link activeClassName="active" to={link.link.uri}>
       {link.title}
     </Link>)
-  } else if(!link.external && link.link.uri.includes('internal:')) {
-    return ( <Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
+  } else if (!link.external && link.link.uri.includes('internal:')) {
+    return (<Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
       {link.title}
     </Link>)
   } else {
-    return ( <a href={link.link.uri} className={'external'}>
+    return (<a href={link.link.uri} className={'external'}>
       {link.title}
     </a>)
   }
@@ -170,27 +178,31 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 //   $(event.currentTarget).siblings().toggle();
 // }
 
-function buildMenu(menuArray, isExpandable, menuName){
-  if(!menuArray)  {
+function buildMenu(menuArray, isExpandable, menuName) {
+  console.log("exp", menuName, isExpandable);
+  if (!menuArray) {
     return
   }
   let menu = []
-  for(let item in menuArray) {
-    if(menuArray[item].children.length !== 0) {
+  for (let item in menuArray) {
+    if (menuArray[item].children.length !== 0) {
       // className={isExpandable == true? "collapsed" : ''} data-toggle={isExpandable == true? "collapse" : ''} href={isExpandable == true? collapseTarget : ''} role={isExpandable == true? "button" : ''} aria-expanded={isExpandable == true? "false" : ''} aria-controls={isExpandable == true?  collapseTarget : ''}
       menu.push(
-      <li key={menuArray[item].drupal_id}>
-        {
-         
-          menuName =='main-nav-mobile'?
-            buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)
-          :
-            buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
-        }
-        <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
-          {buildMenu(menuArray[item].children, true, menuName)}
-        </ul>
-      </li>)
+        <li key={menuArray[item].drupal_id}>
+          {
+
+            menuName == 'main-nav-mobile' ?
+              buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)
+            : 
+            ((menuName == 'first-footer' && isExpandable === true) || (menuName == 'second-footer' && isExpandable === true) || (menuName == 'third-footer' && isExpandable === true) || (menuName == 'fourth-footer' && isExpandable === true)) ?
+              buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id)
+            :
+              buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
+          }
+          <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
+            {buildMenu(menuArray[item].children, true, menuName)}
+          </ul>
+        </li>)
     } else {
       menu.push(<li key={menuArray[item].drupal_id}>{buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)}</li>)
     }
@@ -204,15 +216,15 @@ function generateMenu(menuLinks, menuName, isExpandable) {
   let menu
 
   menu = createMenuHierarchy(menuLinks.allMenuLinkContentMenuLinkContent.edges, menuName)
-  menu = buildMenu(menu, isExpandable,menuName)
+  menu = buildMenu(menu, isExpandable, menuName)
   return menu
 }
 
-const Menu = ({menuName, menuClass, isExpandable}) => (
+const Menu = ({ menuName, menuClass, isExpandable }) => (
 
-   <StaticQuery
-      query={
-        graphql`
+  <StaticQuery
+    query={
+      graphql`
         query MenuQuery {
           allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
             edges {
@@ -235,17 +247,17 @@ const Menu = ({menuName, menuClass, isExpandable}) => (
           }
         }
       `
-      }
-      
-      render={data => (
-        <nav className={menuName, menuClass}>
-          <ul >
-            {generateMenu(data, menuName, isExpandable)}
-          </ul>
-        </nav>
+    }
 
-      )}
-   />
+    render={data => (
+      <nav className={menuName, menuClass}>
+        <ul >
+          {generateMenu(data, menuName, isExpandable)}
+        </ul>
+      </nav>
+
+    )}
+  />
 )
 
 
@@ -258,6 +270,6 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   menuName: `main`,
- }
+}
 
 export default Menu
