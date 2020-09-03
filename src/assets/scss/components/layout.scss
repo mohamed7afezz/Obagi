@@ -162,6 +162,12 @@ p {
 
 }
 
+.footer-menus-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .footer-menu {
 
     ul {
@@ -169,12 +175,70 @@ p {
         padding-left: 0;
         margin-bottom: 0;
 
+        li {
+            padding-top: 15.5px;
+            margin-top: 15.5px;
+            border-top: 1px solid #d6d6d6;
+
+            @include md-screen {
+                padding: 0;
+                border: 0;
+                margin-top: 0;
+            }
+        }
+
         li a {
             @extend %futurapt-bold;
-            @include fontStyle(14, 16);
+            @include fontStyle(16, 24);
             color: #132466;
-
+            display: block;
             text-decoration: none;
+
+            position: relative;
+
+            &:after {
+                position: absolute;
+                content: '';
+                width: 10px;
+                height: 1px;
+                top: 11.4416px;
+                right: 0;
+                background: #132466;
+            }
+
+            @include md-screen {
+                display: unset;
+                &::after, &::before {
+                    content: none;
+                }
+            }
+        }
+
+        li a.collapsed {
+
+            &:after {
+                position: absolute;
+                content: '';
+                width: 10px;
+                height: 1px;
+                top: 11.4416px;
+                right: 0;
+                background: #132466;
+            }
+            &:before {
+                position: absolute;
+                content: '';
+                width: 1px;
+                height: 10px;
+                top: 7px;
+                right: 4.45px;
+                background: #132466;
+            }
+            @include md-screen {
+                &::after, &::before {
+                    content: none;
+                }
+            }
         }
 
         .submenu {
@@ -182,19 +246,27 @@ p {
         }
 
         .submenu li {
-            margin-bottom: 8px;
-
-            &:first-child {
-                margin-top: 19px;
-            }
+            margin-top: 16px;
+            padding: 0;
+            border: 0;
+            // &:first-child {
+            //     margin-top: 8px;
+            // }
             &:last-child {
-                margin-bottom: 0;
+                margin-bottom: 8px;
+                border: 0;
+                @include md-screen {
+                    margin-bottom: 0;
+                }
             }
 
             a {
                 @extend %futurapt-book;
-                @include fontStyle(16, 24);
+                // @include fontStyle(16, 24);
                 color: #132466;
+                &::before, &::after {
+                    content: none;
+                }
                 
             }
         }
@@ -400,7 +472,7 @@ footer .form-group {
                         // border-bottom: 1px solid rgba(124,133,138,0.15);
                         font-size: 14px;
                         line-height: 16px;
-                        @extend %futurapt-bold;
+                        // @extend %futurapt-bold;
                     }
                     
                 }

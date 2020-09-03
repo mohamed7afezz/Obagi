@@ -3,23 +3,23 @@
 
 .footer-section {
     padding-top: 40px;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
 
     @include lg-screen {
         padding-top: 57px;
-        padding-bottom: 72px;
+        padding-bottom: 25px;
     }
 }
 
 .obagi-logo {
-    height: 68px;
-    width: 68px;
-    margin-bottom: 40px;
+    // height: 68px;
+    // width: 68px;
+    // margin-bottom: 40px;
 
     @include lg-screen {
         height: 100%;
         width: 100%;
-        margin-bottom: 0;
+        // margin-bottom: 0;
     }
 }
 .termslink{
@@ -39,6 +39,8 @@
     .form-title {
         @include fontStyle(28, 40);
         margin-bottom: 16px;
+
+        @extend %futurapt-light;
     }
 
     .form-subtitle {
@@ -64,7 +66,7 @@
         @include md-screen {
             border: 0;
             padding-bottom: 0;
-            height: 50%;
+            // height: 50%;
             
         }
 
@@ -115,32 +117,40 @@
     }
 
     .signup {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
         @include md-screen {
             height: 80px;
             width: 100%;
-            border: 1px solid #d6d6d6;
-            display: flex;
-            border-radius: 4px;
+            
+            
+            
             position: relative;
 
         }
 
         @media only screen and (min-width: 992px) and (max-width: 1200px) {
             flex-direction: column;
+            
+        }
+
+        @include lg-screen {
+            justify-content: unset
         }
     }
 
     .input-section {
-        width: 100%;
-        border: 1px solid #d6d6d6;
-        border-radius: 4px;
+        
         padding: 16px 16px 0;
 
-        @include md-screen {
-            border: 0;
-        }
         @media only screen and (min-width: 992px) and (max-width: 1200px) {
             margin-bottom: 10px;
+        }
+
+        @include lg-screen {
+            width: 100%;
         }
     }
 
@@ -154,10 +164,10 @@
 }
 
 .social-media {
-    @include md-screen {
-        display: flex;
-        margin-top: 48px;
 
+        display: flex;
+        margin-top: 24px;
+        margin-bottom: 8px;
         .social-icon {
             margin-right: 15px;
             text-align: left;
@@ -173,10 +183,9 @@
             }
 
             .icon {
-                height: 21px;
-                width: 21px;
+                height: 24px;
+                width: 24px;
             }
-        }
     }
     @media only screen and (min-width: 992px) and (max-width: 1200px) {
         .social-icon {
@@ -186,10 +195,25 @@
             }
         }
     }
+
+    @include md-screen {
+        margin-top: 48px;
+        margin-bottom: 48px;
+        .icon {
+            height: 21px;
+            width: 21px;
+        }
+    }
+
+    @include lg-screen {
+        margin-bottom: 0;
+    }
 }
 
 .margin {
-    margin-bottom: 40px;
+    @include md-screen {
+        margin-bottom: 32px;
+    }
 }
 
 .vertical-line {
@@ -202,6 +226,18 @@
     font-size: 14px;
     line-height: 16px;
     color: #132466;
+    order: 2;
+    text-align: left;
+    width: 100%;
+
+    @include md-screen {
+        width: unset;
+    }
+    
+    @include lg-screen {
+        order: 1;
+        text-align: center;
+    }
 
 }
 .footerprivacy{
@@ -212,4 +248,47 @@
 }
 .footerprivacy li + .footerprivacy li{
     display: none;
+}
+
+.first-col {
+    order: 2;
+
+    @include lg-screen {
+        order: 1;
+    }
+
+}
+
+.second-col {
+    order: 3;
+    @include lg-screen {
+        order: 2;
+    }
+}
+
+.third-col {
+    order: 4;
+    @include lg-screen {
+        order: 3;
+    }
+}
+
+.fourth-col {
+    order: 1;
+    @include lg-screen {
+        order: 4;
+    }
+}
+
+.fifth-col {
+    order: 5;
+    margin-top: 0;
+
+    @include md-screen {
+        margin-top: 25px;
+    }
+    @include lg-screen {
+        order: 5;
+        margin-top: 65px;
+    }
 }

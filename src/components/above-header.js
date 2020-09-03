@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql, useStaticQuery} from 'gatsby'
 import Img from 'gatsby-image'
 import aboveHeader from '../assets/scss/components/above-header.module.scss'
+import { isLoggedIn } from '../services/auth'
 const AboveHeader = () => {
 
     const data = useStaticQuery(graphql`
@@ -21,7 +22,10 @@ const AboveHeader = () => {
       document.getElementById("desk-navigation").style.top="0";
       document.getElementById("mob-navigation").style.top="0";
       document.getElementById("search-wrapper").style.top="0";
-      document.getElementById("show-account").style.top="98px";
+      
+      if(isLoggedIn()) {
+        document.getElementById("show-account").style.top="98px";
+      }
 
       if(document.getElementById("search-wrapper").style.display === "none" && document.getElementById("mob-navigation").style.display !== "none" && document.querySelector(".node-home")) {
         document.querySelector(".node-home").classList.add("node-big-home-margin");
