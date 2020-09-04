@@ -50,8 +50,19 @@ export const UserProvider = ({children}) => {
         return false;
     }
 
+    // logout
+    async function handleLogout () {
+        await fetch(`${baseUrl}custmer_logout`, {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        });
+
+        setUser(false);
+    }
+
     return (
-        <UserContext.Provider value={{user, handleLogin}}>
+        <UserContext.Provider value={{user, handleLogin, handleLogout}}>
             {children}
         </UserContext.Provider>
     )
