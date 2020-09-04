@@ -26,7 +26,7 @@ const Login = () => {
   }
 
 
-  if (user) {
+  if (user && typeof window !== 'undefined') {
     navigate(`/my-account`)
   }
 
@@ -37,7 +37,9 @@ const Login = () => {
         method="post"
         onSubmit={event => {
           handleSubmit(event)
-          navigate(`/my-account/signin`)
+          if(typeof window !== 'undefined') {
+            navigate(`/my-account/signin`)
+          }
         }}
       >
         <label>

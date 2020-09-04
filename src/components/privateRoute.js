@@ -8,7 +8,10 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const {user} = useContext(UserContext);
 
   if (!user && location.pathname !== `/my-account/signin`) {
-    navigate("/my-account/signin")
+    if(typeof window !== 'undefined') {
+      navigate("/my-account/signin")
+    }
+      
     return null
   }
 

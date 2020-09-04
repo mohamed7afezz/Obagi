@@ -45,8 +45,9 @@ export const UserProvider = ({children}) => {
         })).json();
 
         if(isAuthUserRes.success && typeof window !== "undefined") {
-            return window.location.href = `${baseUrl}custmer_login_sso`;
+            window.location.href = `${baseUrl}custmer_login_sso`;
         }
+        return false;
     }
 
     return (
