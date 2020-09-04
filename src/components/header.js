@@ -15,7 +15,7 @@ import UserContext from '../providers/user-provider'
 
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
-  const {user} = useContext(UserContext);
+  const {user, handleLogout} = useContext(UserContext);
 
   const location = useLocation();
 
@@ -425,9 +425,12 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                     <p>
                       {
                         user?
-                          <button type="button" data-toggle="modal" data-target="#show-account">
-                            person icon
-                          </button>
+                          <>
+                            <button type="button" data-toggle="modal" data-target="#show-account">
+                              person icon
+                            </button>
+                            <button type="button" onClick={handleLogout}>Logout</button>
+                          </>
                           :
                           <Link to="/my-account/signin">SIGN IN</Link>
                       }
