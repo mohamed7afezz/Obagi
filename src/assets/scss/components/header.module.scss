@@ -213,6 +213,16 @@
             }
         }
 
+        a {
+            color: #ffffff;
+            @include fontStyle(16, 24);
+            letter-spacing: 1.6px;
+
+            &:hover {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
         .nav-button {
             margin-left: 40px;
         }
