@@ -627,12 +627,13 @@ button:focus{
 .modal-header .close:hover {
   opacity: 1;
 }
-.modal-header .close:before, .close:after {
+.modal-header .close:before,.modal-header .close:after {
   position: absolute;
   left: 15px;
+  top: 24px;
   content: ' ';
-  height: 33px;
-  width: 2px;
+  height: 16px;
+  width: 1px;
   background-color: #132466;
 }
 .modal-header .close:before {

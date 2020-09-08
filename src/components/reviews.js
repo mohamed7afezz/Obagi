@@ -3,25 +3,23 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import reviewStyles from '../assets/scss/components/reviews.module.scss'
 import Stars from './stars'
+import ReviewBox from './review-box'
+import ReviewModal from '../components/review-modal'
 const Reviews = ({ node }) => {
+
   const data = useStaticQuery(graphql`
-    query {
-        review: file(relativePath: { eq: "product-images/review.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+  query {
+    pen: file(relativePath: { eq: "pen.png" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
         }
       }
-      reviewmob: file(relativePath: { eq: "product-images/review-mob.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }`
-  )
+    }
+  }
+  `)
+
+
   return (
 
 
@@ -31,11 +29,16 @@ const Reviews = ({ node }) => {
           <div className={reviewStyles.wrapper}>
             <div className={reviewStyles.title}>Product Reviews</div>
             <div className={reviewStyles.stars}><Stars rate="0" /></div>
-            <div><button type="button" className={[reviewStyles.reviewButton, "button-link"].join(" ")}>Write a Review</button></div>
+            <button type="button" data-toggle="modal" data-target="#review-modal" className={[reviewStyles.reviewButton, "button-link d-lg-none"].join(" ")}>Write a Review <Img fixed={data.pen.childImageSharp.fixed}/></button>
             <div className={reviewStyles.bottomSection}>
               <div className={reviewStyles.reviewsNumber}>65 Reviews</div>
+              <button type="button" data-toggle="modal" data-target="#review-modal" className={[reviewStyles.reviewButton, "button-link d-none d-lg-flex"].join(" ")}>Write a Review <Img fixed={data.pen.childImageSharp.fixed}/></button>
               <div className={reviewStyles.hide}>Hide Reviews</div>
             </div>
+
+            <div className={reviewStyles.noReviews}>Be the first to review this product!</div>
+          {/* <ReviewBox /> */}
+          <ReviewModal />
           </div>
         </div>
       </div>

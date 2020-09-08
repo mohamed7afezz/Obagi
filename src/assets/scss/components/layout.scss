@@ -1343,6 +1343,10 @@ footer .form-group {
 .account-tab-slider .account-tab {
     @include fontStyle(18, 32);
     color: #7c858a;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .account-tab-slider .account-tab.active {
@@ -1664,4 +1668,33 @@ footer .form-group {
     @include lg-screen {
         display: flex;
     }
+}
+
+.review-modal {
+    z-index: 99999999999999999;
+    padding: 0 !important;
+}
+
+.review-modal .modal-dialog {
+    width: 100%;
+    margin: 0;
+}
+
+.review-modal .modal-content {
+    // height: 100%;
+    padding: 64px 24px;
+
+}
+
+.review-modal .modal-header {
+    border: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.review-modal .modal-title {
+    @include fontStyle(40, 56);
+    text-align: center;
+    @extend %futurapt-light;
+
 }
