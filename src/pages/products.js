@@ -17,7 +17,7 @@ import SearchResults from '../components/search-results'
 import Search from "../components/search"
 import Reviews from "../components/reviews"
 import ShowAccount from "../components/show-account"
-import MyAccount from "../components/my-account"
+import MyAccount from "../components/user-account"
 import OrderDetails from '../components/order-details'
 import AddressBox from "../components/address-box"
 
