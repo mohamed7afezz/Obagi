@@ -13,6 +13,7 @@ import Zoom from "react-img-zoom"
 import CartContext from "../../providers/cart-provider"
 import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
+import freeimg from "../../assets/images/product-images/free_image.png"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
@@ -48,6 +49,12 @@ const ProductHero = ({ data, nodeType }) => {
   let feild_preimer = isClincal
     ? node.field_clinical_premier_points
     : node.field_medical_premier_points
+  let key_benefit  = isClincal
+    ? node.field_clinical_key_benefit
+    : node.field_medical_key_benefits
+    let key_benfitList = isClincal
+    ? node.relationships.field_key_benefits_list?node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists:""
+    : node.relationships.field_medical_benefits_lists?node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists:""
   const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
@@ -81,7 +88,7 @@ const ProductHero = ({ data, nodeType }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    arrows: false,
+    arrows: true,
     dots: true,
     beforeChange: (current, next) => {
       if (document.querySelector(".myslickactive") != null) {
@@ -177,25 +184,32 @@ const ProductHero = ({ data, nodeType }) => {
             {nodeType}
           </p>
           <h1 className={ProductStyles.productname}>{node.title}</h1>
+          <div className={["d-flex", ProductStyles.review].join(" ")}>
+            <Stars value="0.0" />
+           <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
+           <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+          </div>
+       
           <div
             className={ProductStyles.productdesc}
             dangerouslySetInnerHTML={{ __html: field_description }}
           ></div>
-          <div className={["d-flex", ProductStyles.type].join(" ")}>
-            <p className={ProductStyles.producttype}>{field_medical_type}</p>
-            <ul>
-              {" "}
-              <li> Size {field_weight} oz </li>
+          <div className={ProductStyles.keyBenefitcon}>
+            <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
+            
+            <ul className={ProductStyles.keyBenefitul}>
+            {key_benfitList?key_benfitList.map((item, index) => {
+              return (
+                
+                  <li className={ProductStyles.keyBenefitli}>
+                    {item.field_list_item}
+                  </li>
+            
+              )
+            }):""}
             </ul>
           </div>
-          <div className={["d-flex", ProductStyles.review].join(" ")}>
-            <Stars value="0.0" />
-            <p>0 Review</p>
-          </div>
-          <p className={ProductStyles.price}>
-            {" "}
-            <span>${field_price}</span>
-          </p>
+          <div className={ProductStyles.skintypes}>
           <p className={ProductStyles.canuse}>
             Skin Type:{" "}
             {field_skin_type.map((item, index) => {
@@ -218,7 +232,20 @@ const ProductHero = ({ data, nodeType }) => {
               )
             })}
           </p>
-          <p className={ProductStyles.quantityhead}>Quantity:</p>
+        
+          </div>
+          <div className={["d-flex", ProductStyles.type].join(" ")}>
+          <p className={ProductStyles.price}>
+            <span>${field_price}</span>
+          </p>
+      
+            <p className={ProductStyles.producttype}>{field_medical_type}</p>
+            <ul>
+              {" "}
+              <li> Size {field_weight} oz </li>
+            </ul>
+          </div>
+  
           <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
             <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
               <select id="quantityBox">
@@ -245,14 +272,7 @@ const ProductHero = ({ data, nodeType }) => {
               </p>
               
             </div>
-            <p
-              className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
-            >
-            
-              <img src={share} /> Share
-            </p>
-          </div>
-          <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>
+            <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>
             <button
               className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
               onClick={() => {
@@ -278,7 +298,29 @@ const ProductHero = ({ data, nodeType }) => {
               </button>
             </div>
             :""}
+            
           </div>
+      
+            <p
+              className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+            >
+            
+              <img src={share} /> Share
+            </p>
+          </div>
+          <div className={ProductStyles.offer}> 
+            <div className={["col-3",ProductStyles.offerimg].join(" ")}>
+            <img src={freeimg}/>
+            </div>
+            <div className={["col-9",ProductStyles.offercontent].join(" ")}>
+            <p className={ProductStyles.offertitle}>
+            FREE GIFT WITH PURCHASE
+            </p>
+            <p className={ProductStyles.offerdesc}>Professional-C Microdermabrasion Polish Mask ($6 Value), with any purchase of Obagi Clinical purchase.</p>
+             <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p>
+            </div>
+            </div>
+  
         </div>
         <div
           id="product-hero-slick"

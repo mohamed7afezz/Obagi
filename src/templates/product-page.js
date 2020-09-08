@@ -40,11 +40,19 @@ export const productPageQuery = graphql`
             field_clinical_id
             field_clinical_medical_type
             field_clinical_weight
+            field_clinical_key_benefit
             field_clinical_description {
                 processed
             }
             
             relationships {
+                field_key_benefits_list {
+                    relationships {
+                      field_key_benefits_lists {
+                        field_list_item
+                      }
+                    }
+                  }
                 field_clinical_skin_concern {
                     name
                     path {
@@ -93,16 +101,25 @@ export const productPageQuery = graphql`
             field_medical_id
             field_medical_type
             field_medical_weight
+            field_medical_key_benefits
             field_medical_form_list
             field_medical_description {
                 processed
             }
             relationships {
+                field_medical_benefits_lists {
+                    relationships {
+                      field_key_benefits_lists {
+                        field_list_item
+                      }
+                    }
+                  }
                 field_medical_skin_concern {
                     name
                     path {
                         alias
                     }
+                    
                 }
                 field_medical_image {
                     localFile {

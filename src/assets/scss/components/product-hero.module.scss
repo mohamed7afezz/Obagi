@@ -78,9 +78,10 @@ top: 5px;
     }
 }
 .price{
-    @extend %futurapt-bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    span{
+        @extend %futurapt-bold;
+    }
+    padding-right: 32px;
 }
 .canuse{
 font-size: 16px;
@@ -99,7 +100,7 @@ a{
 .Indications{
     font-size: 16px;
     line-height: 24px;
-    margin-bottom: 24px;
+  
  
     a{
         font-size: 16px;
@@ -121,11 +122,12 @@ margin-bottom: 10px;
 .quantity{
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 16px;
     @include md-screen{
-        margin-bottom: 45px;
+        margin-bottom: 24px;
         flex-wrap: nowrap;
     }
+    justify-content: space-between;
 }
 .mt-thirty{
     margin-top: 32px;
@@ -148,6 +150,10 @@ margin-bottom: 10px;
 }
 .productHero .selectdiv{
     padding: 0;
+    display: none;
+    @include md-screen{
+        display: block;
+    }
 }
 .productHero .selectdiv::after{
     position: absolute;
@@ -166,13 +172,24 @@ margin-bottom: 10px;
 .share{
     padding: 0;
     flex: 0 0 35% ;
-    margin-left: 30px;
+  display: none;
+  @include md-screen{
+      display: block;
+  }
   
 }
-.codeoff{
+.reviewlink,.reviewlink:hover{
     font-size: 14px;
     line-height: 16px;
-   margin-top: 25px;
+    color: #132466;
+    text-decoration: underline;
+    @extend %futurapt-medium;
+}
+.codeoff{
+
+    font-size: 14px;
+    line-height: 16px;
+
     border-radius: 6px;
     padding-top: 15px;
 padding-bottom: 15px;
@@ -180,12 +197,13 @@ padding-bottom: 15px;
     order: 1;
     justify-content: space-between;
 align-items: center;
-    display: flex;
+   display: flex;
     justify-content: space-evenly;
     @include  md-screen-only {
         flex: 1;
     }
     @include md-screen{
+        display: none;
         order: 0;
         margin-left: 20px;
         margin-right: 0;
@@ -207,7 +225,7 @@ align-items: center;
     color: #fff;
     text-transform: uppercase;
     display: none;
-    max-width: 90%;
+  
     @include md-screen{
         display: inline-block;
     }
@@ -325,4 +343,63 @@ align-items: center;
 }
 .canusedata,.Indicationsdata{
     @extend %futurapt-book ;
+}
+.keyBenefitcon{
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book ;
+}
+.key_benefittitle{
+
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-medium ;
+}
+.keyBenefitli{
+    @extend %futurapt-book ; 
+    margin-top: 10px;
+}
+.keyBenefitul{
+    padding-left: 22px;
+    
+}
+.skintypes{
+    margin-top: 16px;
+    @include md-screen{
+        margin-top: 25px;
+    }
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d6d6d6;
+}
+.offer{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border: 1px solid #132466;
+    border-radius: 6px;
+    display: flex;
+    margin-bottom: 24px;
+    @include md-screen{
+        margin-bottom: 0;
+    }
+    img{
+        max-width: 100%;
+    }
+}
+.offertitle{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    color: #132466;
+    @extend %futurapt-bold ;
+}
+.offerdesc{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book ; 
+}
+.offerfooter{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-medium ;
 }
