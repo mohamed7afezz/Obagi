@@ -180,15 +180,7 @@ export const fragment = graphql`
           
           relationships {
             field_issues_categories {
-              ... on taxonomy_term__clinical_categories {
-                id
-                name
-              }
               ... on taxonomy_term__clinical_skin_concern {
-                id
-                name
-              }
-              ... on taxonomy_term__medical_categories {
                 id
                 name
               }
