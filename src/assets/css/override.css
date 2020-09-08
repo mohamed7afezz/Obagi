@@ -990,12 +990,12 @@ height: 545px;
 }
 }
 
-.address-modal .select-selected{
+.address-modal .select-selected, .review-modal .select-selected{
   position: relative;
   background-color: #fff;
 }
 
-.address-modal .select-selected::after{
+.address-modal .select-selected::after, .review-modal .select-selected::after{
   background-image: url(../images/path-copy.png);
   border: 0;
   top: 24px;
@@ -1008,12 +1008,12 @@ height: 545px;
  
   
 }
-.address-modal .select-selected.select-arrow-active::after {
+.address-modal .select-selected.select-arrow-active::after, .review-modal .select-selected.select-arrow-active::after {
   transform: rotate(0);
   transition: all ease 300ms;
 }
 
-.address-modal .select-items {
+.address-modal .select-items, .review-modal .select-items  {
   background-color: #fff;
  
 }

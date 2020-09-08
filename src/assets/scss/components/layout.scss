@@ -1474,7 +1474,7 @@ footer .form-group {
 }
 
 
-.address-modal {
+.address-modal, .review-modal, .welcome-modal {
     z-index: 99999999999999999;
     padding: 0 !important;
 }
@@ -1493,7 +1493,6 @@ footer .form-group {
 .address-modal .modal-content {
     // height: 100%;
     padding: 80px 24px 24px;
-
     @include lg-screen {
         padding: 80px 40px;
     }
@@ -1529,8 +1528,14 @@ footer .form-group {
     }
 }
 
-.address-modal .modal-header .close::before, .address-modal .modal-header .close::after {
+.address-modal .modal-header .close::before, .address-modal .modal-header .close::after,
+.review-modal .modal-header .close::before, .review-modal .modal-header .close::after,
+.welcome-modal .modal-header .close::before, .welcome-modal .modal-header .close::after{
     width: 1px;
+
+    @include lg-screen {
+        height: 32px;
+    }
 }
 
 .address-modal .modal-title {
@@ -1551,11 +1556,14 @@ footer .form-group {
     color: #7c858a;
 }
 
-.address-modal .form-group {
+.address-modal .form-group, .review-modal .form-group {
     border: 1px solid #bebebe;
     border-radius: 4px;
-    padding: 16px 16px 12px;
-    box-shadow: 0 0 5px 0 rgba(103, 113, 119, 0.25);
+    padding: 16px 11px 12px 16px;
+
+    &:focus-within {
+        box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
+    }
 
     @include lg-screen {
         width: 50%;
@@ -1566,7 +1574,16 @@ footer .form-group {
     }
 }
 
-.address-modal .form-label {
+.review-modal .form-group {
+    border-color: #d6d6d6;
+    @include lg-screen {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+}
+
+.address-modal .form-label, .review-modal .form-label {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
@@ -1575,7 +1592,7 @@ footer .form-group {
     display: block;
 }
 
-.address-modal .form-control {
+.address-modal .form-control, .review-modal .form-control {
     border: 0;
     padding: 0;
     @include fontStyle(18, 32);
@@ -1590,33 +1607,42 @@ footer .form-group {
     }
 
     &::placeholder {
-        color: rgba(19,36,102,0.8);
+        color: #7c858a;
+    }
+
+    &:invalid, &:required {
+        border: 1px solid #ff3737;
+        background: rgba(255, 55, 55, 0.1);
     }
 
 }
 
-.address-modal .select-group {
+.address-modal .select-group, .review-modal .select-group {
     border: 0;
     box-shadow: unset;
     padding: 0;
 }
 
-.address-modal .select-group .form-label{
+.address-modal .select-group .form-label, .review-modal .select-group .form-label{
     margin-bottom: 8px;
     color: #1a1919;
     letter-spacing: 0;
     text-transform: none;
 }
 
-.address-modal .select-group .select-wrapper {
+.address-modal .select-group .select-wrapper, .review-modal .select-group .select-wrapper {
     
     border: 1px solid #d6d6d6;
     border-radius: 4px;
     padding: 0;
     height: auto;
+
+    &:hover {
+        box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
+    }
 }
 
-.address-modal .select-group .select-selected, .address-modal .select-items div {
+.address-modal .select-group .select-selected, .address-modal .select-items div, .review-modal .select-group .select-selected, .review-modal .select-items div {
     padding: 20px 16px;
     @include fontStyle(14, 16);
     color: #677177;
@@ -1625,9 +1651,30 @@ footer .form-group {
 
 }
 
+.address-modal .select-items, .review-modal .select-items{
+    border: 1px solid #bebebe;
+    border-top: 0;
+    padding: 8px 25px 4px 16px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    top: 97%;
+    right: -1px;
+    left: -1px;
+    box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
+
+}
+
+.address-modal .select-items div, .review-modal .select-items div {
+    padding: 0;
+    margin: 0 0 16px;
+
+    &:hover {
+        background: transparent;
+    }
+}
 
 
-.address-modal .select-group .select-wrapper .form-control{
+.address-modal .select-group .select-wrapper .form-control, .review-modal .select-group .select-wrapper .form-control{
     
     display: none;
 }
@@ -1670,19 +1717,23 @@ footer .form-group {
     }
 }
 
-.review-modal {
-    z-index: 99999999999999999;
-    padding: 0 !important;
-}
 
 .review-modal .modal-dialog {
     width: 100%;
     margin: 0;
+
+    @include lg-screen {
+        max-width: 100%;
+    }
 }
 
 .review-modal .modal-content {
     // height: 100%;
-    padding: 64px 24px;
+    padding: 64px 0 24px;
+    border-radius: 0;
+    @include lg-screen {
+        padding: 112px 0 224px;
+    }
 
 }
 
@@ -1696,5 +1747,241 @@ footer .form-group {
     @include fontStyle(40, 56);
     text-align: center;
     @extend %futurapt-light;
+    margin-bottom: 40px;
+    
+    @include lg-screen {
+        @include fontStyle(48, 64);
+        margin-bottom: 72px;
+    }
 
+}
+
+.review-modal .modal-header .close, .welcome-modal .modal-header .close {
+    top: 9px;
+    right: 23px;
+
+    @include lg-screen {
+        top: 29px;
+        right: 51px;
+    }
+}
+
+.review-modal .review-product-name {
+    text-align: center;
+    @include fontStyle(28, 48);
+    @extend %futurapt-bold;
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        @include fontStyle(32, 48);
+        margin-bottom: 8px;
+        text-align: left;
+    }
+}
+.review-modal .modal-body, .welcome-modal .modal-body {
+    padding: 0;
+}
+
+.review-modal .review-footnote {
+    margin: 32px 0 24px;
+    @include fontStyle(14, 16);
+    color: #7c858a;
+
+    @include lg-screen {
+        margin: 0 0 32px;
+    }
+}
+
+.review-modal .textarea-control {
+    height: 120px;
+}
+
+.review-modal .textarea-group {
+    padding-bottom: 8px;
+}
+
+.review-modal .modal-footer > * {
+    margin: 0;
+}
+
+.review-modal .modal-footer {
+    flex-direction: column;
+}
+
+.review-modal .captcha {
+    border-radius: 4px;
+    background: #d6d6d6;
+    width: 100%;
+    padding: 32px 0;
+    color: #fff;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    text-align: center;
+    border: 0;
+    margin-top: 8px;
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        margin-bottom: 32px;
+    }
+}
+
+.review-modal .button-link {
+    width: 100%;
+    padding: 16px 0;
+
+    @include lg-screen {
+        padding: 24px 0;
+    }
+}
+
+.review-modal .login-button {
+    background: #132466;
+    color: #fff;
+    margin: 40px 0 32px;
+    &:hover {
+        background: #fff;
+        color: #132466;
+    }
+}
+
+.review-modal .modal-header .close::before, .review-modal .modal-header .close::after {
+    @include lg-screen {
+        height: 32px;
+    }
+}
+
+.review-modal .error-wrapper {
+    border: 1px solid #ff3737;
+    border-radius: 6px;
+    background: rgba(255, 55, 55, 0.1);
+    color: #ff3737;
+    @include fontStyle(16, 24);
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        padding: 20px 0;
+        margin-top: -24px;
+        margin-bottom: 72px;
+    }
+}
+
+.error-message {
+    max-width: 250px;
+    text-align: center;
+
+    @include lg-screen {
+        max-width: 100%;
+    }
+}
+
+.review-modal .thankyou-note {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    margin: -8px 0 16px;
+    text-align: center;
+
+    @include lg-screen {
+        @include fontStyle(40, 56);
+        margin: 40px 0 24px;
+        text-align: left;
+    }
+}
+
+.review-modal .thankyou-footnote {
+    @include fontStyle(18, 32);
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include lg-screen {
+        text-align: left;
+        margin-bottom: 0;
+    }
+}
+
+.welcome-modal {
+    text-align: center;
+}
+
+
+.welcome-modal .modal-header {
+    padding: 0;
+    border: 0;
+}
+
+.welcome-modal .modal-content {
+    padding: 72px 0 16px;
+
+    @include lg-screen {
+        padding: 72px 0 80px;
+    }
+}
+
+.welcome-modal .welcome-footnote {
+    @include fontStyle(16, 24);
+    @extend %futurapt-bold;
+    margin-bottom: 8px;
+
+    @include lg-screen {
+        margin-bottom: 16px;
+    }
+}
+
+.welcome-modal .welcome-note {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        @include fontStyle(48, 64);
+        margin-bottom: 24px;
+    }
+}
+
+.welcome-modal .welcome-product-name {
+    @extend %futurapt-bold;
+    @include fontStyle(18, 32);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+
+    div {
+        max-width: 294px;
+    }
+
+    @include lg-screen {
+
+        @include fontStyle(32, 48);
+        margin-bottom: 56px;
+        
+        div {
+            max-width: 100%;
+        }
+    }
+}
+
+.welcome-modal .button-link {
+    width: 100%;
+    padding: 24px 0;
+
+}
+
+.welcome-modal .button-section {
+    padding: 24px 0 0;
+
+    @include lg-screen {
+        padding: 56px 77px 0 79px;
+    }
+}
+
+.welcome-modal .modal-dialog {
+    margin: 57px 25px 73px 24px;
+
+    @include lg-screen {
+        margin: 186px auto auto;
+    }
 }
