@@ -1,5 +1,5 @@
 import React from 'react'
-import UserAccount from '../../components/my-account'
+import UserAccount from '../../components/user-account'
 import OrderNoHistory from '../../components/order-no-history'
 import OrderHistory from '../../components/order-history'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'

@@ -2,11 +2,11 @@ import React from 'react';
 import { Router } from "@reach/router";
 import Layout from "../../components/layout";
 import PrivateRoute from '../../components/privateRoute';
-import UserAccount from '../../components/my-account';
+import UserAccount from '../../components/user-account';
 import Login from '../../components/login';
 import ShowAccount from '../../components/show-account';
-import Orders from './orders';
-import AddressBook from './address-book';
+import Orders from '../../components/account/orders';
+import AddressBook from '../../components/account/address-book';
 import OrderDetails from '../../components/order-details';
 
 
