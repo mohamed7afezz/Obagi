@@ -1985,3 +1985,22 @@ footer .form-group {
         margin: 186px auto auto;
     }
 }
+
+.login .instruction {
+    display: flex;
+    justify-content: center;
+    @include fontStyle(16, 24);
+    margin-bottom: 16px;
+
+    div {
+        max-width: 260px;
+        text-align: center;
+    }
+
+    @include lg-screen {
+        div {
+            max-width: 100%;
+            text-align: left;
+        }
+    }
+}

@@ -20,6 +20,7 @@ import ShowAccount from "../components/show-account"
 import MyAccount from "../components/user-account"
 import OrderDetails from '../components/order-details'
 import AddressBox from "../components/address-box"
+import SignIn from "../components/sign-in"
 
 const products = () => (
  
@@ -39,11 +40,12 @@ const products = () => (
 
       {/* <ProductLine /> */}
       {/* <SearchResults /> */}
-      <Reviews /> 
+      {/* <Reviews />  */}
       {/* <MyAccount /> */}
       {/* <OrderDetails /> */}
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
+      <SignIn />
         </Layout>
         
 )

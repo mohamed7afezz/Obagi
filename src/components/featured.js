@@ -85,7 +85,7 @@ productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node
               <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} >PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>)</Link></div>
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
               <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
-                  return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
+                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
               <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div>
             </div>
@@ -105,7 +105,7 @@ productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node
                 <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                 <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
-                  return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
+                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
                 <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
               </div>
@@ -147,7 +147,7 @@ productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node
                   <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                   <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
-                  return <span className={featuredStyles.category}><Link to="#"> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
+                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div>
                   <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
                 </div>
@@ -180,6 +180,9 @@ export const fragment = graphql`
           
           relationships {
             field_issues_categories {
+              path {
+                alias
+              }
               ... on taxonomy_term__clinical_skin_concern {
                 id
                 name

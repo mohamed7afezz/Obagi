@@ -1,0 +1,13 @@
+import React from "react"
+import { Link } from "gatsby"
+
+import Layout from "../components/layout"
+import LoginMenu from "../components/login-menu"
+
+const Registration = () => (
+  <Layout>
+      <LoginMenu />
+  </Layout>
+)
+
+export default Registration
