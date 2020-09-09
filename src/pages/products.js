@@ -20,7 +20,7 @@ import ShowAccount from "../components/show-account"
 import MyAccount from "../components/user-account"
 import OrderDetails from '../components/order-details'
 import AddressBox from "../components/address-box"
-import SignIn from "../components/sign-in"
+import Register from "../components/register"
 
 const products = () => (
  
@@ -45,7 +45,7 @@ const products = () => (
       {/* <OrderDetails /> */}
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
-      <SignIn />
+      <Register />
         </Layout>
         
 )

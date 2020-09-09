@@ -1556,7 +1556,7 @@ footer .form-group {
     color: #7c858a;
 }
 
-.address-modal .form-group, .review-modal .form-group {
+.address-modal .form-group, .review-modal .form-group, .login .form-group {
     border: 1px solid #bebebe;
     border-radius: 4px;
     padding: 16px 11px 12px 16px;
@@ -1574,7 +1574,7 @@ footer .form-group {
     }
 }
 
-.review-modal .form-group {
+.review-modal .form-group, .login .form-group {
     border-color: #d6d6d6;
     @include lg-screen {
         width: 100%;
@@ -1583,7 +1583,7 @@ footer .form-group {
     }
 }
 
-.address-modal .form-label, .review-modal .form-label {
+.address-modal .form-label, .review-modal .form-label, .login label {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
@@ -1592,7 +1592,7 @@ footer .form-group {
     display: block;
 }
 
-.address-modal .form-control, .review-modal .form-control {
+.address-modal .form-control, .review-modal .form-control, .login .form-control {
     border: 0;
     padding: 0;
     @include fontStyle(18, 32);
@@ -1600,7 +1600,7 @@ footer .form-group {
     border: 0;
     height: auto;
     border-radius: 0;
-
+    background: transparent;
     &:focus {
         box-shadow: unset;
         border-color: unset;
@@ -2003,4 +2003,186 @@ footer .form-group {
             text-align: left;
         }
     }
+}
+
+.login .check-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-top: 8px;
+}
+.login .form-check-label {
+    margin-bottom: 0;
+    @include fontStyle(14, 16);
+    @extend %futurapt-book;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 5px;
+}
+
+.login .form-check-input {
+    margin-top: 2px;
+    margin-left: -19px;
+}
+
+.login .forgot-pw {
+    @include fontStyle(14, 16);
+    color: #132466;
+    text-decoration: underline;
+
+}
+
+.login .submit-input {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+    background: #d6d6d6;
+    padding: 16px 0;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        padding: 24px 109px 24px 110px;
+        width: unset;
+        display: inline-block;
+    }
+}
+
+.login .benefits-wrapper, .register .benefits-wrapper {
+    border: 1px solid #d6d6d6;
+    padding: 16px 24px 24px;
+    border-radius: 6px;
+
+    @include lg-screen {
+        padding: 24px;
+    }
+}
+
+.login .benefits-title, .register .benefits-title {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+    margin-bottom: 4px;
+
+    @include lg-screen {
+        @include fontStyle(16, 24);
+    }
+}
+
+.register .benefits-title {
+    @include fontStyle(16, 24);
+}
+
+.login .benefits-text, .register .benefits-text {
+    @include fontStyle(16, 24);
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        margin-bottom: 24px;
+
+    }
+}
+
+.register .benefits-text {
+    margin-bottom: 24px;
+
+}
+
+.login .button-link {
+    padding: 24px 0;
+
+    @include lg-screen {
+        width: 100%;
+    }
+}
+
+.login .desk-signin {
+    @extend %futurapt-bold;
+    @include fontStyle(24, 40);
+    margin-bottom: 8px;
+}
+
+.login .desk-instruction {
+    @include fontStyle(16, 24);
+    margin-bottom: 24px;
+}
+
+.login .form-group {
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        &:first-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.login .benefits-subwrapper, .register .benefits-subwrapper {
+    display: flex;
+    align-items: baseline;
+
+    &:last-child {
+        .title-text {
+            border: 0;
+            margin-bottom: 0;
+        }
+    }
+
+}
+.register .benefits-subwrapper {
+    &:last-child {
+        .benefits-text {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.login .benefit-number, .register .benefit-number {
+    @include fontStyle(14, 16);
+    @extend %futurapt-bold;
+    text-align: center;
+    padding: 8px 11.5px;
+    border: 1px solid #d6d6d6;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.login .title-text, .register .title-text {
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 19px;
+}
+.register .title-text {
+    margin-bottom: 27px;
+}
+
+.register .benefits-wrapper {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.register .question-header {
+    display: block;
+    width: 100%;
+    color: #fff;
+    background: #132466;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 0;
+    padding: 16px 25.5px;
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+    text-align: left;
+}
+
+.register .question-header.collapsed {
+    border-radius: 6px;
 }

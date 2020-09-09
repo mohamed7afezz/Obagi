@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import { navigate, Link } from "gatsby"
 // import { handleLogin, isLoggedIn } from "../services/auth"
 import UserContext from "../providers/user-provider"
+import LoginMenu from '../components/login-menu'
 
 const Login = () => {
 
@@ -31,51 +32,99 @@ const Login = () => {
   }
 
   return (
-    <div className="row login">
-      <div className="col-12">
-        <div className="instruction">
-          <div>Enter your email address and password below to sign in.</div>
-        </div>
-        <form
-          method="post"
-          onSubmit={event => {
-            handleSubmit(event)
-            if (typeof window !== 'undefined') {
-              navigate(`/my-account/signin`)
-            }
-          }}
-        >
+    <>
+      <div className="container-fluid login">
 
-          <div class="form-group">
-            <label for="mail">Email Address</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="" onChange={handleUpdate} />
-          </div>
+        <LoginMenu />
+        <div className="row">
+          <div className="col-12 col-lg-3 offset-lg-3">
 
-
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" name="password" onChange={handleUpdate} />
-          </div>
-
-          <div className="check-wrapper">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-              <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+            <div className="instruction d-lg-none">
+              <div>Enter your email address and password below to sign in.</div>
             </div>
 
-            <Link to="#" className="forgot-pw">Forgot Password</Link>
+
+            <div className="d-none d-lg-block">
+              <div className="desk-signin">Sign In</div>
+              <div className="desk-instruction">Enter your email address and password below to sign in.</div>
+            </div>
+
+            <form
+              method="post"
+              onSubmit={event => {
+                handleSubmit(event)
+                if (typeof window !== 'undefined') {
+                  navigate(`/my-account/signin`)
+                }
+              }}
+            >
+
+              <div class="form-group">
+                <label for="mail">Email Address</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="" onChange={handleUpdate} />
+              </div>
+
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" onChange={handleUpdate} />
+              </div>
+
+              <div className="check-wrapper">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                  <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                </div>
+
+                <Link to="#" className="forgot-pw">Forgot Password</Link>
+              </div>
+
+              <input className="submit-input" type="submit" value="Sign In" />
+            </form>
           </div>
 
-          <input className="submit-input" type="submit" value="Sign In" />
-        </form>
-      </div>
+          <div className="col-12 col-lg-3">
+            <div className="benefits-wrapper">
 
-      <div className="col-12">
-          <div>
+              <div className="d-lg-none">
+                <div className="benefits-title">Don’t have an account?</div>
+                <div className="benefits-text">Create one to enjoy complimentary shipping, faster checkout, and Exlusive Access to new product announcements and insights on the latest formulas and innovations.</div>
+              </div>
 
+
+              <div className="d-none d-lg-block">
+
+                <div className="benefits-subwrapper">
+                  <div className="benefit-number">1</div>
+                  <div className="title-text">
+                    <div className="benefits-title">Complimentary Shipping</div>
+                    <div className="benefits-text">Registered members receive complimentary shipping on orders of $100 or more.</div>
+                  </div>
+                </div>
+
+                <div className="benefits-subwrapper">
+                  <div className="benefit-number">2</div>
+                  <div className="title-text">
+                    <div className="benefits-title">Fast Checkout</div>
+                    <div className="benefits-text">Safely save your shipping and payment information in your account.</div>
+                  </div>
+                </div>
+
+                <div className="benefits-subwrapper">
+                  <div className="benefit-number">3</div>
+                  <div className="title-text">
+                    <div className="benefits-title">Exclusive Access</div>
+                    <div className="benefits-text">Registered members receive first access to new product announcements and insights on the latest formulas and innovations.</div>
+                  </div>
+                </div>
+
+              </div>
+              <Link to="#" className="button-link">Register Now</Link>
+            </div>
           </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 
 }

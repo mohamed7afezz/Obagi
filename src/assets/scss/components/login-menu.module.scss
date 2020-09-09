@@ -4,8 +4,8 @@
 .header-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 24px;
-    margin-bottom: 28px;
+    padding-top: 24px;
+    padding-bottom: 28px;
 }
 
 .header {
@@ -14,6 +14,11 @@
     color: #132466;
     &:first-child {
         margin-right: 64px;
+    }
+
+    &:hover {
+        color: #132466;
+        text-decoration: none;
     }
 }
 
@@ -34,4 +39,13 @@
             text-align: left;
         }
     }
+}
+
+.desk-header {
+    @extend %futurapt-light;
+    @include fontStyle(52, 64);
+    text-align: center;
+    padding: 56px 0 39.5px;
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 39.5px;
 }

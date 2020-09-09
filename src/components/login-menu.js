@@ -7,17 +7,18 @@ const LoginMenu = ({ node }) => {
     return (
 
         <>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12">
-                        <div className={loginMenu.headerWrapper}>
-                            <Link to="#" className={loginMenu.header}>Sign In</Link>
-                            <Link to="#" className={loginMenu.header}>Register</Link>
-                        </div>
+            <div className="row">
+                <div className="col-12 col-lg-10 offset-lg-1">
+                    <div className={[loginMenu.headerWrapper, "d-lg-none"].join(" ")}>
+                        <Link to="#" className={loginMenu.header}>Sign In</Link>
+                        <Link to="#" className={loginMenu.header}>Register</Link>
+                    </div>
+
+                    <div className={[loginMenu.deskHeader, "d-none d-lg-block"].join(" ")}>
+                        My Account
                     </div>
                 </div>
             </div>
-
 
         </>
     )

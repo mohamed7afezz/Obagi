@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import Layout from "../../components/layout";
 import PrivateRoute from '../../components/privateRoute';
 import UserAccount from '../../components/user-account';
-import CustomerLogin from '../../components/customer-login';
+import Login from '../../components/login';
 import ShowAccount from '../../components/show-account';
 import Orders from '../../components/account/orders';
 import AddressBook from '../../components/account/address-book';
@@ -19,7 +19,7 @@ export default function MyAccount() {
                 <PrivateRoute path="/my-account/orders" component={Orders} />
                 <PrivateRoute path="/my-account/address-book" component={AddressBook} />
                 <PrivateRoute path="/my-account/orders/order-details" component={OrderDetails} />
-                <CustomerLogin path="/my-account/signin"/>
+                <Login path="/my-account/signin"/>
             </Router>
         </Layout>
     )
