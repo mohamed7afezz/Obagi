@@ -245,7 +245,18 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight} oz </li>
             </ul>
           </div>
-  
+          <div
+              className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
+                " "
+              )}
+            >
+           <img src={modal} />  
+              <p>
+               Earn ${feild_preimer} Premier Points 
+              </p>
+              
+            </div>
+          
           <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
             <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
               <select id="quantityBox">
@@ -261,18 +272,7 @@ const ProductHero = ({ data, nodeType }) => {
                 <option>10</option>
               </select>
             </div>
-            <div
-              className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
-                " "
-              )}
-            >
-           <img src={modal} />  
-              <p>
-               Earn ${feild_preimer} Premier Points 
-              </p>
-              
-            </div>
-            <div className={["d-flex",ProductStyles.centeralign,"centeralign"].join(" ")}>
+          <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-8"].join(" ")}>
             <button
               className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
               onClick={() => {

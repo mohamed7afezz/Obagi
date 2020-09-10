@@ -8,7 +8,7 @@ const isBrowser = () => typeof window !== "undefined"
 
 export const UserProvider = ({children}) => {
 
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState(true);
 
     async function getUserData() {
 

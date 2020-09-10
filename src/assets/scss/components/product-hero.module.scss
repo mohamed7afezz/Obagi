@@ -203,9 +203,9 @@ align-items: center;
         flex: 1;
     }
     @include md-screen{
-        display: none;
+       
         order: 0;
-        margin-left: 20px;
+       
         margin-right: 0;
         margin-top: 0;
     }
