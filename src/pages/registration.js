@@ -7,7 +7,7 @@ import Register from "../components/register"
 
 const Registration = () => (
   <Layout>
-      <LoginMenu />
+      <LoginMenu currentPage = "register"/>
       <Register />
   </Layout>
 )

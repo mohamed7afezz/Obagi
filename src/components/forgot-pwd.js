@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import loginMenu from '../assets/scss/components/login-menu.module.scss'
 import Login from './login'
-const ForgotPassword = ({ node }) => {
+const ForgotPwd = ({ node }) => {
 
     return (
 
@@ -37,4 +37,4 @@ const ForgotPassword = ({ node }) => {
         </>
     )
 }
-export default ForgotPassword
+export default ForgotPwd

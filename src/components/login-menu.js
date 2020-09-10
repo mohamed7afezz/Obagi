@@ -10,8 +10,8 @@ const LoginMenu = ({ node, currentPage }) => {
             <div className="row">
                 <div className="col-12 col-lg-10 offset-lg-1">
                     <div className={[loginMenu.headerWrapper, "d-lg-none"].join(" ")}>
-                        <Link to="#" className={loginMenu.header}>Sign In</Link>
-                        <Link to="#" className={loginMenu.header}>Register</Link>
+                        <Link to="/my-account/signin" className={currentPage === "login"? loginMenu.header + " " + loginMenu.underline : loginMenu.header }>Sign In</Link>
+                        <Link to="/registration" className={currentPage === "register"? loginMenu.header + " " + loginMenu.underline : loginMenu.header }>Register</Link>
                     </div>
 
                     {currentPage === "login" ?

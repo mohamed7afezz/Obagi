@@ -20,7 +20,6 @@ const Register = () => {
     return (
         <>
             <div className="container-fluid register">
-                <LoginMenu currentPage = "register"/>
 
                 <div className="row">
                     <div className="col-12 col-lg-3 offset-lg-1">
