@@ -1,0 +1,58 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 24px;
+    padding-bottom: 28px;
+}
+
+.header {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+    color: #132466;
+    &:first-child {
+        margin-right: 64px;
+    }
+
+    &:hover {
+        color: #132466;
+        text-decoration: none;
+    }
+}
+
+.instruction {
+    display: flex;
+    justify-content: center;
+    @include fontStyle(16, 24);
+    margin-bottom: 16px;
+
+    div {
+        max-width: 260px;
+        text-align: center;
+    }
+
+    @include lg-screen {
+        div {
+            max-width: 100%;
+            text-align: left;
+        }
+    }
+}
+
+.desk-header {
+    @extend %futurapt-light;
+    @include fontStyle(52, 64);
+    text-align: center;
+    padding: 56px 0 39.5px;
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 39.5px;
+}
+
+.desk-create-header {
+    @extend %futurapt-light;
+    @include fontStyle(52, 64);
+    padding: 56px 0 62px;
+    text-align: center;
+}

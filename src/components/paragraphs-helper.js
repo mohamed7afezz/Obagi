@@ -32,6 +32,7 @@ import Article from './article';
 import HeadingAndButton from './heading-and-button';
 import FaqHero from './faq-hero';
 import FaqWrapper from './faq-wrapper';
+import Reviews from './reviews';
 
 
 const componentsMap = {
@@ -65,6 +66,7 @@ const componentsMap = {
     paragraph__you_might_also_like : YouMayLike,
     paragraph__faq_hero: FaqHero,
     paragraph__faq_wrapper: FaqWrapper,
+    paragraph__reviews: Reviews,
 }
 
 export const getParagraph = node => {

@@ -464,18 +464,30 @@ export const fragment = graphql`
             ... on taxonomy_term__clinical_categories {
               id
               name
+              path {
+                alias
+              }
             }
             ... on taxonomy_term__clinical_skin_concern {
               id
               name
+              path {
+                alias
+              }
             }
             ... on taxonomy_term__medical_categories {
               id
               name
+              path {
+                alias
+              }
             }
             ... on taxonomy_term__medical_skin_concern {
               id
               name
+              path {
+                alias
+              }
             }
           }
         }

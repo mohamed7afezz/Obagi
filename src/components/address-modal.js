@@ -89,7 +89,7 @@ const AddressModal = ({ node }) => {
 
 
                     <div className="modal-footer">
-                        <button type="button" className="modal-button">Update</button>
+                        <input className="modal-button" type="submit" value="Update" />
                     </div>
                 </div>
             </div>
