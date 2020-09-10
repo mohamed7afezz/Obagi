@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import loginMenu from '../assets/scss/components/login-menu.module.scss'
 import Login from './login'
-const LoginMenu = ({ node }) => {
+const LoginMenu = ({ node, currentPage }) => {
 
     return (
 
@@ -14,13 +14,21 @@ const LoginMenu = ({ node }) => {
                         <Link to="#" className={loginMenu.header}>Register</Link>
                     </div>
 
-                    <div className={[loginMenu.deskHeader, "d-none d-lg-block"].join(" ")}>
-                        My Account
+                    {currentPage === "login" ?
+                        <div className={[loginMenu.deskHeader, "d-none d-lg-block"].join(" ")}>
+                            My Account
                     </div>
+                        : ""}
+
+                    {currentPage === "register" ?
+                        <div className={[loginMenu.deskCreateHeader, "d-none d-lg-block"].join(" ")}>
+                            Create an Account
+                        </div>
+                    : ""}
                 </div>
             </div>
 
         </>
     )
 }
-export default LoginMenu;
+export default LoginMenu

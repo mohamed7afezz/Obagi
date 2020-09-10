@@ -64,7 +64,7 @@ const ReviewModal = ({ node }) => {
                                         <div className="review-product-name d-none d-lg-block">Vitamin C + Arbutin Brightening Serum</div>
 
 
-                                        {/* <form>
+                                        <form>
                                             <div className="review-footnote">*Required fields</div>
                                             <div class="form-group select-group">
                                                 <label for="reviewFormSelect" className="form-label">*Rating</label>
@@ -104,26 +104,26 @@ const ReviewModal = ({ node }) => {
                                             </div>
 
                                             <button type="button" className="captcha">CAPTCHA FPO</button>
-                                            <button type="button" data-dismiss="modal" className="button-link">Submit Review</button>
-                                        </form> */}
+                                            <input className="button-link" type="submit" value="Submit Review" />
+                                        </form>
 
 
 
 
                                         {/* After the customer reviews the item  */}
-                                        <div>
+                                        {/* <div>
                                             <div className="thankyou-note d-none d-lg-block">Thank you for reviewing your recent purchase!</div>
                                             <div className="thankyou-footnote d-none d-lg-block">We will send you an email when your review is live.</div>
                                             <button type="button" className="button-link login-button">Continue Shopping</button>
                                             <button type="button" className="button-link">Explore More Serums</button>
-                                        </div>
+                                        </div> */}
 
 
                                         {/* If the customer hasn't bought the item:  */}
-                                        <div className="d-none">
+                                        {/* <div className="d-none">
                                             <button type="button" className="button-link login-button">Log In to Review this product</button>
                                             <button type="button" className="button-link">Continue Shopping</button>
-                                        </div>
+                                        </div> */}
 
                                     </div>
 

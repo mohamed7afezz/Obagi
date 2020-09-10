@@ -21,6 +21,10 @@ import MyAccount from "../components/user-account"
 import OrderDetails from '../components/order-details'
 import AddressBox from "../components/address-box"
 import Register from "../components/register"
+import AddressModal from "../components/address-modal"
+import AddressBook from "../components/account/address-book"
+import ReviewModal from "../components/review-modal"
+import ForgotPassword from "../components/forgot-password"
 
 const products = () => (
  
@@ -45,7 +49,10 @@ const products = () => (
       {/* <OrderDetails /> */}
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
+      {/* <ReviewModal />
+      <Reviews /> */}
       <Register />
+      {/* <ForgotPassword /> */}
         </Layout>
         
 )

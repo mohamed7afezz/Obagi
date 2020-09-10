@@ -35,7 +35,7 @@ const Login = () => {
     <>
       <div className="container-fluid login">
 
-        <LoginMenu />
+        <LoginMenu currentPage="login"/>
         <div className="row">
           <div className="col-12 col-lg-3 offset-lg-3">
 
@@ -67,13 +67,17 @@ const Login = () => {
 
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password" onChange={handleUpdate} />
+                <input type="password" class="form-control" id="password" placeholder="" name="password" onChange={handleUpdate} />
               </div>
 
               <div className="check-wrapper">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                  <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+
+                  <label class="form-check-label terms" for="registerCheck">
+                    Remember Me
+                    <input type="checkbox" class="form-check-input" id="registerCheck" />
+                    <span class="checkmark"></span>
+                  </label>
                 </div>
 
                 <Link to="#" className="forgot-pw">Forgot Password</Link>
@@ -119,7 +123,7 @@ const Login = () => {
                 </div>
 
               </div>
-              <Link to="#" className="button-link">Register Now</Link>
+              <Link to="/registration" className="button-link">Register Now</Link>
             </div>
           </div>
         </div>

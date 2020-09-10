@@ -275,8 +275,10 @@ p {
 
 }
 
-footer .form-group {
+.footer .form-group {
     margin-bottom: 0;
+    margin-top: 0;
+
 }
 
 .nav-mobile {
@@ -1551,12 +1553,16 @@ footer .form-group {
     }
 }
 
-.address-modal .modal-title-footnote {
+.address-modal .modal-title-footnote, .register .required-field {
     @include fontStyle(16, 24);
     color: #7c858a;
 }
 
-.address-modal .form-group, .review-modal .form-group, .login .form-group {
+.address-modal .form-group,
+.review-modal .form-group,
+.login .form-group,
+.register .form-group,
+.forgot-pw .form-group {
     border: 1px solid #bebebe;
     border-radius: 4px;
     padding: 16px 11px 12px 16px;
@@ -1574,16 +1580,26 @@ footer .form-group {
     }
 }
 
-.review-modal .form-group, .login .form-group {
+.review-modal .form-group, 
+.login .form-group, 
+.register .form-group,
+.forgot-pw .form-group  {
     border-color: #d6d6d6;
     @include lg-screen {
         width: 100%;
-        margin-right: 0;
         margin-bottom: 24px;
+
+        &:first-child {
+            margin-right: 0;
+        }
     }
 }
 
-.address-modal .form-label, .review-modal .form-label, .login label {
+.address-modal .form-label, 
+.review-modal .form-label, 
+.login label, 
+.register label,
+.forgot-pw label {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
@@ -1592,7 +1608,11 @@ footer .form-group {
     display: block;
 }
 
-.address-modal .form-control, .review-modal .form-control, .login .form-control {
+.address-modal .form-control, 
+.review-modal .form-control, 
+.login .form-control, 
+.register .form-control,
+.forgot-pw .form-control {
     border: 0;
     padding: 0;
     @include fontStyle(18, 32);
@@ -1630,7 +1650,8 @@ footer .form-group {
     text-transform: none;
 }
 
-.address-modal .select-group .select-wrapper, .review-modal .select-group .select-wrapper {
+.address-modal .select-group .select-wrapper, 
+.review-modal .select-group .select-wrapper {
     
     border: 1px solid #d6d6d6;
     border-radius: 4px;
@@ -1642,16 +1663,21 @@ footer .form-group {
     }
 }
 
-.address-modal .select-group .select-selected, .address-modal .select-items div, .review-modal .select-group .select-selected, .review-modal .select-items div {
+.address-modal .select-group .select-selected, 
+.address-modal .select-items div, 
+.review-modal .select-group .select-selected, 
+.review-modal .select-items div {
     padding: 20px 16px;
     @include fontStyle(14, 16);
+    @extend %futurapt-book;
     color: #677177;
     border: 0;
     border-radius: 4px;
 
 }
 
-.address-modal .select-items, .review-modal .select-items{
+.address-modal .select-items, 
+.review-modal .select-items{
     border: 1px solid #bebebe;
     border-top: 0;
     padding: 8px 25px 4px 16px;
@@ -1664,7 +1690,9 @@ footer .form-group {
 
 }
 
-.address-modal .select-items div, .review-modal .select-items div {
+.address-modal .select-items div, 
+.review-modal .select-items div, 
+.register .select-items div {
     padding: 0;
     margin: 0 0 16px;
 
@@ -1674,11 +1702,18 @@ footer .form-group {
 }
 
 
-.address-modal .select-group .select-wrapper .form-control, .review-modal .select-group .select-wrapper .form-control{
+.address-modal .select-group .select-wrapper .form-control, 
+.review-modal .select-group .select-wrapper .form-control, 
+.register .select-group .select-wrapper .form-control{
     
     display: none;
 }
 
+.address-modal .same-as-selected, 
+.review-modal .same-as-selected, 
+.register .same-as-selected {
+    background: #fff;
+}
 
 .address-modal .modal-footer {
     padding: 0;
@@ -1756,7 +1791,8 @@ footer .form-group {
 
 }
 
-.review-modal .modal-header .close, .welcome-modal .modal-header .close {
+.review-modal .modal-header .close, 
+.welcome-modal .modal-header .close {
     top: 9px;
     right: 23px;
 
@@ -1778,7 +1814,8 @@ footer .form-group {
         text-align: left;
     }
 }
-.review-modal .modal-body, .welcome-modal .modal-body {
+.review-modal .modal-body, 
+.welcome-modal .modal-body {
     padding: 0;
 }
 
@@ -1846,7 +1883,8 @@ footer .form-group {
     }
 }
 
-.review-modal .modal-header .close::before, .review-modal .modal-header .close::after {
+.review-modal .modal-header .close::before, 
+.review-modal .modal-header .close::after {
     @include lg-screen {
         height: 32px;
     }
@@ -2012,18 +2050,70 @@ footer .form-group {
     margin-bottom: 24px;
     margin-top: 8px;
 }
-.login .form-check-label {
+
+.login .form-check, .register .form-check {
+    padding-left: 0;
+}
+
+.login .form-check-label, .register .form-check-label {
     margin-bottom: 0;
     @include fontStyle(14, 16);
     @extend %futurapt-book;
     text-transform: none;
     letter-spacing: 0;
-    margin-left: 5px;
+
+    a {
+        text-decoration: underline;
+        color: #132466;
+        &:hover {
+            color: #132466;
+        }
+    }
 }
 
-.login .form-check-input {
+.login .form-check-input, 
+.register .form-check-input {
     margin-top: 2px;
     margin-left: -19px;
+
+}
+
+.login .checkmark, 
+.register .checkmark {
+    height: 16px;
+    width: 16px;
+    border-radius: 3px;
+}
+
+.login .checkmark {
+    background: #fff;
+    border: 1px solid #132466;
+}
+
+.login .terms, 
+.register .terms {
+    margin-top: 0;
+}
+
+.register .terms .checkmark:after {
+    content: none;
+}
+
+.login .terms .checkmark:after {
+    left: 4px;
+    top: 0;
+    width: 6px;
+    height: 10px;
+    border: solid #132466;
+    border-width: 0 1px 1px 0;
+}
+
+.login .terms input:checked ~ .checkmark {
+    background-color: #ffffff;
+}
+
+.login .terms:hover input ~ .checkmark {
+    background-color: #ffffff;
 }
 
 .login .forgot-pw {
@@ -2033,7 +2123,9 @@ footer .form-group {
 
 }
 
-.login .submit-input {
+.login .submit-input, 
+.register .submit-input,
+.forgot-pw .submit-input {
     width: 100%;
     display: block;
     border-radius: 6px;
@@ -2055,7 +2147,8 @@ footer .form-group {
     }
 }
 
-.login .benefits-wrapper, .register .benefits-wrapper {
+.login .benefits-wrapper, 
+.register .benefits-wrapper {
     border: 1px solid #d6d6d6;
     padding: 16px 24px 24px;
     border-radius: 6px;
@@ -2065,7 +2158,8 @@ footer .form-group {
     }
 }
 
-.login .benefits-title, .register .benefits-title {
+.login .benefits-title, 
+.register .benefits-title {
     @include fontStyle(18, 32);
     @extend %futurapt-bold;
     margin-bottom: 4px;
@@ -2079,7 +2173,8 @@ footer .form-group {
     @include fontStyle(16, 24);
 }
 
-.login .benefits-text, .register .benefits-text {
+.login .benefits-text, 
+.register .benefits-text {
     @include fontStyle(16, 24);
     margin-bottom: 16px;
 
@@ -2113,17 +2208,15 @@ footer .form-group {
     margin-bottom: 24px;
 }
 
-.login .form-group {
+.login .form-group, 
+.register .form-group {
     margin-bottom: 16px;
-
-    @include lg-screen {
-        &:first-child {
-            margin-right: 0;
-        }
-    }
+    display: inline-block;
+    width: 100%;
 }
 
-.login .benefits-subwrapper, .register .benefits-subwrapper {
+.login .benefits-subwrapper, 
+.register .benefits-subwrapper {
     display: flex;
     align-items: baseline;
 
@@ -2143,7 +2236,8 @@ footer .form-group {
     }
 }
 
-.login .benefit-number, .register .benefit-number {
+.login .benefit-number, 
+.register .benefit-number {
     @include fontStyle(14, 16);
     @extend %futurapt-bold;
     text-align: center;
@@ -2153,18 +2247,28 @@ footer .form-group {
     margin-right: 16px;
 }
 
-.login .title-text, .register .title-text {
+.login .title-text, 
+.register .title-text {
     border-bottom: 1px solid #d6d6d6;
     margin-bottom: 19px;
+    width: 100%
 }
 .register .title-text {
     margin-bottom: 27px;
+
+    @include lg-screen {
+        margin-bottom: 23px;
+    }
 }
 
 .register .benefits-wrapper {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+
+    @include lg-screen {
+        padding-right: 38px;
+    }
 }
 
 .register .question-header {
@@ -2181,8 +2285,172 @@ footer .form-group {
     @include fontStyle(18, 32);
     @extend %futurapt-bold;
     text-align: left;
+    position: relative;
+
+    @include lg-screen {
+        padding: 16px 24.5px;
+    }
+}
+
+.register .question-header.collapsed::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    height: 10px;
+    width: 1px;
+    top: 27.9px;
+    right: 36.508px;
+    z-index: 9;
+}
+.register .question-header.collapsed::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    width: 10px;
+    height: 1px;
+    right: 32px;
+    top: 31px;
+    z-index: 9;
 }
 
 .register .question-header.collapsed {
     border-radius: 6px;
+}
+
+.register .required-field {
+    padding: 16px 0;
+    text-align: right;
+
+    @include lg-screen {
+        padding-top: 0;
+        margin-top: -40px;
+    }
+}
+
+.register .select-group .select-wrapper {
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+
+.register .select-group .select-selected, 
+.register .select-items div  {
+    border: 0;
+    padding: 0;
+    @extend %futurapt-book;
+    color: #7c858a;
+    @include fontStyle(18, 32);
+}
+
+.register .select-items {
+    background: #fff;
+    padding-top: 16px;
+
+}
+
+.register .day-mon-year {
+    display: flex;
+    flex-direction: column;
+
+    @include lg-screen {
+        flex-direction: row;
+    }
+}
+
+.register .day-mon-year .form-group {
+    @include lg-screen {
+        width: 43.4%;
+    }
+}
+
+.register .day-month {
+    display: flex;
+
+    @include lg-screen {
+        width: 100%;
+        margin-right: 16px;
+    }
+}
+
+.register .day-month .form-group {
+    width: 50%;
+
+    &:first-child {
+        margin-right: 16px;
+    }
+}
+
+.register .group-title {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+    padding: 8px 0 16px;
+}
+
+.register .form-check-label {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.register .submit-input {
+    margin-bottom: 0;
+
+    @include lg-screen {
+        padding: 24px 108px 24px 109px;
+    }
+}
+
+.register .submit-wrapper {
+    margin: 0 -15px;
+    padding: 16px 15px;
+    box-shadow: 0 -1px 4px 0 rgba(54, 75, 95, 0.15);
+
+    @include lg-screen {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 176px;
+    }
+}
+
+.forgot-pw .forgot-title {
+    @extend %futurapt-light;
+    @include fontStyle(28, 40);
+    text-align: center;
+    padding: 24px 0 8px;
+
+    @include lg-screen {
+        padding: 56px 0 24px;
+        @include fontStyle(52, 64);
+
+    }
+}
+
+.forgot-pw .forgot-text {
+    @include fontStyle(16, 24);
+    text-align: center;
+    padding-bottom: 24px;
+
+    span {
+        white-space: nowrap;
+    }
+
+    @include lg-screen {
+        padding-bottom: 32px;
+    }
+}
+
+.forgot-pw .submit-input {
+    margin-bottom: 0;
+
+    @include lg-screen {
+        padding: 24px 78px 24px 79px;
+        display: flex;
+        margin: 0 auto 496px;
+    }
+}
+
+.forgot-pw .form-group {
+    margin-bottom: 24px;
 }

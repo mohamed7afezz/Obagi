@@ -49,3 +49,10 @@
     border-bottom: 1px solid #d6d6d6;
     margin-bottom: 39.5px;
 }
+
+.desk-create-header {
+    @extend %futurapt-light;
+    @include fontStyle(52, 64);
+    padding: 56px 0 62px;
+    text-align: center;
+}
