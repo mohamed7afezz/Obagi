@@ -24,7 +24,7 @@ import Register from "../components/register"
 import AddressModal from "../components/address-modal"
 import AddressBook from "../components/account/address-book"
 import ReviewModal from "../components/review-modal"
-import ForgotPassword from "../components/forgot-password"
+import ForgotPwd from "../components/forgot-pwd"
 
 const products = () => (
  
@@ -52,7 +52,7 @@ const products = () => (
       {/* <ReviewModal />
       <Reviews /> */}
       <Register />
-      {/* <ForgotPassword /> */}
+      {/* <ForgotPwd /> */}
         </Layout>
         
 )

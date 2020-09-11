@@ -51,7 +51,6 @@ query($slug: String!) {
                 ...paragraphFaqHero
                 ...paragraphFaqWrapper
 
-
             }
         }
         field_meta_tags {

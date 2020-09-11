@@ -12,6 +12,7 @@
     @include fontStyle(18, 32);
     @extend %futurapt-bold;
     color: #132466;
+    position: relative;
     &:first-child {
         margin-right: 64px;
     }
@@ -55,4 +56,15 @@
     @include fontStyle(52, 64);
     padding: 56px 0 62px;
     text-align: center;
+}
+
+.underline::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 4px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #132466;
 }
