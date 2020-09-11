@@ -26,8 +26,24 @@
 top: 5px;
    background-color: #44c4d9;
     }
-.collectionhero {
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), #5b8ca4);
+.clinicalcollectionhero {
+    mix-blend-mode: multiply;
+    background-image: linear-gradient(to top, rgba(91, 140, 164, 0) 42%, rgba(91, 140, 164, 0.18));
+
+    @include lg-screen {
+        mix-blend-mode: multiply;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+    }
+}
+
+.medicalcollectionhero {
+    mix-blend-mode: multiply;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 42%, rgba(81, 87, 162, 0.65));
+
+    @include lg-screen {
+        mix-blend-mode: multiply;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
+    }
 }
 .collectiontitle{
     font-size: 36px;

@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import ShowAccountStyle from "../assets/scss/components/show-account.module.scss"
 import Img from "gatsby-image"
+import UserContext from '../providers/user-provider'
 const ShowAccount = () => {
 
-
+    const {user, handleLogout} = useContext(UserContext);
 
     return (
 
@@ -21,10 +22,11 @@ const ShowAccount = () => {
                         </div>
                     </div>
                     <div className="modal-body links-wrapper">
-                        <Link to="#">Order History</Link>
-                        <Link to="#">Address Book</Link>
+                        <Link to="/my-account/orders">Order History</Link>
+                        <Link to="/my-account/address-book">Address Book</Link>
                         <Link to="#">Account Settings</Link>
                         <Link to="#">Premier Points</Link>
+                        <button type="button" onClick={handleLogout}>Sign Out</button>
                     </div>
                 </div>
             </div>

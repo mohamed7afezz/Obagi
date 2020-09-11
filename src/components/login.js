@@ -33,9 +33,8 @@ const Login = () => {
 
   return (
     <>
+    <LoginMenu currentPage="login"/>
       <div className="container-fluid login">
-
-        <LoginMenu currentPage="login"/>
         <div className="row">
           <div className="col-12 col-lg-3 offset-lg-3">
 

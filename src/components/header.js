@@ -429,7 +429,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                             <button type="button" data-toggle="modal" data-target="#show-account">
                               person icon
                             </button>
-                            <button type="button" onClick={handleLogout}>Logout</button>
+                            {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
                           :
                           <Link to="/my-account/signin">SIGN IN</Link>
