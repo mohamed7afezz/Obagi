@@ -1147,7 +1147,9 @@ height: 545px;
     width: 100%;
     margin-top: 15.5px;
   }
-  
+  .info{
+    display: none;
+  }
   .productHero .slick-prev,
   .productHero .slick-prev:hover,
   .productHero .slick-prev:active,

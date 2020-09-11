@@ -133,7 +133,7 @@ margin-bottom: 10px;
     margin-top: 32px;
 }
 .productHero select {
-    height: 48px;
+    height: 64px;
     border-radius: 6px;
     border-color: #132466;
     -webkit-appearance: none;
@@ -191,8 +191,7 @@ margin-bottom: 10px;
     line-height: 16px;
 
     border-radius: 6px;
-    padding-top: 15px;
-padding-bottom: 15px;
+    padding: 8px;
     border: 2px solid #132466;
     order: 1;
     justify-content: space-between;
@@ -203,7 +202,7 @@ align-items: center;
         flex: 1;
     }
     @include md-screen{
-       
+       margin-bottom: 24px;
         order: 0;
        
         margin-right: 0;
@@ -250,11 +249,12 @@ align-items: center;
     display: none;
 }
 .popcontent{
+    box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
     position: absolute;
     bottom: 80px;
     width: 275px;
-    color: #fff;
-    background-color: #132466;
+    color: #132466;
+    background-color: #fff;
     font-size: 14px;
     padding: 20px;
     border-radius: 5px;
@@ -265,10 +265,10 @@ align-items: center;
         clip-path: polygon(0 0, 0% 100%, 100% 0);
         height: 20px;
         display: block;
-        background-color: #132466;
+    
         bottom: -20px;
        left: 57%;
-        background-color: #132466;
+        background-color: #fff;
         position: absolute;
     }
 }
