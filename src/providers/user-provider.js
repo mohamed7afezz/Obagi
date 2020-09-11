@@ -8,7 +8,7 @@ const isBrowser = () => typeof window !== "undefined"
 
 export const UserProvider = ({children}) => {
 
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState(true);
 
     async function getUserData() {
 
@@ -39,7 +39,7 @@ export const UserProvider = ({children}) => {
         
         const isAuthUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/signin`, {
             method: 'POST',
-            credentials: 'include',
+            credentials: 'same-origin',
             body: JSON.stringify(user),
             mode: 'cors'
         })).json();
