@@ -13,7 +13,8 @@ const ProductCard = ({
   price,
   rate,
   productLink,
-  productId
+  productId,
+  isrx
 }) => {
   const value = useContext(CartContext);
   const addToCart = value && value.addToCart;
@@ -71,11 +72,16 @@ const ProductCard = ({
             <p className={Productcard.price}>
               $ <span className="prod-price">{price}</span>
             </p>
-
-            <button className={Productcard.addtocart} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
+            {isrx == 'RX'?
+            <Link className={Productcard.addtocart} to="/medical/hcpfinder">
+              
+             Find a Physician
+          </Link>
+            :<button className={Productcard.addtocart} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
               
               {addingToCart === productId ? 'Adding to Bag' : "Add to Bag"}
             </button>
+            }
           </div>
         ) : (
           ""

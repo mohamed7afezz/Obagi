@@ -76,7 +76,7 @@ export const productPageQuery = graphql`
                       field_clinical_image {
                         localFile {
                           childImageSharp {
-                            fluid {
+                            fluid (quality: 100){
                               ...GatsbyImageSharpFluid
                             }
                           }
@@ -92,7 +92,7 @@ export const productPageQuery = graphql`
                   field_taxonomy_hero_paraprapgh_i {
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid (quality: 100){
                             ...GatsbyImageSharpFluid
                         }
                       }
@@ -141,7 +141,7 @@ export const productPageQuery = graphql`
                     field_clinical_image {
                       localFile {
                         childImageSharp {
-                          fluid {
+                          fluid (quality: 100){
                             ...GatsbyImageSharpFluid
                           }
                         }
@@ -157,7 +157,7 @@ export const productPageQuery = graphql`
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100){
                           ...GatsbyImageSharpFluid
                       }
                     }
@@ -203,10 +203,13 @@ export const productPageQuery = graphql`
                           }
                         }
                       }
+                      field_medical_rx {
+                        name
+                      }
                       field_medical_image {
                         localFile {
                           childImageSharp {
-                            fluid {
+                            fluid (quality: 100){
                                 ...GatsbyImageSharpFluid
                             }
                           }
@@ -222,7 +225,7 @@ export const productPageQuery = graphql`
                     field_taxonomy_hero_paraprapgh_i {
                       localFile {
                         childImageSharp {
-                          fluid {
+                          fluid (quality: 100){
                               ...GatsbyImageSharpFluid
                           }
                         }
@@ -268,10 +271,13 @@ export const productPageQuery = graphql`
                       }
                     }
                   }
+                  field_medical_rx {
+                    name
+                  }
                   field_medical_image {
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid (quality: 100){
                             ...GatsbyImageSharpFluid
                         }
                       }
@@ -287,7 +293,7 @@ export const productPageQuery = graphql`
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100){
                           ...GatsbyImageSharpFluid
                       }
                     }
@@ -345,6 +351,9 @@ export const productPageQuery = graphql`
                   }
                 }
               }
+              field_medical_rx {
+                name
+              }
               field_medical_image {
                 localFile {
                   childImageSharp {
@@ -392,6 +401,9 @@ export const productPageQuery = graphql`
                             }
                           }
                         }
+                      }
+                      field_medical_rx {
+                        name
                       }
                       field_medical_image {
                         localFile {
@@ -540,11 +552,13 @@ export const productPageQuery = graphql`
                     }
                   }
                 }
-            
+                field_medical_rx {
+                  name
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100){
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -584,7 +598,7 @@ export const productPageQuery = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100){
                         ...GatsbyImageSharpFluid
                       }
                     }

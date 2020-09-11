@@ -1213,3 +1213,6 @@ z-index: 999;
 
   border-left: 1px solid #d6d6d6;
 }
+#accordion a {
+  color: #132466;
+}

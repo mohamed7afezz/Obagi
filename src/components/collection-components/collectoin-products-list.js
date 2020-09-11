@@ -9,7 +9,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
-  
+  console.log('hassan',node)
   if (pageNodeType == "clinicalConcern") {
    
     checkTaxonomy =
@@ -315,6 +315,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                                   .localFile.childImageSharp.fluid : '')
                               : ""
                           }
+                          isrx={item.relationships.field_medical_rx?item.relationships.field_medical_rx.name :""}
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
@@ -431,6 +432,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                               ? (item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')
                               : ""
                           }
+                          isrx={item.relationships.field_medical_rx?item.relationships.field_medical_rx.name :""}
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
@@ -527,6 +529,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                                   ].localFile.childImageSharp.fluid
                                 : ""
                             }
+                            isrx={product.relationships.field_medical_rx?product.relationships.field_medical_rx.name :""}
                             price={product.field_medical_price}
                             rate="0"
                             productId={product.field_medical_id}
@@ -725,6 +728,9 @@ export const fragment = graphql`
                 field_medical_ingredients {
                   name
                 }
+                field_medical_rx {
+                  name
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -766,6 +772,9 @@ export const fragment = graphql`
               field_medical_price
               relationships {
                 field_medical_ingredients {
+                  name
+                }
+                field_medical_rx {
                   name
                 }
                 field_medical_image {
@@ -814,6 +823,9 @@ export const fragment = graphql`
                 field_medical_ingredients {
                   name
                 }
+                field_medical_rx {
+                  name
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -857,6 +869,9 @@ export const fragment = graphql`
               }
               field_medical_price
               relationships {
+                field_medical_rx {
+                  name
+                }
                 field_medical_ingredients {
                   name
                 }
@@ -872,6 +887,7 @@ export const fragment = graphql`
                     }
                   }
                 }
+               
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -914,6 +930,9 @@ export const fragment = graphql`
                       }
                     }
                   }
+                }
+                field_medical_rx {
+                  name
                 }
                 field_medical_image {
                   localFile {
