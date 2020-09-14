@@ -21,11 +21,10 @@ const Register = () => {
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
             CustomSelect();
+            document.querySelectorAll('select[name="date"]').forEach(item => {
+                item.addEventListener('change', handleAttr)
+            });
         }
-    });
-
-    document.querySelectorAll('select[name="date"]').forEach(item => {
-        item.addEventListener('change', handleAttr)
     });
 
     const [isPassMatch, setIsPassMatch] = useState();
@@ -82,6 +81,7 @@ const Register = () => {
 
 
     function handleUpdate(event) {
+        console.log("bahiii", event.target.name)
         setNewUser({
             ...newUser,
             [event.target.name]: event.target.value
@@ -293,12 +293,12 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
                             <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>

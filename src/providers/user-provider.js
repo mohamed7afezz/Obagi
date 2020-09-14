@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 const UserContext = createContext();
 
@@ -67,12 +68,20 @@ export const UserProvider = ({children}) => {
 
     // register
     async function handleRegister(user) {
-        const newUserReq = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
+        const newUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
             mode: "no-cors",
             credentials: 'include',
             body: JSON.stringify([user])
         }));
+        console.log('bahii', newUserRes.status)
+        if(newUserRes.status == 200){
+            await getUserData();
+            navigate("/my-account");
+
+        }else{
+            return newUserRes;
+        }
     }
 
     return (
