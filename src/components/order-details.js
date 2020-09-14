@@ -25,8 +25,8 @@ const OrderDetails = ({ node }) => {
                     <div className="col-12 col-lg-10 offset-lg-1">
                         <div className={orderDetailsStyles.headerWrapper}>
                             <div className={orderDetailsStyles.heading}>Order</div>
-                            <Link to="#" className={orderDetailsStyles.accountLink}>My Account</Link>
-                            <Link to="#" className={["d-none d-lg-block", orderDetailsStyles.orderArrow].join(" ")}></Link>
+                            <Link to="/my-account" className={orderDetailsStyles.accountLink}>My Account</Link>
+                            <Link to="/my-account/orders" className={["d-none d-lg-block", orderDetailsStyles.orderArrow].join(" ")}></Link>
                         </div>
                         <div className={orderDetailsStyles.orderNumber}>#OB1097263894</div>
                     </div>

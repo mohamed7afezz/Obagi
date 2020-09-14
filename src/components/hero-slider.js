@@ -38,7 +38,7 @@ const HeroSlider = ({ node }) => {
     }
     return (
 
-        <div className={pageType === 'medical' ? "hero-slider medical-slider" : 'hero-slider'}>
+        <div className={pageType === 'medical' ? "hero-slider medical-slider" : 'hero-slider clinical-slider'}>
             <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
 
 

@@ -54,7 +54,8 @@
 
     @include lg-screen {
         mix-blend-mode: multiply;
-        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+        // background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+        background-image: none;
     }
 }
 
@@ -64,7 +65,8 @@
 
     @include lg-screen {
         mix-blend-mode: multiply;
-        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
+        // background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
+        background-image: none;
     }
 }
 

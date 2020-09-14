@@ -28,7 +28,22 @@ export default function AddressBook() {
         getAddresses();
     }, [])
 
+
+
+    
+
     console.log("ashraqat", addresses);
+
+    function removeData() {
+        document.querySelector("#address-modal #fname").value = "";
+        document.querySelector("#address-modal #lname").value = "";
+        document.querySelector("#address-modal #stadd").value = "";
+        document.querySelector("#address-modal #apt").value = "";
+        document.querySelector("#address-modal #city").value = "";
+        document.querySelector("#address-modal #state").value = "";
+        document.querySelector("#address-modal #pcode").value = "";
+        document.querySelector("#address-modal #phone").value = "";
+    }
 
     if (addresses !== "undefined" || Object.keys(addresses).length != 0) {
 
@@ -38,7 +53,7 @@ export default function AddressBook() {
 
                     <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
                         <div className={myAccountStyles.secondTitle}>Address Book</div>
-                        <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal">Add Address</button>
+                        <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => {removeData();}}>Add Address</button>
                     </div>
                     {addresses.data ? addresses.data.map((item, index) => {
                         return (
@@ -57,7 +72,7 @@ export default function AddressBook() {
                         )
                     })
                         : ""}
-                    <button type="button" className={[myAccountStyles.addressButton, "d-lg-none"].join(" ")} data-toggle="modal" data-target="#address-modal">Add Address</button>
+                    <button type="button" className={[myAccountStyles.addressButton, "d-lg-none"].join(" ")} data-toggle="modal" data-target="#address-modal" onClick={() => {removeData();}}>Add Address</button>
                 </div>
                 <AddressModal />
             </UserAccount>

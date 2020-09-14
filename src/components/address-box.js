@@ -28,10 +28,23 @@ const AddressBox = ({ node,
 
     phone = formatPhoneNumber(phone);
 
+
+    function editData() {
+        document.querySelector("#address-modal #fname").value = firstName;
+        document.querySelector("#address-modal #lname").value = lastName;
+        document.querySelector("#address-modal #stadd").value = firstAddress;
+        document.querySelector("#address-modal #apt").value = secondAddress;
+        document.querySelector("#address-modal #city").value = city;
+        document.querySelector("#address-modal .select-selected").innerHTML = state;
+        document.querySelector("#address-modal .select-items > div").innerHTML = state;
+        document.querySelector("#address-modal #pcode").value = postalCode;
+        document.querySelector("#address-modal #phone").value = phone;
+    }
+
     return (
         <div className="row">
             <div className="col-12 col-lg-6">
-                <AddressModal
+                {/* <AddressModal
                         firstName = {firstName}
                         lastName = {lastName}
                         firstAddres = {firstAddress}
@@ -41,12 +54,13 @@ const AddressBox = ({ node,
                         postalCode = {postalCode}
                         phone = {phone}
                         id = {id}
-                 />
+                        key = {id}
+                 /> */}
                 <div className={addressBoxStyles.boxWrapper}>
                     <div className={addressBoxStyles.boxHeader}>
                         <div>Address {index}</div>
                         <div className={addressBoxStyles.buttonsWrapper}>
-                            <button type="button" className={addressBoxStyles.headerButton} data-toggle="modal" data-target={"#address" + id}>Edit</button>
+                            <button type="button" className={addressBoxStyles.headerButton} data-toggle="modal" data-target="#address-modal" onClick={() => {editData();}}>Edit</button>
                             <button type="button" className={addressBoxStyles.headerButton}>Delete</button>
                         </div>
                     </div>

@@ -1667,9 +1667,11 @@ p {
     padding: 0;
     height: auto;
 
-    &:hover {
-        box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
-    }
+}
+
+.address-modal .select-selected.select-arrow-active, 
+.review-modal .select-selected.select-arrow-active {
+    box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
 }
 
 .address-modal .select-group .select-selected, 
@@ -2466,4 +2468,20 @@ p {
 
 .forgot-pw .form-group {
     margin-bottom: 24px;
+}
+
+.medical-slider {
+    @include lg-screen {
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
+    }
+}
+
+.clinical-slider {
+    @include lg-screen {
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+    }
+}
+
+.hero-row-wrapper {
+    mix-blend-mode: multiply;
 }

@@ -49,7 +49,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
     : "container-fluid collectionhero medical-bg " + Collectionherostyle.clinicalcollectionhero}
     >
       {nodetype == "clinicalConcern" ? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -126,7 +126,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : nodetype == "clinicalCategories" ? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -203,7 +203,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : nodetype == "medicalLine" ? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -280,7 +280,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : nodetype == 'ClinicalIngredients'? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -357,7 +357,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) :  nodetype == 'skinClinicalType'? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -435,7 +435,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
         </div>
       ) :  nodetype == 'MedicalIngredients'? (
         
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
        
           <div
             className={[
@@ -513,7 +513,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) :  nodetype == 'skinMedicalType'? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -590,7 +590,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : nodetype == "medicalConcern" ? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -667,7 +667,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : nodetype == "medicalCategories" ? (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",
@@ -744,7 +744,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           )}
         </div>
       ) : (
-        <div className={"row"}>
+        <div className={"row hero-row-wrapper"}>
           <div
             className={[
               "col-12",

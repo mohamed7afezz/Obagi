@@ -46,12 +46,12 @@ const products = () => (
       {/* <SearchResults /> */}
       {/* <Reviews />  */}
       {/* <MyAccount /> */}
-      {/* <OrderDetails /> */}
+      <OrderDetails />
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
       {/* <ReviewModal />
       <Reviews /> */}
-      <Register />
+      {/* <Register /> */}
       {/* <ForgotPwd /> */}
         </Layout>
         
