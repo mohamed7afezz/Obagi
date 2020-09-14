@@ -636,6 +636,11 @@ button:focus{
   width: 1px;
   background-color: #132466;
 }
+
+.show-account .modal-header .close:before, .show-account .modal-header .close:after {
+  top: 0;
+}
+
 .modal-header .close:before {
   transform: rotate(45deg);
 }

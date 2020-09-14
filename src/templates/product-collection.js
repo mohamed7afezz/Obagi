@@ -14,7 +14,7 @@ const ClinicalCollectionTemp = props  => {
    
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
-        <CollectionHero node={props} nodetype={props.pageContext.nodetype}/>                                   
+        <CollectionHero node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
         <CollectionFooter node={props.data} blockName={props.data}/>
       </Layout>

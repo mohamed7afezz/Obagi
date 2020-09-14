@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
-const CollectionHero = ({ node, nodetype }) => {
+const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
   let checkTaxonomy;
   if (nodetype == "clinicalConcern") {
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -43,12 +43,10 @@ const CollectionHero = ({ node, nodetype }) => {
   
   return (
     <div
-      className={[
-        "container-fluid",
-        Collectionherostyle.collectionhero,
-        "collectionhero",
-        "medical-bg",
-      ].join(" ")}
+      className={checktaxonomyType === "clinical"? 
+      "container-fluid collectionhero medical-bg " + Collectionherostyle.clinicalcollectionhero
+      : checktaxonomyType === "medical"? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero
+    : "container-fluid collectionhero medical-bg " + Collectionherostyle.clinicalcollectionhero}
     >
       {nodetype == "clinicalConcern" ? (
         <div className={"row"}>

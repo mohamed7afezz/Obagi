@@ -1464,8 +1464,12 @@ p {
     padding: 0;
 }
 
-.show-account .modal-body a {
+.show-account .modal-body a, .show-account .modal-body button {
     @include fontStyle(18, 32);
+    border: 0;
+    background: transparent;
+    text-align: left;
+    padding: 0;
     color: #132466;
     margin-bottom: 24px;
     display: inline-block;
@@ -1639,8 +1643,13 @@ p {
 
 .address-modal .select-group, .review-modal .select-group {
     border: 0;
-    box-shadow: unset;
+    box-shadow: none;
     padding: 0;
+
+    &:focus-within {
+        box-shadow: none;
+    }
+
 }
 
 .address-modal .select-group .form-label, .review-modal .select-group .form-label{
