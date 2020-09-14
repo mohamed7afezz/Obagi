@@ -1,20 +1,168 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { navigate, Link } from "gatsby"
 import LoginMenu from "./login-menu"
 import { CustomSelect } from '../assets/js/custom-select'
+import UserContext from '../providers/user-provider';
+import { map } from 'jquery';
 
 const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
     let largeScreen = 992;
 
+    const {user, handleRegister} = useContext(UserContext);
+
+    if(user) {
+        if(typeof window !== 'undefined') {
+            navigate('/my-account');
+        }
+    }
 
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
             CustomSelect();
         }
+    });
+
+    document.querySelectorAll('select[name="date"]').forEach(item => {
+        item.addEventListener('change', handleAttr)
+    });
+
+    const [isPassMatch, setIsPassMatch] = useState();
+
+    function checkPassMatch(event) {
+        //compare pass
+        let confPass = '';
+        
+        if(event.target.name === 'password') {
+            confPass = document.querySelector('.conf-password').value;
+        } else {
+            confPass = document.querySelector('.password').value;
+        }
+
+        if(confPass === event.target.value) {
+            setIsPassMatch(true);
+        } else {
+            setIsPassMatch(false);
+        }
+        
+
+        return isPassMatch;
+    }
+
+    const [newUser, setNewUser] = useState({
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone: "",
+      authentication: {
+        force_password_reset: false,
+        new_password: "",
+      },
+      attributes: [
+        {
+        // Date of birth
+          attribute_id: 1,
+          attribute_value: "",
+        },
+
+        {
+        // Postal Code
+          attribute_id: 2,
+          attribute_value: "",
+        },
+
+        {
+        // email subscribtion
+          attribute_id: 4,
+          attribute_value: "no",
+        }
+      ]
     })
 
+
+    function handleUpdate(event) {
+        setNewUser({
+            ...newUser,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    function handlePassword(event) {
+        if(checkPassMatch(event)) {
+            setNewUser({
+                ...newUser,
+                authentication: {
+                    ...newUser.authentication,
+                    new_password: event.target.value
+                }
+            })
+        } else {
+            return false;
+        }
+        
+    }
+
+    function handleAttr(event) {
+        switch (event.target.name) {
+            case 'date':
+                console.log('bahiii', event.target.classList, event.target.value);
+                var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
+                if(event.target.classList.contains('day')) {
+                    dateOfBirth[2] = event.target.value
+                } else if (event.target.classList.contains('month')) {
+                    dateOfBirth[1] = event.target.value
+                } else {
+                    dateOfBirth[0] = event.target.value
+                }
+                dateOfBirth = dateOfBirth.join('-');
+
+                setNewUser({
+                    ...newUser,
+                    attributes: newUser.attributes.map(item => {
+                        if(item.attribute_id === 1) {
+                            item.attribute_value = dateOfBirth;
+                        }
+                        return item;
+                    })
+                })
+
+                break;
+            case 'postal_code':
+                setNewUser({
+                    ...newUser,
+                    attributes: newUser.attributes.map(item => {
+                        if(item.attribute_id === 2) {
+                            item.attribute_value = event.target.value;
+                        }
+                        return item;
+                    })
+                })
+                break;
+            case 'email_sub':
+                setNewUser({
+                    ...newUser,
+                    attributes: newUser.attributes.map(item => {
+                        if(item.attribute_id === 4) {
+                            item.attribute_value = event.target.checked? 'yes' : 'no';
+                        }
+                        return item;
+                    })
+                })
+                break;
+            default:
+                console.log('not in the attributes');
+                break;
+        }
+    }
+
+
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log('bahiii', newUser)
+        handleRegister(newUser)
+    }
 
 
     return (
@@ -24,13 +172,13 @@ const Register = () => {
                 <div className="row">
                     <div className="col-12 col-lg-3 offset-lg-1">
                         {screenWidth < largeScreen ?
-                            <button class="question-header collapsed" data-toggle="collapse" data-target="#register" aria-expanded="false" aria-controls="register">
+                            <button className="question-header collapsed" data-toggle="collapse" data-target="#register" aria-expanded="false" aria-controls="register">
                                 Why Register?
                             </button>
                             :
                             <div className="question-header">Why Register?</div>
                         }
-                        <div id={screenWidth < largeScreen ? "register" : ""} class={screenWidth < largeScreen ? "collapse benefits-wrapper" : "benefits-wrapper"} aria-labelledby={screenWidth < largeScreen ? "headingOne" : ""}>
+                        <div id={screenWidth < largeScreen ? "register" : ""} className={screenWidth < largeScreen ? "collapse benefits-wrapper" : "benefits-wrapper"} aria-labelledby={screenWidth < largeScreen ? "headingOne" : ""}>
 
                             <div className="benefits-subwrapper">
                                 <div className="benefit-number">1</div>
@@ -61,78 +209,80 @@ const Register = () => {
                     <div className="col-12 col-lg-4">
                         <div className="required-field">*Required fields</div>
 
-                        <form>
-                            <div class="form-group">
+                        <form onSubmit={e => {
+                            handleSubmit(e);
+                        }}>
+                            <div className="form-group">
                                 <label for="firstname">*First name</label>
-                                <input type="text" class="form-control" name="first" id="firstname" aria-describedby="firstname" placeholder="" />
+                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" aria-describedby="firstname" placeholder="" />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="lastname">*Last name</label>
-                                <input type="text" class="form-control" name="lname" id="lastname" aria-describedby="lastname" placeholder="" />
+                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" aria-describedby="lastname" placeholder="" />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="postalcode">*Postal Code</label>
-                                <input type="text" class="form-control" name="postalcode" id="postalcode" aria-describedby="postalcode" placeholder="" />
+                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" aria-describedby="postalcode" placeholder="" />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="phonenum">Phone Number (Optional)</label>
-                                <input type="tel" class="form-control" name="phone" id="phonenum" aria-describedby="phonenumber" placeholder="" />
+                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" aria-describedby="phonenumber" placeholder="" />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="mailaddress">*Email Address</label>
-                                <input type="email" class="form-control" name="email" id="mailaddress" aria-describedby="emailHelp" placeholder="" />
+                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" aria-describedby="emailHelp" placeholder="" />
                             </div>
 
                             <div className="group-title">Date of Birth</div>
 
                             <div className="day-mon-year">
                                 <div className="day-month">
-                                    <div class="form-group select-group">
+                                    <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Day</label>
                                         <div className="select-wrapper custom-select">
-                                            <select class="form-control" id="reviewFormSelect">
+                                            <select className="form-control day" name="date" id="reviewFormSelect">
                                                 <option>Select</option>
                                                 <option>Select</option>
-                                                <option>5 Star</option>
-                                                <option>4 Stars</option>
-                                                <option>3 Star</option>
-                                                <option>2 Star</option>
-                                                <option>1 Star</option>
+                                                <option value="01">1</option>
+                                                <option value="02">2</option>
+                                                <option value="03">3</option>
+                                                <option value="04">4</option>
+                                                <option value="05">5</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group select-group">
+                                    <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Month</label>
-                                        <div className="select-wrapper custom-select">
-                                            <select class="form-control" id="reviewFormSelect">
+                                        <div className="select-wrapper custom-select" >
+                                            <select className="form-control month" name="date" id="reviewFormSelect">
                                                 <option>Select</option>
                                                 <option>Select</option>
-                                                <option>5 Star</option>
-                                                <option>4 Stars</option>
-                                                <option>3 Star</option>
-                                                <option>2 Star</option>
-                                                <option>1 Star</option>
+                                                <option value="01">1</option>
+                                                <option value="02">2</option>
+                                                <option value="03">3</option>
+                                                <option value="04">4</option>
+                                                <option value="05">5</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group select-group">
+                                <div className="form-group select-group">
                                 <label for="reviewFormSelect" className="form-label">*Year</label>
                                 <div className="select-wrapper custom-select">
-                                    <select class="form-control" id="reviewFormSelect">
+                                    <select className="form-control year" name="date" id="reviewFormSelect">
                                         <option>Select</option>
                                         <option>Select</option>
-                                        <option>5 Star</option>
-                                        <option>4 Stars</option>
-                                        <option>3 Star</option>
-                                        <option>2 Star</option>
-                                        <option>1 Star</option>
+                                        <option value="1999">1999</option>
+                                        <option value="1998">1998</option>
+                                        <option value="1997">1997</option>
+                                        <option value="1996">1996</option>
+                                        <option value="1995">1995</option>
                                     </select>
                                 </div>
                             </div>
@@ -141,22 +291,24 @@ const Register = () => {
                             <div className="group-title">Create Password</div>
 
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input type="password" class="form-control" name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input type="password" class="form-control" name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
-                            <div class="form-check">
+                            <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
 
-                                <label class="form-check-label terms" for="registerCheck">
+                            <div className="form-check">
+
+                                <label className="form-check-label terms" for="registerCheck">
                                     Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the U.S. subject to our U.S. <Link to="#">Privacy Policy</Link> and <Link to="#">Terms of Use</Link>. For U.S. consumers only.
-                                    <input type="checkbox" class="form-check-input" id="registerCheck" />
-                                    <span class="checkmark"></span>
+                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
+                                    <span className="checkmark"></span>
                                 </label>
                             </div>
 

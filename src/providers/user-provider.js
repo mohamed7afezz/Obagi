@@ -8,7 +8,7 @@ const isBrowser = () => typeof window !== "undefined"
 
 export const UserProvider = ({children}) => {
 
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(false);
 
     async function getUserData() {
 
@@ -39,7 +39,7 @@ export const UserProvider = ({children}) => {
         
         const isAuthUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/signin`, {
             method: 'POST',
-            credentials: 'same-origin',
+            credentials: 'include',
             body: JSON.stringify(user),
             mode: 'cors'
         })).json();
@@ -52,17 +52,31 @@ export const UserProvider = ({children}) => {
 
     // logout
     async function handleLogout () {
-        await fetch(`${baseUrl}custmer_logout`, {
+        fetch(`${baseUrl}custmer_logout`, {
             method: 'GET',
             credentials: 'include',
             mode: 'cors'
         });
 
+        fetch('https://gtotest.mybigcommerce.com/login.php?action=logout', {
+            method:'GET',mode:'no-cors',credentials: 'include'
+        });
+
         setUser(false);
     }
 
+    // register
+    async function handleRegister(user) {
+        const newUserReq = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
+            method: "POST",
+            mode: "no-cors",
+            credentials: 'include',
+            body: JSON.stringify([user])
+        }));
+    }
+
     return (
-        <UserContext.Provider value={{user, handleLogin, handleLogout}}>
+        <UserContext.Provider value={{user, handleLogin, handleLogout, handleRegister}}>
             {children}
         </UserContext.Provider>
     )

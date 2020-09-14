@@ -7,13 +7,18 @@
 .productcat{
     @extend %futurapt-bold;
 text-transform: capitalize;
-font-size: 16px;
-line-height: 24px;
-letter-spacing: 1.6;
+font-size: 11.2px;
+line-height: 16.8px;
+letter-spacing: 1.12px;
 color: #132466;
 padding-left: 30px;
 position:relative;
 
+@include md-screen{
+    font-size: 16px;
+line-height: 24px;
+letter-spacing: 1.6;
+}
 }
 .productdetail{
     order: 2;
@@ -28,15 +33,23 @@ position:relative;
    width: 12px;
    height: 12px;
    left: 0;
-top: 5px;
+top: 3px;
    background-color: #44c4d9;
     }
 .productname{
     @extend %futurapt-bold;
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 20px;
+    line-height: 28px;
     color: #132466;
     margin-top: 10px;
+    margin-bottom: 16px;
+    @include md-screen{
+        margin-left: 0;
+        font-size: 32px;
+        line-height: 48px;
+        color: #132466;
+        margin-bottom: 0;
+    }
 }
 .productdesc{
     font-size: 18px;
@@ -132,6 +145,14 @@ margin-bottom: 10px;
 .mt-thirty{
     margin-top: 32px;
 }
+.productHero{
+    margin-bottom: 32px;
+    margin-top: 24px;
+    @include md-screen{
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
 .productHero select {
     height: 64px;
     border-radius: 6px;
@@ -223,7 +244,7 @@ align-items: center;
     letter-spacing: 1.2px;
     color: #fff;
     text-transform: uppercase;
-    display: none;
+
   
     @include md-screen{
         display: inline-block;
@@ -252,24 +273,51 @@ align-items: center;
     box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
     position: absolute;
     bottom: 80px;
-    width: 275px;
-    color: #132466;
-    background-color: #fff;
+    width: 93%;
+    color: #fff;
+    background-color: #132466;
     font-size: 14px;
     padding: 20px;
     border-radius: 5px;
-    right: -75px;
+    right: 12px;
+    min-height: 250px;
+    @include md-screen{
+        box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+        position: absolute;
+        bottom: 80px;
+        width: 275px;
+        color: #132466;
+        background-color: #fff;
+        font-size: 14px;
+        padding: 20px;
+        border-radius: 5px;
+        right: -75px;
+    }
     &::after{
         content: " ";
         width: 20px;
-        clip-path: polygon(0 0, 0% 100%, 100% 0);
+        -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
         height: 20px;
         display: block;
-    
         bottom: -20px;
-       left: 57%;
-        background-color: #fff;
+        left: auto;
+        background-color: #132466;
         position: absolute;
+        right: 12px;
+        @include md-screen{
+            content: " ";
+            width: 20px;
+            clip-path: polygon(0 0, 0% 100%, 100% 0);
+            height: 20px;
+            display: block;
+            right: auto;
+            bottom: -20px;
+            left: 57%;
+            background-color: #fff;
+            position: absolute;
+        
+        }
     }
 }
 .infoselected{
@@ -277,6 +325,8 @@ align-items: center;
 }
 .centeralign{
     align-items: center;
+
+
 }
 .btn-cart:hover{
     color: #fff;
@@ -378,7 +428,7 @@ align-items: center;
     border: 1px solid #132466;
     border-radius: 6px;
     display: flex;
-    margin-bottom: 24px;
+  
     @include md-screen{
         margin-bottom: 0;
     }
@@ -402,4 +452,17 @@ align-items: center;
     font-size: 16px;
     line-height: 24px;
     @extend %futurapt-medium ;
+}
+@media (max-width:767px){
+    
+.centeralign{
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+  
+    left: 0;
+    background-color: #fff;
+    padding-top: 15px;
+}
 }

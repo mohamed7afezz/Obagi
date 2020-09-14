@@ -121,6 +121,9 @@ export const productPageQuery = graphql`
                     }
                     
                 }
+                field_medical_rx {
+                    name
+                  }
                 field_medical_image {
                     localFile {
                         childImageSharp {

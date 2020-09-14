@@ -25,6 +25,9 @@ const ProductHero = ({ data, nodeType }) => {
   let field_image = isClincal
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
+    let field_medical_rx = isClincal
+    ? ""
+    : node.relationships.field_medical_rx.name
   let field_description = isClincal
     ? node.field_clinical_description.processed
     : node.field_medical_description.processed
@@ -133,6 +136,16 @@ const ProductHero = ({ data, nodeType }) => {
             <Link to={`/${nodeType}`}> {nodeType} </Link>/ {node.title}
           </p>
         </div>
+        <div className={["col-12",""].join(" ")}>
+        <p className={[ProductStyles.productcat,"mt-24", "productcat","show-mob"].join(" ")}>
+            {nodeType}
+          </p>
+          <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
+          <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
+            <Stars value="0.0" />
+           <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
+           <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+          </div></div>
         <div
           className={[
             "col-12",
@@ -148,7 +161,7 @@ const ProductHero = ({ data, nodeType }) => {
                 <React.Fragment>
                   <div class="zoom-mobile" data-arrange={index}>
                     {item.localFile ? (
-                      <InnerImageZoom
+                      <img
                         src={item.localFile.childImageSharp.original.src}
                       />
                     ) : (
@@ -180,11 +193,11 @@ const ProductHero = ({ data, nodeType }) => {
             ProductStyles.productdetail,
           ].join(" ")}
         >
-          <p className={[ProductStyles.productcat, "productcat"].join(" ")}>
+          <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
             {nodeType}
           </p>
-          <h1 className={ProductStyles.productname}>{node.title}</h1>
-          <div className={["d-flex", ProductStyles.review].join(" ")}>
+          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")}>{node.title}</h1>
+          <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
             <Stars value="0.0" />
            <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
            <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
@@ -272,8 +285,14 @@ const ProductHero = ({ data, nodeType }) => {
                 <option>10</option>
               </select>
             </div>
-          <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-8"].join(" ")}>
-            <button
+          <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-8"].join(" ")}>
+            {field_medical_rx == "RX"?
+            <Link
+              className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+              to="/medical/hcpfinder">      
+              Find a Physician
+           </Link>
+            :<button
               className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
               onClick={() => {
                 let quantity = document.querySelector("#quantityBox").value;
@@ -283,6 +302,7 @@ const ProductHero = ({ data, nodeType }) => {
             >
               {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
             </button>
+            }
            {field_info?
             <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
               <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
