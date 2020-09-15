@@ -18,7 +18,7 @@ export default function MyAccount() {
                 <PrivateRoute path="/my-account/show-account" component={ShowAccount}/>
                 <PrivateRoute path="/my-account/orders" component={Orders} />
                 <PrivateRoute path="/my-account/address-book" component={AddressBook} />
-                <PrivateRoute path="/my-account/orders/order-details" component={OrderDetails} />
+                <OrderDetails path="/my-account/orders/order-details/:id"/>
                 <Login path="/my-account/signin"/>
             </Router>
         </Layout>

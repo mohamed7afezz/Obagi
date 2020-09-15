@@ -1,9 +1,11 @@
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useContext } from "react"
+import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import Img from 'gatsby-image'
 import orderDetailsStyles from '../assets/scss/components/order-details.module.scss'
+import UserContext from "../providers/user-provider"
+import { useLocation } from "@reach/router"
 
-const OrderDetails = ({ node }) => {
+const OrderDetails = (props,  { node }) => {
 
     const data = useStaticQuery(graphql`
     query {
@@ -17,6 +19,17 @@ const OrderDetails = ({ node }) => {
     }
     `)
 
+    const location = useLocation();
+    const {user} = useContext(UserContext);
+
+    if (!user && !location.pathname.includes(`/my-account/orders/order-details`)) {
+        if(typeof window !== 'undefined') {
+          navigate("/my-account/signin")
+        }
+          
+        return null
+      }
+    console.log("global", props.id);
     return (
         <>
 
