@@ -37,9 +37,7 @@ const OrderHistory = ({ node }) => {
     console.log("ashraqat", orders);
 
     if(isLoading) {
-        return <div>
-            Loading...
-        </div>
+        return <div> Loading... </div>
     }
 
     else if(orders === "undefined" || Object.keys(orders).length == 0) {
