@@ -63,21 +63,21 @@ const AddressBox = ({ node,
 
     async function deleteAddress() {
 
-        const addressesData = await (await fetch(`${baseUrl}bigcommerce/v1/delete_addresses`, {
+        const addressBoxData = await (await fetch(`${baseUrl}bigcommerce/v1/delete_addresses`, {
             method: 'POST',
             credentials: 'include',
             mode: 'cors',
-            body: JSON.stringify([{
-                id: document.querySelector("#address-modal #order-id").value
-            }])
+            body: JSON.stringify({
+                address_id: id
+            })
         })).json();
 
-        if (addressesData !== "User not login.") {
-            setAddresses(addressesData);
+        if (addressBoxData.status == 204 && typeof window !== "undefined") {
+            window.location.reload();
+            
         }
-        console.log("address", addressesData);
+        console.log("box", addressBoxData.status);
     }
-
 
 
     return (

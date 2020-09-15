@@ -83,7 +83,7 @@ const AddressModal = ({ node,
         }
 
         
-        console.log("address", addressesData.status);
+        console.log("status", addressesData.status);
     }
 
 
