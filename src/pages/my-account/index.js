@@ -23,6 +23,7 @@ export default function MyAccount() {
                 <PrivateRoute path="/my-account/orders/order-details" component={OrderDetails} />
                 <PrivateRoute path="/my-account/account-settings" component={AccountSettings} />
                 <PrivateRoute path="/my-account/premier-points" component={Premier} />
+                <OrderDetails path="/my-account/orders/order-details/:id"/>
                 <Login path="/my-account/signin"/>
             </Router>
         </Layout>

@@ -1,8 +1,10 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import addressModalStyles from '../assets/scss/components/address-modal.module.scss'
-import {CustomSelect} from '../assets/js/custom-select'
+import { CustomSelect } from '../assets/js/custom-select'
+
+const baseUrl = process.env.Base_URL;
 
 const AddressModal = ({ node,
     firstName,
@@ -13,16 +15,93 @@ const AddressModal = ({ node,
     city,
     state,
     phone,
-    id
+    id,
+    addressType,
+    countryCode
 }) => {
 
 
     useEffect(() => {
-        if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
-          CustomSelect();
+        if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
+            CustomSelect();
         }
     })
 
+    const [addresses, setAddresses] = useState({});
+
+
+    // if(typeof window !== "undefined") {
+        
+        let fname = document.querySelector("#address-modal #fname").value;
+        let lname = document.querySelector("#address-modal #lname").value;
+        let stadd = document.querySelector("#address-modal #stadd").value;
+        let apt = document.querySelector("#address-modal #apt").value;
+        let cityadd = document.querySelector("#address-modal #city").value;
+        let stateadd = document.querySelector("#address-modal .select-selected").innerHTML;
+        let pcode = document.querySelector("#address-modal #pcode").value;
+        let ccode = "US";
+        let phonenum = document.querySelector("#address-modal #phone").value;
+        let type = "residential";
+        let orid = parseInt(document.querySelector("#address-modal #order-id").value);
+    // }
+
+    async function updateAddresses(event) {
+        event.preventDefault();
+
+        
+
+        const addressesData = await fetch((document.querySelector("#address-modal").classList.contains("add-address") ? `${baseUrl}bigcommerce/v1/customer_addresses` : `${baseUrl}bigcommerce/v1/update_addresses`), {
+            method: 'POST',
+            credentials: 'include',
+            mode: 'cors',
+            body: JSON.stringify([{
+                first_name: fname,
+                last_name: lname,
+                address1: stadd,
+                address2: apt,
+                city: cityadd,
+                state_or_province: stateadd,
+                postal_code: pcode,
+                country_code : ccode,
+                phone: phonenum,
+                address_type: type,
+                id: orid
+
+                // first_name: "shaher",
+                // last_name: "wageh",
+                // address1: "111 E West Street",
+                // address2: "654",
+                // city: "Akron",
+                // state_or_province: "Alabama",
+                // postal_code: "44325",
+                // country_code: "US",
+                // phone: "1234567890",
+                // address_type: "residential",
+                // id:28
+            }])
+        })
+
+        if (addressesData.status == 200 && typeof window !== "undefined") {
+            window.location.reload();
+            
+        }
+
+        
+        console.log("address", addressesData.status);
+    }
+
+
+    // function handleChange () {
+    //     firstName = document.querySelector("#address-modal #fname").value;
+    //     lastName = document.querySelector("#address-modal #lname").value
+    //     firstAddress = document.querySelector("#address-modal #stadd").value
+    //     secondAddress = document.querySelector("#address-modal #apt").value
+    //     city = document.querySelector("#address-modal #city").value
+    //     state = document.querySelector("#address-modal .select-selected").innerHTML
+    //     postalCode = document.querySelector("#address-modal #pcode").value
+    //     phone = document.querySelector("#address-modal #phone").value
+    //     id = document.querySelector("#address-modal #order-id").value;
+    // }
     return (
 
 
@@ -37,40 +116,43 @@ const AddressModal = ({ node,
 
 
                     <div className="modal-body">
-                        <form>
+                        <form method="post"
+                            onSubmit={event => {
+                                updateAddresses(event)
+                            }}>
                             <div className="group-wrapper">
                                 <div className="form-group">
                                     <label for="fname" className="form-label">*First name</label>
-                                    <input type="text" className="form-control" id="fname" aria-describedby="emailHelp" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="fname" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
                                 <div className="form-group">
                                     <label for="lname" className="form-label">*Last name</label>
-                                    <input type="text" className="form-control" id="lname" aria-describedby="emailHelp" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="lname" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
                             </div>
                             <div className="group-wrapper">
                                 <div className="form-group">
                                     <label for="stadd" className="form-label">*Street Address</label>
-                                    <input type="text" className="form-control" id="stadd" aria-describedby="emailHelp" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="stadd" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
                                 <div className="form-group">
                                     <label for="apt" className="form-label">Apt, Suite or Floor</label>
-                                    <input type="text" className="form-control" id="apt" aria-describedby="emailHelp" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="apt" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
                             </div>
                             <div className="group-wrapper">
                                 <div className="form-group">
                                     <label for="pcode" className="form-label">*Postal Code</label>
-                                    <input type="text" className="form-control" id="pcode" aria-describedby="emailHelp" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="pcode" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
                                 <div className="form-group">
                                     <label for="city" className="form-label">*City</label>
-                                    <input type="text" className="form-control" id="city" aria-describedby="city" placeholder="" value=""/>
+                                    <input type="text" className="form-control" id="city" aria-describedby="city" placeholder="" />
 
                                 </div>
                             </div>
@@ -79,28 +161,30 @@ const AddressModal = ({ node,
                                     <label for="state" className="form-label">*State/Province</label>
                                     <div className="select-wrapper custom-select">
                                         <select className="form-control" id="state">
-                                            <option>Select</option>
-                                            <option>Select</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            <option value="Alabama">cairo</option>
+                                            <option value="Alabama">alex</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alabama">Alabama</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className="form-group">
                                     <label for="phone" className="form-label">Phone Number</label>
-                                    <input type="tel" className="form-control" id="phone" aria-describedby="phone" placeholder="" value=""/>
+                                    <input type="tel" className="form-control" id="phone" aria-describedby="phone" placeholder=""/>
 
                                 </div>
                             </div>
+                            <input className="modal-button" type="submit" value="Update" />
+                            <input id="order-id" type="hidden" />
                         </form>
                     </div>
 
 
                     <div className="modal-footer">
-                        <input className="modal-button" type="submit" value="Update" />
+
                     </div>
                 </div>
             </div>

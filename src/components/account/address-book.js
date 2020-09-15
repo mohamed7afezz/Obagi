@@ -24,6 +24,10 @@ export default function AddressBook() {
         console.log("address", addressesData);
     }
 
+
+    
+
+
     useEffect(() => {
         getAddresses();
     }, [])
@@ -43,6 +47,18 @@ export default function AddressBook() {
         document.querySelector("#address-modal #state").value = "";
         document.querySelector("#address-modal #pcode").value = "";
         document.querySelector("#address-modal #phone").value = "";
+        document.querySelector("#address-modal #order-id").value = "";
+        document.querySelector("#address-modal .select-selected").innerHTML = "Select";
+        document.querySelector("#address-modal .select-items > div").innerHTML = "Select";
+    }
+
+    function addAddress() {
+        let modal = document.querySelector("#address-modal");
+        if (modal.classList.contains("edit-address")) {
+            modal.classList.remove("edit-address");
+        }
+
+        modal.classList.add("add-address");
     }
 
     if (addresses !== "undefined" || Object.keys(addresses).length != 0) {
@@ -53,7 +69,7 @@ export default function AddressBook() {
 
                     <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
                         <div className={myAccountStyles.secondTitle}>Address Book</div>
-                        <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => {removeData();}}>Add Address</button>
+                        <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => {removeData(); addAddress(); }}>Add Address</button>
                     </div>
                     {addresses.data ? addresses.data.map((item, index) => {
                         return (
@@ -65,14 +81,17 @@ export default function AddressBook() {
                                 city={item.city}
                                 state={item.state_or_province}
                                 postalCode={item.postal_code}
+                                addressType = {item.address_type}
                                 phone={item.phone}
+                                countryCode = {item.country_code}
                                 id={item.id}
                                 index= {index + 1}
+
                             />
                         )
                     })
                         : ""}
-                    <button type="button" className={[myAccountStyles.addressButton, "d-lg-none"].join(" ")} data-toggle="modal" data-target="#address-modal" onClick={() => {removeData();}}>Add Address</button>
+                    <button type="button" className={[myAccountStyles.addressButton, "d-lg-none"].join(" ")} data-toggle="modal" data-target="#address-modal" onClick={() => { removeData(); addAddress(); }}>Add Address</button>
                 </div>
                 <AddressModal />
             </UserAccount>

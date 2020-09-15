@@ -10,10 +10,13 @@ const baseUrl = process.env.Base_URL;
 
 const OrderHistory = ({ node }) => {
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const [orders, setOrders] = useState({});
 
     async function getOrders() {
 
+        setIsLoading(true);
         const ordersData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
             method: 'GET',
             credentials: 'include',
@@ -23,6 +26,7 @@ const OrderHistory = ({ node }) => {
         if (ordersData !== "User not login.") {
             setOrders(ordersData);
         }
+        setIsLoading(false);
         console.log("hafobagi", ordersData);
     }
 
@@ -32,8 +36,13 @@ const OrderHistory = ({ node }) => {
 
     console.log("ashraqat", orders);
 
+    if(isLoading) {
+        return <div>
+            Loading...
+        </div>
+    }
 
-    if (orders === "undefined" || Object.keys(orders).length == 0) {
+    else if(orders === "undefined" || Object.keys(orders).length == 0) {
 
         return (<OrderNoHistory />)
 
