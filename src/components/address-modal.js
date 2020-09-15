@@ -66,18 +66,6 @@ const AddressModal = ({ node,
                 phone: phonenum,
                 address_type: type,
                 id: orid
-
-                // first_name: "shaher",
-                // last_name: "wageh",
-                // address1: "111 E West Street",
-                // address2: "654",
-                // city: "Akron",
-                // state_or_province: "Alabama",
-                // postal_code: "44325",
-                // country_code: "US",
-                // phone: "1234567890",
-                // address_type: "residential",
-                // id:28
             }])
         })
 

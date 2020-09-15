@@ -1,11 +1,73 @@
-import React, { useContext } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import Img from 'gatsby-image'
 import orderDetailsStyles from '../assets/scss/components/order-details.module.scss'
 import UserContext from "../providers/user-provider"
 import { useLocation } from "@reach/router"
 
-const OrderDetails = (props,  { node }) => {
+const baseUrl = process.env.Base_URL;
+
+const OrderDetails = (props, { node }) => {
+
+    const [details, setDetails] = useState({});
+
+    async function getDetails() {
+
+        const detailsData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}`, {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        })).json();
+
+        if (detailsData !== "User not login.") {
+            setDetails(detailsData);
+        }
+        console.log("details", detailsData);
+    }
+
+    const [products, setProducts] = useState([]);
+
+    async function getProducts() {
+
+        const productsData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}/products`, {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        })).json();
+
+        if (productsData !== "User not login.") {
+            setProducts(productsData);
+        }
+        console.log("products", productsData);
+    }
+
+    const [shippingAddresses, setShippingAddresses] = useState([]);
+
+    async function getShippingAddresses() {
+
+        const shippingAddressesData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`, {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        })).json();
+
+        if (shippingAddressesData !== "User not login.") {
+            setShippingAddresses(shippingAddressesData);
+        }
+        console.log("shipping", shippingAddressesData);
+    }
+
+
+
+
+
+    useEffect(() => {
+        getDetails();
+        getProducts();
+        getShippingAddresses();
+    }, [])
+
+
 
     const data = useStaticQuery(graphql`
     query {
@@ -20,16 +82,24 @@ const OrderDetails = (props,  { node }) => {
     `)
 
     const location = useLocation();
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     if (!user && !location.pathname.includes(`/my-account/orders/order-details`)) {
-        if(typeof window !== 'undefined') {
-          navigate("/my-account/signin")
+        if (typeof window !== 'undefined') {
+            navigate("/my-account/signin")
         }
-          
+
         return null
-      }
+    }
     console.log("global", props.id);
+
+
+    const placedOnDate = new Date(details.date_created? details.date_created: "")
+    .toLocaleDateString({},
+        { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
+    ).split(' ')
+
+
     return (
         <>
 
@@ -41,7 +111,7 @@ const OrderDetails = (props,  { node }) => {
                             <Link to="/my-account" className={orderDetailsStyles.accountLink}>My Account</Link>
                             <Link to="/my-account/orders" className={["d-none d-lg-block", orderDetailsStyles.orderArrow].join(" ")}></Link>
                         </div>
-                        <div className={orderDetailsStyles.orderNumber}>#OB1097263894</div>
+                        <div className={orderDetailsStyles.orderNumber}>{details.id? "#" + details.id: ""}</div>
                     </div>
                 </div>
                 <div className="row">
@@ -57,27 +127,21 @@ const OrderDetails = (props,  { node }) => {
 
                             <div className="collapse" id="detailsAccordion">
 
-                                <div className={orderDetailsStyles.productWrapper}>
-                                    <Img fixed={data.product.childImageSharp.fixed}/>
-                                    <div className={orderDetailsStyles.productInfoWrapper}>
-                                        <div className={orderDetailsStyles.productName}>Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum Dolor Sit Amet Consectetur</div>
-                                        <div className={orderDetailsStyles.priceAndQuantity}>
-                                            <div className={orderDetailsStyles.productQuantity}>Qty. 1</div>
-                                            <div className={orderDetailsStyles.productPrice}>$24.00</div>
+                                {products.map((item, index) => {
+                                    return (
+                                        <div className={orderDetailsStyles.productWrapper}>
+                                            <Img fixed={data.product.childImageSharp.fixed} />
+                                            <div className={orderDetailsStyles.productInfoWrapper}>
+                                                <div className={orderDetailsStyles.productName}>{item.name? item.name : ""}</div>
+                                                <div className={orderDetailsStyles.priceAndQuantity}>
+                                                    <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity? item.quantity : ""}</div>
+                                                    <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax? "$" + item.total_inc_tax : ""}</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    )
+                                })}
 
-                                <div className={orderDetailsStyles.productWrapper}>
-                                    <Img fixed={data.product.childImageSharp.fixed}/>
-                                    <div className={orderDetailsStyles.productInfoWrapper}>
-                                        <div className={orderDetailsStyles.productName}>Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum Dolor Sit Amet Consectetur</div>
-                                        <div className={orderDetailsStyles.priceAndQuantity}>
-                                            <div className={orderDetailsStyles.productQuantity}>Qty. 1</div>
-                                            <div className={orderDetailsStyles.productPrice}>$24.00</div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,40 +149,27 @@ const OrderDetails = (props,  { node }) => {
 
 
                     <div className="col-lg-7 offset-lg-1 d-none d-lg-block">
-                        <div className={orderDetailsStyles.productWrapper}>
-                            <div className={orderDetailsStyles.productInfoWrapper}>
-                                <div className={orderDetailsStyles.productName}>
-                                    <div className={orderDetailsStyles.productImage}>
-                                        <Img fixed={data.product.childImageSharp.fixed} />
-                                    </div>
-                                    Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum Dolor Sit Amet Consectetur
-                            </div>
-                                <div className={orderDetailsStyles.productQuantity}>
-                                    Qty. 1
-                            </div>
-                                <div className={orderDetailsStyles.productPrice}>
-                                    $24.00
-                            </div>
-                            </div>
-                        </div>
 
-
-                        <div className={orderDetailsStyles.productWrapper}>
-                            <div className={orderDetailsStyles.productInfoWrapper}>
-                                <div className={orderDetailsStyles.productName}>
-                                    <div className={orderDetailsStyles.productImage}>
-                                        <Img fixed={data.product.childImageSharp.fixed} />
+                        {products.map((item, index) => {
+                            return (
+                                <div className={orderDetailsStyles.productWrapper}>
+                                    <div className={orderDetailsStyles.productInfoWrapper}>
+                                        <div className={orderDetailsStyles.productName}>
+                                            <div className={orderDetailsStyles.productImage}>
+                                                <Img fixed={data.product.childImageSharp.fixed} />
+                                            </div>
+                                            {item.name? item.name : ""}
+                                        </div>
+                                        <div className={orderDetailsStyles.productQuantity}>
+                                            {item.quantity? "Qty. " + item.quantity : ""}
+                                        </div>
+                                        <div className={orderDetailsStyles.productPrice}>
+                                            {item.total_inc_tax? "$" + item.total_inc_tax : ""}
+                                        </div>
                                     </div>
-                                    Obagi-C Rx System for Normal to Dry Skin Lorem Ipsum Dolor Sit Amet Consectetur
-                            </div>
-                                <div className={orderDetailsStyles.productQuantity}>
-                                    Qty. 1
-                            </div>
-                                <div className={orderDetailsStyles.productPrice}>
-                                    $24.00
-                            </div>
-                            </div>
-                        </div>
+                                </div>
+                            )
+                        })}
 
 
                     </div>
@@ -132,33 +183,37 @@ const OrderDetails = (props,  { node }) => {
 
                             <div className={orderDetailsStyles.detailPart}>
                                 <p>Status</p>
-                                <p>In-progress</p>
+                                <p>{details.status? details.status : ""}</p>
                             </div>
 
                             <div className={orderDetailsStyles.detailPart}>
                                 <p>Order Placed</p>
-                                <p>Jul 27, 2020</p>
+                                <p>{placedOnDate? `${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}` : ""}</p>
                             </div>
 
-                            <div className={orderDetailsStyles.detailPart}>
-                                <p>Shipping Address</p>
-                                <p>JohnSmith</p>
-                                <p>123 Doretta St</p>
-                                <p>Hillsdale NJ, 07657</p>
-                                <p>US</p>
-                            </div>
+                            {shippingAddresses.map((item, index) => {
+                                return (
+                                    <div className={orderDetailsStyles.detailPart}>
+                                        <p>Shipping Address</p>
+                                        <p>{item.first_name? item.first_name : ""} {item.last_name? item.last_name : ""}</p>
+                                        <p>{item.street_1? item.street_1 : ""}</p>
+                                        <p>{item.city? item.city : ""} {item.state? item.state : ""}, {item.zip? item.zip : ""}</p>
+                                        <p>{item.country_iso2? item.country_iso2 : ""}</p>
+                                    </div>
+                                )
+                            })}
 
                             <div className={orderDetailsStyles.detailPart}>
                                 <p>Billing Address</p>
-                                <p>JohnSmith</p>
-                                <p>123 Doretta St</p>
-                                <p>Hillsdale NJ, 07657</p>
-                                <p>US</p>
+                                <p>{details.billing_address? details.billing_address.first_name : ""} {details.billing_address? details.billing_address.last_name : ""}</p>
+                                <p>{details.billing_address? details.billing_address.street_1 : ""}</p>
+                                <p>{details.billing_address? details.billing_address.city : ""} {details.billing_address? details.billing_address.state : ""}, {details.billing_address? details.billing_address.zip : ""}</p>
+                                <p>{details.billing_address? details.billing_address.country_iso2 : ""}</p>
                             </div>
 
                             <div className={orderDetailsStyles.detailPart}>
                                 <p>Payment</p>
-                                <p>Visa: ending in 7320</p>
+                                <p>{details.payment_method? details.payment_method : ""}: ending in 7320</p>
                             </div>
 
                             <div className={orderDetailsStyles.detailPart}>
@@ -169,7 +224,7 @@ const OrderDetails = (props,  { node }) => {
 
                             <div className={orderDetailsStyles.totalWrapper}>
                                 <div>Order Total</div>
-                                <div className={orderDetailsStyles.totalPrice}>$69.00</div>
+                                <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax? "$" + details.total_inc_tax : ""}</div>
                             </div>
 
                             <div className={orderDetailsStyles.orderButtonSection}>

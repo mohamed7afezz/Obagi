@@ -51,7 +51,7 @@ const OrderHistory = ({ node }) => {
         return (
             <div>
                 <div className="d-lg-none">
-                <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>
+                {orders === "undefined" || Object.keys(orders).length == 0? "": <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
                     {orders.map((item, index) => {
                         return (
                             <OrderHistoryRow 

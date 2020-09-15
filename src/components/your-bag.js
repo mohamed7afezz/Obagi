@@ -282,7 +282,7 @@ const YourBag = props => {
                       <div className={BagStyle.bagSelectContainer}>
                         <label>Country</label>
                         <select className={BagStyle.bagSelect} name="Country">
-                          <option vlaue="All">Select</option>
+                          <option value="All">Select</option>
                           <option value="Hyaluronic Acid">
                             Hyaluronic Acid
                           </option>
@@ -291,7 +291,7 @@ const YourBag = props => {
                       <div className={BagStyle.bagSelectContainer}>
                         <label>State/Province</label>
                         <select className={BagStyle.bagSelect} name="Country">
-                          <option vlaue="All">Select</option>
+                          <option value="All">Select</option>
                           <option value="Hyaluronic Acid">
                             Hyaluronic Acid
                           </option>
