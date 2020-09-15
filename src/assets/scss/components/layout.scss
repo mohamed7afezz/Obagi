@@ -4,6 +4,7 @@
 body {
     color: #132466;
     position: relative;
+    padding-right: 0 !important;
     // margin-top: 192.5px;
 
     // @include lg-screen {
@@ -1419,6 +1420,7 @@ p {
     right: 0;
     left: unset;
     top: 154px;
+    padding-right: 0 !important;
 }
 
 .show-account .modal-dialog {

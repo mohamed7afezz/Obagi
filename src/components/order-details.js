@@ -84,7 +84,7 @@ const OrderDetails = (props, { node }) => {
     const location = useLocation();
     const { user } = useContext(UserContext);
 
-    if (!user && !location.pathname.includes(`/my-account/orders/order-details`)) {
+    if (!user && location.pathname.includes(`/my-account/orders/order-details`)) {
         if (typeof window !== 'undefined') {
             navigate("/my-account/signin")
         }
