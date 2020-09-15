@@ -191,8 +191,8 @@ const UserAccount = ({ node, children, activeTab }) => {
                         <Slider {...TabSliderSetting} className="account-tab-slider">
                             <Link to="/my-account/orders" className={activeTab == "orders"? "active account-tab" : "account-tab"}>Order History</Link>
                             <Link to="/my-account/address-book" className={activeTab == "address-book"? "active account-tab" : "account-tab"}>Address Book</Link>
-                            <Link to="#" className={activeTab == "account-settings"? "active account-tab" : "account-tab"}>Account Settings</Link>
-                            <Link to="#" className={activeTab == "premier-points"? "active account-tab" : "account-tab"}>Premier Points</Link>
+                            <Link to="/my-account/account-settings" className={activeTab == "account-settings"? "active account-tab" : "account-tab"}>Account Settings</Link>
+                            <Link to="/my-account/premier-points" className={activeTab == "premier-points"? "active account-tab" : "account-tab"}>Premier Points</Link>
                         </Slider>
                     </div>
                 </div>
@@ -204,8 +204,8 @@ const UserAccount = ({ node, children, activeTab }) => {
                         <div className="list-group" id="myList" role="tablist">
                             <Link className={activeTab == "orders"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/orders" >Order History</Link>
                             <Link className={activeTab == "address-book"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/address-book">Address Book</Link>
-                            <Link className={activeTab == "account-settings"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="#">Account Settings</Link>
-                            <Link className={activeTab == "premier-points"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="#">Premier Points</Link>
+                            <Link className={activeTab == "account-settings"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/account-settings">Account Settings</Link>
+                            <Link className={activeTab == "premier-points"? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/premier-points">Premier Points</Link>
                             <div className={myAccountStyles.csTitle}>Customer Service</div>
                             <div className={myAccountStyles.csText}>Our Customer Service Specialists are available to assist you Monday through Friday from 9am to 5pm EST. Feel free to give us Link call at (800) 555-5555 or <Link className={myAccountStyles.mail} href="mailto:email@email.com">Email Us</Link></div>
                         </div>

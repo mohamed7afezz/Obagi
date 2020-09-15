@@ -24,8 +24,8 @@ const ShowAccount = () => {
                     <div className="modal-body links-wrapper">
                         <Link to="/my-account/orders">Order History</Link>
                         <Link to="/my-account/address-book">Address Book</Link>
-                        <Link to="#">Account Settings</Link>
-                        <Link to="#">Premier Points</Link>
+                        <Link to="/my-account/account-settings">Account Settings</Link>
+                        <Link to="/my-account/premier-points">Premier Points</Link>
                         <button type="button" onClick={handleLogout}>Sign Out</button>
                     </div>
                 </div>

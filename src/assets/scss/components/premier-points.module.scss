@@ -1,0 +1,88 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.second-title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 31.5px;
+    margin-bottom: 32px;
+    @include md-screen {
+    
+        margin-bottom: 40px;
+      
+    }
+}
+.centerimages{
+    justify-content: space-evenly;
+    margin-top: 30px;
+    @include md-screen{
+        margin-top: 40px;
+    }
+}
+.second-title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+}
+.Premiertitle{
+    font-size: 32px;
+    line-height: 48px;
+    @extend %futurapt-light;
+    @include md-screen{
+        margin-top: 40px;
+        font-size: 52px;
+        line-height: 64px;
+    }
+}
+.Premiersubtitle{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-medium;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    @include md-screen{
+    margin-bottom: 16px;
+    }
+}
+.PremierDesc{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-light;
+    margin-top: 35px;
+    @include md-screen{
+        margin-top: 0;
+    }
+}
+.PremierLinks{
+    margin-top: 32px;
+}
+.PremierLinkTitke{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.PremierLinks{
+    counter-reset: count;
+}
+.PremierLink::before {
+    counter-increment: count;                  
+    content: counter(count) ;
+    position: absolute;
+    left: 0;
+border: 1px solid #d6d6d6;
+width: 32px;
+border-radius: 50%;
+text-align: center;
+height: 32px;
+padding-top: 4px;
+font-size: 16px;
+line-height: 24px;
+font-weight: 700;    
+  }
+.PremierLink{
+    margin-bottom: 24px;
+    margin-left: 40px;
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+}

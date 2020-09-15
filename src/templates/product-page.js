@@ -40,6 +40,7 @@ export const productPageQuery = graphql`
             field_clinical_id
             field_clinical_medical_type
             field_clinical_weight
+            field_clinical_description_sub
             field_clinical_key_benefit
             field_clinical_description {
                 processed
@@ -103,6 +104,7 @@ export const productPageQuery = graphql`
             field_medical_weight
             field_medical_key_benefits
             field_medical_form_list
+            field_medical_description_sub
             field_medical_description {
                 processed
             }

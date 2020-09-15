@@ -8,6 +8,8 @@ import ShowAccount from '../../components/show-account';
 import Orders from '../../components/account/orders';
 import AddressBook from '../../components/account/address-book';
 import OrderDetails from '../../components/order-details';
+import AccountSettings from '../../components/account/account-settings';
+import Premier from '../../components/account/premier-points';
 
 
 export default function MyAccount() {
@@ -19,6 +21,8 @@ export default function MyAccount() {
                 <PrivateRoute path="/my-account/orders" component={Orders} />
                 <PrivateRoute path="/my-account/address-book" component={AddressBook} />
                 <PrivateRoute path="/my-account/orders/order-details" component={OrderDetails} />
+                <PrivateRoute path="/my-account/account-settings" component={AccountSettings} />
+                <PrivateRoute path="/my-account/premier-points" component={Premier} />
                 <Login path="/my-account/signin"/>
             </Router>
         </Layout>

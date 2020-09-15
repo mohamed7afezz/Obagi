@@ -1,0 +1,186 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.second-title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 31.5px;
+    margin-bottom: 32px;
+    @include md-screen {
+        border-bottom: 1px solid #d6d6d6 ;
+        margin-bottom: 40px;
+        padding-bottom: 32px;
+    }
+}
+
+.second-title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+
+
+}
+
+.address-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    padding: 16px 0;
+    background: #132466;
+    border-radius: 6px;
+    border: 1px solid #132466;
+    text-transform: uppercase;
+    margin-top: 8px;
+
+    &:hover {
+        background: #ffffff;
+        color: #132466;
+        text-decoration: none;
+    }
+
+    @include lg-screen {
+        margin: 0;
+        padding: 16px 32px;
+        width: unset;
+        display: inline-block;
+    }
+}
+.formTitle{
+    justify-content: space-between;
+    margin-bottom: 16px;
+    @include md-screen{
+        margin-bottom: 20px;
+    }
+}
+.UpdateOption{
+    font-size: 16px;
+    line-height: 24px;
+    color: #7c858a;
+}
+.updateP{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.fieldTitle{
+    letter-spacing: 1.2px;
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    margin-bottom: 5px;
+}
+.Communicationcon{
+    border-top: 1px solid #d6d6d6 ;
+    border-bottom: 1px solid #d6d6d6 ;
+    padding-top: 32px;
+    margin-top: 32px;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    @include md-screen{
+        padding-top: 40px;
+        margin-top: 40px;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+    }
+}
+.formfield{
+    border: 1px solid #132466;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    
+    input{
+        width: 100%;
+        border: 0;
+    }
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+}
+.accountsettinginput{
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-book;
+    color: #132466;
+}
+.selectcontainer{
+    flex: 0 0 45%;
+    border: 1px solid #d6d6d6;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    @include md-screen{
+     flex: 0 0 30%;
+     margin-bottom: 0;
+     padding-top: 16px;
+     padding-bottom: 16px;
+    }
+}
+
+.formTitle{
+    flex-wrap: wrap;
+    @include md-screen{
+        flex-wrap: nowrap;
+    }
+}
+.endselect{
+    flex: 0 0 100%;
+    margin-bottom: 0;
+
+    @include md-screen{
+        flex: 0 0 30%;
+    }
+}
+.selectTitle{
+    padding-left: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    padding-right: 16px;
+}
+.DateBirthCon{
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #d6d6d6;
+    @include md-screen{
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+    }
+}
+    .saveSitting {
+        border: 0;
+        width: 100%;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        color: #fff;
+        background-color: #132466;
+        border-radius: 4px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+    
+}
+@media (max-width:767px){
+    .SaveButton{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        background-color: #fff;
+        z-index: 9999;
+    }
+    .saveSitting   {
+        max-width: 90%;
+margin-left: auto;
+margin-right: auto;
+display: block;
+margin-bottom: 15px;
+margin-top: 15px;
+
+    }
+}

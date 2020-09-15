@@ -55,6 +55,9 @@ const ProductHero = ({ data, nodeType }) => {
   let key_benefit  = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
+    let productSubTitle =isClincal
+    ? node.field_clinical_description_sub
+    : node.field_medical_description_sub
     let key_benfitList = isClincal
     ? node.relationships.field_key_benefits_list?node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists:""
     : node.relationships.field_medical_benefits_lists?node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists:""
@@ -202,7 +205,10 @@ const ProductHero = ({ data, nodeType }) => {
            <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
            <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
           </div>
-       
+          <div
+            className={ProductStyles.productSubDesc}
+        
+          >{productSubTitle}</div>
           <div
             className={ProductStyles.productdesc}
             dangerouslySetInnerHTML={{ __html: field_description }}
@@ -258,6 +264,7 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight} oz </li>
             </ul>
           </div>
+          {feild_preimer?
           <div
               className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
                 " "
@@ -265,70 +272,123 @@ const ProductHero = ({ data, nodeType }) => {
             >
            <img src={modal} />  
               <p>
-               Earn ${feild_preimer} Premier Points 
+               Earn {feild_preimer} Premier Points 
               </p>
               
-            </div>
-          
+            </div>:""
+          }
+           {field_medical_rx == "RX"? 
           <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-            <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
-              <select id="quantityBox">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-          <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-8"].join(" ")}>
-            {field_medical_rx == "RX"?
-            <Link
-              className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-              to="/medical/hcpfinder">      
-              Find a Physician
-           </Link>
-            :<button
-              className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-              onClick={() => {
-                let quantity = document.querySelector("#quantityBox").value;
-                addToCart(productId,false,quantity);
-              }}
-              disabled={addingToCart === productId}
-            >
-              {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-            </button>
-            }
-           {field_info?
-            <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
-              <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
-              {field_info}
-              </p>
-
-              <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
-                <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
-                <img
-                  src={infoselected}
-                  className={[ProductStyles.infoselected,"infoselected"].join(" ")}
-                />
-              </button>
-            </div>
-            :""}
+         
             
-          </div>
       
-            <p
-              className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
-            >
-            
-              <img src={share} /> Share
+        <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-10","md-pl0"].join(" ")}>
+          {field_medical_rx == "RX"?
+          <Link
+            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            to="/medical/hcpfinder">      
+            Find a Physician
+         </Link>
+          :<button
+            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            onClick={() => {
+              let quantity = document.querySelector("#quantityBox").value;
+              addToCart(productId,false,quantity);
+            }}
+            disabled={addingToCart === productId}
+          >
+            {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+          </button>
+          }
+         {field_info?
+          <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
+            <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
+            {field_info}
             </p>
+
+            <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
+              <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
+              <img
+                src={infoselected}
+                className={[ProductStyles.infoselected,"infoselected"].join(" ")}
+              />
+            </button>
           </div>
-          <div className={ProductStyles.offer}> 
+          :""}
+          
+        </div>
+    
+          <p
+            className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+          >
+          
+            <img src={share} /> Share
+          </p>
+        </div>
+       : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
+         
+            
+            
+       <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
+         <select id="quantityBox">
+           <option>1</option>
+           <option>2</option>
+           <option>3</option>
+           <option>4</option>
+           <option>5</option>
+           <option>6</option>
+           <option>7</option>
+           <option>8</option>
+           <option>9</option>
+           <option>10</option>
+         </select>
+       </div>
+
+     <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-8"].join(" ")}>
+       {field_medical_rx == "RX"?
+       <Link
+         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+         to="/medical/hcpfinder">      
+         Find a Physician
+      </Link>
+       :<button
+         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+         onClick={() => {
+           let quantity = document.querySelector("#quantityBox").value;
+           addToCart(productId,false,quantity);
+         }}
+         disabled={addingToCart === productId}
+       >
+         {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+       </button>
+       }
+      {field_info?
+       <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
+         <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
+         {field_info}
+         </p>
+
+         <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
+           <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
+           <img
+             src={infoselected}
+             className={[ProductStyles.infoselected,"infoselected"].join(" ")}
+           />
+         </button>
+       </div>
+       :""}
+       
+     </div>
+ 
+       <p
+         className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+       >
+       
+         <img src={share} /> Share
+       </p>
+     </div>
+      }
+       <div className={ProductStyles.offer}> 
             <div className={["col-3",ProductStyles.offerimg].join(" ")}>
             <img src={freeimg}/>
             </div>
