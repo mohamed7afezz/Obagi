@@ -223,6 +223,8 @@
 #desk-navigation {
   z-index: 999999991;
 }
+
+
 @media (max-width: 768px) {
   .show-mob{
     display: block !important;
