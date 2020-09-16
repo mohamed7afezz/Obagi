@@ -25,7 +25,7 @@ export default function AddressBook() {
         }
 
         setIsLoading(false);
-        console.log("address", addressesData);
+        console.log("address", addresses.data);
     }
 
 
@@ -79,30 +79,33 @@ export default function AddressBook() {
                 {isLoading ?
                     <div> Loading... </div>
                     :
-                    (addresses !== "undefined" || Object.keys(addresses).length != 0) ?
+                    (
+                        ((addresses !== "undefined" || Object.keys(addresses).length != 0) && addresses.data) ?
 
-                        (addresses.data ? addresses.data.map((item, index) => {
-                            return (
-                                <AddressBox
-                                    firstName={item.first_name}
-                                    lastName={item.last_name}
-                                    firstAddress={item.address1}
-                                    secondAddress={item.address2}
-                                    city={item.city}
-                                    state={item.state_or_province}
-                                    postalCode={item.postal_code}
-                                    addressType={item.address_type}
-                                    phone={item.phone}
-                                    countryCode={item.country_code}
-                                    id={item.id}
-                                    index={index + 1}
+                            (addresses.data.map((item, index) => {
+                                return (
+                                    <AddressBox
+                                        firstName={item.first_name}
+                                        lastName={item.last_name}
+                                        firstAddress={item.address1}
+                                        secondAddress={item.address2}
+                                        city={item.city}
+                                        state={item.state_or_province}
+                                        postalCode={item.postal_code}
+                                        addressType={item.address_type}
+                                        phone={item.phone}
+                                        countryCode={item.country_code}
+                                        id={item.id}
+                                        index={index + 1}
+                                        updateAddresses={getAddresses}
+                                    />
+                                )
+                            }))
 
-                                />
-                            )
-                        })
-                            : "")
+                        : <div>There are no addresses.</div>
+                    )
 
-                        : ""}
+                }
                 <button type="button" className={[myAccountStyles.addressButton, "d-lg-none"].join(" ")} data-toggle="modal" data-target="#address-modal" onClick={() => { removeData(); addAddress(); }}>Add Address</button>
             </div>
 

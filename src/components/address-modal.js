@@ -18,7 +18,7 @@ const AddressModal = ({ node,
     phone,
     id,
     addressType,
-    countryCode
+    countryCode,
 }) => {
 
 
@@ -41,18 +41,7 @@ const AddressModal = ({ node,
         event.preventDefault();
 
         if(typeof window !== "undefined") {
-        
-            // fname = document.querySelector("#address-modal #fname").value;
-            // lname = document.querySelector("#address-modal #lname").value;
-            // stadd = document.querySelector("#address-modal #stadd").value;
-            // apt = document.querySelector("#address-modal #apt").value;
-            // cityadd = document.querySelector("#address-modal #city").value;
-            // stateadd = document.querySelector("#address-modal .select-selected").innerHTML;
-            // pcode = document.querySelector("#address-modal #pcode").value;
-            // ccode = "US";
-            // phonenum = document.querySelector("#address-modal #phone").value;
-            // type = "residential";
-            // orid = parseInt(document.querySelector("#address-modal #order-id").value)
+
     
             var addressDetails = {
                 first_name: document.querySelector("#address-modal #fname").value,

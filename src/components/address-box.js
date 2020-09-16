@@ -19,7 +19,8 @@ const AddressBox = ({ node,
     id,
     index,
     addressType,
-    countryCode }) => {
+    countryCode
+}) => {
 
 
     function formatPhoneNumber(phoneNumberString) {
@@ -59,20 +60,20 @@ const AddressBox = ({ node,
     }
 
 
-    const [addresses, setAddresses] = useState({});
+    // const [addresses, setAddresses] = useState({});
 
     async function deleteAddress() {
 
-        const addressBoxData = await (await fetch(`${baseUrl}bigcommerce/v1/delete_addresses`, {
+        const addressBoxData = await fetch(`${baseUrl}bigcommerce/v1/delete_addresses`, {
             method: 'POST',
             credentials: 'include',
             mode: 'cors',
             body: JSON.stringify({
                 address_id: id
             })
-        })).json();
+        });
 
-        if (addressBoxData.status == 204 && typeof window !== "undefined") {
+        if (addressBoxData.status == 200 && typeof window !== "undefined") {
             window.location.reload();
             
         }

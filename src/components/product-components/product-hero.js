@@ -294,6 +294,8 @@ const ProductHero = ({ data, nodeType }) => {
             onClick={() => {
               let quantity = document.querySelector("#quantityBox").value;
               addToCart(productId,false,quantity);
+              alert(productId);
+              
             }}
             disabled={addingToCart === productId}
           >
@@ -356,6 +358,7 @@ const ProductHero = ({ data, nodeType }) => {
          onClick={() => {
            let quantity = document.querySelector("#quantityBox").value;
            addToCart(productId,false,quantity);
+           alert(productId);
          }}
          disabled={addingToCart === productId}
        >
