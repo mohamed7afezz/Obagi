@@ -1568,7 +1568,8 @@ p {
 .review-modal .form-group,
 .login .form-group,
 .register .form-group,
-.forgot-pw .form-group {
+.forgot-pw .form-group,
+.account-settings .form-group {
     border: 1px solid #bebebe;
     border-radius: 4px;
     padding: 16px 11px 12px 16px;
@@ -1589,7 +1590,8 @@ p {
 .review-modal .form-group, 
 .login .form-group, 
 .register .form-group,
-.forgot-pw .form-group  {
+.forgot-pw .form-group,
+.account-settings .form-group  {
     border-color: #d6d6d6;
     @include lg-screen {
         width: 100%;
@@ -1605,7 +1607,8 @@ p {
 .review-modal .form-label, 
 .login label, 
 .register label,
-.forgot-pw label {
+.forgot-pw label,
+.account-settings label {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
@@ -1618,7 +1621,8 @@ p {
 .review-modal .form-control, 
 .login .form-control, 
 .register .form-control,
-.forgot-pw .form-control {
+.forgot-pw .form-control,
+.account-settings .form-control {
     border: 0;
     padding: 0;
     @include fontStyle(18, 32);
@@ -2226,7 +2230,8 @@ p {
 }
 
 .login .form-group, 
-.register .form-group {
+.register .form-group,
+.account-settings .form-group {
     margin-bottom: 16px;
     display: inline-block;
     width: 100%;
