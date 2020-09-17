@@ -11,6 +11,8 @@
         border-bottom: 1px solid #d6d6d6 ;
         margin-bottom: 40px;
         padding-bottom: 32px;
+        margin-left: -30px;
+        padding-left: 30px;
     }
 }
 
@@ -51,6 +53,7 @@
 }
 .formTitle{
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 16px;
     @include md-screen{
         margin-bottom: 20px;
@@ -81,9 +84,11 @@
     margin-bottom: 32px;
     @include md-screen{
         padding-top: 40px;
-        margin-top: 40px;
-        padding-bottom: 40px;
+        margin-top: 23.5px;
+        padding-bottom: 23.5px;
         margin-bottom: 40px;
+        margin-left: -30px;
+        padding-left: 30px;
     }
 }
 .formfield{
@@ -150,6 +155,8 @@
     @include md-screen{
         padding-bottom: 40px;
         margin-bottom: 40px;
+        margin-left: -30px;
+        padding-left: 30px;
     }
 }
     .saveSitting {

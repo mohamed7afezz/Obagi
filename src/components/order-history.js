@@ -37,9 +37,7 @@ const OrderHistory = ({ node }) => {
     console.log("ashraqat", orders);
 
     if(isLoading) {
-        return <div>
-            Loading...
-        </div>
+        return <div> Loading... </div>
     }
 
     else if(orders === "undefined" || Object.keys(orders).length == 0) {
@@ -51,7 +49,7 @@ const OrderHistory = ({ node }) => {
         return (
             <div>
                 <div className="d-lg-none">
-                <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>
+                {orders === "undefined" || Object.keys(orders).length == 0? "": <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
                     {orders.map((item, index) => {
                         return (
                             <OrderHistoryRow 

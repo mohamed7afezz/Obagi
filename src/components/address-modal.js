@@ -6,6 +6,7 @@ import { CustomSelect } from '../assets/js/custom-select'
 
 const baseUrl = process.env.Base_URL;
 
+
 const AddressModal = ({ node,
     firstName,
     lastName,
@@ -17,7 +18,7 @@ const AddressModal = ({ node,
     phone,
     id,
     addressType,
-    countryCode
+    countryCode,
 }) => {
 
 
@@ -29,56 +30,40 @@ const AddressModal = ({ node,
 
     const [addresses, setAddresses] = useState({});
 
+    // let fname, lname, stadd, apt, cityadd, stateadd, pcode, ccode, type, orid, phonenum;
 
-    // if(typeof window !== "undefined") {
-        
-        let fname = document.querySelector("#address-modal #fname").value;
-        let lname = document.querySelector("#address-modal #lname").value;
-        let stadd = document.querySelector("#address-modal #stadd").value;
-        let apt = document.querySelector("#address-modal #apt").value;
-        let cityadd = document.querySelector("#address-modal #city").value;
-        let stateadd = document.querySelector("#address-modal .select-selected").innerHTML;
-        let pcode = document.querySelector("#address-modal #pcode").value;
-        let ccode = "US";
-        let phonenum = document.querySelector("#address-modal #phone").value;
-        let type = "residential";
-        let orid = parseInt(document.querySelector("#address-modal #order-id").value);
-    // }
+
+
+
+
 
     async function updateAddresses(event) {
         event.preventDefault();
 
+        if(typeof window !== "undefined") {
+
+    
+            var addressDetails = {
+                first_name: document.querySelector("#address-modal #fname").value,
+                last_name: document.querySelector("#address-modal #lname").value,
+                address1: document.querySelector("#address-modal #stadd").value,
+                address2: document.querySelector("#address-modal #apt").value,
+                city: document.querySelector("#address-modal #city").value,
+                state_or_province: document.querySelector("#address-modal .select-selected").innerHTML,
+                postal_code: document.querySelector("#address-modal #pcode").value,
+                country_code : "US",
+                phone: document.querySelector("#address-modal #phone").value,
+                address_type: "residential",
+                id: parseInt(document.querySelector("#address-modal #order-id").value)
+            }
+        }
         
 
         const addressesData = await fetch((document.querySelector("#address-modal").classList.contains("add-address") ? `${baseUrl}bigcommerce/v1/customer_addresses` : `${baseUrl}bigcommerce/v1/update_addresses`), {
             method: 'POST',
             credentials: 'include',
             mode: 'cors',
-            body: JSON.stringify([{
-                first_name: fname,
-                last_name: lname,
-                address1: stadd,
-                address2: apt,
-                city: cityadd,
-                state_or_province: stateadd,
-                postal_code: pcode,
-                country_code : ccode,
-                phone: phonenum,
-                address_type: type,
-                id: orid
-
-                // first_name: "shaher",
-                // last_name: "wageh",
-                // address1: "111 E West Street",
-                // address2: "654",
-                // city: "Akron",
-                // state_or_province: "Alabama",
-                // postal_code: "44325",
-                // country_code: "US",
-                // phone: "1234567890",
-                // address_type: "residential",
-                // id:28
-            }])
+            body: JSON.stringify([addressDetails])
         })
 
         if (addressesData.status == 200 && typeof window !== "undefined") {
@@ -87,21 +72,10 @@ const AddressModal = ({ node,
         }
 
         
-        console.log("address", addressesData.status);
+        console.log("status", addressesData.status);
     }
 
 
-    // function handleChange () {
-    //     firstName = document.querySelector("#address-modal #fname").value;
-    //     lastName = document.querySelector("#address-modal #lname").value
-    //     firstAddress = document.querySelector("#address-modal #stadd").value
-    //     secondAddress = document.querySelector("#address-modal #apt").value
-    //     city = document.querySelector("#address-modal #city").value
-    //     state = document.querySelector("#address-modal .select-selected").innerHTML
-    //     postalCode = document.querySelector("#address-modal #pcode").value
-    //     phone = document.querySelector("#address-modal #phone").value
-    //     id = document.querySelector("#address-modal #order-id").value;
-    // }
     return (
 
 

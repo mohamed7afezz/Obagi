@@ -7,6 +7,12 @@ const ShowAccount = () => {
 
     const {user, handleLogout} = useContext(UserContext);
 
+    function closeModal() {
+        document.querySelector("#show-account").style.display = "none";
+        document.querySelector("body").classList.remove("modal-open");
+        document.querySelector(".modal-backdrop").remove();
+    }
+
     return (
 
         
@@ -22,11 +28,11 @@ const ShowAccount = () => {
                         </div>
                     </div>
                     <div className="modal-body links-wrapper">
-                        <Link to="/my-account/orders">Order History</Link>
-                        <Link to="/my-account/address-book">Address Book</Link>
-                        <Link to="/my-account/account-settings">Account Settings</Link>
-                        <Link to="/my-account/premier-points">Premier Points</Link>
-                        <button type="button" onClick={handleLogout}>Sign Out</button>
+                        <Link to="/my-account/orders" onClick={() => {closeModal();}}>Order History</Link>
+                        <Link to="/my-account/address-book" onClick={() => {closeModal();}}>Address Book</Link>
+                        <Link to="/my-account/account-settings" onClick={() => {closeModal();}}>Account Settings</Link>
+                        <Link to="/my-account/premier-points" onClick={() => {closeModal();}}>Premier Points</Link>
+                        <button type="button" onClick={handleLogout} data-dismiss="modal">Sign Out</button>
                     </div>
                 </div>
             </div>

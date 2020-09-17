@@ -39,12 +39,15 @@ const AboveHeader = () => {
       }
        else if(document.querySelector(".node-medical")){
         document.querySelector(".node-medical").classList.add("node-general-margin");
+        document.querySelector(".search-margin").style.marginTop = "0";
 
       } else if (document.querySelector(".node-clinical")) {
         document.querySelector(".node-clinical").classList.add("node-general-margin");
+        document.querySelector(".search-margin").style.marginTop = "0";
       }
       else {
         document.querySelector(".node-home").classList.add("node-home-margin");
+        document.querySelector(".search-margin").style.marginTop = "0";
       }
 
     }

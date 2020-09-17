@@ -66,7 +66,7 @@ const OrderHistoryRow = ({ node,
                 <td>{itemsNum}</td>
                 <td>${total}</td>
                 <td>{status}</td>
-                <td><button type="button"></button></td>
+                <td><Link to={"/my-account/orders/order-details/" + orderNum}></Link></td>
             </tr>
         </>
     )

@@ -87,14 +87,15 @@ export const CartProvider = ({ children }) => {
     
   };
 
-  const addToCart = (productId ,retry, quantity) => {
+  const addToCart = async (productId ,retry, quantity) => {
     
+
     setState({ ...state, addingToCart: productId });
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
     if(cartId) {
         resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
     }
-    fetch(resrouce_url, {
+    await fetch(resrouce_url, {
       method: 'POST',
       credentials: 'same-origin',
       mode: 'cors',
@@ -108,14 +109,15 @@ export const CartProvider = ({ children }) => {
       })
     })
       .then(async res => ({ response: await res.json(), status: res.status }))
-      .then(({ response, status }) => {
+      .then(async ({ response, status }) => {
+        console.log('bahi', 'in add to cart')
         if (status === 404 && !retry) {
           // re create a cart if cart was destroyed
           cartId = undefined;
           if (typeof window !== "undefined") {
             window.localStorage.removeItem('cartId')
           }
-          addToCart(productId, true, quantity);
+          await addToCart(productId, true, quantity);
         }
         status < 300 && addNotification('Item added successfully');
 

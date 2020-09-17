@@ -15,10 +15,9 @@ import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
 import freeimg from "../../assets/images/product-images/free_image.png"
 import { func } from "prop-types"
-import { Helmet } from "react-helmet"
 
 const ProductHero = ({ data, nodeType }) => {
-  const isClincal = nodeType == "clinical"
+  const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
   let productId = isClincal ? node.field_clinical_id : node.field_medical_id
@@ -26,7 +25,7 @@ const ProductHero = ({ data, nodeType }) => {
   let field_image = isClincal
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
-  let field_medical_rx = isClincal
+    let field_medical_rx = isClincal
     ? ""
     : node.relationships.field_medical_rx.name
   let field_description = isClincal
@@ -47,27 +46,21 @@ const ProductHero = ({ data, nodeType }) => {
   let field_skin_concern = isClincal
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
-  let field_info = isClincal
+    let field_info = isClincal
     ? node.field_clinical_info
     : node.field_medical_info
   let feild_preimer = isClincal
     ? node.field_clinical_premier_points
     : node.field_medical_premier_points
-  let key_benefit = isClincal
+  let key_benefit  = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
-  let productSubTitle = isClincal
+    let productSubTitle =isClincal
     ? node.field_clinical_description_sub
     : node.field_medical_description_sub
-  let key_benfitList = isClincal
-    ? node.relationships.field_key_benefits_list
-      ? node.relationships.field_key_benefits_list.relationships
-          .field_key_benefits_lists
-      : ""
-    : node.relationships.field_medical_benefits_lists
-    ? node.relationships.field_medical_benefits_lists.relationships
-        .field_key_benefits_lists
-    : ""
+    let key_benfitList = isClincal
+    ? node.relationships.field_key_benefits_list?node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists:""
+    : node.relationships.field_medical_benefits_lists?node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists:""
   const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
@@ -77,16 +70,19 @@ const ProductHero = ({ data, nodeType }) => {
   })
   const slider1 = useRef()
   const slider2 = useRef()
-  // document.querySelector('body').addEventListener('click',function(){
-  //   if (document.querySelector('.popoverContainer').classList.contains('show')) {
-  //     document.querySelector('.popoverContainer').classList.remove('show')
-  //   }
-  // })
-  function showpopover(e) {
-    document.querySelector(".popoverContainer").classList.toggle("show")
+    // document.querySelector('body').addEventListener('click',function(){
+    //   if (document.querySelector('.popoverContainer').classList.contains('show')) {
+    //     document.querySelector('.popoverContainer').classList.remove('show')
+    //   }
+    // })
+  function showpopover(e){
+     
+      
+    document.querySelector('.popoverContainer').classList.toggle('show')
+    
   }
 //////////////////////
-
+if ( typeof window !== "undefined"){
 window.bvDCC = {
 
   catalogData: {
@@ -132,9 +128,10 @@ window.bvDCC = {
   });
   
   };
-
+}
 /////////////////////////
   useEffect(() => {
+ 
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
@@ -170,7 +167,7 @@ window.bvDCC = {
   function slickGoToslide(int) {
     slider1.current.slickGoTo(int)
   }
-
+  
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
@@ -190,23 +187,18 @@ window.bvDCC = {
             <Link to={`/${nodeType}`}> {nodeType} </Link>/ {node.title}
           </p>
         </div>
-        <div className={["col-12", ""].join(" ")}>
-          <p
-            className={[
-              ProductStyles.productcat,
-              "mt-24",
-              "productcat",
-              "show-mob",
-            ].join(" ")}
-          >
+        <div className={["col-12",""].join(" ")}>
+        <p className={[ProductStyles.productcat,"mt-24", "productcat","show-mob"].join(" ")}>
             {nodeType}
           </p>
-          <h1 className={[ProductStyles.productname, "show-mob"].join(" ")}>
-            {node.title}
-          </h1>
+          <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
+          <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
+
+
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-          <div data-bv-show="reviews" data-bv-product-id={productId}></div>
-        </div>
+  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
+
+          </div></div>
         <div
           className={[
             "col-12",
@@ -222,7 +214,9 @@ window.bvDCC = {
                 <React.Fragment>
                   <div class="zoom-mobile" data-arrange={index}>
                     {item.localFile ? (
-                      <img src={item.localFile.childImageSharp.original.src} />
+                      <img
+                        src={item.localFile.childImageSharp.original.src}
+                      />
                     ) : (
                       ""
                     )}
@@ -252,289 +246,213 @@ window.bvDCC = {
             ProductStyles.productdetail,
           ].join(" ")}
         >
-          <p
-            className={[
-              ProductStyles.productcat,
-              "productcat",
-              "hide-mob",
-            ].join(" ")}
-          >
+          <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
             {nodeType}
           </p>
-          <h1 className={[ProductStyles.productname, "hide-mob"].join(" ")}>
-            {node.title}
-          </h1>
+          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")}>{node.title}</h1>
+          <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
+ 
+
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-          <div data-bv-show="reviews" data-bv-product-id={productId}></div>
-          <div className={ProductStyles.productSubDesc}>{productSubTitle}</div>
+  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
+
+          </div>
+          <div
+            className={ProductStyles.productSubDesc}
+        
+          >{productSubTitle}</div>
           <div
             className={ProductStyles.productdesc}
             dangerouslySetInnerHTML={{ __html: field_description }}
           ></div>
           <div className={ProductStyles.keyBenefitcon}>
             <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
-
+            
             <ul className={ProductStyles.keyBenefitul}>
-              {key_benfitList
-                ? key_benfitList.map((item, index) => {
-                    return (
-                      <li className={ProductStyles.keyBenefitli}>
-                        {item.field_list_item}
-                      </li>
-                    )
-                  })
-                : ""}
+            {key_benfitList?key_benfitList.map((item, index) => {
+              return (
+                
+                  <li className={ProductStyles.keyBenefitli}>
+                    {item.field_list_item}
+                  </li>
+            
+              )
+            }):""}
             </ul>
           </div>
           <div className={ProductStyles.skintypes}>
-            <p className={ProductStyles.canuse}>
-              Skin Type:{" "}
-              {field_skin_type.map((item, index) => {
-                return (
-                  <span className={ProductStyles.canusedata}>
-                    <Link to={item.path.alias}> {item.name}</Link>
-                    {index === field_skin_type.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })}
-            </p>
-            <p className={ProductStyles.Indications}>
-              Skin Concerns:{" "}
-              {field_skin_concern.map((item, index) => {
-                return (
-                  <span className={ProductStyles.Indicationsdata}>
-                    <Link to={item.path.alias}> {item.name}</Link>
-                    {index === field_skin_concern.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })}
-            </p>
+          <p className={ProductStyles.canuse}>
+            Skin Type:{" "}
+            {field_skin_type.map((item, index) => {
+              return (
+                <span className={ProductStyles.canusedata}>
+                  <Link to={item.path.alias}> {item.name}</Link>
+                  {index === field_skin_type.length - 1 ? "" : ", "}
+                </span>
+              )
+            })}
+          </p>
+          <p className={ProductStyles.Indications}>
+            Skin Concerns:{" "}
+            {field_skin_concern.map((item, index) => {
+              return (
+                <span className={ProductStyles.Indicationsdata}>
+                  <Link to={item.path.alias}> {item.name}</Link>
+                  {index === field_skin_concern.length - 1 ? "" : ", "}
+                </span>
+              )
+            })}
+          </p>
+        
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
-            <p className={ProductStyles.price}>
-              <span>${field_price}</span>
-            </p>
-
+          <p className={ProductStyles.price}>
+            <span>${field_price}</span>
+          </p>
+      
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             <ul>
               {" "}
               <li> Size {field_weight} oz </li>
             </ul>
           </div>
-          {feild_preimer ? (
-            <div
+          {feild_preimer?
+          <div
               className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
                 " "
               )}
             >
-              <img src={modal} />
-              <p>Earn {feild_preimer} Premier Points</p>
-            </div>
-          ) : (
-            ""
-          )}
-          {field_medical_rx == "RX" ? (
-            <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-              <div
-                className={[
-                  "d-flex",
-                  ProductStyles.centeralign,
-                  "centeralign",
-                  "col-12",
-                  "col-lg-10",
-                  "md-pl0",
-                ].join(" ")}
-              >
-                {field_medical_rx == "RX" ? (
-                  <Link
-                    className={["btn", ProductStyles.btnCart, "btnCart"].join(
-                      " "
-                    )}
-                    to="/medical/hcpfinder"
-                  >
-                    Find a Physician
-                  </Link>
-                ) : (
-                  <button
-                    className={["btn", ProductStyles.btnCart, "btnCart"].join(
-                      " "
-                    )}
-                    onClick={() => {
-                      let quantity = document.querySelector("#quantityBox")
-                        .value
-                      addToCart(productId, false, quantity)
-                    }}
-                    disabled={addingToCart === productId}
-                  >
-                    {addingToCart === productId
-                      ? "Adding to Bag"
-                      : "Add to Bag"}
-                  </button>
-                )}
-                {field_info ? (
-                  <div
-                    className={[
-                      ProductStyles.popoverContainer,
-                      "popoverContainer",
-                    ].join(" ")}
-                  >
-                    <p
-                      className={[ProductStyles.popcontent, "popcontent"].join(
-                        " "
-                      )}
-                    >
-                      {field_info}
-                    </p>
-
-                    <button
-                      onClick={e => {
-                        showpopover(e)
-                      }}
-                      className={[ProductStyles.popover, "popover"].join(" ")}
-                    >
-                      <img
-                        src={info}
-                        className={[ProductStyles.info, "info"].join(" ")}
-                      />
-                      <img
-                        src={infoselected}
-                        className={[
-                          ProductStyles.infoselected,
-                          "infoselected",
-                        ].join(" ")}
-                      />
-                    </button>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-
-              <p
-                className={["col-12", "col-lg-2", ProductStyles.share].join(
-                  " "
-                )}
-              >
-                <img src={share} /> Share
+           <img src={modal} />  
+              <p>
+               Earn {feild_preimer} Premier Points 
               </p>
-            </div>
-          ) : (
-            <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-              <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
-                <select id="quantityBox">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
+              
+            </div>:""
+          }
+           {field_medical_rx == "RX"? 
+          <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
+         
+            
+      
+        <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-10","md-pl0"].join(" ")}>
+          {field_medical_rx == "RX"?
+          <Link
+            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            to="/medical/hcpfinder">      
+            Find a Physician
+         </Link>
+          :<button
+            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            onClick={() => {
+              let quantity = document.querySelector("#quantityBox").value;
+              addToCart(productId,false,quantity);
+            }}
+            disabled={addingToCart === productId}
+          >
+            {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+          </button>
+          }
+         {field_info?
+          <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
+            <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
+            {field_info}
+            </p>
 
-              <div
-                className={[
-                  "d-flex",
-                  ProductStyles.centeralign,
-                  "centeralign",
-                  "col-12",
-                  "col-lg-8",
-                ].join(" ")}
-              >
-                {field_medical_rx == "RX" ? (
-                  <Link
-                    className={["btn", ProductStyles.btnCart, "btnCart"].join(
-                      " "
-                    )}
-                    to="/medical/hcpfinder"
-                  >
-                    Find a Physician
-                  </Link>
-                ) : (
-                  <button
-                    className={["btn", ProductStyles.btnCart, "btnCart"].join(
-                      " "
-                    )}
-                    onClick={() => {
-                      let quantity = document.querySelector("#quantityBox")
-                        .value
-                      addToCart(productId, false, quantity)
-                    }}
-                    disabled={addingToCart === productId}
-                  >
-                    {addingToCart === productId
-                      ? "Adding to Bag"
-                      : "Add to Bag"}
-                  </button>
-                )}
-                {field_info ? (
-                  <div
-                    className={[
-                      ProductStyles.popoverContainer,
-                      "popoverContainer",
-                    ].join(" ")}
-                  >
-                    <p
-                      className={[ProductStyles.popcontent, "popcontent"].join(
-                        " "
-                      )}
-                    >
-                      {field_info}
-                    </p>
-
-                    <button
-                      onClick={e => {
-                        showpopover(e)
-                      }}
-                      className={[ProductStyles.popover, "popover"].join(" ")}
-                    >
-                      <img
-                        src={info}
-                        className={[ProductStyles.info, "info"].join(" ")}
-                      />
-                      <img
-                        src={infoselected}
-                        className={[
-                          ProductStyles.infoselected,
-                          "infoselected",
-                        ].join(" ")}
-                      />
-                    </button>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-
-              <p
-                className={["col-12", "col-lg-2", ProductStyles.share].join(
-                  " "
-                )}
-              >
-                <img src={share} /> Share
-              </p>
-            </div>
-          )}
-          <div className={ProductStyles.offer}>
-            <div className={["col-3", ProductStyles.offerimg].join(" ")}>
-              <img src={freeimg} />
-            </div>
-            <div className={["col-9", ProductStyles.offercontent].join(" ")}>
-              <p className={ProductStyles.offertitle}>
-                FREE GIFT WITH PURCHASE
-              </p>
-              <p className={ProductStyles.offerdesc}>
-                Professional-C Microdermabrasion Polish Mask ($6 Value), with
-                any purchase of Obagi Clinical purchase.
-              </p>
-              <p className={ProductStyles.offerfooter}>
-                Adds at checkout. While supplies last.
-              </p>
-            </div>
+            <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
+              <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
+              <img
+                src={infoselected}
+                className={[ProductStyles.infoselected,"infoselected"].join(" ")}
+              />
+            </button>
           </div>
+          :""}
+          
+        </div>
+    
+          <p
+            className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+          >
+          
+            <img src={share} /> Share
+          </p>
+        </div>
+       : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
+         
+            
+            
+       <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
+         <select id="quantityBox">
+           <option>1</option>
+           <option>2</option>
+           <option>3</option>
+           <option>4</option>
+           <option>5</option>
+           <option>6</option>
+           <option>7</option>
+           <option>8</option>
+           <option>9</option>
+           <option>10</option>
+         </select>
+       </div>
+
+     <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-8"].join(" ")}>
+       {field_medical_rx == "RX"?
+       <Link
+         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+         to="/medical/hcpfinder">      
+         Find a Physician
+      </Link>
+       :<button
+         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+         onClick={() => {
+           let quantity = document.querySelector("#quantityBox").value;
+           addToCart(productId,false,quantity);
+         }}
+         disabled={addingToCart === productId}
+       >
+         {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+       </button>
+       }
+      {field_info?
+       <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
+         <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
+         {field_info}
+         </p>
+
+         <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
+           <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
+           <img
+             src={infoselected}
+             className={[ProductStyles.infoselected,"infoselected"].join(" ")}
+           />
+         </button>
+       </div>
+       :""}
+       
+     </div>
+ 
+       <p
+         className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+       >
+       
+         <img src={share} /> Share
+       </p>
+     </div>
+      }
+       <div className={ProductStyles.offer}> 
+            <div className={["col-3",ProductStyles.offerimg].join(" ")}>
+            <img src={freeimg}/>
+            </div>
+            <div className={["col-9",ProductStyles.offercontent].join(" ")}>
+            <p className={ProductStyles.offertitle}>
+            FREE GIFT WITH PURCHASE
+            </p>
+            <p className={ProductStyles.offerdesc}>Professional-C Microdermabrasion Polish Mask ($6 Value), with any purchase of Obagi Clinical purchase.</p>
+             <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p>
+            </div>
+            </div>
+  
         </div>
         <div
           id="product-hero-slick"
@@ -565,11 +483,6 @@ window.bvDCC = {
             )
           })}
         </div>
-        <div
-          className="tevv"
-          data-bv-show="reviews"
-          data-bv-product-id="field_medical_id"
-        ></div>
       </div>
     </div>
   )
