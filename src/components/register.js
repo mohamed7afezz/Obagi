@@ -4,7 +4,7 @@ import LoginMenu from "./login-menu"
 import { CustomSelect } from '../assets/js/custom-select'
 import UserContext from '../providers/user-provider';
 import { map } from 'jquery';
-
+import '../assets/css/override.css';
 const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
@@ -17,7 +17,14 @@ const Register = () => {
             navigate('/my-account');
         }
     }
-
+    function checkvaild(){
+        
+        if (!document.querySelector(".regform").checkValidity()) {
+            console.log( document.querySelector(".regform").validationMessage)
+          } else {
+            console.log("hassan",document.querySelector(".regform").checkValidity())
+          } 
+    }
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
             CustomSelect();
@@ -79,7 +86,7 @@ const Register = () => {
       ]
     })
 
-
+    
     function handleUpdate(event) {
         console.log("bahiii", event.target.name)
         setNewUser({
@@ -209,32 +216,32 @@ const Register = () => {
                     <div className="col-12 col-lg-4">
                         <div className="required-field">*Required fields</div>
 
-                        <form onSubmit={e => {
+                        <form class="regform" onSubmit={e => {
                             handleSubmit(e);
                         }}>
                             <div className="form-group">
                                 <label for="firstname">*First name</label>
-                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" aria-describedby="firstname" placeholder="" />
+                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="lastname">*Last name</label>
-                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" aria-describedby="lastname" placeholder="" />
+                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="postalcode">*Postal Code</label>
-                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" aria-describedby="postalcode" placeholder="" />
+                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="phonenum">Phone Number (Optional)</label>
-                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" aria-describedby="phonenumber" placeholder="" />
+                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" required aria-describedby="phonenumber" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="mailaddress">*Email Address</label>
-                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" aria-describedby="emailHelp" placeholder="" />
+                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" />
                             </div>
 
                             <div className="group-title">Date of Birth</div>
@@ -244,7 +251,7 @@ const Register = () => {
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Day</label>
                                         <div className="select-wrapper custom-select">
-                                            <select className="form-control day" name="date" id="reviewFormSelect">
+                                            <select required className="form-control day" name="date" id="reviewFormSelect">
                                                 <option>Select</option>
                                                 <option>Select</option>
                                                 <option value="01">1</option>
@@ -259,7 +266,7 @@ const Register = () => {
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Month</label>
                                         <div className="select-wrapper custom-select" >
-                                            <select className="form-control month" name="date" id="reviewFormSelect">
+                                            <select required className="form-control month" name="date" id="reviewFormSelect">
                                                 <option>Select</option>
                                                 <option>Select</option>
                                                 <option value="01">1</option>
@@ -275,7 +282,7 @@ const Register = () => {
                                 <div className="form-group select-group">
                                 <label for="reviewFormSelect" className="form-label">*Year</label>
                                 <div className="select-wrapper custom-select">
-                                    <select className="form-control year" name="date" id="reviewFormSelect">
+                                    <select required className="form-control year" name="date" id="reviewFormSelect">
                                         <option>Select</option>
                                         <option>Select</option>
                                         <option value="1999">1999</option>
@@ -293,12 +300,12 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input required type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input required type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
                             <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
@@ -307,13 +314,13 @@ const Register = () => {
 
                                 <label className="form-check-label terms" for="registerCheck">
                                     Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the U.S. subject to our U.S. <Link to="#">Privacy Policy</Link> and <Link to="#">Terms of Use</Link>. For U.S. consumers only.
-                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
+                                    <input required type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
 
                             <div className="submit-wrapper">
-                                <input className="submit-input" type="submit" value="Create Account" />
+                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account" />
                             </div>
 
                         </form>

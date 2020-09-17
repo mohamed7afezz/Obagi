@@ -81,7 +81,56 @@ const ProductHero = ({ data, nodeType }) => {
     document.querySelector('.popoverContainer').classList.toggle('show')
     
   }
+  
+//////////////////////
+if ( typeof window !== "undefined"){
+window.bvDCC = {
 
+  catalogData: {
+  
+  locale: "en_US",
+  
+  catalogProducts: [{
+  
+  "productId" : `${productId}`,
+  
+  "productName" : `${node.title}`,
+  
+  
+  
+ 
+  
+  //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
+  
+  "brandName" : "Obagi",
+  
+  "upcs" : ["724742001735","724742006907"],
+  
+  "inactive": false, //default
+  
+  "family": "INSERT_FAMILY_NAME"
+  
+  }]
+  
+  }
+  
+  };
+  
+  window.bvCallback = function (BV) {
+  
+  BV.pixel.trackEvent("CatalogUpdate", {
+  
+  type: 'Product',
+  
+  locale: window.bvDCC.catalogData.locale,
+  
+  catalogProducts: window.bvDCC.catalogData.catalogProducts
+  
+  });
+  
+  };
+}
+/////////////////////////
   useEffect(() => {
  
     setState({
@@ -145,9 +194,11 @@ const ProductHero = ({ data, nodeType }) => {
           </p>
           <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
-            <Stars value="0.0" />
+
+          <Stars value="0.0" />
            <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
            <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+       
           </div></div>
         <div
           className={[
@@ -201,9 +252,11 @@ const ProductHero = ({ data, nodeType }) => {
           </p>
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")}>{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
-            <Stars value="0.0" />
+ 
+          <Stars value="0.0" />
            <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
            <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+       
           </div>
           <div
             className={ProductStyles.productSubDesc}
@@ -294,8 +347,6 @@ const ProductHero = ({ data, nodeType }) => {
             onClick={() => {
               let quantity = document.querySelector("#quantityBox").value;
               addToCart(productId,false,quantity);
-              alert(productId);
-              
             }}
             disabled={addingToCart === productId}
           >
@@ -358,7 +409,6 @@ const ProductHero = ({ data, nodeType }) => {
          onClick={() => {
            let quantity = document.querySelector("#quantityBox").value;
            addToCart(productId,false,quantity);
-           alert(productId);
          }}
          disabled={addingToCart === productId}
        >

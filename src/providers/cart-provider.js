@@ -205,6 +205,14 @@ export const CartProvider = ({ children }) => {
     if (newQuantity < 1) {
       return removeItemFromCart(item.id);
     }
+    if(newQuantity > 3) {
+      return updateItemInCart(item.id, {
+        line_item: {
+          quantity: 3,
+          ...productVariantReferences
+        }
+      });
+    }
     let productVariantReferences = null;
 
     if (typeof item.product_id !== 'undefined') {

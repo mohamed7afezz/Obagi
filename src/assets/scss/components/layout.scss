@@ -1648,6 +1648,11 @@ p {
 
 }
 
+
+.register .regform .form-control:required{
+  border: 0 !important;
+  background-color: transparent !important;
+}
 .address-modal .select-group, .review-modal .select-group {
     border: 0;
     box-shadow: none;

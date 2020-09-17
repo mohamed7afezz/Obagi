@@ -34,7 +34,31 @@ module.exports = {
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
+
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: '"https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-58FFST8",
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+        // Specify optional GTM environment details.
+        //  gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+        //  gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+        //  dataLayerName: "YOUR_DATA_LAYER_NAME",
   
+        // Name of the event that is triggered
+        // on every Gatsby route change.
+        //
+        // Defaults to gatsby-route-change
+       // routeChangeEventName: "YOUR_ROUTE_CHANGE_EVENT_NAME",
+      },
+    },
 
     'gatsby-plugin-sass',
     `gatsby-plugin-fontawesome-css`,

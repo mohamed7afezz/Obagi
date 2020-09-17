@@ -25,11 +25,12 @@ import AddressModal from "../components/address-modal"
 import AddressBook from "../components/account/address-book"
 import ReviewModal from "../components/review-modal"
 import ForgotPwd from "../components/forgot-pwd"
+import SearchResult from "../components/search-results"
 
 const products = () => (
  
     <Layout>
-      <ShowAccount/>
+      {/* <ShowAccount/> */}
         {/* <ProductHero/>
       <Details/>
       <Ingredient/>
@@ -46,7 +47,8 @@ const products = () => (
       {/* <SearchResults /> */}
       {/* <Reviews />  */}
       {/* <MyAccount /> */}
-      <OrderDetails />
+      {/* <OrderDetails /> */}
+      <SearchResult/>
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
       {/* <ReviewModal />

@@ -21,7 +21,7 @@ const AdjustItem = props => {
     )
 
     plusBtn = (
-      <button onClick={() => props.updateCartItemQuantity(item, 'plus')} className={["btn", BagStyle.add].join(" ")}>
+      <button onClick={() => props.updateCartItemQuantity(item, 'plus')} className={["btn", BagStyle.add].join(" ")} disabled={item.quantity >= 3? 'disabled': false}>
        <img className={BagStyle.plusicon} src={plusicon} />
      </button>
     )
