@@ -81,6 +81,7 @@ const ProductHero = ({ data, nodeType }) => {
     document.querySelector('.popoverContainer').classList.toggle('show')
     
   }
+  
 //////////////////////
 if ( typeof window !== "undefined"){
 window.bvDCC = {
@@ -194,10 +195,10 @@ window.bvDCC = {
           <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
 
-
-          <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
-
+          <Stars value="0.0" />
+           <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
+           <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+       
           </div></div>
         <div
           className={[
@@ -252,10 +253,10 @@ window.bvDCC = {
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")}>{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
-
-          <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
-
+          <Stars value="0.0" />
+           <Link className={ProductStyles.reviewlink} to="#"> <p>0 Review</p></Link>
+           <Link className={ProductStyles.reviewlink} to="#"> <p>Write a Review</p></Link>
+       
           </div>
           <div
             className={ProductStyles.productSubDesc}
