@@ -33,6 +33,8 @@ import HeadingAndButton from './heading-and-button';
 import FaqHero from './faq-hero';
 import FaqWrapper from './faq-wrapper';
 import Reviews from './reviews';
+import CustomBlock from './custom-block';
+import NotFound from './not-found';
 
 
 const componentsMap = {
@@ -67,6 +69,8 @@ const componentsMap = {
     paragraph__faq_hero: FaqHero,
     paragraph__faq_wrapper: FaqWrapper,
     paragraph__reviews: Reviews,
+    paragraph__custom_block: CustomBlock,
+    paragraph__not_found: NotFound,
 }
 
 export const getParagraph = node => {

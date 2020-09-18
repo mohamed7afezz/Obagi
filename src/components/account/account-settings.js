@@ -16,10 +16,10 @@ export default function AccountSettings() {
   function changePosition() {
     let button = document.getElementById("save-button");
     if (screenWidth < 992) {
-      if (button.scrollTop == (button.offsetTop + 16) || button.scrollTop > (button.offsetTop + 16)) {
+      if ((document.body.scrollTop == (button.offsetTop)) || (document.body.scrollTop > (button.offsetTop))) {
         button.style.position = "relative";
       } else {
-        button.style.position = "fixed"
+        button.style.position = "fixed";
       }
     }
     console.log("offset", button.offsetTop)

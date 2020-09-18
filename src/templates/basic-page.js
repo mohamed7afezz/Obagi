@@ -50,6 +50,8 @@ query($slug: String!) {
                 ...paragraphHeadingAndButton
                 ...paragraphFaqHero
                 ...paragraphFaqWrapper
+                ...paragraphNotFound
+                ...paragraphCustomBlock
 
             }
         }
