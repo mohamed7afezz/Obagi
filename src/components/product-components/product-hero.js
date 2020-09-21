@@ -107,7 +107,7 @@ window.bvDCC = {
   
   "inactive": false, //default
   
-  "family": "INSERT_FAMILY_NAME"
+  
   
   }]
   

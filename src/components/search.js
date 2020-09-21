@@ -11,7 +11,7 @@ const Search = () => {
                     <div className={searchStyles.typeColor}></div>
                     <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Medical</div>
                 </div>
-                <Link to="#">Obagi-C Cleansing Gel</Link>
+                <Link className={searchStyles.searchlinks} to="#">Obagi-C Cleansing Gel</Link>
                
             </div>
             <div className={searchStyles.result}>
@@ -19,7 +19,7 @@ const Search = () => {
                     <div className={searchStyles.typeColorclinical}></div>
                     <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Clinical</div>
                 </div>
-                <Link to="#">Obagi-C Cleansing Gel</Link>
+                <Link className={searchStyles.searchlinks} to="#">Obagi-C Cleansing Gel</Link>
        
             </div>
         </div>

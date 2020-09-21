@@ -954,6 +954,7 @@ height: 545px;
   
   padding: 15px 16px;
 }
+
 .collectionList .select-selected::after{
   background-image: url(mobileArrow.svg);
   border: 0;
@@ -1404,4 +1405,7 @@ font-weight: 500;
 }
 .medicalbg{
   background-color: rgba(134, 140, 210, 0.1) !important;
+}
+.pb-48{
+  padding-bottom: 48px !important;
 }
