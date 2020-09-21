@@ -52,6 +52,16 @@
     }
 }
 
+.typeColorclinical{
+    height: 8px;
+    width: 8px;
+    background: #edfafc;
+    @include lg-screen {
+        height: 12px;
+        width: 12px;
+        margin-right: 16px;
+    } 
+}
 .type-text {
     margin-right: 14px;
     @include fontStyle(18, 24);

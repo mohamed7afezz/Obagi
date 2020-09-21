@@ -8,11 +8,15 @@
     padding-top: 57px;
 
     @include lg-screen {
-        @include fontStyle(72, 88);
-        padding-top: 79px;
+        @include fontStyle(48, 68);
+     padding-top: 8px;
     }
 }
-
+.title{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-bold;
+}
 
 .selected {
     @include lg-screen {
@@ -21,7 +25,12 @@
         font-style:  normal;
     }
 }
-
+.yourRes{
+    @include fontStyle(14, 16);
+    @extend %futurapt-bold;
+    text-align: center;
+       padding-top: 79px;
+}
 .footnote {
     @extend %futurapt-light;
     @include fontStyle(18, 32);
@@ -29,7 +38,7 @@
     color: #7c858a;
 
     @include lg-screen {
-        @include fontStyle(28, 48);
+        @include fontStyle(24, 40);
         font-family:  futura-pt,   sans-serif; 
         font-weight:  400; 
         font-style:  normal;

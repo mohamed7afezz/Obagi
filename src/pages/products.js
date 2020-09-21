@@ -26,6 +26,7 @@ import AddressBook from "../components/account/address-book"
 import ReviewModal from "../components/review-modal"
 import ForgotPwd from "../components/forgot-pwd"
 import SearchResult from "../components/search-results"
+import NewSearchProductsResult from "../components/new-search"
 
 const products = () => (
  
@@ -49,6 +50,7 @@ const products = () => (
       {/* <MyAccount /> */}
       {/* <OrderDetails /> */}
       <SearchResult/>
+      
       {/* <AddressBox /> */}
       {/* <OrderDetails /> */}
       {/* <ReviewModal />

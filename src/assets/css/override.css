@@ -1297,4 +1297,111 @@ z-index: 999;
 }
 #accordion a {
   color: #132466;
+
+}
+.radioLabel {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+line-height: 24px;
+font-weight: 500;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radioLabel input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.radiomark {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 1px solid #132466;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radioLabel:hover input ~ .radiomark {
+  background-color: transparent;
+  border: 1px solid #132466;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioLabel input:checked ~ .radiomark {
+  background-color: transparent;
+  border: 1px solid #132466;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiomark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radioLabel input:checked ~ .radiomark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioLabel .radiomark:after {
+  top: 4px;
+  left: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #132466;
+}
+.producTypeSelect{
+  align-items: center;
+  justify-content: space-around;
+ 
+}
+.producTypeSelect label {
+  margin-bottom: 0;
+
+}
+.align-items-center{
+  align-items: center;
+}
+.removeSelectBorder .select-selected,.removeSelectBorder .custom-select{
+  border: 0 !important;
+
+}
+.mt-48{
+  margin-top: 48px;
+}
+.removeSelectBorder .select-selected{
+  border: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 10px !important;
+  padding-left: 0 !important;
+}
+.removeSelectBorder{
+  background-color: #fff;
+}
+.SelectChanges{
+  margin-bottom: 0 ;
+  margin-top: 16px;
+}
+.pb-40{
+  padding-bottom: 40px;
+}
+.medicalbg{
+  background-color: rgba(134, 140, 210, 0.1) !important;
 }
