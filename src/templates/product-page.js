@@ -90,6 +90,7 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
+                    ...reviewsParagraph
                     ...recommendedParingParagrapgh
                     ...youMightAlsoLikeParagrapgh
                 }
@@ -155,6 +156,7 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
+                    ...reviewsParagraph
                     ...recommendedMedicalParingParagrapgh
                     ...youMightAlsoLikeMedicalParagrapgh
   
