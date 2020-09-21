@@ -17,14 +17,18 @@ import freeimg from "../../assets/images/product-images/free_image.png"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
+  console.log(data)
   const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
   let productId = isClincal ? node.field_clinical_id : node.field_medical_id
-
+  let productpath = node.path.alias
   let field_image = isClincal
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
+    let reviewimg = isClincal
+    ? node.relationships.field_clinical_image[0]?node.relationships.field_clinical_image[0].localFile.childImageSharp.original.src:""
+    : node.relationships.field_medical_image[0]?node.relationships.field_medical_image[0].localFile.childImageSharp.original.src:""
     let field_medical_rx = isClincal
     ? ""
     : node.relationships.field_medical_rx.name
@@ -83,52 +87,57 @@ const ProductHero = ({ data, nodeType }) => {
   }
 //////////////////////
 if ( typeof window !== "undefined"){
-window.bvDCC = {
+  window.bvDCC = {
+  
+    catalogData: {
+    
+    locale: "en_US",
+    
+    catalogProducts: [{
+    
+    "productId" : `${productId}`,
+    
+    "productName" : `${node.title}`,
+    
+    
 
-  catalogData: {
-  
-  locale: "en_US",
-  
-  catalogProducts: [{
-  
-  "productId" : `${productId}`,
-  
-  "productName" : `${node.title}`,
-  
-  
-  
- 
-  
-  //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
-  
-  "brandName" : "Obagi",
-  
-  "upcs" : ["724742001735","724742006907"],
-  
-  "inactive": false, //default
-  
-  
-  
-  }]
-  
+    "productImageURL": `${reviewimg}`,
+    
+    //ex. https:\\site.com\pub\media\mh02-black_main.jpg
+    
+    "productPageURL":`${productpath}`,
+    
+      
+    //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
+    
+    "brandName" : "Obagi",
+    
+    "upcs" : ["724742001735","724742006907"],
+    
+    "inactive": false, //default
+    
+    "family": "Product Lines"
+    
+    }]
+    
+    }
+    
+    };
+    
+    window.bvCallback = function (BV) {
+    
+    BV.pixel.trackEvent("CatalogUpdate", {
+    
+    type: 'Product',
+    
+    locale: window.bvDCC.catalogData.locale,
+    
+    catalogProducts: window.bvDCC.catalogData.catalogProducts
+    
+    });
+    
+    };
   }
-  
-  };
-  
-  window.bvCallback = function (BV) {
-  
-  BV.pixel.trackEvent("CatalogUpdate", {
-  
-  type: 'Product',
-  
-  locale: window.bvDCC.catalogData.locale,
-  
-  catalogProducts: window.bvDCC.catalogData.catalogProducts
-  
-  });
-  
-  };
-}
 /////////////////////////
   useEffect(() => {
  
@@ -196,7 +205,7 @@ window.bvDCC = {
 
 
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
+ 
 
           </div></div>
         <div
@@ -254,7 +263,7 @@ window.bvDCC = {
  
 
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-  <div data-bv-show="reviews" data-bv-product-id={productId}></div>
+ 
 
           </div>
           <div

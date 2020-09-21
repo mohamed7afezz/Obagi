@@ -8,6 +8,7 @@ import ReviewModal from '../components/review-modal'
 import WelcomeModal from '../components/welcome-modal'
 const Reviews = ({ node , nodeType}) => {
   const isClincal = nodeType == "clinical";
+  console.log('hassan22',node)
   let productId = isClincal ? node.field_clinical_id : node.field_medical_id
 
   const data = useStaticQuery(graphql`
@@ -35,7 +36,7 @@ const Reviews = ({ node , nodeType}) => {
             <div className="d-none">
               <div className={reviewStyles.noReviews}>Be the first to review this product!</div>
             </div>
-            <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
+            
             <div data-bv-show="reviews" data-bv-product-id={productId}></div>
 
             {/* <ReviewBox />
