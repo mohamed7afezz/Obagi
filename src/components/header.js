@@ -391,7 +391,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
               <div className={["row", headerStyles.searchResultWrapper].join(" ")}>
                 <div className="col-12 col-lg-10 offset-lg-1">
-                  <div className={headerStyles.results}>
+                  <div className={[headerStyles.results,"pb-48"].join(" ")}>
                     <Search />
                   </div>
                 </div>
