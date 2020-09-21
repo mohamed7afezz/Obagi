@@ -12,6 +12,36 @@ export default function AccountSettings() {
     }
   })
 
+  function checkvaild() {
+
+    if (!document.querySelector(".regform").checkValidity()) {
+      console.log(document.querySelector(".regform").validationMessage)
+    } else {
+      console.log("hassan", document.querySelector(".regform").checkValidity())
+    }
+  }
+
+  const [isPassMatch, setIsPassMatch] = useState();
+  function checkPassMatch(event) {
+    //compare pass
+    let confPass = '';
+
+    if (event.target.name === 'password') {
+      confPass = document.querySelector('.conf-password').value;
+    } else {
+      confPass = document.querySelector('.password').value;
+    }
+
+    if (confPass === event.target.value) {
+      setIsPassMatch(true);
+    } else {
+      setIsPassMatch(false);
+    }
+
+
+    return isPassMatch;
+  }
+
   let screenWidth = window.innerWidth;
   function changePosition() {
     let button = document.getElementById("save-button");
@@ -131,6 +161,8 @@ export default function AccountSettings() {
                   <label for="conf-pw">*Confirm New Password</label>
                   <input type="password" class="form-control" id="conf-pw" placeholder="" name="conf-pw" />
                 </div>
+
+                <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
 
               </div>
             </div>

@@ -324,7 +324,9 @@ const OrderDetails = (props, { node }) => {
                                                     console.log('bahi', 'before add to cart')
                                                     await addToCart(el.value, false, 1);
                                                     console.log('bahi', 'after add to cart')
-                                                }
+                                                    // console.log("value", el.value)
+                                                } 
+                                                
                                             })
                                         }}
                                         // disabled={addingToCart === productId}
