@@ -14,7 +14,7 @@ const Register = () => {
 
     if(user) {
         if(typeof window !== 'undefined') {
-            navigate('/my-account');
+            navigate('/my-account/orders');
         }
     }
     function checkvaild(){

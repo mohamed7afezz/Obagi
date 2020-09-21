@@ -201,6 +201,7 @@ function buildMenu(menuArray, isExpandable, menuName) {
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
+            {menuName === "third-footer"? <span id="extole_zone_global_header" className="footer-referral-span">Refer a friend</span> : ""}
           </ul>
         </li>)
     } else {

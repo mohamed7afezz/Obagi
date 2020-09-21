@@ -7,12 +7,20 @@ import Img from 'gatsby-image'
 function addMainStyles(e) {
   document.querySelectorAll(".absolute-extended .nav-desk a.collapsed").forEach(Elem => Elem.classList.add("not-selected"));
   document.querySelectorAll(".relative-general-nav .relative-nav-desk a.collapsed").forEach(Elem => Elem.classList.add("not-selected"));
+  document.querySelectorAll(".absolute-extended .nav-desk span").forEach(Elem => Elem.classList.add("not-selected"));
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk span").forEach(Elem => Elem.classList.add("not-selected"));
 
 
-  if(e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > li > a.collapsed") || (e.target.closest(".relative-general-nav > div > div > div > div > div > nav > ul > li > a.collapsed")) ) {
+  if(e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > li > a.collapsed") || (e.target.closest(".relative-general-nav > div > div > div > div > div > nav > ul > li > a.collapsed"))) {
     let selected = e.target.closest("nav > ul > li > a.collapsed");
     selected.classList.remove("not-selected");
     selected.classList.add("hovered");
+  }
+
+  if((e.target.closest(".absolute-extended > div > div > div > div > div > nav > ul > span") || (e.target.closest(".relative-general-nav > div > div > div > div > div > nav > ul > span")))) {
+    let selectedSpan = e.target.closest("nav > ul > span");
+    selectedSpan.classList.remove("not-selected");
+    selectedSpan.classList.add("hovered");
   }
 
 }
@@ -23,6 +31,12 @@ function removeMainStyles() {
 
   document.querySelectorAll(".relative-general-nav .relative-nav-desk a").forEach(Elem => Elem.classList.remove("hovered"));
   document.querySelectorAll(".relative-general-nav .relative-nav-desk a").forEach(Elem => Elem.classList.remove("not-selected"));
+
+  document.querySelectorAll(".absolute-extended .nav-desk span").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".absolute-extended .nav-desk span").forEach(Elem => Elem.classList.remove("not-selected"));
+
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk span").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".relative-general-nav .relative-nav-desk span").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 let megaMenuBlocks = [];
@@ -229,6 +243,7 @@ const MegaMenu = ({menuName, menuClass, isExpandable}) => (
             {fillMegaMenuBlocksArr(data)}
           <ul >
             {generateMenu(data, menuName, isExpandable)}
+            <span id="extole_zone_global_header"className="header-referral-span" onMouseEnter={(e) => {addMainStyles(e);}} onMouseLeave={() => {removeMainStyles();}}>Refer a friend</span>
           </ul>
         </nav>
 
