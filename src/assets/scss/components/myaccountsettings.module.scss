@@ -79,8 +79,8 @@
     border-top: 1px solid #d6d6d6 ;
     border-bottom: 1px solid #d6d6d6 ;
     padding-top: 32px;
-    margin-top: 32px;
-    padding-bottom: 32px;
+    margin-top: 16px;
+    padding-bottom: 16px;
     margin-bottom: 32px;
     @include md-screen{
         padding-top: 40px;
@@ -149,8 +149,7 @@
     padding-right: 16px;
 }
 .DateBirthCon{
-    padding-bottom: 32px;
-    margin-bottom: 32px;
+    padding-bottom: 24px;
     border-bottom: 1px solid #d6d6d6;
     @include md-screen{
         padding-bottom: 40px;
@@ -166,7 +165,8 @@
         padding-top: 16px;
         color: #fff;
         background-color: #132466;
-        border-radius: 4px;
+        border-radius: 6px;
+        letter-spacing: 1.2px;
         font-size: 12px;
         line-height: 16px;
         font-weight: 700;
@@ -174,20 +174,46 @@
 }
 @media (max-width:767px){
     .SaveButton{
+        // position: -webkit-sticky;
         position: fixed;
         bottom: 0;
-        width: 100%;
         left: 0;
+        right: 0;
+        // width: 100%;
+        // left: 0;
         background-color: #fff;
         z-index: 9999;
+        box-shadow: 0 -1px 4px 0 rgba(54, 75, 95, 0.15);
+        margin: 0 -15px;
+        padding: 16px 15px;
     }
     .saveSitting   {
-        max-width: 90%;
-margin-left: auto;
-margin-right: auto;
-display: block;
-margin-bottom: 15px;
-margin-top: 15px;
+        // max-width: 90%;
+        // margin-left: 15px;
+        // margin-right: 15px;
+        display: block;
+        // margin-bottom: 16px;
+        // margin-top: 16px;
 
+    }
+}
+
+.cs-title {
+    @include fontStyle(24, 40);
+    padding: 32px 0 8px;
+}
+
+.cs-text {
+    @include fontStyle(18, 32);
+    padding-bottom: 24px;
+    @extend %futurapt-light;
+
+    a {
+        color: #132466;
+        text-decoration: underline;
+        white-space: nowrap;
+        &:hover {
+            color: #132466;
+        }
     }
 }

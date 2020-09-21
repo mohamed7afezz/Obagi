@@ -1407,6 +1407,7 @@ p {
 .my-account .list-group {
     border-right: 1px solid #d6d6d6;
     border-radius: 0;
+    height: 100%;
 }
 
 .my-account .list-wrapper {
@@ -2496,4 +2497,113 @@ p {
 
 .hero-row-wrapper {
     mix-blend-mode: multiply;
+}
+
+.my-account .myaccount-toggle {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    color: #132466;
+    padding: 16px;
+    text-align: left;
+    margin-bottom: 24px;
+    @include fontStyle(18, 32);
+    position: relative;
+}
+
+.my-account .myaccount-toggle::after {
+    background-image: url('../../images/path-copy.png');
+    border: 0;
+    width: 10px;
+    height: 8px;
+    transform: rotate(180deg);
+    position: absolute;
+    right: 16px;
+    top: 30px;
+    background-repeat: no-repeat;
+    transition: all ease 300ms;
+}
+
+.my-account .dropdown.show > .myaccount-toggle::after {
+    transform: rotate(0);
+
+}
+
+.my-account .myaccount-dropdown {
+
+    width: 100%;
+    padding: 16px;
+    @include fontStyle(18, 32);
+
+    a {
+        color: #7c858a;
+        text-decoration: none;
+        display: block;
+        padding-bottom: 8px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+        &:hover {
+            text-decoration: none;
+            color: #7c858a;
+  
+        }
+    }
+}
+
+.nf-wrapper {
+    padding: 64px 0;
+    text-align: center;
+    border-bottom: 1px solid #d6d6d6;
+
+}
+
+.nf-title {
+    @extend %futurapt-light;
+    @include fontStyle(48, 64);
+    padding-bottom: 8px;
+}
+
+.nf-text {
+    @extend %futurapt-light;
+    @include fontStyle(24, 40);
+}
+
+.node-home .services-wrapper {
+    background: #fff;
+    padding: 40px 0 80px;
+}
+
+.node-home .services-image::after {
+    content: none;
+}
+
+.node-home .collectionfooter {
+    background: #fff;
+}
+
+.node-home .collection-footer-container {
+    margin-top: 0;
+    margin-bottom: 224px;
+    background: #132466;
+    color: #fff;
+}
+
+.node-home .collection-footer-typecon::before {
+    background: #FFCD00;
+}
+
+.node-home .collection-footer-typecon, .node-home .collection-footer-title, .node-home .collection-footer-desc, .node-home .collection-footer-link {
+    color: #fff;
+}
+
+.node-home .collection-footer-link {
+    border-color: #fff;
+
+    &:hover {
+        background: #fff;
+        color: #132466;
+    }
 }
