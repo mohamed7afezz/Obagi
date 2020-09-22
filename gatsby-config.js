@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        src: 'https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js', // Change to the script filename
+        src: ['https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js', 'https://obagi.extole.io/core.js'], // Change to the script filename
       },
     },
     {
