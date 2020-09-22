@@ -59,7 +59,7 @@ const ProductCard = ({
         ) : (
           ""
         )}
-                  <div
+              <div
 
           data-bv-show="inline_rating"
 

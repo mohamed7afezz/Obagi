@@ -36,7 +36,7 @@ console.log(getMedicalSearch, getClinicalSearch)
    }
 
     return (
-        <SearchContext.Provider value={{search,medicalSearchResults,clinicalSearchResults}}>
+        <SearchContext.Provider value={{search , medicalSearchResults , clinicalSearchResults}}>
             {children}
         </SearchContext.Provider>
     )
