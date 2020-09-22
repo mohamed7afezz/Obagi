@@ -13,6 +13,8 @@ import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 
+const baseUrl = process.env.Base_URL;
+
 const Header = ({ siteTitle, nodeType, menuType }) => {
 
   const {user, handleLogout} = useContext(UserContext);
@@ -156,7 +158,35 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
     }
   `)
+  async  function  search(e){
+    e.preventDefault();
+   
+  if ( e.target.value.length >3) {
+    
+     
+    await fetch(`${baseUrl}jsonapi/node/clinical_product?filter[title][condition][value]=${e.target.value}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
+      method: 'GET',
+      credentials: 'include',
+      mode: 'cors',
+   
+  }).then(response => response.json())
+  .then(data => {if(data.status == 200 && typeof window !== "undefined") {
+    console.log(data)
+    
+}    });
+await fetch(`${baseUrl}jsonapi/node/medical_product?filter[title][condition][value]=${e.target.value}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
+  method: 'GET',
+  credentials: 'include',
+  mode: 'cors',
 
+}).then(response => response.json())
+.then(data => {if(data.status == 200 && typeof window !== "undefined") {
+console.log(data)
+
+}    })
+      
+    } 
+   }
   function removeFirstIcons() {
     var x = document.getElementById("first-icons");
     if (x.style.display === "none") {
@@ -381,7 +411,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
                   <div className={headerStyles.searchIcon}><Img fixed={data.searchIcon.childImageSharp.fixed} /></div>
-                  <input type="search" className={headerStyles.searchInput}></input>
+                  <input  type="search" onChange={search} className={[headerStyles.searchInput,"searchInput"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                   <button className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                 </div>
