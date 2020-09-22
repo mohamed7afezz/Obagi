@@ -166,6 +166,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     let searchkey= e.target.value
   if ( searchkey.length >3) {
     search(searchkey)
+}else{
+  search("searchkey")
 } 
    }
   function removeFirstIcons() {
