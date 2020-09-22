@@ -178,7 +178,7 @@ const UserAccount = ({ node, children, activeTab }) => {
 
 
     function changeText(e) {
-        document.getElementById("accountDropdownButton").innerText = e.target.innerText;
+        $("#accountDropdownButton").innerText = e.target.innerText;
 
         // if(activeTab && typeof window !== "undefined") {
         //     let element = document.getElementById("#"`${activeTab}`);
