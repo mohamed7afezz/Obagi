@@ -59,6 +59,16 @@ const ProductCard = ({
         ) : (
           ""
         )}
+                  <div
+
+          data-bv-show="inline_rating"
+
+          data-bv-product-id="INSERT_PRODUCT_ID"
+
+          data-bv-redirect-url = {productLink} >
+
+          </div>
+          
         {productdescription ? (
           <div
             className={Productcard.productcardcon}

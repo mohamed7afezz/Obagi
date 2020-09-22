@@ -1,7 +1,8 @@
+import React , { useState , useContext} from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import PropTypes, { func } from "prop-types"
-import React, { useContext } from "react"
+import PropTypes from "prop-types"
+
 import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
 import MegaMenu from './mega-menu'
@@ -12,13 +13,14 @@ import Search from './search'
 import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
+import SearchContext from "../providers/search-provider"
 
 const baseUrl = process.env.Base_URL;
 
 const Header = ({ siteTitle, nodeType, menuType }) => {
-
+  const {search} = useContext(SearchContext)
   const {user, handleLogout} = useContext(UserContext);
-
+ 
   const location = useLocation();
 
   const data = useStaticQuery(graphql`
@@ -158,34 +160,13 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
     }
   `)
-  async  function  search(e){
+ 
+  async  function  inputval(e){
     e.preventDefault();
-   
-  if ( e.target.value.length >3) {
-    
-     
-    await fetch(`${baseUrl}jsonapi/node/clinical_product?filter[title][condition][value]=${e.target.value}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
-      method: 'GET',
-      credentials: 'include',
-      mode: 'cors',
-   
-  }).then(response => response.json())
-  .then(data => {if(data.status == 200 && typeof window !== "undefined") {
-    console.log(data)
-    
-}    });
-await fetch(`${baseUrl}jsonapi/node/medical_product?filter[title][condition][value]=${e.target.value}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
-  method: 'GET',
-  credentials: 'include',
-  mode: 'cors',
-
-}).then(response => response.json())
-.then(data => {if(data.status == 200 && typeof window !== "undefined") {
-console.log(data)
-
-}    })
-      
-    } 
+    let searchkey= e.target.value
+  if ( searchkey.length >3) {
+    search(searchkey)
+} 
    }
   function removeFirstIcons() {
     var x = document.getElementById("first-icons");
@@ -411,7 +392,7 @@ console.log(data)
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
                   <div className={headerStyles.searchIcon}><Img fixed={data.searchIcon.childImageSharp.fixed} /></div>
-                  <input  type="search" onChange={search} className={[headerStyles.searchInput,"searchInput"].join(" ")}></input>
+                  <input  type="search" onChange={inputval} className={[headerStyles.searchInput,"searchInput"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                   <button className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                 </div>

@@ -1,5 +1,5 @@
 
-import React from "react"
+import React , { useState, useEffect, useContext } from "react"
 
 import '../assets/scss/components/product-hero.module.scss'
 import ProductHero from "../components/product-hero"

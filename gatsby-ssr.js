@@ -9,12 +9,15 @@ import React from 'react';
 import { ViewedProductsProvider } from './src/providers/latestview-provider';
 import { CartProvider } from "./src/providers/cart-provider";
 import { UserProvider } from './src/providers/user-provider';
+import { SearchProvider } from './src/providers/search-provider';
 
 export const wrapRootElement = ({ element }) => (
   <UserProvider>
     <ViewedProductsProvider>
       <CartProvider>
+        <SearchProvider>
         {element}
+        </SearchProvider>
       </CartProvider>
     </ViewedProductsProvider>
   </UserProvider>

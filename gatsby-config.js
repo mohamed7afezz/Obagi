@@ -40,6 +40,11 @@ module.exports = {
       options: {
         src: 'https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js', // Change to the script filename
       },
+    },  {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://apps.bazaarvoice.com/deployments/INSTANCE/main_site/staging/en_US/bv.js', // Change to the script filename
+      },
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",
