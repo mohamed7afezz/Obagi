@@ -63,7 +63,7 @@ const ProductCard = ({
 
           data-bv-show="inline_rating"
 
-          data-bv-product-id="INSERT_PRODUCT_ID"
+          data-bv-product-id={productId}
 
           data-bv-redirect-url = {productLink} >
 
