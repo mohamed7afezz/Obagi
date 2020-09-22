@@ -14,7 +14,7 @@ const Register = () => {
 
     if(user) {
         if(typeof window !== 'undefined') {
-            navigate('/my-account');
+            navigate('/my-account/orders');
         }
     }
     function checkvaild(){
@@ -28,6 +28,8 @@ const Register = () => {
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
             CustomSelect();
+
+            //the issue is here
             document.querySelectorAll('select[name="date"]').forEach(item => {
                 item.addEventListener('change', handleAttr)
             });
@@ -93,6 +95,9 @@ const Register = () => {
             ...newUser,
             [event.target.name]: event.target.value
         });
+
+        console.log("ash", newUser)
+
     }
 
     function handlePassword(event) {
@@ -161,6 +166,7 @@ const Register = () => {
                 console.log('not in the attributes');
                 break;
         }
+        console.log("ash", newUser)
     }
 
 
@@ -169,6 +175,8 @@ const Register = () => {
         event.preventDefault();
         console.log('bahiii', newUser)
         handleRegister(newUser)
+        let data = event.responseData.data
+        console.log("data", data)
     }
 
 
@@ -236,7 +244,7 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="phonenum">Phone Number (Optional)</label>
-                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" required aria-describedby="phonenumber" placeholder="" />
+                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" aria-describedby="phonenumber" placeholder="" />
                             </div>
 
                             <div className="form-group">
@@ -309,12 +317,13 @@ const Register = () => {
                             </div>
 
                             <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
+                            <p id="json-errors"></p>
 
                             <div className="form-check">
 
                                 <label className="form-check-label terms" for="registerCheck">
                                     Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the U.S. subject to our U.S. <Link to="#">Privacy Policy</Link> and <Link to="#">Terms of Use</Link>. For U.S. consumers only.
-                                    <input required type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
+                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
                                     <span className="checkmark"></span>
                                 </label>
                             </div>

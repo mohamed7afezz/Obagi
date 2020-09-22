@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes, { func } from "prop-types";
 import footerStyles from '../assets/scss/components/footer.module.scss'
+import UserContext from '../providers/user-provider'
+
 // const $ = require(jQuery);
 //  onClick={_onHeaderClick}
 
@@ -150,7 +152,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       return (
         <>
           <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-          {link.title}
+            {link.title}
           </a>
         </>
       )
@@ -193,14 +195,15 @@ function buildMenu(menuArray, isExpandable, menuName) {
 
             menuName == 'main-nav-mobile' ?
               buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id, isExpandable)
-            : 
-            ((menuName == 'first-footer' && isExpandable === true) || (menuName == 'second-footer' && isExpandable === true) || (menuName == 'third-footer' && isExpandable === true) || (menuName == 'fourth-footer' && isExpandable === true)) ?
-              buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id)
-            :
-              buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
+              :
+              ((menuName == 'first-footer' && isExpandable === true) || (menuName == 'second-footer' && isExpandable === true) || (menuName == 'third-footer' && isExpandable === true) || (menuName == 'fourth-footer' && isExpandable === true)) ?
+                buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id)
+                :
+                buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
+            {menuName === "third-footer" ? <span id="extole_zone_global_header" className="footer-referral-span">Refer a friend</span> : ""}
           </ul>
         </li>)
     } else {
@@ -220,11 +223,32 @@ function generateMenu(menuLinks, menuName, isExpandable) {
   return menu
 }
 
-const Menu = ({ menuName, menuClass, isExpandable }) => (
+const Menu = ({ menuName, menuClass, isExpandable }) => {
+  const { user } = useContext(UserContext);
 
-  <StaticQuery
-    query={
-      graphql`
+  // useEffect(()=> {
+  //   if(user && typeof window !== "undefined") {
+  //     (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])
+  //   })(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
+  //   extole.createZone({
+  //   name: 'global_header',
+  //   element_id: 'extole_zone_global_header',
+  //   data: {
+  //   "partner_user_id": "", // RECOMMENDED IF AVAILABLE
+  //   "email": "REPLACE", // RECOMMENDED IF AVAILABLE
+  //   "first_name": "REPLACE", // RECOMMENDED IF AVAILABLE
+  //   "last_name": "REPLACE" // RECOMMENDED IF AVAILABLE
+  //   }
+  //   });
+  //   }
+
+  // }, []);
+
+  return (
+
+    <StaticQuery
+      query={
+        graphql`
         query MenuQuery {
           allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
             edges {
@@ -247,18 +271,20 @@ const Menu = ({ menuName, menuClass, isExpandable }) => (
           }
         }
       `
-    }
+      }
 
-    render={data => (
-      <nav className={menuName, menuClass}>
-        <ul >
-          {generateMenu(data, menuName, isExpandable)}
-        </ul>
-      </nav>
+      render={data => (
+        <nav className={menuName, menuClass}>
+          <ul >
+            {generateMenu(data, menuName, isExpandable)}
+            {user && typeof window !== "undefined" ? <span id="extole_zone_global_header" className="header-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}>Refer a friend</span> : ""}
+          </ul>
+        </nav>
 
-    )}
-  />
-)
+      )}
+    />
+  )
+}
 
 
 

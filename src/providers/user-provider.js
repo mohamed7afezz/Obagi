@@ -77,9 +77,9 @@ export const UserProvider = ({children}) => {
         console.log('bahii', newUserRes.status)
         if(newUserRes.status == 200){
             await getUserData();
-            navigate("/my-account");
+            navigate("/my-account/orders");
 
-        }else{
+        } else{
             return newUserRes;
         }
     }

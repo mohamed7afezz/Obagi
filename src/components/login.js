@@ -28,7 +28,7 @@ const Login = () => {
 
 
   if (user && typeof window !== 'undefined') {
-    navigate(`/my-account`)
+    navigate(`/my-account/orders`)
   }
 
   return (
@@ -52,9 +52,9 @@ const Login = () => {
               method="post"
               onSubmit={event => {
                 handleSubmit(event)
-                if (typeof window !== 'undefined') {
-                  navigate(`/my-account/signin`)
-                }
+                // if (typeof window !== 'undefined') {
+                //   navigate(`/my-account/signin`)
+                // }
               }}
             >
 

@@ -13,12 +13,21 @@
 
 .subtitle {
     margin-bottom: 16px;
-    &::before {
-        background: #868cd2;
-    }
 
     @include lg-screen {
         margin: 56px 0 54px 48px;
+    }
+}
+
+.clinical-sub {
+    &:before {
+        background: #44C4D9;
+    }
+}
+
+.medical-sub {
+    &:before {
+        background: #868cd2;
     }
 }
 

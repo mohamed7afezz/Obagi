@@ -909,6 +909,13 @@ p {
 
     &:hover {
         ul {
+            span {
+                color: #7c858a;
+
+                &:hover {
+                    color: #132466;
+                }
+            }
             li {
                 a {
                     color: #7c858a;
@@ -930,6 +937,9 @@ p {
         padding-left: 0;
         position: relative;
 
+        span {
+            color: #fff;
+        }
 
         li {
             a {
@@ -2606,4 +2616,11 @@ p {
         background: #fff;
         color: #132466;
     }
+}
+
+.header-referral-span {
+    @include fontStyle(16, 24);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    padding: 20px 40px;
 }

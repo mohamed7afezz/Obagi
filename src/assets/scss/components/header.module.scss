@@ -135,6 +135,15 @@
                 }
             }
 
+            span {
+                color: #132466;
+
+                &:hover {
+                    // color: #132466;
+                    text-decoration: none;
+                }
+            }
+
             li {
                 ul {
                     li {

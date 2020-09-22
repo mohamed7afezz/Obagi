@@ -5,6 +5,9 @@ import orderDetailsStyles from '../assets/scss/components/order-details.module.s
 import UserContext from "../providers/user-provider"
 import { useLocation } from "@reach/router"
 import CartContext from "../providers/cart-provider"
+import $ from 'jquery'
+// const $ = require('jQuery');
+
 
 
 const baseUrl = process.env.Base_URL;
@@ -208,7 +211,7 @@ const OrderDetails = (props, { node }) => {
                                             <div className={orderDetailsStyles.productName}>
                                                 <form>
                                                     <div class="form-check">
-                                                        <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]}/>
+                                                        <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
                                                     </div>
                                                 </form>
                                                 <div className={orderDetailsStyles.productImage}>
@@ -292,42 +295,56 @@ const OrderDetails = (props, { node }) => {
                                 </div>
 
                                 <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
-                                    <button type="button" className={orderDetailsStyles.orderButton}
+                                    <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
                                         onClick={() => {
                                             let quantity = 1;
-                                            
+
                                             // 1 - loop on all checked boxes
                                             document.querySelectorAll('.details-check').forEach(el => {
                                                 // 2 - check if it's select then => get product id
                                                 console.log('Ashraqat', el.checked)
-                                                if(el.checked) {
+                                                if (el.checked) {
                                                     // 3 - send cart request
                                                     addToCart(el.value, false, quantity);
                                                 }
                                             })
                                         }}
-                                        // disabled={addingToCart === productId}
+                                    // disabled={addingToCart === productId}
                                     >Re-order</button>
                                 </div>
 
                                 <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
-                                    <button type="button" className={orderDetailsStyles.orderButton}
+                                    <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
                                         onClick={() => {
-                                            
-                                            
+                                            let flag = true;
+                                            // let check
                                             // 1 - loop on all checked boxes
-                                            document.querySelectorAll('.desk-details-check').forEach(async (el) => {
+                                            document.querySelectorAll('.desk-details-check').forEach((el) => {
                                                 // 2 - check if it's select then => get product id
-                                                
-                                                if(el.checked) {
+
+                                                if (el.checked) {
                                                     // 3 - send cart request
                                                     console.log('bahi', 'before add to cart')
-                                                    await addToCart(el.value, false, 1);
+                                                    addToCart(el.value, false, 1);
                                                     console.log('bahi', 'after add to cart')
+                                                    // console.log("value", el.value)
+                                                    flag = false;
+
                                                 }
+                                                console.log("before flag", flag)
+
+
                                             })
+                                            console.log("after flag", flag)
+
+                                            if (flag && typeof $ !== "undefined") {
+                                                // let btn = document.getElementById("reorder-button");
+                                                $("#checkModal").modal("show");
+                                                // btn.dataset.toggle = "modal";
+                                                // btn.dataset.target = "#checkModal";
+                                            }
                                         }}
-                                        // disabled={addingToCart === productId}
+                                    // disabled={addingToCart === productId}
                                     >Re-order</button>
                                 </div>
                             </div>
@@ -336,6 +353,23 @@ const OrderDetails = (props, { node }) => {
                 </div>
 
 
+            </div>
+
+            <div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        Please select one or more items to reorder
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
