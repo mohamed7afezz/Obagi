@@ -175,8 +175,8 @@ const Register = () => {
         event.preventDefault();
         console.log('bahiii', newUser)
         handleRegister(newUser)
-        let data = event.responseData.data
-        console.log("data", data)
+        // let data = event.responseData.data
+        // console.log("data", data)
     }
 
 
