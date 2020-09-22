@@ -52,23 +52,23 @@ const ProductCard = ({
         )}
 
         <div className={Productcard.starspd}>
-          <Stars value={rate} />
+                      <div
+
+              data-bv-show="inline_rating"
+
+              data-bv-product-id={productId}
+
+              data-bv-redirect-url = {productLink} >
+
+              </div>
+
         </div>
         {producttitle ? (
           <p className={Productcard.productcarddesc}><Link to={productLink}>{producttitle}</Link></p>
         ) : (
           ""
         )}
-              <div
-
-          data-bv-show="inline_rating"
-
-          data-bv-product-id={productId}
-
-          data-bv-redirect-url = {productLink} >
-
-          </div>
-          
+        
         {productdescription ? (
           <div
             className={Productcard.productcardcon}
