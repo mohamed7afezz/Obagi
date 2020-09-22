@@ -66,8 +66,13 @@ export const UserProvider = ({children}) => {
         setUser(false);
     }
 
+    const [isLoading, setIsLoading] = useState(false);
+
     // register
     async function handleRegister(user) {
+
+        setIsLoading(true);
+
         const newUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
             mode: "no-cors",
@@ -75,10 +80,22 @@ export const UserProvider = ({children}) => {
             body: JSON.stringify([user])
         }));
         console.log('bahii', newUserRes.status)
+        
         if(newUserRes.status == 200){
-            await getUserData();
-            navigate("/my-account/orders");
 
+            setIsLoading(false);
+
+            await getUserData();
+
+
+
+            // if (isLoading) {
+            //     return <div>Loading...</div>
+            // } else {
+                navigate("/my-account/orders");
+
+            // }
+            
         } else{
             return newUserRes;
         }

@@ -181,6 +181,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 // }
 
 function buildMenu(menuArray, isExpandable, menuName) {
+  
   console.log("exp", menuName, isExpandable);
   if (!menuArray) {
     return
@@ -203,7 +204,7 @@ function buildMenu(menuArray, isExpandable, menuName) {
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
-            {menuName === "third-footer" ? <span id="extole_zone_global_header" className="footer-referral-span">Refer a friend</span> : ""}
+            {/* {user && typeof window !== "undefined" && menuName === "third-footer" ? <span id="extole_zone_global_header" className="footer-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}>Refer a friend</span> : ""} */}
           </ul>
         </li>)
     } else {
@@ -224,7 +225,9 @@ function generateMenu(menuLinks, menuName, isExpandable) {
 }
 
 const Menu = ({ menuName, menuClass, isExpandable }) => {
-  const { user } = useContext(UserContext);
+
+const { user } = useContext(UserContext);
+
 
   // useEffect(()=> {
   //   if(user && typeof window !== "undefined") {
@@ -277,7 +280,6 @@ const Menu = ({ menuName, menuClass, isExpandable }) => {
         <nav className={menuName, menuClass}>
           <ul >
             {generateMenu(data, menuName, isExpandable)}
-            {user && typeof window !== "undefined" ? <span id="extole_zone_global_header" className="header-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}>Refer a friend</span> : ""}
           </ul>
         </nav>
 

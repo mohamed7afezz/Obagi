@@ -129,15 +129,15 @@ const Register = () => {
                 }
                 dateOfBirth = dateOfBirth.join('-');
 
-                setNewUser({
-                    ...newUser,
-                    attributes: newUser.attributes.map(item => {
-                        if(item.attribute_id === 1) {
-                            item.attribute_value = dateOfBirth;
-                        }
-                        return item;
-                    })
-                })
+                // setNewUser({
+                //     ...newUser,
+                //     attributes: newUser.attributes.map(item => {
+                //         if(item.attribute_id === 1) {
+                //             item.attribute_value = dateOfBirth;
+                //         }
+                //         return item;
+                //     })
+                // })
 
                 break;
             case 'postal_code':
