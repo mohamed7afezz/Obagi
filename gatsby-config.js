@@ -34,7 +34,12 @@ module.exports = {
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
-
+ {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://www.googleadservices.com/pagead/conversion.js', // Change to the script filename
+      },
+    },
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
@@ -44,7 +49,49 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
+        src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&amp;libraries=places', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
         src: 'https://obagi.extole.io/core.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
       },
     },
     {
