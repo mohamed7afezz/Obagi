@@ -177,17 +177,17 @@ const MegaMenu = ({ menuName, menuClass, isExpandable }) =>
   const { user } = useContext(UserContext);
 
   useEffect(()=> {
-    if(user && typeof window !== "undefined") {
+    if(typeof window !== "undefined") {
       (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])
     })(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
     window.extole.createZone({
     name: 'global_header',
     element_id: 'extole_zone_global_header',
     data: {
-    "partner_user_id": user.id, // RECOMMENDED IF AVAILABLE
-    "email": user.email, // RECOMMENDED IF AVAILABLE
-    "first_name": user.first_name, // RECOMMENDED IF AVAILABLE
-    "last_name": user.last_name // RECOMMENDED IF AVAILABLE
+    "partner_user_id": user? user.id : "", // RECOMMENDED IF AVAILABLE
+    "email": user? user.email : "", // RECOMMENDED IF AVAILABLE
+    "first_name": user? user.first_name : "", // RECOMMENDED IF AVAILABLE
+    "last_name": user? user.last_name : "" // RECOMMENDED IF AVAILABLE
     }
     });
     }

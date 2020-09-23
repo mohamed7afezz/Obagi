@@ -42,7 +42,7 @@ const Register = () => {
     function checkPassMatch(event) {
         //compare pass
         let confPass = '';
-        
+        let check = false;
         if(event.target.name === 'password') {
             confPass = document.querySelector('.conf-password').value;
         } else {
@@ -51,9 +51,11 @@ const Register = () => {
 
         if(confPass === event.target.value) {
             setIsPassMatch(true);
+            check = true;
             $('.submit-input').removeAttr('disabled');
         } else {
             setIsPassMatch(false);
+            check = false;
             // document.querySelectorAll(".submit-input").disabled = true;
             $('.submit-input').attr('disabled','disabled');
 
@@ -62,7 +64,7 @@ const Register = () => {
         
         // console.log("dis", document.querySelectorAll(".submit-input").disabled)
 
-        return isPassMatch;
+        return check;
     }
 
     const [newUser, setNewUser] = useState({
@@ -109,17 +111,22 @@ const Register = () => {
 
     function handlePassword(event) {
         if(checkPassMatch(event)) {
+            console.log("pass", event.target.value)
             setNewUser({
                 ...newUser,
                 authentication: {
                     ...newUser.authentication,
                     new_password: event.target.value
                 }
+                
             })
+        console.log("pass checked true ", newUser);
+
         } else {
+        console.log("pass", newUser);
+
             return false;
         }
-        
     }
 
     function handleAttr(event) {
@@ -330,12 +337,12 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input required type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onChange={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input required type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
                             <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>

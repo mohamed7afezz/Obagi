@@ -1,4 +1,4 @@
-import React , { useState , useContext} from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from "prop-types"
@@ -160,6 +160,26 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
     }
   `)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+
+      (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+      window.extole.createZone({
+          name: "mobile_menu",
+          element_id: 'extole_zone_mobile_menu',
+          data: {
+            "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+            "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+            "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+            "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+          }
+      });
+
+    }
+
+  }, []);
+
  
   async  function  inputval(e){
     e.preventDefault();
@@ -370,9 +390,10 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} /><Link to="#">Welcome, Celia</Link></span>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
                   <span><Link to="#">PREMIER POINTS</Link></span>
                 </div>
+                <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
               </div>
             </div>
           </div>

@@ -181,7 +181,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 // }
 
 function buildMenu(menuArray, isExpandable, menuName) {
-  
+
   console.log("exp", menuName, isExpandable);
   if (!menuArray) {
     return
@@ -204,7 +204,9 @@ function buildMenu(menuArray, isExpandable, menuName) {
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
-            {/* {user && typeof window !== "undefined" && menuName === "third-footer" ? <span id="extole_zone_global_header" className="footer-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}>Refer a friend</span> : ""} */}
+            { typeof window !== "undefined" && menuName === "third-footer" && isExpandable === true? <span id="extole_zone_mobile_footer" className="footer-referral-span">Refer a friend</span>
+            : typeof window !== "undefined" && menuName === "third-footer" && isExpandable === false? <span id="extole_zone_global_footer" className="footer-referral-span">Refer a friend</span>
+            : "" }
           </ul>
         </li>)
     } else {
@@ -226,26 +228,50 @@ function generateMenu(menuLinks, menuName, isExpandable) {
 
 const Menu = ({ menuName, menuClass, isExpandable }) => {
 
-const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
 
-  // useEffect(()=> {
-  //   if(user && typeof window !== "undefined") {
-  //     (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])
-  //   })(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
-  //   extole.createZone({
-  //   name: 'global_header',
-  //   element_id: 'extole_zone_global_header',
-  //   data: {
-  //   "partner_user_id": "", // RECOMMENDED IF AVAILABLE
-  //   "email": "REPLACE", // RECOMMENDED IF AVAILABLE
-  //   "first_name": "REPLACE", // RECOMMENDED IF AVAILABLE
-  //   "last_name": "REPLACE" // RECOMMENDED IF AVAILABLE
-  //   }
-  //   });
-  //   }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
+      window.extole.createZone({
+        name: "global_footer",
+        element_id: 'extole_zone_global_footer',
+        data: {
+          "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+          "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+          "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+          "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+        }
+      });
 
-  // }, []);
+      (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+      window.extole.createZone({
+          name: "mobile_footer",
+          element_id: 'extole_zone_mobile_footer',
+          data: {
+            "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+            "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+            "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+            "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+          }
+      });
+
+      (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+      window.extole.createZone({
+          name: "mobile_menu",
+          element_id: 'extole_zone_mobile_menu',
+          data: {
+            "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+            "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+            "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+            "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+          }
+      });
+
+    }
+
+  }, []);
 
   return (
 
