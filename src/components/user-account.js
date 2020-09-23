@@ -176,23 +176,10 @@ const UserAccount = ({ node, children, activeTab }) => {
     }
     `)
 
-  
 
+    function changeText(e) {
+        $("#accountDropdownButton").innerText = e.target.innerText;
 
-    function changeText() {
-        // $("#accountDropdownButton").innerText = e.target.innerText;
-
-        if(activeTab === "orders") {
-            $("#accountDropdownButton").innerText = $("#orders").innerText
-        } else if(activeTab === "account-settings") {
-            $("#accountDropdownButton").innerText = $("#account-settings").innerText
-        } else if(activeTab === "address-book") {
-            $("#accountDropdownButton").innerText = $("#address-book").innerText
-        } else if(activeTab === "premier-points") {
-            $("#accountDropdownButton").innerText = $("#premier-points").innerText
-        }
-
-        
         // if(activeTab && typeof window !== "undefined") {
         //     let element = document.getElementById("#"`${activeTab}`);
         //     document.getElementById("accountDropdownButton").innerText = element.innerText;

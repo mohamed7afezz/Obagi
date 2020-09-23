@@ -85,6 +85,16 @@ export const UserProvider = ({ children }) => {
             credentials: 'include',
             body: JSON.stringify([user])
         });
+    //     .then((result) => result.json())
+    //     .then((result) => {
+
+    //     if (result.id) {
+    //       dispatch(savedUser( result ));
+    //     } else {
+    //       dispatch(savingUserError( result ));
+    //     }
+    // });
+        
         console.log('bahii', newUserRes.status)
 
         if (newUserRes.status == 200) {
@@ -98,6 +108,8 @@ export const UserProvider = ({ children }) => {
 
 
         } else {
+
+            // console.log("resss",newUserRes)
 
             setErr(newUserRes);
         }
