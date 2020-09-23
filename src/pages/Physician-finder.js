@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
 
-import "../assets/scss/components/physfinder.scss"
-import "../assets/scss/components/physfinder-old.scss"
+// import "../assets/scss/components/physfinder.scss"
+// import "../assets/scss/components/physfinder-old.scss"
 import Layout from "../components/layout"
-import {phyfinder} from '../assets/js/phy'
+// import {phyfinder} from '../assets/js/phy'
 
 const PhysFinder = () => {
     // useEffect(() => {
@@ -17,9 +17,9 @@ const PhysFinder = () => {
     //     }
         
     //   }, [])
-  function inputSubmit(e) {
-    e.preventDefault()
-  }
+  // function inputSubmit(e) {
+  //   e.preventDefault()
+  // }
   //   var s = document.createElement("script");
   //   s.type = "text/javascript";
   //   s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&amp;libraries=places";
@@ -107,9 +107,7 @@ const PhysFinder = () => {
                   </div>
                   <div class="i-b submit-wrapper">
                     <input
-                      onClick={e => {
-                        inputSubmit(e)
-                      }}
+                     
                       id="pf-submit"
                       type="submit"
                       value="Update Search"

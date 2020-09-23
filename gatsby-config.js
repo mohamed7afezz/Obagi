@@ -88,12 +88,7 @@ module.exports = {
         src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
       },
     },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
-      },
-    },
+ 
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
