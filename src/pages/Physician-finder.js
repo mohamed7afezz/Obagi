@@ -1,25 +1,28 @@
 import React, { useState, useEffect, useContext } from "react"
 
-// import "../assets/scss/components/physfinder.scss"
 // import "../assets/scss/components/physfinder-old.scss"
+// import "../assets/scss/components/physfinder.scss"
 import Layout from "../components/layout"
-// import {phyfinder} from '../assets/js/phy'
+import {phyfinder} from '../assets/js/phy'
 
 const PhysFinder = () => {
-    // useEffect(() => {
+    useEffect(() => {
         
-    //     if(typeof window.google !== 'undefined') {
+        if(typeof window !== 'undefined') {
+            let google = window.google;
+            let Handlebars = window.Handlebars;
+            let regeneratorRuntime = window.regeneratorRuntime;
+            let _ = window._;
 
-    //         // console.log(window.google)
-    //         let google = window.google;
-    //         phyfinder(google) 
+            console.log('bahiii did load')
+            phyfinder(google, Handlebars, regeneratorRuntime, _); 
             
-    //     }
+        }
         
-    //   }, [])
-  // function inputSubmit(e) {
-  //   e.preventDefault()
-  // }
+      }, [])
+  function inputSubmit(e) {
+    e.preventDefault()
+  }
   //   var s = document.createElement("script");
   //   s.type = "text/javascript";
   //   s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&amp;libraries=places";
@@ -107,7 +110,6 @@ const PhysFinder = () => {
                   </div>
                   <div class="i-b submit-wrapper">
                     <input
-                     
                       id="pf-submit"
                       type="submit"
                       value="Update Search"

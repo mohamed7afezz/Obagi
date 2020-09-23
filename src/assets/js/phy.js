@@ -1,5 +1,5 @@
 import $ from 'jquery';
-export function phyfinder(google){
+export function phyfinder(google, Handlebars, regeneratorRuntime, _){
 
 const jQuery = $;
   
@@ -54,21 +54,21 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
   });
-  var pfValidator = $("#phys-finder-form").validate({}); // For Goog analytics they want to know if people actually clicked and searched as opposed to using the default geolocation, so setting an initial state which we will remove later after actual search...
+  // var pfValidator = $("#phys-finder-form").validate({}); // For Goog analytics they want to know if people actually clicked and searched as opposed to using the default geolocation, so setting an initial state which we will remove later after actual search...
 
   ga_params.defaultmap = true;
   $("#pf-submit").addClass('defaultmap'); // !handle submit click
-
+  
   $("#pf-submit").on("click", function (e) {
     params = gatherParameters();
     errors = validatePhysicianForm(params);
 
     if (_.size(errors) > 0) {
-      pfValidator.showErrors(errors);
+      // pfValidator.showErrors(errors);
       return false;
     }
 
-    if ($("input:radio[name=searchby]:checked").val() === "location") {
+    if ($("input:radio[name=searchby]:checked").value === "location") {
       // checkInputConsistency() is assuming they manually arrowed down to select something
       if (!checkInputConsistency(params)) {
         // zip, nor city and state were returned, something incomplete... just get first result
@@ -90,7 +90,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     errors = validatePhysicianForm(params);
 
     if (_.size(errors) > 0) {
-      pfValidator.showErrors(errors);
+      // pfValidator.showErrors(errors);
       return false;
     } else {
       $('#error-wrapper label.error').hide();
@@ -161,11 +161,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   $("body").on("click", "#physician-results-list .marker-link", function () {
     $("#physician-results-list .bodycopy").removeClass("active");
     $(this).closest(".bodycopy").addClass("active");
-    numSplit = this.id.split('-');
+    var numSplit = this.id.split('-');
     clearInfoWindows();
     var info = $(this).closest(".bodycopy").find(".info");
-    infoWindow = new google.maps.InfoWindow();
-    let infohtml = $(info).html();
+    var infoWindow = new google.maps.InfoWindow();
+    var infohtml = $(info).html();
     infohtml = EditInfoHtmlContent(infohtml);
     infoWindow.setContent(infohtml);
     infoWindow.open(map, markerList[numSplit[2] - 1]);
@@ -195,11 +195,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   $("body").on("click", "#print-link", function (e) {
     clearInfoWindows();
   });
-  var masonryContainer = $('.prod-system-group').masonry({
-    itemSelector: '.prod-system',
-    columnWidth: 1,
-    transitionDuration: 0
-  });
+  // var masonryContainer = $('.prod-system-group').masonry({
+  //   itemSelector: '.prod-system',
+  //   columnWidth: 1,
+  //   transitionDuration: 0
+  // });
 
   function initialize() {
     map.setZoom(5); //google autocomplete
@@ -235,8 +235,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
     }); //check if user is directed here with parameters already filled in
 
-    if (location.search.length > 0) {
-      qs = getQueryParams(location.search);
+    if (window.location.search.length > 0) {
+      var qs = getQueryParams(window.location.search);
 
       if (typeof qs.physician !== "undefined" && qs.physician.trim() != "") {
         $('#searchByPhysician').click();
@@ -322,7 +322,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             params["product"] = products;
           }
 
-          params["distance"] = $("#pf-radius").val();
+          params["distance"] = $("#pf-radius").value;
           requestPhysicians(params);
           map.setCenter(new google.maps.LatLng(params.lat, params.lng));
           params.lat = undefined;
@@ -336,7 +336,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   function gatherParameters() {
-    params["distance"] = $("#pf-radius").val(); //filter by product
+    params["distance"] = $("#pf-radius").value; //filter by product
 
     if ($("#adv-search-content input.product-item:checked").length > 0) {
       //implement a hashset, so there aren't duplicates
@@ -345,7 +345,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       $("#adv-search-content input.product-item:checked").each(function () {
         if (this.value !== '') {
           if (this.value.indexOf(',') > 0) {
-            prodIds = this.value.split(',');
+            var prodIds = this.value.split(',');
             $.each(prodIds, function (k, v) {
               products[v] = true;
             });
@@ -372,7 +372,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     } //get criteria of zip or city/state (only required fields!) and send to API
 
 
-    if ($("input:radio[name=searchby]:checked").val() === "location") {
+    if ($("input:radio[name=searchby]:checked").value === "location") {
       if (!_.isEmpty(params.city)) {
         params["city"] = params.city;
       }
@@ -386,14 +386,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
 
       params["physician"] = "";
-    } else if ($("input:radio[name=searchby]:checked").val() === "physician") {
-      if ($("#finder-physician-input").val()) {
+    } else if ($("input:radio[name=searchby]:checked").value === "physician") {
+      if ($("#finder-physician-input").value) {
         params["distance"] = "";
         params["city"] = "";
         params["state"] = "";
         params["zip"] = "";
         params["postal"] = "";
-        params["physician"] = $("#finder-physician-input").val();
+        params["physician"] = $("#finder-physician-input").value;
       }
     } else {
       params["location"] = "";
@@ -414,7 +414,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     params.city = '';
     params.state = '';
     params.zip = '';
-    input = $("#finder-location-input").val().split(",");
+    input = $("#finder-location-input").value.split(",");
     input = _.map(input, function (a) {
       return $.trim(a);
     });
@@ -501,7 +501,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   function requestPhysicians(params) {
     pager = {};
     setAllMap(null);
-    markerList = [], physicianPool = [], activePhysicians = [];
+    var markerList = [], physicianPool = [], activePhysicians = [];
     resetErrors();
     $.ajax({
       async: false,
@@ -547,11 +547,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             }); //SORTING
             // sort-dist bypasses the sales-sorting
             //! functionality has been removed by client 3/1/2016
-            //if ($("input:radio[name=searchby]:checked").val() === "location" && $("#sort-dist:checked").length === 0) {
+            //if ($("input:radio[name=searchby]:checked").value === "location" && $("#sort-dist:checked").length === 0) {
             //  physicianPool = sortPhysicians(physicianPool);
             //}
 
-            for (i = 0; i < physicianPool.length; i++) {
+            for (var i = 0; i < physicianPool.length; i++) {
               activePhysicians.push(physicianPool[i]);
             }
 
@@ -562,7 +562,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             $("#info-list-1").closest(".bodycopy").addClass("active");
             clearInfoWindows();
             var info = $("#info-list-1").closest(".bodycopy").find(".info");
-            infoWindow = new google.maps.InfoWindow();
+            var infoWindow = new google.maps.InfoWindow();
             let infohtml = $(info).html();
             infohtml = EditInfoHtmlContent(infohtml);
             infoWindow.setContent(infohtml);
@@ -570,7 +570,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             infoWindows.push(infoWindow);
             markerList[0].setZIndex(google.maps.Marker.MAX_ZINDEX + 1); // only center for distance searches because phys searches could be map-wide
 
-            if ($("input:radio[name=searchby]:checked").val() === "location") {
+            if ($("input:radio[name=searchby]:checked").value === "location") {
               var center = markerList[0].getPosition();
               map.setCenter(center);
             } else {
@@ -581,7 +581,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
             $.extend(ga_params, params);
-            ga_params.searchby = $("input:radio[name=searchby]:checked").val();
+            ga_params.searchby = $("input:radio[name=searchby]:checked").value;
             delete ga_params.product;
             var str = decodeURIComponent($.param(ga_params));
 
@@ -627,13 +627,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             console.error("No results returned by API");
 
             if (params['physician']) {
-              pfValidator.showErrors({
-                "finder-physician-input": "No Results Found."
-              });
+              // pfValidator.showErrors({
+              //   "finder-physician-input": "No Results Found."
+              // });
             } else {
-              pfValidator.showErrors({
-                "finder-location-input": "It doesn't look like there are any physicians within your search."
-              });
+              // pfValidator.showErrors({
+              //   "finder-location-input": "It doesn't look like there are any physicians within your search."
+              // });
             }
           }
         } else {
@@ -703,7 +703,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       errors = {};
     }
 
-    if ($("input:radio[name=searchby]:checked").val() === "location") {
+    if ($("input:radio[name=searchby]:checked").value === "location") {
       var regAlphaOnly = new RegExp("[0-9]");
 
       if (regAlphaOnly.test(params['city']) === true) {
@@ -712,7 +712,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
 
       if (!params['city'] && !params['state']) {
-        if ($('#finder-location-input').val() === '') {
+        if ($('#finder-location-input').value === '') {
           errors['finder-location-input'] = 'ZIP Code is required.';
           console.log('ZIP Code is required.');
         } else {
@@ -720,7 +720,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           console.error("No input in location field when location is selected.");
         }
       }
-    } else if ($("input:radio[name=searchby]:checked").val() === "physician") {
+    } else if ($("input:radio[name=searchby]:checked").value === "physician") {
       if (!params['physician']) {
         console.log(errors);
         errors["finder-physician-input"] = "Physician name is required.";
@@ -793,7 +793,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       $('.d-flex').addClass('search');
     }
 
-    nextPrev = "";
+    var nextPrev = "";
 
     if (pager["total"] > 10) {
       nextPrev = '<span class="next-prev right">';
@@ -810,13 +810,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }
 
     if (pager["end"] >= pager["total"]) {
-      k = pager["total"];
+      var k = pager["total"];
     } else {
-      k = pager["end"];
+      var k = pager["end"];
     }
 
     $("#physician-results-list .inner").append('<div class="left count">' + pager["start"] + '-' + k + ' of ' + pager["total"] + '</div>' + nextPrev + '<div class="clearfix"></div><hr class="first" />');
-    bounds = new google.maps.LatLngBounds(); // clinics array is zero-based, while pager starts at 1, so make adjustment
+    var bounds = new google.maps.LatLngBounds(); // clinics array is zero-based, while pager starts at 1, so make adjustment
 
     var _start = pager["start"] - 1;
 
@@ -824,7 +824,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
     for (var i = _start; i <= _start + (_end - _start); i++) {
       if (clinics[i]) {
-        content = formatContent(clinics[i], i, params);
+        var content = formatContent(clinics[i], i, params);
         $("#physician-results-list .inner").append(content);
         bounds.extend(new google.maps.LatLng(clinics[i]['lat'], clinics[i]['lng']));
         map.fitBounds(bounds);
@@ -843,7 +843,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
     if ($(".count #pf-count-results")) {
       var t = parseInt(pager["total"]) === 1 ? 'result' : 'results';
-      resultsString = pager["total"] + " " + t + " for";
+      var resultsString = pager["total"] + " " + t + " for";
       resultsString += formatCriteria(params);
       $(".count #pf-count-results").html(resultsString);
     }
@@ -852,7 +852,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   function formatCriteria(data) {
     var output = ""; // physician
 
-    if ($("input:radio[name=searchby]:checked").val() === "physician") {
+    if ($("input:radio[name=searchby]:checked").value === "physician") {
       if (data['physician']) {
         output += " " + data['physician'];
       }
@@ -922,7 +922,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   function formatContent(clinicData, key, params) {
     var iconIndex = key + 1;
-    infoWindow = new google.maps.InfoWindow();
+    var infoWindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
       map: map,
       position: new google.maps.LatLng(clinicData['lat'], clinicData['lng']),
@@ -957,7 +957,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       iconIndex: key + 1,
       clinicData: clinicData
     };
-    var locationSearch = $("input:radio[name=searchby]:checked").val() === "location" ? true : false;
+    var locationSearch = $("input:radio[name=searchby]:checked").value === "location" ? true : false;
 
     if (locationSearch && clinicData['distance'] !== null) {
       var d = clinicData['distance'];
@@ -1018,7 +1018,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       number: number,
       clinicData: clinicData
     };
-    var locationSearch = $("input:radio[name=searchby]:checked").val() === "location" ? true : false;
+    var locationSearch = $("input:radio[name=searchby]:checked").value === "location" ? true : false;
 
     if (locationSearch && clinicData['distance'] !== null) {
       var d = clinicData['distance'];
@@ -1102,9 +1102,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     } // scroll up if less than 768px
 
 
-    if (intent.axes.width.current != "standard") {
-      scrollToAnchor('#physician-results-list');
-    }
+    // if (intent.axes.width.current != "standard") {
+    //   scrollToAnchor('#physician-results-list');
+    // }
   }
 
   function hideClinicDetail() {
@@ -1116,7 +1116,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   function formatEmailLink(dataObj) {
-    output = "";
+    var output = "";
 
     if (dataObj) {
       $.each(dataObj, function (key, peele) {
@@ -1155,15 +1155,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       target.children('span.glyphicon-arrow-up').hide().siblings('span.glyphicon-arrow-down').show();
     } else {
       target.addClass('active');
-      $('#adv-search-content').slideDown(750, function () {
-        masonryContainer.masonry('layout');
-      });
+      // $('#adv-search-content').slideDown(750, function () {
+      //   masonryContainer.masonry('layout');
+      // });
       target.children('span.glyphicon-arrow-down').hide().siblings('span.glyphicon-arrow-up').show();
     }
   });
   $("#phys-finder .js-tab").on("click", function () {
     var target = $(this);
-    index = target.parent().index();
+    var index = target.parent().index();
 
     if (!target.hasClass("active")) {
       $("#phys-finder .js-tab").removeClass("active");
@@ -1172,19 +1172,19 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       target.addClass("active").parent().addClass("active");
       $("#phys-finder .tab-content").removeClass("active");
       $('#tab-content-' + index).addClass("active");
-      masonryContainer.masonry('layout');
+      // masonryContainer.masonry('layout');
 
-      if (intent.axes.width.current === "mobile" || intent.axes.width.current === "tablet" || intent.axes.width.current === "tablet480") {
-        $('html, body').animate({
-          scrollTop: $(target).offset().top
-        }, 1000);
-      }
+      // if (intent.axes.width.current === "mobile" || intent.axes.width.current === "tablet" || intent.axes.width.current === "tablet480") {
+      //   $('html, body').animate({
+      //     scrollTop: $(target).offset().top
+      //   }, 1000);
+      // }
     } else {
       //depends on intention.js (obv)
-      if (intent.axes.width.current === "mobile" || intent.axes.width.current === "tablet" || intent.axes.width.current === "tablet480") {
-        target.removeClass("active");
-        $("#phys-finder .tab-content").eq(index).removeClass("active");
-      }
+      // if (intent.axes.width.current === "mobile" || intent.axes.width.current === "tablet" || intent.axes.width.current === "tablet480") {
+      //   target.removeClass("active");
+      //   $("#phys-finder .tab-content").eq(index).removeClass("active");
+      // }
     }
   });
   var prod_group_count = [];
@@ -1223,7 +1223,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   //  $('#sort-dist').change(function(){
   //    // check to see if markers are loaded, meaning a search has already been done
   //    if (markerList.length > 0) {
-  //      if ($("input:radio[name=searchby]:checked").val() === "location") {
+  //      if ($("input:radio[name=searchby]:checked").value === "location") {
   //        $('#pf-submit').click();
   //        // prevent people from double submitting
   //        $(this).prop('disabled', true);
@@ -1450,7 +1450,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     console.log(errors); // window.location.reload();
   });
 
-  if ($('input[name="searchby"]:checked').val() === 'physician') {
+  if ($('input[name="searchby"]:checked').value === 'physician') {
     //$('#pf-radius').prop( "disabled", true );
     document.getElementById("pf-radius").disabled = true; //document.getElementById("sort-dist").disabled = true;
 

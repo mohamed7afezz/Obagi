@@ -56,7 +56,7 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
     let productSubTitle =isClincal
-    ? node.field_clinical_description_sub
+    ? "" //node.field_clinical_description_sub
     : node.field_medical_description_sub
     let key_benfitList = isClincal
     ? node.relationships.field_key_benefits_list?node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists:""

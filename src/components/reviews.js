@@ -124,24 +124,54 @@ export const fragment = graphql`
             }
           }
         }
-        node__clinical_product {
-          path {
-            alias
-          }
-          field_clinical_id
-          title
-          relationships {
-            field_clinical_image {
-              localFile {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
-            }
-          }
-        }
+        
       }
     }
 `;
+
+// export const fragment = graphql`
+//     fragment reviewsParagraph on paragraph__reviews {
+//       id
+//       field_review_title {
+//         processed
+//       }
+//       relationships {
+//         node__medical_product {
+//           field_medical_id
+//           path {
+//             alias
+//           }
+//           title
+//           relationships {
+//             field_medical_image {
+//               localFile {
+//                 childImageSharp {
+//                   original {
+//                     src
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//         node__clinical_product {
+//           path {
+//             alias
+//           }
+//           field_clinical_id
+//           title
+//           relationships {
+//             field_clinical_image {
+//               localFile {
+//                 childImageSharp {
+//                   original {
+//                     src
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+// `;

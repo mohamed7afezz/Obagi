@@ -39,8 +39,6 @@ export const productPageQuery = graphql`
             field_clinical_id
             field_clinical_medical_type
             field_clinical_weight
-            field_clinical_description_sub
-            field_clinical_key_benefit
             path {
                 alias
               }
