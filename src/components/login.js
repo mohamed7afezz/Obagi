@@ -6,7 +6,7 @@ import LoginMenu from '../components/login-menu'
 
 const Login = () => {
 
-  const { user, isLoading, handleLogin } = useContext(UserContext);
+  const { user, isLoading, matchEmail, handleLogin } = useContext(UserContext);
 
   const [state, setState] = useState({
     email: ``,
@@ -71,7 +71,7 @@ const Login = () => {
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" placeholder="" name="password" onChange={handleUpdate} />
             </div>
-
+            <p className={`form-control ${matchEmail == false? 'text-warning' : 'd-none'}`}> Email or Password is incorrect.</p>
             <div className="check-wrapper">
               <div class="form-check">
 

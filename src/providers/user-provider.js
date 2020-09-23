@@ -32,6 +32,7 @@ export const UserProvider = ({ children }) => {
 
     // Login
     const [isLoading, setIsLoading] = useState(false);
+    const [matchEmail, setMatchEmail] = useState(true);
 
 
     async function handleLogin({ email, password }) {
@@ -49,11 +50,16 @@ export const UserProvider = ({ children }) => {
             mode: 'cors'
         })).json();
 
-        if (isAuthUserRes.success && typeof window !== "undefined") {
+
+        if(!isAuthUserRes.success && typeof window !== "undefined") {
+            setMatchEmail(false);
+            setIsLoading(false);
+        }
+        else if (isAuthUserRes.success && typeof window !== "undefined") {
             window.location.href = `${baseUrl}custmer_login_sso`;
+            setMatchEmail(true);
         }
 
-        setIsLoading(false);
 
         return false;
 
@@ -84,7 +90,22 @@ export const UserProvider = ({ children }) => {
             mode: "no-cors",
             credentials: 'include',
             body: JSON.stringify([user])
-        });
+        })
+    
+        // .then(res => console.log("resss", res))
+        // .catch(error => {
+        //     console.log("resss", error)
+        // })
+    //     .then((result) => result.json())
+    //     .then((result) => {
+
+    //     if (result.id) {
+    //       dispatch(savedUser( result ));
+    //     } else {
+    //       dispatch(savingUserError( result ));
+    //     }
+    // });
+        
         console.log('bahii', newUserRes.status)
 
         if (newUserRes.status == 200) {
@@ -99,12 +120,16 @@ export const UserProvider = ({ children }) => {
 
         } else {
 
-            setErr(newUserRes);
+            // console.log("resss",setErr(newUserRes))
+
+            // let response = await newUserRes.json();
+            // console.log("resss", response, newUserRes.errors)
+            // setErr(newUserRes);
         }
     }
 
     return (
-        <UserContext.Provider value={{ user, err, isLoading, handleLogin, handleLogout, handleRegister }}>
+        <UserContext.Provider value={{ user, err, matchEmail, isLoading, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )

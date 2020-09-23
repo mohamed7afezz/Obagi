@@ -195,6 +195,7 @@ const Register = () => {
         event.preventDefault();
         console.log('bahiii', newUser)
         handleRegister(newUser)
+        
 
         // let errors = err.errors;
         // console.log("error", errors)
