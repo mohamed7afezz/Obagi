@@ -135,6 +135,8 @@ const OrderDetails = (props, { node }) => {
         )
     })
 
+    let elementId;
+
     console.log("item", productId)
     return (
         <>
@@ -297,29 +299,10 @@ const OrderDetails = (props, { node }) => {
                                 <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
                                     <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
                                         onClick={() => {
-                                            let quantity = 1;
-
-                                            // 1 - loop on all checked boxes
-                                            document.querySelectorAll('.details-check').forEach(el => {
-                                                // 2 - check if it's select then => get product id
-                                                console.log('Ashraqat', el.checked)
-                                                if (el.checked) {
-                                                    // 3 - send cart request
-                                                    addToCart(el.value, false, quantity);
-                                                }
-                                            })
-                                        }}
-                                    // disabled={addingToCart === productId}
-                                    >Re-order</button>
-                                </div>
-
-                                <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
-                                    <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
-                                        onClick={() => {
                                             let flag = true;
-                                            // let check
+
                                             // 1 - loop on all checked boxes
-                                            document.querySelectorAll('.desk-details-check').forEach((el) => {
+                                            document.querySelectorAll('.details-check').forEach((el) => {
                                                 // 2 - check if it's select then => get product id
 
                                                 if (el.checked) {
@@ -338,13 +321,42 @@ const OrderDetails = (props, { node }) => {
                                             console.log("after flag", flag)
 
                                             if (flag && typeof $ !== "undefined") {
-                                                // let btn = document.getElementById("reorder-button");
                                                 $("#checkModal").modal("show");
-                                                // btn.dataset.toggle = "modal";
-                                                // btn.dataset.target = "#checkModal";
+                                            
                                             }
                                         }}
                                     // disabled={addingToCart === productId}
+                                    >Re-order</button>
+                                </div>
+
+                                <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
+                                    <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
+                                        onClick={() => {
+                                            let flag = true;
+                                            // 1 - loop on all checked boxes
+                                            document.querySelectorAll('.desk-details-check').forEach((el) => {
+                                                // 2 - check if it's select then => get product id
+
+                                                if (el.checked) {
+                                                    // 3 - send cart request
+                                                    console.log('bahi', 'before add to cart')
+                                                    addToCart(el.value, false, 1);
+                                                    console.log('bahi', 'after add to cart')
+                                                    // console.log("value", el.value)
+                                                    flag = false;
+                                                    elementId = el.value;
+                                                }
+                                                console.log("before flag", flag)
+
+
+                                            })
+                                            console.log("after flag", flag)
+
+                                            if (flag && typeof $ !== "undefined") {
+                                                $("#checkModal").modal("show");
+                                            }
+                                        }}
+                                    // disabled={addingToCart === elementId}
                                     >Re-order</button>
                                 </div>
                             </div>

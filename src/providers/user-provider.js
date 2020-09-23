@@ -7,19 +7,20 @@ const baseUrl = process.env.Base_URL;
 
 const isBrowser = () => typeof window !== "undefined"
 
-export const UserProvider = ({children}) => {
+export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(false);
+    const [err, setErr] = useState();
 
     async function getUserData() {
 
-        const userData = await (await fetch(`${baseUrl}bigcommerce/v1/customer`,{
+        const userData = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: 'GET',
             credentials: 'include',
             mode: 'cors'
         })).json();
 
-        if(userData !== "User not login.") {
+        if (userData !== "User not login.") {
             setUser(userData[0]);
         }
     }
@@ -30,14 +31,17 @@ export const UserProvider = ({children}) => {
     }, []);
 
     // Login
+    const [isLoading, setIsLoading] = useState(false);
 
-    async function handleLogin({email, password}) {
-        
+
+    async function handleLogin({ email, password }) {
+        setIsLoading(true);
+
         const user = {
             username: email,
             password: password
         }
-        
+
         const isAuthUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/signin`, {
             method: 'POST',
             credentials: 'include',
@@ -45,14 +49,18 @@ export const UserProvider = ({children}) => {
             mode: 'cors'
         })).json();
 
-        if(isAuthUserRes.success && typeof window !== "undefined") {
+        if (isAuthUserRes.success && typeof window !== "undefined") {
             window.location.href = `${baseUrl}custmer_login_sso`;
         }
+
+        setIsLoading(false);
+
         return false;
+
     }
 
     // logout
-    async function handleLogout () {
+    async function handleLogout() {
         fetch(`${baseUrl}custmer_logout`, {
             method: 'GET',
             credentials: 'include',
@@ -60,32 +68,43 @@ export const UserProvider = ({children}) => {
         });
 
         fetch('https://gtotest.mybigcommerce.com/login.php?action=logout', {
-            method:'GET',mode:'no-cors',credentials: 'include'
+            method: 'GET', mode: 'no-cors', credentials: 'include'
         });
 
         setUser(false);
     }
 
+
     // register
     async function handleRegister(user) {
-        const newUserRes = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
+
+
+        const newUserRes = await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
             mode: "no-cors",
             credentials: 'include',
             body: JSON.stringify([user])
-        }));
+        });
         console.log('bahii', newUserRes.status)
-        if(newUserRes.status == 200){
+
+        if (newUserRes.status == 200) {
+
+
             await getUserData();
+
+
+
             navigate("/my-account/orders");
 
-        } else{
-            return newUserRes;
+
+        } else {
+
+            setErr(newUserRes);
         }
     }
 
     return (
-        <UserContext.Provider value={{user, handleLogin, handleLogout, handleRegister}}>
+        <UserContext.Provider value={{ user, err, isLoading, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )

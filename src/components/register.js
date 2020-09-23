@@ -4,13 +4,14 @@ import LoginMenu from "./login-menu"
 import { CustomSelect } from '../assets/js/custom-select'
 import UserContext from '../providers/user-provider';
 import { map } from 'jquery';
+import $ from 'jquery'
 import '../assets/css/override.css';
 const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
     let largeScreen = 992;
 
-    const {user, handleRegister} = useContext(UserContext);
+    const {user, err, handleRegister} = useContext(UserContext);
 
     if(user) {
         if(typeof window !== 'undefined') {
@@ -26,14 +27,14 @@ const Register = () => {
           } 
     }
     useEffect(() => {
-        if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
-            CustomSelect();
+        // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
+        //     // CustomSelect();
 
-            //the issue is here
-            document.querySelectorAll('select[name="date"]').forEach(item => {
-                item.addEventListener('change', handleAttr)
-            });
-        }
+        //     //the issue is here
+        //     // document.querySelectorAll('input[type="date"]').forEach(item => {
+        //     //     item.addEventListener('change', handleAttr)
+        //     // });
+        // }
     });
 
     const [isPassMatch, setIsPassMatch] = useState();
@@ -50,10 +51,16 @@ const Register = () => {
 
         if(confPass === event.target.value) {
             setIsPassMatch(true);
+            $('.submit-input').removeAttr('disabled');
         } else {
             setIsPassMatch(false);
+            // document.querySelectorAll(".submit-input").disabled = true;
+            $('.submit-input').attr('disabled','disabled');
+
+
         }
         
+        // console.log("dis", document.querySelectorAll(".submit-input").disabled)
 
         return isPassMatch;
     }
@@ -116,24 +123,30 @@ const Register = () => {
     }
 
     function handleAttr(event) {
-        switch (event.target.name) {
-            case 'date':
-                console.log('bahiii', event.target.classList, event.target.value);
-                var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
-                if(event.target.classList.contains('day')) {
-                    dateOfBirth[2] = event.target.value
-                } else if (event.target.classList.contains('month')) {
-                    dateOfBirth[1] = event.target.value
-                } else {
-                    dateOfBirth[0] = event.target.value
-                }
-                dateOfBirth = dateOfBirth.join('-');
+        console.log("new", newUser)
 
+        switch (event.target.name) {
+            
+            case 'date':
+                console.log("new", newUser)
+
+                console.log('new', event.target.classList, event.target.value);
+                // var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
+                // if(event.target.classList.contains('day')) {
+                //     dateOfBirth[2] = event.target.value
+                // } else if (event.target.classList.contains('month')) {
+                //     dateOfBirth[1] = event.target.value
+                // } else {
+                //     dateOfBirth[0] = event.target.value
+                // }
+                // dateOfBirth = dateOfBirth.join('-');
+
+                console.log("new", newUser)
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
                         if(item.attribute_id === 1) {
-                            item.attribute_value = dateOfBirth;
+                            item.attribute_value = event.target.value;
                         }
                         return item;
                     })
@@ -175,8 +188,16 @@ const Register = () => {
         event.preventDefault();
         console.log('bahiii', newUser)
         handleRegister(newUser)
-        let data = event.responseData.data
-        console.log("data", data)
+
+        // let errors = err.errors;
+        // console.log("error", errors)
+        // let data = event.responseData.data
+        // console.log("data", data)
+        
+        // if (typeof window !== "undefined") {
+        //     const content = response.json();
+        //     console.log("content", content);
+        // }
     }
 
 
@@ -226,6 +247,7 @@ const Register = () => {
 
                         <form class="regform" onSubmit={e => {
                             handleSubmit(e);
+                    
                         }}>
                             <div className="form-group">
                                 <label for="firstname">*First name</label>
@@ -258,19 +280,19 @@ const Register = () => {
                                 <div className="day-month">
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Day</label>
-                                        <div className="select-wrapper custom-select">
-                                            <select required className="form-control day" name="date" id="reviewFormSelect">
-                                                <option>Select</option>
+                                        {/* <div className="select-wrapper custom-select"> */}
+                                            <input required className="form-control day" name="date" type="date" id="reviewFormSelect" onChange={handleAttr}/>
+                                                {/* <option>Select</option>
                                                 <option>Select</option>
                                                 <option value="01">1</option>
                                                 <option value="02">2</option>
                                                 <option value="03">3</option>
                                                 <option value="04">4</option>
                                                 <option value="05">5</option>
-                                            </select>
-                                        </div>
+                                            </select> */}
+                                        {/* </div> */}
                                     </div>
-
+{/* 
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Month</label>
                                         <div className="select-wrapper custom-select" >
@@ -299,7 +321,7 @@ const Register = () => {
                                         <option value="1996">1996</option>
                                         <option value="1995">1995</option>
                                     </select>
-                                </div>
+                                </div>  */}
                             </div>
                             </div>
 
@@ -329,7 +351,7 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account" />
+                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account"/>
                             </div>
 
                         </form>
