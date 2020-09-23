@@ -8,13 +8,14 @@ const baseUrl = process.env.Base_URL;
 
 export const SearchProvider = ({children}) => {
 
-    
+   
     const [clinicalSearchResults, setClinicalValue] = useState({});
-     const [medicalSearchResults, setMedicalValue] =  useState({});
+    const [medicalSearchResults, setMedicalValue] =  useState({});
+    const [searchWord, setsearchWord] =  useState({});
   async  function  search(key){
-
+    const savekey = key;
     let searchkey= key
-  if ( searchkey.length >3) {
+  if ( searchkey.length >2) {
     
   
   const getClinicalSearch =  await (await fetch(`${baseUrl}jsonapi/node/clinical_product?filter[title][condition][value]=${searchkey}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
@@ -31,12 +32,13 @@ export const SearchProvider = ({children}) => {
  
 })).json();
 setMedicalValue(getMedicalSearch); 
-console.log(getMedicalSearch, getClinicalSearch)
+setsearchWord(savekey)
+console.log(savekey,getMedicalSearch, getClinicalSearch)
 } 
    }
 
     return (
-        <SearchContext.Provider value={{search , medicalSearchResults , clinicalSearchResults}}>
+        <SearchContext.Provider value={{search , medicalSearchResults , clinicalSearchResults,searchWord}}>
             {children}
         </SearchContext.Provider>
     )

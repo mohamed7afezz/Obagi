@@ -22,7 +22,7 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
   const {user, handleLogout} = useContext(UserContext);
  
   const location = useLocation();
-
+ 
   const data = useStaticQuery(graphql`
     query {
       logo: file(relativePath: { eq: "obagi.png" }) {
@@ -163,8 +163,14 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
  
   async  function  inputval(e){
     e.preventDefault();
+    if (e.keyCode === 13) {
+      // Cancel the default action, if needed
+      console.log('ay')
+      // Trigger the button element with a click
+      document.querySelector(".searchIcon").click();
+    }
     let searchkey= e.target.value
-  if ( searchkey.length >3) {
+  if ( searchkey.length >2) {
     search(searchkey)
 }else{
   search("searchkey")
@@ -393,8 +399,8 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
-                  <div className={headerStyles.searchIcon}><Img fixed={data.searchIcon.childImageSharp.fixed} /></div>
-                  <input  type="search" onChange={inputval} className={[headerStyles.searchInput,"searchInput"].join(" ")}></input>
+                  <Link to="/search-page" className={[headerStyles.searchIcon,"searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
+                  <input  type="search" onKeyUp={inputval} className={[headerStyles.searchInput,"searchInputm"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                   <button className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                 </div>

@@ -6,6 +6,7 @@ import SearchContext from '../providers/search-provider'
 const Search = () => {
 const {clinicalSearchResults} = useContext(SearchContext);
 const {medicalSearchResults} = useContext(SearchContext);
+
     return (
         <div>
             <div className={searchStyles.result}>
@@ -13,7 +14,13 @@ const {medicalSearchResults} = useContext(SearchContext);
                     <div className={searchStyles.typeColor}></div>
                     <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Medical</div>
                 </div>
-                {medicalSearchResults.data?medicalSearchResults.data.length > 0?medicalSearchResults.data.map( data=>(<Link className={searchStyles.searchlinks} to={data.attributes.path.alias}>{data.attributes.title}</Link>)) : "No results found" :""}
+                {medicalSearchResults.data?
+                medicalSearchResults.data.length > 0?
+                medicalSearchResults.data.map( (data , index)=>(
+                    index < 4?
+                <Link className={searchStyles.searchlinks} to={data.attributes.path.alias}>{data.attributes.title}</Link>
+                    :""
+                )) : "No results found" :""}
 
             </div>
             <div className={searchStyles.result}>
@@ -21,7 +28,12 @@ const {medicalSearchResults} = useContext(SearchContext);
                     <div className={searchStyles.typeColorclinical}></div>
                     <div className={[searchStyles.typeText, "d-none d-lg-block"].join(" ")}>Clinical</div>
                 </div>
-                {clinicalSearchResults.data?clinicalSearchResults.data.length > 0?clinicalSearchResults.data.map( data=>(<Link className={searchStyles.searchlinks} to={data.attributes.path.alias}>{data.attributes.title}</Link>)) : "No results found" :""}
+                {clinicalSearchResults.data?clinicalSearchResults.data.length > 0?
+                clinicalSearchResults.data.map( (data , index)=>(
+                    index < 4 ?
+                <Link className={searchStyles.searchlinks} to={data.attributes.path.alias}>{data.attributes.title}</Link>
+                :""
+                )) : "No results found" :""}
        
             </div>
         </div>
