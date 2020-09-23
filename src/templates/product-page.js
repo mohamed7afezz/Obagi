@@ -33,9 +33,8 @@ export const productPageQuery = graphql`
     query($slug: String!) {
         nodeClinicalProduct(fields: { slug: { eq: $slug } }) {
             title
-            field_clinical_premier_points
             field_clinical_price
-            field_clinical_info
+            
             field_clinical_upc
             field_clinical_id
             field_clinical_medical_type

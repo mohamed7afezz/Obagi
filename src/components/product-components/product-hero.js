@@ -50,12 +50,8 @@ const ProductHero = ({ data, nodeType }) => {
   let field_skin_concern = isClincal
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
-    let field_info = isClincal
-    ? node.field_clinical_info
-    : node.field_medical_info
-  let feild_preimer = isClincal
-    ? node.field_clinical_premier_points
-    : node.field_medical_premier_points
+    let field_info =  node.field_medical_info
+  let feild_preimer = node.field_medical_premier_points
   let key_benefit  = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits

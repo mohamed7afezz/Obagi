@@ -1,6 +1,8 @@
 import $ from 'jquery';
-import jQuery from 'jquery';
+export function phyfinder(google){
 
+const jQuery = $;
+  
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -1376,7 +1378,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
                   */
                   if (jQuery('.webform-confirmation').length == 1) {
                     var self = this;
-                    myModule_ajax_load().then(function (res) {
+                    /*myModule_ajax_load().then(function (res) {
                       $('#MakeAppointmentModal .modal-body').html('');
                       $('#MakeAppointmentModal .modal-body').append(res);
                       drupalSettings.ajax = {
@@ -1399,6 +1401,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
                           "selector": "#edit-actions-submit"
                         }
                       };
+                      /////////// what is this ya bahiii////
                       Drupal.attachBehaviors();
 
                       $('.form-physician-email input').val($(self).attr('data-id'));
@@ -1410,7 +1413,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
                       PageLoad($);
                       selectFormatter($);
                       $('#MakeAppointmentModal').modal('show');
-                    });
+                    });*/
                   } else {
 
                     $('.form-physician-email input').val($(this).attr('data-id'));
@@ -1492,7 +1495,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     $('#mapTab').addClass('active');
     $('#listTab').removeClass('active');
   });
-})(jQuery);
+})($);
 
 function EditInfoHtmlContent(htmlcontent) {
   htmlcontent = htmlcontent.replace("Get Directions â€º", "Directions");
@@ -1517,4 +1520,5 @@ function selectSubProducts(selector) {
   }
 
   return false;
+}
 }

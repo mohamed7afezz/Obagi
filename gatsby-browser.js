@@ -10,8 +10,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "slick-carousel/slick/slick.css";
 import './src/assets/css/override.css';
-import './src/assets/css/finder.css';
-import './src/assets/css/finder-map.css';
 
 import "jquery/dist/jquery.min.js";
 import "popper.js/dist/popper.min.js";
