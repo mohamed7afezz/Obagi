@@ -196,8 +196,6 @@ const Register = () => {
         console.log('bahiii', newUser)
         handleRegister(newUser)
         
-        let errors = handleRegister();
-        console.log("handle" , errors)
 
         // let errors = err.errors;
         // console.log("error", errors)

@@ -176,17 +176,6 @@ const UserAccount = ({ node, children, activeTab }) => {
     }
     `)
 
-
-    function changeText(e) {
-        $("#accountDropdownButton").innerText = e.target.innerText;
-
-        // if(activeTab && typeof window !== "undefined") {
-        //     let element = document.getElementById("#"`${activeTab}`);
-        //     document.getElementById("accountDropdownButton").innerText = element.innerText;
-        //     console.log("eh", element)
-        // }
-    }
-
     return (
 
 
@@ -208,13 +197,13 @@ const UserAccount = ({ node, children, activeTab }) => {
                     </div> */}
                     <div className="dropdown">
                         <button className="dropdown-toggle myaccount-toggle" type="button" id="accountDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select
+                            {activeTab === "orders"? "Order History" : activeTab === "address-book"? "Address Book" : activeTab === "account-settings"? "Account Settings" : activeTab === "premier-points"? "Premier Points" : ""}
                         </button>
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
-                            <Link to="/my-account/orders" className={activeTab == "orders" ? "active account-tab" : "account-tab"} onClick={(e) => { changeText(e); }}  id="orders">Order History</Link>
-                            <Link to="/my-account/address-book" className={activeTab == "address-book" ? "active account-tab" : "account-tab"} onClick={(e) => { changeText(e); }} id="address-book">Address Book</Link>
-                            <Link to="/my-account/account-settings" className={activeTab == "account-settings" ? "active account-tab" : "account-tab"} onClick={(e) => { changeText(e); }} id="account-settings">Account Settings</Link>
-                            <Link to="/my-account/premier-points" className={activeTab == "premier-points" ? "active account-tab" : "account-tab"} onClick={(e) => { changeText(e); }} id="premier-points">Premier Points</Link>
+                            <Link to="/my-account/orders" className={activeTab == "orders" ? "active account-tab" : "account-tab"}  id="orders">Order History</Link>
+                            <Link to="/my-account/address-book" className={activeTab == "address-book" ? "active account-tab" : "account-tab"} id="address-book">Address Book</Link>
+                            <Link to="/my-account/account-settings" className={activeTab == "account-settings" ? "active account-tab" : "account-tab"} id="account-settings">Account Settings</Link>
+                            <Link to="/my-account/premier-points" className={activeTab == "premier-points" ? "active account-tab" : "account-tab"} id="premier-points">Premier Points</Link>
                         </div>
                     </div>
                 </div>

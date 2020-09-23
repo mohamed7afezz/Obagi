@@ -51,9 +51,10 @@ export const UserProvider = ({ children }) => {
 
         if (isAuthUserRes.success && typeof window !== "undefined") {
             window.location.href = `${baseUrl}custmer_login_sso`;
+        } else {
+            setIsLoading(false);
         }
 
-        setIsLoading(false);
 
         return false;
 
@@ -84,7 +85,12 @@ export const UserProvider = ({ children }) => {
             mode: "no-cors",
             credentials: 'include',
             body: JSON.stringify([user])
-        });
+        })
+    
+        // .then(res => console.log("resss", res))
+        // .catch(error => {
+        //     console.log("resss", error)
+        // })
     //     .then((result) => result.json())
     //     .then((result) => {
 
@@ -109,9 +115,11 @@ export const UserProvider = ({ children }) => {
 
         } else {
 
-            // console.log("resss",newUserRes)
+            // console.log("resss",setErr(newUserRes))
 
-            setErr(newUserRes);
+            // let response = await newUserRes.json();
+            // console.log("resss", response, newUserRes.errors)
+            // setErr(newUserRes);
         }
     }
 
