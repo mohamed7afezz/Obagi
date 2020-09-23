@@ -233,7 +233,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                       productId={data.attributes.field_medical_id}
                     />
                   </div> 
-                      )) : "No results found" :""}
+                      )) : "" :""}
                   {clinicalSearchResults.data?
                      clinicalSearchResults.data.length > 0?
                      clinicalSearchResults.data.map( (data , index)=>(
@@ -255,7 +255,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         productId={data.attributes.field_clinical_id}
                       />
                            </div> 
-                     )) : "No results found" :""}
+                     )) : "" :""}
             </div>
     </div>
   )
