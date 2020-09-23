@@ -32,6 +32,7 @@ export const UserProvider = ({ children }) => {
 
     // Login
     const [isLoading, setIsLoading] = useState(false);
+    const [matchEmail, setMatchEmail] = useState(true);
 
 
     async function handleLogin({ email, password }) {
@@ -49,10 +50,14 @@ export const UserProvider = ({ children }) => {
             mode: 'cors'
         })).json();
 
-        if (isAuthUserRes.success && typeof window !== "undefined") {
-            window.location.href = `${baseUrl}custmer_login_sso`;
-        } else {
+
+        if(!isAuthUserRes.success && typeof window !== "undefined") {
+            setMatchEmail(false);
             setIsLoading(false);
+        }
+        else if (isAuthUserRes.success && typeof window !== "undefined") {
+            window.location.href = `${baseUrl}custmer_login_sso`;
+            setMatchEmail(true);
         }
 
 
@@ -124,7 +129,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, err, isLoading, handleLogin, handleLogout, handleRegister }}>
+        <UserContext.Provider value={{ user, err, matchEmail, isLoading, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )
