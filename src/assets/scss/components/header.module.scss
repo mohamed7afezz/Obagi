@@ -417,4 +417,10 @@
     padding-left: 25px;
     display: block;
     @extend %futurapt-medium;
+    a {
+        color: #132466;
+        &:hover {
+            color: #132466;
+        }
+    }
 }

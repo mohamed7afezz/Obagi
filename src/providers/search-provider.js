@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react';
 
-
 const SearchContext = createContext();
 const baseUrl = process.env.Base_URL;
 
 
 export const SearchProvider = ({children}) => {
 
+    const [isLoading, setIsLoading] = useState(false);
    
     const [clinicalSearchResults, setClinicalValue] = useState({});
     const [medicalSearchResults, setMedicalValue] =  useState({});
@@ -16,7 +16,7 @@ export const SearchProvider = ({children}) => {
     let searchkey= key
   if ( searchkey.length >2) {
     
-  
+  setIsLoading(true);
   const getClinicalSearch =  await (await fetch(`${baseUrl}jsonapi/node/clinical_product?filter[title][condition][value]=${searchkey}&filter[title][condition][path]=title&filter[title][condition][operator]=CONTAINS`, {
       method: 'GET',
       credentials: 'include',
@@ -33,11 +33,13 @@ export const SearchProvider = ({children}) => {
 setMedicalValue(getMedicalSearch); 
 setsearchWord(savekey)
 console.log(savekey,getMedicalSearch, getClinicalSearch)
+
+setIsLoading(false);
 } 
    }
 
     return (
-        <SearchContext.Provider value={{search , medicalSearchResults , clinicalSearchResults,searchWord}}>
+        <SearchContext.Provider value={{search, isLoading , medicalSearchResults , clinicalSearchResults,searchWord}}>
             {children}
         </SearchContext.Provider>
     )

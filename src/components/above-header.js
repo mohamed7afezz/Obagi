@@ -3,7 +3,7 @@ import { Link, graphql, useStaticQuery} from 'gatsby'
 import Img from 'gatsby-image'
 import aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
-const AboveHeader = () => {
+const AboveHeader = ({ menuType }) => {
 
     const data = useStaticQuery(graphql`
       query {
@@ -37,17 +37,28 @@ const AboveHeader = () => {
         document.querySelector(".node-medical").classList.add("node-big-general-margin");
         
       }
-       else if(document.querySelector(".node-medical")){
+      else if(document.querySelector(".node-medical") && menuType !== "absolute"){
+        document.querySelector(".node-medical").classList.add("node-general-margin");
+        // document.querySelector(".search-margin").style.marginTop = "0";
+
+      } else if(document.querySelector(".node-medical")){
         document.querySelector(".node-medical").classList.add("node-general-margin");
         document.querySelector(".search-margin").style.marginTop = "0";
 
+      } else if (document.querySelector(".node-clinical") && menuType !== "absolute") {
+        document.querySelector(".node-clinical").classList.add("node-general-margin");
+        // document.querySelector(".search-margin").style.marginTop = "0";
       } else if (document.querySelector(".node-clinical")) {
         document.querySelector(".node-clinical").classList.add("node-general-margin");
         document.querySelector(".search-margin").style.marginTop = "0";
-      }
-      else {
+
+      } 
+      else if (document.querySelector(".node-home") && menuType !== "absolute") {
+        document.querySelector(".node-home").classList.add("node-home-margin");
+      } else {
         document.querySelector(".node-home").classList.add("node-home-margin");
         document.querySelector(".search-margin").style.marginTop = "0";
+
       }
 
     }

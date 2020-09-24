@@ -254,7 +254,7 @@ if ( typeof window !== "undefined"){
           <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
             {nodeType}
           </p>
-          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")}>{node.title}</h1>
+          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
 

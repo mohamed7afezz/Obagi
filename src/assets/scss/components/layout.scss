@@ -910,10 +910,12 @@ p {
     &:hover {
         ul {
             span {
-                color: #7c858a;
+                a {
+                    color: #7c858a;
 
-                &:hover {
-                    color: #132466;
+                    &:hover {
+                        color: #132466;
+                    }
                 }
             }
             li {
@@ -938,7 +940,10 @@ p {
         position: relative;
 
         span {
-            color: #fff;
+            a {
+                color: #fff;
+
+            }
         }
 
         li {
@@ -948,7 +953,7 @@ p {
                 color: #ffffff;
                 @include fontStyle(16, 24);
                 letter-spacing: 1.6px;
-                
+                white-space: nowrap;
                 &:hover {
                     text-decoration: none;
                 }
@@ -1016,7 +1021,9 @@ p {
         }
 
         span {
-            color: #132466;
+            a {
+                color: #132466;
+            }
         }
     }
 }
@@ -1138,11 +1145,11 @@ p {
     }
 }
 
-.not-selected {
+.not-selected, .not-selected a {
     color: #7c858a !important;
 }
 
-.hovered {
+.hovered, .hovered a {
     color: #132466;
 }
 
@@ -2627,10 +2634,21 @@ p {
     letter-spacing: 1.6px;
     text-transform: uppercase;
     padding: 20px 40px;
+    white-space: nowrap;
 }
 
 .footer-referral-span {
     margin-top: 16px;
     display: inline-block;
+
+    a {
+        font-family:  futura-pt,   sans-serif !important; 
+        font-weight:  400 !important; 
+        font-style:  normal !important;
+        &::after {
+            content: none !important;
+        }
+
+    }
 }
 

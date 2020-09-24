@@ -246,6 +246,10 @@ top: 0 !important;
     margin-right: 0;
     margin-left: 0;
   }
+  .mob-p-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
 .bigSliderContainer .slick-dots{
   bottom: -54px;
 }

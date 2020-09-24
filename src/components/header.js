@@ -320,7 +320,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
       deskNav.classList.remove("d-lg-block");
       search.classList.add("search-margin");
 
-    } else if (search.style.display === "none" && not.style.display !== "none" && menuType === "relative") {
+    } else if (search.style.display === "none" && not.style.display !== "none" && menuType !== "absolute") {
 
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
@@ -329,7 +329,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     } else if (search.style.display === "none" && not.style.display === "none" && menuType === "absolute") {
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
-    } else if (search.style.display === "none" && not.style.display === "none" && menuType === "relative") {
+    } else if (search.style.display === "none" && not.style.display === "none" && menuType !== "absolute") {
 
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
@@ -415,15 +415,15 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
 
       <div className={headerStyles.searchWrapper} id="search-wrapper" style={{ display: "none" }}>
-        <div className={headerStyles.relativeSearch}>
-          <div className="container-fluid">
+        <div>
+          <div className={["container-fluid", headerStyles.relativeSearch].join(" ")}>
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
                   <Link to="/search-page" className={[headerStyles.searchIcon,"searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
                   <input  type="search" onKeyUp={inputval} className={[headerStyles.searchInput,"searchInputm"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
-                  <button className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
+                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                 </div>
               </div>
             </div>
@@ -475,7 +475,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                           <Link to="/my-account/signin">SIGN IN</Link>
                       }
                     </p>
-                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><Link to="#" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
