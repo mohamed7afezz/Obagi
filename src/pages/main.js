@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import SectionWithColoredBoxes from '../components/section-with-colored-boxes'
+// import SectionWithColoredBoxes from '../components/section-with-colored-boxes'
 
 const IndexPage = () => (
   <Layout>

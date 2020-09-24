@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react"
+import React, {  useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import BagStyle from "../assets/scss/components/yourbag.module.scss"
 import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 
 import plusicon from "../assets/images/product-images/plus1.svg"
 import minusicon from "../assets/images/product-images/minus.svg"
-import Img from "gatsby-image"
+
 import Loader from "./Cart/Loader"
 
 import CartContext from "../providers/cart-provider"
@@ -16,13 +16,13 @@ const AdjustItem = props => {
  
     minusBtn = (
       <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
-        <img className={BagStyle.plusicon} src={minusicon} />
+        <img alt="img" className={BagStyle.plusicon} src={minusicon} />
       </button>
     )
 
     plusBtn = (
       <button onClick={() => props.updateCartItemQuantity(item, 'plus')} className={["btn", BagStyle.add].join(" ")} disabled={item.quantity >= 3? 'disabled': false}>
-       <img className={BagStyle.plusicon} src={plusicon} />
+       <img alt="img" className={BagStyle.plusicon} src={plusicon} />
      </button>
     )
   
@@ -39,17 +39,16 @@ const AdjustItem = props => {
 const StandardItem = props => {
   const { items, cartType } = props
 
-  let itemImage
  
   let itemsContent = items.map(item => {
     var producturl= item.url.split(".com")
-    if(cartType == "overlay"){
+    if(cartType === "overlay"){
       return (
         <>
             <div className={["row", ShowBagStyle.selectedproductsCard,"selectedproductsCard"].join(" ")}>
               <div className={["col-4","mob-pl-0"].join(" ")}>
                 <Link href={`${producturl[1]}`}>
-                <img src={item.image_url} alt={`${item.name}`} />
+                <img alt="img" src={item.image_url} alt={`${item.name}`} />
                 </Link>
               </div>
               <div className={["col-8", "mob-pr-0"].join(" ")}>
@@ -81,7 +80,7 @@ const StandardItem = props => {
           <div className={["row", "alignFlex"].join(" ")}>
             <div class="hide-desk col-4">
             <Link to={`${producturl[1]}`}>
-              <img src={item.image_url} alt={`${item.name}`} />
+              <img alt="img" src={item.image_url} alt={`${item.name}`} />
               </Link>
             </div>
             <div
@@ -89,7 +88,7 @@ const StandardItem = props => {
             >
               <div className={["col-md-2", "hide-tabmob"].join(" ")}>
               <Link to={`${producturl[1]}`}>
-                <img src={item.image_url} alt={`${item.name}`} />
+                <img alt="img" src={item.image_url} alt={`${item.name}`} />
               </Link>
               </div>
               <div className={"col-md-4"}>
@@ -147,19 +146,6 @@ const YourBag = props => {
   const { updatingItem } = state;
   const { cartType } = props
 
-  const data = useStaticQuery(graphql`
-    query {
-      prouduct: file(
-        relativePath: { eq: "product-images/prouduct-thumb.png" }
-      ) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
   function togglebag(e) {
     document.querySelector(".bagDataConten").classList.toggle("Showshipping")
   }
@@ -176,7 +162,7 @@ const YourBag = props => {
     //if cart finish is loading >> check if cart have items
     if (numberItems > 0) {
       //if cart finish is loading >> if cart have items >> check type of cart
-      if (cartType == "overlay") {
+      if (cartType === "overlay") {
         //showpage content
         bagContent = (
           <>

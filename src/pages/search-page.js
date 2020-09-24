@@ -1,15 +1,13 @@
 
-import React , { useState, useEffect, useContext } from "react"
+import React  from "react"
 
 import '../assets/scss/components/product-hero.module.scss'
 
 import Layout from "../components/layout"
-import SearchResults from '../components/search-results'
 
-import Search from "../components/search"
+
 
 import SearchResult from "../components/search-results"
-import NewSearchProductsResult from "../components/new-search"
 
 const products = () => (
  

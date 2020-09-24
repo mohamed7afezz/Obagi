@@ -1,8 +1,7 @@
-import React, { useState , useContext} from "react"
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import React, {  useContext} from "react"
+
 import searchResultStyle from '../assets/scss/components/search-results.module.scss'
-import { CustomSelect } from '../assets/js/custom-select'
-import SearchProductsResult from "./search-poducts-result"
+
 import NewSearchProductsResult from "./new-search"
 import SearchContext from "../providers/search-provider"
 const SearchResult = () => {

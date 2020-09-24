@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { useContext } from 'react';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 import { getProductParagraph } from "../components/paragraphs-helper";
@@ -87,9 +87,9 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
-                    ...reviewsParagraph
+                    
                     ...recommendedParingParagrapgh
-                    ...youMightAlsoLikeParagrapgh
+                    
                 }
             }
             

@@ -1,36 +1,36 @@
 .sprites-sprite {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/generated/sprites-s09f3f3c43b.png) no-repeat
-}
+}#phys-finder 
 
 .fs-xlarge {
     font-size: 2.625rem;
     line-height: 2.8875rem
-}
+}#phys-finder 
 
 .fs-large {
     font-size: 1.7750rem;
     line-height: 2.250rem
-}
+}#phys-finder 
 
 .fs-medium {
     font-size: 1.500rem;
     line-height: 1.875rem
-}
+}#phys-finder 
 
 .fs-lg-regular {
     font-size: 1.250rem;
     line-height: 1.526rem
-}
+}#phys-finder 
 
 .fs-regular {
     font-size: 1rem;
     line-height: 1.3rem
-}
+}#phys-finder 
 
 .fs-small {
     font-size: .8750rem;
     line-height: 1.181rem
-}
+}#phys-finder 
 
 .fs-smallest {
     font-size: .750rem;
@@ -38,195 +38,143 @@
 }
 
 @media (min-width:481px) {
-    .fs-large {
+  #phys-finder   .fs-large {
         font-size: 1.8750rem
-    }
-}
+    } 
+}#phys-finder 
 
 
 
 
-/**/
-
-@media all and (max-width:800px) {
-    #toolbar,
-    #admin-menu {
-        display: none
-    }
-    html body.toolbar,
-    html body.admin-menu {
-        padding-top: 0 !important;
-        margin-top: 0 !important
-    }
-}
-
-
-/**/
 
 .sprites-sprite {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/generated/sprites-s09f3f3c43b.png) no-repeat
-}
+}#phys-finder 
 
-.fs-xlarge,
+.fs-xlarge,#phys-finder  
 h1 {
     font-size: 2.625rem;
     line-height: 2.8875rem
-}
+}#phys-finder 
 
-.fs-large,
+.fs-large,#phys-finder  
 h2 {
     font-size: 1.7750rem;
     line-height: 2.250rem
-}
+}#phys-finder 
 
-.fs-medium,
-h3,
-#billboards .slide-wrap .billboard-copy .billboard-headline h2,
-#custom-obagi-products-systems-all .category-title a,
-#custom-obagi-products-systems-indv .category-title a {
+.fs-medium,#phys-finder  
+h3,#phys-finder    #billboards .slide-wrap .billboard-copy .billboard-headline h2,#phys-finder    #custom-obagi-products-systems-all .category-title a,#phys-finder    #custom-obagi-products-systems-indv .category-title a {
     font-size: 1.500rem;
     line-height: 1.875rem
-}
+}#phys-finder 
 
-.fs-lg-regular,
+.fs-lg-regular,#phys-finder  
 h4 {
     font-size: 1.250rem;
     line-height: 1.526rem
-}
+}#phys-finder 
 
-.fs-regular,
-p,
-.menu-name-menu-products-dropdown-menu>ul>li .prod-category {
+.fs-regular,#phys-finder  
+p,#phys-finder    .menu-name-menu-products-dropdown-menu>ul>li .prod-category {
     font-size: 1rem;
     line-height: 1.3rem
-}
+}#phys-finder 
 
-.fs-small,
-input[type="submit"],
-select,
-._small,
-.small,
-.button,
-button,
-.menu-name-menu-products-dropdown-menu>ul>li a,
-.views-count-page-result p,
-.l-region--sidebar-first h2,
-.l-region--sidebar-first h3,
-.l-region--sidebar-first p,
-.block-bean-module h3.block__title,
-.view-product-details-block .views-field-field-skin-concerns ul li,
-.view-Testimonials .views-row .testimonial .caption,
-#product-system-content-body strong {
+.fs-small,#phys-finder  
+input[type="submit"],#phys-finder  
+select,#phys-finder    ._small,#phys-finder    .small,#phys-finder    .button,#phys-finder  
+button,#phys-finder    .menu-name-menu-products-dropdown-menu>ul>li a,#phys-finder    .views-count-page-result p,#phys-finder    .l-region--sidebar-first h2,#phys-finder    .l-region--sidebar-first h3,#phys-finder    .l-region--sidebar-first p,#phys-finder    .block-bean-module h3.block__title,#phys-finder    .view-product-details-block .views-field-field-skin-concerns ul li,#phys-finder    .view-Testimonials .views-row .testimonial .caption,#phys-finder    #product-system-content-body strong {
     font-size: .8750rem;
     line-height: 1.181rem
-}
+}#phys-finder 
 
-.fs-smallest,
-._smaller,
-.smaller,
-._smallest,
-.smallest,
-.disclaimer,
-.refs,
-.l-region--sub-footer .footer-copyright p,
-.l-region--sub-footer .footer-copyright .menu li a,
-#header-nav-right li a.glyphs,
-#header-nav-left li a.glyphs,
-#header-search input[type="text"],
-#header-nav-right #personal-product-menu a.glyphs,
-.homepage-promotions .promo-wrapper .promo-copy span,
-.product-system-pi p,
-.product-system-isi p,
-.product-system-pi ul,
-.product-system-isi ul {
+.fs-smallest,#phys-finder    ._smaller,#phys-finder    .smaller,#phys-finder    ._smallest,#phys-finder    .smallest,#phys-finder    .disclaimer,#phys-finder    .refs,#phys-finder    .l-region--sub-footer .footer-copyright p,#phys-finder    .l-region--sub-footer .footer-copyright .menu li a,#phys-finder    #header-nav-right li a.glyphs,#phys-finder    #header-nav-left li a.glyphs,#phys-finder    #header-search input[type="text"],#phys-finder    #header-nav-right #personal-product-menu a.glyphs,#phys-finder    .homepage-promotions .promo-wrapper .promo-copy span,#phys-finder    .product-system-pi p,#phys-finder    .product-system-isi p,#phys-finder    .product-system-pi ul,#phys-finder    .product-system-isi ul {
     font-size: .750rem;
     line-height: 1.05rem
 }
 
 @media (min-width:481px) {
-    .fs-large,
+  #phys-finder   .fs-large,#phys-finder  
     h2 {
         font-size: 1.8750rem
     }
 }
-
-html {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important
-}
+#phys-finder 
 
 h1 {
     font-weight: 300;
     padding: 0;
     margin: 1rem 0 .200rem 0;
     text-align: center
-}
+} 
 
 @media (min-width:481px) {
     h1 {
         text-align: left
     }
-}
+}#phys-finder 
 
 h2 {
     color: #3575a5;
     font-weight: 300;
     padding: 0;
     margin: 1.500rem 0 .200rem 0
-}
+}#phys-finder 
 
 h3 {
     color: #3575a5;
     font-weight: 300;
     padding: 0;
     margin: 1rem 0 .200rem 0
-}
+}#phys-finder 
 
 h4 {
     color: #3575a5;
     font-weight: 300;
     padding: 0;
     margin: 1rem 0 .200rem 0
-}
+}#phys-finder 
 
 h5 {
     color: #3575a5;
     margin: 1rem 0 .200rem 0
-}
+}#phys-finder 
 
 h5 a {
     text-decoration: none
-}
+}#phys-finder 
 
-h1 a,
-h2 a,
-h3 a,
+h1 a,#phys-finder  
+h2 a,#phys-finder  
+h3 a,#phys-finder  
 h4 a {
     text-decoration: none
-}
+}#phys-finder 
 
-h1 sup,
-h1 sub,
-h2 sup,
-h2 sub,
-h3 sup,
-h3 sub,
-h4 sup,
+h1 sup,#phys-finder  
+h1 sub,#phys-finder  
+h2 sup,#phys-finder  
+h2 sub,#phys-finder  
+h3 sup,#phys-finder  
+h3 sub,#phys-finder  
+h4 sup,#phys-finder  
 h4 sub {
     font-size: 75%
-}
+}#phys-finder 
 
 .l-content p {
     padding: 0;
     margin: 0 0 1rem 0
-}
+}#phys-finder 
 
 a {
     color: #3575a5
-}
+}#phys-finder 
 
 a:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 hr {
     background-color: #cecece;
@@ -234,64 +182,58 @@ hr {
     color: #cecece;
     height: 1px;
     margin: 1.250rem 0
-}
-
-body {
-    background-color: #fff;
-    color: #555;
-    overflow-x: hidden
-}
+}#phys-finder 
 
 ul {
     list-style: none
-}
+}#phys-finder 
 
 .l-content .node--product-system--full ul {
     list-style: none
-}
+}#phys-finder 
 
 .l-content ul {
     list-style: disc
-}
+}#phys-finder 
 
 .l-content ul.tabs--primary {
     list-style: none
-}
+}#phys-finder 
 
 .l-content ul li {
     margin-bottom: .250rem
-}
+}#phys-finder 
 
 .l-content ol li {
     margin-bottom: .250rem
-}
+}#phys-finder 
 
 img {
     max-width: 100%
-}
+}#phys-finder 
 
 a sup {
     border-bottom: 1px solid #FFF;
     display: inline-block;
     padding-bottom: 2px
-}
+}#phys-finder 
 
 sup {
     font-size: 85%
-}
+}#phys-finder 
 
 input {
     font-weight: 200
-}
+}#phys-finder 
 
 input.error {
     display: inline;
     padding-top: 0
-}
+}#phys-finder 
 
 input.error:before {
     content: ''
-}
+}#phys-finder 
 
 input[type="submit"] {
     -webkit-border-radius: 0;
@@ -305,12 +247,12 @@ input[type="submit"] {
     text-decoration: none;
     text-align: center;
     padding: .750rem 2rem
-}
+}#phys-finder 
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
+input[type="text"],#phys-finder  
+input[type="email"],#phys-finder  
+input[type="password"],#phys-finder  
+input[type="search"],#phys-finder  
 input[type="number"] {
     -webkit-appearance: none;
     -webkit-border-radius: 0;
@@ -323,15 +265,15 @@ input[type="number"] {
     max-width: 480px;
     padding-left: 6px;
     width: 100%
-}
+}#phys-finder 
 
-input[type="text"].error,
-input[type="email"].error,
-input[type="password"].error,
-input[type="search"].error,
+input[type="text"].error,#phys-finder  
+input[type="email"].error,#phys-finder  
+input[type="password"].error,#phys-finder  
+input[type="search"].error,#phys-finder  
 input[type="number"].error {
     border: 2px solid red
-}
+}#phys-finder 
 
 select {
     background: transparent;
@@ -348,58 +290,50 @@ select {
     -moz-appearance: window;
     text-indent: .01px;
     text-overflow: ''
-}
+}#phys-finder 
 
 select.error {
     color: #555;
     border: 2px solid red !important
-}
+}#phys-finder 
 
 ::-webkit-input-placeholder {
     color: #999
-}
+}#phys-finder 
 
 :-moz-placeholder {
     color: #999
-}
+}#phys-finder 
 
 ::-moz-placeholder {
     color: #999
-}
+}#phys-finder 
 
 :-ms-input-placeholder {
     color: #999
-}
+}#phys-finder 
 
 ::-ms-expand {
     display: none
-}
+}#phys-finder 
 
 textarea {
     border: 1px solid #cecece
-}
+}#phys-finder 
 
 fieldset {
     padding: 0;
     margin: 0;
     border: 0
-}
+}#phys-finder 
 
 .styled-select {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/select-arrows.png) no-repeat right #ebf2f5;
     border: 1px solid #c1d2e3;
     height: 34px
-}
+}#phys-finder 
 
-.styled-select-bright,
-#edit-tid,
-.form-item-date-started-day,
-.form-item-date-started-month,
-.form-item-date-started-year,
-.form-item-age-range,
-.form-item-skin-concerns,
-.form-item-gender,
-.webform-client-form .form-select {
+.styled-select-bright,#phys-finder    #edit-tid,#phys-finder    .form-item-date-started-day,#phys-finder    .form-item-date-started-month,#phys-finder    .form-item-date-started-year,#phys-finder    .form-item-age-range,#phys-finder    .form-item-skin-concerns,#phys-finder    .form-item-gender,#phys-finder    .webform-client-form .form-select {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/icon-down-arrow.png) no-repeat right white;
     background-size: 16px;
     border: 2px solid #6cf;
@@ -410,44 +344,38 @@ fieldset {
     -ms-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0
-}
+}#phys-finder 
 
-.form-item label,
-.form-actions label {
+.form-item label,#phys-finder    .form-actions label {
     font-weight: 200
-}
+}#phys-finder 
 
-.form-item label.error,
-.form-actions label.error {
+.form-item label.error,#phys-finder    .form-actions label.error {
     padding-top: .500rem
-}
+}#phys-finder 
 
 .form-radios {
     position: relative
-}
+}#phys-finder 
 
 .form-radios label.error {
     position: absolute;
     top: 0;
     right: 0
-}
+}#phys-finder 
 
 .form-item {
     margin-bottom: 1.250rem;
     line-height: 1.75em
-}
+}#phys-finder 
 
 .form-item .description {
     padding: .250rem 0
-}
+}#phys-finder 
 
-.form-item-age-range,
-.form-item-skin-concerns,
-.form-item-date-started-day,
-.form-item-date-started-month,
-.form-item-date-started-year {
+.form-item-age-range,#phys-finder    .form-item-skin-concerns,#phys-finder    .form-item-date-started-day,#phys-finder    .form-item-date-started-month,#phys-finder    .form-item-date-started-year {
     margin-right: .15em !important
-}
+}#phys-finder 
 
 .form-item-gender {
     height: auto;
@@ -455,113 +383,111 @@ fieldset {
     background: 0;
     margin-left: initial !important;
     max-width: none !important
-}
+}#phys-finder 
 
 .form-item-gender.form-type-radios {
     margin-bottom: 20px !important
-}
+}#phys-finder 
 
-.date-day,
-.date-month,
-.date-year {
+.date-day,#phys-finder    .date-month,#phys-finder    .date-year {
     width: 75px
-}
+}#phys-finder 
 
 .error {
     color: #cd0a0a;
     clear: both;
     display: block
-}
+}#phys-finder 
 
 .error:before {
     content: "\e813";
     font-family: "fontello";
     padding-right: 4px
-}
+}#phys-finder 
 
 span.form-required {
     color: #555
 }
 
 @media (min-width:481px) {
-    .form-item #edit-date-started-day,
-    .form-item #edit-date-started-month,
+  #phys-finder   .form-item #edit-date-started-day,#phys-finder  
+    .form-item #edit-date-started-month,#phys-finder  
     .form-item #edit-date-started-year {
         margin-right: 1rem;
         width: 105px
     }
-}
+}#phys-finder 
 
 .webform-client-form label {
     font-weight: 400;
     padding-bottom: .500rem
-}
+}#phys-finder 
 
 .webform-client-form .option {
     font-weight: 200
-}
+}#phys-finder 
 
 .webform-client-form .form-select {
     max-width: 320px
-}
+}#phys-finder 
 
 .webform-client-form .webform-submit {
     display: block;
     margin: 0 auto
-}
+}#phys-finder 
 
 .webform-client-form .form-required {
     color: #555;
     margin-left: -3px
-}
+} 
 
 @media (min-width:481px) {
-    .webform-client-form .webform-submit {
+  #phys-finder   .webform-client-form .webform-submit {
         display: inline
-    }
-}
+    } 
+}#phys-finder 
 
 ._left {
     float: left
-}
+}#phys-finder 
 
 ._right {
     float: right
-}
+}#phys-finder 
 
 ._center {
     text-align: center
-}
+}#phys-finder 
 
 .center-mobile {
     text-align: center
-}
+} 
 
 @media (min-width:481px) {
-    .center-mobile {
+  #phys-finder   .center-mobile {
         text-align: left
     }
-}
+}#phys-finder 
 
 .left-align {
     text-align: left !important
-}
+}#phys-finder 
 
 .hide {
     display: none
-}
+}#phys-finder 
 
 .show {
     display: block
-}
+}#phys-finder 
 
 .offScreen {
     position: absolute;
     left: -99999px;
     top: -999999px
-}
+}#phys-finder 
 
-.button,
+.button,#phys-finder  
 button {
     background: #3a87c1;
     border: 0;
@@ -572,95 +498,91 @@ button {
     text-transform: uppercase;
     text-decoration: none;
     text-align: center
-}
+}#phys-finder 
 
-.button a,
+.button a,#phys-finder  
 button a {
     color: #fff;
     text-decoration: none
-}
+}#phys-finder 
 
 .mid {
     margin: 0 auto
-}
+}#phys-finder 
 
-.clearfix,
-.clear {
+.clearfix,#phys-finder    .clear {
     clear: both
-}
+}#phys-finder 
 
 .blue {
     color: #3575a5
-}
+}#phys-finder 
 
 .gray-border {
     border: 1px solid #cecece
-}
+}#phys-finder 
 
 .table {
     display: table;
     width: 100%
-}
+}#phys-finder 
 
 .cell {
     padding: .500rem
-}
+}#phys-finder 
 
 .cell-top {
     padding: .500rem .500rem 0 .500rem !important
-}
+}#phys-finder 
 
 .cell-bottom {
     padding: 0 .500rem .500rem .500rem !important
-}
+}#phys-finder 
 
 .middle {
     vertical-align: middle;
     margin: 0 auto;
     text-align: center
-}
+}#phys-finder 
 
 .no-mobile {
     display: none
 }
 
 @media (min-width:481px) {
-    .no-mobile {
+  #phys-finder   .no-mobile {
         display: block
     }
 }
 
 @media (min-width:481px) {
-    .no-tablet {
+  #phys-finder   .no-tablet {
         display: none
-    }
+    } 
 }
 
 @media (min-width:767px) {
-    .no-tablet {
+  #phys-finder   .no-tablet {
         display: block
     }
 }
 
 @media (min-width:767px) {
-    .no-desktop {
+  #phys-finder   .no-desktop {
         display: none
-    }
-}
-
+    }}
 @font-face {
     font-family: 'fontello';
-    src: url("/modules/custom/obagi_finder/fonts/fontello.eot?8011366#iefix") format("embedded-opentype"), url("/modules/custom/obagi_finder/fonts/fontello.woff?8011366") format("woff"), url("/modules/custom/obagi_finder/fonts/fontello.ttf?8011366") format("truetype"), url("/modules/custom/obagi_finder/fonts/fontello.svg?8011366#fontello") format("svg");
+    src: url("/modules/custom/obagi_finder/fonts/fontello.eot?8011366#iefix") format("embedded-opentype"),   url("/modules/custom/obagi_finder/fonts/fontello.woff?8011366") format("woff"),   url("/modules/custom/obagi_finder/fonts/fontello.ttf?8011366") format("truetype"),  url("/modules/custom/obagi_finder/fonts/fontello.svg?8011366#fontello") format("svg");
     font-weight: normal;
     font-style: normal
 }
-
 @font-face {
     font-family: 'fontello2';
-    src: url("/modules/custom/obagi_finder/fonts/fontello2.eot?8011366#iefix") format("embedded-opentype"), url("/modules/custom/obagi_finder/fonts/fontello2.woff?8011366") format("woff"), url("/modules/custom/obagi_finder/fonts/fontello2.ttf?8011366") format("truetype"), url("/modules/custom/obagi_finder/fonts/fontello2.svg?8011366#fontello") format("svg");
+    src: url("/modules/custom/obagi_finder/fonts/fontello2.eot?8011366#iefix") format("embedded-opentype"),  url("/modules/custom/obagi_finder/fonts/fontello2.woff?8011366") format("woff"),  url("/modules/custom/obagi_finder/fonts/fontello2.ttf?8011366") format("truetype"),  url("/modules/custom/obagi_finder/fonts/fontello2.svg?8011366#fontello") format("svg");
     font-weight: normal;
     font-style: normal
-}
+}#phys-finder 
 
 .tt-question {
     display: inline-block;
@@ -668,15 +590,15 @@ button a {
     width: 22px;
     height: 22px;
     vertical-align: bottom
-}
+}#phys-finder 
 
 .tt-question:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 .qtip-defaults {
     padding: 1rem
-}
+}#phys-finder 
 
 .icon-rss {
     background-image: url("/sites/all/themes/responsive/images/su_rss.png");
@@ -685,7 +607,7 @@ button a {
     display: inline-block;
     height: 31px;
     width: 31px
-}
+}#phys-finder 
 
 .icon-link {
     background-image: url("/sites/all/themes/responsive/images/su_other.png");
@@ -694,209 +616,209 @@ button a {
     display: inline-block;
     height: 31px;
     width: 31px
-}
+}#phys-finder 
 
 .sprites-mag-glass {
     background-position: 0 -631px
-}
+}#phys-finder 
 
 .sprites-social-facebook {
     background-position: 0 -541px
-}
+}#phys-finder 
 
 .sprites-social-facebook-lg {
     background-position: 0 -462px
-}
+}#phys-finder 
 
 .sprites-social-twitter {
     background-position: 0 -422px
-}
+}#phys-finder 
 
 .sprites-social-twitter-lg {
     background-position: 0 -253px
-}
+}#phys-finder 
 
 .sprites-social-youtube {
     background-position: 0 -223px
-}
+}#phys-finder 
 
 .sprites-social-youtube-lg {
     background-position: 0 -16px
-}
+}#phys-finder 
 
 .sprites-social-instagram {
     background-position: 0 -314px
-}
+}#phys-finder 
 
 .sprites-social-instagram-lg {
     background-position: 0 -87px
-}
+}#phys-finder 
 
 .sprites-social-pinterest {
     background-position: 0 -346px
-}
+}#phys-finder 
 
 .sprites-social-pinterest-lg {
     background-position: 0 -146px
-}
+}#phys-finder 
 
 .sprites-social-mail {
     background-position: 0 -391px
-}
+}#phys-finder 
 
 .social-sprite {
     background-size: 60px;
     height: 31px;
     width: 31px;
     border: 0
-}
+}#phys-finder 
 
 #fb-tile {
     padding: 0 13px 15px;
     text-decoration: none
-}
+}#phys-finder 
 
 .social-sprite-lg {
     background-size: 60px;
     height: 60px;
     width: 60px;
     border: 0
-}
+}#phys-finder 
 
 .accordion-header:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 .accordion-section {
     display: none;
     overflow: hidden
-}
+}#phys-finder 
 
 .accordion-section.active {
     color: #555
-}
+}#phys-finder 
 
 .faq-accordion-header:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 .faq-accordion-section {
     display: none;
     overflow: hidden
-}
+}#phys-finder 
 
 .faq-accordion-section.active {
     color: #555
-}
+}#phys-finder 
 
 .section-subtab-meta {
     display: none
-}
+}#phys-finder 
 
 div.ctools-modal-content {
     color: #555;
     border: 1px solid #cecece
-}
+}#phys-finder 
 
 div.ctools-modal-content h2 {
     margin: 0
-}
+}#phys-finder 
 
 div.ctools-modal-content h2.node__title {
     display: none
-}
+}#phys-finder 
 
 div.ctools-modal-content .popups-close {
     position: absolute;
     right: 10px;
     top: 10px;
     z-index: 99999
-}
+}#phys-finder 
 
 div.ctools-modal-content .modal-content {
     padding: 2rem;
     overflow: hidden
-}
+}#phys-finder 
 
 div.ctools-modal-content #modal-throbber {
     width: 600px;
     height: 200px;
     display: table-cell;
     vertical-align: middle
-}
+}#phys-finder 
 
 div.ctools-modal-content #modal-throbber img {
     margin-top: 0
-}
+}#phys-finder 
 
 div.ctools-modal-content.ic-signup-modal {
     min-height: 700px
-}
+}#phys-finder 
 
 div.ctools-modal-content.ic-signup-modal .ic-modal-prod-shot {
     position: absolute;
     bottom: 15px;
     right: 20px;
     z-index: 9;
-}
+}#phys-finder 
 
 div.ctools-modal-content.ic-signup-modal li {
     list-style: disc
-}
+}#phys-finder 
 
-div.ctools-modal-content.ic-signup-modal .form-type-textfield,
-div.ctools-modal-content.ic-signup-modal .form-type-select,
+div.ctools-modal-content.ic-signup-modal .form-type-textfield,#phys-finder  
+div.ctools-modal-content.ic-signup-modal .form-type-select,#phys-finder  
 div.ctools-modal-content.ic-signup-modal .form-type-radios {
     max-width: 300px
-}
+}#phys-finder 
 
-div.ctools-modal-content.ic-signup-modal .form-type-textfield>label,
-div.ctools-modal-content.ic-signup-modal .form-type-select>label,
+div.ctools-modal-content.ic-signup-modal .form-type-textfield>label,#phys-finder  
+div.ctools-modal-content.ic-signup-modal .form-type-select>label,#phys-finder  
 div.ctools-modal-content.ic-signup-modal .form-type-radios>label {
     font-weight: 400
-}
+}#phys-finder 
 
 .ctools-modal-ic-modal-style {
     display: none;
     height: 0
-}
+}#phys-finder 
 
 .disclaimer {
     margin-top: 1.4rem !important
-}
+}#phys-finder 
 
 .disclaimer p {
     font-size: inherit
-}
+}#phys-finder 
 
 .editnode {
     float: right
-}
+}#phys-finder 
 
 p.indent {
     text-indent: -0.5rem;
     padding-left: .5rem
-}
+}#phys-finder 
 
 p.refs {
     text-indent: -0.3rem;
     padding-left: .3rem;
     margin-bottom: .55rem
-}
+}#phys-finder 
 
 .nobr {
     white-space: nowrap
-}
+}#phys-finder 
 
-img,
+img,#phys-finder  
 media {
     height: auto;
     max-width: 100%
-}
+}#phys-finder 
 
 .video-container-outer {
     max-width: 375px
-}
+}#phys-finder 
 
 .video-container {
     height: 0;
@@ -904,63 +826,54 @@ media {
     overflow: hidden;
     padding-bottom: 56.25%;
     position: relative
-}
+}#phys-finder 
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
+.video-container iframe,#phys-finder    .video-container object,#phys-finder    .video-container embed {
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%
-}
-
-body {
-    font-family: 'Proxima Nova W01', Arial, Helvetica, sans-serif;
-    font-weight: 200;
-    font-size: 16px
-}
+}#phys-finder 
 
 .proxima {
-    font-family: 'Proxima Nova W01', Arial, Helvetica, sans-serif
-}
+    font-family: 'Proxima Nova W01',  Arial,  Helvetica,  sans-serif
+}#phys-finder 
 
-.glyphs:after,
-.glyphs:before {
+.glyphs:after,#phys-finder    .glyphs:before {
     font-family: "fontello";
     speak: none
-}
+}#phys-finder 
 
 .glyphicon-map-pin:before {
     content: "\e801"
-}
+}#phys-finder 
 
 .glyphicon-right-arrow:before {
     content: "\e804";
     font-size: 1.5rem;
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-right-arrow-after:after {
     content: "\e804";
     font-size: 1.5rem;
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-left-arrow:before {
     content: "\e803";
     font-size: 1.5rem;
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-arrow-down:after {
     content: "\e809"
-}
+}#phys-finder 
 
 .glyphicon-arrow-up:after {
     content: "\e80a"
-}
+}#phys-finder 
 
 .glyphicon-email:before {
     content: "\e810";
@@ -968,56 +881,54 @@ body {
     vertical-align: middle;
     position: relative;
     top: -1px
-}
+}#phys-finder 
 
 .glyphicon-export:before {
     content: '\e808';
     line-height: 1px;
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-mag-glass:before {
     content: "\e812";
     font-size: .700rem;
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-warning:before {
     content: "\e813"
-}
+}#phys-finder 
 
 .glyphicon-at:before {
     content: "\e807"
-}
+}#phys-finder 
 
 .glyphicon-chevron-right:after {
     content: "\e815";
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-chevron-left:before {
     content: "\e814";
     vertical-align: middle
-}
+}#phys-finder 
 
 .glyphicon-hamburger:before {
     content: "\e816";
     vertical-align: middle
-}
+}#phys-finder 
 
 .menu .leaf {
     list-style-image: none;
     list-style-type: none
-}
+}#phys-finder 
 
 .menu .expanded {
     list-style-image: none;
     list-style-type: none
-}
+}#phys-finder 
 
-#nav-toggle span.hamburger,
-#nav-toggle span.hamburger:before,
-#nav-toggle span.hamburger:after {
+#nav-toggle span.hamburger,#phys-finder    #nav-toggle span.hamburger:before,#phys-finder    #nav-toggle span.hamburger:after {
     cursor: pointer;
     border-radius: 1px;
     height: 5px;
@@ -1030,7 +941,7 @@ body {
     -moz-transition: all 500ms ease-in-out;
     -o-transition: all 500ms ease-in-out;
     transition: all 500ms ease-in-out
-}
+}#phys-finder 
 
 #nav-toggle {
     position: absolute;
@@ -1038,30 +949,29 @@ body {
     top: 14px;
     cursor: pointer;
     padding: 10px 35px 16px 0
-}
+}#phys-finder 
 
 #nav-toggle span.hamburger:before {
     top: -10px
-}
+}#phys-finder 
 
 #nav-toggle span.hamburger:after {
     bottom: -10px
-}
+}#phys-finder 
 
 #nav-toggle span.copy {
     padding-left: 50px;
     position: relative;
     top: -5px
-}
+}#phys-finder 
 
 #nav-toggle.active span.hamburger {
     background-color: transparent
-}
+}#phys-finder 
 
-#nav-toggle.active span.hamburger:before,
-#nav-toggle.active span.hamburger:after {
+#nav-toggle.active span.hamburger:before,#phys-finder    #nav-toggle.active span.hamburger:after {
     top: 0
-}
+}#phys-finder 
 
 #nav-toggle.active span.hamburger:before {
     -webkit-transform: rotate(45deg);
@@ -1069,7 +979,7 @@ body {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg)
-}
+}#phys-finder 
 
 #nav-toggle.active span.hamburger:after {
     -webkit-transform: rotate(-45deg);
@@ -1077,14 +987,14 @@ body {
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg)
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu {
     background: #3a87c1;
     position: relative;
     z-index: 100;
     padding: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .toggle-search {
     background: transparent;
@@ -1099,11 +1009,11 @@ body {
     background-repeat: no-repeat;
     background-position: 10px 18px;
     background-size: 20px
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .toggle-search:focus {
     outline: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .search-form {
     display: none;
@@ -1111,97 +1021,94 @@ body {
     left: 0;
     top: 57px;
     width: 100%
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .search-form .form-type-textfield input {
     width: 100%;
     max-width: 100%
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .search-form.active {
     display: block
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .search-form input[type="submit"] {
     display: none
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .content {
     clear: both
-}
+}#phys-finder 
 
-#block-menu-menu-mobile-menu a,
-#block-menu-menu-mobile-menu span {
+#block-menu-menu-mobile-menu a,#phys-finder    #block-menu-menu-mobile-menu span {
     color: #fff
-}
+}#phys-finder 
 
-#block-menu-menu-mobile-menu a:hover,
-#block-menu-menu-mobile-menu span:hover {
+#block-menu-menu-mobile-menu a:hover,#phys-finder    #block-menu-menu-mobile-menu span:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul {
     padding-left: 0;
     margin: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li {
     line-height: 2rem;
     border-bottom: 1px solid #fff;
     padding-left: 1rem
-}
+}#phys-finder 
 
-#block-menu-menu-mobile-menu ul li a,
-#block-menu-menu-mobile-menu ul li span {
+#block-menu-menu-mobile-menu ul li a,#phys-finder    #block-menu-menu-mobile-menu ul li span {
     text-decoration: none;
     padding: .750rem 0;
     display: inline-block;
     width: 100%
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li .active {
     color: #fff
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li ul {
     display: none;
     padding-left: 1rem
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li ul li {
     padding-left: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li.first>a {
     padding-top: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li.first>span {
     padding-top: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu ul li.last {
     border: 0
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu .menu:first-of-type {
     display: none
-}
+}#phys-finder 
 
 #block-menu-menu-mobile-menu.active {
     border-bottom: 5px solid #3575a5
-}
+}#phys-finder 
 
 #block-system-main-menu {
     display: none;
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
 #block-system-main-menu ul {
     height: 56px;
     padding-left: 0
-}
+}#phys-finder 
 
 #block-system-main-menu ul li {
     display: inline-block;
@@ -1209,11 +1116,11 @@ body {
     text-align: center;
     padding: 0;
     margin: 0
-}
+}#phys-finder 
 
 #block-system-main-menu ul li.first {
     margin-left: 3%
-}
+}#phys-finder 
 
 #block-system-main-menu ul li a {
     display: block;
@@ -1222,50 +1129,49 @@ body {
     color: #fff;
     padding: 17px 0 16px 0;
     font-size: .875rem
-}
+}#phys-finder 
 
 #block-system-main-menu ul li a.arrow-active {
     border-bottom: 5px solid #6cf
-}
+}#phys-finder 
 
 #block-system-main-menu ul li a:hover {
     border-bottom: 5px solid #6cf
-}
+}#phys-finder 
 
 #block-system-main-menu ul li a.active-trail {
     border-bottom: 5px solid #6cf;
     font-weight: bold
 }
-
 @media only screen and (min-width:830px) {
-    #block-system-main-menu ul li a {
+  #phys-finder   #block-system-main-menu ul li a {
         font-size: 1rem
     }
-}
+}#phys-finder 
 
 #block-system-main-menu .contextual-links li {
     display: block !important;
     line-height: 70%
-}
+}#phys-finder 
 
 .valeant-global {
     background-color: #132466;
     font-size: .75rem;
     width: 100%
-}
+}#phys-finder 
 
 .valeant-global ul {
     border-left: 1px solid #e1e1e1;
     margin: 0;
     padding: 0
-}
+}#phys-finder 
 
 .valeant-global ul li {
     display: inline-block;
     border-right: 1px solid #e1e1e1;
     line-height: 1.5rem;
     padding: 0 1rem
-}
+}#phys-finder 
 
 #valeant-menu {
     background-color: #333;
@@ -1282,62 +1188,62 @@ body {
     -webkit-box-shadow: 1px 1px 2px 0 rgba(102, 102, 102, 0.35);
     -moz-box-shadow: 1px 1px 2px 0 rgba(102, 102, 102, 0.35);
     box-shadow: 1px 1px 2px 0 rgba(102, 102, 102, 0.35)
-}
+}#phys-finder 
 
 #valeant-menu li {
     display: block;
     margin: .5rem 0;
     padding: 0 1rem;
     border-right: 0
-}
+}#phys-finder 
 
 #valeant-menu li a {
     color: #888;
     text-transform: none;
     display: block
-}
+}#phys-finder 
 
 #valeant-menu li:first-of-type {
     line-height: 1rem
-}
+}#phys-finder 
 
 #valeant-menu li:hover {
     background: #555;
     cursor: pointer
-}
+}#phys-finder 
 
 #valeant-menu li:hover a {
     color: #bababa
-}
+}#phys-finder 
 
 #valeant-menu li.first:hover {
     background: transparent
-}
+}#phys-finder 
 
 .qtip {
     background: #f0fcff;
     border: 2px solid #6cf
-}
+}#phys-finder 
 
 .qtip .qtip-wrapper {
     width: 100% !important
-}
+}#phys-finder 
 
 .qtip .qtip-contentWrapper {
     border: none !important
-}
+}#phys-finder 
 
 .qtip .qtip-content {
     background: #f0fcff !important;
     padding: 0 !important
-}
+}#phys-finder 
 
 #productMenuHeader {
     width: 700px;
     text-align: center;
     margin: 20px auto;
     overflow: hidden
-}
+}#phys-finder 
 
 #productMenuHeader a {
     width: 260px;
@@ -1351,182 +1257,179 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     color: #7e7e7e
-}
+}#phys-finder 
 
-#productMenuHeader #productMenuGetSuggestions p,
-#productMenuHeader #productMenuBrosweProducts p {
+#productMenuHeader #productMenuGetSuggestions p,#phys-finder    #productMenuHeader #productMenuBrosweProducts p {
     text-align: center
-}
+}#phys-finder 
 
-#productMenuHeader #productMenuGetSuggestions p a,
-#productMenuHeader #productMenuBrosweProducts p a {
+#productMenuHeader #productMenuGetSuggestions p a,#phys-finder    #productMenuHeader #productMenuBrosweProducts p a {
     display: block;
     margin: 0 auto
-}
+}#phys-finder 
 
 #mini-panel-products .panels-flexible-region-1-center {
     width: 100%
-}
+}#phys-finder 
 
 #mini-panel-skin_advice .sub-nav-links p {
     margin: 0
-}
+}#phys-finder 
 
 .menu-minipanels .sub-nav-links {
     padding: 1rem 1.250rem
-}
+}#phys-finder 
 
 .menu-minipanels .sub-nav-links p {
     color: black
-}
+}#phys-finder 
 
 .menu-minipanels .sub-nav-links ul {
     padding-left: 0;
     margin: 0
-}
+}#phys-finder 
 
 .menu-minipanels .cta-header {
     font-weight: 400;
     display: inline-block;
     margin-bottom: .500rem;
     color: #555
-}
+}#phys-finder 
 
 .menu-minipanels .cta-link {
     margin-top: .500rem;
     display: inline-block;
     color: black
-}
+}#phys-finder 
 
 .menu-minipanels .cta-link:hover {
     color: #3575a5
-}
+}#phys-finder 
 
 .menu-minipanels a {
     text-decoration: none
-}
+}#phys-finder 
 
 .menu-minipanels ul._left {
     margin-right: 2rem
-}
+}#phys-finder 
 
 .menu-minipanels ul li {
     margin: 10px 0
-}
+}#phys-finder 
 
 .menu-minipanels ul li a {
     color: black
-}
+}#phys-finder 
 
 .menu-minipanels ul li a:hover {
     color: #3a87c1
-}
+}#phys-finder 
 
 .menu-minipanels .nav-cta {
     background: #e5e5e5;
     border-top: 1px solid #cecece;
     padding: 1.250rem
-}
+}#phys-finder 
 
 .menu-minipanels .nav-cta .left-col {
     margin-right: 1rem;
     width: 150px;
     height: 100px
-}
+}#phys-finder 
 
 .menu-minipanels .nav-cta.blog-cta {
     width: 490px
-}
+}#phys-finder 
 
 .menu-minipanels .nav-cta.blog-cta .right-col {
     width: 280px
-}
+}#phys-finder 
 
 .menu-minipanels .nav-cta .right-col p {
     margin: 0
-}
+}#phys-finder 
 
 .menu-minipanels .read-all-link a {
     font-weight: 400;
     color: black
-}
+}#phys-finder 
 
 .menu-minipanels .read-all-link a:hover {
     color: #3575a5
-}
+}#phys-finder 
 
 .menu-minipanels .blog-links-container {
     width: 350px
-}
+}#phys-finder 
 
 .menu-minipanels .blog-concerns {
     width: 200px
-}
+}#phys-finder 
 
 .menu-minipanels .blog-categories {
     width: 150px
-}
+}#phys-finder 
 
-.menu-minipanels .blog-concerns p,
-.menu-minipanels .blog-categories p {
+.menu-minipanels .blog-concerns p,#phys-finder    .menu-minipanels .blog-categories p {
     margin-top: 0
-}
+}#phys-finder 
 
 .menu-minipanels .skin-tips-container {
     width: 350px
-}
+}#phys-finder 
 
 .menu-minipanels .skin-tips-container ._left:first-of-type {
     width: 170px
-}
+}#phys-finder 
 
 .menu-minipanels .skin-tips-container ._left:nth-of-type(2) {
     width: 140px
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu {
     max-width: 1200px;
     margin: 0 auto;
     border-top: 2px solid #cecece
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu .pane-menu-products-dropdown-menu {
     float: left
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu ul {
     padding-left: 0
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu ul:first-of-type {
     width: 98%;
     margin: .750rem auto 0 auto
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu>ul>li {
     display: inline-block;
     width: 17%;
     margin: .750rem 1% .750rem 1%;
     vertical-align: top
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu>ul>li.first {
     margin-left: 3%
-}
+}#phys-finder 
 
 .menu-name-menu-products-dropdown-menu>ul>li .prod-category {
     font-weight: bold
-}
+}#phys-finder 
 
 .pane-custom-obagi-obagi-menu-flyout {
     clear: both
-}
+}#phys-finder 
 
 .menu-flyout-container {
     position: relative;
     clear: both;
     width: 100%
-}
+}#phys-finder 
 
 .menu-flyout-container .product-flyout {
     top: 0;
@@ -1534,36 +1437,35 @@ body {
     display: none;
     width: 768px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .menu-flyout-container .product-flyout h2 {
     color: #3a87c1;
     padding: 0;
     margin-top: 0
-}
+}#phys-finder 
 
 .menu-flyout-container .product-flyout img {
     float: left;
     margin-right: 20px;
     max-height: 180px
-}
+}#phys-finder 
 
 .menu-flyout-container .product-flyout.active {
     display: block
 }
-
 @media only screen and (min-width:760px) {
-    #block-system-main-menu {
+  #phys-finder   #block-system-main-menu {
         display: block
-    }
+    }#phys-finder 
     #block-menu-menu-mobile-menu {
         display: none
-    }
-}
+    } 
+}#phys-finder 
 
 .l-branding {
     color: #e1e1e1
-}
+}#phys-finder 
 
 .l-branding a {
     color: #e1e1e1;
@@ -1571,58 +1473,55 @@ body {
     padding: .75rem 0;
     text-decoration: none;
     text-transform: uppercase
-}
+}#phys-finder 
 
-.l-region--top,
-.page-top {
+.l-region--top,#phys-finder    .page-top {
     background: #3575a5;
     color: white;
     text-align: center;
     padding-bottom: .001rem
-}
+}#phys-finder 
 
-.l-region--top a,
-.page-top a {
+.l-region--top a,#phys-finder    .page-top a {
     color: white;
     text-decoration: underline
-}
+}#phys-finder 
 
-.l-region--top h1,
-.page-top h1 {
+.l-region--top h1,#phys-finder    .page-top h1 {
     margin: 0 auto;
     padding: 2rem 0 1rem;
     text-align: center
-}
+}#phys-finder 
 
 .l-header .l-region--branding {
     background: #132466
-}
+}#phys-finder 
 
 .l-header .l-region--header {
     float: none;
     margin: 0 auto;
     max-width: 1200px
-}
+}#phys-finder 
 
 .l-header .l-region--navigation {
     clear: both;
     background: #3a87c1;
     border-bottom: 5px solid #3575a5;
     height: 57px
-}
+}#phys-finder 
 
 .l-header .l-region--hero {
     clear: both
-}
+}#phys-finder 
 
 .l-main {
     background: #fff
-}
+}#phys-finder 
 
 .l-region--sidebar-first {
     clear: both;
     padding: 1.500rem 0
-}
+}#phys-finder 
 
 .l-footer .fat-footer {
     float: left;
@@ -1630,51 +1529,49 @@ body {
     border-top: 5px solid #43c4d9;
     border-bottom: 5px solid #43c4d9;
     background: #ededed
-}
+}#phys-finder 
 
 .l-footer .fat-footer .l-region--footer {
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .l-footer #block-webform-client-block-646 span.form-required {
     display: none
-}
+}#phys-finder 
 
 .l-footer .l-region--sub-footer {
     clear: both;
     background: #132466
 }
-
 @media (min-width:481px) {
-    .l-branding a {
+  #phys-finder   .l-branding a {
         padding: 0
-    }
+    }#phys-finder 
     .l-main {
         background: #fbfbfb
-    }
+    }#phys-finder 
     .l-region--sidebar-first {
         padding: 1.500rem 2rem
-    }
+    }#phys-finder 
     .l-footer .l-region--footer {
         padding: 0 1.250rem
     }
 }
-
 @media (min-width:767px) {
-    .l-header .l-region--header {
+  #phys-finder   .l-header .l-region--header {
         padding: 1.5rem 1.25rem 0 1.25rem
-    }
+    }#phys-finder 
     .l-region--sidebar-first {
         padding: 1.250rem 0 0 0;
         text-align: center;
         clear: none
     }
-}
+}#phys-finder 
 
 #billboards {
     position: relative
-}
+}#phys-finder 
 
 #billboards .flex-control-nav {
     width: 100%;
@@ -1682,22 +1579,22 @@ body {
     /* bottom: 5px; */
     bottom:10px;
     text-align: center
-}
+}#phys-finder 
 
 #billboards .flex-control-paging li a {
     border: 1px solid #fff;
     background: #fff;
     box-shadow: none
-}
+}#phys-finder 
 
 #billboards .flex-control-paging li a.flex-active {
     background: #3a87c1
-}
+}#phys-finder 
 
 #billboards .slides li {
     max-height: 400px;
     min-height: 275px
-}
+}#phys-finder 
 
 #billboards .flex-prev {
     left: 2%;
@@ -1705,7 +1602,7 @@ body {
     margin-top: -20px;
     display: block;
     text-decoration: none
-}
+}#phys-finder 
 
 #billboards .flex-prev:before {
     font-family: 'fontello';
@@ -1713,7 +1610,7 @@ body {
     color: #fff;
     opacity: .5;
     font-size: 1.75rem
-}
+}#phys-finder 
 
 #billboards .flex-next {
     right: 2%;
@@ -1721,7 +1618,7 @@ body {
     margin-top: -20px;
     display: block;
     text-decoration: none
-}
+}#phys-finder 
 
 #billboards .flex-next:before {
     font-family: 'fontello';
@@ -1729,13 +1626,13 @@ body {
     color: #fff;
     opacity: .5;
     font-size: 1.75rem
-}
+}#phys-finder 
 
 #billboards .slide-wrap {
     margin: 0 auto;
     position: relative;
     max-width: 1200px
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-content-image {
     max-height: 275px;
@@ -1745,11 +1642,11 @@ body {
     overflow: hidden;
     text-align: center;
     margin-top: 1.250rem
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-content-image img {
     position: relative
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-copy {
     max-width: 100%;
@@ -1757,41 +1654,37 @@ body {
     margin: 0 auto;
     padding: 0 1rem;
     z-index: 10
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
     margin-bottom: 0;
     padding: 0 0 .50rem 0;
     line-height: 1.75rem
 }
-
 @media (min-width:481px) {
-    #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
+  #phys-finder   #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
         font-size: 1.7750rem;
         line-height: 2.250rem;
         padding: 1rem 0
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
+  #phys-finder   #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
         margin: .350rem 0 .200rem 0;
         padding: 0 0 .50rem 0
-    }
+    }#phys-finder 
     #billboards .slide-skinmarker .slide-wrap .billboard-copy {
         max-width: 50%;
-    }
+    }#phys-finder 
     #billboards .slide-withchange .slide-wrap .billboard-copy {
         max-width: 42%;
     }
 }
-
 @media (min-width:1200px) {
-    #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
+  #phys-finder   #billboards .slide-wrap .billboard-copy .billboard-headline h2 {
         margin: 1.500rem 0 .200rem 0;
         padding: 1rem 0
-    }
-}
+    } 
+}#phys-finder 
 
 #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-headline h2 {
     font-size: 27px;
@@ -1800,7 +1693,7 @@ body {
     font-family: BigCaslonFB;
     margin: 0 0 .200rem 0;
     padding: 0 0 1rem 0;
-}
+}#phys-finder 
 
 #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
     margin-bottom: 1.4em;
@@ -1813,22 +1706,22 @@ body {
     font-size: 18px;
     font-family: futura-pt;
     font-weight: normal;
-}
+}#phys-finder 
 
 #billboards .slide-skindrink .billboard-content-body span {
     font-weight: bold;
-}
+}#phys-finder 
 
 #billboards .slide-skindrink {
     background-color: #050c55;
-}
+}#phys-finder 
 
 #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
     width: 136px;
     height: 43px;
     background-color: #f99c25;
     margin: 0;
-}
+}#phys-finder 
 
 #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action a {
     color: #ffffff;
@@ -1836,24 +1729,24 @@ body {
     font-size: 15px;
     font-weight: bold;
     padding: .750rem 1rem;
-}
+}#phys-finder 
 
 /* #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy {
         background: url(/sites/default/files/billboard_images/teaser-art.jpg);
          background-repeat: no-repeat;
 
- }
+ }#phys-finder 
 
 #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image {
 	display: none;
-}
+}#phys-finder 
 	#billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy {
 max-width: 52%;
-}*/
+}#phys-finder */
 
 #billboards .slide-elastiderm-product-cream {
   background-color: #000346;
-}
+}#phys-finder 
 
 #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-headline h2 {
   margin: 0.5rem 0 .200rem 0;
@@ -1863,7 +1756,7 @@ max-width: 52%;
   line-height: 1.07;
   letter-spacing: normal;
   font-style: normal;
-}
+}#phys-finder 
 
 #billboards .slide-elastiderm-product-cream .billboard-content-body p {
   color: #ffffff;
@@ -1871,12 +1764,12 @@ max-width: 52%;
   font-family: futura-pt;
   font-weight: normal;
   line-height: 1.22;
-}
+}#phys-finder 
 
 #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image img {
   height: 279px;
   z-index: 2;
-}
+}#phys-finder 
 
 #billboards .slide-elastiderm-product-cream.flex-active-slide:after {
   content: '';
@@ -1887,25 +1780,23 @@ max-width: 52%;
   background: #fff;
   bottom: -10px;
   z-index: 1;
-}
+}#phys-finder 
 
 #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-call-to-action .button {
   background: #97d1dc;
   color: #000346;
   font-weight: bold;
 }
-
 @media only screen and (min-device-width : 410px) and (max-device-width : 550px) {
-    #billboards .slide-elastiderm-product-cream .slide-wrap:after {
+  #phys-finder   #billboards .slide-elastiderm-product-cream .slide-wrap:after {
         bottom: 90px;
         width:395px;
-      }
+      }#phys-finder 
 
       #billboards .slide-elastiderm-product-cream.flex-active-slide:after {
         height: 22px!important;
     }
 }
-
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   #billboards .slide-elastiderm-product-cream .slide-wrap:after {
@@ -1914,57 +1805,56 @@ max-width: 52%;
     content: url('/sites/default/files/billboard_images/billboard-elastiderm-mobile-centered.png');
     bottom: 102px;
     right: 0;
-  }
+  }#phys-finder 
 
   #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-headline h2 {
     /* text-align: left; */
     margin-bottom: 5px;
-  }
+  }#phys-finder 
 
   #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-content-body p {
     margin: initial!important;
     /* text-align: left; */
-  }
+  }#phys-finder 
 
   #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image {
     background: #000346;
-  }
+  }#phys-finder 
 
   #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image img {
     visibility: hidden;
     z-index: 0;
-  }
 }
-
+}
 #billboards .slide-withchange {
     background-color: #76a9d8;
-}
+}#phys-finder 
 
 #billboards .slide-withchange h2 {
     color: #fff;
-}
+}#phys-finder 
 
 #billboards .slide-withchange .billboard-content-body p {
     color: #fff;
-}
+}#phys-finder 
 
 #billboards .slide-skinmarker {
     background-color: #f8f7f5;
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-copy .billboard-content-body p {
     margin-top: 0
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-copy .billboard-call-to-action {
     position: relative;
     z-index: 10;
     margin: 0 auto -17px auto
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-copy .billboard-call-to-action a {
     display: inline-block;
-}
+}#phys-finder 
 
 #billboards .slide-wrap .billboard-zinc {
     background-color: #fff;
@@ -1973,320 +1863,301 @@ max-width: 52%;
     top: 340px;
     right: 10px
 }
-
 @media (min-width:767px) {
-    #billboards .slide-wrap .billboard-content-image {
+  #phys-finder   #billboards .slide-wrap .billboard-content-image {
         text-align: right;
         margin-top: 0
-    }
+    }#phys-finder 
     #billboards .slide-wrap .billboard-copy {
         text-align: left;
         position: absolute;
         max-width: 40%;
         padding: 1rem 1rem 1rem 4.5rem
-    }
+    }#phys-finder 
     #billboards .slide-wrap .billboard-zinc {
         top: 240px
-    }
+    }#phys-finder 
 
 	#billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy {
 		max-width: 50%;
 	}
-}
+}#phys-finder 
 
 #billboards .slide-obagi360 {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #00adc4), color-stop(100%, #88e6ee));
-    background: -webkit-linear-gradient(right, #00adc4, #88e6ee);
-    background: -moz-linear-gradient(right, #00adc4, #88e6ee);
-    background: -o-linear-gradient(right, #00adc4, #88e6ee);
-    background: linear-gradient(right, #00adc4, #88e6ee);
-    background: -ms-linear-gradient(right, #00adc4, #88e6ee);
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0 #00adc4),   color-stop(100%, #88e6ee));
+    background: -webkit-linear-gradient(right #00adc4, #88e6ee);
+    background: -moz-linear-gradient(right #00adc4, #88e6ee);
+    background: -o-linear-gradient(right #00adc4, #88e6ee);
+    background: linear-gradient(right #00adc4, #88e6ee);
+    background: -ms-linear-gradient(right #00adc4, #88e6ee);
     margin: 0 auto
-}
+}#phys-finder 
 
 #billboards .slide-obagi360 .billboard-content-image {
     width: 70%
 }
-
 @media (min-width:767px) {
-    #billboards .slide-obagi360 .billboard-content-image {
+  #phys-finder   #billboards .slide-obagi360 .billboard-content-image {
         width: 100%
-    }
+    }#phys-finder 
     #billboards .slide-obagi360 .billboard-content-image img {
         max-width: 400px
-    }
+    }#phys-finder 
     #billboards .slide-obagi360 .billboard-copy {
         max-width: 50% !important
-    }
+    } 
 }
 
 @media only screen and (min-width:900px) {
-    #billboards .slide-obagi360 .billboard-content-image img {
+  #phys-finder   #billboards .slide-obagi360 .billboard-content-image img {
         max-width: 500px
-    }
+    }#phys-finder 
     #billboards .slide-withchange .billboard-content-image img {
         top: -189px;
-    }
+    }#phys-finder 
     #billboards .slide-skinmarker .billboard-content-image img {
         top: -190px;
-    }
-}
+    } 
+}#phys-finder 
 
 #billboards .slide-discover-obagi {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #a39798), color-stop(100%, #fdf1e8));
-    background: -webkit-linear-gradient(right, #a39798, #fdf1e8);
-    background: -moz-linear-gradient(right, #a39798, #fdf1e8);
-    background: -o-linear-gradient(right, #a39798, #fdf1e8);
-    background: linear-gradient(right, #a39798, #fdf1e8);
-    background: -ms-linear-gradient(right, #a39798, #fdf1e8)
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0,   #a39798),   color-stop(100%,   #fdf1e8));
+    background: -webkit-linear-gradient(right,   #a39798,   #fdf1e8);
+    background: -moz-linear-gradient(right,   #a39798,   #fdf1e8);
+    background: -o-linear-gradient(right,   #a39798,   #fdf1e8);
+    background: linear-gradient(right,   #a39798,   #fdf1e8);
+    background: -ms-linear-gradient(right,   #a39798,   #fdf1e8)
 }
 
 @media (min-width:481px) {
-    #billboards .slide-discover-obagi .billboard-content-image {
+  #phys-finder   #billboards .slide-discover-obagi .billboard-content-image {
         width: 70%
     }
 }
 
 @media (min-width:767px) {
-    #billboards .slide-discover-obagi .billboard-content-image {
+  #phys-finder   #billboards .slide-discover-obagi .billboard-content-image {
         width: 100%
-    }
+    }#phys-finder 
     #billboards .slide-discover-obagi .billboard-content-image img {
         top: -140px;
         right: -130px
     }
-}
+}#phys-finder 
 
 #billboards .slide-pro-c {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #cee7ff), color-stop(100%, #f2f8ff));
-    background: -webkit-linear-gradient(right, #cee7ff, #f2f8ff);
-    background: -moz-linear-gradient(right, #cee7ff, #f2f8ff);
-    background: -o-linear-gradient(right, #cee7ff, #f2f8ff);
-    background: linear-gradient(right, #cee7ff, #f2f8ff);
-    background: -ms-linear-gradient(right, #cee7ff, #f2f8ff)
-}
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0,      #cee7ff),   color-stop(100%,   #f2f8ff));
+    background: -webkit-linear-gradient(right,      #cee7ff,   #f2f8ff);
+    background: -moz-linear-gradient(right,      #cee7ff,   #f2f8ff);
+    background: -o-linear-gradient(right,      #cee7ff,   #f2f8ff);
+    background: linear-gradient(right,      #cee7ff,   #f2f8ff);
+    background: -ms-linear-gradient(right,      #cee7ff,   #f2f8ff)
+}#phys-finder 
 
 #billboards .slide-pro-c .billboard-content-image {
     width: 100%
-}
+}#phys-finder 
 
 #billboards .slide-pro-c .billboard-content-image img {
     max-width: 300px
 }
-
 @media (min-width:767px) {
-    #billboards .slide-pro-c .billboard-copy {
+  #phys-finder   #billboards .slide-pro-c .billboard-copy {
         max-width: 50% !important
-    }
+    }#phys-finder 
     #billboards .slide-pro-c .billboard-content-image img {
         max-width: 416px;
         right: 50px
     }
-}
+}#phys-finder 
 
 #billboards .slide-premier-points {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #b7eedf), color-stop(100%, #e8faea));
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0, #b7eedf),   color-stop(100%, #e8faea));
     background: -webkit-linear-gradient(right, #b7eedf, #e8faea);
     background: -moz-linear-gradient(right, #b7eedf, #e8faea);
     background: -o-linear-gradient(right, #b7eedf, #e8faea);
     background: linear-gradient(right, #b7eedf, #e8faea);
     background: -ms-linear-gradient(right, #b7eedf, #e8faea)
-}
+}#phys-finder 
 
 #billboards .slide-premier-points .billboard-content-image {
     width: 100%
-}
+}#phys-finder 
 
 #billboards .slide-premier-points .billboard-content-image img {
     max-width: 154px;
     top: 16px
 }
-
 @media (min-width:767px) {
-    #billboards .slide-premier-points .billboard-copy {
+  #phys-finder   #billboards .slide-premier-points .billboard-copy {
         max-width: 60%
-    }
+    }#phys-finder 
     #billboards .slide-premier-points .billboard-content-image img {
         max-width: 260px;
         right: 37px;
         top: 21px
-    }
+    } 
 }
-
 @media (min-width:1200px) {
-    #billboards .slide-premier-points .billboard-content-image img {
+  #phys-finder   #billboards .slide-premier-points .billboard-content-image img {
         right: 120px
-    }
-}
+    } 
+}#phys-finder 
 
 #billboards .slide-sunshield-tint {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #e5d59d), color-stop(100%, #fcf8de));
-    background: -webkit-linear-gradient(right, #e5d59d, #fcf8de);
-    background: -moz-linear-gradient(right, #e5d59d, #fcf8de);
-    background: -o-linear-gradient(right, #e5d59d, #fcf8de);
-    background: linear-gradient(right, #e5d59d, #fcf8de);
-    background: -ms-linear-gradient(right, #e5d59d, #fcf8de)
-}
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0, #e5d59d),   color-stop(100%,  #fcf8de));
+    background: -webkit-linear-gradient(right, #e5d59d,  #fcf8de);
+    background: -moz-linear-gradient(right, #e5d59d,  #fcf8de);
+    background: -o-linear-gradient(right, #e5d59d,  #fcf8de);
+    background: linear-gradient(right, #e5d59d,  #fcf8de);
+    background: -ms-linear-gradient(right, #e5d59d,  #fcf8de)
+}#phys-finder 
 
 #billboards .slide-sunshield-tint .billboard-content-image {
     width: 100%
-}
+}#phys-finder 
 
 #billboards .slide-sunshield-tint .billboard-content-image img {
     max-width: 130px
 }
-
 @media (min-width:767px) {
-    #billboards .slide-sunshield-tint .billboard-copy {
+  #phys-finder   #billboards .slide-sunshield-tint .billboard-copy {
         max-width: 59%
-    }
+    }#phys-finder 
     #billboards .slide-sunshield-tint .billboard-content-image img {
         max-width: 208px;
         right: 80px
     }
 }
-
 @media (min-width:1200px) {
-    #billboards .slide-sunshield-tint .billboard-content-image img {
+  #phys-finder   #billboards .slide-sunshield-tint .billboard-content-image img {
         right: 120px
     }
-}
+}#phys-finder 
 
 #billboards .slide-keraphine {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #5aacd9), color-stop(100%, #e2f4fd));
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0, #5aacd9),   color-stop(100%, #e2f4fd));
     background: -webkit-linear-gradient(right, #5aacd9, #e2f4fd);
     background: -moz-linear-gradient(right, #5aacd9, #e2f4fd);
     background: -o-linear-gradient(right, #5aacd9, #e2f4fd);
     background: linear-gradient(right, #5aacd9, #e2f4fd);
     background: -ms-linear-gradient(right, #5aacd9, #e2f4fd)
-}
+}#phys-finder 
 
 #billboards .slide-keraphine .billboard-content-image {
     width: 100%
-}
+}#phys-finder 
 
 #billboards .slide-keraphine .billboard-content-image img {
     top: -10px
 }
-
 @media (min-width:481px) {
-    #billboards .slide-keraphine .billboard-content-image img {
+  #phys-finder   #billboards .slide-keraphine .billboard-content-image img {
         max-width: 500px;
         top: -20px
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    #billboards .slide-keraphine .billboard-copy {
+  #phys-finder   #billboards .slide-keraphine .billboard-copy {
         max-width: 66%
-    }
+    }#phys-finder 
     #billboards .slide-keraphine .billboard-content-image img {
         max-width: 450px;
         left: 50px;
         top: 0
-    }
-}
-
+    }}
 @media (min-width:1200px) {
-    #billboards .slide-keraphine .billboard-copy {
+  #phys-finder   #billboards .slide-keraphine .billboard-copy {
         max-width: 60%
-    }
+    }#phys-finder 
     #billboards .slide-keraphine .billboard-content-image img {
         left: -60px
     }
-}
+}#phys-finder 
 
 #billboards .slide-prod-nu-derm {
     *zoom: 1;
-    background: -webkit-gradient(linear, 100% 50%, 0 50%, color-stop(0, #bfe2ec), color-stop(100%, #e6f4f8));
+    background: -webkit-gradient(linear, 100% 50%, 0 50%,   color-stop(0, #bfe2ec),   color-stop(100%, #e6f4f8));
     background: -webkit-linear-gradient(right, #bfe2ec, #e6f4f8);
     background: -moz-linear-gradient(right, #bfe2ec, #e6f4f8);
     background: -o-linear-gradient(right, #bfe2ec, #e6f4f8);
     background: linear-gradient(right, #bfe2ec, #e6f4f8);
     background: -ms-linear-gradient(right, #bfe2ec, #e6f4f8)
-}
+}#phys-finder 
 
 #billboards .slide-prod-nu-derm .billboard-content-image {
     width: 100%
-}
+}#phys-finder 
 
 #billboards .slide-prod-nu-derm .billboard-content-image img {
     max-width: 300px
 }
-
 @media (min-width:481px) {
-    #billboards .slide-prod-nu-derm .billboard-content-image img {
+  #phys-finder   #billboards .slide-prod-nu-derm .billboard-content-image img {
         max-width: 545px;
         top: -1px;
         left: -25px
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    #billboards .slide-prod-nu-derm .billboard-content-image img {
+  #phys-finder   #billboards .slide-prod-nu-derm .billboard-content-image img {
         max-width: 450px;
         top: -10px;
         left: 31px
-    }
+    }#phys-finder 
     #billboards .slide-prod-nu-derm .billboard-copy {
         max-width: 50% !important
-    }
-}
-
+    }}
 @media only screen and (min-width:900px) {
-    #billboards .slide-prod-nu-derm .billboard-content-image img {
+  #phys-finder   #billboards .slide-prod-nu-derm .billboard-content-image img {
         max-width: 551px;
         top: -40px;
         left: 31px
-    }
-}
-
+    }}
 .product-system-body {
     margin: 0 auto;
     width: 80%
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper {
     background: #666
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu {
     margin: 0;
     padding: 1rem 0
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu>li {
     display: inline-block;
     width: 49%
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu>li a {
     display: block;
     margin: 0 auto
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu>li a span {
     display: none
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu>li:first-of-type {
     border-right: 1px solid #e1e1e1
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li {
     text-align: center
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li a {
     color: #e1e1e1;
     text-decoration: none
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li #valeant-menu {
     margin: 0;
@@ -2295,96 +2166,93 @@ max-width: 52%;
     background: #666;
     border-right: 0;
     border-left: 0
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li #valeant-menu li {
     text-align: left
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li #valeant-menu li .nolink {
     color: #e1e1e1
-}
+}#phys-finder 
 
 .l-page>#valeant-menu-wrapper #valent-menu li #valeant-menu li a {
     display: inline-block;
     padding: .500rem 0
-}
+}#phys-finder 
 
 .fat-footer {
     padding-bottom: 1.250rem
-}
+}#phys-finder 
 
 .l-region--footer .block {
     padding: 0 1.25rem;
     text-align: center
-}
+}#phys-finder 
 
 .l-region--footer .block .block__content {
     border-bottom: 1px solid #cecece;
     clear: both
-}
+}#phys-finder 
 
 .l-region--footer #ic-footer-conf-message {
     background: #fff;
     padding: 70px 30px
-}
+}#phys-finder 
 
-.l-region--footer .join-inner-circle-form .webform-component--first-name,
-.l-region--footer .join-inner-circle-form .webform-component--zip-code {
+.l-region--footer .join-inner-circle-form .webform-component--first-name,#phys-finder    .l-region--footer .join-inner-circle-form .webform-component--zip-code {
     float: left
-}
+}#phys-finder 
 
-.l-region--footer .join-inner-circle-form .webform-component--first-name input,
-.l-region--footer .join-inner-circle-form .webform-component--zip-code input {
+.l-region--footer .join-inner-circle-form .webform-component--first-name input,#phys-finder    .l-region--footer .join-inner-circle-form .webform-component--zip-code input {
     float: left
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .webform-component--are-you-a-us-resident {
     text-align: left
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .webform-component--are-you-a-us-resident .form-item {
     line-height: 1rem
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .webform-component--are-you-a-us-resident input[type="radio"] {
     vertical-align: top
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .webform-component--are-you-a-us-resident label {
     display: inline-block
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form #edit-submitted-are-you-a-us-resident {
     width: 100%;
     float: left;
     position: relative
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form #edit-submitted-are-you-a-us-resident .form-item-submitted-are-you-a-us-resident {
     float: left;
     padding: .625rem .625rem .625rem 0
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form #edit-submitted-are-you-a-us-resident .form-item-submitted-are-you-a-us-resident label.error {
     top: 3px;
     left: 120px
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form label {
     vertical-align: middle;
     text-align: left
-}
+}#phys-finder 
 
-.l-region--footer .join-inner-circle-form input[type="text"],
-.l-region--footer .join-inner-circle-form input[type="submit"] {
+.l-region--footer .join-inner-circle-form input[type="text"],#phys-finder    .l-region--footer .join-inner-circle-form input[type="submit"] {
     width: 100%
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .form-actions {
     clear: both;
     position: relative
-}
+}#phys-finder 
 
 .l-region--footer .join-inner-circle-form .form-actions .glyphs {
     color: #fff;
@@ -2392,70 +2260,69 @@ max-width: 52%;
     left: 50%;
     top: 12px;
     margin-left: -50px
-}
+}#phys-finder 
 
 .l-region--footer .footer-block-third .block__content {
     border: 0
-}
+}#phys-finder 
 
 .l-region--footer .footer-misc .section {
     clear: both;
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .l-region--footer .footer-misc .section.last {
     border: 0
-}
+}#phys-finder 
 
 .l-region--footer .footer-misc .social-media-icons {
     padding: 0;
     max-width: 300px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .l-region--footer .footer-misc .social-media-icons li {
     float: left;
     width: 20%
-}
+}#phys-finder 
 
 .l-region--footer .footer-misc .footer-contact-us {
     text-align: center
-}
+}#phys-finder 
 
-.l-region--sub-footer p,
-.l-region--sub-footer a {
+.l-region--sub-footer p,#phys-finder    .l-region--sub-footer a {
     color: #fff
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright {
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright #footer-obagiforlife-logo {
     text-align: center
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright .menu {
     margin: 0;
     padding: 0;
     text-align: center
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright .menu li {
     display: inline-block;
     margin-bottom: .50rem
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright .menu li a {
     padding: 0 .500rem;
     border-right: 1px solid #fff
-}
+}#phys-finder 
 
 .l-region--sub-footer .footer-copyright .menu li.last a {
     border: 0
-}
+}#phys-finder 
 
 .l-region--sub-footer #back-to-top {
     background-color: #3575a5;
@@ -2466,64 +2333,61 @@ max-width: 52%;
     padding: .25rem 0;
     position: relative;
     text-align: center
-}
+}#phys-finder 
 
 .l-region--sub-footer #back-to-top a {
     color: white;
     padding: 1rem 0;
     text-decoration: none
-}
+}#phys-finder 
 
-.isi.nd h4,
-.isi.crx h4,
-.isi.nd-crx h4 {
+.isi.nd h4,#phys-finder    .isi.crx h4,#phys-finder    .isi.nd-crx h4 {
     margin-bottom: 1rem
 }
-
 @media (min-width:481px) {
-    .l-region--footer .block {
+  #phys-finder   .l-region--footer .block {
         text-align: left
-    }
+    }#phys-finder 
     .l-region--footer .block .block__content {
         border: 0
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-first {
         float: left;
         width: 48.5%;
         margin: 1% 0 1% 3%;
         border: 0
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-second {
         float: left;
         width: 48.5%;
         margin: 1% 0 1% 3%;
         border: 0
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-third {
         width: 100%;
         text-align: center
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-third .block__content {
         border-top: 1px solid #cecece
-    }
+    }#phys-finder 
     .l-region--footer .footer-block:first-child {
         margin-left: 0
-    }
+    }#phys-finder 
     .l-region--sub-footer {
         padding: 1rem
-    }
+    }#phys-finder 
     .l-region--sub-footer #footer-obagiforlife-logo {
         display: inline-block;
         width: 30%;
         vertical-align: top
-    }
+    }#phys-finder 
     .l-region--sub-footer #footer-copyright {
         display: inline-block;
         width: 69%
-    }
+    }#phys-finder 
     .l-region--sub-footer #footer-copyright ._center {
         text-align: left
-    }
+    }#phys-finder 
     .l-region--sub-footer #back-to-top {
         background-color: #ededed;
         bottom: 10px;
@@ -2532,82 +2396,72 @@ max-width: 52%;
         opacity: .6;
         position: fixed;
         right: 10px
-    }
+    }#phys-finder 
     .l-region--sub-footer #back-to-top a {
         color: #555;
         padding: 10px;
         text-decoration: none
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .l-region--footer .footer-block {
+  #phys-finder   .l-region--footer .footer-block {
         float: left;
         width: 31.33%;
         margin: 1% 0 1% 3%;
         padding: 0 1rem
-    }
+    }#phys-finder 
     .l-region--footer .footer-block:first-child {
         margin-left: 0
-    }
+    }#phys-finder 
     .l-region--footer .join-inner-circle-form {
         float: left;
         width: 31.33%;
         margin-left: 0
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-third {
         text-align: left
-    }
+    }#phys-finder 
     .l-region--footer .footer-block-third .block__content {
         border: 0
-    }
-}
-
+    }}
 @media (min-width:1200px) {
-    .l-region--footer {
+  #phys-finder   .l-region--footer {
         padding: 0
-    }
-}
-
-#header-nav-right,
-#header-nav-left {
+    }}
+#header-nav-right,#phys-finder    #header-nav-left {
     display: none;
     margin: 0;
     padding: 0
-}
+}#phys-finder 
 
-#header-nav-right li,
-#header-nav-left li {
+#header-nav-right li,#phys-finder    #header-nav-left li {
     width: 240px;
     height: 2rem;
     border: 2px solid #6cf
-}
+}#phys-finder 
 
-#header-nav-right li a.glyphs,
-#header-nav-left li a.glyphs {
+#header-nav-right li a.glyphs,#phys-finder    #header-nav-left li a.glyphs {
     color: #555;
     display: block;
     padding: 6px;
     text-decoration: none;
     text-transform: uppercase
-}
+}#phys-finder 
 
-#block-custom-obagi-right-side-elements,
-#header-nav-right {
+#block-custom-obagi-right-side-elements,#phys-finder    #header-nav-right {
     float: right
-}
+}#phys-finder 
 
 #header-nav-left {
     float: left
-}
+}#phys-finder 
 
 #header-search {
     text-align: left
-}
+}#phys-finder 
 
 #header-search .form-item {
     display: inline-block
-}
+}#phys-finder 
 
 #header-search input[type="text"] {
     height: 28px;
@@ -2617,23 +2471,23 @@ max-width: 52%;
     float: left;
     text-transform: uppercase;
     color: #555
-}
+}#phys-finder 
 
 #header-search::-webkit-input-placeholder {
     color: #555
-}
+}#phys-finder 
 
 #header-search:-moz-placeholder {
     color: #555
-}
+}#phys-finder 
 
 #header-search::-moz-placeholder {
     color: #555
-}
+}#phys-finder 
 
 #header-search:-ms-input-placeholder {
     color: #555
-}
+}#phys-finder 
 
 #header-search input[type="submit"] {
     float: right;
@@ -2647,19 +2501,19 @@ max-width: 52%;
     background-repeat: no-repeat;
     background-position: 8px 4px;
     background-size: 20px
-}
+}#phys-finder 
 
 #header-search .form-type-textfield {
     position: relative
-}
+}#phys-finder 
 
 #header-search .form-type-textfield:hover {
     cursor: pointer
-}
+}#phys-finder 
 
 #header-nav-left #findProductsMenu:hover {
     background-color: #f0fcff
-}
+}#phys-finder 
 
 #header-nav-left #header-product-finder {
     background-color: #f0fcff;
@@ -2675,7 +2529,7 @@ max-width: 52%;
     width: 240px;
     z-index: 99999;
     padding: 0 1rem 1rem
-}
+}#phys-finder 
 
 #header-nav-left #header-product-finder input[type="submit"] {
     background-color: #3a87c1;
@@ -2686,40 +2540,39 @@ max-width: 52%;
     font-size: 1rem;
     color: white;
     margin-top: 15px
-}
+}#phys-finder 
 
 #header-nav-left #header-product-finder input[type="search"] {
     max-width: 190px !important
-}
+}#phys-finder 
 
 #header-nav-left #header-product-finder .phys-finder-miniform-wrapper .form-item-searchtext {
     padding-bottom: .500rem;
     margin-bottom: 0
-}
+}#phys-finder 
 
 #header-nav-left #header-product-finder .phys-finder-miniform-wrapper .form-item-searchopts {
     display: block;
     vertical-align: top
-}
+}#phys-finder 
 
 #header-nav-right #personal-product-menu:hover {
     background-color: #f0fcff
-}
+}#phys-finder 
 
 #header-nav-right #personal-product-menu {
     background: url("/sites/all/themes/responsive/images/product_finder_icon.png") no-repeat 14px center;
     background-size: 20px
-}
+}#phys-finder 
 
-#header-nav-right #personal-product-menu .button,
-#header-nav-right #personal-product-menu button {
+#header-nav-right #personal-product-menu .button,#phys-finder    #header-nav-right #personal-product-menu button {
     display: block
-}
+}#phys-finder 
 
 #header-nav-right #personal-product-menu a.glyphs {
     text-transform: uppercase;
     text-align: right
-}
+}#phys-finder 
 
 #header-nav-right #product-finder-pane {
     background-color: #f0fcff;
@@ -2735,40 +2588,39 @@ max-width: 52%;
     width: 240px;
     z-index: 99999;
     padding: 1rem
-}
+}#phys-finder 
 
-#header-nav-left li:first-child,
-#header-nav-right li:first-child {
+#header-nav-left li:first-child,#phys-finder    #header-nav-right li:first-child {
     margin: 13px 0 26px
-}
+}#phys-finder 
 
 .product-system-body {
     background-color: #3575a5
-}
+}#phys-finder 
 
 .product-system-body ul {
     margin: 0;
     padding: 1rem 0 0
-}
+}#phys-finder 
 
 .product-system-body p {
     margin: 0;
     padding: 1rem 0
-}
+}#phys-finder 
 
 #VAMenu {
     position: relative
-}
+}#phys-finder 
 
 .valeant-global {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center
-}
+}#phys-finder 
 
 .valeant-global #valent-menu {
     display: none
-}
+}#phys-finder 
 
 .valeant-global .header-find-products.glyphicon-right-arrow-after:after {
     font-size: 1rem;
@@ -2776,95 +2628,92 @@ max-width: 52%;
     padding-left: 5px;
     vertical-align: bottom
 }
-
 @media (min-width:481px) {
-    .valeant-global {
+  #phys-finder   .valeant-global {
         text-align: left
-    }
+    }#phys-finder 
     .valeant-global #valent-menu {
         display: block
-    }
+    }#phys-finder 
     .valeant-global .header-find-products {
         display: none
     }
-}
+}#phys-finder 
 
 .mobile-header-links {
     text-align: center;
     padding-top: 1rem;
     margin-bottom: 1rem
-}
+}#phys-finder 
 
 .mobile-header-links ul {
     margin: 0;
     padding-left: 0
-}
+}#phys-finder 
 
 .mobile-header-links ul li {
     display: inline;
     color: #555
-}
+}#phys-finder 
 
 .mobile-header-links ul li:first-of-type {
     border-right: 1px solid #555
-}
+}#phys-finder 
 
 .mobile-header-links ul li a {
     color: #555;
     padding: 5px;
     text-decoration: none
 }
-
 @media (min-width:767px) {
-    .mobile-header-links {
+  #phys-finder   .mobile-header-links {
         display: none
     }
-}
+}#phys-finder 
 
 .valeant-sites-block {
     float: left
-}
+}#phys-finder 
 
 .valeant-sites-block .menu {
     margin: 0
-}
+}#phys-finder 
 
 .valeant-sites-block .menu li {
     list-style: none
-}
+}#phys-finder 
 
 .valeant-sites-block .menu li a {
     padding: 4px;
     background: silver
-}
+}#phys-finder 
 
 .header-block {
     display: inline-block;
     text-align: center;
     vertical-align: top;
     width: 100%
-}
+}#phys-finder 
 
 .header-block .header-logo {
     text-align: center
 }
-
 @media (min-width:767px) {
-    #header-nav-right,
+  #phys-finder   #header-nav-right,#phys-finder  
     #header-nav-left {
         display: block
-    }
+    }#phys-finder 
     .header-logo-block {
         margin-left: 2%
-    }
+    }#phys-finder 
     .header-block {
         width: 32%
     }
-}
+}#phys-finder 
 
 .pager-wrapper {
     clear: both
-}
+}#phys-finder 
 
 .pager {
     background: transparent;
@@ -2872,23 +2721,23 @@ max-width: 52%;
     position: relative;
     margin: 1rem auto;
     width: 90%
-}
+}#phys-finder 
 
 .pager .pager__item {
     border-bottom: 0;
     line-height: 3.125em;
     margin: 0;
     padding: 0 .350rem !important
-}
+}#phys-finder 
 
 .pager .pager__item a {
     text-decoration: none;
     color: #555
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--current {
     color: #3575a5
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--next {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/chevron-right.png) no-repeat center #3575a5;
@@ -2899,12 +2748,12 @@ max-width: 52%;
     right: 0;
     top: 0;
     width: 50px
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--next a {
     display: block;
     text-indent: -99999px
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--previous {
     position: absolute;
@@ -2913,51 +2762,49 @@ max-width: 52%;
     width: 50px;
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/chevron-left.png) no-repeat center #3575a5;
     background-size: 17px
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--previous a {
     display: block;
     text-indent: -99999px
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--first {
     display: none
-}
+}#phys-finder 
 
 .pager .pager__item.pager__item--last {
     display: none
 }
-
 @media (min-width:767px) {
-    .pager {
+  #phys-finder   .pager {
         width: 100%
     }
-}
+}#phys-finder 
 
 .attachment-after .custom-views-result-count {
     display: none
-}
+}#phys-finder 
 
 .views-count-page-result {
     display: inline-block;
     line-height: 10px;
     text-align: center;
     width: 100%
-}
+}#phys-finder 
 
 .views-count-page-result p {
     margin: 10px 0 15px
-}
+}#phys-finder 
 
 .l-region--sidebar-first {
     font-size: .875rem
-}
+}#phys-finder 
 
-.l-region--sidebar-first h2,
-.l-region--sidebar-first h3 {
+.l-region--sidebar-first h2,#phys-finder    .l-region--sidebar-first h3 {
     color: #555;
     font-weight: 400
-}
+}#phys-finder 
 
 .l-region--sidebar-first .block {
     background: #fff;
@@ -2965,43 +2812,43 @@ max-width: 52%;
     padding: 0 1rem 1rem 1rem;
     text-align: left;
     vertical-align: top
-}
+}#phys-finder 
 
 .l-region--sidebar-first .block ul {
     padding-left: 0;
     margin: 0
-}
+}#phys-finder 
 
 .l-region--sidebar-first .find-obagi-form h2 {
     padding-bottom: 0
-}
+}#phys-finder 
 
 .l-region--sidebar-first .find-obagi-form p {
     margin: .500rem 0
-}
+}#phys-finder 
 
 .l-region--sidebar-first .find-obagi-form input[type="search"] {
     max-width: 150px;
     margin-bottom: 1rem;
     font-size: .8750rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .find-obagi-form .phys-finder-miniform-wrapper .form-type-radios.form-item-searchopts {
     margin-bottom: .500rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .find-obagi-form .phys-finder-miniform-wrapper .form-type-radios.form-item-searchopts .form-item-searchopts {
     margin-right: .500rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .skin-concerns-filter-block {
     width: 100%
-}
+}#phys-finder 
 
 .l-region--sidebar-first .skin-concerns-filter-block li {
     margin-bottom: 5px;
     line-height: 1.200rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .skin-concerns-filter-block a {
     text-decoration: none;
@@ -3009,12 +2856,12 @@ max-width: 52%;
     color: #555;
     padding: .250rem;
     display: inline-block
-}
+}#phys-finder 
 
 .l-region--sidebar-first .skin-concerns-filter-block a:hover {
     color: #e1e1e1;
     background: #555
-}
+}#phys-finder 
 
 .l-region--sidebar-first .block--custom-obagi-block-zinc-codes {
     background-color: transparent;
@@ -3022,49 +2869,45 @@ max-width: 52%;
     float: left;
     width: 100%;
     *zoom: 1
-}
+}#phys-finder 
 
-.l-region--sidebar-first .block--custom-obagi-block-zinc-codes:before,
-.l-region--sidebar-first .block--custom-obagi-block-zinc-codes:after {
+.l-region--sidebar-first .block--custom-obagi-block-zinc-codes:before,#phys-finder    .l-region--sidebar-first .block--custom-obagi-block-zinc-codes:after {
     content: ".";
     display: block;
     height: 0;
     overflow: hidden
-}
+}#phys-finder 
 
 .l-region--sidebar-first .block--custom-obagi-block-zinc-codes:after {
     clear: both
 }
-
 @media (min-width:767px) {
-    .l-region--sidebar-first .block--custom-obagi-block-zinc-codes {
+  #phys-finder   .l-region--sidebar-first .block--custom-obagi-block-zinc-codes {
         float: none
     }
 }
-
 @media only screen and (min-width:672px) {
-    .l-region--sidebar-first .skin-concerns-filter-block {
+  #phys-finder   .l-region--sidebar-first .skin-concerns-filter-block {
         width: 32.26%;
         margin: 0 0 0 1.6%;
         float: left
-    }
+    }#phys-finder 
     .l-region--sidebar-first .skin-concerns-filter-block.second-row {
         margin: 1.250rem auto
     }
 }
-
 @media (min-width:767px) {
-    .l-region--sidebar-first .skin-concerns-filter-block {
+  #phys-finder   .l-region--sidebar-first .skin-concerns-filter-block {
         max-width: 200px
     }
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block {
     border: 0;
     background: transparent;
     margin: 0 auto;
     padding: 0 1rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .chicklets {
     background-image: none !important;
@@ -3073,12 +2916,12 @@ max-width: 52%;
     opacity: 1;
     margin-left: -3px;
     padding-left: 0
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share .body {
     text-align: center;
     padding-top: 1.250rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share .body .social-sprite {
     height: 32px;
@@ -3086,29 +2929,28 @@ max-width: 52%;
     display: inline-block;
     margin-left: 7%;
     border: 1px solid #fff !important
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share .body .social-sprite.first {
     margin-left: 0
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share .body .social-sprite #email-tile {
     padding: 16px;
     text-decoration: none
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share button {
     padding: .750rem 1.5rem
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share .social-copy {
     font-weight: 400
-}
+}#phys-finder 
 
-.l-region--sidebar-first .share-block .physician-share .social-copy,
-.l-region--sidebar-first .share-block .physician-share .social-hashtag {
+.l-region--sidebar-first .share-block .physician-share .social-copy,#phys-finder    .l-region--sidebar-first .share-block .physician-share .social-hashtag {
     display: none
-}
+}#phys-finder 
 
 .l-region--sidebar-first .share-block .physician-share #obagi-social-block {
     display: none;
@@ -3118,14 +2960,13 @@ max-width: 52%;
     background: transparent;
     padding: 0
 }
-
 @media (min-width:481px) {
-    .l-region--sidebar-first .find-obagi-form {
+  #phys-finder   .l-region--sidebar-first .find-obagi-form {
         display: inline-block;
         vertical-align: top;
         margin-bottom: 1.250rem;
         width: 49%
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block {
         background: #fff;
         border: 1px solid #cecece;
@@ -3135,121 +2976,119 @@ max-width: 52%;
         margin-bottom: 1.250rem;
         vertical-align: top;
         width: 49%
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block .physician-share .body {
         padding-top: 0
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block .physician-share button {
         display: none
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block .physician-share #obagi-social-block {
         display: block
-    }
-    .l-region--sidebar-first .share-block .physician-share .social-copy,
+    }#phys-finder 
+    .l-region--sidebar-first .share-block .physician-share .social-copy,#phys-finder  
     .l-region--sidebar-first .share-block .physician-share .social-hashtag {
         display: block
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block .physician-share .social-hashtag {
         margin-bottom: 0
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .l-region--sidebar-first .block {
+  #phys-finder   .l-region--sidebar-first .block {
         float: none;
         margin: 0 auto 1.250rem auto;
         width: 200px
-    }
+    }#phys-finder 
     .l-region--sidebar-first .find-obagi-form {
         display: block;
         height: auto;
         width: 200px
-    }
-    .l-region--sidebar-first .find-obagi-form label.location,
+    }#phys-finder 
+    .l-region--sidebar-first .find-obagi-form label.location,#phys-finder  
     .l-region--sidebar-first .find-obagi-form label.physician {
         display: block;
         vertical-align: top;
         padding-bottom: .500rem
-    }
+    }#phys-finder 
     .l-region--sidebar-first .find-obagi-form .phys-finder-miniform-wrapper .form-item-searchtext {
         margin-bottom: 1rem;
         padding-bottom: .500rem
-    }
+    }#phys-finder 
     .l-region--sidebar-first .share-block {
         display: block;
         height: auto
     }
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav {
     padding: 1.250rem 1.250rem 0 1.250rem
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav h2 {
     border-bottom: 1px solid #cecece;
     padding: 0 0 1rem 0;
     margin: 0
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section .accordion-section ul {
     margin-bottom: 1rem
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section .accordion-section ul li {
     padding: .500rem 0
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section .accordion-section ul li:last-of-type {
     border: 0
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section a {
     text-decoration: none
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section h3 {
     padding: 0;
     margin: 1rem 0
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section h3:after {
     font-family: 'fontello';
     content: '\e809';
     float: right;
     padding-right: 1rem
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section h3.active:after {
     content: '\e80a'
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav .section.last {
     border: 0
-}
+}#phys-finder 
 
 #block-custom-obagi-blog-accordion-nav #archive-list .months {
     padding-left: 1rem;
     margin-bottom: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav {
     padding: 0 0 2.500rem 0;
     border-top: 0;
     width: auto;
     clear: both
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav select {
     margin-bottom: 1rem
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav select:last-of-type {
     margin-bottom: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .block__title {
     padding: 10px 20px;
@@ -3258,11 +3097,11 @@ max-width: 52%;
     text-transform: uppercase;
     font-size: 18px;
     border: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section {
     border: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section h3 {
     padding: 1.250rem;
@@ -3272,84 +3111,79 @@ max-width: 52%;
     background: #eee;
     border-top: 2px solid #cecece;
     font-weight: 100
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section h3.active {
     border-bottom: 2px solid #cecece;
     font-weight: 400;
     color: #3489c3
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section .accordion-section ul li {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section .accordion-section ul li:last-of-type {
     border: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section ul {
     margin: 0;
     padding: 0
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section ul li {
     margin: 0;
     padding: 1rem 1rem .8rem 2rem
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav .section.last h3 {
     border-bottom: 2px solid #cecece
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav #archive-list li:last-of-type {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav #archive-list .year {
     display: block
-}
+}#phys-finder 
 
 .l-content #block-custom-obagi-blog-accordion-nav #archive-list .months li {
     border: 0
-}
+}#phys-finder 
 
 #block-views-module-filter-block-1 {
     display: none
-}
+}#phys-finder 
 
 .block-bean-module {
     display: none
-}
+}#phys-finder 
 
 .node-type-product-system .block-bean-module {
     display: none
 }
-
 @media (min-width:481px) {
-    .block-bean-module {
+  #phys-finder   .block-bean-module {
         display: block
-    }
+    }#phys-finder 
     .node-type-product-system .block-bean-module.show {
         display: block
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .node-type-product-system .block-bean-module.show {
+  #phys-finder   .node-type-product-system .block-bean-module.show {
         display: block
     }
-}
-
 .block-bean-module {
     margin-bottom: 1.250rem;
     width: 100%;
     padding: 0 !important
-}
+}#phys-finder 
 
 .block-bean-module a {
     text-decoration: none
-}
+}#phys-finder 
 
 .block-bean-module h3.block__title {
     margin: 0;
@@ -3357,32 +3191,32 @@ max-width: 52%;
     background: #fff;
     color: #555;
     position: absolute
-}
+}#phys-finder 
 
 .block-bean-module.last-bean {
     margin-bottom: 0
-}
+}#phys-finder 
 
 .block-bean-module .block__content {
     border: 0
-}
+}#phys-finder 
 
 .block-bean-module .content {
     position: relative;
     overflow: hidden;
     padding: 0;
     height: 124px
-}
+}#phys-finder 
 
 .block-bean-module .field--name-field-module-image {
     position: absolute;
     width: 200px
-}
+}#phys-finder 
 
 .block-bean-module .field--name-field-module-image img {
     border-right: 1px solid #cecece;
     max-width: 200px
-}
+}#phys-finder 
 
 .block-bean-module .field--name-field-module-body {
     position: absolute;
@@ -3392,34 +3226,33 @@ max-width: 52%;
     width: 100%;
     color: #555
 }
-
 @media only screen and (min-width:672px) {
-    .block-bean-module {
+  #phys-finder   .block-bean-module {
         width: 32.26%;
         margin: 0 0 0 1.6%;
         float: left
-    }
+    }#phys-finder 
     .block-bean-module h3.block__title {
         padding: 1.5rem 1rem;
         position: relative
-    }
+    }#phys-finder 
     .block-bean-module .entity-bean.bean-module {
         margin-top: 0;
         border-top: 1px solid #cecece
-    }
+    }#phys-finder 
     .block-bean-module .content {
         width: 100%
-    }
+    }#phys-finder 
     .block-bean-module.first-bean {
         margin-left: 0
-    }
+    }#phys-finder 
     .block-bean-module .field--name-field-module-image {
         width: auto
-    }
+    }#phys-finder 
     .block-bean-module .field--name-field-module-image img {
         border: 0;
         max-width: 200px
-    }
+    }#phys-finder 
     .block-bean-module .field--name-field-module-body {
         margin-top: 248px;
         height: 248px;
@@ -3427,85 +3260,73 @@ max-width: 52%;
         color: #fff;
         background: rgb 51, 51, 51;
         background: rgba(51, 51, 51, 0.8)
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .block-bean-module {
+  #phys-finder   .block-bean-module {
         max-width: 200px
-    }
-    .block-bean-module.first-bean,
+    }#phys-finder 
+    .block-bean-module.first-bean,#phys-finder  
     .block-bean-module.last-bean {
         margin: 0 auto 1.250rem auto
     }
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .sort-label {
     display: inline-block;
     width: 100%;
     text-align: center
-}
+}#phys-finder 
 
-.custom-obagi-ambassador-content .styled-select-bright,
-.custom-obagi-ambassador-content #edit-tid,
-.custom-obagi-ambassador-content .form-item-date-started-day,
-.custom-obagi-ambassador-content .form-item-date-started-month,
-.custom-obagi-ambassador-content .form-item-date-started-year,
-.custom-obagi-ambassador-content .form-item-age-range,
-.custom-obagi-ambassador-content .form-item-skin-concerns,
-.custom-obagi-ambassador-content .form-item-gender,
-.custom-obagi-ambassador-content .webform-client-form .form-select,
-.webform-client-form .custom-obagi-ambassador-content .form-select {
+.custom-obagi-ambassador-content .styled-select-bright,#phys-finder    .custom-obagi-ambassador-content #edit-tid,#phys-finder    .custom-obagi-ambassador-content .form-item-date-started-day,#phys-finder    .custom-obagi-ambassador-content .form-item-date-started-month,#phys-finder    .custom-obagi-ambassador-content .form-item-date-started-year,#phys-finder    .custom-obagi-ambassador-content .form-item-age-range,#phys-finder    .custom-obagi-ambassador-content .form-item-skin-concerns,#phys-finder    .custom-obagi-ambassador-content .form-item-gender,#phys-finder    .custom-obagi-ambassador-content .webform-client-form .form-select,#phys-finder    .webform-client-form .custom-obagi-ambassador-content .form-select {
     max-width: 320px;
     margin: .625rem auto
-}
+}#phys-finder 
 
-.custom-obagi-ambassador-content .button,
-.custom-obagi-ambassador-content button {
+.custom-obagi-ambassador-content .button,#phys-finder    .custom-obagi-ambassador-content button {
     display: block;
     max-width: 220px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .content-wrapper {
     border: none !important;
     background: transparent
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content #product-testimonials {
     border-top: 3px solid gainsboro
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper {
     float: left;
     width: 100%
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper span {
     display: block;
     padding-bottom: .625rem
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper .ambassador-image {
     padding-bottom: .625rem
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper .ambassador-copy {
     text-align: left
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper .ambassador-copy a.button {
     padding: .750rem .750rem
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper h2 {
     margin: 0 0 .500rem 0;
     padding: 0
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper h2 a {
     text-decoration: none
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper-month {
     border: 1px solid #cecece;
@@ -3513,7 +3334,7 @@ max-width: 52%;
     float: left;
     width: auto;
     margin: 1.250rem -0.900rem 1.250rem -0.900rem
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper-month .category-title {
     background: #6e7e8e;
@@ -3521,19 +3342,19 @@ max-width: 52%;
     margin: 0;
     padding: .625rem 0;
     text-align: center
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content .ambassador-wrapper-month .ambassador-month-winner {
     float: left;
     width: 100%;
     padding: 1rem;
     text-align: center
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content #ambassador-page-teaser-content {
     clear: both;
     width: auto
-}
+}#phys-finder 
 
 .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper {
     border-bottom: 1px solid #cecece;
@@ -3541,54 +3362,53 @@ max-width: 52%;
     text-align: center;
     margin-bottom: 1.250rem
 }
-
 @media (min-width:481px) {
-    .custom-obagi-ambassador-content .sort-label {
+  #phys-finder   .custom-obagi-ambassador-content .sort-label {
         text-align: left
-    }
-    .custom-obagi-ambassador-content .styled-select-bright,
-    .custom-obagi-ambassador-content #edit-tid,
-    .custom-obagi-ambassador-content .form-item-date-started-day,
-    .custom-obagi-ambassador-content .form-item-date-started-month,
-    .custom-obagi-ambassador-content .form-item-date-started-year,
-    .custom-obagi-ambassador-content .form-item-age-range,
-    .custom-obagi-ambassador-content .form-item-skin-concerns,
-    .custom-obagi-ambassador-content .form-item-gender,
-    .custom-obagi-ambassador-content .webform-client-form .form-select,
+    }#phys-finder 
+    .custom-obagi-ambassador-content .styled-select-bright,#phys-finder  
+    .custom-obagi-ambassador-content #edit-tid,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-date-started-day,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-date-started-month,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-date-started-year,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-age-range,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-skin-concerns,#phys-finder  
+    .custom-obagi-ambassador-content .form-item-gender,#phys-finder  
+    .custom-obagi-ambassador-content .webform-client-form .form-select,#phys-finder  
     .webform-client-form .custom-obagi-ambassador-content .form-select {
         max-width: 320px;
         margin: .625rem 0
-    }
-    .custom-obagi-ambassador-content .button,
+    }#phys-finder 
+    .custom-obagi-ambassador-content .button,#phys-finder  
     .custom-obagi-ambassador-content button {
         margin: 0
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content .ambassador-wrapper-month {
         margin: 1.250rem 0 1.250rem 0
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content .ambassador-wrapper-month .ambassador-month-winner {
         text-align: left
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content .ambassador-wrapper-month .ambassador-month-winner .ambassador-info {
         float: left;
         width: 24%;
         margin-left: 0
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content .ambassador-wrapper-month .ambassador-month-winner .ambassador-product {
         float: left;
         width: 24%;
         margin: 0 0 0 2%;
         text-align: center
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content .ambassador-wrapper-month .ambassador-month-winner .ambassador-copy {
         width: 48%;
         margin: 0 0 0 2%;
         float: left
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content {
         clear: both;
         width: 100%
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper {
         border: 1px solid #cecece;
         float: left;
@@ -3596,114 +3416,113 @@ max-width: 52%;
         margin: 0 0 1.250rem 1.6%;
         text-align: left;
         background-color: white
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper .ambassador-image {
         float: left;
         width: 49%;
         margin-left: 0
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper .ambassador-product {
         float: left;
         width: 49%;
         margin: 0 0 1% 2%;
         text-align: center
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper .ambassador-copy {
         clear: both
-    }
+    }#phys-finder 
     .custom-obagi-ambassador-content #ambassador-page-teaser-content .ambassador-wrapper.odd {
         margin-left: 0
     }
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual {
     text-align: center;
     clear: both
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .prev-next-wrap.top {
     margin-bottom: 1.250rem
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual h2 {
     padding: 0
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .ambassador-testimonial {
     text-align: left
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .ambassador-testimonial div.extra {
     display: none
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .ambassador-image {
     text-align: center
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .outer-video-container {
     margin-bottom: 1.250rem;
     width: 320px
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .social-sprite {
     width: 30px;
     height: 30px;
     display: inline-block;
     text-decoration: none
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .isi {
     margin: 2.5rem 0
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .isi p {
     font-size: .9rem
-}
+}#phys-finder 
 
 .ambassador-wrapper-individual .isi h3 {
     font-size: 1.3rem
 }
-
 @media (min-width:481px) {
-    .ambassador-wrapper-individual {
+  #phys-finder   .ambassador-wrapper-individual {
         text-align: left
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top {
         float: left;
         width: 100%;
         margin-bottom: 1.250rem
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .ambassador-info {
         margin-left: 42%;
         width: 40%;
         text-align: center
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .ambassador-info .bio {
         margin-bottom: 0
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .ambassador-image {
         width: 40%;
         float: left;
         margin-top: -60px
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .ambassador-image img {
         width: 100%
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .product-info {
         width: 40%;
         margin-left: 2%;
         float: left;
         text-align: center
-    }
+    }#phys-finder 
     .ambassador-wrapper-individual .ambassador-top .product-info img {
         max-width: 200px
-    }
-}
+    } 
+}#phys-finder 
 
 .featured-blogs-blogpage {
     float: left
-}
+}#phys-finder 
 
 .video-container {
     position: relative;
@@ -3711,41 +3530,39 @@ max-width: 52%;
     padding-top: 30px;
     height: 0;
     overflow: hidden
-}
+}#phys-finder 
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
+.video-container iframe,#phys-finder    .video-container object,#phys-finder    .video-container embed {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%
-}
+}#phys-finder 
 
 .view-id-Blog h2 {
     padding-bottom: .200rem
-}
+}#phys-finder 
 
 .view-id-Blog.featured-blog-block {
     float: left;
     padding: 1.250rem 0
-}
+}#phys-finder 
 
 .view-id-Blog.featured-blog-block h2 {
     margin: 0;
     padding: 1.5rem 0 .2rem 0
-}
+}#phys-finder 
 
 .view-id-Blog.featured-blog-block .view-content {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .view-id-Blog.featured-blog-block .views-row {
     background: #eee;
     margin: 0;
     padding-bottom: 1.250rem
-}
+}#phys-finder 
 
 .view-id-Blog .view-header {
     background: #6e7e8e;
@@ -3753,11 +3570,11 @@ max-width: 52%;
     padding: 1rem 0;
     text-align: center;
     clear: both
-}
+}#phys-finder 
 
 .view-id-Blog .view-header .category-title {
     font-size: 1.500rem
-}
+}#phys-finder 
 
 .view-id-Blog .views-row {
     background-color: white;
@@ -3766,11 +3583,11 @@ max-width: 52%;
     padding: 0 1.250rem 1.250rem 1.250rem;
     margin: 0;
     position: relative
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-title-1 {
     text-align: center
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-created {
     border-right: 1px solid #cecece;
@@ -3778,98 +3595,97 @@ max-width: 52%;
     line-height: 19px;
     clear: both;
     padding-right: 10px
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-field-blog-tags {
     clear: both;
     float: left;
     width: 100%
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-field-blog-tags span.views-label-field-blog-tags {
     float: left;
     font-weight: bold;
     min-width: 75px
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-field-blog-tags .field-content {
     clear: right
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-field-blog-image .field-content {
     width: 100%;
     clear: both;
     margin: 0
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-field-blog-image .field-content img {
     margin: 1.5rem 0;
     border: 1px solid #cecece
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-edit-node {
     position: absolute;
     bottom: 10px;
     right: 10px
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-edit-node a {
     font-size: 80%
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .blog-categories {
     text-align: center;
     margin: 0
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-body {
     width: 100%
-}
+}#phys-finder 
 
 .view-id-Blog .views-row .views-field-path {
     height: 25px;
     text-align: center;
     margin: 25px 0
-}
+}#phys-finder 
 
-body.node-type-blog-post .blogs-indiv-page-wrapper {
+.node-type-blog-post .blogs-indiv-page-wrapper {
     float: left;
     width: 100%;
     clear: both
-}
+}#phys-finder 
 
-body.node-type-blog-post .share-block-blog {
+.node-type-blog-post .share-block-blog {
     text-align: left
-}
+}#phys-finder 
 
-body.node-type-blog-post .share-block-blog .social-sprite {
+.node-type-blog-post .share-block-blog .social-sprite {
     display: inline-block;
     margin-right: .750rem;
     height: 32px;
     width: 32px;
     border: 1px solid #fff !important
-}
+}#phys-finder 
 
-body.node-type-blog-post .share-block-blog .social-sprite .chicklets {
+.node-type-blog-post .share-block-blog .social-sprite .chicklets {
     background-image: none !important;
     height: 32px;
     width: 32px
-}
+}#phys-finder 
 
-body.node-type-blog-post .share-block-blog .social-sprite #email-tile {
+.node-type-blog-post .share-block-blog .social-sprite #email-tile {
     padding: 16px;
     text-decoration: none
-}
+}#phys-finder 
 
-body.node-type-blog-post .image img {
+.node-type-blog-post .image img {
     border: 1px solid #cecece
 }
-
 @media (min-width:481px) {
-    .view-Blog.view-id-Blog.featured-blog-block .views-row {
+  #phys-finder   .view-Blog.view-id-Blog.featured-blog-block .views-row {
         background: whitesmoke;
         border: 1px solid #cecece
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row {
         border-bottom: 1px solid #cecece;
         float: left;
@@ -3877,7 +3693,7 @@ body.node-type-blog-post .image img {
         width: 100%;
         background: #fbfbfb;
         padding-bottom: 30px
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-created {
         border-right: 1px solid #cecece;
         float: left;
@@ -3885,134 +3701,120 @@ body.node-type-blog-post .image img {
         margin-right: 1.5%;
         max-width: 28%;
         padding-right: 1.5%
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-blog-tags {
         clear: right;
         float: left;
         width: 69%
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-blog-tags span.views-label-field-blog-tags {
         float: left;
         min-width: 75px
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-blog-tags .field-content {
         clear: right
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-blog-image .field-content {
         float: left;
         width: 35%
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-youtube-video .field-content {
         float: left;
         width: 35%
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-field-youtube-video .field-content iframe {
         margin: 1.5rem 0
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-body {
         float: left;
         margin-left: 3%;
         padding: 1.500rem 0 .5rem 0;
         width: 60%
-    }
+    }#phys-finder 
     .view-Blog.view-id-Blog .views-row .views-field-path {
         text-align: left;
         float: right;
         margin: 2% 0;
         width: 62%
-    }
-    body.node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper {
+    }#phys-finder 
+    .node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper {
         float: left;
         clear: both;
         margin: 0 0 15px;
         width: auto
-    }
-    body.node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper .blog-posted {
+    }#phys-finder 
+    .node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper .blog-posted {
         border-right: 1px solid #cecece;
         float: left;
         padding-right: 10px;
         max-width: 30%
-    }
-    body.node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper .blog-tags {
+    }#phys-finder 
+    .node-type-blog-post div.blogs-page-content-wrapper .created-tags-wrapper .blog-tags {
         clear: right;
         float: left;
         margin-left: 10px;
         max-width: 69%
-    }
-    body.node-type-blog-post div.blogs-page-content-wrapper .body .disclaimer {
+    }#phys-finder 
+    .node-type-blog-post div.blogs-page-content-wrapper .body .disclaimer {
         border-top: 1px solid #cecece;
         padding-top: 5px;
         font-size: 14px
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .view-id-Blog .views-row .views-field-title-1 {
+  #phys-finder   .view-id-Blog .views-row .views-field-title-1 {
         text-align: left
-    }
+    }#phys-finder 
     .view-id-Blog .views-row .blog-categories {
         text-align: left
     }
-}
+}#phys-finder 
 
 .skin-concerns-dropdown {
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .front .node__content {
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
-.front .styled-select-bright,
-.front #edit-tid,
-.front .form-item-date-started-day,
-.front .form-item-date-started-month,
-.front .form-item-date-started-year,
-.front .form-item-age-range,
-.front .form-item-skin-concerns,
-.front .form-item-gender,
-.front .webform-client-form .form-select,
-.webform-client-form .front .form-select {
+.front .styled-select-bright,#phys-finder    .front #edit-tid,#phys-finder    .front .form-item-date-started-day,#phys-finder    .front .form-item-date-started-month,#phys-finder    .front .form-item-date-started-year,#phys-finder    .front .form-item-age-range,#phys-finder    .front .form-item-skin-concerns,#phys-finder    .front .form-item-gender,#phys-finder    .front .webform-client-form .form-select,#phys-finder    .webform-client-form .front .form-select {
     max-width: 320px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .front .home-dropdown-container {
     padding: 0 1.250rem;
     margin-bottom: 1.250rem;
     text-align: center;
     width: 100%
-}
+}#phys-finder 
 
 .front .home-dropdown-container p {
     margin: 0 auto 1rem;
     max-width: 480px
 }
-
 @media (min-width:767px) {
-    .front .home-dropdown-container p {
+  #phys-finder   .front .home-dropdown-container p {
         margin: .500rem 0 0 0;
         display: inline-block;
         vertical-align: top
-    }
-    .front .home-dropdown-container .styled-select-bright,
-    .front .home-dropdown-container #edit-tid,
-    .front .home-dropdown-container .form-item-date-started-day,
-    .front .home-dropdown-container .form-item-date-started-month,
-    .front .home-dropdown-container .form-item-date-started-year,
-    .front .home-dropdown-container .form-item-age-range,
-    .front .home-dropdown-container .form-item-skin-concerns,
-    .front .home-dropdown-container .form-item-gender,
-    .front .home-dropdown-container .webform-client-form .form-select,
+    }#phys-finder 
+    .front .home-dropdown-container .styled-select-bright,#phys-finder  
+    .front .home-dropdown-container #edit-tid,#phys-finder  
+    .front .home-dropdown-container .form-item-date-started-day,#phys-finder  
+    .front .home-dropdown-container .form-item-date-started-month,#phys-finder  
+    .front .home-dropdown-container .form-item-date-started-year,#phys-finder  
+    .front .home-dropdown-container .form-item-age-range,#phys-finder  
+    .front .home-dropdown-container .form-item-skin-concerns,#phys-finder  
+    .front .home-dropdown-container .form-item-gender,#phys-finder  
+    .front .home-dropdown-container .webform-client-form .form-select,#phys-finder  
     .webform-client-form .front .home-dropdown-container .form-select {
         display: inline-block;
         width: 50%;
         margin-left: .50rem
-    }
-}
-
+    }}
 .homepage-promotions {
     width: 100%;
     background: #e5e5e5;
@@ -4021,28 +3823,27 @@ body.node-type-blog-post .image img {
     float: left;
     padding-top: 2rem;
     margin-bottom: 3rem
-}
+}#phys-finder 
 
 .homepage-promotions .view-homepage-promotions {
     max-width: 1200px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper {
     position: relative;
     max-width: 250px;
     margin: 0 auto 35px auto
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper a {
     text-decoration: none;
     color: #555
-}
+}#phys-finder 
 
-.homepage-promotions .promo-wrapper:hover span,
-.homepage-promotions .promo-wrapper:hover a {
+.homepage-promotions .promo-wrapper:hover span,#phys-finder    .homepage-promotions .promo-wrapper:hover a {
     color: #3575a5
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper .promo-copy {
     position: relative;
@@ -4050,81 +3851,74 @@ body.node-type-blog-post .image img {
     padding: .500rem .480rem .500rem .480rem;
     margin-top: -90px;
     *zoom: 1;
-    background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.8)), color-stop(50%, #fff));
+    background: -webkit-gradient(linear, 50% 0, 50% 100%,   color-stop(0, rgba(255, 255, 255, 0.8)),   color-stop(50%, #fff));
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.8) 0, #fff 50%);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8) 0, #fff 50%);
     background: -o-linear-gradient(top, rgba(255, 255, 255, 0.8) 0, #fff 50%);
     background: linear-gradient(top, rgba(255, 255, 255, 0.8) 0, #fff 50%);
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.8) 0, white 50%)
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper .promo-copy h4 {
     margin-top: 0
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper .promo-copy p {
     margin-bottom: 0
-}
+}#phys-finder 
 
 .homepage-promotions .promo-wrapper .promo-copy span {
     position: relative;
     top: -1px
 }
-
 @media (min-width:481px) {
-    .view-homepage-promotions .views-row {
+  #phys-finder   .view-homepage-promotions .views-row {
         clear: none;
         float: left;
         height: 17.5rem;
         width: 50%
-    }
+    }#phys-finder 
     .view-homepage-promotions .views-row .views-field {
         text-align: left
-    }
+    }#phys-finder 
     .view-homepage-promotions .views-row .views-field .promo-wrapper {
         width: 95%
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .view-homepage-promotions .views-row {
+  #phys-finder   .view-homepage-promotions .views-row {
         width: 33.332%
-    }
-}
-
+    }}
 .node-type-landing-page h2 {
     margin: .500em 0
-}
+}#phys-finder 
 
 .node-type-landing-page .l-branding {
     height: 2.500em;
     background-color: #666
-}
+}#phys-finder 
 
 .node-type-landing-page .content-wrapper {
     display: block;
     margin: 0 auto;
     width: 85%
-}
+}#phys-finder 
 
 .node-type-landing-page #landing-copy {
     vertical-align: top
-}
+}#phys-finder 
 
 .node-type-landing-page #landing-image-obagi-beautiful img {
     vertical-align: bottom
-}
+}#phys-finder 
 
-.node-type-landing-page #landing-image-virt-trans,
-.node-type-landing-page #landing-image-nuderm {
+.node-type-landing-page #landing-image-virt-trans,#phys-finder    .node-type-landing-page #landing-image-nuderm {
     padding: 5rem 0;
     text-align: center
-}
+}#phys-finder 
 
-.node-type-landing-page #landing-image-virt-trans img,
-.node-type-landing-page #landing-image-nuderm img {
+.node-type-landing-page #landing-image-virt-trans img,#phys-finder    .node-type-landing-page #landing-image-nuderm img {
     width: 80%
-}
+}#phys-finder 
 
 .node-type-landing-page .find-obagi-form {
     background-color: white;
@@ -4132,126 +3926,118 @@ body.node-type-blog-post .image img {
     margin-bottom: 1.500em;
     padding: 1em 1.500em;
     width: 80%
-}
+}#phys-finder 
 
 .node-type-landing-page .find-obagi-form h3 {
     margin: 0
-}
+}#phys-finder 
 
 .node-type-landing-page .phys-finder-miniform-wrapper .form-item-radios.form-item-searchopts .form-item-searchopts {
     display: inline-block;
     margin: .500rem 1rem .500rem 0
-}
+}#phys-finder 
 
 .node-type-landing-page .phys-finder-miniform-wrapper .form-item-searchtext {
     display: inline-block;
     margin-bottom: 1rem
-}
+}#phys-finder 
 
 .node-type-landing-page .phys-finder-miniform-wrapper .submit-wrapper {
     display: inline-block
-}
+}#phys-finder 
 
 .node-type-landing-page .l-footer {
     border-top: .5em solid #3575a5
-}
+}#phys-finder 
 
 .node-type-landing-page .l-footer .menu {
     text-align: left
-}
+}#phys-finder 
 
 .node-type-landing-page .l-footer .menu li.first a {
     padding: 0 .500rem 0 0
-}
+}#phys-finder 
 
 .landing-page-product .l-main {
     background-color: inherit;
     border-left: 0;
     border-right: 0
 }
-
 @media (min-width:767px) {
-    .node-type-landing-page .content-wrapper {
+  #phys-finder   .node-type-landing-page .content-wrapper {
         display: table-cell;
         padding-right: 1em;
         vertical-align: bottom;
         width: 48%
-    }
+    }#phys-finder 
     .phys-finder-miniform-wrapper .form-item-radios.form-item-searchopts .form-item-searchopts {
         margin: 0 1rem 0 0
-    }
+    }#phys-finder 
     .phys-finder-miniform-wrapper .form-item-searchtext {
         margin-right: 1em
-    }
+    }#phys-finder 
     .phys-finder-miniform-wrapper .submit-wrapper {
         display: inline-block
-    }
-}
-
+    }}
 .stretch {
     margin: -2em
-}
+}#phys-finder 
 
 .stretch-mobile {
     margin-left: -2em;
     margin-right: -2em
-}
+}#phys-finder 
 
 .product-system-summary p {
     margin: 0;
     padding: 1em 0
-}
+}#phys-finder 
 
 .page-node-643 .l-content {
     padding: 0 !important
-}
+}#phys-finder 
 
 .page-node-643 #obagi-page-tabs li {
     padding: 0 3rem
-}
+}#phys-finder 
 
 .page-node-643 #obagi-page-tabs .content-wrapper {
     float: none;
     padding: 0
 }
-
 @media (min-width:481px) {
     l-page {
         overflow: auto
-    }
+    }#phys-finder 
     .stretch-mobile {
         margin-left: 0;
         margin-right: 0
-    }
+    }#phys-finder 
     .stretch-tablet {
         margin-left: -2em;
         margin-right: -2em
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .stretch-mobile {
+  #phys-finder   .stretch-mobile {
         margin-left: 0;
         margin-right: 0
-    }
+    }#phys-finder 
     .stretch-tablet {
         margin-left: 0;
         margin-right: 0
-    }
-}
-
+    }}
 #obagi-page-tabs {
     display: block;
     margin: 0;
     padding: 0
-}
+}#phys-finder 
 
 #obagi-page-tabs>li {
     background-color: #eee;
     border-top: 3px solid gainsboro;
     padding: 0 2rem;
     clear: both
-}
+}#phys-finder 
 
 #obagi-page-tabs>li a {
     text-decoration: none;
@@ -4260,48 +4046,47 @@ body.node-type-blog-post .image img {
     display: inline-block;
     width: 100%;
     padding: .500rem 0
-}
+}#phys-finder 
 
 #obagi-page-tabs>li.active-page-tab {
     border-bottom: 3px solid gainsboro
-}
+}#phys-finder 
 
 #obagi-page-tabs>li.active-page-tab a {
     color: #3575a5;
     font-weight: 400
-}
+}#phys-finder 
 
 #obagi-page-tabs>li .li-arrows {
     float: right;
     color: #3575a5
-}
+}#phys-finder 
 
 #obagi-page-tabs>li:first-of-type {
     border-top: 0
-}
+}#phys-finder 
 
 #obagi-page-tabs>li:last-of-type {
     border-bottom: 3px solid gainsboro
-}
+}#phys-finder 
 
 #obagi-page-tabs>li.ic-tab-link {
     border-bottom: 3px solid gainsboro
-}
+}#phys-finder 
 
 #obagi-page-tabs .content-wrapper {
     background-color: white;
     float: left;
     padding: 0 0 1rem
-}
+}#phys-finder 
 
 #obagi-page-tabs .content-wrapper.last {
     border: 0
-}
+}#phys-finder 
 
-#obagi-page-tabs .content-wrapper h2,
-#obagi-page-tabs .content-wrapper h3 {
+#obagi-page-tabs .content-wrapper h2,#phys-finder    #obagi-page-tabs .content-wrapper h3 {
     text-align: center
-}
+}#phys-finder 
 
 #obagi-header-tabs {
     display: none;
@@ -4310,7 +4095,7 @@ body.node-type-blog-post .image img {
     margin: 0;
     width: auto;
     padding-left: 0
-}
+}#phys-finder 
 
 #obagi-header-tabs li {
     -webkit-box-sizing: border-box;
@@ -4318,171 +4103,158 @@ body.node-type-blog-post .image img {
     box-sizing: border-box;
     display: inline-block;
     max-height: 4.18rem
-}
+}#phys-finder 
 
 #obagi-header-tabs li a {
     color: #555;
     text-decoration: none;
     padding: 1.5rem;
     display: block
-}
+}#phys-finder 
 
 #obagi-header-tabs li a:hover {
     color: #3575a5
-}
+}#phys-finder 
 
-#obagi-header-tabs li.active-header-tab,
-#obagi-header-tabs li:hover {
+#obagi-header-tabs li.active-header-tab,#phys-finder    #obagi-header-tabs li:hover {
     border-bottom: 3px solid #3575a5;
     cursor: pointer
-}
+}#phys-finder 
 
 #obagi-header-tabs li.active-header-tab a {
     color: #3575a5;
     font-weight: 400
-}
+}#phys-finder 
 
 .view-product-details-block .views-field-field-skin-concerns ul {
     text-align: center
-}
+}#phys-finder 
 
 .view-product-details-block .views-field-field-skin-concerns ul li {
     display: inline
-}
+}#phys-finder 
 
 .view-product-details-block .views-field-field-skin-concerns ul li:last-of-type:after {
     content: ''
-}
+}#phys-finder 
 
 .view-product-details-block .views-field-body {
     text-align: center
 }
-
 @media (min-width:767px) {
-    #obagi-header-tabs {
+  #phys-finder   #obagi-header-tabs {
         display: block
-    }
+    }#phys-finder 
     #obagi-page-tabs {
         display: none
-    }
-    .content-wrapper h2,
-    .content-wrapper h3,
-    .page-wrapper h2,
+    }#phys-finder 
+    .content-wrapper h2,#phys-finder  
+    .content-wrapper h3,#phys-finder  
+    .page-wrapper h2,#phys-finder  
     .page-wrapper h3 {
         text-align: left
-    }
-}
-
+    }}
 .view .views-row.views-row-last {
     border: 0
-}
+}#phys-finder 
 
-.next-prev,
-.back-to-results {
+.next-prev,#phys-finder    .back-to-results {
     padding: 1rem 0;
     float: left;
     width: 100%
-}
+}#phys-finder 
 
-.next-prev a,
-.back-to-results a {
+.next-prev a,#phys-finder    .back-to-results a {
     text-decoration: none
-}
+}#phys-finder 
 
-.next-prev a.disabled,
-.back-to-results a.disabled {
+.next-prev a.disabled,#phys-finder    .back-to-results a.disabled {
     color: #bcbec0
-}
+}#phys-finder 
 
 .prev-next-wrap {
     float: left;
     width: 100%
-}
+}#phys-finder 
 
 .prev-next-wrap.top {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .prev-next-wrap.top .back-to-results {
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .prev-next-wrap.bottom {
     border-top: 1px solid #cecece
-}
+}#phys-finder 
 
 .prev-next-wrap.bottom .back-to-results {
     border-top: 1px solid #cecece
 }
-
 @media (min-width:481px) {
-    .prev-next-wrap.top .back-to-results,
+  #phys-finder   .prev-next-wrap.top .back-to-results,#phys-finder  
     .prev-next-wrap.bottom .back-to-results {
         border: 0
-    }
+    }#phys-finder 
     .back-to-results {
         float: left;
         width: 50%
-    }
+    }#phys-finder 
     .next-prev {
         float: right;
         width: 48%
-    }
-}
-
+    }}
 .inspiring-video.last {
     border-bottom: 1px solid #cecece
 }
-
 @media (min-width:481px) {
-    .inspiring-video {
+  #phys-finder   .inspiring-video {
         float: left;
         border-bottom: 1px solid #cecece;
         padding: 0 0 1.50rem 0
-    }
+    }#phys-finder 
     .inspiring-video:last-of-type {
         border: 0
-    }
+    }#phys-finder 
     .inspiring-video .video-col {
         width: 50%;
         margin-right: 1.250rem;
         float: left
-    }
+    }#phys-finder 
     .inspiring-video .inspiring-video-copy {
         float: left;
         vertical-align: top;
         width: 45%
-    }
+    }#phys-finder 
     .inspiring-video .inspiring-video-copy p:first-of-type {
         margin-top: 0
-    }
-}
-
+    }}
 @media (min-width:481px) {
-    .img-copy {
+  #phys-finder   .img-copy {
         float: left;
         padding: 0 0 1.50rem 0
-    }
+    }#phys-finder 
     .img-copy .img-col {
         width: 50%;
         margin-right: 1.250rem;
         float: left
-    }
+    }#phys-finder 
     .img-copy .copy-col {
         float: left;
         vertical-align: top;
         width: 45%
-    }
-    .img-copy .copy-col p:first-of-type,
+    }#phys-finder 
+    .img-copy .copy-col p:first-of-type,#phys-finder  
     .img-copy .copy-col h3:first-of-type {
         margin-top: 0
     }
-}
+}#phys-finder 
 
 .three-col-wrapper {
     width: 100%;
     float: left
-}
+}#phys-finder 
 
 .three-col-wrapper .col {
     vertical-align: top;
@@ -4491,269 +4263,262 @@ body.node-type-blog-post .image img {
     width: 100%;
     padding-bottom: 1.250rem;
     margin: 0
-}
+}#phys-finder 
 
 .three-col-wrapper .col p.caption {
     font-size: 1rem;
     font-weight: 300
-}
+}#phys-finder 
 
 .three-col-wrapper .col ul {
     padding-left: 24px
 }
-
 @media (min-width:481px) {
-    .three-col-wrapper {
+  #phys-finder   .three-col-wrapper {
         width: 100%;
         float: left
-    }
+    }#phys-finder 
     .three-col-wrapper .col {
         width: 29%;
         margin: 1.5%
     }
-}
+}#phys-finder 
 
 .ba-wrapper {
     width: 100%;
     float: left;
     margin-bottom: 1.50rem;
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .ba-wrapper h3 {
     text-align: center
-}
+}#phys-finder 
 
 .ba-wrapper .ba-image {
     text-align: center;
     margin-bottom: 2rem
-}
+}#phys-finder 
 
 .ba-wrapper .ba-image p.caption {
     text-transform: uppercase
-}
+}#phys-finder 
 
 .ba-wrapper .ba-links {
     text-align: center
-}
+}#phys-finder 
 
-.ba-wrapper .ba-links .button,
-.ba-wrapper .ba-links button {
+.ba-wrapper .ba-links .button,#phys-finder    .ba-wrapper .ba-links button {
     display: block;
     max-width: 320px;
     margin: 0 auto
-}
+}#phys-finder 
 
 .ba-wrapper .ba-links .learn-more {
     display: block;
     margin: 1.5rem 0
-}
+}#phys-finder 
 
 .ba-wrapper .ba-links .disclaimer {
     margin-bottom: 3rem
 }
-
 @media (min-width:481px) {
-    .ba-wrapper {
+  #phys-finder   .ba-wrapper {
         border-bottom: 1px solid #cecece
-    }
+    }#phys-finder 
     .ba-wrapper h3 {
         text-align: left
-    }
+    }#phys-finder 
     .ba-wrapper .ba-image {
         float: left;
         display: block;
         width: 48%;
         margin: 0 0 0 4%
-    }
+    }#phys-finder 
     .ba-wrapper .ba-image:first-child {
         margin-left: 0
-    }
+    }#phys-finder 
     .ba-wrapper .ba-images {
         width: 100%;
         float: left
-    }
+    }#phys-finder 
     .ba-wrapper .ba-links {
         clear: both
     }
-}
+}#phys-finder 
 
 .view-Testimonials .views-row {
     float: left;
     margin-bottom: 1.250rem;
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
 .view-Testimonials .views-row .testimonial {
     float: left
-}
+}#phys-finder 
 
 .view-Testimonials .views-row .testimonial .testimonial-pic {
     width: 150px;
     margin-right: 1.250rem;
     margin-bottom: 1.250rem
-}
+}#phys-finder 
 
 .view-Testimonials .views-row .testimonial .caption {
     text-align: center
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page .view-filters {
     border-bottom: 1px solid #cecece;
     padding-bottom: 1.250rem
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page #edit-tid-wrapper {
     float: none;
     margin: 0 auto;
     text-align: center;
     padding: .5rem 0 0 0
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page .views-row {
     border-bottom: 1px solid #cecece;
     padding-bottom: 1.250rem
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page .views-row .views-field-field-skin-concern-video .field-content {
     max-width: 350px
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page .views-row h3.field-content {
     text-align: left !important
-}
+}#phys-finder 
 
 .view-skin-concerns-filter-page .learn-more {
     margin-top: 2.250rem
 }
-
 @media (min-width:767px) {
-    .view-skin-concerns-filter-page #edit-tid-wrapper {
+  #phys-finder   .view-skin-concerns-filter-page #edit-tid-wrapper {
         text-align: left;
         float: left
-    }
-}
-
+    }}
 @media (min-width:481px) {
+
     .view-video-tips .views-row {
         float: left;
         border-bottom: 1px solid #cecece;
         padding: 0 0 1.50rem 0
-    }
+    }#phys-finder 
     .view-video-tips .views-row:last-of-type {
         border: 0
-    }
+    }#phys-finder 
     .view-video-tips .views-row .views-field-field-video-tips-video {
         width: 50%;
         margin-right: 1.250rem;
         float: left
-    }
+    }#phys-finder 
     .view-video-tips .views-row .views-field-body {
         float: left;
         width: 45%
-    }
+    }#phys-finder 
     .view-video-tips .views-row .views-field-body p:first-of-type {
         margin-top: 0
     }
-}
+}#phys-finder 
 
 .view-news .views-row {
     border-bottom: 1px solid #cecece;
     padding: 1.250rem 0
-}
+}#phys-finder 
 
 .view-news .views-field-title {
     text-align: center
-}
+}#phys-finder 
 
 .view-news .views-field-field-news-image {
     text-align: center
-}
+}#phys-finder 
 
 .view-news .views-field-field-news-image img {
     max-height: 175px;
     width: auto
-}
+}#phys-finder 
 
-.view-news .views-field-field-news-link,
-.view-news .views-field-field-news-docs {
+.view-news .views-field-field-news-link,#phys-finder    .view-news .views-field-field-news-docs {
     text-align: center;
     margin-top: 1rem
 }
-
 @media (min-width:481px) {
-    .view-news .views-row {
+  #phys-finder   .view-news .views-row {
         border: 0;
         width: 49.2%;
         float: left;
         margin: 1% 0 1% 1.6%;
         min-height: 335px
-    }
+    }#phys-finder 
     .view-news .views-row h2 {
         padding: 0
-    }
+    }#phys-finder 
     .view-news .views-row.views-row-odd {
         float: left;
         margin-left: 0
-    }
+    }#phys-finder 
     .view-news .views-row.views-row-even {
         float: left
-    }
+    }#phys-finder 
     .view-news .views-field-title {
         text-align: left
-    }
+    }#phys-finder 
     .view-news .views-field-field-news-image {
         float: right;
         width: 50%;
         min-height: 150px;
         padding: 1rem
-    }
+    }#phys-finder 
     .view-news .views-field-body {
         float: left;
         min-height: 150px;
         width: 50%
-    }
+    }#phys-finder 
     .view-news .views-field-field-news-docs {
         float: right;
         width: 50%;
         clear: right
-    }
-    .view-news .views-field-field-news-link,
+    }#phys-finder 
+    .view-news .views-field-field-news-link,#phys-finder  
     .view-news .views-field-news-doc {
         clear: both;
         float: right;
         width: 50%
-    }
+    }#phys-finder 
     .view-news .views-field-edit-node {
         clear: both
     }
-}
+}#phys-finder 
 
 #community-billboard {
     background-image: url("/sites/all/themes/responsive/images/billboard_community.jpg");
     height: 200px;
     background-position: center;
     background-size: cover
-}
+}#phys-finder 
 
 #community-ambassador-block {
     display: none
-}
+}#phys-finder 
 
 .community-main-blocks {
     border-bottom: 1px solid #cecece;
     border-top: 1px solid #cecece;
     padding: 1.250rem 0
-}
+}#phys-finder 
 
 .community-page-block img {
     margin-top: 1rem
-}
+}#phys-finder 
 
 #social-network-block {
     width: 100%;
     float: left
-}
+}#phys-finder 
 
 #social-network-block .social-site-link {
     vertical-align: top;
@@ -4763,265 +4528,253 @@ body.node-type-blog-post .image img {
     margin: 0;
     text-align: center
 }
-
 @media (min-width:481px) {
-    #social-network-block {
+  #phys-finder   #social-network-block {
         width: 100%;
         float: left
-    }
+    }#phys-finder 
     #social-network-block .social-site-link {
         width: 25%;
         margin: 3%
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .community-page-block {
+  #phys-finder   .community-page-block {
         display: inline-block;
         vertical-align: top;
         width: 49%
-    }
+    }#phys-finder 
     #community-inner-circle-block {
         padding-right: 1.250rem
-    }
+    }#phys-finder 
     #community-ambassador-block {
         border-left: 1px solid #cecece;
         display: inline-block;
         padding: 0 0 0 1.250rem
-    }
+    }#phys-finder 
     #community-billboard {
         background-size: contain
     }
-}
+}#phys-finder 
 
 .page-node-849 .inner-circle-img {
     padding-top: 1.250rem
-}
+}#phys-finder 
 
 .page-node-849 .form-item-submitted-are-you-a-us-resident {
     position: relative
-}
+}#phys-finder 
 
 .page-node-849 .form-item-submitted-are-you-a-us-resident label.error {
     position: absolute;
     top: 0;
     left: 60px
-}
+}#phys-finder 
 
-.page-node-849 #edit-submitted-zip-code,
-.page-node-849 #edit-submitted-name,
-.page-node-849 #edit-submitted-email {
+.page-node-849 #edit-submitted-zip-code,#phys-finder    .page-node-849 #edit-submitted-name,#phys-finder    .page-node-849 #edit-submitted-email {
     max-width: 256px
-}
+}#phys-finder 
 
 .page-node-849 .optional-fields-markup {
     border-top: 1px solid #cecece
-}
+}#phys-finder 
 
 #ic-thankyou-page .inner-circle-img {
     padding-top: 1.250rem
 }
-
 @media (min-width:481px) {
-    .page-node-849 .inner-circle-img {
+  #phys-finder   .page-node-849 .inner-circle-img {
         display: none
-    }
+    }#phys-finder 
     .page-node-849 .webform-client-form-21 {
         background: url("/sites/default/files/community_join-the-inner-circle.png") no-repeat right 20px;
         background-size: 40%
-    }
+    }#phys-finder 
     #ic-thankyou-page .inner-circle-img {
         text-align: left
     }
-}
+}#phys-finder 
 
 #ambassador-search h3.accordion-header {
     background: #e5e5e5
-}
+}#phys-finder 
 
 #ambassador-search h3.accordion-header:before {
     font-family: "fontello";
     speak: none;
     content: "\e809"
-}
+}#phys-finder 
 
 #ambassador-search h3.accordion-header.active {
     background: #ba5915;
     color: #fff
-}
+}#phys-finder 
 
 #ambassador-search h3.accordion-header.active:before {
     content: "\e80a"
-}
+}#phys-finder 
 
 #ambassador-search .accordion-header {
     padding: .600rem
-}
+}#phys-finder 
 
 #ambassador-search .accordion-section {
     padding-top: 1.250rem
-}
+}#phys-finder 
 
 #ambassador-search .accordion-section.active {
     display: block
-}
+}#phys-finder 
 
 .faq-accordion h3.faq-accordion-header {
     background: #e5e5e5
-}
+}#phys-finder 
 
 .faq-accordion h3.faq-accordion-header:before {
     font-family: fontello;
     speak: none;
     content: "\e809"
-}
+}#phys-finder 
 
 .faq-accordion h3.faq-accordion-header.active {
     background: #ba5915;
     color: #fff
-}
+}#phys-finder 
 
 .faq-accordion h3.faq-accordion-header.active:before {
     content: "\e80a"
-}
+}#phys-finder 
 
 .faq-accordion .faq-accordion-header {
     padding: .6rem
-}
+}#phys-finder 
 
 .faq-accordion .faq-accordion-section {
     padding-top: 1.25rem
-}
+}#phys-finder 
 
 .faq-accordion .faq-accordion-section.active {
     display: block
-}
+}#phys-finder 
 
 #ambassador-search .amb-section {
     border-bottom: 2px solid #cecece;
     float: left;
     padding: 1.250rem 0
-}
+}#phys-finder 
 
 #ambassador-search .amb-section .img {
     margin-top: 1rem
-}
+}#phys-finder 
 
 #ambassador-search .amb-section.last {
     border: 0
-}
+}#phys-finder 
 
 #ambassador-search .copy {
     width: 70%
-}
+}#phys-finder 
 
 #ambassador-search .img {
     text-align: center;
     width: 30%
-}
+}#phys-finder 
 
 #ambassador-search #edit-submitted-photo-upload-upload-button {
     display: none
-}
+}#phys-finder 
 
 .webform-component--story-format {
     margin-left: 2px
-}
+}#phys-finder 
 
 .webform-component--complementary-product .form-item {
     display: inline-block;
     width: 49%
-}
+}#phys-finder 
 
 .webform-component--connect {
     width: 100%
-}
+}#phys-finder 
 
 .webform-component--connect .sprites-sprite {
     display: inline-block
-}
+}#phys-finder 
 
-.webform-component--connect .connect-left,
-.webform-component--connect .connect-right {
+.webform-component--connect .connect-left,#phys-finder    .webform-component--connect .connect-right {
     display: inline-block;
     width: 49%;
     vertical-align: top
-}
+}#phys-finder 
 
 .webform-component--connect input.form-text {
     display: inline-block;
     vertical-align: top;
     width: 80%
-}
+}#phys-finder 
 
 .webform-client-form-5 span.form-required {
     display: none
-}
+}#phys-finder 
 
 .webform-client-form-5 .webform-submit {
     margin: 0
-}
+}#phys-finder 
 
 .webform-client-form-5 .form-item-submitted-customer-type label.error {
     top: 53px
-}
+}#phys-finder 
 
 .webform-client-form-5 .form-item-submitted-contact-method label.error {
     left: 80px
 }
-
 @media (min-width:481px) {
-    #contact-info .col {
+  #phys-finder   #contact-info .col {
         display: inline-block;
         width: 49%;
         vertical-align: top
-    }
-}
-
+    }}
 @media only screen and (min-width:500px) {
-    .webform-client-form-5 .form-item-submitted-customer-type label.error {
+  #phys-finder   .webform-client-form-5 .form-item-submitted-customer-type label.error {
         left: 300px;
         top: 0
     }
-}
+}#phys-finder 
 
 .reseller-list {
     margin: 0;
     padding: 0
-}
+}#phys-finder 
 
 .reseller-list li {
     color: #d00
 }
-
 @media (min-width:481px) {
-    .reseller-list {
+  #phys-finder   .reseller-list {
         padding: 0 0 0 40px;
         margin: 1em 0
     }
-}
+}#phys-finder 
 
-body.page-node-929 h4.section-header,
-body.page-node-930 h4.section-header {
+.page-node-929 h4.section-header,#phys-finder    .page-node-930 h4.section-header {
     display: none
-}
+}#phys-finder 
 
-body.page-node-344 h2 {
+.page-node-344 h2 {
     text-align: left !important
-}
+}#phys-finder 
 
-body.page-node-344 .state-regulation-content .state-reg-map {
+.page-node-344 .state-regulation-content .state-reg-map {
     width: 100%;
     clear: both;
     text-align: center;
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
-body.page-node-344 .state-regulation-content .state-reg-map img {
+.page-node-344 .state-regulation-content .state-reg-map img {
     max-width: 90%
-}
+}#phys-finder 
 
-body.page-node-344 .category-title {
+.page-node-344 .category-title {
     padding: 15px 15px 10px 15px;
     background: #ededed;
     border-top: 1px solid #cecece;
@@ -5029,81 +4782,78 @@ body.page-node-344 .category-title {
     color: #3575a5;
     font-size: 1.5rem;
     margin: 35px 0 10px 0
-}
+}#phys-finder 
 
-body.page-node-344 .product-content-wrapper {
+.page-node-344 .product-content-wrapper {
     text-align: center;
     background: #fff;
     border: 1px solid #cecece;
     margin: 10px 0 25px;
     padding: 10px
-}
+}#phys-finder 
 
-body.page-node-344 .product-content-image {
+.page-node-344 .product-content-image {
     min-height: 150px
 }
-
 @media (min-width:767px) {
-    body.page-node-344 .product-content-wrapper {
+  #phys-finder   .page-node-344 .product-content-wrapper {
         text-align: center;
         display: inline-block;
         margin: 1% 1% 0 0;
         vertical-align: top;
         width: 48%;
         min-height: 345px
-    }
-    body.page-node-344 .product-content-wrapper.obacgi-c-fx {
+    }#phys-finder 
+    .page-node-344 .product-content-wrapper.obacgi-c-fx {
         margin: 1% 0 0 2%
-    }
-    body.page-node-344 .product-content-wrapper.obacgi-c-fx img {
+    }#phys-finder 
+    .page-node-344 .product-content-wrapper.obacgi-c-fx img {
         padding-top: 19px
-    }
-    body.page-node-344 .product-content-wrapper .product-content-body,
-    body.page-node-344 .product-content-wrapper .product-content-image {
+    }#phys-finder 
+    .page-node-344 .product-content-wrapper .product-content-body,#phys-finder  
+    .page-node-344 .product-content-wrapper .product-content-image {
         clear: both;
         float: none;
         text-align: left;
         width: 100%
-    }
-    body.page-node-344 .product-content-wrapper .product-content-body {
+    }#phys-finder 
+    .page-node-344 .product-content-wrapper .product-content-body {
         min-height: 90px
-    }
-    body.page-node-344 .product-content-wrapper .product-content-image {
+    }#phys-finder 
+    .page-node-344 .product-content-wrapper .product-content-image {
         display: block;
         text-align: center
     }
-}
+}#phys-finder 
 
 #virtTrans {
     height: 1500px;
     width: 100%
-}
+}#phys-finder 
 
 .n2nd_success_button {
     margin-top: 25px;
     text-align: center
-}
+}#phys-finder 
 
 #derm_body_list li {
     list-style-type: disc
-}
+}#phys-finder 
 
 #international-header {
     background-image: url(/sites/all/themes/responsive/images/obagi-intl-map.png);
     background-position-x: right;
     background-repeat: no-repeat;
     padding-right: 465px
-}
+}#phys-finder 
 
-.flexslider .flex-direction-nav a,
-.flexslider .flex-direction-nav a {
+.flexslider .flex-direction-nav a,#phys-finder    .flexslider .flex-direction-nav a {
     display: block
-}
+}#phys-finder 
 
-.flexslider:hover .flex-direction-nav a,
-.flexslider:hover .flex-direction-nav a {
+.flexslider:hover .flex-direction-nav a,#phys-finder    .flexslider:hover .flex-direction-nav a {
     display: block
-}
+}#phys-finder 
 
 .sub-sections {
     background-color: #f1efee;
@@ -5116,7 +4866,7 @@ body.page-node-344 .product-content-image {
     overflow: hidden;
     padding: 0;
     text-align: center
-}
+}#phys-finder 
 
 .sub-sections li {
     -webkit-box-sizing: border-box;
@@ -5124,7 +4874,7 @@ body.page-node-344 .product-content-image {
     box-sizing: border-box;
     display: inline-block;
     max-height: 4.18rem
-}
+}#phys-finder 
 
 .sub-sections li a {
     color: #555;
@@ -5132,23 +4882,22 @@ body.page-node-344 .product-content-image {
     text-decoration: none;
     padding: 1.3rem 2.5rem 1rem 2.5rem;
     display: block
-}
+}#phys-finder 
 
 .sub-sections li a:hover {
     background: #3A87C1;
     color: #FFFFFF
-}
+}#phys-finder 
 
-.sub-sections li.active,
-.sub-sections li:hover {
+.sub-sections li.active,#phys-finder    .sub-sections li:hover {
     cursor: pointer;
     border-bottom: 3px solid #29587b;
-}
+}#phys-finder 
 
 .sub-sections li.active a {
     background: #3A87C1;
     color: #FFFFFF;
-}
+}#phys-finder 
 
 .formulation-options {
     display: table;
@@ -5156,7 +4905,7 @@ body.page-node-344 .product-content-image {
     margin: 0;
     padding: 0;
     width: 100%
-}
+}#phys-finder 
 
 .formulation-options li {
     background-color: #f0fcff;
@@ -5166,47 +4915,43 @@ body.page-node-344 .product-content-image {
     padding: .75rem .5rem;
     text-align: center;
     vertical-align: middle
-}
+}#phys-finder 
 
 .formulation-options li a {
     color: #3575a5;
-    font-family: "Proxima N W01 Smbd", sans-serif;
+    font-family: "Proxima N W01 Smbd",   sans-serif;
     font-size: 14px
-}
+}#phys-finder 
 
 .formulation-options .active {
     background-color: #3a87c1
-}
+}#phys-finder 
 
 .formulation-options .active a {
     color: white
-}
+}#phys-finder 
 
 .success-quote {
     border-bottom: 1px solid #cecece;
     padding: 1.5em 0
-}
+}#phys-finder 
 
 .success-quote:last-of-type {
     border-bottom: 0;
     padding-bottom: 0
-}
+}#phys-finder 
 
 #product-details-section {
     margin-top: 1em
-}
+}#phys-finder 
 
-.page-node-929 .l-content,
-.page-node-930 .l-content,
-.node-type-product-system .l-content {
+.page-node-929 .l-content,#phys-finder    .page-node-930 .l-content,#phys-finder    .node-type-product-system .l-content {
     padding: 0 1rem !important
-}
+}#phys-finder 
 
-.page-node-929 h4.active,
-.page-node-930 h4.active,
-.node-type-product-system h4.active {
+.page-node-929 h4.active,#phys-finder    .page-node-930 h4.active,#phys-finder    .node-type-product-system h4.active {
     color: #3575a5
-}
+}#phys-finder 
 
 .product-formulation {
     background-color: white;
@@ -5215,34 +4960,34 @@ body.page-node-344 .product-content-image {
     text-align: center;
     top: 0;
     width: 100%
-}
+}#phys-finder 
 
 .product-formulation .flex-direction-nav a {
     background-color: #eee;
     padding: 110px 5px;
     text-decoration: none;
     top: 0
-}
+}#phys-finder 
 
 .product-formulation .flex-direction-nav a:before {
     font-size: 2rem
-}
+}#phys-finder 
 
 .product-formulation .flex-direction-nav .flex-prev {
     left: 0
-}
+}#phys-finder 
 
 .product-formulation .flex-direction-nav .flex-next {
     right: 0
-}
+}#phys-finder 
 
 .product-formulation .flex-direction-nav .flex-disabled {
     display: none
-}
+}#phys-finder 
 
 .product-formulation .product-list {
     padding: 0 35px
-}
+}#phys-finder 
 
 .product-formulation .product-list li {
     border: 1px solid #eee;
@@ -5250,57 +4995,53 @@ body.page-node-344 .product-content-image {
     margin: 0 5px 1px;
     padding: 10px 0;
     width: 100%
-}
+}#phys-finder 
 
 .product-formulation .product-list .views-field-field-product-image {
     cursor: pointer
-}
+}#phys-finder 
 
 .product-formulation .product-list .flex-active-slide {
     border: 1px solid #3575a5;
     box-sizing: border-box;
     padding-right: 1px
-}
+}#phys-finder 
 
 .product-formulation .product-hero-shot {
     padding: 12px 0;
     height: 175px
-}
+}#phys-finder 
 
 .product-formulation .product-hero-shot li {
     background-color: white
-}
+}#phys-finder 
 
 .product-formulation .product-hero-shot li img {
     max-width: 80%
-}
+}#phys-finder 
 
 .product-formulation .solo-product {
     height: 275px
-}
+}#phys-finder 
 
 .product-formulation .solo-product li img {
     max-width: 100%
-}
+}#phys-finder 
 
-#how-it-works-content ul,
-#real-results-content ul,
-#success-stories-content ul {
+#how-it-works-content ul,#phys-finder    #real-results-content ul,#phys-finder    #success-stories-content ul {
     list-style: initial
-}
+}#phys-finder 
 
-#how-it-works-content h4,
-#real-results-content h4,
-#success-stories-content h4 {
+#how-it-works-content h4,#phys-finder    #real-results-content h4,#phys-finder    #success-stories-content h4 {
     color: #555
-}
+}#phys-finder 
 
 .regs {
     border-bottom: 1px solid #eee;
     border-top: 1px solid #eee;
     font-size: .750em;
     padding: 1rem 0
-}
+}#phys-finder 
 
 .section-header {
     background-color: #eee;
@@ -5310,19 +5051,19 @@ body.page-node-344 .product-content-image {
     font-size: 1.250rem;
     margin: 0 -1rem;
     padding: .600rem 2rem .500rem
-}
+}#phys-finder 
 
 .n2nd-cta-container {
     margin: 2rem 0
-}
+}#phys-finder 
 
 .n2nd-cta-container .cell:first-child {
     padding-bottom: 0 !important
-}
+}#phys-finder 
 
 .n2nd-cta-container .cell:last-child {
     padding-top: 0 !important
-}
+}#phys-finder 
 
 .cta {
     background: #eee;
@@ -5330,130 +5071,124 @@ body.page-node-344 .product-content-image {
     text-align: center;
     padding: .250rem;
     margin: 1.250rem 0 1rem
-}
+}#phys-finder 
 
-.product-system-pi,
-.product-system-isi {
+.product-system-pi,#phys-finder    .product-system-isi {
     margin-top: 2em
-}
+}#phys-finder 
 
-.product-system-pi ul,
-.product-system-isi ul {
+.product-system-pi ul,#phys-finder    .product-system-isi ul {
     list-style: disc
-}
+}#phys-finder 
 
-.product-container,
-.product-container-single {
+.product-container,#phys-finder    .product-container-single {
     background-color: white;
     position: relative
-}
+}#phys-finder 
 
 .product-container {
     height: 260px
-}
+}#phys-finder 
 
 .product-container-single {
     height: 200px
-}
+}#phys-finder 
 
 #product-system-content-title {
     margin: 1.500rem 0;
     padding: 0
-}
+}#phys-finder 
 
 #product-system-content-body strong {
     color: #555
 }
-
 @media (min-width:16) and (max-width:481px) {
-    .sub-sections {
+  #phys-finder   .sub-sections {
         display: none
-    }
-}
-
+    }}
 @media (min-width:481px) {
-    .cell {
+  #phys-finder   .cell {
         display: table-cell;
         width: 50%
-    }
+    }#phys-finder 
     .formulation-options {
         font-size: 1rem
-    }
+    }#phys-finder 
     .formulation-options li {
         padding: .75rem 0
-    }
+    }#phys-finder 
     .formulation-options li a {
         padding: .75rem .500rem
-    }
+    }#phys-finder 
     .product-container {
         height: 365px
-    }
+    }#phys-finder 
     .product-formulation {
         width: 87%
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav a {
         padding: 171px 10px;
         top: 0
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav .flex-prev {
         left: 0
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav .flex-next {
         right: -15%
-    }
+    }#phys-finder 
     .product-formulation #product-thumbs-0 {
         margin-top: -5px
-    }
+    }#phys-finder 
     .product-formulation .product-list {
         margin-top: 1.5em;
         padding: 0 2.5rem;
         width: 115%
-    }
+    }#phys-finder 
     .product-formulation .product-list li {
         margin: 10px 5px;
         padding: 10px 1px
-    }
+    }#phys-finder 
     .product-formulation .product-list li:hover {
         cursor: pointer
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot {
         height: 245px;
         padding: 0
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot .flex-viewport {
         height: 280px
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot li {
         max-height: 350px;
         padding-top: 0rem
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot li img {
         max-height: none;
         max-width: 100%
-    }
+    }#phys-finder 
     .product-formulation .solo-product {
         height: 470px !important;
         width: 742px;
         margin-left: -55px
-    }
+    }#phys-finder 
     .n2nd-cta-container .cell:first-child {
         padding-bottom: .500em !important
-    }
+    }#phys-finder 
     .n2nd-cta-container .cell:last-child {
         padding-top: .500em !important
-    }
+    }#phys-finder 
     .section-header {
         display: none
-    }
+    }#phys-finder 
     .sub-sections {
         display: block
-    }
+    }#phys-finder 
     #product-focus-0 {
         height: auto
-    }
+    }#phys-finder 
     #spotlight-container-0 {
         max-height: none
-    }
+    }#phys-finder 
     .success-quote {
         background: #fff;
         border: 1px solid #cecece;
@@ -5463,22 +5198,20 @@ body.page-node-344 .product-content-image {
         max-width: 45%;
         padding: 1rem 1rem 0 1rem;
         vertical-align: top
-    }
+    }#phys-finder 
     .success-quote:last-of-type {
         border-bottom: 1px solid #cecece
-    }
+    }#phys-finder 
     #success-stories-content h4 {
         color: #3575a5
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .product-container {
+  #phys-finder   .product-container {
         height: 485px
-    }
+    }#phys-finder 
     .product-container-single {
         height: 405px
-    }
+    }#phys-finder 
     .product-formulation {
         background-color: white;
         height: auto;
@@ -5488,313 +5221,235 @@ body.page-node-344 .product-content-image {
         text-align: center;
         width: 91%;
         max-width: 710px
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav a {
         padding: 230px 10px
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav .flex-prev {
         left: -55px
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav .flex-next {
         right: -9.35%
-    }
+    }#phys-finder 
     .product-formulation .product-list {
         margin-left: -1.5rem;
         margin-top: 25px;
         padding-left: 1rem;
         width: 107.5%
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot {
         height: 365px
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot .flex-viewport {
         height: 395px
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot li {
         max-height: 350px
-    }
+    }#phys-finder 
     .product-formulation .product-hero-shot li img {
         max-height: none;
         max-width: 95%
-    }
-}
-
+    }}
 @media (min-width:1200px) {
-    .formulation-options {
+  #phys-finder   .formulation-options {
         font-size: 1rem
-    }
+    }#phys-finder 
     .product-formulation {
         width: 91.5%
-    }
+    }#phys-finder 
     .product-formulation .flex-direction-nav .flex-next {
         right: -8.75%
-    }
+    }#phys-finder 
     .node-type-product-system .l-content {
         padding: 0 2rem !important
     }
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all a,
-#custom-obagi-products-systems-indv a {
+#custom-obagi-products-systems-all a,#phys-finder    #custom-obagi-products-systems-indv a {
     text-decoration: none
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .page-copy,
-#custom-obagi-products-systems-indv .page-copy {
+#custom-obagi-products-systems-all .page-copy,#phys-finder    #custom-obagi-products-systems-indv .page-copy {
     text-align: center;
     padding: 0 1.25em 1.25rem 1.25em
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .page-copy .styled-select-bright,
-#custom-obagi-products-systems-all .page-copy #edit-tid,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-day,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-month,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-year,
-#custom-obagi-products-systems-all .page-copy .form-item-age-range,
-#custom-obagi-products-systems-all .page-copy .form-item-skin-concerns,
-#custom-obagi-products-systems-all .page-copy .form-item-gender,
-#custom-obagi-products-systems-all .page-copy .webform-client-form .form-select,
-.webform-client-form #custom-obagi-products-systems-all .page-copy .form-select,
-#custom-obagi-products-systems-indv .page-copy .styled-select-bright,
-#custom-obagi-products-systems-indv .page-copy #edit-tid,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-day,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-month,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-year,
-#custom-obagi-products-systems-indv .page-copy .form-item-age-range,
-#custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns,
-#custom-obagi-products-systems-indv .page-copy .form-item-gender,
-#custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select,
-.webform-client-form #custom-obagi-products-systems-indv .page-copy .form-select {
+#custom-obagi-products-systems-all .page-copy .styled-select-bright,#phys-finder    #custom-obagi-products-systems-all .page-copy #edit-tid,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-day,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-month,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-year,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-age-range,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-skin-concerns,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-gender,#phys-finder    #custom-obagi-products-systems-all .page-copy .webform-client-form .form-select,#phys-finder    .webform-client-form #custom-obagi-products-systems-all .page-copy .form-select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .styled-select-bright,#phys-finder    #custom-obagi-products-systems-indv .page-copy #edit-tid,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-day,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-month,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-year,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-age-range,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-gender,#phys-finder    #custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select,#phys-finder    .webform-client-form #custom-obagi-products-systems-indv .page-copy .form-select {
     max-width: 320px;
     margin: 0 auto
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .page-copy .styled-select-bright select,
-#custom-obagi-products-systems-all .page-copy #edit-tid select,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-day select,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-month select,
-#custom-obagi-products-systems-all .page-copy .form-item-date-started-year select,
-#custom-obagi-products-systems-all .page-copy .form-item-age-range select,
-#custom-obagi-products-systems-all .page-copy .form-item-skin-concerns select,
-#custom-obagi-products-systems-all .page-copy .form-item-gender select,
-#custom-obagi-products-systems-all .page-copy .webform-client-form .form-select select,
-.webform-client-form #custom-obagi-products-systems-all .page-copy .form-select select,
-#custom-obagi-products-systems-indv .page-copy .styled-select-bright select,
-#custom-obagi-products-systems-indv .page-copy #edit-tid select,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-day select,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-month select,
-#custom-obagi-products-systems-indv .page-copy .form-item-date-started-year select,
-#custom-obagi-products-systems-indv .page-copy .form-item-age-range select,
-#custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns select,
-#custom-obagi-products-systems-indv .page-copy .form-item-gender select,
-#custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select select,
-.webform-client-form #custom-obagi-products-systems-indv .page-copy .form-select select {
+#custom-obagi-products-systems-all .page-copy .styled-select-bright select,#phys-finder    #custom-obagi-products-systems-all .page-copy #edit-tid select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-day select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-month select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-date-started-year select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-age-range select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-skin-concerns select,#phys-finder    #custom-obagi-products-systems-all .page-copy .form-item-gender select,#phys-finder    #custom-obagi-products-systems-all .page-copy .webform-client-form .form-select select,#phys-finder    .webform-client-form #custom-obagi-products-systems-all .page-copy .form-select select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .styled-select-bright select,#phys-finder    #custom-obagi-products-systems-indv .page-copy #edit-tid select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-day select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-month select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-year select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-age-range select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .form-item-gender select,#phys-finder    #custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select select,#phys-finder    .webform-client-form #custom-obagi-products-systems-indv .page-copy .form-select select {
     font-size: 13px
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .page-copy.filtered-products .styled-select-bright,
-#custom-obagi-products-systems-all .page-copy.filtered-products #edit-tid,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-day,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-month,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-year,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-age-range,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-skin-concerns,
-#custom-obagi-products-systems-all .page-copy.filtered-products .form-item-gender,
-#custom-obagi-products-systems-all .page-copy.filtered-products .webform-client-form .form-select,
-.webform-client-form #custom-obagi-products-systems-all .page-copy.filtered-products .form-select,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .styled-select-bright,
-#custom-obagi-products-systems-indv .page-copy.filtered-products #edit-tid,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-day,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-month,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-year,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-age-range,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-skin-concerns,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-gender,
-#custom-obagi-products-systems-indv .page-copy.filtered-products .webform-client-form .form-select,
-.webform-client-form #custom-obagi-products-systems-indv .page-copy.filtered-products .form-select {
+#custom-obagi-products-systems-all .page-copy.filtered-products .styled-select-bright,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products #edit-tid,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-day,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-month,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-date-started-year,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-age-range,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-skin-concerns,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .form-item-gender,#phys-finder    #custom-obagi-products-systems-all .page-copy.filtered-products .webform-client-form .form-select,#phys-finder    .webform-client-form #custom-obagi-products-systems-all .page-copy.filtered-products .form-select,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .styled-select-bright,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products #edit-tid,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-day,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-month,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-date-started-year,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-age-range,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-skin-concerns,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .form-item-gender,#phys-finder    #custom-obagi-products-systems-indv .page-copy.filtered-products .webform-client-form .form-select,#phys-finder    .webform-client-form #custom-obagi-products-systems-indv .page-copy.filtered-products .form-select {
     display: block
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .category-title,
-#custom-obagi-products-systems-indv .category-title {
+#custom-obagi-products-systems-all .category-title,#phys-finder    #custom-obagi-products-systems-indv .category-title {
     text-align: center;
     background: #ededed;
     border-top: 1px solid #cecece;
     border-bottom: 1px solid #cecece
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .category-title #cat-desc-wrapper,
-#custom-obagi-products-systems-indv .category-title #cat-desc-wrapper {
+#custom-obagi-products-systems-all .category-title #cat-desc-wrapper,#phys-finder    #custom-obagi-products-systems-indv .category-title #cat-desc-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1.250rem 1rem
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .category-title a,
-#custom-obagi-products-systems-indv .category-title a {
+#custom-obagi-products-systems-all .category-title a,#phys-finder    #custom-obagi-products-systems-indv .category-title a {
     color: #3575a5;
     line-height: 50px
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .category-title a:after,
-#custom-obagi-products-systems-indv .category-title a:after {
+#custom-obagi-products-systems-all .category-title a:after,#phys-finder    #custom-obagi-products-systems-indv .category-title a:after {
     color: #a0c1da;
     padding-left: 1.250rem;
     font-size: 1.250rem;
     position: relative;
     top: -1px
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-viewport,
-#custom-obagi-products-systems-indv .flexslider .flex-viewport {
+#custom-obagi-products-systems-all .flexslider .flex-viewport,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-viewport {
     padding-top: 3.75rem
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-control-nav,
-#custom-obagi-products-systems-indv .flexslider .flex-control-nav {
+#custom-obagi-products-systems-all .flexslider .flex-control-nav,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-control-nav {
     top: 25px;
     height: 15px
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-control-nav li a,
-#custom-obagi-products-systems-indv .flexslider .flex-control-nav li a {
+#custom-obagi-products-systems-all .flexslider .flex-control-nav li a,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-control-nav li a {
     background: #e5e5e5
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-control-nav li a.flex-active,
-#custom-obagi-products-systems-indv .flexslider .flex-control-nav li a.flex-active {
+#custom-obagi-products-systems-all .flexslider .flex-control-nav li a.flex-active,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-control-nav li a.flex-active {
     background: #3575a5
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a,
-#custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a {
+#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a {
     position: absolute;
     top: 100px
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a.flex-prev:before,
-#custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a.flex-prev:before {
+#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a.flex-prev:before,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a.flex-prev:before {
     font-family: 'fontello';
     content: '\e814'
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a.flex-next:before,
-#custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a.flex-next:before {
+#custom-obagi-products-systems-all .flexslider .flex-direction-nav li a.flex-next:before,#phys-finder    #custom-obagi-products-systems-indv .flexslider .flex-direction-nav li a.flex-next:before {
     font-family: 'fontello';
     content: '\e815'
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .slides,
-#custom-obagi-products-systems-indv .flexslider .slides {
+#custom-obagi-products-systems-all .flexslider .slides,#phys-finder    #custom-obagi-products-systems-indv .flexslider .slides {
     text-align: center
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .slides .product-copy,
-#custom-obagi-products-systems-indv .flexslider .slides .product-copy {
+#custom-obagi-products-systems-all .flexslider .slides .product-copy,#phys-finder    #custom-obagi-products-systems-indv .flexslider .slides .product-copy {
     max-width: 480px;
     margin: 0 auto;
     padding: 1rem
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .slides .product-copy h2,
-#custom-obagi-products-systems-indv .flexslider .slides .product-copy h2 {
+#custom-obagi-products-systems-all .flexslider .slides .product-copy h2,#phys-finder    #custom-obagi-products-systems-indv .flexslider .slides .product-copy h2 {
     padding: 0;
     font-size: 1.500rem
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .slides .product-copy h2 a,
-#custom-obagi-products-systems-indv .flexslider .slides .product-copy h2 a {
+#custom-obagi-products-systems-all .flexslider .slides .product-copy h2 a,#phys-finder    #custom-obagi-products-systems-indv .flexslider .slides .product-copy h2 a {
     color: #3575a5
-}
+}#phys-finder 
 
-#custom-obagi-products-systems-all .flexslider .slides .product-content-image,
-#custom-obagi-products-systems-indv .flexslider .slides .product-content-image {
+#custom-obagi-products-systems-all .flexslider .slides .product-content-image,#phys-finder    #custom-obagi-products-systems-indv .flexslider .slides .product-content-image {
     margin: 0 auto;
     max-width: 80%
 }
-
 @media (min-width:767px) {
-    #cat-desc-wrapper .left-col {
+  #phys-finder   #cat-desc-wrapper .left-col {
         text-align: left;
         display: inline-block;
         width: 60%;
         margin-right: 10%;
         vertical-align: top
-    }
+    }#phys-finder 
     #cat-desc-wrapper .right-col {
         display: inline-block;
         width: 30%
-    }
-    #custom-obagi-products-systems-all .page-copy,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .page-copy,#phys-finder  
     #custom-obagi-products-systems-indv .page-copy {
         max-width: 1200px;
         margin: 0 auto
-    }
-    #custom-obagi-products-systems-all .page-copy p,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .page-copy p,#phys-finder  
     #custom-obagi-products-systems-indv .page-copy p {
         margin-top: 0;
         padding: .500rem 1.250rem 0 0;
         vertical-align: top;
         display: inline-block
-    }
-    #custom-obagi-products-systems-all .page-copy.filtered-products p,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .page-copy.filtered-products p,#phys-finder  
     #custom-obagi-products-systems-indv .page-copy.filtered-products p {
         padding: 0
-    }
-    #custom-obagi-products-systems-all .page-copy .styled-select-bright,
-    #custom-obagi-products-systems-all .page-copy #edit-tid,
-    #custom-obagi-products-systems-all .page-copy .form-item-date-started-day,
-    #custom-obagi-products-systems-all .page-copy .form-item-date-started-month,
-    #custom-obagi-products-systems-all .page-copy .form-item-date-started-year,
-    #custom-obagi-products-systems-all .page-copy .form-item-age-range,
-    #custom-obagi-products-systems-all .page-copy .form-item-skin-concerns,
-    #custom-obagi-products-systems-all .page-copy .form-item-gender,
-    #custom-obagi-products-systems-all .page-copy .webform-client-form .form-select,
-    .webform-client-form #custom-obagi-products-systems-all .page-copy .form-select,
-    #custom-obagi-products-systems-indv .page-copy .styled-select-bright,
-    #custom-obagi-products-systems-indv .page-copy #edit-tid,
-    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-day,
-    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-month,
-    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-year,
-    #custom-obagi-products-systems-indv .page-copy .form-item-age-range,
-    #custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns,
-    #custom-obagi-products-systems-indv .page-copy .form-item-gender,
-    #custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .page-copy .styled-select-bright,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy #edit-tid,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-date-started-day,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-date-started-month,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-date-started-year,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-age-range,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-skin-concerns,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .form-item-gender,#phys-finder  
+    #custom-obagi-products-systems-all .page-copy .webform-client-form .form-select,#phys-finder  
+    .webform-client-form #custom-obagi-products-systems-all .page-copy .form-select,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .styled-select-bright,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy #edit-tid,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-day,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-month,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-date-started-year,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-age-range,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-skin-concerns,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .form-item-gender,#phys-finder  
+    #custom-obagi-products-systems-indv .page-copy .webform-client-form .form-select,#phys-finder  
     .webform-client-form #custom-obagi-products-systems-indv .page-copy .form-select {
         width: 50%;
         display: inline-block
-    }
-    #custom-obagi-products-systems-all .quick-tip-wrapper,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .quick-tip-wrapper,#phys-finder  
     #custom-obagi-products-systems-indv .quick-tip-wrapper {
         display: none
-    }
-    #custom-obagi-products-systems-all .flexslider,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider {
         max-width: 1200px;
         margin: 0 auto
-    }
-    #custom-obagi-products-systems-all .flexslider.single-cat,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider.single-cat,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider.single-cat {
         border: 0
-    }
-    #custom-obagi-products-systems-all .flexslider .flex-viewport,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .flex-viewport,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .flex-viewport {
         padding-top: 1.250rem
-    }
-    #custom-obagi-products-systems-all .flexslider .flex-direction-nav,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .flex-direction-nav,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .flex-direction-nav {
         display: none
-    }
-    #custom-obagi-products-systems-all .flexslider .flex-control-nav,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .flex-control-nav,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .flex-control-nav {
         display: none
-    }
-    #custom-obagi-products-systems-all .flexslider .slides,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .slides,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .slides {
         width: auto !important;
         text-align: left
-    }
-    #custom-obagi-products-systems-all .flexslider .slides li,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .slides li,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .slides li {
         text-align: left;
         vertical-align: top;
@@ -5804,39 +5459,39 @@ body.page-node-344 .product-content-image {
         height: auto;
         float: none !important;
         display: inline-block !important
-    }
-    #custom-obagi-products-systems-all .flexslider .slides li .product-content-image,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .slides li .product-content-image,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .slides li .product-content-image {
         float: left;
         width: 50%;
         text-align: center
-    }
-    #custom-obagi-products-systems-all .flexslider .slides li .product-copy,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .slides li .product-copy,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .slides li .product-copy {
         float: left;
         width: 50%;
         padding: 0 0 0 1.250rem
-    }
-    #custom-obagi-products-systems-all .flexslider .slides li .product-copy h2,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider .slides li .product-copy h2,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider .slides li .product-copy h2 {
         margin-top: 0
-    }
-    #custom-obagi-products-systems-all .flexslider.single-cat .slides li .product-content-image,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider.single-cat .slides li .product-content-image,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider.single-cat .slides li .product-content-image {
         float: none;
         width: 100%
-    }
-    #custom-obagi-products-systems-all .flexslider.single-cat .slides li .product-copy,
+    }#phys-finder 
+    #custom-obagi-products-systems-all .flexslider.single-cat .slides li .product-copy,#phys-finder  
     #custom-obagi-products-systems-indv .flexslider.single-cat .slides li .product-copy {
         float: none;
         width: 100%;
         text-align: center
     }
-}
+}#phys-finder 
 
 .quick-tip-wrapper {
     height: 0
-}
+}#phys-finder 
 
 .quick-tip-wrapper .quick-tip-inner {
     position: relative;
@@ -5847,17 +5502,16 @@ body.page-node-344 .product-content-image {
     background: rgba(229, 229, 229, 0.9);
     text-align: center;
     padding: 1.250rem
-}
+}#phys-finder 
 
 .histo-graph {
     width: 100%
 }
-
 @media (min-width:481px) {
-    .histo-graph {
+  #phys-finder   .histo-graph {
         width: 50%
     }
-}
+}#phys-finder 
 
 
 /**/
@@ -5865,43 +5519,42 @@ body.page-node-344 .product-content-image {
 .fs-xlarge {
     font-size: 2.625rem;
     line-height: 2.8875rem;
-}
+}#phys-finder 
 
 .fs-large {
     font-size: 1.7750rem;
     line-height: 2.250rem;
-}
+}#phys-finder 
 
 .fs-medium {
     font-size: 1.500rem;
     line-height: 1.875rem;
-}
+}#phys-finder 
 
 .fs-lg-regular {
     font-size: 1.250rem;
     line-height: 1.526rem;
-}
+}#phys-finder 
 
 .fs-regular {
     font-size: 1rem;
     line-height: 1.3rem;
-}
+}#phys-finder 
 
 .fs-small {
     font-size: 0.8750rem;
     line-height: 1.181rem;
-}
+}#phys-finder 
 
 .fs-smallest {
     font-size: 0.750rem;
     line-height: 1.05rem;
 }
-
 @media (min-width:481px) {
-    .fs-large {
+  #phys-finder   .fs-large {
         font-size: 1.8750rem;
     }
-}
+}#phys-finder 
 
 .l-main {
     *zoom: 1;
@@ -5915,329 +5568,303 @@ body.page-node-344 .product-content-image {
     background: #fff;
     padding-left: 0;
     padding-right: 0;
-}
+}#phys-finder 
 
 .l-main:after {
     content: "";
     display: table;
     clear: both;
-}
+}#phys-finder 
 
-.l-region--highlighted,
-.l-region--hero,
-.l-region--help {
+.l-region--highlighted,#phys-finder    .l-region--hero,#phys-finder    .l-region--help {
     margin-bottom: 1.25em;
 }
-
 @media (min-width:481px) {
-    .l-region--header {
+  #phys-finder   .l-region--header {
         width: 100%;
         float: left;
         margin-right: 1.81818%;
-    }
+    }#phys-finder 
     .l-region--navigation {
         clear: both;
-    }
+    }#phys-finder 
     .l-region--hero {
         clear: both;
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    .l-region--header {
+  #phys-finder   .l-region--header {
         width: 100%;
         float: left;
         margin-right: 1.81818%;
     }
-}
+}#phys-finder 
 
 #fw-bot-block-container {
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 0.500rem;
     text-align: center;
-}
+}#phys-finder 
 
 #fw-bot-block-container .share-block {
     padding: 0;
-}
+}#phys-finder 
 
 #fw-bot-block-container .share-block .social-copy {
     margin: 1rem 0;
-}
+}#phys-finder 
 
 #fw-bot-block-container .share-block .social-hashtag {
     margin: 1rem 0 0 0;
-}
+}#phys-finder 
 
 #fw-bot-block-container .find-obagi-form {
     display: none;
 }
-
 @media (min-width:481px) {
-    #fw-bot-block-container {
+  #phys-finder   #fw-bot-block-container {
         padding: 0 1.250rem;
-    }
+    }#phys-finder 
     #fw-bot-block-container .block {
         margin-bottom: 0;
-    }
+    }#phys-finder 
     #fw-bot-block-container .share-block {
         max-width: 200px;
         padding: 0 1rem 1rem 1rem;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form {
         display: inline-block;
-    }
-}
-
+    }}
 @media (min-width:767px) {
-    #billboards .slides .slide-priyanka {
+  #phys-finder   #billboards .slides .slide-priyanka {
         background: url(/sites/default/files/skin_backgroud.png);
         background-position-y: top;
         background-position-x: center;
-    }
+    }#phys-finder 
     /*skininclusion */
     #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 200px 0px -17px 45px;
-    }
+    }#phys-finder 
     #fw-bot-block-container .block {
         display: inline-block;
-    }
+    }#phys-finder 
     #fw-bot-block-container .share-block {
         min-height: 160px;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form {
         width: 500px;
         min-height: 160px;
         position: relative;
         padding: 1rem;
         margin-right: 1.250rem;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form h2 {
         padding: 0;
         margin: 0;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .form-item-searchtext {
         position: absolute;
         left: 200px;
         bottom: 12px;
         padding-bottom: 0;
         width: 150px;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .form-item-searchtext input {
         line-height: 2.4rem;
         margin-bottom: 0;
         max-width: 150px !important;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .form-type-radios.form-item-searchopts {
         position: absolute;
         top: 9px;
         left: 200px;
         width: 200px;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .form-type-radios.form-item-searchopts label {
         display: inline;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .description {
         width: 160px;
-    }
+    }#phys-finder 
     #fw-bot-block-container .find-obagi-form .phys-finder-miniform-wrapper .submit-wrapper {
         position: absolute;
         bottom: 25px;
         right: 20px;
-    }
-}
-
-
+    }}
 /**/
 
 @media (min-width:767px) and (max-width: 900px) {
-    #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
+  #phys-finder   #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
         width: 388px;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 42px 0 0 0;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .billboard-content-image img {
         left: 135px;
         width: 80%
-    }
+    }#phys-finder 
     #billboards .slide-withchange .billboard-content-image img {
         top: -213px;
         max-width: unset;
         left: 60px;
-    }
+    }#phys-finder 
     #billboards .slide-withchange .billboard-call-to-action a {
         padding: .750rem 1rem;
-    }
+    }#phys-finder 
     #billboards .slide-skinmarker .billboard-content-image img {
         top: -140px;
         left: 171px;
         width: 95%;
-    }
+    }#phys-finder 
     #billboards .slide-skinmarker .billboard-call-to-action a {
         padding: .750rem 1rem;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy {
         max-width: 59%;
         padding: 1rem 0 1rem 4.5rem;
-    }
-}
-
+    }}
 
 @media (min-width:360px) and (max-width: 766px) {
-    #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
+  #phys-finder   #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
         width: 347px;
         margin: auto;
 
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 59px auto 0 auto;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-headline h2 {
         font-size: 22ppriyanka
 		px;
         margin: 12px 0 .200rem 0;
 
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-content-image {
         margin-top: 0;
-    }
+    }#phys-finder 
 
 	#billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-content-body p {
         width: 330px;
         margin: auto!important;
 		/* text-align:left; */
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 27px auto 0 auto;
 		/* text-align:left; */
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-headline h2 {
         font-size: 30px;
         margin: 20px auto .200rem auto;
         max-width:310px;
 		/* text-align:left; */
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image {
         margin-top: 0;
-    }
+    }#phys-finder 
 
     #billboards .slide-elastiderm-product-cream.flex-active-slide:after {
         height: 0;
-    }
-}
-
+    }}
 @media (max-width: 766px) {
-    .header-logo img {
+  #phys-finder   .header-logo img {
         width: 90px;
-    }
-}
-
-_:-ms-lang(x),
-#billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
+    }}
+_:-ms-lang(x),#phys-finder    #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
     width: 150px;
     height: 43px;
     background-color: #f99c25;
     margin: 30px 0 0 0;
 }
-
 @media not all and (min-resolution:.001dpcm) {
   
         #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
             width: 158px;
-        }
-  
-}
-
+        }}
 @media (min-width:320px) and (max-width: 359px) {
-    #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
+  #phys-finder   #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
         width: 288px;
         margin: auto;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .billboard-content-body {
         position: relative;
         display: inline-block;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-content-image {
         margin-top: 0
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 20px auto -17px auto;
-    }
+    }#phys-finder 
     #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-headline h2 {
         font-size: 20px;
         margin: 12px 0 .200rem 0;
-    }
+    }#phys-finder 
 
 	 #billboards .slide-skindrink .slide-wrap .billboard-copy .billboard-content-body p {
         width: 288px;
         margin: auto;
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .billboard-content-body {
         position: relative;
         display: inline-block;
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-content-image {
         margin-top: 0
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 20px auto -17px auto;
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream .slide-wrap .billboard-copy .billboard-headline h2 {
         font-size: 20px;
         margin: 12px 0 .200rem 0;
-    }
+    }#phys-finder 
     #billboards .slide-elastiderm-product-cream.flex-active-slide:after {
         height: 0;
-    }
-}
-
+    }}
 @media (max-width: 420px) {
-    #billboards .slide-priyanka .slide-wrap .billboard-copy {
+  #phys-finder   #billboards .slide-priyanka .slide-wrap .billboard-copy {
         background: url(/sites/default/files/priyanka_responsive.png);
         height: 417px;
         background-repeat: no-repeat;
         background-position: center;
-    }
+    }#phys-finder 
     #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 0 auto -17px 20px !important;
         top: 313px;
-    }
+    }#phys-finder 
     #billboards .slide-priyanka .slide-wrap .billboard-content-image {
         display: none;
-    }
+    }#phys-finder 
     #billboards .slides .slide-priyanka {
         max-height: 417px;
-    }
-}
-
+    }}
 @media (min-width:421px) and (max-width: 766px) {
-    #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-call-to-action {
+  #phys-finder   #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-call-to-action {
         margin: 0 0px -17px -0;
         top: 230px;
         text-align: left;
-    }
+    }#phys-finder 
     #billboards .slide-priyanka .slide-wrap .billboard-content-image {
         margin-top: 0;
-    }
+    }#phys-finder 
     #billboards .slide-priyanka .slide-wrap {
         background: url(/sites/default/files/priyanka_responsive1.png);
         height: 417px;
         background-repeat: no-repeat;
         background-position: center;
-    }
+    }#phys-finder 
     #billboards .slide-priyanka .slide-wrap .billboard-content-image {
         display: none;
-    }
+    }#phys-finder 
     #billboards .slides .slide-priyanka {
         max-height: 417px;
     }
-}
+}#phys-finder 
 
 #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-headline h2 {
     display: none;
-}
+}#phys-finder 
 
 #billboards .slide-priyanka .slide-wrap .billboard-copy .billboard-call-to-action a {
     color: #ffffff;
@@ -6245,12 +5872,13 @@ _:-ms-lang(x),
     font-size: 15px;
     font-weight: bold;
     padding: .9rem 1.8rem;
-}
+}#phys-finder 
 
 #billboards .slide-priyanka .slide-wrap .billboard-content-image {
     text-align: center;
-}
+}#phys-finder 
 
 div.ctools-modal-content .modal-header {
     background-color: transparent ! important;
+}
 }

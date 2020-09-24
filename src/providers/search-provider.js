@@ -1,5 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { navigate } from 'gatsby';
+import React, { createContext, useState } from 'react';
 
 
 const SearchContext = createContext();

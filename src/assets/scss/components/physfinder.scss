@@ -1,17 +1,16 @@
-.row {
+#phys-finder .row {
 	margin: 0;
-}
-#phys-finder #clinic-details-container li, #phys-finder #clinic-details-container li.prod-system {
+}#phys-finder #clinic-details-container li, #phys-finder #clinic-details-container li.prod-system {
   background: none;
   display: block;
   margin: auto;
   max-width: none;
   padding: 0 0 0.5rem 0;
   vertical-align: baseline;
-  width: auto; }
+  width: auto; }#phys-finder 
 
 #phys-finder-form {
-  position: relative; }
+  position: relative; }#phys-finder 
 
 #phys-finder-search-form select {
   background: url(/modules/custom/obagi_finder/images/icon-down-arrow.png) no-repeat right #fff;
@@ -24,14 +23,13 @@
   -moz-appearance: none;
   text-indent: 0.01px;
   text-overflow: '';
-  z-index: 1; }
-  #phys-finder-search-form select:disabled {
-    color: #cecece; }
+  z-index: 1; }#phys-finder -search-form select:disabled {
+    color: #cecece; }#phys-finder 
 
 .ie #phys-finder-search-form .ie9-wrapper {
   position: relative;
   display: inline-block;
-  z-index: 0; }
+  z-index: 0; }#phys-finder 
   .ie #phys-finder-search-form .ie9-wrapper:before {
     background: #fff;
     display: block;
@@ -42,19 +40,16 @@
     height: 27px;
     width: 20px;
     margin-right: 25px;
-    z-index: 5; }
+    z-index: 5; }#phys-finder 
 
 #phys-finder #pf-submit {
-  width: 100%; }
-#phys-finder #adv-search-content {
+  width: 100%; }#phys-finder #adv-search-content {
   background: #dddddd;
   display: none;
   margin: -1rem 0 1rem;
   position: relative;
-  padding: 1.5em; }
-  #phys-finder #adv-search-content ul {
-    padding: 0; }
-  #phys-finder #adv-search-content .count {
+  padding: 1.5em; }#phys-finder  #adv-search-content ul {
+    padding: 0; }#phys-finder  #adv-search-content .count {
     background-color: #fff;
     -moz-border-radius: 1rem;
     -webkit-border-radius: 1rem;
@@ -63,103 +58,69 @@
     display: none;
     font-size: 0.85rem;
     margin-left: .5rem;
-    width: 1.250rem; }
-  #phys-finder #adv-search-content .header {
+    width: 1.250rem; }#phys-finder  #adv-search-content .header {
     color: #333;
     font-weight: bold;
-    text-align: center; }
-#phys-finder .searchtext-wrapper {
+    text-align: center; }#phys-finder .searchtext-wrapper {
   margin-top: 0.750rem;
-  margin-bottom: 1rem; }
-#phys-finder #pf-count-results {
+  margin-bottom: 1rem; }#phys-finder #pf-count-results {
   color: #fff;
   margin-bottom: 1rem;
-  text-align: center; }
-#phys-finder #pf-email-print {
+  text-align: center; }#phys-finder #pf-email-print {
   color: #fff;
-  text-align: center; }
-#phys-finder #email-link {
-  display: inline-block; }
-#phys-finder #print-link {
-  display: none; }
-#phys-finder .prod-system {
+  text-align: center; }#phys-finder #email-link {
+  display: inline-block; }#phys-finder #print-link {
+  display: none; }#phys-finder .prod-system {
   background-color: #fff;
   display: inline-block;
   padding: 0.500rem;
   vertical-align: top;
-  width: 44%; }
-  #phys-finder .prod-system header {
+  width: 44%; }#phys-finder  .prod-system header {
     font-size: 1.25rem;
-    font-weight: bold; }
-  #phys-finder .prod-system .short-desc {
+    font-weight: bold; }#phys-finder  .prod-system .short-desc {
     font-size: 1rem;
-    font-weight: 100; }
-  #phys-finder .prod-system p {
-    text-align: left; }
-  #phys-finder .prod-system label {
+    font-weight: 100; }#phys-finder  .prod-system p {
+    text-align: left; }#phys-finder  .prod-system label {
     text-align: left;
     display: block;
     padding-left: 1.2rem;
-    text-indent: -1.2rem; }
-  #phys-finder .prod-system ul li {
-    text-align: left; }
-  #phys-finder .prod-system .product-individual.has-systems {
-    display: none; }
-#phys-finder .adv-search-toggle {
+    text-indent: -1.2rem; }#phys-finder  .prod-system ul li {
+    text-align: left; }#phys-finder  .prod-system .product-individual.has-systems {
+    display: none; }#phys-finder .adv-search-toggle {
   margin-bottom: 1rem;
   padding: 0.750rem 1rem;
-  width: 100%; }
-  #phys-finder .adv-search-toggle .text1 {
-    display: inline; }
-  #phys-finder .adv-search-toggle .text2 {
-    display: none; }
-  #phys-finder .adv-search-toggle #clear-all-prods {
+  width: 100%; }#phys-finder  .adv-search-toggle .text1 {
+    display: inline; }#phys-finder  .adv-search-toggle .text2 {
+    display: none; }#phys-finder  .adv-search-toggle #clear-all-prods {
     font-weight: 300;
-    margin-top: .75rem; }
-    #phys-finder .adv-search-toggle #clear-all-prods.active {
+    margin-top: .75rem; }#phys-finder .adv-search-toggle #clear-all-prods.active {
       color: #fff;
       cursor: default;
       display: block;
-      text-decoration: underline; }
-    #phys-finder .adv-search-toggle #clear-all-prods.hide {
-      display: none; }
-    #phys-finder .adv-search-toggle #clear-all-prods span {
+      text-decoration: underline; }#phys-finder .adv-search-toggle #clear-all-prods.hide {
+      display: none; }#phys-finder .adv-search-toggle #clear-all-prods span {
       cursor: pointer;
-      text-transform: none; }
-#phys-finder .tabs {
+      text-transform: none; }#phys-finder .tabs {
   padding: 0;
-  text-align: center; }
-  #phys-finder .tabs li {
+  text-align: center; }#phys-finder  .tabs li {
     display: inline-block;
     position: relative;
-    width: 100%; }
-    #phys-finder .tabs li button.tab {
+    width: 100%; }#phys-finder .tabs li button.tab {
       font-size: .85rem;
       padding: 0.5rem 1.1rem;
-      width: 100%; }
-  #phys-finder .tabs a.button {
-    background: #3a87c1; }
-#phys-finder .tab-content {
-  display: none; }
-  #phys-finder .tab-content.active {
-    display: block; }
-  #phys-finder .tab-content header.title {
-    display: none; }
-  #phys-finder .tab-content ul li {
+      width: 100%; }#phys-finder  .tabs a.button {
+    background: #3a87c1; }#phys-finder .tab-content {
+  display: none; }#phys-finder  .tab-content.active {
+    display: block; }#phys-finder  .tab-content header.title {
+    display: none; }#phys-finder  .tab-content ul li {
     list-style: none;
-    margin-bottom: 0.75rem; }
-    #phys-finder .tab-content ul li ul li {
-      display: block; }
-#phys-finder .i-b {
-  margin-bottom: 1rem; }
-  #phys-finder .i-b #lblRadius {
-    display: none; }
-#phys-finder #lblSortDist {
+    margin-bottom: 0.75rem; }#phys-finder .tab-content ul li ul li {
+      display: block; }#phys-finder .i-b {
+  margin-bottom: 1rem; }#phys-finder  .i-b #lblRadius {
+    display: none; }#phys-finder #lblSortDist {
   display: block;
-  white-space: nowrap; }
-#phys-finder #finder-physician-input {
-  display: none; }
-#phys-finder #clinic-details-container {
+  white-space: nowrap; }#phys-finder #finder-physician-input {
+  display: none; }#phys-finder #clinic-details-container {
   background-color: #fff;
   height: auto;
   opacity: 0;
@@ -169,43 +130,31 @@
   transition: opacity 0.75s;
   visibility: hidden;
   width: 100%;
-  z-index: 20; }
-  #phys-finder #clinic-details-container h4 {
-    margin-top: 0; }
-  #phys-finder #clinic-details-container hr {
-    margin: 1.250rem 0 !important; }
-  #phys-finder #clinic-details-container.active {
+  z-index: 20; }#phys-finder  #clinic-details-container h4 {
+    margin-top: 0; }#phys-finder  #clinic-details-container hr {
+    margin: 1.250rem 0 !important; }#phys-finder  #clinic-details-container.active {
     opacity: 1;
     transition: opacity 0.75s;
-    visibility: visible; }
-  #phys-finder #clinic-details-container .number {
+    visibility: visible; }#phys-finder  #clinic-details-container .number {
     display: inline-block;
     vertical-align: top;
-    width: 2.5rem; }
-  #phys-finder #clinic-details-container .info {
+    width: 2.5rem; }#phys-finder  #clinic-details-container .info {
     display: inline-block;
     vertical-align: top;
-    width: 80%; }
-    #phys-finder #clinic-details-container .info h4 {
-      margin: 0 0 0.200rem; }
-  #phys-finder #clinic-details-container header {
+    width: 80%; }#phys-finder #clinic-details-container .info h4 {
+      margin: 0 0 0.200rem; }#phys-finder  #clinic-details-container header {
     background-color: lightgray;
     margin: -8px -4px 8px;
-    padding: 0 0.250rem; }
-    #phys-finder #clinic-details-container header .back {
+    padding: 0 0.250rem; }#phys-finder #clinic-details-container header .back {
       float: left;
-      padding: 1rem 0; }
-    #phys-finder #clinic-details-container header .next-prev {
+      padding: 1rem 0; }#phys-finder #clinic-details-container header .next-prev {
       float: right;
       text-align: right;
-      width: auto; }
-  #phys-finder #clinic-details-container ul {
+      width: auto; }#phys-finder  #clinic-details-container ul {
     padding: 0;
-    margin: 0; }
-  #phys-finder #clinic-details-container li.prod-system {
+    margin: 0; }#phys-finder  #clinic-details-container li.prod-system {
     font-weight: bold;
-    padding: 0; }
-  #phys-finder #clinic-details-container .directions {
+    padding: 0; }#phys-finder  #clinic-details-container .directions {
     background-color: #3a87c1;
     border: none;
     color: #fff;
@@ -214,38 +163,28 @@
     padding: 0.750rem 1rem;
     text-align: center;
     text-decoration: none;
-    width: 90%; }
-    #phys-finder #clinic-details-container .directions:hover {
-      text-decoration: underline; }
-#phys-finder #physician-results-list-wrapper {
+    width: 90%; }#phys-finder #clinic-details-container .directions:hover {
+      text-decoration: underline; }#phys-finder #physician-results-list-wrapper {
   position: absolute;
   top: 0;
-  left: 0; }
-#phys-finder #physician-results-list {
+  left: 0; }#phys-finder #physician-results-list {
   position: relative;
   font-weight: 300;
-  font-size: .88rem; }
-  #phys-finder #physician-results-list h4 {
+  font-size: .88rem; }#phys-finder  #physician-results-list h4 {
     margin: 0;
     font-weight: 600;
     color: #337ab7;
-   }
-  #phys-finder #physician-results-list .count {
+   }#phys-finder  #physician-results-list .count {
     display: inline-block;
-    padding: 1rem 0; }
-  #phys-finder #physician-results-list .next-prev {
+    padding: 1rem 0; }#phys-finder  #physician-results-list .next-prev {
     width: auto;
-    float: right; }
-  #phys-finder #physician-results-list .marker-link {
-    display: block; }
-  #phys-finder #physician-results-list .number {
+    float: right; }#phys-finder  #physician-results-list .marker-link {
+    display: block; }#phys-finder  #physician-results-list .number {
     display: inline-block;
     vertical-align: top;
-    width: 2.7rem; }
-    #phys-finder #physician-results-list .number a:after {
+    width: 2.7rem; }#phys-finder #physician-results-list .number a:after {
       border: 5px solid black;
-      display: block; }
-  #phys-finder #physician-results-list a.next:after {
+      display: block; }#phys-finder  #physician-results-list a.next:after {
     border: 5px solid #014e97;
     border-right-color: transparent;
     border-top-color: transparent;
@@ -253,8 +192,7 @@
     content: "";
     float: right;
     margin-left: 5px;
-    margin-top: 5px; }
-  #phys-finder #physician-results-list a.prev:before {
+    margin-top: 5px; }#phys-finder  #physician-results-list a.prev:before {
     border: 5px solid #014e97;
     border-left-color: transparent;
     border-top-color: transparent;
@@ -262,26 +200,18 @@
     content: "";
     float: left;
     margin-right: 5px;
-    margin-top: 5px; }
-  #phys-finder #physician-results-list .next {
-    padding-left: .75rem; }
-  #phys-finder #physician-results-list .info {
+    margin-top: 5px; }#phys-finder  #physician-results-list .next {
+    padding-left: .75rem; }#phys-finder  #physician-results-list .info {
     display: inline-block;
-    width: 79%; }
-  #phys-finder #physician-results-list .products {
+    width: 79%; }#phys-finder  #physician-results-list .products {
     font-style: italic;
-    padding: 0.67rem 0; }
-  #phys-finder #physician-results-list .links a {
-    text-decoration: underline; }
-  #phys-finder #physician-results-list hr.first {
-    margin-top: 0; }
-#phys-finder .map-header {
+    padding: 0.67rem 0; }#phys-finder  #physician-results-list .links a {
+    text-decoration: underline; }#phys-finder  #physician-results-list hr.first {
+    margin-top: 0; }#phys-finder .map-header {
   background-color: #6e7e8e;
-  padding: 10px 16px; }
-  #phys-finder .map-header a {
+  padding: 10px 16px; }#phys-finder  .map-header a {
     color: #fff;
-    text-decoration: none; }
-#phys-finder #in-progress {
+    text-decoration: none; }#phys-finder #in-progress {
   display: none;
   opacity: 0.75;
   background: #fff url(/sites/all/themes/responsive/images/spinner.gif) no-repeat center center;
@@ -290,68 +220,48 @@
   z-index: 100;
   position: absolute;
   top: 0;
-  left: 0; }
-#phys-finder .header h1 {
-  margin-bottom: 1.6rem; }
-#phys-finder #adv-search header {
+  left: 0; }#phys-finder .header h1 {
+  margin-bottom: 1.6rem; }#phys-finder #adv-search header {
   text-align: center;
-  font-weight: bold; }
-  #phys-finder #adv-search header span.glyphs {
+  font-weight: bold; }#phys-finder  #adv-search header span.glyphs {
     font-size: 1.5rem;
     vertical-align: middle;
-    padding-left: .25rem; }
-  #phys-finder #adv-search header span.glyphicon-arrow-up {
-    display: none; }
-#phys-finder .bodycopy a.details {
+    padding-left: .25rem; }#phys-finder  #adv-search header span.glyphicon-arrow-up {
+    display: none; }#phys-finder .bodycopy a.details {
   margin-right: 0.500rem;
-  text-decoration: underline; }
-#phys-finder button.active {
+  text-decoration: underline; }#phys-finder button.active {
   color: #fff;
-  background-color: #3a87c1; }
-#phys-finder .button.active {
+  background-color: #3a87c1; }#phys-finder .button.active {
   color: #fff;
-  background-color: #3a87c1; }
-#phys-finder .info-list div.clinic-distance {
-  display: none; }
-#phys-finder .gm-style-iw .products {
+  background-color: #3a87c1; }#phys-finder .info-list div.clinic-distance {
+  display: none; }#phys-finder .gm-style-iw .products {
   font-style: italic;
-  padding: 0.67rem 0; }
+  padding: 0.67rem 0; }#phys-finder 
 
   #phys-finder #error-wrapper {
   margin: 1rem 0;
-  text-align: center; }
-  #phys-finder #error-wrapper .error:before {
-    padding-right: .5rem; }
+  text-align: center; }#phys-finder  #error-wrapper .error:before {
+    padding-right: .5rem; }#phys-finder 
 
 ._margin-top {
-  margin-top: 1.5rem; }
-
-@media screen and (min-width: 0px) and (max-width: 480px) {
+  margin-top: 1.5rem; }@media screen and (min-width: 0px) and (max-width: 480px) {
   .page-hcpfinder .l-main .l-content {
-    padding: 0 1rem; } }
-@media screen and (min-width: 481px) {
+    padding: 0 1rem;  } }@media screen and (min-width: 481px) {
   #phys-finder .header .controls {
-    margin-bottom: 1rem; }
-  #phys-finder .i-b {
+    margin-bottom: 1rem; }#phys-finder  .i-b {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: baseline;
-    width: auto; }
-  #phys-finder #pf-count-results {
+    width: auto; }#phys-finder  #pf-count-results {
     display: inline-block;
     float: left;
-    margin-bottom: 0; }
-  #phys-finder #pf-email-print {
+    margin-bottom: 0; }#phys-finder  #pf-email-print {
     display: inline-block;
-    float: right; }
-  #phys-finder .radius-wrapper {
+    float: right; }#phys-finder  .radius-wrapper {
     position: relative;
-    bottom: 2px; }
-  #phys-finder #inner-update {
-    margin-top: 2.750rem; }
-  #phys-finder .prod-system {
-    margin: 0 1.5% 3rem 1.5%; }
-  #phys-finder #pf-submit,
+    bottom: 2px; }#phys-finder  #inner-update {
+    margin-top: 2.750rem; }#phys-finder  .prod-system {
+    margin: 0 1.5% 3rem 1.5%; }#phys-finder  #pf-submit,
   #phys-finder .update-search {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -360,8 +270,7 @@
     box-shadow: 0 0 1px transparent;
     width: auto;
     -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto; }
-    #phys-finder #pf-submit.pulse,
+    -moz-osx-font-smoothing: auto; }#phys-finder #pf-submit.pulse,
     #phys-finder .update-search.pulse {
       -webkit-animation-duration: 2s;
       animation-duration: 2s;
@@ -372,111 +281,82 @@
       -webkit-animation-name: pulse;
       animation-name: pulse;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }
-
-  @-webkit-keyframes pulse {
+      -moz-osx-font-smoothing: grayscale; }  @-webkit-keyframes pulse {
     25% {
       background-color: #3a87c1;
       -webkit-transform: scale(1.03);
-      transform: scale(1.03); }
-    75% {
+      transform: scale(1.03); }75% {
       background-color: #66ccff;
       -webkit-transform: scale(0.98);
-      transform: scale(0.98); } }
-  @keyframes pulse {
+      transform: scale(0.98);  } }  @keyframes pulse {
     25% {
       background-color: #3a87c1;
       -webkit-transform: scale(1.03);
-      transform: scale(1.03); }
-    75% {
+      transform: scale(1.03); }75% {
       background-color: #66ccff;
       -webkit-transform: scale(0.98);
-      transform: scale(0.98); } } }
-      #phys-finder #map {
+      transform: scale(0.98);  }  } }#phys-finder 
+       #map {
         height: 32.500rem;
-      }
-@media screen and (min-width: 768px) {
+      }@media screen and (min-width: 768px) {
   #phys-finder {
     padding-right: 2rem; }
     #phys-finder #map {
       display: block;
       clear: both;
       height: 32.500rem;
-      width: 100%; }
-      #phys-finder #map .number {
-        display: none; }
-      #phys-finder #map hr {
-        display: none; }
-    #phys-finder .header h1 {
+      width: 100%; }#phys-finder 
+       #map .number {
+        display: none; }#phys-finder #map hr {
+        display: none; }#phys-finder .header h1 {
       display: inline-block;
       margin-right: 2%;
       margin-bottom: 0;
-      vertical-align: bottom; }
-    #phys-finder .header .controls {
+      vertical-align: bottom; }#phys-finder .header .controls {
       display: inline-block;
       margin-bottom: 0;
-      width: auto; }
-    #phys-finder .i-b {
+      width: auto; }#phys-finder .i-b {
       margin-right: 0.5rem;
-      vertical-align: bottom; }
-      #phys-finder .i-b #lblRadius {
-        display: block; }
-    #phys-finder .searchby-wrapper {
+      vertical-align: bottom; }#phys-finder .i-b #lblRadius {
+        display: block; }#phys-finder .searchby-wrapper {
       width: 250px;
-      margin-right: 20px; }
-    #phys-finder .searchtext-wrapper {
-      margin-bottom: 0; }
-    #phys-finder .radius-wrapper {
+      margin-right: 20px; }#phys-finder .searchtext-wrapper {
+      margin-bottom: 0; }#phys-finder .radius-wrapper {
       bottom: 0;
-      margin-right: 20px; }
-    #phys-finder .submit-wrapper {
+      margin-right: 20px; }#phys-finder .submit-wrapper {
       bottom: 0;
-      position: relative; }
-    #phys-finder .active {
-      color: #555555; }
-    #phys-finder .prod-system {
+      position: relative; }#phys-finder .active {
+      color: #555555; }#phys-finder .prod-system {
       background: #fff;
       display: inline-block;
       margin: 0 1.5% 3rem 1.5%;
       max-width: 20rem;
       padding: 1%;
       vertical-align: top;
-      width: 29%; }
-      #phys-finder .prod-system .product-individual {
-        display: block; }
-        #phys-finder .prod-system .product-individual.has-systems {
-          display: block; }
-      #phys-finder .prod-system label {
+      width: 29%; }#phys-finder .prod-system .product-individual {
+        display: block; }#phys-finder  .prod-system .product-individual.has-systems {
+          display: block; }#phys-finder .prod-system label {
         display: inline-block;
         text-indent: -1.2em;
-        padding-left: 1.2em; }
-      #phys-finder .prod-system .short-desc p {
+        padding-left: 1.2em; }#phys-finder .prod-system .short-desc p {
         font-weight: 100;
-        text-align: center; }
-    #phys-finder #map_canvas {
+        text-align: center; }#phys-finder #map_canvas {
       width: 960px;
-      height: 600px; }
-    #phys-finder .gm-style-iw {
+      height: 600px; }#phys-finder .gm-style-iw {
       font-family: Proxima Nova W01, Arial, Helvetica, sans-serif;
-       }
-      #phys-finder .gm-style-iw .info-list div.clinic-distance {
+       }#phys-finder .gm-style-iw .info-list div.clinic-distance {
         display: none;
-        margin-bottom: .25rem; }
-    #phys-finder .bodycopy,
+        margin-bottom: .25rem; }#phys-finder .bodycopy,
     #phys-finder .gm-style-iw .bodycopy {
       font-weight: 300;
-       }
-    #phys-finder .bodycopy h4,
+       }#phys-finder .bodycopy h4,
     #phys-finder .gm-style-iw h4 {
       font-weight: 600;
       font-size: 14px;
       color: #337ab7;
-      margin-top: 0; }
-    #phys-finder .adv-search-toggle .text1 {
-      display: none; }
-    #phys-finder .adv-search-toggle .text2 {
-      display: inline; }
-    #phys-finder #physician-results-list {
+      margin-top: 0; }#phys-finder .adv-search-toggle .text1 {
+      display: none; }#phys-finder .adv-search-toggle .text2 {
+      display: inline; }#phys-finder #physician-results-list {
       /* background-color: #fff; */
       display: none;
       height: 32.500rem;
@@ -487,151 +367,125 @@
       /* position: absolute; */
       /* top: 96px; */
       /* left: 14px; */
-      z-index: 11; }
-      #phys-finder #physician-results-list hr {
-        margin: 0; }
-      #phys-finder #physician-results-list .marker-link {
-        cursor: pointer; }
-      #phys-finder #physician-results-list .bodycopy {
-        padding: 10px 0 10px 10px; }
-        #phys-finder #physician-results-list .bodycopy.active {
-          background-color: #acccea; }
-      #phys-finder #physician-results-list .info {
+      z-index: 11; }#phys-finder #physician-results-list hr {
+        margin: 0; }#phys-finder #physician-results-list .marker-link {
+        cursor: pointer; }#phys-finder #physician-results-list .bodycopy {
+        padding: 10px 0 10px 10px; }#phys-finder  #physician-results-list .bodycopy.active {
+          background-color: #acccea; }#phys-finder #physician-results-list .info {
         display: inline-block;
-        padding-left: 10px; }
-      #phys-finder #physician-results-list .cemail {
-        display: none; }
-      #phys-finder #physician-results-list .website {
-        display: none; }
-    #phys-finder #email-link {
-      padding-right: 1rem; }
-    #phys-finder #print-link {
-      display: inline-block; }
-    #phys-finder .left {
-      float: left; }
-    #phys-finder .right {
-      float: right; }
-    #phys-finder .text-left {
-      text-align: left; }
-    #phys-finder #inner-update {
-      margin-top: 3.750rem; }
-    #phys-finder button:focus {
-      outline: none; }
-    #phys-finder .tab-content header.title {
-      display: block; }
-    #phys-finder .gm-style a {
-      text-decoration: underline; }
-    #phys-finder #adv-search-content .count {
-      position: inherit; }
-    #phys-finder .tabs li {
-      width: auto; }
-      #phys-finder .tabs li.active {
+        padding-left: 10px; }#phys-finder #physician-results-list .cemail {
+        display: none; }#phys-finder #physician-results-list .website {
+        display: none; }#phys-finder #email-link {
+      padding-right: 1rem; }#phys-finder #print-link {
+      display: inline-block; }#phys-finder .left {
+      float: left; }#phys-finder .right {
+      float: right; }#phys-finder .text-left {
+      text-align: left; }#phys-finder #inner-update {
+      margin-top: 3.750rem; }#phys-finderbutton:focus {
+      outline: none; }#phys-finder .tab-content header.title {
+      display: block; }#phys-finder .gm-style a {
+      text-decoration: underline; }#phys-finder #adv-search-content .count {
+      position: inherit; }#phys-finder .tabs li {
+      width: auto; }#phys-finder .tabs li.active {
         border-bottom-color: #66ccff;
         border-bottom-width: 5px;
-        border-bottom-style: solid; }
-      #phys-finder .tabs li button.tab {
-        width: auto; }
+        border-bottom-style: solid; }#phys-finder .tabs li button.tab {
+        width: auto; }#phys-finder 
 
   #phys-finder-search-form {
     margin-bottom: 1rem;
-    text-align: center; }
+    text-align: center; }#phys-finder 
     #phys-finder-search-form select {
       margin-top: .85rem;
-      margin-right: 1rem; }
+      margin-right: 1rem; }#phys-finder 
     #phys-finder-search-form label {
       text-align: left;
-      white-space: nowrap; }
+      white-space: nowrap; }#phys-finder 
     #phys-finder-search-form lbl-radius {
-      display: block; }
+      display: block; }#phys-finder 
 
   #phys-finder-search-results {
-    position: relative; }
+    position: relative; }#phys-finder 
 
   .ie #phys-finder-search-form .ie9-wrapper:before {
-    top: 16px; } }
-@media print {
+    top: 16px;  } }@media print {
   #phys-finder #map {
     margin-top: .2rem;
     width: 90%;
-    height: 600px; }
-  #phys-finder #adv-search {
-    display: none !important; }
-  #phys-finder #phys-finder-search-results .map-header {
-    display: none !important; }
-  #phys-finder #phys-finder-search-results .links {
-    display: none !important; }
-  #phys-finder .header h1 {
+    height: 600px; }#phys-finder  #adv-search {
+    display: none !important; }#phys-finder  #phys-finder-search-results .map-header {
+    display: none !important; }#phys-finder  #phys-finder-search-results .links {
+    display: none !important; }#phys-finder  .header h1 {
     font-size: 1.1rem;
     margin-top: 0.25rem;
-    margin-bottom: 0; }
-  #phys-finder #physician-results-list h4 {
-    font-weight: normal; }
+    margin-bottom: 0; }#phys-finder  #physician-results-list h4 {
+    font-weight: normal; }#phys-finder 
 
   .page-hcpfinder .header-block {
     display: block;
     text-align: center;
-    margin-left: 1rem; }
+    margin-left: 1rem; }#phys-finder 
     .page-hcpfinder .header-block .header-logo {
       text-align: left;
       -webkit-print-color-adjust: exact;
-      width: 130px; }
+      width: 130px; }#phys-finder 
   .page-hcpfinder .l-main {
     background: none;
     border: none;
     margin: 0;
-    padding: 0; }
+    padding: 0; }#phys-finder 
   .page-hcpfinder .l-content {
     margin: 0;
-    padding: 0; }
+    padding: 0; }#phys-finder 
   .page-hcpfinder img {
-    -webkit-print-color-adjust: exact; }
+    -webkit-print-color-adjust: exact; }#phys-finder 
   .page-hcpfinder h1 {
-    color: black; }
+    color: black; }#phys-finder 
   .page-hcpfinder h2 {
-    color: black; }
+    color: black; }#phys-finder 
   .page-hcpfinder h3 {
-    color: black; }
+    color: black; }#phys-finder 
   .page-hcpfinder h4 {
-    color: black; }
+    color: black; }#phys-finder 
   .page-hcpfinder .l-footer .l-region--sub-footer {
     background: none;
     color: black;
     margin: 0;
-    padding: 0; }
+    padding: 0; }#phys-finder 
     .page-hcpfinder .l-footer .l-region--sub-footer p {
-      color: black; }
+      color: black; }#phys-finder 
   .page-hcpfinder .l-footer .menu {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .l-footer #back-to-top {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .l-region--sub-footer .footer-copyright {
     margin: 0 0 0 2em;
     width: 100%;
-    border: 1px solid #cecece; }
+    border: 1px solid #cecece; }#phys-finder 
   .page-hcpfinder .l-region--sub-footer #footer-obagiforlife-logo {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder #valeant-menu-wrapper {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .l-region--navigation {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder #header-nav-left {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder #header-nav-right {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder #block-system-main-menu {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder #block-menu-menu-mobile-menu {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .mobile-header-links {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .fat-footer {
-    display: none !important; }
+    display: none !important; }#phys-finder 
   .page-hcpfinder .l-header .l-region--header {
-    padding: .2rem 0 0 0; }
+    padding: .2rem 0 0 0; }#phys-finder 
   .page-hcpfinder a:link {
     font-weight: bold;
     text-decoration: underline;
-    color: #06c; }
+    color: #06c; }#phys-finder 
 
   #physician-results-list {
     position: relative;
@@ -639,75 +493,71 @@
     left: auto;
     opacity: 1;
     top: auto;
-    width: auto; }
+    width: auto; }#phys-finder 
     #physician-results-list .next-prev {
-      display: none !important; }
+      display: none !important; }#phys-finder 
 
   #pf-email-print {
-    display: none !important; }
+    display: none !important; }#phys-finder 
 
   #clinic-details-container {
-    display: none !important; }
+    display: none !important; }#phys-finder 
 
-  body.page-hcpfinder {
+  .page-hcpfinder {
     background: none;
-    color: black; }
+    color: black; }#phys-finder 
 
   #phys-finder-search-form .controls {
-    display: none !important; } }
+    display: none !important;  } }#phys-finder 
 
     .d-flex {
       display: flex;
       justify-content: space-between;
-    }
+    }#phys-finder 
     
     .d-flex .right-side
      {
       width: 100%;
       transition: all 500ms ease;
-    }
+    }#phys-finder 
     .d-flex.search .right-side {
       width: 75%;
-    }
+    }#phys-finder 
 
     .d-flex .left-side {
       width: 0%;
-    }
+    }#phys-finder 
     .d-flex.search .left-side {
       width: 25%;
-    }
-    
-    @media (max-width: 767px) {
+    }     @media (max-width: 767px) {
       .d-flex {
         display: block;
         margin-top: 0;
-      }
+      }#phys-finder 
     
       .d-flex .right-side,
       .d-flex .left-side {
         width: 100%;
-      }
+      }#phys-finder 
 
       .d-flex .left-side {
         display: none;
       }
-    }
+    }#phys-finder 
     
     .visible-xs-block {
       display: none;
-    }
-    
-    @media (max-width: 767px) {
+    }     @media (max-width: 767px) {
       .visible-xs-block {
         display: block;
       }
-    }
+    }#phys-finder 
     
     #phys-finder-tabs ul {
       display: flex;
       border-bottom: 5px solid #3575a5;
       padding: 0 !important;
-    }
+    }#phys-finder 
     
     #phys-finder-tabs ul li {
       background-color: #c6c6c6;
@@ -719,36 +569,34 @@
       cursor: pointer;
       text-align: center;
 	  list-style: none;
-    }
+    }#phys-finder 
     
     #phys-finder-tabs ul li:first-child {
       margin-right: 15px;
-    }
+    }#phys-finder 
     
     #phys-finder-tabs ul li.active {
       background-color: #3575a5;
-    }
+    }#phys-finder 
     
     #phys-finder-tabs ul li span {
       font-size: 16px;
       font-weight: bold;
-    }
-    
-    @media (max-width: 767px) {
+    }     @media (max-width: 767px) {
       .d-flex .left-side {
         display: none;
       }
-    }
+    }#phys-finder 
   #productsModal .modal-header {
   text-align: right;
   border-bottom: 0;
-}
+}#phys-finder 
 #productsModal .modal-content {
   border-radius: 0;
-}
+}#phys-finder 
 .modal-open {
   overflow: hidden;
-}
+}#phys-finder 
 .modal {
   display: none;
   overflow: hidden;
@@ -760,7 +608,7 @@
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-}
+}#phys-finder 
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -25%);
   -ms-transform: translate(0, -25%);
@@ -770,22 +618,22 @@
   -moz-transition: -moz-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
-}
+}#phys-finder 
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
-}
+}#phys-finder 
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
-}
+}#phys-finder 
 .modal-dialog {
   position: relative;
   width: auto;
   margin: 10px;
-}
+}#phys-finder 
 .modal-content {
   position: relative;
   background-color: #fff;
@@ -796,7 +644,7 @@
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   outline: 0;
-}
+}#phys-finder 
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -805,88 +653,86 @@
   left: 0;
   z-index: 1040;
   background-color: #000;
-}
+}#phys-finder 
 .modal-backdrop.fade {
   opacity: 0;
   filter: alpha(opacity=0);
-}
+}#phys-finder 
 .modal-backdrop.in {
   opacity: 0.5;
   filter: alpha(opacity=50);
-}
+}#phys-finder 
 .modal-header {
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
-}
+}#phys-finder 
 .modal-header .close {
   margin-top: -2px;
-}
+}#phys-finder 
 .modal-title {
   margin: 0;
   line-height: 1.42857143;
-}
+}#phys-finder 
 .modal-body {
   position: relative;
   padding: 15px;
-}
+}#phys-finder 
 .modal-footer {
   padding: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
-}
+}#phys-finder 
 .modal-footer .btn + .btn {
   margin-left: 5px;
   margin-bottom: 0;
-}
+}#phys-finder 
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
-}
+}#phys-finder 
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
-}
+}#phys-finder 
 .modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
   width: 50px;
   height: 50px;
   overflow: scroll;
-}
-@media (min-width: 768px) {
+}@media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
-  }
+  }#phys-finder 
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
+  }#phys-finder 
   .modal-sm {
     width: 300px;
-  }
-}
-@media (min-width: 992px) {
+  } 
+}@media (min-width: 992px) {
   .modal-lg {
     width: 900px;
   }
-}
+}#phys-finder 
 label {
 	font-weight: 100;
-}
+}#phys-finder 
 .error.remove {
 	display: none;
-}
+}#phys-finder 
 .product-num {
     text-decoration:underline;
-} 
+}#phys-finder  
 .close {
 	opacity: 1;
-}
+}#phys-finder 
 .glyphs::before {
 	display: none !important;
-}
+}#phys-finder 
 .glyphicon-remove::before {
 	color: #3a87c1;
-}
+}#phys-finder 
 
 #modalContent .modal-content  {
 	box-shadow: none;
@@ -895,18 +741,19 @@ border: 0;
 
 
 @media (max-width: 767px){
-  #phys-finder-tabs{
+  #phys-finder   #phys-finder-tabs{
     display: none !important;
-  }
+  }#phys-finder 
  
 .result.d-flex {
   margin-top: 20px;
-}
+}#phys-finder 
 .result.d-flex .right-side{
   display: none !important;
-}
+}#phys-finder 
 .d-flex .left-side{
   display: block !important;
   width: 100% !important;
+
 }
 }
