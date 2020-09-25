@@ -193,19 +193,8 @@ const Register = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log('bahiii', newUser)
-        handleRegister(newUser)
-        
-
-        // let errors = err.errors;
-        // console.log("error", errors)
-        // let data = event.responseData.data
-        // console.log("data", data)
-        
-        // if (typeof window !== "undefined") {
-        //     const content = response.json();
-        //     console.log("content", content);
-        // }
+        console.log('bahiii', newUser);
+        handleRegister(newUser);
     }
 
 
@@ -251,7 +240,15 @@ const Register = () => {
                     </div>
 
                     <div className="col-12 col-lg-4">
+                        
                         <div className="required-field">*Required fields</div>
+
+                        <div className={`errors ${err != undefined? 'errors bg-light' : ''}`}>
+                            <ul>
+                                {err !== undefined? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>): ''}
+                            </ul>
+                            
+                        </div>
 
                         <form class="regform" onSubmit={e => {
                             handleSubmit(e);

@@ -87,24 +87,9 @@ export const UserProvider = ({ children }) => {
 
         const newUserRes = await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
-            mode: "no-cors",
             credentials: 'include',
             body: JSON.stringify([user])
         })
-    
-        // .then(res => console.log("resss", res))
-        // .catch(error => {
-        //     console.log("resss", error)
-        // })
-    //     .then((result) => result.json())
-    //     .then((result) => {
-
-    //     if (result.id) {
-    //       dispatch(savedUser( result ));
-    //     } else {
-    //       dispatch(savingUserError( result ));
-    //     }
-    // });
         
         console.log('bahii', newUserRes.status)
 
@@ -119,12 +104,8 @@ export const UserProvider = ({ children }) => {
 
 
         } else {
-
-            // console.log("resss",setErr(newUserRes))
-
-            // let response = await newUserRes.json();
-            // console.log("resss", response, newUserRes.errors)
-            // setErr(newUserRes);
+            let res = await newUserRes.json();
+            setErr(res.errors);
         }
     }
 
