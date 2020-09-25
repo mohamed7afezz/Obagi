@@ -82,6 +82,7 @@ const ProductHero = ({ data, nodeType }) => {
     
   }
 //////////////////////
+
 if ( typeof window !== "undefined"){
   window.bvDCC = {
   
@@ -97,11 +98,11 @@ if ( typeof window !== "undefined"){
     
     
 
-    "productImageURL": `${reviewimg}`,
+    "productImageURL": `https://dev-obagi.azurewebsites.net${reviewimg}`,
     
     //ex. https:\\site.com\pub\media\mh02-black_main.jpg
     
-    "productPageURL":`${productpath}`,
+    "productPageURL":`https://dev-obagi.azurewebsites.net${productpath}`,
     
       
     //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
@@ -196,11 +197,13 @@ if ( typeof window !== "undefined"){
         <p className={[ProductStyles.productcat,"mt-24", "productcat","show-mob"].join(" ")}>
             {nodeType}
           </p>
-          <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
-          <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
+          <div itemtype="https://schema.org/Product">
+            <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
+            <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
 
 
-          <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
+            <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
+          </div>
  
 
           </div></div>
@@ -254,6 +257,7 @@ if ( typeof window !== "undefined"){
           <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
             {nodeType}
           </p>
+          <div itemtype="https://schema.org/Product">
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
@@ -261,6 +265,7 @@ if ( typeof window !== "undefined"){
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
  
 
+          </div>
           </div>
           <div
             className={ProductStyles.productSubDesc}
