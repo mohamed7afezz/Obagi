@@ -67,7 +67,7 @@ export const productPageQuery = graphql`
                         original {
                                 src
                            }
-                           fluid {
+                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
                         }
                         }

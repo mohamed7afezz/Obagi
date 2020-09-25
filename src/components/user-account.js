@@ -168,7 +168,7 @@ const UserAccount = ({ node, children, activeTab }) => {
     query {
       skinanalyzer: file(relativePath: { eq: "image.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

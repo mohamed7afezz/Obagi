@@ -61,15 +61,21 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/jquery.validate.min.js', // Change to the script filename
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', // Change to the script filename
       },
     },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js', // Change to the script filename
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/jquery.validate.min.js', // Change to the script filename
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js', // Change to the script filename
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-load-script',
       options: {

@@ -584,7 +584,7 @@ export const fragment = graphql`
           field_clinical_image {
             localFile {
               childImageSharp {
-                fluid {
+                fluid (quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -621,7 +621,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -644,7 +644,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -677,7 +677,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -700,7 +700,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -734,7 +734,7 @@ export const fragment = graphql`
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -780,7 +780,7 @@ export const fragment = graphql`
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -829,7 +829,7 @@ export const fragment = graphql`
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -891,7 +891,7 @@ export const fragment = graphql`
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -937,7 +937,7 @@ export const fragment = graphql`
                 field_medical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -971,7 +971,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -994,7 +994,7 @@ export const fragment = graphql`
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }

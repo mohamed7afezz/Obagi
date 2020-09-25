@@ -58,7 +58,7 @@ export const fragment = graphql`
       field_box_image {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }
@@ -67,7 +67,7 @@ export const fragment = graphql`
       field_second_b {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }
@@ -76,7 +76,7 @@ export const fragment = graphql`
       field_first_box_title_logo {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }
@@ -85,7 +85,7 @@ export const fragment = graphql`
       field_second_box_title_logo {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }

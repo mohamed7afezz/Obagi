@@ -52,7 +52,7 @@ export const fragment = graphql`
       field_image_left {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }

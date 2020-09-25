@@ -1,6 +1,12 @@
 import $ from 'jquery';
-export function phyfinder(google, Handlebars, regeneratorRuntime, _){
-
+export function phyfinder(google, regeneratorRuntime, _){
+  
+  var script = document.createElement('script'); 
+          
+  script.src = "https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/jquery.validate.min.js"; 
+    
+  document.head.appendChild(script);
+  
 const jQuery = $;
   
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }

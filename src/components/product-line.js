@@ -190,7 +190,7 @@ const ProductLine = ({ node }) => {
                   field_medical_image {
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid (quality: 100){
                           ...GatsbyImageSharpFluid
                         }
                       }
@@ -204,7 +204,7 @@ const ProductLine = ({ node }) => {
       }
       image: file(relativePath: { eq: "252x193.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
@@ -453,7 +453,7 @@ export const fragment = graphql`
           field_line_image {
             localFile {
               childImageSharp {
-                fluid {
+                fluid (quality: 100){
                   ...GatsbyImageSharpFluid
                 }
               }

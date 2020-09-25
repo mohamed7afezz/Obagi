@@ -24,7 +24,7 @@ const Footer = ({ siteTitle }) => {
     query {
       placeholderImage: file(relativePath: { eq: "general.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }

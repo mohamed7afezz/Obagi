@@ -17,7 +17,7 @@ const WelcomeModal = ({ node }) => {
     query {
       productImage: file(relativePath: { eq: "image-3-4.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

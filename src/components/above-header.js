@@ -9,7 +9,7 @@ const AboveHeader = ({ menuType }) => {
       query {
         close: file(relativePath: { eq: "close.png" }) {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }

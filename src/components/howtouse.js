@@ -8,9 +8,9 @@ const Howtouse = ({ node }) => {
     query {
         videoimg: file(relativePath: { eq: "product-images/how-to-use.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+            fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
         }
       }
      

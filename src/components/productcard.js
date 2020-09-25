@@ -24,14 +24,14 @@ const ProductCard = ({
     query {
       smlamb: file(relativePath: { eq: "product-images/smallLamb.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }

@@ -43,7 +43,7 @@ export const fragment = graphql`
       field_paragraph_divider {
         localFile {
           childImageSharp {
-            fluid {
+            fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
           }

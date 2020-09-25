@@ -147,9 +147,9 @@ export const fragment = graphql`
                                 field_slide_image {
                                     localFile {
                                         childImageSharp {
-                                            fluid {
+                                            fluid (quality: 100){
                                                 ...GatsbyImageSharpFluid
-                                            }
+                                              }
                                         }
                                     }
                                 }

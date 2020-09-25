@@ -10,16 +10,16 @@ const Beforeafter = ({ node }) => {
     query {
         afterimg: file(relativePath: { eq: "product-images/smallLamb.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+            fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
         }
       }
       cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+            fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
         }
       }
     }`

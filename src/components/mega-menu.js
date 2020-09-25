@@ -220,9 +220,9 @@ return (
                                         field_mega_block_image {
                                         localFile {
                                             childImageSharp {
-                                                fluid {
-                                                    ...GatsbyImageSharpFluid
-                                                }
+                                              fluid (quality: 100){
+                                                ...GatsbyImageSharpFluid
+                                              }
                                             }
                                         }
                                         }

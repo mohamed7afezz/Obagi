@@ -104,7 +104,7 @@ fragment recommendedParingParagrapgh on paragraph__recomended_paring {
                 field_clinical_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -147,7 +147,7 @@ fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
                   field_medical_image {
                     localFile {
                       childImageSharp {
-                        fluid {
+                        fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
                         }
                       }

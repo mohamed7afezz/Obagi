@@ -20,7 +20,7 @@ const CollectionFooter = ({ info, blockName })=> {
                 field_taxonomy_footer_image {
                   localFile {
                     childImageSharp {
-                      fluid {
+                      fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }

@@ -9,23 +9,23 @@ const NavBlocks = () => {
     query {
         test: file(relativePath: { eq: "blog-clenziderm-model.png" }) {
             childImageSharp {
-                fluid {
+                fluid (quality: 100){
                     ...GatsbyImageSharpFluid
-                }
+                  }
             }
         }
         testarrow: file(relativePath: { eq: "small-right.png" }) {
             childImageSharp {
-                fluid {
+                fluid (quality: 100){
                     ...GatsbyImageSharpFluid
-                }
+                  }
             }
         }
         skinclusion: file(relativePath: { eq: "skinclusion-logo-2019-tag-outlined-sm-tm.png" }) {
             childImageSharp {
-                fluid {
+                fluid (quality: 100){
                     ...GatsbyImageSharpFluid
-                }
+                  }
             }
         }
     }

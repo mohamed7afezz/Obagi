@@ -12,9 +12,9 @@ const OrderNoHistory = ({ node }) => {
     query {
       skinanalyzer: file(relativePath: { eq: "image.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+            fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
         }
       }
     }

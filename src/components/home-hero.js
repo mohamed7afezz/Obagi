@@ -59,8 +59,8 @@ export const fragment = graphql`
           field_default_bg {
             localFile {
               childImageSharp {
-                fluid {
-                    ...GatsbyImageSharpFluid
+                fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
                 }
                 original {
                     src
@@ -71,7 +71,7 @@ export const fragment = graphql`
           field_scroll_down {
             localFile {
               childImageSharp {
-                fluid {
+                fluid (quality: 100){
                   ...GatsbyImageSharpFluid
                 }
               }

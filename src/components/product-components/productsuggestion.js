@@ -25,7 +25,7 @@ const ProductSuggestion = ({ node }) => {
     query {
       cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

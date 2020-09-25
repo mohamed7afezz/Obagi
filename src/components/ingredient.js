@@ -10,14 +10,14 @@ const Ingredient = ({ node }) => {
     query {
         ingredientimg: file(relativePath: { eq: "product-images/key-ingredients.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       pluswhite: file(relativePath: { eq: "product-images/iplus-white.svg" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }

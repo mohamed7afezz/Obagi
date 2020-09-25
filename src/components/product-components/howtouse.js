@@ -244,7 +244,7 @@ export const fragment = graphql`
                           field_video_poster {
                             localFile {
                               childImageSharp {
-                                fluid {
+                                fluid (quality: 100) {
                                     ...GatsbyImageSharpFluid
                                 }
                               }
@@ -256,7 +256,7 @@ export const fragment = graphql`
                     field_step_image {
                         localFile {
                             childImageSharp {
-                                fluid {
+                                fluid (quality: 100) {
                                     ...GatsbyImageSharpFluid
                                 }
                             }

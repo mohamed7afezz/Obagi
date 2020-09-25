@@ -25,7 +25,7 @@ const Notification = ({ id, text, type }) => {
       relativePath: { eq: "product-images/prouduct-thumb.png" }
     ) {
       childImageSharp {
-        fluid {
+        fluid (quality: 100){
           ...GatsbyImageSharpFluid
         }
       }

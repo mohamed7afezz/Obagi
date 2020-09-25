@@ -3,19 +3,19 @@ import React, { useEffect } from "react"
 import "../assets/scss/components/physfinder-old.scss"
 import "../assets/scss/components/physfinder.scss"
 import Layout from "../components/layout"
-import {phyfinder} from '../assets/js/phy'
+// import {phyfinder} from '../assets/js/phy'
 
 const PhysFinder = () => {
     useEffect(() => {
         
         if(typeof window !== 'undefined') {
             let google = window.google;
-            let Handlebars = window.Handlebars;
+            // let Handlebars = window.Handlebars;
             let regeneratorRuntime = window.regeneratorRuntime;
             let _ = window._;
 
             console.log('bahiii did load')
-            phyfinder(google, Handlebars, regeneratorRuntime, _); 
+            // phyfinder(google, regeneratorRuntime, _); 
             
         }
         

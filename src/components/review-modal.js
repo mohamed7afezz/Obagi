@@ -17,9 +17,9 @@ const ReviewModal = ({ node }) => {
     query {
       productImage: file(relativePath: { eq: "image-3-4.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+            fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
         }
       }
     }

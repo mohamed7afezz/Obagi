@@ -92,7 +92,7 @@ fragment youMightAlsoLikeParagrapgh on paragraph__you_might_also_like {
             field_clinical_image {
               localFile {
                 childImageSharp {
-                  fluid {
+                  fluid (quality: 100) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -120,7 +120,7 @@ fragment youMightAlsoLikeMedicalParagrapgh on paragraph__you_might_also_like {
             field_medical_image {
               localFile {
                 childImageSharp {
-                  fluid {
+                  fluid (quality: 100) {
                     ...GatsbyImageSharpFluid
                   }
                 }

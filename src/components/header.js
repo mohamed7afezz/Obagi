@@ -41,7 +41,7 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
       }
       search: file(relativePath: { eq: "search.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
@@ -62,14 +62,14 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
       }
       cart: file(relativePath: { eq: "bag.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       menu: file(relativePath: { eq: "menu.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
@@ -78,82 +78,82 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
 
       medical: file(relativePath: { eq: "11-29-201841057.png" }) {
         childImageSharp {
-            fluid {
-                ...GatsbyImageSharpFluid
-            }
+          fluid (quality: 100){
+            ...GatsbyImageSharpFluid
+          }
         }
     }
     clinical: file(relativePath: { eq: "2022-ob-02-0076-group-shot.png" }) {
       childImageSharp {
-          fluid {
-              ...GatsbyImageSharpFluid
-          }
+        fluid (quality: 100){
+          ...GatsbyImageSharpFluid
+        }
       }
   }
   ourstory: file(relativePath: { eq: "01-0576-copy.png" }) {
     childImageSharp {
-        fluid {
-            ...GatsbyImageSharpFluid
-        }
+      fluid (quality: 100){
+        ...GatsbyImageSharpFluid
+      }
     }
 }
 innovation: file(relativePath: { eq: "2019-ob-14-petri-dish-0242-copy.png" }) {
   childImageSharp {
-      fluid {
-          ...GatsbyImageSharpFluid
-      }
+    fluid (quality: 100){
+      ...GatsbyImageSharpFluid
+    }
   }
 }
 skincare: file(relativePath: { eq: "04-0868-copy.png" }) {
   childImageSharp {
-      fluid {
-          ...GatsbyImageSharpFluid
-      }
+    fluid (quality: 100){
+      ...GatsbyImageSharpFluid
+    }
   }
 }
 istocksmall: file(relativePath: { eq: "i-stock-985783976.png" }) {
   childImageSharp {
-      fluid {
-          ...GatsbyImageSharpFluid
-      }
+    fluid (quality: 100){
+      ...GatsbyImageSharpFluid
+    }
   }
 }
 
 blog: file(relativePath: { eq: "blog-clenziderm-model.png" }) {
   childImageSharp {
-      fluid {
-          ...GatsbyImageSharpFluid
-      }
+    fluid (quality: 100){
+      ...GatsbyImageSharpFluid
+    }
   }
 }
 
 press: file(relativePath: { eq: "11-29-201841195.png" }) {
   childImageSharp {
-      fluid {
-          ...GatsbyImageSharpFluid
-      }
+    fluid (quality: 100){
+      ...GatsbyImageSharpFluid
+    }
   }
 }
 
     istock: file(relativePath: { eq: "2-i-stock-985783976.png" }) {
       childImageSharp {
-          fluid {
-              ...GatsbyImageSharpFluid
-          }
+        fluid (quality: 100){
+          ...GatsbyImageSharpFluid
+        }
       }
   }
     testarrow: file(relativePath: { eq: "small-right.png" }) {
         childImageSharp {
-            fluid {
-                ...GatsbyImageSharpFluid
-            }
+          fluid (quality: 100){
+            ...GatsbyImageSharpFluid
+          }
         }
     }
     skinclusion: file(relativePath: { eq: "skinclusion-logo-2019-tag-outlined-sm-tm.png" }) {
         childImageSharp {
-            fluid {
-                ...GatsbyImageSharpFluid
-            }
+          fluid (quality: 100){
+            ...GatsbyImageSharpFluid
+          }
         }
     }
 

@@ -103,28 +103,28 @@ const ProductHero = ({ node, props }) => {
       }
       retinol1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       vitamins1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       ob1: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       f41: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
         childImageSharp {
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
