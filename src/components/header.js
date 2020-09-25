@@ -391,9 +391,9 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
 
                 <div className={headerStyles.lowerSection}>
                   <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
-                  <span><Link to="#">PREMIER POINTS</Link></span>
+                  <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
                 </div>
-                <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
+                
               </div>
             </div>
           </div>

@@ -412,8 +412,6 @@
 }
 .mobile-referral-span {
     @include fontStyle(14, 16);
-    padding-bottom: 165px;
-    padding-top: 20px;
     padding-left: 25px;
     display: block;
     @extend %futurapt-medium;
