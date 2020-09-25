@@ -49,52 +49,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&libraries=places', // Change to the script filename
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
         src: 'https://obagi.extole.io/core.js', // Change to the script filename
       },
     },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', // Change to the script filename
-      },
-    },
-    // {
-    //   resolve: 'gatsby-plugin-load-script',
-    //   options: {
-    //     src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/jquery.validate.min.js', // Change to the script filename
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-plugin-load-script',
-    //   options: {
-    //     src: 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js', // Change to the script filename
-    //   },
-    // },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.js', // Change to the script filename
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://dev-obagielastiderm.pantheonsite.io/modules/custom/obagi_finder/js/physfinder.js', // Change to the script filename
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: 'https://dev-obagielastiderm.pantheonsite.io/core/assets/vendor/underscore/underscore-min.js', // Change to the script filename
-      },
-    },
-    
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
