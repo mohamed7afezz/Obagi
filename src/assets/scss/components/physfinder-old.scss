@@ -1,3 +1,6 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
 .sprites-sprite {
     background: url(https://www.obagi.com/sites/all/themes/responsive/images/generated/sprites-s09f3f3c43b.png) no-repeat
 }#phys-finder 
@@ -5881,4 +5884,288 @@ _:-ms-lang(x),#phys-finder    #billboards .slide-skindrink .slide-wrap .billboar
 div.ctools-modal-content .modal-header {
     background-color: transparent ! important;
 }
+}
+///////////////////////////////////////////////////////////start
+#phys-finder,#phys-finder p ,#phys-finder h1 ,
+#phys-finder h2 , #phys-finder h3 ,#phys-finder span,
+#phys-finder div ,#phys-finder input ,#phys-finder label,#phys-finder a{
+  font-weight: 400 !important;
+  font-family: futura-pt, sans-serif !important;
+  color: #132466 !important;
+}
+.finder-title{
+    font-weight: 300 !important;
+    font-size: 32px !important;
+    line-height: 48px !important;
+   margin-bottom: 8px;
+    @include md-screen{
+        font-size: 52px !important;
+        margin-bottom: 16px;
+        line-height: 64px !important;
+    }
+}
+.finder-subtitle{
+    font-size: 18px !important;
+    line-height: 32px !important;
+    margin-bottom: 32px;
+}
+.lastfind{
+    margin-bottom: 48px;
+}
+#phys-finder .searchby-wrapper{
+  
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-between;
+}
+#phys-finder .radius-wrapper{
+    margin-right: 0 !important;
+}
+#phys-finder .submit-wrapper {
+    margin-right: 0 !important;
+}
+#phys-finder .header .controls{
+
+align-items: center;
+}
+#phys-finder .searchby-wrapper{
+  width: auto;
+}
+.checkcon {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .checkcon input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmarkfinder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .checkcon:hover input ~ .checkmarkfinder {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .checkcon input:checked ~ .checkmarkfinder {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmarkfinder:after {
+    content: " ";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .checkcon input:checked ~ .checkmarkfinder:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .checkcon .checkmarkfinder:after {
+    content: " ";
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+      position: absolute;
+  }
+
+ 
+  #phys-finder  .selctfinder{
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-weight: 700 !important;
+ }
+ #phys-finder .searchtext-wrapper, #phys-finder .radius-wrapper{
+    margin-bottom: 0;
+    margin-top: 0;
+    border: 1px solid #d6d6d6;
+    padding: 12px 16px;
+    text-align: left;
+  
+}
+#phys-finder .custom-select{
+border: 0;
+outline: 0;
+
+padding-left: 0;
+}
+#phys-finder #phys-finder-search-form #pf-radius{
+position: absolute;
+z-index: -9999;
+}
+#phys-finder .ie9-wrapper .select-items,#phys-finder .ie9-wrapper .select-selected{
+background-color: #fff;
+
+}
+#phys-finder .ie9-wrapper .select-selected{
+    padding: 0;
+border: 0;
+}
+#phys-finder .searchtext-wrapper label {
+    font-size: 12px !important;
+    letter-spacing: 1.2px !important;
+    line-height: 16px !important;
+    font-weight: 700 !important;
+}
+  #phys-finder #phys-finder-search-form select{
+    margin-right: 0 !important;
+  }
+ #phys-finder  #finder-physician-input,#phys-finder  #finder-location-input,
+ #phys-finder  #finder-physician-input:focus,#phys-finder  #finder-location-input:focus{
+    border: 0;
+    outline: 0;
+  }
+  #phys-finder  input#finder-physician-input,#phys-finder  input#finder-location-input{
+      height: 30px;
+      padding-left: 0;
+  }
+  #phys-finder #phys-finder-search-form label{
+      margin-bottom: 0;
+  }
+  #phys-finder .i-b.submit-wrapper{
+      display: flex;
+      justify-content: space-between;
+  }
+  #phys-finder .i-b.submit-wrapper #searchProduct,  #phys-finder .i-b.submit-wrapper #pf-submit{
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      font-weight: 700 !important;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      border-radius: 6px;
+  } 
+  #phys-finder .i-b.submit-wrapper #searchProduct,#phys-finder .i-b.submit-wrapper #pf-submit:hover{
+    background-color: #fff;
+    color: #132466 !important;
+    border: 1px solid #132466;
+}
+
+#phys-finder .i-b.submit-wrapper #pf-submit,#phys-finder .i-b.submit-wrapper #searchProduct:hover{
+    background-color: #132466;
+    color: #fff !important;
+    border: 1px solid #fff;
+}
+#phys-finder.searchby-wrapper.col-lg-6{
+    @include md-screen{
+    padding-left: 0;    
+}
+}#phys-finder
+.i-b.submit-wrapper.col-lg-4{
+    @include md-screen{
+        padding-right: 0;    
+    }
+}
+#phys-finder #lblRadius{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 700 !important;
+}
+#phys-finder .searchtext-wrapper {
+    margin-bottom: 0;
+    margin-top: 0;
+    max-width: 200px;
+}
+.controls{
+    margin-bottom: 25px;
+    @include md-screen{
+        margin-bottom: 48px;
+    }
+}
+#phys-finder .error::before {
+    display: none;
+}
+.finder-foot{
+    font-size: 16px;
+    line-height: 24;
+    padding-top: 48px;
+   
+}
+#phys-finder .d-flex.search .right-side {
+    width: 64%;
+}
+#phys-finder .d-flex.search .left-side {
+    width: 34%;
+}#phys-finder .map-header{
+    width: 100%;
+    background-color: #fff !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500 !important;
+    border-bottom: 1px solid #d6d6d6;
+
+
+}
+#phys-finder #physician-results-list .bodycopy {
+    padding: 10px 0 11px 16px;
+}#phys-finder #physician-results-list .count{
+    padding-left: 16px;
+}
+#phys-finder #physician-results-list::-webkit-scrollbar {
+    display: none;
+  }
+#phys-finder #physician-results-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#phys-finder .d-flex.search .left-side{
+    border: 1px solid #d6d6d6 !important;
+    border-radius: 6px;
+  
+}#phys-finder #physician-results-list .next {
+    margin-right: 15px;
+    display: flex;
+}
+#phys-finder #physician-results-list a.next::after{
+    display: block;
+    height: 6px;
+    float: none;
+}
+#phys-finder .clinic-name{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700 !important;
+}
+#phys-finder .make-appointment{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 700 !important;
+    color: #fff !important;
+    background-color: #132466 !important;
+    padding: 12px !important;
+    border-bottom: 0;
+    outline: 0;
 }

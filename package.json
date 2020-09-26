@@ -33,6 +33,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-before-after-slider": "^1.0.4",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-img-zoom": "^0.1.0",

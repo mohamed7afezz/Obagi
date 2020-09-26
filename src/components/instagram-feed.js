@@ -45,7 +45,7 @@ const InstagramFeed = ({ node }) => {
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        {node.field_feed_footnote ? <div dangerouslySetInnerHTML={{ __html: node.field_feed_footnote.processed }} className={instagramStyles.footnote}></div> : ''}
+                        {/* {node.field_feed_footnote ? <div dangerouslySetInnerHTML={{ __html: node.field_feed_footnote.processed }} className={instagramStyles.footnote}></div> : ''} */}
                         <div className={instagramStyles.socialMedia}>
                             <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faTwitter} className={instagramStyles.icon} /></Link></div>
                             <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faInstagram} className={instagramStyles.icon} /></Link></div>
@@ -63,9 +63,7 @@ export default InstagramFeed
 export const fragment = graphql`
     fragment paragraphInstagramFeed on paragraph__instagram_feed {
         id
-        field_feed_footnote {
-            processed
-        }
+      
         field_feed_subtitle {
             processed
         }
