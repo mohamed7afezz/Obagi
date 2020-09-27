@@ -12,6 +12,7 @@ function playvideo(event) {
   
   let url = event.target.parentNode.getAttribute("href");  
   playerOpts.url = url;
+
   if (!playerOpts.url.indexOf('youtube') > -1) {
     document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     
@@ -74,7 +75,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                 <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>
-                {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
+                {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg} src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:""} /> : ''}
               </div>
             </div>
           </div>
@@ -117,7 +118,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                   <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>
-                  {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
+                  {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg}  src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:""} /> : ''}
                 </div>
               </div>
             </div>
@@ -135,7 +136,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                     <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                       <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? <Img fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:''} /> : ''}
+                    {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg}  src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:''} /> : ''}
                   </div>
                 </div>
               </div>
@@ -194,8 +195,8 @@ export const fragment = graphql`
                 field_video_poster {
                   localFile {
                     childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
+                      original{
+                        src
                       }
                     }
                   }

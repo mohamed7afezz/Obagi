@@ -16,7 +16,8 @@ function playvideo(event) {
     
     let url = event.target.parentNode.getAttribute("href");
     playerOpts.url = url;
-    if (!playerOpts.url.indexOf('youtube') > -1) {
+   
+    if (!playerOpts.url.indexOf('youtube') > -1 || !playerOpts.url.indexOf('youtu') > -1) {
         document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         
         return;

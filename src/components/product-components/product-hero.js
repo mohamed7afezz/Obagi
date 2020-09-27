@@ -13,7 +13,7 @@ import Zoom from "react-img-zoom"
 import CartContext from "../../providers/cart-provider"
 import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
-import freeimg from "../../assets/images/product-images/free_image.png"
+import freeimg from "../../assets/images/thumbnail.png"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
@@ -261,9 +261,11 @@ if ( typeof window !== "undefined"){
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
-
+          {field_medical_rx == "RX"? 
+          ""
+          :
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
- 
+        }
 
           </div>
           </div>
@@ -450,7 +452,8 @@ if ( typeof window !== "undefined"){
        </p>
      </div>
       }
-       <div className={ProductStyles.offer}> 
+      {field_medical_rx == "RX"? "":
+             <div className={ProductStyles.offer}> 
             <div className={["col-3",ProductStyles.offerimg].join(" ")}>
             <img src={freeimg}/>
             </div>
@@ -458,11 +461,11 @@ if ( typeof window !== "undefined"){
             <p className={ProductStyles.offertitle}>
             FREE GIFT WITH PURCHASE
             </p>
-            <p className={ProductStyles.offerdesc}>Professional-C Microdermabrasion Polish Mask ($6 Value), with any purchase of Obagi Clinical purchase.</p>
-             <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p>
+            <p className={ProductStyles.offerdesc}>Registered Members receive Free Ground Shipping with purchase of $125. <Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
+             {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
             </div>
             </div>
-  
+}
         </div>
         <div
           id="product-hero-slick"

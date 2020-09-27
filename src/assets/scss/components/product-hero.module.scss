@@ -110,6 +110,14 @@ a{
     margin-left: 3px;
 }
 }
+.linkText{
+    font-size: 16px;
+    line-height: 24px;
+    @extend %futurapt-book;
+    text-decoration: underline;
+    color: #132466;
+ 
+}
 .Indications{
     font-size: 16px;
     line-height: 24px;
