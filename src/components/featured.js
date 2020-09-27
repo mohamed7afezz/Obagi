@@ -60,7 +60,7 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
 
 //console.log('current', currentName)
 
-productCount = taxonomy.node.relationships.node__clinical_product? taxonomy.node.relationships.node__clinical_product.length : 0;
+productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
   return (
 
     <div>

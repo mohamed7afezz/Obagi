@@ -86,7 +86,6 @@ export const productPageQuery = graphql`
                     ...ingredientParagraph
                     ...howToUseParagraph
                     ...beforeAfterParagraph
-                    ...needToKnowParagrapgh
                     
                     ...recommendedParingParagrapgh
                     
@@ -154,8 +153,6 @@ export const productPageQuery = graphql`
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
                     ...reviewsParagraph
-                    ...recommendedMedicalParingParagrapgh
-                    ...youMightAlsoLikeMedicalParagrapgh
   
                 }
             }

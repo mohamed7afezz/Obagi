@@ -39,8 +39,8 @@ const Ingredient = ({ node }) => {
         <div className={["col-12", "col-lg-5", "offset-lg-1", ingredient.ingredientorder].join(" ")}>
           <h1 className={ingredient.ingredientimagehead}>{node.field_ingredienthead?node.field_ingredienthead.processed:''}</h1>
           {
-            data.field_ingredient_image.relationships.field_section_image?
-            (data.field_ingredient_image.relationships.field_section_image.localFile? <Img fluid={data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid} alt="ingredientimg" /> : '')
+            data.field_ingredient_image?
+            (data.field_ingredient_image.relationships.field_section_image? <Img fluid={data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid} alt="ingredientimg" /> : '')
             :
             ''
           }
