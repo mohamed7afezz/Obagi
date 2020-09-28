@@ -122,22 +122,25 @@ const Howtouse = ({ node }) => {
                                             <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
 
                                                 <div class="card-body ">
-                                                    {item.relationships.field_step_image ?
-                                                        <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                    {node.relationships.field_general_image?
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
                                                         :
-                                                        <div className="video-wrapper">
-                                                            {
-                                                                item.relationships.field_video.relationships.field_video_poster ?
-                                                                    <div className="img-wrap">
-                                                                        <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
-                                                                            <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
-                                                                        </a>
-                                                                        <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
-                                                                    </div>
-                                                                    :
-                                                                    ''
-                                                            }
-                                                        </div>
+                                                        (item.relationships.field_step_image ?
+                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                            :
+                                                            <div className="video-wrapper">
+                                                                {
+                                                                    item.relationships.field_video.relationships.field_video_poster ?
+                                                                        <div className="img-wrap">
+                                                                            <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
+                                                                                <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                                                                            </a>
+                                                                            <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                        </div>
+                                                                        :
+                                                                        ''
+                                                                }
+                                                            </div>)
                                                     }
 
                                                 </div>
@@ -160,22 +163,25 @@ const Howtouse = ({ node }) => {
                                             <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
 
                                                 <div class="card-body ">
-                                                    {item.relationships.field_step_image ?
-                                                        <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                    {node.relationships.field_general_image? 
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
                                                         :
-                                                        <div className="video-wrapper">
-                                                            {
-                                                                item.relationships.field_video.relationships.field_video_poster ?
-                                                                    <div className="img-wrap">
-                                                                        <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
-                                                                            <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
-                                                                        </a>
-                                                                        <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
-                                                                    </div>
-                                                                    :
-                                                                    ''
-                                                            }
-                                                        </div>
+                                                        (item.relationships.field_step_image ?
+                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                            :
+                                                            <div className="video-wrapper">
+                                                                {
+                                                                    item.relationships.field_video.relationships.field_video_poster ?
+                                                                        <div className="img-wrap">
+                                                                            <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
+                                                                                <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                                                                            </a>
+                                                                            <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                        </div>
+                                                                        :
+                                                                        ''
+                                                                }
+                                                            </div>)
                                                     }
 
                                                 </div>
@@ -232,6 +238,15 @@ export const fragment = graphql`
             processed
         }
         relationships {
+            field_general_image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
             field_step_paragragh {
                 field_step_all_content {
                     processed

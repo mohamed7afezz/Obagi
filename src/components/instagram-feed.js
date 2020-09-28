@@ -47,10 +47,10 @@ const InstagramFeed = ({ node }) => {
                     <div className="col-12">
                         {/* {node.field_feed_footnote ? <div dangerouslySetInnerHTML={{ __html: node.field_feed_footnote.processed }} className={instagramStyles.footnote}></div> : ''} */}
                         <div className={instagramStyles.socialMedia}>
-                        <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faPinterest} className={instagramStyles.icon} /></Link></div>
-                            <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faInstagram} className={instagramStyles.icon} /></Link></div>
-                            <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faFacebook} className={instagramStyles.icon} /></Link></div>
-                            <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faTwitter} className={instagramStyles.icon} /></Link></div>
+                        {/* <div className={instagramStyles.socialIcon}><Link to="#"><FontAwesomeIcon icon={faPinterest} className={instagramStyles.icon} /></Link></div> */}
+                            <div className={instagramStyles.socialIcon}><a href="https://www.instagram.com/obagiclinical/"><FontAwesomeIcon icon={faInstagram} className={instagramStyles.icon} /></a></div>
+                            <div className={instagramStyles.socialIcon}><a href="https://www.facebook.com/ObagiClinicalProducts"><FontAwesomeIcon icon={faFacebook} className={instagramStyles.icon} /></a></div>
+                            <div className={instagramStyles.socialIcon}><a href="https://twitter.com/obagiclinical?lang=en"><FontAwesomeIcon icon={faTwitter} className={instagramStyles.icon} /></a></div>
 
                         </div>
                     </div>

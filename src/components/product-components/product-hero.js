@@ -462,7 +462,7 @@ if ( typeof window !== "undefined"){
             FREE GIFT WITH PURCHASE
             </p>
             <p className={ProductStyles.offerdesc}>Registered Members receive Free Ground Shipping with purchase of $125.</p>
-            <p className={ProductStyles.offerdesc}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
+            <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
 
              {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
             </div>

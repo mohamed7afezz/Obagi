@@ -13,6 +13,8 @@ const HeroSlider = ({ node }) => {
         slidesToShow: 1,
         arrows: false,
         dots: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
         // beforeChange: (current, next) => {
         //     document.querySelector('.myslickactive').classList.remove('myslickactive');
         //     document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
