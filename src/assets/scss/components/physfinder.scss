@@ -797,15 +797,27 @@ border: 0;
     
    align-items: center !important;
 display: flex !important;
-justify-content: space-between;
+justify-content: space-evenly;
+@include md-screen{
+  justify-content: space-between;
+}
 }
 #phys-finder .header .controls{
 display: flex;
 align-items: center;
+flex-direction: column;
+@include md-screen{
+  flex-direction: row;
+}
 }
 #phys-finder .searchby-wrapper{
   width: auto;
   margin-right: 0;
+
+  flex-wrap: wrap;
+  @include md-screen {
+    flex-direction: row;
+  }
 }
 .checkcon {
     display: block;
@@ -878,11 +890,15 @@ align-items: center;
     font-size: 16px !important;
     line-height: 24px !important;
     font-weight: 700 !important;
+   
 }
 #phys-finder .searchtext-wrapper{
-  margin-bottom: 0;
-  margin-top: 0;
-  
+ margin-bottom: 16px;
+ margin-top: 16px;
+  @include md-screen{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }
 #phys-finder #phys-finder-search-form select{
   margin-right: 0 !important;
@@ -918,7 +934,15 @@ align-items: center;
     font-size: 16px;
     line-height: 24;
     padding-top: 48px;
-   
+    padding-left: 16px;
+    padding-right: 16px;
+   @include md-screen{
+     padding-left: 0;
+     padding-right: 0;
+   }
+}
+#pf-location-error{
+  display: none !important;
 }
 #phys-finder .d-flex.search .right-side {
     width: 64%;
@@ -994,4 +1018,70 @@ fill : #fff !important;
 }
 #phys-finder .right-side .make-appointment{
   margin-bottom: 16px;
+}
+@media (max-width:1024px){
+  .finder-foot-1{
+    padding-top: 0;
+  }
+  #phys-finder #pf-submit{
+    margin-bottom: 16px;
+}
+  #phys-finder .i-b.submit-wrapper{
+    margin-bottom: 0;
+  }
+  .selctfinder{
+  flex: 0 0 100%;
+  text-align: center;
+
+  margin-bottom: 16px;
+  }
+  #phys-finder .radius-wrapper{
+    padding-bottom: 0;
+    padding-top: 0;
+    border: 0;
+    border-radius: 4px;
+  }
+  .ie9-wrapper{
+    padding:16px;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+  }
+  #phys-finder .covid{
+    padding: 16px;
+    padding-top: 0;
+  }
+  #phys-finder #pf-count-results,#phys-finder #pf-count-results span{
+    text-align: left;
+
+  }
+  #phys-finder #physician-results-list .count ,  #phys-finder #physician-results-list .next-prev{
+    display: none;
+  }
+  #phys-finder #physician-results-list .bodycopy{
+    margin-bottom: 18px;
+  }
+}
+#phys-finder #pf-count-results,#phys-finder #pf-count-results span{
+ font-size: 16px;
+ line-height: 24px;
+ font-weight: 500 !important;   
+
+}
+#phys-finder #physician-results-list hr.first{
+  display: none;
+}
+
+#physician-results-list div:nth-child(2){
+  width: 100% !important;
+}
+#phys-finder #physician-results-list .bodycopy {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 16px;
+}
+#phys-finder .inner  hr{
+  background-color: transparent;
+}
+#phys-finder .inner .number{
+  margin-right: 15px;
 }

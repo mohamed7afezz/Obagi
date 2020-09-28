@@ -5908,6 +5908,10 @@ div.ctools-modal-content .modal-header {
     font-size: 18px !important;
     line-height: 32px !important;
     margin-bottom: 32px;
+    display: none;
+    @include md-screen{
+        display: block;
+    }
 }
 .lastfind{
     margin-bottom: 48px;
@@ -6077,6 +6081,13 @@ border: 0;
     color: #fff !important;
     border: 1px solid #fff;
 }
+
+#phys-finder .i-b.submit-wrapper{
+    flex-direction: column;
+    @include md-screen{
+        flex-direction: row;
+    }
+}
 #phys-finder.searchby-wrapper.col-lg-6{
     @include md-screen{
     padding-left: 0;    
@@ -6094,9 +6105,12 @@ border: 0;
     font-weight: 700 !important;
 }
 #phys-finder .searchtext-wrapper {
-    margin-bottom: 0;
-    margin-top: 0;
+    width: 100%;
+    border-radius: 4px;
+    text-transform: uppercase;
+  @include md-screen{
     max-width: 200px;
+}
 }
 .controls{
     margin-bottom: 25px;
@@ -6169,3 +6183,11 @@ border: 0;
     border-bottom: 0;
     outline: 0;
 }
+#phys-finder .header .controls{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include md-screen{
+      flex-direction: row;
+    }
+    }

@@ -66,15 +66,11 @@ export const fragment = graphql`
     fragment paragraphInstagramFeed on paragraph__instagram_feed {
         id
       
-        field_feed_subtitle {
-            processed
-        }
+   
         field_feed_title {
             processed
         }
-        field_feed_username {
-            processed
-        }
+   
         relationships {
             field_feed_image {
                 localFile {
