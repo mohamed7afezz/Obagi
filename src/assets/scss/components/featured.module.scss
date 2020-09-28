@@ -16,6 +16,7 @@
 
 .subtitle {
     padding: 24px 0 0;
+    text-transform: uppercase;
     &::before {
         background: #ffcd00;
     }
@@ -42,6 +43,7 @@
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
     display: flex;
+    text-transform: uppercase;
     a {
         color: #132466;
         display: flex;
@@ -72,6 +74,7 @@
     letter-spacing: 1.6px;
     display: flex;
     flex-wrap: wrap;
+    text-transform: uppercase;
 }
 
 .category {

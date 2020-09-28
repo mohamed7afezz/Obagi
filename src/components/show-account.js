@@ -3,14 +3,15 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import ShowAccountStyle from "../assets/scss/components/show-account.module.scss"
 import Img from "gatsby-image"
 import UserContext from '../providers/user-provider'
+import $ from 'jquery'
 const ShowAccount = () => {
 
     const {user, handleLogout} = useContext(UserContext);
 
     function closeModal() {
-        document.querySelector("#show-account").style.display = "none";
-        document.querySelector("body").classList.remove("modal-open");
-        document.querySelector(".modal-backdrop").remove();
+        $("#show-account").style.display = "none";
+        $("body").classList.remove("modal-open");
+       $(".modal-backdrop").remove();
     }
 
     return (

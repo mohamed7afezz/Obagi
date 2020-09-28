@@ -9,6 +9,7 @@ const isBrowser = () => typeof window !== "undefined"
 
 export const UserProvider = ({ children }) => {
 
+    const [redirectUrl, setRedirectUrl] = useState();
     const [user, setUser] = useState(false);
     const [err, setErr] = useState();
 
@@ -110,7 +111,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, err, matchEmail, isLoading, handleLogin, handleLogout, handleRegister }}>
+        <UserContext.Provider value={{ user, err, matchEmail, isLoading, redirectUrl, setRedirectUrl, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )

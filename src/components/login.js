@@ -6,7 +6,7 @@ import LoginMenu from '../components/login-menu'
 
 const Login = () => {
 
-  const { user, isLoading, matchEmail, handleLogin } = useContext(UserContext);
+  const { user, isLoading, matchEmail, handleLogin, redirectUrl } = useContext(UserContext);
 
   const [state, setState] = useState({
     email: ``,
@@ -28,7 +28,7 @@ const Login = () => {
 
 
   if (user && typeof window !== 'undefined') {
-    navigate(`/my-account/orders`)
+    navigate(redirectUrl? redirectUrl : `/my-account/orders`)
   }
 
   return (

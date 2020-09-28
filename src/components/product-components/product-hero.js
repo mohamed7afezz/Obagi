@@ -459,10 +459,11 @@ if ( typeof window !== "undefined"){
             </div>
             <div className={["col-9",ProductStyles.offercontent].join(" ")}>
             <p className={ProductStyles.offertitle}>
-            FREE GIFT WITH PURCHASE
+            COMPLIMENTARY SHIPPING
             </p>
-            <p className={ProductStyles.offerdesc}>Registered Members receive Free Ground Shipping with purchase of $125.</p>
-            <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
+            <p className={ProductStyles.offerdesc}>Sign Up for a free Obagi Account and receive free ground shipping on order $125 or more.</p>
+            <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
+            </p>
 
              {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
             </div>
