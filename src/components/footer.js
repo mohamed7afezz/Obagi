@@ -62,20 +62,20 @@ const Footer = ({ siteTitle }) => {
                   ].join(" ")}
                 >
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a href="https://www.instagram.com/obagiclinical/">
                       <FontAwesomeIcon
                         icon={faInstagramSquare}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a href="https://www.facebook.com/ObagiClinicalProducts">
                       <FontAwesomeIcon
                         icon={faFacebookF}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
                     <Link to="#">
@@ -86,21 +86,21 @@ const Footer = ({ siteTitle }) => {
                     </Link>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a href="https://twitter.com/obagiclinical?lang=en">
                       <FontAwesomeIcon
                         icon={faTwitter}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
-                  <div className={footerStyles.socialIcon}>
+                  {/* <div className={footerStyles.socialIcon}>
                     <Link to="#">
                       <FontAwesomeIcon
                         icon={faPinterest}
                         className={footerStyles.icon}
                       />
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

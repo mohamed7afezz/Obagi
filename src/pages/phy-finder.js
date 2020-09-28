@@ -37,85 +37,67 @@ export default function PhyFinder() {
                 <Link to="#">Advanced Search</Link> option.*
               </p>
 
-              <div class="header">
-                <div class="controls">
-                  <div class="i-b searchby-wrapper col-lg-6">
-                      <p class ="selctfinder">Search by:</p>
-                    <label for="searchByLocation" class="checkcon">
-                      <input
-                        id="searchByLocation"
-                        type="radio"
-                        name="searchby"
-                        value="location"
-                        checked="true"
-                      />
-                      By Location
-                      <span class="checkmarkfinder"></span>
+             <div class="header">
+              <div class="controls">
+                <div class="i-b searchby-wrapper col-lg-6">
+                    <p class ="selctfinder">Search by:</p>
+                  <label for="searchByLocation"  class="checkcon">
+                    <input
+                      id="searchByLocation"
+                      type="radio"
+                      name="searchby"
+                      value="location"
+                      checked="true"
+                    />
+                    By Location
+                    <span class="checkmarkfinder"></span>
                     </label>
 
-                    <label for="searchByPhysician" class="checkcon">
-                      <input
-                        id="searchByPhysician"
-                        type="radio"
-                        name="searchby"
-                        value="physician"
-                      />
-                      <span class="checkmarkfinder"></span>
-                      By Physician
-                    </label>
-                    <div class="searchtext-wrapper">
-                    <label id="finder-location-input" class="input-header">Location</label>
-                    <label id="finder-physician-input" class="input-header">Physician</label>
-                      <input
-                        type="text"
-                        id="finder-location-input"
-                        name="finder-location-input"
-                        placeholder="Enter a location or Zip Code"
-                        maxlength="5"
-                      />
-                      
-                      <input
-                        type="text"
-                        id="finder-physician-input"
-                        name="finder-physician-input"
-                        placeholder="Enter a physician name"
-                        maxlength="40"
-                      />
-                    </div>
-                  </div>
-                  <div class="i-b radius-wrapper col-lg-2">
-                    <label for="radius" id="lblRadius">
-                      Distance
-                    </label>
-                    <div class="ie9-wrapper">
-                    <div className="custom-select">
-                        <select  name="radius" id="pf-radius">
-                        <option value="1">1 mile</option>
-                        <option value="5">5 miles</option>
-                        <option value="10" selected>
-                          10 miles
-                        </option>
-                        <option value="25">25 miles</option>
-                        <option value="50">50 miles</option>
-                        <option value="100">100 miles</option>
-                      </select>
-                    </div>
-                    </div>
-                  </div>
-                  <p class="covid show-mob">
-                  COVID-19 UPDATE:  Skincare professional partners openings and hours may vary based on location. Please contact your skincare professional directly to learn more.
-                  </p>
-                  <div class="i-b submit-wrapper col-lg-4">
-                    <input id="pf-submit" type="submit" value="Update Search" />
-                    <input id="searchProduct" type="submit" value="Search By Product" />
+                  <label for="searchByPhysician"
+                    ><input
+                      id="searchByPhysician"
+                      type="radio"
+                      name="searchby"
+                      value="physician"
+                    />
+                    By Physician</label
+                  >
+                  <div class="searchtext-wrapper">
+                    <input
+                      type="text"
+                      id="finder-location-input"
+                      name="finder-location-input"
+                      placeholder="Enter a location or Zip Code"
+                      maxlength="5"
+                    />
+                    <input
+                      type="text"
+                      id="finder-physician-input"
+                      name="finder-physician-input"
+                      placeholder="Enter a physician name"
+                      maxlength="40"
+                    />
                   </div>
                 </div>
-                <p class="covid hide-mob">
-                COVID-19 UPDATE:  Skincare professional partners openings and hours may vary based on location. Please contact your skincare professional directly to learn more.
-
-                </p>
+                <div class="i-b radius-wrapper">
+                  <label for="radius" id="lblRadius">Radius</label>
+                  <div class="ie9-wrapper">
+                    <select name="radius" id="pf-radius">
+                      <option value="1">1 mile</option>
+                      <option value="5">5 miles</option>
+                      <option value="10" selected>10 miles</option>
+                      <option value="25">25 miles</option>
+                      <option value="50">50 miles</option>
+                      <option value="100">100 miles</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="i-b submit-wrapper">
+                  <input id="pf-submit" type="submit" value="Update Search" />
+                </div>
               </div>
             </div>
+          </div>
             <div id="error-wrapper">
               <label
                 class="error remove"

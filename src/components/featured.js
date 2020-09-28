@@ -75,20 +75,20 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                 <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>
-                {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg} src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:""} /> : ''}
+                {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
               </div>
             </div>
           </div>
           <div className="col-12">
             <div className={featuredStyles.textWrapper}>
-              <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
+              {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-              <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} >PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>)</Link></div>
+              {node.field_featured_products_title? <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} ><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>)</Link></div> : ""}
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-              <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
+              {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
-              })} </div>
-              <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div>
+              })} </div> : " "}
+              {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div> : ""}
             </div>
           </div>
         </div>
@@ -101,14 +101,14 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
 
             <div className={["col-lg-5", "offset-lg-1", featuredStyles.columnsWrapper].join(" ")}>
               <div className="col-lg-7 offset-lg-2">
-                <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
+                {node.field_featured_subtitle ? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
+                {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div>(<span className={featuredStyles.productsNo}>{ " " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
-                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
-              })} </div>
-                <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
+                {node.field_featured_featured_title ? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
+                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {" " + item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
+              })} </div> : ""}
+                {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
               </div>
             </div>
 
@@ -118,7 +118,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                   <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>
-                  {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg}  src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:""} /> : ''}
+                  {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
                 </div>
               </div>
             </div>
@@ -136,21 +136,21 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                     <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                       <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? <img className={featuredStyles.videoimg}  src={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.original.src:''} /> : ''}
+                    {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:''} /> : ''}
                   </div>
                 </div>
               </div>
 
               <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
                 <div className="col-lg-7 offset-lg-2">
-                  <div className={["subtitle", featuredStyles.subtitle].join(" ")}>Featured</div>
+                  {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
-                  <div className={featuredStyles.products}>PRODUCTS (<span className={featuredStyles.productsNo}>{productCount}</span>) <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span></div>
+                  {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                  <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
+                  {node.field_featured_perfect_title? <div className={featuredStyles.perfect}>PERFECT FOR: {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
-              })} </div>
-                  <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div>
+              })} </div> : ""}
+                  {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
                 </div>
               </div>
 
@@ -177,6 +177,15 @@ export const fragment = graphql`
           field_featured_title {
             processed
           }
+          field_featured_perfect_title {
+            processed
+          }
+          field_featured_products_title {
+            processed
+          }
+          field_featured_subtitle {
+            processed
+          }
           field_image_right
           
           relationships {
@@ -195,6 +204,9 @@ export const fragment = graphql`
                 field_video_poster {
                   localFile {
                     childImageSharp {
+                      fluid (quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
                       original{
                         src
                       }

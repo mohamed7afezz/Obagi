@@ -13,7 +13,7 @@ import Zoom from "react-img-zoom"
 import CartContext from "../../providers/cart-provider"
 import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
-import freeimg from "../../assets/images/thumbnail.png"
+import freeimg from "../../assets/images/rsz_thumbnail.png"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
@@ -461,7 +461,9 @@ if ( typeof window !== "undefined"){
             <p className={ProductStyles.offertitle}>
             FREE GIFT WITH PURCHASE
             </p>
-            <p className={ProductStyles.offerdesc}>Registered Members receive Free Ground Shipping with purchase of $125. <Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
+            <p className={ProductStyles.offerdesc}>Registered Members receive Free Ground Shipping with purchase of $125.</p>
+            <p className={ProductStyles.offerdesc}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link>  to receive offer </p>
+
              {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
             </div>
             </div>

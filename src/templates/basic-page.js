@@ -38,7 +38,6 @@ query($slug: String!) {
                 ...paragraphFeaturedSection
                 ...paragraphHeroSlider
                 ...paragraphInstagramFeed
-                ...howToUseParagraph
                 ...paragraphServicesParagraph
                 ...paragraphTrending
                 ...vocabularySkinConcerHero
