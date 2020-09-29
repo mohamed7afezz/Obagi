@@ -27,8 +27,8 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
     let reviewimg = isClincal
-    ? node.relationships.field_clinical_image[0]?node.relationships.field_clinical_image[0].localFile.childImageSharp.original.src:""
-    : node.relationships.field_medical_image[0]?node.relationships.field_medical_image[0].localFile.childImageSharp.original.src:""
+    ? node.relationships.field_clinical_image[0]?(node.relationships.field_clinical_image[0].localFile? node.relationships.field_clinical_image[0].localFile.childImageSharp.original.src : ""):""
+    : node.relationships.field_medical_image[0]?(node.relationships.field_medical_image[0].localFile? node.relationships.field_medical_image[0].localFile.childImageSharp.original.src : ""):""
     let field_medical_rx = isClincal
     ? ""
     : node.relationships.field_medical_rx.name
@@ -461,7 +461,7 @@ if ( typeof window !== "undefined"){
             <p className={ProductStyles.offertitle}>
             COMPLIMENTARY SHIPPING
             </p>
-            <p className={ProductStyles.offerdesc}>Sign Up for a free Obagi Account and receive free ground shipping on order $125 or more.</p>
+            <p className={ProductStyles.offerdesc}>Sign Up for a free Obagi Account and receive free ground shipping on orders $125 or more.</p>
             <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
             </p>
 

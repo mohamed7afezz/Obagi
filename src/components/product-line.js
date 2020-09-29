@@ -229,7 +229,7 @@ const ProductLine = ({ node }) => {
   //   : 0;
 
 
-  //   console.log('count', productCount, taxonomy)
+    console.log("data", data)
 
 
   return (
@@ -259,18 +259,19 @@ const ProductLine = ({ node }) => {
               >
                 {data.allTaxonomyTermMedicalProductLines.edges
                   ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-
+                    console.log("tax", item)
                     return (
                       <div>
                         <div className="col-12 p-0">
                           <div className={lineStyles.tabWrapper}>
                             {item.node.name ? (
-                              <div
+                              (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
+                              (<div
                                 onClick={(e) => slickGoToslide(e, index)}
                                 className={[lineStyles.tab, "line-tab", index == 0 ? 'active' : ""].join(
                                   " "
                                 )}
-                              >{item.node.name}</div>
+                              >{item.node.name}</div>)
                             ) : (
                                 ""
                               )}

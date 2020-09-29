@@ -16,9 +16,9 @@ const ProductCard = ({
   productId,
   isrx
 }) => {
-  const value = useContext(CartContext);
-  const addToCart = value && value.addToCart;
-  const addingToCart = value && value.state.addingToCart;
+  const value = useContext(CartContext)
+  const addToCart = value && value.addToCart
+  const addingToCart = value && value.state.addingToCart
 
   const data = useStaticQuery(graphql`
     query {
@@ -51,7 +51,7 @@ const ProductCard = ({
           ""
         )}
 
-        <div className={Productcard.starspd}>
+        {isrx !== "RX"? <div className={Productcard.starspd}>
                       <div
 
               data-bv-show="inline_rating"
@@ -62,7 +62,7 @@ const ProductCard = ({
 
               </div>
 
-        </div>
+        </div> : ""}
         {producttitle ? (
           <p className={Productcard.productcarddesc}><Link to={productLink}>{producttitle}</Link></p>
         ) : (
@@ -87,9 +87,14 @@ const ProductCard = ({
               
              Find a Physician
           </Link>
-            :<button className={Productcard.addtocart} onClick={() => addToCart(productId)} disabled={addingToCart === productId}>
-              
-              {addingToCart === productId ? 'Adding to Bag' : "Add to Bag"}
+            :<button className={Productcard.addtocart} 
+            onClick={() => {
+              let quantity = 1;
+              addToCart(productId,false,quantity);
+            }}
+            disabled={addingToCart === productId}
+          >
+            {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
             </button>
             }
           </div>

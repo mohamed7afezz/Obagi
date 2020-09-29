@@ -75,7 +75,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                 <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>
-                {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
+                {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : "") : ''}
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                   <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>
-                  {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ''}
+                  {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
                 </div>
               </div>
             </div>
@@ -136,7 +136,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                     <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                       <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:''} /> : ''}
+                    {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
                   </div>
                 </div>
               </div>
