@@ -476,7 +476,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                                   product.field_clinical_description.processed,
                               }}
                               productimage={
-                                product.relationships.field_clinical_image[0]
+                                (product.relationships.field_clinical_image[0] && product.relationships.field_clinical_image[0].localFile)
                                   ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                   : ""
                               }
