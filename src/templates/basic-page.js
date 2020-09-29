@@ -33,7 +33,6 @@ query($slug: String!) {
                 ...paragraphSectionWithColoredBoxes
                 ...paragraphSectionWithImageAndText
                 ...paragraphImageLeftTextRight
-                ...paragraphBigParagraph
                 ...paragraphImagesBoxes
                 ...paragraphFeaturedSection
                 ...paragraphHeroSlider

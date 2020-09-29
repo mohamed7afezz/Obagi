@@ -8,7 +8,8 @@ const ImageLeftTextRight = ({ node }) => {
     <div className="container-fluid">
       <div className="row">
         <div className={["col-12", "col-lg-5", imageLeft.colPadding, imageLeft.firstSection].join(" ")}>
-          <div className={imageLeft.image}><Img fluid={node.relationships.field_image_left.localFile.childImageSharp.fluid} /></div>
+          
+          <div className={imageLeft.image}><Img fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
         </div>
 
           <div className={["col-12", "col-lg-6", "offset-lg-1", imageLeft.colFullPadding].join(" ")}>
