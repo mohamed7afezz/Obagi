@@ -6,7 +6,7 @@ import LoginMenu from '../components/login-menu'
 
 const Login = () => {
 
-  const { user, isLoading, matchEmail, handleLogin, redirectUrl } = useContext(UserContext);
+  const { user, isLoading, matchEmail, handleLogin, redirectUrl, setIsLoading } = useContext(UserContext);
 
   const [state, setState] = useState({
     email: ``,

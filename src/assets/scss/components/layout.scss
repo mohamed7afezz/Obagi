@@ -2658,19 +2658,22 @@ p {
 
 .hero-slider.clinical-slider, 
 .hero-slider.medical-slider {
-    .slick-track {
-        display: flex;
-    }
-    .slick-slide {
-        float: none;
-        height: auto
-        
-    }
-         
-    .slick-slide > div,
-    .slick-slide > div > div,
-    .slick-slide > div > div > div,
-    .slick-slide > div > div > div > div {
-        height: 100%;
+ 
+    @include lg-screen {
+        .slick-track {
+            display: flex;
+        }
+        .slick-slide {
+            float: none;
+            height: auto
+            
+        }
+             
+        .slick-slide > div,
+        .slick-slide > div > div,
+        .slick-slide > div > div > div,
+        .slick-slide > div > div > div > div {
+            height: 100%;
+        }
     }
 }

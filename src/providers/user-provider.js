@@ -12,9 +12,12 @@ export const UserProvider = ({ children }) => {
     const [redirectUrl, setRedirectUrl] = useState();
     const [user, setUser] = useState(false);
     const [err, setErr] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    const [matchEmail, setMatchEmail] = useState(true);
 
     async function getUserData() {
 
+        setIsLoading(true);
         const userData = await (await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: 'GET',
             credentials: 'include',
@@ -24,6 +27,8 @@ export const UserProvider = ({ children }) => {
         if (userData !== "User not login.") {
             setUser(userData[0]);
         }
+        setIsLoading(false);
+
     }
 
     //get user data
@@ -32,8 +37,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     // Login
-    const [isLoading, setIsLoading] = useState(false);
-    const [matchEmail, setMatchEmail] = useState(true);
+
 
 
     async function handleLogin({ email, password }) {
@@ -54,12 +58,13 @@ export const UserProvider = ({ children }) => {
 
         if(!isAuthUserRes.success && typeof window !== "undefined") {
             setMatchEmail(false);
-            setIsLoading(false);
         }
         else if (isAuthUserRes.success && typeof window !== "undefined") {
             window.location.href = `${baseUrl}custmer_login_sso`;
             setMatchEmail(true);
+
         }
+        setIsLoading(false);
 
 
         return false;
@@ -79,6 +84,7 @@ export const UserProvider = ({ children }) => {
         });
 
         setUser(false);
+
     }
 
 
@@ -111,7 +117,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, err, matchEmail, isLoading, redirectUrl, setRedirectUrl, handleLogin, handleLogout, handleRegister }}>
+        <UserContext.Provider value={{ user, err, matchEmail, isLoading, redirectUrl, setIsLoading, setRedirectUrl, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )
