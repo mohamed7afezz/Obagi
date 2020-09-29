@@ -32,7 +32,7 @@ export const SearchProvider = ({children}) => {
 })).json();
 setMedicalValue(getMedicalSearch); 
 setsearchWord(savekey)
-console.log(savekey,getMedicalSearch, getClinicalSearch)
+console.log("save",savekey,getMedicalSearch, getClinicalSearch)
 
 setIsLoading(false);
 } 

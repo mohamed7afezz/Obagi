@@ -204,8 +204,8 @@ function buildMenu(menuArray, isExpandable, menuName) {
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
-            { typeof window !== "undefined" && menuName === "third-footer" && isExpandable === true? <span id="extole_zone_mobile_footer" className="footer-referral-span">Refer a friend</span>
-            : typeof window !== "undefined" && menuName === "third-footer" && isExpandable === false? <span id="extole_zone_global_footer" className="footer-referral-span">Refer a friend</span>
+            { typeof window !== "undefined" && menuName === "third-footer" && isExpandable === true? <span id="extole_zone_mobile_footer" className="footer-referral-span"></span>
+            : typeof window !== "undefined" && menuName === "third-footer" && isExpandable === false? <span id="extole_zone_global_footer" className="footer-referral-span"></span>
             : "" }
           </ul>
         </li>)

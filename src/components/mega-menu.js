@@ -268,7 +268,7 @@ return (
         {fillMegaMenuBlocksArr(data)}
         <ul >
           {generateMenu(data, menuName, isExpandable)}
-          { typeof window !== "undefined" ?<span id="extole_zone_global_header" className="header-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}>Refer a friend</span> : ""}
+          { typeof window !== "undefined" ?<span id="extole_zone_global_header" className="header-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}></span> : ""}
           
         </ul>
       </nav>

@@ -228,7 +228,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         productLink={data.attributes.path.alias}
                       producttitle={data.attributes.title}
                       productdescription={{__html:data.attributes.field_medical_description.processed}}
-                      productimage=" "
+                      productimage={data.attributes.relationships? data.attributes.relationships.field_medical_image.links.related.href : ""}
                       price={data.attributes.field_medical_price}
                       productId={data.attributes.field_medical_id}
                     />
