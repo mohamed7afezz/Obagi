@@ -60,8 +60,8 @@ class Search extends Temps {
 
     async searchByLocation(lat, lng) {
         this.err.hideErr();
-
-        this.loadingFn(true);
+        this.emptyParams();
+        this.setLoading(true);
         
         let gcPromise = new Promise((res, rej) => {
             this.geocoder.geocode({
@@ -98,8 +98,45 @@ class Search extends Temps {
         this.params.distance = this.inputMiles.value;
         this.results = await this.sendSearchReq();
         
-        if(this.results.clinics && this.results.clinics.length > 0) {
-            this.results.clinics.forEach((item, index) => {
+        this.appendResults(this.results.clinics)
+
+        this.setLoading(false);
+    }
+
+    async searchByPhys() {
+        this.err.hideErr();
+        this.emptyParams();
+        this.setLoading(true);
+
+        this.params.physician = this.inputPhy.value.trim().toLowerCase().split(' ').join('+');
+
+        this.results = await this.sendSearchReq();
+        
+        this.appendResults(this.results.clinics)
+
+        this.setLoading(false);
+    }
+
+    // helpers
+    emptyParams() {
+        this.params = {
+            city: '',
+            state: '',
+            zip: '',
+            distance: '',
+            product: '',
+            postal: '',
+            physician: '',
+            country: ''
+        };
+    }
+
+    /**
+     * @param {clinics} clinics - array of clinics
+     */
+    appendResults(clinics) {
+        if(clinics && clinics.length > 0) {
+            clinics.forEach((item, index) => {
                 let li = document.createElement('li');
                 li.innerHTML = this.resultTemp(index, item);
                 document.getElementById('results').appendChild(li);
@@ -107,17 +144,6 @@ class Search extends Temps {
         } else {
             this.err.showErr('noRes');
         }
-
-        this.loadingFn(false);
-    }
-
-    searchByPhys() {
-
-        this.sendSearchReq();
-    }
-
-    gatherParams() {
-
     }
 
     async sendSearchReq() {
@@ -128,12 +154,12 @@ class Search extends Temps {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); this.loadingFn(false)})).json();
+        }).catch(err => {console.log(err); this.setLoading(false)})).json();
 
         return req;
     }
 
-    loadingFn (loading) {
+    setLoading (loading) {
         if(loading) {
             // show loader
             document.getElementById('loader').classList.remove('d-none');
@@ -180,7 +206,7 @@ class Map extends Search {
         this.mapId = mapId;
         this.initCenterLoc = initCenterLoc;
         this.zoom = zoom;
-        
+        this.markers = [];
     }
 
     initMap () {
@@ -205,8 +231,9 @@ class Map extends Search {
 
         // check if browser navigator is allowed
         if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                this.searchByLocation(position.coords.latitude, position.coords.longitude);
+            navigator.geolocation.getCurrentPosition(async position => {
+                await this.searchByLocation(position.coords.latitude, position.coords.longitude);
+                console.log('bahiii', this.results)
             })
         }
     }
