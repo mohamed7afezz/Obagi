@@ -71,7 +71,7 @@ const Beforeafter = ({ node }) => {
 
                 <div className={["col-12", "col-lg-4", "offset-lg-1", beforeafter.beforeaftercontent].join(" ")}>
                     <h1 className={beforeafter.beforeafterhead} dangerouslySetInnerHTML={{ __html: node.field_before_meet_after.processed }}></h1>
-                    <div className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{ __html: node.field_before_meet_after_subtitle.processed }}></div>
+                    <div className={beforeafter.beforeaftersubtitle} dangerouslySetInnerHTML={{ __html: node.field_before_meet_after_subtitle ? node.field_before_meet_after_subtitle.processed : '' }}></div>
 
                     <div className={["row", beforeafter.tabs].join(" ")}>
                         {
