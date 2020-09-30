@@ -73,6 +73,7 @@ const componentsMap = {
     paragraph__custom_block: CustomBlock,
     paragraph__not_found: NotFound,
     paragraph__image: Image,
+    paragraph_blog: Blog,
 }
 
 export const getParagraph = node => {

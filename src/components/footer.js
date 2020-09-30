@@ -177,7 +177,7 @@ const Footer = ({ siteTitle }) => {
                       registering, your information will be collected and used
                       in the U.S. subject to our U.S. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
                       of Use</Link>. For U.S. consumers only.
-                      <input type="checkbox" checked = "true" name="footer-checkbox"/>
+                      <input type="checkbox" defaultChecked={true} name="footer-checkbox"/>
                       <span className="checkmark"></span>
                     </label>
                     <button type="button" className="btn signup-btn d-none d-lg-block">SIGN UP</button>

@@ -104,7 +104,7 @@ const Login = () => {
                 <div className="benefit-number">1</div>
                 <div className="title-text">
                   <div className="benefits-title">Complimentary Shipping</div>
-                  <div className="benefits-text">Registered members receive complimentary shipping on orders of $100 or more.</div>
+                  <div className="benefits-text">Registered members receive complimentary shipping on orders of $125 or more.</div>
                 </div>
               </div>
 
