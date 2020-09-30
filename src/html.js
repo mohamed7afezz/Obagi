@@ -12,14 +12,18 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&libraries=places"></script>
-    <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script>
-    <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/masonry.pkgd.min.js"></script>
-    <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/templates/templates.js"></script>
+        <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script>
+        <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/masonry.pkgd.min.js"></script>
+        <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/templates/templates.js"></script>
+
+        {/* <!-- //COOKIE OVEN --> */}
+        <script src="https://gto-cookie-oven.s3.us-east-2.amazonaws.com/widget.js" type="text/javascript" ></script>
+         {/* <!--//END COOKIE OVEN--> */}
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

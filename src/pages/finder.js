@@ -24,6 +24,8 @@ export default function Finder() {
                 <div class="row">
                     <div className="col search-filters">
                         search by: 
+                        <label><input type="radio" name='search-radio' value="loc"/>location</label>
+                        <label><input type="radio" name='search-radio' value="phy"/>physician</label>
                         location <input id="input-location" type="text" maxlength="5" />
                         physician <input id="input-physician" type="text" />
                         miles <select id="miles">
