@@ -32,7 +32,7 @@ const Header = ({ siteTitle, nodeType, menuType }) => {
           }
         }
       }
-      logoDesk: file(relativePath: { eq: "obagi-logo.png" }) {
+      logoDesk: file(relativePath: { eq: "obagi-logo1.png" }) {
         childImageSharp {
           fixed {
             ...GatsbyImageSharpFixed
