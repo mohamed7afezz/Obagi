@@ -98,7 +98,6 @@ export const UserProvider = ({ children }) => {
             body: JSON.stringify([user])
         })
         
-        console.log('bahii', newUserRes.status)
 
         if (newUserRes.status == 200) {
 

@@ -17,7 +17,7 @@ import freeimg from "../../assets/images/rsz_thumbnail.png"
 import { func } from "prop-types"
 
 const ProductHero = ({ data, nodeType }) => {
-  console.log(data)
+  
   const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 

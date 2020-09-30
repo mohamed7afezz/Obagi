@@ -194,7 +194,7 @@ const MegaMenu = ({ menuName, menuClass, isExpandable }) =>
 
   }, []);
 
-  console.log("user", user);
+  
 return (
 
   <StaticQuery

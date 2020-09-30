@@ -23,7 +23,6 @@ export default function Orders() {
         if (ordersData !== "User not login.") {
             setOrders(ordersData);
         }
-        console.log("hafobagi", ordersData);
     }
 
     useEffect(() => {

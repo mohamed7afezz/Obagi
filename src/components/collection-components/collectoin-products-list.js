@@ -9,7 +9,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
-  console.log('hassan',node)
+ 
   if (pageNodeType == "clinicalConcern") {
    
     checkTaxonomy =

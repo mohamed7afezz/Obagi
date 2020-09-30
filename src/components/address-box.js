@@ -77,7 +77,7 @@ const AddressBox = ({ node,
             window.location.reload();
             
         }
-        console.log("box", addressBoxData.status);
+        
     }
 
 

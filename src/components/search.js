@@ -9,7 +9,7 @@ const Search = () => {
   const { medicalSearchResults } = useContext(SearchContext)
 
   if (clinicalSearchResults.data) {
-    console.log("med", clinicalSearchResults.data.length)
+    // console.log("med", clinicalSearchResults.data.length)
   }
   return (
     <div>

@@ -185,7 +185,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     e.preventDefault();
     if (e.keyCode === 13) {
       // Cancel the default action, if needed
-      console.log('ay')
+      
       // Trigger the button element with a click
       document.querySelector(".searchIcon").click();
     }

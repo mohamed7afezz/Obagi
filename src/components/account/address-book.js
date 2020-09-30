@@ -25,7 +25,6 @@ export default function AddressBook() {
         }
 
         setIsLoading(false);
-        console.log("address", addresses.data);
     }
 
 
@@ -40,7 +39,6 @@ export default function AddressBook() {
 
 
 
-    console.log("ashraqat", addresses);
 
     function removeData() {
         document.querySelector("#address-modal #fname").value = "";

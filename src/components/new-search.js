@@ -124,7 +124,7 @@ sortPriceSelect.addEventListener("change", function (event) {
 //       })
 //     }
 //   })
- console.log("hassan",medicalSearchResults, clinicalSearchResults)
+ 
   return (
     <div
       className={medicalSearchResults.data? (clinicalSearchResults.data? ( medicalSearchResults.data.length > clinicalSearchResults.data.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>

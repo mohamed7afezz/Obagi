@@ -182,7 +182,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 
 function buildMenu(menuArray, isExpandable, menuName) {
 
-  console.log("exp", menuName, isExpandable);
+ 
   if (!menuArray) {
     return
   }

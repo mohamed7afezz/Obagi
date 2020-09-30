@@ -8,7 +8,6 @@ const Recommendedparing = ({ node }) => {
   if (node.parent_field_name === 'field_medical_components') {
     var checkCardType 
   }
-  console.log("node", node)
   
   var settings = {
 
