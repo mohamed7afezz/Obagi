@@ -2677,3 +2677,11 @@ p {
         }
     }
 }
+
+.img-divider {
+    height: 12px;
+
+    @include lg-screen {
+        height: 24px;
+    }
+}
