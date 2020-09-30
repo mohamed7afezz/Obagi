@@ -8,6 +8,7 @@ const Recommendedparing = ({ node }) => {
   if (node.parent_field_name === 'field_medical_components') {
     var checkCardType 
   }
+  console.log("node", node)
   
   var settings = {
 
@@ -49,7 +50,7 @@ const Recommendedparing = ({ node }) => {
                node.relationships.field_croduct_card.map((item, index) => (
                  <div className={["col-12", recommendedparing.allcon].join(" ")}>
  
-                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed? item.field_medical_description.processed : '' }} productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} price={item.field_medical_price} rate="5" />
+                   <ProductCard producttitle={item.title} productdescription={{ __html: item.field_medical_description.processed? item.field_medical_description.processed : '' }} productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} price={item.field_medical_price} productId={item.field_medical_id} rate="5" />
  
                  </div>
                ))
@@ -67,7 +68,7 @@ const Recommendedparing = ({ node }) => {
               node.relationships.field_croduct_card.map((item, index) => (
                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-                  <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} rate="5" />
+                  <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description.processed }} productimage={item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid} price={item.field_clinical_price} productId={item.field_clinical_id} rate="5" />
 
                 </div>
               ))
@@ -92,6 +93,7 @@ fragment recommendedParingParagrapgh on paragraph__recomended_paring {
           field_croduct_card {
             ... on node__clinical_product {
               id
+              field_clinical_id
               title
               path {
                 alias
@@ -135,6 +137,7 @@ fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
             field_croduct_card {
               ... on node__medical_product {
                 id
+                field_medical_id
                 path {
                   alias
                 }

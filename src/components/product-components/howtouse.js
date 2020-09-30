@@ -126,7 +126,9 @@ const Howtouse = ({ node }) => {
                                                         <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
                                                         :
                                                         (item.relationships.field_step_image ?
+                                                            (item.relationships.field_step_image.localFile?
                                                             <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                            : "")
                                                             :
                                                             <div className="video-wrapper">
                                                                 {

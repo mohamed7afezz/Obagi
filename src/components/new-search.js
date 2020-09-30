@@ -5,6 +5,7 @@ import productsliststyle from "../assets/scss/components/collection-list.module.
 import {CustomSelect} from '../assets/js/custom-select'
 import searchResultStyle from '../assets/scss/components/search-results.module.scss'
 import SearchContext from "../providers/search-provider"
+import $ from "jquery"
 
 const NewSearchProductsResult = ({ searchResult, node, nodetype }) => {
 
@@ -123,18 +124,10 @@ sortPriceSelect.addEventListener("change", function (event) {
 //       })
 //     }
 //   })
- console.log("hassan",medicalSearchResults)
+ console.log("hassan",medicalSearchResults, clinicalSearchResults)
   return (
     <div
-      className={[
-        "container-fluid",
-        productsliststyle.collectionList,
-        "collectionhero",
-        "collectionList",
-        "medicalbg",
-        "mt-48"
-      ].join(" ")}
-    >
+      className={medicalSearchResults.data? (clinicalSearchResults.data? ( medicalSearchResults.data.length > clinicalSearchResults.data.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
       <div
         className={[
           "row",
@@ -176,8 +169,8 @@ sortPriceSelect.addEventListener("change", function (event) {
 
         <div className="producTypeSelect d-flex">
             <label className={searchResultStyle.title}>Products:</label>
-            <label className="radioLabel"  onClick={() => {medicalbg();}}><input name="radiono"  value="medical"   type="radio"/><span class="radiomark"></span>Medical </label>
-            <label className="radioLabel"  onClick={() => {clinicalbg(); }}><input name="radiono" value="Clinical"  type="radio"/> <span class="radiomark"></span>Clinical </label>
+            <label className="radioLabel"  onClick={() => {medicalbg();}}><input name="radiono"  value="medical"   type="radio" /><span class="radiomark"></span>Medical </label>
+            <label className="radioLabel"  onClick={() => {clinicalbg(); }}><input name="radiono" value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical </label>
         </div>
         </div>
         <div 
