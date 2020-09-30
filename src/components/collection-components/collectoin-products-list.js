@@ -9,7 +9,7 @@ const Collectionproducts = ({ node, nodetype }) => {
   let products = []
   let checkTaxonomy
   let pageNodeType = nodetype ? nodetype : ""
-  console.log('hassan',node)
+ 
   if (pageNodeType == "clinicalConcern") {
    
     checkTaxonomy =
@@ -274,10 +274,11 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp?item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.fluid
+                            : "":""
                           }
                           price={item.field_clinical_price}
                           rate="0"
@@ -292,10 +293,11 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
                               ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp?item.relationships.field_clinical_image[0]
                                   .localFile.childImageSharp.fluid
-                              : ""
+                              : "":""
                           }
                           price={item.field_clinical_price}
                           rate="0"
@@ -344,10 +346,11 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
                               ? item.relationships.field_clinical_image[0]
+                                  .localFile.childImageSharp?item.relationships.field_clinical_image[0]
                                   .localFile.childImageSharp.fluid
-                              : ""
+                              : "":""
                           }
                           price={item.field_clinical_price}
                           rate="0"
@@ -360,7 +363,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
                               ? (item.relationships.field_clinical_image[0]
                                   .localFile? item.relationships.field_clinical_image[0]
                                   .localFile.childImageSharp.fluid : '')
@@ -376,7 +379,7 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
                               ? (item.relationships.field_clinical_image[0]
                                   .localFile? item.relationships.field_clinical_image[0]
                                   .localFile.childImageSharp.fluid : '')
@@ -393,10 +396,11 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp?item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.fluid
+                            : "":""
                           }
                           price={item.field_clinical_price}
                           rate="0"
@@ -410,10 +414,11 @@ const Collectionproducts = ({ node, nodetype }) => {
                             __html: item.field_clinical_description.processed,
                           }}
                           productimage={
-                            item.relationships.field_clinical_image[0]
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
+                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp?item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.fluid
+                            : "":""
                           }
                           price={item.field_clinical_price}
                           rate="0"

@@ -72,7 +72,6 @@ const AddressModal = ({ node,
         }
 
         
-        console.log("status", addressesData.status);
     }
 
 

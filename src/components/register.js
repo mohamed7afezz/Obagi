@@ -21,9 +21,9 @@ const Register = () => {
     function checkvaild(){
         
         if (!document.querySelector(".regform").checkValidity()) {
-            console.log( document.querySelector(".regform").validationMessage)
+            // console.log( document.querySelector(".regform").validationMessage)
           } else {
-            console.log("hassan",document.querySelector(".regform").checkValidity())
+            // console.log("hassan",document.querySelector(".regform").checkValidity())
           } 
     }
     useEffect(() => {
@@ -99,19 +99,19 @@ const Register = () => {
 
     
     function handleUpdate(event) {
-        console.log("bahiii", event.target.name)
+        
         setNewUser({
             ...newUser,
             [event.target.name]: event.target.value
         });
 
-        console.log("ash", newUser)
+        
 
     }
 
     function handlePassword(event) {
         if(checkPassMatch(event)) {
-            console.log("pass", event.target.value)
+           
             setNewUser({
                 ...newUser,
                 authentication: {
@@ -120,24 +120,24 @@ const Register = () => {
                 }
                 
             })
-        console.log("pass checked true ", newUser);
+       
 
         } else {
-        console.log("pass", newUser);
+        
 
             return false;
         }
     }
 
     function handleAttr(event) {
-        console.log("new", newUser)
+        
 
         switch (event.target.name) {
             
             case 'date':
-                console.log("new", newUser)
+                
 
-                console.log('new', event.target.classList, event.target.value);
+                
                 // var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
                 // if(event.target.classList.contains('day')) {
                 //     dateOfBirth[2] = event.target.value
@@ -148,7 +148,7 @@ const Register = () => {
                 // }
                 // dateOfBirth = dateOfBirth.join('-');
 
-                console.log("new", newUser)
+                
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
@@ -186,14 +186,13 @@ const Register = () => {
                 console.log('not in the attributes');
                 break;
         }
-        console.log("ash", newUser)
+       
     }
 
 
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log('bahiii', newUser);
         handleRegister(newUser);
     }
 

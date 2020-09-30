@@ -20,9 +20,9 @@ export default function AccountSettings() {
   function checkvaild() {
 
     if (!document.querySelector(".regform").checkValidity()) {
-      console.log(document.querySelector(".regform").validationMessage)
+      // console.log(document.querySelector(".regform").validationMessage)
     } else {
-      console.log("hassan", document.querySelector(".regform").checkValidity())
+      // console.log("hassan", document.querySelector(".regform").checkValidity())
     }
   }
 
@@ -72,7 +72,6 @@ export default function AccountSettings() {
         button.style.position = "fixed";
       }
     }
-    console.log("offset", button.offsetTop)
   }
 
 
@@ -91,7 +90,7 @@ export default function AccountSettings() {
       window.location.reload();
 
     }
-    console.log("box", userSettingsData.status);
+  
   }
 
   async function getData() {
@@ -108,7 +107,7 @@ export default function AccountSettings() {
     }
 
     // setIsLoading(false);
-    console.log("user data", userAccount);
+    
   }
 
   function handleAttr(event) {
@@ -128,11 +127,11 @@ export default function AccountSettings() {
         })
 
     default: 
-      console.log('not in the attributes');
+      
       break;
 
   }
-  console.log("name")
+  
 }
 
 

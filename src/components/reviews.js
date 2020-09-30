@@ -7,7 +7,7 @@ import ReviewBox from './review-box'
 import ReviewModal from '../components/review-modal'
 import WelcomeModal from '../components/welcome-modal'
 const Reviews = ({ node , nodeType}) => {
-  console.log('hassan22',node)
+  
   let data = node.relationships.node__clinical_product ? node.relationships.node__clinical_product : node.relationships.node__medical_product
 
 

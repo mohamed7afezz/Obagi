@@ -229,7 +229,7 @@ const ProductLine = ({ node }) => {
   //   : 0;
 
 
-    console.log("data", data)
+  
 
 
   return (
@@ -259,7 +259,7 @@ const ProductLine = ({ node }) => {
               >
                 {data.allTaxonomyTermMedicalProductLines.edges
                   ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-                    console.log("tax", item)
+                    
                     return (
                       <div>
                         <div className="col-12 p-0">

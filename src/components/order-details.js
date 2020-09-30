@@ -37,7 +37,7 @@ const OrderDetails = (props, { node }) => {
         }
 
         // setIsLoading(false);
-        console.log("details", detailsData);
+        
     }
 
     const [products, setProducts] = useState([]);
@@ -60,7 +60,7 @@ const OrderDetails = (props, { node }) => {
         }
 
         setIsLoading(false);
-        console.log("products", productsData);
+        
     }
 
 
@@ -82,7 +82,7 @@ const OrderDetails = (props, { node }) => {
         }
 
         // setIsLoading(false);
-        console.log("shipping", shippingAddressesData);
+        
     }
 
 
@@ -119,7 +119,7 @@ const OrderDetails = (props, { node }) => {
 
         return null
     }
-    console.log("global", props.id);
+    
 
 
     const placedOnDate = new Date(details.date_created ? details.date_created : "")
@@ -137,7 +137,7 @@ const OrderDetails = (props, { node }) => {
 
     let elementId;
 
-    console.log("item", productId)
+    
     return (
         <>
 
@@ -307,18 +307,18 @@ const OrderDetails = (props, { node }) => {
 
                                                 if (el.checked) {
                                                     // 3 - send cart request
-                                                    console.log('bahi', 'before add to cart')
+                                                    
                                                     addToCart(el.value, false, 1);
-                                                    console.log('bahi', 'after add to cart')
+                                                    
                                                     // console.log("value", el.value)
                                                     flag = false;
 
                                                 }
-                                                console.log("before flag", flag)
+                                                
 
 
                                             })
-                                            console.log("after flag", flag)
+                                            
 
                                             if (flag && typeof $ !== "undefined") {
                                                 $("#checkModal").modal("show");
@@ -339,18 +339,18 @@ const OrderDetails = (props, { node }) => {
 
                                                 if (el.checked) {
                                                     // 3 - send cart request
-                                                    console.log('bahi', 'before add to cart')
+                                                    
                                                     addToCart(el.value, false, 1);
-                                                    console.log('bahi', 'after add to cart')
+                                                    
                                                     // console.log("value", el.value)
                                                     flag = false;
                                                     elementId = el.value;
                                                 }
-                                                console.log("before flag", flag)
+                                                
 
 
                                             })
-                                            console.log("after flag", flag)
+                                            
 
                                             if (flag && typeof $ !== "undefined") {
                                                 $("#checkModal").modal("show");

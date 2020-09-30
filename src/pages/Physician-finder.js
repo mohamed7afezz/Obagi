@@ -14,7 +14,6 @@ const PhysFinder = () => {
             let regeneratorRuntime = window.regeneratorRuntime;
             let _ = window._;
 
-            console.log('bahiii did load')
             // phyfinder(google, regeneratorRuntime, _); 
             
         }

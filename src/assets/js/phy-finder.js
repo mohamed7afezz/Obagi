@@ -31,6 +31,7 @@ class Search extends Temps {
         this.inputPhy = inputPhy;
         this.inputMiles = inputMiles;
         this.searchBtn = searchBtn;
+        this.searchRadios = Array.prototype.slice.call(document.getElementsByName('search-radio'));
         this.results = [];
         this.params = {
             city: '',
@@ -52,6 +53,16 @@ class Search extends Temps {
             types: ['(regions)'],
             componentRestrictions: {
               country: ['us', 'pr']
+            }
+        });
+
+        // add event listener on click update search
+        this.searchBtn.addEventListener('click', (e) => {
+            // get checked radio
+            if(this.searchRadios.filter(item => item.checked)[0].value == 'loc') {
+                this.searchByLocation()
+            }else {
+                this.searchByPhys();
             }
         });
 

@@ -110,7 +110,6 @@ export const CartProvider = ({ children }) => {
     })
       .then(async res => ({ response: await res.json(), status: res.status }))
       .then(async ({ response, status }) => {
-        console.log('bahi', 'in add to cart')
         if (status === 404 && !retry) {
           // re create a cart if cart was destroyed
           cartId = undefined;

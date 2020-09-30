@@ -27,14 +27,14 @@ const OrderHistory = ({ node }) => {
             setOrders(ordersData);
         }
         setIsLoading(false);
-        console.log("hafobagi", ordersData);
+        
     }
 
     useEffect(() => {
         getOrders();
     }, [])
 
-    console.log("ashraqat", orders);
+    
 
     if(isLoading) {
         return <div> Loading... </div>
@@ -81,7 +81,7 @@ const OrderHistory = ({ node }) => {
 
                         <tbody>
                             {orders.map((item, index) => {
-                                console.log("id", item.id)
+                                
                                 return (
                                     <OrderHistoryRow 
                                         orderNum = {item.id}
