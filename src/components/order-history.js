@@ -34,13 +34,14 @@ const OrderHistory = ({ node }) => {
         getOrders();
     }, [])
 
+    console.log("orders", orders)
     
 
     if(isLoading) {
         return <div> Loading... </div>
     }
 
-    else if(orders === "undefined" || Object.keys(orders).length == 0) {
+    else if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
 
         return (<OrderNoHistory />)
 

@@ -169,7 +169,7 @@ sortPriceSelect.addEventListener("change", function (event) {
 
         <div className="producTypeSelect d-flex">
             <label className={searchResultStyle.title}>Products:</label>
-            <label className="radioLabel"  onClick={() => {medicalbg();}}><input name="radiono"  value="medical"   type="radio" /><span class="radiomark"></span>Medical </label>
+            <label className="radioLabel"  onClick={() => {medicalbg();}}><input name="radiono"  value="medical"  type="radio" /><span class="radiomark"></span>Medical </label>
             <label className="radioLabel"  onClick={() => {clinicalbg(); }}><input name="radiono" value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical </label>
         </div>
         </div>

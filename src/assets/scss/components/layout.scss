@@ -1060,6 +1060,13 @@ p {
         justify-content: center;
         margin: 0;
         padding: 20px 0;
+        span {
+            padding: 0;
+            a {
+                color: #fff;
+
+            }
+        }
 
         li {
             margin: 0 30px;
@@ -2140,7 +2147,10 @@ p {
 }
 
 .register .terms .checkmark:after {
-    content: none;
+    left: 4px;
+    top: 1px;
+    width: 7px;
+    height: 11px;
 }
 
 .login .terms .checkmark:after {

@@ -33,14 +33,24 @@ function removeStyles() {
 }
 
 function addMainStyles(e) {
-
+  document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
+  document.querySelector(".extended-nav ul span").classList.add("not-selected");
 
   if (e.target.closest(".extended-nav > ul > li > a")) {
-    document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-    document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
+    
+
     let selected = e.target.closest(".extended-nav > ul > li > a");
     selected.classList.remove("not-selected");
     selected.classList.add("hovered");
+
+  }
+
+  if (e.target.closest(".extended-nav > ul > span")) {    
+
+
+    let selectedSpan = e.target.closest(".extended-nav > ul > span");
+    selectedSpan.classList.remove("not-selected");
+    selectedSpan.classList.add("hovered");
   }
 
 }
@@ -48,6 +58,9 @@ function addMainStyles(e) {
 function removeMainStyles() {
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("hovered"));
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
+
+  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 function addOverview(e) {
@@ -233,6 +246,19 @@ const Menu = ({ menuName, menuClass, isExpandable }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      (function(c,e,k,l,a){c[e]=c[e]||{};for(c[e].q=c[e].q||[];a<l.length;)k(l[a++],c[e])
+    })(window,"extole",function(c,e){e[c]=e[c]||function(){e.q.push([c,arguments])}},["createZone"],0);
+    window.extole.createZone({
+    name: 'global_header',
+    element_id: 'extole_zone_global_header',
+    data: {
+    "partner_user_id": user? user.id : "", // RECOMMENDED IF AVAILABLE
+    "email": user? user.email : "", // RECOMMENDED IF AVAILABLE
+    "first_name": user? user.first_name : "", // RECOMMENDED IF AVAILABLE
+    "last_name": user? user.last_name : "" // RECOMMENDED IF AVAILABLE
+    }
+    });
+    
       (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
       window.extole.createZone({
         name: "global_footer",
@@ -306,6 +332,8 @@ const Menu = ({ menuName, menuClass, isExpandable }) => {
         <nav className={menuName, menuClass}>
           <ul >
             {generateMenu(data, menuName, isExpandable)}
+            { typeof window !== "undefined" && (menuName ==='clinical-navigation' || menuName ==='medical-navigation')?<span id="extole_zone_global_header" className="header-referral-span" onMouseEnter={(e) => { addMainStyles(e); }} onMouseLeave={() => { removeMainStyles(); }}></span> : ""}
+
           </ul>
         </nav>
 

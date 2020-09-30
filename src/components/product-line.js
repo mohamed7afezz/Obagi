@@ -259,13 +259,14 @@ const ProductLine = ({ node }) => {
               >
                 {data.allTaxonomyTermMedicalProductLines.edges
                   ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-                    
                     return (
-                      <div>
+                    (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
+
+                    (  <div>
                         <div className="col-12 p-0">
                           <div className={lineStyles.tabWrapper}>
                             {item.node.name ? (
-                              (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
+                              
                               (<div
                                 onClick={(e) => slickGoToslide(e, index)}
                                 className={[lineStyles.tab, "line-tab", index == 0 ? 'active' : ""].join(
@@ -277,7 +278,7 @@ const ProductLine = ({ node }) => {
                               )}
                           </div>
                         </div>
-                      </div>
+                      </div>)
                     )
                   })
                   : ""}
@@ -296,7 +297,9 @@ const ProductLine = ({ node }) => {
                   {data.allTaxonomyTermMedicalProductLines
                     ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
                       return (
-                        <div className={["row", lineStyles.sliderFlex].join(" ")}>
+                    (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
+
+           (             <div className={["row", lineStyles.sliderFlex].join(" ")}>
                           <div
                             className={["col-12", "col-lg-6", lineStyles.cardWrapper, "cardWrapper"].join(
                               " "
@@ -308,10 +311,12 @@ const ProductLine = ({ node }) => {
 
                             <div className={["offset-lg-2", "col-lg-8", "pr-0", "pl-0", lineStyles.leftSliderwapper].join(" ")}>
                               {item.node.name ? (
+                               (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
+                              (
                                 <div
                                   className={lineStyles.cardTitle}
                                 >{item.node.name}</div>
-                              ) : (
+                              )) : (
                                   ""
                                 )}
                               <div className={lineStyles.products}>
@@ -411,7 +416,7 @@ const ProductLine = ({ node }) => {
                               </Slider>
                             </div>
                           </div>
-                        </div>
+                        </div>)
                       )
                     })
                     : ""}
