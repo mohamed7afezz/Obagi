@@ -1,6 +1,14 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+
+.image-container {
+    margin-bottom: 72px;
+    
+    @include lg-screen {
+        margin-bottom: 224px;
+    }
+}
 .col-padding {
     padding-left: 0;
     @include lg-screen {
@@ -88,6 +96,7 @@
 
     @include lg-screen {
 
+        margin-top: 117px;
         &::before {
             top: -117px;
             width: 117px;

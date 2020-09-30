@@ -50,6 +50,7 @@ query($slug: String!) {
                 ...paragraphFaqWrapper
                 ...paragraphNotFound
                 ...paragraphCustomBlock
+                ...paragraphImage
 
             }
         }
