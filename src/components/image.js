@@ -19,7 +19,7 @@ const Image = ({ node }) => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-8 offset-2">
-          <div>{node.relationships? <Img fluid={(node.relationships.field_section_image && node.relationships.field_section_image.localFile)? node.relationships.field_section_image.localFile.childImageSharp.fluid : ''} className="img-divider"/> : ""}</div>  
+          <div>{(node && node.relationships)? <Img fluid={(node.relationships.field_section_image && node.relationships.field_section_image.localFile)? node.relationships.field_section_image.localFile.childImageSharp.fluid : ''} className="img-divider"/> : ""}</div>  
         </div>
       </div>
     </div>
