@@ -52,9 +52,9 @@ export default function Premier() {
             <div className="col-12 col-lg-6 mob-p-0">
             <div className={[premierStyles.PremierRight,"show-mob"].join(" ")}>
                         <h1 className={premierStyles.Premiertitle}>
-                        Join Obagi Medical Premier Points Today
+                        Obagi Premier Points<sup>&reg;</sup>
                         </h1>
-                        <p className={premierStyles.Premiersubtitle}>Earn reward points with every purchase of Obagi Medical and receive free products*</p>
+                        <p className={premierStyles.Premiersubtitle}>Obagi Medical <sup>&reg;</sup></p>
                      </div>
                 <Img className="mobileImg" fluid={data.bitmap.childImageSharp.fluid}/>
                 <div className={[premierStyles.centerimages].join(" ")}>
@@ -65,9 +65,9 @@ export default function Premier() {
             <div className="col-12 col-lg-6 mob-p-0">
                     <div className={premierStyles.PremierRight}>
                         <h1 className={[premierStyles.Premiertitle,"hide-mob"].join(" ")}>
-                        Join Obagi Medical Premier Points Today
+                         Obagi Premier Points<sup>&reg;</sup>
                         </h1>
-                        <p className={[premierStyles.Premiersubtitle,"hide-mob"].join(" ")}>Earn reward points with every purchase of Obagi Medical and receive free products*</p>
+                        <p className={[premierStyles.Premiersubtitle,"hide-mob"].join(" ")}>Obagi Medical <sup>&reg;</sup></p>
                         <p className={premierStyles.PremierDesc}>Obagi Premier Points is an exclusive opportunity to earn points every time you purchase Obagi Medical products from your physician. Join today, and every dollar you spend in a physicians office goes towards free products in the future. Once you've saved enough points, you can redeem them for free Obagi products. Follow these 3 easy steps:</p>
                       <div className={premierStyles.PremierLinks}>
                     <div className={premierStyles.PremierLink}>
@@ -93,7 +93,7 @@ export default function Premier() {
         <div className="row d-lg-none">
           <div className="col-12">
             <div className={premierStyles.csTitle}>Customer Service</div>
-            <div className={premierStyles.csText}>Our Customer Service Specialists are available to assist you Monday through Friday from 9am to 5pm EST. Feel free to give us a call at  1-800-636-7546 or <Link to="mailto:@email.com">Email Us</Link></div>
+            <div className={premierStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
           </div>
         </div>
       </div>
