@@ -236,7 +236,7 @@
 
 .product-info-wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     flex-direction: column;
@@ -258,12 +258,12 @@
 
     @include lg-screen {
         font-family:  futura-pt,   sans-serif; 
-        font-weight:  400; 
+        font-weight:  500; 
         font-style:  normal;
         max-width: 445px;
         display: flex;
         align-items: center;
-        flex: 1;
+        flex: 0 0 50%;
     }
 
 }
@@ -280,14 +280,43 @@
 
 
     @include lg-screen {
-        margin-left: auto;
-        margin-right: 96px;
+        flex: 0 0 17.3%;
+        text-align: center;
     }
 }
-
+.productstatus{
+    @include lg-screen {
+        flex: 0 0 17.3%;
+        text-align: center;
+        font-weight: 700;
+    }
+}
 .product-price {
 
     @include lg-screen {
-        margin-right: auto;
+        flex: 0 0 17.3%;
+        text-align: center;
+    }
+}
+.informdetail{
+    font-weight: 500;
+}
+.shipment p{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 700;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.shipmentsplit{
+    padding-bottom: 24px;
+    border-bottom: 1px solid #d6d6d6;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    @include md-screen{
+        font-size: 24px;
+        line-height: 40p;
+        padding-bottom: 37px;
     }
 }
