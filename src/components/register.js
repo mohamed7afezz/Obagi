@@ -216,7 +216,7 @@ const Register = () => {
                                 <div className="benefit-number">1</div>
                                 <div className="title-text">
                                     <div className="benefits-title">Complimentary Shipping</div>
-                                    <div className="benefits-text">Registered members receive complimentary shipping on orders of $100 or more.</div>
+                                    <div className="benefits-text">Registered members receive complimentary shipping on orders of $125 or more.</div>
                                 </div>
                             </div>
 
@@ -349,7 +349,7 @@ const Register = () => {
 
                                 <label className="form-check-label terms" for="registerCheck">
                                     Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the U.S. subject to our U.S. <Link to="#">Privacy Policy</Link> and <Link to="#">Terms of Use</Link>. For U.S. consumers only.
-                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" />
+                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true}/>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>

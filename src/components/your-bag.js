@@ -2,9 +2,11 @@ import React, {  useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import BagStyle from "../assets/scss/components/yourbag.module.scss"
 import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
-
+import Img from 'gatsby-image'
 import plusicon from "../assets/images/product-images/plus1.svg"
 import minusicon from "../assets/images/product-images/minus.svg"
+import myAccountStyles from '../assets/scss/components/my-account.module.scss'
+
 
 import Loader from "./Cart/Loader"
 
@@ -133,6 +135,17 @@ const StandardItem = props => {
   )
 }
 const YourBag = props => {
+  const data = useStaticQuery(graphql`
+  query {
+    skinanalyzer: file(relativePath: { eq: "image.png" }) {
+      childImageSharp {
+          fluid (quality: 100){
+              ...GatsbyImageSharpFluid
+            }
+      }
+    }
+  }
+  `)
   const { state, removeItemFromCart, updateCartItemQuantity } = useContext(
     CartContext
   )
@@ -402,12 +415,11 @@ const YourBag = props => {
             BagStyle.BagContainer,
           ].join(" ")}
         >
-          <h2 className={BagStyle.bagHead}>Your Bag</h2>
           <div className={'yourbagpadding'}>
             <p
               className={ShowBagStyle.empatyTitle}
             >
-              Looks like your bag is empty!
+              Your Obagi shopping bag is empty.
             </p>
             <Link
               className={ShowBagStyle.empatyLink}
@@ -416,6 +428,21 @@ const YourBag = props => {
               Continue Shopping
             </Link>
           </div>
+
+          <div className="row">
+                    <div className="col-4 pr-0">
+                        <div className={myAccountStyles.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+                    </div>
+                    <div className="col-8 pl-0">
+                        <div className="d-flex align-items-center h-100">
+                            <div className={myAccountStyles.bottomHalf}>
+                                <div className={myAccountStyles.bottomTitle}>Try our Skinanalyzer</div>
+                                <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
+                                <Link to="#" className={myAccountStyles.bottomLink}>TAKE THE QUIZ</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
       )
     }

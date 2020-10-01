@@ -1199,6 +1199,8 @@ right: 10px;
 
 .signup-btn:hover {
   color: #fff;
+  background: #132466;
+  border: 1px solid #132466;
 }
 
 .signup-btn:focus {

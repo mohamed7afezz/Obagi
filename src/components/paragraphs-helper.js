@@ -61,6 +61,7 @@ const componentsMap = {
     paragraph__article : Article,
     paragraph__heading_and_button: HeadingAndButton,
     paragraph__the_details_safe_section: Details,
+    paragraph__blog: Blog,
     paragraph__ingredient: Ingredient,
     paragraph__need_to_know: Needtoknow,
     paragraph__how_to_use: Howtouse,
@@ -73,6 +74,7 @@ const componentsMap = {
     paragraph__custom_block: CustomBlock,
     paragraph__not_found: NotFound,
     paragraph__image: Image,
+    paragraph_blog: Blog,
 }
 
 export const getParagraph = node => {

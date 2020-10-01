@@ -17,15 +17,20 @@ const OrderHistory = ({ node }) => {
     async function getOrders() {
 
         setIsLoading(true);
-        const ordersData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
+        const ordersData =  await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
             method: 'GET',
             credentials: 'include',
-            mode: 'cors'
-        })).json();
+        })
 
-        if (ordersData !== "User not login.") {
-            setOrders(ordersData);
+        if(ordersData.status == 200) {
+            let ordersResponse = await ordersData.json();
+
+            if (ordersData !== "User not login.") {
+                setOrders(ordersData);
+            }
         }
+
+      
         setIsLoading(false);
         
     }

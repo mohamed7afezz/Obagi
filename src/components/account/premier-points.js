@@ -1,9 +1,41 @@
 import React, { useEffect, useState } from "react"
 import UserAccount from "../../components/user-account"
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import premierStyles from "../../assets/scss/components/premier-points.module.scss"
+import Img from 'gatsby-image'
+
 
 export default function Premier() {
+
+  const data = useStaticQuery(graphql`
+  query {
+    bitmap: file(relativePath: { eq: "bitmap.png" }) {
+      childImageSharp {
+        fluid (quality: 100){
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    google: file(relativePath: { eq: "google-play-badge.png" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+
+    appstore: file(relativePath: { eq: "download-on-the-app-store-badge-us-uk-rgb-blk-092917.png" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+
+
+  }`)
+
   return (
     <UserAccount activeTab="premier-points">
       <div className="tab-pane active" id="premier" role="tabpanel">
@@ -24,10 +56,10 @@ export default function Premier() {
                         </h1>
                         <p className={premierStyles.Premiersubtitle}>Earn reward points with every purchase of Obagi Medical and receive free products*</p>
                      </div>
-                <img className="mobileImg" src="https://via.placeholder.com/650x500"/>
+                <Img className="mobileImg" fluid={data.bitmap.childImageSharp.fluid}/>
                 <div className={[premierStyles.centerimages].join(" ")}>
-                <img className="mobileImg" src="https://via.placeholder.com/150x50"/>
-                <img className="mobileImg" src="https://via.placeholder.com/170x50"/>
+                <a href="https://apps.apple.com/us/app/obagi-premier-points/id1056761689" target="_blank"><div className="mobileImg"><Img fixed={data.appstore.childImageSharp.fixed}/></div></a>
+                <a href="https://play.google.com/store/apps/details?id=com.obagi.premierepoints&hl=en" target="_blank"><div className="mobileImg"><Img fixed={data.google.childImageSharp.fixed}/></div></a>
                 </div>
             </div>
             <div className="col-12 col-lg-6 mob-p-0">

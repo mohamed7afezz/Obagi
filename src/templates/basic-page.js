@@ -42,6 +42,7 @@ query($slug: String!) {
                 ...vocabularySkinConcerHero
                 ...vocabulariesList
                 ...paragraphSolutions
+                ...paragraphBlog
                 ...paragraphProductLine
                 ...paragraphCareersHero
                 ...paragraphArticle

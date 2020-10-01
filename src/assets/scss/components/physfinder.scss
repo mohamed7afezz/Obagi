@@ -1,778 +1,847 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
-#phys-finder,#phys-finder p ,#phys-finder h1 ,
-#phys-finder h2 , #phys-finder h3 ,#phys-finder span,
-#phys-finder div ,#phys-finder input ,#phys-finder label,#phys-finder a{
-  font-weight: 400 !important;
-  font-family: futura-pt, sans-serif !important;
-  color: #132466 !important;
-}
-#phys-finder .row {
-	margin: 0;
-}#phys-finder #clinic-details-container li, #phys-finder #clinic-details-container li.prod-system {
-  background: none;
-  display: block;
-  margin: auto;
-  max-width: none;
-  padding: 0 0 0.5rem 0;
-  vertical-align: baseline;
-  width: auto; }#phys-finder 
 
-#phys-finder-form {
-  position: relative; }#phys-finder 
+//  .row {
+// 	margin: 0;
+// } #clinic-details-container li,  #clinic-details-container li.prod-system {
+//   background: none;
+//   display: block;
+//   margin: auto;
+//   max-width: none;
+//   padding: 0 0 0.5rem 0;
+//   vertical-align: baseline;
+//   width: auto; } 
 
-#phys-finder-search-form select {
-  background: url(/modules/custom/obagi_finder/images/icon-down-arrow.png) no-repeat right #fff;
-  background-size: 1rem;
-  border: 1px solid #cecece;
-  color: inherit;
-  margin: 0 auto;
-  padding: 0.6rem 1.5rem .6rem .5rem;
-  width: 100%;
-  -moz-appearance: none;
-  text-indent: 0.01px;
-  text-overflow: '';
-  z-index: 1; }#phys-finder -search-form select:disabled {
-    color: #cecece; }#phys-finder 
+// -form {
+//   position: relative; } 
 
-.ie #phys-finder-search-form .ie9-wrapper {
-  position: relative;
-  display: inline-block;
-  z-index: 0; }#phys-finder 
-  .ie #phys-finder-search-form .ie9-wrapper:before {
-    background: #fff;
-    display: block;
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 10px;
-    height: 27px;
-    width: 20px;
-    margin-right: 25px;
-    z-index: 5; }#phys-finder 
+// -search-form select {
+//   background: url(/modules/custom/obagi_finder/images/icon-down-arrow.png) no-repeat right #fff;
+//   background-size: 1rem;
+//   border: 1px solid #cecece;
+//   color: inherit;
+//   margin: 0 auto;
+//   padding: 0.6rem 1.5rem .6rem .5rem;
+//   width: 100%;
+//   -moz-appearance: none;
+//   text-indent: 0.01px;
+//   text-overflow: '';
+//   z-index: 1; } -search-form select:disabled {
+//     color: #cecece; } 
 
-#phys-finder #pf-submit {
-  width: 100%; }#phys-finder #adv-search-content {
-  background: #dddddd;
-  display: none;
-  margin: -1rem 0 1rem;
-  position: relative;
-  padding: 1.5em; }#phys-finder  #adv-search-content ul {
-    padding: 0; }#phys-finder  #adv-search-content .count {
-    background-color: #fff;
-    -moz-border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    border-radius: 1rem;
-    color: black;
-    display: none;
-    font-size: 0.85rem;
-    margin-left: .5rem;
-    width: 1.250rem; }#phys-finder  #adv-search-content .header {
-    color: #333;
-    font-weight: bold;
-    text-align: center; }#phys-finder .searchtext-wrapper {
-  margin-top: 0.750rem;
-  margin-bottom: 1rem; }#phys-finder #pf-count-results {
-  color: #fff;
-  margin-bottom: 1rem;
-  text-align: center; }#phys-finder #pf-email-print {
-  color: #fff;
-  text-align: center; }#phys-finder #email-link {
-  display: inline-block; }#phys-finder #print-link {
-  display: none; }#phys-finder .prod-system {
-  background-color: #fff;
-  display: inline-block;
-  padding: 0.500rem;
-  vertical-align: top;
-  width: 44%; }#phys-finder  .prod-system header {
-    font-size: 1.25rem;
-    font-weight: bold; }#phys-finder  .prod-system .short-desc {
-    font-size: 1rem;
-    font-weight: 100; }#phys-finder  .prod-system p {
-    text-align: left; }#phys-finder  .prod-system label {
-    text-align: left;
-    display: block;
-    padding-left: 1.2rem;
-    text-indent: -1.2rem; }#phys-finder  .prod-system ul li {
-    text-align: left; }#phys-finder  .prod-system .product-individual.has-systems {
-    display: none; }#phys-finder .adv-search-toggle {
-  margin-bottom: 1rem;
-  padding: 0.750rem 1rem;
-  width: 100%; }#phys-finder  .adv-search-toggle .text1 {
-    display: inline; }#phys-finder  .adv-search-toggle .text2 {
-    display: none; }#phys-finder  .adv-search-toggle #clear-all-prods {
-    font-weight: 300;
-    margin-top: .75rem; }#phys-finder .adv-search-toggle #clear-all-prods.active {
-      color: #fff;
-      cursor: default;
-      display: block;
-      text-decoration: underline; }#phys-finder .adv-search-toggle #clear-all-prods.hide {
-      display: none; }#phys-finder .adv-search-toggle #clear-all-prods span {
-      cursor: pointer;
-      text-transform: none; }#phys-finder .tabs {
-  padding: 0;
-  text-align: center; }#phys-finder  .tabs li {
-    display: inline-block;
-    position: relative;
-    width: 100%; }#phys-finder .tabs li button.tab {
-      font-size: .85rem;
-      padding: 0.5rem 1.1rem;
-      width: 100%; }#phys-finder  .tabs a.button {
-    background: #3a87c1; }#phys-finder .tab-content {
-  display: none; }#phys-finder  .tab-content.active {
-    display: block; }#phys-finder  .tab-content header.title {
-    display: none; }#phys-finder  .tab-content ul li {
-    list-style: none;
-    margin-bottom: 0.75rem; }#phys-finder .tab-content ul li ul li {
-      display: block; }#phys-finder .i-b {
-  margin-bottom: 1rem; }#phys-finder  .i-b #lblRadius {
-    display: none; }#phys-finder #lblSortDist {
-  display: block;
-  white-space: nowrap; }#phys-finder #finder-physician-input {
-  display: none; }#phys-finder #clinic-details-container {
-  background-color: #fff;
-  height: auto;
-  opacity: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0.500rem 0.250rem;
-  transition: opacity 0.75s;
-  visibility: hidden;
-  width: 100%;
-  z-index: 20; }#phys-finder  #clinic-details-container h4 {
-    margin-top: 0; }#phys-finder  #clinic-details-container hr {
-    margin: 1.250rem 0 !important; }#phys-finder  #clinic-details-container.active {
-    opacity: 1;
-    transition: opacity 0.75s;
-    visibility: visible; }#phys-finder  #clinic-details-container .number {
-    display: inline-block;
-    vertical-align: top;
-    width: 2.5rem; }#phys-finder  #clinic-details-container .info {
-    display: inline-block;
-    vertical-align: top;
-    width: 80%; }#phys-finder #clinic-details-container .info h4 {
-      margin: 0 0 0.200rem; }#phys-finder  #clinic-details-container header {
-    background-color: lightgray;
-    margin: -8px -4px 8px;
-    padding: 0 0.250rem; }#phys-finder #clinic-details-container header .back {
-      float: left;
-      padding: 1rem 0; }#phys-finder #clinic-details-container header .next-prev {
-      float: right;
-      text-align: right;
-      width: auto; }#phys-finder  #clinic-details-container ul {
-    padding: 0;
-    margin: 0; }#phys-finder  #clinic-details-container li.prod-system {
-    font-weight: bold;
-    padding: 0; }#phys-finder  #clinic-details-container .directions {
-    background-color: #3a87c1;
-    border: none;
-    color: #fff;
-    display: block;
-    margin: 1rem auto;
-    padding: 0.750rem 1rem;
-    text-align: center;
-    text-decoration: none;
-    width: 90%; }#phys-finder #clinic-details-container .directions:hover {
-      text-decoration: underline; }#phys-finder #physician-results-list-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0; }#phys-finder #physician-results-list {
-  position: relative;
-  font-weight: 300;
-  font-size: .88rem; }#phys-finder  #physician-results-list h4 {
-    margin: 0;
-    font-weight: 600;
-    color: #337ab7;
-   }#phys-finder  #physician-results-list .count {
-    display: inline-block;
-    padding: 1rem 0; }#phys-finder  #physician-results-list .next-prev {
-    width: auto;
-    float: right; }#phys-finder  #physician-results-list .marker-link {
-    display: block; }#phys-finder  #physician-results-list .number {
-    display: inline-block;
-    vertical-align: top;
-    width: 2.7rem; }#phys-finder #physician-results-list .number a:after {
-      border: 5px solid black;
-      display: block; }#phys-finder  #physician-results-list a.next:after {
-    border: 5px solid #014e97;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    content: "";
-    float: right;
-    margin-left: 5px;
-    margin-top: 5px; }#phys-finder  #physician-results-list a.prev:before {
-    border: 5px solid #014e97;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    content: "";
-    float: left;
-    margin-right: 5px;
-    margin-top: 5px; }#phys-finder  #physician-results-list .next {
-    padding-left: .75rem; }#phys-finder  #physician-results-list .info {
-    display: inline-block;
-    width: 79%; }#phys-finder  #physician-results-list .products {
-    font-style: italic;
-    padding: 0.67rem 0; }#phys-finder  #physician-results-list .links a {
-    text-decoration: underline; }#phys-finder  #physician-results-list hr.first {
-    margin-top: 0; }#phys-finder .map-header {
-  background-color: #6e7e8e;
-  padding: 10px 16px; }#phys-finder  .map-header a {
-    color: #fff;
-    text-decoration: none; }#phys-finder #in-progress {
-  display: none;
-  opacity: 0.75;
-  background: #fff url(/sites/all/themes/responsive/images/spinner.gif) no-repeat center center;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  position: absolute;
-  top: 0;
-  left: 0; }#phys-finder .header h1 {
-  margin-bottom: 1.6rem; }#phys-finder #adv-search header {
-  text-align: center;
-  font-weight: bold; }#phys-finder  #adv-search header span.glyphs {
-    font-size: 1.5rem;
-    vertical-align: middle;
-    padding-left: .25rem; }#phys-finder  #adv-search header span.glyphicon-arrow-up {
-    display: none; }#phys-finder .bodycopy a.details {
-  margin-right: 0.500rem;
-  text-decoration: underline; }#phys-finder button.active {
-  color: #fff;
-  background-color: #3a87c1; }#phys-finder .button.active {
-  color: #fff;
-  background-color: #3a87c1; }#phys-finder .info-list div.clinic-distance {
-  display: none; }#phys-finder .gm-style-iw .products {
-  font-style: italic;
-  padding: 0.67rem 0; }#phys-finder 
+// .ie -search-form .ie9-wrapper {
+//   position: relative;
+//   display: inline-block;
+//   z-index: 0; } 
+//   .ie -search-form .ie9-wrapper:before {
+//     background: #fff;
+//     display: block;
+//     position: absolute;
+//     content: '';
+//     right: 0;
+//     top: 10px;
+//     height: 27px;
+//     width: 20px;
+//     margin-right: 25px;
+//     z-index: 5; } 
 
-  #phys-finder #error-wrapper {
-  margin: 1rem 0;
-  text-align: center; }#phys-finder  #error-wrapper .error:before {
-    padding-right: .5rem; }#phys-finder 
+//  #pf-submit {
+//   width: 100%; } #adv-search-content {
+//   background: #dddddd;
+//   display: none;
+//   margin: -1rem 0 1rem;
+//   position: relative;
+//   padding: 1.5em; }  #adv-search-content ul {
+//     padding: 0; }  #adv-search-content .count {
+//     background-color: #fff;
+//     -moz-border-radius: 1rem;
+//     -webkit-border-radius: 1rem;
+//     border-radius: 1rem;
+//     color: black;
+//     display: none;
+//     font-size: 0.85rem;
+//     margin-left: .5rem;
+//     width: 1.250rem; }  #adv-search-content .header {
+//     color: #333;
+//     font-weight: bold;
+//     text-align: center; } .searchtext-wrapper {
+//   margin-top: 0.750rem;
+//   margin-bottom: 1rem; } #pf-count-results {
+//   color: #fff;
+//   margin-bottom: 1rem;
+//   text-align: center; } #pf-email-print {
+//   color: #fff;
+//   text-align: center; } #email-link {
+//   display: inline-block; } #print-link {
+//   display: none; } .prod-system {
+//   background-color: #fff;
+//   display: inline-block;
+//   padding: 0.500rem;
+//   vertical-align: top;
+//   width: 44%; }  .prod-system header {
+//     font-size: 1.25rem;
+//     font-weight: bold; }  .prod-system .short-desc {
+//     font-size: 1rem;
+//     font-weight: 100; }  .prod-system p {
+//     text-align: left; }  .prod-system label {
+//     text-align: left;
+//     display: block;
+//     padding-left: 1.2rem;
+//     text-indent: -1.2rem; }  .prod-system ul li {
+//     text-align: left; }  .prod-system .product-individual.has-systems {
+//     display: none; } .adv-search-toggle {
+//   margin-bottom: 1rem;
+//   padding: 0.750rem 1rem;
+//   width: 100%; }  .adv-search-toggle .text1 {
+//     display: inline; }  .adv-search-toggle .text2 {
+//     display: none; }  .adv-search-toggle #clear-all-prods {
+//     font-weight: 300;
+//     margin-top: .75rem; } .adv-search-toggle #clear-all-prods.active {
+//       color: #fff;
+//       cursor: default;
+//       display: block;
+//       text-decoration: underline; } .adv-search-toggle #clear-all-prods.hide {
+//       display: none; } .adv-search-toggle #clear-all-prods span {
+//       cursor: pointer;
+//       text-transform: none; } .tabs {
+//   padding: 0;
+//   text-align: center; }  .tabs li {
+//     display: inline-block;
+//     position: relative;
+//     width: 100%; } .tabs li button.tab {
+//       font-size: .85rem;
+//       padding: 0.5rem 1.1rem;
+//       width: 100%; }  .tabs a.button {
+//     background: #3a87c1; } .tab-content {
+//   display: none; }  .tab-content.active {
+//     display: block; }  .tab-content header.title {
+//     display: none; }  .tab-content ul li {
+//     list-style: none;
+//     margin-bottom: 0.75rem; } .tab-content ul li ul li {
+//       display: block; } .i-b {
+//   margin-bottom: 1rem; }  .i-b #lblRadius {
+//     display: none; } #lblSortDist {
+//   display: block;
+//   white-space: nowrap; } #finder-physician-input {
+//   display: none; } #clinic-details-container {
+//   background-color: #fff;
+//   height: auto;
+//   opacity: 0;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   padding: 0.500rem 0.250rem;
+//   transition: opacity 0.75s;
+//   visibility: hidden;
+//   width: 100%;
+//   z-index: 20; }  #clinic-details-container h4 {
+//     margin-top: 0; }  #clinic-details-container hr {
+//     margin: 1.250rem 0 !important; }  #clinic-details-container.active {
+//     opacity: 1;
+//     transition: opacity 0.75s;
+//     visibility: visible; }  #clinic-details-container .number {
+//     display: inline-block;
+//     vertical-align: top;
+//     width: 2.5rem; }  #clinic-details-container .info {
+//     display: inline-block;
+//     vertical-align: top;
+//     width: 80%; } #clinic-details-container .info h4 {
+//       margin: 0 0 0.200rem; }  #clinic-details-container header {
+//     background-color: lightgray;
+//     margin: -8px -4px 8px;
+//     padding: 0 0.250rem; } #clinic-details-container header .back {
+//       float: left;
+//       padding: 1rem 0; } #clinic-details-container header .next-prev {
+//       float: right;
+//       text-align: right;
+//       width: auto; }  #clinic-details-container ul {
+//     padding: 0;
+//     margin: 0; }  #clinic-details-container li.prod-system {
+//     font-weight: bold;
+//     padding: 0; }  #clinic-details-container .directions {
+//     background-color: #3a87c1;
+//     border: none;
+//     color: #fff;
+//     display: block;
+//     margin: 1rem auto;
+//     padding: 0.750rem 1rem;
+//     text-align: center;
+//     text-decoration: none;
+//     width: 90%; } #clinic-details-container .directions:hover {
+//       text-decoration: underline; } #physician-results-list-wrapper {
+//   position: absolute;
+//   top: 0;
+//   left: 0; } #physician-results-list {
+//   position: relative;
+//   font-weight: 300;
+//   font-size: .88rem; }  #physician-results-list h4 {
+//     margin: 0;
+//     font-weight: 600;
+//     color: #337ab7;
+//    }  #physician-results-list .count {
+//     display: inline-block;
+//     padding: 1rem 0; }  #physician-results-list .next-prev {
+//     width: auto;
+//     float: right; }  #physician-results-list .marker-link {
+//     display: block; }  #physician-results-list .number {
+//     display: inline-block;
+//     vertical-align: top;
+//     width: 2.7rem; } #physician-results-list .number a:after {
+//       border: 5px solid black;
+//       display: block; }  #physician-results-list a.next:after {
+//     border: 5px solid #014e97;
+//     border-right-color: transparent;
+//     border-top-color: transparent;
+//     border-bottom-color: transparent;
+//     content: "";
+//     float: right;
+//     margin-left: 5px;
+//     margin-top: 5px; }  #physician-results-list a.prev:before {
+//     border: 5px solid #014e97;
+//     border-left-color: transparent;
+//     border-top-color: transparent;
+//     border-bottom-color: transparent;
+//     content: "";
+//     float: left;
+//     margin-right: 5px;
+//     margin-top: 5px; }  #physician-results-list .next {
+//     padding-left: .75rem; }  #physician-results-list .info {
+//     display: inline-block;
+//     width: 79%; }  #physician-results-list .products {
+//     font-style: italic;
+//     padding: 0.67rem 0; }  #physician-results-list .links a {
+//     text-decoration: underline; }  #physician-results-list hr.first {
+//     margin-top: 0; } .map-header {
+//   background-color: #6e7e8e;
+//   padding: 10px 16px; }  .map-header a {
+//     color: #fff;
+//     text-decoration: none; } #in-progress {
+//   display: none;
+//   opacity: 0.75;
+//   background: #fff url(/sites/all/themes/responsive/images/spinner.gif) no-repeat center center;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 100;
+//   position: absolute;
+//   top: 0;
+//   left: 0; } .header h1 {
+//   margin-bottom: 1.6rem; } #adv-search header {
+//   text-align: center;
+//   font-weight: bold; }  #adv-search header span.glyphs {
+//     font-size: 1.5rem;
+//     vertical-align: middle;
+//     padding-left: .25rem; }  #adv-search header span.glyphicon-arrow-up {
+//     display: none; } .bodycopy a.details {
+//   margin-right: 0.500rem;
+//   text-decoration: underline; } button.active {
+//   color: #fff;
+//   background-color: #3a87c1; } .button.active {
+//   color: #fff;
+//   background-color: #3a87c1; } .info-list div.clinic-distance {
+//   display: none; } .gm-style-iw .products {
+//   font-style: italic;
+//   padding: 0.67rem 0; } 
 
-._margin-top {
-  margin-top: 1.5rem; }@media screen and (min-width: 0px) and (max-width: 480px) {
-  .page-hcpfinder .l-main .l-content {
-    padding: 0 1rem;  } }@media screen and (min-width: 481px) {
-  #phys-finder .header .controls {
-    margin-bottom: 1rem; }#phys-finder  .i-b {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: baseline;
-    width: auto; }#phys-finder  #pf-count-results {
-    display: inline-block;
-    float: left;
-    margin-bottom: 0; }#phys-finder  #pf-email-print {
-    display: inline-block;
-    float: right; }#phys-finder  .radius-wrapper {
-    position: relative;
-    bottom: 2px; }#phys-finder  #inner-update {
-    margin-top: 2.750rem; }#phys-finder  .prod-system {
-    margin: 0 1.5% 3rem 1.5%; }#phys-finder  #pf-submit,
-  #phys-finder .update-search {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    box-shadow: 0 0 1px transparent;
-    width: auto;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto; }#phys-finder #pf-submit.pulse,
-    #phys-finder .update-search.pulse {
-      -webkit-animation-duration: 2s;
-      animation-duration: 2s;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-      -webkit-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
-      -webkit-animation-name: pulse;
-      animation-name: pulse;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }  @-webkit-keyframes pulse {
-    25% {
-      background-color: #3a87c1;
-      -webkit-transform: scale(1.03);
-      transform: scale(1.03); }75% {
-      background-color: #66ccff;
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);  } }  @keyframes pulse {
-    25% {
-      background-color: #3a87c1;
-      -webkit-transform: scale(1.03);
-      transform: scale(1.03); }75% {
-      background-color: #66ccff;
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);  }  } }#phys-finder 
-       #map {
-        height: 32.500rem;
-      }@media screen and (min-width: 768px) {
-  #phys-finder {
-    padding-right: 2rem; }
-    #phys-finder #map {
-      display: block;
-      clear: both;
-      height: 32.500rem;
-      width: 100%; }#phys-finder 
-       #map .number {
-        display: none; }#phys-finder #map hr {
-        display: none; }#phys-finder .header h1 {
-      display: inline-block;
-      margin-right: 2%;
-      margin-bottom: 0;
-      vertical-align: bottom; }#phys-finder .header .controls {
-      display: inline-block;
-      margin-bottom: 0;
-      width: auto; }#phys-finder .i-b {
-      margin-right: 0.5rem;
-      vertical-align: bottom; }#phys-finder .i-b #lblRadius {
-        display: block; }#phys-finder .searchby-wrapper {
-      width: 250px;
-      margin-right: 20px; }#phys-finder .searchtext-wrapper {
-      margin-bottom: 0; }#phys-finder .radius-wrapper {
-      bottom: 0;
-      margin-right: 20px; }#phys-finder .submit-wrapper {
-      bottom: 0;
-      position: relative; }#phys-finder .active {
-      color: #555555; }#phys-finder .prod-system {
-      background: #fff;
-      display: inline-block;
-      margin: 0 1.5% 3rem 1.5%;
-      max-width: 20rem;
-      padding: 1%;
-      vertical-align: top;
-      width: 29%; }#phys-finder .prod-system .product-individual {
-        display: block; }#phys-finder  .prod-system .product-individual.has-systems {
-          display: block; }#phys-finder .prod-system label {
-        display: inline-block;
-        text-indent: -1.2em;
-        padding-left: 1.2em; }#phys-finder .prod-system .short-desc p {
-        font-weight: 100;
-        text-align: center; }#phys-finder #map_canvas {
-      width: 960px;
-      height: 600px; }#phys-finder .gm-style-iw {
-      font-family: Proxima Nova W01, Arial, Helvetica, sans-serif;
-       }#phys-finder .gm-style-iw .info-list div.clinic-distance {
-        display: none;
-        margin-bottom: .25rem; }#phys-finder .bodycopy,
-    #phys-finder .gm-style-iw .bodycopy {
-      font-weight: 300;
-       }#phys-finder .bodycopy h4,
-    #phys-finder .gm-style-iw h4 {
-      font-weight: 600;
-      font-size: 14px;
-      color: #337ab7;
-      margin-top: 0; }#phys-finder .adv-search-toggle .text1 {
-      display: none; }#phys-finder .adv-search-toggle .text2 {
-      display: inline; }#phys-finder #physician-results-list {
-      /* background-color: #fff; */
-      display: none;
-      height: 32.500rem;
-      width: 100%;
-      overflow-y: auto;
-      opacity: 1;
-      padding: 0.500rem 0 0.500rem;
-      /* position: absolute; */
-      /* top: 96px; */
-      /* left: 14px; */
-      z-index: 11; }#phys-finder #physician-results-list hr {
-        margin: 0; }#phys-finder #physician-results-list .marker-link {
-        cursor: pointer; }#phys-finder #physician-results-list .bodycopy {
-        padding: 10px 0 10px 10px; }#phys-finder  #physician-results-list .bodycopy.active {
-          background-color: #acccea; }#phys-finder #physician-results-list .info {
-        display: inline-block;
-        padding-left: 10px; }#phys-finder #physician-results-list .cemail {
-        display: none; }#phys-finder #physician-results-list .website {
-        display: none; }#phys-finder #email-link {
-      padding-right: 1rem; }#phys-finder #print-link {
-      display: inline-block; }#phys-finder .left {
-      float: left; }#phys-finder .right {
-      float: right; }#phys-finder .text-left {
-      text-align: left; }#phys-finder #inner-update {
-      margin-top: 3.750rem; }#phys-finderbutton:focus {
-      outline: none; }#phys-finder .tab-content header.title {
-      display: block; }#phys-finder .gm-style a {
-      text-decoration: underline; }#phys-finder #adv-search-content .count {
-      position: inherit; }#phys-finder .tabs li {
-      width: auto; }#phys-finder .tabs li.active {
-        border-bottom-color: #66ccff;
-        border-bottom-width: 5px;
-        border-bottom-style: solid; }#phys-finder .tabs li button.tab {
-        width: auto; }#phys-finder 
+//    #error-wrapper {
+//   margin: 1rem 0;
+//   text-align: center; }  #error-wrapper .error:before {
+//     padding-right: .5rem; } 
 
-  #phys-finder-search-form {
-    margin-bottom: 1rem;
-    text-align: center; }#phys-finder 
-    #phys-finder-search-form select {
-      margin-top: .85rem;
-      margin-right: 1rem; }#phys-finder 
-    #phys-finder-search-form label {
-      text-align: left;
-      white-space: nowrap; }#phys-finder 
-    #phys-finder-search-form lbl-radius {
-      display: block; }#phys-finder 
+// ._margin-top {
+//   margin-top: 1.5rem; }@media screen and (min-width: 0px) and (max-width: 480px) {
+//   .page-hcpfinder .l-main .l-content {
+//     padding: 0 1rem;  } }@media screen and (min-width: 481px) {
+//    .header .controls {
+//     margin-bottom: 1rem; }  .i-b {
+//     display: inline-block;
+//     margin-bottom: 0;
+//     vertical-align: baseline;
+//     width: auto; }  #pf-count-results {
+//     display: inline-block;
+//     float: left;
+//     margin-bottom: 0; }  #pf-email-print {
+//     display: inline-block;
+//     float: right; }  .radius-wrapper {
+//     position: relative;
+//     bottom: 2px; }  #inner-update {
+//     margin-top: 2.750rem; }  .prod-system {
+//     margin: 0 1.5% 3rem 1.5%; }  #pf-submit,
+//    .update-search {
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0);
+//     -webkit-backface-visibility: hidden;
+//     backface-visibility: hidden;
+//     box-shadow: 0 0 1px transparent;
+//     width: auto;
+//     -webkit-font-smoothing: subpixel-antialiased;
+//     -moz-osx-font-smoothing: auto; } #pf-submit.pulse,
+//      .update-search.pulse {
+//       -webkit-animation-duration: 2s;
+//       animation-duration: 2s;
+//       -webkit-animation-timing-function: linear;
+//       animation-timing-function: linear;
+//       -webkit-animation-iteration-count: infinite;
+//       animation-iteration-count: infinite;
+//       -webkit-animation-name: pulse;
+//       animation-name: pulse;
+//       -webkit-font-smoothing: antialiased;
+//       -moz-osx-font-smoothing: grayscale; }  @-webkit-keyframes pulse {
+//     25% {
+//       background-color: #3a87c1;
+//       -webkit-transform: scale(1.03);
+//       transform: scale(1.03); }75% {
+//       background-color: #66ccff;
+//       -webkit-transform: scale(0.98);
+//       transform: scale(0.98);  } }  @keyframes pulse {
+//     25% {
+//       background-color: #3a87c1;
+//       -webkit-transform: scale(1.03);
+//       transform: scale(1.03); }75% {
+//       background-color: #66ccff;
+//       -webkit-transform: scale(0.98);
+//       transform: scale(0.98);  }  } } 
+//        #map {
+//         height: 32.500rem;
+//       }@media screen and (min-width: 768px) {
+   
+//      #map {
+//       display: block;
+//       clear: both;
+//       height: 32.500rem;
+//       width: 100%; } 
+//        #map .number {
+//         display: none; } #map hr {
+//         display: none; } .header h1 {
+//       display: inline-block;
+//       margin-right: 2%;
+//       margin-bottom: 0;
+//       vertical-align: bottom; } .header .controls {
+//       display: inline-block;
+//       margin-bottom: 0;
+//       width: auto; } .i-b {
+//       margin-right: 0.5rem;
+//       vertical-align: bottom; } .i-b #lblRadius {
+//         display: block; } .searchby-wrapper {
+//       width: 250px;
+//       margin-right: 20px; } .searchtext-wrapper {
+//       margin-bottom: 0; } .radius-wrapper {
+//       bottom: 0;
+//       margin-right: 20px; } .submit-wrapper {
+//       bottom: 0;
+//       position: relative; } .active {
+//       color: #555555; } .prod-system {
+//       background: #fff;
+//       display: inline-block;
+//       margin: 0 1.5% 3rem 1.5%;
+//       max-width: 20rem;
+//       padding: 1%;
+//       vertical-align: top;
+//       width: 29%; } .prod-system .product-individual {
+//         display: block; }  .prod-system .product-individual.has-systems {
+//           display: block; } .prod-system label {
+//         display: inline-block;
+//         text-indent: -1.2em;
+//         padding-left: 1.2em; } .prod-system .short-desc p {
+//         font-weight: 100;
+//         text-align: center; } #map_canvas {
+//       width: 960px;
+//       height: 600px; } .gm-style-iw {
+//       font-family: Proxima Nova W01, Arial, Helvetica, sans-serif;
+//        } .gm-style-iw .info-list div.clinic-distance {
+//         display: none;
+//         margin-bottom: .25rem; } .bodycopy,
+//      .gm-style-iw .bodycopy {
+//       font-weight: 300;
+//        } .bodycopy h4,
+//      .gm-style-iw h4 {
+//       font-weight: 600;
+//       font-size: 14px;
+//       color: #337ab7;
+//       margin-top: 0; } .adv-search-toggle .text1 {
+//       display: none; } .adv-search-toggle .text2 {
+//       display: inline; } #physician-results-list {
+//       /* background-color: #fff; */
+//       display: none;
+//       height: 32.500rem;
+//       width: 100%;
+//       overflow-y: auto;
+//       opacity: 1;
+//       padding: 0.500rem 0 0.500rem;
+//       /* position: absolute; */
+//       /* top: 96px; */
+//       /* left: 14px; */
+//       z-index: 11; } #physician-results-list hr {
+//         margin: 0; } #physician-results-list .marker-link {
+//         cursor: pointer; } #physician-results-list .bodycopy {
+//         padding: 10px 0 10px 10px; }  #physician-results-list .bodycopy.active {
+//           background-color: #acccea; } #physician-results-list .info {
+//         display: inline-block;
+//         padding-left: 10px; } #physician-results-list .cemail {
+//         display: none; } #physician-results-list .website {
+//         display: none; } #email-link {
+//       padding-right: 1rem; } #print-link {
+//       display: inline-block; } .left {
+//       float: left; } .right {
+//       float: right; } .text-left {
+//       text-align: left; } #inner-update {
+//       margin-top: 3.750rem; }button:focus {
+//       outline: none; } .tab-content header.title {
+//       display: block; } .gm-style a {
+//       text-decoration: underline; } #adv-search-content .count {
+//       position: inherit; } .tabs li {
+//       width: auto; } .tabs li.active {
+//         border-bottom-color: #66ccff;
+//         border-bottom-width: 5px;
+//         border-bottom-style: solid; } .tabs li button.tab {
+//         width: auto; } 
 
-  #phys-finder-search-results {
-    position: relative; }#phys-finder 
+//   -search-form {
+//     margin-bottom: 1rem;
+//     text-align: center; } 
+//     -search-form select {
+//       margin-top: .85rem;
+//       margin-right: 1rem; } 
+//     -search-form label {
+//       text-align: left;
+//       white-space: nowrap; } 
+//     -search-form lbl-radius {
+//       display: block; } 
 
-  .ie #phys-finder-search-form .ie9-wrapper:before {
-    top: 16px;  } }@media print {
-  #phys-finder #map {
-    margin-top: .2rem;
-    width: 90%;
-    height: 600px; }#phys-finder  #adv-search {
-    display: none !important; }#phys-finder  #phys-finder-search-results .map-header {
-    display: none !important; }#phys-finder  #phys-finder-search-results .links {
-    display: none !important; }#phys-finder  .header h1 {
-    font-size: 1.1rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0; }#phys-finder  #physician-results-list h4 {
-    font-weight: normal; }#phys-finder 
+//   -search-results {
+//     position: relative; } 
 
-  .page-hcpfinder .header-block {
-    display: block;
-    text-align: center;
-    margin-left: 1rem; }#phys-finder 
-    .page-hcpfinder .header-block .header-logo {
-      text-align: left;
-      -webkit-print-color-adjust: exact;
-      width: 130px; }#phys-finder 
-  .page-hcpfinder .l-main {
-    background: none;
-    border: none;
-    margin: 0;
-    padding: 0; }#phys-finder 
-  .page-hcpfinder .l-content {
-    margin: 0;
-    padding: 0; }#phys-finder 
-  .page-hcpfinder img {
-    -webkit-print-color-adjust: exact; }#phys-finder 
-  .page-hcpfinder h1 {
-    color: black; }#phys-finder 
-  .page-hcpfinder h2 {
-    color: black; }#phys-finder 
-  .page-hcpfinder h3 {
-    color: black; }#phys-finder 
-  .page-hcpfinder h4 {
-    color: black; }#phys-finder 
-  .page-hcpfinder .l-footer .l-region--sub-footer {
-    background: none;
-    color: black;
-    margin: 0;
-    padding: 0; }#phys-finder 
-    .page-hcpfinder .l-footer .l-region--sub-footer p {
-      color: black; }#phys-finder 
-  .page-hcpfinder .l-footer .menu {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .l-footer #back-to-top {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .l-region--sub-footer .footer-copyright {
-    margin: 0 0 0 2em;
-    width: 100%;
-    border: 1px solid #cecece; }#phys-finder 
-  .page-hcpfinder .l-region--sub-footer #footer-obagiforlife-logo {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder #valeant-menu-wrapper {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .l-region--navigation {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder #header-nav-left {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder #header-nav-right {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder #block-system-main-menu {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder #block-menu-menu-mobile-menu {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .mobile-header-links {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .fat-footer {
-    display: none !important; }#phys-finder 
-  .page-hcpfinder .l-header .l-region--header {
-    padding: .2rem 0 0 0; }#phys-finder 
-  .page-hcpfinder a:link {
-    font-weight: bold;
-    text-decoration: underline;
-    color: #06c; }#phys-finder 
+//   .ie -search-form .ie9-wrapper:before {
+//     top: 16px;  } }@media print {
+//    #map {
+//     margin-top: .2rem;
+//     width: 90%;
+//     height: 600px; }  #adv-search {
+//     display: none !important; }  -search-results .map-header {
+//     display: none !important; }  -search-results .links {
+//     display: none !important; }  .header h1 {
+//     font-size: 1.1rem;
+//     margin-top: 0.25rem;
+//     margin-bottom: 0; }  #physician-results-list h4 {
+//     font-weight: normal; } 
 
-  #physician-results-list {
-    position: relative;
-    height: auto;
-    left: auto;
-    opacity: 1;
-    top: auto;
-    width: auto; }#phys-finder 
-    #physician-results-list .next-prev {
-      display: none !important; }#phys-finder 
+//   .page-hcpfinder .header-block {
+//     display: block;
+//     text-align: center;
+//     margin-left: 1rem; } 
+//     .page-hcpfinder .header-block .header-logo {
+//       text-align: left;
+//       -webkit-print-color-adjust: exact;
+//       width: 130px; } 
+//   .page-hcpfinder .l-main {
+//     background: none;
+//     border: none;
+//     margin: 0;
+//     padding: 0; } 
+//   .page-hcpfinder .l-content {
+//     margin: 0;
+//     padding: 0; } 
+//   .page-hcpfinder img {
+//     -webkit-print-color-adjust: exact; } 
+//   .page-hcpfinder h1 {
+//     color: black; } 
+//   .page-hcpfinder h2 {
+//     color: black; } 
+//   .page-hcpfinder h3 {
+//     color: black; } 
+//   .page-hcpfinder h4 {
+//     color: black; } 
+//   .page-hcpfinder .l-footer .l-region--sub-footer {
+//     background: none;
+//     color: black;
+//     margin: 0;
+//     padding: 0; } 
+//     .page-hcpfinder .l-footer .l-region--sub-footer p {
+//       color: black; } 
+//   .page-hcpfinder .l-footer .menu {
+//     display: none !important; } 
+//   .page-hcpfinder .l-footer #back-to-top {
+//     display: none !important; } 
+//   .page-hcpfinder .l-region--sub-footer .footer-copyright {
+//     margin: 0 0 0 2em;
+//     width: 100%;
+//     border: 1px solid #cecece; } 
+//   .page-hcpfinder .l-region--sub-footer #footer-obagiforlife-logo {
+//     display: none !important; } 
+//   .page-hcpfinder #valeant-menu-wrapper {
+//     display: none !important; } 
+//   .page-hcpfinder .l-region--navigation {
+//     display: none !important; } 
+//   .page-hcpfinder #header-nav-left {
+//     display: none !important; } 
+//   .page-hcpfinder #header-nav-right {
+//     display: none !important; } 
+//   .page-hcpfinder #block-system-main-menu {
+//     display: none !important; } 
+//   .page-hcpfinder #block-menu-menu-mobile-menu {
+//     display: none !important; } 
+//   .page-hcpfinder .mobile-header-links {
+//     display: none !important; } 
+//   .page-hcpfinder .fat-footer {
+//     display: none !important; } 
+//   .page-hcpfinder .l-header .l-region--header {
+//     padding: .2rem 0 0 0; } 
+//   .page-hcpfinder a:link {
+//     font-weight: bold;
+//     text-decoration: underline;
+//     color: #06c; } 
 
-  #pf-email-print {
-    display: none !important; }#phys-finder 
+//   #physician-results-list {
+//     position: relative;
+//     height: auto;
+//     left: auto;
+//     opacity: 1;
+//     top: auto;
+//     width: auto; } 
+//     #physician-results-list .next-prev {
+//       display: none !important; } 
 
-  #clinic-details-container {
-    display: none !important; }#phys-finder 
+//   #pf-email-print {
+//     display: none !important; } 
 
-  .page-hcpfinder {
-    background: none;
-    color: black; }#phys-finder 
+//   #clinic-details-container {
+//     display: none !important; } 
 
-  #phys-finder-search-form .controls {
-    display: none !important;  } }#phys-finder 
+//   .page-hcpfinder {
+//     background: none;
+//     color: black; } 
 
-    .d-flex {
-      display: flex;
-      justify-content: space-between;
-    }#phys-finder 
+//   -search-form .controls {
+//     display: none !important;  } } 
+
+//     .d-flex {
+//       display: flex;
+//       justify-content: space-between;
+//     } 
     
-    .d-flex .right-side
-     {
-      width: 100%;
-      transition: all 500ms ease;
-    }#phys-finder 
-    .d-flex.search .right-side {
-      width: 75%;
-    }#phys-finder 
+//     .d-flex .right-side
+//      {
+//       width: 100%;
+//       transition: all 500ms ease;
+//     } 
+//     .d-flex.search .right-side {
+//       width: 75%;
+//     } 
 
-    .d-flex .left-side {
-      width: 0%;
-    }#phys-finder 
-    .d-flex.search .left-side {
-      width: 25%;
-    }     @media (max-width: 767px) {
-      .d-flex {
-        display: block;
-        margin-top: 0;
-      }#phys-finder 
+//     .d-flex .left-side {
+//       width: 0%;
+//     } 
+//     .d-flex.search .left-side {
+//       width: 25%;
+//     }     @media (max-width: 767px) {
+//       .d-flex {
+//         display: block;
+//         margin-top: 0;
+//       } 
     
-      .d-flex .right-side,
-      .d-flex .left-side {
-        width: 100%;
-      }#phys-finder 
+//       .d-flex .right-side,
+//       .d-flex .left-side {
+//         width: 100%;
+//       } 
 
-      .d-flex .left-side {
-        display: none;
-      }
-    }#phys-finder 
+//       .d-flex .left-side {
+//         display: none;
+//       }
+//     } 
     
-    .visible-xs-block {
-      display: none;
-    }     @media (max-width: 767px) {
-      .visible-xs-block {
-        display: block;
-      }
-    }#phys-finder 
+//     .visible-xs-block {
+//       display: none;
+//     }     @media (max-width: 767px) {
+//       .visible-xs-block {
+//         display: block;
+//       }
+//     } 
     
-    #phys-finder-tabs ul {
-      display: flex;
-      border-bottom: 5px solid #3575a5;
-      padding: 0 !important;
-    }#phys-finder 
+//     -tabs ul {
+//       display: flex;
+//       border-bottom: 5px solid #3575a5;
+//       padding: 0 !important;
+//     } 
     
-    #phys-finder-tabs ul li {
-      background-color: #c6c6c6;
-      color: #fff;
-      margin-bottom: 0 !important;
-      padding: 10px 0 2px 0;
-      transition: all 500ms ease-in;
-      flex: 1;
-      cursor: pointer;
-      text-align: center;
-	  list-style: none;
-    }#phys-finder 
+//     -tabs ul li {
+//       background-color: #c6c6c6;
+//       color: #fff;
+//       margin-bottom: 0 !important;
+//       padding: 10px 0 2px 0;
+//       transition: all 500ms ease-in;
+//       flex: 1;
+//       cursor: pointer;
+//       text-align: center;
+// 	  list-style: none;
+//     } 
     
-    #phys-finder-tabs ul li:first-child {
-      margin-right: 15px;
-    }#phys-finder 
+//     -tabs ul li:first-child {
+//       margin-right: 15px;
+//     } 
     
-    #phys-finder-tabs ul li.active {
-      background-color: #3575a5;
-    }#phys-finder 
+//     -tabs ul li.active {
+//       background-color: #3575a5;
+//     } 
     
-    #phys-finder-tabs ul li span {
-      font-size: 16px;
-      font-weight: bold;
-    }     @media (max-width: 767px) {
-      .d-flex .left-side {
-        display: none;
-      }
-    }#phys-finder 
-  #productsModal .modal-header {
-  text-align: right;
-  border-bottom: 0;
-}#phys-finder 
-#productsModal .modal-content {
-  border-radius: 0;
-}#phys-finder 
-.modal-open {
-  overflow: hidden;
-}#phys-finder 
-.modal {
-  display: none;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1050;
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
-}#phys-finder 
-.modal.fade .modal-dialog {
-  -webkit-transform: translate(0, -25%);
-  -ms-transform: translate(0, -25%);
-  -o-transform: translate(0, -25%);
-  transform: translate(0, -25%);
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -moz-transition: -moz-transform 0.3s ease-out;
-  -o-transition: -o-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
-}#phys-finder 
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0);
-}#phys-finder 
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-}#phys-finder 
-.modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 10px;
-}#phys-finder 
-.modal-content {
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  background-clip: padding-box;
-  outline: 0;
-}#phys-finder 
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  background-color: #000;
-}#phys-finder 
-.modal-backdrop.fade {
-  opacity: 0;
-  filter: alpha(opacity=0);
-}#phys-finder 
-.modal-backdrop.in {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-}#phys-finder 
-.modal-header {
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
-}#phys-finder 
-.modal-header .close {
-  margin-top: -2px;
-}#phys-finder 
-.modal-title {
-  margin: 0;
-  line-height: 1.42857143;
-}#phys-finder 
-.modal-body {
-  position: relative;
-  padding: 15px;
-}#phys-finder 
-.modal-footer {
-  padding: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
-}#phys-finder 
-.modal-footer .btn + .btn {
-  margin-left: 5px;
-  margin-bottom: 0;
-}#phys-finder 
-.modal-footer .btn-group .btn + .btn {
-  margin-left: -1px;
-}#phys-finder 
-.modal-footer .btn-block + .btn-block {
-  margin-left: 0;
-}#phys-finder 
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
-}@media (min-width: 768px) {
-  .modal-dialog {
-    width: 600px;
-    margin: 30px auto;
-  }#phys-finder 
-  .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }#phys-finder 
-  .modal-sm {
-    width: 300px;
-  } 
-}@media (min-width: 992px) {
-  .modal-lg {
-    width: 900px;
-  }
-}#phys-finder 
-label {
-	font-weight: 100;
-}#phys-finder 
-.error.remove {
-	display: none;
-}#phys-finder 
-.product-num {
-    text-decoration:underline;
-}#phys-finder  
-.close {
-	opacity: 1;
-}#phys-finder 
-.glyphs::before {
-	display: none !important;
-}#phys-finder 
-.glyphicon-remove::before {
-	color: #3a87c1;
-}#phys-finder 
+//     -tabs ul li span {
+//       font-size: 16px;
+//       font-weight: bold;
+//     }     @media (max-width: 767px) {
+//       .d-flex .left-side {
+//         display: none;
+//       }
+//     } 
+//   #productsModal .modal-header {
+//   text-align: right;
+//   border-bottom: 0;
+// } 
+// #productsModal .modal-content {
+//   border-radius: 0;
+// } 
+// .modal-open {
+//   overflow: hidden;
+// } 
+// .modal {
+//   display: none;
+//   overflow: hidden;
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 1050;
+//   -webkit-overflow-scrolling: touch;
+//   outline: 0;
+// } 
+// .modal.fade .modal-dialog {
+//   -webkit-transform: translate(0, -25%);
+//   -ms-transform: translate(0, -25%);
+//   -o-transform: translate(0, -25%);
+//   transform: translate(0, -25%);
+//   -webkit-transition: -webkit-transform 0.3s ease-out;
+//   -moz-transition: -moz-transform 0.3s ease-out;
+//   -o-transition: -o-transform 0.3s ease-out;
+//   transition: transform 0.3s ease-out;
+// } 
+// .modal.in .modal-dialog {
+//   -webkit-transform: translate(0, 0);
+//   -ms-transform: translate(0, 0);
+//   -o-transform: translate(0, 0);
+//   transform: translate(0, 0);
+// } 
+// .modal-open .modal {
+//   overflow-x: hidden;
+//   overflow-y: auto;
+// } 
+// .modal-dialog {
+//   position: relative;
+//   width: auto;
+//   margin: 10px;
+// } 
+// .modal-content {
+//   position: relative;
+//   background-color: #fff;
+//   border: 1px solid #999;
+//   border: 1px solid rgba(0, 0, 0, 0.2);
+//   border-radius: 6px;
+//   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+//   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+//   background-clip: padding-box;
+//   outline: 0;
+// } 
+// .modal-backdrop {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 1040;
+//   background-color: #000;
+// } 
+// .modal-backdrop.fade {
+//   opacity: 0;
+//   filter: alpha(opacity=0);
+// } 
+// .modal-backdrop.in {
+//   opacity: 0.5;
+//   filter: alpha(opacity=50);
+// } 
+// .modal-header {
+//   padding: 15px;
+//   border-bottom: 1px solid #e5e5e5;
+// } 
+// .modal-header .close {
+//   margin-top: -2px;
+// } 
+// .modal-title {
+//   margin: 0;
+//   line-height: 1.42857143;
+// } 
+// .modal-body {
+//   position: relative;
+//   padding: 15px;
+// } 
+// .modal-footer {
+//   padding: 15px;
+//   text-align: right;
+//   border-top: 1px solid #e5e5e5;
+// } 
+// .modal-footer .btn + .btn {
+//   margin-left: 5px;
+//   margin-bottom: 0;
+// } 
+// .modal-footer .btn-group .btn + .btn {
+//   margin-left: -1px;
+// } 
+// .modal-footer .btn-block + .btn-block {
+//   margin-left: 0;
+// } 
+// .modal-scrollbar-measure {
+//   position: absolute;
+//   top: -9999px;
+//   width: 50px;
+//   height: 50px;
+//   overflow: scroll;
+// }@media (min-width: 768px) {
+//   .modal-dialog {
+//     width: 600px;
+//     margin: 30px auto;
+//   } 
+//   .modal-content {
+//     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+//     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+//   } 
+//   .modal-sm {
+//     width: 300px;
+//   } 
+// }@media (min-width: 992px) {
+//   .modal-lg {
+//     width: 900px;
+//   }
+// } 
+// label {
+// 	font-weight: 100;
+// } 
+// .error.remove {
+// 	display: none;
+// } 
+// .product-num {
+//     text-decoration:underline;
+// }  
+// .close {
+// 	opacity: 1;
+// } 
+// .glyphs::before {
+// 	display: none !important;
+// } 
+// .glyphicon-remove::before {
+// 	color: #3a87c1;
+// } 
 
-#modalContent .modal-content  {
-	box-shadow: none;
-border: 0;
-}
+// #modalContent .modal-content  {
+// 	box-shadow: none;
+// border: 0;
+// }
 
 
-@media (max-width: 767px){
-  #phys-finder   #phys-finder-tabs{
-    display: none !important;
-  }#phys-finder 
+// @media (max-width: 767px){
+//      -tabs{
+//     display: none !important;
+//   } 
  
-.result.d-flex {
-  margin-top: 20px;
-}#phys-finder 
-.result.d-flex .right-side{
-  display: none !important;
-}#phys-finder 
-.d-flex .left-side{
-  display: block !important;
-  width: 100% !important;
+// .result.d-flex {
+//   margin-top: 20px;
+// } 
+// .result.d-flex .right-side{
+//   display: none !important;
+// } 
+// .d-flex .left-side{
+//   display: block !important;
+//   width: 100% !important;
 
+// }
+// }
+// ///////////////////////////////////////////////////////////start
+.finder-input{
+  border: 1px solid #d6d6d6;
+  padding:14px 16px;
+ 
+  border-radius: 4px;;
+  input{
+    border: 0;
+  }
+  span{
+    font-weight: 700 !important;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+  display: flex;
+  flex-direction: column;
+}
+.miles{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+span{
+  padding-left: 12px;
+}
+  .select-selected{
+    padding: 0;
+    background-color: #fff;
+    color: #132466;
+  }
+  .select-items{
+    background-color: #fff;
+    color: #132466;
+    border: 1px solid #d6d6d6;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  div,div:hover{
+    color: #132466;
+    background-color: #fff;   
+  
+  }
+  div{
+    border: 0 !important;
+  }
+  div+div{
+    border-top: 1px solid #d6d6d6  !important;
+  }
+  }
+  .select-selected
+  {
+    border: 0;
+  }
+}
+.search-drop{
+  justify-content: space-between;
+}
+.miles .custom-select{
+  border: 0;
+}
+#miles{
+  border: 0;
+  display: none;
+}
+.search-con{
+  justify-content: space-between;
+  padding-right: 0;
+  align-items: center;
+}
+
+.search-filters {
+  margin-bottom: 48px;
+  label{
+    margin-bottom: 0;
 }
 }
-///////////////////////////////////////////////////////////start
-#phys-finder,#phys-finder p ,#phys-finder h1 ,
-#phys-finder h2 , #phys-finder h3 ,#phys-finder span,
-#phys-finder div ,#phys-finder input ,#phys-finder label,#phys-finder a{
-  font-weight: 400 !important;
-  font-family: futura-pt, sans-serif !important;
-  color: #132466 !important;
+.search-drop{
+  padding-right: 0;
+  align-items: center;
 }
 .finder-title{
     font-weight: 300 !important;
@@ -788,12 +857,18 @@ border: 0;
 .finder-subtitle{
     font-size: 18px !important;
     line-height: 32px !important;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
+    a{
+      color: #132466;
+      font-size: 18px;
+      line-height: 32px;
+      text-decoration: underline;
+    }
 }
 .lastfind{
     margin-bottom: 48px;
 }
-#phys-finder .searchby-wrapper{
+ .searchby-wrapper{
     
    align-items: center !important;
 display: flex !important;
@@ -802,7 +877,7 @@ justify-content: space-evenly;
   justify-content: space-between;
 }
 }
-#phys-finder .header .controls{
+ .header .controls{
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -810,7 +885,7 @@ flex-direction: column;
   flex-direction: row;
 }
 }
-#phys-finder .searchby-wrapper{
+ .searchby-wrapper{
   width: auto;
   margin-right: 0;
 
@@ -892,7 +967,7 @@ flex-direction: column;
     font-weight: 700 !important;
    
 }
-#phys-finder .searchtext-wrapper{
+ .searchtext-wrapper{
  margin-bottom: 16px;
  margin-top: 16px;
   @include md-screen{
@@ -900,10 +975,10 @@ flex-direction: column;
     margin-top: 0;
   }
 }
-#phys-finder #phys-finder-search-form select{
+ -search-form select{
   margin-right: 0 !important;
 }
-#phys-finder .controls{
+ .controls{
   margin-bottom: 25px !important;
 
   @include md-screen{
@@ -911,19 +986,21 @@ flex-direction: column;
       margin-bottom: 48px !important;
   }
 }
-#phys-finder .covid {
+ .covid {
   font-size: 14px;
   line-height: 16px;
+  margin-top: 16px;
   font-weight: 500 !important;
   @include md-screen{
+    margin-top: 48px;
     font-size: 18px;
     line-height: 32px;
 }
 }
-#phys-finder .error::before {
+ .error::before {
   display: none;
 }
-#phys-finder .map-header{
+ .map-header{
   width: 34%;
   background-color: #fff !important;
   font-size: 16px;
@@ -932,7 +1009,7 @@ flex-direction: column;
 }
 .finder-foot{
     font-size: 16px;
-    line-height: 24;
+    line-height: 24px;
     padding-top: 48px;
     padding-left: 16px;
     padding-right: 16px;
@@ -944,12 +1021,12 @@ flex-direction: column;
 #pf-location-error{
   display: none !important;
 }
-#phys-finder .d-flex.search .right-side {
+ .d-flex.search .right-side {
     width: 64%;
 }
-#phys-finder .d-flex.search .left-side {
+ .d-flex.search .left-side {
     width: 34%;
-}#phys-finder .map-header{
+} .map-header{
   width: 100%;
   background-color: #fff !important;
   font-size: 16px;
@@ -959,17 +1036,17 @@ flex-direction: column;
 
 
 }
-#phys-finder #physician-results-list .bodycopy {
+ #physician-results-list .bodycopy {
     padding: 10px 0 11px 16px;
     padding-top: 36px;
     padding-bottom: 36px;
-}#phys-finder #physician-results-list .count{
+} #physician-results-list .count{
     padding-left: 16px;
 }
-#phys-finder #physician-results-list .bodycopy.active {
+ #physician-results-list .bodycopy.active {
   background-color: #f8f8f8;
 
-}#phys-finder .make-appointment{
+} .make-appointment{
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 1.2px;
@@ -981,52 +1058,52 @@ flex-direction: column;
   outline: 0;
   text-decoration: none !important;
 }
-#phys-finder .inner path {
+ .inner path {
 
 stroke : #132466 !important;
 fill : #fff !important;
-}#phys-finder .inner text {
+} .inner text {
   fill: #132466 ;
 }
-#phys-finder #physician-results-list .inner .bodycopy.active path{
+ #physician-results-list .inner .bodycopy.active path{
   stroke : none !important;
   fill : #132466 !important;
 }
-#phys-finder #physician-results-list .inner .bodycopy.active text{
+ #physician-results-list .inner .bodycopy.active text{
   fill: #fff ;
 }
-#phys-finder .d-flex.search .left-side .links{
+ .d-flex.search .left-side .links{
   justify-content: space-between;
   margin-top: 16px;
   font-size: 16px;
   line-height: 24px;
 }
-#phys-finder .address-one,#phys-finder .city,#phys-finder .phone{
+ .address-one, .city, .phone{
   font-size: 16px !important;
   line-height: 24px !important;
   
 }
-#phys-finder .clinic-distance{
+ .clinic-distance{
   margin-top: 16px;
   font-size: 14px !important;
   line-height: 16px !important;
   display: inline-block;
 }
-#phys-finder .make-appointment{
+ .make-appointment{
   margin-top: 16px;
   border-radius: 6px;
 }
-#phys-finder .right-side .make-appointment{
+ .right-side .make-appointment{
   margin-bottom: 16px;
 }
 @media (max-width:1024px){
   .finder-foot-1{
     padding-top: 0;
   }
-  #phys-finder #pf-submit{
+   #pf-submit{
     margin-bottom: 16px;
 }
-  #phys-finder .i-b.submit-wrapper{
+   .i-b.submit-wrapper{
     margin-bottom: 0;
   }
   .selctfinder{
@@ -1035,7 +1112,7 @@ fill : #fff !important;
 
   margin-bottom: 16px;
   }
-  #phys-finder .radius-wrapper{
+   .radius-wrapper{
     padding-bottom: 0;
     padding-top: 0;
     border: 0;
@@ -1046,42 +1123,87 @@ fill : #fff !important;
     border: 1px solid #d6d6d6;
     border-radius: 4px;
   }
-  #phys-finder .covid{
+   .covid{
     padding: 16px;
     padding-top: 0;
   }
-  #phys-finder #pf-count-results,#phys-finder #pf-count-results span{
+   #pf-count-results, #pf-count-results span{
     text-align: left;
 
   }
-  #phys-finder #physician-results-list .count ,  #phys-finder #physician-results-list .next-prev{
+   #physician-results-list .count ,   #physician-results-list .next-prev{
     display: none;
   }
-  #phys-finder #physician-results-list .bodycopy{
+   #physician-results-list .bodycopy{
     margin-bottom: 18px;
   }
 }
-#phys-finder #pf-count-results,#phys-finder #pf-count-results span{
+ #pf-count-results, #pf-count-results span{
  font-size: 16px;
  line-height: 24px;
  font-weight: 500 !important;   
 
 }
-#phys-finder #physician-results-list hr.first{
+ #physician-results-list hr.first{
   display: none;
 }
 
 #physician-results-list div:nth-child(2){
   width: 100% !important;
 }
-#phys-finder #physician-results-list .bodycopy {
+ #physician-results-list .bodycopy {
   display: flex;
   justify-content: space-between;
   padding-right: 16px;
 }
-#phys-finder .inner  hr{
+ .inner  hr{
   background-color: transparent;
 }
-#phys-finder .inner .number{
+ .inner .number{
   margin-right: 15px;
+}
+#search-btn,.rev-search{
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.f-buttons {
+  justify-content: space-evenly;
+  #search-btn{
+    background-color: #132466;
+    color: #fff;
+    font-weight: 700;
+    border: 0;
+    text-transform: uppercase;
+    padding: 20px !important;
+    border-radius: 6px;
+  box-shadow: none !important;
+  
+  outline: 0;
+
+  }
+  #search-btn:active{
+    border: 0 !important;
+  }
+}
+.rev-search{
+  background-color: #fff;
+  color: #132466;
+  border:1px solid #132466;
+  border-radius: 6px;
+  box-shadow: 0;
+  outline: 0;
+}
+.results-wrapper{
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+}
+.result-con > div{
+  flex: 0 0 47%;
+}
+.result-con {
+  justify-content: space-between;
 }

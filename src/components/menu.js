@@ -33,11 +33,14 @@ function removeStyles() {
 }
 
 function addMainStyles(e) {
-  document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-  document.querySelector(".extended-nav ul span").classList.add("not-selected");
+
 
   if (e.target.closest(".extended-nav > ul > li > a")) {
-    
+    document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
+    document.querySelector(".extended-nav ul span").classList.add("not-selected");
+
+
+    document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
 
     let selected = e.target.closest(".extended-nav > ul > li > a");
     selected.classList.remove("not-selected");
@@ -47,6 +50,7 @@ function addMainStyles(e) {
 
   if (e.target.closest(".extended-nav > ul > span")) {    
 
+    document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
 
     let selectedSpan = e.target.closest(".extended-nav > ul > span");
     selectedSpan.classList.remove("not-selected");
