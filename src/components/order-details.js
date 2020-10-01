@@ -184,7 +184,7 @@ const OrderDetails = (props, { node }) => {
                        {isLoading ?
                            <div>Loading...</div>
                            :
-                           (getshiping.map((item, index) => {
+                           (products.map((item, index) => {
 
 
                                return (
