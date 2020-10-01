@@ -1,10 +1,10 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 .empatyTitle{
-    font-size: 18px;
-    line-height: 32px;
-    @extend %futurapt-bold ;
-    padding-bottom: 24px;
+    font-size: 28px;
+    line-height: 40px;
+    @extend %futurapt-light ;
+    padding-bottom: 8px;
     color: #132466;
     text-align: center;
 }
@@ -158,3 +158,72 @@
             padding-top: 24px;
         }
   }
+
+.image {
+    top: 20px;
+    margin-bottom: 40px;
+    margin-right: 16px;
+    margin-left: -8px;
+    position: relative;
+
+    @include lg-screen {
+        position: unset;
+        margin: 0;
+    }
+}
+
+.bottom-half {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+    width: 100%;
+
+    padding: 24px 0 0 24px;
+    
+    color: #ffffff;
+
+    @include lg-screen{
+        margin-left: -1px;
+        padding: 24px 0 32px 39px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.bottom-title {
+    @extend %futurapt-bold;
+    @include fontStyle(16, 24);
+    
+    @include lg-screen {
+        padding-bottom: 4px;
+    }
+    
+}
+
+.bottom-text {
+    @include fontStyle(16, 24);
+    @extend %futurapt-light;
+    padding-bottom: 4px;
+
+    @include lg-screen {
+        padding-bottom: 8px;
+
+    }
+}
+
+.bottom-link {
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    color: #ffffff;
+
+    &:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
