@@ -60,6 +60,7 @@ const componentsMap = {
     paragraph__article : Article,
     paragraph__heading_and_button: HeadingAndButton,
     paragraph__the_details_safe_section: Details,
+    paragraph__blog: Blog,
     paragraph__ingredient: Ingredient,
     paragraph__need_to_know: Needtoknow,
     paragraph__how_to_use: Howtouse,
