@@ -220,17 +220,20 @@
 
     display: flex;
     align-items: center;
-    padding: 24px 15px 24px 0;
-
-
-
+    padding: 24px 15px 24px 15px;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    margin-bottom: 20px;
     @include lg-screen {
         border: 1px solid #d6d6d6;
         border-radius: 6px;
         padding: 25px 24px 38px;
         margin-bottom: 16px;
-
+        width: auto;
         @include fontStyle(16, 24);
+    }
+    img{
+        width: 100px;
     }
 }
 
