@@ -1440,3 +1440,20 @@ font-weight: 500;
 .medicalbg .clinicalProduct{
   display: none;
 }
+.cookie-oven-widget .inline-group h3{
+  display: none;
+}
+.cookie-oven-widget {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: auto;
+  box-sizing: border-box;
+  background-color: #26cad3;
+  position: fixed;
+  z-index: 9999;
+  color: #fff;
+  font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
