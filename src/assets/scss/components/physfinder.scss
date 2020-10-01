@@ -828,20 +828,31 @@ span{
   display: none;
 }
 .search-con{
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-bottom: 16px;
+  @include md-screen{
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
   padding-right: 0;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .search-filters {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   label{
     margin-bottom: 0;
 }
 }
 .search-drop{
-  padding-right: 0;
+  flex-direction: column;
   align-items: center;
+  @include md-screen{
+    padding-right: 0;
+    flex-direction:row
+  }
+ 
 }
 .finder-title{
     font-weight: 300 !important;
@@ -920,8 +931,8 @@ flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 27px;
+    width: 27px;
     background-color: #fff;
     border: 1px solid;
     border-radius: 50%;
@@ -953,8 +964,8 @@ flex-direction: column;
   
   /* Style the indicator (dot/circle) */
   .checkcon .checkmarkfinder:after {
-      top: 3px;
-      left: 3px;
+      top: 4px;
+      left: 4px;
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -986,11 +997,18 @@ flex-direction: column;
       margin-bottom: 48px !important;
   }
 }
+.result-con > div.w-100{
+flex: 0 0 47%;
+}
+.results-wrapper.hide + #map{
+  flex:  0 0 100%;
+}
  .covid {
   font-size: 14px;
   line-height: 16px;
   margin-top: 16px;
   font-weight: 500 !important;
+  text-align: center;
   @include md-screen{
     margin-top: 48px;
     font-size: 18px;
@@ -1056,6 +1074,8 @@ flex-direction: column;
   padding: 12px !important;
   border-bottom: 0;
   outline: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
   text-decoration: none !important;
 }
  .inner path {
@@ -1200,10 +1220,100 @@ fill : #fff !important;
 .results-wrapper{
   border-radius: 6px;
   border: 1px solid #d6d6d6;
+  padding-left: 28px;
+  padding-right: 28px;
+  overflow: auto;
+  max-height: 500px;
+  @include md-screen{
+    .results-wrapper{
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+.results-wrapper >div{
+
+    width: 100% !important;
+
 }
 .result-con > div{
   flex: 0 0 47%;
 }
 .result-con {
   justify-content: space-between;
+}
+#results{
+  list-style: none;
+  padding-left: 0;
+}
+.marker-con{
+  padding-right: 0;
+  padding-left: 0;
+}
+.clinic-name{
+  margin-bottom: 0;
+}
+.phone a {
+  font-size: 16px;
+  line-height: 24px;
+  color: #132466;
+}
+.links{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  justify-content: space-between;
+  a {
+    color: #132466; 
+    text-decoration: underline;
+  }
+  margin-top: 16px;
+}
+.results-wrapper{
+  padding-left: 0;
+  padding-right: 0;
+}
+.result-con{
+
+  padding-left: 42px;
+  padding-right: 42px;
+}
+#results li{
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #d6d6d6;
+}
+@media (max-width:767px){
+  #map{
+    display: none;
+  }
+  .search-drop{
+    label{
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .miles {
+      width: 100%;
+    }
+  }
+  .f-buttons{
+    flex-direction: column;
+  #search-btn{
+    margin-bottom: 16px;
+  }
+  }
+  .result-con > div.results-wrapper{
+    flex: 0 0 100%;
+  }
+  .result-con{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #results {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.result-con{
+  padding-bottom: 48px;
+}
 }

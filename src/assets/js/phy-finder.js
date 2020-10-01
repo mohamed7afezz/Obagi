@@ -8,20 +8,27 @@ class Temps {
 
     resultTemp (index, obj, isPhy) {
         return `
-            <div class="container-fluid">
+            <div class="container-fluid result-con">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-3 marker-con">
                         ${index}
-                        <br>${isPhy? '' : (obj.distance.toFixed(2) + 'miles')}
+                        <br>${isPhy? '' : (obj.distance.toFixed(2) + '<br>miles')}
                     </div>
-                    <div class="col">
-                        <h2 class="phys-name">${obj.name}</h2>
-                        <div class="links">
-                            ${obj.website != '' ? `<a href="${obj.website}" class="link-website">view website</a>` : ''}
-                        </div>
+                    <div class="info info-list col-9">
+                        <h2 class="row clinic-name">${obj.name}</h2>
+                       <div class="row email"><a class="make-appointment" > Request Appointment</a></div>
+                       <div class="row address-one">${obj.address1}</div>
+                       <div class="row city">${obj.city}, ${obj.state} ${obj.zip}</div>
+                       <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
+                        <div class="row sales-email hide">${obj.email}</div>
+                         <div class="row links">
+                           <Link to="#">6 products</Link> <a href="#">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website">view website</a>` : ''}
+                         </div>
                     </div>
                 </div>
             </div>
+
+
         `
     }
 
@@ -165,7 +172,7 @@ class Search extends Temps {
      */
     appendResults(clinics, isPhy) {
         document.getElementById('results').innerHTML = '';
-
+        document.getElementById('results').classList.remove('hide')
         if(clinics && clinics.length > 0) {
             clinics.forEach((item, index) => {
                 let li = document.createElement('li');

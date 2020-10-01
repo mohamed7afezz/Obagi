@@ -6147,10 +6147,10 @@ border: 0;
 }#phys-finder #physician-results-list .count{
     padding-left: 16px;
 }
-#phys-finder #physician-results-list::-webkit-scrollbar {
+ .results-wrapper::-webkit-scrollbar {
     display: none;
   }
-#phys-finder #physician-results-list {
+  .results-wrapper{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
@@ -6167,12 +6167,12 @@ border: 0;
     height: 6px;
     float: none;
 }
-#phys-finder .clinic-name{
+ .clinic-name{
     font-size: 16px;
     line-height: 24px;
     font-weight: 700 !important;
 }
-#phys-finder .make-appointment{
+ .make-appointment{
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 1.2px;
