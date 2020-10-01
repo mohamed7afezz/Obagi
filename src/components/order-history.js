@@ -25,8 +25,8 @@ const OrderHistory = ({ node }) => {
         if(ordersData.status == 200) {
             let ordersResponse = await ordersData.json();
 
-            if (ordersData !== "User not login.") {
-                setOrders(ordersData);
+            if (ordersResponse !== "User not login.") {
+                setOrders(ordersResponse);
             }
         }
 
