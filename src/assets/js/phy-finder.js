@@ -6,18 +6,27 @@ export function phyFinder(google, finderURL) {
 
 class Temps {
 
-    resultTemp (index, obj) {
+    resultTemp (index, obj, isPhy) {
         return `
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
                         ${index}
-                        <br>${obj.distance.toFixed(2)}
-                        <br>miles
+                        <br>${isPhy? '' : (obj.distance.toFixed(2) + 'miles')}
+                    </div>
+                    <div class="col">
+                        <h2 class="phys-name">${obj.name}</h2>
+                        <div class="links">
+                            ${obj.website != '' ? `<a href="${obj.website}" class="link-website">view website</a>` : ''}
+                        </div>
                     </div>
                 </div>
             </div>
         `
+    }
+
+    infoWindowTemp(obj) {
+        return ``;
     }
 }
 
@@ -59,10 +68,16 @@ class Search extends Temps {
         // add event listener on click update search
         this.searchBtn.addEventListener('click', (e) => {
             // get checked radio
-            if(this.searchRadios.filter(item => item.checked)[0].value == 'loc') {
-                this.searchByLocation()
-            }else {
-                this.searchByPhys();
+            if(this.searchRadios.filter(item => item.checked)[0]) {
+                if(this.searchRadios.filter(item => item.checked)[0].value == 'loc') {
+                    console.log('bahiiii', this.inputLoc.value)
+                    this.searchByLocation()
+                } else {
+                    this.searchByPhys();
+                }
+                
+            } else {
+                this.err.showErr('noRadio')
             }
         });
 
@@ -71,40 +86,43 @@ class Search extends Temps {
 
     async searchByLocation(lat, lng) {
         this.err.hideErr();
-        this.emptyParams();
         this.setLoading(true);
         
-        let gcPromise = new Promise((res, rej) => {
-            this.geocoder.geocode({
-                    'latLng': new this.google.maps.LatLng(lat, lng)
-                }, (results, st) => {
-                    if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
-                        
-                        for (var i = 0; i < results[0].address_components.length; i++) {
-                            if (results[0].address_components[i]["types"][0] === "locality") {
-                            this.params["city"] = results[0].address_components[i]["long_name"];
+        if(lat && lng) {            
+            this.emptyParams();            
+            
+            let gcPromise = new Promise((res, rej) => {
+                this.geocoder.geocode({
+                        'latLng': new this.google.maps.LatLng(lat, lng)
+                    }, (results, st) => {
+                        if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
+                            
+                            for (var i = 0; i < results[0].address_components.length; i++) {
+                                if (results[0].address_components[i]["types"][0] === "locality") {
+                                this.params["city"] = results[0].address_components[i]["long_name"];
+                                }
+            
+                                if (results[0].address_components[i]["types"][0] === "administrative_area_level_1") {
+                                this.params["state"] = results[0].address_components[i]["short_name"];
+                                }
+            
+                                if (results[0].address_components[i]["types"][0] === "country") {
+                                this.params["country"] = results[0].address_components[i]["long_name"];
+                                }
+            
+                                this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
                             }
-        
-                            if (results[0].address_components[i]["types"][0] === "administrative_area_level_1") {
-                            this.params["state"] = results[0].address_components[i]["short_name"];
-                            }
-        
-                            if (results[0].address_components[i]["types"][0] === "country") {
-                            this.params["country"] = results[0].address_components[i]["long_name"];
-                            }
-        
-                            this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
+
+                            res();
+                        } else {
+                            rej(st)
                         }
+                })
+            
+            });
 
-                        res();
-                    } else {
-                        rej(st)
-                    }
-            })
-        
-        });
-
-        await gcPromise.catch(err => {console.log(err)});
+            await gcPromise.catch(err => {console.log(err)});
+        }
 
         this.params.distance = this.inputMiles.value;
         this.results = await this.sendSearchReq();
@@ -123,7 +141,7 @@ class Search extends Temps {
 
         this.results = await this.sendSearchReq();
         
-        this.appendResults(this.results.clinics)
+        this.appendResults(this.results.clinics, true);
 
         this.setLoading(false);
     }
@@ -145,11 +163,13 @@ class Search extends Temps {
     /**
      * @param {clinics} clinics - array of clinics
      */
-    appendResults(clinics) {
+    appendResults(clinics, isPhy) {
+        document.getElementById('results').innerHTML = '';
+
         if(clinics && clinics.length > 0) {
             clinics.forEach((item, index) => {
                 let li = document.createElement('li');
-                li.innerHTML = this.resultTemp(index, item);
+                li.innerHTML = this.resultTemp(index, item, isPhy);
                 document.getElementById('results').appendChild(li);
             })
         } else {
@@ -184,7 +204,8 @@ class Search extends Temps {
         const errMsgs = {
             noRes: "It doesn't look like there are any physicians within your search.",
             moreChars: 'Please enter no more than 5 characters.',
-            invalidZip: 'Invalid Zip Code'
+            invalidZip: 'Invalid Zip Code',
+            noRadio: 'Please choose search type'
         }
 
         /**
@@ -202,6 +223,26 @@ class Search extends Temps {
             }
         }
     }
+
+    updateParams(location) {
+        this.searchBtn.disabled = true;
+        location.address_components.forEach(item => {
+            if(item.types.includes('postal_code')) {
+                this.params.zip = item.short_name
+            } else if(item.types.includes('locality')) {
+                this.params.state = item.short_name
+            } else if(item.types.includes('administrative_area_level_1')) {
+                this.params.city = item.short_name
+            } else if(item.types.includes('country')) {
+                this.params.country = item.long_name
+            } else {
+                // this is left blank intentionally
+            }
+        });
+        this.searchBtn.disabled = false;
+        // add pulse class
+        this.searchBtn.classList.add('pulse');
+    }
 }
 
 class Map extends Search {
@@ -218,6 +259,7 @@ class Map extends Search {
         this.initCenterLoc = initCenterLoc;
         this.zoom = zoom;
         this.markers = [];
+        this.currLocation = '';
     }
 
     initMap () {
@@ -234,9 +276,11 @@ class Map extends Search {
             let newPlace = this.autoComplete.getPlace();
 
             if(newPlace.geometry) {
-                console.log('bahiii', newPlace.geometry.location)
+                console.log('bahiii', newPlace)
                 this.map.panTo(newPlace.geometry.location);
                 this.map.setZoom(15);
+                // update params
+                this.updateParams(newPlace);
             }
         });
 

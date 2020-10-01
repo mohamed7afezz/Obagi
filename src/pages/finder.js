@@ -24,7 +24,7 @@ export default function Finder() {
                 <div class="row">
                     <div className="col search-filters">
                         search by: 
-                        <label><input type="radio" name='search-radio' value="loc"/>location</label>
+                        <label><input type="radio" name='search-radio' value="loc" checked/>location</label>
                         <label><input type="radio" name='search-radio' value="phy"/>physician</label>
                         location <input id="input-location" type="text" maxlength="5" />
                         physician <input id="input-physician" type="text" />
@@ -44,6 +44,7 @@ export default function Finder() {
 
                 <div className="row">
                     <div className="col results-wrapper">
+                        <p><span id="results-no">8</span> results <span id="results-distance">within <span id="distance">10</span> miles</span></p>
                         <ul id="results"></ul>
                     </div>
                     <div className="col map" id="map" style={{height: '500px'}}></div>
