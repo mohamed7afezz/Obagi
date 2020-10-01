@@ -35,6 +35,7 @@ import FaqWrapper from './faq-wrapper';
 import Reviews from './reviews';
 import CustomBlock from './custom-block';
 import NotFound from './not-found';
+import Image from './image'
 
 
 const componentsMap = {
@@ -72,6 +73,8 @@ const componentsMap = {
     paragraph__reviews: Reviews,
     paragraph__custom_block: CustomBlock,
     paragraph__not_found: NotFound,
+    paragraph__image: Image,
+    paragraph_blog: Blog,
 }
 
 export const getParagraph = node => {

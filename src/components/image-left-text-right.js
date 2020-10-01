@@ -5,7 +5,7 @@ import imageLeft from '../assets/scss/components/image-left-text-right.module.sc
 
 const ImageLeftTextRight = ({ node }) => {
   return (
-    <div className="container-fluid">
+    <div className={["container-fluid", imageLeft.imageContainer].join(" ")}>
       <div className="row">
         <div className={["col-12", "col-lg-5", imageLeft.colPadding, imageLeft.firstSection].join(" ")}>
           

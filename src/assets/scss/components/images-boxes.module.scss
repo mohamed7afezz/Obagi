@@ -40,8 +40,10 @@
 
 .image-boxes {
     margin-bottom: 49px;
+    margin-top: 119px;
     @include lg-screen {
         margin-bottom: 224px;
+        margin-top: 224px;
     }
 }
 

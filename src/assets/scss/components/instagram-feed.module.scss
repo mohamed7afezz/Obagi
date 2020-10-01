@@ -6,9 +6,12 @@
     @extend %futurapt-light;
     padding-top: 80px;
 
+    padding-bottom: 48px;
     @include lg-screen {
         @include fontStyle(64, 72);
         text-align: center;
+        padding-bottom: 71px;
+
     }
 }
 
@@ -89,9 +92,11 @@
     display: flex;
     justify-content: center;
     padding-bottom: 82px;
-
+    padding-top: 48px;
     @include lg-screen {
         padding-bottom: 161px;
+        padding-top: 60px;
+
     }
 }
 

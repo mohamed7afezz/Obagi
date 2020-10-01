@@ -17,15 +17,20 @@ const OrderHistory = ({ node }) => {
     async function getOrders() {
 
         setIsLoading(true);
-        const ordersData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
+        const ordersData =  await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
             method: 'GET',
             credentials: 'include',
-            mode: 'cors'
-        })).json();
+        })
 
-        if (ordersData !== "User not login.") {
-            setOrders(ordersData);
+        if(ordersData.status == 200) {
+            let ordersResponse = await ordersData.json();
+
+            if (ordersData !== "User not login.") {
+                setOrders(ordersData);
+            }
         }
+
+      
         setIsLoading(false);
         
     }
@@ -34,13 +39,14 @@ const OrderHistory = ({ node }) => {
         getOrders();
     }, [])
 
+    console.log("orders", orders)
     
 
     if(isLoading) {
         return <div> Loading... </div>
     }
 
-    else if(orders === "undefined" || Object.keys(orders).length == 0) {
+    else if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
 
         return (<OrderNoHistory />)
 
