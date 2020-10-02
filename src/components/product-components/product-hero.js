@@ -177,7 +177,7 @@ if ( typeof window !== "undefined"){
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
-
+console.log("ash", productId);
   return (
     <div
       className={[

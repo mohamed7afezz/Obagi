@@ -168,7 +168,7 @@ const ProductLine = ({ node }) => {
 
   const data = useStaticQuery(graphql`
     query My {
-      allTaxonomyTermMedicalProductLines {
+      allTaxonomyTermMedicalProductLines (sort: {fields: weight, order: ASC}){
         edges {
           node {
             name

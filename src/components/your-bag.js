@@ -5,11 +5,12 @@ import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import Img from 'gatsby-image'
 import plusicon from "../assets/images/product-images/plus1.svg"
 import minusicon from "../assets/images/product-images/minus.svg"
-
+import ProductCard from './productcard'
 
 import Loader from "./Cart/Loader"
 
 import CartContext from "../providers/cart-provider"
+import Showbag from "./bag-preview"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -134,17 +135,66 @@ const StandardItem = props => {
   )
 }
 const YourBag = props => {
+  const value = useContext(CartContext)
+  const addToCart = value && value.addToCart
+  const addingToCart = value && value.state.addingToCart
+
   const data = useStaticQuery(graphql`
   query {
-    skinanalyzer: file(relativePath: { eq: "image.png" }) {
+    skinanalyzer: file(relativePath: { eq: "skinanalyzer-sc.png" }) {
       childImageSharp {
           fluid (quality: 100){
               ...GatsbyImageSharpFluid
             }
       }
     }
+
+    professionalC: nodeMedicalProduct(field_medical_id: {eq: "349"}) {
+      id
+      field_medical_price
+      field_medical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
+    elastiderm: nodeMedicalProduct(field_medical_id: {eq: "373"}) {
+      id
+      field_medical_price
+      field_medical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
   }
   `)
+
+  let productId = data.professionalC.field_medical_id;
+
   const { state, removeItemFromCart, updateCartItemQuantity } = useContext(
     CartContext
   )
@@ -205,9 +255,14 @@ const YourBag = props => {
                   Checkout
                   </button>
               </form>
-              <p className={ShowBagStyle.footnote}>
+
+              <div className={BagStyle.freeShipping}>
+                Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
+                  </div>
+
+              {/* <p className={ShowBagStyle.footnote}>
                 Shipping and taxes calculated at checkout.
-                </p>
+                </p> */}
             </div>
           </>
         )
@@ -414,7 +469,7 @@ const YourBag = props => {
             BagStyle.BagContainer,
           ].join(" ")}
         >
-          <div className={'yourbagpadding'}>
+          <div>
             <p
               className={ShowBagStyle.empatyTitle}
             >
@@ -438,7 +493,7 @@ const YourBag = props => {
           </div>
 
           <div className="d-none d-lg-block">
-            <div className="row">
+            <div className={["row align-items-center", ShowBagStyle.bottomWrapper].join(" ")}>
               <div className="col-4 pr-0">
                 <div className={ShowBagStyle.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
               </div>
@@ -452,6 +507,57 @@ const YourBag = props => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className={ShowBagStyle.recommendedWrapper}>
+            <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
+
+            <div className={ShowBagStyle.productWrapper}>
+              {data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? <div className={ShowBagStyle.productImage}><Img fluid={data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid} /></div> : "" : "" : ""}
+              
+              <div className={ShowBagStyle.smallWrapper}>
+                {data.professionalC.path.alias ? <Link to={data.professionalC.path.alias} className={ShowBagStyle.productName}>{data.professionalC.title ? <div>{data.professionalC.title}</div> : ""}</Link> : ""}
+
+                <div className={ShowBagStyle.miniWrapper}>
+                  {data.professionalC.field_medical_price ? <div>${data.professionalC.field_medical_price}</div> : ""}
+                  <button className={ShowBagStyle.cartButton}
+                    onClick={() => {
+                      let quantity = 1;
+                      addToCart(productId, false, quantity);
+                    }}
+                    disabled={addingToCart === productId}
+                  >
+                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+                  </button>
+                
+                </div>
+              </div>
+            </div>
+
+
+
+            <div className={ShowBagStyle.productWrapper}>
+              {data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? <div className={ShowBagStyle.productImage}><Img fluid={data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid} /></div> : "" : "" : ""}
+              
+              <div className={ShowBagStyle.smallWrapper}>
+                {data.elastiderm.path.alias ? <Link to={data.elastiderm.path.alias} className={ShowBagStyle.productName}>{data.elastiderm.title ? <div>{data.elastiderm.title}</div> : ""}</Link> : ""}
+               
+                <div className={ShowBagStyle.miniWrapper}>
+                  {data.elastiderm.field_medical_price ? <div>${data.elastiderm.field_medical_price}</div> : ""}
+                  <button className={ShowBagStyle.cartButton}
+                    onClick={() => {
+                      let quantity = 1;
+                      addToCart(productId, false, quantity);
+                    }}
+                    disabled={addingToCart === productId}
+                  >
+                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       )
