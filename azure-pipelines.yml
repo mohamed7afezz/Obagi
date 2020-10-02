@@ -39,7 +39,7 @@ steps:
     password: sLjsGJxjcCRrburkoYi40xpCPtQcRfhNsd0amnZtTNC10sPovrFz7eYBtsAo
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
-    remoteDirectory: '/site/wwwroot/'
+    remoteDirectory: /site/wwwroot/storefront
     clean: false
     cleanContents: false
     preservePaths: true
