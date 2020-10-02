@@ -1460,3 +1460,51 @@ font-weight: 500;
 .img-mob{
   width: 100px;
 }
+.reqmodal{
+  color: #7c858a;
+  font-size: 16px;
+  line-height: 24px;
+}
+.appointment-body{
+
+}
+#appointment .modal-header .close::before, #appointment .modal-header .close::after {
+top: 32%;
+height:  32px;
+}
+#appointment .modal-header{
+  border-bottom: 0;
+}
+#appointment .custom-select{
+  border: 0;
+  padding: 0;
+}
+#appointment .select-selected{
+  background-color: transparent;
+  
+  color: #132466;
+  padding-bottom: 0;
+  border: 0;
+}
+#appointment .select-items div{
+
+  color: #132466;
+}
+#appointment .select-items,#appointment .select-items:hover{
+  background-color: #fff;
+}
+#appointment{
+  padding-left: 0;
+  z-index: 9999999;
+}
+@media (max-width:767px){
+  #appointment .modal-dialog{
+    margin: 0;
+  }
+  .mob-mt-24{
+    margin-top: 24px !important;
+  }
+}
+#appointment .select-items div:hover, #appointment .same-as-selected{
+  background-color: #fff;
+}

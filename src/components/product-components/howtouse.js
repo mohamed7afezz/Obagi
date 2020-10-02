@@ -123,11 +123,14 @@ const Howtouse = ({ node }) => {
 
                                                 <div class="card-body ">
                                                     {node.relationships.field_general_image?
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
+                                                    node.relationships.field_general_image.localFile?
+                                                    node.relationships.field_general_image.localFile.childImageSharp?
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             (item.relationships.field_step_image.localFile?
-                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                item.relationships.field_step_image.localFile.childImageSharp?
+                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />:""
                                                             : "")
                                                             :
                                                             <div className="video-wrapper">
@@ -165,11 +168,16 @@ const Howtouse = ({ node }) => {
                                             <div style={{ width: '100%' }} id={'step' + index} class={index == 0 ? 'collapse show allstep' : 'collapse allstep'}>
 
                                                 <div class="card-body ">
-                                                    {node.relationships.field_general_image? 
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
+                                                    {node.relationships.field_general_image?
+                                                    node.relationships.field_general_image.localFile?
+                                                    node.relationships.field_general_image.localFile.childImageSharp?
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
+                                                            item.relationships.field_step_image.localFile?
+                                                            item.relationships.field_step_image.localFile.childImageSharp?
                                                             <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                :"":""
                                                             :
                                                             <div className="video-wrapper">
                                                                 {

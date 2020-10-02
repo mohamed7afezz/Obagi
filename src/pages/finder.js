@@ -130,6 +130,63 @@ export default function Finder() {
         
             </p>
                 </div>
+                <div class="modal fade" id="appointment" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <span class="reqmodal">*All fields are required</span>
+            {/* <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> */}
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body appointment-body">
+        <div class="body-desc">
+            <h2 class="body-title">Request an appointment below for a skin care consultation with:</h2>
+            <div class="doc-name"><p class="doctitle">The Robert Zubowski MD Center for Plastic and Reconstructive Surgery</p>
+            <div class="d-flex"><p class="address-one">1 Sears Drive Suite 102</p><ul><p class="city">•  Paramus, NJ 07652</p><p class="phone"><a href="#">•  (123) 456-7890</a></p></ul></div>
+            </div>    
+            <form>
+                <div class="d-flex inputs-con">
+                    <div class="appointment-elemnt mt-0"><p class="input-name">First name</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt mt-0 mob-mt-24"><p class="input-name">Last name</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt"><p class="input-name">Email Address</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt"><p class="input-name">Phone Number</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt"><p class="input-name">Address</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt"><p class="input-name">City</p><input class="appointmentInput"/></div>
+                    <div class="appointment-elemnt">
+                    <p class="input-name">State/Province</p>
+                    <div class="custom-select">
+                    
+                        <select  id="state">
+                            <option value="1">US</option>
+                            <option value="uk">UK</option>
+                            <option value="1">UA</option>
+                            <option value="1">EG</option>
+                            <option value="1">CA</option>
+                        </select>
+                        </div>
+                        </div>
+                    <div class="appointment-elemnt"><p class="input-name">Postal Code</p><input class="appointmentInput"/></div>
+
+                </div>
+                <div class="d-flex Submit-btns">
+                    <button class="appointment-cancel">Cancel</button>
+                    <button class="appointment-Submit">Submit request</button>
+
+                </div>
+            </form>
+           </div>
+
+          </div>
+          {/* <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> */}
+        </div>
+      </div>
+    </div>
+  
             </div>
         </Layout>
     )

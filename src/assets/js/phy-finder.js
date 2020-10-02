@@ -16,7 +16,7 @@ class Temps {
                     </div>
                     <div class="info info-list col-9">
                         <h2 class="row clinic-name">${obj.name}</h2>
-                       <div class="row email"><a class="make-appointment" > Request Appointment</a></div>
+                       <div class="row email"><button  data-toggle="modal" data-target="#appointment" class="make-appointment" > Request Appointment</button></div>
                        <div class="row address-one">${obj.address1}</div>
                        <div class="row city">${obj.city}, ${obj.state} ${obj.zip}</div>
                        <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
