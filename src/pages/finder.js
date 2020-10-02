@@ -105,8 +105,9 @@ export default function Finder() {
 
                 <div className="row result-con">
                     <div className="col results-wrapper hide" id="results-wrapper">
+                        <div><p><span id="results-number"></span> results <span id="results-distance"> within <span id="results-distance-number"></span> miles</span></p></div>
                     <Scrollbars style={{ width: 376, height: 520 }}>
-                        <ul id="results" className="hide" ></ul>
+                        <ul id="results" ></ul>
                         </Scrollbars>
                     </div>
                     <div className="col map" id="map" style={{height: '500px'}}></div>
