@@ -29,9 +29,7 @@ export default function Finder() {
             document.querySelector('.showphysician').classList.remove('hide');
         }
     }
-    function showresult (){
-        document.querySelector('.results-wrapper').classList.remove('hide')
-    }
+    
 
     return (
         <Layout>
@@ -92,7 +90,7 @@ export default function Finder() {
                   COVID-19 UPDATE:  Skincare professional partners openings and hours may vary based on location. Please contact your skincare professional directly to learn more.
                   </p>
                       <div class="col-lg-4 d-flex f-buttons">
-                        <button className="btn btn-primary" onClick={() => {showresult();}} id="search-btn">Update Search</button>
+                        <button className="btn btn-primary" id="search-btn">Update Search</button>
                         <button  class="rev-search" data-toggle="modal" data-target="#advancedSearch">Revise Product Search</button>
                    
                      </div> 
@@ -106,7 +104,7 @@ export default function Finder() {
                 </div>
 
                 <div className="row result-con">
-                    <div className="col results-wrapper hide">
+                    <div className="col results-wrapper hide" id="results-wrapper">
                     <Scrollbars style={{ width: 376, height: 520 }}>
                         <ul id="results" className="hide" ></ul>
                         </Scrollbars>
