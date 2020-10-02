@@ -43,7 +43,7 @@ steps:
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
     remoteDirectory: /site/wwwroot/storefront
-    clean: true
+    clean: false
     cleanContents: false
     preservePaths: true
     trustSSL: false
