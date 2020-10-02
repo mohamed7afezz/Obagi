@@ -168,7 +168,7 @@ const ProductLine = ({ node }) => {
 
   const data = useStaticQuery(graphql`
     query My {
-      allTaxonomyTermMedicalProductLines {
+      allTaxonomyTermMedicalProductLines (sort: {fields: weight, order: ASC}){
         edges {
           node {
             name
@@ -296,6 +296,8 @@ const ProductLine = ({ node }) => {
                 >
                   {data.allTaxonomyTermMedicalProductLines
                     ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
+                      console.log("ash", item)
+
                       return (
                     (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
 
