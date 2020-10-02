@@ -168,7 +168,7 @@ const ProductLine = ({ node }) => {
 
   const data = useStaticQuery(graphql`
     query My {
-      allTaxonomyTermMedicalProductLines {
+      allTaxonomyTermMedicalProductLines (sort: {fields: weight, order: ASC}){
         edges {
           node {
             name
@@ -176,6 +176,9 @@ const ProductLine = ({ node }) => {
               alias
             }
             relationships {
+              field_hero_productline_taxonomy {
+                field_taxonomy_hero_para_desc
+              }
               node__medical_product {
                 title
                 field_medical_price
@@ -296,6 +299,7 @@ const ProductLine = ({ node }) => {
                 >
                   {data.allTaxonomyTermMedicalProductLines
                     ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
+                      
                       return (
                     (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx")? "" :
 
@@ -329,7 +333,9 @@ const ProductLine = ({ node }) => {
                               <div
                                 className={lineStyles.description}
                               >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae.
+
+                                { item.node.relationships.field_hero_productline_taxonomy ? item.node.relationships.field_hero_productline_taxonomy.field_taxonomy_hero_para_desc : "" }
+                                {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae. */}
                             </div>
 
                               <div className={lineStyles.perfect}>

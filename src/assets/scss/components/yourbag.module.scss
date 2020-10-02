@@ -8,9 +8,11 @@
     height: 100%;
 }
 .BagContainer{
-    margin-top: 15px;
+    // margin-top: 15px;
+    padding: 32px 24px 0;
     @include md-screen{
-        margin-top: 56px;
+        // margin-top: 56px;
+        padding: 40px 40px 0;
     }
 }
 .bagHead{
@@ -277,4 +279,19 @@ label{
     color: #132466;
     padding-left: 16px;
 }
+}
+
+.free-shipping {
+    border-radius: 6px;
+    padding: 16px;
+    @include fontStyle(18, 32);
+    text-align: center;
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
+    margin: 24px 0;
+
+    @include lg-screen {
+        padding: 16px 24px;
+        margin: 24px 0 40px;
+    }
 }

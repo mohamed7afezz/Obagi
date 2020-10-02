@@ -16,6 +16,37 @@
     
 }
 
+.tableCon{
+    width: 100%;
+border-spacing: 0 16px;
+border-collapse: separate;
+display: none;
+@include md-screen{
+    display: table;
+}
+th:first-child{
+    width: 50%;
+    text-align: center;
+}
+th {
+    padding: 16px 24px;
+    background: #f8f8f8;
+    text-align: center;
+}
+th,  td {
+    @include fontStyle(16, 24);
+    @extend %futurapt-medium;
+    height: 100%;
+
+}
+td {
+    padding: 24px;
+    border: 1px solid #d6d6d6;
+    border-right: 0;
+    border-left: 0;
+}
+
+}
 .tHead {
 
 

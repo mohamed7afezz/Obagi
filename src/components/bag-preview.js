@@ -50,11 +50,11 @@ const Notification = ({ id, text, type }) => {
     >
     <div class="modal-dialog modal-data mr-0 " role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div className={value > 0? "modal-header show-bag-header" : "modal-header"}>
           <div
             className={["d-flex", ShowBagStyle.left, "w100"].join(" ")}
           >
-            <div
+            {value > 0? <div
               className={[
                 ShowBagStyle.productCounter,
                 "d-flex",
@@ -69,7 +69,7 @@ const Notification = ({ id, text, type }) => {
               <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => removeNotification(id)}>
                 View Full Cart
               </Link>
-            </div>
+            </div> : ""}
             <button
               type="button"
               class="close"

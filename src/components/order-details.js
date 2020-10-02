@@ -5,6 +5,8 @@ import orderDetailsStyles from '../assets/scss/components/order-details.module.s
 import UserContext from "../providers/user-provider"
 import { useLocation } from "@reach/router"
 import CartContext from "../providers/cart-provider"
+import orderHistoryStyles from '../assets/scss/components/order-history.module.scss'
+
 import $ from 'jquery'
 // const $ = require('jQuery');
 
@@ -22,6 +24,7 @@ const OrderDetails = (props, { node }) => {
 
     const [details, setDetails] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [getshiping, setShipment] = useState(false);
 
     async function getDetails() {
 
@@ -34,15 +37,29 @@ const OrderDetails = (props, { node }) => {
 
         if (detailsData !== "User not login.") {
             setDetails(detailsData);
+            console.log('detail',detailsData)
         }
 
         // setIsLoading(false);
         
     }
-
+    
     const [products, setProducts] = useState([]);
 
+    async function getshipment(){
+        const getshipping = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipments`, {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        })).json();
 
+        if (getshipping !== "User not login.") {
+            setShipment(getshipping);
+            console.log('ship',getshipping)
+        }
+
+    
+    }
 
 
     async function getProducts() {
@@ -57,6 +74,7 @@ const OrderDetails = (props, { node }) => {
 
         if (productsData !== "User not login.") {
             setProducts(productsData);
+            console.log("hassan",productsData)
         }
 
         setIsLoading(false);
@@ -92,6 +110,7 @@ const OrderDetails = (props, { node }) => {
     useEffect(() => {
         getDetails();
         getProducts();
+        getshipment();
         getShippingAddresses();
     }, [])
 
@@ -152,57 +171,60 @@ const OrderDetails = (props, { node }) => {
                         <div className={orderDetailsStyles.orderNumber}>{details.id ? "#" + details.id : ""}</div>
                     </div>
                 </div>
+                
                 <div className="row">
-
+                <div class="col-lg-7 offset-lg-1">
+                <div className={orderDetailsStyles.shipmentsplit}><p>Your order has been split into 2 shipments. The details and status are listed below.</p></div>
+                               
+                <div className={orderDetailsStyles.shipmentstate}>
+                    <div className={orderDetailsStyles.shipment}><p>Shipment</p></div>
+                    <table className={orderHistoryStyles.tableCon}>
+                        <thead className={orderHistoryStyles.tHead}>
+                            <tr><th scope="col">Last Updated</th>
+                            <th scope="col">Items</th><th scope="col">Total</th><th scope="col">Status</th></tr></thead></table>
+                                                               
                     <div className="col-12  d-lg-none">
-                        <div className={orderDetailsStyles.accordion}>
-                            <div className={orderDetailsStyles.accordionHeader}>
-                                <div className={orderDetailsStyles.itemsCount}>{products ? (products.length > 1 ? products.length + " Items" : products.length + " Item") : ""}</div>
-                                <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
-                                    View Details
-                                </button>
-                            </div>
+                   
+                   <div >
 
-                            <div className="collapse" id="detailsAccordion">
-
-                                {isLoading ?
-                                    <div>Loading...</div>
-                                    :
-                                    (products.map((item, index) => {
+                       {isLoading ?
+                           <div>Loading...</div>
+                           :
+                           (products.map((item, index) => {
 
 
-                                        return (
-                                            <div className={orderDetailsStyles.productWrapper}>
-                                                <form>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
-                                                    </div>
-                                                </form>
-                                                {item.images.data.map((item, index) => {
-                                                    return (
-                                                        <img src={item.url_tiny} />
-                                                    )
-                                                })}
-                                                <div className={orderDetailsStyles.productInfoWrapper}>
-                                                    <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
-                                                    <div className={orderDetailsStyles.priceAndQuantity}>
-                                                        <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
-                                                        <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + item.total_inc_tax : ""}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                    }))
-                                }
+                               return (
+                                   <div className={orderDetailsStyles.productWrapper}>
+                                       {/* <form>
+                                           <div class="form-check">
+                                               <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                           </div>
+                                       </form> */}
+                                       {item.images.data.map((item, index) => {
+                                               return (
+                                                   <img class="img-mob" src={item.url_tiny} />
+                                               )
+                                           })[0]}
+                                       <div className={orderDetailsStyles.productInfoWrapper}>
+                                           <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
+                                           <div className={orderDetailsStyles.priceAndQuantity}>
+                                               <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
+                                               <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + item.total_inc_tax : ""}</div>
+                                               
 
-                            </div>
-                        </div>
-                    </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               )
+                           }))
+                       }
 
+                   </div>
+               
+           </div>
 
-
-                    <div className="col-lg-7 offset-lg-1 d-none d-lg-block">
-
+                            <div className="d-none d-lg-block">
+                        
                         {isLoading ?
                             <div>Loading...</div>
                             :
@@ -213,8 +235,8 @@ const OrderDetails = (props, { node }) => {
                                             <div className={orderDetailsStyles.productName}>
                                                 <form>
                                                     <div class="form-check">
-                                                        <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
-                                                    </div>
+                                                       {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                                    */ }</div>
                                                 </form>
                                                 <div className={orderDetailsStyles.productImage}>
                                                     {item.images.data.map((item, index) => {
@@ -231,6 +253,95 @@ const OrderDetails = (props, { node }) => {
                                             <div className={orderDetailsStyles.productPrice}>
                                                 {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
                                             </div>
+                                            <div className={orderDetailsStyles.productstatus}>sh</div>
+                                        </div>
+                                    </div>
+                                )
+                            }))
+                        }
+
+
+                    </div>
+                        </div>
+                  {/* //////////////////////////////////////Reapted//////////// */}
+                  <div className={orderDetailsStyles.shipmentstate}>
+                    <div className={orderDetailsStyles.shipment}><p>Shipment</p></div>
+                    <table className={orderHistoryStyles.tableCon}>
+                        <thead className={orderHistoryStyles.tHead}>
+                            <tr><th scope="col">Last Updated</th>
+                            <th scope="col">Items</th><th scope="col">Total</th><th scope="col">Status</th></tr></thead></table>
+                 
+                            <div className="col-12  d-lg-none">
+                   
+                   <div >
+
+                       {isLoading ?
+                           <div>Loading...</div>
+                           :
+                           (products.map((item, index) => {
+
+
+                               return (
+                                   <div className={orderDetailsStyles.productWrapper}>
+                                       {/* <form>
+                                           <div class="form-check">
+                                               <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                           </div>
+                                       </form> */}
+                                       {item.images.data.map((item, index) => {
+                                               return (
+                                                   <img class="" src={item.url_tiny} />
+                                               )
+                                           })[0]}
+                                       <div className={orderDetailsStyles.productInfoWrapper}>
+                                           <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
+                                           <div className={orderDetailsStyles.priceAndQuantity}>
+                                               <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
+                                               <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + item.total_inc_tax : ""}</div>
+                                               
+
+                                           </div>
+                                       </div>
+                                   </div>
+                               )
+                           }))
+                       }
+
+                   </div>
+               
+           </div>
+
+                            <div className="d-none d-lg-block">
+                        
+                        {isLoading ?
+                            <div>Loading...</div>
+                            :
+                            (products.map((item, index) => {
+                                return (
+                                    <div className={orderDetailsStyles.productWrapper}>
+                                        <div className={orderDetailsStyles.productInfoWrapper}>
+                                            <div className={orderDetailsStyles.productName}>
+                                                <form>
+                                                    <div class="form-check">
+                                                       {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                                    */ }</div>
+                                                </form>
+                                                <div className={orderDetailsStyles.productImage}>
+                                                    {item.images.data.map((item, index) => {
+                                                        return (
+                                                            <img src={item.url_tiny} />
+                                                        )
+                                                    })[0]}
+                                                </div>
+                                                {item.name ? item.name : ""}
+                                            </div>
+                                            <div className={orderDetailsStyles.productQuantity}>
+                                                {item.quantity ? "Qty. " + item.quantity : ""}
+                                            </div>
+                                            <div className={orderDetailsStyles.productPrice}>
+                                                {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
+                                            </div>
+                                            <div className={orderDetailsStyles.productstatus}>sh</div>
                                         </div>
                                     </div>
                                 )
@@ -240,7 +351,10 @@ const OrderDetails = (props, { node }) => {
 
                     </div>
 
-                    <div className="col-12 col-lg-3">
+                    </div>
+                  </div>
+
+                  <div className="col-12 col-lg-3">
                         {isLoading ?
                             ""
                             :
@@ -251,19 +365,19 @@ const OrderDetails = (props, { node }) => {
                                 </div>
 
                                 <div className={orderDetailsStyles.detailPart}>
-                                    <p>Status</p>
+                                    <p className={orderDetailsStyles.informdetail}>Status</p>
                                     <p>{details.status ? details.status : ""}</p>
                                 </div>
 
                                 <div className={orderDetailsStyles.detailPart}>
-                                    <p>Order Placed</p>
+                                    <p className={orderDetailsStyles.informdetail}>Order Placed</p>
                                     <p>{placedOnDate ? `${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}` : ""}</p>
                                 </div>
 
                                 {shippingAddresses.map((item, index) => {
                                     return (
                                         <div className={orderDetailsStyles.detailPart}>
-                                            <p>Shipping Address</p>
+                                            <p className={orderDetailsStyles.informdetail}>Shipping Address</p>
                                             <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
                                             <p>{item.street_1 ? item.street_1 : ""}</p>
                                             <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
@@ -273,7 +387,7 @@ const OrderDetails = (props, { node }) => {
                                 })}
 
                                 <div className={orderDetailsStyles.detailPart}>
-                                    <p>Billing Address</p>
+                                    <p className={orderDetailsStyles.informdetail}>Billing Address</p>
                                     <p>{details.billing_address ? details.billing_address.first_name : ""} {details.billing_address ? details.billing_address.last_name : ""}</p>
                                     <p>{details.billing_address ? details.billing_address.street_1 : ""}</p>
                                     <p>{details.billing_address ? details.billing_address.city : ""} {details.billing_address ? details.billing_address.state : ""}, {details.billing_address ? details.billing_address.zip : ""}</p>
@@ -281,18 +395,18 @@ const OrderDetails = (props, { node }) => {
                                 </div>
 
                                 <div className={orderDetailsStyles.detailPart}>
-                                    <p>Payment</p>
+                                    <p className={orderDetailsStyles.informdetail}>Payment</p>
                                     <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
                                 </div>
 
                                 <div className={orderDetailsStyles.detailPart}>
-                                    <p>Actions</p>
+                                    <p className={orderDetailsStyles.informdetail}>Actions</p>
                                     <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                                 </div>
 
 
                                 <div className={orderDetailsStyles.totalWrapper}>
-                                    <div>Order Total</div>
+                                    <div >Order Total</div>
                                     <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" + details.total_inc_tax : ""}</div>
                                 </div>
 
@@ -362,7 +476,9 @@ const OrderDetails = (props, { node }) => {
                             </div>
                         }
                     </div>
-                </div>
+       
+
+               </div>
 
 
             </div>

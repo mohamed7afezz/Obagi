@@ -51,6 +51,7 @@ function addMainStyles(e) {
   if (e.target.closest(".extended-nav > ul > span")) {    
 
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
+    document.querySelector(".extended-nav ul span").classList.add("not-selected");
 
     let selectedSpan = e.target.closest(".extended-nav > ul > span");
     selectedSpan.classList.remove("not-selected");

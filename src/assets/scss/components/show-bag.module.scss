@@ -1,26 +1,37 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 .empatyTitle{
-    font-size: 18px;
-    line-height: 32px;
-    @extend %futurapt-bold ;
-    padding-bottom: 24px;
+    font-size: 28px;
+    line-height: 40px;
+    @extend %futurapt-light ;
+    padding-bottom: 8px;
     color: #132466;
     text-align: center;
+    max-width: 265px;
+
+    @include lg-screen {
+        max-width: 100%;
+        padding-bottom: 16px;
+    }
 }
 .empatyLink{
     color: #132466;
-    letter-spacing: 1.2px;
-    @extend %futurapt-bold ;
-    font-size: 12px;
-    line-height: 16px;
-    width: 100%;
+    // letter-spacing: 1.2px;
+    // @extend %futurapt-bold ;
+    font-size: 16px;
+    line-height: 24px;
+    // width: 100%;
     display: block;
-    padding-top: 24px;
-    padding-bottom: 26px;
-    border-radius: 6px;
+    // padding-top: 24px;
+    padding-bottom: 40px;
+    // border-radius: 6px;
     text-align: center;
-    border: 1px solid #132466;
+    // border: 1px solid #132466;
+    text-decoration: underline;
+
+    &:hover {
+        color: #132466;
+    }
 }
 .prodThumb{
     width: 100%;
@@ -158,3 +169,154 @@
             padding-top: 24px;
         }
   }
+
+.image {
+    top: 20px;
+    margin-bottom: 40px;
+    margin-right: 16px;
+    margin-left: -8px;
+    position: relative;
+
+    @include lg-screen {
+        position: unset;
+        margin: 0;
+    }
+}
+
+.bottom-half {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+    width: 100%;
+
+    padding: 24px 0 0 24px;
+    
+    color: #ffffff;
+    margin-bottom: 72px;
+
+    @include lg-screen{
+        margin-left: -1px;
+        padding: 33px 19px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-bottom: 0;
+
+    }
+}
+
+.bottom-title {
+    @extend %futurapt-bold;
+    @include fontStyle(16, 24);
+    
+    @include lg-screen {
+        padding-bottom: 4px;
+    }
+    
+}
+
+.bottom-text {
+    @include fontStyle(16, 24);
+    @extend %futurapt-light;
+    padding-bottom: 4px;
+
+    @include lg-screen {
+        padding-bottom: 8px;
+
+    }
+}
+
+.bottom-link {
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    color: #ffffff;
+
+    &:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+.bottomWrapper {
+
+    @include lg-screen {
+    margin-bottom: 146px;
+
+    }
+}
+
+.recommended-wrapper {
+    padding: 16px 24px 24px;
+    margin: 0 -24px;
+    background: #f8f8f8;
+
+    @include lg-screen {
+        margin: 0 -40px;
+    }
+}
+
+.recommended-title {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+}
+
+.product-wrapper {
+    display: flex;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(54, 75, 95, 0.15);
+    margin-top: 16px;
+}
+
+.small-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mini-wrapper {
+    display: flex;
+    align-items: center;
+    @include fontStyle(14, 16);
+    @extend %futurapt-medium;
+}
+
+.product-image {
+    width: 100%;
+    padding-right: 16px;
+}
+
+.product-name {
+    @include fontStyle(14, 16);
+    @extend %futurapt-medium;
+    padding-bottom: 11px;
+    color: #132466;
+
+    &:hover {
+        text-decoration: none;
+        color: #132466;
+    }
+
+}
+
+.cart-button {
+    text-transform: uppercase;
+    margin-left: 22px;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    padding: 7px 12px;
+    @include fontStyle(12, 16);
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #132466;
+    border-radius: 6px;
+}
