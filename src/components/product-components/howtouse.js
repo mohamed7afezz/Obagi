@@ -123,7 +123,8 @@ const Howtouse = ({ node }) => {
 
                                                 <div class="card-body ">
                                                     {node.relationships.field_general_image?
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
+                                                    (node.relationships.field_general_image.localFile?
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/> : "")
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             (item.relationships.field_step_image.localFile?
@@ -166,7 +167,8 @@ const Howtouse = ({ node }) => {
 
                                                 <div class="card-body ">
                                                     {node.relationships.field_general_image? 
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>
+                                                    (node.relationships.field_general_image.localFile? 
+                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/> : "")
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />

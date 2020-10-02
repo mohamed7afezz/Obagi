@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 import plusicon from "../assets/images/product-images/plus1.svg"
 import minusicon from "../assets/images/product-images/minus.svg"
 import ProductCard from './productcard'
-
+import RecommendedProduct from './recommended-product'
 import Loader from "./Cart/Loader"
 
 import CartContext from "../providers/cart-provider"
@@ -14,7 +14,7 @@ import Showbag from "./bag-preview"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
-
+  console.log("item", item);
 
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
@@ -190,10 +190,34 @@ const YourBag = props => {
         }
       }
     }
+
+    hydrate: nodeMedicalProduct(field_medical_id: {eq: "352"}) {
+      id
+      field_medical_price
+      field_medical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
   }
   `)
 
-  let productId = data.professionalC.field_medical_id;
+  let profProductId = data.professionalC.field_medical_id ? data.professionalC.field_medical_id : "";
+  let elastiProductId = data.elastiderm.field_medical_id ? data.elastiderm.field_medical_id : "";
+  let hydrateId = data.hydrate.field_medical_id ? data.hydrate.field_medical_id : "";
+
 
   const { state, removeItemFromCart, updateCartItemQuantity } = useContext(
     CartContext
@@ -218,6 +242,14 @@ const YourBag = props => {
     document.querySelector(".bagDataConten").classList.toggle("applied")
     e.preventDefault()
   }
+
+  console.log("line", lineItems);
+  var checkProduct = lineItems.physical_items? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
+  console.log("line", checkProduct)
+
+
+
+  
   let bagContent
   //check if cart is  sill loading
   if (!state.cartLoading) {
@@ -259,6 +291,28 @@ const YourBag = props => {
               <div className={BagStyle.freeShipping}>
                 Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
                   </div>
+              {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
+                <div className={ShowBagStyle.recommendedWrapper}>
+                  <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
+
+                  <RecommendedProduct
+                    recId={elastiProductId}
+                    recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
+                    recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
+                    recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+                    recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
+                  />
+
+                  <RecommendedProduct
+                    recId={hydrateId}
+                    recTitle={data.hydrate.title ? data.hydrate.title : ""}
+                    recLink={data.hydrate.path.alias ? data.hydrate.path.alias : ""}
+                    recImage={data.hydrate.relationships ? data.hydrate.relationships.field_medical_image[0] ? data.hydrate.relationships.field_medical_image[0].localFile ? data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+                    recPrice={data.hydrate.field_medical_price ? data.hydrate.field_medical_price : ""}
+                  />
+                </div> 
+                {/* : ""} */}
+
 
               {/* <p className={ShowBagStyle.footnote}>
                 Shipping and taxes calculated at checkout.
@@ -512,52 +566,21 @@ const YourBag = props => {
           <div className={ShowBagStyle.recommendedWrapper}>
             <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
 
-            <div className={ShowBagStyle.productWrapper}>
-              {data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? <div className={ShowBagStyle.productImage}><Img fluid={data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid} /></div> : "" : "" : ""}
-              
-              <div className={ShowBagStyle.smallWrapper}>
-                {data.professionalC.path.alias ? <Link to={data.professionalC.path.alias} className={ShowBagStyle.productName}>{data.professionalC.title ? <div>{data.professionalC.title}</div> : ""}</Link> : ""}
+            <RecommendedProduct
+              recId={profProductId}
+              recTitle={data.professionalC.title ? data.professionalC.title : ""}
+              recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
+              recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+              recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
+            />
 
-                <div className={ShowBagStyle.miniWrapper}>
-                  {data.professionalC.field_medical_price ? <div>${data.professionalC.field_medical_price}</div> : ""}
-                  <button className={ShowBagStyle.cartButton}
-                    onClick={() => {
-                      let quantity = 1;
-                      addToCart(productId, false, quantity);
-                    }}
-                    disabled={addingToCart === productId}
-                  >
-                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-                  </button>
-                
-                </div>
-              </div>
-            </div>
-
-
-
-            <div className={ShowBagStyle.productWrapper}>
-              {data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? <div className={ShowBagStyle.productImage}><Img fluid={data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid} /></div> : "" : "" : ""}
-              
-              <div className={ShowBagStyle.smallWrapper}>
-                {data.elastiderm.path.alias ? <Link to={data.elastiderm.path.alias} className={ShowBagStyle.productName}>{data.elastiderm.title ? <div>{data.elastiderm.title}</div> : ""}</Link> : ""}
-               
-                <div className={ShowBagStyle.miniWrapper}>
-                  {data.elastiderm.field_medical_price ? <div>${data.elastiderm.field_medical_price}</div> : ""}
-                  <button className={ShowBagStyle.cartButton}
-                    onClick={() => {
-                      let quantity = 1;
-                      addToCart(productId, false, quantity);
-                    }}
-                    disabled={addingToCart === productId}
-                  >
-                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-                  </button>
-                </div>
-
-              </div>
-            </div>
-
+            <RecommendedProduct
+              recId={elastiProductId}
+              recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
+              recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
+              recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+              recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
+            />
           </div>
         </div>
       )
