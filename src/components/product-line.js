@@ -172,6 +172,7 @@ const ProductLine = ({ node }) => {
         edges {
           node {
             name
+            field_product_lines_cta_title
             description {
               processed
             }
@@ -375,7 +376,7 @@ const ProductLine = ({ node }) => {
                                       lineStyles.link,
                                     ].join(" ")}
                                   >
-                                    {"Shop " + systemName[index]}
+                                    { item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index] }
                                   </Link>
                                 </div>
                               ) : (
