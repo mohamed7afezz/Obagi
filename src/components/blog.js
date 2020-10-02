@@ -19,7 +19,7 @@ const Blog = ({ node }) => {
     }
 
     return (
-        <div>
+        <div className={blogStyles.largeWrapper}>
             <div className={blogStyles.wrapper}>
                 <div className="container-fluid">
                     <div className="row">
@@ -36,11 +36,11 @@ const Blog = ({ node }) => {
                                     {item.field_card_title ? <div dangerouslySetInnerHTML={{ __html: item.field_card_title.processed }} className={blogStyles.cardTitle}></div> : ''}
                                     {item.field_card_description ?
                                         <div className={blogStyles.cardDesc}>
-                                            <span dangerouslySetInnerHTML={{ __html: item.field_card_description.processed + ' ' }}></span>
-                                            {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id={"blog-more" + index} style={{display: "none"}}></span> : ''}
+                                            <span dangerouslySetInnerHTML={{ __html: item.field_card_description.processed}}></span>
+                                            {/* {item.field_card_complete_description ? <span dangerouslySetInnerHTML={{ __html: item.field_card_complete_description.processed }} id={"blog-more" + index} style={{display: "none"}}></span> : ''} */}
                                         </div>
                                         : ''}
-                                    <button type="button" id={"readBtn" + index} className={blogStyles.readMore} onClick={() => { expand(index); }}>Read More</button>
+                                    {/* <button type="button" id={"readBtn" + index} className={blogStyles.readMore} onClick={() => { expand(index); }}>Read More</button> */}
                                 </div>
                             )
                         })}

@@ -172,6 +172,9 @@ const ProductLine = ({ node }) => {
         edges {
           node {
             name
+            description {
+              processed
+            }
             path {
               alias
             }
@@ -334,7 +337,7 @@ const ProductLine = ({ node }) => {
                                 className={lineStyles.description}
                               >
 
-                                { item.node.relationships.field_hero_productline_taxonomy ? item.node.relationships.field_hero_productline_taxonomy.field_taxonomy_hero_para_desc : "" }
+                                { item.node.description ? <div dangerouslySetInnerHTML={{__html:item.node.description.processed}}></div> : ""}
                                 {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae. */}
                             </div>
 

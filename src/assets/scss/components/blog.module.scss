@@ -1,6 +1,11 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.large-wrapper {
+    padding-top: 161px;
+    background: #ebfafc;
+}
+
 .wrapper {
     background: #00c7d8;
     color: #ffffff;

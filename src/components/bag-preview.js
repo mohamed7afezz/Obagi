@@ -34,6 +34,8 @@ const Notification = ({ id, text, type }) => {
 `)
   const value = useContext(CartContext);
   const removeNotification = value && value.removeNotification;
+
+  console.log("val", value)
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
