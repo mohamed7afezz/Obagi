@@ -64,7 +64,7 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
 productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
   return (
 
-    <div>
+    <>
       <div className={["container-fluid", "d-lg-none", featuredStyles.wrapper].join(" ")}>
         <div className="row">
           <div className="col-12">
@@ -158,7 +158,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
             </div>
           </div>
         </div>}
-    </div>
+    </>
   )
 }
 
