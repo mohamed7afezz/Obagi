@@ -1455,7 +1455,7 @@ font-weight: 500;
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: auto;
+  min-height: none !important;
   box-sizing: border-box;
   background-color: #26cad3;
   position: fixed;

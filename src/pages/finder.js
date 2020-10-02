@@ -93,7 +93,7 @@ export default function Finder() {
                   </p>
                       <div class="col-lg-4 d-flex f-buttons">
                         <button className="btn btn-primary" onClick={() => {showresult();}} id="search-btn">Update Search</button>
-                        <button  class="rev-search">Revise Product Search</button>
+                        <button  class="rev-search" data-toggle="modal" data-target="#advancedSearch">Revise Product Search</button>
                    
                      </div> 
                      <p class="covid hide-mob">
@@ -130,7 +130,10 @@ export default function Finder() {
         
             </p>
                 </div>
-                <div class="modal fade" id="appointment" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          
+  
+            </div>
+                  <div class="modal fade" id="appointment" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -186,8 +189,83 @@ export default function Finder() {
         </div>
       </div>
     </div>
-  
+    <div class="modal fade" id="advancedSearch" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <span class="reqmodal"></span>
+            {/* <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> */}
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body appointment-body">
+        <div class="body-desc">
+            <h2 class="body-title">Looking for a specific product?</h2>
+            <div class="doc-name"><p class="doctitle">Find skin care professionals that carry specific Obagi products. Choose products under the Product Line you’d like to find a physician for, enter city or ZIP code and search.</p>
+            </div>    
+            <form>
+                <div class="d-flex inputs-con">
+                   <div class="appointment-elemnt advanced-search"><p class="input-name">Location</p><input class="appointmentInput"/></div>
+                   <div class="appointment-elemnt advanced-search">
+                    <p class="input-name">Distance</p>
+                    <div class="custom-select">
+                    
+                        <select  id="state">
+                            <option value="5 miles">5 miles</option>
+                            <option value="5 miles">5 miles</option>
+                            <option value="10 miles">10 miles</option>
+                            <option value="20 miles">20 miles</option>
+                            <option value="50 miles">50 miles</option>
+                        </select>
+                        </div>
+                        </div>
+                   <div class="appointment-elemnt advanced-search"><p class="input-name">Product Lines</p>
+                   
+                   <div class="custom-select">
+                    
+                    <select  id="state">
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option> 
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                        <option value="5 miles">loram</option>
+                    </select>
+                    </div>
+         
+                   </div>
+                    <div class="advanced-search"> <button class="appointment-Submit">APPLY</button></div>
+                </div>
+                <hr class="seprator"/>
+                <div class="d-flex space-between">
+                 <p class="result-count"> 0 Results</p>
+                 <button class="clear-selection"> Clear All Selections</button>
+                </div>
+                <p class="select-prod">Select the products below you are interested in </p>
+            </form>
+            <div class="d-flex search-results">
+                <div class="search-res left-res"></div>
+                <div class="search-res right-res"></div>
             </div>
+           </div>
+
+          </div>
+          {/* <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> */}
+        </div>
+      </div>
+    </div>
         </Layout>
     )
 }
