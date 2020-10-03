@@ -642,9 +642,14 @@ padding-bottom: 134px;
 
 }
 .locker p {
-  left: 1px !important;
-  top: 0 !important;
-  width: 100%;
+  left: 0px !important;
+  top: 0px !important;
+  width: 20px;
+  text-align: center;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 button:focus{
  outline: 0;

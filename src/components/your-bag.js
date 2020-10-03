@@ -11,6 +11,7 @@ import Loader from "./Cart/Loader"
 import $ from 'jquery'
 import CartContext from "../providers/cart-provider"
 import Showbag from "./bag-preview"
+import { parse } from "@fortawesome/fontawesome-svg-core"
 
 
 const AdjustItem = props => {
@@ -136,6 +137,9 @@ const StandardItem = props => {
 
   )
 }
+
+const Base_URL = process.env.Base_URL;
+
 const YourBag = (props, {notificationId}) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -223,8 +227,158 @@ const YourBag = (props, {notificationId}) => {
         }
       }
     }
+
+    cMicro: nodeMedicalProduct(field_medical_id: {eq: "356"}) {
+      id
+      field_medical_price
+      field_medical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
+    spf: nodeMedicalProduct(field_medical_id: {eq: "383"}) {
+      id
+      field_medical_price
+      field_medical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
+    kinetin: nodeClinicalProduct(field_clinical_id: {eq: "348"}) {
+      id
+      field_clinical_price
+      field_clinical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        }
+      }
+    }
+
+    kinetinSerum: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
+      id
+      field_clinical_price
+      field_clinical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        }
+      }
+    }
+
+    kinetinCream: nodeClinicalProduct(field_clinical_id: {eq: "342"}) {
+      id
+      field_clinical_price
+      field_clinical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        }
+      }
+    }
+
+    retinol: nodeClinicalProduct(field_clinical_id: {eq: "344"}) {
+      id
+      field_clinical_price
+      field_clinical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        }
+      }
+    }
+
+    vitaminc: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
+      id
+      field_clinical_price
+      field_clinical_id
+      title
+      path {
+        alias
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              fluid (quality: 100){
+                  ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        }
+      }
+    }
+
   }
-  `)
+
+  `);
+
 
   let profProductId = data.professionalC.field_medical_id ? data.professionalC.field_medical_id : "";
   let elastiProductId = data.elastiderm.field_medical_id ? data.elastiderm.field_medical_id : "";
@@ -261,7 +415,51 @@ const YourBag = (props, {notificationId}) => {
   var checkProduct = lineItems.physical_items? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
   console.log("line", checkProduct)
 
+  let isClinical = true;
+  function getRecommendedProducts(bag) {
+    if(bag.length > 3) {
+      return [];
+    }
 
+    let medicalList = [
+      data.professionalC,
+      data.elastiderm,
+      data.hydrate,
+      data.cMicro,
+      data.spf
+    ]
+    let clinicalList = [
+      data.kinetin,
+      data.kinetinSerum,
+      data.kinetinCream,
+      data.retinol,
+      data.vitaminc
+    ]
+
+    let recommendedList = [];
+    let tempList = [];
+    
+    // check if bag products are all clinical => recommended from clinical List 
+    // if not recommended from medical List
+    // choose top 2 from list which not in the bag
+
+    for(let i = 0; i < bag.length; i++) {
+      if(!bag[i].url.includes('clinical')) {
+        isClinical = false;
+        break;
+      }
+    }
+
+    if(isClinical) {
+      tempList = clinicalList.filter(item => bag.filter(product => product.product_id === parseInt(item.field_clinical_id)).length < 1);
+    } else {
+      tempList = medicalList.filter(item => bag.filter(product => product.product_id === parseInt(item.field_medical_id)).length < 1);
+    }
+
+    recommendedList = [tempList[0], tempList[1]];
+
+    return recommendedList;
+  }
 
   
   let bagContent
@@ -306,24 +504,23 @@ const YourBag = (props, {notificationId}) => {
                 Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
                   </div>
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
-                <div className={ShowBagStyle.recommendedWrapper}>
+                {/* recommended products section */}
+                {console.log('bahiiii', lineItems.physical_items)}
+                <div className={`${ShowBagStyle.recommendedWrapper} ${lineItems.physical_items.length > 3 ? 'hide' : ''}`}>
                   <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
-
-                  <RecommendedProduct
-                    recId={elastiProductId}
-                    recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
-                    recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
-                    recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
-                    recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
-                  />
-
-                  <RecommendedProduct
-                    recId={hydrateId}
-                    recTitle={data.hydrate.title ? data.hydrate.title : ""}
-                    recLink={data.hydrate.path.alias ? data.hydrate.path.alias : ""}
-                    recImage={data.hydrate.relationships ? data.hydrate.relationships.field_medical_image[0] ? data.hydrate.relationships.field_medical_image[0].localFile ? data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
-                    recPrice={data.hydrate.field_medical_price ? data.hydrate.field_medical_price : ""}
-                  />
+                  {getRecommendedProducts(lineItems.physical_items).length > 0?getRecommendedProducts(lineItems.physical_items).map(product => {
+                    return (
+                      <RecommendedProduct
+                        recId={isClinical? product.field_clinical_id : product.field_medical_id}
+                        recTitle={product.title ? product.title : ""}
+                        recLink={product.path.alias ? product.path.alias : ""}
+                        recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
+                        recPrice={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
+                      />
+                    )
+                  })  : ''
+                }
+                  
                 </div> 
                 {/* : ""} */}
 
