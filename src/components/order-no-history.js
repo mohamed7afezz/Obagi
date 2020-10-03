@@ -10,7 +10,7 @@ const OrderNoHistory = ({ node }) => {
 
     const data = useStaticQuery(graphql`
     query {
-      skinanalyzer: file(relativePath: { eq: "image.png" }) {
+      skinanalyzer: file(relativePath: { eq: "Skin_Analyzer_6.jpg" }) {
         childImageSharp {
             fluid (quality: 100){
                 ...GatsbyImageSharpFluid
