@@ -61,7 +61,11 @@ return (
 
             <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
             <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
-            <Img className={Collectionfooterstyle.fullheightimg} fluid={getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp.fluid}/>
+            {getdata.relationships.field_taxonomy_footer_image.localFile?
+            getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp?
+             <Img className={Collectionfooterstyle.fullheightimg} fluid={getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp.fluid}/>
+            :"":""
+            }
             </div>
             <div className={['col-10 offset-1','col-lg-4','offset-lg-1',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
                       <p className={[Collectionfooterstyle.typecon, "collection-footer-typecon"].join(" ")}>{getdata.field_taxonomy_footer_type}</p>
