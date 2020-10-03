@@ -190,100 +190,116 @@ const OrderDetails = (props, { node }) => {
                   {isLoading ? (
                     <div>Loading...</div>
                   ) : (
-                    getshiping? getshiping.map((item, index) => {
-                      return (
-                          <div className={orderDetailsStyles.shipmentstate}>
-                               <div className={orderDetailsStyles.shipment}>
-                            <p>Shipment #{index+1} : {item.id}</p>
-                              </div>
-                               <table className={orderHistoryStyles.tableCon}>
-                <thead className={orderHistoryStyles.tHead}>
-                  <tr>
-                    <th scope="col">Last Updated</th>
-                    <th scope="col">Items</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-              </table>
-                    <div className="col-12  d-lg-none">
-                <div>
-                        <div className={orderDetailsStyles.productWrapper}>
-                          {/* <form>
-                                           <div class="form-check">
-                                               <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
-                                           </div>
-                                       </form> */}
-                          {
-                            item.product.images.data.map((item, index) => {
-                              return <img class="img-mob" src={item.url_tiny} />
-                            })[0]
-                          }
-                          <div
-                            className={orderDetailsStyles.productInfoWrapper}
-                          >
-                            <div className={orderDetailsStyles.productName}>
-                              {item.product.name ? item.product.name : ""}
-                            </div>
+                    
+                    getshiping? getshiping.map((getshipm, index1) => {
+                   return(   products? products.map((item,index)=>{
+
+                    return(  getshipm.items.map((getProdId,index2) =>{
+                        
+                       return(
+                        getProdId.product_id === item.product_id?
+                            <div className={orderDetailsStyles.shipmentstate}>
+                              {index2 < 1?  
+                              <>
+                                 <div className={orderDetailsStyles.shipment}>
+                              <p>Shipment #{index+1} : {getshipm.id}</p>
+                                </div>
+                                <table className={orderHistoryStyles.tableCon}>
+                  <thead className={orderHistoryStyles.tHead}>
+                    <tr>
+                      <th scope="col">Last Updated</th>
+                      <th scope="col">Items</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                </table>
+                    
+                                </>
+                                :""
+                                }
+                      <div className="col-12  d-lg-none">
+                  <div>
+                          <div className={orderDetailsStyles.productWrapper}>
+                            {/* <form>
+                                             <div class="form-check">
+                                                 <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                             </div>
+                                         </form> */}
+                            {
+                              item.images.data.map((item, index) => {
+                                return <img class="img-mob" src={item.url_tiny} />
+                              })[0]
+                            }
                             <div
-                              className={orderDetailsStyles.priceAndQuantity}
+                              className={orderDetailsStyles.productInfoWrapper}
                             >
+                              <div className={orderDetailsStyles.productName}>
+                                {item.name ? item.name : ""}
+                              </div>
                               <div
-                                className={orderDetailsStyles.productQuantity}
+                                className={orderDetailsStyles.priceAndQuantity}
                               >
-                                Qty. {item.product.quantity ? item.product.quantity : ""}
+                                <div
+                                  className={orderDetailsStyles.productQuantity}
+                                >
+                                  Qty. {item.quantity ? item.quantity : ""}
+                                </div>
+                                <div className={orderDetailsStyles.productPrice}>
+                                  {item.total_inc_tax
+                                    ? "$" + item.total_inc_tax
+                                    : ""}
+                                </div>
                               </div>
-                              <div className={orderDetailsStyles.productPrice}>
-                                {item.product.total_inc_tax
-                                  ? "$" + item.product.total_inc_tax
-                                  : ""}
+                            </div>
+                          </div>
+                      
+                      </div>
+                      </div>
+                      <div className="d-none d-lg-block">
+          
+                        <div className={orderDetailsStyles.productWrapper}>
+                          <div className={orderDetailsStyles.productInfoWrapper}>
+                            <div className={orderDetailsStyles.productName}>
+                              <form>
+                                <div class="form-check">
+                                  {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                   */}
+                                </div>
+                              </form>
+                              <div className={orderDetailsStyles.productImage}>
+                                {
+                                  item.images.data.map((item, index) => {
+                                    return <img src={item.url_tiny} />
+                                  })[0]
+                                }
                               </div>
+                              {item.name ? item.name : ""}
+                            </div>
+                            <div className={orderDetailsStyles.productQuantity}>
+                              {item.quantity ? "Qty. " + item.quantity : ""}
+                            </div>
+                            <div className={orderDetailsStyles.productPrice}>
+                              {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
+                            </div>
+                            <div className={orderDetailsStyles.productstatus}>
+                              {item.order_status}
                             </div>
                           </div>
                         </div>
                     
-                    </div>
-                    </div>
-                    <div className="d-none d-lg-block">
-                
-                   
-                   
-                      <div className={orderDetailsStyles.productWrapper}>
-                        <div className={orderDetailsStyles.productInfoWrapper}>
-                          <div className={orderDetailsStyles.productName}>
-                            <form>
-                              <div class="form-check">
-                                {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
-                                 */}
-                              </div>
-                            </form>
-                            <div className={orderDetailsStyles.productImage}>
-                              {
-                                item.product.images.data.map((item, index) => {
-                                  return <img src={item.url_tiny} />
-                                })[0]
-                              }
-                            </div>
-                            {item.product.name ? item.product.name : ""}
-                          </div>
-                          <div className={orderDetailsStyles.productQuantity}>
-                            {item.product.quantity ? "Qty. " + item.product.quantity : ""}
-                          </div>
-                          <div className={orderDetailsStyles.productPrice}>
-                            {item.product.total_inc_tax ? "$" + item.product.total_inc_tax : ""}
-                          </div>
-                          <div className={orderDetailsStyles.productstatus}>
-                            {item.order_status}
-                          </div>
-                        </div>
+                    
+             
+                </div>
+          
                       </div>
-                  
-                  
-           
-              </div>
-        
-                    </div>
-                    )
+                         :""  )    
+                        })
+                        )
+                     
+
+                      }):"")
+                    
                     })
                  :"" )}
              
