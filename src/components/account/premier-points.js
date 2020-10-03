@@ -68,7 +68,7 @@ export default function Premier() {
                         Join Obagi Medical Premier Points<sup>&reg;</sup> Today
                         </h1>
                         <p className={[premierStyles.Premiersubtitle,"hide-mob"].join(" ")}>Earn reward points with every purchase of Obagi Medical<sup>&reg;</sup></p>
-                        <p className={premierStyles.PremierDesc}>Obagi Premier Points is an exclusive opportunity to earn points every time you purchase Obagi Medical products from your physician. Join today, and every dollar you spend in a physicians office goes towards free products in the future. Once you've saved enough points, you can redeem them for free Obagi products. Follow these 3 easy steps:</p>
+                        <p className={premierStyles.PremierDesc}>Obagi Premier Points<sup>&reg;</sup> is an exclusive opportunity to earn points every time you purchase Obagi Medical<sup>&reg;</sup> products from your physician or online at <Link to="/">Obagi.com</Link>. Join today, and every dollar you spend on applicable products goes towards free products in the future. Once you have saved enough points, you can redeem them for free Obagi products.</p>
                       <div className={premierStyles.PremierLinks}>
                     <div className={premierStyles.PremierLink}>
                         <p className={premierStyles.PremierLinkTitke}>Download</p>
@@ -77,7 +77,7 @@ export default function Premier() {
                     <div className={premierStyles.PremierLink}>
                         <p className={premierStyles.PremierLinkTitke}>Purchase</p>
                         <p className={premierStyles.PremierLinkDesc}>
-                        Purchase qualifying Obagi Medical products at your physician's office and use the app at checkout</p>
+                       Purchase qualifying Obagi Medical<sup>&reg;</sup> products at your physician’s office or online at <Link to="/">Obagi.com</Link></p>
                     </div>
                     <div className={premierStyles.PremierLink}>
                         <p className={premierStyles.PremierLinkTitke}>Earn Points</p>
@@ -85,6 +85,7 @@ export default function Premier() {
                         Earn points and redeem them for qualifying products</p>
                     </div>
                     </div>
+                    <p className={premierStyles.PremierFootNote}>*Free Obagi products do not include any prescription products.<br/> Please see the Obagi Premier Points app for full program terms and conditions.</p>
                     </div>
                 </div>
           
