@@ -2695,3 +2695,12 @@ p {
         height: 24px;
     }
 }
+
+
+.showbag-top {
+    top: 136.5px !important;
+
+    @include lg-screen {
+        top: 98px !important;
+    }
+}

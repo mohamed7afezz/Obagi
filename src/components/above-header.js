@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from "react"
 import { Link, graphql, useStaticQuery} from 'gatsby'
 import Img from 'gatsby-image'
 import aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
+import UserContext from '../providers/user-provider'
+
+
 const AboveHeader = ({ menuType }) => {
 
+  const {notif, setNotif} = useContext(UserContext);
     const data = useStaticQuery(graphql`
       query {
         close: file(relativePath: { eq: "close.png" }) {
@@ -22,7 +26,11 @@ const AboveHeader = ({ menuType }) => {
       document.getElementById("desk-navigation").style.top="0";
       document.getElementById("mob-navigation").style.top="0";
       document.getElementById("search-wrapper").style.top="0";
-      
+      setNotif(false);
+      if(document.getElementById("Showbag")) {
+        document.getElementById("Showbag").classList.add("showbag-top");
+      }
+
       if(isLoggedIn()) {
         document.getElementById("show-account").style.top="98px";
       }

@@ -181,7 +181,9 @@ const ProductLine = ({ node }) => {
             }
             relationships {
               field_hero_productline_taxonomy {
-                field_taxonomy_hero_para_desc
+                field_taxonomy_hero_para_descrip {
+                  processed
+                }
               }
               node__medical_product {
                 title

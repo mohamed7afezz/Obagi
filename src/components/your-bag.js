@@ -8,9 +8,11 @@ import minusicon from "../assets/images/product-images/minus.svg"
 import ProductCard from './productcard'
 import RecommendedProduct from './recommended-product'
 import Loader from "./Cart/Loader"
-
+import $ from 'jquery'
 import CartContext from "../providers/cart-provider"
 import Showbag from "./bag-preview"
+
+
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -69,7 +71,7 @@ const StandardItem = props => {
                     Remove
                     </button>
                 </div>
-                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center"].join(" ")}>{item.list_price}</p>
+                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center"].join(" ")}>${item.list_price}</p>
               </div>
             </div>
           </div>
@@ -134,17 +136,27 @@ const StandardItem = props => {
 
   )
 }
-const YourBag = props => {
+const YourBag = (props, {notificationId}) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
 
+  const removeNotification = value && value.removeNotification;
+
   const data = useStaticQuery(graphql`
   query {
-    skinanalyzer: file(relativePath: { eq: "skinanalyzer-sc.png" }) {
+    skinanalyzerMob: file(relativePath: { eq: "Skin Analyzer295.jpg" }) {
       childImageSharp {
           fluid (quality: 100){
               ...GatsbyImageSharpFluid
+            }
+      }
+    }
+
+    skinanalyzerDesk: file(relativePath: { eq: "Skin Analyzer166.jpg" }) {
+      childImageSharp {
+          fixed{
+              ...GatsbyImageSharpFixed
             }
       }
     }
@@ -231,6 +243,8 @@ const YourBag = props => {
   } = state.cart
   const { updatingItem } = state;
   const { cartType } = props
+
+
 
   function togglebag(e) {
     document.querySelector(".bagDataConten").classList.toggle("Showshipping")
@@ -529,12 +543,11 @@ const YourBag = props => {
             >
               Your Obagi shopping bag is empty.
             </p>
-            <Link
+            <button type="button" onClick={() => {removeNotification(notificationId);}}
               className={ShowBagStyle.empatyLink}
-              href="#"
             >
               Continue Shopping
-            </Link>
+            </button>
           </div>
 
           <div className="d-lg-none">
@@ -542,23 +555,23 @@ const YourBag = props => {
               <div className={ShowBagStyle.bottomTitle}>Try our Skinanalyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
               <div className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</div>
-              <div className={ShowBagStyle.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerMob? data.skinanalyzerMob.childImageSharp?<Img fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
 
           <div className="d-none d-lg-block">
-            <div className={["row align-items-center", ShowBagStyle.bottomWrapper].join(" ")}>
-              <div className="col-4 pr-0">
-                <div className={ShowBagStyle.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
-              </div>
-              <div className="col-8 pl-0">
-                <div className="d-flex align-items-center h-100">
+            <div className={[ ShowBagStyle.bottomWrapper].join(" ")}>
+              {/* <div className="col-4 pr-0"> */}
+              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk? data.skinanalyzerDesk.childImageSharp? <Img fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
+              {/* </div> */}
+              {/* <div className="col-8 pl-0"> */}
+                {/* <div className="d-flex align-items-center h-100"> */}
                   <div className={ShowBagStyle.bottomHalf}>
                     <div className={ShowBagStyle.bottomTitle}>Try our Skinanalyzer</div>
                     <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
                     <Link to="#" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</Link>
-                  </div>
-                </div>
+                  {/* </div> */}
+                {/* </div> */}
               </div>
             </div>
           </div>
