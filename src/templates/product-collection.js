@@ -86,7 +86,9 @@ export const productPageQuery = graphql`
                   }
                 field_hero_categories_taxonomy {
                 field_taxonomy_hero_para_title
-                field_taxonomy_hero_para_desc
+                field_taxonomy_hero_para_descrip {
+                  processed
+                }
                 field_taxonomy_hero_paraprapgh_t
                 relationships {
                   field_taxonomy_hero_paraprapgh_i {
@@ -151,7 +153,9 @@ export const productPageQuery = graphql`
                 }
                field_hero_ingredients_taxonomy {
               field_taxonomy_hero_para_title
-              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_para_descrip {
+                processed
+              }
               field_taxonomy_hero_paraprapgh_t
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
@@ -219,7 +223,9 @@ export const productPageQuery = graphql`
                   }
                 field_hero_taxonomy {
                   field_taxonomy_hero_para_title
-                  field_taxonomy_hero_para_desc
+                  field_taxonomy_hero_para_descrip {
+                    processed
+                  }
                   field_taxonomy_hero_paraprapgh_t
                   relationships {
                     field_taxonomy_hero_paraprapgh_i {
@@ -287,7 +293,9 @@ export const productPageQuery = graphql`
               }
               field_hero_clinical_ing_taxonomy {
               field_taxonomy_hero_para_title
-              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_para_descrip {
+                processed
+              }
               field_taxonomy_hero_paraprapgh_t
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
@@ -318,7 +326,9 @@ export const productPageQuery = graphql`
               field_hero_parag_taxonomy {
                 field_taxonomy_hero_para_title
                 field_taxonomy_hero_paraprapgh_t
-                field_taxonomy_hero_para_desc
+                field_taxonomy_hero_para_descrip {
+                  processed
+                }
                 relationships {
                   field_taxonomy_hero_paraprapgh_i {
                     localFile {
@@ -418,7 +428,9 @@ export const productPageQuery = graphql`
                   }
                 field_hero_category_taxonomy {
                   field_taxonomy_hero_para_title
-                  field_taxonomy_hero_para_desc
+                  field_taxonomy_hero_para_descrip {
+                    processed
+                  }
                   field_taxonomy_hero_paraprapgh_t
                   relationships {
                     field_taxonomy_hero_paraprapgh_i {
@@ -453,7 +465,9 @@ export const productPageQuery = graphql`
             field_hero_taxonomy_skintype {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title
-              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_para_descrip {
+                processed
+              }
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
@@ -511,7 +525,9 @@ export const productPageQuery = graphql`
             field_hero_productline_taxonomy {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title
-              field_taxonomy_hero_para_desc
+              field_taxonomy_hero_para_descrip {
+                processed
+              }
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {

@@ -26,29 +26,29 @@ const BigParagraph = ({ node }) => {
 export default BigParagraph;
 
 
-export const fragment = graphql`
-  fragment paragraphBigParagraph on paragraph__big_paragraph {
-    id
-    field_paragraph_button {
-      title
-      uri
-    }
-    field_paragraph_subtitle {
-      processed
-    }
-    field_paragraph_text {
-      processed
-    }
-    relationships {
-      field_paragraph_divider {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const fragment = graphql`
+//   fragment paragraphBigParagraph on paragraph__big_paragraph {
+//     id
+//     field_paragraph_button {
+//       title
+//       uri
+//     }
+//     field_paragraph_subtitle {
+//       processed
+//     }
+//     field_paragraph_text {
+//       processed
+//     }
+//     relationships {
+//       field_paragraph_divider {
+//         localFile {
+//           childImageSharp {
+//             fluid (quality: 100){
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

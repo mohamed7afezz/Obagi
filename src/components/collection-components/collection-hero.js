@@ -82,12 +82,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_paraprapgh_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -159,12 +154,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_categories_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_categories_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -236,12 +226,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_productline_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_productline_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -313,12 +298,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_ingredients_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_ingredients_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -390,12 +370,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_taxonomy_skintype ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_taxonomy_skintype
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -469,12 +444,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_clinical_ing_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -546,12 +516,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_parag_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_parag_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -623,12 +588,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -700,12 +660,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_category_taxonomy ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_hero_category_taxonomy
-                    .field_taxonomy_hero_para_desc
-                }
-              </p>
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -774,12 +729,8 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
             ) : (
               ""
             )}
-            {checkTaxonomy.field_taxonomy_hero_para_desc ? (
-              <p className={Collectionherostyle.collectiondescription}>
-                {
-                  checkTaxonomy.field_taxonomy_hero_para_desc
-                }
-              </p>
+            {checkTaxonomy.field_taxonomy_hero_para_descrip ? (
+              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
             ) : (
               ""
             )}
@@ -825,7 +776,9 @@ export const fragment = graphql`
     relationships {
       field_hero_paraprapgh_taxonomy {
         field_taxonomy_hero_para_title
-        field_taxonomy_hero_para_desc
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
         field_taxonomy_hero_paraprapgh_t
         relationships {
           field_taxonomy_hero_paraprapgh_i {
@@ -847,7 +800,9 @@ export const fragment = graphql`
 
   fragment vocabularySkinConcerHero on paragraph__taxonomy_hero_paraprapgh {
     id
-    field_taxonomy_hero_para_desc
+    field_taxonomy_hero_para_descrip {
+      processed
+    }
     field_taxonomy_hero_para_title
     field_taxonomy_hero_paraprapgh_t
     relationships {
