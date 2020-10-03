@@ -23,6 +23,12 @@ steps:
 - script: |
     gatsby build
   displayName: 'gatsby build'
+- script:  |
+    npm install gatsby-plugin-offline
+  displayName: 'gatsby offline'
+- script: |
+    gatsby serve
+  displayName: 'gatsby serve'
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'public/'
