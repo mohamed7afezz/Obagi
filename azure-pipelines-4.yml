@@ -21,10 +21,6 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    gatsby serve
-  displayName: 'gatsby serve'
-
-- script: |
     npm install gatsby-plugin-offline
   displayName: 'gatsby plugin offline'
 
