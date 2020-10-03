@@ -33,7 +33,7 @@ const OrderNoHistory = ({ node }) => {
                 </div>
 
                 <div className={myAccountStyles.bottomHalf}>
-                    <div className={myAccountStyles.bottomTitle}>Try our Skinanalyzer</div>
+                    <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
                     <div className={myAccountStyles.bottomLink}>TAKE THE QUIZ</div>
                     <div className={myAccountStyles.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
