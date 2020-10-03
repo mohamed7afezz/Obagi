@@ -149,7 +149,7 @@ const YourBag = (props, {notificationId}) => {
 
   const data = useStaticQuery(graphql`
   query {
-    skinanalyzerMob: file(relativePath: { eq: "Skin Analyzer295.jpg" }) {
+    skinanalyzerMob: file(relativePath: { eq: "Skin_Analyzer295.jpg" }) {
       childImageSharp {
           fluid (quality: 100){
               ...GatsbyImageSharpFluid
@@ -157,7 +157,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    skinanalyzerDesk: file(relativePath: { eq: "Skin Analyzer166.jpg" }) {
+    skinanalyzerDesk: file(relativePath: { eq: "Skin_Analyzer166.jpg" }) {
       childImageSharp {
           fixed{
               ...GatsbyImageSharpFixed
