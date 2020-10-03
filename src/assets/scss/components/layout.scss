@@ -1267,13 +1267,13 @@ p {
     .faq-sign {
         position: absolute;
         content: '';
-        width: 24px;
+        width: 25px;
         height: 24px;
         right: 0;
         top: 55px;
         background-image: url('../../images/minus.png');
         
-
+        background-size: cover;
         &.collapsed {
             background-image: url('../../images/plus.png');
         }

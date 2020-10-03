@@ -1335,7 +1335,7 @@ fill : #fff !important;
   }
 }
 
-#appointment .modal-dialog{
+#appointment .modal-dialog,#advancedSearch .modal-dialog{
   max-width: 800px;
   
 }
@@ -1440,4 +1440,110 @@ padding-bottom: 16px;
   @include md-screen{
     margin-bottom: 0;
   }
+}
+#appointment .modal-header .close::before, #appointment .modal-header .close::after,
+#advancedSearch .modal-header .close::before, #advancedSearch .modal-header .close::after {
+
+  top: 32%;
+  height: 32px;
+ 
+}
+#advancedSearch{
+  .modal-header{
+    border-bottom: 0;
+  }
+  .doc-name{
+    padding: 0;
+    border: 0;
+   max-width: 800px;
+   margin-left: auto;
+   margin-right: auto;
+    margin-bottom: 0 !important;
+    .doctitle{
+      font-weight: 400;
+}
+}
+    
+ .custom-select{
+  border: 0;
+  padding: 0;
+}
+ .select-selected{
+  background-color: transparent;
+  
+  color: #132466;
+  padding-bottom: 0;
+  border: 0;
+}
+ .select-items div{
+
+  color: #132466;
+}
+ .select-items, .select-items:hover{
+  background-color: #fff;
+  }
+ 
+  .inputs-con div:nth-child(odd){
+    flex: 0 0 70%;
+  }
+  .inputs-con div:nth-child(even){
+    flex: 0 0 25%;
+  }
+  .appointment-Submit{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+  }
+  .advanced-search{
+    padding-top: 24px;
+  }
+  .select-items{
+    max-height: 200px;
+    overflow: auto;
+  } .select-items::-webkit-scrollbar {
+    display: none;
+  }
+  .select-items{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.seprator{
+  background-color: #d6d6d6;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.space-between{
+  justify-content: space-between;
+}
+.result-count{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+.clear-selection{
+  background-color: transparent;
+  border: 0;
+  color: #132466;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+.select-prod{
+  color: #7c858a;
+  font-size: 14px;
+  line-height: 16px;
+}
+.search-res{
+  flex: 100%;
+  border-radius: 6px;
+  border: 1px solid #132466;
+  @include md-screen{
+    flex:0 0 47%;
+    justify-content: space-between;
+  }
+}
 }
