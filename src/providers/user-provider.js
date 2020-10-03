@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
 
     const [redirectUrl, setRedirectUrl] = useState();
     const [user, setUser] = useState(false);
+    const [notif, setNotif] = useState();
     const [err, setErr] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [matchEmail, setMatchEmail] = useState(true);
@@ -116,7 +117,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, err, matchEmail, isLoading, redirectUrl, setIsLoading, setRedirectUrl, handleLogin, handleLogout, handleRegister }}>
+        <UserContext.Provider value={{ user, err, matchEmail, isLoading, redirectUrl, notif, setNotif, setIsLoading, setRedirectUrl, handleLogin, handleLogout, handleRegister }}>
             {children}
         </UserContext.Provider>
     )

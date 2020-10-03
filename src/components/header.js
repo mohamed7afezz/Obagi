@@ -134,6 +134,13 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
     }
   }
 }
+personIcon: file(relativePath: { eq: "user-type.png" }) {
+  childImageSharp {
+    fixed (quality: 100){
+      ...GatsbyImageSharpFixed
+    }
+  }
+}
 
     istock: file(relativePath: { eq: "2-i-stock-985783976.png" }) {
       childImageSharp {
@@ -200,6 +207,12 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
       x.style.display = "flex";
     } else {
       x.style.display = "none";
+    }
+  }
+
+  function openBag() {
+    if(document.querySelector(".Notify")) {
+      document.querySelector(".Notify").style.display = "block";
     }
   }
 
@@ -362,7 +375,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
-                            <button to="#" className={'locker'} onClick={() => value.addNotification('Item added successfully')} className={headerStyles.navButton}>
+                            <button type="button" className={'locker'} onClick={() => {value.addNotification('Item added successfully'); openBag();}} className={headerStyles.navButton}>
                               <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                               {value &&
                                 value.state.cart &&
@@ -465,7 +478,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                         user?
                           <>
                             <button type="button" data-toggle="modal" data-target="#show-account">
-                              person icon
+                              <Img fixed={data.personIcon.childImageSharp.fixed}/> Welcome, {user.first_name}
                             </button>
                             {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
@@ -479,7 +492,7 @@ press: file(relativePath: { eq: "11-29-201841195.png" }) {
                         return (
                           <div className={headerStyles.navButton}>
                             <div className={headerStyles.cartWrapper}>
-                              <button to="#" className={'locker'} onClick={() => value.addNotification('Item added successfully')}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              <button type="button" className={'locker'} onClick={() => {value.addNotification('Item added successfully'); openBag();}}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
                                   value.state.cart &&
                                   value.state.cart.numberItems > 0 && (

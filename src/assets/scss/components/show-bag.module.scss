@@ -8,7 +8,7 @@
     color: #132466;
     text-align: center;
     max-width: 265px;
-
+    margin: 0 auto;
     @include lg-screen {
         max-width: 100%;
         padding-bottom: 16px;
@@ -23,12 +23,14 @@
     // width: 100%;
     display: block;
     // padding-top: 24px;
-    padding-bottom: 40px;
+    padding: 0;
     // border-radius: 6px;
     text-align: center;
     // border: 1px solid #132466;
     text-decoration: underline;
-
+    background: transparent;
+    border: none;
+    margin: 0 auto 40px;
     &:hover {
         color: #132466;
     }
@@ -73,9 +75,9 @@
       width: 100%;
   }
   .final{
-      padding: 16px 23px ;
+      padding: 16px 23px 0;
       @include md-screen{
-          padding: 24px 40px;
+          padding: 24px 40px 0;
       }
   }
   .BagProductLink{
@@ -177,6 +179,10 @@
     margin-left: -8px;
     position: relative;
 
+    img {
+        border-radius: 6px;
+
+    }
     @include lg-screen {
         position: unset;
         margin: 0;
@@ -204,7 +210,10 @@
         padding: 33px 19px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        margin-bottom: 0;
+        // margin-bottom: 0;
+        margin: 8px 0;
+        height: 100%;
+        white-space: nowrap;
 
     }
 }
@@ -244,8 +253,8 @@
 .bottomWrapper {
 
     @include lg-screen {
-    margin-bottom: 146px;
-
+        margin-bottom: 146px;
+        display: flex;
     }
 }
 
@@ -256,12 +265,17 @@
 
     @include lg-screen {
         margin: 0 -40px;
+        padding: 24px 40px 40px;
     }
 }
 
 .recommended-title {
     @include fontStyle(18, 32);
     @extend %futurapt-bold;
+
+    @include lg-screen {
+        padding-bottom: 8px;
+    }
 }
 
 .product-wrapper {
@@ -271,6 +285,10 @@
     border-radius: 6px;
     box-shadow: 0 1px 4px 0 rgba(54, 75, 95, 0.15);
     margin-top: 16px;
+
+    @include lg-screen {
+        padding: 24px 24px 24px 16px;
+    }
 }
 
 .small-wrapper {
@@ -290,6 +308,10 @@
 .product-image {
     width: 100%;
     padding-right: 16px;
+    
+    @include lg-screen {
+        padding-right: 23px;
+    }
 }
 
 .product-name {
@@ -301,6 +323,10 @@
     &:hover {
         text-decoration: none;
         color: #132466;
+    }
+
+    @include lg-screen {
+        padding-bottom: 22px;
     }
 
 }
@@ -319,4 +345,9 @@
     background: #ffffff;
     border: 1px solid #132466;
     border-radius: 6px;
+
+
+    @include lg-screen {
+        margin-left: 84px;
+    }
 }
