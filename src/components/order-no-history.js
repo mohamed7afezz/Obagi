@@ -53,7 +53,7 @@ const OrderNoHistory = ({ node }) => {
                     <div className="col-8 pl-0">
                         <div className="d-flex align-items-center h-100">
                             <div className={myAccountStyles.bottomHalf}>
-                                <div className={myAccountStyles.bottomTitle}>Try our Skinanalyzer</div>
+                                <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                                 <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
                                 <Link to="#" className={myAccountStyles.bottomLink}>TAKE THE QUIZ</Link>
                             </div>
