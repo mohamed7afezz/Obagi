@@ -82,7 +82,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_paraprapgh_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_paraprapgh_taxonomy
+                .field_taxonomy_hero_para_descrip.processed:""}}
+              >
+              
+              </div>
             ) : (
               ""
             )}
@@ -154,7 +161,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_categories_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              
+              dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_categories_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_categories_taxonomy
+                .field_taxonomy_hero_para_descrip.processed:""}}
+              >
+               
+              </div>
             ) : (
               ""
             )}
@@ -226,7 +241,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_productline_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_productline_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_categories_taxonomy
+                .field_hero_productline_taxonomy.processed:""}}
+              >
+              
+              </div>
             ) : (
               ""
             )}
@@ -298,7 +320,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_ingredients_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_ingredients_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_ingredients_taxonomy
+                .field_hero_productline_taxonomy.processed:""}}
+              >
+            
+              </div>
             ) : (
               ""
             )}
@@ -370,7 +399,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_taxonomy_skintype ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_taxonomy_skintype
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_taxonomy_skintype
+                .field_hero_productline_taxonomy.processed:""}}
+              >
+            
+              </div>
             ) : (
               ""
             )}
@@ -444,7 +480,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}        
+                 dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_hero_clinical_ing_taxonomy
+                  .field_taxonomy_hero_para_descrip?
+                  checkTaxonomy.field_hero_clinical_ing_taxonomy
+                  .field_taxonomy_hero_para_descrip.processed :""}}
+              >
+                
+              </div>
             ) : (
               ""
             )}
@@ -516,7 +559,18 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_parag_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_hero_clinical_ing_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_clinical_ing_taxonomy
+                .field_taxonomy_hero_para_descrip.processed :""}}
+              >
+                {
+                  checkTaxonomy.field_hero_parag_taxonomy
+                    .field_taxonomy_hero_para_descrip
+                    .processed
+                }
+              </div>
             ) : (
               ""
             )}
@@ -588,7 +642,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_hero_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_taxonomy
+                .field_taxonomy_hero_para_descrip.processed :""}}
+              >
+             
+              </div>
             ) : (
               ""
             )}
@@ -660,7 +721,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_hero_category_taxonomy ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_hero_category_taxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_hero_category_taxonomy
+                .field_taxonomy_hero_para_descrip.processed :""}}
+              >
+               
+              </div>
             ) : (
               ""
             )}
@@ -730,7 +798,14 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
             {checkTaxonomy.field_taxonomy_hero_para_descrip ? (
-              <div className={Collectionherostyle.collectiondescription} dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_hero_para_descrip.processed: '' }}></div>
+              <div className={Collectionherostyle.collectiondescription}
+              dangerouslySetInnerHTML={{ __html: checkTaxonomy
+                .field_taxonomy_hero_para_descrip?
+                checkTaxonomy.field_taxonomy_hero_para_descrip
+                .processed :""}}
+              >
+             
+              </div>
             ) : (
               ""
             )}
@@ -776,8 +851,8 @@ export const fragment = graphql`
     relationships {
       field_hero_paraprapgh_taxonomy {
         field_taxonomy_hero_para_title
-        field_taxonomy_hero_para_descrip {
-          processed
+        field_taxonomy_hero_para_descrip{
+            processed
         }
         field_taxonomy_hero_paraprapgh_t
         relationships {
@@ -800,8 +875,8 @@ export const fragment = graphql`
 
   fragment vocabularySkinConcerHero on paragraph__taxonomy_hero_paraprapgh {
     id
-    field_taxonomy_hero_para_descrip {
-      processed
+    field_taxonomy_hero_para_descrip{
+        processed
     }
     field_taxonomy_hero_para_title
     field_taxonomy_hero_paraprapgh_t
