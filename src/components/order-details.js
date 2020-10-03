@@ -24,7 +24,7 @@ const OrderDetails = (props, { node }) => {
   async function getDetails() {
     // setIsLoading(true);
     const detailsData = await (
-      await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}`, {
+      await fetch(`https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}`, {
         method: "GET",
         credentials: "include",
         mode: "cors",
@@ -44,7 +44,7 @@ const OrderDetails = (props, { node }) => {
   async function getshipment() {
     const getshipping = await (
       await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipments`,
+        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/shipments`,
         {
           method: "GET",
           credentials: "include",
@@ -63,7 +63,7 @@ const OrderDetails = (props, { node }) => {
     setIsLoading(true)
     const productsData = await (
       await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/products`,
+        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/products`,
         {
           method: "GET",
           credentials: "include",
@@ -86,7 +86,7 @@ const OrderDetails = (props, { node }) => {
     // setIsLoading(true);
     const shippingAddressesData = await (
       await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`,
+        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`,
         {
           method: "GET",
           credentials: "include",

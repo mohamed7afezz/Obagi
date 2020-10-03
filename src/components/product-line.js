@@ -407,8 +407,7 @@ const ProductLine = ({ node }) => {
                                             producttitle={item.title}
                                             productdescription={{
 
-                                              __html: item.field_medical_description.processed
-                                            }}
+                                              __html: item.field_medical_description?item.field_medical_description.processed:""                                            }}
                                             productimage={
                                               item.relationships.field_medical_image[0]
                                                 ? (item.relationships.field_medical_image[0]

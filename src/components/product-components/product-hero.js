@@ -34,7 +34,7 @@ const ProductHero = ({ data, nodeType }) => {
     : node.relationships.field_medical_rx.name
   let field_description = isClincal
     ? node.field_clinical_description.processed
-    : node.field_medical_description.processed
+    : node.field_medical_description?node.field_medical_description.processed:''
   let field_medical_type = isClincal
     ? node.field_clinical_medical_type
     : node.field_medical_form_list

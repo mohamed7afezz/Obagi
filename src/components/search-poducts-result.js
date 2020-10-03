@@ -241,7 +241,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_medical_description.processed,
+                            __html: item.field_medical_description?item.field_medical_description.processed:""
                           }}
                           productimage={
                             item.relationships.field_medical_image[0]
@@ -342,7 +342,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_medical_description.processed,
+                            __html: item.field_medical_description?item.field_medical_description.processed:""
                           }}
                           productimage={
                             item.relationships.field_medical_image[0]
