@@ -1509,9 +1509,16 @@ height:  32px;
   #appointment .modal-dialog{
     margin: 0;
   }
+  #advancedSearch{
+    padding-left: 0!important;
+  }
+  #advancedSearch .modal-dialog{
+    margin: 0;
+  }
   .mob-mt-24{
     margin-top: 24px !important;
   }
+  
 }
 #appointment .select-items div:hover, #appointment .same-as-selected{
   background-color: #fff;

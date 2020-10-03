@@ -251,9 +251,43 @@ export default function Finder() {
                 </div>
                 <p class="select-prod">Select the products below you are interested in </p>
             </form>
+            <Scrollbars style={{ height: 400 }}>
             <div class="d-flex search-results">
-                <div class="search-res left-res"></div>
-                <div class="search-res right-res"></div>
+                
+                <div class="search-res left-res">
+                    <p class="result-tax">Obagi Nu-Derm System</p>
+                    <div class="d-flex d-col">
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    </div>
+                    <p class="not-ava">Not available in select states including MA, MT, NH, NY, and TX,
+                 due to state regulations regarding the ability of physicians to dispense prescription drug products in their offices. 
+                 For an effective, cosmetic skin-brightening option, learn about the Obagi-C® Fx System.</p>
+                </div>
+                <div class="search-res right-res">
+                <p class="result-tax">Obagi-C Rx System</p>
+                <div class="d-flex d-col">
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    <label><input type="checkbox"/>Blender</label>
+                    </div>
+                <p class="not-ava">Not available in select states including MA, MT, NH, NY, and TX,
+                 due to state regulations regarding the ability of physicians to dispense prescription drug products in their offices. 
+                 For an effective, cosmetic skin-brightening option, learn about the Obagi-C® Fx System.</p>
+                </div>
+            </div>
+            </Scrollbars>
+            <div class="">
+                <button class="submit-search-physician">Search for a physician</button>
             </div>
            </div>
 

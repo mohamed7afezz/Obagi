@@ -1388,7 +1388,10 @@ fill : #fff !important;
 .inputs-con{
   flex-wrap: wrap;
   justify-content: space-between;
-
+flex-direction: column;
+@include md-screen{
+  flex-direction: row;
+}
   div{
     flex: 0 0 100%;
     @include md-screen{
@@ -1493,11 +1496,13 @@ padding-bottom: 16px;
     padding-top: 24px;
     padding-bottom: 24px;
     width: 100%;
-    height: 100%;
+    align-self: center;
     font-weight: 700;
+    
   }
   .advanced-search{
     padding-top: 24px;
+   
   }
   .select-items{
     max-height: 200px;
@@ -1511,8 +1516,8 @@ padding-bottom: 16px;
 }
 .seprator{
   background-color: #d6d6d6;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .space-between{
   justify-content: space-between;
@@ -1536,14 +1541,55 @@ padding-bottom: 16px;
   color: #7c858a;
   font-size: 14px;
   line-height: 16px;
+  padding-bottom: 16px;
 }
 .search-res{
   flex: 100%;
+  padding: 32px;
   border-radius: 6px;
   border: 1px solid #132466;
+  margin-bottom: 24px;
   @include md-screen{
     flex:0 0 47%;
-    justify-content: space-between;
   }
+}
+.search-results::-webkit-scrollbar {
+  display: none;
+}
+.search-results{
+
+  overflow: auto;
+  flex-wrap: wrap;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+  justify-content: space-between;
+  input{
+    margin-right: 15px;
+  }
+  .result-tax{
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+}
+.d-col{
+  flex-direction: column;
+}
+.not-ava{
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 16px;
+}
+.submit-search-physician{
+  padding-top: 24px;
+  padding-bottom: 24px;
+  color: #fff;
+  background-color: #132466;
+  width: 100%;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 }
