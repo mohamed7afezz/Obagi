@@ -18,7 +18,7 @@ const addingToCart = value && value.state.addingToCart
     return (
 
         <div className={ShowBagStyle.productWrapper}>
-            <div className={ShowBagStyle.productImage}><Img fluid={recImage} /></div>
+            <div className={ShowBagStyle.productImage}><Img fluid={recImage? recImage: ''} /></div>
 
             <div className={ShowBagStyle.smallWrapper}>
                 <Link to={recLink} className={ShowBagStyle.productName}><div>{recTitle}</div></Link>
