@@ -749,7 +749,7 @@ const YourBag = (props, {notificationId}) => {
 
           <div className="d-lg-none">
             <div className={ShowBagStyle.bottomHalf}>
-              <div className={ShowBagStyle.bottomTitle}>Try our Skinanalyzer</div>
+              <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
               <div className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</div>
               <div className={ShowBagStyle.image}>{data.skinanalyzerMob? data.skinanalyzerMob.childImageSharp?<Img fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
@@ -764,7 +764,7 @@ const YourBag = (props, {notificationId}) => {
               {/* <div className="col-8 pl-0"> */}
                 {/* <div className="d-flex align-items-center h-100"> */}
                   <div className={ShowBagStyle.bottomHalf}>
-                    <div className={ShowBagStyle.bottomTitle}>Try our Skinanalyzer</div>
+                    <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
                     <Link to="#" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</Link>
                   {/* </div> */}
