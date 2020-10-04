@@ -52,10 +52,12 @@ top: 5px;
     @include md-screen{
         font-size: 64px;
         line-height: 72px;
-        padding-bottom: 14px;
+        padding-bottom: 16px;
     }
 }
 .collectiondescription{
+    @extend %futurapt-light;
+
     font-size: 18px;
     line-height: 27px;
     @include md-screen{    

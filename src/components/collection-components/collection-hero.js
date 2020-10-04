@@ -53,7 +53,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -97,7 +97,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -132,7 +132,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -177,7 +177,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_categories_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -212,7 +212,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -256,7 +256,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -291,7 +291,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -335,7 +335,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -370,7 +370,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -403,7 +403,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               dangerouslySetInnerHTML={{ __html:checkTaxonomy.field_hero_taxonomy_skintype
                 .field_taxonomy_hero_para_descrip?
                 checkTaxonomy.field_hero_taxonomy_skintype
-                .field_hero_productline_taxonomy.processed:""}}
+                .field_taxonomy_hero_para_descrip.processed:""}}
               >
             
               </div>
@@ -414,7 +414,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_taxonomy_skintype ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -451,7 +451,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -495,7 +495,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -530,7 +530,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -574,7 +574,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_parag_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -609,7 +609,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -653,7 +653,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -688,7 +688,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -732,7 +732,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.field_hero_category_taxonomy ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
@@ -767,7 +767,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           <div
             className={[
               "col-12",
-              "col-lg-3",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -809,7 +809,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
           {checkTaxonomy.relationships ? (
             <div
               className={[
-                "col-lg-7",
+                "col-lg-5",
                 "offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,

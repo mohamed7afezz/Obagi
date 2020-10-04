@@ -172,6 +172,9 @@ const ProductLine = ({ node }) => {
         edges {
           node {
             name
+            field_medical_pro_col_footer_mod {
+              processed
+            }
             field_product_lines_cta_title
             description {
               processed

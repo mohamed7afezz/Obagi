@@ -190,7 +190,7 @@ console.log("ash", productId);
         <div className={["pathname", "col-12"].join(" ")}>
           <p className="pathtitle">
             <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${nodeType}`}> {nodeType} </Link>/ {node.title}
+            <Link to={`/${nodeType}`}> {nodeType}</Link> / {node.title}
           </p>
         </div>
         <div className={["col-12",""].join(" ")}>
