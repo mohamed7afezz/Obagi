@@ -178,6 +178,7 @@ const OrderDetails = (props, { node }) => {
         </div>
 
         <div className="row">
+            {getshiping ?   <>
           <div class="col-lg-7 offset-lg-1">
             <div className={orderDetailsStyles.shipmentsplit}>
               <p>
@@ -494,6 +495,223 @@ const OrderDetails = (props, { node }) => {
               </div>
             )}
           </div>
+       
+       
+       </>:
+       <>
+       <div className="col-12  d-lg-none">
+    <div className={orderDetailsStyles.accordion}>
+        <div className={orderDetailsStyles.accordionHeader}>
+            <div className={orderDetailsStyles.itemsCount}>{products ? (products.length > 1 ? products.length + " Items" : products.length + " Item") : ""}</div>
+            <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
+                View Details
+            </button>
+        </div>
+
+        <div className="collapse" id="detailsAccordion">
+
+            {isLoading ?
+                <div>Loading...</div>
+                :
+                (products.map((item, index) => {
+
+
+                    return (
+                        <div className={orderDetailsStyles.productWrapper}>
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                </div>
+                            </form>
+                            {item.images.data.map((item, index) => {
+                                return (
+                                    <img src={item.url_tiny} />
+                                )
+                            })}
+                            <div className={orderDetailsStyles.productInfoWrapper}>
+                                <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
+                                <div className={orderDetailsStyles.priceAndQuantity}>
+                                    <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
+                                    <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + item.total_inc_tax : ""}</div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }))
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+<div className="col-lg-7 offset-lg-1 d-none d-lg-block">
+
+    {isLoading ?
+        <div>Loading...</div>
+        :
+        (products.map((item, index) => {
+            return (
+                <div className={orderDetailsStyles.productWrapper}>
+                    <div className={orderDetailsStyles.productInfoWrapper}>
+                        <div className={orderDetailsStyles.productName}>
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                </div>
+                            </form>
+                            <div className={orderDetailsStyles.productImage}>
+                                {item.images.data.map((item, index) => {
+                                    return (
+                                        <img src={item.url_tiny} />
+                                    )
+                                })[0]}
+                            </div>
+                            {item.name ? item.name : ""}
+                        </div>
+                        <div className={orderDetailsStyles.productQuantity}>
+                            {item.quantity ? "Qty. " + item.quantity : ""}
+                        </div>
+                        <div className={orderDetailsStyles.productPrice}>
+                            {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
+                        </div>
+                    </div>
+                </div>
+            )
+        }))
+    }
+
+
+</div>
+
+<div className="col-12 col-lg-3">
+    {isLoading ?
+        ""
+        :
+        <div className={orderDetailsStyles.orderWrapper}>
+            <div className={orderDetailsStyles.detailsHeader}>
+                <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
+                <a href={"https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
+            </div>
+
+            <div className={orderDetailsStyles.detailPart}>
+                <p>Status</p>
+                <p>{details.status ? details.status : ""}</p>
+            </div>
+
+            <div className={orderDetailsStyles.detailPart}>
+                <p>Order Placed</p>
+                <p>{placedOnDate ? `${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}` : ""}</p>
+            </div>
+
+            {shippingAddresses.map((item, index) => {
+                return (
+                    <div className={orderDetailsStyles.detailPart}>
+                        <p>Shipping Address</p>
+                        <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
+                        <p>{item.street_1 ? item.street_1 : ""}</p>
+                        <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
+                        <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
+                    </div>
+                )
+            })}
+
+            <div className={orderDetailsStyles.detailPart}>
+                <p>Billing Address</p>
+                <p>{details.billing_address ? details.billing_address.first_name : ""} {details.billing_address ? details.billing_address.last_name : ""}</p>
+                <p>{details.billing_address ? details.billing_address.street_1 : ""}</p>
+                <p>{details.billing_address ? details.billing_address.city : ""} {details.billing_address ? details.billing_address.state : ""}, {details.billing_address ? details.billing_address.zip : ""}</p>
+                <p>{details.billing_address ? details.billing_address.country_iso2 : ""}</p>
+            </div>
+
+            <div className={orderDetailsStyles.detailPart}>
+                <p>Payment</p>
+                <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
+            </div>
+
+            <div className={orderDetailsStyles.detailPart}>
+                <p>Actions</p>
+                <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
+            </div>
+
+
+            <div className={orderDetailsStyles.totalWrapper}>
+                <div>Order Total</div>
+                <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" + details.total_inc_tax : ""}</div>
+            </div>
+
+            <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
+                <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
+                    onClick={() => {
+                        let flag = true;
+
+                        // 1 - loop on all checked boxes
+                        document.querySelectorAll('.details-check').forEach((el) => {
+                            // 2 - check if it's select then => get product id
+
+                            if (el.checked) {
+                                // 3 - send cart request
+                                
+                                addToCart(el.value, false, 1);
+                                
+                                // console.log("value", el.value)
+                                flag = false;
+
+                            }
+                            
+
+
+                        })
+                        
+
+                        if (flag && typeof $ !== "undefined") {
+                            $("#checkModal").modal("show");
+                        
+                        }
+                    }}
+                // disabled={addingToCart === productId}
+                >Re-order</button>
+            </div>
+
+            <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
+                <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
+                    onClick={() => {
+                        let flag = true;
+                        // 1 - loop on all checked boxes
+                        document.querySelectorAll('.desk-details-check').forEach((el) => {
+                            // 2 - check if it's select then => get product id
+
+                            if (el.checked) {
+                                // 3 - send cart request
+                                
+                                addToCart(el.value, false, 1);
+                                
+                                // console.log("value", el.value)
+                                flag = false;
+                                elementId = el.value;
+                            }
+                            
+
+
+                        })
+                        
+
+                        if (flag && typeof $ !== "undefined") {
+                            $("#checkModal").modal("show");
+                        }
+                    }}
+                // disabled={addingToCart === elementId}
+                >Re-order</button>
+            </div>
+        </div>
+    }
+</div>
+
+       </>
+       }
+
+
         </div>
       </div>
 

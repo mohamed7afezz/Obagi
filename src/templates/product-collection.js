@@ -11,10 +11,10 @@ import CollectionProducts from '../components/collection-components/collectoin-p
 const ClinicalCollectionTemp = props  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
   
-   
+    
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
-        <CollectionHero node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
+        <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
         <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data}/>
       </Layout>

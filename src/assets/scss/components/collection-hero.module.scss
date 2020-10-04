@@ -70,9 +70,12 @@ top: 5px;
     padding-top: 48px;
     padding-bottom: 48px;
     @include md-screen{
-        padding-top: 245px;
+        padding-top: 195px;
         padding-bottom: 112px;
     }
+}
+.breadcramp-con{
+    padding-bottom: 72px;
 }
 .allheight{
     height: 100%;
