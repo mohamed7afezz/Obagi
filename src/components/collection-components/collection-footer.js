@@ -3,7 +3,7 @@ import { useStaticQuery,graphql } from "gatsby"
 import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
 import Img from 'gatsby-image'
 const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
-  console.log('hassan',node)
+
   const FooterBlockList = useStaticQuery(graphql`
     query{
       allBlockContentTaxonomyFooterBlock {

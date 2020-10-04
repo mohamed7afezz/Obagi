@@ -12,6 +12,9 @@ import $ from 'jquery'
 import CartContext from "../providers/cart-provider"
 import Showbag from "./bag-preview"
 import { parse } from "@fortawesome/fontawesome-svg-core"
+import paypal from "../assets/images/product-images/paypal.png"
+import appelpay from "../assets/images/product-images/appelPay.png"
+import visa from "../assets/images/product-images/visa.png"
 
 
 const AdjustItem = props => {
@@ -716,7 +719,23 @@ const YourBag = (props, {notificationId}) => {
                         type="submit">
                         Checkout
                       </button>
+                      <button
+                        className={BagStyle.buttonImg}
+                        type="submit">
+                       <img type="submit" src={paypal}/>
+                         </button>
+                         <button
+                        className={BagStyle.buttonImg}
+                        type="submit">
+                       <img type="submit" src={appelpay}/>
+                         </button>
+                         <button
+                        className={BagStyle.buttonImg}
+                        type="submit">
+                       <img type="submit" src={visa}/>
+                         </button>
                     </form>
+                      
                   </div>
                 </div>
               </div>
