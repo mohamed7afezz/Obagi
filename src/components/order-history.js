@@ -63,7 +63,7 @@ const OrderHistory = ({ node }) => {
                             placedOn = {item.date_created}
                             lastUpdated = {item.date_modified}
                             itemsNum = {item.items_total}
-                            total = {item.total_inc_tax}
+                            total = {parseFloat(item.total_inc_tax).toFixed(2)}
                             status = {item.status}
                         
                         />
@@ -94,7 +94,7 @@ const OrderHistory = ({ node }) => {
                                         placedOn = {item.date_created}
                                         lastUpdated = {item.date_modified}
                                         itemsNum = {item.items_total}
-                                        total = {item.total_inc_tax}
+                                        total = {parseFloat(item.total_inc_tax).toFixed(2)}
                                         status = {item.status}
                                     
                                     />

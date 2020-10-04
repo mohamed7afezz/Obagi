@@ -15,6 +15,17 @@
         padding: 40px 40px 0;
     }
 }
+.buttonImg{
+    width: 100%;
+border: 0;
+background: transparent;
+padding: 0;
+margin-top: 16px;
+border-radius: 6px;
+img{
+    max-width: 95%;
+}
+}
 .bagHead{
     font-size: 28px;
     line-height: 48px;

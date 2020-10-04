@@ -4,6 +4,20 @@
 .collectionfooter{
 background-color: #44c4d9;
 }
+.footer-medical-bg.collectionfooter{
+background-color: #868cd2;
+.CollectionFooterContainer{
+    background-color: #868cd2;
+}
+.typecon,.collectionFooterTitle,.subtitle,.description,.linkcontainer{
+    color: #fff;
+  a
+  { 
+    color: #fff;  
+    border-color: #fff;
+  }
+}
+}
 .CollectionFooterContainer{
     margin-top: 48px;
     margin-bottom: 48px;
@@ -159,5 +173,35 @@ top: 5px;
     text-align: center;
     @include  md-screen{
     text-align: left;
+    }
+}
+.footerModCon{
+    background-color: rgba(134, 140, 210,0.1);
+    padding-top: 48px;
+    padding-bottom: 48px;
+    h2{
+        font-size: 36px;
+        line-height: 46px;
+        margin-bottom: 16px;
+        font-weight: 300;
+        color: #101e6a;
+        @include md-screen{
+            font-size: 64px;
+            line-height: 74px;
+        }
+    }
+    p{
+        color: #101e6a;
+        font-size: 28px;
+        line-height: 40px;
+        font-weight: 300;
+        @include md-screen{
+            font-size: 28px;
+            line-height: 27px;
+        }
+    }
+    @include md-screen{
+        padding-top: 96px;
+        padding-bottom: 96px;
     }
 }

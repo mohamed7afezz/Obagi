@@ -2,8 +2,8 @@ import React  from 'react'
 import { useStaticQuery,graphql } from "gatsby"
 import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
 import Img from 'gatsby-image'
-const CollectionFooter = ({ info, blockName })=> {
-  
+const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
+
   const FooterBlockList = useStaticQuery(graphql`
     query{
       allBlockContentTaxonomyFooterBlock {
@@ -36,6 +36,38 @@ const CollectionFooter = ({ info, blockName })=> {
     }
   `);
 
+  let checkfooter = "";
+  let pageNodeType = nodetype ? nodetype : ""
+ 
+  if (pageNodeType == "medicalConcern") {
+    
+    checkfooter =
+    node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod?
+    node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod.processed:""
+  } else if (pageNodeType == "medicalCategories") {
+    checkfooter =
+      node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod?
+      node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod.processed:""
+  }else if(pageNodeType == 'medicalLine'){
+    checkfooter =
+      node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod?
+      node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod.processed:""
+  }else if(pageNodeType == 'skinMedicalType'){
+    checkfooter =
+    node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod?
+    node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod.processed:"" 
+  } else if(pageNodeType == 'MedicalIngredients'){
+    checkfooter =
+    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
+    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:""   
+  }
+  else{
+    checkfooter = "clinical"
+  }
+
+
+
+
   let getdata;
 
   for (let i = 0; i < FooterBlockList.allBlockContentTaxonomyFooterBlock.edges.length; i++) {
@@ -52,10 +84,14 @@ const CollectionFooter = ({ info, blockName })=> {
  
  
   }
-
+ 
 return (
-    
-    <div className={["container-fluid", Collectionfooterstyle.collectionfooter,"collectionhero","collectionfooter"].join(" ")}>
+    <>
+    <div 
+     className={checktaxonomyType === "clinical"? 
+      "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
+      :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
+    >
         <div className={"row"}>
           <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
@@ -77,8 +113,29 @@ return (
                       </div>
                   </div>
                </div>
+           
              </div>
+            
           </div>
+
+          {checkfooter === 'clinical'? ""
+               :
+               <div className={Collectionfooterstyle.footerModCon}>
+                 <div className={["container-fluid"]}>
+                 <div className="row">
+               <div className="col-12 col-lg-8 offset-lg-1">
+               <div className={Collectionfooterstyle.footerMod} 
+               dangerouslySetInnerHTML={{ __html: checkfooter }}
+
+               >
+                </div>
+               </div>
+               </div>
+               </div>
+               </div>
+               }
+
+          </>
     )
 }
 

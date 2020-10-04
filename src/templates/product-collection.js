@@ -16,7 +16,7 @@ const ClinicalCollectionTemp = props  => {
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
         <CollectionHero node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
-        <CollectionFooter node={props.data} blockName={props.data}/>
+        <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data}/>
       </Layout>
     )
 }
@@ -178,6 +178,9 @@ export const productPageQuery = graphql`
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
+            field_medical_sk_col_footer_mod {
+              processed
+            }
             relationships {
                 node__medical_product {
                   field_medical_is_system
@@ -249,6 +252,9 @@ export const productPageQuery = graphql`
       
       taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
         name
+        field_medical_ing_col_footer_mod {
+          processed
+        }
         relationships {
             node__medical_product {
               field_medical_is_system
@@ -318,6 +324,9 @@ export const productPageQuery = graphql`
   },
       taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
         name
+        field_medical_skt_col_footer_mod {
+          processed
+        }
         id
         path {
           alias
@@ -384,6 +393,9 @@ export const productPageQuery = graphql`
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
+            field_medical_cat_col_footer_mod {
+              processed
+            }
             relationships {
                 node__medical_product {
                     field_medical_is_system
@@ -521,6 +533,9 @@ export const productPageQuery = graphql`
           }
         },
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
+          field_medical_pro_col_footer_mod {
+            processed
+          }
           relationships {
             field_hero_productline_taxonomy {
               field_taxonomy_hero_paraprapgh_t
