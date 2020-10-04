@@ -8,10 +8,10 @@ class Temps {
 
     resultTemp (index, obj, isPhy) {
         return `
-            <div class="container-fluid result-con">
+            <div class="container-fluid result-con" id="result-info-wrapper-${index}">
                 <div class="row">
                     <div class="col-3 marker-con">
-                        ${index}
+                        <span class="tray-result-number">${index + 1}</span>
                         <br>${isPhy? '' : (obj.distance.toFixed(2) + '<br>miles')}
                     </div>
                     <div class="info info-list col-9">
@@ -22,7 +22,7 @@ class Temps {
                        <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
                         <div class="row sales-email hide">${obj.email}</div>
                          <div class="row links">
-                           <button class="btn btn-link">6 products</button> <a href="#" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">view website</a>` : ''}
+                           <button class="btn btn-link">6 products</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">view website</a>` : ''}
                          </div>
                     </div>
                 </div>
@@ -33,7 +33,11 @@ class Temps {
     }
 
     infoWindowTemp(obj) {
-        return ``;
+        return `
+            <div>
+                <h2>${obj.name}</h2>
+            </div>
+        `;
     }
 }
 
@@ -240,9 +244,11 @@ class Search extends Temps {
         if(loading) {
             // show loader
             document.getElementById('loader').classList.remove('d-none');
+            this.searchBtn.disabled = true;
         } else {
             // hide loader
             document.getElementById('loader').classList.add('d-none');
+            this.searchBtn.disabled = false;
         }
     }
     
@@ -305,6 +311,14 @@ class Map extends Search {
         this.initCenterLoc = initCenterLoc;
         this.zoom = zoom;
         this.markers = [];
+        this.markerIcon ={
+            default: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin_0.png',
+            active: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin-active.png'
+        }
+        this.infoWindow = new this.google.maps.InfoWindow({
+            content: '',
+            maxWidth: 315
+        });
     }
 
     initMap () {
@@ -317,7 +331,6 @@ class Map extends Search {
 
         // add eventListener while searching with location to change map location
         this.google.maps.event.addListener(this.autoComplete, 'place_changed', () => {
-            console.log('bahii', this.autoComplete)
             this.currPlace = this.autoComplete.getPlace();
 
             if(this.currPlace.geometry) {
@@ -342,26 +355,83 @@ class Map extends Search {
 
         // add event listener after append results to add markers
         document.getElementById('results-wrapper').addEventListener('resultsappend', () => {
+            this.infoWindow.close();
             this.map.panTo(new this.google.maps.LatLng(this.results.clinics[0].lat, this.results.clinics[0].lng));
-            this.map.setZoom(10);
+            this.map.setZoom(9);
             // clear old markers
             this.markers.forEach(marker => {
                 marker.setMap(null);
             })
-            this.marker= [];
+            this.markers= [];
 
             this.results.clinics.forEach((clinic, index) => {
                 const marker = new this.google.maps.Marker({
                     map: this.map,
                     draggable: false,
-                    label: {text: index + 1 + '', color: '#fff'},
+                    label: {text: index + 1 + '', color: '#132466'},
+                    icon: this.markerIcon.default,
                     animation: this.google.maps.Animation.DROP,
                     position: new this.google.maps.LatLng(parseFloat(clinic.lat), parseFloat(clinic.lng))
                 });
-
+                marker.addListener('click', () => {
+                    this.openClinic(index)
+                })
                 this.markers.push(marker)
             })
-            console.log('bahiiii', this.markers)
+
+            this.openClinic(0);
+
+            // add event Listener on tray result number
+            for(let i = 0; i < document.getElementsByClassName('tray-result-number').length; i++) {
+                document.getElementsByClassName('tray-result-number')[i].addEventListener('click', (e) => {
+                    console.log('bahiiii', e)
+                    this.openClinic(i, true)
+                    this.map.panTo(new this.google.maps.LatLng(this.results.clinics[i].lat, this.results.clinics[i].lng));
+                    this.map.setZoom(15)
+                })
+            }
+            
         })
+        
+        
+        // document.getElementsByClassName('tray-result-number').forEach(item => {
+        //     item.addEventListener('click', () => {
+        //         alert('Papa')
+        //     })
+        // })
+    }
+
+    resetMarkersIcon() {
+        this.markers.forEach(marker => {
+            marker.setIcon(this.markerIcon.default);
+            const labelCOlor = marker.getLabel();
+            labelCOlor.color = '#132466';
+            marker.setLabel(labelCOlor)
+        })
+    }
+
+    openClinic(index, stopScrollResult) {
+
+        this.resetMarkersIcon();
+        this.markers[index].setIcon(this.markerIcon.active);
+        const labelCOlor = this.markers[index].getLabel();
+        labelCOlor.color = '#fff';
+        this.markers[index].setLabel(labelCOlor)
+        this.infoWindow.setContent(this.infoWindowTemp(this.results.clinics[index]));
+        this.infoWindow.open(this.map, this.markers[index]);
+
+        
+        const myElement = document.getElementById(`result-info-wrapper-${index}`);
+        
+        for(let i = 0; i < document.getElementsByClassName('result-con').length; i++) {
+            document.getElementsByClassName('result-con')[i].classList.remove('active');
+        }
+        myElement.classList.add('active');
+
+        // scroll the result top
+        if(!stopScrollResult) {
+            const topPos = myElement.offsetTop;
+            document.getElementById('scroll-wrapper').children[0].scrollTop  = topPos - document.getElementById('results-info').offsetHeight;
+        }
     }
 }
