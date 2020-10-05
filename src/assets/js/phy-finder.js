@@ -83,21 +83,30 @@ class Search extends Temps {
             }
         });
 
+        this.prodLocAutoComplete = new this.google.maps.places.Autocomplete(document.getElementById('prodLoc'), {
+            types: ['(regions)'],
+            componentRestrictions: {
+              country: ['us', 'pr']
+            }
+        });
+
         // add event listener on click update search
         this.searchBtn.addEventListener('click', (e) => {
             // get checked radio
             if(this.searchRadios.filter(item => item.checked)[0]) {
-                if(this.searchRadios.filter(item => item.checked)[0].value == 'loc') {
-                    console.log('bahiiii', this.inputLoc.value)
-                    
+                if(this.searchRadios.filter(item => item.checked)[0].value == 'loc') {                    
                     // if zipcode less than 5
-                    if(this.inputLoc.value.length < 4) {
+                    if(this.inputLoc.value.length < 5) {
                         this.setLoading(false);
                         this.err.showErr('invalidZip');
                         return;
                     }
-
-                    this.searchByLocation({address: this.inputLoc.value})
+                    if(isNaN(this.inputLoc.value)) {
+                        this.searchByLocation({useParams: true})
+                    } else {
+                        this.searchByLocation({address: this.inputLoc.value})
+                    }
+                    
                 } else {
                     this.searchByPhys();
                 }
@@ -107,61 +116,82 @@ class Search extends Temps {
             }
         });
 
-        
+        // add event listener on click update searc for products 
+        document.getElementById('submit-search-physician').addEventListener('click', (e) => {
+            // if zipcode less than 5
+            let prodLocInput = document.getElementById('prodLoc');
+            if(prodLocInput.value.length < 5) {
+                this.setLoading(false);
+                this.err.showErr('invalidZip', 'prod');
+                return;
+            }
+            if(isNaN(prodLocInput.value)) {
+                this.searchByLocation({useParams: true}, true)
+            } else {
+                // if input location value only number
+                this.searchByLocation({address: prodLocInput.value}, true)
+            }
+
+            
+        }); 
     }
 
     /**
      * 
      * @param {*} searchOptions object {address: string, location: {lat: number, lng: number}}
      */
-    async searchByLocation(searchOptions) {
+    async searchByLocation(searchOptions, isProd) {
         this.err.hideErr();
         this.setLoading(true);
-
+        
         let geocodeOptions = {};
         
         if(searchOptions.address) {
+            // search by zip code
+            this.emptyParams();  
             geocodeOptions = {
                 'address': searchOptions.address
             }
-        } else {
+            // update Params
+            await this.gcPromise(geocodeOptions).catch(err => {
+                this.setLoading(false);
+                console.log(err)
+            });
+
+        } else if(geocodeOptions.location) {
+            // search from navigator
+            this.emptyParams();  
             geocodeOptions = {
                 'latLng': new this.google.maps.LatLng(searchOptions.location.lat, searchOptions.location.lng)
             }
+            // update Params
+            await this.gcPromise(geocodeOptions).catch(err => {
+                this.setLoading(false);
+                console.log(err)
+            });
+
+        } else {
+            // params are already there.
         }
 
-        this.emptyParams();            
-            
-        let gcPromise = new Promise((res, rej) => {
-            this.geocoder.geocode(geocodeOptions, (results, st) => {
-                    if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
-                        for (var i = 0; i < results[0].address_components.length; i++) {
-                            if (results[0].address_components[i]["types"][0] === "locality") {
-                            this.params["city"] = results[0].address_components[i]["long_name"];
-                            }
-        
-                            if (results[0].address_components[i]["types"][0] === "administrative_area_level_1") {
-                            this.params["state"] = results[0].address_components[i]["short_name"];
-                            }
-        
-                            if (results[0].address_components[i]["types"][0] === "country") {
-                            this.params["country"] = results[0].address_components[i]["long_name"];
-                            }
-        
-                            this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
-                        }
-
-                        res();
-                    } else {
-                        rej(st)
-                    }
-            })
-        
-        });
-
-        await gcPromise.catch(err => {console.log(err)});
-
         this.params.distance = this.inputMiles.value;
+        
+        if(isProd) {
+            // add prodct values to params
+            let products = [];
+
+            for(let i = 0; i < document.getElementsByClassName('product-check-box').length; i++) {
+                let item = document.getElementsByClassName('product-check-box').item(i);
+                if(item.checked) {
+                    products.push(item.value)
+                }
+            }
+            this.params.product = '';
+            this.params.product = products.length > 0? products.join(',') : '';
+            console.log('bahiiii', this.params, products)
+        }
+        
+
         this.results = await this.sendSearchReq();
         
         this.appendResults(this.results.clinics)
@@ -184,9 +214,23 @@ class Search extends Temps {
     }
 
     // helpers
-    getGeoCode() {
+    gcPromise(geocodeOptions) {
+        let gcPromise = new Promise((res, rej) => {
+            this.geocoder.geocode(geocodeOptions, (results, st) => {
+                    if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
+                        this.updateParams(results[0]);
+
+                        res();
+                    } else {
+                        rej(st)
+                    }
+            })
         
+        });
+
+        return gcPromise;
     }
+
     emptyParams() {
         this.params = {
             city: '',
@@ -229,15 +273,21 @@ class Search extends Temps {
 
     async sendSearchReq() {
         let qs = Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
-        let req = await (await fetch(this.ajaxURL, {
+        console.log('bahiiii', qs)
+        let req = await fetch(this.ajaxURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); this.setLoading(false)})).json();
+        }).catch(err => {console.log(err); this.setLoading(false)});
 
-        return req;
+        let res = {};
+        if(req.status === 200) {
+            res = await req.json();
+        }
+
+        return res;
     }
 
     setLoading (loading) {
@@ -249,6 +299,7 @@ class Search extends Temps {
             // hide loader
             document.getElementById('loader').classList.add('d-none');
             this.searchBtn.disabled = false;
+            this.searchBtn.classList.remove('pulse');
         }
     }
     
@@ -265,9 +316,14 @@ class Search extends Temps {
          * @param {errType} errType string [noRes, moreChars, invalidZip]
          */
         return {
-            showErr: function (errType) {
-                document.getElementById('err-msg').classList.remove('d-none');
-                document.getElementById('err-msg').innerHTML = errMsgs[errType];
+            showErr: function (errType, errFor) {
+                if(errFor === 'prod') {
+                    document.getElementById('prod-err-msg').classList.remove('d-none');
+                    document.getElementById('prod-err-msg').innerHTML = errMsgs[errType];
+                } else {
+                    document.getElementById('err-msg').classList.remove('d-none');
+                    document.getElementById('err-msg').innerHTML = errMsgs[errType];
+                }                
             },
     
             hideErr: function () {
@@ -276,7 +332,7 @@ class Search extends Temps {
         }
     }
 
-    updateParams(location) {
+    updateParams(location, paramsFor) {
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
@@ -293,7 +349,9 @@ class Search extends Temps {
         });
         this.searchBtn.disabled = false;
         // add pulse class
-        this.searchBtn.classList.add('pulse');
+        if(paramsFor != 'prod') {
+            this.searchBtn.classList.add('pulse');
+        }
     }
 }
 
@@ -331,15 +389,13 @@ class Map extends Search {
 
         // add eventListener while searching with location to change map location
         this.google.maps.event.addListener(this.autoComplete, 'place_changed', () => {
-            this.currPlace = this.autoComplete.getPlace();
-
-            if(this.currPlace.geometry) {
-                this.map.panTo(this.currPlace.geometry.location);
-                this.map.setZoom(15);
-                // update params
-                this.updateParams(this.currPlace);
-            }
+            this.autoCompFN(this.autoComplete);
         });
+
+        this.google.maps.event.addListener(this.prodLocAutoComplete, 'place_changed', () => {
+            this.autoCompFN(this.prodLocAutoComplete, 'prod');
+        });
+
 
         // check if browser navigator is allowed
         if(navigator.geolocation) {
@@ -393,12 +449,17 @@ class Map extends Search {
             
         })
         
-        
-        // document.getElementsByClassName('tray-result-number').forEach(item => {
-        //     item.addEventListener('click', () => {
-        //         alert('Papa')
-        //     })
-        // })
+    }
+
+    autoCompFN (autoComp, autoCompFor) {
+        this.currPlace = autoComp.getPlace();
+
+        if(this.currPlace.geometry) {
+            this.map.panTo(this.currPlace.geometry.location);
+            this.map.setZoom(15);
+            // update params
+            this.updateParams(this.currPlace, autoCompFor);
+        }
     }
 
     resetMarkersIcon() {
