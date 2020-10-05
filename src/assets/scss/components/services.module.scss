@@ -104,11 +104,45 @@
     
         &:hover {
             background: #ffffff;
-            box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+            box-shadow: 0 8px 30px 0 #364b5f26;
         }
     }
 }
+.twoCards .link{
+    border-color: #fff;
+    color: #fff;
 
+}
+
+.twoCards .medical-sub::before{
+background-color: #44c4d9;
+}
+.footer-medical-bg{
+    .twoCards .medical-sub::before{
+        background-color: #868cd2;
+        }
+}
+.twoCards .subtitle{
+    margin-right: 36px;
+}
+.twoCards .card-wrapper{
+    @include lg-screen {
+        border-radius: 6px;
+        color: #fff;
+        &:hover {
+            background: #ffffff;
+            color: #132466;
+            box-shadow: 0 8px 30px 0 #364b5f26;
+            .link{
+                color: #132466;
+                border-color: #132466;
+                &:hover {
+                    color: #fff;
+                }
+                }
+        }
+    }
+}
 .column-wrapper {
     @include lg-screen {
         margin-bottom: 141px;

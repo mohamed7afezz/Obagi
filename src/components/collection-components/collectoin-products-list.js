@@ -4,7 +4,7 @@ import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../../assets/js/custom-select'
 
-const Collectionproducts = ({ node, nodetype }) => {
+const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
 
   let products = []
   let checkTaxonomy
@@ -147,7 +147,7 @@ const Collectionproducts = ({ node, nodetype }) => {
 
   return (
     <div
-    className={nodetype === "clinical"? 
+    className={checktaxonomyType === "clinical"? 
       "container-fluid collectionhero collectionList " + productsliststyle.collectionList
       :"container-fluid collectionhero collectionList  "+productsliststyle.listMedicalBg + " " + productsliststyle.listMedicalBg}
     >

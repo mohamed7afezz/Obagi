@@ -269,6 +269,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'clinicalGroups',
+                collectionName: 'Clinical Categories',
+                collectionUrl: '/clinical/category',
                 checktaxonomyType: 'clinical'
 
             }
@@ -294,6 +296,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'skinClinicalType',
+                collectionName: 'Clinical Categories',
+                collectionUrl: '/clinical/category',
                 checktaxonomyType: 'clinical'
             }
         });

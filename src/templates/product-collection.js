@@ -16,7 +16,7 @@ const ClinicalCollectionTemp = props  => {
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
         <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
-        <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data}/>
+        <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data} checktaxonomyType={props.pageContext.checktaxonomyType}/>
       </Layout>
     )
 }
@@ -28,6 +28,36 @@ export const productPageQuery = graphql`
             ...collectionhero
             ...collectionproducts
             relationships {
+              field_footer_two_section{
+                relationships {
+                  field_service_card {
+                    field_service_name {
+                      processed
+                    }
+                    relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                            fluid (quality: 100) {
+                              ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                    field_service_title {
+                      processed
+                    }
+                    field_service_description {
+                      processed
+                    }
+                    field_se {
+                      title
+                      uri
+                    }
+                  }
+                }
+              }
               node__clinical_product {
             relationships {
               field_clinical_ingredients {
@@ -46,6 +76,36 @@ export const productPageQuery = graphql`
             name
             id
             relationships {
+              field_footer_two_section_cat {
+        relationships {
+          field_service_card {
+            field_service_name {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid (quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            field_service_title {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              title
+              uri
+            }
+          }
+        }
+      }
                 node__clinical_product {     
                     field_clinical_id   
                     field_clinical_description {
@@ -113,6 +173,37 @@ export const productPageQuery = graphql`
           name
           id
           relationships {
+            field_footer_two_section_cli_ing {
+              relationships {
+                field_service_card {
+                  field_service_name {
+                    processed
+                  }
+                  relationships {
+                    field_service_image {
+                      localFile {
+                        childImageSharp {
+                          fluid (quality: 100) {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                  field_service_title {
+                    processed
+                  }
+                  field_service_description {
+                    processed
+                  }
+                  field_se {
+                    title
+                    uri
+                  }
+                }
+              }
+            }
+
               node__clinical_product {     
                   field_clinical_id   
                   field_clinical_description {
@@ -182,6 +273,36 @@ export const productPageQuery = graphql`
               processed
             }
             relationships {
+              field_footer_two_section_med_ski{
+                relationships {
+                  field_service_card {
+                    field_service_name {
+                      processed
+                    }
+                    relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                            fluid (quality: 100) {
+                              ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                    field_service_title {
+                      processed
+                    }
+                    field_service_description {
+                      processed
+                    }
+                    field_se {
+                      title
+                      uri
+                    }
+                  }
+                }
+              }
                 node__medical_product {
                   field_medical_is_system
                   field_medical_id
@@ -256,6 +377,36 @@ export const productPageQuery = graphql`
           processed
         }
         relationships {
+          field_footer_two_section_med_ing{
+            relationships {
+              field_service_card {
+                field_service_name {
+                  processed
+                }
+                relationships {
+                  field_service_image {
+                    localFile {
+                      childImageSharp {
+                        fluid (quality: 100) {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+                field_service_title {
+                  processed
+                }
+                field_service_description {
+                  processed
+                }
+                field_se {
+                  title
+                  uri
+                }
+              }
+            }
+          }
             node__medical_product {
               field_medical_is_system
               field_medical_id
@@ -332,6 +483,36 @@ export const productPageQuery = graphql`
           alias
         }
         relationships {
+          field_taxonomy_footer_two{
+            relationships {
+              field_service_card {
+                field_service_name {
+                  processed
+                }
+                relationships {
+                  field_service_image {
+                    localFile {
+                      childImageSharp {
+                        fluid (quality: 100) {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+                field_service_title {
+                  processed
+                }
+                field_service_description {
+                  processed
+                }
+                field_se {
+                  title
+                  uri
+                }
+              }
+            }
+          }
               field_hero_parag_taxonomy {
                 field_taxonomy_hero_para_title
                 field_taxonomy_hero_paraprapgh_t
@@ -397,6 +578,36 @@ export const productPageQuery = graphql`
               processed
             }
             relationships {
+              field_footer_two_section_med_cat{
+                relationships {
+                  field_service_card {
+                    field_service_name {
+                      processed
+                    }
+                    relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                            fluid (quality: 100) {
+                              ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                    field_service_title {
+                      processed
+                    }
+                    field_service_description {
+                      processed
+                    }
+                    field_se {
+                      title
+                      uri
+                    }
+                  }
+                }
+              }
                 node__medical_product {
                     field_medical_is_system
                     field_medical_id
@@ -474,6 +685,37 @@ export const productPageQuery = graphql`
             }
           }
           relationships {
+            field_footer_two_section_sk_type{
+
+              relationships {
+                field_service_card {
+                  field_service_name {
+                    processed
+                  }
+                  relationships {
+                    field_service_image {
+                      localFile {
+                        childImageSharp {
+                          fluid (quality: 100) {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                  field_service_title {
+                    processed
+                  }
+                  field_service_description {
+                    processed
+                  }
+                  field_se {
+                    title
+                    uri
+                  }
+                }
+              }
+            }
             field_hero_taxonomy_skintype {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title
@@ -537,6 +779,36 @@ export const productPageQuery = graphql`
             processed
           }
           relationships {
+            field_footer_two_section_title {
+              relationships {
+                field_service_card {
+                  field_service_name {
+                    processed
+                  }
+                  field_service_description {
+                    processed
+                  }
+                  field_se {
+                    title
+                    uri
+                  }
+                  field_service_title {
+                    processed
+                  }
+                  relationships {
+                    field_service_image {
+                      localFile {
+                        childImageSharp {
+                          fluid (quality: 100) {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
             field_hero_productline_taxonomy {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title
@@ -615,6 +887,38 @@ export const productPageQuery = graphql`
             alias
           }
           relationships {
+
+             field_footer_two_sections {
+        relationships {
+          field_service_card {
+            field_service_name {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid (quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+            field_service_title {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              title
+              uri
+            }
+          }
+        }
+      }
+
             node__clinical_product {
               field_clinical_id
               field_clinical_description {

@@ -18,6 +18,22 @@ background-color: #868cd2;
   }
 }
 }
+.collectionfooter{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 96px;
+    padding-bottom: 96px;
+    }
+}
+.twoCards{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
+}
 .CollectionFooterContainer{
     margin-top: 48px;
     margin-bottom: 48px;
