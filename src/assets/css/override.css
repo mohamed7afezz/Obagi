@@ -1629,3 +1629,13 @@ height:  32px;
             animation-timing-function: ease-out;
   }
 }
+
+.products-masonry {
+  column-count: 2;
+  column-gap: 30px;
+}
+
+.product-line-masonry {
+  width: 100%;
+  margin-bottom: 15px;
+}

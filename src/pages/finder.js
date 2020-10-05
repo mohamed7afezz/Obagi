@@ -10,11 +10,11 @@ import Layout from "../components/layout"
 
 const finderURL = process.env.Finder_URL;
 
-export const ProductLineComp = ({line}) => {
+export const ProductLineComp = ({line, key}) => {
 
     return (
       <>
-        <div class="search-res left-res">
+        
           <p class="result-tax">{line.name}</p>
           <div class="d-flex d-col">
             {(line.relationships && line.relationships.products)? line.relationships.products.map(product => {
@@ -34,7 +34,6 @@ export const ProductLineComp = ({line}) => {
             cosmetic skin-brightening option, learn about the Obagi-C® Fx
             System.
           </p>
-        </div>
       </>
     )
 };
@@ -53,7 +52,7 @@ export default function Finder({ data }) {
             setProductLines(prodLines.filter(item => item !== e.target.value));            
         }
 
-        //TODO: add masonary style
+        //TODO: add masonry style
 
     }
 
@@ -62,6 +61,11 @@ export default function Finder({ data }) {
           document.getElementById('prod-err-msg').classList.remove('d-none');
           document.getElementById('prod-err-msg').innerHTML = 'Invalid Zip Code';
 
+          return;
+        }
+        if(prodLines.length < 1) {
+          document.getElementById('prod-err-msg').classList.remove('d-none');
+          document.getElementById('prod-err-msg').innerHTML = 'No Product Line selected';
           return;
         }
         document.getElementById('prod-err-msg').classList.add('d-none');
@@ -90,6 +94,34 @@ export default function Finder({ data }) {
     ) {
       CustomSelect()
     }
+
+    // build masonory grid for product lines
+    const isotope = require('isotope-layout');
+    let isoGrid = new isotope(".products-masonry", {
+      itemSelector: ".product-line-masonry",
+      layoutMode: "masonry",
+      masonry: {
+        gutter: 30
+      }
+    })
+
+    document.querySelector('#prod-search-btn').addEventListener('click', () => {
+      if((document.getElementById('prodLoc').value.length < 5) || (prodLines.length < 1)) {
+        return;
+      }
+      console.log('bahiii', isoGrid.getItemElements())
+      isoGrid.insert(document.getElementsByClassName('.product-line-masonry'));
+      isoGrid.layout();
+      isoGrid.arrange();
+      // isoGrid = new isotope(".products-masonry", {
+      //   itemSelector: ".product-line-masonry",
+      //   layoutMode: "masonry",
+      //   masonry: {
+      //     gutter: 30
+      //   }
+      // })
+      console.log('bahiii', isoGrid.getItemElements())
+    })
   }, [])
 
   function searchBy(e) {
@@ -293,7 +325,7 @@ export default function Finder({ data }) {
                     </ul>
                   </div>
                 </div>
-                <form>
+                <form onSubmit={(e) => {e.preventDefault();}}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt mt-0">
                       <p class="input-name">First name</p>
@@ -384,7 +416,7 @@ export default function Finder({ data }) {
                   </p>
                 </div>
                 <div id="prod-err-msg" className="d-none"></div>
-                <form>
+                <form onSubmit={(e) => {e.preventDefault();}}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">Location</p>
@@ -449,11 +481,17 @@ export default function Finder({ data }) {
                   </p>
                 </form>
                 <Scrollbars style={{ height: 400 }} className={lines.length > 0? '' : 'd-none'}>
-                  <div class="d-flex search-results" id="products-search-result">
-                    
-                    {
-                        lines.length > 0? lines.map(({node}) => <ProductLineComp line={node} />) : ''
-                    }
+                  <div>
+                    <div class="products-masonry" id="products-search-result">
+                      
+                      {
+                        lines.length > 0? lines.map(({node}) => (
+                          <div class="search-res left-res product-line-masonry">
+                            <ProductLineComp line={node} key={node.id}/>)
+                          </div>
+                        )) : '<div class="search-res left-res product-line-masonry"></dvi>'
+                      }
+                    </div>
                   </div>
                 </Scrollbars>
                 <div class="">
