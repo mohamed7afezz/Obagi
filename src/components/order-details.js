@@ -74,7 +74,6 @@ const OrderDetails = (props, { node }) => {
 
     if (productsData !== "User not login.") {
       setProducts(productsData)
-      console.log("hassan", productsData)
     }
 
     setIsLoading(false)

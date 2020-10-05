@@ -38,7 +38,7 @@ export const SearchProvider = ({children}) => {
     const setSearchIndex = (ClinicalProduct,MedicalProduct) =>{
         ProductsIndex.ClinicalProduct = ClinicalProduct;
         ProductsIndex.MedicalProduct = MedicalProduct;
-        console.log("hafezz",ProductsIndex)
+        
     }
     const searchInIndex = (searchkey) =>{
         setIsLoading(true);
@@ -51,7 +51,6 @@ export const SearchProvider = ({children}) => {
         });
         setClinicalValue(filterdClinicalProduct);
         setMedicalValue(filterdMedicalProduct); 
-        console.log("hafezz",searchkey,filterdClinicalProduct,filterdMedicalProduct);
         setIsLoading(false);
     }
     

@@ -33,7 +33,6 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
   }else if(pageNodeType == 'medicalLine'){
-    console.log('hassan')
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
       .node__medical_product     
