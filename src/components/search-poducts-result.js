@@ -389,7 +389,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                               producttitle={product.title}
                               productdescription={{
                                 __html:
-                                  product.field_clinical_description.processed,
+                                  product.field_clinical_description?product.field_clinical_description.processed:"",
                               }}
                               productimage={
                                 product.relationships.field_clinical_image[
