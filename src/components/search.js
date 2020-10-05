@@ -7,7 +7,8 @@ const Search = () => {
 
   const { clinicalSearchResults, isLoading } = useContext(SearchContext)
   const { medicalSearchResults } = useContext(SearchContext)
-
+  console.log("hafezzz",clinicalSearchResults)
+  console.log("hafezzz",isLoading)
   if (clinicalSearchResults.data) {
     // console.log("med", clinicalSearchResults.data.length)
   }
@@ -22,25 +23,23 @@ const Search = () => {
             Medical
           </div>
         </div>
-        {medicalSearchResults.data
-          ? 
-          (medicalSearchResults.data.length > 0
+        {(medicalSearchResults.length > 0
             ? (isLoading? "Loading..."
             : 
-            (medicalSearchResults.data.map((data, index) =>
+            (medicalSearchResults.map((data, index) =>
                 index < 6 ? (
                   <Link
                     className={searchStyles.searchlinks}
-                    to={data.attributes.path.alias}
+                    to={data.path.alias}
                   >
-                    {data.attributes.title}
+                    {data.title}
                   </Link>
                 ) : (
                   ""
                 )
               )))
             : "No results found")
-          : ""}
+          }
       </div>
       <div className={searchStyles.result}>
         <div className={searchStyles.typeSection}>
@@ -51,24 +50,23 @@ const Search = () => {
             Clinical
           </div>
         </div>
-        {clinicalSearchResults.data
-          ? clinicalSearchResults.data.length > 0
+        { clinicalSearchResults.length > 0
             ? (isLoading? "Loading..."
                 :
-                (clinicalSearchResults.data.map((data, index) =>
+                (clinicalSearchResults.map((data, index) =>
                 index < 6 ? (
                   <Link
                     className={searchStyles.searchlinks}
-                    to={data.attributes.path.alias}
+                    to={data.path.alias}
                   >
-                    {data.attributes.title}
+                    {data.title}
                   </Link>
                 ) : (
                   ""
                 )
               )))
             : "No results found"
-          : ""}
+          }
       </div>
     </div>
   )
