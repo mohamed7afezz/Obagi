@@ -1,5 +1,5 @@
 import React  from 'react'
-import { useStaticQuery,graphql } from "gatsby"
+import { useStaticQuery,graphql, Link } from "gatsby"
 import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
 import Img from 'gatsby-image'
 const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
@@ -92,6 +92,7 @@ return (
       "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
       :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
     >
+    
         <div className={"row"}>
           <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
@@ -118,8 +119,8 @@ return (
             
           </div>
 
-          {checkfooter === 'clinical'? ""
-               :
+          {checkfooter === 'medical'? 
+             
                <div className={Collectionfooterstyle.footerModCon}>
                  <div className={["container-fluid"]}>
                  <div className="row">
@@ -133,6 +134,7 @@ return (
                </div>
                </div>
                </div>
+               :""
                }
 
           </>

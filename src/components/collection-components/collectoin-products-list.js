@@ -33,6 +33,7 @@ const Collectionproducts = ({ node, nodetype }) => {
    node.data.taxonomyTermClinicalGroups.relationships
       .node__clinical_product 
   }else if(pageNodeType == 'medicalLine'){
+    console.log('hassan')
     checkTaxonomy =
     node.data.taxonomyTermMedicalProductLines.relationships
       .node__medical_product     
@@ -146,12 +147,9 @@ const Collectionproducts = ({ node, nodetype }) => {
 
   return (
     <div
-      className={[
-        "container-fluid",
-        productsliststyle.collectionList,
-        "collectionhero",
-        "collectionList",
-      ].join(" ")}
+    className={nodetype === "clinical"? 
+      "container-fluid collectionhero collectionList " + productsliststyle.collectionList
+      :"container-fluid collectionhero collectionList  "+productsliststyle.listMedicalBg + " " + productsliststyle.listMedicalBg}
     >
       <div
         className={[

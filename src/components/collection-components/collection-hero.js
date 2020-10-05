@@ -1,8 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
-const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
+const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;
   if (nodetype == "clinicalConcern") {
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -48,7 +48,9 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
       : checktaxonomyType === "medical"? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero
     : "container-fluid collectionhero medical-bg " + Collectionherostyle.clinicalcollectionhero}
     >
+      
       {nodetype == "clinicalConcern" ? (
+        
         <div className={"row hero-row-wrapper"}>
           <div
             className={[
@@ -59,6 +61,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+      <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
               <p className={Collectionherostyle.type}>
                 {" "}
@@ -104,6 +115,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+        
               {checkTaxonomy.field_hero_paraprapgh_taxonomy
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_paraprapgh_taxonomy
@@ -127,6 +139,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
             ""
           )}
         </div>
+        </div>
       ) : nodetype == "clinicalCategories" ? (
         <div className={"row hero-row-wrapper"}>
           <div
@@ -138,6 +151,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+            <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_categories_taxonomy ? (
               <p className={Collectionherostyle.type}>
                 {" "}
@@ -184,6 +206,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+      
               {checkTaxonomy.field_hero_categories_taxonomy
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_categories_taxonomy
@@ -207,6 +230,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
             ""
           )}
         </div>
+        </div>
       ) : nodetype == "medicalLine" ? (
         <div className={"row hero-row-wrapper"}>
           <div
@@ -218,6 +242,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+              <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_categories_taxonomy ? (
               <p className={Collectionherostyle.type}>
                 {" "}
@@ -252,6 +285,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
             ) : (
               ""
             )}
+            </div>
           </div>
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
@@ -263,6 +297,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+      
               {checkTaxonomy.field_hero_productline_taxonomy
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_productline_taxonomy
@@ -282,6 +317,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+           
           ) : (
             ""
           )}
@@ -297,6 +333,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+          <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_ingredients_taxonomy ? (
               <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                 {" "}
@@ -332,6 +377,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
             <div
               className={[
@@ -342,6 +388,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+      
               {checkTaxonomy.field_hero_ingredients_taxonomy.relationships
                 .field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_ingredients_taxonomy.relationships
@@ -361,10 +408,12 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+           
           ) : (
             ""
           )}
         </div>
+        
       ) :  nodetype == 'skinClinicalType'? (
         <div className={"row hero-row-wrapper"}>
           <div
@@ -376,6 +425,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+          <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_taxonomy_skintype ? (
               <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                 {" "}
@@ -411,6 +469,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_taxonomy_skintype ? (
             <div
               className={[
@@ -421,6 +480,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+       
               {checkTaxonomy.field_hero_taxonomy_skintype.relationships
                 .field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_taxonomy_skintype.relationships
@@ -439,6 +499,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ) : (
                 ""
               )}
+           
             </div>
           ) : (
             ""
@@ -457,6 +518,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+          <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
               <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                
@@ -492,6 +562,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
             <div
               className={[
@@ -502,6 +573,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+         
               {checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
                 .field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
@@ -521,6 +593,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+           
           ) : (
             ""
           )}
@@ -536,6 +609,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+             <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_hero_parag_taxonomy ? (
               <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                 {" "}
@@ -571,6 +653,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_parag_taxonomy ? (
             <div
               className={[
@@ -600,6 +683,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+           
           ) : (
             ""
           )}
@@ -615,6 +699,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+            <div className="row">
+          <div className={["breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/homepage"> Home </Link>/{" "}
+                <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+              </p>
+            </div>
+          </div>
+          <div className="offset-lg-1">
             {checkTaxonomy.field_hero_taxonomy ? (
               <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                 {" "}
@@ -650,6 +743,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_taxonomy ? (
             <div
               className={[
@@ -660,6 +754,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+       
               {checkTaxonomy.field_hero_taxonomy.relationships
                 .field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.field_hero_taxonomy.relationships
@@ -679,6 +774,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+          
           ) : (
             ""
           )}
@@ -694,6 +790,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+              <div className="row">
+          <div className={["breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/homepage"> Home </Link>/{" "}
+                <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+              </p>
+            </div>
+          </div>
+          <div className="offset-lg-1">
             {checkTaxonomy.field_hero_category_taxonomy ? (
               <p className={[Collectionherostyle.type, nodetype.includes('medical')? Collectionherostyle.medical : ""].join(' ')}>
                 {" "}
@@ -729,6 +834,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.field_hero_category_taxonomy ? (
             <div
               className={[
@@ -758,6 +864,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+        
           ) : (
             ""
           )}
@@ -773,6 +880,15 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               "Collectionheroleftcol",
             ].join(" ")}
           >
+          <div className="row">
+      <div className={["breadcramp-con", "col-12"].join(" ")}>
+          <p className="breadcramp">
+            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          </p>
+        </div>
+      </div>
+      <div className="offset-lg-1">
             {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
               <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')? Collectionherostyle.medical : ""].join(' ')}>
                 {" "}
@@ -806,6 +922,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
               ""
             )}
           </div>
+          </div>
           {checkTaxonomy.relationships ? (
             <div
               className={[
@@ -816,6 +933,8 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 "Collectionherorightcol",
               ].join(" ")}
             >
+    
+      
               {checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? (
                 checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
                   <Img
@@ -831,6 +950,7 @@ const CollectionHero = ({ node, nodetype, checktaxonomyType }) => {
                 ""
               )}
             </div>
+           
           ) : (
             ""
           )}

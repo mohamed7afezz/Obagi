@@ -12,8 +12,17 @@
         padding-top: 108px;
         padding-bottom: 128px;
     }
+    
 }
+.listMedicalBg{
+    background-color: rgba( 134, 140, 210,0.1) !important;
+    padding-top: 48px;
 
+    @include md-screen{
+        padding-top: 96px;
+
+    }
+}
 .productview{
     padding-bottom: 25px;
     @include md-screen {
