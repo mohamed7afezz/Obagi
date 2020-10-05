@@ -135,7 +135,7 @@ const Howtouse = ({ node }) => {
                                                             :
                                                             <div className="video-wrapper">
                                                                 {
-                                                                    item.relationships.field_video.relationships.field_video_poster ?
+                                                                    item.relationships.field_video.relationships && item.relationships.field_video.relationships.field_video_poster ?
                                                                         <div className="img-wrap">
                                                                             <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />

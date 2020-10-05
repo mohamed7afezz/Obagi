@@ -7,63 +7,36 @@ import searchResultStyle from '../assets/scss/components/search-results.module.s
 import SearchContext from "../providers/search-provider"
 import $ from "jquery"
 
-const NewSearchProductsResult = ({ searchResult, node, nodetype }) => {
+const NewSearchProductsResult = ({ node }) => {
 
 
   const {clinicalSearchResults} = useContext(SearchContext);
   const {medicalSearchResults} = useContext(SearchContext);
   let products = []
-  let checkTaxonomy = searchResult
-  let pageNodeType = nodetype ? nodetype : ""
-  let outside="";
+  let isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
   
-function clinicalbg (){
-  document.querySelector('.collectionList').classList.remove('medicalbg')
-}
-function medicalbg (){
-  document.querySelector('.collectionList').classList.add('medicalbg')
-}
+  function clinicalbg (){
+    document.querySelector('.collectionList').classList.remove('medicalbg')
+    document.getElementById("clinicalRadio").checked = true;
+  }
+  function medicalbg (){
+    document.querySelector('.collectionList').classList.add('medicalbg')
+    document.getElementById("medicalRadio").checked = true;
+  }
   function checkProductExisitance(product) {
-   
     return products.some(item => product.path.alias == item.path.alias)
   }
 
-  function getIngredient (item) {
-    // if (item.relationships.field_clinical_components) {
-    //   return item.relationships.field_clinical_components.filter(
-    //     comp => {
-    //       return comp.__typename == "paragraph__ingredient"
-    //     }
-    //   )[0].relationships.field_read_more[0].field_read_more_content
-    //     .processed;
-    // } 
-    // return item.relationships.field_medical_components.filter(
-     
-    //   comp => {
-        
-    //     return comp.__typename == "paragraph__ingredient"
-    //   }
-    // )[0]?item.relationships.field_medical_components.filter(
-     
-    //   comp => {
-        
-    //     return comp.__typename == "paragraph__ingredient"
-    //   }
-    // )[0].relationships.field_read_more[0].field_read_more_content
-    //   .processed:''
-  }
-   useEffect(() => {
+  useEffect(() => {
+    
+    isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
       CustomSelect();
-     }
-      const isotope = require("isotope-layout")
+    }
 
-  
+    const isotope = require("isotope-layout")
     const sortPriceSelect = document.querySelector(".sort-price")
-     let sortAsc =
-       sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-         ? true
-         : false
+    let sortAsc = sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low" ? true : false
 
     const isoGrid = new isotope(".products-list", {
        itemSelector: ".product-element",
@@ -85,7 +58,7 @@ function medicalbg (){
         
 //       // },
        transitionDuration: 0,
-      sortBy: "price",
+       sortBy: "price",
        sortAscending: sortAsc,
      })
 
@@ -127,7 +100,7 @@ sortPriceSelect.addEventListener("change", function (event) {
  
   return (
     <div
-      className={medicalSearchResults.data? (clinicalSearchResults.data? ( medicalSearchResults.data.length > clinicalSearchResults.data.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
+      className={medicalSearchResults? (clinicalSearchResults? ( medicalSearchResults.length > clinicalSearchResults.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
       <div
         className={[
           "row",
@@ -169,8 +142,8 @@ sortPriceSelect.addEventListener("change", function (event) {
 
         <div className="producTypeSelect d-flex">
             <label className={searchResultStyle.title}>Products:</label>
-            <label className="radioLabel"  onClick={() => {medicalbg();}}><input name="radiono"  value="medical"  type="radio" /><span class="radiomark"></span>Medical </label>
-            <label className="radioLabel"  onClick={() => {clinicalbg(); }}><input name="radiono" value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical </label>
+            <label className="radioLabel" onClick={() => {medicalbg();}}><input id="medicalRadio" name="radiono" checked={isDefultSelectCategoryMedical} value="medical"  type="radio" /><span class="radiomark"></span>Medical </label>
+            <label className="radioLabel" onClick={() => {clinicalbg(); }}><input id="clinicalRadio" name="radiono" checked={!isDefultSelectCategoryMedical} value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical </label>
         </div>
         </div>
         <div 
@@ -204,9 +177,9 @@ sortPriceSelect.addEventListener("change", function (event) {
         ].join(" ")}
       >
            
-                  {medicalSearchResults.data?
-                medicalSearchResults.data.length > 0?
-                medicalSearchResults.data.map( (data , index)=>(
+                  {
+                medicalSearchResults.length > 0?
+                medicalSearchResults.map( (data , index)=>(
                   <div
                   className={[
                     "col-12 col-lg-3 col-md-4 product-element medicalProduct",
@@ -218,18 +191,19 @@ sortPriceSelect.addEventListener("change", function (event) {
                 >         
                       
                        <ProductCard
-                        productLink={data.attributes.path.alias}
-                      producttitle={data.attributes.title}
-                      productdescription={{__html:data.attributes.field_medical_description.processed}}
-                      productimage={data.attributes.relationships? data.attributes.relationships.field_medical_image.links.related.href : ""}
-                      price={data.attributes.field_medical_price}
-                      productId={data.attributes.field_medical_id}
+                        productLink={data.path.alias}
+                      producttitle={data.title}
+                      productdescription={{__html:data.field_medical_description.processed}}
+                      productimage={ data.relationships.field_medical_image &&  data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      price={data.field_medical_price}
+                      productId={data.field_medical_id}
                     />
                   </div> 
-                      )) : "" :""}
-                  {clinicalSearchResults.data?
-                     clinicalSearchResults.data.length > 0?
-                     clinicalSearchResults.data.map( (data , index)=>(
+                      )) : <div className="col-12 text-center medicalProduct">No results found.</div> }
+                  {
+                     clinicalSearchResults.length > 0?
+                     clinicalSearchResults.map( (data , index)=>(
+                      
                       <div
                   className={[
                     "col-12 col-lg-3 col-md-4 product-element clinicalProduct",
@@ -240,383 +214,18 @@ sortPriceSelect.addEventListener("change", function (event) {
                   data-ingrediant={`vitamin-c-${index}`}
                 >     
                        <ProductCard
-                         productLink={data.attributes.path.alias}
-                        producttitle={data.attributes.title}
-                        productdescription={{__html:data.attributes.field_clinical_description.processed}}
-                        productimage=" "
-                        price={data.attributes.field_clinical_price}
-                        productId={data.attributes.field_clinical_id}
+                         productLink={data.path.alias}
+                        producttitle={data.title}
+                        productdescription={{__html:data.field_clinical_description.processed}}
+                        productimage={data.relationships.field_clinical_image && data.relationships.field_clinical_image[0].localFile?data.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''}
+                        price={data.field_clinical_price}
+                        productId={data.field_clinical_id}
                       />
                            </div> 
-                     )) : "" :""}
+                     )) : <div className="col-12 text-center clinicalProduct">No results found.</div> }
             </div>
     </div>
   )
 }
 
 export default NewSearchProductsResult
-export const fragment = graphql`
-  fragment collectionproducts on taxonomy_term__clinical_skin_concern {
-    relationships {
-      node__clinical_product {
-        field_clinical_id
-        field_clinical_description {
-          processed
-        }
-        path {
-          alias
-        }
-        field_clinical_price
-        title
-        relationships {
-          field_clinical_components {
-            ... on paragraph__ingredient {
-              relationships {
-                field_read_more {
-                  field_read_more_content {
-                    processed
-                  }
-                }
-              }
-            }
-          }
-
-          field_clinical_image {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  fragment vocabulariesList1 on paragraph__vocabularies {
-    id
-    relationships {
-      field_vocabularies {
-        ... on taxonomy_term__clinical_categories {
-          id
-          path {
-            alias
-          }
-          relationships {
-            node__clinical_product {
-              field_clinical_id
-              title
-              field_clinical_description {
-                processed
-              }
-              path {
-                alias
-              }
-              field_clinical_price
-              relationships {
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-              relationships {
-                field_clinical_components {
-                  ... on paragraph__ingredient {
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-      
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        ... on taxonomy_term__medical_ingredients {
-          id
-          name
-          relationships {
-            node__medical_product {
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              title
-              path {
-                alias
-              }
-              field_medical_price
-              relationships {
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                        src
-                      }
-                    }
-                  }
-                }
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        ... on taxonomy_term__medical_product_lines {
-          id
-          name
-          relationships {
-            node__medical_product {
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              title
-              path {
-                alias
-              }
-              field_medical_price
-              relationships {
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                        src
-                      }
-                    }
-                  }
-                }
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        ... on taxonomy_term__medical_categories {
-          id
-          name
-          path {
-            alias
-          }
-          relationships {
-            node__medical_product {
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              field_medical_price
-              title
-              path {
-                alias
-              }
-              relationships {
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        ... on taxonomy_term__medical_product_lines {
-          id
-          name
-          path {
-            alias
-          }
-          relationships {
-            node__medical_product {
-              path {
-                alias
-              }
-              title
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              field_medical_price
-              relationships {
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        ... on taxonomy_term__medical_skin_concern {
-          id
-          name
-          relationships {
-            node__medical_product {
-              title
-              path {
-                alias
-              }
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              field_medical_price
-              relationships {
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          path {
-            alias
-          }
-        }
-        ... on taxonomy_term__clinical_skin_concern {
-          id
-          name
-          relationships {
-            node__clinical_product {
-              field_clinical_id
-              field_clinical_price
-              title
-              field_clinical_description {
-                processed
-              }
-              path {
-                alias
-              }
-              relationships {
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-              relationships {
-                field_clinical_components {
-                  ... on paragraph__ingredient {
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-      
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          path {
-            alias
-          }
-        }
-      }
-    }
-  }
-`

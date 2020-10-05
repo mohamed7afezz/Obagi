@@ -188,6 +188,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productTemp,
             context: {
                 slug: node.fields.slug,
+                collectionName: 'all clinical Products',
+                collectionUrl: '/clinical/all',
                 nodetype: 'clinical'
             }
         });
@@ -199,7 +201,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
             component: productTemp,
             context: {
                 slug: node.fields.slug,
+                collectionName: 'all medical Products',
+                collectionUrl: '/medical/all',
                 nodetype: 'medical'
+                
             }
         });
     });
@@ -211,6 +216,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.fields.slug,
                 nodetype: 'clinicalConcern',
+                collectionName: 'clinical skin concern',
+                collectionUrl: '/clinical/skin-concerns',
                 checktaxonomyType: 'clinical'
             }
         });
@@ -222,6 +229,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'clinicalCategories',
+                collectionName: 'Clinical Categories',
+                collectionUrl: '/clinical/category',
                 checktaxonomyType: 'clinical'
             }
         });
@@ -233,6 +242,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'medicalConcern',
+                collectionName: 'Medical skin concerns',
+                collectionUrl: '/medical/skin-concerns',
                 checktaxonomyType: 'medical'
             }
         });
@@ -244,6 +255,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'medicalCategories',
+                collectionName: 'medical Categories',
+                collectionUrl: '/medical/category',
                 checktaxonomyType: 'medical'
 
             }
@@ -268,6 +281,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'medicalLine',
+                collectionName: 'Medical Product lines',
+                collectionUrl: '/medical/product-lines',
                 checktaxonomyType: 'medical'
             }
         });
@@ -302,6 +317,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
             context: {
                 slug: node.path.alias,
                 nodetype: 'ClinicalIngredients',
+                collectionName: 'Clinical Ingredient',
+                collectionUrl: '/clinical/ingredients',
                 checktaxonomyType: 'clinical'
 
             }

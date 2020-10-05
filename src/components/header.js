@@ -17,14 +17,64 @@ import SearchContext from "../providers/search-provider"
 
 const baseUrl = process.env.Base_URL;
 
-const Header = ({ siteTitle, nodeType, menuType }) => {
-  const {search} = useContext(SearchContext)
+const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
+
+  const {search,setSearchIndex,searchInIndex} = useContext(SearchContext)
+
   const {user, handleLogout} = useContext(UserContext);
  
   const location = useLocation();
  
   const data = useStaticQuery(graphql`
     query {
+      ClinicalProduct: allNodeClinicalProduct {
+        nodes {
+          field_clinical_id
+          title
+          field_clinical_price
+          path {
+            alias
+          }
+          field_clinical_description {
+            processed
+          }
+          relationships {
+            field_clinical_image {
+              localFile {
+                childImageSharp {
+                  fluid (quality: 100){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      MedicalProduct: allNodeMedicalProduct {
+        nodes {
+          field_medical_id
+          title
+          field_medical_price
+          path {
+            alias
+          }
+          field_medical_description {
+            processed
+          }
+          relationships {
+            field_medical_image {
+              localFile {
+                childImageSharp {
+                  fluid (quality: 100){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       logo: file(relativePath: { eq: "obagi.png" }) {
         childImageSharp {
           fixed {
@@ -167,7 +217,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
     }
   `)
-
+  setSearchIndex(data.ClinicalProduct,data.MedicalProduct)
   useEffect(() => {
     if (typeof window !== "undefined") {
 
@@ -197,9 +247,11 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       document.querySelector(".searchIcon").click();
     }
     let searchkey= e.target.value
-  if ( searchkey.length >2) {
-    search(searchkey)
-}
+    searchInIndex(searchkey)
+    // if ( searchkey.length >2) {
+    //   search(searchkey)
+      
+    // }
    }
   function removeFirstIcons() {
     var x = document.getElementById("first-icons");
@@ -553,5 +605,7 @@ Header.propTypes = {
 Header.defaultProps = {
   siteTitle: ``,
 }
+
+
 
 export default Header
