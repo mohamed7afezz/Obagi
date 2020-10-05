@@ -268,7 +268,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -287,7 +287,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -340,7 +340,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -357,7 +357,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -373,7 +373,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -390,7 +390,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -408,7 +408,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed:"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -476,7 +476,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               producttitle={product.title}
                               productdescription={{
                                 __html:
-                                  product.field_clinical_description.processed,
+                                product.field_clinical_description?product.field_clinical_description.processed:"",
                               }}
                               productimage={
                                 (product.relationships.field_clinical_image[0] && product.relationships.field_clinical_image[0].localFile)

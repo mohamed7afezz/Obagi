@@ -152,7 +152,7 @@ export const productPageQuery = graphql`
                     ...howToUseParagraph
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
-                    ...reviewsParagraph
+                    
   
                 }
             }
