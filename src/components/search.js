@@ -7,8 +7,7 @@ const Search = () => {
 
   const { clinicalSearchResults, isLoading } = useContext(SearchContext)
   const { medicalSearchResults } = useContext(SearchContext)
-  console.log("hafezzz",clinicalSearchResults)
-  console.log("hafezzz",isLoading)
+  
   if (clinicalSearchResults.data) {
     // console.log("med", clinicalSearchResults.data.length)
   }
