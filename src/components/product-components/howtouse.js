@@ -77,11 +77,11 @@ const Howtouse = ({ node }) => {
         
        }
       
-       document.getElementById('accordion').style.minHeight = `${getheight}px`
+     //  document.getElementById('accordion').style.minHeight = `${getheight}px`
 
     }
     useEffect(() => {
-        getheight=  document.getElementById('accordion').offsetHeight
+       // getheight=  document.getElementById('accordion').offsetHeight
     })
     return (
         <div className={["container-fluid", howto.howtousecon, "howtousecon"].join(" ")} >
@@ -137,12 +137,12 @@ const Howtouse = ({ node }) => {
                                                     {node.relationships.field_general_image?
                                                     node.relationships.field_general_image.localFile?
                                                     node.relationships.field_general_image.localFile.childImageSharp?
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>:"":""
+                                                        <img src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             (item.relationships.field_step_image.localFile?
                                                                 item.relationships.field_step_image.localFile.childImageSharp?
-                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />:""
+                                                            <img src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />:""
                                                             : "")
                                                             :
                                                             <div className="video-wrapper">
@@ -183,12 +183,12 @@ const Howtouse = ({ node }) => {
                                                     {node.relationships.field_general_image?
                                                     node.relationships.field_general_image.localFile?
                                                     node.relationships.field_general_image.localFile.childImageSharp?
-                                                        <Img fluid={node.relationships.field_general_image.localFile.childImageSharp.fluid}/>:"":""
+                                                        <img src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             item.relationships.field_step_image.localFile?
                                                             item.relationships.field_step_image.localFile.childImageSharp?
-                                                            <Img fluid={item.relationships.field_step_image.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                            <img src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                 :"":""
                                                             :
                                                             <div className="video-wrapper">
@@ -266,6 +266,9 @@ export const fragment = graphql`
                     fluid {
                       ...GatsbyImageSharpFluid
                     }
+                    original {
+                        src
+                    }
                   }
                 }
               }
@@ -285,6 +288,9 @@ export const fragment = graphql`
                                 fluid (quality: 100) {
                                     ...GatsbyImageSharpFluid
                                 }
+                                original {
+                                    src
+                                }
                               }
                             }
                           }
@@ -296,6 +302,9 @@ export const fragment = graphql`
                             childImageSharp {
                                 fluid (quality: 100) {
                                     ...GatsbyImageSharpFluid
+                                }
+                                original {
+                                    src
                                 }
                             }
                         }

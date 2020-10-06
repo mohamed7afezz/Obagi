@@ -242,12 +242,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     e.preventDefault();
     if (e.keyCode === 13) {
       // Cancel the default action, if needed
-      
+      deskOpenSearch();
       // Trigger the button element with a click
       document.querySelector(".searchIcon").click();
     }
     let searchkey= e.target.value
     searchInIndex(searchkey)
+    
     // if ( searchkey.length >2) {
     //   search(searchkey)
       
@@ -483,7 +484,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
-                  <Link to="/search-page" className={[headerStyles.searchIcon,"searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
+                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon,"searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
                   <input  type="search" onKeyUp={inputval} className={[headerStyles.searchInput,"searchInputm"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                   <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
