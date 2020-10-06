@@ -36,6 +36,8 @@ import Reviews from './reviews';
 import CustomBlock from './custom-block';
 import NotFound from './not-found';
 import Image from './image'
+import Basics from './basics';
+import Vitamins from './vitamins';
 
 
 const componentsMap = {
@@ -74,7 +76,9 @@ const componentsMap = {
     paragraph__custom_block: CustomBlock,
     paragraph__not_found: NotFound,
     paragraph__image: Image,
-    paragraph_blog: Blog,
+    paragraph__blog: Blog,
+    paragraph__basics: Basics,
+    paragraph__vitamins: Vitamins,
 }
 
 export const getParagraph = node => {
