@@ -19,6 +19,40 @@
     text-transform: uppercase;
     display: inline-flex;
     margin-top: 35px;
+    padding-left: 40px;
+    position: relative;
+
+    &::before {
+        background-image: url('../../images/product-images/plus-white.svg');
+        position: absolute;
+        content: '';
+        width: 24px;
+        height: 24px;
+        left: 0;
+        // top: 32px;              
+        background-repeat: no-repeat;
+        transition: all ease 300ms;
+    }
+
+    
+    &.collapsed {
+        &::before {
+            background-image: url('../../images/product-images/plus-white.svg');
+            // position: absolute;
+            // content: '';
+            // width: 24px;
+            // height: 24px;
+            // left: 0;
+            // top: 32px;              
+            // background-repeat: no-repeat;
+            transition: all ease 300ms;
+        }
+    }
+    
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
     @include md-screen{
         margin-top: 40px;
     }
@@ -26,6 +60,7 @@
         padding-right: 16px;
     }
 }
+
 .ingredienthead{
     color: #fff;
     display: none;

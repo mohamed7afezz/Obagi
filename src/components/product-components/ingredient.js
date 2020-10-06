@@ -27,9 +27,9 @@ const Ingredient = ({ node }) => {
          { 
              data.field_read_more.map(item => (
                 <div>
-                   <div className={[ingredient.ingredienttitle,ingredient.expand,"expand","readmorefix", ingredient.ftitle].join(" ")}  dangerouslySetInnerHTML={{__html:item.field_re.processed}} >
-                </div>      
-               <div class=""  id="multiCollapseExample3">    
+                   <a className={[ingredient.ingredienttitle,ingredient.expand,"expand","readmorefix", ingredient.ftitle].join(" ")}  data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><div dangerouslySetInnerHTML={{__html:item.field_re.processed}}>
+                </div></a>      
+               <div className="collapse multi-collapse"  id="multiCollapseExample3">    
                  <div  dangerouslySetInnerHTML={{__html:item.field_read_more_content?item.field_read_more_content.processed:''}} ></div>   
                  </div>
                </div>
