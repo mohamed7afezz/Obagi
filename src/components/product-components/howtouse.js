@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import howto from '../../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
@@ -7,7 +7,7 @@ import Player from '@vimeo/player';
 import { useStaticQuery, graphql } from "gatsby"
 
 
-
+var getheight = 1 ;
 
 function playvideo(event) {
     let iframeContainer, player, playerOpts = {
@@ -69,8 +69,20 @@ const Howtouse = ({ node }) => {
 
             }
         }
+       
+
+       if(document.getElementById('accordion').offsetHeight > getheight ){
+           
+        getheight=document.getElementById('accordion').offsetHeight;
+        
+       }
+      
+       document.getElementById('accordion').style.minHeight = `${getheight}px`
+
     }
-    
+    useEffect(() => {
+        getheight=  document.getElementById('accordion').offsetHeight
+    })
     return (
         <div className={["container-fluid", howto.howtousecon, "howtousecon"].join(" ")} >
             <div className={["row", howto.ordering].join(" ")}>

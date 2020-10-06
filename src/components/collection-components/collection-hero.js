@@ -40,7 +40,11 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
     // listing pages
     checkTaxonomy = node;
   }
-  
+  if(typeof window !== "undefined") {
+    var pathname = new URL(window.location.href).pathname;
+    var geturi= pathname.split('/')
+   console.log('hassan',geturi[1],geturi[2])
+  }
   return (
     <div
       className={checktaxonomyType === "clinical"? 
@@ -65,7 +69,7 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
             <Link to="/homepage">Home</Link> /{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
         <div className="offset-lg-1">
@@ -156,9 +160,9 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
             <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
-          </p>
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
+                 </p>
         </div>
         <div className="offset-lg-1">
             {checkTaxonomy.field_hero_categories_taxonomy ? (
@@ -249,8 +253,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
               <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
         <div className="offset-lg-1">
@@ -341,8 +345,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
           <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
         <div className="offset-lg-1">
@@ -434,8 +438,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
           <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
         <div className="offset-lg-1">
@@ -528,8 +532,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
           <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link>  
           </p>
         </div>
         <div className="offset-lg-1">
@@ -620,8 +624,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
              <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
       </div>
@@ -710,8 +714,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
             <div className="row">
           <div className={["breadcramp-con", "col-12"].join(" ")}>
               <p className="breadcramp">
-                <Link to="/homepage"> Home </Link>/{" "}
-                <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+              <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
               </p>
             </div>
           </div>
@@ -801,8 +805,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
               <div className="row">
           <div className={["breadcramp-con", "col-12"].join(" ")}>
               <p className="breadcramp">
-                <Link to="/homepage"> Home </Link>/{" "}
-                <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+              <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link>  
               </p>
             </div>
           </div>
@@ -891,8 +895,8 @@ const CollectionHero = ({ node, nodetype,collectionName,collectionUrl, checktaxo
           <div className="row">
       <div className={["breadcramp-con", "col-12"].join(" ")}>
           <p className="breadcramp">
-            <Link to="/homepage"> Home </Link>/{" "}
-            <Link to={`/${checktaxonomyType}`}> {checktaxonomyType}</Link> / <Link to={collectionUrl}>{collectionName}</Link> 
+          <Link to="/homepage">Home</Link> /{" "}
+            <Link to={`/${geturi[1]}`}> {geturi[1]}</Link> / <Link to={'/'+geturi[1]+'/'+geturi[2]}>{geturi[2]}</Link> 
           </p>
         </div>
        <div className="offset-lg-1">
