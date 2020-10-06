@@ -53,6 +53,7 @@ query($slug: String!) {
                 ...paragraphCustomBlock
                 ...paragraphImage
                 ...paragraphVitamins
+                ...paragraphTaxonomyHeroParaprapgh
 
             }
         }

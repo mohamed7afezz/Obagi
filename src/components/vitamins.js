@@ -15,16 +15,18 @@ const Vitamins = ({ node }) => {
                 {node.field_vitamins_subtitle? <div dangerouslySetInnerHTML={{__html: node.field_vitamins_subtitle.processed}}></div> : ""}
               </div>
               <div className="col-12">
-                {/* { node.relationships?
+                { node.relationships?
                     node.relationships.field_vitamins?
                       (node.relationships.field_vitamins.map((item, index) => {
                         return (
-                          (item.field_vitamin_name? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_name.processed}}></div> : "")
-                          (item.field_vitamin_description? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_description.processed}}></div> : "")
+                          <>
+                            {(item.field_vitamin_name? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_name.processed}}></div> : "")}
+                            {(item.field_vitamin_description? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_description.processed}}></div> : "")}
+                          </>
                         )
                       }))
 
-                : "" : ""} */}
+                : "" : ""}
               </div>
             </div>
           </div>

@@ -994,7 +994,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               )}
                           </div>
                         )}
+                        {console.log('bahiiii', node)}
     </div>
+    
   )
 }
 
