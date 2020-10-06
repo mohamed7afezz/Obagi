@@ -21,9 +21,10 @@ export default function HTML(props) {
         <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/masonry.pkgd.min.js"></script>
         <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/templates/templates.js"></script>
 
-        {/* <!-- //COOKIE OVEN --> */}
-        <script src="https://gto-cookie-oven.s3.us-east-2.amazonaws.com/widget.js" type="text/javascript" ></script>
-         {/* <!--//END COOKIE OVEN--> */}
+        {/* <!-- //OneTrust Cookies Consent Notice end for www.obagi.com - --> */}
+        <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="359f2fcf-2d57-4b0d-89ac-8c5045c52021-test" ></script>
+        <script type="text/javascript">function OptanonWrapper() { }</script>      
+         {/* <!--//OneTrust Cookies Consent Notice end for www.obagi.com ---> */}
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
