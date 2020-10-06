@@ -79,6 +79,7 @@
 
 .category {
     text-decoration: underline;
+    text-transform: none;
     letter-spacing: 0;
     @extend %futurapt-book;
     padding-left: 6px;

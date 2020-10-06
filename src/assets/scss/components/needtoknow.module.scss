@@ -27,3 +27,17 @@
         @extend %futurapt-bold;
     }
 }
+
+.read-more {
+  color: #fff;
+  display: block;
+  padding-top: 24px;
+  @include fontStyle(12, 16);
+  letter-spacing: 1.2px;
+  @extend %futurapt-bold;
+  text-transform: uppercase;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
