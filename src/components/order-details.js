@@ -202,7 +202,7 @@ const OrderDetails = (props, { node }) => {
                               {index2 < 1?  
                               <>
                                  <div className={orderDetailsStyles.shipment}>
-                              <p>Shipment #{index+1} : {getshipm.id}</p>
+                              <p>Shipment #{index+1} : {getshipm.tracking_number}</p>
                                 </div>
                                 <table className={orderHistoryStyles.tableCon}>
                   <thead className={orderHistoryStyles.tHead}>
@@ -247,7 +247,7 @@ const OrderDetails = (props, { node }) => {
                                 </div>
                                 <div className={orderDetailsStyles.productPrice}>
                                   {item.total_inc_tax
-                                    ? "$" + item.total_inc_tax
+                                    ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
                                     : ""}
                                 </div>
                               </div>
@@ -280,7 +280,7 @@ const OrderDetails = (props, { node }) => {
                               {item.quantity ? "Qty. " + item.quantity : ""}
                             </div>
                             <div className={orderDetailsStyles.productPrice}>
-                              {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
+                              {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                             </div>
                             <div className={orderDetailsStyles.productstatus}>
                               {item.order_status}
@@ -410,7 +410,7 @@ const OrderDetails = (props, { node }) => {
                 <div className={orderDetailsStyles.totalWrapper}>
                   <div>Order Total</div>
                   <div className={orderDetailsStyles.totalPrice}>
-                    {details.total_inc_tax ? "$" + details.total_inc_tax : ""}
+                    {details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}
                   </div>
                 </div>
 
@@ -531,7 +531,7 @@ const OrderDetails = (props, { node }) => {
                                 <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
                                 <div className={orderDetailsStyles.priceAndQuantity}>
                                     <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
-                                    <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + item.total_inc_tax : ""}</div>
+                                    <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
                                 </div>
                             </div>
                         </div>
@@ -573,7 +573,7 @@ const OrderDetails = (props, { node }) => {
                             {item.quantity ? "Qty. " + item.quantity : ""}
                         </div>
                         <div className={orderDetailsStyles.productPrice}>
-                            {item.total_inc_tax ? "$" + item.total_inc_tax : ""}
+                            {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                         </div>
                     </div>
                 </div>
@@ -637,7 +637,7 @@ const OrderDetails = (props, { node }) => {
 
             <div className={orderDetailsStyles.totalWrapper}>
                 <div>Order Total</div>
-                <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" + details.total_inc_tax : ""}</div>
+                <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" +  parseFloat(details.total_inc_tax).toFixed(2) : ""}</div>
             </div>
 
             <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>

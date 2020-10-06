@@ -142,8 +142,8 @@ sortPriceSelect.addEventListener("change", function (event) {
 
         <div className="producTypeSelect d-flex">
             <label className={searchResultStyle.title}>Products:</label>
-            <label className="radioLabel" onClick={() => {medicalbg();}}><input id="medicalRadio" name="radiono" checked={isDefultSelectCategoryMedical} value="medical"  type="radio" /><span class="radiomark"></span>Medical </label>
-            <label className="radioLabel" onClick={() => {clinicalbg(); }}><input id="clinicalRadio" name="radiono" checked={!isDefultSelectCategoryMedical} value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical </label>
+      <label className="radioLabel" onClick={() => {medicalbg();}}><input id="medicalRadio" name="radiono" checked={isDefultSelectCategoryMedical} value="medical"  type="radio" /><span class="radiomark"></span>Medical ({medicalSearchResults.length})</label>
+            <label className="radioLabel" onClick={() => {clinicalbg(); }}><input id="clinicalRadio" name="radiono" checked={!isDefultSelectCategoryMedical} value="Clinical"  type="radio" /> <span class="radiomark"></span>Clinical ({clinicalSearchResults.length})</label>
         </div>
         </div>
         <div 
