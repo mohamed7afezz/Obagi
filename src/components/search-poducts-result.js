@@ -207,7 +207,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -223,8 +223,9 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         <ProductCard
                         productLink={item.path.alias}
                           producttitle={item.title}
+                          
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -274,7 +275,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -290,7 +291,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -307,7 +308,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
@@ -324,7 +325,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
-                            __html: item.field_clinical_description.processed,
+                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
                           }}
                           productimage={
                             (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)

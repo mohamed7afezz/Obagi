@@ -105,27 +105,7 @@ export const fragment = graphql`
       field_review_title {
         processed
       }
-      relationships {
-        node__medical_product {
-          field_medical_id
-          path {
-            alias
-          }
-          title
-          relationships {
-            field_medical_image {
-              localFile {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
-            }
-          }
-        }
-        
-      }
+    
     }
 `;
 
