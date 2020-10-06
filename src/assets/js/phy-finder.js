@@ -1,5 +1,5 @@
-export function phyFinder(google, finderURL) {
-    const map = new Map(finderURL, google, 'map', {lat: 37.9820046, lng: -96.8954686}, 5)
+export function phyFinder(google, finderURL, productsDataObj) {
+    const map = new Map(finderURL, productsDataObj, google, 'map', {lat: 37.9820046, lng: -96.8954686}, 5)
     map.initMap();
     
 }
@@ -16,13 +16,13 @@ class Temps {
                     </div>
                     <div class="info info-list col-9">
                         <h2 class="row clinic-name">${obj.name}</h2>
-                       <div class="row email"><button  data-toggle="modal" data-target="#appointment" class="make-appointment" > Request Appointment</button></div>
+                       <div class="row email"><button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" > Request Appointment</button></div>
                        <div class="row address-one">${obj.address1}</div>
                        <div class="row city">${obj.city}, ${obj.state} ${obj.zip}</div>
                        <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
                         <div class="row sales-email hide">${obj.email}</div>
                          <div class="row links">
-                           <button class="btn btn-link">6 products</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">view website</a>` : ''}
+                           <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'products' : 'product'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">view website</a>` : ''}
                          </div>
                     </div>
                 </div>
@@ -36,15 +36,35 @@ class Temps {
         return `
             <div>
                 <h2>${obj.name}</h2>
+                <button  data-toggle="modal" data-target="#appointment" class="make-appointment" id="req-appointment-info" > Request Appointment</button>
             </div>
         `;
+    }
+
+    relatedProduct(name, link) {
+        return `
+            <div><span>${name}</span> <span><a href="${link}">view product</a></span> </div>
+        `
+    }
+
+    clinicInfo(obj) {
+        return `
+            <div class="doc-name">
+                <p class="doctitle">${obj.name}</p>
+                <div class="d-flex">
+                    <p class="address-one">${obj.address1}</p>
+                    <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
+                </div>
+            </div>
+        `
     }
 }
 
 class Search extends Temps {
-    constructor(ajaxURL, google, inputLoc, inputPhy, inputMiles, searchBtn) {
+    constructor(ajaxURL, productsDataObj, google, inputLoc, inputPhy, inputMiles, searchBtn) {
         super();
         this.ajaxURL = ajaxURL;
+        this.productsDataObj = productsDataObj;
         this.google = google;        
         this.geocoder = new this.google.maps.Geocoder();
         this.inputLoc = inputLoc;
@@ -158,7 +178,7 @@ class Search extends Temps {
                 console.log(err)
             });
 
-        } else if(geocodeOptions.location) {
+        } else if(searchOptions.location) {
             // search from navigator
             this.emptyParams();  
             geocodeOptions = {
@@ -188,7 +208,6 @@ class Search extends Temps {
             }
             this.params.product = '';
             this.params.product = products.length > 0? products.join(',') : '';
-            console.log('bahiiii', this.params, products)
         }
         
 
@@ -259,10 +278,17 @@ class Search extends Temps {
                 document.getElementById('results-distance').classList.remove('hide');                
                 document.getElementById('results-distance-number').innerHTML = this.params.distance;
             }
-            clinics.forEach((item, index) => {
+            clinics.forEach((clinic, index) => {
                 let li = document.createElement('li');
-                li.innerHTML = this.resultTemp(index, item, isPhy);
+                li.innerHTML = this.resultTemp(index, clinic, isPhy);
                 document.getElementById('results').appendChild(li);
+                document.getElementsByClassName('req-appointment').item(index).addEventListener('click', (e) => {
+                    document.getElementById('req-app-clinic-info').innerHTML = this.clinicInfo(clinic);
+                });
+                // add event listener for related products request
+                document.getElementsByClassName('related-products').item(index).addEventListener('click', (e) => {
+                    this.getRelatedProducts(e, clinic);
+                })
             })
             document.getElementById('results-wrapper').dispatchEvent(this.eventAppend);
 
@@ -271,9 +297,47 @@ class Search extends Temps {
         }
     }
 
+    async getRelatedProducts(e, clinic) {
+        e.preventDefault();
+        document.getElementById('related-phy-info').innerHTML = '';
+        document.getElementById('related-phy-info').innerHTML = this.clinicInfo(clinic);
+        document.getElementById('related-products-list').innerHTML = 'Loading...';
+
+        let qs = 'customer_number=' + clinic.cid;
+        let req = await fetch(this.ajaxURL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: qs
+        }).catch(err => {console.log(err); document.getElementById('related-products-list').innerHTML = 'Please contact us, something went wrong!';});
+        
+        let res = [];
+        if(req.status == 200) {
+            res = await req.json();
+        }
+
+        if(res.length > 0) {
+            document.getElementById('related-products-list').innerHTML = '';
+            res.forEach(item => {
+                let product = document.createElement('div');
+                product.innerHTML = this.relatedProduct(item.item_description, this.getRelatedProductLink(item.item_number));
+                document.getElementById('related-products-list').append(product);
+            });
+        } else {
+            document.getElementById('related-products-list').innerHTML = 'No products found!';
+        }
+    
+    }
+
+    getRelatedProductLink(id) {
+        console.log('bahiii', this.productsDataObj);
+        let prodIndex = this.productsDataObj.findIndex(item => item.sku == id);
+        return this.productsDataObj[prodIndex].path;
+    }
+
     async sendSearchReq() {
         let qs = Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
-        console.log('bahiiii', qs)
         let req = await fetch(this.ajaxURL, {
             method: 'POST',
             headers: {
@@ -333,6 +397,7 @@ class Search extends Temps {
     }
 
     updateParams(location, paramsFor) {
+        console.log('update Params')
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
@@ -352,13 +417,17 @@ class Search extends Temps {
         if(paramsFor != 'prod') {
             this.searchBtn.classList.add('pulse');
         }
+        
+        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
+        document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
 }
 
 class Map extends Search {
-    constructor (ajaxURL, google, mapId, initCenterLoc, zoom) {
+    constructor (ajaxURL, productsDataObj, google, mapId, initCenterLoc, zoom) {
         super(
             ajaxURL,
+            productsDataObj,
             google,
             document.getElementById('input-location'),
             document.getElementById('input-physician'),
@@ -435,12 +504,13 @@ class Map extends Search {
                 this.markers.push(marker)
             })
 
-            this.openClinic(0);
+            // this.openClinic(0);
+            // new this.google.maps.event.trigger( this.markers[0], 'click' );
 
             // add event Listener on tray result number
             for(let i = 0; i < document.getElementsByClassName('tray-result-number').length; i++) {
                 document.getElementsByClassName('tray-result-number')[i].addEventListener('click', (e) => {
-                    console.log('bahiiii', e)
+                    
                     this.openClinic(i, true)
                     this.map.panTo(new this.google.maps.LatLng(this.results.clinics[i].lat, this.results.clinics[i].lng));
                     this.map.setZoom(15)
@@ -480,6 +550,16 @@ class Map extends Search {
         this.markers[index].setLabel(labelCOlor)
         this.infoWindow.setContent(this.infoWindowTemp(this.results.clinics[index]));
         this.infoWindow.open(this.map, this.markers[index]);
+        
+        let self = this;
+        function clickInfoReq () {
+            document.getElementById('req-app-clinic-info').innerHTML = self.clinicInfo(self.results.clinics[index])
+        }
+
+        // document.getElementById('req-appointment-info').removeEventListener('click', clickInfoReq);
+        document.getElementById('req-appointment-info').addEventListener('click', clickInfoReq);
+
+
 
         
         const myElement = document.getElementById(`result-info-wrapper-${index}`);
