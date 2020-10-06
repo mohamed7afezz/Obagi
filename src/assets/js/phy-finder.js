@@ -47,13 +47,14 @@ class Temps {
         `
     }
 
-    clinicInfo(obj) {
+    clinicInfo(obj, isProd) {
         return `
             <div class="doc-name">
                 <p class="doctitle">${obj.name}</p>
                 <div class="d-flex">
                     <p class="address-one">${obj.address1}</p>
                     <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
+                    ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
                 </div>
             </div>
         `
@@ -300,7 +301,10 @@ class Search extends Temps {
     async getRelatedProducts(e, clinic) {
         e.preventDefault();
         document.getElementById('related-phy-info').innerHTML = '';
-        document.getElementById('related-phy-info').innerHTML = this.clinicInfo(clinic);
+        document.getElementById('related-phy-info').innerHTML = this.clinicInfo(clinic, true);
+        document.getElementById('req-app-rel-pro').addEventListener('click', () => {
+            document.getElementById('req-app-clinic-info').innerHTML = this.clinicInfo(clinic);
+        })
         document.getElementById('related-products-list').innerHTML = 'Loading...';
 
         let qs = 'customer_number=' + clinic.cid;
