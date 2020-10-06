@@ -158,7 +158,7 @@ class Search extends Temps {
                 console.log(err)
             });
 
-        } else if(geocodeOptions.location) {
+        } else if(searchOptions.location) {
             // search from navigator
             this.emptyParams();  
             geocodeOptions = {
@@ -188,7 +188,6 @@ class Search extends Temps {
             }
             this.params.product = '';
             this.params.product = products.length > 0? products.join(',') : '';
-            console.log('bahiiii', this.params, products)
         }
         
 
@@ -273,7 +272,6 @@ class Search extends Temps {
 
     async sendSearchReq() {
         let qs = Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
-        console.log('bahiiii', qs)
         let req = await fetch(this.ajaxURL, {
             method: 'POST',
             headers: {
@@ -333,6 +331,7 @@ class Search extends Temps {
     }
 
     updateParams(location, paramsFor) {
+        console.log('update Params')
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
@@ -352,6 +351,9 @@ class Search extends Temps {
         if(paramsFor != 'prod') {
             this.searchBtn.classList.add('pulse');
         }
+        
+        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
+        document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
 }
 
@@ -440,7 +442,7 @@ class Map extends Search {
             // add event Listener on tray result number
             for(let i = 0; i < document.getElementsByClassName('tray-result-number').length; i++) {
                 document.getElementsByClassName('tray-result-number')[i].addEventListener('click', (e) => {
-                    console.log('bahiiii', e)
+                    
                     this.openClinic(i, true)
                     this.map.panTo(new this.google.maps.LatLng(this.results.clinics[i].lat, this.results.clinics[i].lng));
                     this.map.setZoom(15)

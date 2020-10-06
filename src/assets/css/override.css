@@ -1630,12 +1630,13 @@ height:  32px;
   }
 }
 
-.products-masonry {
+/* .products-masonry {
   column-count: 2;
   column-gap: 30px;
 }
+*/
 
 .product-line-masonry {
-  width: 100%;
+  width: 50%;
   margin-bottom: 15px;
-}
+} 

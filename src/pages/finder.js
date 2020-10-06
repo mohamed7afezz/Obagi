@@ -10,7 +10,7 @@ import Layout from "../components/layout"
 
 const finderURL = process.env.Finder_URL;
 
-export const ProductLineComp = ({line, key}) => {
+export const ProductLineComp = ({line}) => {
 
     return (
       <>
@@ -46,8 +46,9 @@ export default function Finder({ data }) {
     function updateProductLines(e) {
         if(e.target.checked) {
             console.log('bahiii', prodLines)
-            prodLines.push(e.target.value)
-            setProductLines(prodLines);
+            let newProdLines = prodLines;
+            newProdLines.push(e.target.value);
+            setProductLines(newProdLines);
         } else {
             setProductLines(prodLines.filter(item => item !== e.target.value));            
         }
@@ -94,34 +95,6 @@ export default function Finder({ data }) {
     ) {
       CustomSelect()
     }
-
-    // build masonory grid for product lines
-    const isotope = require('isotope-layout');
-    let isoGrid = new isotope(".products-masonry", {
-      itemSelector: ".product-line-masonry",
-      layoutMode: "masonry",
-      masonry: {
-        gutter: 30
-      }
-    })
-
-    document.querySelector('#prod-search-btn').addEventListener('click', () => {
-      if((document.getElementById('prodLoc').value.length < 5) || (prodLines.length < 1)) {
-        return;
-      }
-      console.log('bahiii', isoGrid.getItemElements())
-      isoGrid.insert(document.getElementsByClassName('.product-line-masonry'));
-      isoGrid.layout();
-      isoGrid.arrange();
-      // isoGrid = new isotope(".products-masonry", {
-      //   itemSelector: ".product-line-masonry",
-      //   layoutMode: "masonry",
-      //   masonry: {
-      //     gutter: 30
-      //   }
-      // })
-      console.log('bahiii', isoGrid.getItemElements())
-    })
   }, [])
 
   function searchBy(e) {
@@ -170,8 +143,8 @@ export default function Finder({ data }) {
                   <span class="checkmarkfinder"></span>by location
                 </label>
 
-                <label class="checkcon">
-                  <input type="radio" name="search-radio" value="phy" />
+                <label class="checkcon" onClick={searchBy}>
+                  <input type="radio" name="search-radio" value="phy"/>
                   <span class="checkmarkfinder"></span>by physician
                 </label>
               </div>
@@ -480,20 +453,23 @@ export default function Finder({ data }) {
                     Select the products below you are interested in
                   </p>
                 </form>
-                <Scrollbars style={{ height: 400 }} className={lines.length > 0? '' : 'd-none'}>
-                  <div>
-                    <div class="products-masonry" id="products-search-result">
-                      
-                      {
-                        lines.length > 0? lines.map(({node}) => (
-                          <div class="search-res left-res product-line-masonry">
-                            <ProductLineComp line={node} key={node.id}/>)
-                          </div>
-                        )) : '<div class="search-res left-res product-line-masonry"></dvi>'
-                      }
+                
+                <div className={lines.length > 0? '' : 'd-none'}>
+                  <Scrollbars style={{ height: 400 }}>
+                    <div>
+                      <div class="products-masonry" id="products-search-result">
+                        
+                        {
+                          lines.length > 0? lines.map(({node}) => (
+                            <div class="product-line-masonry" key={node.id}>
+                              <ProductLineComp line={node} />)
+                            </div>
+                          )) : '<div class="search-res left-res product-line-masonry"></dvi>'
+                        }
+                      </div>
                     </div>
-                  </div>
-                </Scrollbars>
+                  </Scrollbars>
+                </div>
                 <div class="">
                   <button class="submit-search-physician" type="button" id="submit-search-physician" data-dismiss="modal" >
                     Search for a physician
