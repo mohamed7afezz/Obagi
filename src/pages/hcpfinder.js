@@ -45,14 +45,12 @@ export default function Finder({ data }) {
 
     function updateProductLines(e) {
         if(e.target.checked) {
-            console.log('bahiii', prodLines)
-            let newProdLines = prodLines;
+            let newProdLines = [...prodLines];
             newProdLines.push(e.target.value);
             setProductLines(newProdLines);
         } else {
             setProductLines(prodLines.filter(item => item !== e.target.value));            
         }
-
         //TODO: add masonry style
 
     }
@@ -72,7 +70,7 @@ export default function Finder({ data }) {
         document.getElementById('prod-err-msg').classList.add('d-none');
         e.target.disabled = true;
         let searchLines = data.productLines.edges.filter(({node}) => prodLines.includes(node.name));
-        let resultsNumber = searchLines.map(({node}) => node.relationships.products.length).reduce((acc, sum) => acc + sum);
+        let resultsNumber = searchLines.map(({node}) => node.relationships.products? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum);
         setProductResultsNumber(resultsNumber);
         setLines(searchLines);
         document.querySelector('#prodLines').classList.add('d-none');
@@ -88,7 +86,18 @@ export default function Finder({ data }) {
   useEffect(() => {
     if (typeof window != "undefined") {
       const google = window.google
-      phyFinder(google, finderURL)
+      const productsData = data.productLines.edges.map(({node}) => {
+        let newNode = node.relationships.products? node.relationships.products.map(product => {
+          return {
+            path: (product.path && product.path.alias)? product.path.alias : '#',
+            sku: product.field_medical_sku? product.field_medical_sku : ''
+          }
+        }) : undefined;
+
+        return newNode;
+      }).filter(item => item != undefined).flat();
+
+      phyFinder(google, finderURL, productsData);
     }
     if (
       document.querySelectorAll(".custom-select .select-selected").length < 1
@@ -283,21 +292,7 @@ export default function Finder({ data }) {
                   Request an appointment below for a skin care consultation
                   with:
                 </h2>
-                <div class="doc-name">
-                  <p class="doctitle">
-                    The Robert Zubowski MD Center for Plastic and Reconstructive
-                    Surgery
-                  </p>
-                  <div class="d-flex">
-                    <p class="address-one">1 Sears Drive Suite 102</p>
-                    <ul>
-                      <p class="city">• Paramus, NJ 07652</p>
-                      <p class="phone">
-                        <a href="#">• (123) 456-7890</a>
-                      </p>
-                    </ul>
-                  </div>
-                </div>
+                <div id="req-app-clinic-info"></div>
                 <form onSubmit={(e) => {e.preventDefault();}}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt mt-0">
@@ -418,15 +413,21 @@ export default function Finder({ data }) {
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">Product Lines</p>
                         <div id="prodLinesSelected" onClick={(e) => {document.querySelector('#prodLines').classList.contains('d-none')? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none')}}>
-                        {prodLines[0]? prodLines[0] : 'Select Product Line'} {prodLines.length > 1? '+' + (prodLines.length - 1): ''}
-                          
+                        {prodLines.length > 0? prodLines[0] : 'Select Product Line'} {prodLines.length > 1? '+' + (prodLines.length - 1): ''}
+                         
                         </div>
                       <div class="product-lines d-none" id="prodLines">
                         <Scrollbars style={{ height: 250 }}>
                           <ul>
-                            {data.productLines.edges.map(({ node }) => (
-                              <li><input type="checkbox" value={node.name} onClick={updateProductLines}/>{node.name}</li>
-                            ))}
+                            {data.productLines.edges.map(({ node }) => {
+                              if(node.relationships.products) {
+                                return (
+                                  <li key={node.id}>
+                                    <input type="checkbox" value={node.name} onClick={updateProductLines}/>{node.name}
+                                  </li>
+                                )
+                              }
+                            })}
                           </ul>
                         </Scrollbars>
                       </div>
@@ -461,7 +462,7 @@ export default function Finder({ data }) {
                         
                         {
                           lines.length > 0? lines.map(({node}) => (
-                            <div class="product-line-masonry" key={node.id}>
+                            <div class="product-line-masonry" key={node.id + '1'}>
                               <ProductLineComp line={node} />)
                             </div>
                           )) : '<div class="search-res left-res product-line-masonry"></dvi>'
@@ -484,6 +485,23 @@ export default function Finder({ data }) {
           </div>
         </div>
       </div>
+      {/* releated products */}
+      <div class="modal fade" id="related-products" tabindex="-1" role="dialog" aria-labelledby="related-products" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Related products</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="related-phy-info"></div>
+              <div id="related-products-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -499,6 +517,9 @@ export const productsLine = graphql`
             products: node__medical_product {
               field_medical_sku
               title
+              path {
+                alias
+              }
             }
           }
         }
