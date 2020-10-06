@@ -47,11 +47,12 @@ query($slug: String!) {
                 ...paragraphCareersHero
                 ...paragraphArticle
                 ...paragraphHeadingAndButton
-               
+                ...paragraphBasics
                 ...paragraphFaqWrapper
                 ...paragraphNotFound
                 ...paragraphCustomBlock
                 ...paragraphImage
+                ...paragraphVitamins
 
             }
         }
