@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"
-import ReactDomServer from 'react-dom/server'
 import { graphql, Link } from "gatsby"
-import { phyFinder } from "../assets/js/phy-finder"
-import "../assets/scss/components/physfinder-old.scss"
-import "../assets/scss/components/physfinder.scss"
-import { CustomSelect } from "../assets/js/custom-select"
+import { phyFinder } from "../../assets/js/phy-finder"
+// import "../assets/scss/components/physfinder-old.scss"
+// import "../assets/scss/components/physfinder.scss"
+import { CustomSelect } from "../../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 
 const finderURL = process.env.Finder_URL;
 
