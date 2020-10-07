@@ -85,7 +85,7 @@ const ProductCard = ({
             {isrx == 'RX'?
             <Link className={Productcard.addtocart} to="/medical/hcpfinder">
               
-             Find a Physician
+             Locate a Physician
           </Link>
             :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
             onClick={() => {

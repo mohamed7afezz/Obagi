@@ -349,7 +349,13 @@ class Search extends Temps {
     }
 
     async sendSearchReq() {
-        let qs = Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
+        let qs = Object.keys(this.params).map(key => {
+            if(key == 'country') {
+               return key + '=' + ''
+            } else {
+               return key + '=' + this.params[key]
+            }
+        }).join('&');
         let req = await fetch(this.ajaxURL, {
             method: 'POST',
             headers: {
@@ -413,13 +419,14 @@ class Search extends Temps {
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
-                this.params.zip = item.short_name
+                this.params.zip = item.short_name;
+                this.params.postal = item.short_name;
             } else if(item.types.includes('locality')) {
-                this.params.state = item.short_name
-            } else if(item.types.includes('administrative_area_level_1')) {
                 this.params.city = item.short_name
+            } else if(item.types.includes('administrative_area_level_1')) {
+                this.params.state = item.short_name
             } else if(item.types.includes('country')) {
-                this.params.country = item.long_name
+                this.params.country = item.short_name
             } else {
                 // this is left blank intentionally
             }
@@ -430,7 +437,7 @@ class Search extends Temps {
             this.searchBtn.classList.add('pulse');
         }
         
-        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
+        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params.zip + ', ' + this.params.country;
         document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
 }
