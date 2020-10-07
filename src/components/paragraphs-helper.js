@@ -38,6 +38,7 @@ import NotFound from './not-found';
 import Image from './image'
 import Basics from './basics';
 import Vitamins from './vitamins';
+import SysRelatedProducts from './product-components/sys-related-products';
 
 
 const componentsMap = {
@@ -79,6 +80,7 @@ const componentsMap = {
     paragraph__blog: Blog,
     paragraph__basics: Basics,
     paragraph__vitamins: Vitamins,
+    paragraph__sys_related_products: SysRelatedProducts
 }
 
 export const getParagraph = node => {

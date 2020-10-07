@@ -1,6 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 import vitaminsStyles from '../assets/scss/components/vitamins.module.scss'
 
 const Vitamins = ({ node }) => {
@@ -8,25 +9,28 @@ const Vitamins = ({ node }) => {
   console.log("vit", node.relationships)
     return (
         <>
-          <div className="container-fluid">
+          <div className={["container-fluid", vitaminsStyles.wrapper].join(" ")}>
             <div className="row">
-              <div className="col-12">
-                {node.field_paragraph_title? <div dangerouslySetInnerHTML={{__html: node.field_paragraph_title.processed}}></div> : ""}
-                {node.field_vitamins_subtitle? <div dangerouslySetInnerHTML={{__html: node.field_vitamins_subtitle.processed}}></div> : ""}
+              <div className="col-12 col-lg-5 offset-lg-1">
+                {node.field_paragraph_title? <div className={vitaminsStyles.title} dangerouslySetInnerHTML={{__html: node.field_paragraph_title.processed}}></div> : ""}
+                {node.field_vitamins_subtitle? <div className={vitaminsStyles.subtitle} dangerouslySetInnerHTML={{__html: node.field_vitamins_subtitle.processed}}></div> : ""}
+                {node.relationships && node.relationships.field_paragraph_image && node.relationships.field_paragraph_image.localFile? <Img className={[vitaminsStyles.image, "d-none d-lg-block"].join(" ")} fluid={node.relationships.field_paragraph_image.localFile.childImageSharp.fluid}/> : ""}
               </div>
-              <div className="col-12">
+              <div className="col-12 col-lg-4 offset-lg-1">
                 { node.relationships?
                     node.relationships.field_vitamins?
                       (node.relationships.field_vitamins.map((item, index) => {
                         return (
                           <>
-                            {(item.field_vitamin_name? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_name.processed}}></div> : "")}
-                            {(item.field_vitamin_description? <div dangerouslySetInnerHTML={{__html: item.field_vitamin_description.processed}}></div> : "")}
+                            {item.field_vitamin_name? <div className={vitaminsStyles.vName} dangerouslySetInnerHTML={{__html: item.field_vitamin_name.processed}}></div> : ""}
+                            {item.field_vitamin_description? <div className={vitaminsStyles.vDesc} dangerouslySetInnerHTML={{__html: item.field_vitamin_description.processed}}></div> : ""}
                           </>
                         )
                       }))
 
                 : "" : ""}
+
+                {node.field_paragraph_link? <Link className={vitaminsStyles.link} to={node.field_paragraph_link.uri}>{node.field_paragraph_link.title}</Link> : ""}
               </div>
             </div>
           </div>
@@ -54,7 +58,7 @@ export const fragment = graphql`
               localFile {
                 childImageSharp {
                   fluid {
-                    src
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }

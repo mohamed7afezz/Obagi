@@ -273,7 +273,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    kinetin: nodeClinicalProduct(field_clinical_id: {eq: "348"}) {
+    product1: nodeClinicalProduct(field_clinical_id: {eq: "339"}) {
       id
       field_clinical_price
       field_clinical_id
@@ -294,7 +294,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    kinetinSerum: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
+    product2: nodeClinicalProduct(field_clinical_id: {eq: "346"}) {
       id
       field_clinical_price
       field_clinical_id
@@ -315,7 +315,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    kinetinCream: nodeClinicalProduct(field_clinical_id: {eq: "342"}) {
+    product3: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
       id
       field_clinical_price
       field_clinical_id
@@ -336,7 +336,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    retinol: nodeClinicalProduct(field_clinical_id: {eq: "344"}) {
+    product4: nodeClinicalProduct(field_clinical_id: {eq: "345"}) {
       id
       field_clinical_price
       field_clinical_id
@@ -357,7 +357,7 @@ const YourBag = (props, {notificationId}) => {
       }
     }
 
-    vitaminc: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
+    product5: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
       id
       field_clinical_price
       field_clinical_id
@@ -432,11 +432,11 @@ const YourBag = (props, {notificationId}) => {
       data.spf
     ]
     let clinicalList = [
-      data.kinetin,
-      data.kinetinSerum,
-      data.kinetinCream,
-      data.retinol,
-      data.vitaminc
+      data.product1,
+      data.product2,
+      data.product3,
+      data.product4,
+      data.product5
     ]
 
     let recommendedList = [];
