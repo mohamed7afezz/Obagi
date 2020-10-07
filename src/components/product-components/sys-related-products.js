@@ -31,12 +31,28 @@ export default function SysRelatedProducts({node}) {
             return '';
         }
     }
+//     checkloadedscript();
+//     function checkloadedscript(){
+// if (document.querySelector('.sysRelatedComp .slick-track')) {
+//     slickheight()
+// }else
 
+// {
+//     setTimeout(checkloadedscript,2000)  
+// }
+// }
+//     function slickheight(){
+//     if(typeof window !== "undefined") {
+        
+//         var stHeight = document.querySelector('.sysRelatedComp .slick-track').offsetHeight;
+//         document.querySelector('.sysRelatedComp .slick-slide').style.minHeight=`${stHeight}px`
+//         }
+//     }
     return (
         <>
             {
                 checkDataCondition(node.field_enabled, (
-                    <div className={`container-fluid ${compStyles.sysRelatedComp}`}>
+                    <div className={`container-fluid ${compStyles.sysRelatedComp} sysRelatedComp`}>
                         <div className="row">
                             <div className="col">
                                 <h2 className={`${compStyles.sysRelHeader}`}>
@@ -45,7 +61,7 @@ export default function SysRelatedProducts({node}) {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col">
+                            <div className="col offset-lg-2 col-lg-8">
                                 <Slider {...sliderSettings}>            
                                     {
                                         checkDataCondition((products.length > 0), (

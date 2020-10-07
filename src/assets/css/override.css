@@ -187,6 +187,23 @@ top: 0 !important;
   max-width: 100%;
 }
 @media (min-width: 768px) {
+  .sysRelatedComp
+.slick-track
+{
+    display: flex !important;
+}
+
+.sysRelatedComp  .slick-slide
+{
+  min-height: 691px !important;
+}
+.sysRelatedComp  .slick-slide > div
+{
+height: 691px !important;
+}
+.sysRelatedComp .slide {
+  height: 100%;
+}
   #Showbag {
     z-index: 999999999;
     height: 100vh;
