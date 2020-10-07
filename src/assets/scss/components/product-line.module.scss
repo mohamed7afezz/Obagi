@@ -34,13 +34,15 @@
     @include fontStyle(12, 16);
     letter-spacing: 1.2px;
     color: #132466;
-    padding: 14px 0;
+    padding: 14px;
     background: #ffffff;
     text-align: center;
     border-radius: 6px;
     position: relative;
     margin-right: 24px;
     margin-bottom: 35px;
+    width: 100%;
+    white-space: nowrap;
  
 
     &:hover {

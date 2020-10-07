@@ -1,2 +1,84 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
+
+.wrapper {
+    padding-top: 40px;
+    padding-bottom: 39px;
+    @extend %futurapt-light;
+
+    @include lg-screen {
+        padding-top: 112px;
+        padding-bottom: 100px;
+    }
+
+}
+
+.title {
+    @include fontStyle(40, 56);
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+    }
+}
+
+.subtitle {
+    @include fontStyle(18, 32);
+    padding: 8px 0 16px;
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        padding: 16px 0 48px;
+    }
+}
+
+.v-name {
+    @include fontStyle(24, 40);
+    padding-left: 24px;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        left: 0;
+        top: 16px;
+        background: #ffcd00;
+    }
+}
+
+.v-desc {
+    @include fontStyle(18, 32);
+    padding: 4px 0 16px 24px;
+
+    @include lg-screen {
+        padding-bottom: 28px;
+    }
+}
+
+.link {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #132466;
+    border-radius: 6px;
+    color: #132466;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    text-transform: uppercase;
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+        background: #132466;
+    }
+
+    @include lg-screen {
+        margin-top: 12px;
+        margin-left: 24px;
+        width: 50%;
+        padding: 24px;
+    }
+}
