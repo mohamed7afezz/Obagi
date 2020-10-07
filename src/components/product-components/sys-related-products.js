@@ -56,7 +56,8 @@ export default function SysRelatedProducts({node}) {
                         <div className="row">
                             <div className="col">
                                 <h2 className={`${compStyles.sysRelHeader}`}>
-                                    All {system.title}
+                                    Product Set Includes<br/>
+                                    All {system.title} Products
                                 </h2>
                             </div>
                         </div>
