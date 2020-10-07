@@ -56,7 +56,7 @@ top: 5px;
     line-height: 46px;
     @extend %futurapt-light;
     @include md-screen{
-        font-size: 64px;
+        font-size: 54px;
         line-height: 72px;
         padding-bottom: 16px;
     }
@@ -67,7 +67,7 @@ top: 5px;
     font-size: 18px;
     line-height: 27px;
     @include md-screen{    
-    font-size: 28px;
+    font-size: 20px;
     
     line-height: 40px;
     }

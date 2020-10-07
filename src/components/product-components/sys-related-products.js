@@ -56,7 +56,7 @@ export default function SysRelatedProducts({node}) {
                         <div className="row">
                             <div className="col">
                                 <h2 className={`${compStyles.sysRelHeader}`}>
-                                    {system.title}
+                                    All {system.title}
                                 </h2>
                             </div>
                         </div>

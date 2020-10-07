@@ -351,7 +351,7 @@ if ( typeof window !== "undefined"){
           <Link
             className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
             to="/medical/hcpfinder">      
-            Find a Physician
+            Locate a Physician
          </Link>
           :<button
             className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
