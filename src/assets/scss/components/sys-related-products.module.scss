@@ -1,0 +1,32 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.sys-related-comp {
+    background-color: #868cd2;
+    padding-top: 32px;
+    padding-bottom: 40px;
+
+    @include md-screen {
+        padding-top: 112px;
+        padding-bottom: 112px;
+    }
+}
+
+.sys-rel-header {
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+
+    margin-bottom: 32px;
+
+    @extend %futurapt-light;
+
+    @include fontStyle(40, 56);
+
+    @include md-screen {
+        @include fontStyle(48, 64);
+        margin-bottom: 64px;
+    }
+
+}
