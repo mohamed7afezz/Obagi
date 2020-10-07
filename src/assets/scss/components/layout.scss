@@ -5,6 +5,14 @@ body {
     color: #132466;
     position: relative;
     padding-right: 0 !important;
+   
+    div, a, button {
+        outline: none;
+    }
+
+    button, a {
+        transition: all ease 100ms;
+    }
     // margin-top: 192.5px;
 
     // @include lg-screen {
@@ -2702,5 +2710,26 @@ p {
 
     @include lg-screen {
         top: 98px !important;
+    }
+}
+
+.basics-paragraph .the-product-card {
+    border-radius: 6px;
+    box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+
+
+    @include lg-screen {
+        max-width: 430px;
+    }
+}
+
+.basics-paragraph .the-product-button {
+    color: #132466;
+    background: #fff;
+    border: 1px solid #132466;
+
+    &:hover {
+        color: #fff;
+        background: #132466;
     }
 }

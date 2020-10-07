@@ -39,7 +39,7 @@ const ProductCard = ({
     }
   `)
   return (
-    <div className={["container-fluid", Productcard.productCardHero].join(" ")}>
+    <div className={["container-fluid the-product-card", Productcard.productCardHero].join(" ")}>
       <div className={Productcard.cardContainer}>
         {/* <div className={["d-flex",Productcard.cardname].join(" ")}>
                     <p>new</p>
@@ -87,7 +87,7 @@ const ProductCard = ({
               
              Find a Physician
           </Link>
-            :<button className={Productcard.addtocart} 
+            :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
             onClick={() => {
               let quantity = 1;
               addToCart(productId,false,quantity);

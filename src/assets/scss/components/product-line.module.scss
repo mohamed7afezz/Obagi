@@ -43,6 +43,11 @@
     margin-bottom: 35px;
     width: 100%;
     white-space: nowrap;
+
+    &:focus, &:visited, &:active {
+        outline: 0;
+        -moz-outline-style: none;
+    }
  
 
     &:hover {
