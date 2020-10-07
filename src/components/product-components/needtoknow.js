@@ -30,8 +30,8 @@ const Needtoknow = ({ node }) => {
                         {node.field_need_to_know_title ? node.field_need_to_know_title.processed : ''}
                     </p>
                     <div dangerouslySetInnerHTML={{ __html: node.field_need_to_know_description ? node.field_need_to_know_description.processed : '' }}></div>
-                    <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.field_need_to_know_description ? node.field_need_to_know_description.processed : '' }}></div>
-                    <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More</a>
+                    <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.field_description_second_part ? node.field_description_second_part.processed : '' }}></div>
+                  {node.field_description_second_part? <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More</a>:""}
                 </div>
             </div>
         </div>
@@ -46,6 +46,9 @@ export const fragment = graphql`
         field_need_to_know_description {
           processed
         }
+        field_description_second_part {
+            processed
+          }
         field_need_to_know_title {
           processed
         }
