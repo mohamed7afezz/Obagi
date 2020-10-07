@@ -998,7 +998,10 @@ flex-direction: column;
   }
 }
 .result-con > div.w-100{
-flex: 0 0 47%;
+flex: 0 0 43%;
+}
+.result-con > div#map{
+  flex: 0 0 50%;
 }
 .results-wrapper.hide + #map{
   flex:  0 0 100%;
@@ -1014,6 +1017,13 @@ flex: 0 0 47%;
     font-size: 18px;
     line-height: 32px;
 }
+}
+#results-info{
+  padding-left: 42px;
+  padding-right: 42px;
+}
+.result-con-1{
+padding: 42px;
 }
  .error::before {
   display: none;
@@ -1248,6 +1258,14 @@ fill : #fff !important;
   list-style: none;
   padding-left: 0;
 }
+#results-info{
+font-size: 16px;
+line-height: 24px;
+font-weight: 500;
+padding-top: 16px;
+padding-bottom: 16px;
+border-bottom: 1px solid #d6d6d6;
+}
 .marker-con{
   padding-right: 0;
   padding-left: 0;
@@ -1275,16 +1293,8 @@ fill : #fff !important;
   padding-left: 0;
   padding-right: 0;
 }
-.result-con{
 
-  padding-left: 42px;
-  padding-right: 42px;
-}
-#results li{
-  padding-top: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #d6d6d6;
-}
+
 @media (max-width:767px){
   #map{
     display: none;
@@ -1307,18 +1317,19 @@ fill : #fff !important;
   .result-con > div.results-wrapper{
     flex: 0 0 100%;
   }
-  .result-con{
-    padding-left: 16px;
-    padding-right: 16px;
+  #results-info, .result-con-1{
+    padding-left: 24px;
+    padding-right: 24px;
   }
   #results {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
 }
 .result-con{
   padding-bottom: 48px;
 }
 }
+
 .body-title{
   font-size: 32px;
   line-height: 48px;
@@ -1449,7 +1460,7 @@ padding-bottom: 16px;
 
   top: 32%;
   height: 32px;
- 
+ margin-top: -8px;
 }
 #advancedSearch{
   .modal-header{
@@ -1592,4 +1603,122 @@ padding-bottom: 16px;
   margin-top: 24px;
   margin-bottom: 24px;
 }
+}
+.address-one, .city{
+  margin-bottom: 8px;
+}
+.links .related-products{
+  text-decoration: underline;
+  font-size: 16px;
+  color: #132466;
+  line-height: 24px;
+  padding: 0;
+  font-weight: 500;
+  border: 0;
+}
+.tray-result-number{
+  background: url(../../images/product-images/pin_0.png);
+  width: 33px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.tray-result-number{
+  cursor: pointer;
+}
+.result-con-1.active{
+background-color: #f8f8f8;
+
+.tray-result-number{
+  background: url(https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin-active.png);
+  color: #fff;
+}
+}
+.map-buttons{
+  a{
+    display: block;
+  }
+  button{
+    display: block;
+  }
+}
+.gm-style .gm-style-iw-c{
+  padding: 24px;
+}
+.gm-ui-hover-effect{
+  display: none !important;
+}
+.popupVideoInput{
+width: auto !important;
+}
+.popupUl{
+  list-style: none;
+  padding-left: 0;
+  .checkmark{
+    top: -3px;
+  }
+}
+#products-search-result{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .product-line-masonry{
+  flex: 0 0 100%;
+  border: 1px solid #d6d6d6;
+  padding: 24px;
+border-radius: 6px;
+margin-bottom: 16px;
+    @include md-screen{
+    flex: 0 0 48%;
+  }
+  }
+ 
+}
+#prodLinesSelected{
+  margin-bottom: 16px;
+}
+#advancedSearch .terms{
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+.result-tax{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.product-search-masonry{
+  
+}
+.results-input-list{
+.not-ava{
+  font-size: 14px;
+  line-height: 16px;
+}
+}
+.results-input-list{
+  .checkmark{
+    top: 0;
+  }
+}
+#req-app-clinic-info{
+.data-wrapper{
+  text-align: center;
+}
+ul{
+  display: inline-flex;
+  padding-left: 0;
+  .city,.phone{
+    margin-left: 30px;
+  }
+}
+}
+#appointment{
+  padding-left: 0 !important;
+}
+#appointment .reqmodal{
+  margin-left: 25px;
+  margin-top: 25px;
 }

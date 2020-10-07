@@ -144,6 +144,9 @@ left: 0 !important;
 top: 0 !important;
 }
 @media (max-width: 767px) {
+  .mob-m-0{
+    margin: 0;
+  }
   .productview{
     padding-bottom: 25px;
   }
@@ -1644,4 +1647,11 @@ height:  32px;
     
   align-items: center;
 
+}
+#advancedSearch .modal-header .close,#appointment .modal-header .close{
+  height: 44px;
+}
+#advancedSearch .modal-header,#appointment .modal-header{
+  height: 45px;
+  padding: 0;
 }

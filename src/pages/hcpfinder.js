@@ -16,12 +16,13 @@ export const ProductLineComp = ({line}) => {
       <>
         
           <p class="result-tax">{line.name}</p>
-          <div class="d-flex d-col">
+          <div class="d-flex d-col results-input-list">
             {(line.relationships && line.relationships.products)? line.relationships.products.map(product => {
                 return (
-                    <label>
+                    <label class="terms">
                         <input className="product-check-box" type="checkbox" value={product.field_medical_sku}/>
                         {product.title}
+                        <div class="checkmark"></div>
                     </label>
                 )
             }) : ''}
@@ -418,12 +419,15 @@ export default function Finder({ data }) {
                         </div>
                       <div class="product-lines d-none" id="prodLines">
                         <Scrollbars style={{ height: 250 }}>
-                          <ul>
+                          <ul class="popupUl">
                             {data.productLines.edges.map(({ node }) => {
                               if(node.relationships.products) {
                                 return (
-                                  <li key={node.id}>
-                                    <input type="checkbox" value={node.name} onClick={updateProductLines}/>{node.name}
+                                  <li  key={node.id}>
+                                    <label class="terms">
+                                    <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines}/>{node.name}
+                                    <span className="checkmark"></span>
+                                    </label>
                                   </li>
                                 )
                               }
@@ -455,7 +459,7 @@ export default function Finder({ data }) {
                   </p>
                 </form>
                 
-                <div className={lines.length > 0? '' : 'd-none'}>
+                <div className={[lines.length > 0? '' : 'd-none',"product-search-masonry"].join(" ")}>
                   <Scrollbars style={{ height: 400 }}>
                     <div>
                       <div class="products-masonry" id="products-search-result">

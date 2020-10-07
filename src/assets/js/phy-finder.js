@@ -8,9 +8,9 @@ class Temps {
 
     resultTemp (index, obj, isPhy) {
         return `
-            <div class="container-fluid result-con" id="result-info-wrapper-${index}">
-                <div class="row">
-                    <div class="col-3 marker-con">
+            <div class="container-fluid result-con-1" id="result-info-wrapper-${index}">
+                <div class="row mob-m-0">
+                    <div class="col-2 marker-con">
                         <span class="tray-result-number">${index + 1}</span>
                         <br>${isPhy? '' : (obj.distance.toFixed(2) + '<br>miles')}
                     </div>
@@ -35,9 +35,17 @@ class Temps {
     infoWindowTemp(obj) {
         return `
             <div>
-                <h2>${obj.name}</h2>
+                <h2 class="clinic-name">${obj.name}</h2>
                 <button  data-toggle="modal" data-target="#appointment" class="make-appointment" id="req-appointment-info" > Request Appointment</button>
-            </div>
+                <div class=" address-one">${obj.address1}</div>
+                <div class=" city">${obj.city}, ${obj.state} ${obj.zip}</div>
+                <div class=" phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
+                 <div class=" sales-email hide">${obj.email}</div>
+                  <div class=" links map-buttons">
+                     <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a> 
+    
+                  </div>
+                </div>
         `;
     }
 
@@ -51,8 +59,8 @@ class Temps {
         return `
             <div class="doc-name">
                 <p class="doctitle">${obj.name}</p>
-                <div class="d-flex">
-                    <p class="address-one">${obj.address1}</p>
+                <div class="data-wrapper">
+                    <span class="address-one">${obj.address1}</span>
                     <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
                     ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
                 </div>
@@ -568,8 +576,8 @@ class Map extends Search {
         
         const myElement = document.getElementById(`result-info-wrapper-${index}`);
         
-        for(let i = 0; i < document.getElementsByClassName('result-con').length; i++) {
-            document.getElementsByClassName('result-con')[i].classList.remove('active');
+        for(let i = 0; i < document.getElementsByClassName('result-con-1').length; i++) {
+            document.getElementsByClassName('result-con-1')[i].classList.remove('active');
         }
         myElement.classList.add('active');
 
