@@ -10,7 +10,7 @@ const Basics = ({ node }) => {
   // console.log("basics", node)
 
   const cardsProducts = node.relationships.field_basics_product_card.map(card => {
-    return card.relationships.field_card_products_category?card.relationships.field_card_products_category.map(cat => {
+    let newCard = card.relationships.field_card_products_category.map(cat => {
       let products = [];
       for (const key in cat.relationships) {
         if (cat.relationships[key]) {
@@ -18,7 +18,9 @@ const Basics = ({ node }) => {
         }
       }
       return products
-    }).flat():""
+    });
+
+    return newCard.flat();
   });
   // console.log('bahiii', cardsProducts)
 
