@@ -4,8 +4,6 @@ import Slider from 'react-slick'
 import ProductCard from '../productcard'
 
 import compStyles from '../../assets/scss/components/sys-related-products.module.scss';
-import checkDataCondition from '../paragraphs-helper'
-
 
 export default function SysRelatedProducts({node}) {
     const system = node.relationships.node__medical_product[0];
@@ -26,7 +24,13 @@ export default function SysRelatedProducts({node}) {
         ],
     }
 
-
+    function checkDataCondition(condition, data) {
+        if(condition) {
+            return data;
+        } else {
+            return '';
+        }
+    }
 //     checkloadedscript();
 //     function checkloadedscript(){
 // if (document.querySelector('.sysRelatedComp .slick-track')) {
@@ -72,13 +76,13 @@ export default function SysRelatedProducts({node}) {
                                                         __html: prod.field_medical_description? prod.field_medical_description.processed : ''
                                                     }}
                                                     productimage={
-                                                        checkDataCondition((prod.relationships && 
+                                                        prod?checkDataCondition((prod.relationships && 
                                                                 prod.relationships.field_medical_image && 
                                                                 prod.relationships.field_medical_image[0].localFile &&
                                                                 prod.relationships.field_medical_image[0].localFile.childImageSharp
                                                             ), (
                                                             prod.relationships.field_medical_image[0].localFile.childImageSharp.fluid
-                                                        ))
+                                                        )):""
                                                     }
                                                     price={prod.field_medical_price}
                                                 />

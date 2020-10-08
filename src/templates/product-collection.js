@@ -269,6 +269,7 @@ export const productPageQuery = graphql`
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
+          
             relationships {
               field_footer_two_section_med_ski{
                 relationships {
@@ -472,6 +473,7 @@ export const productPageQuery = graphql`
   },
       taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
         name
+      
         id
         path {
           alias
@@ -568,6 +570,7 @@ export const productPageQuery = graphql`
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
+           
             relationships {
               field_footer_two_section_med_cat{
                 relationships {
