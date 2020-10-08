@@ -59,12 +59,14 @@ class Temps {
         return `
             <div class="doc-name">
                 <p class="doctitle">${obj.name}</p>
+                <div class="result-product-list d-flex">
                 <div class="data-wrapper">
                     <span class="address-one">${obj.address1}</span>
                     <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
-                    ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
                 </div>
-            </div>
+                ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
+
+            </div></div>
         `
     }
 }

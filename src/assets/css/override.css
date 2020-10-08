@@ -1505,11 +1505,11 @@ font-weight: 500;
 .appointment-body{
 
 }
-#appointment .modal-header .close::before, #appointment .modal-header .close::after {
+#related-products .modal-header .close::before, .modal-header .close::before, #appointment .modal-header .close::after,#related-products .modal-header .close::after{
 top: 32%;
 height:  32px;
 }
-#appointment .modal-header{
+#appointment .modal-header,#related-products .modal-header{
   border-bottom: 0;
 }
 #appointment .custom-select{
@@ -1530,7 +1530,7 @@ height:  32px;
 #appointment .select-items,#appointment .select-items:hover{
   background-color: #fff;
 }
-#appointment{
+#appointment,#related-products{
   padding-left: 0;
   z-index: 9999999;
 }
@@ -1546,7 +1546,7 @@ height:  32px;
     line-height: 24px;
   }
 @media (max-width:767px){
-  #appointment .modal-dialog{
+  #appointment .modal-dialog,#related-products .modal-dialog{
     margin: 0;
   }
   #advancedSearch{
@@ -1665,10 +1665,10 @@ height:  32px;
   align-items: center;
 
 }
-#advancedSearch .modal-header .close,#appointment .modal-header .close{
+#advancedSearch .modal-header .close,#appointment .modal-header .close,#related-products .modal-header .close{
   height: 44px;
 }
-#advancedSearch .modal-header,#appointment .modal-header{
+#advancedSearch .modal-header,#appointment .modal-header,#related-products .modal-header{
   height: 45px;
   padding: 0;
 }#flitersCon{

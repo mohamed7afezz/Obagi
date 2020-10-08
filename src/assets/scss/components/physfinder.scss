@@ -1330,7 +1330,9 @@ border-bottom: 1px solid #d6d6d6;
 }
 }
 
-.body-title{
+.body-title,#related-products .modal-title{
+    
+
   font-size: 32px;
   line-height: 48px;
   font-weight: 300;
@@ -1344,9 +1346,10 @@ border-bottom: 1px solid #d6d6d6;
     font-size: 52px;
     line-height: 64px;
   }
+  
 }
 
-#appointment .modal-dialog,#advancedSearch .modal-dialog{
+#appointment .modal-dialog,#advancedSearch .modal-dialog,#related-products .modal-dialog{
   max-width: 800px;
   
 }
@@ -1722,3 +1725,52 @@ ul{
   margin-left: 25px;
   margin-top: 25px;
 }
+#related-products-list > div{border: 1px solid #d6d6d6;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 16px;
+  >div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span:first-of-type{
+      flex: 0 0 70%;
+    }
+    a{
+      color: #132466;
+      text-decoration: underline;
+    }
+  }
+  span{
+    color: #132466;
+    font-size: 18px;
+    line-height: 32px;
+  }
+}
+.doc-name .result-product-list {
+  justify-content: space-between !important;
+  align-items: center;
+}
+#related-phy-info {
+  #req-app-rel-pro{
+    padding: 24px !important;
+  }
+  .doctitle{
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .data-wrapper{
+    justify-content: space-between;
+flex: 0 0 60%;
+display: flex;
+
+ul{
+  display: flex;
+  flex: 0 0 60%;
+  justify-content: space-between;
+}
+}
+}
+

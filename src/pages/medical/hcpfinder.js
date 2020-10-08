@@ -489,18 +489,21 @@ export default function Finder({ data }) {
         </div>
       </div>
       {/* releated products */}
-      <div class="modal fade" id="related-products" tabindex="-1" role="dialog" aria-labelledby="related-products" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Related products</h5>
+      <div class="modal fade" id="related-products" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              
               </button>
             </div>
             <div class="modal-body">
+            <h5 class="modal-title">Related products</h5>
+           
               <div id="related-phy-info"></div>
+              <Scrollbars style={{ height: 300 }}>
               <div id="related-products-list"></div>
+              </Scrollbars>
             </div>
           </div>
         </div>
