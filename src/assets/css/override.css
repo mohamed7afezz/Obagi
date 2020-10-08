@@ -1671,4 +1671,49 @@ height:  32px;
 #advancedSearch .modal-header,#appointment .modal-header{
   height: 45px;
   padding: 0;
+}#flitersCon{
+  background-color: #fff;
+
+}
+#flitersCon .terms{
+ 
+  font-size: 16px;
+}
+.Collectionfilter .filterprodline,.Collectionfilter .sortprodline,.Collectionfilter .filterSkinconcern,.Collectionfilter .filterIngredients  {
+  margin-top: 0;
+  background-color: #fff;
+  border-color: #132466;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.Collectionfilter  .input-name{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.Collectionfilter .checkcon.terms{
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+.Collectionfilter #prodLinesSelected{
+  margin: 0;
+}
+.Prescription{
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+.Prescription .checkmark,.Prescription:hover input:not(:checked) ~ .checkmark{
+  background-color: transparent;
+  border: 1px solid #132466;
+
+}
+.Prescription input:checked ~ .checkmark{
+  border: 0;
+}
+.upsection .productInBag{
+  background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 16px;
 }

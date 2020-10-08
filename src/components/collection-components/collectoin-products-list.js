@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../../assets/js/custom-select'
-
+import { Scrollbars } from "react-custom-scrollbars"
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
 
   let products = []
@@ -78,70 +78,104 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
    
 
   }
+  function filtersearchData(){
+    if(  document.querySelector('#flitersCon').classList.contains('hide')){
+      document.querySelector('#flitersCon').classList.remove('hide')
+    }else{
+      document.querySelector('#flitersCon').classList.add('hide')
+  
+    }
+  }
+  function sortSearchData(){
+    if(  document.querySelector('#sortCon').classList.contains('hide')){
+      document.querySelector('#sortCon').classList.remove('hide')
+    }else{
+      document.querySelector('#sortCon').classList.add('hide')
+  
+    }
+  }  
+  function filterIngredientsData(){
+    if(  document.querySelector('#filterIngredients').classList.contains('hide')){
+    document.querySelector('#filterIngredients').classList.remove('hide')
+  }else{
+    document.querySelector('#filterIngredients').classList.add('hide')
+
+  }
+  }
+  function filterSkinconcernsearchData(){
+  if(  document.querySelector('#filterSkinconcern').classList.contains('hide')){
+    document.querySelector('#filterSkinconcern').classList.remove('hide')
+  }else{
+    document.querySelector('#filterSkinconcern').classList.add('hide')
+
+  }
+
+  }
   useEffect(() => {
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
       CustomSelect();
     }
-    const isotope = require("isotope-layout")
-    const filterValSelect = document.querySelector("#product-filter")
-    const sortPriceSelect = document.querySelector(".sort-price")
-    let sortAsc =
-      sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-        ? true
-        : false
+    
+    // const isotope = require("isotope-layout")
+    // const filterValSelect = document.querySelector("#product-filter")
+    // const sortPriceSelect = document.querySelector(".sort-price")
+    // let sortAsc =
+    //   sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
+    //     ? true
+    //     : false
 
-    const isoGrid = new isotope(".products-list", {
-      itemSelector: ".product-element",
-      layoutMode: "masonry",
-      getSortData: {
-        price: item => {
-          var weight = item.querySelector(".prod-price").textContent
-          return parseFloat(weight)
-        },
-      },
-      filter: item => {
-        const filterVal =
-          filterValSelect.options[filterValSelect.selectedIndex].value
-        if (filterVal === "All" || filterVal == undefined) {
-          return true
-        }
-        return item
-          .getElementsByClassName("ingredient")[0]
-          .innerText.includes(filterVal)
-      },
-      transitionDuration: 0,
-      sortBy: "price",
-      sortAscending: sortAsc,
-    })
+    // const isoGrid = new isotope(".products-list", {
+    //   itemSelector: ".product-element",
+    //   layoutMode: "masonry",
+    //   getSortData: {
+    //     price: item => {
+    //       var weight = item.querySelector(".prod-price").textContent
+    //       return parseFloat(weight)
+    //     },
+    //   },
+    //   // filter: item => {
+    //   //   const filterVal =
+    //   //     filterValSelect.options[filterValSelect.selectedIndex].value
+    //   //   if (filterVal === "All" || filterVal == undefined) {
+    //   //     return true
+    //   //   }
+    //   //   return item
+    //   //     .getElementsByClassName("ingredient")[0]
+    //   //     .innerText.includes(filterVal)
+    //   // },
+    //   transitionDuration: 0,
+    //   sortBy: "price",
+    //   sortAscending: sortAsc,
+    // })
 
     //update view on sort on page load
-    updateSortView()
+    // updateSortView()
 
     //filter
-    filterValSelect.addEventListener("change", function (event) {
-      sortAsc =
-        sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-          ? true
-          : false
-      isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
-      updateSortView()
-    })
-    //sort
-    sortPriceSelect.addEventListener("change", function (event) {
-      sortAsc =
-        sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-          ? true
-          : false
-      isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
-      updateSortView()
-    })
+    // filterValSelect.addEventListener("change", function (event) {
+    //   sortAsc =
+    //     sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
+    //       ? true
+    //       : false
+    //   isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
+    //   updateSortView()
+    // })
+    // //sort
+    // sortPriceSelect.addEventListener("change", function (event) {
+    //   sortAsc =
+    //     sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
+    //       ? true
+    //       : false
+    //   isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
+    //   updateSortView()
+    // })
 
-    function updateSortView() {
-      document.querySelector(".products-list").innerHTML = null
-      isoGrid.getFilteredItemElements().map(item => {
-        document.querySelector(".products-list").appendChild(item)
-      })
-    }
+    // function updateSortView() {
+    //   document.querySelector(".products-list").innerHTML = null
+    //   isoGrid.getFilteredItemElements().map(item => {
+    //     document.querySelector(".products-list").appendChild(item)
+    //   })
+    // }
   })
 
   return (
@@ -165,55 +199,111 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             "Collectionfilter",
           ].join(" ")}
         >
-          <label className={productsliststyle.filter}>Filter by:</label>
-          <div className="custom-select">
-            {pageNodeType?pageNodeType.toLowerCase().includes('medical')?
-          <select id="product-filter" name="filter by">
-              
-              <option vlaue="All">All</option>
-              <option vlaue="All">All</option>
-              <option value="Aloe">Aloe</option>
-              <option value="Antioxidants">Antioxidants</option>
-              <option value="Arbutin">Arbutin</option>
-              <option value="Benzoyl Peroxide">Benzoyl Peroxide</option>
-              <option value="Caffeine ">Caffeine </option>
-              <option value="Glycerin ">Glycerin </option>
-              <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-              <option value="Hyaluronic Acid">Hyaluronic Acid</option>
-              <option value="Hydroquinone  ">Hydroquinone  </option>
-              <option value="Retinol">Retinol</option>
-              <option value="Salicylic Acid">Salicylic Acid</option>
-              <option value="Tretinoin">Tretinoin</option>
-              <option value="Vitamin C">Vitamin C</option>
-              <option value="Witch Hazel">Witch Hazel</option>
-              <option value="Zinc Oxide*">Zinc Oxide</option>
-              </select>
-              : 
-              <select id="product-filter" name="filter by">
-                
-                <option vlaue="All">All</option>
-                <option vlaue="All">All</option>
-                <option value="Arbutin">Arbutin</option>
-                <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-                <option value="Kinetin ">Kinetin </option>
-                <option value="Lactic Acid">Lactic Acid</option>
-                <option value="Retinol">Retinol</option>
-                <option value="Vitamin C">Vitamin C</option>
-                <option value="Salicylic Acid">Salicylic Acid</option>
-              </select>
-  :  <select id="product-filter" name="filter by">
-                
-  <option vlaue="All">All</option>
-  <option vlaue="All">All</option>
-  <option value="Arbutin">Arbutin</option>
-  <option value="Glycolic Acid (AHA)">Glycolic Acid (AHA)</option>
-  <option value="Kinetin ">Kinetin </option>
-  <option value="Lactic Acid">Lactic Acid</option>
-  <option value="Retinol">Retinol</option>
-  <option value="Vitamin C">Vitamin C</option>
-  <option value="Salicylic Acid">Salicylic Acid</option>
-</select>}
+        <div class="appointment-elemnt advanced-search filterprodline">
+            <p class="input-name" onClick={() => { filtersearchData(); }}>Filter by:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="flitersCon">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Aloe"/>Aloe
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Antioxidants"/>Antioxidants
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Arbutin" />Arbutin
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Caffeine"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Glycerin"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Glycolic Acid (AHA)"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Hyaluronic Acid"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Retinol"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Salicylic Acid"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Tretinoin"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Vitamin C"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Witch Hazel" />Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="product" type="radio" value="Zinc Oxide*"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
           </div>
+            
+         
         </div>
         <div
           className={[
@@ -223,19 +313,264 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             "Collectionfilter",
           ].join(" ")}
         >
-          <label className={productsliststyle.filter}>Sort by:</label>
-          <div className="custom-select">
-          <select class="filters-select sort-price" name="sort by">
-            <option value="low" >
-              Price :Low - High
-            </option>
-            <option value="low" >
-              Price :Low - High
-            </option>
-            <option value="high">Price :High - Low</option>
-          </select>
+      
+            
+            
+          <div class="appointment-elemnt advanced-search filterSkinconcern">
+            <p class="input-name" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="filterSkinconcern">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Aloe"/>Aloe
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Antioxidants"/>Antioxidants
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Arbutin" />Arbutin
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Caffeine"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Glycerin"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Glycolic Acid (AHA)"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Hyaluronic Acid"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Retinol"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Salicylic Acid"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Tretinoin"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Vitamin C"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Witch Hazel" />Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Zinc Oxide*"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>
+            
+              
+      
+         
         </div>
+        <div
+          className={[
+            "col-12",
+            "col-lg-2",
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+      
+            
+            
+          <div class="appointment-elemnt advanced-search filterIngredients">
+            <p class="input-name" onClick={() => { filterIngredientsData(); }}>Ingredients:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="filterIngredients">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Aloe"/>Aloe
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Antioxidants"/>Antioxidants
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Arbutin" />Arbutin
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Caffeine"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Glycerin"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Glycolic Acid (AHA)"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Vitamin C"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Witch Hazel" />Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Zinc Oxide*"/>Loram
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>
+            
+              
+      
+         
         </div>
+        <div
+          className={[
+            "col-12",
+            "col-lg-2",
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+          <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" /><span class="checkmark"></span></label>
+          </div>
+        <div
+          className={[
+            "col-12",
+            "offset-lg-2",
+            "col-lg-2",
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+      <div class="appointment-elemnt advanced-search sortprodline">
+            <p class="input-name" onClick={() => { sortSearchData(); }}>Sort by:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="sortCon">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="sort" type="radio" value="All"/>Newest
+
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="sort" type="radio" value="Aloe"/>Price: Low - High
+
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" name="sort" type="radio" value="Antioxidants"/>Price: High - Low
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                     
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>   </div>
       </div>
       <div
         className={[

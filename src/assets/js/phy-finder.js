@@ -51,7 +51,7 @@ class Temps {
 
     relatedProduct(name, link) {
         return `
-            <div><span>${name}</span> <span><a href="${link}">view product</a></span> </div>
+    <div><span>${name}</span> ${link !="#"?`<span><a href="${link}">view product</a></span>`:""} </div>
         `
     }
 
@@ -345,7 +345,11 @@ class Search extends Temps {
     getRelatedProductLink(id) {
         console.log('bahiii', this.productsDataObj);
         let prodIndex = this.productsDataObj.findIndex(item => item.sku == id);
-        return this.productsDataObj[prodIndex].path;
+        if (prodIndex > -1) {
+            return this.productsDataObj[prodIndex].path
+        }else{
+            return "#";
+        }
     }
 
     async sendSearchReq() {
