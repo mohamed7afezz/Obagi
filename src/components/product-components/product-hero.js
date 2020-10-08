@@ -325,7 +325,7 @@ if ( typeof window !== "undefined"){
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             <ul>
               {" "}
-              <li> Size {field_weight} oz </li>
+              <li> Size {field_weight} {field_weight_unit} </li>
             </ul>
           </div>
           {feild_preimer?
