@@ -179,7 +179,7 @@ if ( typeof window !== "undefined"){
   const addingToCart = value && value.state.addingToCart
 
   return (
-    <div
+    <div itemtype="https://schema.org/Product"
       className={[
         "container-fluid",
         ProductStyles.productHero,
@@ -197,7 +197,7 @@ if ( typeof window !== "undefined"){
         <p className={[ProductStyles.productcat,"mt-24", "productcat","show-mob"].join(" ")}>
             {nodeType}
           </p>
-          <div itemtype="https://schema.org/Product">
+          <div>
             <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
             <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
 
@@ -257,7 +257,7 @@ if ( typeof window !== "undefined"){
           <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
             {nodeType}
           </p>
-          <div itemtype="https://schema.org/Product">
+          <div>
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
