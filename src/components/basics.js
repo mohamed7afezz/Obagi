@@ -8,9 +8,17 @@ import Slider from "react-slick"
 const Basics = ({ node }) => {
 
   // console.log("basics", node)
+  Object.defineProperty(Array.prototype, 'flat', {
+    value: function(depth = 1) {
+      return this.reduce(function (flat, toFlatten) {
+        return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
+      }, []);
+    }
+});
+
 
   const cardsProducts = node.relationships.field_basics_product_card.map(card => {
-    let newCard = card.relationships.field_card_products_category.map(cat => {
+    let newCard = card.relationships.field_card_products_category?card.relationships.field_card_products_category.map(cat => {
       let products = [];
       for (const key in cat.relationships) {
         if (cat.relationships[key]) {
@@ -18,9 +26,9 @@ const Basics = ({ node }) => {
         }
       }
       return products
-    });
+    }):""
 
-    return newCard.flat();
+    return newCard.flat()
   });
   // console.log('bahiii', cardsProducts)
 
