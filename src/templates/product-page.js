@@ -21,8 +21,11 @@ const ProductPage = props => {
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
+        <div itemscope itemtype="https://schema.org/Product">
           <ProductHero data={data} nodeType={nodeType} />
           {paragraphs}
+          <div data-bv-show="reviews" data-bv-product-id= {nodeType === 'clinical'? data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}></div>
+          </div>
         </Layout>
     )
 }
