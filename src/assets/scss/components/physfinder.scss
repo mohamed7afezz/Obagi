@@ -1761,11 +1761,15 @@ ul{
     line-height: 24px;
     margin-bottom: 8px;
   }
+  .address-res-wrap{
+    display: flex;
+    justify-content: space-between;
+  }
   .data-wrapper{
     justify-content: space-between;
-flex: 0 0 60%;
+flex: 0 0 70%;
 display: flex;
-
+flex-direction: column;
 ul{
   display: flex;
   flex: 0 0 60%;

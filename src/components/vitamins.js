@@ -6,7 +6,7 @@ import vitaminsStyles from '../assets/scss/components/vitamins.module.scss'
 
 const Vitamins = ({ node }) => {
 
-  console.log("vit", node.relationships)
+  // console.log("vit", node.relationships)
     return (
         <>
           <div className={["container-fluid", vitaminsStyles.wrapper].join(" ")}>

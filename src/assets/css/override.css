@@ -639,6 +639,10 @@ padding-bottom: 134px;
 .productInBag img {
   max-width: 100%;
 }
+.upsection  img {
+  filter: brightness(400);
+
+}
 .productInBag .spinner::before {
   width: 20px;
   height: 20px;
@@ -1712,7 +1716,7 @@ height:  32px;
 }
 .Collectionfilter .checkcon.terms{
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 0;
 }
 .Collectionfilter #prodLinesSelected{
   margin: 0;
@@ -1721,7 +1725,7 @@ height:  32px;
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  margin-top: 15px;
+  margin-top: 21px;
 }
 .Prescription .checkmark,.Prescription:hover input:not(:checked) ~ .checkmark{
   background-color: transparent;
@@ -1736,4 +1740,50 @@ height:  32px;
   padding-top: 25px;
   padding-bottom: 25px;
   padding-right: 16px;
+}
+.transparent-bg{
+  background-color: transparent !important;
+}
+.Collectionfilter .input-name{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-left: 16px;
+padding-right: 16px;
+}
+.Collectionfilter .input-name::after{
+  content: " ";
+  display: block;
+  background-image: url(mobileArrow.svg);
+  width: 8px;
+  height: 8px;
+  background-repeat: no-repeat;
+
+}
+.Collectionfilter .advanced-search li:hover {
+  background-color: #132466;
+  
+}
+.Collectionfilter .advanced-search li{
+padding-left: 16px;
+padding-right: 16px;
+padding-top: 12px;
+padding-bottom: 12px;
+}
+.Collectionfilter .advanced-search{
+  padding-left: 0;
+  padding-right: 0;
+}
+.Collectionfilter .advanced-search li:hover .checkcon {
+color: #fff;
+}
+.Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder::after {
+background-color: #fff;
+}
+.Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder {
+
+  background-color: #132466;
+}
+#related-products{
+  padding-right: 0 !important;
 }

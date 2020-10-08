@@ -7,10 +7,10 @@ import Slider from "react-slick"
 
 const Basics = ({ node }) => {
 
-  console.log("basics", node)
+  // console.log("basics", node)
 
   const cardsProducts = node.relationships.field_basics_product_card.map(card => {
-    return card.relationships.field_card_products_category.map(cat => {
+    return card.relationships.field_card_products_category?card.relationships.field_card_products_category.map(cat => {
       let products = [];
       for (const key in cat.relationships) {
         if (cat.relationships[key]) {
@@ -18,9 +18,9 @@ const Basics = ({ node }) => {
         }
       }
       return products
-    }).flat();
+    }).flat():""
   });
-  console.log('bahiii', cardsProducts)
+  // console.log('bahiii', cardsProducts)
 
 
   function checkDataCondition(condition, data) {

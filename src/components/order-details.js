@@ -33,7 +33,7 @@ const OrderDetails = (props, { node }) => {
 
     if (detailsData !== "User not login.") {
       setDetails(detailsData)
-      console.log("detail", detailsData)
+      // console.log("detail", detailsData)
     }
 
     // setIsLoading(false);
@@ -55,7 +55,7 @@ const OrderDetails = (props, { node }) => {
 
     if (getshipping !== "User not login.") {
       setShipment(getshipping)
-      console.log("ship", getshipping)
+      // console.log("ship", getshipping)
     }
   }
 
@@ -148,7 +148,7 @@ const OrderDetails = (props, { node }) => {
 
   return (
     <>
-      {console.log("bahiiii", getshiping)}
+      {/* {console.log("bahiiii", getshiping)} */}
       <div
         className={[
           "container-fluid",

@@ -58,11 +58,14 @@ class Temps {
     clinicInfo(obj, isProd) {
         return `
             <div class="doc-name">
-                <p class="doctitle">${obj.name}</p>
+                
                 <div class="result-product-list d-flex">
                 <div class="data-wrapper">
+                <p class="doctitle">${obj.name}</p>
+                <div class="address-res-wrap">
                     <span class="address-one">${obj.address1}</span>
                     <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
+                </div>
                 </div>
                 ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
 
@@ -345,7 +348,7 @@ class Search extends Temps {
     }
 
     getRelatedProductLink(id) {
-        console.log('bahiii', this.productsDataObj);
+        // console.log('bahiii', this.productsDataObj);
         let prodIndex = this.productsDataObj.findIndex(item => item.sku == id);
         if (prodIndex > -1) {
             return this.productsDataObj[prodIndex].path
@@ -421,7 +424,7 @@ class Search extends Temps {
     }
 
     updateParams(location, paramsFor) {
-        console.log('update Params')
+        // console.log('update Params')
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {

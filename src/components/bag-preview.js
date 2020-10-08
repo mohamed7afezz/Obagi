@@ -40,7 +40,7 @@ const Notification = ({ id, text, type }) => {
   const removeNotification = value && value.removeNotification;
   const {notif, setNotif} = useContext(UserContext);
 
-  console.log("val", value)
+  // console.log("val", value)
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
@@ -48,7 +48,7 @@ const Notification = ({ id, text, type }) => {
   //   return () => clearTimeout(timer);
   //   // eslint-disable-next-line
   // }, []);
-console.log("notif", notif)
+// console.log("notif", notif)
   return (
     
     <div

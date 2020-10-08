@@ -129,11 +129,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   function filtersearchData(){
     if(  document.querySelector('#flitersCon').classList.contains('hide')){
       document.querySelector('#flitersCon').classList.remove('hide')
-      document.querySelector('.filterlabel').classList.remove('hide')
+      document.querySelector('.filterprodline ').classList.remove('transparent-bg')
 
     }else{
       document.querySelector('#flitersCon').classList.add('hide')
       document.querySelector('.filterlabel').classList.add('hide')
+      document.querySelector('.filterprodline ').classList.add('transparent-bg')
 
     }
   }
@@ -141,10 +142,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     if(  document.querySelector('#sortCon').classList.contains('hide')){
       document.querySelector('#sortCon').classList.remove('hide');
       document.querySelector('.sortlabel').classList.remove('hide');
+      document.querySelector('.sortprodline').classList.remove('transparent-bg');
 
     }else{
       document.querySelector('#sortCon').classList.add('hide')
       document.querySelector('.sortlabel').classList.add('hide');
+      document.querySelector('.sortprodline').classList.add('transparent-bg');
 
     }
     
@@ -153,10 +156,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     if(  document.querySelector('#filterIngredients').classList.contains('hide')){
     document.querySelector('#filterIngredients').classList.remove('hide')
     document.querySelector('.ingredientlabel').classList.remove('hide')
+    document.querySelector('.filterIngredients ').classList.remove('transparent-bg')
 
   }else{
     document.querySelector('#filterIngredients').classList.add('hide')
     document.querySelector('.ingredientlabel').classList.add('hide')
+    document.querySelector('.filterIngredients ').classList.add('transparent-bg')
 
   }
   }
@@ -164,10 +169,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   if(  document.querySelector('#filterSkinconcern').classList.contains('hide')){
     document.querySelector('#filterSkinconcern').classList.remove('hide')
     document.querySelector('.skinlabel').classList.remove('hide')
+    document.querySelector('.filterSkinconcern').classList.remove('transparent-bg')
 
   }else{
     document.querySelector('#filterSkinconcern').classList.add('hide')
     document.querySelector('.skinlabel').classList.add('hide')
+    document.querySelector('.filterSkinconcern').classList.add('transparent-bg')
 
   }
 
@@ -261,7 +268,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
           ].join(" ")}
         >
           <label className={[productsliststyle.filter,"hide","filterlabel"].join(" ")}>Filter by:</label>
-        <div class="appointment-elemnt advanced-search filterprodline">
+        <div class="appointment-elemnt advanced-search filterprodline transparent-bg">
             <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Filter by:</p>
            <div id="prodLinesSelected">
         
@@ -357,7 +364,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             
       <label className={[productsliststyle.filter,"hide","skinlabel"].join(" ")}>Skin concern:</label>
 
-          <div class="appointment-elemnt advanced-search filterSkinconcern">
+          <div class="appointment-elemnt advanced-search filterSkinconcern transparent-bg">
             <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern:</p>
            <div id="prodLinesSelected">
         
@@ -477,7 +484,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             
       <label className={[productsliststyle.filter,"hide","ingredientlabel"].join(" ")}>Ingredients:</label>
 
-          <div class="appointment-elemnt advanced-search filterIngredients">
+          <div class="appointment-elemnt advanced-search filterIngredients transparent-bg">
             <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients:</p>
            <div id="prodLinesSelected">
         
@@ -582,7 +589,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         >
                 <label className={[productsliststyle.filter,"hide","sortlabel"].join(" ")}>Sort by:</label>
 
-      <div class="appointment-elemnt advanced-search sortprodline">
+      <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
             <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Sort by:</p>
            <div id="prodLinesSelected">
         

@@ -46,9 +46,7 @@ export const fragment = graphql`
         field_need_to_know_description {
           processed
         }
-        field_description_second_part {
-            processed
-          }
+       
         field_need_to_know_title {
           processed
         }

@@ -984,7 +984,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               )}
                           </div>
                         )}
-                        {console.log('bahiiii', node)}
+                        {/* {console.log('bahiiii', node)} */}
     </div>
     
   )

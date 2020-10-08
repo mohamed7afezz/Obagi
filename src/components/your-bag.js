@@ -17,10 +17,11 @@ import appelpay from "../assets/images/product-images/appelPay.png"
 import visa from "../assets/images/product-images/visa.png"
 import paycred from'../assets/images/ppcredit-logo-large.png'
 import freeimg from "../assets/images/rsz_thumbnail.png"
+import ProductSuggestion from "./product-components/productsuggestion"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
-  console.log("item", item);
+  // console.log("item", item);
 
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
@@ -124,9 +125,9 @@ const StandardItem = props => {
               <div className={"col-md-4"}>
                 <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
               </div>
-              <div className={"col-md-2"}>
+              {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
-              </div>
+              </div> */}
               <div class="col-md-2 col-6">
                 <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
                   <AdjustItem {...props} item={item} cartType={cartType} />
@@ -437,9 +438,9 @@ const YourBag = (props, {notificationId}) => {
     e.preventDefault()
   }
 
-  console.log("line", lineItems);
+  // console.log("line", lineItems);
   var checkProduct = lineItems.physical_items? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
-  console.log("line", checkProduct)
+  // console.log("line", checkProduct)
 
   let isClinical = true;
   function getRecommendedProducts(bag) {
@@ -532,7 +533,7 @@ const YourBag = (props, {notificationId}) => {
                   </div>
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
                 {/* recommended products section */}
-                {console.log('bahiiii', lineItems.physical_items)}
+                {/* {console.log('bahiiii', lineItems.physical_items)} */}
                 <div className={`${ShowBagStyle.recommendedWrapper} ${lineItems.physical_items.length > 3 ? 'hide' : ''}`}>
                   <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
                   {getRecommendedProducts(lineItems.physical_items).length > 0?getRecommendedProducts(lineItems.physical_items).map(product => {
@@ -560,7 +561,7 @@ const YourBag = (props, {notificationId}) => {
         )
       } else {
         //ful cart page
-        bagContent = (
+        bagContent = (<>
           <div
             className={[
               "container-fluid",
@@ -762,7 +763,10 @@ const YourBag = (props, {notificationId}) => {
                       <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</p>
               </div>
             </div>
+          
           </div>
+          <ProductSuggestion/>
+          </>
         )
       }
     } else {
