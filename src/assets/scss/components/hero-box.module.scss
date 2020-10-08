@@ -35,7 +35,7 @@ h1 {
 .title {
     @include fontStyle(40, 48);
     padding: 0 30px;
-
+    text-align: center;
 
     @include lg-screen {
         @include fontStyle(52, 64);
