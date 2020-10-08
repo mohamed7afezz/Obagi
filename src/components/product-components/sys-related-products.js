@@ -7,7 +7,7 @@ import compStyles from '../../assets/scss/components/sys-related-products.module
 
 export default function SysRelatedProducts({node}) {
     const system = node.relationships.node__medical_product[0];
-    const products = system.relationships.field_medical_product_lines.relationships.node__medical_product.filter(prod => !(prod.field_medical_is_system));
+    const products = system.relationships.field_medical_system[0].relationships.node__medical_product.filter(prod => !(prod.field_medical_is_system));
 
     const sliderSettings = {    
         slidesToShow: 2,
@@ -100,37 +100,34 @@ export default function SysRelatedProducts({node}) {
 
 // fragment
 export const fragment = graphql`
-    fragment sysRelatedProduct on paragraph__sys_related_products {
-        id
-        field_enabled
+  fragment sysRelatedProduct on paragraph__sys_related_products {
+    id
+    field_enabled
+    relationships {
+      node__medical_product {
+        title
+        field_medical_is_system
         relationships {
-          node__medical_product {
-            title
-            field_medical_is_system
+          field_medical_system {
+            field_product_system_id
             relationships {
-              field_medical_product_lines {
-                name
-                field_medical_product_lines_id
+              node__medical_product {
+                title
+                field_medical_is_system
+                field_medical_id
+                path {
+                  alias
+                }
+                field_medical_description {
+                  processed
+                }
+                field_medical_price
                 relationships {
-                  node__medical_product {
-                    title
-                    field_medical_is_system
-                    field_medical_id
-                    path {
-                      alias
-                    }
-                    field_medical_description {
-                      processed
-                    }
-                    field_medical_price
-                    relationships {
-                      field_medical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100){
-                                ...GatsbyImageSharpFluid
-                            }
-                          }
+                  field_medical_image {
+                    localFile {
+                      childImageSharp {
+                        fluid(quality: 100) {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -140,5 +137,7 @@ export const fragment = graphql`
             }
           }
         }
+      }
     }
-`;
+  }
+`
