@@ -269,9 +269,6 @@ export const productPageQuery = graphql`
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
-            field_medical_sk_col_footer_mod {
-              processed
-            }
             relationships {
               field_footer_two_section_med_ski{
                 relationships {
@@ -475,9 +472,6 @@ export const productPageQuery = graphql`
   },
       taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
         name
-        field_medical_skt_col_footer_mod {
-          processed
-        }
         id
         path {
           alias
@@ -574,9 +568,6 @@ export const productPageQuery = graphql`
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
-            field_medical_cat_col_footer_mod {
-              processed
-            }
             relationships {
               field_footer_two_section_med_cat{
                 relationships {
