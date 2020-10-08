@@ -52,7 +52,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
       className={checktaxonomyType === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
         : checktaxonomyType === "medical" ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero
-          : "container-fluid collectionhero " + Collectionherostyle.generalcollectionhero}
+          : "container-fluid collectionhero generalcollectionhero " + Collectionherostyle.generalcollectionhero}
     >
 
       {nodetype == "clinicalConcern" ? (
@@ -903,7 +903,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                 "Collectionheroleftcol",
                               ].join(" ")}
                             >
-                              <div className="row">
+                              <div className="row m-0">
                                 {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                                   <p className="breadcramp">
                                     <Link to="/homepage">Home</Link> /{" "}
@@ -946,7 +946,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                       ""
                                     )}
                                     {checkTaxonomy.field_taxonomy_hero_link? (
-                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
+                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri} className={[Collectionherostyle.heroLink, "d-none d-lg-inline-block"].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
                                     ) : ""}
                                 </div>
 
@@ -957,7 +957,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                 className={[
                                   "col-lg-7",                                
                                   "col-12",
-                                  Collectionherostyle.Collectionherorightcol,
+                                  
                                   "Collectionherorightcol",
                                 ].join(" ")}
                               >

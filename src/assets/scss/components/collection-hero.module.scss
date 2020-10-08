@@ -48,6 +48,7 @@ top: 5px;
 
 .generalcollectionhero {
     background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
 }
 
 
@@ -104,4 +105,27 @@ top: 5px;
 
 .general.type::before {
     background-color: #ffcd00;
+}
+
+.general {
+    color: #fff;
+}
+
+.hero-link {
+    color: #fff;
+    border: 1px solid #fff;
+    @extend %futurapt-bold;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    text-align: center;
+    padding: 24px 93px 24px 94px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    margin-top: 40px;
+    &:hover {
+        color: #132466;
+        background: #fff;
+        border: 1px solid #132466;
+        text-decoration: none;
+    }
 }

@@ -86,10 +86,10 @@
 }
 
 .card-wrapper {
-    padding: 24px 15px 152px;
+    padding: 24px 0 152px;
 
     @include lg-screen {
-        padding: 152px 0;
+        padding: 152px 0 0;
     }
 }
 
@@ -102,7 +102,7 @@
 }
 
 @media (max-width: 991px) {
-    .col-wrapper {
+    .col-wrapper, .col-padding {
         padding-left: 0;
         padding-right: 0;
     }
@@ -256,7 +256,7 @@
         border-bottom-left-radius: 6px;
 
         border-top-right-radius: 0;
-        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 
@@ -266,7 +266,7 @@
         border-bottom-right-radius: 6px;
 
         border-top-left-radius: 0;
-        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 }
 
@@ -280,4 +280,10 @@
         right: 273px;
         left: unset;
     }
+}
+
+.slide-counter {
+    position: relative;
+    bottom: 0;
+    left: 132px;
 }
