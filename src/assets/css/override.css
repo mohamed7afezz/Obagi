@@ -753,7 +753,12 @@ button:focus{
   }.mob-pr-0{
     padding-right: 0;
   }
-  
+  #related-phy-info .result-product-list{
+  flex-direction: column;
+  }
+  #req-app-rel-pro{
+    width: 100%;
+  }
   #Showbag {
     z-index: 999999999;
     width: 100%;
