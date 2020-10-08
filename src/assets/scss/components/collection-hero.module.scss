@@ -129,3 +129,11 @@ top: 5px;
         text-decoration: none;
     }
 }
+.medicalBg{
+    .general{
+        color: #132466;
+    &:before{
+        background-color: #868cd2;
+    }
+    }
+}

@@ -44,14 +44,15 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var pathname = new URL(window.location.href).pathname;
     var geturi = pathname.split('/')
     var first_url = geturi[1];
-    var sec_url = geturi[2]
+    var sec_url = geturi[2];
+    console.log("hassan",first_url)
   }
 
   return (
     <div
       className={checktaxonomyType === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : checktaxonomyType === "medical" ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero
+        : (checktaxonomyType === "medical"||first_url === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
           : "container-fluid collectionhero generalcollectionhero " + Collectionherostyle.generalcollectionhero}
     >
 

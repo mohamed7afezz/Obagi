@@ -264,11 +264,11 @@ if ( typeof window !== "undefined"){
           <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
-          {field_medical_rx == "RX"? 
+          {/* {field_medical_rx == "RX"? 
           ""
           :
           <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-        }
+        } */}
 
           </div>
           </div>
