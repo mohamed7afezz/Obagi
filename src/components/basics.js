@@ -34,13 +34,14 @@ const Basics = ({ node }) => {
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    arrows: false,
+    arrows: true,
     dots: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          dots: true,
+          slidesToShow: 1.05,
+          dots: false,
           arrows: false,
         },
       },
@@ -93,11 +94,11 @@ const Basics = ({ node }) => {
                             basicsStyles.colWrapper,
                           ].join(" ")}
                         >
-                          <div className="row">
+                          <div className="row  m-0">
                             <div
                               className={index % 2? "col-12 col-lg-6 " + basicsStyles.wrapper + " " + basicsStyles.blueEven : "col-12 col-lg-6 " + basicsStyles.wrapper}
                             >
-                              <div className="col-12 col-lg-8 offset-lg-2">
+                              <div className={["col-12 col-lg-8 offset-lg-2", basicsStyles.colPadding].join(" ")}>
                                 <div className={basicsStyles.cardWrapper}>
                                   {item.field_basics_card_title ? (
                                     <div
@@ -160,6 +161,7 @@ const Basics = ({ node }) => {
                                             (it, index) => {
                                               return (
                                                 <>
+                                                {index === 1? " " : ""}
                                                   <Link to={it.path.alias}>
                                                     {it.name}
                                                   </Link>
@@ -184,7 +186,7 @@ const Basics = ({ node }) => {
                                       to="#"
                                       className={basicsStyles.shopLink}
                                     >
-                                      Shop{" "}
+                                      Shop
                                       <div
                                         dangerouslySetInnerHTML={{
                                           __html:
@@ -209,9 +211,10 @@ const Basics = ({ node }) => {
                                   basicsStyles.colWrapper,
                                 ].join(" ")}
                               >
-                                <div className={basicsStyles.sliderWrapper}>
+                                <div className={[basicsStyles.sliderWrapper, "basicsProductWrapper"].join(" ")}>
                                   <Slider {...SliderSettings}>
-                                    {cardsProducts[index].map(prod => (
+                                    {cardsProducts[index].map((prod, ind, array) => (
+                                      <>
                                       <ProductCard
                                         producttitle={prod.title ? prod.title : ""}
                                         productId={prod.field_medical_id ? prod.field_medical_id : prod.field_clinical_id ? prod.field_clinical_id : ""}
@@ -230,6 +233,8 @@ const Basics = ({ node }) => {
                                             prod.relationships.field_clinical_image[0].localFile.childImageSharp ? prod.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                             : ""}
                                       />
+                                      <div className={basicsStyles.slideCounter}>{ind + 1 + "/" + array.length}</div>
+                                      </>
                                     ))}
                                   </Slider>
                                 </div>

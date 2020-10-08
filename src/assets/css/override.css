@@ -384,8 +384,14 @@ border: 0;
 .pt-45{
   padding-top: 45px;
 }
-.bigSliderContainer .productInlineSlider .slick-prev,.bigSliderContainer .productInlineSlider .slick-prev:hover,
-.bigSliderContainer .productInlineSlider .slick-prev:active,.bigSliderContainer .productInlineSlider .slick-prev:focus{
+.bigSliderContainer .productInlineSlider .slick-prev,
+.bigSliderContainer .productInlineSlider .slick-prev:hover,
+.bigSliderContainer .productInlineSlider .slick-prev:active,
+.bigSliderContainer .productInlineSlider .slick-prev:focus,
+.basics-paragraph .basicsProductWrapper .slick-prev,
+.basics-paragraph .basicsProductWrapper .slick-prev:hover,
+.basics-paragraph .basicsProductWrapper .slick-prev:active,
+.basics-paragraph .basicsProductWrapper .slick-prev:focus{
   left: 36%;
   bottom: 54px;
   transform: none;
@@ -413,7 +419,11 @@ right: -8%;
 .bigSliderContainer .productInlineSlider  .slick-next,
 .bigSliderContainer .productInlineSlider  .slick-next:hover,
 .bigSliderContainer .productInlineSlider  .slick-next:active,
-.bigSliderContainer .productInlineSlider  .slick-next:focus {
+.bigSliderContainer .productInlineSlider  .slick-next:focus,
+.basics-paragraph .basicsProductWrapper  .slick-next,
+.basics-paragraph .basicsProductWrapper  .slick-next:hover,
+.basics-paragraph .basicsProductWrapper  .slick-next:active,
+.basics-paragraph .basicsProductWrapper  .slick-next:focus {
   background-image: url(tringle-arrow.svg);
   transform: rotate(180deg);
   right:  40%;
@@ -427,6 +437,14 @@ right: -8%;
 .bigSliderContainer .productInlineSlider .slick-initialized{
   padding-bottom: 110px;
 }
+
+.basics-paragraph .basicsProductWrapper .slick-initialized {
+  padding-bottom: 111px;
+}
+/* .basics-paragraph .basicsProductWrapper .slick-list,
+.basics-paragraph .basicsProductWrapper .slick-track {
+  position: unset;
+} */
 #Showbag .modal-header{
   border: 0;
   padding-right: 40px !important;
@@ -1031,10 +1049,12 @@ height: 545px;
 .collectionList .select-items{
   background-color: #132466;
 }
-.bigSliderContainer .slick-disabled{
+.bigSliderContainer .slick-disabled,
+.basics-paragraph .slick-disabled{
   display: none !important;
 }
-.bigSliderContainer .productInlineSlider .slick-disabled{
+.bigSliderContainer .productInlineSlider .slick-disabled,
+.basics-paragraph .basicsProductWrapper .slick-disabled{
   display: block !important;
 }
 .productimage .slick-dots {
