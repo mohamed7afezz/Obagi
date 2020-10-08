@@ -179,7 +179,7 @@ if ( typeof window !== "undefined"){
   const addingToCart = value && value.state.addingToCart
 
   return (
-    <div itemtype="https://schema.org/Product"
+    <div 
       className={[
         "container-fluid",
         ProductStyles.productHero,
