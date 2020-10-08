@@ -41,7 +41,7 @@ export const productPageQuery = graphql`
         nodeClinicalProduct(fields: { slug: { eq: $slug } }) {
             title
             field_clinical_price
-            
+            field_clinical_weight_unit
             field_clinical_upc
             field_clinical_id
             field_clinical_medical_type
@@ -109,6 +109,7 @@ export const productPageQuery = graphql`
             field_medical_id
             field_medical_type
             field_medical_weight
+            field_medical_weight_unit
             field_medical_key_benefits
             field_medical_form_list
             field_medical_description_sub

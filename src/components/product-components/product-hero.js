@@ -51,7 +51,10 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
     let field_info =  node.field_medical_info
-  let feild_preimer = node.field_medical_premier_points
+  let feild_preimer = node.field_medical_premier_points;
+  let field_weight_unit  = isClincal
+    ? node.field_clinical_weight_unit
+     :node.field_medical_weight_unit
   let key_benefit  = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
@@ -325,7 +328,7 @@ if ( typeof window !== "undefined"){
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             <ul>
               {" "}
-              <li> Size {field_weight} {field_weight_unit} </li>
+              <li> Size {field_weight}  {field_weight_unit} </li>
             </ul>
           </div>
           {feild_preimer?
