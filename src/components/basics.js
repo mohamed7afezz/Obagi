@@ -52,12 +52,12 @@ const Basics = ({ node }) => {
                       <div className={["col-12 col-lg-6", basicsStyles.wrapper].join(" ")}>
                         <div className="col-12">
                           <div className={basicsStyles.cardWrapper}>
-                            {item.field_basics_card_title ? <div className={basicsStyles.pTitle} dangerouslySetInnerHTML={{ __html: item.field_basics_card_title.processed }}></div> : ""}
+                            {item.field_basics_card_title ? <div className={basicsStyles.pTitle} dangerouslySetInnerHTML={{ __html: item.field_basics_card_title?item.field_basics_card_title.processed:"" }}></div> : ""}
                             <div className={basicsStyles.productsSection}>
-                              {item.field_basics_products_field ? <div className={basicsStyles.pField} dangerouslySetInnerHTML={{ __html: item.field_basics_products_field.processed }}></div> : ""}
-                              {item.field_view_all_field ? <Link to="#"><div className={basicsStyles.vaField} dangerouslySetInnerHTML={{ __html: item.field_view_all_field.processed }}></div></Link> : ""}
+                              {item.field_basics_products_field ? <div className={basicsStyles.pField} dangerouslySetInnerHTML={{ __html: item.field_basics_products_field?item.field_basics_products_field.processed:"" }}></div> : ""}
+                              {item.field_view_all_field ? <Link to="#"><div className={basicsStyles.vaField} dangerouslySetInnerHTML={{ __html: item.field_view_all_field?item.field_view_all_field.processed:"" }}></div></Link> : ""}
                             </div>
-                            {item.field_basics_card_description ? <div className={basicsStyles.pDesc} dangerouslySetInnerHTML={{ __html: item.field_basics_card_description.processed }}></div> : ""}
+                            {item.field_basics_card_description ? <div className={basicsStyles.pDesc} dangerouslySetInnerHTML={{ __html: item.field_basics_card_description?item.field_basics_card_description.processed:"" }}></div> : ""}
                             {item.relationships && item.relationships.field_card_skin_concerns ?
                               <div className={basicsStyles.perfect}>
                                 <span className={basicsStyles.catTitle}>Perfect for:</span>
@@ -68,7 +68,7 @@ const Basics = ({ node }) => {
                                 </span>
                               </div>
                               : ""}
-                            <Link to="#" className={basicsStyles.shopLink}>Shop <div dangerouslySetInnerHTML={{ __html: item.field_basics_card_title.processed }}></div></Link>
+                            <Link to="#" className={basicsStyles.shopLink}>Shop <div dangerouslySetInnerHTML={{ __html: item.field_basics_card_title?item.field_basics_card_title.processed:"" }}></div></Link>
                             {item.field_has_colored_section && item.field_has_colored_section === true ? <div className={basicsStyles.yellowSection}></div> : ""}
 
                           </div>
