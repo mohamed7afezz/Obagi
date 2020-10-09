@@ -1809,4 +1809,5 @@ height: 5px;
 }
 .Collectionherorightcol{
   position: relative;
+  overflow: hidden;
 }
