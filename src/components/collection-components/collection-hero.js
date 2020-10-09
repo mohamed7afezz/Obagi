@@ -1013,7 +1013,7 @@ export const fragment = graphql`
           field_taxonomy_hero_paraprapgh_i {
             localFile {
               childImageSharp {
-                fluid (quality: 100) {
+                fluid(maxWidth: 1200) {
                   ...GatsbyImageSharpFluid
                 }
                 original {
@@ -1041,7 +1041,7 @@ export const fragment = graphql`
             original {
               src
             }
-            fluid (quality: 100) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
           }

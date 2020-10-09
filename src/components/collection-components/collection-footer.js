@@ -42,9 +42,9 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   let getTwoSection="";
   if (pageNodeType == "medicalConcern") {
     
-    getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
+    getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski?node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
     node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships?
-    node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships.field_service_card:"":"":"";
     // checkfooter =
     // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod?
     // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod.processed:""
@@ -58,17 +58,17 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     //   node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod.processed:""
   }else if(pageNodeType == 'medicalLine'){
     
-    getTwoSection=node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0]?
+    getTwoSection=node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title?node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0]?
     node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships?
-    node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships.field_service_card:"":"":"";
     checkfooter =
       node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod?
       node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod.processed:""
   }else if(pageNodeType == 'skinMedicalType'){
     
-    getTwoSection=node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0]?
+    getTwoSection=node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two?node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0]?
     node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships?
-    node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships.field_service_card:"":"":"";
     // checkfooter =
     // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod?
     // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod.processed:"" 
@@ -139,7 +139,7 @@ return (
       :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
     >
         <div className={["row",servicesStyles.twoCards].join(" ")} >
-          {/* <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
+          <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
             <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
             <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
@@ -159,7 +159,7 @@ return (
                       </div>
                   </div>
                </div>
-            */}
+           
                {getTwoSection?getTwoSection.map((item, index) => {
                             return (
                                 <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper}>
