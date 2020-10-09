@@ -639,10 +639,7 @@ padding-bottom: 134px;
 .productInBag img {
   max-width: 100%;
 }
-.upsection  img {
-  filter: brightness(400);
 
-}
 .productInBag .spinner::before {
   width: 20px;
   height: 20px;
