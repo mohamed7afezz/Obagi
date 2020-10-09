@@ -2713,13 +2713,61 @@ p {
     }
 }
 
+.basics-paragraph .slick-track {
+    @include lg-screen {    
+        display: flex;
+        // height: 100%;
+        align-items: center;}
+}
+
+.basics-paragraph .slick-initialized .slick-slide {
+    @include lg-screen {
+        padding-right: 32px;
+        padding-left: 32px;
+        height: 100%;
+        // display: flex;
+    
+        div {
+            // height: 100%;
+        }
+    }
+}
+
 .basics-paragraph .the-product-card {
     border-radius: 6px;
     box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+    height: 100%;
 
 
     @include lg-screen {
-        margin-top: 48px;
+        // margin-top: 48px;
+        position: relative;
+        margin-right: 35px;
+        &::before {
+            position: absolute;
+            content: '';
+            top: 16px;
+            bottom: 16px;
+            right: -17px;
+            left: -16px;
+            z-index: -1;
+            background: #868cd2;
+            opacity: 0.1;
+            border-radius: 6px;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            top: 32px;
+            bottom: 32px;
+            right: -32px;
+            left: -32px;
+            z-index: -2;
+            background: #868cd2;
+            opacity: 0.1;
+            border-radius: 6px;
+        }
     }
 }
 
@@ -2729,11 +2777,19 @@ p {
     border: 1px solid #132466;
 
     &:hover {
-        color: #fff;
-        background: #132466;
+        color: #132466;
+        // background: #132466;
     }
+
 }
 
 .generalcollectionhero .hero-row-wrapper {
     mix-blend-mode: unset;
+}
+
+.basics-paragraph .slick-track::before, .slick-track::after {
+    @include lg-screen {
+        display: none;
+
+    }
 }

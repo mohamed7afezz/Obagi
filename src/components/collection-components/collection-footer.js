@@ -139,7 +139,7 @@ return (
       :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
     >
         <div className={["row",servicesStyles.twoCards].join(" ")} >
-          {/* <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
+           <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
             <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
             <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
@@ -159,7 +159,7 @@ return (
                       </div>
                   </div>
                </div>
-            */}
+            
                {getTwoSection?getTwoSection.map((item, index) => {
                             return (
                                 <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper}>

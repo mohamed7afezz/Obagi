@@ -140,7 +140,8 @@
 
 .p-field {
     margin-right: 24px;
-
+    display: flex;
+    align-items: center;
     @include lg-screen{
         margin-right: 40px;
     }
@@ -212,6 +213,7 @@
 
     @include lg-screen {
         padding: 24px;
+        width: 66.6666666667%;
     }
 }
 
@@ -284,6 +286,7 @@
 
 .slide-counter {
     position: relative;
-    bottom: 0;
-    left: 132px;
+    bottom: -19px;
+    // left: 132px;
+    text-align: center;
 }
