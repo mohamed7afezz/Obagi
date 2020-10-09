@@ -86,27 +86,6 @@ const StandardItem = props => {
     } else {
       return (
         <>
-        <div className="upsection ">
-          <div className="productInBag">
-            <div class="row alignFlex">
-          <div class="hide-desk col-4">
-            <img alt="" src={freeimg}/></div>
-          </div>
-          <div class="row alignFlex col-8 col-lg-12">
-            <div class="col-md-2 hide-tabmob">
-            <img alt="" src={freeimg}/>
-            </div>
-            <div class="col-10">
-              <p className={BagStyle.exclusiveOffertitle}>
-              COMPLIMENTARY SHIPPING 
-                            </p>
-              <p className={BagStyle.exclusiveOfferdesc}>
-              Obagi Members Receive Complimentary Free Shipping on Orders $125 or more</p>
-             
-            </div>
-          </div>
-          </div>
-        </div>
         <div className={"productInBag"}>
           <div className={["row", "alignFlex"].join(" ")}>
             <div class="hide-desk col-4">
@@ -571,7 +550,29 @@ const YourBag = (props, {notificationId}) => {
           >
             <h2 className={BagStyle.bagHead}>Your Bag</h2>
             <div className={"row"}>
-              <div className={["offset-lg-1", "col-lg-7"].join(" ")}>
+             <div className={["offset-lg-1", "col-lg-7"].join(" ")}>
+              <div className="upsection ">
+          <div className="productInBag">
+            <div class="row alignFlex">
+          <div class="hide-desk col-4">
+            <img alt="" src={freeimg}/></div>
+          </div>
+          <div class="row alignFlex col-8 col-lg-12">
+            <div class="col-md-2 hide-tabmob">
+            <img alt="" src={freeimg}/>
+            </div>
+            <div class="col-10">
+              <p className={BagStyle.exclusiveOffertitle}>
+              COMPLIMENTARY SHIPPING 
+                            </p>
+              <p className={BagStyle.exclusiveOfferdesc}>
+              Obagi Members Receive Complimentary Free Shipping on Orders $125 or more</p>
+             
+            </div>
+          </div>
+          </div>
+        </div>
+           
                 <StandardItem
                   currency={currency}
                   updatingItem={updatingItem}
