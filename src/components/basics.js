@@ -56,6 +56,7 @@ const Basics = ({ node }) => {
           slidesToShow: 1.05,
           dots: false,
           arrows: false,
+          adaptiveHeight: true,
         },
       },
     ],
