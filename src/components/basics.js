@@ -49,6 +49,7 @@ const Basics = ({ node }) => {
     slidesToShow: 1,
     arrows: true,
     dots: false,
+    adaptiveHeight: false,
     responsive: [
       {
         breakpoint: 1024,
