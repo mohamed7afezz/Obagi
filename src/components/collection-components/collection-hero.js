@@ -131,12 +131,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_paraprapgh_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_paraprapgh_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -225,12 +225,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_categories_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_categories_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -317,12 +317,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_productline_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_productline_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -410,12 +410,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_ingredients_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_ingredients_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -504,12 +504,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_taxonomy_skintype.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_taxonomy_skintype
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -599,12 +599,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_clinical_ing_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -690,12 +690,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_parag_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_parag_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -782,12 +782,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -873,12 +873,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_category_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_category_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -966,10 +966,10 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
                                 {checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? (
                                   checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                    <Img
-                                      className={Collectionherostyle.allheight}
-                                      fluid={
-                                        checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid
+                                    <img
+                                      className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                                      src={
+                                        checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src
                                       }
                                     />
                                   ) : (
@@ -1015,6 +1015,7 @@ export const fragment = graphql`
               childImageSharp {
                 fluid(maxWidth: 1200) {
                   ...GatsbyImageSharpFluid
+                  
                 }
                 original {
                   src

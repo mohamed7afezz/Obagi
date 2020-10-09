@@ -1781,11 +1781,32 @@ color: #fff;
 }
 .Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder::after {
 background-color: #fff;
+width: 5px;
+height: 5px;
 }
 .Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder {
-
+  width: 19px;
+  height: 19px;
   background-color: #132466;
 }
+.Collectionfilter .advanced-search li .checkcon .checkmarkfinder{
+  width: 19px !important;
+  height: 19px !important;
+}
+.Collectionfilter .advanced-search li .checkcon .checkmarkfinder::after {
+  width: 10px;
+  height: 10px;
+  top: 4px;
+  left: 4px;
+  }
 #related-products{
   padding-right: 0 !important;
+}
+.img-fluid-height{
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.Collectionherorightcol{
+  position: relative;
 }

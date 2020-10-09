@@ -40,6 +40,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100) {
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -88,6 +90,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -138,6 +142,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100){
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -156,6 +162,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -185,6 +193,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -236,6 +246,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -254,6 +266,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -308,6 +322,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100){
                                 ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -326,6 +342,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100){
                               ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -358,6 +376,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -411,6 +431,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -429,6 +451,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -463,6 +487,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -497,6 +523,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -550,6 +578,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100) {
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -568,6 +598,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -605,6 +637,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -636,6 +670,9 @@ export const productPageQuery = graphql`
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
+                      original{
+                        src
+                      }
                     }
                   }
                 }
@@ -657,6 +694,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -699,6 +738,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -741,6 +782,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -778,6 +821,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -813,6 +858,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
