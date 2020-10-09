@@ -16,7 +16,7 @@ import paypal from "../assets/images/product-images/paypal.png"
 import appelpay from "../assets/images/product-images/appelPay.png"
 import visa from "../assets/images/product-images/visa.png"
 import paycred from'../assets/images/ppcredit-logo-large.png'
-import freeimg from "../assets/images/rsz_thumbnail.png"
+import freeimg from "../assets/images/tag.png"
 import ProductSuggestion from "./product-components/productsuggestion"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
