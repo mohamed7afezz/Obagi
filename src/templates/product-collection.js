@@ -40,6 +40,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100) {
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -88,6 +90,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -138,6 +142,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100){
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -156,6 +162,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -185,6 +193,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -236,6 +246,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -254,6 +266,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -271,36 +285,7 @@ export const productPageQuery = graphql`
             name
           
             relationships {
-              field_footer_two_section_med_ski{
-                relationships {
-                  field_service_card {
-                    field_service_name {
-                      processed
-                    }
-                    relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            }
-                          }
-                        }
-                      }
-                    }
-                    field_service_title {
-                      processed
-                    }
-                    field_service_description {
-                      processed
-                    }
-                    field_se {
-                      title
-                      uri
-                    }
-                  }
-                }
-              }
+              
                 node__medical_product {
                   field_medical_is_system
                   field_medical_id
@@ -337,6 +322,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100){
                                 ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -355,6 +342,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100){
                               ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -387,6 +376,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -440,6 +431,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100){
                             ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -458,6 +451,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -479,36 +474,7 @@ export const productPageQuery = graphql`
           alias
         }
         relationships {
-          field_taxonomy_footer_two{
-            relationships {
-              field_service_card {
-                field_service_name {
-                  processed
-                }
-                relationships {
-                  field_service_image {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-                field_service_title {
-                  processed
-                }
-                field_service_description {
-                  processed
-                }
-                field_se {
-                  title
-                  uri
-                }
-              }
-            }
-          }
+          
               field_hero_parag_taxonomy {
                 field_taxonomy_hero_para_title
                 field_taxonomy_hero_paraprapgh_t
@@ -521,6 +487,8 @@ export const productPageQuery = graphql`
                       childImageSharp {
                         fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
+                        } original{
+                          src
                         }
                       }
                     }
@@ -555,6 +523,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -572,36 +542,7 @@ export const productPageQuery = graphql`
             name
            
             relationships {
-              field_footer_two_section_med_cat{
-                relationships {
-                  field_service_card {
-                    field_service_name {
-                      processed
-                    }
-                    relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            }
-                          }
-                        }
-                      }
-                    }
-                    field_service_title {
-                      processed
-                    }
-                    field_service_description {
-                      processed
-                    }
-                    field_se {
-                      title
-                      uri
-                    }
-                  }
-                }
-              }
+              
                 node__medical_product {
                     field_medical_is_system
                     field_medical_id
@@ -637,6 +578,8 @@ export const productPageQuery = graphql`
                           childImageSharp {
                             fluid (quality: 100) {
                               ...GatsbyImageSharpFluid
+                            } original{
+                              src
                             }
                           }
                         }
@@ -655,6 +598,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -692,6 +637,8 @@ export const productPageQuery = graphql`
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
+                          } original{
+                            src
                           }
                         }
                       }
@@ -723,6 +670,9 @@ export const productPageQuery = graphql`
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
+                      original{
+                        src
+                      }
                     }
                   }
                 }
@@ -744,6 +694,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -773,36 +725,7 @@ export const productPageQuery = graphql`
             processed
           }
           relationships {
-            field_footer_two_section_title {
-              relationships {
-                field_service_card {
-                  field_service_name {
-                    processed
-                  }
-                  field_service_description {
-                    processed
-                  }
-                  field_se {
-                    title
-                    uri
-                  }
-                  field_service_title {
-                    processed
-                  }
-                  relationships {
-                    field_service_image {
-                      localFile {
-                        childImageSharp {
-                          fluid (quality: 100) {
-                            ...GatsbyImageSharpFluid
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            
             field_hero_productline_taxonomy {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title
@@ -815,6 +738,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -857,6 +782,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }
@@ -894,6 +821,8 @@ export const productPageQuery = graphql`
                   childImageSharp {
                     fluid (quality: 100) {
                       ...GatsbyImageSharpFluid
+                    } original{
+                      src
                     }
                   }
                 }
@@ -929,6 +858,8 @@ export const productPageQuery = graphql`
                     childImageSharp {
                       fluid (quality: 100){
                         ...GatsbyImageSharpFluid
+                      } original{
+                        src
                       }
                     }
                   }

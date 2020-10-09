@@ -911,8 +911,10 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               product.relationships.field_medical_image[0]
                                 ? product.relationships.field_medical_image[
                                     0
+                                  ].localFile? product.relationships.field_medical_image[
+                                    0
                                   ].localFile.childImageSharp.fluid
-                                : ""
+                                : "":""
                             }
                             isrx={product.relationships.field_medical_rx?product.relationships.field_medical_rx.name :""}
                             price={product.field_medical_price}

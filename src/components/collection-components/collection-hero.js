@@ -44,14 +44,15 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var pathname = new URL(window.location.href).pathname;
     var geturi = pathname.split('/')
     var first_url = geturi[1];
-    var sec_url = geturi[2]
+    var sec_url = geturi[2];
+    console.log("hassan",first_url)
   }
 
   return (
     <div
       className={checktaxonomyType === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : checktaxonomyType === "medical" ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero
+        : (checktaxonomyType === "medical"||first_url === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
           : "container-fluid collectionhero generalcollectionhero " + Collectionherostyle.generalcollectionhero}
     >
 
@@ -68,7 +69,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -130,12 +131,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_paraprapgh_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_paraprapgh_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -161,7 +162,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -224,12 +225,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_categories_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_categories_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -255,7 +256,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -316,12 +317,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_productline_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_productline_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -348,7 +349,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -409,12 +410,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_ingredients_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_ingredients_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -442,7 +443,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -503,12 +504,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_taxonomy_skintype.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_taxonomy_skintype
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -537,7 +538,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -598,12 +599,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_clinical_ing_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -630,7 +631,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -689,12 +690,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_parag_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_parag_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -721,7 +722,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -781,12 +782,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_taxonomy.relationships
                     .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -813,7 +814,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -872,12 +873,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 .relationships.field_taxonomy_hero_paraprapgh_i ? (
                   checkTaxonomy.field_hero_category_taxonomy
                     .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <Img
-                        className={Collectionherostyle.allheight}
-                        fluid={
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
                           checkTaxonomy.field_hero_category_taxonomy
                             .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.fluid
+                            .localFile.childImageSharp.original.src
                         }
                       />
                     ) : (
@@ -904,12 +905,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               ].join(" ")}
                             >
                               <div className="row m-0">
-                                {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
-                                  <p className="breadcramp">
-                                    <Link to="/homepage">Home</Link> /{" "}
-                                    <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
-                                  </p>
-                                </div> : ""}
+                              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                                      <p className="breadcramp">
+                                        <Link to="/homepage">Home</Link> /{" "}
+                                        <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                                      </p>
+                                    </div> : ""}
                                 <div className="offset-lg-1">
                                   {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
                                     <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') ? Collectionherostyle.medical : Collectionherostyle.general].join(' ')}>
@@ -965,10 +966,10 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
                                 {checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? (
                                   checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                    <Img
-                                      className={Collectionherostyle.allheight}
-                                      fluid={
-                                        checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid
+                                    <img
+                                      className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                                      src={
+                                        checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src
                                       }
                                     />
                                   ) : (
@@ -1012,8 +1013,9 @@ export const fragment = graphql`
           field_taxonomy_hero_paraprapgh_i {
             localFile {
               childImageSharp {
-                fluid (quality: 100) {
+                fluid(maxWidth: 1200) {
                   ...GatsbyImageSharpFluid
+                  
                 }
                 original {
                   src
@@ -1040,7 +1042,7 @@ export const fragment = graphql`
             original {
               src
             }
-            fluid (quality: 100) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
           }

@@ -192,7 +192,7 @@ if ( typeof window !== "undefined"){
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname", "col-12"].join(" ")}>
           <p className="pathtitle">
-            <Link to="/homepage"> Home </Link>/{" "}
+            <Link to="/homepage"> Home</Link> /{" "}
             <Link to={`/${nodeType}`}> {nodeType}</Link> / {node.title}
           </p>
         </div>

@@ -42,69 +42,69 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   let getTwoSection="";
   if (pageNodeType == "medicalConcern") {
     
-    getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
+    getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski?node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
     node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships?
-    node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships.field_service_card:"":"":"";
     // checkfooter =
     // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod?
     // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod.processed:""
   } else if (pageNodeType == "medicalCategories") {
     
-    getTwoSection=node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0]?
+    getTwoSection=node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat?node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0]?
     node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0].relationships?
-    node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0].relationships.field_service_card:"":"":"";
     // checkfooter =
     //   node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod?
     //   node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod.processed:""
   }else if(pageNodeType == 'medicalLine'){
     
-    getTwoSection=node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0]?
+    getTwoSection=node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title?node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0]?
     node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships?
-    node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0].relationships.field_service_card:"":"":"";
     checkfooter =
       node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod?
       node.taxonomyTermMedicalProductLines.field_medical_pro_col_footer_mod.processed:""
   }else if(pageNodeType == 'skinMedicalType'){
     
-    getTwoSection=node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0]?
+    getTwoSection=node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two?node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0]?
     node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships?
-    node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships.field_service_card:"":"":"";
     // checkfooter =
     // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod?
     // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod.processed:"" 
   } else if(pageNodeType == 'MedicalIngredients'){
  
-    getTwoSection=node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0]?
+    getTwoSection=node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing?node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0]?
     node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships?
-    node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships.field_service_card:"":"";
+    node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships.field_service_card:"":"":"";
     checkfooter =
     node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
     node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:"";
   }
   else if(pageNodeType == 'clinicalCategories'){
-    getTwoSection=node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0]?
+    getTwoSection=node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat?node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0]?
     node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0].relationships?
-    node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0].relationships.field_service_card:"":""
+    node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'ClinicalIngredients'){
-    getTwoSection=node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0]?
+    getTwoSection=node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing?node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0]?
     node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0].relationships?
-    node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0].relationships.field_service_card:"":""
+    node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'clinicalConcern'){
-    getTwoSection=node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0]?
+    getTwoSection=node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section?node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0]?
     node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0].relationships?
-    node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0].relationships.field_service_card:"":""
+    node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'clinicalGroups'){
-    getTwoSection=node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0]?
+    getTwoSection=node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections?node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0]?
     node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0].relationships?
-    node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0].relationships.field_service_card:"":""
+    node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'skinClinicalType'){
-    getTwoSection=node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type[0]?
+    getTwoSection=node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type?node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type[0]?
     node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type[0].relationships?
-    node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type[0].relationships.field_service_card:"":""
+    node.taxonomyTermClinicalSkinType.relationships.field_footer_two_section_sk_type[0].relationships.field_service_card:"":"":""
 
   }
   
@@ -139,7 +139,7 @@ return (
       :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
     >
         <div className={["row",servicesStyles.twoCards].join(" ")} >
-           <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
+          <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
             <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
             <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
@@ -159,7 +159,7 @@ return (
                       </div>
                   </div>
                </div>
-            
+           
                {getTwoSection?getTwoSection.map((item, index) => {
                             return (
                                 <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper}>
