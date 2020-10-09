@@ -69,7 +69,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -162,7 +162,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -256,7 +256,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -349,7 +349,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -443,7 +443,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -538,7 +538,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -631,7 +631,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -722,7 +722,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -814,7 +814,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             ].join(" ")}
           >
             <div className="row">
-              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/homepage">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
@@ -905,12 +905,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               ].join(" ")}
                             >
                               <div className="row m-0">
-                                {checktaxonomyType === "clinical" || checktaxonomyType === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
-                                  <p className="breadcramp">
-                                    <Link to="/homepage">Home</Link> /{" "}
-                                    <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
-                                  </p>
-                                </div> : ""}
+                              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                                      <p className="breadcramp">
+                                        <Link to="/homepage">Home</Link> /{" "}
+                                        <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                                      </p>
+                                    </div> : ""}
                                 <div className="offset-lg-1">
                                   {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
                                     <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') ? Collectionherostyle.medical : Collectionherostyle.general].join(' ')}>
