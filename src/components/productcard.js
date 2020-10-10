@@ -58,9 +58,7 @@ const ProductCard = ({
 
               data-bv-product-id={productId}
 
-              data-bv-redirect-url = {productLink}
-              
-              data-bv-seo="false">
+              data-bv-redirect-url = {productLink} >
 
               </div>
 

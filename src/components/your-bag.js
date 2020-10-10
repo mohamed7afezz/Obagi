@@ -766,7 +766,11 @@ const YourBag = (props, {notificationId}) => {
             </div>
           
           </div>
-          <ProductSuggestion/>
+          
+          {
+            ((getRecommendedProducts(lineItems.physical_items).length > 0) && (lineItems.physical_items))? <ProductSuggestion/> : ''
+          }
+          
           </>
         )
       }
