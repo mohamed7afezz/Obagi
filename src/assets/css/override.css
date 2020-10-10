@@ -434,12 +434,28 @@ right: -8%;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+
+.basics-paragraph .basicsProductWrapper  .slick-next,
+.basics-paragraph .basicsProductWrapper  .slick-next:hover,
+.basics-paragraph .basicsProductWrapper  .slick-next:active,
+.basics-paragraph .basicsProductWrapper  .slick-next:focus {
+  right: 38%;
+}
+.basics-paragraph .basicsProductWrapper .slick-prev,
+.basics-paragraph .basicsProductWrapper .slick-prev:hover,
+.basics-paragraph .basicsProductWrapper .slick-prev:active,
+.basics-paragraph .basicsProductWrapper .slick-prev:focus {
+  left: 38%;
+  z-index: 99999999999999;
+}
+
+
 .bigSliderContainer .productInlineSlider .slick-initialized{
   padding-bottom: 110px;
 }
 
 .basics-paragraph .basicsProductWrapper .slick-initialized {
-  padding-bottom: 111px;
+  padding-bottom: 0;
 }
 /* .basics-paragraph .basicsProductWrapper .slick-list,
 .basics-paragraph .basicsProductWrapper .slick-track {

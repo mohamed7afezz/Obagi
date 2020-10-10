@@ -5,9 +5,12 @@ import basicsStyles from "../assets/scss/components/basics.module.scss"
 import ProductCard from "../components/productcard"
 import Slider from "react-slick"
 
-const Basics = ({ node }) => {
 
-  // console.log("basics", node)
+const baseUrl = process.env.Base_URL;
+const Basics = ({ node }) => {
+  
+
+  console.log("basics", node)
   Object.defineProperty(Array.prototype, 'flat', {
     value: function(depth = 1) {
       return this.reduce(function (flat, toFlatten) {
@@ -30,7 +33,7 @@ const Basics = ({ node }) => {
 
     return newCard.flat()
   });
-  // console.log('bahiii', cardsProducts)
+  console.log('bahiii', cardsProducts)
 
 
   function checkDataCondition(condition, data) {
@@ -46,6 +49,7 @@ const Basics = ({ node }) => {
     slidesToShow: 1,
     arrows: true,
     dots: false,
+    adaptiveHeight: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -53,9 +57,16 @@ const Basics = ({ node }) => {
           slidesToShow: 1.05,
           dots: false,
           arrows: false,
+          adaptiveHeight: true,
         },
       },
     ],
+
+
+    customPaging: function(slider) {
+      console.log("ash" , slider)
+      return (" sds")
+    },
   }
 
   return (
@@ -123,14 +134,16 @@ const Basics = ({ node }) => {
                                     )}
                                   <div className={basicsStyles.productsSection}>
                                     {item.field_basics_products_field ? (
+                                      <div className={basicsStyles.pField}>
                                       <div
-                                        className={basicsStyles.pField}
                                         dangerouslySetInnerHTML={{
                                           __html:
                                             item.field_basics_products_field
                                               .processed,
                                         }}
-                                      ></div>
+                                      ></div>&nbsp;
+                                      {"(" + cardsProducts[index].length + ")"}
+                                      </div>
                                     ) : (
                                         ""
                                       )}
@@ -164,7 +177,7 @@ const Basics = ({ node }) => {
                                     item.relationships.field_card_skin_concerns ? (
                                       <div className={basicsStyles.perfect}>
                                         <span className={basicsStyles.catTitle}>
-                                          Perfect for: 
+                                          Perfect for:&nbsp;
                                     </span>
                                         <span>
                                           {item.relationships.field_card_skin_concerns.map(
@@ -196,7 +209,7 @@ const Basics = ({ node }) => {
                                       to="#"
                                       className={basicsStyles.shopLink}
                                     >
-                                      Shop
+                                      Shop&nbsp;
                                       <div
                                         dangerouslySetInnerHTML={{
                                           __html:
@@ -228,7 +241,7 @@ const Basics = ({ node }) => {
                                       <ProductCard
                                         producttitle={prod.title ? prod.title : ""}
                                         productId={prod.field_medical_id ? prod.field_medical_id : prod.field_clinical_id ? prod.field_clinical_id : ""}
-                                        price={prod.price ? prod.price : ""}
+                                        price={prod.field_clinical_price ? prod.field_clinical_price : prod.field_medical_price? prod.field_medical_price : ""}
                                         rate="0"
                                         productdescription={prod.field_medical_description ? { __html: prod.field_medical_description.processed } : prod.field_clinical_description ? { __html: prod.field_clinical_description.processed } : ""}
                                         productLink={prod.path ? prod.path.alias : ""}
@@ -243,7 +256,7 @@ const Basics = ({ node }) => {
                                             prod.relationships.field_clinical_image[0].localFile.childImageSharp ? prod.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                             : ""}
                                       />
-                                      <div className={basicsStyles.slideCounter}>{ind + 1 + "/" + array.length}</div>
+                                      {/* <div className={basicsStyles.slideCounter}>{ind + 1 + "/" + array.length}</div> */}
                                       </>
                                     ))}
                                   </Slider>
