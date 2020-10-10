@@ -132,12 +132,12 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
  
 return (
     <>
-    {getTwoSection?
-    <div 
-     className={checktaxonomyType === "clinical"? 
-      "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
-      :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
-    >
+    
+   <div 
+   className={checktaxonomyType === "clinical"? 
+    "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
+    :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
+  >
         <div className={["row",servicesStyles.twoCards].join(" ")} >
           <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
 
@@ -176,7 +176,7 @@ return (
              </div>
             
           </div>
-:""}
+
           {checktaxonomyType === 'clinical'? ""
                :checkfooter?
                <div className={Collectionfooterstyle.footerModCon}>

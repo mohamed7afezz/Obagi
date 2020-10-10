@@ -1810,4 +1810,5 @@ height: 5px;
 .Collectionherorightcol{
   position: relative;
   overflow: hidden;
+  min-height: 300px;
 }

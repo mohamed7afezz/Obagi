@@ -53,7 +53,7 @@ const HeroSlider = ({ node }) => {
                                         <div>
                                             <div className="d-lg-none">
                                                 <div className="col-12 col-lg-7 col-padding">
-                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><Img fluid={item.relationships.field_slide_image.localFile.childImageSharp.fluid} /></div> : '':""}
+                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><img src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '':""}
                                                 </div>
                                                 <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
                                                     <div className="col-12 col-lg-4">
@@ -78,7 +78,7 @@ const HeroSlider = ({ node }) => {
                                                     </div>
                                                     <div className="col-lg-7 col-padding">
                                                         <div className={heroSlider.sliderImg}>
-                                                            {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <Img fluid={item.relationships.field_slide_image.localFile.childImageSharp.fluid} /> : '' :""}
+                                                            {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <img src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /> : '' :""}
                                                         </div>
 
                                                     </div>
@@ -119,6 +119,9 @@ export const fragment = graphql`
                                     fixed {
                                         ...GatsbyImageSharpFixed
                                     }
+                                    original {
+                                        src
+                                    }
                                 }
                             }
                         }
@@ -127,6 +130,9 @@ export const fragment = graphql`
                                 childImageSharp {
                                 fixed {
                                     ...GatsbyImageSharpFixed
+                                }
+                                original {
+                                    src
                                 }
                                 }
                             }
@@ -152,6 +158,9 @@ export const fragment = graphql`
                                             fluid (quality: 100){
                                                 ...GatsbyImageSharpFluid
                                               }
+                                              original {
+                                                src
+                                            }
                                         }
                                     }
                                 }
