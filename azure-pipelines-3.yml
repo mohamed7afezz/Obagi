@@ -35,12 +35,6 @@ steps:
     SourceFolder: 'public/'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'inputs'
