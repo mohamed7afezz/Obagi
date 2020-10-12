@@ -2630,6 +2630,13 @@ p {
     color: #fff;
 }
 
+.general-collection-footer-container {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
+    margin-top: 112px;
+    margin-bottom: 192px;
+}
+
 .node-home .collection-footer-typecon::before {
     background: #FFCD00;
 }
@@ -2719,8 +2726,16 @@ p {
         // height: 100%;
         align-items: center;}
 }
+.basics-paragraph .slick-initialized {
+    padding-bottom: 96px;
+    @include lg-screen {
+        height: 100%;
+    }
+}
 
 .basics-paragraph .slick-initialized .slick-slide {
+    position: relative;
+
     @include lg-screen {
         padding-right: 32px;
         padding-left: 32px;
@@ -2730,6 +2745,14 @@ p {
         div {
             // height: 100%;
         }
+    }
+}
+
+.basics-paragraph .slick-initialized .slick-list {
+    @include lg-screen {
+        height: 100%;
+        padding-bottom: 111px;
+        padding-top: 48px;
     }
 }
 

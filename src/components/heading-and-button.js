@@ -7,7 +7,7 @@ const HeadingAndButton = ({ node }) => {
         <div>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-12 col-lg-8 offset-lg-2">
+                    <div className="col-8 offset-2">
                         {node.field_heading ? <div dangerouslySetInnerHTML={{ __html: node.field_heading.processed }} className={headingStyles.heading}></div> : ''}
                     </div>
                     <div className="col-12 col-lg-2 offset-lg-5">

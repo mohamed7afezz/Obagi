@@ -256,6 +256,7 @@ const Basics = ({ node }) => {
                                             prod.relationships.field_clinical_image[0].localFile.childImageSharp ? prod.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                             : ""}
                                       />
+                                      <div className={basicsStyles.productType}>{prod.path ? (prod.path.alias.toLowerCase().includes('clinical')? "Clinical" : prod.path.alias.toLowerCase().includes('medical')? "Medical" : "") : ""}</div>
                                       {/* <div className={basicsStyles.slideCounter}>{ind + 1 + "/" + array.length}</div> */}
                                       </>
                                     ))}
