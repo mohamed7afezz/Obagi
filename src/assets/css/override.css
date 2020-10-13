@@ -729,7 +729,7 @@ button:focus{
 .modal-header .close:before,.modal-header .close:after {
   position: absolute;
   left: 15px;
-  top: 24px;
+  top: 11px;
   content: ' ';
   height: 16px;
   width: 1px;
@@ -1203,6 +1203,12 @@ right: 10px;
   background: #fff;
 }
 
+.contact-us .select-selected.select-arrow-active::before  {
+  left: -16px;
+  width: unset;
+  right: -10px;
+  top: 98%;
+}
 
 .address-modal .select-items, 
 .review-modal .select-items, 
@@ -1573,7 +1579,10 @@ font-weight: 500;
 .appointment-body{
 
 }
-#related-products .modal-header .close::before, .modal-header .close::before, #appointment .modal-header .close::after,#related-products .modal-header .close::after{
+#appointment .modal-header .close::before, 
+#related-products .modal-header .close::before, 
+#appointment .modal-header .close::after,
+#related-products .modal-header .close::after{
 top: 32%;
 height:  32px;
 }
