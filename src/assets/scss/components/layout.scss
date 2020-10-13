@@ -6,7 +6,7 @@ body {
     position: relative;
     padding-right: 0 !important;
    
-    div, a, button {
+    div, a, button, input {
         outline: none;
     }
 
@@ -1447,7 +1447,9 @@ p {
 }
 
 .my-account .list-wrapper {
-    margin-bottom: 112px;
+    @include lg-screen {
+        margin-bottom: 112px;
+    }
 }
 
 
@@ -1755,7 +1757,8 @@ p {
 }
 
 .address-modal .select-items, 
-.review-modal .select-items{
+.review-modal .select-items,
+.contact-us .select-items{
     border: 1px solid #bebebe;
     border-top: 0;
     padding: 8px 25px 4px 16px;
@@ -1766,6 +1769,12 @@ p {
     left: -1px;
     box-shadow: 0 0 5px 0 rgba(54, 75, 95, 0.15);
 
+}
+
+.contact-us .select-items {
+    right: -12px;
+    left: -17px;
+    top: 134%;
 }
 
 .address-modal .select-items div, 
@@ -2847,6 +2856,10 @@ p {
 
 .contact-us .contact-text {
     @include fontStyle(16, 24);
+
+    @include lg-screen {
+        @include fontStyle(18, 32);
+    }
 }
 
 .contact-us .contact-title {
@@ -2865,16 +2878,31 @@ p {
         top: 12px;
         position: absolute;
     }
+
+    @include lg-screen {
+        margin: 32px 0 8px;
+    }
+
 }
 
 .contact-us .check-group {
     margin: 24px 0 8px;
+
+    @include lg-screen {
+        display: flex;
+        margin: 16px 0 24px;
+    }
 }
 
 .contact-us .form-check {
     margin-bottom: 16px;
     display: inline-block;
-    padding-left: 36px;
+    padding-left: 0;
+    margin-right: 40px;
+
+    @include lg-screen {
+        white-space: nowrap;
+    }
 }
 
 .contact-us .form-check-label {
@@ -2888,6 +2916,10 @@ p {
     @extend %futurapt-bold;
     margin-top: 8px;
     text-transform: uppercase;
+
+    @include lg-screen {
+        margin-top: 24px;
+    }
 }
 
 .contact-us .second-check-group {
@@ -2906,11 +2938,16 @@ p {
     color: #fff;
     background: #132466;
     margin: 24px 0 32px;
-
+    padding: 16px;
 
     &:hover {
         background: #fff;
         color: #132466;
+    }
+
+    @include lg-screen {
+        padding: 24px;
+        margin-bottom: 40px;
     }
 }
 
@@ -2919,6 +2956,25 @@ p {
     border-radius: 4px;
     padding: 0 24px 16px;
     margin-bottom: 24px;
+
+    @include lg-screen {
+        display: flex;
+        padding: 0 24px 24px;
+    }
+}
+
+.contact-us .contact-info-wrapper .contact-title {
+    @include lg-screen {
+        margin-top: 24px;
+    }
+}
+
+.contact-us .contact-info-subwrapper {
+    @include lg-screen {
+        &:first-child {
+            margin-right: 141px;
+        }
+    }
 }
 
 .contact-us .contact-mini-wrapper {
@@ -2927,5 +2983,29 @@ p {
 
     &:last-child {
         margin-bottom: 0;
+    }
+}
+
+.contact-us .second-title-wrapper {
+    margin: 31.5px 0 8px;
+}
+
+.contact-us .contact-thanks-note {
+    @include fontStyle(24, 40);
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+
+    @include lg-screen {
+        @include fontStyle(32, 48);
+    }
+}
+
+.contact-us .contact-thanks-text {
+    @include fontStyle(16, 24);
+    margin-bottom: 32px;
+
+    @include lg-screen {
+        @include fontStyle(18, 32);
+        margin-bottom: 40px;
     }
 }
