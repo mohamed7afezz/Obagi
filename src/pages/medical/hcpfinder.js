@@ -16,15 +16,39 @@ const finderURL = process.env.Finder_URL;
     item.closest('.appointment-elemnt').classList.remove('error')
     item.nextSibling.classList.add('hide')
 
-  }
+  } const updateItemInCart = (updatedItemData) => {
+    fetch(
+      `/api/webform_rest/submit`,
+      {
+        credentials: 'same-origin',
+        mode: 'cors',
+        method: 'POST',
+        body: JSON.stringify(updatedItemData)
+      }
+    )
+      .then(res => res.json())
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log('error',error)
+      });
+   };
 
-
+ 
 function submitforming(e){
   var forms = document.getElementsByClassName('needs-validations');
   var list = document.querySelectorAll('input:invalid');
+  if (list.length > 0){
   for (var item of list) {
     item.closest('.appointment-elemnt').classList.add('error')
     item.nextSibling.classList.remove('hide')
+}}else{
+  let list2 = document.querySelectorAll('input');
+  for (let item of list2) {
+    item.closest('.appointment-elemnt').classList.add('error')
+    item.nextSibling.classList.remove('hide')
+}
 }
 }
 export const ProductLineComp = ({line}) => {
@@ -316,47 +340,47 @@ export default function Finder({ data }) {
                   with:
                 </h2>
                 <div id="req-app-clinic-info"></div>
-                <form className="needs-validations" onSubmit={(e) => {e.preventDefault();}}>
+                <form className="needs-validations" method="POST" action="/api/webform_rest/submit" onSubmit={(e) => {e.preventDefault();}}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt mt-0">
-                      <p class="input-name">First name</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <p class="input-name" >First name</p>
+                      <input class="appointmentInput" name="first_name" onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your First Name</p>
                     </div>
                     <div class="appointment-elemnt mt-0 mob-mt-24">
                       <p class="input-name">Last name</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <input class="appointmentInput" name="last_name" onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your Last Name</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Email Address</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <input class="appointmentInput" name="email_address" onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Phone Number</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <input class="appointmentInput" name="phone_number" onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your Phone Number</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Address</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <input class="appointmentInput" name="address"  onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">City</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
+                      <input class="appointmentInput" name="city" onKeyUp={removevaild} required/>
                       <p className="error-msg hide">Please Enter Your City</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">State/Province</p>
                       <div class="custom-select">
-                        <select id="state" required>
+                        <select id="state" name="state_province">
                           <option value="1">US</option>
                           <option value="uk">UK</option>
                           <option value="1">UA</option>
@@ -369,8 +393,8 @@ export default function Finder({ data }) {
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Postal Code</p>
-                      <input class="appointmentInput" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your First Name</p>
+                      <input class="appointmentInput"name="postal_code" onKeyUp={removevaild} required/>
+                      <p className="error-msg hide">Please Enter Your Postal Code</p>
 
                     </div>
                   </div>
