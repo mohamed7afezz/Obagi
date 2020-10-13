@@ -37,6 +37,7 @@ const finderURL = process.env.Finder_URL;
 
  
 function submitforming(e){
+  var obj={webform_id : "request_appointment"};
   var forms = document.getElementsByClassName('needs-validations');
   var list = document.querySelectorAll('input:invalid');
   if (list.length > 0){
@@ -44,11 +45,13 @@ function submitforming(e){
     item.closest('.appointment-elemnt').classList.add('error')
     item.nextSibling.classList.remove('hide')
 }}else{
-  let list2 = document.querySelectorAll('input');
+  let list2 = document.querySelectorAll('.needs-validations input');
   for (let item of list2) {
     item.closest('.appointment-elemnt').classList.add('error')
     item.nextSibling.classList.remove('hide')
+    obj[item.getAttribute("name")]=item.value
 }
+console.log("hassan",obj)
 }
 }
 export const ProductLineComp = ({line}) => {
