@@ -136,10 +136,11 @@ return (
    <div 
    className={checktaxonomyType === "clinical"? 
     "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
-    :"container-fluid collectionhero collectionfooter  "+Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter}
+    : checktaxonomyType === "medical"? "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter
+    : "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerGeneralBg + " " + Collectionfooterstyle.collectionfooter}
   >
         <div className={["row",servicesStyles.twoCards].join(" ")} >
-          <div className={["col-12","col-lg-10",'row',"offset-lg-1", "collection-footer-container",Collectionfooterstyle.CollectionFooterContainer].join(' ')}>
+          <div className={checktaxonomyType === "clinical" || checktaxonomyType === "medical"? "col-12 col-lg-10 row offset-lg-1 collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer : "col-12 col-lg-10 row offset-lg-1 general-collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer}>
 
             <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
             <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>

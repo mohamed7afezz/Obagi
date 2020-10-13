@@ -1,6 +1,15 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+
+.hero-wrapper {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(19,36,102,0.4));
+}
+
+.bg-wrapper {
+    mix-blend-mode: multiply;
+}
+
 .headline {
     @extend %futurapt-light;
     @include fontStyle(36, 46);

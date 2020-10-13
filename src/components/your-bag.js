@@ -554,14 +554,14 @@ const YourBag = (props, {notificationId}) => {
               <div className="upsection ">
           <div className="productInBag">
             <div class="row alignFlex">
-          <div class="hide-desk col-4">
+          <div class="hide-desk col-12 col-lg-4">
             <img alt="" src={freeimg}/></div>
           </div>
-          <div class="row alignFlex col-8 col-lg-12">
+          <div class="row alignFlex col-11 col-lg-12">
             <div class="col-md-2 hide-tabmob">
             <img alt="" src={freeimg}/>
             </div>
-            <div class="col-10">
+            <div class="col-12 col-lg-10">
               <p className={BagStyle.exclusiveOffertitle}>
               COMPLIMENTARY SHIPPING 
                             </p>
