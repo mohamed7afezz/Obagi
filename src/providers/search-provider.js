@@ -53,9 +53,39 @@ export const SearchProvider = ({children}) => {
         setMedicalValue(filterdMedicalProduct); 
         setIsLoading(false);
     }
+    const searchInIndexById = (searchkey,is_medical) =>{
+        let result ={}
+        
+        if(is_medical == 0){
+            result = ProductsIndex.ClinicalProduct.nodes.filter(function(itm){
+                let filterBool = false;
+                searchkey.forEach(element => {
+                    if(itm.field_clinical_id == element && element != ""){
+                        filterBool =true;
+                        return;
+                    }
+                });
+                return filterBool;
+            });
+        }
+        if(is_medical != 0){
+            result = ProductsIndex.MedicalProduct.nodes.filter(function(itm){
+                let filterBool = false;
+                searchkey.forEach(element => {
+                    if(itm.field_medical_id == element && element != ""){
+                        filterBool =true;
+                        return;
+                    }
+                });
+                return filterBool;
+            });
+        }
+        return result;
+        
+    }
     
     return (
-        <SearchContext.Provider value={{search,setSearchIndex,searchInIndex, isLoading , medicalSearchResults , clinicalSearchResults,searchWord}}>
+        <SearchContext.Provider value={{search,setSearchIndex,searchInIndex,searchInIndexById, isLoading , medicalSearchResults , clinicalSearchResults,searchWord}}>
             {children}
         </SearchContext.Provider>
     )
