@@ -97,6 +97,7 @@
 
     @include lg-screen {
         position: relative;
+        height: 100%;
 
     }
 }
@@ -222,6 +223,7 @@
 
     @include lg-screen {
         margin-top: 0;
+        height: 100%;
     }
 }
 
@@ -289,4 +291,18 @@
     bottom: -19px;
     // left: 132px;
     text-align: center;
+}
+
+.product-type {
+    position: absolute;
+    top: 25px;
+    left: 24px;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    @extend %futurapt-bold;
+
+    @include lg-screen {
+        left: 56px;
+    }
 }

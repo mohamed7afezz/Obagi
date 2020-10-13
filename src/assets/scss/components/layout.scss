@@ -1596,9 +1596,15 @@ p {
     }
 }
 
-.address-modal .modal-title-footnote, .register .required-field {
+.address-modal .modal-title-footnote,
+.register .required-field,
+.contact-us .required-field {
     @include fontStyle(16, 24);
     color: #7c858a;
+}
+
+.contact-us .required-field {
+    margin-top: 16px;
 }
 
 .address-modal .form-group,
@@ -1606,7 +1612,8 @@ p {
 .login .form-group,
 .register .form-group,
 .forgot-pw .form-group,
-.account-settings .form-group {
+.account-settings .form-group,
+.contact-us .form-group {
     border: 1px solid #bebebe;
     border-radius: 4px;
     padding: 16px 11px 12px 16px;
@@ -1628,7 +1635,8 @@ p {
 .login .form-group, 
 .register .form-group,
 .forgot-pw .form-group,
-.account-settings .form-group  {
+.account-settings .form-group,
+.contact-text .form-group  {
     border-color: #d6d6d6;
     @include lg-screen {
         width: 100%;
@@ -1645,7 +1653,8 @@ p {
 .login label, 
 .register label,
 .forgot-pw label,
-.account-settings label {
+.account-settings label,
+.contact-us .form-label {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;
     letter-spacing: 1.2px;
@@ -1659,7 +1668,8 @@ p {
 .login .form-control, 
 .register .form-control,
 .forgot-pw .form-control,
-.account-settings .form-control {
+.account-settings .form-control,
+.contact-us .form-control {
     border: 0;
     padding: 0;
     @include fontStyle(18, 32);
@@ -1685,11 +1695,13 @@ p {
 }
 
 
-.register .regform .form-control:required{
+.register .regform .form-control:required,
+.contact-us .form-control:required{
   border: 0 !important;
   background-color: transparent !important;
 }
-.address-modal .select-group, .review-modal .select-group {
+.address-modal .select-group,
+.review-modal .select-group {
     border: 0;
     box-shadow: none;
     padding: 0;
@@ -1700,7 +1712,8 @@ p {
 
 }
 
-.address-modal .select-group .form-label, .review-modal .select-group .form-label{
+.address-modal .select-group .form-label, 
+.review-modal .select-group .form-label{
     margin-bottom: 8px;
     color: #1a1919;
     letter-spacing: 0;
@@ -1725,7 +1738,9 @@ p {
 .address-modal .select-group .select-selected, 
 .address-modal .select-items div, 
 .review-modal .select-group .select-selected, 
-.review-modal .select-items div {
+.review-modal .select-items div,
+.contact-us .select-group .select-selected, 
+.contact-us .select-items div {
     padding: 20px 16px;
     @include fontStyle(14, 16);
     @extend %futurapt-book;
@@ -1733,6 +1748,10 @@ p {
     border: 0;
     border-radius: 4px;
 
+}
+
+.contact-us .select-group .select-selected {
+    padding: 0;
 }
 
 .address-modal .select-items, 
@@ -1751,7 +1770,8 @@ p {
 
 .address-modal .select-items div, 
 .review-modal .select-items div, 
-.register .select-items div {
+.register .select-items div,
+.contact-us .select-items div  {
     padding: 0;
     margin: 0 0 16px;
 
@@ -1763,7 +1783,8 @@ p {
 
 .address-modal .select-group .select-wrapper .form-control, 
 .review-modal .select-group .select-wrapper .form-control, 
-.register .select-group .select-wrapper .form-control{
+.register .select-group .select-wrapper .form-control,
+.contact-us .select-group .select-wrapper .form-control{
     
     display: none;
 }
@@ -1890,6 +1911,10 @@ p {
 
 .review-modal .textarea-control {
     height: 120px;
+}
+
+.contact-us textarea {
+    height: 110px !important;
 }
 
 .review-modal .textarea-group {
@@ -2276,7 +2301,9 @@ p {
 
 .login .form-group, 
 .register .form-group,
-.account-settings .form-group {
+.account-settings .form-group,
+.contact-us .form-group
+ {
     margin-bottom: 16px;
     display: inline-block;
     width: 100%;
@@ -2396,7 +2423,8 @@ p {
     }
 }
 
-.register .select-group .select-wrapper {
+.register .select-group .select-wrapper,
+.contact-us .select-group .select-wrapper {
     height: auto;
     padding: 0;
     border: 0;
@@ -2630,6 +2658,13 @@ p {
     color: #fff;
 }
 
+.general-collection-footer-container {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
+    margin-top: 112px;
+    margin-bottom: 192px;
+}
+
 .node-home .collection-footer-typecon::before {
     background: #FFCD00;
 }
@@ -2719,8 +2754,16 @@ p {
         // height: 100%;
         align-items: center;}
 }
+.basics-paragraph .slick-initialized {
+    padding-bottom: 96px;
+    @include lg-screen {
+        height: 100%;
+    }
+}
 
 .basics-paragraph .slick-initialized .slick-slide {
+    position: relative;
+
     @include lg-screen {
         padding-right: 32px;
         padding-left: 32px;
@@ -2730,6 +2773,14 @@ p {
         div {
             // height: 100%;
         }
+    }
+}
+
+.basics-paragraph .slick-initialized .slick-list {
+    @include lg-screen {
+        height: 100%;
+        padding-bottom: 111px;
+        padding-top: 48px;
     }
 }
 
@@ -2791,5 +2842,90 @@ p {
     @include lg-screen {
         display: none;
 
+    }
+}
+
+.contact-us .contact-text {
+    @include fontStyle(16, 24);
+}
+
+.contact-us .contact-title {
+    @include fontStyle(18, 32);
+    @extend %futurapt-bold;
+    padding-left: 24px;
+    margin: 24px 0 8px;
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #ffcd00;
+        left: 0;
+        top: 12px;
+        position: absolute;
+    }
+}
+
+.contact-us .check-group {
+    margin: 24px 0 8px;
+}
+
+.contact-us .form-check {
+    margin-bottom: 16px;
+    display: inline-block;
+    padding-left: 36px;
+}
+
+.contact-us .form-check-label {
+    @include fontStyle(16, 24);
+    @extend %futurapt-medium;
+}
+
+.contact-us .question {
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.contact-us .second-check-group {
+    display: flex;
+    margin: 24px 0;
+}
+
+.contact-us .footnote {
+    @include fontStyle(14, 16);
+    color: #7c858a;
+    margin-top: -8px;
+}
+
+.contact-us .button-link {
+    width: 100%;
+    color: #fff;
+    background: #132466;
+    margin: 24px 0 32px;
+
+
+    &:hover {
+        background: #fff;
+        color: #132466;
+    }
+}
+
+.contact-us .contact-info-wrapper {
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    padding: 0 24px 16px;
+    margin-bottom: 24px;
+}
+
+.contact-us .contact-mini-wrapper {
+    @include fontStyle(18, 32);
+    margin-bottom: 8px;
+
+    &:last-child {
+        margin-bottom: 0;
     }
 }
