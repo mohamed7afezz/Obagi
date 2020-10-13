@@ -8,7 +8,7 @@ const ProductSuggestion = ({ node }) => {
   let settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
 
     responsive: [
@@ -18,6 +18,7 @@ const ProductSuggestion = ({ node }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
+          arrows:false,
         },
       },
     ],
@@ -342,7 +343,7 @@ const ProductSuggestion = ({ node }) => {
         You might Also Like
       </h1>
       <div className={["row", productsuggestion.ordering].join(" ")}>
-        <div className={`col-lg-8 offset-lg-2 ${productsuggestion.slickcon}`}>
+        <div className={`col-lg-12 ${productsuggestion.slickcon}`}>
         <Slider {...settings}>
           {
             getRecommendedProducts(lineItems.physical_items).length > 0? getRecommendedProducts(lineItems.physical_items).map(product => (

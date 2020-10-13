@@ -147,6 +147,12 @@ top: 0 !important;
   .mob-m-0{
     margin: 0;
   }
+  .upsection .productInBag{
+    display: flex;
+  }
+.upsection .productInBag img{
+  text-align: center;
+}
   .productview{
     padding-bottom: 25px;
   }
@@ -1827,4 +1833,36 @@ height: 5px;
   position: relative;
   overflow: hidden;
   min-height: 300px;
+}
+.productsuggestioncon .slick-initialized{
+padding-bottom: 0;
+}
+.productsuggestioncon .slick-track{
+  display: flex !important;
+  height: auto
+}
+.productsuggestioncon .slick-initialized .slick-slide{
+ height: auto;
+ float: none;
+}
+.productsuggestioncon .slick-initialized .slick-slide > div{
+  height: 100%;
+}
+.productsuggestioncon .slick-dots{
+  position: relative;
+}
+.appointment-elemnt.error input:invalid{
+ box-shadow: none;
+ border-bottom: 1px solid red !important;
+
+}
+.appointment-elemnt.error{
+  border-color: red;
+}
+.error-msg{
+  margin-top: 15px;
+  color: red;
+}
+.appointmentInput{
+  margin-top: 5px;
 }
