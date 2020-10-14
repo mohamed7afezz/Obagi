@@ -3009,3 +3009,81 @@ p {
         margin-bottom: 40px;
     }
 }
+
+.skinanalyzer .analyzer-intro {
+    
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
+    text-align: center;
+    background-position-x: 50%;
+    // background-position-y: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-size: cover;
+
+    @include lg-screen {
+        background-image: url('../../images/imgSkinAnalyzer.png');
+    }
+}
+
+.analyzer-intro .intro-text-wrapper {
+    padding-top: 24px;
+    padding-bottom: 42px;
+
+    @include lg-screen {
+        padding: 64px 0 88px;
+        margin-top: 232px;
+        margin-bottom: 232px;
+        border-radius: 16px;
+        background: rgba(19,36,102,0.3);
+    }
+}
+
+.analyzer-intro .text-padding {
+
+    @include lg-screen {
+        padding: 0 96px;
+    }
+}
+
+.analyzer-intro .intro-title {
+    @extend %futurapt-light;
+    @include fontStyle(40, 56);
+    margin-bottom: 8px;
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+    }
+}
+
+.analyzer-intro .intro-text {
+    @include fontStyle(18, 32);
+    @extend %futurapt-light;
+    margin-bottom: 24px;
+    padding: 0 24px;
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        padding: 0;
+        margin-bottom: 32px;
+    }
+}
+
+.analyzer-intro .button-link {
+    width: 100%;
+    padding: 16px;
+    background: #fff;
+    border-color: #fff;
+
+    &:hover {
+        color: #fff;
+        background: #132466;
+        border-color: #132466;
+    }
+
+    @include lg-screen {
+        padding: 24px;
+    }
+}
