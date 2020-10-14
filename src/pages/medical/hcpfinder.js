@@ -16,7 +16,7 @@ const finderURL = process.env.Finder_URL;
     item.closest('.appointment-elemnt').classList.remove('error')
     item.nextSibling.classList.add('hide')
 
-  } const updateItemInCart = (updatedItemData) => {
+  } const sendFormValues = (updatedItemData) => {
     fetch(
       `/api/webform_rest/submit`,
       {
@@ -47,11 +47,11 @@ function submitforming(e){
 }}else{
   let list2 = document.querySelectorAll('.needs-validations input');
   for (let item of list2) {
-    item.closest('.appointment-elemnt').classList.add('error')
-    item.nextSibling.classList.remove('hide')
+    item.closest('.appointment-elemnt').classList.remove('error')
+    item.nextSibling.classList.add('hide')
     obj[item.getAttribute("name")]=item.value
 }
-console.log("hassan",obj)
+sendFormValues({obj})
 }
 }
 export const ProductLineComp = ({line}) => {
