@@ -32,10 +32,12 @@ const Footer = ({ siteTitle }) => {
      fetch(
        `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
        {
-         credentials: 'same-origin',
-         mode: 'cors',
+        headers:{
+          "Content-Type": "application/json",
+
+        },
          method: 'POST',
-         body: JSON.stringify(updatedItemData)
+         body: JSON.stringify(updatedItemData.obj)
        }
      )
        .then(res => res.json())
@@ -49,7 +51,7 @@ const Footer = ({ siteTitle }) => {
  
   
  function submitforming(e){
-   var obj={webform_id : "request_appointment"};
+   var obj={webform_id : "subscription"};
    var forms = document.getElementsByClassName('needs-valid');
    var list = document.querySelectorAll('.needs-valid input:invalid');
    if (list.length > 0){
@@ -60,11 +62,13 @@ const Footer = ({ siteTitle }) => {
    let list2 = document.querySelectorAll('.needs-valid input');
    for (let item of list2) {
      item.parentElement.classList.remove('error')
-     item.nextSibling.classList.add('hide')
+     if (item.getAttribute("type") != "checkbox") {
+      item.nextSibling.classList.add('hide')
+     }
+     
      obj[item.getAttribute("name")]=item.value;
   }
   
-  obj[document.querySelector('.needs-valid select').getAttribute("name")]=[`${document.querySelector('.needs-valid select').value}`]
   
  sendFormValues({obj})
  }
@@ -219,6 +223,7 @@ const Footer = ({ siteTitle }) => {
                         className={footerStyles.formBox}
                         id="inputEmail"
                         aria-describedby="emailHelp"
+                        name="email_address"
                         required
                       ></input>
                        <p onClick={removevaild} className="error-msg hide">Please Enter Your Eail Address</p>
@@ -226,14 +231,14 @@ const Footer = ({ siteTitle }) => {
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
-                  <div className={footerStyles.terms}>
+                  <div className={[footerStyles.terms,"formInputCon"].join(" ")}>
                     <label className="terms">
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the U.S. subject to our U.S. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
                       of Use</Link>. For U.S. consumers only.
-                      <input type="checkbox" defaultChecked={true} name="footer-checkbox" />
+                      <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>
                     <button type="button" onClick={(e) => {submitforming(e)}} className="btn signup-btn d-none d-lg-block">SIGN UP</button>

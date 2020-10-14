@@ -1907,6 +1907,9 @@ padding-bottom: 0;
 .error .radiomark{
   border-color: red !important;
 }
+.error .checkmark{
+  border:1px solid red !important;
+}
 .appointmentInput{
   margin-top: 5px;
 }
