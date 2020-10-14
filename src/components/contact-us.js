@@ -6,6 +6,63 @@ import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 
 export default function Contact() {
 
+    function removevaild(e){
+        let item= e.target
+        
+         item.closest('.form-element-con').classList.remove('error')
+         
+         item.nextSibling.classList.add('hide')
+       }
+       function removevaildspan(e) {
+        let item= e.target
+        
+         item.closest('.form-element-con').classList.remove('error')
+         
+       }
+        const sendFormValues = (updatedItemData) => {
+         fetch(
+           `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+           {
+             credentials: 'same-origin',
+             mode: 'cors',
+             method: 'POST',
+             body: JSON.stringify(updatedItemData)
+           }
+         )
+           .then(res => res.json())
+           .then(response => {
+             console.log(response)
+           })
+           .catch(error => {
+             console.log('error',error)
+           });
+        };
+     
+      
+     function submitforming(e){
+       var obj={webform_id : "contact_us"};
+       var forms = document.getElementsByClassName('needs-validations');
+       var list = document.querySelectorAll('input:invalid');
+      var text_area= document.querySelector('textarea')
+      text_area.closest('.form-element-con').classList.add('error')
+       if (list.length > 0){
+       for (var item of list) {
+         item.closest('.form-element-con').classList.add('error')
+         item.nextSibling.classList.remove('hide')
+     }}else{
+       let list2 = document.querySelectorAll('.needs-validations input');
+       for (let item of list2) {
+         item.closest('.form-element-con').classList.remove('error')
+         item.nextSibling.classList.add('hide')
+         obj[item.getAttribute("name")]=item.value;
+      }
+     
+      obj[document.querySelector('.needs-validations select').getAttribute("name")]=[`${document.querySelector('.needs-validations select').value}`]
+     
+     sendFormValues({obj})
+     }
+     }
+
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
             CustomSelect();
@@ -42,21 +99,21 @@ export default function Contact() {
                         <div className="contact-text">Submit your message below, and we will respond to most inquiries within 2 to 3 business days.</div>
                     </div>
                     <div className="col-12 col-lg-6">
-                        <form>
+                        <form class="needs-validations" onSubmit={(e) => {e.preventDefault();}}>
                             <div className="required-field">*All fields required</div>
 
 
                             <div className="check-group">
-                                <div className="form-check">
-                                    <label className="radioLabel form-check-label" for="contactFirstRadio">
-                                        <input className="form-check-input" type="radio" name="exampleRadios" id="contactFirstRadio" value="option1" />
+                                <div className="form-check form-element-con">
+                                    <label className="radioLabel form-check-label" for="contactFirstRadio" onClick={removevaildspan}>
+                                        <input className="form-check-input" type="radio" name="exampleRadios" id="contactFirstRadio" value="option1"required />
                                         <span class="radiomark"></span>
                                         I am a Patient/Consumer
                                     </label>
                                 </div>
-                                <div className="form-check">
-                                    <label className="radioLabel form-check-label" for="contactSecondRadio">
-                                        <input className="form-check-input" type="radio" name="exampleRadios" id="contactSecondRadio" value="option2" />
+                                <div className="form-check form-element-con">
+                                    <label className="radioLabel form-check-label" for="contactSecondRadio" onClick={removevaildspan}>
+                                        <input required className="form-check-input" type="radio" name="exampleRadios" id="contactSecondRadio" value="option2" />
                                         <span class="radiomark"></span>
                                         I am a Physician/Skin Care Professional
                                     </label>
@@ -64,21 +121,21 @@ export default function Contact() {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group form-element-con">
                                 <label for="contactFName" className="form-label">*First name</label>
-                                <input type="text" className="form-control" id="contactFName" aria-describedby="contactFName" placeholder="" required />
-
+                                <input type="text" className="form-control" onClick={removevaild} id="contactFName" aria-describedby="contactFName" placeholder="" required />
+                                <p  className="error-msg hide">Please Enter Your First Name</p>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group form-element-con">
                                 <label for="contactLName" className="form-label">*Last name</label>
-                                <input type="text" className="form-control" id="contactLName" aria-describedby="contactLName" placeholder="" required />
-
+                                <input type="text" className="form-control" onClick={removevaild} id="contactLName" aria-describedby="contactLName" placeholder="" required />
+                                <p  className="error-msg hide">Please Enter Your First Name</p>
                             </div>
 
                             <div className="form-group select-group">
                                 <label for="state" className="form-label">*Subject</label>
                                 <div className="select-wrapper custom-select">
-                                    <select className="form-control" id="subject">
+                                    <select className="form-control"  id="subject">
                                         <option value="Alabama">Subject 1</option>
                                         <option value="Alabama">Subject 2</option>
                                         <option value="Alabama">Subject 2</option>
@@ -89,39 +146,39 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <div className="form-group textarea-group">
+                            <div className="form-group textarea-group form-element-con">
                                 <label for="contactDesc" className="form-label">Description</label>
-                                <textarea type="text" className="form-control textarea-control" id="contactDesc" aria-describedby="contactDesc" placeholder="Type here…" />
+                                <textarea required type="text" className="form-control textarea-control" id="contactDesc" aria-describedby="contactDesc" placeholder="Type here…" />
 
                             </div>
 
                             <div className="question">How would you like to be contacted:</div>
 
                             <div className="second-check-group">
-                                <div className="form-check">
-                                    <label className="radioLabel form-check-label" for="contactEmailRadio">
-                                        <input className="form-check-input" type="radio" name="emailRadio" id="contactEmailRadio" value="option1" />
+                                <div className="form-check form-element-con">
+                                    <label className="radioLabel form-check-label" for="contactEmailRadio" onClick={removevaildspan}>
+                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactEmailRadio" value="option1"required />
                                         <span class="radiomark"></span>
                                         Email
                                 </label>
                                 </div>
-                                <div className="form-check">
-                                    <label className="radioLabel form-check-label" for="contactPhoneRadio">
-                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" />
+                                <div className="form-check form-element-con">
+                                    <label className="radioLabel form-check-label" for="contactPhoneRadio" onClick={removevaildspan}>
+                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" required/>
                                         <span class="radiomark"></span>
                                         Phone
                                 </label>
                                 </div>
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group form-element-con">
                                 <label for="contactPhone" className="form-label">*Phone</label>
-                                <input type="text" className="form-control" id="contactPhone" aria-describedby="contactPhone" placeholder="" required />
-
+                                <input type="text" className="form-control" onClick={removevaild} id="contactPhone" aria-describedby="contactPhone" placeholder="" required />
+                                <p  className="error-msg hide">Please Enter Your First Name</p>
                             </div>
 
                             <div className="footnote">Including area code and/or country code, no spaces or dashes (e.g., 1234567890)</div>
-                            <input className="button-link" type="submit" value="Send Message" />
+                            <input  onClick={(e) => {submitforming(e);}} className="button-link" type="submit" value="Send Message" required/>
 
                         </form>
                     </div>
