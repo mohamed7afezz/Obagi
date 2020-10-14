@@ -18,13 +18,15 @@ const finderURL = process.env.Finder_URL;
     item.classList.add('hide')
   }
    const sendFormValues = (updatedItemData) => {
+    console.log(updatedItemData)
     fetch(
       `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
-      {
-        credentials: 'same-origin',
-        mode: 'cors',
+      {    
+        headers:{
+          "Content-Type": "application/json",
+        },
         method: 'POST',
-        body: JSON.stringify(updatedItemData)
+        body: JSON.stringify(updatedItemData.obj)
       }
     )
       .then(res => res.json())
@@ -40,21 +42,21 @@ const finderURL = process.env.Finder_URL;
 function submitforming(e){
   var obj={webform_id : "request_appointment"};
   var forms = document.getElementsByClassName('needs-validations');
-  var list = document.querySelectorAll('input:invalid');
+  var list = document.querySelectorAll('.needs-validations input:invalid');
   if (list.length > 0){
   for (var item of list) {
-    item.closest('.appointment-elemnt').classList.add('error')
+    item.parentElement.classList.add('error')
     item.nextSibling.classList.remove('hide')
 }}else{
   let list2 = document.querySelectorAll('.needs-validations input');
   for (let item of list2) {
-    item.closest('.appointment-elemnt').classList.remove('error')
+    item.parentElement.classList.remove('error')
     item.nextSibling.classList.add('hide')
     obj[item.getAttribute("name")]=item.value;
  }
  
- obj[document.querySelector('.needs-validations select').getAttribute("name")]=[`${document.querySelector('.needs-validations select').value}`]
- 
+ obj[document.querySelector('.needs-validations select').getAttribute("name")]=`${document.querySelector('.needs-validations select').value}`
+  
 sendFormValues({obj})
 }
 }
@@ -388,11 +390,82 @@ export default function Finder({ data }) {
                       <p class="input-name">State/Province</p>
                       <div class="custom-select">
                         <select id="state" name="state_province">
-                          <option value="US">US</option>
-                          <option value="uk">UK</option>
-                          <option value="UA">UA</option>
-                          <option value="EG">EG</option>
-                          <option value="CA">CA</option>
+                        <option value="" selected="selected">- None -</option>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AS">American Samoa</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
+                          <option value="AA">Armed Forces Americas</option>
+                          <option value="AP">Armed Forces Pacific</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="DC">District of Columbia</option>
+                          <option value="FM">Federated States of Micronesia</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="GU">Guam</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MH">Marshall Islands</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="MP">Northern Mariana Islands</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PW">Palau</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="PR">Puerto Rico</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VI">Virgin Islands</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                          <option value="AB">Alberta</option>
+                          <option value="BC">British Columbia</option>
+                          <option value="MB">Manitoba</option>
+                          <option value="NB">New Brunswick</option>
+                          <option value="NL">Newfoundland and Labrador</option>
+                          <option value="NS">Nova Scotia</option>
+                          <option value="NT">Northwest Territories</option>
+                          <option value="NU">Nunavut</option>
+                          <option value="ON">Ontario</option>
+                          <option value="PE">Prince Edward Island</option>
+                          <option value="QC">Quebec</option>
+                          <option value="SK">Saskatchewan</option>
+                          <option value="YT">Yukon</option>
                         </select>
                       </div>
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your State/Province</p>
