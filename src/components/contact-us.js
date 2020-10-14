@@ -41,18 +41,17 @@ export default function Contact() {
       
      function submitforming(e){
        var obj={webform_id : "contact_us"};
-       var forms = document.getElementsByClassName('needs-validations');
-       var list = document.querySelectorAll('input:invalid');
-      var text_area= document.querySelector('textarea')
-      text_area.closest('.form-element-con').classList.add('error')
+       var list = document.querySelectorAll('.needs-validations input:invalid');
+    //   var text_area= document.querySelector('textarea:invaild')
+   //   text_area.closest('.form-element-con').classList.add('error')
        if (list.length > 0){
        for (var item of list) {
-         item.closest('.form-element-con').classList.add('error')
+         item.parentElement.classList.add('error')
          item.nextSibling.classList.remove('hide')
      }}else{
        let list2 = document.querySelectorAll('.needs-validations input');
        for (let item of list2) {
-         item.closest('.form-element-con').classList.remove('error')
+         item.parentElement.classList.remove('error')
          item.nextSibling.classList.add('hide')
          obj[item.getAttribute("name")]=item.value;
       }

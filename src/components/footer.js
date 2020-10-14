@@ -20,6 +20,56 @@ import {
 
 
 const Footer = ({ siteTitle }) => {
+
+  function removevaild(e){
+    let item= e.target
+    
+     item.closest('.formInputCon').classList.remove('error')
+     
+     item.classList.add('hide')
+   }
+    const sendFormValues = (updatedItemData) => {
+     fetch(
+       `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+       {
+         credentials: 'same-origin',
+         mode: 'cors',
+         method: 'POST',
+         body: JSON.stringify(updatedItemData)
+       }
+     )
+       .then(res => res.json())
+       .then(response => {
+         console.log(response)
+       })
+       .catch(error => {
+         console.log('error',error)
+       });
+    };
+ 
+  
+ function submitforming(e){
+   var obj={webform_id : "request_appointment"};
+   var forms = document.getElementsByClassName('needs-valid');
+   var list = document.querySelectorAll('.needs-valid input:invalid');
+   if (list.length > 0){
+   for (var item of list) {
+     item.parentElement.classList.add('error')
+     item.nextSibling.classList.remove('hide')
+ }}else{
+   let list2 = document.querySelectorAll('.needs-valid input');
+   for (let item of list2) {
+     item.parentElement.classList.remove('error')
+     item.nextSibling.classList.add('hide')
+     obj[item.getAttribute("name")]=item.value;
+  }
+  
+  obj[document.querySelector('.needs-valid select').getAttribute("name")]=[`${document.querySelector('.needs-valid select').value}`]
+  
+ sendFormValues({obj})
+ }
+ }
+
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "general1.png" }) {
@@ -148,7 +198,7 @@ const Footer = ({ siteTitle }) => {
                         <div className={footerStyles.verticalLine}></div>
                     </div> */}
             <div className={["col-12 col-lg-3", footerStyles.fourthCol].join(" ")}>
-              <form className={footerStyles.form}>
+              <form className={[footerStyles.form,"needs-valid"].join(" ")}  onSubmit={(e) => {e.preventDefault();}}>
                 <div className="form-group formGroup">
                   <label
                     htmlFor="inputEmail"
@@ -157,7 +207,7 @@ const Footer = ({ siteTitle }) => {
                     Let’s Connect!
                   </label>
                   <div className={footerStyles.signup}>
-                    <div className={footerStyles.inputSection}>
+                    <div className={[footerStyles.inputSection,'formInputCon'].join(' ')}>
                       <label
                         htmlFor="inputEmail"
                         className={footerStyles.formEmail}
@@ -169,7 +219,10 @@ const Footer = ({ siteTitle }) => {
                         className={footerStyles.formBox}
                         id="inputEmail"
                         aria-describedby="emailHelp"
+                        required
                       ></input>
+                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Eail Address</p>
+
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
@@ -183,7 +236,7 @@ const Footer = ({ siteTitle }) => {
                       <input type="checkbox" defaultChecked={true} name="footer-checkbox" />
                       <span className="checkmark"></span>
                     </label>
-                    <button type="button" className="btn signup-btn d-none d-lg-block">SIGN UP</button>
+                    <button type="button" onClick={(e) => {submitforming(e)}} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
                   </div>
                 </div>
               </form>
