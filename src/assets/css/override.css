@@ -1887,11 +1887,42 @@ padding-bottom: 0;
 }
 .appointment-elemnt.error{
   border-color: red;
+  position: relative;
 }
-.error-msg{
+.error-msg {
   margin-top: 15px;
   color: red;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  font-weight: 700;
+  display: flex;
+  width: 92%;
+  text-align: center;
+  justify-content: space-between;
 }
 .appointmentInput{
   margin-top: 5px;
+}
+.pb-10{
+  padding-bottom: 10px !important;
+}
+.error-msg::before{
+  display: block;
+  content: " ";
+  background-image: url(../images/danger.png);
+  width: 31px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -3px;
+}
+.error-msg::after{
+  display: block;
+  content: " ";
+  background-image: url(../images/vaild.png);
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -3px;
+
 }

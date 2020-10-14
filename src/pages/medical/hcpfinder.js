@@ -14,11 +14,11 @@ const finderURL = process.env.Finder_URL;
    let item= e.target
    
     item.closest('.appointment-elemnt').classList.remove('error')
-    item.nextSibling.classList.add('hide')
-
+    
+    item.classList.add('hide')
   } const sendFormValues = (updatedItemData) => {
     fetch(
-      `/api/webform_rest/submit`,
+      `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
       {
         credentials: 'same-origin',
         mode: 'cors',
@@ -49,8 +49,11 @@ function submitforming(e){
   for (let item of list2) {
     item.closest('.appointment-elemnt').classList.remove('error')
     item.nextSibling.classList.add('hide')
-    obj[item.getAttribute("name")]=item.value
-}
+    obj[item.getAttribute("name")]=item.value;
+ }
+
+ obj[document.querySelector('.needs-validations select').getAttribute("name")]=[`${document.querySelector('.needs-validations select').value}`]
+
 sendFormValues({obj})
 }
 }
@@ -347,57 +350,57 @@ export default function Finder({ data }) {
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt mt-0">
                       <p class="input-name" >First name</p>
-                      <input class="appointmentInput" name="first_name" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your First Name</p>
+                      <input class="appointmentInput" name="first_name"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your First Name</p>
                     </div>
                     <div class="appointment-elemnt mt-0 mob-mt-24">
                       <p class="input-name">Last name</p>
-                      <input class="appointmentInput" name="last_name" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your Last Name</p>
+                      <input class="appointmentInput" name="last_name"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Last Name</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Email Address</p>
-                      <input class="appointmentInput" name="email_address" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your Email Address</p>
+                      <input class="appointmentInput" name="email_address"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Phone Number</p>
-                      <input class="appointmentInput" name="phone_number" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your Phone Number</p>
+                      <input class="appointmentInput" name="phone_number"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Phone Number</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Address</p>
-                      <input class="appointmentInput" name="address"  onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your Address</p>
+                      <input class="appointmentInput" name="address"    required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">City</p>
-                      <input class="appointmentInput" name="city" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your City</p>
+                      <input class="appointmentInput" name="city"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your City</p>
 
                     </div>
-                    <div class="appointment-elemnt">
+                    <div class="appointment-elemnt pb-10">
                       <p class="input-name">State/Province</p>
                       <div class="custom-select">
                         <select id="state" name="state_province">
-                          <option value="1">US</option>
+                          <option value="US">US</option>
                           <option value="uk">UK</option>
-                          <option value="1">UA</option>
-                          <option value="1">EG</option>
-                          <option value="1">CA</option>
+                          <option value="UA">UA</option>
+                          <option value="EG">EG</option>
+                          <option value="CA">CA</option>
                         </select>
                       </div>
-                      <p className="error-msg hide">Please Enter Your State/Province</p>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your State/Province</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Postal Code</p>
-                      <input class="appointmentInput"name="postal_code" onKeyUp={removevaild} required/>
-                      <p className="error-msg hide">Please Enter Your Postal Code</p>
+                      <input class="appointmentInput"name="postal_code"   required/>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Postal Code</p>
 
                     </div>
                   </div>
@@ -454,7 +457,7 @@ export default function Finder({ data }) {
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">Location</p>
                       <input
-                        class="appointmentInput" onKeyUp={removevaild}
+                        class="appointmentInput"  
                         id="prodLoc"
                         maxLength="5"
                       />
