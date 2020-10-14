@@ -52,9 +52,9 @@ function submitforming(e){
     item.nextSibling.classList.add('hide')
     obj[item.getAttribute("name")]=item.value;
  }
-
+ 
  obj[document.querySelector('.needs-validations select').getAttribute("name")]=[`${document.querySelector('.needs-validations select').value}`]
-
+ 
 sendFormValues({obj})
 }
 }
