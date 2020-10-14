@@ -25,8 +25,12 @@ const Footer = ({ siteTitle }) => {
     let item= e.target
     
      item.closest('.formInputCon').classList.remove('error')
-     
-     item.classList.add('hide')
+     if (item.classList.contains('error-msg')) {
+      item.classList.add('hide')
+     }
+     if (item.classList.contains('error')) {
+      item.classList.remove('error')
+     }
    }
     const sendFormValues = (updatedItemData) => {
      fetch(
@@ -232,13 +236,13 @@ const Footer = ({ siteTitle }) => {
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
                   <div className={[footerStyles.terms,"formInputCon"].join(" ")}>
-                    <label className="terms">
+                    <label className="terms"  onClick={removevaild}>
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the U.S. subject to our U.S. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
                       of Use</Link>. For U.S. consumers only.
-                      <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
+                      <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>
                     <button type="button" onClick={(e) => {submitforming(e)}} className="btn signup-btn d-none d-lg-block">SIGN UP</button>

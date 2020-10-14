@@ -1880,7 +1880,7 @@ padding-bottom: 0;
 .productsuggestioncon .slick-dots{
   position: relative;
 }
-.appointment-elemnt.error input:invalid{
+.needs-validation .error input:invalid,.needs-validations .error input:invalid,.needs-valid .error input:invalid{
  box-shadow: none;
  border-bottom: 1px solid red !important;
 
@@ -1934,4 +1934,7 @@ padding-bottom: 0;
   background-repeat: no-repeat;
   margin-top: -3px;
 
+}
+input:invalid,textarea:invalid{
+  box-shadow: none;
 }
