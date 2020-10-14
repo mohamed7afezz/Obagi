@@ -1,23 +1,23 @@
 import React, { useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import BagStyle from "../assets/scss/components/yourbag.module.scss"
-import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
+import BagStyle from "../../assets/scss/components/yourbag.module.scss"
+import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
 import Img from 'gatsby-image'
-import plusicon from "../assets/images/product-images/plus1.svg"
-import minusicon from "../assets/images/product-images/minus.svg"
-import ProductCard from './productcard'
-import RecommendedProduct from './recommended-product'
-import Loader from "./Cart/Loader"
+import plusicon from "../../assets/images/product-images/plus1.svg"
+import minusicon from "../../assets/images/product-images/minus.svg"
+import ProductCard from '../productcard'
+import RecommendedProduct from '../recommended-product'
+import Loader from "./Loader"
 import $ from 'jquery'
-import CartContext from "../providers/cart-provider"
+import CartContext from "../../providers/cart-provider"
 import Showbag from "./bag-preview"
 import { parse } from "@fortawesome/fontawesome-svg-core"
-import paypal from "../assets/images/product-images/paypal.png"
-import appelpay from "../assets/images/product-images/appelPay.png"
-import visa from "../assets/images/product-images/visa.png"
-import paycred from'../assets/images/ppcredit-logo-large.png'
-import freeimg from "../assets/images/tag.png"
-import ProductSuggestion from "./product-components/productsuggestion"
+import paypal from "../../assets/images/product-images/paypal.png"
+import appelpay from "../../assets/images/product-images/appelPay.png"
+import visa from "../../assets/images/product-images/visa.png"
+import paycred from'../../assets/images/ppcredit-logo-large.png'
+import freeimg from "../../assets/images/tag.png"
+import ProductSuggestion from "../product-components/productsuggestion"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;

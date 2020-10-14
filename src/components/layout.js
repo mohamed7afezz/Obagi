@@ -18,7 +18,7 @@ import '../assets/scss/components/layout.scss'
 
 import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
-import Showbag from "./bag-preview"
+import Showbag from "./Cart/bag-preview"
 
 const Layout = ({ children,nodeType,menuType}) => {
   if(!nodeType){
