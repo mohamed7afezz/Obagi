@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import ProgressBar from '../../components/progress-bar'
+
 
 
 const Q7 = (props) => {
@@ -20,12 +22,21 @@ const Q7 = (props) => {
         }
     }
     return (
-        <>
+        <div className="skinanalyzer-questions-wrapper">
+            <div className="row question-progress-wrapper last-question-progress d-lg-none">
+                <div className="col-12">
+                    <ProgressBar
+                        percentage="100%"
+                        index="7"
+                        total="7"
+                    />
+                </div>
+            </div>
             <div className="row quiz-header-wrapper">
-                <div className="col-1 d-none d-lg-block">
+                <div className="col-2 d-none d-lg-block">
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
-                <div className="col-12 col-lg-2 offset-lg-4">
+                <div className="col-12 col-lg-2 offset-lg-3">
                     <div className="quiz-title">Skin Analyzer Quiz</div>
                 </div>
             </div>
@@ -164,7 +175,17 @@ const Q7 = (props) => {
                     <button onClick={sendBackData} className="button-link">See Your Results</button>
                 </div>
             </div>
-        </>
+
+            {/* <div className="row question-progress-wrapper last-question-progress d-none d-lg-flex">
+                <div className="col-5 offset-4">
+                    <ProgressBar 
+                        percentage="100"
+                        index="7"
+                        total="7"
+                    />
+                </div>
+            </div> */}
+        </div>
     )
 }
 export default Q7

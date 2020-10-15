@@ -1,4 +1,5 @@
 import React from 'react'
+import ProgressBar from '../../components/progress-bar'
 
 
 const Q4 = (props) => {
@@ -16,12 +17,21 @@ const Q4 = (props) => {
         }
     }
     return (
-        <>
+        <div className="skinanalyzer-questions-wrapper">
+            <div className="row question-progress-wrapper d-lg-none">
+                <div className="col-12">
+                    <ProgressBar
+                        percentage="57.14285714285714%"
+                        index="4"
+                        total="7"
+                    />
+                </div>
+            </div>
             <div className="row quiz-header-wrapper">
-                <div className="col-1 d-none d-lg-block">
+                <div className="col-2 d-none d-lg-block">
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
-                <div className="col-12 col-lg-2 offset-lg-4">
+                <div className="col-12 col-lg-2 offset-lg-3">
                     <div className="quiz-title">Skin Analyzer Quiz</div>
                 </div>
             </div>
@@ -51,7 +61,7 @@ const Q4 = (props) => {
                                 <input type="radio" id="BreakoutsC" name="q" value="Breakouts" onChange={sendBackData} />
                                 <label htmlFor="BreakoutsC">Breakouts</label>
                             </div>
-                        
+
                             <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
                                 <input type="radio" id="DehydratedSkinC" name="q" value="Dehydrated Skin" onChange={sendBackData} />
                                 <label htmlFor="DehydratedSkinC">Dehydrated Skin</label>
@@ -66,7 +76,7 @@ const Q4 = (props) => {
                                 <input type="radio" id="TiredPuffyEyesC" name="q" value="Tired & Puffy Eyes" onChange={sendBackData} />
                                 <label htmlFor="TiredPuffyEyesC">Tired & Puffy Eyes</label>
                             </div>
-                        
+
                             <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
                                 <input type="radio" id="SensitiveSkinC" name="q" value="Sensitive Skin" onChange={sendBackData} />
                                 <label htmlFor="SensitiveSkinC">Sensitive Skin</label>
@@ -81,7 +91,7 @@ const Q4 = (props) => {
                                 <input type="radio" id="PoresC" name="q" value="Pores" onChange={sendBackData} />
                                 <label htmlFor="PoresC">Pores</label>
                             </div>
-                      
+
                             <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
                                 <input type="radio" id="RoughSkinC" name="q" value="Rough Skin" onChange={sendBackData} />
                                 <label htmlFor="RoughSkinC">Rough Skin</label>
@@ -107,7 +117,7 @@ const Q4 = (props) => {
                                 <input type="radio" id="Acne" name="q" value="Acne" onChange={sendBackData} />
                                 <label htmlFor="Acne">Acne</label>
                             </div>
-            
+
                             <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
                                 <input type="radio" id="DehydratedSkin" name="q" value="Dehydrated Skin" onChange={sendBackData} />
                                 <label htmlFor="DehydratedSkin">Dehydrated Skin</label>
@@ -122,7 +132,7 @@ const Q4 = (props) => {
                                 <input type="radio" id="EyeBagsAndDarkCircles" name="q" value="Eye Bags And Dark Circles" onChange={sendBackData} />
                                 <label htmlFor="EyeBagsAndDarkCircles">Eye Bags And Dark Circles</label>
                             </div>
-                  
+
                             <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
                                 <input type="radio" id="SensitiveSkin" name="q" value="Sensitive Skin" onChange={sendBackData} />
                                 <label htmlFor="SensitiveSkin">Sensitive Skin</label>
@@ -146,7 +156,17 @@ const Q4 = (props) => {
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
             </div>
-        </>
+
+            <div className="row question-progress-wrapper d-none d-lg-flex">
+                <div className="col-5 offset-4">
+                    <ProgressBar 
+                        percentage="57.14285714285714%"
+                        index="4"
+                        total="7"
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 export default Q4

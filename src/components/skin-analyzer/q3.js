@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ProgressBar from '../../components/progress-bar'
 
 const Q3 = (props) => {
     function sendBackData(e) {
@@ -9,12 +9,21 @@ const Q3 = (props) => {
         props.passChildData('q2', '', 1);
     }
     return (
-        <>
+        <div className="skinanalyzer-questions-wrapper">
+            <div className="row question-progress-wrapper d-lg-none">
+                <div className="col-12">
+                    <ProgressBar
+                        percentage="42.85714285714286%"
+                        index="3"
+                        total="7"
+                    />
+                </div>
+            </div>
             <div className="row quiz-header-wrapper">
-                <div className="col-1 d-none d-lg-block">
+                <div className="col-2 d-none d-lg-block">
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
-                <div className="col-12 col-lg-2 offset-lg-4">
+                <div className="col-12 col-lg-2 offset-lg-3">
                     <div className="quiz-title">Skin Analyzer Quiz</div>
                 </div>
             </div>
@@ -26,13 +35,13 @@ const Q3 = (props) => {
                 </div>
             </div>
 
-            <div className="row first-three">
-                <div className="col-12 col-lg-2 offset-lg-4">
+            <div className="row first-three justify-content-center">
+                <div className="col-12 col-lg-auto">
                     <input type="radio" id="Preventative" name="q" value="Preventative" onChange={sendBackData} />
                     <label htmlFor="Preventative">Preventative</label>
                 </div>
 
-                <div className="col-12 col-lg-2">
+                <div className="col-12 col-lg-auto">
                     <input type="radio" id="Corrective" name="q" value="Corrective" onChange={sendBackData} />
                     <label htmlFor="Corrective">Corrective</label>
                 </div>
@@ -43,7 +52,17 @@ const Q3 = (props) => {
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
             </div>
-        </>
+
+            <div className="row question-progress-wrapper d-none d-lg-flex">
+                <div className="col-5 offset-4">
+                    <ProgressBar 
+                        percentage="42.85714285714286%"
+                        index="3"
+                        total="7"
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 export default Q3
