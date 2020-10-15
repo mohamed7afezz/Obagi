@@ -143,9 +143,47 @@ position: relative !important;
 left: 0 !important;
 top: 0 !important;
 }
+
+.toggle-icon{
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  border:1px solid #fff;
+  width: 100%;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #fff;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  margin-top: 24px;
+  padding-left: 16px;
+}
+.toggle-icon::after{
+  content: "+";
+  font-size: 24px;
+  display: block;
+  margin-right: 16px;
+}
+.analyzer-result .card-body{
+  background-color: transparent;
+}
 @media (max-width: 767px) {
   .mob-m-0{
     margin: 0;
+  }
+  .d-mob-none{
+    display: none;
+  }
+  .results-card-container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .results-card-container .the-product-card{
+    padding-left: 0;
+    padding-right: 0;
   }
   .upsection .productInBag{
     display: flex;
@@ -655,9 +693,10 @@ padding-bottom: 134px;
   padding: 25px;
   border: 1px solid #d6d6d6;
   border-radius: 6px;
-  padding-right: 75px;
+  padding-right: 50px;
   margin-bottom: 24px;
 }
+
 .productInBag img {
   max-width: 100%;
 }
@@ -747,9 +786,28 @@ button:focus{
   transform: rotate(-45deg);
 
 }
+.analyzr{
+  display: none;
+}
 @media (max-width: 767px) {
   .node-medical .howrightcol {
     background-color: #f3f3fb;
+}
+.results-card-container .productcardcon{
+  display: none;
+}
+.results-card-container .analyzr{
+  display: block;
+}
+.results-card-container .analyzr p{
+  font-size: 16px;
+  line-height: 24px;
+}
+.mob-p-0{
+  padding: 0;
+}
+.mob-pl-0{
+  padding-left: 0;
 }
   .mob-text-center{
     text-align: center;
@@ -1880,18 +1938,203 @@ padding-bottom: 0;
 .productsuggestioncon .slick-dots{
   position: relative;
 }
-.appointment-elemnt.error input:invalid{
+.needs-validation .error input:invalid,.needs-validations .error input:invalid,.needs-valid .error input:invalid{
  box-shadow: none;
  border-bottom: 1px solid red !important;
 
 }
-.appointment-elemnt.error{
-  border-color: red;
+.appointment-elemnt.error,.form-element-con.error{
+  border-color: red !important;
+  position: relative;
 }
-.error-msg{
+.error-msg {
   margin-top: 15px;
   color: red;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  font-weight: 700;
+  display: flex;
+  width: 92%;
+  text-align: center;
+  justify-content: space-between;
+}
+.form-element-con .error-msg{
+  z-index: -1;
+}
+.error .radiomark{
+  border-color: red !important;
+}
+.error .checkmark{
+  border:1px solid red !important;
 }
 .appointmentInput{
   margin-top: 5px;
+}
+.pb-10{
+  padding-bottom: 10px !important;
+}
+.error-msg::before{
+  display: block;
+  content: " ";
+  background-image: url(../images/danger.png);
+  width: 31px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -3px;
+}
+.error-msg::after{
+  display: block;
+  content: " ";
+  background-image: url(../images/vaild.png);
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -3px;
+
+}
+input:invalid,textarea:invalid{
+  box-shadow: none;
+}
+.results-card-container  .Productcardtype.d-none{
+
+  font-size: 24px;
+  line-height: 40px;
+  position: relative;
+  padding-left: 16px;
+  font-weight: 300;
+  align-items: center;
+}
+.results-card-container  .Productcardtype.d-none:before {
+  content: "";
+margin-right: 15px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  background-color: #ffcd00;
+
+}
+.cardProdprice{
+  display: none;
+}
+.the-new-product-button{
+  display: none;
+}
+.analyzer-result{
+  margin-top: 20px;
+}
+.results-card-container  .Productcardtype.d-none.show-mob{
+  display: flex !important;
+}
+@media (min-width:768px){
+  .results-card-container  .Productcardtype.d-none{
+    display: flex !important;
+  }
+  .results-card-container  .Productcardtype.d-none.show-mob{
+    display: none !important;
+  }
+  .results-card-container .prod-price-con,
+  .results-card-container .the-product-button,
+  .results-card-container .priceCon{
+    display: none;
+  }
+  .results-card-container{
+    border-left: 1px solid #d6d6d6;
+  }
+  .results-card-container .cardProdprice{
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .analyzer-result{
+    margin-top: 0;
+  }
+ .analyzer-result .clinical,.analyzer-result .medical{
+   padding-top: 80px;
+ }
+ .results-card-container .product-card-con{
+   padding-left: 8px;
+ }
+ 
+  .results-card-container .the-new-product-button{
+    display: block;
+    text-transform: uppercase;
+    border-radius: 6px;
+    font-weight: 700;
+    margin-left: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    color: #132466;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width: 80%;
+    border: 1px solid #132466;
+    background-color: transparent;
+  }
+  .results-card-container .starspd{
+    display: flex;
+    align-items: center;
+  }
+  .results-card-container .product-card-img{
+    flex: 0 0 50%;
+  }
+  .results-card-container .cardProdprice{
+    padding-left: 0;
+    padding-right: 24px;
+  }
+  
+  .results-card-container .product-card-con{
+    flex-direction: column;
+    display: flex;
+  }
+  .results-card-container  .Productcardtype.d-none:before{
+    margin-right: 30px;
+  }
+  .results-card-container  .Productcardtype.d-none{
+font-size: 48px;
+line-height: 60px;
+order: -3;
+  }
+  .results-card-container .starspd{
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+  .results-card-container .the-product-card{
+    padding-top: 0;
+  }
+  .results-card-container  .the-product-card {
+padding-bottom: 55px;
+padding-top: 55px;
+border-bottom: 1px solid #d6d6d6;
+  }
+.results-card-container .cardContainerflex{
+  display: flex;
+  flex-direction: row;
+}
+.results-card-container .productcardcon{
+  order: -2;
+margin-top: 16px;
+margin-bottom: 40px;
+padding-top: 0;
+font-size: 18px;
+line-height: 32px;
+padding-bottom: 0;
+}
+  .results-card-container .productcarddesc{
+    padding-top: 0;
+    padding-bottom: 0;
+    order: -1;
+  }
+  
+}
+.analyzer-result .clinical{
+  background-color:rgba( 68, 196 ,217,0.1);
+}
+.analyzer-result .medical{
+  background-color: rgba(134, 140, 210,0.1);
+}
+.results-card-container .the-product-card{
+  background-color: transparent;
 }

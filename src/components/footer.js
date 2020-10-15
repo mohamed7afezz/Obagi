@@ -20,6 +20,64 @@ import {
 
 
 const Footer = ({ siteTitle }) => {
+
+  function removevaild(e){
+    let item= e.target
+    
+     item.closest('.formInputCon').classList.remove('error')
+     if (item.classList.contains('error-msg')) {
+      item.classList.add('hide')
+     }
+     if (item.classList.contains('error')) {
+      item.classList.remove('error')
+     }
+   }
+    const sendFormValues = (updatedItemData) => {
+     fetch(
+       `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+       {
+        headers:{
+          "Content-Type": "application/json",
+
+        },
+         method: 'POST',
+         body: JSON.stringify(updatedItemData.obj)
+       }
+     )
+       .then(res => res.json())
+       .then(response => {
+         console.log(response)
+       })
+       .catch(error => {
+         console.log('error',error)
+       });
+    };
+ 
+  
+ function submitforming(e){
+   var obj={webform_id : "subscription"};
+   var forms = document.getElementsByClassName('needs-valid');
+   var list = document.querySelectorAll('.needs-valid input:invalid');
+   if (list.length > 0){
+   for (var item of list) {
+     item.parentElement.classList.add('error')
+     item.nextSibling.classList.remove('hide')
+ }}else{
+   let list2 = document.querySelectorAll('.needs-valid input');
+   for (let item of list2) {
+     item.parentElement.classList.remove('error')
+     if (item.getAttribute("type") != "checkbox") {
+      item.nextSibling.classList.add('hide')
+     }
+     
+     obj[item.getAttribute("name")]=item.value;
+  }
+  
+  
+ sendFormValues({obj})
+ }
+ }
+
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "general1.png" }) {
@@ -148,7 +206,7 @@ const Footer = ({ siteTitle }) => {
                         <div className={footerStyles.verticalLine}></div>
                     </div> */}
             <div className={["col-12 col-lg-3", footerStyles.fourthCol].join(" ")}>
-              <form className={footerStyles.form}>
+              <form className={[footerStyles.form,"needs-valid"].join(" ")}  onSubmit={(e) => {e.preventDefault();}}>
                 <div className="form-group formGroup">
                   <label
                     htmlFor="inputEmail"
@@ -157,7 +215,7 @@ const Footer = ({ siteTitle }) => {
                     Let’s Connect!
                   </label>
                   <div className={footerStyles.signup}>
-                    <div className={footerStyles.inputSection}>
+                    <div className={[footerStyles.inputSection,'formInputCon'].join(' ')}>
                       <label
                         htmlFor="inputEmail"
                         className={footerStyles.formEmail}
@@ -169,21 +227,25 @@ const Footer = ({ siteTitle }) => {
                         className={footerStyles.formBox}
                         id="inputEmail"
                         aria-describedby="emailHelp"
+                        name="email_address"
+                        required
                       ></input>
+                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Eail Address</p>
+
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
-                  <div className={footerStyles.terms}>
-                    <label className="terms">
+                  <div className={[footerStyles.terms,"formInputCon"].join(" ")}>
+                    <label className="terms"  onClick={removevaild}>
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the U.S. subject to our U.S. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
                       of Use</Link>. For U.S. consumers only.
-                      <input type="checkbox" defaultChecked={true} name="footer-checkbox" />
+                      <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>
-                    <button type="button" className="btn signup-btn d-none d-lg-block">SIGN UP</button>
+                    <button type="button" onClick={(e) => {submitforming(e)}} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
                   </div>
                 </div>
               </form>

@@ -1,0 +1,147 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.resPageTitle{
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 300;
+    color: #fff;
+    a{
+        font-size: 24px;
+        line-height: 40px;
+        font-weight: 300;
+        color: #fff;  
+        text-decoration: underline;
+    }
+    @include md-screen{
+        font-size: 52px;
+        line-height: 64px;
+        color: #132466;
+    font-weight: 400;
+    a{
+        font-size: 52px;
+        line-height: 64px;
+        color: #132466;  
+    }
+}
+}
+.addtobagheadbtn{
+    display: none;
+    @include md-screen{
+        display: inline-block;
+    }
+}
+.resPageSubTitle{
+    font-size: 18px;
+    line-height: 32px;
+    color: #fff;
+    font-weight: 300;
+    
+    @include md-screen{
+    color: #132466;
+    font-size: 24px;
+    line-height: 40px;
+    }
+}
+.addtobagcon{
+   align-items: center;
+    display: flex;
+   
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-top: 8px;
+    @include md-screen{
+        padding-bottom: 55px;
+         padding-top: 8px;
+    }
+    .addtobag{
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        background-color: #132466;
+        border: 0;
+        color: #fff;
+        border-radius: 6px;
+    }
+   
+}
+.yourAnswer{
+    font-size: 28px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    color: #132466;
+}
+.startover{
+    border: 1px solid #132466;
+    color: #132466;
+    background-color: transparent;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    padding: 18px;
+    border-radius: 6px;
+    margin-top: 16px;
+}
+.answers{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    .qtitle{
+        @extend %futurapt-medium;
+    }
+}
+.resultsBody{
+    padding-bottom: 180px;
+    padding-top: 24px;
+    @include md-screen{
+        padding-bottom: 80px;
+        display: flex;
+        padding-top: 56px;
+        align-items: flex-start;
+        border-top: 1px solid #d6d6d6;
+    }
+}
+.addtobagcondata{
+    margin-top: 48px;
+    padding-bottom: 0;
+    padding-top: 0;
+    @include md-screen{
+        margin-top: 65px;
+    }
+   
+}
+.resultmobhead{
+    background-color: #868cd2;
+    padding-top: 24px;
+    @include md-screen{
+        background-color: transparent;
+
+        padding-top: 0;
+    }
+}
+.clinical .resultmobhead{
+    @include md-screen{
+        background-color: transparent;
+    }
+    background-color: #44c4d9;
+}
+.headercon{
+    padding-left: 0;
+    padding-right: 0;
+    @include md-screen{
+        
+    }
+}
+.talktophy{
+    font-size: 16px;
+    line-height: 24px;
+    color: #132466;
+    @include md-screen{
+        margin-top: 80px;
+    }
+}

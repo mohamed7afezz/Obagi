@@ -1,13 +1,17 @@
 import React , { useContext,useEffect } from "react"
 import { useStaticQuery, graphql,Link } from "gatsby"
-import YourBag from "./bag"
-import CartContext from "../providers/cart-provider"
-import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
+import YourBag from "./your-bag"
+import CartContext from "../../providers/cart-provider"
+import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
 import Img from "gatsby-image"
+import UserContext from '../../providers/user-provider'
+
+
 const Showbag = () => {
   const value = useContext(CartContext);
   const notifications = value && value.notifications;
   const hasNotifications = Array.isArray(notifications) && notifications.length;
+
   
   return hasNotifications ? (
     <section className="Notify">
@@ -25,7 +29,7 @@ const Notification = ({ id, text, type }) => {
       relativePath: { eq: "product-images/prouduct-thumb.png" }
     ) {
       childImageSharp {
-        fluid (quality: 100) {
+        fluid (quality: 100){
           ...GatsbyImageSharpFluid
         }
       }
@@ -34,27 +38,31 @@ const Notification = ({ id, text, type }) => {
 `)
   const value = useContext(CartContext);
   const removeNotification = value && value.removeNotification;
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      removeNotification(id);
-    }, 227000);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line
-  }, []);
+  const {notif, setNotif} = useContext(UserContext);
 
+  // console.log("val", value)
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     removeNotification(id);
+  //   }, 7000);
+  //   return () => clearTimeout(timer);
+  //   // eslint-disable-next-line
+  // }, []);
+// console.log("notif", notif)
   return (
     
     <div
-    class="d-block"
+    className={notif === false?"d-block showbag-top" : "d-block"}
     id="Showbag"
+    role="dialog"
     >
     <div class="modal-dialog modal-data mr-0 " role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div className={value.state? value.state.cart? value.state.cart.lineItems? value.state.cart.lineItems.physical_items? value.state.cart.lineItems.physical_items.length > 0? "modal-header show-bag-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header"}>
           <div
             className={["d-flex", ShowBagStyle.left, "w100"].join(" ")}
           >
-            <div
+            {value.state? value.state.cart? value.state.cart.lineItems? value.state.cart.lineItems.physical_items? value.state.cart.lineItems.physical_items.length > 0? <div
               className={[
                 ShowBagStyle.productCounter,
                 "d-flex",
@@ -62,13 +70,14 @@ const Notification = ({ id, text, type }) => {
               ].join(" ")}
             >
               <p className={ShowBagStyle.shoppingBag}>
-                {" "}
-                Shopping Bag (2)
+                Shopping Bag ({value &&
+                        value.state.cart &&
+                        value.state.cart.numberItems})
               </p>
               <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => removeNotification(id)}>
                 View Full Cart
               </Link>
-            </div>
+            </div> : "" : "" : "" : "" : ""}
             <button
               type="button"
               class="close"
@@ -76,14 +85,14 @@ const Notification = ({ id, text, type }) => {
               aria-label="Close"
               onClick={() => removeNotification(id)}
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&nbsp;</span>
             </button>
           </div>
         </div>
         <div class="modal-body ">
-          <YourBag cartType="overlay"/>
+          <YourBag cartType="overlay" notificationId = {id}/>
         </div>
-        <div class="modal-footer">
+        {/* <div class="modal-footer">
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
               <Img
@@ -99,7 +108,7 @@ const Notification = ({ id, text, type }) => {
                 </p>
               </div>
               <div
-                className={["col-12", "d-flex", ShowBagStyle.left ].join(
+                className={["col-12", "d-flex", ShowBagStyle.left].join(
                   " "
                 )}
               >
@@ -124,7 +133,7 @@ const Notification = ({ id, text, type }) => {
                 </p>
               </div>
               <div
-                className={["col-12", "d-flex", ShowBagStyle.subcontainer].join(
+                className={["col-12", "d-flex", ShowBagStyle.left].join(
                   " "
                 )}
               >
@@ -133,7 +142,7 @@ const Notification = ({ id, text, type }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

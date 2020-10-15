@@ -1,23 +1,24 @@
 import React, { useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import BagStyle from "../assets/scss/components/yourbag.module.scss"
-import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
+import BagStyle from "../../assets/scss/components/yourbag.module.scss"
+import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
 import Img from 'gatsby-image'
-import plusicon from "../assets/images/product-images/plus1.svg"
-import minusicon from "../assets/images/product-images/minus.svg"
-import ProductCard from './productcard'
-import RecommendedProduct from './recommended-product'
-import Loader from "./Cart/Loader"
+import plusicon from "../../assets/images/product-images/plus1.svg"
+import minusicon from "../../assets/images/product-images/minus.svg"
+import ProductCard from '../productcard'
+import RecommendedProduct from '../recommended-product'
+import Loader from "./Loader"
 import $ from 'jquery'
-import CartContext from "../providers/cart-provider"
+import CartContext from "../../providers/cart-provider"
 import Showbag from "./bag-preview"
 import { parse } from "@fortawesome/fontawesome-svg-core"
-import paypal from "../assets/images/product-images/paypal.png"
-import appelpay from "../assets/images/product-images/appelPay.png"
-import visa from "../assets/images/product-images/visa.png"
-import paycred from'../assets/images/ppcredit-logo-large.png'
-import freeimg from "../assets/images/tag.png"
-import ProductSuggestion from "./product-components/productsuggestion"
+import paypal from "../../assets/images/product-images/paypal.png"
+import appelpay from "../../assets/images/product-images/appelPay.png"
+import visa from "../../assets/images/product-images/visa.png"
+import paycred from'../../assets/images/ppcredit-logo-large.png'
+import freeimg from "../../assets/images/tag.png"
+import ProductSuggestion from "../product-components/productsuggestion"
+import SearchContext from "../../providers/search-provider"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -48,8 +49,13 @@ const AdjustItem = props => {
 const StandardItem = props => {
   const { items, cartType } = props
 
-
+  const {searchInIndexById} = useContext(SearchContext)
   let itemsContent = items.map(item => {
+    let findedProduct = searchInIndexById([item.product_id],1);
+    item.premier_points = '';
+    if(findedProduct.length>0){
+      item.premier_points = findedProduct[0].field_medical_premier_points;
+    }
     var producturl = item.url.split(".com")
     if (cartType === "overlay") {
       return (
@@ -63,6 +69,7 @@ const StandardItem = props => {
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
                 <p className={ShowBagStyle.BagProductDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                {item.premier_points != ''? <span>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -101,18 +108,19 @@ const StandardItem = props => {
                   <img alt="img" src={item.image_url} alt={`${item.name}`} />
                 </Link>
               </div>
-              <div className={"col-md-4"}>
+              <div className={"col-md-5 mob-p-0"}>
                 <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                {item.premier_points != ''? <span className={BagStyle.premire}>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
               {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
               </div> */}
-              <div class="col-md-2 col-6">
+              <div class="col-md-2 col-6 mob-p-0">
                 <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
                   <AdjustItem {...props} item={item} cartType={cartType} />
                 </div>
               </div>
-              <div class="col-md-1 col-3">
+              <div class="col-md-2 col-3">
                 <p
                   className={[
                     BagStyle.bagProudctPrice,
