@@ -116,7 +116,7 @@ if ( typeof window !== "undefined"){
     
     "inactive": false, //default
     
-    "family": "Product Lines"
+    "family": ""
     
     }]
     

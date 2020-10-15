@@ -76,7 +76,25 @@ img{
 .bagProudctPrice{
     font-size: 14px;
     line-height: 16px;
+    text-align: center;
     @extend %futurapt-medium ;
+}
+.premire{
+    margin-top: 16px;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+text-align: center;
+  @include md-screen{
+      margin-bottom: 0;
+      width: auto;
+  }
 }
 .bagCount{
     align-items: center;

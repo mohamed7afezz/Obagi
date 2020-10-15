@@ -50,7 +50,7 @@ const Reviews = ({ node , nodeType}) => {
     
     "inactive": false, //default
     
-    "family": "Product Lines"
+    "family": ""
     
     }]
     

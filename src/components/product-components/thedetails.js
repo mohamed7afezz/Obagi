@@ -18,7 +18,7 @@ const Details = ({ node }) => {
                             :
                                 ''
                             }
-                            <div className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription.processed}}></div>
+                            <div className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription?item.field_sectiondescription.processed:""}}></div>
                         </div>
                     </div>
                    ))
