@@ -101,10 +101,11 @@ export const getProductParagraph = node => {
     return <p key={node.id}>Unknown type {node.__typename}</p>;
 }
 
-export const checkDataCondition = function (condition, data) {
-    if(condition) {
-        return data;
+
+export function checkDataCondition(condition, data) {
+    if (condition) {
+        return data
     } else {
-        return '';
+        return ""
     }
 }

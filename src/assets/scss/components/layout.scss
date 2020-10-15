@@ -956,7 +956,7 @@ p {
 
         li {
             a {
-                padding: 20px 40px;
+                padding: 20px 23px;
                 display: inline-block;
                 color: #ffffff;
                 @include fontStyle(16, 24);
@@ -2537,7 +2537,7 @@ p {
     padding-bottom: 24px;
 
     span {
-        white-space: nowrap;
+        // white-space: nowrap;
     }
 
     @include lg-screen {
@@ -2695,8 +2695,8 @@ p {
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
     text-transform: uppercase;
-    padding: 20px 40px;
-    white-space: nowrap;
+    padding: 20px 0;
+    // white-space: nowrap;
 }
 
 .footer-referral-span {
@@ -2770,7 +2770,8 @@ p {
     }
 }
 
-.basics-paragraph .slick-initialized .slick-slide {
+.basics-paragraph .slick-initialized .slick-slide,
+.product-line .product-line-product-slider .slick-initialized .slick-slide {
     position: relative;
 
     @include lg-screen {
@@ -2793,7 +2794,8 @@ p {
     }
 }
 
-.basics-paragraph .the-product-card {
+.basics-paragraph .the-product-card,
+.product-line .the-product-card {
     border-radius: 6px;
     box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
     height: 100%;
@@ -3177,6 +3179,8 @@ p {
         margin-bottom: 40px;
         padding: 21px 10px;
         @include fontStyle(18, 32);
+        width: 274px;
+        height: 74px;
     }
 }
 
@@ -3196,9 +3200,14 @@ p {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0;
     }
 }
+
+// .analyzer-questions .fourth-question label {
+//     @include lg-screen {
+     
+//     }
+// }
 
 .start-over {
     @include fontStyle(14, 16);
@@ -3241,6 +3250,8 @@ p {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     text-align: left;
+    width: 100%;
+    height: unset;
 
     &::before {
         position: absolute;
@@ -3445,6 +3456,7 @@ p {
 .question-progress-wrapper {
     @include lg-screen {
         margin-top: 174px;
+        justify-content: center;
     }
 }
 
@@ -3454,5 +3466,14 @@ p {
 
     @include lg-screen {
         width: 393px;
+    }
+}
+
+.loading {
+    text-align: center;
+    @include fontStyle(40, 56);
+    margin-top: 24px;
+    @include lg-screen {
+        @include fontStyle(48, 64);
     }
 }

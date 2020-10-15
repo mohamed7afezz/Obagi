@@ -101,54 +101,56 @@ const Q4 = (props) => {
                     </>
                 )}
                 {checkDataCondition((props.brandJourney != "Clinical Persona"),
-                    <>
-                        <div className="row">
-                            <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
+                    <div className="fourth-question">
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="FineLinesAndWrinkles" name="q" value="Fine Lines And Wrinkles" onChange={sendBackData} />
                                 <label htmlFor="FineLinesAndWrinkles">Fine Lines And Wrinkles</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="SkinDiscoloration" name="q" value="Skin Discoloration" onChange={sendBackData} />
                                 <label htmlFor="SkinDiscoloration">Skin Discoloration</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Acne" name="q" value="Acne" onChange={sendBackData} />
                                 <label htmlFor="Acne">Acne</label>
                             </div>
-
-                            <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DehydratedSkin" name="q" value="Dehydrated Skin" onChange={sendBackData} />
                                 <label htmlFor="DehydratedSkin">Dehydrated Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="RednessProne" name="q" value="Redness Prone" onChange={sendBackData} />
                                 <label htmlFor="RednessProne">Redness Prone</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="EyeBagsAndDarkCircles" name="q" value="Eye Bags And Dark Circles" onChange={sendBackData} />
                                 <label htmlFor="EyeBagsAndDarkCircles">Eye Bags And Dark Circles</label>
                             </div>
-
-                            <div className="col-12 col-lg-2 offset-lg-3 label-wrapper">
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="SensitiveSkin" name="q" value="Sensitive Skin" onChange={sendBackData} />
                                 <label htmlFor="SensitiveSkin">Sensitive Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ElastisitySagging" name="q" value="Elastisity & Sagging" onChange={sendBackData} />
                                 <label htmlFor="ElastisitySagging">Elastisity & Sagging</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="HyperpigmentationMelasma" name="q" value="Hyperpigmentation & Melasma" onChange={sendBackData} />
                                 <label htmlFor="HyperpigmentationMelasma">Hyperpigmentation & Melasma</label>
                             </div>
                         </div>
-                    </>
+                    </div>
                 )}
             </>
             <div className="row d-lg-none">
@@ -158,8 +160,8 @@ const Q4 = (props) => {
             </div>
 
             <div className="row question-progress-wrapper d-none d-lg-flex">
-                <div className="col-5 offset-4">
-                    <ProgressBar 
+                <div className="col-auto">
+                    <ProgressBar
                         percentage="57.14285714285714%"
                         index="4"
                         total="7"

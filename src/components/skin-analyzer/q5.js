@@ -46,23 +46,25 @@ const Q5 = (props) => {
             <>
                 {checkDataCondition((props.brandJourney == "Clinical Persona"),
                     <>
-                        <div className="row">
-                            <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkinC" name="q" value="Dry Skin" onChange={sendBackData} />
                                 <label htmlFor="DrySkinC">Dry Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="NormalSkinC" name="q" value="Normal Skin" onChange={sendBackData} />
                                 <label htmlFor="NormalSkinC">Normal Skin</label>
                             </div>
+                            </div>
+                            <div className="row justify-content-center">
 
-                            <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkinC" name="q" value="Combination Skin" onChange={sendBackData} />
                                 <label htmlFor="CombinationSkinC">Combination Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="OilySkinC" name="q" value="Oily Skin" onChange={sendBackData} />
                                 <label htmlFor="OilySkinC">Oily Skin</label>
                             </div>
@@ -71,23 +73,26 @@ const Q5 = (props) => {
                 )}
                 {checkDataCondition((props.brandJourney != "Clinical Persona"),
                     <>
-                        <div className="row">
-                            <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkin" name="q" value="Dry Skin" onChange={sendBackData} />
                                 <label htmlFor="DrySkin">Dry Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="NormalSkin" name="q" value="Normal Skin" onChange={sendBackData} />
                                 <label htmlFor="NormalSkin">Normal Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
+                        </div>
+                        <div className="row justify-content-center">
+
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkin" name="q" value="Combination Skin" onChange={sendBackData} />
                                 <label htmlFor="CombinationSkin">Combination Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="OilySkin" name="q" value="Oily Skin" onChange={sendBackData} />
                                 <label htmlFor="OilySkin">Oily Skin</label>
                             </div>
@@ -103,7 +108,7 @@ const Q5 = (props) => {
             </div>
 
             <div className="row question-progress-wrapper d-none d-lg-flex">
-                <div className="col-5 offset-4">
+                <div className="col-auto">
                     <ProgressBar 
                         percentage="71.42857142857143%"
                         index="5"

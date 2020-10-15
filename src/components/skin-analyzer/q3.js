@@ -54,7 +54,7 @@ const Q3 = (props) => {
             </div>
 
             <div className="row question-progress-wrapper d-none d-lg-flex">
-                <div className="col-5 offset-4">
+                <div className="col-auto">
                     <ProgressBar 
                         percentage="42.85714285714286%"
                         index="3"
