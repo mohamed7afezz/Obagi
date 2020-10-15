@@ -68,5 +68,6 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+.vscode/settings.json
 /BC-STencil
 /assets
