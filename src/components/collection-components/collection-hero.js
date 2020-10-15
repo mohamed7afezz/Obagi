@@ -50,9 +50,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
   return (
     <div
-      className={checktaxonomyType === "clinical" ?
+      className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : (checktaxonomyType === "medical"||first_url === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
+        : (checktaxonomyType === "medical"||first_url === "medical" || nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
           : "container-fluid collectionhero generalcollectionhero " + Collectionherostyle.generalcollectionhero}
     >
 
