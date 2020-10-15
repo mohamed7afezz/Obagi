@@ -3,9 +3,9 @@ import Productcard from "../assets/scss/components/productcard.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"
-import Stars from "../components/stars"
+import Stars from "./stars"
 import CartContext from "../providers/cart-provider"
-const ProductCard = ({
+const HorizontalCard = ({
   node,
   producttitle,
   productdescription,
@@ -40,25 +40,22 @@ const ProductCard = ({
   `)
   return (
     <div className={["container-fluid the-product-card", Productcard.productCardHero].join(" ")}>
-      
-      <div className={[Productcard.cardContainer,"cardContainerflex"].join(" ")}>
+      <div className={Productcard.cardContainer}>
         {/* <div className={["d-flex",Productcard.cardname].join(" ")}>
                     <p>new</p>
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
-                <h1  className="d-none Productcardtype show-mob">Vitamin A</h1>
-      <div className={"product-card-img"}>
+                <div className="row">
+                    <div className="col-lg-6">
         {productimage ? (
           <Img className={Productcard.cardimg} fluid={productimage} />
         ) : (
           ""
         )}
 </div>
-<div className={"product-card-con"}>
-        {isrx !== "RX"? <div className={[Productcard.starspd,"starspd"].join(" ")}>
-        <p className={[Productcard.price,"cardProdprice"].join(" ")}>
-              $ <span className="prod-price">{price}</span>
-            </p>      <div
+        
+        {isrx !== "RX"? <div className={Productcard.starspd}>
+                      <div
 
               data-bv-show="inline_rating"
 
@@ -71,26 +68,23 @@ const ProductCard = ({
               </div>
 
         </div> : ""}
-        
-          <h1  className="d-none Productcardtype">Vitamin A</h1>
-          
         {producttitle ? (
-          <p className={[Productcard.productcarddesc,"productcarddesc"].join(" ")}><Link to={productLink}>{producttitle}</Link></p>
+          <p className={Productcard.productcarddesc}><Link to={productLink}>{producttitle}</Link></p>
         ) : (
           ""
         )}
         
         {productdescription ? (
           <div
-            className={[Productcard.productcardcon,"productcardcon"].join(" ")}
+            className={Productcard.productcardcon}
             dangerouslySetInnerHTML={productdescription}
           ></div>
         ) : (
           ""
         )}
         {price ? (
-          <div className={[Productcard.priceCon,"priceCon"].join(" ")}>
-            <p className={[Productcard.price,"prod-price-con"].join(" ")}>
+          <div className={Productcard.priceCon}>
+            <p className={Productcard.price}>
               $ <span className="prod-price">{price}</span>
             </p>
             {isrx == 'RX'?
@@ -111,18 +105,11 @@ const ProductCard = ({
           </div>
         ) : (
           ""
-        )}<button className={["the-new-product-button"].join(" ")} 
-        onClick={() => {
-          let quantity = 1;
-          addToCart(productId,false,quantity);
-        }}
-        disabled={addingToCart === productId}
-      >
-        {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-        </button>
+        )}
       </div>
-      </div> </div>
+    </div>
+    </div>
   )
 }
-export default ProductCard
+export default HorizontalCard
 

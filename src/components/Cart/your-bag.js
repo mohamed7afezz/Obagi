@@ -108,19 +108,19 @@ const StandardItem = props => {
                   <img alt="img" src={item.image_url} alt={`${item.name}`} />
                 </Link>
               </div>
-              <div className={"col-md-4"}>
+              <div className={"col-md-5 mob-p-0"}>
                 <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
-                {item.premier_points != ''? <span>Earn {item.premier_points} Premier Points ea.</span>: ''}
+                {item.premier_points != ''? <span className={BagStyle.premire}>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
               {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
               </div> */}
-              <div class="col-md-2 col-6">
+              <div class="col-md-2 col-6 mob-p-0">
                 <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
                   <AdjustItem {...props} item={item} cartType={cartType} />
                 </div>
               </div>
-              <div class="col-md-1 col-3">
+              <div class="col-md-2 col-3">
                 <p
                   className={[
                     BagStyle.bagProudctPrice,

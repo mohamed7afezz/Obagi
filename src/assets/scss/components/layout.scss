@@ -3010,10 +3010,7 @@ p {
     }
 }
 
-.skinanalyzer {
-    color: #fff;
-    text-align: center;
-}
+
 
 .skinanalyzer .analyzer-intro {
     
@@ -3093,16 +3090,20 @@ p {
 
 .analyzer-questions {
     background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+
+        color: #fff;
+        text-align: center;
+  
 }
 
-.analyzer-questions .container-fluid {
-    padding-top: 24px;
+// .analyzer-questions .container-fluid {
+//     padding-top: 24px;
     
-    @include lg-screen {
-        padding-top: 64px;
-        padding-bottom: 248px;
-    }
-}
+//     @include lg-screen {
+//         padding-top: 64px;
+//         padding-bottom: 248px;
+//     }
+// }
 
 .quiz-header-wrapper {
     margin-top: 24px;
