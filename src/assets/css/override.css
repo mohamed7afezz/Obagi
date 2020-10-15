@@ -786,9 +786,22 @@ button:focus{
   transform: rotate(-45deg);
 
 }
+.analyzr{
+  display: none;
+}
 @media (max-width: 767px) {
   .node-medical .howrightcol {
     background-color: #f3f3fb;
+}
+.results-card-container .productcardcon{
+  display: none;
+}
+.results-card-container .analyzr{
+  display: block;
+}
+.results-card-container .analyzr p{
+  font-size: 16px;
+  line-height: 24px;
 }
 .mob-p-0{
   padding: 0;

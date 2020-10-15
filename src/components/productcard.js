@@ -47,6 +47,14 @@ const ProductCard = ({
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
                 <h1  className="d-none Productcardtype show-mob">Vitamin A</h1>
+                {productdescription ? (
+          <div
+            className={[Productcard.productcardcon,"productcardcon","analyzr"].join(" ")}
+            dangerouslySetInnerHTML={productdescription}
+          ></div>
+        ) : (
+          ""
+        )}
       <div className={"product-card-img"}>
         {productimage ? (
           <Img className={Productcard.cardimg} fluid={productimage} />
