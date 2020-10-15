@@ -51,38 +51,40 @@ const Q7 = (props) => {
             <>
                 {checkDataCondition((props.brandJourney == "Clinical Persona"),
                     <>
-                        <div className="row">
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="RetinolC" name="q" value="Retinol" onChange={handleInputChange} />
                                 <label htmlFor="RetinolC">Retinol</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="GlycolicAcidC" name="q" value="Glycolic Acid" onChange={handleInputChange} />
                                 <label htmlFor="GlycolicAcidC">Glycolic Acid</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="SalicylicAcidC" name="q" value="Salicylic Acid" onChange={handleInputChange} />
                                 <label htmlFor="SalicylicAcidC">Salicylic Acid</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="LacticAcidC" name="q" value="Lactic Acid" onChange={handleInputChange} />
                                 <label htmlFor="LacticAcidC">Lactic Acid</label>
                             </div>
+                        </div>
+                        <div className="row justify-content-center">
 
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="VitaminCC" name="q" value="Vitamin C" onChange={handleInputChange} />
                                 <label htmlFor="VitaminCC">Vitamin C</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="KinetinGrowthFactorsC" name="q" value="Kinetin (Growth Factors)" onChange={handleInputChange} />
                                 <label htmlFor="KinetinGrowthFactorsC">Kinetin (Growth Factors)</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ArbutinC" name="q" value="Arbutin" onChange={handleInputChange} />
                                 <label htmlFor="ArbutinC">Arbutin</label>
                             </div>
@@ -91,78 +93,83 @@ const Q7 = (props) => {
                 )}
                 {checkDataCondition((props.brandJourney != "Clinical Persona"),
                     <>
-                        <div className="row">
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="GlycolicAcid" name="q" value="Glycolic Acid" onChange={handleInputChange} />
                                 <label htmlFor="GlycolicAcid">Glycolic Acid</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="HyaluronicAcid" name="q" value="Hyaluronic Acid" onChange={handleInputChange} />
                                 <label htmlFor="HyaluronicAcid">Hyaluronic Acid</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Niacinamide" name="q" value="Niacinamide" onChange={handleInputChange} />
                                 <label htmlFor="Niacinamide">Niacinamide</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Salicylicacid" name="q" value="Salicylic acid" onChange={handleInputChange} />
                                 <label htmlFor="Salicylicacid">Salicylic acid</label>
                             </div>
+                        </div>
+                        <div className="row justify-content-center">
 
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Caffeine" name="q" value="Caffeine" onChange={handleInputChange} />
                                 <label htmlFor="Caffeine">Caffeine</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Hydroquinone" name="q" value="Hydroquinone" onChange={handleInputChange} />
                                 <label htmlFor="Hydroquinone">Hydroquinone</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Lacticacid" name="q" value="Lactic acid" onChange={handleInputChange} />
                                 <label htmlFor="Lacticacid">Lactic acid</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="BenzoylPeroxide" name="q" value="Benzoyl Peroxide" onChange={handleInputChange} />
                                 <label htmlFor="BenzoylPeroxide">Benzoyl Peroxide</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Glycerin" name="q" value="Glycerin" onChange={handleInputChange} />
                                 <label htmlFor="Glycerin">Glycerin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Peptides" name="q" value="Peptides" onChange={handleInputChange} />
                                 <label htmlFor="Peptides">Peptides</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Arbutin" name="q" value="Arbutin" onChange={handleInputChange} />
                                 <label htmlFor="Arbutin">Arbutin</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="AHAsBHAsPHAs" name="q" value="AHAs / BHAs / PHAs" onChange={handleInputChange} />
                                 <label htmlFor="AHAsBHAsPHAs">AHAs / BHAs / PHAs</label>
                             </div>
-
-                            <div className="col-12 col-lg-2 offset-lg-2 label-wrapper">
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="VitaminC" name="q" value="Vitamin-C" onChange={handleInputChange} />
                                 <label htmlFor="VitaminC">Vitamin-C</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Retinol" name="q" value="Retinol" onChange={handleInputChange} />
                                 <label htmlFor="Retinol">Retinol</label>
                             </div>
 
-                            <div className="col-12 col-lg-2 label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Antioxidants" name="q" value="Antioxidants" onChange={handleInputChange} />
                                 <label htmlFor="Antioxidants">Antioxidants</label>
                             </div>

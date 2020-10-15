@@ -956,7 +956,7 @@ p {
 
         li {
             a {
-                padding: 20px 40px;
+                padding: 20px 23px;
                 display: inline-block;
                 color: #ffffff;
                 @include fontStyle(16, 24);
@@ -2537,7 +2537,7 @@ p {
     padding-bottom: 24px;
 
     span {
-        white-space: nowrap;
+        // white-space: nowrap;
     }
 
     @include lg-screen {
@@ -2695,8 +2695,8 @@ p {
     @include fontStyle(16, 24);
     letter-spacing: 1.6px;
     text-transform: uppercase;
-    padding: 20px 40px;
-    white-space: nowrap;
+    padding: 20px 0;
+    // white-space: nowrap;
 }
 
 .footer-referral-span {
@@ -3177,6 +3177,8 @@ p {
         margin-bottom: 40px;
         padding: 21px 10px;
         @include fontStyle(18, 32);
+        width: 274px;
+        height: 74px;
     }
 }
 
@@ -3196,16 +3198,14 @@ p {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0;
     }
 }
 
-.analyzer-questions .fourth-question label {
-    @include lg-screen {
-        width: 274px;
-        height: 74px;
-    }
-}
+// .analyzer-questions .fourth-question label {
+//     @include lg-screen {
+     
+//     }
+// }
 
 .start-over {
     @include fontStyle(14, 16);
@@ -3248,6 +3248,8 @@ p {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     text-align: left;
+    width: 100%;
+    height: unset;
 
     &::before {
         position: absolute;
@@ -3452,6 +3454,7 @@ p {
 .question-progress-wrapper {
     @include lg-screen {
         margin-top: 174px;
+        justify-content: center;
     }
 }
 
