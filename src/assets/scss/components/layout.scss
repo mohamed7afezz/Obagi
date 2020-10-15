@@ -3010,11 +3010,14 @@ p {
     }
 }
 
+.skinanalyzer {
+    color: #fff;
+    text-align: center;
+}
+
 .skinanalyzer .analyzer-intro {
     
     background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
-    color: #fff;
-    text-align: center;
     background-position-x: 50%;
     // background-position-y: center;
     background-repeat: no-repeat;
@@ -3085,5 +3088,213 @@ p {
 
     @include lg-screen {
         padding: 24px;
+    }
+}
+
+.analyzer-questions {
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+}
+
+.analyzer-questions .container-fluid {
+    padding-top: 24px;
+    
+    @include lg-screen {
+        padding-top: 64px;
+        padding-bottom: 248px;
+    }
+}
+
+.quiz-header-wrapper {
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    @include lg-screen {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+}
+
+.quiz-title {
+
+    @include fontStyle(14, 16);
+    @extend %futurapt-bold;
+
+    @include lg-screen {
+        padding: 24px 0 8px;
+    }
+}
+
+.first-question .quiz-title {
+    
+    @include lg-screen {
+        padding: 0;
+    }
+}
+
+.question-header {
+    @include fontStyle(24, 40);
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+
+    @include lg-screen {
+        @include fontStyle(32, 48);
+        margin-bottom: 16px;
+    }
+}
+
+.question-text {
+    @include fontStyle(16, 24);
+    margin-bottom: 32px;
+
+    @include lg-screen {
+        @include fontStyle(18, 32);
+        margin-bottom: 48px;
+        padding: 0 115px;
+    }
+}
+
+.analyzer-questions input {
+    display: none;
+}
+
+.analyzer-questions label {
+    width: 100%;
+    @include fontStyle(16, 24);
+    padding: 12px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    margin-bottom: 16px;
+
+    &:hover {
+        background: #132466;
+        border-color: #132466;
+    }
+
+    @include lg-screen {
+        margin-bottom: 40px;
+        padding: 21px;
+        @include fontStyle(18, 32);
+    }
+}
+
+.analyzer-questions .first-three label {
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        @include fontStyle(28, 40);
+        height: 274px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+}
+
+.start-over {
+    @include fontStyle(14, 16);
+    background: transparent;
+    border: 0;
+    color: #fff;
+    text-decoration: underline;
+    margin-top: 16px;
+    padding: 0;
+
+    @include lg-screen {
+        margin-top: 0;
+        padding: 16px;
+        width: 100%;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include fontStyle(12, 16);
+        letter-spacing: 1.2px;
+        font-family:  futura-pt-bold,   sans-serif; 
+        font-weight:  700; 
+        font-style:  normal;
+        border: 1px solid #fff;
+        border-radius: 6px;
+
+        &:hover {
+            background: #fff;
+            color: #132466;
+        }
+    }
+}
+
+.skinanalyzer .label-wrapper {
+    display: flex;
+}
+
+.skinanalyzer .sixth-question label {
+    padding: 8px 16px;
+    position: relative;
+    margin-top: 106px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    text-align: left;
+
+    &::before {
+        position: absolute;
+        content: '';
+        bottom: 100%;
+        height: 106px;
+        left: -1px;
+        right: -1px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border: 1px solid #fff;
+    }
+
+    @include lg-screen {
+        padding: 12px 24px;
+    }
+}
+
+.skinanalyzer .sixth-question label#firstColor::before,
+.skinanalyzer .sixth-question label#firstColorC::before {
+    background: #fce9de;
+} 
+
+.skinanalyzer .sixth-question label#secondColor::before,
+.skinanalyzer .sixth-question label#secondColorC::before {
+    background: #f0d2ac;
+} 
+
+.skinanalyzer .sixth-question label#thirdColor::before,
+.skinanalyzer .sixth-question label#thirdColorC::before {
+    background: #d8a97b;
+}
+
+.skinanalyzer .sixth-question label#fourthColor::before,
+.skinanalyzer .sixth-question label#fourthColorC::before {
+    background: #ae705b;
+}
+
+.skinanalyzer .sixth-question label#fifthColor::before,
+.skinanalyzer .sixth-question label#fifthColorC::before {
+    background: #6c3a2a;
+}
+
+.skinanalyzer .sixth-question label#sixthColor::before,
+.skinanalyzer .sixth-question label#sixthColorC::before {
+    background: #3d2314;
+}
+
+.seventh-question .button-link {
+    width: 100%;
+    padding: 16px;
+    background: #fff;
+    border-color: #fff;
+    margin: 8px 0 24px;
+
+    &:hover {
+        color: #fff;
+        background: #132466;
+        border-color: #132466;
+    }
+
+    @include lg-screen {
+        padding: 24px;
+        margin: 8px 0 0;
     }
 }
