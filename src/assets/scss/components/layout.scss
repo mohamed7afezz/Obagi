@@ -3200,6 +3200,13 @@ p {
     }
 }
 
+.analyzer-questions .fourth-question label {
+    @include lg-screen {
+        width: 274px;
+        height: 74px;
+    }
+}
+
 .start-over {
     @include fontStyle(14, 16);
     background: transparent;
@@ -3454,5 +3461,14 @@ p {
 
     @include lg-screen {
         width: 393px;
+    }
+}
+
+.loading {
+    text-align: center;
+    @include fontStyle(40, 56);
+    margin-top: 24px;
+    @include lg-screen {
+        @include fontStyle(48, 64);
     }
 }

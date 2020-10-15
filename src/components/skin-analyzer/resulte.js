@@ -185,7 +185,7 @@ const Resulte = (props) => {
             )}
             {checkDataCondition(!loading,
                 <>
-                    <p>Loading...</p>
+                    <p className="loading">Loading...</p>
                 </>
             )}
         </>
