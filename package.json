@@ -39,6 +39,7 @@
     "react-img-zoom": "^0.1.0",
     "react-inner-image-zoom": "^1.1.1",
     "react-slick": "^0.26.1",
+    "react-spinners": "^0.9.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

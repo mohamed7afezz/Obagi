@@ -7,6 +7,13 @@ import { CustomSelect } from "../../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
 import Layout from "../../components/layout"
 
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const finderURL = process.env.Finder_URL;
 
 
@@ -262,7 +269,13 @@ export default function Finder({ data }) {
               </p>
             </div>
             <div id="loader" className="d-none">
-              Loading....
+            <div>
+                   <ClipLoader
+               css={spinner}
+                size={150}
+                color={"#123abc"}
+     />           
+     </div>  
             </div>
             <div>
               <p id="err-msg"></p>

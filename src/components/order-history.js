@@ -5,7 +5,13 @@ import orderHistoryStyles from '../assets/scss/components/order-history.module.s
 import OrderHistoryRow from "./order-history-row"
 import Paginator from './paginator'
 import OrderNoHistory from "./order-no-history"
-
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const baseUrl = process.env.Base_URL;
 
 const OrderHistory = ({ node }) => {
@@ -43,7 +49,13 @@ const OrderHistory = ({ node }) => {
     
 
     if(isLoading) {
-        return <div> Loading... </div>
+        return    <div>
+        <ClipLoader
+    css={spinner}
+     size={150}
+     color={"#123abc"}
+/>           
+</div>   
     }
 
     else if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {

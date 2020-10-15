@@ -64,9 +64,12 @@ const ProductCard = ({
 </div>
 <div className={"product-card-con"}>
         {isrx !== "RX"? <div className={[Productcard.starspd,"starspd"].join(" ")}>
+        <div className="analyzer-rate">
         <p className={[Productcard.price,"cardProdprice"].join(" ")}>
               $ <span className="prod-price">{price}</span>
-            </p>      <div
+            </p> 
+           
+               <div
 
               data-bv-show="inline_rating"
 
@@ -77,7 +80,16 @@ const ProductCard = ({
                data-bv-seo="false" >
 
               </div>
-
+              </div>
+              <button className={["the-new-product-button","mob-analyzer-btn"].join(" ")} 
+        onClick={() => {
+          let quantity = 1;
+          addToCart(productId,false,quantity);
+        }}
+        disabled={addingToCart === productId}
+      >
+        {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+        </button>
         </div> : ""}
         
           <h1  className="d-none Productcardtype">Vitamin A</h1>

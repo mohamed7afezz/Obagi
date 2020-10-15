@@ -143,12 +143,25 @@ position: relative !important;
 left: 0 !important;
 top: 0 !important;
 }
-
+.results-card-container .card-body{
+  padding: 16px;
+}
+.results-card-container .card-body+ .results-card-container .card-body{
+  margin-top: 16px;
+}
+.analyzer-result .card-body{
+  padding-top: 0;
+  border: 0;
+}
+.analyzer-result .card-body .col-12{
+padding-left: 0;
+padding-right: 0;
+}
 .toggle-icon{
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-  border:1px solid #fff;
+  border:0;
   width: 100%;
   font-weight: 700;
   font-size: 14px;
@@ -156,26 +169,56 @@ top: 0 !important;
   padding-top: 16px;
   padding-bottom: 16px;
   color: #fff;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  margin-top: 24px;
+  margin-bottom: 0;
+  margin-top: 0;
   padding-left: 16px;
 }
 .toggle-icon::after{
-  content: "+";
+  content: "-";
   font-size: 24px;
-  display: block;
-  margin-right: 16px;
+    display: block;
+    margin-right: 16px;
+  }
+.collapsed.toggle-icon::after{
+  content: "+";
+  
+}
+.isloading{
+  position: fixed;
+  font-size: 48px;
+  height: 100vh;
+ width: 100vw;
+  background: rgba(0,0,0,0.3);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.isloading p{
+  margin-top: 30%;
 }
 .analyzer-result .card-body{
   background-color: transparent;
 }
+#Showbag .modal-header .close {
+top: 49%;
+right: 0;
+}
 @media (max-width: 767px) {
+  #Showbag .modal-header .close{
+    right: 4%;
+  }
   .mob-m-0{
     margin: 0;
   }
   .d-mob-none{
     display: none;
+  }
+  #abc .card-body{
+    color: #fff;
+  }
+  .results-card-container .the-product-card{
+    padding-bottom: 32px;
+    border-bottom: 1px solid #d6d6d6;
   }
   .results-card-container{
     padding-left: 0;
@@ -236,7 +279,10 @@ top: 0 !important;
 {
     display: flex !important;
 }
-
+.analyzer-rate{
+  display: flex;
+  width: 100%;
+}
 .sysRelatedComp  .slick-slide
 {
   min-height: 691px !important;
@@ -533,6 +579,7 @@ text-align: center;
 
 #Showbag .modal-header .close{
   padding-left: 32px;
+  top: 36px;
 }
 #Showbag .empatyState{
   padding-top: 90px;
@@ -1451,6 +1498,9 @@ z-index: 999;
 }
 
 @media (max-width: 991px) {
+  #Showbag .modal-header .close{
+    top: 28px;
+  }
   .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;
   }
@@ -2021,16 +2071,25 @@ margin-right: 15px;
 .the-new-product-button{
   display: none;
 }
+.results-card-container .the-new-product-button:hover{
+  background-color: #132466;
+  color: #fff;
+  transition: all ease 300ms;
+}
 .analyzer-result{
   margin-top: 20px;
 }
 .results-card-container  .Productcardtype.d-none.show-mob{
   display: flex !important;
 }
+.mob-analyzer-btn{
+  display: none !important;
+}
 @media (min-width:768px){
   .results-card-container  .Productcardtype.d-none{
     display: flex !important;
   }
+ 
   .results-card-container  .Productcardtype.d-none.show-mob{
     display: none !important;
   }
@@ -2073,6 +2132,7 @@ margin-right: 15px;
     border: 1px solid #132466;
     background-color: transparent;
   }
+  
   .results-card-container .starspd{
     display: flex;
     align-items: center;
@@ -2137,4 +2197,59 @@ padding-bottom: 0;
 }
 .results-card-container .the-product-card{
   background-color: transparent;
+}
+
+@media (max-width:767px){
+ .results-card-container
+  .product-card-con {
+    display: flex;
+    flex-direction: column;
+  }
+  .results-card-container
+  .productcarddesc {
+  
+    order: -1;
+  }
+  .results-card-container
+  .productcarddesc a{
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  }
+  .results-card-container  .priceCon{
+  display: none;
+  }
+  .results-card-container .starspd{
+    padding-top: 16px !important;
+    padding-left: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .results-card-container .cardProdprice{
+    display: block;
+    padding-top: 8px;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  .results-card-container .the-new-product-button{
+    padding: 16px 21px;
+    border: 1px solid #132466;
+    border-radius: 6px;
+    background-color: transparent;
+  }
+  .results-card-container .starspd >div{
+    padding-left: 16px;
+  }
+  .results-card-container .starspd .the-new-product-button{
+    display: block;
+  }
+  .results-card-container .analyzer-rate{
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+  .results-card-container .mob-analyzer-btn{
+    display: block !important;
+  }
 }

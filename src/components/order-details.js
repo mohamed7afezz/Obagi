@@ -6,12 +6,18 @@ import UserContext from "../providers/user-provider"
 import { useLocation } from "@reach/router"
 import CartContext from "../providers/cart-provider"
 import orderHistoryStyles from "../assets/scss/components/order-history.module.scss"
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import $ from "jquery"
 // const $ = require('jQuery');
 
 const baseUrl = process.env.Base_URL
-
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const OrderDetails = (props, { node }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -188,7 +194,13 @@ const OrderDetails = (props, { node }) => {
 
             
                   {isLoading ? (
-                    <div>Loading...</div>
+                        
+                    <ClipLoader
+                    css={spinner}
+                      size={150}
+                      color={"#123abc"}
+                    
+              />
                   ) : (
                     
                     getshiping? getshiping.map((getshipm, index1) => {
@@ -309,7 +321,13 @@ const OrderDetails = (props, { node }) => {
 
           <div className="col-12 col-lg-3">
             {isLoading ? (
-              ""
+           
+                      <ClipLoader
+                  css={spinner}
+                  size={150}
+                  color={"#123abc"}
+                
+            />
             ) : (
               <div className={orderDetailsStyles.orderWrapper}>
                 <div className={orderDetailsStyles.detailsHeader}>
@@ -510,7 +528,13 @@ const OrderDetails = (props, { node }) => {
         <div className="collapse" id="detailsAccordion">
 
             {isLoading ?
-                <div>Loading...</div>
+          
+                    <ClipLoader
+                css={spinner}
+                  size={150}
+                  color={"#123abc"}
+                
+                    />
                 :
                 (products.map((item, index) => {
 
@@ -548,7 +572,13 @@ const OrderDetails = (props, { node }) => {
 <div className="col-lg-7 offset-lg-1 d-none d-lg-block">
 
     {isLoading ?
-        <div>Loading...</div>
+      
+            <ClipLoader
+        css={spinner}
+          size={150}
+          color={"#123abc"}
+        
+            />
         :
         (products.map((item, index) => {
             return (
@@ -586,7 +616,13 @@ const OrderDetails = (props, { node }) => {
 
 <div className="col-12 col-lg-3">
     {isLoading ?
-        ""
+ 
+             <ClipLoader
+         css={spinner}
+           size={150}
+           color={"#123abc"}
+         
+             />
         :
         <div className={orderDetailsStyles.orderWrapper}>
             <div className={orderDetailsStyles.detailsHeader}>
