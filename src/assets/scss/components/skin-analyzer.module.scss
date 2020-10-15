@@ -4,20 +4,23 @@
 .resPageTitle{
     font-size: 24px;
     line-height: 40px;
-    font-weight: 300;
+    font-weight: 400;
     color: #fff;
     a{
         font-size: 24px;
         line-height: 40px;
-        font-weight: 300;
+        font-weight: 400;
         color: #fff;  
         text-decoration: underline;
+        @include md-screen{
+            font-weight: 300;
+        }
     }
     @include md-screen{
         font-size: 52px;
         line-height: 64px;
         color: #132466;
-    font-weight: 400;
+    font-weight: 300;
     a{
         font-size: 52px;
         line-height: 64px;
@@ -96,15 +99,55 @@
     }
 }
 .resultsBody{
-    padding-bottom: 180px;
-    padding-top: 24px;
+  padding-bottom: 80px;
+  padding-top: 24px;
     @include md-screen{
+        padding-top: 24px;
         padding-bottom: 80px;
         display: flex;
         padding-top: 56px;
         align-items: flex-start;
         border-top: 1px solid #d6d6d6;
+        padding-bottom: 180px;
     }
+}
+.collapseContainer{
+    border: 1px solid #fff;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    margin-top: 24px;
+   
+}
+.answersMob{
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 24px;
+    font-size: 16px;
+    .qtitle{
+        @extend %futurapt-medium;
+    }
+}
+.startovermob{
+    width: 100%;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 1.2px;
+padding-bottom: 16px;
+padding-top: 16px;
+font-weight: 700;
+border-radius: 6px;
+background-color: #fff;
+border: 1px solid #fff;
+}
+.startovermob:hover{
+    background-color: #132466;
+    color: #fff;
+}
+.collapseContainer + .collapseContainer{
+  
+    margin-bottom: 24px;
+    margin-top: 0px;
+   
 }
 .addtobagcondata{
     margin-top: 48px;
@@ -113,7 +156,12 @@
     @include md-screen{
         margin-top: 65px;
     }
-   
+   .resPageSubTitle{
+       display: none;
+       @include md-screen{
+           display: block;
+       }
+   }
 }
 .resultmobhead{
     background-color: #868cd2;
