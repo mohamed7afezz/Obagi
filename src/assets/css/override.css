@@ -1823,8 +1823,8 @@ color: #fff;
 }
 .Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder::after {
 background-color: #fff;
-width: 5px;
-height: 5px;
+width: 11px;
+height: 11px;
 }
 .Collectionfilter .advanced-search li:hover .checkcon .checkmarkfinder {
   width: 19px;
@@ -1836,10 +1836,10 @@ height: 5px;
   height: 19px !important;
 }
 .Collectionfilter .advanced-search li .checkcon .checkmarkfinder::after {
-  width: 10px;
-  height: 10px;
-  top: 4px;
-  left: 4px;
+  width: 11px;
+  height: 11px;
+  top: 3px;
+  left: 3px;
   }
 #related-products{
   padding-right: 0 !important;

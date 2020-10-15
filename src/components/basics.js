@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import $ from "jquery"
 import { graphql, Link } from "gatsby"
 import basicsStyles from "../assets/scss/components/basics.module.scss"
@@ -6,18 +6,17 @@ import ProductCard from "../components/productcard"
 import Slider from "react-slick"
 
 
-const baseUrl = process.env.Base_URL;
 const Basics = ({ node }) => {
   
+  const [slidesCurr, setSlidesCurr] = useState([]);
 
-  console.log("basics", node)
   Object.defineProperty(Array.prototype, 'flat', {
     value: function(depth = 1) {
       return this.reduce(function (flat, toFlatten) {
         return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
       }, []);
     }
-});
+  });
 
 
   const cardsProducts = node.relationships.field_basics_product_card.map(card => {
@@ -33,7 +32,6 @@ const Basics = ({ node }) => {
 
     return newCard.flat()
   });
-  console.log('bahiii', cardsProducts)
 
 
   function checkDataCondition(condition, data) {
@@ -60,14 +58,18 @@ const Basics = ({ node }) => {
           adaptiveHeight: true,
         },
       },
-    ],
-
-
-    customPaging: function(slider) {
-      console.log("ash" , slider)
-      return (" sds")
-    },
+    ]
   }
+
+  useEffect(() => {
+    if(node.relationships && node.relationships.field_basics_product_card) {
+      node.relationships.field_basics_product_card.map((item, index) => {
+        let newSlides = [...slidesCurr];
+        newSlides[index] = 1;
+        setSlidesCurr(newSlides);
+      })
+    }
+  }, [])
 
   return (
     <div className={basicsStyles.containerWrapper}>
@@ -235,7 +237,14 @@ const Basics = ({ node }) => {
                                 ].join(" ")}
                               >
                                 <div className={[basicsStyles.sliderWrapper, "basicsProductWrapper"].join(" ")}>
-                                  <Slider {...SliderSettings}>
+                                  
+                                  <Slider {...SliderSettings} style={{'position': 'relative', 'z-index': '1'}}
+                                    afterChange={(curr) => {
+                                      let newSlides = [...slidesCurr];
+                                      newSlides[index] = curr;
+                                      setSlidesCurr(newSlides);
+                                    }}
+                                  >
                                     {cardsProducts[index].map((prod, ind, array) => (
                                       <>
                                       <ProductCard
@@ -261,6 +270,14 @@ const Basics = ({ node }) => {
                                       </>
                                     ))}
                                   </Slider>
+                                  <div className="slides-number" style={{
+                                    'position': 'absolute',
+                                    'bottom': '48px',
+                                    'left': '0',
+                                    'right': '0',
+                                    'text-align': 'center',
+                                    'z-index': '0'
+                                  }}>{slidesCurr[index]? (slidesCurr[index] + 1) : '1'}/{cardsProducts[index].length}</div>
                                 </div>
                               </div>
                             </div>

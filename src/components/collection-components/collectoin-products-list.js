@@ -1,10 +1,103 @@
 import React, { useEffect } from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import ProductCard from "../../components/productcard"
 import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
+import { checkDataCondition } from "../paragraphs-helper"
+
+const isotope = require("isotope-layout");
+
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
+  
+  const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical');
+  const filtersDataQuery = useStaticQuery(graphql`
+    {
+      clinicalType: allTaxonomyTermClinicalSkinType {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      clinicalSkin: allTaxonomyTermClinicalSkinConcern {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      clinicalIngredients: allTaxonomyTermClinicalIngredients {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+
+      medicalType: allTaxonomyTermMedicalSkinType {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      medicalSkin: allTaxonomyTermMedicalSkinConcern {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      medicalIngredients: allTaxonomyTermMedicalIngredients {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+  `);
+  
+  
+  let isoGrid;
+
+  useEffect(() => {
+    if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
+      CustomSelect();
+    }
+
+    getDefault(document.querySelectorAll('.popupVideoInput[name="sort"]'), document.querySelector('.sortsearch'));
+    getDefault(document.querySelectorAll('.popupVideoInput[name="product"]'), document.querySelector('.filtersearch'));
+    getDefault(document.querySelectorAll('.popupVideoInput[name="Skin-concern"]'), document.querySelector('.skinsearch'));
+    getDefault(document.querySelectorAll('.popupVideoInput[name="Ingredients"]'), document.querySelector('.ingsearch'));
+  
+    isoGrid = new isotope(".products-list", {
+      itemSelector: ".product-element",
+      layoutMode: "masonry",
+      getSortData: {
+        price: item => {
+          var weight = item.querySelector(".prod-price").textContent;
+          
+          return parseFloat(weight)
+        },
+      },
+      filter: '*',
+      transitionDuration: 0
+    });
+
+    //update view on sort on page load
+    updateSortView()
+      
+  });
+
+  function updateSortView() {
+    document.querySelector(".products-list").innerHTML = null
+    isoGrid.getFilteredItemElements().map(item => {
+      document.querySelector(".products-list").appendChild(item)
+    })
+  }
+
 
   let products = []
   let checkTaxonomy
@@ -55,6 +148,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   } else {
     checkTaxonomy = node
   }
+
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)
@@ -83,31 +177,75 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     }
 
     return null;
-}
-  function saveselect(e){
-    if (e.target.childNodes[0] != undefined) {
-      let i = e.target.childNodes[0].value;
-      document.querySelector('.skinsearch').innerHTML=i;
-    }
   }
+
+  // update HTML with selected filters value
+  let isoFilterData = {
+    type: '',
+    concern: '',
+    ing: ''
+  };
+  function saveselect(e){
+    document.querySelector('.skinsearch').innerHTML= e.target.value;
+    // close dropdown
+    filterSkinconcernsearchData();
+    // update filter view
+    isoFilter('type', e.target.value);
+  }  
   function saveselectfilter(e){
-    if (e.target.childNodes[0] != undefined) {
-      let i = e.target.childNodes[0].value;
-      document.querySelector('.filtersearch').innerHTML=i;
-    }
+    document.querySelector('.filtersearch').innerHTML= e.target.value;
+    // close dropdown
+    filtersearchData();
+    // update filter view
+    isoFilter('concern', e.target.value);
   }
   function saveselectIngredients(e){
-    if (e.target.childNodes[0] != undefined) {
-      let i = e.target.childNodes[0].value;
-      document.querySelector('.ingsearch').innerHTML=i;
-    }
+    document.querySelector('.ingsearch').innerHTML= e.target.value;
+    // close dropdown
+    filterIngredientsData();
+    // update filter view
+    isoFilter('ing', e.target.value);
+    
   }
   function sortselect(e){
-    if (e.target.childNodes[0] != undefined) {
-      let i = e.target.childNodes[0].value;
-      document.querySelector('.sortsearch').innerHTML=i;
+    document.querySelector('.sortsearch').innerHTML= e.target.value;
+    // close dropdown
+    sortSearchData();
+    // update sort/filtered view
+    switch (e.target.value) {
+      case 'Newest':
+        isoGrid.arrange({sortBy: 'original-order'});
+        updateSortView();
+        break;
+      case 'Price: High - Low':
+        isoGrid.arrange({sortBy: 'price', sortAscending: false});
+        updateSortView();
+      break;
+      case 'Price: Low - High': 
+        isoGrid.arrange({sortBy: 'price', sortAscending: true});
+        updateSortView();
+      break;
+      default:
+        break;
     }
+    
   }
+
+  function isoFilter(type, val) {
+    
+    isoFilterData[type] = val === 'All'? '' : val.split(' ').join('_');
+
+    let newFilter = '.';
+    for (const key in isoFilterData) {
+      if (isoFilterData.hasOwnProperty(key)) {
+        newFilter += isoFilterData[key] !== ''? isoFilterData[key] + ', .' : '';
+      }
+    }
+    console.log('bahiiii', newFilter)
+    isoGrid.arrange({filter: newFilter.slice(0, -3)});
+    updateSortView();
+  }
+
   function getIngredient (item) {
     let getdata="";
     if (item.relationships.field_clinical_ingredients  ) {
@@ -179,72 +317,24 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   }
 
   }
-  useEffect(() => {
-    if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
-      CustomSelect();
-    }
+
+  function getDefault(selector, target) {
+    let val = '';
     
-    // const isotope = require("isotope-layout")
-    // const filterValSelect = document.querySelector("#product-filter")
-    // const sortPriceSelect = document.querySelector(".sort-price")
-    // let sortAsc =
-    //   sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-    //     ? true
-    //     : false
+    selector.forEach(item => {
+      if(item.checked) {
+        val = item.value
+      }
+    })
+    if (val != '') {
+      target.innerHTML = val;
+    }
+  }
 
-    // const isoGrid = new isotope(".products-list", {
-    //   itemSelector: ".product-element",
-    //   layoutMode: "masonry",
-    //   getSortData: {
-    //     price: item => {
-    //       var weight = item.querySelector(".prod-price").textContent
-    //       return parseFloat(weight)
-    //     },
-    //   },
-    //   // filter: item => {
-    //   //   const filterVal =
-    //   //     filterValSelect.options[filterValSelect.selectedIndex].value
-    //   //   if (filterVal === "All" || filterVal == undefined) {
-    //   //     return true
-    //   //   }
-    //   //   return item
-    //   //     .getElementsByClassName("ingredient")[0]
-    //   //     .innerText.includes(filterVal)
-    //   // },
-    //   transitionDuration: 0,
-    //   sortBy: "price",
-    //   sortAscending: sortAsc,
-    // })
+  function updateFilter() {
 
-    //update view on sort on page load
-    // updateSortView()
-
-    //filter
-    // filterValSelect.addEventListener("change", function (event) {
-    //   sortAsc =
-    //     sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-    //       ? true
-    //       : false
-    //   isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
-    //   updateSortView()
-    // })
-    // //sort
-    // sortPriceSelect.addEventListener("change", function (event) {
-    //   sortAsc =
-    //     sortPriceSelect.options[sortPriceSelect.selectedIndex].value === "low"
-    //       ? true
-    //       : false
-    //   isoGrid.arrange({ sortBy: "price", sortAscending: sortAsc })
-    //   updateSortView()
-    // })
-
-    // function updateSortView() {
-    //   document.querySelector(".products-list").innerHTML = null
-    //   isoGrid.getFilteredItemElements().map(item => {
-    //     document.querySelector(".products-list").appendChild(item)
-    //   })
-    // }
-  })
+  }
+  
 
   return (
     <div
@@ -252,6 +342,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       "container-fluid collectionhero collectionList " + productsliststyle.collectionList
       :"container-fluid collectionhero collectionList  "+productsliststyle.listMedicalBg + " " + productsliststyle.listMedicalBg}
     >
+      {/* Fiters */}
       <div
         className={[
           "row",
@@ -274,76 +365,39 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         
               <div class="product-lines hide" id="flitersCon">
                         <Scrollbars style={{ height: 250 }}>
-                          <ul class="popupUl popupFilter"> 
+                          <ul class="popupUl popupFilter">
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="All"/>All
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Aloe"/>Aloe
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Antioxidants"/>Antioxidants
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Arbutin" />Arbutin
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Caffeine"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Glycerin"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Glycolic Acid (AHA)"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Hyaluronic Acid"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Retinol"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                         
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectfilter(e)}}>
-                              <input class="popupVideoInput" name="product" type="radio" value="Witch Hazel" />Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                          
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalType.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
 
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalType.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
+                            
                           </ul>
                         </Scrollbars>
                       </div>
@@ -372,95 +426,36 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl popupFilter"> 
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="All"/>All
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Aloe"/>Aloe
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Antioxidants"/>Antioxidants
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Arbutin" />Arbutin
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Caffeine"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Glycerin"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Glycolic Acid (AHA)"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Hyaluronic Acid"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Retinol"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Salicylic Acid"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Tretinoin"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Vitamin C"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Witch Hazel" />Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselect(e)}}>
-                              <input class="popupVideoInput" name="Skin-concern" type="radio" value="Zinc Oxide*"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalSkin.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
+
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalSkin.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
 
                           </ul>
                         </Scrollbars>
@@ -492,71 +487,37 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl popupFilter"> 
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="All"/>All
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}}n ame="Ingredients" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Aloe"/>Aloe
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Antioxidants"/>Antioxidants
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Arbutin" />Arbutin
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Benzoyl Peroxide" />Benzoyl Peroxide
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Caffeine"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Glycerin"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Glycolic Acid (AHA)"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Vitamin C"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Witch Hazel" />Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
-                            <li>
-                            <label class="checkcon terms" onClick={(e) => { saveselectIngredients(e)}}>
-                              <input class="popupVideoInput" name="Ingredients" type="radio" value="Zinc Oxide*"/>Loram
-                              <span className="checkmarkfinder"></span>
-                              </label>
-                            </li>
+                            
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalIngredients.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
+
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalIngredients.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
 
                           </ul>
                         </Scrollbars>
@@ -574,10 +535,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             "col-lg-2",
             productsliststyle.Collectionfilter,
             "Collectionfilter",
+            `${dataType == 'clinical' ? 'd-none' : ''}`
           ].join(" ")}
         >
           <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" /><span class="checkmark"></span></label>
-          </div>
+        </div>
         <div
           className={[
             "col-12",
@@ -590,29 +552,29 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                 <label className={[productsliststyle.filter,"hide","sortlabel"].join(" ")}>Sort by:</label>
 
       <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
-            <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Sort by:</p>
+            <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}></p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="sortCon">
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl popupFilter"> 
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { sortselect(e)}}>
-                              <input class="popupVideoInput" name="sort" type="radio" value="Newest"/>Newest
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Newest" defaultChecked={true}/>Newest
 
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { sortselect(e)}}>
-                              <input class="popupVideoInput" name="sort" type="radio" value="Price: Low - High"/>Price: Low - High
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Price: Low - High"/>Price: Low - High
 
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
                             <li>
-                              <label class="checkcon terms" onClick={(e) => { sortselect(e)}}>
-                              <input class="popupVideoInput" name="sort" type="radio" value="Price: High - Low"/>Price: High - Low
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Price: High - Low"/>Price: High - Low
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
@@ -623,6 +585,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                </div>
           </div>   </div>
       </div>
+      
+      {/* List */}
       <div
         className={[
           "row products-list",
@@ -643,11 +607,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                     <div
                       className={[
                         "col-12 col-lg-6 col-md-6 product-element",
-                        `vitamin-c-${index}`,
+                        
                         productsliststyle.productview,
                         "productview",
+                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`
                       ].join(" ")}
-                      data-ingrediant={`vitamin-c-${index}`}
+                      
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
@@ -715,11 +680,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                     <div
                       className={[
                         "col-12 col-lg-3 col-md-4 product-element",
-                        `vitamin-c-${index}`,
+                        
                         productsliststyle.productview,
                         "productview",
+                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`
                       ].join(" ")}
-                      data-ingrediant={`vitamin-c-${index}`}
+                      
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
@@ -851,11 +817,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <div
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
-                              `vitamin-c-${index}`,
+                              
                               productsliststyle.productview,
                               "productview",
                             ].join(" ")}
-                            data-ingrediant={`vitamin-c-${index}`}
+                            
                           >
                             <ProductCard
                               productLink={product.path.alias}
@@ -894,11 +860,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         <div
                           className={[
                             "col-12 col-lg-3 col-md-4 product-element",
-                            `vitamin-c-${index}`,
+                            
                             productsliststyle.productview,
                             "productview",
+                            `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`
                           ].join(" ")}
-                          data-ingrediant={`vitamin-c-${index}`}
+                          
                         >
                           <ProductCard
                             productLink={product.path.alias}
