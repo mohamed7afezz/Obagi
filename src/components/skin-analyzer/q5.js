@@ -1,4 +1,5 @@
 import React from 'react'
+import ProgressBar from '../../components/progress-bar'
 
 
 const Q5 = (props) => {
@@ -16,12 +17,21 @@ const Q5 = (props) => {
         }
     }
     return (
-        <>
+        <div className="skinanalyzer-questions-wrapper">
+            <div className="row question-progress-wrapper d-lg-none">
+                <div className="col-12">
+                    <ProgressBar
+                        percentage="71.42857142857143%"
+                        index="5"
+                        total="7"
+                    />
+                </div>
+            </div>
             <div className="row quiz-header-wrapper">
-                <div className="col-1 d-none d-lg-block">
+                <div className="col-2 d-none d-lg-block">
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
-                <div className="col-12 col-lg-2 offset-lg-4">
+                <div className="col-12 col-lg-2 offset-lg-3">
                     <div className="quiz-title">Skin Analyzer Quiz</div>
                 </div>
             </div>
@@ -46,7 +56,7 @@ const Q5 = (props) => {
                                 <input type="radio" id="NormalSkinC" name="q" value="Normal Skin" onChange={sendBackData} />
                                 <label htmlFor="NormalSkinC">Normal Skin</label>
                             </div>
-                     
+
                             <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
                                 <input type="radio" id="CombinationSkinC" name="q" value="Combination Skin" onChange={sendBackData} />
                                 <label htmlFor="CombinationSkinC">Combination Skin</label>
@@ -71,7 +81,7 @@ const Q5 = (props) => {
                                 <input type="radio" id="NormalSkin" name="q" value="Normal Skin" onChange={sendBackData} />
                                 <label htmlFor="NormalSkin">Normal Skin</label>
                             </div>
-                    
+
                             <div className="col-12 col-lg-2 offset-lg-4 label-wrapper">
                                 <input type="radio" id="CombinationSkin" name="q" value="Combination Skin" onChange={sendBackData} />
                                 <label htmlFor="CombinationSkin">Combination Skin</label>
@@ -91,7 +101,17 @@ const Q5 = (props) => {
                     <button onClick={startOver} className="start-over">Start Over</button>
                 </div>
             </div>
-        </>
+
+            <div className="row question-progress-wrapper d-none d-lg-flex">
+                <div className="col-5 offset-4">
+                    <ProgressBar 
+                        percentage="71.42857142857143%"
+                        index="5"
+                        total="7"
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 export default Q5

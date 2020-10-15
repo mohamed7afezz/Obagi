@@ -3022,7 +3022,8 @@ p {
     background-origin: padding-box;
     background-clip: border-box;
     background-size: cover;
-
+    color: #fff;
+    text-align: center;
     @include lg-screen {
         background-image: url('../../images/imgSkinAnalyzer.png');
     }
@@ -3091,19 +3092,20 @@ p {
 .analyzer-questions {
     background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
 
-        color: #fff;
-        text-align: center;
+    color: #fff;
+    text-align: center;
   
 }
 
-// .analyzer-questions .container-fluid {
-//     padding-top: 24px;
-    
-//     @include lg-screen {
-//         padding-top: 64px;
-//         padding-bottom: 248px;
-//     }
-// }
+
+.skinanalyzer-questions-wrapper {
+    padding-top: 24px;
+    padding-bottom: 91px;
+    @include lg-screen {
+        padding-top: 64px;
+        padding-bottom: 248px;
+    }
+}
 
 .quiz-header-wrapper {
     margin-top: 24px;
@@ -3165,7 +3167,7 @@ p {
     border: 1px solid #fff;
     border-radius: 6px;
     margin-bottom: 16px;
-
+    cursor: pointer;
     &:hover {
         background: #132466;
         border-color: #132466;
@@ -3173,9 +3175,14 @@ p {
 
     @include lg-screen {
         margin-bottom: 40px;
-        padding: 21px;
+        padding: 21px 10px;
         @include fontStyle(18, 32);
     }
+}
+
+.analyzer-questions .label-wrapper input[type=radio]:checked + label {
+    background: #132466;
+    border-color: #132466;
 }
 
 .analyzer-questions .first-three label {
@@ -3185,6 +3192,7 @@ p {
         font-style: normal;
         @include fontStyle(28, 40);
         height: 274px;
+        width: 274px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3297,5 +3305,154 @@ p {
     @include lg-screen {
         padding: 24px;
         margin: 8px 0 0;
+    }
+}
+
+.analyzer-info-button {
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    padding: 6px 10px;
+    margin-left: 16px;
+    @include fontStyle(17, 10);
+
+    @include lg-screen {
+        @include fontStyle(23, 20);
+
+    }
+
+}
+
+
+.sixth-question-wrapper .modal {
+    color: #132466;
+    text-align: left;
+    z-index: 999999;
+    padding: 0 !important;
+    
+}
+.sixth-question-wrapper .modal-dialog {
+    margin: 0;
+
+    @include lg-screen {
+        margin: 80px auto 120px;
+    }
+    
+}
+
+.sixth-question-wrapper .modal-content {
+    padding: 80px 24px 16px;   
+    border-radius: 0;
+
+    @include lg-screen {
+        padding: 32px 40px 24px;
+        border-radius: 6px;
+    }
+}
+
+.sixth-question-wrapper .modal-header {
+    border: 0;
+    padding: 0;
+}
+
+.sixth-question-wrapper .modal-header .close {
+    top: 28px;
+
+    @include lg-screen {
+        top: 41px;
+    }
+}
+
+.sixth-question-wrapper .modal-header .close::before, 
+.sixth-question-wrapper .modal-header .close::after {
+    height: 32px;
+}
+
+.sixth-question-wrapper .modal-body {
+    padding: 0;
+} 
+
+.sixth-question-wrapper .modal-title {
+    @extend %futurapt-light;
+    @include fontStyle(32, 48);
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        @include fontStyle(40, 56);
+    }
+}
+
+.sixth-question-wrapper .skin-type-title {
+    @extend %futurapt-bold;
+    @include fontStyle(16, 24);
+    margin-bottom: 8px;
+}
+
+.sixth-question-wrapper .skin-type-desc {
+    @include fontStyle(16, 24);
+    margin-bottom: 16px;
+}
+
+.custom-progress-bar {
+    display: flex;
+    align-items: center;
+}
+
+.progress-counter {
+    display: inline-block;
+    margin-left: 16px;
+    @include fontStyle(14, 16);
+    @extend %futurapt-medium;
+
+}
+
+.custom-progress-bar .progress {
+    border-radius: 8px;
+    height: 16px;
+    background: transparent;
+    border: 1px solid #fff;
+    position: relative;
+    width: 100%;
+    
+    &::after {
+        position: absolute;
+        content: '';
+        background: #fff;
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        right: 4px;
+        top: 3px;
+    }
+}
+
+.last-question-progress .custom-progress-bar .progress::after {
+    background: #132466;
+}
+
+.first-question-progress .custom-progress-bar .progress-bar {
+    border-radius: 0;
+}
+
+.custom-progress-bar .progress-bar {
+    background: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.question-progress-wrapper {
+    @include lg-screen {
+        margin-top: 174px;
+    }
+}
+
+.question-progress-wrapper .progress {
+    width: 278px;
+    max-width: 100%;
+
+    @include lg-screen {
+        width: 393px;
     }
 }
