@@ -88,7 +88,15 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (productId ,retry, quantity) => {
-    
+    let findedProduct;
+    if(state.cart.lineItems.physical_items){
+      findedProduct = state.cart.lineItems.physical_items.filter(function(itm){
+        return itm.product_id == productId;
+      })[0];
+    }
+    if(findedProduct != undefined && findedProduct.quantity == 3){
+      return;
+    }
 
     setState({ ...state, addingToCart: productId });
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;

@@ -56,6 +56,7 @@ const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
           field_medical_id
           title
           field_medical_price
+          field_medical_premier_points
           path {
             alias
           }
