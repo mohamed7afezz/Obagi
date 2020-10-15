@@ -3,8 +3,14 @@ import SearchContext from "../../providers/search-provider"
 import ProductCard from '../productcard';
 import resulteSkinStyle from "../../assets/scss/components/skin-analyzer.module.scss"
 import { Link } from 'gatsby';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 const baseUrl = process.env.Base_URL;
-
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const Resulte = (props) => {
     console.log(props)
     const { searchInIndexById } = useContext(SearchContext)
@@ -58,7 +64,7 @@ const Resulte = (props) => {
                                             <div className={resulteSkinStyle.collapseContainer}>
                                                 <button class="toggle-icon" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skincare</button>
 
-                                                <div class="collapse multi-collapse" id="abc">
+                                                <div class="collapse multi-collapse show" id="abc">
                                                     <div class="card card-body">
                                                         loaram  loaram  loaram  loaram  loaram  loaram  loaram  loaram
                                         </div>
@@ -68,7 +74,7 @@ const Resulte = (props) => {
 
                                                 <button class="toggle-icon" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="false" aria-controls="answersmob">Your Answers</button>
 
-                                                <div class="collapse multi-collapse" id="answersmob">
+                                                <div class="collapse multi-collapse show" id="answersmob">
                                                     <div class="card card-body">
                                                         <div className="col-12 ">
                                                   
@@ -168,8 +174,11 @@ const Resulte = (props) => {
                                 
                                         <div className={resulteSkinStyle.addtobagcon}>
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skincare regimen:</p>
-                                            <button className={[resulteSkinStyle.addtobag, "col-lg-2"].join(" ")}>Add all to Bag</button>
+                                           
+                                            <button className={[resulteSkinStyle.addtobag,  resulteSkinStyle.addtobagheadbtn,"col-lg-2"].join(" ")}>Add all to Bag</button>
                                         </div>
+                                        <p className={[resulteSkinStyle.resPageSubdetail,"show-mob"].join(" ")}>If you have detailed questions about your individual skincare or products, 
+                                            it is best to talk to a skincare specialist. <Link   to="/medical/phcfinder" >Find a Physician</Link></p>
                                     </div>
 
                                 </div>
@@ -201,6 +210,8 @@ const Resulte = (props) => {
                                         )) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skincare regimen:</p>
+                                           
+
                                             <button className={[resulteSkinStyle.addtobag, "col-lg-3"].join(" ")}>Add all to Bag</button>
                                         </div>
                                     </div>
@@ -214,9 +225,14 @@ const Resulte = (props) => {
                 </>
             )}
             {checkDataCondition(!loading,
-                <>
-                    <p>Loading...</p>
-                </>
+                <div>
+                   <ClipLoader
+               css={spinner}
+                size={150}
+                color={"#123abc"}
+              
+        />
+                </div>
             )}
         </>
     )

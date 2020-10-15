@@ -2,7 +2,13 @@ import React, { useContext, useState } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import searchStyles from "../assets/scss/components/search.module.scss"
 import SearchContext from "../providers/search-provider"
-
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const Search = () => {
 
   const { clinicalSearchResults, isLoading } = useContext(SearchContext)
@@ -23,7 +29,13 @@ const Search = () => {
           </div>
         </div>
         {(medicalSearchResults.length > 0
-            ? (isLoading? "Loading..."
+            ? (isLoading?    <div>
+              <ClipLoader
+          css={spinner}
+           size={150}
+           color={"#123abc"}
+/>           
+</div>   
             : 
             (medicalSearchResults.map((data, index) =>
                 index < 6 ? (
@@ -50,7 +62,13 @@ const Search = () => {
           </div>
         </div>
         { clinicalSearchResults.length > 0
-            ? (isLoading? "Loading..."
+            ? (isLoading?    <div>
+              <ClipLoader
+          css={spinner}
+           size={150}
+           color={"#123abc"}
+/>           
+</div>   
                 :
                 (clinicalSearchResults.map((data, index) =>
                 index < 6 ? (

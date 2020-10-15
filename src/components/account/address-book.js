@@ -3,7 +3,13 @@ import UserAccount from '../../components/user-account'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import AddressBox from '../../components/address-box'
 import AddressModal from '../../components/address-modal'
-
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const baseUrl = process.env.Base_URL;
 
 export default function AddressBook() {
@@ -72,10 +78,14 @@ export default function AddressBook() {
                     <div className={myAccountStyles.secondTitle}>Address Book</div>
                     <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => { removeData(); addAddress(); }}>Add Address</button>
                 </div>
-
-
-                {isLoading ?
-                    <div> Loading... </div>
+                        {isLoading ?
+                                    <div>
+                                    <ClipLoader
+                                css={spinner}
+                                    size={150}
+                                    color={"#123abc"}
+                        />           
+                        </div>   
                     :
                     (
                         ((addresses !== "undefined" || Object.keys(addresses).length != 0) && addresses.data) ?

@@ -19,6 +19,14 @@ import paycred from'../../assets/images/ppcredit-logo-large.png'
 import freeimg from "../../assets/images/tag.png"
 import ProductSuggestion from "../product-components/productsuggestion"
 import SearchContext from "../../providers/search-provider"
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const baseUrl = process.env.Base_URL;
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -68,8 +76,8 @@ const StandardItem = props => {
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
-                <p className={ShowBagStyle.BagProductDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
-                {item.premier_points != ''? <span>Earn {item.premier_points} Premier Points ea.</span>: ''}
+                <p className={[ShowBagStyle.BagProductDesc,BagStyle.cartpre].join(" ")}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                {item.premier_points != ''? <span className={[BagStyle.premire,BagStyle.premirecart].join(" ")}>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -865,10 +873,13 @@ const YourBag = (props, {notificationId}) => {
       >
         <h2 className={BagStyle.bagHead}>Your Bag</h2>
         <div>
-          <p className={ShowBagStyle.empatyTitle}>
-            Loading Bag..
-          </p>
-        </div>
+                   <ClipLoader
+               css={spinner}
+                size={150}
+                color={"#123abc"}
+              
+        />
+                </div>
       </div>
     )
   }

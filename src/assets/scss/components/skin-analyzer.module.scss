@@ -38,12 +38,12 @@
     font-size: 18px;
     line-height: 32px;
     color: #fff;
-    font-weight: 300;
-    
+       
     @include md-screen{
     color: #132466;
     font-size: 24px;
     line-height: 40px;
+    font-weight: 300;
     }
 }
 .addtobagcon{
@@ -191,5 +191,16 @@ border: 1px solid #fff;
     color: #132466;
     @include md-screen{
         margin-top: 80px;
+    }
+}
+.resPageSubdetail{
+    padding-top: 24px;
+    border-top: 1px solid #fff;
+    padding-bottom: 24px;
+    font-size: 18px;
+    color: #FFF;
+    line-height: 32px;
+    a{
+        color: #fff;
     }
 }

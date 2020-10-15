@@ -3,7 +3,13 @@ import { navigate, Link } from "gatsby"
 // import { handleLogin, isLoggedIn } from "../services/auth"
 import UserContext from "../providers/user-provider"
 import LoginMenu from '../components/login-menu'
-
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const Login = () => {
 
   const { user, isLoading, matchEmail, handleLogin, redirectUrl, setIsLoading } = useContext(UserContext);
@@ -35,7 +41,13 @@ const Login = () => {
     <>
     <LoginMenu currentPage="login"/>
     {isLoading? 
-      <h3 style={{textAlign: "center"}}>Loading...</h3>
+    <div>
+                         <ClipLoader
+                     css={spinner}
+                      size={150}
+                      color={"#123abc"}
+         />           
+         </div>    
       : 
       <div className="container-fluid login">
       <div className="row">
