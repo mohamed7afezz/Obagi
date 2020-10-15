@@ -18,6 +18,7 @@ import visa from "../../assets/images/product-images/visa.png"
 import paycred from'../../assets/images/ppcredit-logo-large.png'
 import freeimg from "../../assets/images/tag.png"
 import ProductSuggestion from "../product-components/productsuggestion"
+import SearchContext from "../../providers/search-provider"
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -48,8 +49,13 @@ const AdjustItem = props => {
 const StandardItem = props => {
   const { items, cartType } = props
 
-
+  const {searchInIndexById} = useContext(SearchContext)
   let itemsContent = items.map(item => {
+    let findedProduct = searchInIndexById([item.product_id],1);
+    item.premier_points = '';
+    if(findedProduct.length>0){
+      item.premier_points = findedProduct[0].field_medical_premier_points;
+    }
     var producturl = item.url.split(".com")
     if (cartType === "overlay") {
       return (
@@ -63,6 +69,7 @@ const StandardItem = props => {
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
                 <p className={ShowBagStyle.BagProductDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                {item.premier_points != ''? <span>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -103,6 +110,7 @@ const StandardItem = props => {
               </div>
               <div className={"col-md-4"}>
                 <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                {item.premier_points != ''? <span>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
               {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
