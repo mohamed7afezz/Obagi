@@ -577,7 +577,10 @@ margin-right: 40px;
 text-align: center;
 }
 
-
+#Showbag .modal-header .close{
+  padding-left: 32px;
+  top: 36px;
+}
 #Showbag .empatyState{
   padding-top: 90px;
   
@@ -1495,6 +1498,9 @@ z-index: 999;
 }
 
 @media (max-width: 991px) {
+  #Showbag .modal-header .close{
+    top: 28px;
+  }
   .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;
   }

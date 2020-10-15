@@ -127,9 +127,13 @@
     font-size: 14px;
     line-height: 16px;
     outline: 0;
-  border: 0;
-  margin-right: 64px;
+    border: 0;
+    margin-right: 64px;
     color: #132466;
+
+    &:hover {
+        color: #132466;
+    }
   }
   .removebtn{
       font-size: 14px;
