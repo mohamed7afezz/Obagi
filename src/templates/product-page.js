@@ -21,7 +21,7 @@ const ProductPage = props => {
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
-        <div itemscope itemtype="https://schema.org/Product">
+        <div itemscope="" itemtype="https://schema.org/Product">
           <ProductHero data={data} nodeType={nodeType} />
           {paragraphs}
           {/*Review widget BV */      
