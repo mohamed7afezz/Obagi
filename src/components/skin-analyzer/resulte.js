@@ -148,7 +148,7 @@ const Resulte = (props) => {
 
                                                 <button class="toggle-icon" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="true" aria-controls="answersmob">Your Answers</button>
 
-                                                <div class="collapse multi-collapse show in" id="answersmob">
+                                                <div class="collapse multi-collapse show " id="answersmob">
                                                     <div class="card card-body">
                                                         <div className="col-12 ">
                                                   
