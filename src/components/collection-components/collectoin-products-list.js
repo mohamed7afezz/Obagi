@@ -8,7 +8,7 @@ import { checkDataCondition } from "../paragraphs-helper"
 
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   console.log('bahiiii', node.relationships)
-  const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical');
+  const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path?(node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical') : '');
   const filtersDataQuery = useStaticQuery(graphql`
     {
       clinicalType: allTaxonomyTermClinicalSkinType {
@@ -813,7 +813,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             })
           : checkTaxonomy
           ? checkTaxonomy.relationships.field_vocabularies.map(item =>
-              item.relationships.node__clinical_product
+              (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
                       
@@ -858,7 +858,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                       return;
                     }
                   )
-                : item.relationships.node__medical_product
+                : (item.relationships && item.relationships.node__medical_product)
                 ? item.relationships.node__medical_product.map(
                     (product, index) => {
                       
