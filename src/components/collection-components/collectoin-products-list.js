@@ -6,10 +6,8 @@ import {CustomSelect} from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
 import { checkDataCondition } from "../paragraphs-helper"
 
-const isotope = require("isotope-layout");
-
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
-  
+  console.log('bahiiii', node.relationships)
   const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical');
   const filtersDataQuery = useStaticQuery(graphql`
     {
@@ -71,7 +69,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     getDefault(document.querySelectorAll('.popupVideoInput[name="product"]'), document.querySelector('.filtersearch'));
     getDefault(document.querySelectorAll('.popupVideoInput[name="Skin-concern"]'), document.querySelector('.skinsearch'));
     getDefault(document.querySelectorAll('.popupVideoInput[name="Ingredients"]'), document.querySelector('.ingsearch'));
-  
+    const isotope = require("isotope-layout");
     isoGrid = new isotope(".products-list", {
       itemSelector: ".product-element",
       layoutMode: "masonry",
@@ -183,7 +181,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   let isoFilterData = {
     type: '',
     concern: '',
-    ing: ''
+    ing: '',
+    rx: ''
   };
   function saveselect(e){
     document.querySelector('.skinsearch').innerHTML= e.target.value;
@@ -231,18 +230,28 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     
   }
 
+  function handlePrescribe(e) {
+    if(e.target.checked) {
+      isoFilter('rx', ':not(.RX)');
+    } else {
+      isoFilter('rx', 'All');
+    }
+  }
+
   function isoFilter(type, val) {
     
     isoFilterData[type] = val === 'All'? '' : val.split(' ').join('_');
 
-    let newFilter = '.';
+    let newFilter = '';
     for (const key in isoFilterData) {
-      if (isoFilterData.hasOwnProperty(key)) {
-        newFilter += isoFilterData[key] !== ''? isoFilterData[key] + ', .' : '';
+      if (isoFilterData.hasOwnProperty(key) && key != 'rx') {
+        newFilter += isoFilterData[key] !== ''? '.' + isoFilterData[key] + ', ' : '';
+      } else {
+        newFilter += isoFilterData[key] !== ''? isoFilterData[key] + ', ' : '';
       }
     }
-    console.log('bahiiii', newFilter)
-    isoGrid.arrange({filter: newFilter.slice(0, -3)});
+    console.log('bahiiii', newFilter.slice(0, -2))
+    isoGrid.arrange({filter: newFilter.slice(0, -2)});
     updateSortView();
   }
 
@@ -488,7 +497,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <ul class="popupUl popupFilter"> 
                             <li>
                               <label class="checkcon terms">
-                              <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}}n ame="Ingredients" type="radio" value="All"/>All
+                              <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
@@ -538,7 +547,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             `${dataType == 'clinical' ? 'd-none' : ''}`
           ].join(" ")}
         >
-          <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" /><span class="checkmark"></span></label>
+          <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" onChange={handlePrescribe}/><span class="checkmark"></span></label>
         </div>
         <div
           className={[
@@ -817,7 +826,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <div
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
-                              
+                              `${item.name.split(' ').join('_')}`,
                               productsliststyle.productview,
                               "productview",
                             ].join(" ")}
@@ -852,6 +861,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                 : item.relationships.node__medical_product
                 ? item.relationships.node__medical_product.map(
                     (product, index) => {
+                      
                       if (!checkProductExisitance(product)) {
                         products.push(product)
                         let ingredient = getIngredient(product);
@@ -860,7 +870,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         <div
                           className={[
                             "col-12 col-lg-3 col-md-4 product-element",
-                            
+                            `${item.name.split(' ').join('_')}`,
                             productsliststyle.productview,
                             "productview",
                             `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`
@@ -957,6 +967,7 @@ export const fragment = graphql`
           path {
             alias
           }
+          name
           relationships {
             node__clinical_product {
               field_clinical_id
@@ -1013,6 +1024,7 @@ export const fragment = graphql`
           path {
             alias
           }
+          name
           relationships {
             node__clinical_product {
               field_clinical_id
