@@ -418,7 +418,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} critical={true} fadeIn = {false}/></Link>
               </div>
 
               <div className="col-6 offset-2">
@@ -522,7 +522,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 </div>
 
                 <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} critical={true} fadeIn = {false}/></Link>
                 </div>
 
                 <div className="col col-padding">

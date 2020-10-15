@@ -2770,7 +2770,8 @@ p {
     }
 }
 
-.basics-paragraph .slick-initialized .slick-slide {
+.basics-paragraph .slick-initialized .slick-slide,
+.product-line .product-line-product-slider .slick-initialized .slick-slide {
     position: relative;
 
     @include lg-screen {
@@ -2793,7 +2794,8 @@ p {
     }
 }
 
-.basics-paragraph .the-product-card {
+.basics-paragraph .the-product-card,
+.product-line .the-product-card {
     border-radius: 6px;
     box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
     height: 100%;
