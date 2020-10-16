@@ -77,9 +77,9 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     getTwoSection=node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing?node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0]?
     node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships?
     node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships.field_service_card:"":"":"";
-    checkfooter =
-    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
-    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:"";
+    // checkfooter =
+    // node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
+    // node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:"";
   }
   else if(pageNodeType == 'clinicalCategories'){
     getTwoSection=node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat?node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0]?

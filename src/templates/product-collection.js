@@ -181,38 +181,7 @@ export const productPageQuery = graphql`
           name
           id
           relationships {
-            field_footer_two_section_cli_ing {
-              relationships {
-                field_service_card {
-                  field_service_name {
-                    processed
-                  }
-                  relationships {
-                    field_service_image {
-                      localFile {
-                        childImageSharp {
-                          fluid (quality: 100) {
-                            ...GatsbyImageSharpFluid
-                          } original{
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
-                  field_service_title {
-                    processed
-                  }
-                  field_service_description {
-                    processed
-                  }
-                  field_se {
-                    title
-                    uri
-                  }
-                }
-              }
-            }
+      
 
               node__clinical_product {     
                   field_clinical_id   
@@ -360,9 +329,7 @@ export const productPageQuery = graphql`
       
       taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
         name
-        field_medical_ing_col_footer_mod {
-          processed
-        }
+       
         relationships {
           field_footer_two_section_med_ing{
             relationships {
@@ -809,38 +776,7 @@ export const productPageQuery = graphql`
           }
           relationships {
 
-             field_footer_two_sections {
-        relationships {
-          field_service_card {
-            field_service_name {
-              processed
-            }
-            relationships {
-              field_service_image {
-                localFile {
-                  childImageSharp {
-                    fluid (quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    } original{
-                      src
-                    }
-                  }
-                }
-              }
-            }
-            field_service_title {
-              processed
-            }
-            field_service_description {
-              processed
-            }
-            field_se {
-              title
-              uri
-            }
-          }
-        }
-      }
+      
 
             node__clinical_product {
               field_clinical_id

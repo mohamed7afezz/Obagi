@@ -579,7 +579,7 @@ text-align: center;
 
 #Showbag .modal-header .close{
   padding-left: 32px;
-  top: 36px;
+ 
 }
 #Showbag .empatyState{
   padding-top: 90px;
@@ -2114,6 +2114,7 @@ margin-right: 15px;
  }
  .results-card-container .product-card-con{
    padding-left: 8px;
+   margin-top: 0;
  }
  
   .results-card-container .the-new-product-button{
@@ -2198,12 +2199,18 @@ padding-bottom: 0;
 .results-card-container .the-product-card{
   background-color: transparent;
 }
+.product-card-con{
 
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
 @media (max-width:767px){
  .results-card-container
   .product-card-con {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
   .results-card-container
   .productcarddesc {

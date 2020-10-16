@@ -73,24 +73,8 @@ export const fragment = graphql`
           }
         }
       }
-      field_first_box_title_logo {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-      field_second_box_title_logo {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
+   
+    
     }
   }
 `

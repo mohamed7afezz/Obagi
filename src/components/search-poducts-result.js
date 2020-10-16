@@ -470,7 +470,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
 
 export default SearchProductsResult
 export const fragment = graphql`
-  fragment collectionproducts on taxonomy_term__clinical_skin_concern {
+  fragment collectionproduct on taxonomy_term__clinical_skin_concern {
     relationships {
       node__clinical_product {
         field_clinical_id
