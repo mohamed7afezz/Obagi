@@ -1,7 +1,7 @@
 import React from 'react';
 // import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-// import SEO from '../components/seo';
+import SEO from '../components/seo';
 import CollectionHero from '../components/collection-components/collection-hero'
 import CollectionFooter from '../components/collection-components/collection-footer'
 import CollectionProducts from '../components/collection-components/collectoin-products-list'
@@ -13,7 +13,9 @@ const ClinicalCollectionTemp = props  => {
   
     
     return (
-      <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">            
+      <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
+        {/* <SEO title={props.nodePage.field_meta_tags && props.nodePage.field_meta_tags.title? props.nodePage.field_meta_tags.title : ""} description={props.nodePage.field_meta_tags && props.nodePage.field_meta_tags.description? props.nodePage.field_meta_tags.description : ""}/> */}
+
         <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
         <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data} checktaxonomyType={props.pageContext.checktaxonomyType}/>
@@ -23,6 +25,16 @@ const ClinicalCollectionTemp = props  => {
 export default ClinicalCollectionTemp
 export const productPageQuery = graphql`
     query($slug: String!) {
+      nodePage(fields: { slug: { eq: $slug } }) {
+        id
+        field_meta_tags {
+            description
+            keywords
+            title
+        }
+      }
+    
+
         taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
             name
             ...collectionhero
