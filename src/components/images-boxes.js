@@ -12,7 +12,7 @@ const ImagesBoxes = ({ node }) => {
             <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
             <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></p>
             {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
-            <div><Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} /></div>
+            <div><Img fluid={(node.relationships.field_box_image && node.relationships.field_box_image.localFile && node.relationships.field_box_image.childImageSharp)?node.relationships.field_box_image.localFile.childImageSharp.fluid : ''} className={imagesBoxesStyles.boxImage} /></div>
           </div>
 
         </div>
