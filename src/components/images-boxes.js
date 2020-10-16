@@ -12,7 +12,11 @@ const ImagesBoxes = ({ node }) => {
             <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
             <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></p>
             {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
-            <div><Img fluid={(node.relationships.field_box_image && node.relationships.field_box_image.localFile && node.relationships.field_box_image.childImageSharp)?node.relationships.field_box_image.localFile.childImageSharp.fluid : ''} className={imagesBoxesStyles.boxImage} /></div>
+            <div>
+              {console.log("hafezz",node.relationships)}
+              {(node.relationships.field_box_image && node.relationships.field_box_image.localFile && node.relationships.field_box_image.localFile.childImageSharp)? 
+              <Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
+            </div>
           </div>
 
         </div>
@@ -22,7 +26,10 @@ const ImagesBoxes = ({ node }) => {
             <p dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
             <p dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></p>
             {/* <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
-            <div><Img fluid={(node.relationships.field_second_b && node.relationships.field_second_b.localFile && node.relationships.field_second_b.localFile.childImageSharp)?node.relationships.field_second_b.localFile.childImageSharp.fluid : ''} className={imagesBoxesStyles.boxImage} /></div>
+            <div>
+              {(node.relationships.field_second_b && node.relationships.field_second_b.localFile && node.relationships.field_second_b.localFile.childImageSharp)?
+              <Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
+            </div>
           </div>
 
         </div>
