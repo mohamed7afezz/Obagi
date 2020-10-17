@@ -84,6 +84,8 @@ const Resulte = (props) => {
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Concern</span> {props.questionsResult.q4} </p>
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Type:</span> {props.questionsResult.q5} </p>
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Tone:</span> {props.questionsResult.q6} </p>
+                                                            <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Ingredients:</span> {props.questionsResult.q7} </p>
+
                                                             <button className={resulteSkinStyle.startovermob} onClick={startOver}>Start Over</button>
                                                        
                                                         </div>
@@ -107,6 +109,8 @@ const Resulte = (props) => {
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Concern</span> {props.questionsResult.q4} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Type:</span> {props.questionsResult.q5} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Tone:</span> {props.questionsResult.q6} </p>
+                                        <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Ingredients:</span> {props.questionsResult.q7} </p>
+
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
 
                                     </div>
@@ -164,6 +168,8 @@ const Resulte = (props) => {
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Concern</span> {props.questionsResult.q4} </p>
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Type:</span> {props.questionsResult.q5} </p>
                                                             <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Skin Tone:</span> {props.questionsResult.q6} </p>
+                                                            <p className={resulteSkinStyle.answersMob}><span className={resulteSkinStyle.qtitle}>Ingredients:</span> {props.questionsResult.q7} </p>
+
                                                             <button className={resulteSkinStyle.startovermob} onClick={startOver}>Start Over</button>
                                                        
                                                         </div>
@@ -191,6 +197,8 @@ const Resulte = (props) => {
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Concern</span> {props.questionsResult.q4} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Type:</span> {props.questionsResult.q5} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Skin Tone:</span> {props.questionsResult.q6} </p>
+                                        <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Ingredients:</span> {props.questionsResult.q7} </p>
+
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
                                         <div className={resulteSkinStyle.talktophy}>
                                             <p>If you have detailed questions about your individual skincare or products, it is best to talk to a skincare specialist. Find a Physician</p>

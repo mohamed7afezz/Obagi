@@ -274,57 +274,72 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
 
   }
   function filtersearchData(){
-    if(  document.querySelector('#flitersCon').classList.contains('hide')){
-      document.querySelector('#flitersCon').classList.remove('hide')
-      document.querySelector('.filterprodline ').classList.remove('transparent-bg')
-
-    }else{
-      document.querySelector('#flitersCon').classList.add('hide')
-      document.querySelector('.filterlabel').classList.add('hide')
-      document.querySelector('.filterprodline ').classList.add('transparent-bg')
-
+    let i =document.querySelectorAll('#flitersCon');
+    for(let item of i ){
+      if(  
+        item.classList.contains('hide')){
+          item.classList.remove('hide')
+        document.querySelector('.filterprodline ').classList.remove('transparent-bg')
+  
+      }else{
+        item.classList.add('hide')
+        document.querySelector('.filterlabel').classList.add('hide')
+        document.querySelector('.filterprodline ').classList.add('transparent-bg')
+  
+      }
     }
+  
   }
   function sortSearchData(){
-    if(  document.querySelector('#sortCon').classList.contains('hide')){
-      document.querySelector('#sortCon').classList.remove('hide');
-      document.querySelector('.sortlabel').classList.remove('hide');
-      document.querySelector('.sortprodline').classList.remove('transparent-bg');
-
-    }else{
-      document.querySelector('#sortCon').classList.add('hide')
-      document.querySelector('.sortlabel').classList.add('hide');
-      document.querySelector('.sortprodline').classList.add('transparent-bg');
-
+    let i = document.querySelectorAll('#sortCon')
+    for (let item of i) {
+      if(  item.classList.contains('hide')){
+        item.classList.remove('hide');
+        document.querySelector('.sortlabel').classList.remove('hide');
+        document.querySelector('.sortprodline').classList.remove('transparent-bg');
+  
+      }else{
+        item.classList.add('hide')
+        document.querySelector('.sortlabel').classList.add('hide');
+        document.querySelector('.sortprodline').classList.add('transparent-bg');
+  
+      }
     }
+ 
     
   }  
   function filterIngredientsData(){
-    if(  document.querySelector('#filterIngredients').classList.contains('hide')){
-    document.querySelector('#filterIngredients').classList.remove('hide')
+    let i = document.querySelectorAll('#filterIngredients')
+    for (let item of i) {
+    if(  item.classList.contains('hide')){
+    item.classList.remove('hide')
     document.querySelector('.ingredientlabel').classList.remove('hide')
     document.querySelector('.filterIngredients ').classList.remove('transparent-bg')
 
   }else{
-    document.querySelector('#filterIngredients').classList.add('hide')
+    item.classList.add('hide')
     document.querySelector('.ingredientlabel').classList.add('hide')
     document.querySelector('.filterIngredients ').classList.add('transparent-bg')
 
   }
+}
+
   }
   function filterSkinconcernsearchData(){
-  if(  document.querySelector('#filterSkinconcern').classList.contains('hide')){
-    document.querySelector('#filterSkinconcern').classList.remove('hide')
+    let i = document.querySelectorAll('#filterSkinconcern')
+    for (let item of i) {
+  if(  item.classList.contains('hide')){
+    item.classList.remove('hide')
     document.querySelector('.skinlabel').classList.remove('hide')
     document.querySelector('.filterSkinconcern').classList.remove('transparent-bg')
 
   }else{
-    document.querySelector('#filterSkinconcern').classList.add('hide')
+    item.classList.add('hide')
     document.querySelector('.skinlabel').classList.add('hide')
     document.querySelector('.filterSkinconcern').classList.add('transparent-bg')
 
   }
-
+}
   }
 
   function getDefault(selector, target) {
@@ -357,6 +372,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
           "row",
           productsliststyle.Collectionfiltercontainer,
           "pb-20",
+          "hide-mob"
         ].join(" ")}
       >
         <div
@@ -470,11 +486,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         </Scrollbars>
                       </div>
                </div>
-          </div>
-            
-              
-      
-         
+          </div>     
         </div>
         <div
           className={[
@@ -552,7 +564,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         <div
           className={[
             "col-12",
-            "offset-lg-2",
+            `${dataType == 'clinical' ? 'offset-lg-4' : 'offset-lg-2'}`,
             "col-lg-2",
             productsliststyle.Collectionfilter,
             "Collectionfilter",
@@ -594,7 +606,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                </div>
           </div>   </div>
       </div>
-      
+      <div className={["show-mob",productsliststyle.filtermob].join(" ")}>
+        <button data-toggle="modal" data-target="#collectionPopup" className={["col-12",productsliststyle.filterbtn].join(" ")}>
+          Filters
+        </button>
+      </div>
       {/* List */}
       <div
         className={[
@@ -968,6 +984,266 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
             )
           : ""}
       </div>
+        <div
+        class="modal fade"
+        id="collectionPopup"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p className="filterpopuptitle">Filter</p>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body collectionPopup-body">
+            <div
+          className={[
+          
+            `${dataType == 'clinical' ? 'offset-lg-4' : 'offset-lg-2'}`,
+          
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+
+      <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
+            <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Sort By:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="sortCon">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Newest" defaultChecked={true}/>Newest
+
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Price: Low - High"/>Price: Low - High
+
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Price: High - Low"/>Price: High - Low
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                     
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>   </div>
+     
+            <div
+          className={[
+          
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+
+        <div class="appointment-elemnt advanced-search filterprodline transparent-bg">
+            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="flitersCon">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter">
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalType.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
+
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalType.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
+                            
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>
+            
+         
+        </div>
+        <div
+          className={[
+           
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+      
+            
+      <label className={[productsliststyle.filter,"hide","skinlabel"].join(" ")}>Skin concern:</label>
+
+          <div class="appointment-elemnt advanced-search filterSkinconcern transparent-bg">
+            <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="filterSkinconcern">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalSkin.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
+
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalSkin.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselect(e)}} name="Skin-concern" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
+
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>     
+        </div>
+        <div
+          className={[
+           
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+          ].join(" ")}
+        >
+      
+            
+      <label className={[productsliststyle.filter,"hide","ingredientlabel"].join(" ")}>Ingredients:</label>
+
+          <div class="appointment-elemnt advanced-search filterIngredients transparent-bg">
+            <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients:</p>
+           <div id="prodLinesSelected">
+        
+              <div class="product-lines hide" id="filterIngredients">
+                        <Scrollbars style={{ height: 250 }}>
+                          <ul class="popupUl popupFilter"> 
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value="All"/>All
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            
+                            {checkDataCondition((dataType === 'clinical'), (
+                              <>
+                                {filtersDataQuery.clinicalIngredients.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))}
+
+                            {checkDataCondition((dataType === 'medical'), (
+                              <>
+                                {filtersDataQuery.medicalIngredients.edges.map(({node}) => (
+                                  <li>
+                                    <label class="checkcon terms">
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectIngredients(e)}} name="Ingredients" type="radio" value={node.name}/>{node.name}
+                                      <span className="checkmarkfinder"></span>
+                                    </label>
+                                  </li>
+                                ))}
+                              </>
+                            ))} 
+
+                          </ul>
+                        </Scrollbars>
+                      </div>
+               </div>
+          </div>
+            
+              
+      
+         
+        </div>
+     
+            </div>
+            <div
+          className={[
+           
+            productsliststyle.Collectionfilter,
+            "Collectionfilter",
+            "medical-rx",
+            `${dataType == 'clinical' ? 'd-none' : ''}`
+          ].join(" ")}
+        >
+          <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" onChange={handlePrescribe}/><span class="checkmark"></span></label>
+        </div>
+   
+            <div class="modal-footer">
+        <button type="button" class=" collectionPopup-fbtn" >Cancel</button>
+        <button type="button" class="collectionPopup-fbtn" data-dismiss="modal">APPLY</button>
+      </div>
+          </div>
+        </div>
+      </div>
+    
     </div>
   )
 }
