@@ -3,7 +3,8 @@ import { graphql } from 'gatsby'
 import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 import Paginator from './paginator'
 import FaqRow from './faq-row'
-
+import Customer from '../components/customer-care'
+import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 const FaqWrapper = ({ node }) => {
 
   // console.log('node', node.relationships.field_faq_section)
@@ -65,10 +66,14 @@ const FaqWrapper = ({ node }) => {
   // console.log("list", list);
 
   return (
-    <div className={faqStyles.wrapper}>
-      <div className="container-fluid faq-wrapper">
+    <Customer activeTab="faq">
+      <div className={[faqStyles.wrapper, "faq-wrapper"].join(" ")}>
+        {/* <div className="container-fluid"> */}
+        <div className="d-none d-lg-flex second-title-wrapper">
+          <div className={myAccountStyles.secondTitle}>FAQ’s</div>
+        </div>
         <div className="row">
-          <div className="col-12 col-lg-9 offset-lg-2">
+          <div className="col-12">
             <div id="list">
               {node.relationships.field_faq_section ?
                 <Paginator pagerData={node.relationships.field_faq_section} rowComponent={FaqRow} rowsPerPage={2} />
@@ -76,9 +81,16 @@ const FaqWrapper = ({ node }) => {
             </div>
           </div>
         </div>
+        <div className="row d-lg-none">
+          <div className="col-12">
+            <div className={faqStyles.csTitle}>Customer Service</div>
+            <div className={faqStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+          </div>
+        </div>
 
+        {/* </div> */}
       </div>
-    </div>
+    </Customer>
   )
 }
 

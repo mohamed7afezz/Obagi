@@ -6,6 +6,7 @@ import { phyFinder } from "../../assets/js/phy-finder"
 import { CustomSelect } from "../../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
 import Layout from "../../components/layout"
+import SEO from '../../components/seo';
 
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -181,6 +182,8 @@ export default function Finder({ data }) {
 
   return (
     <Layout>
+      <SEO title="Healthcare Professional Finder" description="Healthcare Professional Finder Description" />
+
       <div className="container">
         <div className="row">
           <div className="col">
@@ -668,7 +671,7 @@ export default function Finder({ data }) {
 }
 
 export const productsLine = graphql`
-  query {
+  query{
     productLines: allTaxonomyTermMedicalProductLines {
       edges {
         node {

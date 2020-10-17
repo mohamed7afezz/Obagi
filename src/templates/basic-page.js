@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-// import SEO from '../components/seo';
+import SEO from '../components/seo';
 
 import { getParagraph } from '../components/paragraphs-helper';
 
@@ -12,7 +12,7 @@ const BasicPageTemp = ({ data }) => {
     
     return (
         <Layout menuType = {menutype} nodeType={pageType}>
-            {/* <SEO title={data.nodePage.field_meta_tags.title} description={data.nodePage.field_meta_tags.description}/> */}
+            <SEO title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""}/>
             {paragraphs}
         </Layout>
     )
