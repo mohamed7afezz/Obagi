@@ -611,7 +611,7 @@ padding-bottom: 134px;
     flex-direction: column;
   }
 }
-.RemoveBag,.Showshipping .ShowBag,.showinfp{
+.RemoveBag,.showinfp{
   display: none !important;
 }
 .Showshipping .RemoveBag,.Showshipping .showinfp{

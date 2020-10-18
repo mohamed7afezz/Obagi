@@ -327,7 +327,6 @@ const ProductSuggestion = ({ node }) => {
     }
 
     recommendedList = tempList;
-    console.log('bahiiii', recommendedList);
     return recommendedList;
   }
 

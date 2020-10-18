@@ -407,7 +407,7 @@ const YourBag = (props, {notificationId}) => {
   let hydrateId = data.hydrate.field_medical_id ? data.hydrate.field_medical_id : "";
 
 
-  const { state, removeItemFromCart, updateCartItemQuantity } = useContext(
+  const { state, removeItemFromCart, updateCartItemQuantity,fetchShippingMethods, changeShippingMethods,showShippingMethods } = useContext(
     CartContext
   )
   const {
@@ -423,7 +423,10 @@ const YourBag = (props, {notificationId}) => {
 
 
   function togglebag(e) {
-    document.querySelector(".bagDataConten").classList.toggle("Showshipping")
+    if(state.shippingLoading){
+      fetchShippingMethods();
+    }
+    showShippingMethods(!state.showShippingMethods);
   }
   function coupon(e) {
     document.querySelector(".bagDataConten").classList.toggle("showCoupon")
@@ -605,7 +608,7 @@ const YourBag = (props, {notificationId}) => {
                   BagStyle.bagDataContainer,
                 ].join(" ")}
               ><div className={BagStyle.giveBorder}>
-                  <div class="bagDataConten">
+                  <div class="bagDataConten Showshipping">
                     <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
                       <span className={BagStyle.bagtitles}>
                         <strong>Subtotal</strong>
@@ -615,7 +618,7 @@ const YourBag = (props, {notificationId}) => {
                     <div>
                       <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>
                         <span className={BagStyle.bagtitles}>
-                          <strong>Est. Shipping</strong>
+                          <strong>Shipping</strong>
                         </span>
                         <span>
                           <button
@@ -627,9 +630,9 @@ const YourBag = (props, {notificationId}) => {
                               "ShowBag",
                             ].join(" ")}
                           >
-                            Add Info
+                            {state.showShippingMethods == 0?'Select':'Cancel'}
                         </button>
-                          <button
+                          {/* <button
                             onClick={e => togglebag(e)}
                             className={[
                               "btn",
@@ -637,43 +640,71 @@ const YourBag = (props, {notificationId}) => {
                               "RemoveBag",
                             ].join(" ")}
                           >
-                            Remove
-                        </button>
+                            Cancel
+                        </button> */}
                         </span>
                       </div>
-                      <div className={"showinfp"}>
-                        <div className={BagStyle.bagSelectContainer}>
-                          <label>Country</label>
-                          <select className={BagStyle.bagSelect} name="Country">
-                            <option value="All">Select</option>
-                            <option value="Hyaluronic Acid">
-                              Hyaluronic Acid
-                          </option>
-                          </select>
+                      {state.showShippingMethods?
+                        <div className={"showinfp"}>
+                          {/* <div className={BagStyle.bagSelectContainer}>
+                            <label>Country</label>
+                            <select className={BagStyle.bagSelect} name="Country">
+                              <option value="All">Select</option>
+                              <option value="Hyaluronic Acid">
+                                Hyaluronic Acid
+                            </option>
+                            </select>
+                          </div>
+                          <div className={BagStyle.bagSelectContainer}>
+                            <label>State/Province</label>
+                            <select className={BagStyle.bagSelect} name="Country">
+                              <option value="All">Select</option>
+                              <option value="Hyaluronic Acid">
+                                Hyaluronic Acid
+                            </option>
+                            </select>
+                          </div>
+                          <div className={BagStyle.baginputtext}>
+                            <label>Suburb/City</label>
+                            <input type="text" name="Suburb/City" />
+                          </div>
+                          <div className={BagStyle.baginputtext}>
+                            <label>Zip Code</label>
+                            <input type="text" name="Zip Code" />
+                          </div>
+                          <button
+                            className={["btn", BagStyle.shippingbtn].join(" ")}
+                          >
+                            Estimate Shipping
+                          </button> */}
+                          {!state.shippingLoading?
+                          <>
+                            {state.shippingMethods.length > 0 ? state.shippingMethods
+                            .map(method => (
+                            <>
+                              {(method.settings
+                              && method.settings.carrier_options 
+                              && method.settings.carrier_options.minimum_sub_total
+                              && cartAmount < parseFloat(method.settings.carrier_options.minimum_sub_total))?
+                              ''
+                              :
+                                <>
+                                  <input type="radio" id={method.id} 
+                                    name="me" value={method.settings.rate?method.settings.rate:0 } 
+                                    checked={state.selectedShippingMethodsId == method.id}
+                                    onClick={changeShippingMethods}
+                                  />
+                                  <label htmlFor={method.id}>{method.name}</label>
+                                  <label htmlFor={method.id}>{method.settings.rate?'$' + method.settings.rate:'FREE'}</label>
+                                  <br></br>
+                                </>
+                              }
+                            </>
+                            )):''}
+                          </>
+                          :'Loading..'}
                         </div>
-                        <div className={BagStyle.bagSelectContainer}>
-                          <label>State/Province</label>
-                          <select className={BagStyle.bagSelect} name="Country">
-                            <option value="All">Select</option>
-                            <option value="Hyaluronic Acid">
-                              Hyaluronic Acid
-                          </option>
-                          </select>
-                        </div>
-                        <div className={BagStyle.baginputtext}>
-                          <label>Suburb/City</label>
-                          <input type="text" name="Suburb/City" />
-                        </div>
-                        <div className={BagStyle.baginputtext}>
-                          <label>Zip Code</label>
-                          <input type="text" name="Zip Code" />
-                        </div>
-                        <button
-                          className={["btn", BagStyle.shippingbtn].join(" ")}
-                        >
-                          Estimate Shipping
-                      </button>
-                      </div>
+                      :''}
                     </div>
                     <div className={"couponContainer"}>
                       <div
@@ -749,7 +780,7 @@ const YourBag = (props, {notificationId}) => {
                         <strong>Subtotal</strong>
                       </span>{" "}
                       <span>
-                        <strong>${cartAmount}</strong>
+                        <strong>${cartAmount+ parseFloat(state.estShipping)}</strong>
                       </span>
                     </p>
                     <form

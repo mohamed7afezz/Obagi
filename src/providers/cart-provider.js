@@ -21,7 +21,12 @@ const initialState = {
     lineItems: {},
     numberItems: 0,
     redirectUrls: {}
-  }
+  },
+  shippingLoading: true,
+  showShippingMethods: false,
+  estShipping: 0,
+  selectedShippingMethodsId: 0,
+  shippingMethods: []
 };
 
 export const CartProvider = ({ children }) => {
@@ -29,11 +34,11 @@ export const CartProvider = ({ children }) => {
   const [notifications, updateNotifications] = useState([]);
 
   const addNotification = (text, type = 'notify') => {
-    updateNotifications([...notifications, { text, type, id: Date.now() }]);
+   updateNotifications([...notifications, { text, type, id: Date.now() }]);
   };
 
   const removeNotification = id => {
-    updateNotifications([]);
+   updateNotifications([]);
   };
 
   const fetchCart = () => {
@@ -57,7 +62,7 @@ export const CartProvider = ({ children }) => {
 
   // eslint-disable-next-line
   useEffect(() => fetchCart(), []);
-
+  
   const refreshCart = response => {
     
     if (response.status === 204 || response.status === 404) {
@@ -66,7 +71,7 @@ export const CartProvider = ({ children }) => {
       const lineItems = response.data.line_items;
       const cartAmount = response.data.cart_amount;
       const currency = response.data.currency;
-      
+
       setState({
         ...state,
         cartLoading: false,
@@ -86,7 +91,7 @@ export const CartProvider = ({ children }) => {
     }
     
   };
-
+  
   const addToCart = async (productId ,retry, quantity) => {
     let findedProduct;
     if(state.cart.lineItems.physical_items){
@@ -237,11 +242,89 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  //Shipping
+  const fetchShippingMethods = () => {
+    fetch(`${baseUrl}bigcommerce/v1/shipping/zones/1/methods`, {
+      credentials: 'same-origin',
+      mode: 'cors'
+    })
+      .then(res => res.json())
+      .then(response => {
+        addShippingMethods(response);
+      })
+      .catch(error => {
+        console.log("Error fetch Shipping Methods", error);
+      });
+  };
+  const addShippingMethods = response => {
+    
+    if (response.status === 204 || response.status === 404) {
+      //
+      console.log("Error fetch Shipping Methods", response);
+    } else {
+      
+      let defulteShippingMethodsId = 0;
+      let enabledShippingMethods = [];
+      if(response.length>0){
+        response.forEach(element => {
+          //show only enabled methods
+          if(element.enabled){
+            enabledShippingMethods.push(element);
+          }
+        });
+      }
+
+      if(enabledShippingMethods.length > 0){
+        //sort Shipping Methods by rate
+        enabledShippingMethods.sort(function(a, b) {
+          let aRate = a.settings.rate?a.settings.rate:0;
+          let bRate = b.settings.rate?b.settings.rate:0;
+          return parseFloat(aRate) - parseFloat(bRate);
+        });
+
+        //set defulte Shipping Methods to first one after sorting
+        //defulteShippingMethodsId = enabledShippingMethods[0].id;
+      }
+     
+      //update state with methods
+      setState({
+        ...state,
+        shippingLoading: false,
+        showShippingMethods: true,
+        selectedShippingMethodsId: defulteShippingMethodsId,
+        shippingMethods: enabledShippingMethods
+      });
+    }
+    
+  };
+  const changeShippingMethods = (e) => {
+     //update state with methods
+     let id = e.target.id;
+     let rate = e.target.value;
+     setState({
+      ...state,
+      selectedShippingMethodsId: id,
+      estShipping: rate
+    });
+  };
+  const showShippingMethods = (value) => {
+    //update state with methods
+    setState({
+     ...state,
+     selectedShippingMethodsId: 0,
+     estShipping: 0,
+     showShippingMethods: value
+   });
+  };
+  
   return (
     <CartContext.Provider
       value={{
         state,
         addToCart,
+        fetchShippingMethods,
+        changeShippingMethods,
+        showShippingMethods,
         removeItemFromCart,
         updateCartItemQuantity,
         notifications,
