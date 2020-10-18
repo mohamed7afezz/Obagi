@@ -265,7 +265,12 @@ return (
             <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
           </div>
         </div>
+          <div class="row">
+            <div class=" col-12">
+            <p class="mb-16">Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
 
+            </div>
+          </div>
         <div className="row">
           <div className="col-lg-4 col-12">
             <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>

@@ -607,7 +607,9 @@ const YourBag = (props, {notificationId}) => {
                   "bagDataContainer",
                   BagStyle.bagDataContainer,
                 ].join(" ")}
-              ><div className={BagStyle.giveBorder}>
+              >
+                <p className={BagStyle.ordersummary}>Order Summary</p>
+                <div className={BagStyle.giveBorder}>
                   <div class="bagDataConten Showshipping">
                     <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
                       <span className={BagStyle.bagtitles}>
@@ -689,19 +691,27 @@ const YourBag = (props, {notificationId}) => {
                               ''
                               :
                                 <>
+                                <div class="d-flex shipping-flex">
+                                  <label class="radioLabel">
                                   <input type="radio" id={method.id} 
                                     name="me" value={method.settings.rate?method.settings.rate:0 } 
                                     checked={state.selectedShippingMethodsId == method.id}
                                     onClick={changeShippingMethods}
                                   />
-                                  <label htmlFor={method.id}>{method.name}</label>
-                                  <label htmlFor={method.id}>{method.settings.rate?'$' + method.settings.rate:'FREE'}</label>
-                                  <br></br>
+                                    {method.name}
+                                  <span class="radiomark"></span>
+                                  </label>
+                                  <label >{method.settings.rate?'$' + method.settings.rate:'FREE'}</label>
+                                  </div>
                                 </>
                               }
                             </>
+                            
                             )):''}
+                               <p class="shipping-footnote">*Please allow for up to 48 hours to processing time.</p>
+
                           </>
+                          
                           :'Loading..'}
                         </div>
                       :''}

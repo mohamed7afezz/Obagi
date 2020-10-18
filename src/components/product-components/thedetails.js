@@ -9,8 +9,8 @@ const Details = ({ node }) => {
         <div className={["container-fluid", "detailHero" ,detailsStyles.detailHero].join(" ")}>
             <div className={"row"}>
                {
-                   data.field_detail_safe.map(item => (
-                    <div className={["col-12", "col-lg-4", "offset-lg-1"].join(" ")}>
+                   data.field_detail_safe.map((item,index )=> (
+                    <div className={["col-12", `${index===0?"col-lg-4":"col-lg-5"}`, "offset-lg-1"].join(" ")}>
                         <div className={detailsStyles.detail}>
                             {
                             item.field_sec?
