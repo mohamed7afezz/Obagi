@@ -3,9 +3,11 @@ import React, { useEffect } from "react"
 import "../assets/scss/components/physfinder-old.scss"
 import "../assets/scss/components/physfinder.scss"
 import Layout from "../components/layout"
+import SEO from '../components/seo';
+import { graphql } from 'gatsby';
 // import {phyfinder} from '../assets/js/phy'
 
-const PhysFinder = () => {
+const PhysFinder = ({ data }) => {
     useEffect(() => {
         
         if(typeof window !== 'undefined') {
@@ -26,6 +28,8 @@ const PhysFinder = () => {
   //   $("head").append(s);
   return (
     <Layout>
+      <SEO title="Physician Finder" description="Physician Finder Page Description" />
+
       <div class="container">
         <div id="phys-finder">
           <form id="phys-finder-form">

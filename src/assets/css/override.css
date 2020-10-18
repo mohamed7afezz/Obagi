@@ -1687,6 +1687,8 @@ font-weight: 500;
 .appointment-body{
 
 }
+#collectionPopup .modal-header .close::after,
+#collectionPopup .modal-header .close::before, 
 #appointment .modal-header .close::before, 
 #related-products .modal-header .close::before, 
 #appointment .modal-header .close::after,
@@ -1694,7 +1696,7 @@ font-weight: 500;
 top: 32%;
 height:  32px;
 }
-#appointment .modal-header,#related-products .modal-header{
+#appointment .modal-header,#related-products .modal-header,#collectionPopup .modal-header{
   border-bottom: 0;
 }
 #appointment .custom-select{
@@ -1731,7 +1733,7 @@ height:  32px;
     line-height: 24px;
   }
 @media (max-width:767px){
-  #appointment .modal-dialog,#related-products .modal-dialog{
+  #appointment .modal-dialog,#related-products .modal-dialog,#collectionPopup .modal-dialog{
     margin: 0;
   }
   #advancedSearch{
@@ -1850,13 +1852,98 @@ height:  32px;
   align-items: center;
 
 }
-#advancedSearch .modal-header .close,#appointment .modal-header .close,#related-products .modal-header .close{
+#collectionPopup{
+  z-index: 99999;
+}
+#collectionPopup .modal-content{
+  height: 100vh;
+}
+#advancedSearch .modal-header .close,#appointment .modal-header .close,#related-products .modal-header .close,#collectionPopup .modal-header .close{
   height: 44px;
 }
-#advancedSearch .modal-header,#appointment .modal-header,#related-products .modal-header{
+#advancedSearch .modal-header,#appointment .modal-header,#related-products .modal-header,#collectionPopup .modal-header {
   height: 45px;
   padding: 0;
-}#flitersCon{
+}
+#collectionPopup .modal-header{
+
+  align-items: center;
+
+  height: auto;
+  padding: 16px 16px 35px;
+}
+#collectionPopup .Collectionfilter .input-name{
+  padding-left: 0;
+}
+#collectionPopup .Collectionfilter .advanced-search{
+border: 0;
+border-bottom: 1px solid;
+border-radius: 0;
+}
+#collectionPopup .Collectionfilter .sortprodline  {
+  border-top: 1px solid;
+}
+#collectionPopup .Prescription{
+padding-top: 0;
+padding-bottom: 0;
+color: #fff;
+font-size: 18px;
+line-height: 24px;
+font-weight: 500;
+}
+#collectionPopup .modal-footer{
+  background-color: #f3f4fb;
+  padding-top: 24px;
+  padding-bottom: 24px;
+display: flex;
+justify-content: center;
+}
+.collectionPopup-fbtn{
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 1.2px;
+font-weight: 700;
+padding-top: 16px;
+padding-bottom: 16px;
+padding-left: 45px;
+padding-right: 45px;
+background: transparent;
+color: #132466;
+border:1px solid #132466;
+margin-left: 8px;
+margin-right: 8px;
+transition: all ease 300ms;
+border-radius: 6px;
+}
+.collectionPopup-fbtn:hover{
+  background-color: #132466;
+  color:#f3f4fb ;
+}
+#collectionPopup .checkmark,#collectionPopup .terms input:checked ~ .checkmark{
+border:1px solid #fff;
+}
+#collectionPopup .Collectionfilter{
+  padding-bottom: 0;
+}
+#collectionPopup .medical-rx{
+  margin-top: auto;
+  padding-top: 12px;
+  padding-left: 28px;
+  padding-bottom: 12px;
+  background-color: #132466;
+}
+#collectionPopup .modal-header .close {
+height: 28px;
+}
+.collectionPopup-body{
+  padding-top: 0;
+}
+#collectionPopup .modal-header p{
+font-size: 18px;
+line-height: 24px;
+font-weight: 500;
+}
+#flitersCon{
   background-color: #fff;
 
 }

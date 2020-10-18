@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import SEO from '../components/seo';
+
 
 import { getProductParagraph } from "../components/paragraphs-helper";
 
@@ -21,6 +23,9 @@ const ProductPage = props => {
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
+        <SEO title={nodeType === "clinical"? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title? data.nodeClinicalProduct.field_clinical_metatags.title : "" )
+        : nodeType === "medical"? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title? data.nodeMedicalProduct.field_medical_metatags.title : "" ) : ""} />
+
         <div itemscope="" itemtype="https://schema.org/Product">
           <ProductHero data={data} nodeType={nodeType} />
           {paragraphs}
@@ -40,6 +45,10 @@ export const productPageQuery = graphql`
     query($slug: String!) {
         nodeClinicalProduct(fields: { slug: { eq: $slug } }) {
             title
+            field_clinical_metatags {
+                description
+                title
+              }
             field_clinical_price
             field_clinical_weight_unit
             field_clinical_upc
@@ -102,6 +111,10 @@ export const productPageQuery = graphql`
         },
         nodeMedicalProduct(fields: { slug: { eq: $slug } }) {
             title
+            field_medical_metatags {
+                description
+                title
+              }
             field_medical_premier_points
             field_medical_price
             field_medical_upc
