@@ -44,7 +44,7 @@ const Q7 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">What product types or ingredients are you looking for?</div>
-                    <div className="question-text">Tell us what ingedients you are interesting in finding in your skincare products when searching for the perfect skincare solution.</div>
+                    <div className="question-text">Tell us what ingedients you are interesting in finding in your Skin care products when searching for the perfect Skin care solution.</div>
                 </div>
             </div>
 

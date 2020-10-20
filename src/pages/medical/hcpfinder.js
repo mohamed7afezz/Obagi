@@ -112,7 +112,7 @@ export const ProductLineComp = ({line}) => {
             Not available in select states including MA, MT, NH, NY, and TX, due
             to state regulations regarding the ability of physicians to dispense
             prescription drug products in their offices. For an effective,
-            cosmetic skin-brightening option, learn about the Obagi-C® Fx
+            cosmetic skin-brightening option, learn about the Obagi-C<sup>®</sup> Fx
             System.
           </p>
       </>
@@ -266,8 +266,8 @@ export default function Finder({ data }) {
                 </div>
               </div>
               <p class="covid show-mob">
-                COVID-19 UPDATE: Skincare professional partners openings and
-                hours may vary based on location. Please contact your skincare
+                -19 UPDATE: Skin care professional partners' openings and
+                hours may vary based on location. Please contact your Skin care
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
@@ -283,8 +283,8 @@ export default function Finder({ data }) {
                 </button>
               </div>
               <p class="covid hide-mob">
-                COVID-19 UPDATE: Skincare professional partners openings and
-                hours may vary based on location. Please contact your skincare
+                COVID-19 UPDATE: Skin care professional partners' openings and
+                hours may vary based on location. Please contact your Skin care
                 professional directly to learn more.
               </p>
             </div>
@@ -341,7 +341,7 @@ export default function Finder({ data }) {
             representations or warranties of any kind as to services provided by
             any of the physicians listed, and expressly disclaim any and all
             liability for damages, including without limitation, direct,
-            incidental, special, consequential, indirect or punitive damages,
+            incidental, special, consequential, indirect or punitive damages
             relating to your use of the information provided or the actions of
             any of the physicians listed.
           </p>
