@@ -885,7 +885,7 @@ const YourBag = (props, {notificationId}) => {
             <div className={ShowBagStyle.bottomHalf}>
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-              <div className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</div>
+              <div className={ShowBagStyle.bottomLink}><Link to="/skin-analyzer"> TAKE THE QUIZ</Link></div>
               <div className={ShowBagStyle.image}>{data.skinanalyzerMob? data.skinanalyzerMob.childImageSharp?<Img fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
@@ -900,7 +900,7 @@ const YourBag = (props, {notificationId}) => {
                   <div className={ShowBagStyle.bottomHalf}>
                     <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-                    <Link to="#" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</Link>
+                    <Link to="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ</Link>
                   {/* </div> */}
                 {/* </div> */}
               </div>

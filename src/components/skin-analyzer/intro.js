@@ -32,7 +32,7 @@ const Intro = (props) => {
                             <div className="intro-text">Discover what works for you and your skin! Answer the following questions, and we'll recommend product with your top concerns in mind.</div>
                         </div>
                         <div className="col-12 col-lg-6 offset-lg-3">
-                            <button className="button-link" onClick={sendBackData}>Take the Quiz</button>
+                            <button href="/skin-analyzer" className="button-link" onClick={sendBackData}>Take the Quiz</button>
                         </div>
                     </div>
                 </div>
