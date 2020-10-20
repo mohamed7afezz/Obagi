@@ -723,7 +723,7 @@ const YourBag = (props, {notificationId}) => {
                             </>
                             
                             )):''}
-                               <p class="shipping-footnote">*Please allow for up to 48 hours to processing time.</p>
+                               <p class="shipping-footnote">*Please allow for up to 1 business day for order processing.</p>
 
                           </>
                           
