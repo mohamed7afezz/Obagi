@@ -12,7 +12,7 @@ const BasicPageTemp = ({ data }) => {
     
     return (
         <Layout menuType = {menutype} nodeType={pageType}>
-            <SEO title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""}/>
+            <SEO title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription= {data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_description? data.nodePage.field_meta_tags.og_description : ""} ogTitle= {data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_title? data.nodePage.field_meta_tags.og_title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image? data.nodePage.field_meta_tags.og_image : ""}/>
             {paragraphs}
         </Layout>
     )
@@ -61,6 +61,9 @@ query($slug: String!) {
             description
             keywords
             title
+            og_description
+            og_image
+            og_title
         }
         field_menu_type
         field_page_type

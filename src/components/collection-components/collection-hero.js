@@ -898,7 +898,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                             <div
                               className={[
                                 "col-12",
-                                "col-lg-4",
+                                "col-lg-5",
                                 "offset-lg-1",
                                 Collectionherostyle.Collectionheroleftcol,
                                 "Collectionheroleftcol",
@@ -956,9 +956,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                             {checkTaxonomy.relationships ? (
                               <div
                                 className={[
-                                  "col-lg-7",                                
+                                  "col-lg-5",                                
                                   "col-12",
-                                  
+                                  "offset-lg-1",
                                   "Collectionherorightcol",
                                 ].join(" ")}
                               >

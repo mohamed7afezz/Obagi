@@ -58,6 +58,8 @@ let productCount = 0;
 let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
   return currentName.includes(item.node.name.split(' ')[0])
 })[0];
+let paragraphId = node.field_featured_paragraph_id? node.field_featured_paragraph_id.processed : null;
+console.log("ash", paragraphId)
 
 //console.log('current', currentName)
 
@@ -95,7 +97,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
       </div>
 
 
-      {node.field_image_right == true ? <div className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
+      {node.field_image_right == true ? <div name={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
         <div className="container-fluid d-none d-lg-block">
           <div className="row">
 
@@ -126,7 +128,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
         </div>
       </div>
         :
-        <div className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
+        <div name={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
           <div className="container-fluid d-none d-lg-block">
             <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
@@ -167,6 +169,9 @@ export default Featured
 export const fragment = graphql`
     fragment paragraphFeaturedSection on paragraph__featured_section {
           id
+          field_featured_paragraph_id {
+            processed
+          }
           field_featured_button {
             title
             uri
