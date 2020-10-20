@@ -16,7 +16,17 @@ import {
 
 
 
+let thanksmodal =()=>{
+  document.querySelector("#formsubmition").classList.remove('hidden')
+  var container = document.querySelector("#formsubmition .container");
 
+  document.querySelector("#formsubmition").addEventListener("click", function (e) {
+    if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
+    document.querySelector("#formsubmition").classList.add("hidden");
+  });
+
+  
+}
 
 
 const Footer = ({ siteTitle }) => {
@@ -71,6 +81,7 @@ const Footer = ({ siteTitle }) => {
      }
      
      obj[item.getAttribute("name")]=item.value;
+     thanksmodal();
   }
   
   

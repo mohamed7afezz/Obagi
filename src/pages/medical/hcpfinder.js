@@ -66,7 +66,24 @@ function submitforming(e){
  obj[document.querySelector('.needs-validations select').getAttribute("name")]=`${document.querySelector('.needs-validations select').value}`
   
 sendFormValues({obj})
+ document.querySelector("#formsubmition").classList.remove('hidden')
+var container = document.querySelector("#formsubmition .container");
+
+document.querySelector('body').classList.remove('modal-open')
+document.querySelector('#appointment').classList.remove('in');
+document.querySelector('#appointment').classList.remove('showmodal')
+document.querySelector("#appointment").setAttribute('aria-modal',"")
+document.querySelector("#appointment").setAttribute("aria-hidden","true")
+document.getElementById("appointment").style.display = "none"
+document.getElementById("appointment").className += document.getElementById("appointment").className.replace("show", "")
+document.querySelector("#formsubmition").addEventListener("click", function (e) {
+  if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
+  document.querySelector("#formsubmition").classList.add("hidden");
+});
+document.querySelector(".modal-backdrop.fade.show").remove();
+document.querySelector(".modal-backdrop.fade.in").remove();
 }
+
 }
 export const ProductLineComp = ({line}) => {
 

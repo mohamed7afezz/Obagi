@@ -342,23 +342,69 @@ const ProductSuggestion = ({ node }) => {
         You might Also Like
       </h1>
       <div className={["row", productsuggestion.ordering].join(" ")}>
-        <div className={`col-lg-12 ${productsuggestion.slickcon}`}>
-        <Slider {...settings}>
-          {
+      {
             getRecommendedProducts(lineItems.physical_items).length > 0? getRecommendedProducts(lineItems.physical_items).map(product => (
-              <ProductCard
+          
+        <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
+   
+          <ProductCard
                 producttitle={product.title}
                 productId={isClinical? product.field_clinical_id : product.field_medical_id}
                 productimage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
                 price={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
-                // productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
+                 productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
               />
-            )) : ''
-          }
-        </Slider>
+           
+       
         </div>
+         )) : <>
+           <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
+   
+   <ProductCard
+         producttitle={data.professionalC.title?data.professionalC.title:""}
+         productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id :""}
+         productimage={data.professionalC.relationships?data.professionalC.relationships.field_medical_image[0]?data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
+         price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
+         productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
+         productLink={data.professionalC.path.alias}
+         productdescription={{
+          __html:
+          data.professionalC.field_medical_description?data.professionalC.field_medical_description.processed:"",
+        }}       />
+    
+
+ </div>
+ <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
+ <ProductCard
+         producttitle={data.elastiderm.title?data.elastiderm.title:""}
+         productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id :""}
+         productimage={data.elastiderm.relationships?data.elastiderm.relationships.field_medical_image[0]?data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
+         price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
+         productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
+         productLink={data.elastiderm.path.alias}
+         productdescription={{
+          __html:
+          data.elastiderm.field_medical_description?data.elastiderm.field_medical_description.processed:"",
+        }}   />
+ </div>
+ <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
+ <ProductCard
+         producttitle={data.hydrate.title?data.hydrate.title:""}
+         productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id :""}
+         productimage={data.hydrate.relationships?data.hydrate.relationships.field_medical_image[0]?data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
+         price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
+         productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id:""}
+         productLink={data.hydrate.path.alias}
+         productdescription={{
+          __html:
+          data.hydrate.field_medical_description?data.hydrate.field_medical_description.processed:"",
+        }}       />
+ </div>
+         
+         </>
+        }
       </div>
     </div>
   )
 }
-export default ProductSuggestion
+export default ProductSuggestion;

@@ -2354,7 +2354,7 @@ padding-bottom: 0;
 }
 .shipping-flex{
   justify-content: space-between;
-  margin-bottom: 16px;
+ 
 }
 .shipping-flex .radioLabel{
   margin-bottom: 0;
@@ -2369,4 +2369,64 @@ padding-bottom: 0;
   border-bottom: 1px solid #d6d6d6;
   margin-bottom: 25px;
   padding-bottom: 25px;
+}
+#formsubmition .modal-body{
+  padding: 100px;
+}
+#formsubmition .container{
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (max-width:767px){
+  #formsubmition .modal-body{
+    padding: 50px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  #formsubmition h1{
+    text-align: center;
+  }
+}
+#Showbag  .prodsuggest{
+  display: none;
+}
+.BagContainer  .prodrecom{
+  display: none;
+}
+.BagContainer .recommendedTitle{
+  display: none;
+}
+.BagContainer .recommendedWrapper,.BagContainer .productsuggestioncon{
+  background-color: #e6f3f5;
+}
+#Showbag .BagContainer  .recommendedWrapper{
+  background-color: #f8f8f8;
+}
+#Showbag .BagContainer  .prodrecom{
+  display: block;
+}
+
+#Showbag .BagContainer  .recommendedTitle{
+  display: block;
+}
+#Showbag{
+  position: fixed;
+  top: 0 !important;
+}
+.product-card-img .custom-img{
+  max-height: none;
+  max-width: 250px;
+width: auto;
+margin-left: auto;
+margin-right: auto;
+}
+.shipmenttxt{
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  padding-left: 35px;
+}
+.collectionPopup-fbtn{
+  width: 100%;
 }

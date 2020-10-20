@@ -10,6 +10,9 @@
     padding-bottom: 112px;
 }
 }
+.ordering{
+    justify-content: center;
+}
 .productsuggestionhead{
     @extend %futurapt-light;
     font-size: 48px;
@@ -27,4 +30,8 @@
 
 
     overflow: hidden;
+}
+ .slickcon{
+    padding-top: 24px
+
 }

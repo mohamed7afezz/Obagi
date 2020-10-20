@@ -1237,7 +1237,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         </div>
    
             <div class="modal-footer">
-        <button type="button" class=" collectionPopup-fbtn" >Cancel</button>
+        <button type="button" class=" collectionPopup-fbtn hide" >Cancel</button>
         <button type="button" class="collectionPopup-fbtn" data-dismiss="modal">APPLY</button>
       </div>
           </div>

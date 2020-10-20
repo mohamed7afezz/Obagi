@@ -45,7 +45,14 @@ const Layout = ({ children,nodeType,menuType}) => {
         <Footer />
         <Popup/>
       </div>
-
+          <div class="modal hidden" id="formsubmition">
+           <div class="container">
+              <div class="modal-body">
+                  <h1>Thank You For Submition</h1>
+                  <p>Your Request Has Been submitted</p>
+              </div>
+           </div>
+         </div>
     </div>
   )
 }

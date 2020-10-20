@@ -485,7 +485,15 @@ const YourBag = (props, {notificationId}) => {
 
     return recommendedList;
   }
-
+  let shipmenttext =(id)=>{
+    if(id === 2){
+      return <p className="shipmenttext">5-7 Business Days*</p>
+    }else if (id === 4){
+      return <p className="shipmenttext">2 Business Days*</p>
+    }else if (id === 5){
+      return <p className="shipmenttext">1 Business Day*</p>
+    }
+  }
   
   let bagContent
   //check if cart is  sill loading
@@ -532,24 +540,30 @@ const YourBag = (props, {notificationId}) => {
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
                 {/* recommended products section */}
                 {/* {console.log('bahiiii', lineItems.physical_items)} */}
-                <div className={`${ShowBagStyle.recommendedWrapper} ${lineItems.physical_items.length > 3 ? 'hide' : ''}`}>
-                  <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
-                  {getRecommendedProducts(lineItems.physical_items).length > 0?getRecommendedProducts(lineItems.physical_items).map(product => {
-                    return (
-                      <RecommendedProduct
-                        recId={isClinical? product.field_clinical_id : product.field_medical_id}
-                        recTitle={product.title ? product.title : ""}
-                        recLink={product.path.alias ? product.path.alias : ""}
-                        recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
-                        recPrice={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
-                      />
-                    )
-                  })  : ''
-                }
-                  
-                </div> 
-                {/* : ""} */}
+               {/* : ""} */}
+               {
+        <div className={[ShowBagStyle.recommendedWrapper,"recommendedWrapper"].join(' ')}>
+        <div className={[ShowBagStyle.recommendedTitle,"recommendedTitle"].join(" ")}>Recommended</div>
+        <div className="prodrecom">
+        <RecommendedProduct
+          recId={profProductId}
+          recTitle={data.professionalC.title ? data.professionalC.title : ""}
+          recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
+          recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+          recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
+        />
 
+        <RecommendedProduct
+          recId={elastiProductId}
+          recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
+          recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
+          recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+          recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
+        />
+         </div>
+       
+      </div>
+          }
 
               {/* <p className={ShowBagStyle.footnote}>
                 Shipping and taxes calculated at checkout.
@@ -703,6 +717,7 @@ const YourBag = (props, {notificationId}) => {
                                   </label>
                                   <label >{method.settings.rate?'$' + method.settings.rate:'FREE'}</label>
                                   </div>
+                                  <p className="shipmenttxt">{shipmenttext(method.id)}</p>
                                 </>
                               }
                             </>
@@ -712,7 +727,13 @@ const YourBag = (props, {notificationId}) => {
 
                           </>
                           
-                          :'Loading..'}
+                          :   <div>
+                          <ClipLoader
+                      css={spinner}
+                       size={100}
+                       color={"#123abc"}
+            />           
+            </div>  }
                         </div>
                       :''}
                     </div>
@@ -886,9 +907,10 @@ const YourBag = (props, {notificationId}) => {
             </div>
           </div>
 
-          <div className={ShowBagStyle.recommendedWrapper}>
-            <div className={ShowBagStyle.recommendedTitle}>Recommended</div>
-
+         
+          <div className={[ShowBagStyle.recommendedWrapper,"recommendedWrapper"].join(' ')}>
+            <div className={[ShowBagStyle.recommendedTitle,"recommendedTitle"].join(" ")}>Recommended</div>
+            <div className="prodrecom">
             <RecommendedProduct
               recId={profProductId}
               recTitle={data.professionalC.title ? data.professionalC.title : ""}
@@ -904,6 +926,10 @@ const YourBag = (props, {notificationId}) => {
               recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
               recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
             />
+             </div>
+            <div className="prodsuggest">
+                <ProductSuggestion/> 
+          </div>
           </div>
         </div>
       )
@@ -920,12 +946,11 @@ const YourBag = (props, {notificationId}) => {
       >
         <h2 className={BagStyle.bagHead}>Your Bag</h2>
         <div>
-                   <ClipLoader
+          <ClipLoader
                css={spinner}
-                size={150}
-                color={"#123abc"}
-              
-        />
+              size={150}
+             color={"#123abc"}
+            />
                 </div>
       </div>
     )
