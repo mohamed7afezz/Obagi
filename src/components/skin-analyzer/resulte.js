@@ -29,6 +29,8 @@ const Resulte = (props) => {
         return true;
       }
     var productsid=[];
+    var fproductsid=[];
+    
     console.log(props)
     const value = useContext(CartContext)
     const addMultiToCart = value && value.addMultiToCart;
@@ -115,15 +117,17 @@ const Resulte = (props) => {
                                         </div>
                                         <div className={[resulteSkinStyle.addtobagcon].join(" ")}>
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
+                                            {clinicalProduct.length > 0 ? clinicalProduct.map(data => {
+                                            fproductsid.push(data.field_clinical_id)}):''}
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
                                                 addMultiToCart(productsid, false, quantity);
                                             }}
-                                            disabled={arraysEqual(addingToCart,productsid)}                                        
+                                            disabled={arraysEqual(addingToCart,fproductsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")}>
-                                           {arraysEqual(addingToCart,productsid) ? "Adding all to Bag" : "Add all to Bag"}
-                                            </button>
+                                                {arraysEqual(addingToCart,fproductsid) ? "Adding all to Bag" : "Add all to Bag"}
+                                            </button>  
                                         </div>
                                     </div>
 
@@ -216,14 +220,17 @@ const Resulte = (props) => {
                                 
                                         <div className={resulteSkinStyle.addtobagcon}>
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
-  <button 
+                                            
+                                            {medicalProduct.length > 0 ? medicalProduct.map(data => {
+                                            fproductsid.push(data.field_medical_id)}):""}
+                                        <button 
                                             onClick={() => {
                                                 let quantity = 1;
                                                 addMultiToCart(productsid, false, quantity);
                                             }}
-                                            disabled={arraysEqual(addingToCart,productsid)}
+                                            disabled={arraysEqual(addingToCart,fproductsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-2"].join(" ")}>
-                                            {arraysEqual(addingToCart,productsid) ? "Adding all to Bag" : "Add all to Bag"}
+                                            {arraysEqual(addingToCart,fproductsid) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>                                        </div>
                                         <p className={[resulteSkinStyle.resPageSubdetail,"show-mob"].join(" ")}>If you have detailed questions about your individual Skin care or products, 
                                             it is best to talk to a Skin care specialist. <Link   to="/medical/phcfinder" >Find a Physician</Link></p>
