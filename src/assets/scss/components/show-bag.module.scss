@@ -265,6 +265,17 @@
         color: #ffffff;
         text-decoration: none;
     }
+    a{
+        @include fontStyle(12, 16);
+        @extend %futurapt-bold;
+        letter-spacing: 1.2px;
+        color: #ffffff;
+    
+        &:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
 }
 .bottomWrapper {
 
