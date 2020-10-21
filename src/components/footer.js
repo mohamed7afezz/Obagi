@@ -251,8 +251,8 @@ const Footer = ({ siteTitle }) => {
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
-                      in the US. subject to our US. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
-                      of Use</Link>. For US. consumers only.
+                      in the US subject to our US <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
+                      of Use</Link>. For US consumers only.
                       <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>
@@ -263,7 +263,7 @@ const Footer = ({ siteTitle }) => {
             </div>
             <div className={["col-12 col-lg-10 offset-lg-1 d-flex spaceBetween", footerStyles.fifthCol].join(" ")}>
               <p className={footerStyles.footerNote}>
-                ©2020 Obagi Cosmeceuticals LLC. All rights reserved.
+                ©2020 <Link className="footer-obagi-link" to="www.obagi.com">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
                 OBG.02313.USA.16
               </p>
               <ul className="footerprivacy">

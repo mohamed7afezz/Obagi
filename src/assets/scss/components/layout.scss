@@ -3529,3 +3529,11 @@ p {
         padding: 100px;
     }
   }
+
+  .footer-obagi-link {
+      color: #132466;
+      &:hover {
+          color: #132466;
+          text-decoration: none;
+      }
+  }
