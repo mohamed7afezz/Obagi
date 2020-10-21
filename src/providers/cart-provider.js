@@ -162,6 +162,101 @@ export const CartProvider = ({ children }) => {
       });
   };
 
+  const addMultiToCart = async (productsId ,retry, quantity) => {
+    let findedProduct = productsId;
+    if(state.cart.lineItems.physical_items){
+      findedProduct = productsId.filter(function(element){
+        let quantity = 0;
+        state.cart.lineItems.physical_items.forEach( itm => {
+          if(itm.product_id == element){
+            quantity = itm.quantity;
+            return;
+          }
+        });
+        if(quantity != 3){
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+      })
+    }
+
+    
+    if(!findedProduct.length > 0){
+      return;
+    }
+
+    setState({ ...state, addingToCart: productsId });
+    
+    productsId = findedProduct;
+
+    let body= [];
+    if(productsId.length > 0){
+      productsId.forEach(element => {
+        body.push({
+          quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+          product_id: parseInt(element, 10)
+        })
+      });  
+    }
+
+    
+
+    let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
+    if(cartId) {
+        resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
+    }
+    await fetch(resrouce_url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      mode: 'cors',
+      body: JSON.stringify({
+        line_items: body
+      })
+    })
+      .then(async res => ({ response: await res.json(), status: res.status }))
+      .then(async ({ response, status }) => {
+        if (status === 404 && !retry) {
+          // re create a cart if cart was destroyed
+          cartId = undefined;
+          if (typeof window !== "undefined") {
+            window.localStorage.removeItem('cartId')
+          }
+          await addMultiToCart(productsId, true, quantity);
+        }
+        status < 300 && addNotification('Item added successfully');
+
+        const lineItems = response.data.line_items;
+        const cartAmount = response.data.cart_amount;
+        const currency = response.data.currency;
+        cartId = response.data.id;
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem('cartId', JSON.stringify(cartId));
+        }
+        setState({
+          ...state,
+          addingToCart: false,
+          addedToCart: productsId,
+          cart: {
+            currency,
+            cartAmount,
+            lineItems,
+            numberItems:
+              lineItems.physical_items.length +
+              lineItems.digital_items.length +
+              lineItems.custom_items.length +
+              lineItems.gift_certificates.length,
+            redirectUrls: response.data.redirect_urls
+          }
+        });
+      })
+      .catch(error => {
+        setState({ ...state, addingToCart: false, addToCartError: error });
+      });
+  };
+
   const updateItemInCart = (itemId, updatedItemData) => {
     fetch(
       `${baseUrl}bigcommerce/v1/cart/${cartId}/${itemId}`,
@@ -322,6 +417,7 @@ export const CartProvider = ({ children }) => {
       value={{
         state,
         addToCart,
+        addMultiToCart,
         fetchShippingMethods,
         changeShippingMethods,
         showShippingMethods,
