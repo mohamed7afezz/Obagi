@@ -171,7 +171,7 @@ export default function PhyFinder() {
           </div>
           <section id="phys-finder-footer">
             <p class="hide">
-              Not in the U.S.?
+              Not in the US?
               <a href="/International">
                 Find a certified Obagi distributor internationally
               </a>
