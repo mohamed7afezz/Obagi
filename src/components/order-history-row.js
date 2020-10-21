@@ -22,7 +22,7 @@ const OrderHistoryRow = ({ node,
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
 
-
+console.log("date", placedOn, lastUpdated)
 
 
  
@@ -38,11 +38,11 @@ const OrderHistoryRow = ({ node,
                 <div className={orderHistoryRowStyles.rowsWrapper}>
                     <div className={orderHistoryRowStyles.tableRow}>
                         <div>Placed on:</div>
-                        <div>{`${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}`}</div>
+                        <div>{`${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`}</div>
                     </div>
                     <div className={orderHistoryRowStyles.tableRow}>
                         <div>Last updated:</div>
-                        <div>{`${lastUpdatedDate[1]} ${lastUpdatedDate[0]}, ${lastUpdatedDate[2]}`}</div>
+                        <div>{`${lastUpdatedDate[0]} ${lastUpdatedDate[1]} ${lastUpdatedDate[2]}`}</div>
                     </div>
                     <div className={orderHistoryRowStyles.tableRow}>
                         <div>Items:</div>
@@ -61,8 +61,8 @@ const OrderHistoryRow = ({ node,
 
             <tr className={["d-none d-lg-table-row"].join(" ")}>
                 <td scope="row">{orderNum}</td>
-                <td>{`${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}`}</td>
-                <td>{`${lastUpdatedDate[1]} ${lastUpdatedDate[0]}, ${lastUpdatedDate[2]}`}</td>
+                <td>{`${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`}</td>
+                <td>{`${lastUpdatedDate[0]} ${lastUpdatedDate[1]} ${lastUpdatedDate[2]}`}</td>
                 <td>{itemsNum}</td>
                 <td>${total}</td>
                 <td>{status}</td>

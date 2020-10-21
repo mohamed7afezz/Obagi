@@ -84,7 +84,7 @@ const AddressModal = ({ node,
                     <div className="modal-header">
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close"></button>
                         <div className="modal-title" id="addressModalLabel">Edit Address</div>
-                        <div className="modal-title-footnote">*Required fileds</div>
+                        <div className="modal-title-footnote">*Required fields</div>
                     </div>
 
 
@@ -112,7 +112,7 @@ const AddressModal = ({ node,
 
                                 </div>
                                 <div className="form-group">
-                                    <label for="apt" className="form-label">Apt, Suite or Floor</label>
+                                    <label for="apt" className="form-label">Apt, Suite, or Floor</label>
                                     <input type="text" className="form-control" id="apt" aria-describedby="emailHelp" placeholder=""/>
 
                                 </div>
@@ -220,8 +220,7 @@ const AddressModal = ({ node,
 
                                 </div>
                             </div>
-                            <p className="mb-16">whenever we ask then to submit info to us:<br/>
-Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
+                            <p className="mb-16">Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
                             <input className="modal-button" type="submit" value="Update" />
                             <input id="order-id" type="hidden" />
                         </form>

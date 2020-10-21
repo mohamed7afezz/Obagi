@@ -108,7 +108,7 @@ const AddressBox = ({ node,
                         <p>{firstName + " " + lastName}</p>
                         <p>{firstAddress}</p>
                         <p>{secondAddress}</p>
-                        <p>{city + ", " + state + ", " + postalCode}</p>
+                        <p>{city + ", " + state + " " + postalCode}</p>
                         <p>{phone}</p>
                     </div>
                 </div>

@@ -197,7 +197,7 @@ return (
 
 
                     <div class="form-group">
-                      <label for="settingsemail">Email Adress</label>
+                      <label for="settingsemail">Email Address</label>
                       <input type="" class="form-control" name="settingsemail" id="settingsemail" aria-describedby="settingsemailhelp" placeholder="" value={userAccount.email} onChange={handleAttr}/>
                     </div>
 
@@ -271,7 +271,7 @@ return (
 
             </div>
           </div>
-        <div className="row">
+        <div className={["row", accountsettings.saveRow].join(" ")}>
           <div className="col-lg-4 col-12">
             <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>
               <button className={accountsettings.saveSitting}>
