@@ -845,7 +845,7 @@ const YourBag = (props, {notificationId}) => {
                   </div>
                 </div>
                       <p className={BagStyle.paytitle}>Customer Service</p>
-                      <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</p>
+                      <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={BagStyle.csNumber}>1-800-636-7546</span>.</p>
               </div>
             </div>
           

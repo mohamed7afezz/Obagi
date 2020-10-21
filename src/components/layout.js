@@ -48,8 +48,8 @@ const Layout = ({ children,nodeType,menuType}) => {
           <div class="modal hidden" id="formsubmition">
            <div class="container">
               <div class="modal-body">
-                  <h1>Thank You For Submition</h1>
-                  <p>Your Request Has Been submitted</p>
+                  <h1>Thank you for your submission</h1>
+                  <p>Your request has been submitted</p>
               </div>
            </div>
          </div>

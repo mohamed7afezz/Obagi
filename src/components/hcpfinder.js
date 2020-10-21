@@ -102,7 +102,7 @@ export const ProductLineComp = ({line}) => {
                 return (
                     <label class="terms">
                         <input className="product-check-box" type="checkbox" value={product.field_medical_sku}/>
-                        {product.title}
+                        <span dangerouslySetInnerHTML={{__html: product.title}}></span>
                         <div class="checkmark"></div>
                     </label>
                 )
@@ -344,7 +344,7 @@ export default function Finder() {
         <div class="row">
           <p class="finder-foot finder-foot-1">
             {" "}
-            *Products containing Hydroquinone are not available in select states
+            *Products containing hydroquinone are not available in select states
             including MA, MT, NH, NY, and TX, due to state regulations regarding
             the ability of physicians to dispense prescription drug products in
             their offices.
@@ -362,7 +362,7 @@ export default function Finder() {
             representations or warranties of any kind as to services provided by
             any of the physicians listed, and expressly disclaim any and all
             liability for damages, including without limitation, direct,
-            incidental, special, consequential, indirect or punitive damages
+            incidental, special, consequential, indirect, or punitive damages
             relating to your use of the information provided or the actions of
             any of the physicians listed.
           </p>
@@ -576,7 +576,7 @@ export default function Finder() {
                   <p class="doctitle">
                     Find skin care professionals that carry specific Obagi
                     products. Choose products under the Product Line you’d like
-                    to find a physician for, enter city or ZIP code and search.
+                    to find a physician for, enter city or ZIP code, and search.
                   </p>
                 </div>
                 <div id="prod-err-msg" className="d-none"></div>
@@ -620,7 +620,8 @@ export default function Finder() {
                                 return (
                                   <li key={node.id}>
                                     <label class="terms">
-                                      <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />{node.name}
+                                      <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                      <span dangerouslySetInnerHTML={{__html: node.name}}></span>
                                       <span className="checkmark"></span>
                                     </label>
                                   </li>

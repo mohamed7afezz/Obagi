@@ -193,7 +193,7 @@ if ( typeof window !== "undefined"){
         <div className={["pathname", "col-12"].join(" ")}>
           <p className="pathtitle">
             <Link to="/homepage"> Home</Link> /{" "}
-            <Link to={`/${nodeType}`}> {nodeType}</Link> / {node.title}
+            <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{__html: node.title}}></span>
           </p>
         </div>
         <div className={["col-12",""].join(" ")}>
@@ -201,7 +201,7 @@ if ( typeof window !== "undefined"){
             {nodeType}
           </p>
           <div>
-            <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}>{node.title}</h1>
+            <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}><span dangerouslySetInnerHTML={{__html: node.title}}></span></h1>
             <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
 
 
@@ -261,7 +261,7 @@ if ( typeof window !== "undefined"){
             {nodeType}
           </p>
           <div>
-          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name">{node.title}</h1>
+          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name"><span dangerouslySetInnerHTML={{__html: node.title}}></span></h1>
           <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
  
           {field_medical_rx == "RX"? 

@@ -94,7 +94,7 @@ export default function Premier() {
         <div className="row d-lg-none">
           <div className="col-12">
             <div className={premierStyles.csTitle}>Customer Service</div>
-            <div className={premierStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+            <div className={premierStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={premierStyles.csNumber}>1-800-636-7546</span>.</div>
           </div>
         </div>
       </div>

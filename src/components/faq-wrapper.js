@@ -70,7 +70,7 @@ const FaqWrapper = ({ node }) => {
       <div className={[faqStyles.wrapper, "faq-wrapper"].join(" ")}>
         {/* <div className="container-fluid"> */}
         <div className="d-none d-lg-flex second-title-wrapper">
-          <div className={myAccountStyles.secondTitle}>FAQ’s</div>
+          <div className={myAccountStyles.secondTitle}>FAQs</div>
         </div>
         <div className="row">
           <div className="col-12">
@@ -84,7 +84,7 @@ const FaqWrapper = ({ node }) => {
         <div className="row d-lg-none">
           <div className="col-12">
             <div className={faqStyles.csTitle}>Customer Service</div>
-            <div className={faqStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+            <div className={faqStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={faqStyles.csNumber}>1-800-636-7546</span>.</div>
           </div>
         </div>
 
