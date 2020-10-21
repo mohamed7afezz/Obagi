@@ -225,7 +225,7 @@ function buildMenu(menuArray, isExpandable, menuName) {
             {typeof window !== "undefined" && menuName === "third-footer" && isExpandable === true ? <span id="extole_zone_mobile_footer" className="footer-referral-span"></span>
               : typeof window !== "undefined" && menuName === "third-footer" && isExpandable === false ? <span id="extole_zone_global_footer" className="footer-referral-span"></span>
                 : ""}
-            {menuName === "fourth-footer" ? <li><Link className="single-tab" to="/my-account">
+            {menuName === "fourth-footer" ? <li><Link className="single-tab" to="/my-account/orders">
               My Account
             </Link></li> : ""}
           </ul>

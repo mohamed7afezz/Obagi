@@ -180,7 +180,7 @@ const OrderDetails = (props, { node }) => {
           <div className="col-12 col-lg-10 offset-lg-1">
             <div className={orderDetailsStyles.headerWrapper}>
               <div className={orderDetailsStyles.heading}>Order</div>
-              <Link to="/my-account" className={orderDetailsStyles.accountLink}>
+              <Link to="/my-account/orders" className={orderDetailsStyles.accountLink}>
                 My Account
               </Link>
               <Link
