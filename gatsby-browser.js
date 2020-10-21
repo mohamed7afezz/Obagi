@@ -21,6 +21,32 @@ import { CartProvider } from "./src/providers/cart-provider";
 import { UserProvider } from './src/providers/user-provider';
 import { SearchProvider } from './src/providers/search-provider';
 
+
+
+const scrollTo = (id) => () => {
+  const els = document.querySelectorAll(id)
+  if (els) {
+    console.log("ash", els)
+
+    for(let i = 0; i < els.length; i++) {
+      if(els.item(i).offsetTop > 0) {
+
+        console.log("ash", els.item(i).offsetTop)
+        return window.scroll({ top: els.item(i).offsetTop, behavior: 'smooth' });
+
+      }
+    }
+  }
+  return false
+}
+
+export const onRouteUpdate = ({ location }) => {
+  console.log("ash", location.hash)
+  if (location.hash) {
+    window.setTimeout(scrollTo(location.hash), 1000)
+  }
+}
+
 export const wrapRootElement = ({ element }) => (
   <UserProvider>
     <ViewedProductsProvider>

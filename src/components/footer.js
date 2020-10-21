@@ -251,8 +251,8 @@ const Footer = ({ siteTitle }) => {
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
-                      in the U.S. subject to our U.S. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
-                      of Use</Link>. For U.S. consumers only.
+                      in the US. subject to our US. <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
+                      of Use</Link>. For US. consumers only.
                       <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>

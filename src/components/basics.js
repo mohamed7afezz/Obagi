@@ -149,8 +149,8 @@ const Basics = ({ node }) => {
                                     ) : (
                                         ""
                                       )}
-                                    {item.field_view_all_field ? (
-                                      <Link to="#">
+                                    {item.field_view_all_field && item.field_basics_card_link? (
+                                      <Link to={item.field_basics_card_link.uri.replace('internal:', '')}>
                                         <div
                                           className={basicsStyles.vaField}
                                           dangerouslySetInnerHTML={{
@@ -206,20 +206,11 @@ const Basics = ({ node }) => {
                                     ) : (
                                       ""
                                     )}
-                                  {item.field_basics_card_title ? (
+                                  {item.field_basics_card_link ? (
                                     <Link
-                                      to="#"
+                                      to={item.field_basics_card_link.uri.replace('internal:', '')}
                                       className={basicsStyles.shopLink}
-                                    >
-                                      Shop&nbsp;
-                                      <div
-                                        dangerouslySetInnerHTML={{
-                                          __html:
-                                            item.field_basics_card_title
-                                              .processed,
-                                        }}
-                                      ></div>
-                                    </Link>
+                                  >{item.field_basics_card_link.title}</Link>
                                   ) : (
                                       ""
                                     )}
@@ -321,6 +312,10 @@ export const fragment = graphql`
     relationships {
       field_basics_product_card {
         field_untouchable_fields
+        field_basics_card_link {
+          title
+          uri
+        }
         field_basics_card_title {
           processed
         }
