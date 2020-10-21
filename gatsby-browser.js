@@ -40,8 +40,10 @@ const scrollTo = (id) => () => {
   return false
 }
 
-export const onRouteUpdate = ({ location }) => {
-  // console.log("ash", location.hash)
+export const onRouteUpdate = ({ location, prevLocation }) => {
+  console.log("ash", location)
+  console.log('new pathname', location.pathname)
+  console.log('old pathname', prevLocation ? prevLocation.hash : null)
   if (location.hash) {
     window.setTimeout(scrollTo(location.hash), 1000)
   }

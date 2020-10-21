@@ -48,7 +48,7 @@ const Customer = ({ node, children, activeTab }) => {
                             <Link to="/customer-care/contact-us" className={activeTab == "contact-us" ? "active account-tab" : "account-tab"} id="contact">Contact Us</Link>
                             <Link to="#" className={activeTab == "shipping-returns" ? "active account-tab" : "account-tab"} id="shipping">Shipping & Returns</Link>
                             <Link to="/FAQ" className={activeTab == "faq" ? "active account-tab" : "account-tab"} id="faqs">FAQ</Link>
-                            <Link to="/my-account" className={activeTab == "my-account" ? "active account-tab" : "account-tab"} id="account">My Account</Link>
+                            <Link to="/my-account/orders" className={activeTab == "my-account" ? "active account-tab" : "account-tab"} id="account">My Account</Link>
 
                         </div>
                     </div>
@@ -63,7 +63,7 @@ const Customer = ({ node, children, activeTab }) => {
                             <Link className={activeTab == "contact-us" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/customer-care/contact-us" >Contact Us</Link>
                             <Link className={activeTab == "shipping-returns" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="#" >Shipping & Returns</Link>
                             <Link className={activeTab == "faq" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/FAQ" >FAQ</Link>
-                            <Link className={activeTab == "my-account" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account" >My Account</Link>
+                            <Link className={activeTab == "my-account" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/orders" >My Account</Link>
 
                             <div className={myAccountStyles.csTitle}>Customer Service</div>
                             <div className={myAccountStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
