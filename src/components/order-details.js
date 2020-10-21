@@ -458,30 +458,22 @@ const OrderDetails = (props, { node }) => {
                     id="mob-reorder-button"
                     disabled={arraysEqual(addingToCart,productsid)}  
                     className={orderDetailsStyles.orderButton}
-                    onClick={() => {
+                    onClick={(e) => {
                       let flag = true
-
-                      // 1 - loop on all checked boxes
                       document
                         .querySelectorAll(".details-check")
                         .forEach(el => {
-                          // 2 - check if it's select then => get product id
-
-                          if (el.checked) {
+                          if (el.checked && !productsid.includes(el.value)) {
                             // 3 - send cart request
                             productsid.push(el.value)
-                            
-
                             // console.log("value", el.value)
                             flag = false
                           }
                         })
                         let quantity = 1;
-                        addMultiToCart(productsid, false, quantity);
-                        console.log(productsid)
-                      if (flag && typeof $ !== "undefined") {
-                        $("#checkModal").modal("show")
-                      }
+                       addMultiToCart(productsid, false, quantity);
+                        console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
+                       
                     }}
                     // disabled={addingToCart === productId}
                   >
@@ -500,15 +492,15 @@ const OrderDetails = (props, { node }) => {
                     id="reorder-button"
                     disabled={arraysEqual(addingToCart,productsid)}  
                     className={orderDetailsStyles.orderButton}
-                    onClick={() => {
+                    onClick={(e) => {
                       let flag = true
-                      // 1 - loop on all checked boxes
+                      
                       document
                         .querySelectorAll(".desk-details-check")
                         .forEach(el => {
-                          // 2 - check if it's select then => get product id
+                          
 
-                          if (el.checked) {
+                          if (el.checked && !productsid.includes(el.value)) {
                             // 3 - send cart request
                             productsid.push(el.value)
                             
@@ -518,11 +510,9 @@ const OrderDetails = (props, { node }) => {
                           }
                         })
                         let quantity = 1;
-                        addMultiToCart(productsid, false, quantity);
-                        console.log(productsid)
-                      if (flag && typeof $ !== "undefined") {
-                        $("#checkModal").modal("show")
-                      }
+                       addMultiToCart(productsid, false, quantity);
+                        console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
+                       
                     }}
                     // disabled={addingToCart === elementId}
                   >
@@ -699,14 +689,14 @@ const OrderDetails = (props, { node }) => {
             <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
                 <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
                 disabled={arraysEqual(addingToCart,productsid)}  
-                    onClick={() => {
+                    onClick={(e) => {
                         let flag = true;
 
-                        // 1 - loop on all checked boxes
+                        
                         document.querySelectorAll('.details-check').forEach((el) => {
-                            // 2 - check if it's select then => get product id
+                            
 
-                            if (el.checked) {
+                            if (el.checked && !productsid.includes(el.value)) {
                               // 3 - send cart request
                               productsid.push(el.value)
                               
@@ -716,12 +706,9 @@ const OrderDetails = (props, { node }) => {
                             }
                           })
                           let quantity = 1;
-                          addMultiToCart(productsid, false, quantity);
-                          console.log(productsid)
-                        if (flag && typeof $ !== "undefined") {
-                            $("#checkModal").modal("show");
+                         addMultiToCart(productsid, false, quantity);
+                          console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
                         
-                        }
                     }}
                 // disabled={addingToCart === productId}
                 >{arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}</button>
@@ -730,13 +717,13 @@ const OrderDetails = (props, { node }) => {
             <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
                 <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
                 disabled={arraysEqual(addingToCart,productsid)}  
-                    onClick={() => {
+                    onClick={(e) => {
                         let flag = true;
-                        // 1 - loop on all checked boxes
+                        
                         document.querySelectorAll('.desk-details-check').forEach((el) => {
-                            // 2 - check if it's select then => get product id
+                            
 
-                            if (el.checked) {
+                            if (el.checked && !productsid.includes(el.value)) {
                               // 3 - send cart request
                               productsid.push(el.value)
                               
@@ -746,11 +733,9 @@ const OrderDetails = (props, { node }) => {
                             }
                           })
                           let quantity = 1;
-                          addMultiToCart(productsid, false, quantity);
-                          console.log(productsid)
-                        if (flag && typeof $ !== "undefined") {
-                            $("#checkModal").modal("show");
-                        }
+                         addMultiToCart(productsid, false, quantity);
+                          console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
+                       
                     }}
                 // disabled={addingToCart === elementId}
                 >{arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}</button>
