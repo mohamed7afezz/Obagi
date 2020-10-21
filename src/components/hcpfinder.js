@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { graphql, Link } from "gatsby"
-import { phyFinder } from "../../assets/js/phy-finder"
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import { phyFinder } from "../assets/js/phy-finder"
 // import "../assets/scss/components/physfinder-old.scss"
 // import "../assets/scss/components/physfinder.scss"
-import { CustomSelect } from "../../assets/js/custom-select"
+import { CustomSelect } from "../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
-import Layout from "../../components/layout"
-import SEO from '../../components/seo';
+import Layout from "./layout"
+import SEO from './seo';
 
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -18,71 +18,72 @@ const spinner = css`
 const finderURL = process.env.Finder_URL;
 
 
-  function removevaild(e){
-   let item= e.target
-   
-    item.closest('.appointment-elemnt').classList.remove('error')
-    
-    item.classList.add('hide')
-  }
-   const sendFormValues = (updatedItemData) => {
-    console.log(updatedItemData)
-    fetch(
-      `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
-      {    
-        headers:{
-          "Content-Type": "application/json",
-        },
-        method: 'POST',
-        body: JSON.stringify(updatedItemData.obj)
-      }
-    )
-      .then(res => res.json())
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log('error',error)
-      });
-   };
+function removevaild(e) {
+  let item = e.target
 
- 
-function submitforming(e){
-  var obj={webform_id : "request_appointment"};
+  item.closest('.appointment-elemnt').classList.remove('error')
+
+  item.classList.add('hide')
+}
+const sendFormValues = (updatedItemData) => {
+  console.log(updatedItemData)
+  fetch(
+    `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: 'POST',
+      body: JSON.stringify(updatedItemData.obj)
+    }
+  )
+    .then(res => res.json())
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log('error', error)
+    });
+};
+
+
+function submitforming(e) {
+  var obj = { webform_id: "request_appointment" };
   var forms = document.getElementsByClassName('needs-validations');
   var list = document.querySelectorAll('.needs-validations input:invalid');
-  if (list.length > 0){
-  for (var item of list) {
-    item.parentElement.classList.add('error')
-    item.nextSibling.classList.remove('hide')
-}}else{
-  let list2 = document.querySelectorAll('.needs-validations input');
-  for (let item of list2) {
-    item.parentElement.classList.remove('error')
-    item.nextSibling.classList.add('hide')
-    obj[item.getAttribute("name")]=item.value;
- }
- 
- obj[document.querySelector('.needs-validations select').getAttribute("name")]=`${document.querySelector('.needs-validations select').value}`
-  
-sendFormValues({obj})
- document.querySelector("#formsubmition").classList.remove('hidden')
-var container = document.querySelector("#formsubmition .container");
+  if (list.length > 0) {
+    for (var item of list) {
+      item.parentElement.classList.add('error')
+      item.nextSibling.classList.remove('hide')
+    }
+  } else {
+    let list2 = document.querySelectorAll('.needs-validations input');
+    for (let item of list2) {
+      item.parentElement.classList.remove('error')
+      item.nextSibling.classList.add('hide')
+      obj[item.getAttribute("name")] = item.value;
+    }
 
-document.querySelector('body').classList.remove('modal-open')
-document.querySelector('#appointment').classList.remove('in');
-document.querySelector('#appointment').classList.remove('showmodal')
-document.querySelector("#appointment").setAttribute('aria-modal',"")
-document.querySelector("#appointment").setAttribute("aria-hidden","true")
-document.getElementById("appointment").style.display = "none"
-document.getElementById("appointment").className += document.getElementById("appointment").className.replace("show", "")
-document.querySelector("#formsubmition").addEventListener("click", function (e) {
-  if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
-  document.querySelector("#formsubmition").classList.add("hidden");
-});
-document.querySelector(".modal-backdrop.fade.show").remove();
-document.querySelector(".modal-backdrop.fade.in").remove();
-}
+    obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
+
+    sendFormValues({ obj })
+    document.querySelector("#formsubmition").classList.remove('hidden')
+    var container = document.querySelector("#formsubmition .container");
+
+    document.querySelector('body').classList.remove('modal-open')
+    document.querySelector('#appointment').classList.remove('in');
+    document.querySelector('#appointment').classList.remove('showmodal')
+    document.querySelector("#appointment").setAttribute('aria-modal', "")
+    document.querySelector("#appointment").setAttribute("aria-hidden", "true")
+    document.getElementById("appointment").style.display = "none"
+    document.getElementById("appointment").className += document.getElementById("appointment").className.replace("show", "")
+    document.querySelector("#formsubmition").addEventListener("click", function (e) {
+      if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;
+      document.querySelector("#formsubmition").classList.add("hidden");
+    });
+    document.querySelector(".modal-backdrop.fade.show").remove();
+    document.querySelector(".modal-backdrop.fade.in").remove();
+  }
 
 }
 export const ProductLineComp = ({line}) => {
@@ -115,63 +116,84 @@ export const ProductLineComp = ({line}) => {
             cosmetic skin-brightening option, learn about the Obagi-C<sup>®</sup> Fx
             System.
           </p>
-      </>
-    )
+    </>
+  )
 };
 
-export default function Finder({ data }) {
-    const [prodLines, setProductLines] = useState([]);
-    const [lines, setLines] = useState([]);
-    const [productResultsNumber, setProductResultsNumber] =useState(0);
-
-    function updateProductLines(e) {
-        if(e.target.checked) {
-            let newProdLines = [...prodLines];
-            newProdLines.push(e.target.value);
-            setProductLines(newProdLines);
-        } else {
-            setProductLines(prodLines.filter(item => item !== e.target.value));            
+export default function Finder() {
+  const [prodLines, setProductLines] = useState([]);
+  const [lines, setLines] = useState([]);
+  const [productResultsNumber, setProductResultsNumber] = useState(0);
+  const data = useStaticQuery(graphql`
+      query{
+        productLines: allTaxonomyTermMedicalProductLines {
+          edges {
+            node {
+              id
+              name
+              relationships {
+                products: node__medical_product {
+                  field_medical_sku
+                  title
+                  path {
+                    alias
+                  }
+                }
+              }
+            }
+          }
         }
-        //TODO: add masonry style
+}
+`)
 
+  function updateProductLines(e) {
+    if (e.target.checked) {
+      let newProdLines = [...prodLines];
+      newProdLines.push(e.target.value);
+      setProductLines(newProdLines);
+    } else {
+      setProductLines(prodLines.filter(item => item !== e.target.value));
     }
+    //TODO: add masonry style
 
-    function searchProducts(e) {
-        if(document.getElementById('prodLoc').value.length < 5) {
-          document.getElementById('prod-err-msg').classList.remove('d-none');
-          document.getElementById('prod-err-msg').innerHTML = 'Invalid Zip Code';
+  }
 
-          return;
-        }
-        if(prodLines.length < 1) {
-          document.getElementById('prod-err-msg').classList.remove('d-none');
-          document.getElementById('prod-err-msg').innerHTML = 'No Product Line selected';
-          return;
-        }
-        document.getElementById('prod-err-msg').classList.add('d-none');
-        e.target.disabled = true;
-        let searchLines = data.productLines.edges.filter(({node}) => prodLines.includes(node.name));
-        let resultsNumber = searchLines.map(({node}) => node.relationships.products? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum);
-        setProductResultsNumber(resultsNumber);
-        setLines(searchLines);
-        document.querySelector('#prodLines').classList.add('d-none');
-        e.target.disabled = false
+  function searchProducts(e) {
+    if (document.getElementById('prodLoc').value.length < 5) {
+      document.getElementById('prod-err-msg').classList.remove('d-none');
+      document.getElementById('prod-err-msg').innerHTML = 'Invalid Zip Code';
+
+      return;
     }
-
-    function clearSelected(e) {
-      document.querySelectorAll('.product-check-box').forEach(item => {
-        item.checked = false;
-      })
+    if (prodLines.length < 1) {
+      document.getElementById('prod-err-msg').classList.remove('d-none');
+      document.getElementById('prod-err-msg').innerHTML = 'No Product Line selected';
+      return;
     }
+    document.getElementById('prod-err-msg').classList.add('d-none');
+    e.target.disabled = true;
+    let searchLines = data.productLines.edges.filter(({ node }) => prodLines.includes(node.name));
+    let resultsNumber = searchLines.map(({ node }) => node.relationships.products ? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum);
+    setProductResultsNumber(resultsNumber);
+    setLines(searchLines);
+    document.querySelector('#prodLines').classList.add('d-none');
+    e.target.disabled = false
+  }
+
+  function clearSelected(e) {
+    document.querySelectorAll('.product-check-box').forEach(item => {
+      item.checked = false;
+    })
+  }
 
   useEffect(() => {
     if (typeof window != "undefined") {
       const google = window.google
-      const productsData = data.productLines.edges.map(({node}) => {
-        let newNode = node.relationships.products? node.relationships.products.map(product => {
+      const productsData = data.productLines.edges.map(({ node }) => {
+        let newNode = node.relationships.products ? node.relationships.products.map(product => {
           return {
-            path: (product.path && product.path.alias)? product.path.alias : '#',
-            sku: product.field_medical_sku? product.field_medical_sku : ''
+            path: (product.path && product.path.alias) ? product.path.alias : '#',
+            sku: product.field_medical_sku ? product.field_medical_sku : ''
           }
         }) : undefined;
 
@@ -198,8 +220,7 @@ export default function Finder({ data }) {
   }
 
   return (
-    <Layout>
-      <SEO title="Healthcare Professional Finder" description="Healthcare Professional Finder Description" />
+    <>
 
       <div className="container">
         <div className="row">
@@ -236,7 +257,7 @@ export default function Finder({ data }) {
                 </label>
 
                 <label class="checkcon" onClick={searchBy}>
-                  <input type="radio" name="search-radio" value="phy"/>
+                  <input type="radio" name="search-radio" value="phy" />
                   <span class="checkmarkfinder"></span>by physician
                 </label>
               </div>
@@ -289,13 +310,13 @@ export default function Finder({ data }) {
               </p>
             </div>
             <div id="loader" className="d-none">
-            <div>
-                   <ClipLoader
-               css={spinner}
-                size={150}
-                color={"#123abc"}
-     />           
-     </div>  
+              <div>
+                <ClipLoader
+                  css={spinner}
+                  size={150}
+                  color={"#123abc"}
+                />
+              </div>
             </div>
             <div>
               <p id="err-msg"></p>
@@ -382,40 +403,40 @@ export default function Finder({ data }) {
                   with:
                 </h2>
                 <div id="req-app-clinic-info"></div>
-                <form className="needs-validations"  onSubmit={(e) => {e.preventDefault();}}>
+                <form className="needs-validations" onSubmit={(e) => { e.preventDefault(); }}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt mt-0">
                       <p class="input-name" >First name</p>
-                      <input class="appointmentInput" name="first_name"   required/>
+                      <input class="appointmentInput" name="first_name" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your First Name</p>
                     </div>
                     <div class="appointment-elemnt mt-0 mob-mt-24">
                       <p class="input-name">Last name</p>
-                      <input class="appointmentInput" name="last_name"   required/>
+                      <input class="appointmentInput" name="last_name" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Last Name</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Email Address</p>
-                      <input class="appointmentInput" name="email_address"   required/>
+                      <input class="appointmentInput" name="email_address" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Phone Number</p>
-                      <input class="appointmentInput" name="phone_number"   required/>
+                      <input class="appointmentInput" name="phone_number" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Phone Number</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Address</p>
-                      <input class="appointmentInput" name="address"    required/>
+                      <input class="appointmentInput" name="address" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Address</p>
 
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">City</p>
-                      <input class="appointmentInput" name="city"   required/>
+                      <input class="appointmentInput" name="city" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your City</p>
 
                     </div>
@@ -423,7 +444,7 @@ export default function Finder({ data }) {
                       <p class="input-name">State/Province</p>
                       <div class="custom-select">
                         <select id="state" name="state_province">
-                        <option value="" selected="selected">- None -</option>
+                          <option value="" selected="selected">- None -</option>
                           <option value="AL">Alabama</option>
                           <option value="AK">Alaska</option>
                           <option value="AS">American Samoa</option>
@@ -506,14 +527,14 @@ export default function Finder({ data }) {
                     </div>
                     <div class="appointment-elemnt">
                       <p class="input-name">Postal Code</p>
-                      <input class="appointmentInput"name="postal_code"   required/>
+                      <input class="appointmentInput" name="postal_code" required />
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Postal Code</p>
 
                     </div>
                   </div>
                   <div class="d-flex Submit-btns">
                     <button class="appointment-cancel">Cancel</button>
-                    <button class="appointment-Submit" onClick={(e) => {submitforming(e);}}  type="submit">Submit request</button>
+                    <button class="appointment-Submit" onClick={(e) => { submitforming(e); }} type="submit">Submit request</button>
                   </div>
                 </form>
               </div>
@@ -559,12 +580,12 @@ export default function Finder({ data }) {
                   </p>
                 </div>
                 <div id="prod-err-msg" className="d-none"></div>
-                <form onSubmit={(e) => {e.preventDefault();}}>
+                <form onSubmit={(e) => { e.preventDefault(); }}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">Location</p>
                       <input
-                        class="appointmentInput"  
+                        class="appointmentInput"
                         id="prodLoc"
                         maxLength="5"
                       />
@@ -587,20 +608,20 @@ export default function Finder({ data }) {
                     </div>
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">Product Lines</p>
-                        <div id="prodLinesSelected" onClick={(e) => {document.querySelector('#prodLines').classList.contains('d-none')? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none')}}>
-                        {prodLines.length > 0? prodLines[0] : 'Select Product Line'} {prodLines.length > 1? '+' + (prodLines.length - 1): ''}
-                         
-                        </div>
+                      <div id="prodLinesSelected" onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                        {prodLines.length > 0 ? prodLines[0] : 'Select Product Line'} {prodLines.length > 1 ? '+' + (prodLines.length - 1) : ''}
+
+                      </div>
                       <div class="product-lines d-none" id="prodLines">
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl">
                             {data.productLines.edges.map(({ node }) => {
-                              if(node.relationships.products) {
+                              if (node.relationships.products) {
                                 return (
-                                  <li  key={node.id}>
+                                  <li key={node.id}>
                                     <label class="terms">
-                                    <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines}/>{node.name}
-                                    <span className="checkmark"></span>
+                                      <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />{node.name}
+                                      <span className="checkmark"></span>
                                     </label>
                                   </li>
                                 )
@@ -632,14 +653,14 @@ export default function Finder({ data }) {
                     Select the products below you are interested in
                   </p>
                 </form>
-                
-                <div className={[lines.length > 0? '' : 'd-none',"product-search-masonry"].join(" ")}>
+
+                <div className={[lines.length > 0 ? '' : 'd-none', "product-search-masonry"].join(" ")}>
                   <Scrollbars style={{ height: 400 }}>
                     <div>
                       <div class="products-masonry" id="products-search-result">
-                        
+
                         {
-                          lines.length > 0? lines.map(({node}) => (
+                          lines.length > 0 ? lines.map(({ node }) => (
                             <div class="product-line-masonry" key={node.id + '1'}>
                               <ProductLineComp line={node} />)
                             </div>
@@ -665,46 +686,30 @@ export default function Finder({ data }) {
       </div>
       {/* releated products */}
       <div class="modal fade" id="related-products" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              
+
               </button>
             </div>
             <div class="modal-body">
-            <h5 class="modal-title">Related products</h5>
-           
+              <h5 class="modal-title">Related products</h5>
+
               <div id="related-phy-info"></div>
               <Scrollbars style={{ height: 300 }}>
-              <div id="related-products-list"></div>
+                <div id="related-products-list"></div>
               </Scrollbars>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 
-export const productsLine = graphql`
-  query{
-    productLines: allTaxonomyTermMedicalProductLines {
-      edges {
-        node {
-          id
-          name
-          relationships {
-            products: node__medical_product {
-              field_medical_sku
-              title
-              path {
-                alias
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+
+
+// export const productsLine = graphql`
+
+// `

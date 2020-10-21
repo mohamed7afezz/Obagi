@@ -10,7 +10,7 @@ body {
         outline: none;
     }
 
-    button, a {
+    button {
         transition: all ease 100ms;
     }
     // margin-top: 192.5px;
@@ -3150,7 +3150,7 @@ p {
     }
 }
 
-.question-header {
+.analyzer-questions .question-header {
     @include fontStyle(24, 40);
     @extend %futurapt-light;
     margin-bottom: 8px;

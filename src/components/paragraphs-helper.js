@@ -39,6 +39,10 @@ import Image from './image'
 import Basics from './basics';
 import Vitamins from './vitamins';
 import SysRelatedProducts from './product-components/sys-related-products';
+import Finder from './hcpfinder';
+import PhysicianFinder from './physician-finder'
+import SkinAnalyzer from './skin-analyzer';
+import Registration from './registration';
 
 
 const componentsMap = {
@@ -80,7 +84,10 @@ const componentsMap = {
     paragraph__blog: Blog,
     paragraph__basics: Basics,
     paragraph__vitamins: Vitamins,
-    paragraph__sys_related_products: SysRelatedProducts
+    paragraph__sys_related_products: SysRelatedProducts,
+    paragraph__physician_finder: PhysicianFinder,
+    paragraph__skin_analyzer: SkinAnalyzer,
+    paragraph__registration: Registration,
 }
 
 export const getParagraph = node => {

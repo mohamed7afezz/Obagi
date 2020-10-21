@@ -67,7 +67,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
   return (
 
     <>
-      <div className={["container-fluid", "d-lg-none", featuredStyles.wrapper].join(" ")}>
+      <div name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""} className={["container-fluid", "d-lg-none", featuredStyles.wrapper].join(" ")}>
         <div className="row">
           <div className="col-12">
 
@@ -97,7 +97,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
       </div>
 
 
-      {node.field_image_right == true ? <div name={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
+      {node.field_image_right == true ? <div name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
         <div className="container-fluid d-none d-lg-block">
           <div className="row">
 
@@ -128,7 +128,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
         </div>
       </div>
         :
-        <div name={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
+        <div name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""} className={[featuredStyles.containerWrapper, "d-none d-lg-block"].join(" ")}>
           <div className="container-fluid d-none d-lg-block">
             <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
