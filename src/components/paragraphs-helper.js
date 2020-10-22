@@ -92,7 +92,6 @@ const componentsMap = {
 
 export const getParagraph = node => {
     if (componentsMap.hasOwnProperty(node.type)) {
-        console.log('bahiiiiii', node)
         const ParagraphComponent = componentsMap[node.type];
         return <ParagraphComponent key={node.id} node={node} />;
     }

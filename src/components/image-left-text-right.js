@@ -14,9 +14,9 @@ const ImageLeftTextRight = ({ node }) => {
 
           <div className={["col-12", "col-lg-6", "offset-lg-1", imageLeft.colFullPadding].join(" ")}>
             <div className={imageLeft.smallSection}>
-              <p dangerouslySetInnerHTML={{ __html: node.field_image_left_subtitle.processed }} className={["subtitle", imageLeft.subtitle].join(" ")}></p>
+              <div dangerouslySetInnerHTML={{ __html: node.field_image_left_subtitle.processed }} className={["subtitle", imageLeft.subtitle].join(" ")}></div>
               <h1 dangerouslySetInnerHTML={{ __html: node.field_image_left_title.processed }} className={[imageLeft.title, "title"].join(" ")}></h1>
-              <p dangerouslySetInnerHTML={{ __html: node.field_image_left_paragraph.processed }} className={[imageLeft.description, "description"].join(" ")}></p>
+              <div dangerouslySetInnerHTML={{ __html: node.field_image_left_paragraph.processed }} className={[imageLeft.description, "description"].join(" ")}></div>
               <div className={imageLeft.linkSection}><Link to={node.field_image_left_button.uri} className="button-link">{node.field_image_left_button.title}</Link></div>
             </div>
           </div>
