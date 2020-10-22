@@ -14,7 +14,7 @@ const ImagesBoxes = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></div>
             {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
             <div>
-              {(node.relationships.field_box_image && node.relationships.field_box_image.localFile && node.relationships.field_box_image.localFile.childImageSharp)? 
+              {(node.relationships.field_box_image && node.relationships.field_box_image.localFile)? 
               <Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
@@ -27,7 +27,7 @@ const ImagesBoxes = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></div>
             {/* <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
             <div>
-              {(node.relationships.field_second_b && node.relationships.field_second_b.localFile && node.relationships.field_second_b.localFile.childImageSharp)?
+              {(node.relationships.field_second_b && node.relationships.field_second_b.localFile)?
               <Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
