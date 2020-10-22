@@ -57,6 +57,9 @@ query($slug: String!) {
                 ...paragraphPhysicianFinder
                 ...paragraphSkinAnalyzer
                 ...paragraphRegistration
+                ...paragraphImageLeftDescriptionRight
+                ...paragraphSimpleFooter
+                ...paragraphPremierVideo
             }
         }
         field_meta_tags {
