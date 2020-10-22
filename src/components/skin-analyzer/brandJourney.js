@@ -97,6 +97,18 @@ const BrandJourney = [
     }
 ]
 
+export const MedicalResultType = [
+  "Vitamin A",
+  "Broad Spectrum Sunscreen",
+  "Vitamin C",
+  "Additional Skin Care Support"
+]
+
+export const ClinicalResultType = [
+  "Recommendation #1",
+  "Recommendation #2",
+  "Recommendation #3"
+]
 export function getBrandJourney (questionsResult) {
     let ValueBrandJourney = [];
     ValueBrandJourney = BrandJourney.filter(function(itme){

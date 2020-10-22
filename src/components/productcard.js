@@ -14,7 +14,8 @@ const ProductCard = ({
   rate,
   productLink,
   productId,
-  isrx
+  isrx,
+  Type
 }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -91,8 +92,8 @@ const ProductCard = ({
         {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
         </button>
         </div> : ""}
-        
-          <h1  className="d-none Productcardtype">Vitamin A</h1>
+        {Type ? <h1  className="d-none Productcardtype">{Type}</h1>:''}
+          
           
         {producttitle ? (
           <p className={[Productcard.productcarddesc,"productcarddesc"].join(" ")}><Link to={productLink}><span dangerouslySetInnerHTML={{__html: producttitle}}></span></Link></p>

@@ -4,6 +4,7 @@ import ProgressBar from '../../components/progress-bar'
 
 
 const Q7 = (props) => {
+    const [disableButton, setDisableButton] = useState();
     const [ingredients, setIngredients] = useState('');
     function handleInputChange(e) {
         setIngredients(e.target.value)
@@ -199,7 +200,7 @@ const Q7 = (props) => {
             </>
             <div className="row seventh-question justify-content-center">
                 <div className="col-12 col-lg-auto">
-                    <button onClick={sendBackData} className="button-link">See Your Results</button>
+                    <button onClick={sendBackData} className="button-link" disabled={ingredients==''}>See Your Results</button>
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import CartContext from '../../providers/cart-provider';
+import { MedicalResultType, ClinicalResultType } from './brandJourney';
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -28,9 +29,9 @@ const Resulte = (props) => {
         }
         return true;
       }
+    
     var productsid=[];
     var fproductsid=[];
-    
     console.log(props)
     const value = useContext(CartContext)
     const addMultiToCart = value && value.addMultiToCart;
@@ -50,8 +51,10 @@ const Resulte = (props) => {
                 let listOfProducts = searchInIndexById(response, is_medical);
                 if (is_medical) {
                     setMedicalProduct(listOfProducts);
+                    console.log("hafezz",response,listOfProducts)
                 } else {
                     setClinicalProduct(listOfProducts);
+                    console.log("hafezz",response,listOfProducts)
                 }
 
                 setLoading(true)
@@ -147,10 +150,11 @@ const Resulte = (props) => {
 
                                     </div>
                                     <div className="col-12 col-lg-7 results-card-container">
-                                        {clinicalProduct.length > 0 ? clinicalProduct.map(data => {
+                                        {clinicalProduct.length > 0 ? clinicalProduct.map((data,index)=> {
                                             productsid.push(data.field_clinical_id)
-                                        return    <ProductCard
+                                            return    <ProductCard
                                                 key={data.field_clinical_id}
+                                                Type= {ClinicalResultType[index]}
                                                 productLink={data.path.alias}
                                                 producttitle={data.title}
                                                 productdescription={{ __html: data.field_clinical_description.processed }}
@@ -254,7 +258,7 @@ const Resulte = (props) => {
                                         </div>
                                     </div>
                                     <div className="col-12 col-lg-7 results-card-container">
-                                        {medicalProduct.length > 0 ? medicalProduct.map(data => {
+                                        {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
                                             productsid.push(data.field_medical_id)
                                         return  <ProductCard
                                                 key={data.field_medical_id}
@@ -264,6 +268,7 @@ const Resulte = (props) => {
                                                 productimage={data.relationships.field_medical_image && data.relationships.field_medical_image[0].localFile ? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                                                 price={data.field_medical_price}
                                                 productId={data.field_medical_id}
+                                                Type= {MedicalResultType[index]}
                                             />
                                          }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
