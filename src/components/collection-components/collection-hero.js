@@ -91,8 +91,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_paraprapgh_taxonomy
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_paraprapgh_taxonomy
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -184,8 +184,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_categories_taxonomy
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_categories_taxonomy
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -278,8 +278,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_productline_taxonomy ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_productline_taxonomy
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_productline_taxonomy
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -371,8 +371,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_ingredients_taxonomy ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_ingredients_taxonomy
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_ingredients_taxonomy
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -465,8 +465,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_taxonomy_skintype ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_taxonomy_skintype
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_taxonomy_skintype
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -560,8 +560,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                 {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                   <h1 className={Collectionherostyle.collectiontitle}>
                     {
-                      checkTaxonomy.field_hero_clinical_ing_taxonomy
-                        .field_taxonomy_hero_para_title
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_clinical_ing_taxonomy
+                        .field_taxonomy_hero_para_title}}></div>
                     }
                   </h1>
                 ) : (
@@ -654,8 +654,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
               {checkTaxonomy.field_hero_parag_taxonomy ? (
                 <h1 className={Collectionherostyle.collectiontitle}>
                   {
-                    checkTaxonomy.field_hero_parag_taxonomy
-                      .field_taxonomy_hero_para_title
+                    <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_parag_taxonomy
+                      .field_taxonomy_hero_para_title}}></div>
                   }
                 </h1>
               ) : (
@@ -745,8 +745,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
               {checkTaxonomy.field_hero_taxonomy ? (
                 <h1 className={Collectionherostyle.collectiontitle}>
                   {
-                    checkTaxonomy.field_hero_taxonomy
-                      .field_taxonomy_hero_para_title
+                    <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_taxonomy
+                      .field_taxonomy_hero_para_title}}></div>
                   }
                 </h1>
               ) : (
@@ -837,8 +837,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
               {checkTaxonomy.field_hero_category_taxonomy ? (
                 <h1 className={Collectionherostyle.collectiontitle}>
                   {
-                    checkTaxonomy.field_hero_category_taxonomy
-                      .field_taxonomy_hero_para_title
+                    <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_hero_category_taxonomy
+                      .field_taxonomy_hero_para_title}}></div>
                   }
                 </h1>
               ) : (
@@ -926,7 +926,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   {checkTaxonomy.field_taxonomy_hero_para_title ? (
                                     <h1 className={Collectionherostyle.collectiontitle}>
                                       {
-                                        checkTaxonomy.field_taxonomy_hero_para_title
+                                        <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_taxonomy_hero_para_title}}></div>
                                       }
                                     </h1>
                                   ) : (
