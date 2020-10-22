@@ -11,6 +11,10 @@
 
 .row-padding {
     padding-top: 54px;
+
+    @include lg-screen {
+        padding-top: 112px;
+    }
 }
 
 .section {
@@ -21,7 +25,7 @@
     margin: 58px 0 17px;
 
     @include lg-screen {
-        margin: 360px 0 32px;
+        margin: 306px 0 32px;
     }
 }
 
@@ -61,17 +65,17 @@
 }
 
 .image {
-    margin-left: -86px;
+    // margin-left: -86px;
 
     // top: 54px;
     // height: 100%;
     // width: 100%;
 
     @include lg-screen {
-        margin-left: 0;;
-        position: relative;
-        z-index: -1;
-        top: -761px;
-        margin-bottom: -761px;
+        // margin-left: 0;
+        // position: relative;
+        // z-index: -1;
+        // top: -761px;
+        // margin-bottom: -761px;
     }
 }
