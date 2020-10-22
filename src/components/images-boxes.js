@@ -9,8 +9,8 @@ const ImagesBoxes = ({ node }) => {
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
         <div className={["col-12", "col-md-6", "col-lg-4", "offset-lg-2", imagesBoxesStyles.colPadding, imagesBoxesStyles.colMargin].join(" ")}>
           <div className={imagesBoxesStyles.boxes}>
-            <p dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-            <p dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></p>
+            <div dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></div>
             {/* <div><Img fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
             <div>
               {(node.relationships.field_box_image && node.relationships.field_box_image.localFile && node.relationships.field_box_image.localFile.childImageSharp)? 
@@ -22,8 +22,8 @@ const ImagesBoxes = ({ node }) => {
 
         <div className={["col-12", "col-md-6", "col-lg-4", imagesBoxesStyles.colPadding, imagesBoxesStyles.colMargin].join(" ")}>
           <div className={imagesBoxesStyles.boxes}>
-            <p dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></p>
-            <p dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></p>
+            <div dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></div>
             {/* <div><Img fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
             <div>
               {(node.relationships.field_second_b && node.relationships.field_second_b.localFile && node.relationships.field_second_b.localFile.childImageSharp)?
