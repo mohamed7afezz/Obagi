@@ -18,7 +18,7 @@ const HomeHero = ({ node }) => {
       <div className={["row"].join(" ")}>
         <div className={["col col-lg-4 offset-lg-4"].join(" ")}>
           {node.field_main_header? <h2 dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></h2> : ""}
-          {node.field_main_subtitle? <p dangerouslySetInnerHTML={{ __html: node.field_main_subtitle.processed }} className={[homeHero.subtitle].join(" ")}></p> : ""}
+          {/* {node.field_main_subtitle? <p dangerouslySetInnerHTML={{ __html: node.field_main_subtitle.processed }} className={[homeHero.subtitle].join(" ")}></p> : ""} */}
           {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
         </div>
       </div>
@@ -48,9 +48,7 @@ export const fragment = graphql`
         field_main_header {
           processed
         }
-        field_main_subtitle {
-          processed
-        }
+        
       
         relationships {
           field_box {
