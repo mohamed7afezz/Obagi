@@ -2022,7 +2022,13 @@ padding-bottom: 12px;
 }
 .Collectionfilter .advanced-search{
   padding-left: 0;
+  position: relative;
   padding-right: 0;
+}
+.Collectionfilter .product-lines >div{
+  position:  absolute !important;
+  z-index: 99;
+  background-color: #fff;
 }
 .Collectionfilter .advanced-search li:hover .checkcon {
 color: #fff;
@@ -2038,14 +2044,15 @@ height: 11px;
   background-color: #132466;
 }
 .Collectionfilter .advanced-search li .checkcon .checkmarkfinder{
-  width: 19px !important;
-  height: 19px !important;
+  width: 14px !important;
+  height: 14px !important;
+  top: 5px;
 }
 .Collectionfilter .advanced-search li .checkcon .checkmarkfinder::after {
-  width: 11px;
-  height: 11px;
-  top: 3px;
-  left: 3px;
+  width: 8px !important;
+  height: 8px !important;
+  top: 2px;
+  left: 1.85px;
   }
 #related-products{
   padding-right: 0 !important;
@@ -2413,6 +2420,14 @@ padding-bottom: 0;
   position: fixed;
   top: 0 !important;
 }
+#loader{
+
+position: absolute;
+width: 100%;
+height: 80vh;
+background-color: rgba(0,0,0,.5);
+margin-left: -15px;
+}
 .product-card-img .custom-img{
   max-height: none;
   max-width: 250px;
@@ -2429,4 +2444,30 @@ margin-right: auto;
 }
 .collectionPopup-fbtn{
   width: 100%;
+}
+.Collectionfilter .advanced-search{
+  border: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.Collectionfilter .advanced-search .input-name::after{
+transform: rotate(180deg);
+
+}
+.Collectionfilter .advanced-search.transparent-bg{
+  border: 1px solid;
+ border-radius: 6px;
+}
+.Collectionfilter .advanced-search.transparent-bg .input-name::after{
+transform: rotate(0);
+}.Collectionfilter .input-name{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: .4px;
+}
+.vhidden{
+  position: absolute;
+  z-index: -99;
+  opacity: 0;
 }

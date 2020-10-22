@@ -12,8 +12,11 @@ import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 const spinner = css`
   display: block;
+  left:35%;
   margin: 0 auto;
- 
+  border-width: 4px;
+  position: absolute;
+  top: 10%;
 `;
 const finderURL = process.env.Finder_URL;
 
@@ -310,10 +313,10 @@ export default function Finder() {
               </p>
             </div>
             <div id="loader" className="d-none">
-              <div>
+              <div class="d-mob-none">
                 <ClipLoader
                   css={spinner}
-                  size={150}
+                  size={400}
                   color={"#123abc"}
                 />
               </div>
@@ -531,6 +534,7 @@ export default function Finder() {
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Postal Code</p>
 
                     </div>
+                   <div id="hidden-fields"></div>
                   </div>
                   <div class="d-flex Submit-btns">
                     <button class="appointment-cancel">Cancel</button>
