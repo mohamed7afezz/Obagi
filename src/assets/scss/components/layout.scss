@@ -96,7 +96,7 @@ p {
 
     @include lg-screen {
         @include fontStyle(20, 24);
-        letter-spacing: 16px;
+        letter-spacing: 13px;
         padding-left: 15px;
         margin-bottom: 72px;
     }
