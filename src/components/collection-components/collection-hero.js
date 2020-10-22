@@ -905,7 +905,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               ].join(" ")}
                             >
                               <div className="row m-0">
-                              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                              {checktaxonomyType === "clinical"|| first_url==="clinical" || checktaxonomyType === "medical" || first_url ==="medical"  ?
+                                 <div className={["breadcramp-con", "col-12"].join(" ")}>
                                       <p className="breadcramp">
                                         <Link to="/">Home</Link> /{" "}
                                         <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>

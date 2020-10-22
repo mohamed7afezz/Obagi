@@ -43,6 +43,9 @@ import Finder from './hcpfinder';
 import PhysicianFinder from './physician-finder'
 import SkinAnalyzer from './skin-analyzer';
 import Registration from './registration';
+import ImageLeftDescRight from './ImageLeftDescriptionRight';
+import SimpleFooter from './SimpleFooter';
+import PremierVideo from './Premier-Video';
 
 
 const componentsMap = {
@@ -88,6 +91,9 @@ const componentsMap = {
     paragraph__physician_finder: PhysicianFinder,
     paragraph__skin_analyzer: SkinAnalyzer,
     paragraph__registration: Registration,
+    paragraph__image_left_description_right_: ImageLeftDescRight,
+    paragraphSimpleFooter : SimpleFooter,
+    paragraph__video :PremierVideo ,
 }
 
 export const getParagraph = node => {
