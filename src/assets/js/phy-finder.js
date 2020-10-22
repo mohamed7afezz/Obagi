@@ -71,6 +71,30 @@ class Temps {
 
             </div></div>
         `
+        
+    }
+    clinicAddress(obj) {
+return `
+        <div class="appointment-elemnt vhidden">
+                <input class="appointmentInput" id="physicianemail" name="physician_email" value=${obj.email}  />
+        </div>
+        <div class="appointment-elemnt vhidden">
+              <input class="appointmentInput" type="text" name="physician_name" value=${obj.doctorFName}  />
+        </div>
+        <div class="appointment-elemn vhidden">
+              <input class="appointmentInput" name="physician_address" value=${obj.address1} />
+        </div>
+        <div class="appointment-elemn vhidden">
+               <input class="appointmentInput" name="clinic_name" value=${obj.name} />
+        </div>
+        <div class="appointment-elemn vhidden">
+             <input class="appointmentInput" name="physician_phone" value=${obj.phone} />
+        </div>
+        <div class="appointment-elemn vhidden">
+              <input class="appointmentInput" name="physician_city" value=${obj.city}" />
+        </div>
+
+`
     }
 }
 
@@ -298,6 +322,7 @@ class Search extends Temps {
                 document.getElementById('results').appendChild(li);
                 document.getElementsByClassName('req-appointment').item(index).addEventListener('click', (e) => {
                     document.getElementById('req-app-clinic-info').innerHTML = this.clinicInfo(clinic);
+                    document.getElementById('hidden-fields').innerHTML = this.clinicAddress(clinic)
                 });
                 // add event listener for related products request
                 document.getElementsByClassName('related-products').item(index).addEventListener('click', (e) => {
@@ -317,6 +342,7 @@ class Search extends Temps {
         document.getElementById('related-phy-info').innerHTML = this.clinicInfo(clinic, true);
         document.getElementById('req-app-rel-pro').addEventListener('click', () => {
             document.getElementById('req-app-clinic-info').innerHTML = this.clinicInfo(clinic);
+            document.getElementById('hidden-fields').innerHTML = this.clinicAddress(clinic)
         })
         document.getElementById('related-products-list').innerHTML = 'Loading...';
 
@@ -582,6 +608,7 @@ class Map extends Search {
         let self = this;
         function clickInfoReq () {
             document.getElementById('req-app-clinic-info').innerHTML = self.clinicInfo(self.results.clinics[index])
+            document.getElementById('hidden-fields').innerHTML = self.clinicAddress(self.results.clinics[index])
         }
 
         // document.getElementById('req-appointment-info').removeEventListener('click', clickInfoReq);

@@ -74,6 +74,9 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       itemSelector: ".product-element",
       layoutMode: "masonry",
       getSortData: {
+        name: item => {
+          var name = item.querySelector(".productcarddesc").textContent;
+          return name },
         price: item => {
           var weight = item.querySelector(".prod-price").textContent;
           
@@ -146,7 +149,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   } else {
     checkTaxonomy = node
   }
-
+console.log('zz',checkTaxonomy)
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)
@@ -212,8 +215,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     sortSearchData();
     // update sort/filtered view
     switch (e.target.value) {
-      case 'Newest':
-        isoGrid.arrange({sortBy: 'original-order'});
+      case 'Alphabetically(A-Z)':
+        isoGrid.arrange({sortBy: 'name',sortAscending: true});
+        updateSortView();
+        break;
+        case 'Alphabetically(Z-A)':
+        isoGrid.arrange({sortBy: 'name',sortAscending: false});
         updateSortView();
         break;
       case 'Price: High - Low':
@@ -229,7 +236,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     }
     
   }
-
+  useEffect(() => {
+   
+    isoGrid.arrange({sortBy: 'name',sortAscending: true});
+        updateSortView();
+  }, [])
   function handlePrescribe(e) {
     if(e.target.checked) {
       isoFilter('rx', ':not(.RX)');
@@ -237,21 +248,28 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       isoFilter('rx', 'All');
     }
   }
-
+  function checkparray(item) {
+    return item != "";
+  }
   function isoFilter(type, val) {
     
     isoFilterData[type] = val === 'All'? '' : val.split(' ').join('_');
-
+    let p = [];
     let newFilter = '';
     for (const key in isoFilterData) {
       if (isoFilterData.hasOwnProperty(key) && key != 'rx') {
-        newFilter += isoFilterData[key] !== ''? '.' + isoFilterData[key] + ', ' : '';
+        newFilter += isoFilterData[key] !== ''? '.' + isoFilterData[key]  : '';
+        isoGrid.arrange({filter:newFilter});
       } else {
-        newFilter += isoFilterData[key] !== ''? isoFilterData[key] + ', ' : '';
+        newFilter += isoFilterData[key] !== ''? isoFilterData[key] + '' : '';
+        isoGrid.arrange({filter:`${newFilter}:not(rx)`});
       }
     }
-    console.log('bahiiii', newFilter.slice(0, -2))
-    isoGrid.arrange({filter: newFilter.slice(0, -2)});
+    
+   
+    console.log('bahiiii', newFilter)
+   
+    
     updateSortView();
   }
 
@@ -275,10 +293,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   }
   function filtersearchData(){
     let i =document.querySelectorAll('#flitersCon');
+   
     for(let item of i ){
       if(  
         item.classList.contains('hide')){
           item.classList.remove('hide')
+          document.querySelector('.filterlabel').classList.remove('hide');
         document.querySelector('.filterprodline ').classList.remove('transparent-bg')
   
       }else{
@@ -581,7 +601,14 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <ul class="popupUl popupFilter"> 
                             <li>
                               <label class="checkcon terms">
-                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Newest" defaultChecked={true}/>Newest
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Alphabetically(A-Z)" defaultChecked={true}/>Alphabetically(A-Z)
+
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Alphabetically(Z-A)" />Alphabetically(Z-A)
 
                               <span className="checkmarkfinder"></span>
                               </label>
@@ -868,7 +895,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
               (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
-                      
+                      console.log('zzz',product)
                       let ingredient = getIngredient(product);
                       
                       
@@ -878,9 +905,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <div
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
-                              `${item.name.split(' ').join('_')}`,
+                     
                               productsliststyle.productview,
-                              
+                              `${product.relationships?product.relationships.field_clinical_skin_type?product.relationships.field_clinical_skin_type.map(
+                                item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""}  ${product.relationships?product.relationships.field_clinical_ingredients?product.relationships.field_clinical_ingredients.map(
+                                  item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""} ${product.relationships?product.relationships.field_clinical_skin_concern?product.relationships.field_clinical_skin_concern.map(
+                                    item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""}`,
                               "productview",
                               
                             ].join(" ")}
@@ -1025,7 +1055,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           <ul class="popupUl popupFilter"> 
                             <li>
                               <label class="checkcon terms">
-                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Newest" defaultChecked={true}/>Newest
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="Name" defaultChecked={true}/>Name
 
                               <span className="checkmarkfinder"></span>
                               </label>

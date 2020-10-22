@@ -18,12 +18,15 @@ const spinner = css`
   margin: 0 auto;
  
 `;
+ var saveprodarr = [];
 const OrderDetails = (props, { node }) => {
+  var productsOid = []; 
+ 
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addMultiToCart = value && value.addMultiToCart;
   const addingToCart = value && value.state.addingToCart;
-  var productsid = []; 
+ 
   const [details, setDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [getshiping, setShipment] = useState(false)
@@ -143,7 +146,20 @@ const OrderDetails = (props, { node }) => {
 
   const location = useLocation()
   const { user } = useContext(UserContext)
-
+let getallcheck =()=>{
+  document
+          .querySelectorAll(".desk-details-check")
+          .forEach(el => {
+            if (el.checked && !saveprodarr.includes(el.value)) {
+              // 3 - send cart request
+              console.log(productsOid)
+              saveprodarr.push(el.value)
+              // console.log("value", el.value)
+              
+            }
+          })
+          // console.log(document.querySelectorAll(".details-check"))
+}
   if (!user && location.pathname.includes(`/my-account/orders/order-details`)) {
     if (typeof window !== "undefined") {
       navigate("/my-account/signin")
@@ -456,28 +472,16 @@ const OrderDetails = (props, { node }) => {
                   <button
                     type="button"
                     id="mob-reorder-button"
-                    disabled={arraysEqual(addingToCart,productsid)}  
                     className={orderDetailsStyles.orderButton}
-                    onClick={(e) => {
-                      let flag = true
-                      document
-                        .querySelectorAll(".details-check")
-                        .forEach(el => {
-                          if (el.checked && !productsid.includes(el.value)) {
-                            // 3 - send cart request
-                            productsid.push(el.value)
-                            // console.log("value", el.value)
-                            flag = false
-                          }
-                        })
-                        let quantity = 1;
-                       addMultiToCart(productsid, false, quantity);
-                        console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
-                       
-                    }}
+                    onClick={() => {
+                      productsOid= saveprodarr;let quantity = 1;
+                      console.log(saveprodarr,"hassan")
+                      addMultiToCart(productsOid, false, quantity);
+                  }}
+                  disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === productId}
                   >
-                    {arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}
+                    {arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}
                   </button>
                 </div>
 
@@ -490,33 +494,17 @@ const OrderDetails = (props, { node }) => {
                   <button
                     type="button"
                     id="reorder-button"
-                    disabled={arraysEqual(addingToCart,productsid)}  
+                
                     className={orderDetailsStyles.orderButton}
-                    onClick={(e) => {
-                      let flag = true
-                      
-                      document
-                        .querySelectorAll(".desk-details-check")
-                        .forEach(el => {
-                          
-
-                          if (el.checked && !productsid.includes(el.value)) {
-                            // 3 - send cart request
-                            productsid.push(el.value)
-                            
-                            
-                            // console.log("value", el.value)
-                            flag = false
-                          }
-                        })
-                        let quantity = 1;
-                       addMultiToCart(productsid, false, quantity);
-                        console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
-                       
-                    }}
+                    onClick={() => {
+                      productsOid= saveprodarr;let quantity = 1;
+                      console.log(saveprodarr,"hassan")
+                      addMultiToCart(productsOid, false, quantity);
+                  }}
+                  disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === elementId}
                   >
-                    {arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}
+                    {arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}
                   </button>
                 </div>
               </div>
@@ -553,7 +541,7 @@ const OrderDetails = (props, { node }) => {
                         <div className={orderDetailsStyles.productWrapper}>
                             <form>
                                 <div class="form-check">
-                                    <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                    <input class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} />
                                 </div>
                             </form>
                             {item.images.data.map((item, index) => {
@@ -597,7 +585,7 @@ const OrderDetails = (props, { node }) => {
                         <div className={orderDetailsStyles.productName}>
                             <form>
                                 <div class="form-check">
-                                    <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                    <input class="form-check-input desk-details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                 </div>
                             </form>
                             <div className={orderDetailsStyles.productImage}>
@@ -688,57 +676,26 @@ const OrderDetails = (props, { node }) => {
 
             <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
                 <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
-                disabled={arraysEqual(addingToCart,productsid)}  
-                    onClick={(e) => {
-                        let flag = true;
-
-                        
-                        document.querySelectorAll('.details-check').forEach((el) => {
-                            
-
-                            if (el.checked && !productsid.includes(el.value)) {
-                              // 3 - send cart request
-                              productsid.push(el.value)
-                              
-  
-                              // console.log("value", el.value)
-                              flag = false
-                            }
-                          })
-                          let quantity = 1;
-                         addMultiToCart(productsid, false, quantity);
-                          console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
-                        
-                    }}
+                onClick={() => {
+                  productsOid= saveprodarr;let quantity = 1;
+                  console.log(saveprodarr,"hassan")
+                  addMultiToCart(productsOid, false, quantity);
+              }}
+              disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === productId}
-                >{arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}</button>
+                >{arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}</button>
             </div>
 
             <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
                 <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
-                disabled={arraysEqual(addingToCart,productsid)}  
-                    onClick={(e) => {
-                        let flag = true;
-                        
-                        document.querySelectorAll('.desk-details-check').forEach((el) => {
-                            
-
-                            if (el.checked && !productsid.includes(el.value)) {
-                              // 3 - send cart request
-                              productsid.push(el.value)
-                              
-  
-                              // console.log("value", el.value)
-                              flag = false
-                            }
-                          })
-                          let quantity = 1;
-                         addMultiToCart(productsid, false, quantity);
-                          console.log(productsid);console.log(arraysEqual(addingToCart,productsid))
-                       
-                    }}
+               onClick={() => {
+                productsOid= saveprodarr;let quantity = 1;
+                console.log(saveprodarr,"hassan")
+                addMultiToCart(productsOid, false, quantity);
+            }}
+            disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === elementId}
-                >{arraysEqual(addingToCart,productsid) ? "Re-ordering" : "Re-order"}</button>
+                >{arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}</button>
             </div>
         </div>
     }
