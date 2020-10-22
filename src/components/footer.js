@@ -269,8 +269,8 @@ const Footer = ({ siteTitle }) => {
               <ul className="footerprivacy">
                 <Link to='#' className="footerprivacyli">Privacy Policy</Link>
                 <Link to='#' className="footerprivacyli">Terms of Use</Link>
-                <Link to='#' className="footerprivacyli">Cookie Policy</Link>
-                <Link to='#' className="footerprivacyli">User Generated Content Terms</Link>
+                {/* <Link to='#' className="footerprivacyli">Cookie Policy</Link> */}
+                {/* <Link to='#' className="footerprivacyli">User Generated Content Terms</Link> */}
                 <Link to='#' className="footerprivacyli">Sitemap</Link>
                 <p id="demo"></p>
               </ul>
