@@ -197,7 +197,7 @@ return (
 
 
                     <div class="form-group">
-                      <label for="settingsemail">Email Adress</label>
+                      <label for="settingsemail">Email Address</label>
                       <input type="" class="form-control" name="settingsemail" id="settingsemail" aria-describedby="settingsemailhelp" placeholder="" value={userAccount.email} onChange={handleAttr}/>
                     </div>
 
@@ -262,7 +262,7 @@ return (
         <div className="row d-lg-none">
           <div className="col-12">
             <div className={accountsettings.csTitle}>Customer Service</div>
-            <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+            <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={accountsettings.csNumber}>1-800-636-7546</span>.</div>
           </div>
         </div>
           <div class="row">
@@ -271,7 +271,7 @@ return (
 
             </div>
           </div>
-        <div className="row">
+        <div className={["row", accountsettings.saveRow].join(" ")}>
           <div className="col-lg-4 col-12">
             <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>
               <button className={accountsettings.saveSitting}>

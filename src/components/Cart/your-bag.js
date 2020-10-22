@@ -76,7 +76,7 @@ const StandardItem = props => {
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
-                <p className={[ShowBagStyle.BagProductDesc,BagStyle.cartpre].join(" ")}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                <p className={[ShowBagStyle.BagProductDesc,BagStyle.cartpre].join(" ")}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}><span dangerouslySetInnerHTML={{__html: item.name}}></span></Link> </p>
                 {item.premier_points != ''? <span className={[BagStyle.premire,BagStyle.premirecart].join(" ")}>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
 
@@ -117,7 +117,7 @@ const StandardItem = props => {
                 </Link>
               </div>
               <div className={"col-md-5 mob-p-0"}>
-                <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}>{item.name}</Link> </p>
+                <p className={BagStyle.prouductBagDesc}><Link className={ShowBagStyle.cartProductTitle} to={`${producturl[1]}`}><span dangerouslySetInnerHTML={{__html: item.name}}></span></Link> </p>
                 {item.premier_points != ''? <span className={BagStyle.premire}>Earn {item.premier_points} Premier Points ea.</span>: ''}
               </div>
               {/* <div className={"col-md-2"}>
@@ -845,7 +845,7 @@ const YourBag = (props, {notificationId}) => {
                   </div>
                 </div>
                       <p className={BagStyle.paytitle}>Customer Service</p>
-                      <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</p>
+                      <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={BagStyle.csNumber}>1-800-636-7546</span>.</p>
               </div>
             </div>
           

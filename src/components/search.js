@@ -43,7 +43,7 @@ const Search = () => {
                     className={searchStyles.searchlinks}
                     to={data.path.alias}
                   >
-                    {data.title}
+                    <span dangerouslySetInnerHTML={{__html: data.title}}></span>
                   </Link>
                 ) : (
                   ""
@@ -76,7 +76,7 @@ const Search = () => {
                     className={searchStyles.searchlinks}
                     to={data.path.alias}
                   >
-                    {data.title}
+                    <span dangerouslySetInnerHTML={{__html: data.title}}></span>
                   </Link>
                 ) : (
                   ""

@@ -67,8 +67,8 @@ export default function Premier() {
                         <h1 className={[premierStyles.Premiertitle,"hide-mob"].join(" ")}>
                         Join Obagi Medical Premier Points<sup>&reg;</sup> Today
                         </h1>
-                        <p className={[premierStyles.Premiersubtitle,"hide-mob"].join(" ")}>Earn reward points with every purchase of Obagi Medical<sup>&reg;</sup>products</p>
-                        <p className={premierStyles.PremierDesc}>Obagi Premier Points is an exclusive opportunity to earn points when you purchase Obagi Medical products directly from your physician or online at <Link to="/">Obagi.com</Link>. Join today, and every dollar you spend on applicable products goes towards free products in the future*. Once your saved enough points, you can redeem them for free Obagi Medical products.</p>
+                        <p className={[premierStyles.Premiersubtitle,"hide-mob"].join(" ")}>Earn reward points with every purchase of Obagi Medical<sup>&reg;</sup> products</p>
+                        <p className={premierStyles.PremierDesc}>Obagi Premier Points is an exclusive opportunity to earn points when you purchase Obagi Medical products directly from your physician or online at <Link to="/">Obagi.com</Link>. Join today, and every dollar you spend on applicable products goes towards free products in the future.* Once you've saved enough points, you can redeem them for free Obagi Medical products.</p>
                       <div className={premierStyles.PremierLinks}>
                     <div className={premierStyles.PremierLink}>
                         <p className={premierStyles.PremierLinkTitke}>Download</p>
@@ -94,7 +94,7 @@ export default function Premier() {
         <div className="row d-lg-none">
           <div className="col-12">
             <div className={premierStyles.csTitle}>Customer Service</div>
-            <div className={premierStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+            <div className={premierStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={premierStyles.csNumber}>1-800-636-7546</span>.</div>
           </div>
         </div>
       </div>

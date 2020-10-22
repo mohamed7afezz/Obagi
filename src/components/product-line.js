@@ -286,7 +286,7 @@ const ProductLine = ({ node }) => {
                                   className={[lineStyles.tab, "line-tab", index == 0 ? 'active' : ""].join(
                                     " "
                                   )}
-                                >{item.node.name}</div>)
+                                ><span dangerouslySetInnerHTML={{__html: item.node.name}}></span></div>)
                               ) : (
                                   ""
                                 )}
@@ -331,7 +331,7 @@ const ProductLine = ({ node }) => {
                                     (
                                       <div
                                         className={lineStyles.cardTitle}
-                                      >{item.node.name}</div>
+                                      ><span dangerouslySetInnerHTML={{__html: item.node.name}}></span></div>
                                     )) : (
                                     ""
                                   )}
@@ -384,7 +384,8 @@ const ProductLine = ({ node }) => {
                                         lineStyles.link,
                                       ].join(" ")}
                                     >
-                                      {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]}
+                                      {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
+                                      Shop&nbsp; <span dangerouslySetInnerHTML={{__html:item.node.name}}></span>
                                     </Link>
                                   </div>
                                 ) : (

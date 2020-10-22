@@ -218,7 +218,7 @@ const UserAccount = ({ node, children, activeTab }) => {
                             <Link className={activeTab == "account-settings" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/account-settings" >Account Settings</Link>
                             <Link className={activeTab == "premier-points" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/premier-points" >Premier Points</Link>
                             <div className={myAccountStyles.csTitle}>Customer Service</div>
-                            <div className={myAccountStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at 1-800-636-7546.</div>
+                            <div className={myAccountStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={myAccountStyles.csNumber}>1-800-636-7546</span>.</div>
                         </div>
                     </div>
 

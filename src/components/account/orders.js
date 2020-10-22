@@ -37,7 +37,7 @@ export default function Orders() {
                     <div className={myAccountStyles.secondTitle}>Order History</div>
 
                     {orders !== "undefined" || Object.keys(orders).length != 0 ?
-                        <div className={myAccountStyles.ordersCount}>{orders.length} Orders</div>
+                        <div className={myAccountStyles.ordersCount}>{orders.length} {orders.length > 1? "Orders" : "Order"}</div>
                         : ""
                     }
 

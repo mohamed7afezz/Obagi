@@ -278,7 +278,7 @@ let getallcheck =()=>{
                               className={orderDetailsStyles.productInfoWrapper}
                             >
                               <div className={orderDetailsStyles.productName}>
-                                {item.name ? item.name : ""}
+                                {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}
                               </div>
                               <div
                                 className={orderDetailsStyles.priceAndQuantity}
@@ -317,7 +317,7 @@ let getallcheck =()=>{
                                   })[0]
                                 }
                               </div>
-                              {item.name ? item.name : ""}
+                              {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span>: ""}
                             </div>
                             <div className={orderDetailsStyles.productQuantity}>
                               {item.quantity ? "Qty. " + item.quantity : ""}
@@ -388,7 +388,7 @@ let getallcheck =()=>{
                   </p>
                   <p>
                     {placedOnDate
-                      ? `${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}`
+                      ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`
                       : ""}
                   </p>
                 </div>
@@ -405,8 +405,8 @@ let getallcheck =()=>{
                       </p>
                       <p>{item.street_1 ? item.street_1 : ""}</p>
                       <p>
-                        {item.city ? item.city : ""}{" "}
-                        {item.state ? item.state : ""},{" "}
+                        {item.city ? item.city : ""},{" "}
+                        {item.state ? item.state : ""}{" "}
                         {item.zip ? item.zip : ""}
                       </p>
                       <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
@@ -434,11 +434,11 @@ let getallcheck =()=>{
                   <p>
                     {details.billing_address
                       ? details.billing_address.city
-                      : ""}{" "}
+                      : ""},{" "}
                     {details.billing_address
                       ? details.billing_address.state
                       : ""}
-                    ,{" "}
+                    {" "}
                     {details.billing_address ? details.billing_address.zip : ""}
                   </p>
                   <p>
@@ -550,7 +550,7 @@ let getallcheck =()=>{
                                 )
                             })}
                             <div className={orderDetailsStyles.productInfoWrapper}>
-                                <div className={orderDetailsStyles.productName}>{item.name ? item.name : ""}</div>
+                                <div className={orderDetailsStyles.productName}>{item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}</div>
                                 <div className={orderDetailsStyles.priceAndQuantity}>
                                     <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
                                     <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
@@ -595,7 +595,7 @@ let getallcheck =()=>{
                                     )
                                 })[0]}
                             </div>
-                            {item.name ? item.name : ""}
+                            {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}
                         </div>
                         <div className={orderDetailsStyles.productQuantity}>
                             {item.quantity ? "Qty. " + item.quantity : ""}
@@ -635,7 +635,7 @@ let getallcheck =()=>{
 
             <div className={orderDetailsStyles.detailPart}>
                 <p>Order Placed</p>
-                <p>{placedOnDate ? `${placedOnDate[1]} ${placedOnDate[0]}, ${placedOnDate[2]}` : ""}</p>
+                <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
             </div>
 
             {shippingAddresses.map((item, index) => {

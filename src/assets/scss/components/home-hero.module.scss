@@ -53,9 +53,9 @@
     @include fontStyle(18, 24);
     margin-bottom: 71px;
 
-    @include lg-screen {
-        display: none;
-    }
+    // @include lg-screen {
+    //     display: none;
+    // }
 }
 
 .scroll-button {

@@ -95,7 +95,7 @@ const ProductCard = ({
           <h1  className="d-none Productcardtype">Vitamin A</h1>
           
         {producttitle ? (
-          <p className={[Productcard.productcarddesc,"productcarddesc"].join(" ")}><Link to={productLink}>{producttitle}</Link></p>
+          <p className={[Productcard.productcarddesc,"productcarddesc"].join(" ")}><Link to={productLink}><span dangerouslySetInnerHTML={{__html: producttitle}}></span></Link></p>
         ) : (
           ""
         )}
