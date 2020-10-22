@@ -241,9 +241,16 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
  
   async  function  inputval(e){
     e.preventDefault();
+    var search = document.getElementById("search-wrapper");
+    var deskNav = document.getElementById("desk-navigation");
+    var nav = document.getElementById("mob-navigation");
     if (e.keyCode === 13) {
       // Cancel the default action, if needed
+      search.style.display = "none";
+      deskNav.classList.add("d-lg-block");
+      nav.style.display = "block";
       deskOpenSearch();
+      // openSearch();
       // Trigger the button element with a click
       document.querySelector(".searchIcon").click();
     }
@@ -389,7 +396,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
-      search.style.position = "relative";
+      // search.style.position = "relative";
+      search.classList.add("relative-class");
 
     } else if (search.style.display === "none" && not.style.display === "none" && menuType === "absolute") {
       search.style.display = "block";
@@ -398,7 +406,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
       search.style.display = "block";
       deskNav.classList.remove("d-lg-block");
-      search.style.position = "relative";
+      // search.style.position = "relative";
+      search.classList.add("relative-class");
 
     }
     else {
