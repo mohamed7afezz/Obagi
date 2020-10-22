@@ -6,7 +6,7 @@ import imageAndText from '../assets/scss/components/section-with-image-and-text.
 const SectionWithImageAndText = ({ node }) => {
   return (
     <div className={["container-fluid"].join(" ")}>
-      <div className={["row", imageAndText.section, imageAndText.rowPadding].join(" ")}>
+      <div className={["row align-items-center", imageAndText.section, imageAndText.rowPadding].join(" ")}>
         <div className={["col-9", "offset-2", "col-lg-4", "offset-lg-1"].join(" ")}>
           <div className={[imageAndText.textSection].join(" ")}>
             <div dangerouslySetInnerHTML={{ __html: node.field_sub_title.processed }} className={["subtitle", imageAndText.subtitle].join(" ")}></div>
