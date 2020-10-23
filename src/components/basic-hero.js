@@ -20,15 +20,30 @@ const Basichero = ({ node }) => {
             <div className="row remove-mob-padding">
               <div className="offset-lg-1">
              
+              { 
+                  node.relationships.field_basic_hero_left_img_paragr?
+                      <img
+                        className={[basichero.heroLeft,"col-lg-10"].join(" ")}
+                        src={
+                          node.relationships.field_basic_hero_left_img_paragr
+                           
+                            .localFile.childImageSharp.original.src
+                        }
+                      />
+                  :""
+                
+                }
     {
                   <h1 className={basichero.collectiontitle}>
                     {
+                      node.field_basic_hero_title_paragrapg?
                       <div dangerouslySetInnerHTML={{__html: node.field_basic_hero_title_paragrapg
-                        .processed}}></div>
+                        .processed}}></div>:""
                     }
                   </h1>
                }
                 { 
+                node.field_basic_hero_desc_paragrapgh?
                   <div className={basichero.collectiondescription}
                     dangerouslySetInnerHTML={{
                       __html: node.field_basic_hero_desc_paragrapgh.processed
@@ -36,6 +51,7 @@ const Basichero = ({ node }) => {
                   >
 
                   </div>
+                  :""
                
                   }
               </div>
@@ -54,7 +70,7 @@ const Basichero = ({ node }) => {
             >
 
               { 
-                  
+                  node.relationships.field_basic_img_hero_paragrapgh?
                       <img
                         className={[basichero.allheight,"img-fluid-height"].join(" ")}
                         src={
@@ -63,7 +79,7 @@ const Basichero = ({ node }) => {
                             .localFile.childImageSharp.original.src
                         }
                       />
-                  
+                  :""
                 
                 }
             </div>
@@ -87,6 +103,18 @@ fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
       processed
     }
     relationships {
+      field_basic_hero_left_img_paragr {
+        localFile {
+          childImageSharp {
+            fluid {
+              src
+            }
+            original{
+                src
+            }
+          }
+        }
+      }
       field_basic_img_hero_paragrapgh {
         localFile {
           childImageSharp {
