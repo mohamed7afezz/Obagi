@@ -278,6 +278,12 @@ right: 0;
   max-width: 100%;
 }
 @media (min-width: 768px) {
+  .basicbg .img-fluid-height{
+    height: 100%;
+   }
+.desk-auto{
+  margin-top: auto;
+}   
   .sysRelatedComp
 .slick-track
 {
@@ -2500,7 +2506,4 @@ min-height: 0;
 }
 .permier-video-link{
   position: relative;
-}
-.basicbg .img-fluid-height{
-  left: 60%;
 }

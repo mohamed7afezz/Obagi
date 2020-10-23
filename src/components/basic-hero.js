@@ -11,7 +11,7 @@ const Basichero = ({ node }) => {
           <div
             className={[
               "col-12",
-              "col-lg-4",
+              "col-lg-5",
               "offset-lg-1",
               basichero.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -45,7 +45,8 @@ const Basichero = ({ node }) => {
         
             <div
               className={[
-                "col-lg-7",                
+                "col-lg-5",
+                "offset-lg-1",                
                 "col-12",
                 basichero.Collectionherorightcol,
                 "Collectionherorightcol",
