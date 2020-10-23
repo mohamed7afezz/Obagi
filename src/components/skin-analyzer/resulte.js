@@ -43,8 +43,15 @@ const Resulte = (props) => {
     useEffect(() => {
 
         const is_medical = props.brandJourney == "Clinical Persona" ? 0 : 1;
-        fetch(`${baseUrl}bigcommerce/v1/skin_alnyzer?is_medical=${is_medical}&q4=${props.questionsResult.q4}&q5=${props.questionsResult.q5}&q7=${props.questionsResult.q7}`, {
+        fetch(`${baseUrl}bigcommerce/v1/skin_alnyzer`, {
             credentials: 'same-origin',
+            method: 'POST',
+            body: JSON.stringify({
+                is_medical: is_medical,
+                q4: props.questionsResult.q4,
+                q5: props.questionsResult.q5,
+                q7: props.questionsResult.q7
+              })
         })
             .then(res => res.json())
             .then(response => {
