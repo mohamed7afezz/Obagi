@@ -45,11 +45,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-    if (first_url ==="medical") {
-      document.querySelector('.collectionhero ').classList.add('collectionhero medicalBg')
-    }else if(first_url === "clinical")
-    document.querySelector('.collectionhero ').classList.add('collectionhero')
-
+    console.log("hassan",first_url)
   }
 
   return (
@@ -909,8 +905,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               ].join(" ")}
                             >
                               <div className="row m-0">
-                              {checktaxonomyType === "clinical"|| first_url==="clinical" || checktaxonomyType === "medical" || first_url ==="medical"  ?
-                                 <div className={["breadcramp-con", "col-12"].join(" ")}>
+                              {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                                       <p className="breadcramp">
                                         <Link to="/">Home</Link> /{" "}
                                         <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
