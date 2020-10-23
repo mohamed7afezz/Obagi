@@ -1,0 +1,85 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.title{
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 300;
+    margin-bottom: 0px;
+    margin-top: 32px;
+    display: none;
+    text-align: center;
+    @include md-screen{
+    text-align: left;
+    display: block;
+    font-size: 52px;
+    line-height: 64px;
+    margin-bottom: 40px;
+    }
+}
+.leftimg{
+    max-width: 100%;
+}
+.primercradtitle{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.primercradDesc{
+    font-size: 16px;
+    line-height: 24px;
+}
+.primerli{
+    margin-bottom: 32px;
+}
+.primerimg{
+    margin-top: 8px;
+    display: none;
+    img{
+      
+        margin-right: 0;
+      
+        @include md-screen{
+           
+            &:first-child{
+                margin-right: 20px;
+            }
+        }
+    }
+    @include md-screen{
+        display: block;
+    }
+}
+.sectionBg{
+    background-color: rgba( 40, 116, 192,0.1);
+}
+.givepadding{
+    padding-top: 0;
+    @include md-screen{
+        padding-top: 80px;
+    }
+}
+.mobDcol{
+    flex-direction: column;
+    @include md-screen{
+        flex-direction: row;
+    }
+}
+
+.primerul{
+    counter-reset: section;                /* Creates a new instance of the
+    section counter with each ol
+    element */
+list-style-type: none;
+}
+.primerli::before {
+    counter-increment: section;       
+    content: counters(section, ".") " ";
+    position: absolute;
+    left: 10px;
+    border: 1px solid #132466;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 50%;
+}

@@ -75,25 +75,27 @@ class Temps {
     }
     clinicAddress(obj) {
 return `
-        <div class="appointment-elemnt vhidden">
-                <input class="appointmentInput" id="physicianemail" name="physician_email" value=${obj.email}  />
+        <div class="t vhidden">
+                <input class="appointmentInput" id="physicianemail" name="physician_email" value="${obj.email}" />
         </div>
-        <div class="appointment-elemnt vhidden">
-              <input class="appointmentInput" type="text" name="physician_name" value=${obj.doctorFName}  />
+        <div class="t vhidden">
+              <input class="appointmentInput" type="text" name="physician_name" value="${obj.doctorFName} ${obj.doctorLName}"  />
         </div>
-        <div class="appointment-elemn vhidden">
-              <input class="appointmentInput" name="physician_address" value=${obj.address1} />
+        <div class=" vhidden">
+              <input class="appointmentInput" name="physician_address" value="${obj.address1}" />
         </div>
-        <div class="appointment-elemn vhidden">
-               <input class="appointmentInput" name="clinic_name" value=${obj.name} />
+        <div class=" vhidden">
+               <input class="appointmentInput" name="clinic_name" value="${obj.name}" />
         </div>
-        <div class="appointment-elemn vhidden">
-             <input class="appointmentInput" name="physician_phone" value=${obj.phone} />
+        <div class=" vhidden">
+             <input class="appointmentInput" name="physician_phone" value="${obj.phone}" />
         </div>
-        <div class="appointment-elemn vhidden">
-              <input class="appointmentInput" name="physician_city" value=${obj.city}" />
+        <div class=" vhidden">
+              <input class="appointmentInput" name="physician_city" value="${obj.city}"/>
         </div>
-
+        <div class=" vhidden">
+        <input class="appointmentInput" name="rep_email" value="${obj.rep_email}"/>
+  </div>
 `
     }
 }

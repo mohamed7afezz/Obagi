@@ -207,6 +207,10 @@ right: 0;
   #Showbag .modal-header .close{
     right: 4%;
   }
+  .remove-mob-padding{
+    margin-left: 0;
+    margin-right: 0;
+  }
   .mob-m-0{
     margin: 0;
   }
@@ -274,6 +278,12 @@ right: 0;
   max-width: 100%;
 }
 @media (min-width: 768px) {
+  .basicbg .img-fluid-height{
+    height: 100%;
+   }
+.desk-auto{
+  margin-top: auto ; 
+}   
   .sysRelatedComp
 .slick-track
 {
@@ -2306,6 +2316,10 @@ padding-bottom: 0;
   flex-direction: column;
 }
 @media (max-width:767px){
+  .basicbg .img-fluid-height {
+    left: 52% !important;
+    top: -60% ;
+}
  .results-card-container
   .product-card-con {
     display: flex;
@@ -2388,7 +2402,18 @@ padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
 }
+.show-mob{
+  display: none !important;
+}
 @media (max-width:767px){
+  .show-mob{
+    display: block !important;
+  }
+  .show-mob.d-mob-flex{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
   #formsubmition .modal-body{
     padding: 50px;
     padding-top: 80px;
@@ -2474,4 +2499,11 @@ transform: rotate(0);
   position: absolute;
   z-index: -99;
   opacity: 0;
+}
+.permier-video-link .video-wrapper{
+position: unset;
+min-height: 0;
+}
+.permier-video-link{
+  position: relative;
 }
