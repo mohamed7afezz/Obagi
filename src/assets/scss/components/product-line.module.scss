@@ -80,11 +80,11 @@
     color: #ffffff;
     @include md-screen{
         padding-top: 40px;
-        padding-left: 0;
-        padding-right: 0;
     }
 
     @include lg-screen {
+        padding-left: 0;
+        padding-right: 0;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
@@ -144,7 +144,7 @@
 
 .image-wrapper {
     padding: 44px 37px 35px;
-    @include md-screen{
+    @include lg-screen{
         display: none;
     }
 }

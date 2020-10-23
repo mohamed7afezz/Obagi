@@ -60,7 +60,7 @@ const HeroSlider = ({ node }) => {
                                                         {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical')? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                         {item.field_slide_title? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : '' }
                                                         {item.field_sli? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
-                                                        {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri} className="button-link">{item.field_slide_button.title}</Link></div> : ''}
+                                                        {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link"].join(" ")}>{item.field_slide_button.title}</Link></div> : ''}
                                                     </div>
                                                 </div>
                                             </div>

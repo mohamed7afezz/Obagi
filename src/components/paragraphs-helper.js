@@ -47,6 +47,8 @@ import ImageLeftDescRight from './ImageLeftDescriptionRight';
 import SimpleFooter from './SimpleFooter';
 import PremierVideo from './Premier-Video';
 import Basichero from './basic-hero';
+import Contact from './contact-us';
+import Customer from './customer-care';
 
 
 const componentsMap = {
@@ -96,6 +98,8 @@ const componentsMap = {
     paragraph__simple_footer : SimpleFooter,
     paragraph__video :PremierVideo ,
     paragraph__basic_hero_paragrapgh : Basichero,
+    paragraph__contact_us: Contact,
+    paragraph__customer_care: Customer
 }
 
 export const getParagraph = node => {

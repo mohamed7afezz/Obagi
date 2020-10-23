@@ -141,7 +141,7 @@ p {
     text-align: center;
     color: #132466;
     letter-spacing: 1.2px;
-    padding: 20px 0;
+    padding: 20px;
     text-transform: uppercase;
     background: transparent;
 
@@ -3544,3 +3544,17 @@ p {
         position: relative;
     }
   }
+
+  .tab-slider .slick-dots {
+
+    @include md-screen {
+        margin-bottom: 22px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .tab-slider .slick-dots {
+        margin-bottom: 22px;
+        
+      }
+}
