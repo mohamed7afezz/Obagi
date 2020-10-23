@@ -64,6 +64,9 @@ const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
             processed
           }
           relationships {
+            field_medical_rx {
+              name
+            }
             field_medical_image {
               localFile {
                 childImageSharp {
