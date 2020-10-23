@@ -1,0 +1,49 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.Collectionheroleftcol{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 195px;
+        padding-bottom: 112px;
+    }
+}
+.Collectionherorightcol{
+    max-width: 100%;
+    overflow: hidden;
+    order: -1;
+    @include md-screen{
+        order: 2;
+    }
+}
+.collectiondescription{
+   p{
+       font-size: 16px;
+       line-height: 24px;
+       font-weight: 300;
+       @include md-screen{
+           font-size: 24px;
+           line-height: 40px;
+       }
+       &:first-child{
+           font-size: 16px;
+           line-height: 24px;
+           font-weight: 700;
+           @include md-screen{
+               font-size: 18px;
+               line-height: 32px;
+           }
+        padding-top: 24px;
+        padding-bottom: 24px;
+       }
+   }
+}
+.collectiontitle{
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 300;
+    @include md-screen{
+        font-size: 64px;
+        line-height: 72px;
+    }
+}

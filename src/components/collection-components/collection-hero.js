@@ -45,7 +45,11 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-    console.log("hassan",first_url)
+    if (first_url ==="medical") {
+      document.querySelector('.collectionhero ').classList.add('collectionhero medicalBg')
+    }else if(first_url === "clinical")
+    document.querySelector('.collectionhero ').classList.add('collectionhero')
+
   }
 
   return (

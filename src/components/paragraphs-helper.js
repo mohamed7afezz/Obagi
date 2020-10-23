@@ -46,6 +46,7 @@ import Registration from './registration';
 import ImageLeftDescRight from './ImageLeftDescriptionRight';
 import SimpleFooter from './SimpleFooter';
 import PremierVideo from './Premier-Video';
+import Basichero from './basic-hero';
 
 
 const componentsMap = {
@@ -92,8 +93,9 @@ const componentsMap = {
     paragraph__skin_analyzer: SkinAnalyzer,
     paragraph__registration: Registration,
     paragraph__image_left_description_right_: ImageLeftDescRight,
-    paragraphSimpleFooter : SimpleFooter,
+    paragraph__simple_footer : SimpleFooter,
     paragraph__video :PremierVideo ,
+    paragraph__basic_hero_paragrapgh : Basichero,
 }
 
 export const getParagraph = node => {

@@ -1,0 +1,55 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.givepadding{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    @include md-screen
+    {
+        padding-top: 144px;
+        padding-bottom: 120px;
+    }
+}
+.givebg{
+    background-color: #132466;
+    text-align: center;
+    color: #fff;
+}
+
+.title{
+font-size: 32px;
+line-height: 48px;
+font-weight: 300;
+@include md-screen{
+font-size: 52px;
+line-height: 64px;
+}
+}
+.subtitle{
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    @include md-screen{
+        margin-top: 24px;
+        margin-bottom: 40px;
+        font-size: 24px;
+        line-height: 40px;
+    }
+}
+.Flink{
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    padding: 30px 24px;
+    transition: all ease 300ms;
+}
+.Flink:hover{
+    background-color: #fff;
+    color: #132466;
+}

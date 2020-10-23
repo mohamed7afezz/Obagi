@@ -53,14 +53,14 @@ const sendFormValues = (updatedItemData) => {
 function submitforming(e) {
   var obj = { webform_id: "request_appointment" };
   var forms = document.getElementsByClassName('needs-validations');
-  var list = document.querySelectorAll('.needs-validations input:invalid');
+  var list = document.querySelectorAll('.needs-validations .appointment-elemnt input:invalid');
   if (list.length > 0) {
     for (var item of list) {
       item.parentElement.classList.add('error')
       item.nextSibling.classList.remove('hide')
     }
   } else {
-    let list2 = document.querySelectorAll('.needs-validations input');
+    let list2 = document.querySelectorAll('.needs-validations .appointment-elemnt input');
     for (let item of list2) {
       item.parentElement.classList.remove('error')
       item.nextSibling.classList.add('hide')
@@ -85,7 +85,8 @@ function submitforming(e) {
       document.querySelector("#formsubmition").classList.add("hidden");
     });
     document.querySelector(".modal-backdrop.fade.show").remove();
-    document.querySelector(".modal-backdrop.fade.in").remove();
+   
+  
   }
 
 }
