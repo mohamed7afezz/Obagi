@@ -1514,6 +1514,9 @@ z-index: 999;
   .footerprivacy{
     padding-left: 0;
   }
+  .producTypeSelect {
+    margin-bottom: 20px;
+  }
 }
 
 .mt-65{

@@ -3537,3 +3537,10 @@ p {
           text-decoration: none;
       }
   }
+
+  .relative-class {
+
+    @include lg-screen {
+        position: relative;
+    }
+  }
