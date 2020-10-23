@@ -263,7 +263,7 @@ const Footer = ({ siteTitle }) => {
             </div>
             <div className={["col-12 col-lg-10 offset-lg-1 d-flex spaceBetween", footerStyles.fifthCol].join(" ")}>
               <p className={footerStyles.footerNote}>
-                ©2020 <Link className="footer-obagi-link" to="www.obagi.com">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
+                ©2020 <Link className="footer-obagi-link" to="/">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
                 OBG.02313.USA.16
               </p>
               <ul className="footerprivacy">

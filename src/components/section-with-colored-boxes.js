@@ -17,7 +17,7 @@ const SectionWithColoredBoxes = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join(" ")}></div>
             <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title, "title"].join(" ")}></h1>
             <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description, "description"].join(" ")}></div>
-            <div className={[coloredBoxesStyle.linkSection].join(" ")}><Link to={node.field_colored_boxes_button.uri} className={[coloredBoxesStyle.link].join(" ")}>{node.field_colored_boxes_button.title}</Link></div>
+            <div className={[coloredBoxesStyle.linkSection].join(" ")}><Link to={node.field_colored_boxes_button.uri.replace('internal:', '')} className={[coloredBoxesStyle.link].join(" ")}>{node.field_colored_boxes_button.title}</Link></div>
           </div>
         </div>
       </div>
