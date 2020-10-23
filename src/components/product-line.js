@@ -189,6 +189,17 @@ const ProductLine = ({ node }) => {
                 field_taxonomy_hero_para_descrip {
                   processed
                 }
+                relationships {
+                  field_taxonomy_hero_paraprapgh_i {
+                    localFile {
+                      childImageSharp {
+                        fluid (quality: 100){
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
               }
               node__medical_product {
                 title
@@ -286,7 +297,7 @@ const ProductLine = ({ node }) => {
                                   className={[lineStyles.tab, "line-tab", index == 0 ? 'active' : ""].join(
                                     " "
                                   )}
-                                ><span dangerouslySetInnerHTML={{__html: item.node.name}}></span></div>)
+                                ><span dangerouslySetInnerHTML={{ __html: item.node.name }}></span></div>)
                               ) : (
                                   ""
                                 )}
@@ -331,7 +342,7 @@ const ProductLine = ({ node }) => {
                                     (
                                       <div
                                         className={lineStyles.cardTitle}
-                                      ><span dangerouslySetInnerHTML={{__html: item.node.name}}></span></div>
+                                      ><span dangerouslySetInnerHTML={{ __html: item.node.name }}></span></div>
                                     )) : (
                                     ""
                                   )}
@@ -364,17 +375,19 @@ const ProductLine = ({ node }) => {
                               }
                             )} */}
                                 </div>
-                                {/* {node.relationships.field_line_card.relationships.field_line_image.localFile ? ( */}
-                                <div className={lineStyles.imageWrapper}>
-                                  <Img
-                                    fluid={
-                                      data.image.childImageSharp.fluid
-                                    }
-                                  />
-                                </div>
-                                {/* ) : (
-                            ""
-                          )} */}
+                                {item.node.relationships
+                                  && item.node.relationships.field_hero_productline_taxonomy
+                                  && item.node.relationships.field_hero_productline_taxonomy.relationships
+                                  && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i
+                                  && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile
+                                  && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp ?
+                                  (
+                                    <div className={lineStyles.imageWrapper}>
+                                      <Img fluid={item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid}/>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
                                 {item.node.path.alias ? (
                                   <div>
                                     <Link
@@ -385,7 +398,7 @@ const ProductLine = ({ node }) => {
                                       ].join(" ")}
                                     >
                                       {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
-                                      Shop&nbsp; <span dangerouslySetInnerHTML={{__html:item.node.name}}></span>
+                                      Shop&nbsp; <span dangerouslySetInnerHTML={{ __html: item.node.name }}></span>
                                     </Link>
                                   </div>
                                 ) : (
@@ -440,13 +453,13 @@ const ProductLine = ({ node }) => {
                                     : ""}
                                 </Slider>
                                 <div className="slides-number" style={{
-                                    'position': 'absolute',
-                                    'bottom': '49px',
-                                    'left': '0',
-                                    'right': '12px',
-                                    'text-align': 'center',
-                                    'z-index': '0'
-                                  }}>{slidesCurr[index]? (slidesCurr[index] + 1) : '1'}/{item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : "1"}</div>
+                                  'position': 'absolute',
+                                  'bottom': '49px',
+                                  'left': '0',
+                                  'right': '12px',
+                                  'text-align': 'center',
+                                  'z-index': '0'
+                                }}>{slidesCurr[index] ? (slidesCurr[index] + 1) : '1'}/{item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : "1"}</div>
                               </div>
                             </div>
                           </div>)

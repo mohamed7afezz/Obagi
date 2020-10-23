@@ -152,3 +152,13 @@ background-color: #44c4d9;
         }
     }
 }
+
+.column-odd-wrapper {
+    @include lg-screen {
+        margin-bottom: 141px;
+
+        &:last-child() {
+            margin-bottom: 0;
+        }
+    }
+}

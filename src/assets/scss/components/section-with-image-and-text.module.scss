@@ -79,3 +79,9 @@
         // margin-bottom: -761px;
     }
 }
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .link {
+        width: 100%;
+    }
+}
