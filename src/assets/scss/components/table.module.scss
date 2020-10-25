@@ -1,0 +1,112 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.tabletitle{
+color: #c8775b;
+font-size: 40px;
+line-height: 56px;
+font-weight: 500;
+@include md-screen{
+    font-size: 64px;
+    line-height: 72px;
+}
+span{
+    font-weight: 500;
+}
+}
+.coldeskRowMob{
+    display: flex;
+    @include md-screen{
+        width: 100%;
+        flex-direction: column;
+    }
+}
+.tabelContainer{
+    flex-direction: column;
+    @include md-screen{
+        flex-direction: row;
+    }
+}
+.tableimg{
+    max-width: 100%;
+}
+.skincolor{
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    margin-top: -2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    @include md-screen{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+.coldeskRowMob+.coldeskRowMob{
+    @include md-screen{
+  border-left:1px solid #d6d6d6 ;
+}
+}
+.skinType {
+margin-right: 0.6px;
+margin-left: 0.6px;
+}
+.tableCell{
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 14px;
+    padding-bottom: 10px;
+    @include md-screen{
+        padding-top: 32px;
+        padding-bottom: 32px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 32px;
+        padding-left: 0;
+    }
+}
+.lastCell{
+    @include md-screen{
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 0;
+}
+}
+.firstcell{
+   
+    flex: 0 0 33%;
+    @include md-screen{
+        margin-top: auto;
+        margin-bottom: auto;
+        flex: 0;
+        
+    }
+}
+.tabelImage{
+    flex-direction: column;
+    flex: 0 0 33%;
+    height: 100%;
+    @include md-screen{
+        flex: 0;
+        height: auto;
+    }
+}
+.coldeskRowMob + .coldeskRowMob{
+    .firstcell,.lastCell{
+    border-top: 1px solid #d6d6d6;
+  
+}
+.firstcell{
+    @include md-screen{
+        border: 0;
+    }
+}
+}
+.coldeskRowMob .firstcell{
+    border-right: 1px solid #d6d6d6;
+    @include md-screen{
+ border-right: 0;
+}
+}

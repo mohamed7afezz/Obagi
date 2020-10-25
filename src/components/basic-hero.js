@@ -15,6 +15,7 @@ const Basichero = ({ node }) => {
               "offset-lg-1",
               basichero.Collectionheroleftcol,
               "Collectionheroleftcol",
+              `${node.field_basic_hero_custom_class_?node.field_basic_hero_custom_class_:""}`,
             ].join(" ")}
           >
             <div className="row remove-mob-padding">
@@ -96,6 +97,7 @@ export default Basichero
 export const fragment = graphql`
 fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
     id
+    field_basic_hero_custom_class_
     field_basic_hero_title_paragrapg {
       processed
     }

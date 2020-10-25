@@ -61,6 +61,9 @@ query($slug: String!) {
                 ...paragraphSimpleFooter
                 ...paragraphPremierVideo
                 ...paragrapghBasicHero
+                ...paragraphSkinClusionLeftImgLeft
+                ...paragraphSkinClusionTextLeft
+                ...paragraphSkinClusionTable
             }
         }
         field_meta_tags {

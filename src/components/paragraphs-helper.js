@@ -49,6 +49,9 @@ import PremierVideo from './Premier-Video';
 import Basichero from './basic-hero';
 import Contact from './contact-us';
 import Customer from './customer-care';
+import SkinClusionLeftImgLeft from './skinclusion-left-img-left';
+import SkinClusionTextLeft from './skin-culsion-text-left';
+import SkinClusionTable from './skinclusion-table';
 
 
 const componentsMap = {
@@ -99,7 +102,10 @@ const componentsMap = {
     paragraph__video :PremierVideo ,
     paragraph__basic_hero_paragrapgh : Basichero,
     paragraph__contact_us: Contact,
-    paragraph__customer_care: Customer
+    paragraph__customer_care: Customer,
+    paragraph__skin_clusion_img_text:SkinClusionLeftImgLeft,
+    paragraph__skin_clusion_text_left_image:SkinClusionTextLeft,
+    paragraph__skin_culsion_tabel:SkinClusionTable,
 }
 
 export const getParagraph = node => {

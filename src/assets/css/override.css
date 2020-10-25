@@ -278,6 +278,19 @@ right: 0;
   max-width: 100%;
 }
 @media (min-width: 768px) {
+  .cell-0{
+    flex: 0 0 25%;
+  }
+  .cell-0 .lastCell{
+    border-top: 0;
+  }
+  .cell-0 .firstcell{
+ border-bottom: 1px solid #d6d6d6;
+ padding-bottom: 4px;
+  }
+  .cell-0 .tableimg{
+    max-width: 90%;
+  }
   .basicbg .img-fluid-height{
     height: 100%;
    }
@@ -851,6 +864,9 @@ button:focus{
 @media (max-width: 767px) {
   .node-medical .howrightcol {
     background-color: #f3f3fb;
+}
+.cell-0 .tabelImage{
+  opacity: 0;
 }
 .results-card-container .productcardcon{
   display: none;
@@ -1459,6 +1475,12 @@ right: 10px;
 @media (max-width:767px){
 .hide-mob{
   display: none !important;
+}
+.Skinclusion{
+  padding-bottom: 32px !important;
+}
+.mob-mt-40{
+  margin-top: 40px;
 }
   #product-hero-slick{
     display: none;
@@ -2506,4 +2528,28 @@ min-height: 0;
 }
 .permier-video-link{
   position: relative;
+}
+.type-1{
+  background-color: #481e09;
+  color: #fff;
+}
+.type-2{
+  background-color: #793723;
+  color: #fff;
+}
+.type-3{
+  background-color: #c8775b;
+  color: #fff;
+}
+.type-4{
+  background-color: #ebaf7c;
+  color: #3d2314;
+}
+.type-5{
+  background-color: #ffddb9;
+  color: #3d2314;
+}
+.type-6{
+  background-color: #ffeade;
+  color: #3d2314;
 }
