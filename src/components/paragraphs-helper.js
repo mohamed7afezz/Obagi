@@ -52,6 +52,11 @@ import Customer from './customer-care';
 import SkinClusionLeftImgLeft from './skinclusion-left-img-left';
 import SkinClusionTextLeft from './skin-culsion-text-left';
 import SkinClusionTable from './skinclusion-table';
+import BigText from './Big-Text';
+import CulsionImage from './culsion-img';
+import CulsionFlexTwoSections from './culsion-two-section';
+import CulsionFinalSection from './CulsionFinalSection';
+import Sepratorimg from './seprator';
 
 
 const componentsMap = {
@@ -106,6 +111,11 @@ const componentsMap = {
     paragraph__skin_clusion_img_text:SkinClusionLeftImgLeft,
     paragraph__skin_clusion_text_left_image:SkinClusionTextLeft,
     paragraph__skin_culsion_tabel:SkinClusionTable,
+    paragraph__big_text:BigText,
+    paragraph__culsion_image:CulsionImage,
+    paragraph__flex_2_sections:CulsionFlexTwoSections,
+    paragraph__skin_culsion_final_section:CulsionFinalSection,
+    paragraph__separator_image:Sepratorimg,
 }
 
 export const getParagraph = node => {

@@ -10,6 +10,14 @@ export default function Contact() {
         let item= e.target
         
          item.parentElement.classList.remove('error')
+        
+         let i= document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
+
+         console.log(i)
+         for (let j = 0; j < i.length; j++) {
+             
+             i[j].parentElement.classList.remove('error')
+         }
          if (item.classList.contains('error-msg')) {
             item.classList.add('hide')
          }else 
@@ -17,11 +25,10 @@ export default function Contact() {
           item.classList.remove('error');
         
          }else if (item.nextSibling !=null && !item.nextSibling.classList.contains('radiomark')) {
-            
+            console.log('aa')
             item.nextSibling.classList.add('hide')
            
-             
-           
+            
          }
         
       
@@ -48,13 +55,10 @@ export default function Contact() {
            });
         };
         let thanksmodal =()=>{
-            document.querySelector("#formsubmition").classList.remove('hidden')
-            var container = document.querySelector("#formsubmition .container");
+            document.querySelector(".contact-sucss").classList.remove('hide')
+            
+            document.querySelector(".form-container").classList.add('hide')
           
-            document.querySelector("#formsubmition").addEventListener("click", function (e) {
-              if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
-              document.querySelector("#formsubmition").classList.add("hidden");
-            });
           
             
           }
@@ -111,14 +115,14 @@ export default function Contact() {
 
                     {/* The below row -ONLY- appears after the submit request is successful  *****************/}
 
-                {/* <div className="row">
+               <div className="row contact-sucss hide">
                     <div className="col-12 col-lg-8">
                         <div className="contact-thanks-note">Thank you for contacting Obagi</div>
                         <div className="contact-thanks-text">We’ve received your message. You should receive a response within 2 to 3 business days.</div>
                     </div>
-                </div> */}
+                </div> 
 
-                <div className="row">
+                <div className="row form-container">
                     <div className="col-12 col-lg-8">
                         <div className="contact-text">Submit your message below, and we will respond to most inquiries within 2 to 3 business days.</div>
                     </div>
@@ -129,15 +133,15 @@ export default function Contact() {
 
                             <div className="check-group">
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactFirstRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer"required />
+                                    <label className="radioLabel form-check-label" for="contactFirstRadio" >
+                                        <input className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer"required />
                                         <span class="radiomark"></span>
                                         I am a Patient/Consumer
                                     </label>
                                 </div>
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactSecondRadio" onClick={removevaild}>
-                                        <input required className="form-check-input" type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
+                                    <label className="radioLabel form-check-label" for="contactSecondRadio" onChange={removevaild}>
+                                        <input required className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
                                         <span class="radiomark"></span>
                                         I am a Physician/Skin Care Professional
                                     </label>
@@ -181,15 +185,15 @@ export default function Contact() {
 
                             <div className="second-check-group">
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactEmailRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactEmailRadio" value="option1"required />
+                                    <label className="radioLabel form-check-label" for="contactEmailRadio" >
+                                        <input onChange={removevaild} className="form-check-input" type="radio" name="phoneRadio" id="contactEmailRadio" value="option1"required />
                                         <span class="radiomark"></span>
                                         Email
                                 </label>
                                 </div>
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactPhoneRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" required/>
+                                    <label className="radioLabel form-check-label" for="contactPhoneRadio" >
+                                        <input onChange={removevaild} className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" required/>
                                         <span class="radiomark"></span>
                                         Phone
                                 </label>
