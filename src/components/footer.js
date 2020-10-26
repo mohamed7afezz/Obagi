@@ -241,7 +241,7 @@ const Footer = ({ siteTitle }) => {
                         name="email_address"
                         required
                       ></input>
-                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Eail Address</p>
+                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
