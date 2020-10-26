@@ -29,7 +29,7 @@ const OrderNoHistory = ({ node }) => {
 
                 <div className={myAccountStyles.topHalf}>
                     <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
-                    <Link to="#" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
+                    <Link to="/" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
                 </div>
 
                 <div className={myAccountStyles.bottomHalf}>
@@ -44,7 +44,7 @@ const OrderNoHistory = ({ node }) => {
 
                 <div className={myAccountStyles.topHalf}>
                     <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
-                    <Link to="#" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
+                    <Link to="/" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
                 </div>
                 <div className="row">
                     <div className="col-4 pr-0">
