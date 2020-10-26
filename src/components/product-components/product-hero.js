@@ -296,7 +296,7 @@ if ( typeof window !== "undefined"){
             </ul>
           </div>
           <div className={ProductStyles.skintypes}>
-          {field_skin_type > 0? <p className={ProductStyles.canuse}>
+          {field_skin_type.length > 0? <p className={ProductStyles.canuse}>
             Skin Type:{" "}
             {field_skin_type.map((item, index) => {
               return (
