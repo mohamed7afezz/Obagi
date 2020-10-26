@@ -9,7 +9,7 @@ const CulsionImage = ({ node }) => {
       <div className={["container-fluid "].join(" ")}>
       <div className={"row "}>
       <div className="w-100">
-     <Img fluid={node.relationships.field_culsion_image.localFile.childImageSharp.fluid}/>
+     <img className="img-responsive" src={node.relationships.field_culsion_image.localFile.childImageSharp.original.src}/>
      </div>
         </div>
         </div>
