@@ -10,7 +10,7 @@ export default function HTML(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&libraries=places"></script>
        
-        <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script>
+        {/* <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script> */}
         {/* <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/jquery.validate.min.js"></script> */}
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script> */}
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script> */}
