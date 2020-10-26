@@ -53,7 +53,7 @@ const HeroSlider = ({ node }) => {
                                         <div>
                                             <div className="d-lg-none">
                                                 <div className="col-12 col-lg-7 col-padding">
-                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><img src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '':""}
+                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><img className={heroSlider.mobImage} src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '':""}
                                                 </div>
                                                 <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
                                                     <div className="col-12 col-lg-4">
