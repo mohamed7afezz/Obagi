@@ -565,6 +565,7 @@ right: -8%;
 
 .bigSliderContainer .productInlineSlider .slick-initialized{
   padding-bottom: 110px;
+  height: 100%;
 }
 
 .basics-paragraph .basicsProductWrapper .slick-initialized {
