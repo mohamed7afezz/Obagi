@@ -6,17 +6,23 @@ import React, { useEffect } from 'react';
 const Popup = ({ node, props }) => {
 
   useEffect(() => {
-    var myModalEl = document.getElementById('VideoPopUp')
+    var myModalEl = document.getElementById('VideoPopUp');
+    
     myModalEl.addEventListener('hidden.bs.modal', function (e) {
       // do something...
       document.querySelector('#VideoPopUp .video-popup-wrap').innerHTML = null;
     })
   })
-  
+  function removeVideo(){
+    if (!document.getElementById('VideoPopUp').classList.contains('show')) {
+      document.querySelector('#VideoPopUp .video-popup-wrap').innerHTML = null;
+    }
+  }
+
 
   return (
 
-    <div class="modal fade" id="VideoPopUp" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="VideoPopUp" tabIndex="-1" onClick={removeVideo} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">

@@ -348,7 +348,7 @@ const Register = () => {
                             <div className="form-check">
 
                                 <label className="form-check-label terms" for="registerCheck">
-                                    Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the US subject to our US <Link to="#">Privacy Policy</Link> and <Link to="#">Terms of Use</Link>. For US consumers only.
+                                    Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
                                     <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true}/>
                                     <span className="checkmark"></span>
                                 </label>

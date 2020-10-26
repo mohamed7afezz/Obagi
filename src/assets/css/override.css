@@ -799,7 +799,7 @@ margin-bottom: 35px;
     #Showbag .modal-content {
     border: 0;
     border-radius: 0;
-    height: 700px;
+    height: 99.8vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -923,13 +923,11 @@ button:focus{
   #Showbag .modal-content {
     border: 0;
     border-radius: 0;
-    height: 500px;
+    height: 99.8vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
-.body-small-margin  #Showbag .modal-content {
-height: 545px;
-}
+
   .zoom-mobile {
     display: block;
   }
@@ -1533,7 +1531,7 @@ z-index: 999;
 
 @media (max-width: 991px) {
   #Showbag .modal-header .close{
-    top: 28px;
+    top: 16px;
   }
   .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;

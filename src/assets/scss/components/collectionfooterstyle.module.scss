@@ -15,9 +15,16 @@ background-color: #868cd2;
   { 
     color: #fff;  
     border-color: #fff;
+    transition: all ease 300ms;
+  }
+  a:hover{
+    background-color: #fff;
+    color: #868cd2;
+    border-color: #868cd2;
   }
 }
 }
+
 .collectionfooter{
     padding-top: 48px;
     padding-bottom: 48px;

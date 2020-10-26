@@ -156,7 +156,7 @@ sortPriceSelect.addEventListener("change", function (event) {
             "removeSelectBorder"
           ].join(" ")}
         >
-          <label className={[productsliststyle.filter,"SelectChanges"].join(" ")}>Sort by:</label>
+          <label className={[productsliststyle.filtersearch,"SelectChanges"].join(" ")}>Sort by:</label>
           <div className="custom-select">
           <select class="filters-select sort-price" name="sort by">
             <option value="low" >
