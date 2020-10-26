@@ -281,7 +281,14 @@ right: 0;
   max-width: 100%;
   height: auto;
 }
+
 @media (min-width: 768px) {
+  .clusion-fimg{
+    margin-top: 80px;
+  }
+  .clusion-simg{
+    margin-top: 140px;
+  }
   .cell-0{
     flex: 0 0 25%;
   }
@@ -1476,6 +1483,9 @@ right: 10px;
   height: auto;
 }
 @media (max-width:767px){
+  .mob-mt-50{
+    margin-top: 50px;
+  }
 .hide-mob{
   display: none !important;
 }
