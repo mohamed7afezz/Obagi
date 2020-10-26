@@ -6,7 +6,7 @@ import tableStyle from '../assets/scss/components/table.module.scss'
 
 
 const SkinClusionTable = ({ node }) => {
-    console.log('hassan',node)
+ 
   return(
    
     <div className={tableStyle.tableContainer}>
