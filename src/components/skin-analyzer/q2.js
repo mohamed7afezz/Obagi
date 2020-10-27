@@ -10,8 +10,8 @@ const Q2 = (props) => {
     }
     return (
         <div className="skinanalyzer-questions-wrapper">
-            <div className="row question-progress-wrapper d-lg-none">
-                <div className="col-12">
+            <div className="row question-progress-wrapper d-lg-none justify-content-center">
+                <div className="col-auto">
                     <ProgressBar
                         percentage="28.57142857142857%"
                         index="2"

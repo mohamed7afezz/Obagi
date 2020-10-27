@@ -14,6 +14,7 @@ import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import SearchContext from "../providers/search-provider"
+import $ from 'jquery'
 
 const baseUrl = process.env.Base_URL;
 
@@ -419,6 +420,20 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     }
   }
 
+  // $(window).on('resize', function () {
+  //   if ($(window).width() > 768) {
+  //     $(".node-clinical").css("margin-top", "0");
+  //     $(".node-medical").css("margin-top", "0");
+  //     $(".node-home").css("margin-top", "0");
+  //   }
+
+  //   if ($(window).width() <= 768) {
+      
+  //     if($(".search-margin")) {
+  //       $(".search-margin").removeClass("search-margin");
+  //     }
+  //   }
+  // })
 
 
   return (

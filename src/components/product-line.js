@@ -388,7 +388,7 @@ const ProductLine = ({ node }) => {
                                     ""
                                   )}
                                 {item.node.path.alias ? (
-                                  <div>
+                                  <div className={lineStyles.linkSection}>
                                     <Link
                                       to={item.node.path.alias}
                                       className={[

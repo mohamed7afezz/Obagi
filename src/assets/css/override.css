@@ -2002,7 +2002,6 @@ font-weight: 500;
 
 }
 #flitersCon .terms{
- 
   font-size: 16px;
 }
 .Collectionfilter .filterprodline,.Collectionfilter .sortprodline,.Collectionfilter .filterSkinconcern,.Collectionfilter .filterIngredients  {
@@ -2013,8 +2012,9 @@ font-weight: 500;
   padding-bottom: 0;
 }
 .Collectionfilter  .input-name{
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: pointer;
 }
 .Collectionfilter .checkcon.terms{
   margin-top: 0;
@@ -2152,6 +2152,7 @@ padding-bottom: 0;
   top: 50%;
   transform: translateY(-60%);
   font-weight: 700;
+  font-size: 15px;
   display: flex;
   width: 92%;
   text-align: center;
@@ -2532,7 +2533,7 @@ transform: rotate(0);
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: .4px;
+  letter-spacing: 0;
 }
 .vhidden{
   position: absolute;

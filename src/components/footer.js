@@ -16,78 +16,79 @@ import {
 
 const baseUrl = process.env.Base_URL;
 
-let thanksmodal =()=>{
+let thanksmodal = () => {
   document.querySelector("#formsubmition").classList.remove('hidden')
   var container = document.querySelector("#formsubmition .container");
 
   document.querySelector("#formsubmition").addEventListener("click", function (e) {
-    if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
+    if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;
     document.querySelector("#formsubmition").classList.add("hidden");
   });
 
-  
+
 }
 
 
 const Footer = ({ siteTitle }) => {
 
-  function removevaild(e){
-    let item= e.target
-    
-     item.closest('.formInputCon').classList.remove('error')
-     if (item.classList.contains('error-msg')) {
+  function removevaild(e) {
+    let item = e.target
+
+    item.closest('.formInputCon').classList.remove('error')
+    if (item.classList.contains('error-msg')) {
       item.classList.add('hide')
-     }
-     if (item.classList.contains('error')) {
+    }
+    if (item.classList.contains('error')) {
       item.classList.remove('error')
-     }
-   }
-    const sendFormValues = (updatedItemData) => {
-     fetch(
-       `${baseUrl}api/webform_rest/submit`,
-       {
-        headers:{
+    }
+  }
+  const sendFormValues = (updatedItemData) => {
+    fetch(
+      `${baseUrl}api/webform_rest/submit`,
+      {
+        headers: {
           "Content-Type": "application/json",
 
         },
-         method: 'POST',
-         body: JSON.stringify(updatedItemData.obj)
-       }
-     )
-       .then(res => res.json())
-       .then(response => {
-         console.log(response)
-       })
-       .catch(error => {
-         console.log('error',error)
-       });
-    };
- 
-  
- function submitforming(e){
-   var obj={webform_id : "subscription"};
-   var forms = document.getElementsByClassName('needs-valid');
-   var list = document.querySelectorAll('.needs-valid input:invalid');
-   if (list.length > 0){
-   for (var item of list) {
-     item.parentElement.classList.add('error')
-     item.nextSibling.classList.remove('hide')
- }}else{
-   let list2 = document.querySelectorAll('.needs-valid input');
-   for (let item of list2) {
-     item.parentElement.classList.remove('error')
-     if (item.getAttribute("type") != "checkbox") {
-      item.nextSibling.classList.add('hide')
-     }
-     
-     obj[item.getAttribute("name")]=item.value;
-     thanksmodal();
+        method: 'POST',
+        body: JSON.stringify(updatedItemData.obj)
+      }
+    )
+      .then(res => res.json())
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log('error', error)
+      });
+  };
+
+
+  function submitforming(e) {
+    var obj = { webform_id: "subscription" };
+    var forms = document.getElementsByClassName('needs-valid');
+    var list = document.querySelectorAll('.needs-valid input:invalid');
+    if (list.length > 0) {
+      for (var item of list) {
+        item.parentElement.classList.add('error')
+        item.nextSibling.classList.remove('hide')
+      }
+    } else {
+      let list2 = document.querySelectorAll('.needs-valid input');
+      for (let item of list2) {
+        item.parentElement.classList.remove('error')
+        if (item.getAttribute("type") != "checkbox") {
+          item.nextSibling.classList.add('hide')
+        }
+
+        obj[item.getAttribute("name")] = item.value;
+        thanksmodal();
+      }
+
+
+      sendFormValues({ obj })
+    }
   }
-  
-  
- sendFormValues({obj})
- }
- }
 
   const data = useStaticQuery(graphql`
     query {
@@ -176,7 +177,7 @@ const Footer = ({ siteTitle }) => {
                 </div>
               </div>
             </div>
-            <div className={["col-12 col-md-6 col-lg-2 offset-lg-1", footerStyles.secondCol].join(" ")}>
+            <div className={["col-12 col-lg-4 offset-lg-1", footerStyles.secondCol].join(" ")}>
               <div className="footer-menus-wrapper">
                 <Menu
                   menuName={`second-footer`}
@@ -185,39 +186,42 @@ const Footer = ({ siteTitle }) => {
                 />
                 {/* 
                 <div className={footerStyles.margin}></div> */}
-
-                <Menu
-                  menuName={`first-footer`}
-                  menuClass={`footer-menu mt-md-auto`}
-                  isExpandable={size.width < mediumScreen ? true : false}
-                />
-
-              </div>
-
-            </div>
-            <div className={["col-12 col-md-6 col-lg-2", footerStyles.thirdCol].join(" ")}>
-              <div className="footer-menus-wrapper">
                 <Menu
                   menuName={`third-footer`}
                   menuClass={`footer-menu`}
                   isExpandable={size.width < mediumScreen ? true : false}
                 />
 
-                <div className={footerStyles.margin}></div>
 
                 <Menu
-                  menuName={`fourth-footer`}
-                  menuClass={`footer-menu`}
+                  menuName={`first-footer`}
+                  menuClass={`footer-menu mt-md-4`}
                   isExpandable={size.width < mediumScreen ? true : false}
                 />
 
+                <Menu
+                  menuName={`fourth-footer`}
+                  menuClass={`footer-menu  mt-md-4`}
+                  isExpandable={size.width < mediumScreen ? true : false}
+                />
+                {/* </div> */}
+                {/* <div className="footer-menus-wrapper"> */}
+
+
+
+
+                {/* <div className={footerStyles.margin}></div> */}
+
+
               </div>
+
             </div>
+
             {/* <div className="col-lg-1 d-none d-lg-block">
                         <div className={footerStyles.verticalLine}></div>
                     </div> */}
             <div className={["col-12 col-lg-3", footerStyles.fourthCol].join(" ")}>
-              <form className={[footerStyles.form,"needs-valid"].join(" ")}  onSubmit={(e) => {e.preventDefault();}}>
+              <form className={[footerStyles.form, "needs-valid"].join(" ")} onSubmit={(e) => { e.preventDefault(); }}>
                 <div className="form-group formGroup">
                   <label
                     htmlFor="inputEmail"
@@ -226,7 +230,7 @@ const Footer = ({ siteTitle }) => {
                     Let’s Connect!
                   </label>
                   <div className={footerStyles.signup}>
-                    <div className={[footerStyles.inputSection,'formInputCon'].join(' ')}>
+                    <div className={[footerStyles.inputSection, 'formInputCon'].join(' ')}>
                       <label
                         htmlFor="inputEmail"
                         className={footerStyles.formEmail}
@@ -241,22 +245,22 @@ const Footer = ({ siteTitle }) => {
                         name="email_address"
                         required
                       ></input>
-                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
+                      <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
-                  <div className={[footerStyles.terms,"formInputCon"].join(" ")}>
-                    <label className="terms"  onClick={removevaild}>
+                  <div className={[footerStyles.terms, "formInputCon"].join(" ")}>
+                    <label className="terms" onClick={removevaild}>
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the US subject to our US <Link className={footerStyles.termslink} to="/privacy-policy"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="/terms-of-use">Terms
                       of Use</Link>. For US consumers only.
-                      <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
+                      <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
                     </label>
-                    <button type="button" onClick={(e) => {submitforming(e)}} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
+                    <button type="button" onClick={(e) => { submitforming(e) }} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
                   </div>
                 </div>
               </form>
@@ -269,7 +273,7 @@ const Footer = ({ siteTitle }) => {
               <ul className="footerprivacy">
                 <Link to='/privacy-policy' className="footerprivacyli">Privacy Policy</Link>
                 <Link to='/terms-of-use' className="footerprivacyli">Terms of Use</Link>
-                <Link to='/cookie-policy' className="footerprivacyli">Cookie Policy</Link> 
+                <Link to='/cookie-policy' className="footerprivacyli">Cookie Policy</Link>
                 {/* <Link to='#' className="footerprivacyli">User Generated Content Terms</Link> */}
                 <Link to='/sitemap' className="footerprivacyli">Sitemap</Link>
                 <p id="demo"></p>
