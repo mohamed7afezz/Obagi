@@ -64,6 +64,9 @@ const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
             processed
           }
           relationships {
+            field_medical_rx {
+              name
+            }
             field_medical_image {
               localFile {
                 childImageSharp {
@@ -254,7 +257,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       // Trigger the button element with a click
       document.querySelector(".searchIcon").click();
     }
-    let searchkey= e.target.value
+    let searchkey= e.target.value.toLowerCase();
     searchInIndex(searchkey)
     
     // if ( searchkey.length >2) {

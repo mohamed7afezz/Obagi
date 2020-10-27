@@ -9,6 +9,7 @@ const ImagesBoxes = ({ node }) => {
     <div className={[imagesBoxesStyles.imageBoxes, "container-fluid"].join(" ")}>
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>
         <div className={["col-12", "col-md-6", "col-lg-4", "offset-lg-2", imagesBoxesStyles.colPadding, imagesBoxesStyles.colMargin].join(" ")}>
+          <Link className={imagesBoxesStyles.boxeLink} to={node.field_first_box_link.uri.replace('internal:', '')}>
           <div className={imagesBoxesStyles.boxes}>
             <div dangerouslySetInnerHTML={{ __html: node.field_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></div>
             <div dangerouslySetInnerHTML={{ __html: node.field_first_box_title.processed }} className="logo"></div>
@@ -18,10 +19,11 @@ const ImagesBoxes = ({ node }) => {
               <Img fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
-
+          </Link>
         </div>
 
         <div className={["col-12", "col-md-6", "col-lg-4", imagesBoxesStyles.colPadding, imagesBoxesStyles.colMargin].join(" ")}>
+        <Link className={imagesBoxesStyles.boxeLink} to={node.field_second_box_link.uri.replace('internal:', '')}>
           <div className={imagesBoxesStyles.boxes}>
             <div dangerouslySetInnerHTML={{ __html: node.field_second_box_subtitle.processed }} className={imagesBoxesStyles.subtitle}></div>
             <div dangerouslySetInnerHTML={{ __html: node.field_second_box_title.processed }} className="logo"></div>
@@ -31,8 +33,9 @@ const ImagesBoxes = ({ node }) => {
               <Img fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
-
+          </Link>
         </div>
+     
       </div>
 
 
@@ -51,6 +54,12 @@ export const fragment = graphql`
     }
     field_second_b {
       alt
+    }
+    field_first_box_link {
+      uri
+    }
+    field_second_box_link {
+      uri
     }
     field_second_box_subtitle {
       processed

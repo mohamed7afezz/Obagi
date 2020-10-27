@@ -42,7 +42,6 @@
     margin-right: 24px;
     margin-bottom: 35px;
     width: 100%;
-    white-space: nowrap;
 
     &:focus, &:visited, &:active {
         outline: 0;
@@ -52,6 +51,10 @@
 
     &:hover {
         box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+    }
+
+    @include lg-screen {
+        white-space: nowrap;
     }
 
 
@@ -77,11 +80,11 @@
     color: #ffffff;
     @include md-screen{
         padding-top: 40px;
-        padding-left: 0;
-        padding-right: 0;
     }
 
     @include lg-screen {
+        padding-left: 0;
+        padding-right: 0;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
@@ -141,7 +144,7 @@
 
 .image-wrapper {
     padding: 44px 37px 35px;
-    @include md-screen{
+    @include lg-screen{
         display: none;
     }
 }
@@ -149,7 +152,7 @@
 .link {
     color: #ffffff;
     border: 1px solid #ffffff;
-    padding: 24px 67px;
+    padding: 24px 15px;
 
     &:hover {
         border: 1px solid #132466;

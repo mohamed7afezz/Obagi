@@ -133,15 +133,15 @@ const Footer = ({ siteTitle }) => {
 
 
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a target="_blank" href="https://www.pinterest.com/obagi/">
                       <FontAwesomeIcon
                         icon={faPinterest}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://www.instagram.com/obagiclinical/">
+                    <a target="_blank" href="https://www.instagram.com/obagimedical/">
                       <FontAwesomeIcon
                         icon={faInstagramSquare}
                         className={footerStyles.icon}
@@ -149,7 +149,7 @@ const Footer = ({ siteTitle }) => {
                     </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://www.facebook.com/ObagiClinicalProducts">
+                    <a target="_blank" href="https://www.facebook.com/Obagi/">
                       <FontAwesomeIcon
                         icon={faFacebookF}
                         className={footerStyles.icon}
@@ -157,15 +157,15 @@ const Footer = ({ siteTitle }) => {
                     </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a target="_blank" href="https://www.youtube.com/user/obagimedicalproducts">
                       <FontAwesomeIcon
                         icon={faYoutube}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://twitter.com/obagiclinical?lang=en">
+                    <a target="_blank" href="https://twitter.com/Obagi">
                       <FontAwesomeIcon
                         icon={faTwitter}
                         className={footerStyles.icon}
@@ -241,7 +241,7 @@ const Footer = ({ siteTitle }) => {
                         name="email_address"
                         required
                       ></input>
-                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Eail Address</p>
+                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
                     <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
@@ -251,7 +251,7 @@ const Footer = ({ siteTitle }) => {
                       Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
-                      in the US subject to our US <Link className={footerStyles.termslink} to="#"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="#">Terms
+                      in the US subject to our US <Link className={footerStyles.termslink} to="/privacy-policy"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="/terms-of-use">Terms
                       of Use</Link>. For US consumers only.
                       <input  type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
                       <span className="checkmark"></span>
@@ -263,15 +263,15 @@ const Footer = ({ siteTitle }) => {
             </div>
             <div className={["col-12 col-lg-10 offset-lg-1 d-flex spaceBetween", footerStyles.fifthCol].join(" ")}>
               <p className={footerStyles.footerNote}>
-                ©2020 <Link className="footer-obagi-link" to="www.obagi.com">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
+                ©2020 <Link className="footer-obagi-link" to="/">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
                 OBG.02313.USA.16
               </p>
               <ul className="footerprivacy">
-                <Link to='#' className="footerprivacyli">Privacy Policy</Link>
-                <Link to='#' className="footerprivacyli">Terms of Use</Link>
-                {/* <Link to='#' className="footerprivacyli">Cookie Policy</Link> */}
+                <Link to='/privacy-policy' className="footerprivacyli">Privacy Policy</Link>
+                <Link to='/terms-of-use' className="footerprivacyli">Terms of Use</Link>
+                <Link to='/cookie-policy' className="footerprivacyli">Cookie Policy</Link> 
                 {/* <Link to='#' className="footerprivacyli">User Generated Content Terms</Link> */}
-                <Link to='#' className="footerprivacyli">Sitemap</Link>
+                <Link to='/sitemap' className="footerprivacyli">Sitemap</Link>
                 <p id="demo"></p>
               </ul>
             </div>

@@ -53,14 +53,14 @@ const HeroSlider = ({ node }) => {
                                         <div>
                                             <div className="d-lg-none">
                                                 <div className="col-12 col-lg-7 col-padding">
-                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><img src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '':""}
+                                                    {item.relationships.field_slide_image?item.relationships.field_slide_image.localFile? <div><img className={heroSlider.mobImage} src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '':""}
                                                 </div>
                                                 <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
                                                     <div className="col-12 col-lg-4">
                                                         {item.field_slide_type? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical')? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                         {item.field_slide_title? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : '' }
                                                         {item.field_sli? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
-                                                        {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri} className="button-link">{item.field_slide_button.title}</Link></div> : ''}
+                                                        {item.field_slide_button? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link"].join(" ")}>{item.field_slide_button.title}</Link></div> : ''}
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,9 +95,10 @@ const HeroSlider = ({ node }) => {
                         </div>
 
                         <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
-                            {node.relationships.field_slider_scroll_down? (node.relationships.field_slider_scroll_down.localFile? <Link to="#" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
+                            {node.relationships.field_slider_scroll_down? (node.relationships.field_slider_scroll_down.localFile? <Link to="#here" className={heroSlider.slideDown}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
                             {node.relationships.field_obagi_logo? (node.relationships.field_obagi_logo.localFile? <div className={heroSlider.sliderLogo}><Img fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : '') : ''}
                         </div>
+                        <div id="here" className={heroSlider.here}></div>
 
                     </div>
                 </div>

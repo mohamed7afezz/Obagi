@@ -260,8 +260,7 @@ const Basics = ({ node }) => {
                                       {/* <div className={basicsStyles.slideCounter}>{ind + 1 + "/" + array.length}</div> */}
                                       </>
                                     ))}
-                                  </Slider>
-                                  <div className="slides-number" style={{
+                                     <div className="slides-number" style={{
                                     'position': 'absolute',
                                     'bottom': '48px',
                                     'left': '0',
@@ -269,6 +268,8 @@ const Basics = ({ node }) => {
                                     'text-align': 'center',
                                     'z-index': '0'
                                   }}>{slidesCurr[index]? (slidesCurr[index] + 1) : '1'}/{cardsProducts[index].length}</div>
+                                  </Slider>
+                                 
                                 </div>
                               </div>
                             </div>

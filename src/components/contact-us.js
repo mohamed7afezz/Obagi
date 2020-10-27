@@ -6,86 +6,94 @@ import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 
 export default function Contact() {
 
-    function removevaild(e){
-        let item= e.target
-        
-         item.parentElement.classList.remove('error')
-         if (item.classList.contains('error-msg')) {
+    const [emailSelected, setEmailSelected] = useState(true);
+
+    function removevaild(e) {
+        let item = e.target
+
+        item.parentElement.classList.remove('error')
+
+        let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
+
+        console.log(i)
+        for (let j = 0; j < i.length; j++) {
+
+            i[j].parentElement.classList.remove('error')
+        }
+        if (item.classList.contains('error-msg')) {
             item.classList.add('hide')
-         }else 
-         if (item.classList.contains('error')) {
-          item.classList.remove('error');
-        
-         }else if (item.nextSibling !=null && !item.nextSibling.classList.contains('radiomark')) {
-            
-            item.nextSibling.classList.add('hide')
-           
-             
-           
-         }
-        
-      
-        
-       }
-      
-        const sendFormValues = (updatedItemData) => {
-         fetch(
-           `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
-           {
-            headers:{
-                "Content-Type": "application/json",
-              },
-             method: 'POST',
-             body: JSON.stringify(updatedItemData.obj)
-           }
-         )
-           .then(res => res.json())
-           .then(response => {
-             console.log(response)
-           })
-           .catch(error => {
-             console.log('error',error)
-           });
-        };
-        let thanksmodal =()=>{
-            document.querySelector("#formsubmition").classList.remove('hidden')
-            var container = document.querySelector("#formsubmition .container");
-          
-            document.querySelector("#formsubmition").addEventListener("click", function (e) {
-              if (e.target !== document.querySelector("#formsubmition") && e.target !== container) return;     
-              document.querySelector("#formsubmition").classList.add("hidden");
+        } else
+            if (item.classList.contains('error')) {
+                item.classList.remove('error');
+
+            } else if (item.nextSibling != null && !item.nextSibling.classList.contains('radiomark')) {
+                console.log('aa')
+                item.nextSibling.classList.add('hide')
+
+
+            }
+
+
+
+    }
+    
+
+    const sendFormValues = (updatedItemData) => {
+        fetch(
+            `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: 'POST',
+                body: JSON.stringify(updatedItemData.obj)
+            }
+        )
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log('error', error)
             });
-          
-            
-          }
-          
-      
-     function submitforming(e){
-       var obj={webform_id : "contact_us"};
-       var list = document.querySelectorAll('.needs-validations input:invalid');
-         let text_area1= document.querySelectorAll('#contactDesc:invalid')
-        if (text_area1.length>0) {
+    };
+    let thanksmodal = () => {
+        document.querySelector(".contact-sucss").classList.remove('hide')
+
+        document.querySelector(".form-container").classList.add('hide')
+
+
+
+    }
+
+
+    function submitforming(e) {
+        var obj = { webform_id: "contact_us" };
+        var list = document.querySelectorAll('.needs-validations input:invalid');
+        let text_area1 = document.querySelectorAll('#contactDesc:invalid')
+        if (text_area1.length > 0) {
             console.log(text_area1)
             text_area1[0].parentElement.classList.add('error')
             text_area1[0].nextSibling.classList.remove('hide')
         }
-       if (list.length > 0){
-       for (var item of list) {
-         item.parentElement.classList.add('error')
-         item.nextSibling.classList.remove('hide')
-     }}else{
-       let list2 = document.querySelectorAll('.needs-validations input');
-       for (let item of list2) {
-       
-         obj[item.getAttribute("name")]=item.value;
-         thanksmodal();
-      }
-      obj['description']=`${document.querySelector("#contactDesc").value}`
-      obj[document.querySelector('.needs-validations select').getAttribute("name")]=`${document.querySelector('.needs-validations select').value}`
-     console.log(obj)
-     sendFormValues({obj})
-     }
-     }
+        if (list.length > 0) {
+            for (var item of list) {
+                item.parentElement.classList.add('error')
+                item.nextSibling.classList.remove('hide')
+            }
+        } else {
+            let list2 = document.querySelectorAll('.needs-validations input');
+            for (let item of list2) {
+
+                obj[item.getAttribute("name")] = item.value;
+                thanksmodal();
+            }
+            obj['description'] = `${document.querySelector("#contactDesc").value}`
+            obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
+            console.log(obj)
+            sendFormValues({ obj })
+        }
+    }
 
     useEffect(() => {
         if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
@@ -109,35 +117,35 @@ export default function Contact() {
                 </div>
 
 
-                    {/* The below row -ONLY- appears after the submit request is successful  *****************/}
+                {/* The below row -ONLY- appears after the submit request is successful  *****************/}
 
-                {/* <div className="row">
+                <div className="row contact-sucss hide">
                     <div className="col-12 col-lg-8">
                         <div className="contact-thanks-note">Thank you for contacting Obagi</div>
                         <div className="contact-thanks-text">We’ve received your message. You should receive a response within 2 to 3 business days.</div>
                     </div>
-                </div> */}
+                </div>
 
-                <div className="row">
+                <div className="row form-container">
                     <div className="col-12 col-lg-8">
                         <div className="contact-text">Submit your message below, and we will respond to most inquiries within 2 to 3 business days.</div>
                     </div>
                     <div className="col-12 col-lg-6">
-                        <form class="needs-validations" onSubmit={(e) => {e.preventDefault();}}>
+                        <form class="needs-validations" onSubmit={(e) => { e.preventDefault(); }}>
                             <div className="required-field">*All fields required</div>
 
 
                             <div className="check-group">
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactFirstRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer"required />
+                                    <label className="radioLabel form-check-label" for="contactFirstRadio" >
+                                        <input className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer" required />
                                         <span class="radiomark"></span>
                                         I am a Patient/Consumer
                                     </label>
                                 </div>
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactSecondRadio" onClick={removevaild}>
-                                        <input required className="form-check-input" type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
+                                    <label className="radioLabel form-check-label" for="contactSecondRadio" onChange={removevaild}>
+                                        <input required className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
                                         <span class="radiomark"></span>
                                         I am a Physician/Skin Care Professional
                                     </label>
@@ -148,12 +156,12 @@ export default function Contact() {
                             <div className="form-group form-element-con">
                                 <label for="contactFName" className="form-label">*First name</label>
                                 <input type="text" className="form-control" name="first_name" onClick={removevaild} id="contactFName" aria-describedby="contactFName" placeholder="" required />
-                                <p  className="error-msg hide">Please Enter Your First Name</p>
+                                <p className="error-msg hide">Please Enter Your First Name</p>
                             </div>
                             <div className="form-group form-element-con">
                                 <label for="contactLName" className="form-label">*Last name</label>
                                 <input type="text" className="form-control" onClick={removevaild} name="last_name" id="contactLName" aria-describedby="contactLName" placeholder="" required />
-                                <p  className="error-msg hide">Please Enter Your First Name</p>
+                                <p className="error-msg hide">Please Enter Your First Name</p>
                             </div>
 
                             <div className="form-group select-group">
@@ -173,23 +181,23 @@ export default function Contact() {
                             <div className="form-group textarea-group form-element-con">
                                 <label for="contactDesc" className="form-label">Description</label>
                                 <textarea onClick={removevaild} type="text" className="form-control textarea-control" id="contactDesc" aria-describedby="contactDesc" required placeholder="Type here…" />
-                                <p  className="error-msg hide">Please Enter Your Description</p>
+                                <p className="error-msg hide">Please Enter Your Description</p>
 
                             </div>
 
-                            <div className="question">How would you like to be contacted:</div>
+                            <div className="question">*How would you like to be contacted:</div>
 
                             <div className="second-check-group">
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactEmailRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactEmailRadio" value="option1"required />
+                                    <label className="radioLabel form-check-label" for="contactEmailRadio" onClick={() => {setEmailSelected(true)}}>
+                                        <input onChange={removevaild} className="form-check-input" type="radio" name="phoneRadio" id="contactEmailRadio" value="option1" required />
                                         <span class="radiomark"></span>
                                         Email
                                 </label>
                                 </div>
                                 <div className="form-check form-element-con">
-                                    <label className="radioLabel form-check-label" for="contactPhoneRadio" onClick={removevaild}>
-                                        <input className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" required/>
+                                    <label className="radioLabel form-check-label" for="contactPhoneRadio" onClick={() => {setEmailSelected(false)}}>
+                                        <input onChange={removevaild} className="form-check-input" type="radio" name="phoneRadio" id="contactPhoneRadio" value="option2" required />
                                         <span class="radiomark"></span>
                                         Phone
                                 </label>
@@ -197,14 +205,14 @@ export default function Contact() {
                             </div>
 
                             <div className="form-group form-element-con">
-                                <label for="contactPhone" className="form-label">*Phone</label>
+                                <label for="contactPhone" className="form-label">*{emailSelected == true? "Email" : "Phone"}</label>
                                 <input type="text" className="form-control" onClick={removevaild} name="phone" id="contactPhone" aria-describedby="contactPhone" placeholder="" required />
-                                <p  className="error-msg hide">Please Enter Your Phone</p>
+                                <p className="error-msg hide">Please Enter Your {emailSelected == true? "Email" : "Phone"}</p>
                             </div>
 
                             <div className="footnote">Including area code and/or country code, no spaces or dashes (e.g., 1234567890)</div>
-                            <button  onClick={(e) => {submitforming(e);}} className="button-link" type="submit"  >
-                            Send Message
+                            <button onClick={(e) => { submitforming(e); }} className="button-link" type="submit"  >
+                                Send Message
                             </button>
                         </form>
                     </div>

@@ -28,7 +28,7 @@ const addingToCart = value && value.state.addingToCart
                     <button className={ShowBagStyle.cartButton}
                         onClick={() => {
                             let quantity = 1;
-                            addToCart(recId, false, quantity);
+                            addToCart(recId, false, quantity,recPrice);
                         }}
                         disabled={addingToCart === recId}
                     >

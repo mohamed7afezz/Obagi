@@ -53,6 +53,15 @@ const Layout = ({ children,nodeType,menuType}) => {
               </div>
            </div>
          </div>
+
+         <div class="modal hidden" id="moremaxprice">
+           <div class="container">
+              <div class="modal-body">
+                  <h1>Your total card value <br/>reached to maximum allowed.</h1>
+              
+              </div>
+           </div>
+         </div>
     </div>
   )
 }

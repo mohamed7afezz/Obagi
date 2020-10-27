@@ -156,7 +156,7 @@ sortPriceSelect.addEventListener("change", function (event) {
             "removeSelectBorder"
           ].join(" ")}
         >
-          <label className={[productsliststyle.filter,"SelectChanges"].join(" ")}>Sort by:</label>
+          <label className={[productsliststyle.filtersearch,"SelectChanges"].join(" ")}>Sort by:</label>
           <div className="custom-select">
           <select class="filters-select sort-price" name="sort by">
             <option value="low" >
@@ -197,6 +197,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                       productimage={ data.relationships.field_medical_image &&  data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                       price={data.field_medical_price}
                       productId={data.field_medical_id}
+                      isrx={data.relationships.field_medical_rx?data.relationships.field_medical_rx.name :""}
                     />
                   </div> 
                       )) : <div className="col-12 text-center medicalProduct">No results found.</div> }

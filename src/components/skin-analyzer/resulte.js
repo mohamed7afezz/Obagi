@@ -29,7 +29,7 @@ const Resulte = (props) => {
         }
         return true;
       }
-    
+    var totalprice =0;
     var productsid=[];
     var fproductsid=[];
     console.log(props)
@@ -43,8 +43,15 @@ const Resulte = (props) => {
     useEffect(() => {
 
         const is_medical = props.brandJourney == "Clinical Persona" ? 0 : 1;
-        fetch(`${baseUrl}bigcommerce/v1/skin_alnyzer?is_medical=${is_medical}&q4=${props.questionsResult.q4}&q5=${props.questionsResult.q5}&q7=${props.questionsResult.q7}`, {
+        fetch(`${baseUrl}bigcommerce/v1/skin_alnyzer`, {
             credentials: 'same-origin',
+            method: 'POST',
+            body: JSON.stringify({
+                is_medical: is_medical,
+                q4: props.questionsResult.q4,
+                q5: props.questionsResult.q5,
+                q7: props.questionsResult.q7
+              })
         })
             .then(res => res.json())
             .then(response => {
@@ -125,7 +132,7 @@ const Resulte = (props) => {
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity);
+                                                addMultiToCart(productsid, false, quantity,totalprice);
                                             }}
                                             disabled={arraysEqual(addingToCart,fproductsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")}>
@@ -152,6 +159,7 @@ const Resulte = (props) => {
                                     <div className="col-12 col-lg-7 results-card-container">
                                         {clinicalProduct.length > 0 ? clinicalProduct.map((data,index)=> {
                                             productsid.push(data.field_clinical_id)
+                                            totalprice = parseFloat(totalprice) + parseFloat(data.field_clinical_price)
                                             return    <ProductCard
                                                 key={data.field_clinical_id}
                                                 Type= {ClinicalResultType[index]}
@@ -168,7 +176,7 @@ const Resulte = (props) => {
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity);
+                                                addMultiToCart(productsid, false, quantity,totalprice);
                                             }}
                                             disabled={arraysEqual(addingToCart,productsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-2"].join(" ")}>
@@ -226,11 +234,11 @@ const Resulte = (props) => {
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
                                             
                                             {medicalProduct.length > 0 ? medicalProduct.map(data => {
-                                            fproductsid.push(data.field_medical_id)}):""}
+                                            fproductsid.push(data.field_medical_id)}):""}    
                                         <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity);
+                                                addMultiToCart(productsid, false, quantity,totalprice);
                                             }}
                                             disabled={arraysEqual(addingToCart,fproductsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-2"].join(" ")}>
@@ -259,6 +267,7 @@ const Resulte = (props) => {
                                     </div>
                                     <div className="col-12 col-lg-7 results-card-container">
                                         {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
+                                            totalprice = parseFloat(totalprice) + parseFloat(data.field_medical_price)
                                             productsid.push(data.field_medical_id)
                                         return  <ProductCard
                                                 key={data.field_medical_id}
@@ -278,7 +287,7 @@ const Resulte = (props) => {
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity);
+                                                addMultiToCart(productsid, false, quantity,totalprice);
                                             }}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")} 
                                             disabled={arraysEqual(addingToCart,productsid)}>

@@ -21,7 +21,7 @@ const spinner = css`
  var saveprodarr = [];
 const OrderDetails = (props, { node }) => {
   var productsOid = []; 
- 
+ var total = 0 ;
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addMultiToCart = value && value.addMultiToCart;
@@ -152,7 +152,6 @@ let getallcheck =()=>{
           .forEach(el => {
             if (el.checked && !saveprodarr.includes(el.value)) {
               // 3 - send cart request
-              console.log(productsOid)
               saveprodarr.push(el.value)
               // console.log("value", el.value)
               
@@ -236,7 +235,8 @@ let getallcheck =()=>{
                     
                     getshiping? getshiping.map((getshipm, index1) => {
                    return(   products? products.map((item,index)=>{
-
+                     
+                    {total = parseFloat(total).toFixed(2) +  parseFloat(item.total_inc_taxtotal).toFixed(2)}
                     return(  getshipm.items.map((getProdId,index2) =>{
                         
                        return(
@@ -475,8 +475,8 @@ let getallcheck =()=>{
                     className={orderDetailsStyles.orderButton}
                     onClick={() => {
                       productsOid= saveprodarr;let quantity = 1;
-                      console.log(saveprodarr,"hassan")
-                      addMultiToCart(productsOid, false, quantity);
+                      
+                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax );
                   }}
                   disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === productId}
@@ -499,7 +499,7 @@ let getallcheck =()=>{
                     onClick={() => {
                       productsOid= saveprodarr;let quantity = 1;
                       console.log(saveprodarr,"hassan")
-                      addMultiToCart(productsOid, false, quantity);
+                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax );
                   }}
                   disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === elementId}
@@ -536,7 +536,7 @@ let getallcheck =()=>{
                 :
                 (products.map((item, index) => {
 
-
+                  {total = parseFloat(total).toFixed(2) +  parseFloat(item.total_inc_taxtotal).toFixed(2)}
                     return (
                         <div className={orderDetailsStyles.productWrapper}>
                             <form>
@@ -679,7 +679,7 @@ let getallcheck =()=>{
                 onClick={() => {
                   productsOid= saveprodarr;let quantity = 1;
                   console.log(saveprodarr,"hassan")
-                  addMultiToCart(productsOid, false, quantity);
+                  addMultiToCart(productsOid, false, quantity,total );
               }}
               disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === productId}
@@ -691,7 +691,7 @@ let getallcheck =()=>{
                onClick={() => {
                 productsOid= saveprodarr;let quantity = 1;
                 console.log(saveprodarr,"hassan")
-                addMultiToCart(productsOid, false, quantity);
+                addMultiToCart(productsOid, false, quantity,details.total_inc_tax );
             }}
             disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === elementId}

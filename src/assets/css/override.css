@@ -207,6 +207,10 @@ right: 0;
   #Showbag .modal-header .close{
     right: 4%;
   }
+  .remove-mob-padding{
+    margin-left: 0;
+    margin-right: 0;
+  }
   .mob-m-0{
     margin: 0;
   }
@@ -273,7 +277,41 @@ right: 0;
 .imageContainer .gatsby-image-wrapper {
   max-width: 100%;
 }
+.img-responsive{
+  max-width: 100%;
+  height: auto;
+}
+
 @media (min-width: 768px) {
+  .clusion-fimg{
+    margin-top: 80px;
+  }
+  .clusion-simg{
+    margin-top: 140px;
+  }
+  .cell-0{
+    flex: 0 0 25%;
+  }
+  .lastCell{
+    min-height: 160px;
+  }
+  .cell-0 .lastCell{
+    border-top: 0;
+  }
+  .cell-0 .firstcell{
+ border-bottom: 1px solid #d6d6d6;
+ padding-bottom: 14px;
+ margin-bottom: 0;
+  }
+  .cell-0 .tableimg{
+    max-width: 90%;
+  }
+  .basicbg .img-fluid-height{
+    height: 100%;
+   }
+.desk-auto{
+  margin-top: auto ; 
+}   
   .sysRelatedComp
 .slick-track
 {
@@ -542,6 +580,7 @@ right: -8%;
 
 .bigSliderContainer .productInlineSlider .slick-initialized{
   padding-bottom: 110px;
+  height: 100%;
 }
 
 .basics-paragraph .basicsProductWrapper .slick-initialized {
@@ -776,7 +815,7 @@ margin-bottom: 35px;
     #Showbag .modal-content {
     border: 0;
     border-radius: 0;
-    height: 700px;
+    height: 99.8vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -842,6 +881,9 @@ button:focus{
   .node-medical .howrightcol {
     background-color: #f3f3fb;
 }
+.cell-0 .tabelImage{
+  opacity: 0;
+}
 .results-card-container .productcardcon{
   display: none;
 }
@@ -897,13 +939,11 @@ button:focus{
   #Showbag .modal-content {
     border: 0;
     border-radius: 0;
-    height: 500px;
+    height: 99.8vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
-.body-small-margin  #Showbag .modal-content {
-height: 545px;
-}
+
   .zoom-mobile {
     display: block;
   }
@@ -1447,8 +1487,17 @@ right: 10px;
   height: auto;
 }
 @media (max-width:767px){
+  .mob-mt-50{
+    margin-top: 50px;
+  }
 .hide-mob{
   display: none !important;
+}
+.Skinclusion{
+  padding-bottom: 32px !important;
+}
+.mob-mt-40{
+  margin-top: 40px;
 }
   #product-hero-slick{
     display: none;
@@ -1501,7 +1550,7 @@ z-index: 999;
 
 @media (max-width: 991px) {
   #Showbag .modal-header .close{
-    top: 28px;
+    top: 16px;
   }
   .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;
@@ -2306,6 +2355,10 @@ padding-bottom: 0;
   flex-direction: column;
 }
 @media (max-width:767px){
+  .basicbg .img-fluid-height {
+    left: 52% !important;
+    top: -60% ;
+}
  .results-card-container
   .product-card-con {
     display: flex;
@@ -2381,20 +2434,31 @@ padding-bottom: 0;
   margin-bottom: 25px;
   padding-bottom: 25px;
 }
-#formsubmition .modal-body{
+#formsubmition .modal-body,#moremaxprice .modal-body{
   padding: 100px;
 }
-#formsubmition .container{
+#formsubmition .container,#moremaxprice .modal-body{
   padding-left: 0;
   padding-right: 0;
 }
+.show-mob{
+  display: none !important;
+}
 @media (max-width:767px){
-  #formsubmition .modal-body{
+  .show-mob{
+    display: block !important;
+  }
+  .show-mob.d-mob-flex{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  #formsubmition .modal-body ,#moremaxprice .modal-body{
     padding: 50px;
     padding-top: 80px;
     padding-bottom: 80px;
   }
-  #formsubmition h1{
+  #formsubmition h1 ,#moremaxprice h1{
     text-align: center;
   }
 }
@@ -2474,4 +2538,49 @@ transform: rotate(0);
   position: absolute;
   z-index: -99;
   opacity: 0;
+}
+.permier-video-link .video-wrapper{
+position: unset;
+min-height: 0;
+}
+.permier-video-link{
+  position: relative;
+}
+.type-1{
+  background-color: #481e09;
+  color: #fff;
+}
+.type-2{
+  background-color: #793723;
+  color: #fff;
+}
+.type-3{
+  background-color: #c8775b;
+  color: #fff;
+}
+.type-4{
+  background-color: #ebaf7c;
+  color: #3d2314;
+}
+.type-5{
+  background-color: #ffddb9;
+  color: #3d2314;
+}
+.type-6{
+  background-color: #ffeade;
+  color: #3d2314;
+}
+.d-flex-col{
+  display: flex;
+  flex-direction: column;
+}
+.twosec-sep +.twosec-sep{
+  margin-top: 32px;
+}
+#WAR,.bv_button_buttonMinimalist,.bv_avgRating_component_container,[data-bv-show="rating_summary"] .bv_main_container .bv_button_buttonMinimalist:hover
+,[data-bv-show="rating_summary"] .bv_main_container .bv_button_buttonMinimalist{
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  text-decoration: underline !important;
 }

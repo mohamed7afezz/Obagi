@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useEffect } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import featuredStyles from '../assets/scss/components/featured.module.scss'
 import Img from 'gatsby-image'
@@ -22,7 +22,7 @@ function playvideo(event) {
   player = new Player.Vimeo(document.querySelector('#VideoPopUp iframe'), playerOpts);
 
   player.play();
-
+ 
 
 }
 
@@ -64,6 +64,7 @@ console.log("ash", paragraphId)
 //console.log('current', currentName)
 
 productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
+
   return (
 
     <>

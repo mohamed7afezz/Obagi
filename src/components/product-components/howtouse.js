@@ -152,7 +152,9 @@ const Howtouse = ({ node }) => {
                                                                             <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
-                                                                            <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                            {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile? 
+                                                                                <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                            :''}
                                                                         </div>
                                                                         :
                                                                         ''
@@ -198,7 +200,9 @@ const Howtouse = ({ node }) => {
                                                                             <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
-                                                                            <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                            {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile?
+                                                                                <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                            :''}
                                                                         </div>
                                                                         :
                                                                         ''

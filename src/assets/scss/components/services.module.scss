@@ -145,9 +145,19 @@ background-color: #44c4d9;
 }
 .column-wrapper {
     @include lg-screen {
-        margin-bottom: 141px;
+        margin-bottom: 85px;
 
         &:last-child(), &:nth-last-child(2) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.column-odd-wrapper {
+    @include lg-screen {
+        margin-bottom: 85px;
+
+        &:last-child() {
             margin-bottom: 0;
         }
     }

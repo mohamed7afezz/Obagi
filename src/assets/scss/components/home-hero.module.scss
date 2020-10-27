@@ -5,13 +5,14 @@
     color: #fff;
     text-align: center;
     // background-repeat: no-repeat;
-    background: no-repeat center center fixed;
+    background: no-repeat center center;
     background-size: cover;
     padding-bottom: 65px;
     position: relative;
 
     @include lg-screen {
         // padding-left: 196px;
+        background: no-repeat center center fixed;
         padding-bottom: 180px;
         position: relative;
         margin-bottom: 308px;

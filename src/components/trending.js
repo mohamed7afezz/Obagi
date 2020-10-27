@@ -13,7 +13,7 @@ const Trending = ({ node }) => {
             return (
               <>
                 <div className="col-12 col-md-6 d-lg-none">
-                  <div className={trendingStyles.cardWrapper}>
+                  <div className={index == 0 || index == 1? trendingStyles.cardWrapper : trendingStyles.cardWrapper  +" " + trendingStyles.lastCardWrappers}>
                     <div className={trendingStyles.subtitle}>Trending</div>
                     {item.field_trending_card_title ? <div dangerouslySetInnerHTML={{ __html: item.field_trending_card_title.processed }} className={trendingStyles.title}></div> : ''}
                     {item.relationships.field_trending_card_image ? (item.relationships.field_trending_card_image.localFile? <div className={trendingStyles.image}><Img fluid={item.relationships.field_trending_card_image.localFile.childImageSharp.fluid} /></div> : '') : ''}
