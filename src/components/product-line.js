@@ -321,7 +321,6 @@ const ProductLine = ({ node }) => {
                 >
                   {data.allTaxonomyTermMedicalProductLines
                     ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-                      console.log("ashshhsh", item.node.relationships)
 
                       return (
                         (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
@@ -485,6 +484,5 @@ export const fragment = graphql`
     field_product_line_title {
       processed
     }
-   
   }
 `

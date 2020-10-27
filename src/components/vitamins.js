@@ -30,7 +30,7 @@ const Vitamins = ({ node }) => {
 
                 : "" : ""}
 
-                {node.field_paragraph_link? <Link className={vitaminsStyles.link} to={node.field_paragraph_link.uri}>{node.field_paragraph_link.title}</Link> : ""}
+                {node.field_paragraph_link? <Link className={vitaminsStyles.link} to={node.field_paragraph_link.uri.replace('internal:', '')}>{node.field_paragraph_link.title}</Link> : ""}
               </div>
             </div>
           </div>
