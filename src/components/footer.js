@@ -44,7 +44,7 @@ const Footer = ({ siteTitle }) => {
    }
     const sendFormValues = (updatedItemData) => {
      fetch(
-       `${baseUrl}api/webform_rest/submit`,
+       `${baseUrl}webform_rest/submit`,
        {
         headers:{
           "Content-Type": "application/json",
