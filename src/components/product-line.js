@@ -321,7 +321,6 @@ const ProductLine = ({ node }) => {
                 >
                   {data.allTaxonomyTermMedicalProductLines
                     ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
-                      console.log("ashshhsh", item.node.relationships)
 
                       return (
                         (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
@@ -482,68 +481,6 @@ export const fragment = graphql`
   fragment paragraphProductLine on paragraph__product_line {
     field_product_line_title {
       processed
-    }
-    relationships {
-      field_line_card {
-        field_tab_title {
-          processed
-        }
-        field_card_subtitle {
-          processed
-        }
-        field_line_title {
-          processed
-        }
-        field_line_description {
-          processed
-        }
-        field_line_link {
-          title
-          uri
-        }
-        relationships {
-          field_line_image {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-
-          field_line_category {
-            ... on taxonomy_term__clinical_categories {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__clinical_skin_concern {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__medical_categories {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__medical_skin_concern {
-              id
-              name
-              path {
-                alias
-              }
-            }
-          }
-        }
-      }
     }
   }
 `
