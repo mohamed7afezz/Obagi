@@ -1471,8 +1471,11 @@ export const fragment = graphql`
         ... on taxonomy_term__medical_product_lines {
           id
           name
+          
           relationships {
             node__medical_product {
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_id
               field_medical_description {
                 processed
@@ -1525,6 +1528,8 @@ export const fragment = graphql`
           name
           relationships {
             node__medical_product {
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_id
               field_medical_description {
                 processed
@@ -1580,6 +1585,8 @@ export const fragment = graphql`
           }
           relationships {
             node__medical_product {
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_id
               field_medical_description {
                 processed
@@ -1635,6 +1642,8 @@ export const fragment = graphql`
           }
           relationships {
             node__medical_product {
+              field_medical_premier_points
+              field_medical_premier_points_id
               path {
                 alias
               }
@@ -1689,6 +1698,8 @@ export const fragment = graphql`
           relationships {
             
             node__medical_product {
+              field_medical_premier_points
+              field_medical_premier_points_id
               title
               path {
                 alias

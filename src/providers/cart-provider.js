@@ -132,8 +132,8 @@ export const CartProvider = ({ children }) => {
             quantity: (typeof(quantity)==='undefined')? 1 : quantity,
             product_id: parseInt(productId, 10),
             option_selections:[{
-            option_id :parseFloat( premierid ),
-            option_value: parseFloat( feild_preimer),
+            option_id :parseFloat(premierid),
+            option_value: parseFloat(feild_preimer),
           }]
           }
         ]
