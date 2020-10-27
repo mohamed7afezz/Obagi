@@ -131,8 +131,10 @@ export const CartProvider = ({ children }) => {
           {
             quantity: (typeof(quantity)==='undefined')? 1 : quantity,
             product_id: parseInt(productId, 10),
-            premierid :premierid,
-            preimerpoint: feild_preimer,
+            option_selections:[{
+            option_id :parseFloat( premierid ),
+            option_value: parseFloat( feild_preimer),
+          }]
           }
         ]
       })
@@ -179,8 +181,10 @@ export const CartProvider = ({ children }) => {
       });
   };
 
-  const addMultiToCart = async (productsId ,retry, quantity,price) => {
+  const addMultiToCart = async (productsId ,retry, quantity,price,premierid,feild_preimer) => {
     let findedProduct = productsId;
+    let productspremierid =premierid;
+    let productspremierpoints =feild_preimer;
     if(state.cart.lineItems.physical_items){
       findedProduct = productsId.filter(function(element){
         let quantity = 0;
@@ -209,7 +213,8 @@ export const CartProvider = ({ children }) => {
     }
 
     setState({ ...state, addingToCart: productsId });
-    
+  
+    console.log('pop',premierid)
     productsId = findedProduct;
 
     let body= [];
@@ -217,11 +222,13 @@ export const CartProvider = ({ children }) => {
       productsId.forEach(element => {
         body.push({
           quantity: (typeof(quantity)==='undefined')? 1 : quantity,
-          product_id: parseInt(element, 10)
+          product_id: parseInt(element, 10),
+          
+        
         })
       });  
     }
-
+    
     
 
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
@@ -244,7 +251,7 @@ export const CartProvider = ({ children }) => {
           if (typeof window !== "undefined") {
             window.localStorage.removeItem('cartId')
           }
-          await addMultiToCart(productsId, true, quantity);
+          await addMultiToCart(productsId, true, quantity,premierid,feild_preimer);
         }
         status < 300 && addNotification('Item added successfully');
 

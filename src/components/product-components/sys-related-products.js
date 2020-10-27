@@ -84,6 +84,8 @@ export default function SysRelatedProducts({node}) {
                                                         )):""
                                                     }
                                                     price={prod.field_medical_price}
+                                                    premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
+                                                   feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
                                                 />
                                             ))
                                         ))

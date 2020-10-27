@@ -367,6 +367,8 @@ const ProductSuggestion = ({ node }) => {
          price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
          productLink={data.professionalC.path.alias}
+         premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
+         feild_preimer={data.professionalC.field_medical_premier_points?data.professionalC.field_medical_premier_points:""}
          productdescription={{
           __html:
           data.professionalC.field_medical_description?data.professionalC.field_medical_description.processed:"",
@@ -382,6 +384,8 @@ const ProductSuggestion = ({ node }) => {
          price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
          productLink={data.elastiderm.path.alias}
+         premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
+         feild_preimer={data.elastiderm.field_medical_premier_points?data.elastiderm.field_medical_premier_points:""}
          productdescription={{
           __html:
           data.elastiderm.field_medical_description?data.elastiderm.field_medical_description.processed:"",
@@ -395,6 +399,8 @@ const ProductSuggestion = ({ node }) => {
          price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id:""}
          productLink={data.hydrate.path.alias}
+         premierid={data.hydrate.field_medical_premier_points_id?data.hydrate.field_medical_premier_points_id:""}
+         feild_preimer={data.hydrate.field_medical_premier_points?data.hydrate.field_medical_premier_points:""}
          productdescription={{
           __html:
           data.hydrate.field_medical_description?data.hydrate.field_medical_description.processed:"",

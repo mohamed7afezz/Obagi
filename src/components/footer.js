@@ -14,7 +14,7 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons"
 
-
+const baseUrl = process.env.Base_URL;
 
 let thanksmodal =()=>{
   document.querySelector("#formsubmition").classList.remove('hidden')
@@ -44,7 +44,7 @@ const Footer = ({ siteTitle }) => {
    }
     const sendFormValues = (updatedItemData) => {
      fetch(
-       `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+       `${baseUrl}api/webform_rest/submit`,
        {
         headers:{
           "Content-Type": "application/json",

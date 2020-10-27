@@ -993,6 +993,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
 export default CollectionHero
 export const fragment = graphql`
+  fragment paragraphTaxonomyHeroParaprapgh on paragraph__taxonomy_hero_paraprapgh {
+    id
+  }
 
   fragment collectionhero on taxonomy_term__clinical_skin_concern {
     id

@@ -29,7 +29,7 @@ const OrderDetails = (props, { node }) => {
  
   const [details, setDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
-  const [getshiping, setShipment] = useState(false)
+  const [getshiping, setShipment] = useState(false);
   function arraysEqual(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;
