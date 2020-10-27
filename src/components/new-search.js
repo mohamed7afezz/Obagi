@@ -198,6 +198,8 @@ sortPriceSelect.addEventListener("change", function (event) {
                       price={data.field_medical_price}
                       productId={data.field_medical_id}
                       isrx={data.relationships.field_medical_rx?data.relationships.field_medical_rx.name :""}
+                      premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
+                       feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                     />
                   </div> 
                       )) : <div className="col-12 text-center medicalProduct">No results found.</div> }

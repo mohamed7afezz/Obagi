@@ -10,7 +10,9 @@ recImage,
 recLink,
 recPrice,
 recId,
-recTitle }) => {
+recTitle ,
+premierid,
+feild_preimer}) => {
 
 const value = useContext(CartContext)
 const addToCart = value && value.addToCart
@@ -28,7 +30,7 @@ const addingToCart = value && value.state.addingToCart
                     <button className={ShowBagStyle.cartButton}
                         onClick={() => {
                             let quantity = 1;
-                            addToCart(recId, false, quantity,recPrice);
+                            addToCart(recId, false, quantity,recPrice,premierid,feild_preimer);
                         }}
                         disabled={addingToCart === recId}
                     >

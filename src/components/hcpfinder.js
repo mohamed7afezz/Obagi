@@ -19,7 +19,7 @@ const spinner = css`
   top: 10%;
 `;
 const finderURL = process.env.Finder_URL;
-
+const baseUrl = process.env.Base_URL;
 
 function removevaild(e) {
   let item = e.target
@@ -31,7 +31,7 @@ function removevaild(e) {
 const sendFormValues = (updatedItemData) => {
   console.log(updatedItemData)
   fetch(
-    `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+    `${baseUrl}api/webform_rest/submit`,
     {
       headers: {
         "Content-Type": "application/json",

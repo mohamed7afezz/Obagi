@@ -253,6 +253,8 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
+                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
                       )}
                       <div
@@ -286,6 +288,8 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
                       ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productLink={item.path.alias}
@@ -353,7 +357,9 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
-                        />
+                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                          />
                       )}
                       <div
                         class="d-none ingredient"
@@ -449,7 +455,9 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                             price={product.field_medical_price}
                             rate="0"
                             productId={product.field_medical_id}
-                          />
+                            premierid={product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
+                            feild_preimer={product.field_medical_premier_points?product.field_medical_premier_points:""}
+                         />
                            <div
                         class="d-none ingredient"
                         dangerouslySetInnerHTML={{ __html: ingredient }}

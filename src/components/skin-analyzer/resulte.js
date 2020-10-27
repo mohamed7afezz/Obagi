@@ -32,6 +32,7 @@ const Resulte = (props) => {
     var totalprice =0;
     var productsid=[];
     var fproductsid=[];
+    let premieridarr,premierpoints=[]
     console.log(props)
     const value = useContext(CartContext)
     const addMultiToCart = value && value.addMultiToCart;
@@ -58,7 +59,7 @@ const Resulte = (props) => {
                 let listOfProducts = searchInIndexById(response, is_medical);
                 if (is_medical) {
                     setMedicalProduct(listOfProducts);
-                    console.log("hafezz",response,listOfProducts)
+                    console.log("hafezz111",response,listOfProducts)
                 } else {
                     setClinicalProduct(listOfProducts);
                     console.log("hafezz",response,listOfProducts)
@@ -269,6 +270,9 @@ const Resulte = (props) => {
                                         {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_medical_price)
                                             productsid.push(data.field_medical_id)
+                                            premieridarr= parseFloat(data.field_medical_premier_points_id)
+                                            console.log('pop1',data.field_medical_premier_points,data)
+                                            premierpoints=parseFloat(data.field_medical_premier_points)
                                         return  <ProductCard
                                                 key={data.field_medical_id}
                                                 productLink={data.path.alias}
@@ -278,6 +282,8 @@ const Resulte = (props) => {
                                                 price={data.field_medical_price}
                                                 productId={data.field_medical_id}
                                                 Type= {MedicalResultType[index]}
+                                                premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
+                                                feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                                             />
                                          }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
@@ -287,7 +293,7 @@ const Resulte = (props) => {
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity,totalprice);
+                                                addMultiToCart(productsid, false, quantity,totalprice,premieridarr,premierpoints);
                                             }}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")} 
                                             disabled={arraysEqual(addingToCart,productsid)}>

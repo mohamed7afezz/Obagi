@@ -14,6 +14,8 @@ const ProductCard = ({
   rate,
   productLink,
   productId,
+  premierid,
+  feild_preimer,
   isrx,
   Type
 }) => {
@@ -85,7 +87,7 @@ const ProductCard = ({
               <button className={["the-new-product-button","mob-analyzer-btn"].join(" ")} 
         onClick={() => {
           let quantity = 1;
-          addToCart(productId,false,quantity,price);
+          addToCart(productId,false,quantity,price,premierid,feild_preimer);
         }}
         disabled={addingToCart === productId}
       >
@@ -122,7 +124,7 @@ const ProductCard = ({
             :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
             onClick={() => {
               let quantity = 1;
-              addToCart(productId,false,quantity,price);
+              addToCart(productId,false,quantity,price,premierid,feild_preimer);
             }}
             disabled={addingToCart === productId}
           >
@@ -135,7 +137,7 @@ const ProductCard = ({
         )}<button className={["the-new-product-button"].join(" ")} 
         onClick={() => {
           let quantity = 1;
-          addToCart(productId,false,quantity,price);
+          addToCart(productId,false,quantity,price,premierid,feild_preimer);
         }}
         disabled={addingToCart === productId}
       >

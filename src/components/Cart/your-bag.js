@@ -553,7 +553,9 @@ const YourBag = (props, { notificationId }) => {
                         recLink={product.path.alias ? product.path.alias : ""}
                         recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
                         recPrice={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
-                      />
+                        premierid={isClinical ?"": product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
+                        feild_preimer={isClinical ?"": product.field_medical_premier_points?product.field_medical_premier_points:""}
+                        />
                     )
                   })  : ''
                 }
@@ -914,6 +916,8 @@ const YourBag = (props, { notificationId }) => {
                 recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
                 recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
+                premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
+                feild_preimer={data.professionalC.field_medical_premier_points?data.professionalC.field_medical_premier_points:""}
               />
 
               <RecommendedProduct
@@ -922,6 +926,8 @@ const YourBag = (props, { notificationId }) => {
                 recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
                 recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
+                premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
+                feild_preimer={data.elastiderm.field_medical_premier_points?data.elastiderm.field_medical_premier_points:""}
               />
             </div>
             <div className="prodsuggest">

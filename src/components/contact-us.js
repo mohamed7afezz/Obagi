@@ -5,7 +5,7 @@ import { CustomSelect } from '../assets/js/custom-select'
 import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 
 export default function Contact() {
-
+    const baseUrl = process.env.Base_URL;
     const [emailSelected, setEmailSelected] = useState(true);
 
     function removevaild(e) {
@@ -40,7 +40,7 @@ export default function Contact() {
 
     const sendFormValues = (updatedItemData) => {
         fetch(
-            `https://dev-obagi.azurewebsites.net/api/webform_rest/submit`,
+            `${baseUrl}api/webform_rest/submit`,
             {
                 headers: {
                     "Content-Type": "application/json",

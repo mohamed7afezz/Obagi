@@ -435,7 +435,7 @@ console.log('zz',checkTaxonomy)
                                 {filtersDataQuery.medicalType.edges.map(({node}) => (
                                   <li>
                                     <label class="checkcon terms">
-                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); }} name="product" type="radio" value={node.name}/>{node.name}
                                       <span className="checkmarkfinder"></span>
                                     </label>
                                   </li>
@@ -701,6 +701,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          
                         />
                         
                       ) : pageNodeType == "clinicalCategories" ? (
@@ -739,6 +740,8 @@ console.log('zz',checkTaxonomy)
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
+                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
                       )}
                       <div
@@ -879,6 +882,8 @@ console.log('zz',checkTaxonomy)
                           price={item.field_medical_price}
                           rate="0"
                           productId={item.field_medical_id}
+                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
                       )}
                       <div
@@ -999,6 +1004,8 @@ console.log('zz',checkTaxonomy)
                             price={product.field_medical_price}
                             rate="0"
                             productId={product.field_medical_id}
+                            premierid={product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
+                            feild_preimer={product.field_medical_premier_points?product.field_medical_premier_points:""}
                           />
                            <div
                         class="d-none ingredient"

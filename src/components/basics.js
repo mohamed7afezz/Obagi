@@ -243,6 +243,8 @@ const Basics = ({ node }) => {
                                         productId={prod.field_medical_id ? prod.field_medical_id : prod.field_clinical_id ? prod.field_clinical_id : ""}
                                         price={prod.field_clinical_price ? prod.field_clinical_price : prod.field_medical_price? prod.field_medical_price : ""}
                                         rate="0"
+                                        premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
+                                        feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
                                         productdescription={prod.field_medical_description ? { __html: prod.field_medical_description.processed } : prod.field_clinical_description ? { __html: prod.field_clinical_description.processed } : ""}
                                         productLink={prod.path ? prod.path.alias : ""}
                                         productimage={prod.relationships &&

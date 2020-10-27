@@ -445,6 +445,8 @@ const ProductLine = ({ node }) => {
                                               price={item.field_medical_price}
                                               rate="0"
                                               productId={item.field_medical_id}
+                                              premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                                             />
                                           </div>
                                         )
@@ -483,67 +485,6 @@ export const fragment = graphql`
     field_product_line_title {
       processed
     }
-    relationships {
-      field_line_card {
-        field_tab_title {
-          processed
-        }
-        field_card_subtitle {
-          processed
-        }
-        field_line_title {
-          processed
-        }
-        field_line_description {
-          processed
-        }
-        field_line_link {
-          title
-          uri
-        }
-        relationships {
-          field_line_image {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-
-          field_line_category {
-            ... on taxonomy_term__clinical_categories {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__clinical_skin_concern {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__medical_categories {
-              id
-              name
-              path {
-                alias
-              }
-            }
-            ... on taxonomy_term__medical_skin_concern {
-              id
-              name
-              path {
-                alias
-              }
-            }
-          }
-        }
-      }
-    }
+   
   }
 `
