@@ -579,6 +579,8 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_id
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_description {
                 processed
               }
@@ -619,6 +621,8 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_id
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_description {
                 processed
               }
@@ -662,6 +666,8 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_id
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_description {
                 processed
               }
@@ -708,6 +714,8 @@ export const fragment = graphql`
                 alias
               }
               title
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_id
               field_medical_description {
                 processed
@@ -749,6 +757,8 @@ export const fragment = graphql`
                 alias
               }
               field_medical_id
+              field_medical_premier_points
+              field_medical_premier_points_id
               field_medical_description {
                 processed
               }

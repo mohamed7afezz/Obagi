@@ -122,11 +122,15 @@ export const CartProvider = ({ children }) => {
     if(cartId) {
         resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
     }
+    if (premierid && feild_preimer) {
+      
+   
     await fetch(resrouce_url, {
       method: 'POST',
       credentials: 'same-origin',
       mode: 'cors',
       body: JSON.stringify({
+        
         line_items: [
           {
             quantity: (typeof(quantity)==='undefined')? 1 : quantity,
@@ -179,6 +183,64 @@ export const CartProvider = ({ children }) => {
       .catch(error => {
         setState({ ...state, addingToCart: false, addToCartError: error });
       });
+    }else{
+      await fetch(resrouce_url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        body: JSON.stringify({
+          
+          line_items: [
+            {
+              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              product_id: parseInt(productId, 10),
+            }
+          ]
+        })
+      })
+        .then(async res => ({ response: await res.json(), status: res.status }))
+        .then(async ({ response, status }) => {
+          if (status === 404 && !retry) {
+            // re create a cart if cart was destroyed
+            cartId = undefined;
+            if (typeof window !== "undefined") {
+              window.localStorage.removeItem('cartId')
+            }
+            await addToCart(productId, true, quantity,price,premierid,feild_preimer);
+          }
+         
+          status < 300 && addNotification('Item added successfully');
+  
+          const lineItems = response.data.line_items;
+          const cartAmount = response.data.cart_amount;
+          const currency = response.data.currency;
+          cartId = response.data.id;
+          if (typeof window !== "undefined") {
+            window.localStorage.setItem('cartId', JSON.stringify(cartId));
+          }
+          setState({
+            ...state,
+            addingToCart: false,
+            addedToCart: productId,
+            cart: {
+              currency,
+              cartAmount,
+              lineItems,
+              numberItems:
+                lineItems.physical_items.length +
+                lineItems.digital_items.length +
+                lineItems.custom_items.length +
+                lineItems.gift_certificates.length,
+              redirectUrls: response.data.redirect_urls
+            }
+          });
+        })
+        .catch(error => {
+          setState({ ...state, addingToCart: false, addToCartError: error });
+        });
+     
+    }
+  
   };
 
   const addMultiToCart = async (productsId ,retry, quantity,price,premierid,feild_preimer) => {
