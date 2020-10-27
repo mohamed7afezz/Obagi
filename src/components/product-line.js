@@ -205,6 +205,8 @@ const ProductLine = ({ node }) => {
                 title
                 field_medical_price
                 field_medical_id
+                field_medical_premier_points
+                field_medical_premier_points_id
                 path {
                   alias
                 }
@@ -430,6 +432,7 @@ const ProductLine = ({ node }) => {
                                             <ProductCard
                                               productLink={item.path.alias}
                                               producttitle={item.title}
+                                              
                                               productdescription={{
 
                                                 __html: item.field_medical_description ? item.field_medical_description.processed : ""
@@ -445,7 +448,7 @@ const ProductLine = ({ node }) => {
                                               rate="0"
                                               productId={item.field_medical_id}
                                               premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                                               feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                                             />
                                           </div>
                                         )

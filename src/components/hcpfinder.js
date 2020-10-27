@@ -31,7 +31,7 @@ function removevaild(e) {
 const sendFormValues = (updatedItemData) => {
   console.log(updatedItemData)
   fetch(
-    `${baseUrl}api/webform_rest/submit`,
+    `${baseUrl}webform_rest/submit`,
     {
       headers: {
         "Content-Type": "application/json",

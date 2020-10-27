@@ -2498,11 +2498,12 @@ background-color: rgba(0,0,0,.5);
 margin-left: -15px;
 }
 .product-card-img .custom-img{
-  max-height: none;
-  max-width: 250px;
-width: auto;
-margin-left: auto;
-margin-right: auto;
+  max-height: 250px;
+  max-width: none;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  height: 250px;
 }
 .shipmenttxt{
   margin-top: 8px;

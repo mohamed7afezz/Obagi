@@ -40,13 +40,13 @@ const Footer = ({ siteTitle }) => {
     }
     if (item.classList.contains('error')) {
       item.classList.remove('error')
-    }
-  }
-  const sendFormValues = (updatedItemData) => {
-    fetch(
-      `${baseUrl}api/webform_rest/submit`,
-      {
-        headers: {
+     }
+   }
+    const sendFormValues = (updatedItemData) => {
+     fetch(
+       `${baseUrl}webform_rest/submit`,
+       {
+        headers:{
           "Content-Type": "application/json",
 
         },
