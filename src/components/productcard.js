@@ -58,7 +58,7 @@ const ProductCard = ({
         )}
       <div className={"product-card-img"}>
         {productimage ? (
-          <Img className={[Productcard.cardimg,'custom-img'].join(" ")} fluid={productimage} />
+          <Link to={productLink}><Img className={[Productcard.cardimg,'custom-img'].join(" ")} fluid={productimage} /></Link>
         ) : (
           ""
         )}

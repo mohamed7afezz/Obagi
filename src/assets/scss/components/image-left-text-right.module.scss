@@ -60,7 +60,7 @@
     padding: 134px 79px 147px 71px;
     background: #ffcd00;
     position: relative;
-    z-index: -1;
+    // z-index: -1;
     
     &::after {
         width: 104px;
@@ -73,7 +73,7 @@
         left: 0;
     }
 
-    @include lg-screen {
+    @include xl-screen {
 
         padding: 268px 0 434px 0;
         z-index: 0;

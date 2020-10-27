@@ -300,7 +300,7 @@ if ( typeof window !== "undefined"){
             </ul>
           </div>
           <div className={ProductStyles.skintypes}>
-          <p className={ProductStyles.canuse}>
+          {field_skin_type.length > 0? <p className={ProductStyles.canuse}>
             Skin Type:{" "}
             {field_skin_type.map((item, index) => {
               return (
@@ -310,8 +310,8 @@ if ( typeof window !== "undefined"){
                 </span>
               )
             })}
-          </p>
-          <p className={ProductStyles.Indications}>
+          </p> : ""}
+          {field_skin_concern.length > 0? <p className={ProductStyles.Indications}>
             Skin Concerns:{" "}
             {field_skin_concern.map((item, index) => {
               return (
@@ -321,7 +321,7 @@ if ( typeof window !== "undefined"){
                 </span>
               )
             })}
-          </p>
+          </p> : ""}
         
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
