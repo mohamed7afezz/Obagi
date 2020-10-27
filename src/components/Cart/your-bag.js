@@ -871,11 +871,13 @@ const YourBag = (props, { notificationId }) => {
             >
               Your Obagi shopping bag is empty.
             </p>
-            <button type="button" onClick={() => { removeNotification(notificationId); }}
+            {cartType === "overlay"? <button type="button" onClick={() => { removeNotification(notificationId); }}
               className={ShowBagStyle.empatyLink}
             >
               Continue Shopping
             </button>
+            :
+            <Link to="/" className={ShowBagStyle.empatyLink}>Continue Shopping</Link>}
           </div>
 
           <div className="d-lg-none">
