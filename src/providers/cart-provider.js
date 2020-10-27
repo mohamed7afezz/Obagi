@@ -136,8 +136,8 @@ export const CartProvider = ({ children }) => {
             quantity: (typeof(quantity)==='undefined')? 1 : quantity,
             product_id: parseInt(productId, 10),
             option_selections:[{
-            option_id :parseFloat(premierid),
-            option_value: parseFloat(feild_preimer),
+              option_id :parseFloat(premierid),
+              option_value: parseFloat(feild_preimer),
           }]
           }
         ]
@@ -243,10 +243,9 @@ export const CartProvider = ({ children }) => {
   
   };
 
-  const addMultiToCart = async (productsId ,retry, quantity,price,premierid,feild_preimer) => {
+  const addMultiToCart = async (productsId ,retry, quantity, price, productsPremierPoints) => {
+    console.log("hafezzz12",productsPremierPoints,productsId,state.cart.lineItems.physical_items)
     let findedProduct = productsId;
-    let productspremierid =premierid;
-    let productspremierpoints =feild_preimer;
     if(state.cart.lineItems.physical_items){
       findedProduct = productsId.filter(function(element){
         let quantity = 0;
@@ -265,29 +264,46 @@ export const CartProvider = ({ children }) => {
         }
       })
     }
+    console.log("hafezzz1",findedProduct)
     if (parseFloat(state.cart.cartAmount) + parseFloat(price) > 750) {
       maxprice();
      return
     }
     
+    console.log("hafezzz1",findedProduct)
     if(!findedProduct.length > 0){
       return;
     }
 
     setState({ ...state, addingToCart: productsId });
   
-    console.log('pop',premierid)
     productsId = findedProduct;
-
     let body= [];
     if(productsId.length > 0){
       productsId.forEach(element => {
-        body.push({
-          quantity: (typeof(quantity)==='undefined')? 1 : quantity,
-          product_id: parseInt(element, 10),
-          
+        if(productsPremierPoints){
+          console.log("hafezz",element,productPremierPoint);
+          let productPremierPoint = productsPremierPoints.find(x => x.productId === element);
+          if(productPremierPoint && productPremierPoint.premierId && productPremierPoint.premierPoints){
+            body.push({
+              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              product_id: parseInt(element, 10),
+              option_selections:[{
+                option_id :parseFloat(productPremierPoint.premierId),
+                option_value: parseFloat(productPremierPoint.premierPoints),
+              }]  
+            })
+          }  else{
+            body.push({
+              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              product_id: parseInt(element, 10),
+              
+            
+            })
+          }
+        }
         
-        })
+        
       });  
     }
     
@@ -313,7 +329,7 @@ export const CartProvider = ({ children }) => {
           if (typeof window !== "undefined") {
             window.localStorage.removeItem('cartId')
           }
-          await addMultiToCart(productsId, true, quantity,premierid,feild_preimer);
+          await addMultiToCart(productsId, true, quantity, price, productsPremierPoints);
         }
         status < 300 && addNotification('Item added successfully');
 

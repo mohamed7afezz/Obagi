@@ -114,7 +114,7 @@ const ProductCard = ({
         {price ? (
           <div className={[Productcard.priceCon,"priceCon"].join(" ")}>
             <p className={[Productcard.price,"prod-price-con"].join(" ")}>
-              $ <span className="prod-price">{price}</span>
+              $<span className="prod-price">{price}</span>
             </p>
             {isrx == 'RX'?
             <Link className={Productcard.addtocart} to="/medical/hcpfinder">

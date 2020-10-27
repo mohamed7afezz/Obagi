@@ -32,7 +32,7 @@ const Resulte = (props) => {
     var totalprice =0;
     var productsid=[];
     var fproductsid=[];
-    let premieridarr,premierpoints=[]
+    var productsPremierPoints=[];
     console.log(props)
     const value = useContext(CartContext)
     const addMultiToCart = value && value.addMultiToCart;
@@ -159,9 +159,9 @@ const Resulte = (props) => {
                                     </div>
                                     <div className="col-12 col-lg-7 results-card-container">
                                         {clinicalProduct.length > 0 ? clinicalProduct.map((data,index)=> {
-                                            productsid.push(data.field_clinical_id)
+                                            productsid.push(data.field_clinical_id);
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_clinical_price)
-                                            return    <ProductCard
+                                            return <ProductCard
                                                 key={data.field_clinical_id}
                                                 Type= {ClinicalResultType[index]}
                                                 productLink={data.path.alias}
@@ -239,7 +239,7 @@ const Resulte = (props) => {
                                         <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity,totalprice);
+                                                addMultiToCart(productsid, false, quantity,totalprice,productsPremierPoints);
                                             }}
                                             disabled={arraysEqual(addingToCart,fproductsid)}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-2"].join(" ")}>
@@ -270,9 +270,12 @@ const Resulte = (props) => {
                                         {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_medical_price)
                                             productsid.push(data.field_medical_id)
-                                            premieridarr= parseFloat(data.field_medical_premier_points_id)
-                                            console.log('pop1',data.field_medical_premier_points,data)
-                                            premierpoints=parseFloat(data.field_medical_premier_points)
+                                            productsPremierPoints.push(
+                                                {
+                                                    productId:data.field_medical_id,
+                                                    premierId:data.field_medical_premier_points_id,
+                                                    premierPoints:data.field_medical_premier_points
+                                                });
                                         return  <ProductCard
                                                 key={data.field_medical_id}
                                                 productLink={data.path.alias}
@@ -288,12 +291,10 @@ const Resulte = (props) => {
                                          }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
                                             <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
-                                           
-
                                             <button 
                                             onClick={() => {
                                                 let quantity = 1;
-                                                addMultiToCart(productsid, false, quantity,totalprice,premieridarr,premierpoints);
+                                                addMultiToCart(productsid, false, quantity,totalprice,productsPremierPoints);
                                             }}
                                             className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")} 
                                             disabled={arraysEqual(addingToCart,productsid)}>

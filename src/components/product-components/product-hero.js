@@ -292,7 +292,7 @@ if ( typeof window !== "undefined"){
               return (
                 
                   <li className={ProductStyles.keyBenefitli}>
-                    {item.field_list_item}
+                    <span  dangerouslySetInnerHTML={{ __html: item.field_list_item }}></span>
                   </li>
             
               )
