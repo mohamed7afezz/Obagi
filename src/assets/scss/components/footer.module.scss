@@ -263,6 +263,7 @@
     order: 3;
     @include lg-screen {
         order: 2;
+        display: flex;
     }
 }
 
