@@ -32,6 +32,7 @@ const ProductHero = ({ data, nodeType }) => {
     let field_medical_rx = isClincal
     ? ""
     : node.relationships.field_medical_rx.name
+   
   let field_description = isClincal
     ? node.field_clinical_description.processed
     : node.field_medical_description?node.field_medical_description.processed:''
@@ -51,7 +52,10 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
     let field_info =  node.field_medical_info
-  let feild_preimer = node.field_medical_premier_points;
+  let feild_preimer = node.field_medical_premier_points?
+  node.field_medical_premier_points:"";
+  let premierid = node.field_medical_premier_points_id?
+  node.field_medical_premier_points_id :""
   let field_weight_unit  = isClincal
     ? node.field_clinical_weight_unit
      :node.field_medical_weight_unit
@@ -356,12 +360,13 @@ if ( typeof window !== "undefined"){
             to="/medical/hcpfinder">      
             Locate a Physician
          </Link>
-          :<button
+          :  <button
             className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
             onClick={() => {
               let quantity = document.querySelector("#quantityBox").value;
-              addToCart(productId,false,quantity);
-            }}
+              premierid && feild_preimer?
+              addToCart(productId,false,quantity,field_price,premierid,feild_preimer):addToCart(productId,false,quantity,field_price)
+             }}
             disabled={addingToCart === productId}
           >
             {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
@@ -411,11 +416,12 @@ if ( typeof window !== "undefined"){
          to="/medical/hcpfinder">      
          Find a Physician
       </Link>
-       :<button
+       : <button
          className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
          onClick={() => {
            let quantity = document.querySelector("#quantityBox").value;
-           addToCart(productId,false,quantity);
+           premierid && feild_preimer?
+           addToCart(productId,false,quantity,field_price,premierid,feild_preimer):addToCart(productId,false,quantity,field_price)
          }}
          disabled={addingToCart === productId}
        >

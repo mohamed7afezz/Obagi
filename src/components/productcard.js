@@ -85,7 +85,7 @@ const ProductCard = ({
               <button className={["the-new-product-button","mob-analyzer-btn"].join(" ")} 
         onClick={() => {
           let quantity = 1;
-          addToCart(productId,false,quantity);
+          addToCart(productId,false,quantity,price);
         }}
         disabled={addingToCart === productId}
       >
@@ -122,7 +122,7 @@ const ProductCard = ({
             :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
             onClick={() => {
               let quantity = 1;
-              addToCart(productId,false,quantity);
+              addToCart(productId,false,quantity,price);
             }}
             disabled={addingToCart === productId}
           >
@@ -135,7 +135,7 @@ const ProductCard = ({
         )}<button className={["the-new-product-button"].join(" ")} 
         onClick={() => {
           let quantity = 1;
-          addToCart(productId,false,quantity);
+          addToCart(productId,false,quantity,price);
         }}
         disabled={addingToCart === productId}
       >

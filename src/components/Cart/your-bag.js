@@ -520,7 +520,7 @@ const YourBag = (props, { notificationId }) => {
                 )}
               >
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
-                <p className={ShowBagStyle.Subtotal}>${cartAmount}</p>
+                <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
               <form
                 action={redirectUrls.checkout_url}
@@ -626,7 +626,7 @@ const YourBag = (props, { notificationId }) => {
                       <span className={BagStyle.bagtitles}>
                         <strong>Subtotal</strong>
                       </span>
-                      <span>${cartAmount}</span>
+                      <span>${parseFloat(cartAmount).toFixed(2)}</span>
                     </p>
                     <div>
                       <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>

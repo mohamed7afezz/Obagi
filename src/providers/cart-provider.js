@@ -28,7 +28,17 @@ const initialState = {
   selectedShippingMethodsId: 0,
   shippingMethods: []
 };
+let maxprice = ()=>{
 
+  document.querySelector("#moremaxprice").classList.remove('hidden')
+
+  var container = document.querySelector("#moremaxprice .container");
+  document.querySelector("#moremaxprice").addEventListener("click", function (e) {
+    if (e.target !== document.querySelector("#moremaxprice") && e.target !== container) return;
+    document.querySelector("#moremaxprice").classList.add("hidden");
+    
+});
+}
 export const CartProvider = ({ children }) => {
   const [state, setState] = useState(initialState);
   const [notifications, updateNotifications] = useState([]);
@@ -92,7 +102,7 @@ export const CartProvider = ({ children }) => {
     
   };
   
-  const addToCart = async (productId ,retry, quantity) => {
+  const addToCart = async (productId ,retry, quantity,price,premierid,feild_preimer) => {
     let findedProduct;
     if(state.cart.lineItems.physical_items){
       findedProduct = state.cart.lineItems.physical_items.filter(function(itm){
@@ -102,7 +112,11 @@ export const CartProvider = ({ children }) => {
     if(findedProduct != undefined && findedProduct.quantity == 3){
       return;
     }
-
+   
+    if (parseFloat(state.cart.cartAmount) + parseFloat(price) > 750) {
+      maxprice();
+      return
+    }
     setState({ ...state, addingToCart: productId });
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
     if(cartId) {
@@ -116,7 +130,9 @@ export const CartProvider = ({ children }) => {
         line_items: [
           {
             quantity: (typeof(quantity)==='undefined')? 1 : quantity,
-            product_id: parseInt(productId, 10)
+            product_id: parseInt(productId, 10),
+            premierid :premierid,
+            preimerpoint: feild_preimer,
           }
         ]
       })
@@ -129,8 +145,9 @@ export const CartProvider = ({ children }) => {
           if (typeof window !== "undefined") {
             window.localStorage.removeItem('cartId')
           }
-          await addToCart(productId, true, quantity);
+          await addToCart(productId, true, quantity,price,premierid,feild_preimer);
         }
+       
         status < 300 && addNotification('Item added successfully');
 
         const lineItems = response.data.line_items;
@@ -162,7 +179,7 @@ export const CartProvider = ({ children }) => {
       });
   };
 
-  const addMultiToCart = async (productsId ,retry, quantity) => {
+  const addMultiToCart = async (productsId ,retry, quantity,price) => {
     let findedProduct = productsId;
     if(state.cart.lineItems.physical_items){
       findedProduct = productsId.filter(function(element){
@@ -182,7 +199,10 @@ export const CartProvider = ({ children }) => {
         }
       })
     }
-
+    if (parseFloat(state.cart.cartAmount) + parseFloat(price) > 750) {
+      maxprice();
+     return
+    }
     
     if(!findedProduct.length > 0){
       return;
@@ -269,7 +289,7 @@ export const CartProvider = ({ children }) => {
     )
       .then(res => res.json())
       .then(response => {
-        refreshCart(response);
+        refreshCart(response);    
       })
       .catch(error => {
         setState({ ...state, cartLoading: false, cartError: error });
@@ -308,6 +328,7 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItemQuantity = (item, action) => {
     const newQuantity = item.quantity + (action === 'minus' ? -1 : 1);
+    const saveprice = item.list_price + (action === 'minus' ? -1 : 1)
     setState({ ...state, updatingItem: item.id });
     if (newQuantity < 1) {
       return removeItemFromCart(item.id);
@@ -319,6 +340,11 @@ export const CartProvider = ({ children }) => {
           ...productVariantReferences
         }
       });
+    }
+    if (parseFloat(saveprice) + parseFloat(state.cart.cartAmount) > 750 && action != 'minus' ) {
+      maxprice();
+      setState({ ...state, updatingItem: false});
+      return;
     }
     let productVariantReferences = null;
 

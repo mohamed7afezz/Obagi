@@ -3496,7 +3496,7 @@ p {
         @include fontStyle(48, 64);
     }
 }
-#formsubmition {
+#formsubmition,#moremaxprice {
     background-color: rgba(0,0,0,0.4); /* Transparent dimmed overlay */
     position: fixed;
     top: 0;
@@ -3506,18 +3506,23 @@ p {
     display: table;
   }
   
-  #formsubmition.hidden {
+  #formsubmition.hidden ,#moremaxprice.hidden{
     display: none;
   }
   
-  #formsubmition .container {
+  #formsubmition .container,#moremaxprice .container {
    display: table-cell;
    text-align: center;
    vertical-align: middle;
    width: 200px;
   }
-  
-  #formsubmition .modal-body {
+  #moremaxprice{
+    z-index: 99999999999;
+      h1{
+      text-align: center;
+  }
+}
+  #formsubmition .modal-body ,#moremaxprice .modal-body {
     box-shadow: 5px 10px #888888;
     display: inline-block;
     background-color: white;

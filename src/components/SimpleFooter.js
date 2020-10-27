@@ -15,7 +15,7 @@ const SimpleFooter = ({ node }) => {
            <div dangerouslySetInnerHTML={{ __html: node.field_premier_footer_desc.processed }} className={[primerfooter.subtitle].join(' ')}>
 
             </div>
-            <Link className={[primerfooter.Flink].join(' ')} to ={node.field_premier_footer_link.uri}>{node.field_premier_footer_link.title}</Link>
+            <Link className={[primerfooter.Flink].join(' ')} to ={node.field_premier_footer_link.uri.replace('internal:', '')}>{node.field_premier_footer_link.title}</Link>
         </div>
       </div>
     </div>

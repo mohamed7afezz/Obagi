@@ -133,15 +133,15 @@ const Footer = ({ siteTitle }) => {
 
 
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a target="_blank" href="https://www.pinterest.com/obagi/">
                       <FontAwesomeIcon
                         icon={faPinterest}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://www.instagram.com/obagiclinical/">
+                    <a target="_blank" href="https://www.instagram.com/obagimedical/">
                       <FontAwesomeIcon
                         icon={faInstagramSquare}
                         className={footerStyles.icon}
@@ -149,7 +149,7 @@ const Footer = ({ siteTitle }) => {
                     </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://www.facebook.com/ObagiClinicalProducts">
+                    <a target="_blank" href="https://www.facebook.com/Obagi/">
                       <FontAwesomeIcon
                         icon={faFacebookF}
                         className={footerStyles.icon}
@@ -157,15 +157,15 @@ const Footer = ({ siteTitle }) => {
                     </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <Link to="#">
+                    <a target="_blank" href="https://www.youtube.com/user/obagimedicalproducts">
                       <FontAwesomeIcon
                         icon={faYoutube}
                         className={footerStyles.icon}
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className={footerStyles.socialIcon}>
-                    <a href="https://twitter.com/obagiclinical?lang=en">
+                    <a target="_blank" href="https://twitter.com/Obagi">
                       <FontAwesomeIcon
                         icon={faTwitter}
                         className={footerStyles.icon}

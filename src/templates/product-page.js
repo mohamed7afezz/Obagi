@@ -124,6 +124,7 @@ export const productPageQuery = graphql`
             field_medical_weight
             field_medical_weight_unit
             field_medical_key_benefits
+            field_medical_premier_points_id
             field_medical_form_list
             field_medical_description_sub
             path {
