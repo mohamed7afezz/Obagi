@@ -392,7 +392,7 @@ console.log('zz',checkTaxonomy)
           "row",
           productsliststyle.Collectionfiltercontainer,
           "pb-20",
-          "hide-mob"
+          "lg-visibility"
         ].join(" ")}
       >
         <div
@@ -633,8 +633,8 @@ console.log('zz',checkTaxonomy)
                </div>
           </div>   </div>
       </div>
-      <div className={["show-mob",productsliststyle.filtermob].join(" ")}>
-        <button data-toggle="modal" data-target="#collectionPopup" className={["col-12",productsliststyle.filterbtn].join(" ")}>
+      <div className={["sm-visibility",productsliststyle.filtermob].join(" ")}>
+        <button data-toggle="modal" data-target="#collectionPopup" className={["col-12 col-md-3 col-lg-12",productsliststyle.filterbtn].join(" ")}>
           Filters
         </button>
       </div>

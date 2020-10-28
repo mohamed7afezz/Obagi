@@ -3571,3 +3571,17 @@ p {
         
       }
 }
+
+.lg-visibility {
+    display: none;
+
+    @include lg-screen {
+        display: flex;
+    }
+}
+
+.sm-visibility {
+    @include lg-screen {
+        display: none;
+    }
+}

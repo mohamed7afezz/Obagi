@@ -330,10 +330,10 @@ if ( typeof window !== "undefined"){
           </p>
       
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
-            <ul>
+            {field_weight !== "0"? <ul>
               {" "}
               <li> Size {field_weight}  {field_weight_unit} </li>
-            </ul>
+            </ul> : ""}
           </div>
           {feild_preimer?
           <div

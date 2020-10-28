@@ -19,7 +19,7 @@
     background-color: rgba( 134, 140, 210,0.1) !important;
     padding-top: 48px;
 
-    @include md-screen{
+    @include lg-screen{
         padding-top: 96px;
 
     }
@@ -71,9 +71,15 @@
     color: #fff;
     border-radius: 6px;
     background-color: #132466;
+    border: 1px solid #132466;
     padding-top: 12px;
     padding-bottom: 12px;
     margin-bottom: 15px;
+
+    &:hover {
+        background: #fff;
+        color: #132466;
+    }
 }
 .filtersearch{
     display: block;
