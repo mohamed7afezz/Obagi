@@ -9,8 +9,8 @@ const ShowAccount = () => {
     const {user, handleLogout} = useContext(UserContext);
 
     function closeModal() {
-        $("#show-account").style.display = "none";
-        $("body").classList.remove("modal-open");
+        $("#show-account").css("display", "none");
+       $("body").removeClass("modal-open");
        $(".modal-backdrop").remove();
     }
 

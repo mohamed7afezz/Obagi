@@ -16,9 +16,15 @@ const Login = () => {
       if(window.location.href.includes("reset_password") && document.querySelector('#reset-password')){
         document.querySelector('#reset-password').classList.remove("d-none");
         
+        let newURL = window.location.href.split("?")[0];
+        window.history.pushState('object', document.title, newURL);
+        
       }
       if(window.location.href.includes("change_password") && document.querySelector('#change-password')){
         document.querySelector('#change-password').classList.remove("d-none");
+
+        let newURL = window.location.href.split("?")[0];
+        window.history.pushState('object', document.title, newURL);
       }
     }
     

@@ -390,12 +390,12 @@ if ( typeof window !== "undefined"){
           
         </div>
     
-          <p
+          <button
             className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
           >
           
             <img src={share} /> Share
-          </p>
+          </button>
         </div>
        : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
          
@@ -446,12 +446,12 @@ if ( typeof window !== "undefined"){
        
      </div>
  
-       <p
+       <button
          className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
        >
        
          <img src={share} /> Share
-       </p>
+       </button>
      </div>
       }
       {field_medical_rx == "RX"? "":
