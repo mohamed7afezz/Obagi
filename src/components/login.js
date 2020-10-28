@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState,useEffect } from "react"
 import { navigate, Link } from "gatsby"
 // import { handleLogin, isLoggedIn } from "../services/auth"
 import UserContext from "../providers/user-provider"
@@ -11,7 +11,18 @@ const spinner = css`
  
 `;
 const Login = () => {
-
+  useEffect(() => {
+    if(window != undefined){
+      if(window.location.href.includes("reset_password") && document.querySelector('#reset-password')){
+        document.querySelector('#reset-password').classList.remove("d-none");
+        
+      }
+      if(window.location.href.includes("change_password") && document.querySelector('#change-password')){
+        document.querySelector('#change-password').classList.remove("d-none");
+      }
+    }
+    
+  })
   const { user, isLoading, matchEmail, handleLogin, redirectUrl, setIsLoading } = useContext(UserContext);
 
   const [state, setState] = useState({
@@ -57,7 +68,12 @@ const Login = () => {
                 <div>Enter your email address and password below to sign in.</div>
               </div>
 
-
+              <div id="reset-password" class="alert alert-success d-none" role="alert">
+                If the entered email address is associated with this store, you will receive a password reset email. If you don't receive this e-mail, please check your junk mail folder or contact us for further assistance. 
+              </div>
+              <div id="change-password" class="alert alert-success d-none" role="alert">
+                Your password has been successfully updated.
+              </div>
               <div className="d-none d-lg-block">
                 <div className="desk-signin">Sign In</div>
                 <div className="desk-instruction">Enter your email address and password below to sign in.</div>
@@ -94,7 +110,7 @@ const Login = () => {
                     </label>
                   </div>
 
-                  <Link to="/forgot-password" className="forgot-pw">Forgot Password</Link>
+                  <a href="https://gtotest.mybigcommerce.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
                 </div>
 
                 <input className="submit-input" type="submit" value="Sign In" />
