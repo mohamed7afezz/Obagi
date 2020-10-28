@@ -91,7 +91,7 @@ const StandardItem = props => {
                     Remove
                     </button>
                 </div>
-                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center"].join(" ")}>${item.list_price}</p>
+                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center"].join(" ")}>${parseFloat(item.list_price).toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ const StandardItem = props => {
                       "bagProudctPrice",
                     ].join(" ")}
                   >
-                    ${item.list_price}
+                    ${parseFloat(item.list_price).toFixed(2)}
                   </p>
                 </div>
                 <div class="col-md-1 col-3">
