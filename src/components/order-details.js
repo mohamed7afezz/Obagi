@@ -194,7 +194,7 @@ let getallcheck =()=>{
 
   let elementId = products.map(item => {
 
-    return item.product_options[0]?item.product_options[0].option_id:""
+    return item.product_options[0]?item.product_options[0].product_option_id:""
   })
   let elementPoints = products.map(item => {
 
