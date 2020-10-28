@@ -191,6 +191,8 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_premier_points_id
+      field_medical_premier_points
       title
       path {
         alias
@@ -212,6 +214,8 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_premier_points_id
+      field_medical_premier_points
       title
       path {
         alias
@@ -233,6 +237,8 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_premier_points_id
+      field_medical_premier_points
       title
       path {
         alias
@@ -254,6 +260,8 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_premier_points_id
+      field_medical_premier_points
       title
       path {
         alias
@@ -275,6 +283,8 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_premier_points_id
+      field_medical_premier_points
       title
       path {
         alias
@@ -296,6 +306,7 @@ const YourBag = (props, { notificationId }) => {
       id
       field_clinical_price
       field_clinical_id
+  
       title
       path {
         alias

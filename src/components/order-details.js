@@ -18,11 +18,13 @@ const spinner = css`
   margin: 0 auto;
  
 `;
+var savearr =[];
  var saveprodarr = [];
+ var productsPremierPoints=[];
 const OrderDetails = (props, { node }) => {
   var productsOid = [];
   var total = 0 ;
-  var productsPremierPoints=[];
+
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addMultiToCart = value && value.addMultiToCart;
@@ -31,7 +33,7 @@ const OrderDetails = (props, { node }) => {
   const [details, setDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [getshiping, setShipment] = useState(false);
-  
+  const [saveprod, setprod] = useState({})
   function arraysEqual(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;
@@ -47,10 +49,11 @@ const OrderDetails = (props, { node }) => {
     }
     return true;
   }
+  const baseUrl = process.env.Base_URL;
   async function getDetails() {
     // setIsLoading(true);
     const detailsData = await (
-      await fetch(`https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}`, {
+      await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}`, {
         method: "GET",
         credentials: "include",
         mode: "cors",
@@ -70,7 +73,7 @@ const OrderDetails = (props, { node }) => {
   async function getshipment() {
     const getshipping = await (
       await fetch(
-        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/shipments`,
+        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipments`,
         {
           method: "GET",
           credentials: "include",
@@ -89,7 +92,7 @@ const OrderDetails = (props, { node }) => {
     setIsLoading(true)
     const productsData = await (
       await fetch(
-        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/products`,
+        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/products`,
         {
           method: "GET",
           credentials: "include",
@@ -111,7 +114,7 @@ const OrderDetails = (props, { node }) => {
     // setIsLoading(true);
     const shippingAddressesData = await (
       await fetch(
-        `https://dev-obagi.azurewebsites.net/api/bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`,
+        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`,
         {
           method: "GET",
           credentials: "include",
@@ -149,20 +152,21 @@ const OrderDetails = (props, { node }) => {
   const location = useLocation()
   const { user } = useContext(UserContext)
 let getallcheck =()=>{
+  saveprodarr =[];
+  productsPremierPoints= [];
   document
           .querySelectorAll(".desk-details-check")
-          .forEach(el => {
+          .forEach((el,index) => {
             if (el.checked && !saveprodarr.includes(el.value)) {
               // 3 - send cart request
-              console.log(el)
-              console.log(el.premid)
-              productsPremierPoints.push(
-                {
-                    productId:el.value,
-                    premierId:el.premid,
-                    premierPoints:el.prempoints
-                });
-                console.log("pops",productsPremierPoints)
+              
+              saveprodarr.push(el.value)
+                productsPremierPoints.push(
+                  {
+                      productId:el.value,
+                      premierId:el.getAttribute('premid'),
+                      premierPoints:el.getAttribute('prempoints')
+                  });
             }
           })
           // console.log(document.querySelectorAll(".details-check"))
@@ -185,21 +189,19 @@ let getallcheck =()=>{
     .split(" ")
 
   let productId = products.map(item => {
-    console.log('pppp',item)
     return item.product_id
   })
 
   let elementId = products.map(item => {
-    console.log('pp1',item)
+
     return item.product_options[0]?item.product_options[0].option_id:""
   })
   let elementPoints = products.map(item => {
-    console.log('pp2',item.product_options[0].value)
+
     return item.product_options[0]?item.product_options[0].value:""
   })
   return (
     <>
-      {/* {console.log("bahiiii", getshiping)} */}
       <div
         className={[
           "container-fluid",
@@ -490,8 +492,8 @@ let getallcheck =()=>{
                     className={orderDetailsStyles.orderButton}
                     onClick={() => {
                       productsOid= saveprodarr;let quantity = 1;
-                      
-                      addMultiToCart(productsOid, false, quantity,productsPremierPoints );
+                      savearr =productsPremierPoints
+                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
                   }}
                   disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === productId}
@@ -513,8 +515,8 @@ let getallcheck =()=>{
                     className={orderDetailsStyles.orderButton}
                     onClick={() => {
                       productsOid= saveprodarr;let quantity = 1;
-                      console.log(saveprodarr,"hassan")
-                      addMultiToCart(productsOid, false, quantity,productsPremierPoints );
+                      savearr =productsPremierPoints
+                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
                   }}
                   disabled={arraysEqual(addingToCart,productsOid)}
                     // disabled={addingToCart === elementId}
@@ -594,14 +596,13 @@ let getallcheck =()=>{
             />
         :
         (products.map((item, index) => {
-          console.log("hassan2",item.product_options[0])
             return (
                 <div className={orderDetailsStyles.productWrapper}>
                     <div className={orderDetailsStyles.productInfoWrapper}>
                         <div className={orderDetailsStyles.productName}>
                             <form>
                                 <div class="form-check">
-                                    <input class="form-check-input desk-details-check" type="checkbox" premid={elementId} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                    <input class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                 </div>
                             </form>
                             <div className={orderDetailsStyles.productImage}>
@@ -694,8 +695,9 @@ let getallcheck =()=>{
                 <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
                 onClick={() => {
                   productsOid= saveprodarr;let quantity = 1;
-                  console.log(saveprodarr,"hassan")
-                  addMultiToCart(productsOid, false, quantity,productsPremierPoints );
+                  savearr =productsPremierPoints
+                  console.log(saveprodarr,"hassan33")
+                  addMultiToCart(productsOid, false, quantity,total,savearr );
               }}
               disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === productId}
@@ -706,8 +708,9 @@ let getallcheck =()=>{
                 <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
                onClick={() => {
                 productsOid= saveprodarr;let quantity = 1;
-                console.log(saveprodarr,"hassan")
-                addMultiToCart(productsOid, false, quantity,productsPremierPoints );
+                savearr =productsPremierPoints
+                console.log(saveprodarr,"hassan33")
+                addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
             }}
             disabled={arraysEqual(addingToCart,productsOid)}
                 // disabled={addingToCart === elementId}

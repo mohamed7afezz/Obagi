@@ -143,6 +143,8 @@ fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
             field_croduct_card {
               ... on node__medical_product {
                 id
+               field_medical_premier_points_id
+               field_medical_premier_points
                 field_medical_id
                 path {
                   alias

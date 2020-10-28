@@ -538,6 +538,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+                  field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }
@@ -566,6 +568,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+                  field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }
@@ -594,6 +598,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+              field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }
@@ -622,6 +628,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+              field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }
@@ -650,6 +658,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+              field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }
@@ -678,6 +688,8 @@ export const fragment = graphql`
                 node__medical_product {
                   title
                   field_medical_id
+                  field_medical_premier_points
+              field_medical_premier_points_id
                   field_medical_description {
                     processed
                   }

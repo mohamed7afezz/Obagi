@@ -13,7 +13,7 @@ recId,
 recTitle ,
 premierid,
 feild_preimer}) => {
-
+console.log('tayel',premierid)
 const value = useContext(CartContext)
 const addToCart = value && value.addToCart
 const addingToCart = value && value.state.addingToCart

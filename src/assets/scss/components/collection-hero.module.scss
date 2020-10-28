@@ -9,11 +9,12 @@
     line-height: 24px;
     letter-spacing: 1.6px;
     color: #132466;
-    padding-left: 30px;
+    
     position:relative;
     padding-bottom: 24px;
     @include md-screen{
         padding-bottom: 40px;
+        padding-left: 30px;
     }
 }
 .type:before{

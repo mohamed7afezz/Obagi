@@ -500,6 +500,9 @@ border: 0;
   z-index: 999;
   position: relative;
 }
+.desk-pr-30{
+  padding-right: 30px;
+}
 .body-small-margin #Showbag{
   padding-top: 154px;
 }
@@ -2027,7 +2030,7 @@ font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  margin-top: 21px;
+  margin-top: 12px;
 }
 .Prescription .checkmark,.Prescription:hover input:not(:checked) ~ .checkmark{
   background-color: transparent;
