@@ -64,6 +64,10 @@ top: 5px;
     }
 }
 .collectiondescription{
+    h2{
+        font-size: 28px;
+        line-height: 40px;
+    }
     @extend %futurapt-light;
 
     font-size: 18px;
