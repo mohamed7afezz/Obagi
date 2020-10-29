@@ -10,14 +10,14 @@ const SectionWithColoredBoxes = ({ node }) => {
     <div className="container-fluid" id="colored-boxes">
       <div className={["row", coloredBoxesStyle.bigSection].join(" ")}>
         <div className={["col-10", "col-lg-5", coloredBoxesStyle.colLeftPadding, coloredBoxesStyle.firstSection].join(" ")}>
-        {node.relationships.field_colored_boxes_image.localFile? <div className={coloredBoxesStyle.image}><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div> : ''}
+        {node.relationships && node.relationships.field_colored_boxes_image && node.relationships.field_colored_boxes_image.localFile && node.relationships.field_colored_boxes_image.localFile.childImageSharp? <div className={coloredBoxesStyle.image}><Img fluid={node.relationships.field_colored_boxes_image.localFile.childImageSharp.fluid} /></div> : ''}
         </div>
         <div className={["col-9", "offset-2", "col-lg-7", "offset-lg-0", coloredBoxesStyle.colRightPadding].join(" ")}>
           <div className={[coloredBoxesStyle.smallSection].join(" ")}>
-            <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join(" ")}></div>
-            <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title, "title"].join(" ")}></h1>
-            <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description, "description"].join(" ")}></div>
-            <div className={[coloredBoxesStyle.linkSection].join(" ")}><Link to={node.field_colored_boxes_button.uri.replace('internal:', '')} className={[coloredBoxesStyle.link].join(" ")}>{node.field_colored_boxes_button.title}</Link></div>
+            {node.field_colored_boxes_subtitle? <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_subtitle.processed }} className={[coloredBoxesStyle.subtitle].join(" ")}></div> : ""}
+            {node.field_colored_boxes_title? <h1 dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_title.processed }} className={[coloredBoxesStyle.title, "title"].join(" ")}></h1> : ""}
+            {node.field_colored_boxes_description? <div dangerouslySetInnerHTML={{ __html: node.field_colored_boxes_description.processed }} className={[coloredBoxesStyle.description, "description"].join(" ")}></div> : ""}
+            {node.field_colored_boxes_button? <div className={[coloredBoxesStyle.linkSection].join(" ")}><Link to={node.field_colored_boxes_button.uri.replace('internal:', '')} className={[coloredBoxesStyle.link].join(" ")}>{node.field_colored_boxes_button.title}</Link></div> : ""}
           </div>
         </div>
       </div>

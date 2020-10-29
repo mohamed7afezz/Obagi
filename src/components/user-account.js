@@ -14,9 +14,9 @@ import $ from 'jquery'
 
 const UserAccount = ({ node, children, activeTab }) => {
 
-    if(typeof window !== 'undefined') {
-        navigate("/my-account/orders")
-      }
+    // if(typeof window !== 'undefined') {
+    //     navigate("/my-account/orders")
+    //   }
 
     // const [nav1, setNav1] = React.useState(null)
     // // const [nav2, setNav2] = React.useState(null)
