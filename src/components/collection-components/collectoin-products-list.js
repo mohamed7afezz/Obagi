@@ -406,9 +406,9 @@ console.log('zz',checkTaxonomy)
             "Collectionfilter",
           ].join(" ")}
         >
-          <label className={[productsliststyle.filter,"hide","filterlabel"].join(" ")}>Filter by:</label>
+          <label className={[productsliststyle.filter,"hide","filterlabel"].join(" ")}>Skin Type:</label>
         <div class="appointment-elemnt advanced-search filterprodline transparent-bg">
-            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Filter by:</p>
+            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type:</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="flitersCon">

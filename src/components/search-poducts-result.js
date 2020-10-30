@@ -133,7 +133,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
             "Collectionfilter",
           ].join(" ")}
         >
-          <label className={productsliststyle.filter}>Filter by:</label>
+          <label className={productsliststyle.filter}>Skin Type:</label>
           <div className="custom-select">
             <select id="product-filter" name="filter by">
               <option vlaue="All">All</option>
