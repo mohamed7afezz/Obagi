@@ -206,6 +206,7 @@ const ProductLine = ({ node }) => {
                 field_medical_price
                 field_medical_id
                 field_medical_premier_points
+                field_medical_sku
                 field_medical_premier_points_id
                 path {
                   alias

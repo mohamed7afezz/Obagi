@@ -1302,6 +1302,7 @@ export const fragment = graphql`
           alias
         }
         field_clinical_price
+        field_clinical_sku
         title
         relationships {
           field_clinical_ingredients {
@@ -1361,6 +1362,7 @@ export const fragment = graphql`
                 alias
               }
               field_clinical_price
+              field_clinical_sku
               relationships {
                 field_clinical_ingredients {
                   name
@@ -1424,6 +1426,7 @@ export const fragment = graphql`
                 alias
               }
               field_clinical_price
+              field_clinical_sku
               relationships {
             
                 field_clinical_ingredients {
@@ -1478,6 +1481,7 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               field_medical_id
               field_medical_description {
@@ -1532,6 +1536,7 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               field_medical_id
               field_medical_description {
@@ -1589,6 +1594,7 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               field_medical_id
               field_medical_description {
@@ -1646,6 +1652,7 @@ export const fragment = graphql`
           relationships {
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               path {
                 alias
@@ -1702,6 +1709,7 @@ export const fragment = graphql`
             
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               title
               path {
@@ -1762,6 +1770,7 @@ export const fragment = graphql`
             node__clinical_product {
               field_clinical_id
               field_clinical_price
+              field_clinical_sku
               title
               field_clinical_description {
                 processed

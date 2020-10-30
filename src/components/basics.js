@@ -396,6 +396,7 @@ export const fragment = graphql`
                 node__clinical_product {
                   field_clinical_id
                   field_clinical_price
+                  field_clinical_sku
                   field_clinical_type
                   field_clinical_description {
                     processed
@@ -422,6 +423,7 @@ export const fragment = graphql`
                 node__clinical_product {
                   field_clinical_id
                   field_clinical_price
+                  field_clinical_sku
                   field_clinical_type
                   path {
                     alias
@@ -451,6 +453,7 @@ export const fragment = graphql`
                 node__clinical_product {
                   field_clinical_id
                   field_clinical_price
+                  field_clinical_sku
                   field_clinical_type
                   path {
                     alias
@@ -480,6 +483,7 @@ export const fragment = graphql`
                 node__clinical_product {
                   field_clinical_id
                   field_clinical_price
+                  field_clinical_sku
                   field_clinical_type
                   path {
                     alias
@@ -509,6 +513,7 @@ export const fragment = graphql`
                 node__clinical_product {
                   field_clinical_id
                   field_clinical_price
+                  field_clinical_sku
                   field_clinical_type
                   path {
                     alias
@@ -539,6 +544,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
                   field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -569,6 +575,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
                   field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -599,6 +606,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -629,6 +637,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -659,6 +668,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -689,6 +699,7 @@ export const fragment = graphql`
                   title
                   field_medical_id
                   field_medical_premier_points
+                  field_medical_sku
               field_medical_premier_points_id
                   field_medical_description {
                     processed

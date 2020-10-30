@@ -47,19 +47,9 @@ top: 5px;
     }
 }
 
-.generalcollectionhero {
-    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
-    color: #fff;
-}
 
-.generalcollectionhero .allheight {
-    max-width: 100%;
-    height: unset;
-    @include lg-screen {
-        height: 100%;
-        max-width: unset;
-    }
-}
+
+
 
 
 .collectiontitle{
@@ -85,6 +75,9 @@ top: 5px;
     font-size: 20px;
     
     line-height: 40px;
+    }
+    small{
+        font-weight: 300;
     }
 }
 .Collectionheroleftcol{

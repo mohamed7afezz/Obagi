@@ -44,8 +44,9 @@ const PremierVideo = ({ node }) => {
                 {
                     <div className="img-wrap">
                         <a data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href="#" data-link={node.field_video_link} class=" popupvideo playbtn">
-                            <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
+                            <img class="playbtnimg mob-change" src={playbtnimg} alt="videomsg" />
                         </a>
+                        <p className="text-wrap">{node.field_video_txt}</p>
                     </div>
                    
                 }
@@ -60,6 +61,7 @@ export const fragment = graphql`
   fragment paragraphPremierVideo on paragraph__video {
     id
     field_video_link
+    field_video_txt
     relationships {
       field_video_poster {
         localFile {

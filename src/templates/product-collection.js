@@ -131,6 +131,7 @@ export const productPageQuery = graphql`
                       alias
                     } 
                     field_clinical_price
+                    field_clinical_sku
                     title
                     relationships {
                       field_clinical_ingredients {
@@ -204,6 +205,7 @@ export const productPageQuery = graphql`
                     alias
                   } 
                   field_clinical_price
+                  field_clinical_sku
                   title
                   relationships {
                     field_clinical_ingredients {
@@ -269,6 +271,7 @@ export const productPageQuery = graphql`
               
                 node__medical_product {
                   field_medical_premier_points
+                  field_medical_sku
                   field_medical_premier_points_id
                   field_medical_is_system
                   field_medical_id
@@ -379,6 +382,7 @@ export const productPageQuery = graphql`
           }
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               field_medical_is_system
               field_medical_id
@@ -480,6 +484,7 @@ export const productPageQuery = graphql`
               }
           node__medical_product {
             field_medical_premier_points
+            field_medical_sku
             field_medical_premier_points_id
             title
             path {
@@ -530,6 +535,7 @@ export const productPageQuery = graphql`
               
                 node__medical_product {
                   field_medical_premier_points
+                  field_medical_sku
                   field_medical_premier_points_id
                     field_medical_is_system
                     field_medical_id
@@ -674,6 +680,7 @@ export const productPageQuery = graphql`
                 alias
               }
               field_clinical_price
+              field_clinical_sku
               title
               relationships {
                 field_clinical_image {
@@ -735,6 +742,7 @@ export const productPageQuery = graphql`
             }
             node__medical_product {
               field_medical_premier_points
+              field_medical_sku
               field_medical_premier_points_id
               id
               field_medical_is_system
@@ -797,7 +805,26 @@ export const productPageQuery = graphql`
             alias
           }
           relationships {
-
+            field_taxonomy_hero {
+              field_taxonomy_hero_para_descrip {
+                processed
+              }
+              field_taxonomy_hero_para_title
+              field_taxonomy_hero_paraprapgh_t
+              relationships {
+                field_taxonomy_hero_paraprapgh_i {
+                  localFile {
+                    childImageSharp {
+                      fluid (quality: 100){
+                        ...GatsbyImageSharpFluid
+                      } original{
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
       
 
             node__clinical_product {
@@ -809,6 +836,7 @@ export const productPageQuery = graphql`
                 alias
               }
               field_clinical_price
+              field_clinical_sku
               title
               relationships {
                 field_clinical_image {

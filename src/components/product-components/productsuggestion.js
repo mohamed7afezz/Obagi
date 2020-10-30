@@ -156,6 +156,7 @@ const ProductSuggestion = ({ node }) => {
       product1: nodeClinicalProduct(field_clinical_id: {eq: "339"}) {
         id
         field_clinical_price
+        field_clinical_sku
         field_clinical_id
         title
         path {
@@ -180,6 +181,7 @@ const ProductSuggestion = ({ node }) => {
       product2: nodeClinicalProduct(field_clinical_id: {eq: "346"}) {
         id
         field_clinical_price
+        field_clinical_sku
         field_clinical_id
         title
         path {
@@ -204,6 +206,7 @@ const ProductSuggestion = ({ node }) => {
       product3: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
         id
         field_clinical_price
+        field_clinical_sku
         field_clinical_id
         title
         path {
@@ -228,6 +231,7 @@ const ProductSuggestion = ({ node }) => {
       product4: nodeClinicalProduct(field_clinical_id: {eq: "345"}) {
         id
         field_clinical_price
+        field_clinical_sku
         field_clinical_id
         title
         path {
@@ -252,6 +256,7 @@ const ProductSuggestion = ({ node }) => {
       product5: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
         id
         field_clinical_price
+        field_clinical_sku
         field_clinical_id
         title
         path {

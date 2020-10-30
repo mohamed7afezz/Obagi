@@ -15,7 +15,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
   } else if (nodetype == "clinicalGroups") {
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
-        .node__clinical_product
+        
   } else if (nodetype == 'medicalLine') {
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
@@ -45,15 +45,15 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-    console.log("hassan",first_url)
+   
   }
 
   return (
     <div
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : (checktaxonomyType === "medical"||first_url === "medical" || nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
-          : "container-fluid collectionhero generalcollectionhero " + Collectionherostyle.generalcollectionhero}
+        : ( first_url === "medical" || checktaxonomyType === "medical"|| nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
+          : "container-fluid collectionhero generalcollectionhero "}
     >
 
       {nodetype == "clinicalConcern" ? (
@@ -431,7 +431,99 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             )}
         </div>
 
-      ) : nodetype == 'skinClinicalType' ? (
+      ) : nodetype == 'clinicalGroups' ?(  <div className={"row hero-row-wrapper"}>
+          <div
+            className={[
+              "col-12",
+              "col-lg-4",
+              "offset-lg-1",
+              Collectionherostyle.Collectionheroleftcol,
+              "Collectionheroleftcol",
+            ].join(" ")}
+          >
+            <div className="">
+            {checktaxonomyType === "clinical" || checktaxonomyType === "medical" || first_url ==="medical" || first_url === ""  ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                <p className="breadcramp">
+                  <Link to="/">Home</Link> /{" "}
+                  <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                </p>
+              </div> : ""}
+              <div className="col-12 offset-lg-1 desk-pr-46">
+                {checkTaxonomy.field_taxonomy_hero ? (
+                  <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
+                    {
+                      checkTaxonomy.field_taxonomy_hero
+                        .field_taxonomy_hero_paraprapgh_t
+                    }
+                  </p>
+                ) : (
+                    ""
+                  )}
+
+                {checkTaxonomy.field_taxonomy_hero ? (
+                  <h1 className={Collectionherostyle.collectiontitle}>
+                    {
+                      <div dangerouslySetInnerHTML={{__html: checkTaxonomy.field_taxonomy_hero
+                        .field_taxonomy_hero_para_title}}></div>
+                    }
+                  </h1>
+                ) : (
+                    ""
+                  )}
+                {checkTaxonomy.field_taxonomy_hero ? (
+                  <div className={Collectionherostyle.collectiondescription}
+                    dangerouslySetInnerHTML={{
+                      __html: checkTaxonomy.field_taxonomy_hero
+                        .field_taxonomy_hero_para_descrip ?
+                        checkTaxonomy.field_taxonomy_hero
+                          .field_taxonomy_hero_para_descrip.processed : ""
+                    }}
+                  >
+
+                  </div>
+                ) : (
+                    ""
+                  )}
+              </div>
+
+            </div>
+          </div>
+          {checkTaxonomy.field_taxonomy_hero ? (
+            <div
+              className={[
+                "col-lg-7",                
+                "col-12",
+                Collectionherostyle.Collectionherorightcol,
+                "Collectionherorightcol",
+              ].join(" ")}
+            >
+
+              {checkTaxonomy.field_taxonomy_hero.relationships
+                .field_taxonomy_hero_paraprapgh_i ? (
+                  checkTaxonomy.field_taxonomy_hero.relationships
+                    .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                      <img
+                        className={[Collectionherostyle.allheight,"img-fluid-height"].join(" ")}
+                        src={
+                          checkTaxonomy.field_taxonomy_hero
+                            .relationships.field_taxonomy_hero_paraprapgh_i
+                            .localFile.childImageSharp.original.src
+                        }
+                      />
+                    ) : (
+                      ""
+                    )
+                ) : (
+                  ""
+                )}
+            </div>
+
+          ) : (
+              ""
+            )}
+        </div>
+):
+       nodetype == 'skinClinicalType' ? (
         <div className={"row hero-row-wrapper"}>
           <div
             className={[
@@ -913,7 +1005,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                     </div> : ""}
                                 <div className="col-12 offset-lg-1 desk-pr-46">
                                   {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
-                                    <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') ? Collectionherostyle.medical : Collectionherostyle.general].join(' ')}>
+                                    <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general].join(' ')}>
                                       {" "}
                                       {
                                         checkTaxonomy.field_taxonomy_hero_paraprapgh_t

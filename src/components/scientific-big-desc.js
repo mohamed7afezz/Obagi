@@ -1,42 +1,36 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import primerfooter from '../assets/scss/components/simple-footer.module.scss'
-
-const SimpleFooter = ({ node }) => {
+import sientificStyle from '../assets/scss/components/scientific-two-col.module.scss'
+import Img from 'gatsby-image'
+const SintificFooter = ({ node }) => {
 
   return (
-      <div className={primerfooter.givebg}>
-    <div className={["container-fluid",primerfooter.givepadding].join(" ")}>
+      <div className={[sientificStyle.paddingfooter].join(' ')}>
+    <div className={["container-fluid"].join(" ")}>
       <div className="row">
-        <div className="col-12">
-           <div dangerouslySetInnerHTML={{ __html: node.field_premier_footer_title.processed }} className={[primerfooter.title].join(' ')}>
-
-           </div>
-           <div dangerouslySetInnerHTML={{ __html: node.field_premier_footer_desc.processed }} className={[primerfooter.subtitle].join(' ')}>
-
+        <div className={["col-12 offset-lg-1 col-lg-6",sientificStyle.leftsecfooter].join(" ")}>
+      <div className dangerouslySetInnerHTML={{ __html: node.field__scientific_left_describti.processed }}></div>
+       </div>
+       <div className="col-12 offset-lg-1 col-lg-4">
+                  <h1 className={[sientificStyle.link].join(' ')}><Link to={node.field_scientific_link_url}>{node.field_scientific_link_title_}</Link></h1>
             </div>
-            <Link className={[primerfooter.Flink].join(' ')} to ={node.field_premier_footer_link.uri.replace('internal:', '')}>{node.field_premier_footer_link.title}</Link>
-        </div>
+      
       </div>
     </div>
     </div>
   )
 }
 
-export default SimpleFooter
+export default SintificFooter
 
 export const fragment = graphql`
-  fragment paragraphSimpleFooter on paragraph__simple_footer {
+  fragment paragraphScientificFooter on paragraph__scientific_describtion_big_link {
     id
-    field_premier_footer_desc {
+    field__scientific_left_describti {
       processed
     }
-    field_premier_footer_link {
-      title
-      uri
-    }
-    field_premier_footer_title {
-      processed
-    }
+  
+    field_scientific_link_title_
+    field_scientific_link_url
   }
   `

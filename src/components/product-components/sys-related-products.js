@@ -118,6 +118,7 @@ export const fragment = graphql`
                 field_medical_is_system
                 field_medical_id
                 field_medical_premier_points
+                field_medical_sku
               field_medical_premier_points_id
                 path {
                   alias

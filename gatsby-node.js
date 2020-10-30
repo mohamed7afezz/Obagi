@@ -270,7 +270,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
                 slug: node.path.alias,
                 nodetype: 'clinicalGroups',
                 collectionName: 'Clinical Categories',
-                collectionUrl: '/clinical/category',
+                collectionUrl: '/clinical/skin-care',
                 checktaxonomyType: 'clinical'
 
             }

@@ -33,6 +33,7 @@ const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
           field_clinical_id
           title
           field_clinical_price
+          field_clinical_sku
           path {
             alias
           }
@@ -58,6 +59,7 @@ const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
           title
           field_medical_price
           field_medical_premier_points_id
+          field_medical_sku
           field_medical_premier_points
           path {
             alias

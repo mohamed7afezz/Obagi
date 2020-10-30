@@ -105,6 +105,7 @@ fragment recommendedParingParagrapgh on paragraph__recomended_paring {
                 alias
               }
               field_clinical_price
+              field_clinical_sku
               field_clinical_description {
                 processed
               }
@@ -144,6 +145,7 @@ fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
               ... on node__medical_product {
                 id
                field_medical_premier_points_id
+               field_medical_sku
                field_medical_premier_points
                 field_medical_id
                 path {

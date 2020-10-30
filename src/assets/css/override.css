@@ -495,13 +495,17 @@ border: 0;
   top: 0;
   right: 0;
 }  
+.img-responsive{
+  max-width: 100%;
+  height: auto;
+}
 @media (min-width:1024px){
 #notification{
   z-index: 999;
   position: relative;
 }
-.desk-pr-30{
-  padding-right: 30px;
+.desk-pr-46{
+  padding-right: 46px;
 }
 .body-small-margin #Showbag{
   padding-top: 154px;
@@ -1116,7 +1120,16 @@ button:focus{
     color: #fff;
     box-shadow: unset;
 }
-
+.text-wrap{
+  position: absolute;
+top: 61%;
+left: 50%;
+transform: translateX(-50%);
+font-size: 52px;
+line-height: 64px;
+color: #fff;
+font-weight: 300;
+}
 .tab-slider .active.line-tab::after {
         content: '';
         width: 24px;
@@ -1129,8 +1142,37 @@ button:focus{
         transform: rotate(-315deg);
         z-index: -1;
 }
+.generalcollectionhero {
+  background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+  color: #fff;
+}
+.generalcollectionhero .allheight {
+
+      height: 100%;
+      max-width: unset;
+
+}
+.generalcollectionhero .hero-row-wrapper {
+  mix-blend-mode: unset;
+}
 @media (max-width: 767px) {
-  
+  .generalcollectionhero .allheight {
+    max-width: 100%;
+    height: unset;
+  }
+  .mob-change{
+    top: 41%;
+  }
+  .text-wrap{
+ 
+    font-size: 32px;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
+    max-width: 86%;
+    top: 58%;
+
+  }
   .tab-slider .slick-dots {
     display: none !important;
   }
