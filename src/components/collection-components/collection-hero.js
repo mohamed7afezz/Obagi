@@ -61,7 +61,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
         : ( first_url === "medical" || checktaxonomyType === "medical"|| nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
-          : "container-fluid collectionhero  generalcollectionhero"}
+          : "container-fluid collectionhero  "}
     >
 
       {nodetype == "clinicalConcern" ? (

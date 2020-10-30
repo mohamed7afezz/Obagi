@@ -388,7 +388,7 @@ height: 691px !important;
   color: #132466;
 }
 .node-clinical .general::before{
-  background-color: #44c4d9;
+  background-color: #44c4d9 !important;
 }
 @media (max-width: 768px) {
   .video-img-mob{
