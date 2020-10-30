@@ -387,6 +387,16 @@ height: 691px !important;
 .node-clinical .general{
   color: #132466;
 }
+.node-medical .general{
+  color: #132466;
+}
+.node-medical .general::before{
+  background-color: #868cd2 !important;
+
+}
+.advanced-search .input-name{
+  text-transform: capitalize;
+}
 .node-clinical .general::before{
   background-color: #44c4d9 !important;
 }
@@ -395,7 +405,16 @@ height: 691px !important;
   line-height: 40px;
   font-weight: 300;
 }
+.clinicalcollectionhero{
+  mix-blend-mode: multiply;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
+}
 @media (max-width: 768px) {
+  .clinicalcollectionhero{
+    mix-blend-mode: multiply;
+      background-image: linear-gradient(to top, rgba(91, 140, 164, 0) 42%, rgba(91, 140, 164, 0.18));
+  
+  }
  .collectiondescription{
    padding-top: 16px;
  }
@@ -1763,6 +1782,13 @@ font-weight: 500;
 .medicalbg{
   background-color: rgba(134, 140, 210, 0.1) !important;
 }
+.medicalBg .general{
+      color: #132466
+  
+}
+.medicalBg .general::before{
+  background-color: #868cd2;
+}
 .pb-48{
   padding-bottom: 48px !important;
 }
@@ -2119,8 +2145,13 @@ font-weight: 500;
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding-left: 16px;
-padding-right: 16px;
+margin-left: 16px;
+margin-right: 16px;
+border-bottom: 1px solid #d6d6d6;
+
+}
+.Collectionfilter .transparent-bg .input-name{
+  border-bottom: 0;
 }
 .Collectionfilter .input-name::after{
   content: " ";
@@ -2654,4 +2685,10 @@ min-height: 0;
   font-size: 14px !important;
   line-height: 16px !important;
   text-decoration: underline !important;
+}
+.filterlabel.d-block{
+  display: block !important;
+}
+.sortlabel.d-block{
+  display: block !important;
 }

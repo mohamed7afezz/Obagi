@@ -48,11 +48,21 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
    if (first_url !="medical") {
      if (!first_url !="clinical") {
        if ( document.querySelector('.collectionhero')) {
-            document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
-       }
-
-      
-     }
+            document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+            document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
+            document.querySelector('.collectionhero').classList.remove('medical-bg')
+       }   
+     }else{
+      if ( document.querySelector('.collectionhero')) {
+      document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
+      document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
+      document.querySelector('.collectionhero').classList.remove('medical-bg')
+     }}
+   }else{
+    if ( document.querySelector('.collectionhero')) {
+      document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
+      document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+    }
    }
   }
 
@@ -61,7 +71,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
         : ( first_url === "medical" || checktaxonomyType === "medical"|| nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
-          : "container-fluid collectionhero  generalcollectionhero"}
+          : "container-fluid collectionhero  generalcollectionhero clinicalcollectionhero medical-bg"}
     >
 
       {nodetype == "clinicalConcern" ? (
