@@ -244,7 +244,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const addMultiToCart = async (productsId ,retry, quantity, price, productsPremierPoints) => {
-    console.log("hafezzz12",productsPremierPoints,productsId)
     let findedProduct = productsId;
     if(state.cart.lineItems.physical_items){
       findedProduct = productsId.filter(function(element){
@@ -264,13 +263,11 @@ export const CartProvider = ({ children }) => {
         }
       })
     }
-    console.log("hafezzz1",findedProduct)
     if (parseFloat(state.cart.cartAmount) + parseFloat(price) > 750) {
       maxprice();
      return
     }
     
-    console.log("hafezzz1",findedProduct)
     if(!findedProduct.length > 0){
       return;
     }
@@ -284,7 +281,6 @@ export const CartProvider = ({ children }) => {
         if(productsPremierPoints){
          
           let productPremierPoint = productsPremierPoints.find(x => x.productId === element);
-          console.log("hafezz2",element,productPremierPoint);
           if(productPremierPoint && productPremierPoint.premierId && productPremierPoint.premierPoints){
             body.push({
               quantity: (typeof(quantity)==='undefined')? 1 : quantity,
