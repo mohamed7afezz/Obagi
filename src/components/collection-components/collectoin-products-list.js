@@ -704,7 +704,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
-                          
+                          Sku={item.field_clinical_sku}
                         />
                         
                       ) : pageNodeType == "clinicalCategories" ? (
@@ -724,6 +724,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                       ) : (
                         <ProductCard
@@ -745,6 +746,7 @@ console.log('zz',checkTaxonomy)
                           productId={item.field_medical_id}
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                           feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                          Sku={item.field_medical_sku}
                         />
                       )}
                       <div
@@ -798,6 +800,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                       ) : pageNodeType == "ClinicalIngredients" ? ( <ProductCard
                         productLink={item.path.alias}
@@ -815,6 +818,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />): pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productLink={item.path.alias}
                           producttitle={item.title}
@@ -831,6 +835,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                           productLink={item.path.alias}
@@ -848,6 +853,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
@@ -866,6 +872,7 @@ console.log('zz',checkTaxonomy)
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                        
                       ): (
@@ -887,6 +894,7 @@ console.log('zz',checkTaxonomy)
                           productId={item.field_medical_id}
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                           feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                          Sku={item.field_medical_sku}
                         />
                       )}
                       <div
@@ -939,6 +947,7 @@ console.log('zz',checkTaxonomy)
                               price={product.field_clinical_price}
                               rate="0"
                               productId={product.field_clinical_id}
+                              Sku={item.field_clinical_sku}
                             />
                             <div
                               class="d-none ingredient"
@@ -1009,6 +1018,7 @@ console.log('zz',checkTaxonomy)
                             productId={product.field_medical_id}
                             premierid={product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
                             feild_preimer={product.field_medical_premier_points?product.field_medical_premier_points:""}
+                            Sku={product.field_medical_sku}
                           />
                            <div
                         class="d-none ingredient"

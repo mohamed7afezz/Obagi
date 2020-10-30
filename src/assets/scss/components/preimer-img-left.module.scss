@@ -31,7 +31,16 @@
     line-height: 24px;
 }
 .primerli{
-    margin-bottom: 32px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    @include md-screen{
+    padding-right: 40px;
+}
+}
+
+.primerli + .primerli{
+    padding-top: 40px;
+    border-top: 1px solid #132466;
 }
 .primerimg{
     margin-top: 8px;
@@ -78,6 +87,7 @@
     element */
     list-style-type: none;
     margin-top: 55px;
+    padding-left: 0;
 @include md-screen{
     margin-top: 0;
 }

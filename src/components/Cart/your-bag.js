@@ -239,6 +239,7 @@ const YourBag = (props, { notificationId }) => {
       id
       field_medical_price
       field_medical_id
+      field_medical_sku
       field_medical_premier_points_id
       field_medical_premier_points
       title
@@ -575,6 +576,7 @@ const YourBag = (props, { notificationId }) => {
                         recPrice={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
                         premierid={isClinical ?"": product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
                         feild_preimer={isClinical ?"": product.field_medical_premier_points?product.field_medical_premier_points:""}
+                        Sku={isClinical ? product.field_clinical_sku ? product.field_clinical_sku : "": product.field_medical_sku}
                         />
                     )
                   })  : ''
@@ -939,6 +941,7 @@ const YourBag = (props, { notificationId }) => {
                 recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
                 premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
+                Sku={data.professionalC.field_medical_sku?data.professionalC.field_medical_sku:""}
                 feild_preimer={data.professionalC.field_medical_premier_points?data.professionalC.field_medical_premier_points:""}
               />
 
@@ -949,6 +952,7 @@ const YourBag = (props, { notificationId }) => {
                 recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
                 premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
+                Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:""}
                 feild_preimer={data.elastiderm.field_medical_premier_points?data.elastiderm.field_medical_premier_points:""}
               />
             </div>

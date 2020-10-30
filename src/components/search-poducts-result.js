@@ -217,6 +217,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                         
                       ) : pageNodeType == "clinicalCategories" ? (
@@ -236,6 +237,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                       ) : (
                         <ProductCard
@@ -254,6 +256,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           rate="0"
                           productId={item.field_medical_id}
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          Sku={item.field_medical_sku}
                                         feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
                       )}
@@ -288,8 +291,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
-                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                          Sku={item.field_clinical_sku}
                         />
                       ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productLink={item.path.alias}
@@ -307,6 +309,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                           productLink={item.path.alias}
@@ -323,6 +326,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
@@ -340,6 +344,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           price={item.field_clinical_price}
                           rate="0"
                           productId={item.field_clinical_id}
+                          Sku={item.field_clinical_sku}
                         />
                        
                       ): (
@@ -358,6 +363,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           rate="0"
                           productId={item.field_medical_id}
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                          Sku={item.field_medical_sku}
                           feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                           />
                       )}
@@ -410,6 +416,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                               price={product.field_clinical_price}
                               rate="0"
                               productId={product.field_clinical_id}
+                              Sku={item.field_clinical_sku}
                             />
                             <div
                               class="d-none ingredient"
@@ -456,6 +463,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                             rate="0"
                             productId={product.field_medical_id}
                             premierid={product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
+                            Sku={item.field_medical_sku}
                             feild_preimer={product.field_medical_premier_points?product.field_medical_premier_points:""}
                          />
                            <div

@@ -168,6 +168,7 @@ const Resulte = (props) => {
                                                 productimage={data.relationships.field_clinical_image && data.relationships.field_clinical_image[0].localFile ? data.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''}
                                                 price={data.field_clinical_price}
                                                 productId={data.field_clinical_id}
+                                                Sku={data.field_clinical_sku}
                                             />
                                         }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
@@ -283,6 +284,7 @@ const Resulte = (props) => {
                                                 price={data.field_medical_price}
                                                 productId={data.field_medical_id}
                                                 Type= {MedicalResultType[index]}
+                                                Sku={data.field_medical_sku?data.field_medical_sku:"" }
                                                 premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
                                                 feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                                             />

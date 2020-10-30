@@ -48,6 +48,7 @@ const YouMayLike = ({ node }) => {
                   price={item.field_medical_price} rate="5" 
                   premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                   feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                  Sku={item.field_medical_sku?item.field_medical_sku:"" }
                   />
 
                 </div>
@@ -63,7 +64,7 @@ const YouMayLike = ({ node }) => {
              node.relationships.field_product_card.map((item, index) => (
                <div className={["col-12", productsuggestion.allcon].join(" ")}>
                     
-                 <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={(item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} price={item.field_clinical_price} rate="5" />
+                 <ProductCard producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={(item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} Sku={item.field_medical_sku} price={item.field_clinical_price} rate="5" />
 
                </div>
              ))
