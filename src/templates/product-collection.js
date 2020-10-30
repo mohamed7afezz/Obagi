@@ -8,13 +8,19 @@ import CollectionProducts from '../components/collection-components/collectoin-p
 
 // import { getParagraph } from '../components/paragraphs-helper';
 
-const ClinicalCollectionTemp = props  => {
+const ClinicalCollectionTemp = (props, data)  => {
     // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
   
-    
+    let medicalTaxMeta = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags? props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags
+                    : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta? props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta
+                    : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags? props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags
+                    : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
+                    : "";
+    // let medicalProLi = props.data.tax
+    console.log("ashhhh", medicalTaxMeta)
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
-        {/* <SEO title={props.nodePage.field_meta_tags && props.nodePage.field_meta_tags.title? props.nodePage.field_meta_tags.title : ""} description={props.nodePage.field_meta_tags && props.nodePage.field_meta_tags.description? props.nodePage.field_meta_tags.description : ""}/> */}
+        <SEO title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}/>
 
         <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
@@ -25,14 +31,6 @@ const ClinicalCollectionTemp = props  => {
 export default ClinicalCollectionTemp
 export const productPageQuery = graphql`
     query($slug: String!) {
-      nodePage(fields: { slug: { eq: $slug } }) {
-        id
-        field_meta_tags {
-            description
-            keywords
-            title
-        }
-      }
     
 
         taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
@@ -266,7 +264,10 @@ export const productPageQuery = graphql`
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
-          
+            field_medicla_skin_con_meta_tags {
+              description
+              title
+            }
             relationships {
               
                 node__medical_product {
@@ -455,7 +456,10 @@ export const productPageQuery = graphql`
   },
       taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
         name
-      
+        field_medical_skin_type_meta_tag {
+          description
+          title
+        }
         id
         path {
           alias
@@ -530,6 +534,10 @@ export const productPageQuery = graphql`
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
+            field_medical_cat_meta_tags {
+              description
+              title
+            }
            
             relationships {
               
@@ -717,6 +725,10 @@ export const productPageQuery = graphql`
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
           field_medical_pro_col_footer_mod {
             processed
+          }
+          field_medical_prod_lines_meta_ta {
+            description
+            title
           }
           relationships {
             
