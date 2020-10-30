@@ -29,13 +29,20 @@
 .primercradDesc{
     font-size: 16px;
     line-height: 24px;
+    @include md-screen{
+        font-size: 18px;
+        line-height: 32px;
+    }
 }
 .primerli{
     padding-bottom: 40px;
-    padding-left: 40px;
-    @include md-screen{
-    padding-right: 40px;
-}
+    padding-left: 48px;
+    position: relative;
+    &:first-child{
+        &::before{
+            top: 5px;
+        }
+    }
 }
 
 .primerli + .primerli{
@@ -93,10 +100,10 @@
 }
 }
 .primerli::before {
-    counter-increment: section;       
+    counter-increment: section;
     content: counters(section, ".") " ";
     position: absolute;
-    left: 10px;
+    left: 0;
     border: 1px solid #132466;
     font-size: 16px;
     font-weight: 700;
@@ -104,4 +111,5 @@
     border-radius: 50%;
     color: #fff;
     background-color: #132466;
+    top: 44px;
 }
