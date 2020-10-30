@@ -70,7 +70,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       CustomSelect();
     }
 
-    getDefault(document.querySelectorAll('.popupVideoInput[name="sort"]'), document.querySelector('.sortsearch'));
+
     getDefault(document.querySelectorAll('.popupVideoInput[name="product"]'), document.querySelector('.filtersearch'));
     getDefault(document.querySelectorAll('.popupVideoInput[name="Skin-concern"]'), document.querySelector('.skinsearch'));
     getDefault(document.querySelectorAll('.popupVideoInput[name="Ingredients"]'), document.querySelector('.ingsearch'));
@@ -406,9 +406,9 @@ console.log('zz',checkTaxonomy)
             "Collectionfilter",
           ].join(" ")}
         >
-          <label className={[productsliststyle.filter,"hide","filterlabel"].join(" ")}>Skin Type:</label>
+          <label className={[productsliststyle.filter,"hide","filterlabel","d-block"].join(" ")}>Filter by:</label>
         <div class="appointment-elemnt advanced-search filterprodline transparent-bg">
-            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type:</p>
+            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="flitersCon">
@@ -467,7 +467,7 @@ console.log('zz',checkTaxonomy)
       <label className={[productsliststyle.filter,"hide","skinlabel"].join(" ")}>Skin concern:</label>
 
           <div class="appointment-elemnt advanced-search filterSkinconcern transparent-bg">
-            <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern:</p>
+            <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="filterSkinconcern">
@@ -524,7 +524,7 @@ console.log('zz',checkTaxonomy)
       <label className={[productsliststyle.filter,"hide","ingredientlabel"].join(" ")}>Ingredients:</label>
 
           <div class="appointment-elemnt advanced-search filterIngredients transparent-bg">
-            <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients:</p>
+            <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="filterIngredients">
@@ -593,10 +593,10 @@ console.log('zz',checkTaxonomy)
             "Collectionfilter",
           ].join(" ")}
         >
-                <label className={[productsliststyle.filter,"hide","sortlabel"].join(" ")}>Sort by:</label>
+                <label className={[productsliststyle.filter,"hide","sortlabel","d-block"].join(" ")}>Sort by:</label>
 
       <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
-            <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}></p>
+            <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Select One</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="sortCon">
@@ -655,7 +655,7 @@ console.log('zz',checkTaxonomy)
           ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
               
-
+              console.log('hassan22' ,item)
               return (
                 <>
                   {item.field_medical_is_system ? (
@@ -908,6 +908,7 @@ console.log('zz',checkTaxonomy)
             })
           : checkTaxonomy
           ? checkTaxonomy.relationships.field_vocabularies.map(item =>
+            
               (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
@@ -922,11 +923,26 @@ console.log('zz',checkTaxonomy)
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
                      
-                              productsliststyle.productview,
-                              `${product.relationships?product.relationships.field_clinical_skin_type?product.relationships.field_clinical_skin_type.map(
-                                item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""}  ${product.relationships?product.relationships.field_clinical_ingredients?product.relationships.field_clinical_ingredients.map(
-                                  item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""} ${product.relationships?product.relationships.field_clinical_skin_concern?product.relationships.field_clinical_skin_concern.map(
-                                    item =>(" " +item.name.split(' ').join('_')+" ")).join(' '):"":""}`,
+                           
+                       `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                       `${item.relationships.field_medical_skin_concern? item.relationships.field_medical_skin_concern.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                       `${item.relationships.field_medical_ingredients? item.relationships.field_medical_ingredients.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                       `${item.relationships.field_clinical_skin_type? item.relationships.field_clinical_skin_type.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                       `${item.relationships.field_clinical_skin_concern? item.relationships.field_clinical_skin_concern.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                       `${item.relationships.field_clinical_ingredients? item.relationships.field_clinical_ingredients.map(prod=>(
+                        " " +prod.name.split(' ').join('_')+" "
+                       )):" "}`,
+                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
                               "productview",
                               
                             ].join(" ")}
@@ -1109,7 +1125,7 @@ console.log('zz',checkTaxonomy)
         >
 
         <div class="appointment-elemnt advanced-search filterprodline transparent-bg">
-            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type:</p>
+            <p class="input-name filtersearch" onClick={() => { filtersearchData(); }}>Skin Type</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="flitersCon">
@@ -1167,7 +1183,7 @@ console.log('zz',checkTaxonomy)
       <label className={[productsliststyle.filter,"hide","skinlabel"].join(" ")}>Skin concern:</label>
 
           <div class="appointment-elemnt advanced-search filterSkinconcern transparent-bg">
-            <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern:</p>
+            <p class="input-name skinsearch" onClick={() => { filterSkinconcernsearchData(); }}>Skin concern</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="filterSkinconcern">
@@ -1223,7 +1239,7 @@ console.log('zz',checkTaxonomy)
       <label className={[productsliststyle.filter,"hide","ingredientlabel"].join(" ")}>Ingredients:</label>
 
           <div class="appointment-elemnt advanced-search filterIngredients transparent-bg">
-            <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients:</p>
+            <p class="input-name ingsearch" onClick={() => { filterIngredientsData(); }}>Ingredients</p>
            <div id="prodLinesSelected">
         
               <div class="product-lines hide" id="filterIngredients">

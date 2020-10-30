@@ -387,6 +387,13 @@ height: 691px !important;
 .node-clinical .general{
   color: #132466;
 }
+.node-medical .general{
+  color: #132466;
+}
+.node-medical .general::before{
+  background-color: #868cd2 !important;
+
+}
 .node-clinical .general::before{
   background-color: #44c4d9 !important;
 }
@@ -2670,4 +2677,10 @@ min-height: 0;
   font-size: 14px !important;
   line-height: 16px !important;
   text-decoration: underline !important;
+}
+.filterlabel.d-block{
+  display: block !important;
+}
+.sortlabel.d-block{
+  display: block !important;
 }
