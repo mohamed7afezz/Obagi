@@ -18,7 +18,7 @@ const ProductCard = ({
   feild_preimer,
   isrx,
   Type,
-  SKU
+  Sku
 }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -85,7 +85,7 @@ const ProductCard = ({
 
               </div>
               </div>
-              <button data-sku={SKU} className={["the-new-product-button","mob-analyzer-btn"].join(" ")} 
+              <button data-Sku={Sku} className={["the-new-product-button","mob-analyzer-btn"].join(" ")} 
         onClick={() => {
           let quantity = 1;
           addToCart(productId,false,quantity,price,premierid,feild_preimer);
@@ -122,7 +122,7 @@ const ProductCard = ({
               
              Locate a Physician
           </Link>
-            :<button data-sku={SKU}  className={[Productcard.addtocart, "the-product-button"].join(" ")} 
+            :<button data-Sku={Sku}  className={[Productcard.addtocart, "the-product-button"].join(" ")} 
             onClick={() => {
               let quantity = 1;
               addToCart(productId,false,quantity,price,premierid,feild_preimer);
@@ -135,7 +135,7 @@ const ProductCard = ({
           </div>
         ) : (
           ""
-        )}<button data-sku={SKU}  className={["the-new-product-button"].join(" ")} 
+        )}<button data-Sku={Sku}  className={["the-new-product-button"].join(" ")} 
         onClick={() => {
           let quantity = 1;
           addToCart(productId,false,quantity,price,premierid,feild_preimer);

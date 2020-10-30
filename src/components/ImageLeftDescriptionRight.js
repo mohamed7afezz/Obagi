@@ -9,7 +9,7 @@ const ImageLeftDescRight = ({ node }) => {
     <div className={primerstyle.sectionBg}>
       <div className={["container-fluid ", primerstyle.givepadding].join(" ")}>
         <div className={["row", primerstyle.mobDcol].join(" ")}>
-          <div className="col-lg-5 col-12 offset-lg-1 desk-auto">
+          <div className="col-lg-5 col-12 offset-lg-1 ">
             <div dangerouslySetInnerHTML={{ __html: node.field_premier_title.processed }} className={[primerstyle.title, "show-mob"].join(' ')}></div>
 
             <Img className={primerstyle.leftimg} fluid={node.relationships.field_images_left ? node.relationships.field_images_left.localFile ? node.relationships.field_images_left.localFile.childImageSharp ? node.relationships.field_images_left.localFile.childImageSharp.fluid : "" : "" : ""} />

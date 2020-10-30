@@ -447,6 +447,7 @@ const ProductLine = ({ node }) => {
                                               }
                                               price={item.field_medical_price}
                                               rate="0"
+                                              Sku={item.field_medical_sku}
                                               productId={item.field_medical_id}
                                               premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                                                feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}

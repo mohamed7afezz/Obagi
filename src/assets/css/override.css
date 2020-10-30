@@ -387,6 +387,9 @@ height: 691px !important;
 
 
 @media (max-width: 768px) {
+  .video-img-mob{
+    min-height: 455px;
+  }
   .show-mob{
     display: block !important;
   }
@@ -1155,12 +1158,16 @@ font-weight: 300;
 .generalcollectionhero .hero-row-wrapper {
   mix-blend-mode: unset;
 }
+.playbtnimg.mob-change{
+  max-width: 128px;
+  top: 47%;
+}
 @media (max-width: 767px) {
   .generalcollectionhero .allheight {
     max-width: 100%;
     height: unset;
   }
-  .mob-change{
+  .playbtnimg.mob-change{
     top: 41%;
   }
   .text-wrap{

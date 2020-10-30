@@ -36,6 +36,7 @@ const ProductSuggestion = ({ node }) => {
       professionalC: nodeMedicalProduct(field_medical_id: {eq: "349"}) {
         id
         field_medical_price
+        field_medical_sku
         field_medical_id
         title
         path {
@@ -60,6 +61,7 @@ const ProductSuggestion = ({ node }) => {
       elastiderm: nodeMedicalProduct(field_medical_id: {eq: "373"}) {
         id
         field_medical_price
+        field_medical_sku
         field_medical_id
         title
         path {
@@ -84,6 +86,7 @@ const ProductSuggestion = ({ node }) => {
       hydrate: nodeMedicalProduct(field_medical_id: {eq: "352"}) {
         id
         field_medical_price
+        field_medical_sku
         field_medical_id
         title
         path {
@@ -108,6 +111,7 @@ const ProductSuggestion = ({ node }) => {
       cMicro: nodeMedicalProduct(field_medical_id: {eq: "356"}) {
         id
         field_medical_price
+        field_medical_sku
         field_medical_id
         title
         path {
@@ -132,6 +136,7 @@ const ProductSuggestion = ({ node }) => {
       spf: nodeMedicalProduct(field_medical_id: {eq: "383"}) {
         id
         field_medical_price
+        field_medical_sku
         field_medical_id
         title
         path {
@@ -355,6 +360,7 @@ const ProductSuggestion = ({ node }) => {
           <ProductCard
                 producttitle={product.title}
                 productId={isClinical? product.field_clinical_id : product.field_medical_id}
+                Sku={isClinical? product.field_clinical_sku : product.field_medical_sku}
                 productimage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
                 price={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
                  productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
@@ -370,6 +376,8 @@ const ProductSuggestion = ({ node }) => {
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id :""}
          productimage={data.professionalC.relationships?data.professionalC.relationships.field_medical_image[0]?data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
+         Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
+
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
          productLink={data.professionalC.path.alias}
          premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
@@ -387,6 +395,8 @@ const ProductSuggestion = ({ node }) => {
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id :""}
          productimage={data.elastiderm.relationships?data.elastiderm.relationships.field_medical_image[0]?data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
+         Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
+
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
          productLink={data.elastiderm.path.alias}
          premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
@@ -402,6 +412,8 @@ const ProductSuggestion = ({ node }) => {
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id :""}
          productimage={data.hydrate.relationships?data.hydrate.relationships.field_medical_image[0]?data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
+         Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
+
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id:""}
          productLink={data.hydrate.path.alias}
          premierid={data.hydrate.field_medical_premier_points_id?data.hydrate.field_medical_premier_points_id:""}

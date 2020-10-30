@@ -48,6 +48,7 @@ const YouMayLike = ({ node }) => {
                   price={item.field_medical_price} rate="5" 
                   premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                   feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                  Sku={item.field_medical_sku?item.field_medical_sku:"" }
                   />
 
                 </div>

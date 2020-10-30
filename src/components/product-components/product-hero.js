@@ -59,6 +59,8 @@ const ProductHero = ({ data, nodeType }) => {
   let field_weight_unit  = isClincal
     ? node.field_clinical_weight_unit
      :node.field_medical_weight_unit
+  let Sku= isClincal ? node.field_clinical_sku
+  : node.field_medical_sku
   let key_benefit  = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
@@ -362,6 +364,7 @@ if ( typeof window !== "undefined"){
          </Link>
           :  <button
             className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            data-Sku={Sku}
             onClick={() => {
               let quantity = document.querySelector("#quantityBox").value;
               premierid && feild_preimer?
@@ -418,6 +421,7 @@ if ( typeof window !== "undefined"){
       </Link>
        : <button
          className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+         data-Sku={Sku}
          onClick={() => {
            let quantity = document.querySelector("#quantityBox").value;
            premierid && feild_preimer?
