@@ -52,6 +52,15 @@ top: 5px;
     color: #fff;
 }
 
+.generalcollectionhero .allheight {
+    max-width: 100%;
+    height: unset;
+    @include lg-screen {
+        height: 100%;
+        max-width: unset;
+    }
+}
+
 
 .collectiontitle{
     font-size: 36px;

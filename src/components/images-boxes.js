@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scss'
 
 const ImagesBoxes = ({ node }) => {
-  console.log('bahiiiii', node)
+  
   return (
     <div className={[imagesBoxesStyles.imageBoxes, "container-fluid"].join(" ")}>
       <div className={["row", imagesBoxesStyles.rowMargin].join(" ")}>

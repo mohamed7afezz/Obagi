@@ -59,10 +59,8 @@ const Resulte = (props) => {
                 let listOfProducts = searchInIndexById(response, is_medical);
                 if (is_medical) {
                     setMedicalProduct(listOfProducts);
-                    console.log("hafezz111",response,listOfProducts)
                 } else {
                     setClinicalProduct(listOfProducts);
-                    console.log("hafezz",response,listOfProducts)
                 }
 
                 setLoading(true)

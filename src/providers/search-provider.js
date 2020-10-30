@@ -61,7 +61,6 @@ export const SearchProvider = ({ children }) => {
                 let findedItems = ProductsIndex.ClinicalProduct.nodes.filter(function (itm) {
                     return itm.field_clinical_id == element && element != "";
                 });
-                console.log("hafezz", findedItems)
                 if (findedItems.length > 0) {
                     result.push(findedItems[0]);
                 }
@@ -74,7 +73,6 @@ export const SearchProvider = ({ children }) => {
                 let findedItems = ProductsIndex.MedicalProduct.nodes.filter(function (itm) {
                     return itm.field_medical_id == element && element != "";
                 });
-                console.log("hafezz", findedItems)
                 if (findedItems.length > 0) {
                     result.push(findedItems[0]);
                 }
@@ -82,7 +80,6 @@ export const SearchProvider = ({ children }) => {
 
 
         }
-        console.log("hafezz", result)
         return result;
 
     }
