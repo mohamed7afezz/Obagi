@@ -1142,7 +1142,24 @@ font-weight: 300;
         transform: rotate(-315deg);
         z-index: -1;
 }
+.generalcollectionhero {
+  background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+  color: #fff;
+}
+.generalcollectionhero .allheight {
+
+      height: 100%;
+      max-width: unset;
+
+}
+.generalcollectionhero .hero-row-wrapper {
+  mix-blend-mode: unset;
+}
 @media (max-width: 767px) {
+  .generalcollectionhero .allheight {
+    max-width: 100%;
+    height: unset;
+  }
   .mob-change{
     top: 41%;
   }
