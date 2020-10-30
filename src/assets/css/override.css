@@ -394,6 +394,9 @@ height: 691px !important;
   background-color: #868cd2 !important;
 
 }
+.advanced-search .input-name{
+  text-transform: capitalize;
+}
 .node-clinical .general::before{
   background-color: #44c4d9 !important;
 }
