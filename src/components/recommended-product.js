@@ -10,6 +10,7 @@ recImage,
 recLink,
 recPrice,
 recId,
+Sku,
 recTitle ,
 premierid,
 feild_preimer}) => {
@@ -28,6 +29,7 @@ const addingToCart = value && value.state.addingToCart
                 <div className={ShowBagStyle.miniWrapper}>
                     <div>${recPrice}</div>
                     <button className={ShowBagStyle.cartButton}
+                    data-Sku={Sku}
                         onClick={() => {
                             let quantity = 1;
                             addToCart(recId, false, quantity,recPrice,premierid,feild_preimer);
