@@ -1038,9 +1038,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   ) : (
                                       ""
                                     )}
-                                    {/* {checkTaxonomy.field_taxonomy_hero_link? (
-                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri} className={[Collectionherostyle.heroLink, "d-none d-lg-inline-block"].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
-                                    ) : ""} */}
+                                    {checkTaxonomy.field_taxonomy_hero_link? (
+                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
+                                    ) : ""}
                                 </div>
 
                               </div>
@@ -1077,7 +1077,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               )}
                           </div>
                         )}
-                        {/* {console.log('bahiiii', node)} */}
+                        {console.log('bahiiii', node)}
     </div>
     
   )
@@ -1087,6 +1087,10 @@ export default CollectionHero
 export const fragment = graphql`
   fragment paragraphTaxonomyHeroParaprapgh on paragraph__taxonomy_hero_paraprapgh {
     id
+    field_taxonomy_hero_link {
+      title
+      uri
+    }
   }
 
   fragment collectionhero on taxonomy_term__clinical_skin_concern {

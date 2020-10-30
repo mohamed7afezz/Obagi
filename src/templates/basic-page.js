@@ -68,6 +68,7 @@ query($slug: String!) {
                 ...paragrapghCulsionFlexTwoSections
                 ...paragrapghCulsionFinalSection
                 ...paragrapghSepratorimg
+                ...paragraphTaxonomyHeroParaprapgh
                 ...paragraphScientificTowCols
                 ...paragraphScientificFooter
             }

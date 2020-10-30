@@ -129,16 +129,25 @@ top: 5px;
     border: 1px solid #fff;
     @extend %futurapt-bold;
     @include fontStyle(12, 16);
+    padding: 16px 14px;
+    width: 100%;
     letter-spacing: 1.2px;
     text-align: center;
-    padding: 24px 93px 24px 94px;
     border-radius: 6px;
     text-transform: uppercase;
-    margin-top: 40px;
+    margin-top: 16px;
+    display: block;
     &:hover {
         color: #132466;
         background: #fff;
         text-decoration: none;
+    }
+
+    @include lg-screen {
+        margin-top: 40px;
+        display: inline-block;
+        width: unset;
+        padding: 24px 47px;
     }
 }
 .medicalBg{
