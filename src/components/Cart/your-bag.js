@@ -192,6 +192,7 @@ const YourBag = (props, { notificationId }) => {
       field_medical_price
       field_medical_id
       field_medical_premier_points_id
+      field_medical_sku
       field_medical_premier_points
       title
       path {
@@ -215,6 +216,7 @@ const YourBag = (props, { notificationId }) => {
       field_medical_price
       field_medical_id
       field_medical_premier_points_id
+      field_medical_sku
       field_medical_premier_points
       title
       path {
@@ -261,6 +263,7 @@ const YourBag = (props, { notificationId }) => {
       field_medical_price
       field_medical_id
       field_medical_premier_points_id
+      field_medical_sku
       field_medical_premier_points
       title
       path {
@@ -284,6 +287,7 @@ const YourBag = (props, { notificationId }) => {
       field_medical_price
       field_medical_id
       field_medical_premier_points_id
+      field_medical_sku
       field_medical_premier_points
       title
       path {
@@ -305,6 +309,7 @@ const YourBag = (props, { notificationId }) => {
     product1: nodeClinicalProduct(field_clinical_id: {eq: "339"}) {
       id
       field_clinical_price
+      field_clinical_sku
       field_clinical_id
   
       title
@@ -327,6 +332,7 @@ const YourBag = (props, { notificationId }) => {
     product2: nodeClinicalProduct(field_clinical_id: {eq: "346"}) {
       id
       field_clinical_price
+      field_clinical_sku
       field_clinical_id
       title
       path {
@@ -348,6 +354,7 @@ const YourBag = (props, { notificationId }) => {
     product3: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
       id
       field_clinical_price
+      field_clinical_sku
       field_clinical_id
       title
       path {
@@ -369,6 +376,7 @@ const YourBag = (props, { notificationId }) => {
     product4: nodeClinicalProduct(field_clinical_id: {eq: "345"}) {
       id
       field_clinical_price
+      field_clinical_sku
       field_clinical_id
       title
       path {
@@ -390,6 +398,7 @@ const YourBag = (props, { notificationId }) => {
     product5: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
       id
       field_clinical_price
+      field_clinical_sku
       field_clinical_id
       title
       path {

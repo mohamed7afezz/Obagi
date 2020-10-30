@@ -9,6 +9,7 @@
     margin-top: 32px;
     display: none;
     text-align: center;
+    margin-bottom: 56px;
     @include md-screen{
     text-align: left;
     display: block;
@@ -21,8 +22,8 @@
     max-width: 100%;
 }
 .primercradtitle{
-    font-size: 18px;
-    line-height: 32px;
+    font-size: 24px;
+   
     font-weight: 700;
 }
 .primercradDesc{
@@ -34,13 +35,18 @@
 }
 .primerimg{
     margin-top: 8px;
-    display: none;
+    text-align: right;
+    @include md-screen{
+        text-align: left;
+        display: flex !important;
+    }
     img{
-      
+      margin-top: 16px;
         margin-right: 0;
-      
+        width: 100%;
         @include md-screen{
-           
+           width: auto;
+           margin-top: 0;
             &:first-child{
                 margin-right: 20px;
             }
@@ -70,7 +76,11 @@
     counter-reset: section;                /* Creates a new instance of the
     section counter with each ol
     element */
-list-style-type: none;
+    list-style-type: none;
+    margin-top: 55px;
+@include md-screen{
+    margin-top: 0;
+}
 }
 .primerli::before {
     counter-increment: section;       
@@ -82,4 +92,6 @@ list-style-type: none;
     font-weight: 700;
     padding: 4px 11px;
     border-radius: 50%;
+    color: #fff;
+    background-color: #132466;
 }

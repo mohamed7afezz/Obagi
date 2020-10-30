@@ -16,7 +16,7 @@ class Temps {
                     </div>
                     <div class="info info-list col-9">
                         <h2 class="row clinic-name">${obj.name}</h2>
-                       <div class="row email"><button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" > Request Appointment</button></div>
+                       <div class="row email"><button   class="make-appointment req-appointment" > Request Appointment</button></div>
                        <div class="row address-one">${obj.address1}</div>
                        <div class="row city">${obj.city}, ${obj.state} ${obj.zip}</div>
                        <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
@@ -36,7 +36,7 @@ class Temps {
         return `
             <div>
                 <h2 class="clinic-name">${obj.name}</h2>
-                <button  data-toggle="modal" data-target="#appointment" class="make-appointment" id="req-appointment-info" > Request Appointment</button>
+                <button   class="make-appointment" id="req-appointment-info" > Request Appointment</button>
                 <div class=" address-one">${obj.address1}</div>
                 <div class=" city">${obj.city}, ${obj.state} ${obj.zip}</div>
                 <div class=" phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
@@ -67,7 +67,7 @@ class Temps {
                     <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
                 </div>
                 </div>
-                ${isProd? `<button  data-toggle="modal" data-target="#appointment" class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
+                ${isProd? `<button   class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
 
             </div></div>
         `

@@ -57,6 +57,8 @@ import CulsionImage from './culsion-img';
 import CulsionFlexTwoSections from './culsion-two-section';
 import CulsionFinalSection from './CulsionFinalSection';
 import Sepratorimg from './seprator';
+import TwoCol from './scientific-two-col';
+import SintificFooter from './scientific-big-desc';
 
 
 const componentsMap = {
@@ -116,6 +118,8 @@ const componentsMap = {
     paragraph__flex_2_sections:CulsionFlexTwoSections,
     paragraph__skin_culsion_final_section:CulsionFinalSection,
     paragraph__separator_image:Sepratorimg,
+    paragraph__scientific_innovation_two_col:TwoCol,
+    paragraph__scientific_describtion_big_link:SintificFooter,
 }
 
 export const getParagraph = node => {

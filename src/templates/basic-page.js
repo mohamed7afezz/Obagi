@@ -68,6 +68,8 @@ query($slug: String!) {
                 ...paragrapghCulsionFlexTwoSections
                 ...paragrapghCulsionFinalSection
                 ...paragrapghSepratorimg
+                ...paragraphScientificTowCols
+                ...paragraphScientificFooter
             }
         }
         field_meta_tags {

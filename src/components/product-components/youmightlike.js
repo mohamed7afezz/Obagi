@@ -88,6 +88,7 @@ fragment youMightAlsoLikeParagrapgh on paragraph__you_might_also_like {
           id
           title
           field_clinical_price
+          field_clinical_sku
           path {
             alias
           }

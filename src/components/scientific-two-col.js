@@ -1,42 +1,72 @@
-// import React from "react"
-// import { useStaticQuery, graphql, Link } from "gatsby"
-// import primerfooter from '../assets/scss/components/simple-footer.module.scss'
+import React from "react"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import sientificStyle from '../assets/scss/components/scientific-two-col.module.scss'
+import Img from 'gatsby-image'
+const TwoCol = ({ node }) => {
 
-// const TwoCol = ({ node }) => {
+  return (
+  
+    <div className={["container-fluid"].join(" ")}>
+            <div className={[sientificStyle.givepadding].join(' ')}>
+      <div className="row">
+        <div className={["col-12 offset-lg-1 col-lg-5",sientificStyle.leftcol].join(" ")}>
+           <div dangerouslySetInnerHTML={{ __html: node.field_scientific_title.processed }} className={[sientificStyle.title].join(' ')}>
 
-//   return (
-//       <div className={primerfooter.givebg}>
-//     <div className={["container-fluid",primerfooter.givepadding].join(" ")}>
-//       <div className="row">
-//         <div className="col-12">
-//            <div dangerouslySetInnerHTML={{ __html: node.field_premier_footer_title.processed }} className={[primerfooter.title].join(' ')}>
+           </div>
+           <div dangerouslySetInnerHTML={{ __html: node.field_scientific_describtion.processed }} className={[sientificStyle.desc].join(' ')}>
 
-//            </div>
-//            <div dangerouslySetInnerHTML={{ __html: node.field_premier_footer_desc.processed }} className={[primerfooter.subtitle].join(' ')}>
+           </div>
+           {node.relationships.field_scientific_image?<Img className="show-mob img-responsive" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid}/>:""}
 
-//             </div>
-//             <Link className={[primerfooter.Flink].join(' ')} to ={node.field_premier_footer_link.uri.replace('internal:', '')}>{node.field_premier_footer_link.title}</Link>
-//         </div>
-//       </div>
-//     </div>
-//     </div>
-//   )
-// }
+           <div dangerouslySetInnerHTML={{ __html: node.field_scientific_list_title.processed }} className={[sientificStyle.listTitle].join(' ')}>
 
-// export default TwoCol
+           </div>
+           <ul  className={[sientificStyle.list].join(' ')}>
+                {node.field_scientific_list_item?node.field_scientific_list_item.map(item=>(
+                    <li dangerouslySetInnerHTML={{__html: item.processed}}></li>
+                )):""}
+           </ul>
+       </div>
+       <div className="col-12 offset-lg-1 col-lg-5">
+                {node.relationships.field_scientific_image?<Img className="hide-mob" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid}/>:""}
+            </div>
+      
+      </div>
+    </div>
+    </div>
+  )
+}
 
-// export const fragment = graphql`
-//   fragment paragraphSimpleFooter on paragraph__simple_footer {
-//     id
-//     field_premier_footer_desc {
-//       processed
-//     }
-//     field_premier_footer_link {
-//       title
-//       uri
-//     }
-//     field_premier_footer_title {
-//       processed
-//     }
-//   }
-//   `
+export default TwoCol
+
+export const fragment = graphql`
+  fragment paragraphScientificTowCols on paragraph__scientific_innovation_two_col {
+    id
+    field_scientific_describtion {
+      processed
+    }
+    field_scientific_list_title {
+      processed
+    }
+    field_scientific_list_item {
+      processed
+    }
+    field_scientific_title {
+      processed
+    }
+    relationships {
+      field_scientific_image {
+        localFile {
+          childImageSharp {
+            fluid (quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+              original{
+                src
+            }
+          }
+        }
+      }
+    }
+  }
+  `
