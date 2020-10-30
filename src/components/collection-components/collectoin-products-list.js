@@ -5,9 +5,14 @@ import productsliststyle from "../../assets/scss/components/collection-list.modu
 import {CustomSelect} from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
 import { checkDataCondition } from "../paragraphs-helper"
+import {checkStock} from '../../assets/js/stock';
 
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
-  console.log('bahiiii', node.relationships)
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock();
+    }
+  }, [])
   const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path?(node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical') : '');
   const filtersDataQuery = useStaticQuery(graphql`
     {
@@ -265,9 +270,7 @@ console.log('zz',checkTaxonomy)
         isoGrid.arrange({filter:`${newFilter}:not(rx)`});
       }
     }
-    
-   
-    console.log('bahiiii', newFilter)
+
    
     
     updateSortView();
@@ -413,7 +416,7 @@ console.log('zz',checkTaxonomy)
                           <ul class="popupUl popupFilter">
                             <li>
                               <label class="checkcon terms">
-                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value="All"/>All
+                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e);}} name="product" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
@@ -422,7 +425,7 @@ console.log('zz',checkTaxonomy)
                                 {filtersDataQuery.clinicalType.edges.map(({node}) => (
                                   <li>
                                     <label class="checkcon terms">
-                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e);}} name="product" type="radio" value={node.name}/>{node.name}
                                       <span className="checkmarkfinder"></span>
                                     </label>
                                   </li>
@@ -1114,7 +1117,7 @@ console.log('zz',checkTaxonomy)
                           <ul class="popupUl popupFilter">
                             <li>
                               <label class="checkcon terms">
-                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value="All"/>All
+                              <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e);}} name="product" type="radio" value="All"/>All
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
@@ -1123,7 +1126,7 @@ console.log('zz',checkTaxonomy)
                                 {filtersDataQuery.clinicalType.edges.map(({node}) => (
                                   <li>
                                     <label class="checkcon terms">
-                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e);}} name="product" type="radio" value={node.name}/>{node.name}
                                       <span className="checkmarkfinder"></span>
                                     </label>
                                   </li>
@@ -1136,7 +1139,7 @@ console.log('zz',checkTaxonomy)
                                 {filtersDataQuery.medicalType.edges.map(({node}) => (
                                   <li>
                                     <label class="checkcon terms">
-                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e); console.log('bahiiiiiii change');}} name="product" type="radio" value={node.name}/>{node.name}
+                                      <input class="popupVideoInput" onChange={(e) => { saveselectfilter(e);}} name="product" type="radio" value={node.name}/>{node.name}
                                       <span className="checkmarkfinder"></span>
                                     </label>
                                   </li>
