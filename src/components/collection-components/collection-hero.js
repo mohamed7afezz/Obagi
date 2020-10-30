@@ -45,9 +45,9 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-    console.log("hassan",first_url)
+   
   }
-console.log('hassan22',checkTaxonomy)
+
   return (
     <div
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
