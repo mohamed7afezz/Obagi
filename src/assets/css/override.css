@@ -384,8 +384,12 @@ height: 691px !important;
 #desk-navigation {
   z-index: 999;
 }
-
-
+.node-clinical .general{
+  color: #132466;
+}
+.node-clinical .general::before{
+  background-color: #44c4d9;
+}
 @media (max-width: 768px) {
   .video-img-mob{
     min-height: 455px;

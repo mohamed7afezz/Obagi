@@ -45,7 +45,11 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-   
+   if (first_url !="medical") {
+     if (!first_url !="clinical") {
+       document.querySelector('.collectionhero').classList.add('generalcollectionhero')
+     }
+   }
   }
 
   return (
@@ -53,7 +57,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
         : ( first_url === "medical" || checktaxonomyType === "medical"|| nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
-          : "container-fluid collectionhero generalcollectionhero "}
+          : "container-fluid collectionhero  "}
     >
 
       {nodetype == "clinicalConcern" ? (
@@ -1005,7 +1009,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                     </div> : ""}
                                 <div className="col-12 col-lg-11 offset-lg-1 ">
                                   {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
-                                    <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general].join(' ')}>
+                                    <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical') || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general,"general"].join(' ')}>
                                       {" "}
                                       {
                                         checkTaxonomy.field_taxonomy_hero_paraprapgh_t
