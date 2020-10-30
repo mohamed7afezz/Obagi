@@ -38,8 +38,9 @@
 }
 
 
-.header {
+.header ,.header h1{
     @include fontStyle(40, 56);
+    text-align: center;
     @extend %futurapt-light;
     margin: 248px 0 8px;
 
@@ -49,9 +50,12 @@
 
     }
 }
-
-.subtitle {
+.subtitle h2{
     @include fontStyle(18, 24);
+    margin-bottom: 0;
+}
+.subtitle {
+ 
     margin-bottom: 71px;
 
     // @include lg-screen {
