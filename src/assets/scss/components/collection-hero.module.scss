@@ -84,11 +84,7 @@ top: 5px;
     padding-top: 48px;
     padding-bottom: 48px;
     text-align: center;
-    padding-left: 15px;
-    padding-right: 15px;
     @include md-screen{
-        padding-left: 0;
-        padding-right: 0;
         text-align: left;
         padding-top: 195px;
         padding-bottom: 112px;
