@@ -45,15 +45,15 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[1];
     var sec_url = geturi[2];
-  //  if (first_url !="medical") {
-  //    if (!first_url !="clinical") {
-  //      if ( document.querySelector('.collectionhero')) {
-  //           document.querySelector('.collectionhero').classList.add('generalcollectionhero')
-  //      }
+   if (first_url !="medical") {
+     if (!first_url !="clinical") {
+       if ( document.querySelector('.collectionhero')) {
+            document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
+       }
 
       
-  //    }
-  //  }
+     }
+   }
   }
 
   return (
@@ -61,7 +61,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
         : ( first_url === "medical" || checktaxonomyType === "medical"|| nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero+" "+Collectionherostyle.medicalBg
-          : "container-fluid collectionhero  "}
+          : "container-fluid collectionhero  generalcollectionhero"}
     >
 
       {nodetype == "clinicalConcern" ? (

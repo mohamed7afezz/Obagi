@@ -8,7 +8,7 @@ const ImageLeftDescRight = ({ node }) => {
   return (
     <div className={primerstyle.sectionBg}>
       <div className={["container-fluid ", primerstyle.givepadding].join(" ")}>
-        <div className={["row", primerstyle.mobDcol].join(" ")}>
+        <div className={["row", primerstyle.mobDcol,"align-items-center"].join(" ")}>
           <div className="col-lg-4 col-12 offset-lg-1 ">
             <div dangerouslySetInnerHTML={{ __html: node.field_premier_title.processed }} className={[primerstyle.title, "show-mob"].join(' ')}></div>
 

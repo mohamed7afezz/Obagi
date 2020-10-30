@@ -390,7 +390,20 @@ height: 691px !important;
 .node-clinical .general::before{
   background-color: #44c4d9 !important;
 }
+.collection-hero-p{
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 300;
+}
 @media (max-width: 768px) {
+ .collectiondescription{
+   padding-top: 16px;
+ }
+  .collection-hero-p{
+    font-size: 18px;
+    line-height: 32px;
+ 
+  }
   .video-img-mob{
     min-height: 455px;
   }
