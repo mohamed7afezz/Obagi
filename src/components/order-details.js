@@ -288,7 +288,7 @@ let getallcheck =()=>{
                                          </form> */}
                             {
                               item.images.data.map((item, index) => {
-                                return <img class="img-mob" src={item.url_tiny} />
+                                return <img class="img-mob" src={item.url_thumbnail} />
                               })[0]
                             }
                             <div
@@ -330,7 +330,7 @@ let getallcheck =()=>{
                               <div className={orderDetailsStyles.productImage}>
                                 {
                                   item.images.data.map((item, index) => {
-                                    return <img src={item.url_tiny} />
+                                    return <img src={item.url_thumbnail} />
                                   })[0]
                                 }
                               </div>
@@ -563,7 +563,7 @@ let getallcheck =()=>{
                             </form>
                             {item.images.data.map((item, index) => {
                                 return (
-                                    <img src={item.url_tiny} />
+                                    <img src={item.url_thumbnail} />
                                 )
                             })}
                             <div className={orderDetailsStyles.productInfoWrapper}>
@@ -608,7 +608,7 @@ let getallcheck =()=>{
                             <div className={orderDetailsStyles.productImage}>
                                 {item.images.data.map((item, index) => {
                                     return (
-                                        <img src={item.url_tiny} />
+                                        <img src={item.url_thumbnail} />
                                     )
                                 })[0]}
                             </div>

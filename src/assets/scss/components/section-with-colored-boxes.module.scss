@@ -22,7 +22,6 @@
     @include lg-screen {
         background: #132466;
         padding: 0 30px 244px 187px;
-
         &::before {
             height: 118px;
             width: 118px;
@@ -30,6 +29,7 @@
             background: #ffcd00;
             position: absolute;
             left: -103px;
+            z-index: 99;
         }
 
         &::after {
@@ -61,11 +61,36 @@
             position: absolute;
             z-index: 999;
             left: 50px;
-            bottom: -79px;
+            bottom: 0;
             height: 273px;
             width: 273px;
         }
     }
+
+    @include xl-screen {
+        padding-right: 117px;
+
+    }
+}
+
+.image-right .small-section {
+    @include lg-screen {
+        padding: 0 187px 244px 30px;
+
+        &::before {
+            left: unset;
+            right: -142px;
+   
+        }
+        &::after {
+            left: unset;
+            right: 50px;
+        }
+    }
+    @include xl-screen {
+        padding-left: 117px;
+    }
+
 }
 
 .first-section {
@@ -88,14 +113,22 @@
     }
 }
 
-// .image-right .first-section {
-//     order: 2;
+.not-home .first-section {
+    order: 2;
 
-//     &::before {
-//         width: 46px;
-//         height: 47px;
-//     }
-// }
+    @include lg-screen {
+        order: 0;
+    }
+}
+
+.image-right .first-section {
+    order: 2;
+
+    &::before {
+        width: 46px;
+        height: 47px;
+    }
+}
 
 .image {
     margin-top: 44px;
@@ -128,22 +161,21 @@
     &::after {
         bottom: 0;
         right: 0;
+        width: 82px;
+        height: 82px;
     }
     @include lg-screen {
         margin-top: 157px;
+        
     }
 }
 
-// .image-right .image {
-//     margin-top: 0;
-
-//     &::after {
-//         bottom: 0;
-//         right: 0;
-//         width: 82px;
-//         height: 82px;
-//     }
-// }
+.image-right .image {
+    @include lg-screen {
+        margin-right: 157px;
+        margin-left: -157px;
+    }
+}
 
 .subtitle {
     @extend %futurapt-bold;
@@ -179,6 +211,7 @@
 
 .not-home .title {
     padding-top: 40px;
+    margin: 0;
     @include fontStyle(32, 48);
 
     @include lg-screen {
@@ -206,7 +239,7 @@
 
     @include lg-screen {
         @include fontStyle(24, 40);
-        margin: 32px 117px 0 0;
+        margin: 32px 0 0 0;
         font-family:  futura-pt,   sans-serif;
         font-weight: 300;
         font-style: normal;
