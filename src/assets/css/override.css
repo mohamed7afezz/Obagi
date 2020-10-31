@@ -281,8 +281,18 @@ right: 0;
   max-width: 100%;
   height: auto;
 }
-
+.medicalcollectionhero {
+  mix-blend-mode: multiply;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 42%, rgba(81, 87, 162, 0.65));
+}
 @media (min-width: 768px) {
+  .medicalcollectionhero {
+ 
+
+        mix-blend-mode: multiply;
+        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 63%, rgba(81, 87, 162, 0.65));
+ 
+}
   .clusion-fimg{
     margin-top: 80px;
   }
@@ -1875,12 +1885,15 @@ height:  32px;
   padding-bottom: 70px;
   text-transform: capitalize;
   }
-  .breadcramp a{
+  .breadcramp a,.general a{
     color: #132466;
     text-transform: capitalize;
     font-size: 16px;
     line-height: 24px;
   }
+  .medical-bg{
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) , rgba(81, 87, 162, 0.65) );
+   }
 @media (max-width:767px){
   #appointment .modal-dialog,#related-products .modal-dialog,#collectionPopup .modal-dialog{
     margin: 0;

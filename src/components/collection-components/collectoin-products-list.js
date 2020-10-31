@@ -154,7 +154,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   } else {
     checkTaxonomy = node
   }
-console.log('zz',checkTaxonomy)
+console.log('hassan11',node)
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)
@@ -655,7 +655,7 @@ console.log('zz',checkTaxonomy)
           ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
               
-              console.log('hassan22' ,item)
+              console.log('hassan221' ,item)
               return (
                 <>
                   {item.field_medical_is_system ? (
@@ -912,17 +912,19 @@ console.log('zz',checkTaxonomy)
               (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
-                      console.log('zzz',product)
+                     
                       let ingredient = getIngredient(product);
                       
                       
                       if (!checkProductExisitance(product)) {
+                        
                         products.push(product)
                         return (
                           <div
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
-                     
+                              productsliststyle.productview,
+                              "productview",
                            
                        `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
                         " " +prod.name.split(' ').join('_')+" "
@@ -943,7 +945,7 @@ console.log('zz',checkTaxonomy)
                         " " +prod.name.split(' ').join('_')+" "
                        )):" "}`,
                         `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
-                              "productview",
+                       
                               
                             ].join(" ")}
                             
