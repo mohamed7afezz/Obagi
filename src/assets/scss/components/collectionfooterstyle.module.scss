@@ -26,10 +26,10 @@ background-color: #868cd2;
 }
 
 .collectionfooter{
-    padding-top: 48px;
+    padding-top: 0;
     padding-bottom: 48px;
     @include md-screen{
-        padding-top: 96px;
+        padding-top: 0;
     padding-bottom: 96px;
     }
 }
@@ -41,16 +41,21 @@ background-color: #868cd2;
         padding-bottom: 112px;
     }
 }
+@media (max-width:767px){
+    .CollectionFooterContainer{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
 .CollectionFooterContainer{
     margin-top: 48px;
     margin-bottom: 48px;
-   
-    padding-left: 0;
+ padding-left: 15px;
+  
     @include md-screen {
         border-radius: 6px;
         margin-top: 137px;
-        margin-bottom: 137px;
-       
+        padding-left: 0;
         background-color: #edfafc;
         
     }

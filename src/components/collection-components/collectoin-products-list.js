@@ -664,26 +664,33 @@ console.log('hassan11',node)
                         "col-12 col-lg-6 col-md-6 product-element",
                         
                         productsliststyle.productview,
-                        "productview",
-                       `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_medical_skin_concern? item.relationships.field_medical_skin_concern.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_medical_ingredients? item.relationships.field_medical_ingredients.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_skin_type? item.relationships.field_clinical_skin_type.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_skin_concern? item.relationships.field_clinical_skin_concern.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_ingredients? item.relationships.field_clinical_ingredients.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`
+                        "productview", `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         `${item.relationships.field_medical_skin_concern? item.relationships.field_medical_skin_concern.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         `${item.relationships.field_medical_ingredients? item.relationships.field_medical_ingredients.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         `${item.relationships.field_clinical_skin_type? item.relationships.field_clinical_skin_type.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         `${item.relationships.field_clinical_skin_concern? item.relationships.field_clinical_skin_concern.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         `${item.relationships.field_clinical_ingredients? item.relationships.field_clinical_ingredients.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         
+                         `${item.relationships.taxonomy_term__clinical_categories? item.relationships.taxonomy_term__clinical_categories.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         
+                         `${item.relationships.taxonomy_term__clinical_skin_concern? item.relationships.taxonomy_term__clinical_skin_concern.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                          `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
                       ].join(" ")}
                       
                     >
@@ -760,8 +767,7 @@ console.log('hassan11',node)
                         "col-12 col-lg-3 col-md-4 product-element",
                         
                         productsliststyle.productview,
-                        "productview",
-                        `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
+                        "productview", `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
                          `${item.relationships.field_medical_skin_concern? item.relationships.field_medical_skin_concern.map(prod=>(
@@ -779,7 +785,15 @@ console.log('hassan11',node)
                          `${item.relationships.field_clinical_ingredients? item.relationships.field_clinical_ingredients.map(prod=>(
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
-                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`
+                         
+                         `${item.relationships.taxonomy_term__clinical_categories? item.relationships.taxonomy_term__clinical_categories.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                         
+                         `${item.relationships.taxonomy_term__clinical_skin_concern? item.relationships.taxonomy_term__clinical_skin_concern.map(prod=>(
+                          " " +prod.name.split(' ').join('_')+" "
+                         )):" "}`,
+                          `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
                       ].join(" ")}
                       
                     >
@@ -912,7 +926,7 @@ console.log('hassan11',node)
               (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
-                     
+                     console.log('hassan12',product)
                       let ingredient = getIngredient(product);
                       
                       
@@ -925,28 +939,33 @@ console.log('hassan11',node)
                               "col-12 col-lg-3 col-md-4 product-element",
                               productsliststyle.productview,
                               "productview",
-                           
-                       `${item.relationships.field_medical_skin_type? item.relationships.field_medical_skin_type.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_medical_skin_concern? item.relationships.field_medical_skin_concern.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_medical_ingredients? item.relationships.field_medical_ingredients.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_skin_type? item.relationships.field_clinical_skin_type.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_skin_concern? item.relationships.field_clinical_skin_concern.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                       `${item.relationships.field_clinical_ingredients? item.relationships.field_clinical_ingredients.map(prod=>(
-                        " " +prod.name.split(' ').join('_')+" "
-                       )):" "}`,
-                        `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
-                       
-                              
+                              `${product.relationships.field_medical_skin_type? product.relationships.field_medical_skin_type.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               `${product.relationships.field_medical_skin_concern? product.relationships.field_medical_skin_concern.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               `${product.relationships.field_medical_ingredients? product.relationships.field_medical_ingredients.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               `${product.relationships.field_clinical_skin_type? product.relationships.field_clinical_skin_type.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               `${product.relationships.field_clinical_skin_concern? product.relationships.field_clinical_skin_concern.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               `${product.relationships.field_clinical_ingredients? product.relationships.field_clinical_ingredients.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               
+                               `${product.relationships.taxonomy_term__clinical_categories? product.relationships.taxonomy_term__clinical_categories.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                               
+                               `${product.relationships.taxonomy_term__clinical_skin_concern? product.relationships.taxonomy_term__clinical_skin_concern.map(prod=>(
+                                " " +prod.name.split(' ').join('_')+" "
+                               )):" "}`,
+                                `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
                             ].join(" ")}
                             
                           >
@@ -991,8 +1010,7 @@ console.log('hassan11',node)
                             "col-12 col-lg-3 col-md-4 product-element",
                             `${item.name.split(' ').join('_')}`,
                             productsliststyle.productview,
-                            "productview",
-                            `${product.relationships.field_medical_skin_type? product.relationships.field_medical_skin_type.map(prod=>(
+                            "productview", `${product.relationships.field_medical_skin_type? product.relationships.field_medical_skin_type.map(prod=>(
                               " " +prod.name.split(' ').join('_')+" "
                              )):" "}`,
                              `${product.relationships.field_medical_skin_concern? product.relationships.field_medical_skin_concern.map(prod=>(
@@ -1010,7 +1028,15 @@ console.log('hassan11',node)
                              `${product.relationships.field_clinical_ingredients? product.relationships.field_clinical_ingredients.map(prod=>(
                               " " +prod.name.split(' ').join('_')+" "
                              )):" "}`,
-                            `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`
+                             
+                             `${product.relationships.taxonomy_term__clinical_categories? product.relationships.taxonomy_term__clinical_categories.map(prod=>(
+                              " " +prod.name.split(' ').join('_')+" "
+                             )):" "}`,
+                             
+                             `${product.relationships.taxonomy_term__clinical_skin_concern? product.relationships.taxonomy_term__clinical_skin_concern.map(prod=>(
+                              " " +prod.name.split(' ').join('_')+" "
+                             )):" "}`,
+                              `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
                           ].join(" ")}
                           
                         >
@@ -1342,7 +1368,13 @@ export const fragment = graphql`
           field_clinical_skin_type {
             name
           }
-        
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+
        
           field_clinical_components {
             ... on paragraph__ingredient {
@@ -1521,13 +1553,17 @@ export const fragment = graphql`
               }
               field_medical_price
               relationships {
-                field_medical_skin_type {
-                  name
-                }
                 field_medical_ingredients {
+                  id
                   name
                 }
                 field_medical_skin_concern {
+                  name
+                }
+                field_medical_skin_type {
+                  name
+                }
+                field_medical_categories {
                   name
                 }
                 field_medical_rx {
@@ -1576,13 +1612,17 @@ export const fragment = graphql`
               }
               field_medical_price
               relationships {
-                field_medical_skin_type {
-                  name
-                }
                 field_medical_ingredients {
+                  id
                   name
                 }
                 field_medical_skin_concern {
+                  name
+                }
+                field_medical_skin_type {
+                  name
+                }
+                field_medical_categories {
                   name
                 }
                 field_medical_rx {
@@ -1634,13 +1674,17 @@ export const fragment = graphql`
                 alias
               }
               relationships {
-                field_medical_skin_type {
-                  name
-                }
                 field_medical_ingredients {
+                  id
                   name
                 }
                 field_medical_skin_concern {
+                  name
+                }
+                field_medical_skin_type {
+                  name
+                }
+                field_medical_categories {
                   name
                 }
                 field_medical_rx {
@@ -1750,16 +1794,19 @@ export const fragment = graphql`
               field_medical_price
               relationships {
                 
-                field_medical_skin_type {
-                  name
-                }
                 field_medical_ingredients {
+                  id
                   name
                 }
                 field_medical_skin_concern {
                   name
                 }
-         
+                field_medical_skin_type {
+                  name
+                }
+                field_medical_categories {
+                  name
+                }
                 field_medical_components {
                   ... on paragraph__ingredient {
                     id

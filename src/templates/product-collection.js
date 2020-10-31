@@ -75,6 +75,18 @@ export const productPageQuery = graphql`
               field_clinical_ingredients {
                 name
               }
+              field_clinical_skin_concern {
+                name
+              }
+              field_clinical_skin_type {
+                name
+              }
+              field_clinical_categories {
+                name
+              }
+              field_clinical_groups {
+                name
+              }
             }
           }
         }
@@ -133,6 +145,18 @@ export const productPageQuery = graphql`
                     title
                     relationships {
                       field_clinical_ingredients {
+                        name
+                      }
+                      field_clinical_skin_concern {
+                        name
+                      }
+                      field_clinical_skin_type {
+                        name
+                      }
+                      field_clinical_categories {
+                        name
+                      }
+                      field_clinical_groups {
                         name
                       }
                         field_clinical_components {
@@ -207,6 +231,18 @@ export const productPageQuery = graphql`
                   title
                   relationships {
                     field_clinical_ingredients {
+                      name
+                    }
+                    field_clinical_skin_concern {
+                      name
+                    }
+                    field_clinical_skin_type {
+                      name
+                    }
+                    field_clinical_categories {
+                      name
+                    }
+                    field_clinical_groups {
                       name
                     }
                       field_clinical_components {
@@ -287,6 +323,16 @@ export const productPageQuery = graphql`
                     title
                     relationships {
                       field_medical_ingredients {
+                        id
+                        name
+                      }
+                      field_medical_skin_concern {
+                        name
+                      }
+                      field_medical_skin_type {
+                        name
+                      }
+                      field_medical_categories {
                         name
                       }
                       field_medical_components {
@@ -397,6 +443,16 @@ export const productPageQuery = graphql`
                 title
                 relationships {
                   field_medical_ingredients {
+                    id
+                    name
+                  }
+                  field_medical_skin_concern {
+                    name
+                  }
+                  field_medical_skin_type {
+                    name
+                  }
+                  field_medical_categories {
                     name
                   }
                   field_medical_components {
@@ -496,6 +552,16 @@ export const productPageQuery = graphql`
             }
             relationships {
               field_medical_ingredients {
+                id
+                name
+              }
+              field_medical_skin_concern {
+                name
+              }
+              field_medical_skin_type {
+                name
+              }
+              field_medical_categories {
                 name
               }
               field_medical_components {
@@ -557,6 +623,16 @@ export const productPageQuery = graphql`
                     }
                     relationships {
                       field_medical_ingredients {
+                        id
+                        name
+                      }
+                      field_medical_skin_concern {
+                        name
+                      }
+                      field_medical_skin_type {
+                        name
+                      }
+                      field_medical_categories {
                         name
                       }
                       field_medical_components {
@@ -691,6 +767,21 @@ export const productPageQuery = graphql`
               field_clinical_sku
               title
               relationships {
+                field_clinical_ingredients {
+                  name
+                }
+                field_clinical_skin_concern {
+                  name
+                }
+                field_clinical_skin_type {
+                  name
+                }
+                field_clinical_categories {
+                  name
+                }
+                field_clinical_groups {
+                  name
+                }
                 field_clinical_image {
                   localFile {
                     childImageSharp {
@@ -786,6 +877,19 @@ export const productPageQuery = graphql`
                 field_medical_rx {
                   name
                 }
+                field_medical_ingredients {
+                  id
+                  name
+                }
+                field_medical_skin_concern {
+                  name
+                }
+                field_medical_skin_type {
+                  name
+                }
+                field_medical_categories {
+                  name
+                }
                 field_medical_image {
                   localFile {
                     childImageSharp {
@@ -863,6 +967,18 @@ export const productPageQuery = graphql`
                   }
                 }
                 field_clinical_ingredients {
+                  name
+                }
+                field_clinical_skin_concern {
+                  name
+                }
+                field_clinical_skin_type {
+                  name
+                }
+                field_clinical_categories {
+                  name
+                }
+                field_clinical_groups {
                   name
                 }
                 field_clinical_components {

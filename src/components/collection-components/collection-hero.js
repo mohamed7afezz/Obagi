@@ -1,4 +1,4 @@
-import React from "react"
+import React , {useEffect} from "react"
 import { graphql, Link } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
@@ -42,39 +42,46 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
   }
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
-    console.log('Hassanurl',window.location.href);
-    console.log('hassanpathname',new URL(window.location.href).pathname)
+
     var geturi = pathname.split('/')
     var first_url = geturi[3];
     var sec_url = geturi[4];
-    if (first_url != "medical") {
-      if (first_url != "clinical") {
-        if (document.querySelector('.collectionhero')) {
-          document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
-          document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
-          document.querySelector('.collectionhero').classList.remove('medical-bg')
-        }
-      } else {
-        if (document.querySelector('.collectionhero')) {
-          document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
-          document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
-          document.querySelector('.collectionhero').classList.remove('medical-bg')
-        }
+   
+  }
+  useEffect(() => {
+    saveuri()
+  }, [])
+function saveuri(){
+  if (first_url != "medical") {
+    if (first_url != "clinical") {
+      
+      if (document.querySelector('.collectionhero')) {
+      
+        document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+        document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
+        document.querySelector('.collectionhero').classList.remove('medical-bg')
       }
     } else {
       if (document.querySelector('.collectionhero')) {
+        document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
         document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
-        document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+        document.querySelector('.collectionhero').classList.remove('medical-bg')
       }
     }
+  } else {
+    if (document.querySelector('.collectionhero')) {
+      document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
+      document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+    }
   }
-
+}
   return (
     <div
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : (first_url === "medical" ||  nodetype === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
+        : (first_url === "medical" ||  nodetype === "medical" ||checktaxonomyType === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
           : "container-fluid collectionhero  generalcollectionhero clinicalcollectionhero medical-bg"}
+
     >
 
       {nodetype == "clinicalConcern" ? (
