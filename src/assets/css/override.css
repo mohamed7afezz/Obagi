@@ -1908,6 +1908,7 @@ height:  32px;
   #appointment .modal-dialog,#related-products .modal-dialog,#collectionPopup .modal-dialog{
     margin: 0;
   }
+
   #advancedSearch{
     padding-left: 0!important;
   }
@@ -2478,7 +2479,13 @@ padding-bottom: 0;
   height: 100%;
   flex-direction: column;
 }
+.results-card-container .Productcardtype.d-none.show-mob-result{
+  display: none !important;
+}
 @media (max-width:767px){
+   .results-card-container .Productcardtype.d-none.show-mob-result{
+display: flex !important;
+  }
   .basicbg .img-fluid-height {
     left: 52% !important;
     top: -60% ;
