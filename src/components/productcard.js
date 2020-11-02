@@ -94,7 +94,7 @@ const ProductCard = ({
       >
         {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
         </button>
-        </div> :<div className="analyzer-rate h-27"></div>}
+        </div> :<div className="analyzer-rate mt-24 h-27"></div>}
         {Type ? <h1  className="d-none Productcardtype">{Type}</h1>:''}
           
           

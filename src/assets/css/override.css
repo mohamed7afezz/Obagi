@@ -2488,6 +2488,9 @@ padding-bottom: 0;
 .h-27{
   height: 27px;
 }
+.mt-24{
+  margin-top: 24px;
+}
 @media (max-width:767px){
    .results-card-container .Productcardtype.d-none.show-mob-result{
 display: flex !important;
