@@ -2485,6 +2485,9 @@ padding-bottom: 0;
 .make-appointment.req-appointment,#req-appointment-info{
   display: none !important;
 }
+.h-27{
+  height: 27px;
+}
 @media (max-width:767px){
    .results-card-container .Productcardtype.d-none.show-mob-result{
 display: flex !important;
