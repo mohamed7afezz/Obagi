@@ -1090,7 +1090,7 @@ function saveuri(){
                                         ""
                                       )}
                                     {checkTaxonomy.field_taxonomy_hero_link ? (
-                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
+                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri.replace('internal:', '')} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
                                     ) : ""}
                                   </div>
 
