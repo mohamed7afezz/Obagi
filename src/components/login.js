@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { navigate, Link } from "gatsby"
 // import { handleLogin, isLoggedIn } from "../services/auth"
 import UserContext from "../providers/user-provider"
@@ -12,22 +12,22 @@ const spinner = css`
 `;
 const Login = () => {
   useEffect(() => {
-    if(window != undefined){
-      if(window.location.href.includes("reset_password") && document.querySelector('#reset-password')){
+    if (window != undefined) {
+      if (window.location.href.includes("reset_password") && document.querySelector('#reset-password')) {
         document.querySelector('#reset-password').classList.remove("d-none");
-        
+
         let newURL = window.location.href.split("?")[0];
         window.history.pushState('object', document.title, newURL);
-        
+
       }
-      if(window.location.href.includes("change_password") && document.querySelector('#change-password')){
+      if (window.location.href.includes("change_password") && document.querySelector('#change-password')) {
         document.querySelector('#change-password').classList.remove("d-none");
 
         let newURL = window.location.href.split("?")[0];
         window.history.pushState('object', document.title, newURL);
       }
     }
-    
+
   })
   const { user, isLoading, matchEmail, handleLogin, redirectUrl, setIsLoading } = useContext(UserContext);
 
@@ -75,7 +75,7 @@ const Login = () => {
               </div>
 
               <div id="reset-password" class="alert alert-success d-none" role="alert">
-                If the entered email address is associated with this store, you will receive a password reset email. If you don't receive this e-mail, please check your junk mail folder or contact us for further assistance. 
+                If the entered email address is associated with this store, you will receive a password reset email. If you don't receive this e-mail, please check your junk mail folder or contact us for further assistance.
               </div>
               <div id="change-password" class="alert alert-success d-none" role="alert">
                 Your password has been successfully updated.
@@ -107,14 +107,14 @@ const Login = () => {
                 </div>
                 <p className={`form-control ${matchEmail == false ? 'text-warning' : 'd-none'}`}> Email or Password is incorrect.</p>
                 <div className="check-wrapper">
-                  <div class="form-check">
+                  {/* <div class="form-check">
 
                     <label class="form-check-label terms" for="registerCheck">
                       Remember Me
-                  <input type="checkbox" class="form-check-input" id="registerCheck" />
+                      <input type="checkbox" class="form-check-input" id="registerCheck" />
                       <span class="checkmark"></span>
                     </label>
-                  </div>
+                  </div> */}
 
                   <a href="https://gtotest.mybigcommerce.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
                 </div>
