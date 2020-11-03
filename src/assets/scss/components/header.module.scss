@@ -61,6 +61,13 @@
         .nav-button {
             background: transparent;
             border: 0;
+            margin-right: 28px;
+            display: inline-block;
+            padding: 0;
+            position: relative;
+            .icon-img, &.icon-img {
+                margin: 0;
+            }
 
 
         }
@@ -301,11 +308,13 @@
         position: absolute;
         color: #ffffff;
         top: 5px;
-        left: 25px !important;
+        left: 50% !important;
         font-size: 10px;
+        transform: translateX(-50%);
 
         @include lg-screen {
             left: 0 !important;
+            transform: unset;
         }
     }
 }
