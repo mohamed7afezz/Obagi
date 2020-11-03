@@ -82,11 +82,11 @@ const StandardItem = props => {
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
                 <div className={["d-flex", ShowBagStyle.left, "col-9", "pl-0"].join(" ")}>
-                  <div className={[BagStyle.bagCount, "d-flex", "col-lg-8", "col-lg-6"].join(" ")}>
+                  <div className={[BagStyle.bagCount, "d-flex", "col-lg-7", "col-lg-6"].join(" ")}>
                     <AdjustItem {...props} item={item} cartType={cartType} />
                   </div>
                   <button href="#" onClick={() => props.removeItemFromCart(item.id)}
-                    className={[ShowBagStyle.removebtn, "col-4"].join(" ")}
+                    className={[ShowBagStyle.removebtn, "col-5"].join(" ")}
                   >
                     Remove
                     </button>
