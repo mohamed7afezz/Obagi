@@ -123,12 +123,12 @@ const StandardItem = props => {
                 {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
               </div> */}
-                <div class="col-md-2 col-6 mob-p-0">
+                <div class="col-md-2 col-4 mob-p-0">
                   <div className={[BagStyle.bagCount, "d-flex"].join(" ")}>
                     <AdjustItem {...props} item={item} cartType={cartType} />
                   </div>
                 </div>
-                <div class="col-md-2 col-3">
+                <div class="col-md-2 col-4">
                   <p
                     className={[
                       BagStyle.bagProudctPrice,
@@ -138,7 +138,7 @@ const StandardItem = props => {
                     ${parseFloat(item.list_price).toFixed(2)}
                   </p>
                 </div>
-                <div class="col-md-1 col-3">
+                <div class="col-md-1 col-4">
                   <button onClick={() => props.removeItemFromCart(item.id)} className={["btn", BagStyle.action].join(" ")}>
                     Remove
                 </button>
