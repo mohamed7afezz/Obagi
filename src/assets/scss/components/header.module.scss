@@ -11,6 +11,10 @@
     a:hover {
         text-decoration: none;
     }
+
+    @include lg-screen {
+        top: 56px;
+    }
 }
 
 .nav-container {
@@ -285,6 +289,9 @@
 .top-styles {
     // position: absolute;
     top: 0;
+    @include lg-screen {
+        top: 56px;
+    }
 }
 
 .cart-wrapper {

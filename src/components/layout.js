@@ -36,6 +36,7 @@ const Layout = ({ children,nodeType,menuType}) => {
   // Similar to componentDidMount and componentDidUpdate: 
   return (
     <div className={`node-${nodeType}`}>
+      <AboveHeader menuType={menuType} notifClass="d-none d-lg-block" id="notificationDesk"/>
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
       {/* <NavBlocks /> */}
       <div>

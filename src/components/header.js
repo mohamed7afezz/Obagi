@@ -445,7 +445,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     <header>
       <div className={[headerStyles.header, "d-lg-none"].join(" ")} id="mob-navigation">
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
-        <AboveHeader menuType={menuType} id="notificationMob"/>
+        <AboveHeader menuType={menuType} id="notificationMob" className="d-lg-none"/>
 
           <div className="row">
             <div className={headerStyles.topNav}>
@@ -540,7 +540,6 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
       <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' relative-general-nav ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
-          <AboveHeader menuType={menuType} id="notificationDesk"/>
 
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
