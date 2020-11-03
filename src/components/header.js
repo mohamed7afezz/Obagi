@@ -15,7 +15,7 @@ import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import SearchContext from "../providers/search-provider"
 import $ from 'jquery'
-
+import AboveHeader from './above-header'
 const baseUrl = process.env.Base_URL;
 
 const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
@@ -297,7 +297,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   function openSearch() {
     var search = document.getElementById("search-wrapper");
     var nav = document.getElementById("mob-navigation");
-    var not = document.getElementById("notification");
+    var not = document.getElementById("notificationMob");
     var body = document.querySelector("body");
 
     if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical"))  {
@@ -347,7 +347,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
      else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-home")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-home").style.marginTop= "192.5px";
+      // document.querySelector(".node-home").style.marginTop= "192.5px";
 
     }
     else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) {
@@ -389,7 +389,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
   function deskOpenSearch() {
     var search = document.getElementById("search-wrapper");
-    var not = document.getElementById("notification");
+    var not = document.getElementById("notificationDesk");
     var body = document.querySelector("body");
     var deskNav = document.getElementById("desk-navigation");
 
@@ -445,6 +445,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     <header>
       <div className={[headerStyles.header, "d-lg-none"].join(" ")} id="mob-navigation">
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
+        <AboveHeader menuType={menuType} id="notificationMob"/>
+
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
@@ -538,6 +540,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
       <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' relative-general-nav ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
         <div className={headerStyles.upperNav}>
+          <AboveHeader menuType={menuType} id="notificationDesk"/>
+
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
               <div className="row mr-0 ml-0">

@@ -4,7 +4,7 @@
 .header {
     position: fixed;
     z-index: 999;
-    top: 56px;
+    top: 0;
     width: 100%;
     background: #132466;
 
@@ -284,7 +284,7 @@
 
 .top-styles {
     // position: absolute;
-    top: 56px;
+    top: 0;
 }
 
 .cart-wrapper {
@@ -340,7 +340,7 @@
 .search-wrapper {
     background: #132466;
     position: fixed;
-    top: 56px;
+    top: 0;
     right: 0;
     left: 0;
     z-index: 99999;

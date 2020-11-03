@@ -6,7 +6,7 @@ import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 
 
-const AboveHeader = ({ menuType }) => {
+const AboveHeader = ({ menuType, id }) => {
 
   const {notif, setNotif} = useContext(UserContext);
     const data = useStaticQuery(graphql`
@@ -22,10 +22,16 @@ const AboveHeader = ({ menuType }) => {
     `)
 
     function closeNotification() {
-      document.getElementById("notification").style.display = "none";
-      document.getElementById("desk-navigation").style.top="0";
-      document.getElementById("mob-navigation").style.top="0";
-      document.getElementById("search-wrapper").style.top="0";
+      
+      if(document.getElementById("notificationMob").style.display !== "none") {
+        document.getElementById("notificationMob").style.display = "none";
+      }
+      if(document.getElementById("notificationDesk").style.display !== "none") {
+        document.getElementById("notificationDesk").style.display = "none";
+      }
+      // document.getElementById("desk-navigation").style.top="0";
+      // document.getElementById("mob-navigation").style.top="0";
+      // document.getElementById("search-wrapper").style.top="0";
       setNotif(false);
       if(document.getElementById("Showbag")) {
         document.getElementById("Showbag").classList.add("showbag-top");
@@ -72,16 +78,16 @@ const AboveHeader = ({ menuType }) => {
     }
 
     return (
-        <div className={aboveHeader.wrapper} id="notification">
-            <div className="container-fluid">
-                <div className="row">
+        <>
+            {/* <div className="container-fluid"> */}
+                <div className={[aboveHeader.wrapper, "row"].join(" ")} id={id}>
                     <div className={["col", aboveHeader.columnWrapper].join(" ")}>
                     <div className={aboveHeader.text}><p>Obagi Members Enjoy Complimentary Shipping on Orders of $125 or More! <Link to="/my-account/orders">Sign In</Link> or <Link to="/registration">Register Today</Link></p></div>
                     <div className={aboveHeader.closeButton}><button type="button" onClick={() => {closeNotification();}}><Img fluid={data.close.childImageSharp.fluid} className={aboveHeader.closeImg}/></button></div>
                     </div>
                 </div>
-            </div>
-        </div>
+            {/* </div> */}
+        </>
     )
 }
 
