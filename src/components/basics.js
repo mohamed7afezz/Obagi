@@ -338,13 +338,7 @@ export const fragment = graphql`
 
         relationships {
           field_card_skin_concerns {
-            ... on taxonomy_term__clinical_categories {
-              id
-              name
-              path {
-                alias
-              }
-            }
+           
             ... on taxonomy_term__medical_skin_concern {
               id
               name
