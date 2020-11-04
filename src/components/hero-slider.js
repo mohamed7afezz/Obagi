@@ -40,12 +40,10 @@ const HeroSlider = ({ node }) => {
     }
     return (
 
-        <div className={pageType === 'medical' ? "hero-slider medical-slider" : 'hero-slider clinical-slider'}>
-            <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
 
 
-                <div className="container-fluid pl-0 pr-0">
-                    <div className={["row mr-0 ml-0", heroSlider.rowWrapper].join(" ")}>
+                <div className={pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider" : 'container-fluid pl-0 pr-0 hero-slider clinical-slider'}>
+                    <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : ''}>
                         <div style={{ width: "100%" }}>
                             <Slider {...SliderSetting}>
                                 {node.relationships.field_slide.map((item, index) => {
@@ -102,8 +100,7 @@ const HeroSlider = ({ node }) => {
 
                     </div>
                 </div>
-            </div>
-        </div>
+    
     )
 }
 

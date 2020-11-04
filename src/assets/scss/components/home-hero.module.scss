@@ -7,15 +7,24 @@
     // background-repeat: no-repeat;
     background: no-repeat center center;
     background-size: cover;
-    padding-bottom: 65px;
     position: relative;
 
     @include lg-screen {
         // padding-left: 196px;
         background: no-repeat center center fixed;
-        padding-bottom: 180px;
         position: relative;
         margin-bottom: 308px;
+
+    }
+}
+
+.container-wrapper {
+    padding-bottom: 65px;
+
+    @include lg-screen {
+        position: relative;
+        padding-bottom: 180px;
+
         &::after {
             height: 196px;
             width: 197px;
@@ -46,17 +55,24 @@
 
 
     @include lg-screen {
-        margin: 232px 0 72px;
+        margin: 232px 0 30px;
 
     }
 }
 .subtitle h2{
     @include fontStyle(18, 24);
-    margin-bottom: 0;
+    margin-bottom: 15px;
+    @extend %futurapt-book;
+
+    @include lg-screen {
+        @include fontStyle(20, 32);
+    }
+
 }
 .subtitle {
+    @extend %futurapt-book;
  
-    margin-bottom: 71px;
+    margin-bottom: 56px;
 
     // @include lg-screen {
     //     display: none;

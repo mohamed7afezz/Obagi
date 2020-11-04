@@ -83,7 +83,7 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
   return (
     <div id={id} className={notifClass}>
       {/* <div className="container-fluid"> */}
-      <div className={[aboveHeader.wrapper, "row d-lg-none"].join(" ")}>
+      <div className={[aboveHeader.wrapper, "row"].join(" ")}>
         <div className={["col", aboveHeader.columnWrapper].join(" ")}>
           <div className={aboveHeader.text}><p>Obagi Members Enjoy Complimentary Shipping on Orders of $125 or More! <Link to="/my-account/orders">Sign In</Link> or <Link to="/registration">Register Today</Link></p></div>
           <div className={aboveHeader.closeButton}><button type="button" onClick={() => { closeNotification(); }}><Img fluid={data.close.childImageSharp.fluid} className={aboveHeader.closeImg} /></button></div>
@@ -91,14 +91,6 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
       </div>
       {/* </div> */}
 
-      <div className="container-fluid d-none d-lg-block">
-        <div className={[aboveHeader.wrapper, "row"].join(" ")} >
-          <div className={["col", aboveHeader.columnWrapper].join(" ")}>
-            <div className={aboveHeader.text}><p>Obagi Members Enjoy Complimentary Shipping on Orders of $125 or More! <Link to="/my-account/orders">Sign In</Link> or <Link to="/registration">Register Today</Link></p></div>
-            <div className={aboveHeader.closeButton}><button type="button" onClick={() => { closeNotification(); }}><Img fluid={data.close.childImageSharp.fluid} className={aboveHeader.closeImg} /></button></div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

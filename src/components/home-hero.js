@@ -14,24 +14,29 @@ const HomeHero = ({ node }) => {
 
   return (
     <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle].join(" ")} id="hero">
-      <div className="container-fluid">
-      <div className={["row"].join(" ")}>
-        <div className={["col col-lg-4 offset-lg-4"].join(" ")}>
-          {node.field_main_header? <div dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></div> : ""}
-          {node.field_main_subtitle? <div dangerouslySetInnerHTML={{ __html: node.field_main_subtitle.processed }} className={[homeHero.subtitle].join(" ")}></div> : ""}
-          {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
+      <div className={[homeHero.containerWrapper, "container-fluid"].join(" ")}>
+        <div className={["row"].join(" ")}>
+          <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
+            {node.field_main_header ? <div dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></div> : ""}
+            {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
+          </div>
         </div>
-      </div>
-      <div className="row">
-        {node.relationships.field_box.map((box, i) => {
-          return (
-            <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.original.src); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src); }}>
-              <HeroBox node={box} />
-            </div>
-          )
-        })}
-        <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div>
-      </div>
+        <div className="row">
+          <div className="col-12 col-lg-8 offset-lg-2">
+            {node.field_main_subtitle ? <div dangerouslySetInnerHTML={{ __html: node.field_main_subtitle.processed }} className={[homeHero.subtitle].join(" ")}></div> : ""}
+
+          </div>
+        </div>
+        <div className="row">
+          {node.relationships.field_box.map((box, i) => {
+            return (
+              <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.original.src); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src); }}>
+                <HeroBox node={box} />
+              </div>
+            )
+          })}
+          <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div>
+        </div>
       </div>
     </div>
   );

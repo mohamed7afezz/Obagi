@@ -10,8 +10,7 @@ const Solutions = ({ node }) => {
         return ( changelink.uri.replace('internal:', '') )
   }
     return (
-        <div className={solutionsStyles.wrapper}>
-            <div className="container-fluid">
+            <div className={[solutionsStyles.wrapper, "container-fluid"].join(" ")}>
                 <div className="row">
                     <div className="col-12 d-lg-none">
                         <div className={solutionsStyles.containerWrapper}>
@@ -53,7 +52,6 @@ const Solutions = ({ node }) => {
 
                 </div>
             </div>
-        </div>
     )
 }
 

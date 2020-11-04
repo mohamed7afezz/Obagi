@@ -16,6 +16,11 @@
     }
 }
 
+@media (max-width: 991px) {
+    .col-padding {
+        padding-right: 0;
+    }
+}
 .col-full-padding {
     padding: 0;
     @include lg-screen {

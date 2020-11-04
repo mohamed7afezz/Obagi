@@ -3,10 +3,11 @@
 
 .wrapper {
     background: rgba(134, 140, 210, 0.1);
-    padding: 80px 0 32px;
-
+    padding-top: 80px;
+    padding-bottom: 32px;
     @include lg-screen {
-        padding: 84px 0 112px;
+        padding-top: 84px;
+        padding-bottom: 112px;
     }
 
 }
@@ -56,18 +57,16 @@
 }
 
 .link {
-    display: inline-block;
-    padding: 24px 78px;
-    margin: 40px 41px 48px;
+    padding: 24px;
 
-    @include lg-screen {
-        margin: 40px 48px 48px;
-        padding: 24px 93px;
-    }
 }
 
 .button-wrapper {
+    padding: 40px 41px 48px;
+
     @include md-screen {
+        padding: 40px 48px 48px;
+
         margin-top: auto;
     }
 }
