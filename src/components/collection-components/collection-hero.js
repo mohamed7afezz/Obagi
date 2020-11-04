@@ -4,35 +4,44 @@ import Collectionherostyle from "../../assets/scss/components/collection-hero.mo
 import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;
+  let getname;
   if (nodetype == "clinicalConcern") {
+    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
   } else if (nodetype == "clinicalCategories") {
+    getname=checkTaxonomy = node.data.taxonomyTermClinicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermClinicalCategories.relationships
   } else if (nodetype == "medicalConcern") {
+    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships
   } else if (nodetype == "medicalCategories") {
+    getname=checkTaxonomy = node.data.taxonomyTermMedicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships
   } else if (nodetype == "clinicalGroups") {
+    getname=checkTaxonomy = node.data.taxonomyTermClinicalGroups.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
 
   } else if (nodetype == 'medicalLine') {
+    getname=checkTaxonomy = node.data.taxonomyTermMedicalProductLines.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
   } else if (nodetype == 'skinClinicalType') {
+    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
 
   } else if (nodetype == 'skinMedicalType') {
-
+    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalSkinType.relationships;
   } else if (nodetype == 'MedicalIngredients') {
-
+    getname=checkTaxonomy = node.data.taxonomyTermMedicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalIngredients.relationships
 
   } else if (nodetype == "ClinicalIngredients") {
+    getname=checkTaxonomy = node.data.taxonomyTermClinicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalIngredients.relationships
 
@@ -40,6 +49,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
+  console.log('hassan12',getname)
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
@@ -100,7 +110,7 @@ function saveuri(){
               {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
               </div> : ""}
               <div className="offset-lg-1">
@@ -195,7 +205,7 @@ function saveuri(){
               {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
               </div> : ""}
               <div className=" offset-lg-1">
@@ -291,7 +301,7 @@ function saveuri(){
               {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
               </div> : ""}
               <div className="col-12 col-lg-11 offset-lg-1 ">
@@ -386,7 +396,7 @@ function saveuri(){
               {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
               </div> : ""}
               <div className="col-12  col-lg-11 offset-lg-1 ">
@@ -481,7 +491,7 @@ function saveuri(){
             {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link> /{" "}
-                <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title:getname}</Link>:""}
               </p>
             </div> : ""}
             <div className="col-12 col-lg-11 offset-lg-1">
@@ -576,7 +586,7 @@ function saveuri(){
                         {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> : ""}
                         <div className="col-12 col-lg-11 offset-lg-1 ">
@@ -673,7 +683,7 @@ function saveuri(){
                         {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> : ""}
                         <div className="col-12 col-lg-11 offset-lg-1 ">
@@ -768,7 +778,7 @@ function saveuri(){
                         {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> : ""}
                       </div>
@@ -859,9 +869,10 @@ function saveuri(){
                     >
                       <div className="row">
                         {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> : ""}
                       </div>
@@ -954,8 +965,9 @@ function saveuri(){
                       <div className="row">
                         {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
                           <p className="breadcramp">
+                    <h1>{getname}</h1>
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> : ""}
                       </div>
@@ -1049,7 +1061,7 @@ function saveuri(){
                                     <div className="breadcramp-con col-12">
                                       <p className="breadcramp">
                                         <Link to="/">Home</Link> /{" "}
-                                        <Link to={'/' + first_url}> {first_url}</Link> / <Link to={collectionUrl ? collectionUrl : '/' + first_url + '/' + sec_url}>{sec_url}</Link>
+                                        <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_page_title:getname}</Link>:""}
                                       </p>
                                     </div>
                                     
@@ -1141,12 +1153,16 @@ export const fragment = graphql`
       title
       uri
     }
+    field_taxonomy_page_url
+    field_taxonomy_page_title
   }
 
   fragment collectionhero on taxonomy_term__clinical_skin_concern {
     id
     relationships {
       field_hero_paraprapgh_taxonomy {
+        field_taxonomy_page_url
+        field_taxonomy_page_title
         field_taxonomy_hero_para_title
         field_taxonomy_hero_para_descrip{
             processed
@@ -1178,6 +1194,8 @@ export const fragment = graphql`
     }
     field_taxonomy_hero_para_title
     field_taxonomy_hero_paraprapgh_t
+    field_taxonomy_page_url
+    field_taxonomy_page_title
     relationships {
       field_taxonomy_hero_paraprapgh_i {
         localFile {
