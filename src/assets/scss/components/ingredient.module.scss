@@ -68,6 +68,11 @@
     @include md-screen {
         display: block;
     }
+    li{
+        font-size: 18px;
+        line-height: 32px;
+        color: #fff;
+    }
 }
 .ingredientimagehead{
     display: block;
