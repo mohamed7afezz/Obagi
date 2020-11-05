@@ -49,7 +49,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-  console.log('hassan12',getname)
+  console.log('hassan12',checkTaxonomy)
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
@@ -59,6 +59,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
    
   }
   useEffect(() => {
+    
     saveuri()
   }, [])
 function saveuri(){
@@ -76,12 +77,14 @@ function saveuri(){
         document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
         document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
         document.querySelector('.collectionhero').classList.remove('medical-bg')
+        document.querySelector('.breadcramp-con').classList.remove('hide')
       }
     }
   } else {
     if (document.querySelector('.collectionhero')) {
       document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
       document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+      document.querySelector('.breadcramp-con').classList.remove('hide')
     }
   }
 }
@@ -102,17 +105,18 @@ function saveuri(){
               "col-12",
               "col-lg-4",
               "offset-lg-1",
+              "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
             ].join(" ")}
           >
             <div className="row">
-              {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
-              </div> : ""}
+              </div> }
               <div className="offset-lg-1">
                 {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -197,17 +201,18 @@ function saveuri(){
               "col-12",
               "col-lg-4",
               "offset-lg-1",
+              "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
             ].join(" ")}
           >
             <div className="row">
-              {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
-              </div> : ""}
+              </div> }
               <div className=" offset-lg-1">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -293,17 +298,18 @@ function saveuri(){
               "col-12",
               "col-lg-4",
               "offset-lg-1",
+              "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
             ].join(" ")}
           >
             <div className="row">
-              {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
-              </div> : ""}
+              </div> }
               <div className="col-12 col-lg-11 offset-lg-1 ">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -386,6 +392,7 @@ function saveuri(){
           <div
             className={[
               "col-12",
+              "ClinicalIngredientsclass",
               "col-lg-4",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
@@ -393,16 +400,16 @@ function saveuri(){
             ].join(" ")}
           >
             <div className="row">
-              {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
-                <p className="breadcramp">
+              {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+                <p className="breadcramp ">
                   <Link to="/">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
-              </div> : ""}
+              </div> }
               <div className="col-12  col-lg-11 offset-lg-1 ">
                 {checkTaxonomy.field_hero_ingredients_taxonomy ? (
                   <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
-                    {" "}
+                   
                     {
                       checkTaxonomy.field_hero_ingredients_taxonomy
                         .field_taxonomy_hero_paraprapgh_t
@@ -483,17 +490,18 @@ function saveuri(){
             "col-12",
             "col-lg-4",
             "offset-lg-1",
+            "ClinicalIngredientsclass",
             Collectionherostyle.Collectionheroleftcol,
             "Collectionheroleftcol",
           ].join(" ")}
         >
           <div className="row">
-            {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+            { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link> /{" "}
                 <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title:getname}</Link>:""}
               </p>
-            </div> : ""}
+            </div> }
             <div className="col-12 col-lg-11 offset-lg-1">
               {checkTaxonomy.field_taxonomy_hero ? (
                 <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
@@ -578,17 +586,18 @@ function saveuri(){
                         "col-12",
                         "col-lg-4",
                         "offset-lg-1",
+                        "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
                     >
                       <div className="row">
-                        {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                        {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
-                        </div> : ""}
+                        </div> }
                         <div className="col-12 col-lg-11 offset-lg-1 ">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
@@ -674,18 +683,19 @@ function saveuri(){
                       className={[
                         "col-12",
                         "col-lg-4",
+                        "ClinicalIngredientsclass",
                         "offset-lg-1",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
                     >
                       <div className="row">
-                        {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
-                        </div> : ""}
+                        </div> }
                         <div className="col-12 col-lg-11 offset-lg-1 ">
                           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
@@ -770,17 +780,18 @@ function saveuri(){
                         "col-12",
                         "col-lg-4",
                         "offset-lg-1",
+                        "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
                     >
                       <div className="row">
-                        {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
-                        </div> : ""}
+                        </div> }
                       </div>
                       <div className="col-12 col-lg-11 offset-lg-1 ">
                         {checkTaxonomy.field_hero_parag_taxonomy ? (
@@ -863,18 +874,19 @@ function saveuri(){
                         "col-12",
                         "col-lg-4",
                         "offset-lg-1",
+                        "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
                     >
                       <div className="row">
-                        {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
 
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
-                        </div> : ""}
+                        </div> }
                       </div>
                       <div className="col-12 col-lg-11 offset-lg-1 ">
                         {checkTaxonomy.field_hero_taxonomy ? (
@@ -958,18 +970,19 @@ function saveuri(){
                         "col-12",
                         "col-lg-4",
                         "offset-lg-1",
+                        "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
                     >
                       <div className="row">
-                        {first_url === "clinical"  || first_url === "medical" ? <div className={["breadcramp-con", "col-12"].join(" ")}>
+                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
-                    <h1>{getname}</h1>
+              
                             <Link to="/">Home</Link> /{" "}
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
-                        </div> : ""}
+                        </div> }
                       </div>
                       <div className="col-12 col-lg-11 offset-lg-1 ">
                         {checkTaxonomy.field_hero_category_taxonomy ? (
@@ -1052,13 +1065,14 @@ function saveuri(){
                                   "col-12",
                                   "col-lg-5",
                                   "offset-lg-1",
+                                  "ClinicalIngredientsclass",
                                   Collectionherostyle.Collectionheroleftcol,
                                   "Collectionheroleftcol",
                                 ].join(" ")}
                               >
                                 <div className="row m-0">
                                   
-                                    <div className="breadcramp-con col-12">
+                                    <div className=" breadcramp-con hide col-12">
                                       <p className="breadcramp">
                                         <Link to="/">Home</Link> /{" "}
                                         <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_page_title:getname}</Link>:""}
