@@ -290,14 +290,14 @@ export const CartProvider = ({ children }) => {
                 option_value: parseFloat(productPremierPoint.premierPoints),
               }]  
             })
-          }  else{
-            body.push({
-              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
-              product_id: parseInt(element, 10),
-              
+          }  
+        }else{
+          body.push({
+            quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+            product_id: parseInt(element, 10),
             
-            })
-          }
+          
+          })
         }
         
         

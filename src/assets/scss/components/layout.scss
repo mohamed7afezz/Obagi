@@ -91,7 +91,7 @@ p {
     text-align: center;
     text-transform: uppercase;
     @include fontStyle(19, 24);
-    letter-spacing: 11px;
+    letter-spacing: 8px;
     padding-left: 10px;
 
     @include lg-screen {

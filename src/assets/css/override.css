@@ -207,6 +207,24 @@ right: 0;
   #Showbag .modal-header .close{
     right: 4%;
   }
+  h1.common-p{      
+  
+    font-size: 36px;
+    line-height: 46px;
+    font-family: futura-pt,sans-serif;
+  }
+  h2.common-p{
+    font-size: 28px;
+    line-height: 40px;
+  }
+  h3.common-p{
+    font-size: 20;
+    line-height: 24px;
+  }
+  p.common-p{
+    font-size: 16px;
+    line-height: 24px;
+  }
   .remove-mob-padding{
     margin-left: 0;
     margin-right: 0;
@@ -2771,4 +2789,35 @@ min-height: 0;
 }
 .cartButton.add-btn-ready{
   display: block;
+}
+h1.common-p{      
+  font-weight: 300;
+  font-style: normal;
+  padding-top: 80px;
+  text-align: left;
+  padding: 56px 0 39.5px;
+  font-size: 54px;
+  line-height: 72px;
+  font-family: futura-pt,sans-serif;}
+
+
+
+
+h2.common-p{
+font-weight: 300;
+  font-size: 28px;
+  line-height: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-family: futura-pt,sans-serif;
+}
+
+h3.common-p {
+font-size: 40px;line-height: 56px;font-weight: 300;
+}
+
+
+
+p.common-p{
+font-weight: 300;font-size: 20px;line-height: 34px;padding-top: 20px;padding-bottom:40px;
 }

@@ -2,7 +2,7 @@
 @import '../grid/grid.scss';
 
 .wrapper {
-    padding: 80px 0;
+    padding-top: 80px;
     background: rgba(134, 140, 210, 0.1);
     padding-bottom: 130px;
     @include md-screen{
