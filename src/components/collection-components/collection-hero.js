@@ -307,7 +307,16 @@ function saveuri(){
               { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?
+                    <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?
+                      checkTaxonomy.field_taxonomy_page_title:getname}</Link>:
+                      checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url?
+                       <Link dangerouslySetInnerHTML={{
+                        __html: checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title?
+                        checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title:getname}} to={checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url}>
+                         </Link>
+                      :""
+                      }
                 </p>
               </div> }
               <div className="col-12 col-lg-11 offset-lg-1 ">
@@ -403,7 +412,9 @@ function saveuri(){
               {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp ">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url? 
+                  <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title?
+                  checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                 </p>
               </div> }
               <div className="col-12  col-lg-11 offset-lg-1 ">
