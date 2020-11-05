@@ -176,7 +176,8 @@ const Basics = ({ node }) => {
                                       ""
                                     )}
                                   {item.relationships &&
-                                    item.relationships.field_card_skin_concerns ? (
+                                    item.relationships.field_card_skin_concerns &&
+                                    item.relationships.field_card_skin_concerns.length > 0 ? (
                                       <div className={basicsStyles.perfect}>
                                         <span className={basicsStyles.catTitle}>
                                           Perfect for:&nbsp;

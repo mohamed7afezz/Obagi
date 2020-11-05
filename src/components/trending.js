@@ -6,8 +6,7 @@ import trendingStyles from '../assets/scss/components/trending.module.scss'
 
 const Trending = ({ node }) => {
   return (
-    <div className={trendingStyles.wrapper}>
-      <div className="container-fluid">
+      <div className={[trendingStyles.wrapper, "container-fluid"].join(" ")}>
         <div className="row">
           {node.relationships.field_trending_card.map((item, index) => {
             return (
@@ -39,7 +38,6 @@ const Trending = ({ node }) => {
           })}
         </div>
       </div>
-    </div>
   )
 }
 

@@ -261,8 +261,7 @@ const ProductLine = ({ node }) => {
 
 
   return (
-    <div className={[lineStyles.wrapper, "product-line"].join(" ")}>
-      <div className="container-fluid">
+      <div className= {["container-fluid product-line", lineStyles.wrapper].join(" ")}>
         <div className="row">
           <div className="col-12">
             {node.field_product_line_title ? (
@@ -478,7 +477,6 @@ const ProductLine = ({ node }) => {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 
