@@ -7,6 +7,7 @@ import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import CartContext from '../../providers/cart-provider';
 import { MedicalResultType, ClinicalResultType } from './brandJourney';
+import {checkStock} from '../../assets/js/stock';
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -54,20 +55,24 @@ const Resulte = (props) => {
                 q7: props.questionsResult.q7
               })
         })
-            .then(res => res.json())
-            .then(response => {
-                let listOfProducts = searchInIndexById(response, is_medical);
-                if (is_medical) {
-                    setMedicalProduct(listOfProducts);
-                } else {
-                    setClinicalProduct(listOfProducts);
-                }
+        .then(res => res.json())
+        .then(response => {
+            let listOfProducts = searchInIndexById(response, is_medical);
+            if (is_medical) {
+                setMedicalProduct(listOfProducts);
+            } else {
+                setClinicalProduct(listOfProducts);
+            }
 
-                setLoading(true)
-            })
-            .catch(error => {
-                setLoading(true)
-            });
+            setLoading(true);
+
+            if(typeof window != undefined ){
+                checkStock(baseUrl);
+            }
+        })
+        .catch(error => {
+            setLoading(true)
+        });
     }, [])
     function startOver(e) {
         props.passChildData('q2', '', 1);

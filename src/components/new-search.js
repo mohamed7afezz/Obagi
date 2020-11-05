@@ -6,9 +6,10 @@ import {CustomSelect} from '../assets/js/custom-select'
 import searchResultStyle from '../assets/scss/components/search-results.module.scss'
 import SearchContext from "../providers/search-provider"
 import $ from "jquery"
+import {checkStock} from '../assets/js/stock';
+const baseUrl = process.env.Base_URL;
 
 const NewSearchProductsResult = ({ node }) => {
-
 
   const {clinicalSearchResults} = useContext(SearchContext);
   const {medicalSearchResults} = useContext(SearchContext);
@@ -28,7 +29,9 @@ const NewSearchProductsResult = ({ node }) => {
   }
 
   useEffect(() => {
-    
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
     isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
       CustomSelect();

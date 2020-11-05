@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext,useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import BagStyle from "../../assets/scss/components/yourbag.module.scss"
 import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
@@ -21,6 +21,7 @@ import ProductSuggestion from "../product-components/productsuggestion"
 import SearchContext from "../../providers/search-provider"
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import {checkStock} from '../../assets/js/stock';
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -160,9 +161,12 @@ const StandardItem = props => {
   )
 }
 
-const Base_URL = process.env.Base_URL;
-
 const YourBag = (props, { notificationId }) => {
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
+  })
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart

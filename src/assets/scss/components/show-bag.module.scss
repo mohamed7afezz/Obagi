@@ -361,23 +361,3 @@
 
 }
 
-.cart-button {
-    text-transform: uppercase;
-    margin-left: 22px;
-    display: inline-block;
-    width: 100%;
-    white-space: nowrap;
-    padding: 7px 12px;
-    @include fontStyle(12, 16);
-    @extend %futurapt-bold;
-    letter-spacing: 1.2px;
-    text-align: center;
-    background: #ffffff;
-    border: 1px solid #132466;
-    border-radius: 6px;
-
-
-    @include lg-screen {
-        margin-left: 84px;
-    }
-}

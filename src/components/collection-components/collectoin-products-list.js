@@ -6,11 +6,12 @@ import {CustomSelect} from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
 import { checkDataCondition } from "../paragraphs-helper"
 import {checkStock} from '../../assets/js/stock';
+const baseUrl = process.env.Base_URL;
 
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   useEffect(() => {
     if(typeof window != undefined ){
-      checkStock();
+      checkStock(baseUrl);
     }
   }, [])
   const dataType = checktaxonomyType? checktaxonomyType : (node.relationships.field_vocabularies[0].path?(node.relationships.field_vocabularies[0].path.alias.includes('medical')? 'medical' : 'clinical') : '');

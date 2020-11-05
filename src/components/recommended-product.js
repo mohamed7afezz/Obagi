@@ -28,7 +28,7 @@ const addingToCart = value && value.state.addingToCart
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div>${recPrice}</div>
-                    <button className={ShowBagStyle.cartButton}
+                    <button className={'cartButton'}
                     data-Sku={Sku}
                         onClick={() => {
                             let quantity = 1;

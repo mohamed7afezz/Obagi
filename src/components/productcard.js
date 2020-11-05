@@ -135,7 +135,7 @@ const ProductCard = ({
           </div>
         ) : (
           ""
-        )}<button data-Sku={Sku}  className={["the-new-product-button"].join(" ")} 
+        )}<button data-Sku={Sku}  className={["the-new-product-button desk-analyzer-btn"].join(" ")} 
         onClick={() => {
           let quantity = 1;
           addToCart(productId,false,quantity,price,premierid,feild_preimer);

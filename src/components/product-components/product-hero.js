@@ -15,9 +15,15 @@ import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
 import freeimg from "../../assets/images/rsz_thumbnail.png"
 import { func } from "prop-types"
+import {checkStock} from '../../assets/js/stock';
+const baseUrl = process.env.Base_URL;
 
 const ProductHero = ({ data, nodeType }) => {
-  
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
+  }, [])
   const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
