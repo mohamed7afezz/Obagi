@@ -8,7 +8,6 @@ import coloredBoxesStyle from '../assets/scss/components/section-with-colored-bo
 const SectionWithColoredBoxes = ({ node }) => {
 
 
-  console.log("colored", node.field_image_is_right, node.field_not_homepage)
   return (
     <div className={(node.field_not_homepage && node.field_image_is_right)? coloredBoxesStyle.notHome + " container-fluid " + coloredBoxesStyle.imageRight : (!node.field_image_is_right && node.field_not_homepage)? "container-fluid " + coloredBoxesStyle.notHome : "container-fluid"} id="colored-boxes">
       <div className={["row", coloredBoxesStyle.bigSection].join(" ")}>

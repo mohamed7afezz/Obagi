@@ -4,7 +4,6 @@ import loginMenu from '../assets/scss/components/login-menu.module.scss'
 import Login from './login'
 const LoginMenu = ({ node, currentPage }) => {
 
-    console.log("ash", currentPage);
     return (
 
         <>

@@ -12,7 +12,7 @@ const PremierVideo = ({ node }) => {
         }
         
         let url = event.target.parentNode.getAttribute("data-link");
-        console.log(url)
+
         playerOpts.url = url;
        
         if (!playerOpts.url.indexOf('youtube') > -1 || !playerOpts.url.indexOf('youtu') > -1) {
