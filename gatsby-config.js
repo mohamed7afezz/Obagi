@@ -32,6 +32,7 @@ module.exports = {
       options: {
         baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+        concurrentFileRequests: 1,
       },
     },
  {
