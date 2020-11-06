@@ -1072,7 +1072,7 @@ function saveuri(){
                 ) : (
                             <div className={"row hero-row-wrapper"}>
                               <div
-                                className={[
+                               className={[
                                   "col-12",
                                   "col-lg-5",
                                   "offset-lg-1",
@@ -1135,6 +1135,10 @@ function saveuri(){
                               </div>
                               {checkTaxonomy.relationships ? (
                                 <div
+                                style={{background:`url(${checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? 
+                                  checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ?
+                                   checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src:"":""})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                                
                                   className={[
                                     "col-lg-5",
                                     "col-12",
@@ -1144,20 +1148,7 @@ function saveuri(){
                                 >
 
 
-                                  {checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? (
-                                    checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                      <img
-                                        className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                        src={
-                                          checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src
-                                        }
-                                      />
-                                    ) : (
-                                        ""
-                                      )
-                                  ) : (
-                                      ""
-                                    )}
+                                
                                 </div>
 
                               ) : (

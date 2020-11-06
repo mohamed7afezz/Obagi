@@ -5,7 +5,14 @@ import Img from "gatsby-image"
 import lineStyles from "../assets/scss/components/product-line.module.scss"
 import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
 import ProductCard from "../components/productcard"
+import {checkStock} from '../assets/js/stock';
+const baseUrl = process.env.Base_URL;
 const ProductLine = ({ node }) => {
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
+  }, [])
   const [nav1, setNav1] = React.useState(null)
   const [nav2, setNav2] = React.useState(null)
   const [slidesCurr, setSlidesCurr] = useState([]);

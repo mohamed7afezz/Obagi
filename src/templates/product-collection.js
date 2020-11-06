@@ -17,7 +17,7 @@ const ClinicalCollectionTemp = (props, data)  => {
                     : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
                     : "";
     // let medicalProLi = props.data.tax
-    console.log("ashhhh", medicalTaxMeta)
+  
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
         <SEO title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}/>

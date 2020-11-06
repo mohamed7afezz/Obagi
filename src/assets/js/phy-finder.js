@@ -22,7 +22,7 @@ class Temps {
                        <div class="row phone"><a href="tel:${obj.phone}">${obj.phone}</a></div>
                         <div class="row sales-email hide">${obj.email}</div>
                          <div class="row links">
-                           <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'products' : 'product'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">view website</a>` : ''}
+                           <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'Products Available' : 'Product Available'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">View Website</a>` : ''}
                          </div>
                     </div>
                 </div>

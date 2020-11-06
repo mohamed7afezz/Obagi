@@ -14,7 +14,7 @@ const CulsionFinalSection = ({ node }) => {
     return  <div className={finalSection.describtion} dangerouslySetInnerHTML={{ __html: item.processed }}></div>
 
     })}
-    <Link className={[finalSection.link,"col-12","col-lg-4"].join(" ")} to={node.field_final_section_link.uri}>{node.field_final_section_link.title}</Link>
+    <Link className={[finalSection.link,"col-12","col-lg-4"].join(" ")} to={node.field_final_section_link.uri.replace('internal:', '')}>{node.field_final_section_link.title}</Link>
      </div>
           
         </div>

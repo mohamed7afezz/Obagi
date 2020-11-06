@@ -257,9 +257,7 @@ align-items: center;
     text-transform: uppercase;
 
   
-    @include md-screen{
-        display: inline-block;
-    }
+ 
 }
 .popover{
     background-color: transparent;
