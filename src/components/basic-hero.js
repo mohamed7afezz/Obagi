@@ -61,6 +61,9 @@ const Basichero = ({ node }) => {
           </div>
         
             <div
+            style={{ background: `url(${node.relationships.field_basic_img_hero_paragrapgh? node.relationships.field_basic_img_hero_paragrapgh
+                           
+              .localFile.childImageSharp.original.src:""})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
               className={[
                 "col-lg-5",
                 "offset-lg-1",                
@@ -70,19 +73,7 @@ const Basichero = ({ node }) => {
               ].join(" ")}
             >
 
-              { 
-                  node.relationships.field_basic_img_hero_paragrapgh?
-                      <img
-                        className={[basichero.allheight,"img-fluid-height"].join(" ")}
-                        src={
-                          node.relationships.field_basic_img_hero_paragrapgh
-                           
-                            .localFile.childImageSharp.original.src
-                        }
-                      />
-                  :""
-                
-                }
+          
             </div>
 
           

@@ -326,6 +326,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @include md-screen{
+    flex: 0 0 67.5%;
+}
 }
 
 .mini-wrapper {
@@ -334,7 +337,10 @@
     @include fontStyle(14, 16);
     @extend %futurapt-medium;
 }
-
+.upbp{
+    padding-top: 7.6px;
+    padding-bottom: 7.6px;
+}
 .product-image {
     width: 100%;
     padding-right: 16px;

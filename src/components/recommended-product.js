@@ -27,7 +27,7 @@ const addingToCart = value && value.state.addingToCart
                 <Link to={recLink} className={ShowBagStyle.productName}><div><span dangerouslySetInnerHTML={{__html: recTitle}}></span></div></Link>
 
                 <div className={ShowBagStyle.miniWrapper}>
-                    <div>${recPrice}</div>
+                    <div className={ShowBagStyle.upbp}>${recPrice}</div>
                     <button className={'cartButton'}
                     data-Sku={Sku}
                         onClick={() => {

@@ -8,7 +8,7 @@ import CartContext from "../providers/cart-provider"
 import orderHistoryStyles from "../assets/scss/components/order-history.module.scss"
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-
+import {checkStock} from '../assets/js/stock';
 import $ from "jquery"
 // const $ = require('jQuery');
 
@@ -131,6 +131,9 @@ const OrderDetails = (props, { node }) => {
   }
 
   useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+  }
     getDetails()
     getProducts()
     getshipment()

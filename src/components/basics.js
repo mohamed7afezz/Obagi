@@ -4,10 +4,15 @@ import { graphql, Link } from "gatsby"
 import basicsStyles from "../assets/scss/components/basics.module.scss"
 import ProductCard from "../components/productcard"
 import Slider from "react-slick"
-
+import {checkStock} from '../assets/js/stock';
+const baseUrl = process.env.Base_URL;
 
 const Basics = ({ node }) => {
-  
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
+  }, [])
   const [slidesCurr, setSlidesCurr] = useState([]);
 
   Object.defineProperty(Array.prototype, 'flat', {

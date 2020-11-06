@@ -155,7 +155,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   } else {
     checkTaxonomy = node
   }
-console.log('hassan11',node)
+console.log('hassan16',node)
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)
@@ -985,7 +985,7 @@ console.log('hassan11',node)
                               price={product.field_clinical_price}
                               rate="0"
                               productId={product.field_clinical_id}
-                              Sku={item.field_clinical_sku}
+                              Sku={product.field_clinical_sku}
                             />
                             <div
                               class="d-none ingredient"

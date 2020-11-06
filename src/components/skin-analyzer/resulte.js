@@ -34,7 +34,6 @@ const Resulte = (props) => {
     var productsid=[];
     var fproductsid=[];
     var productsPremierPoints=[];
-    console.log(props)
     const value = useContext(CartContext)
     const addMultiToCart = value && value.addMultiToCart;
     const addingToCart = value && value.state.addingToCart;
