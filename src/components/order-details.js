@@ -69,7 +69,7 @@ const OrderDetails = (props, { node }) => {
   }
 
   const [products, setProducts] = useState([])
-  console.log('zaki',products)
+
   async function getshipment() {
     const getshipping = await (
       await fetch(
@@ -699,7 +699,6 @@ let getallcheck =()=>{
                 onClick={() => {
                   productsOid= saveprodarr;let quantity = 1;
                   savearr =productsPremierPoints
-                  console.log(saveprodarr,"hassan33")
                   addMultiToCart(productsOid, false, quantity,total,savearr );
               }}
               disabled={arraysEqual(addingToCart,productsOid)}

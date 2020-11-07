@@ -49,7 +49,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-  console.log('hassan12',checkTaxonomy)
+
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
