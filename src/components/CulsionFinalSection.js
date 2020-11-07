@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import finalSection from '../assets/scss/components/final-section.module.scss'
 const CulsionFinalSection = ({ node }) => {
-  console.log('hassan',node)
+
     return (
       <div className={finalSection.final}>
       <div className={["container-fluid "].join(" ")}>

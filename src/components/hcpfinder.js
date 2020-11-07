@@ -29,7 +29,7 @@ function removevaild(e) {
   item.classList.add('hide')
 }
 const sendFormValues = (updatedItemData) => {
-  console.log(updatedItemData)
+
   fetch(
     `${baseUrl}webform_rest/submit`,
     {

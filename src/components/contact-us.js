@@ -15,7 +15,6 @@ export default function Contact() {
 
         let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
 
-        console.log(i)
         for (let j = 0; j < i.length; j++) {
 
             i[j].parentElement.classList.remove('error')
@@ -27,7 +26,7 @@ export default function Contact() {
                 item.classList.remove('error');
 
             } else if (item.nextSibling != null && !item.nextSibling.classList.contains('radiomark')) {
-                console.log('aa')
+
                 item.nextSibling.classList.add('hide')
 
 
@@ -72,7 +71,6 @@ export default function Contact() {
         var list = document.querySelectorAll('.needs-validations input:invalid');
         let text_area1 = document.querySelectorAll('#contactDesc:invalid')
         if (text_area1.length > 0) {
-            console.log(text_area1)
             text_area1[0].parentElement.classList.add('error')
             text_area1[0].nextSibling.classList.remove('hide')
         }
@@ -90,7 +88,6 @@ export default function Contact() {
             }
             obj['description'] = `${document.querySelector("#contactDesc").value}`
             obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
-            console.log(obj)
             sendFormValues({ obj })
         }
     }

@@ -21,6 +21,9 @@ body {
 }
 .node-home{
     margin-top: 212.5px;
+    @include md-screen {
+        margin-top: 192.5px;
+    }
     @include lg-screen {
         margin-top: 0;
     }
@@ -31,6 +34,9 @@ p {
 .node-medical, .node-clinical{
    
     margin-top:  155.5px;
+    @include md-screen {
+        margin-top: 135.5px;
+    }
     @include lg-screen {
         margin-top: 0;
     }
@@ -3581,5 +3587,16 @@ p {
 .sm-visibility {
     @include lg-screen {
         display: none;
+    }
+}
+
+.collectionhero .collection-footnote-strong {
+    @include fontStyle(16, 24);
+    @extend %futurapt-bold;
+    color: #132466;
+    margin-top: 16px;
+
+    @include lg-screen {
+        margin-top: 32px;
     }
 }

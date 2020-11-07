@@ -71,6 +71,7 @@ query($slug: String!) {
                 ...paragraphTaxonomyHeroParaprapgh
                 ...paragraphScientificTowCols
                 ...paragraphScientificFooter
+                ...paragraphInternational
             }
         }
         field_meta_tags {

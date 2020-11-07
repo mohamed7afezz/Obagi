@@ -9,12 +9,12 @@
     line-height: 24px;
     letter-spacing: 1.6px;
     color: #132466;
+    padding-left: 30px;
     
     position:relative;
     padding-bottom: 24px;
     @include md-screen{
         padding-bottom: 40px;
-        padding-left: 30px;
     }
 }
 .type:before{
@@ -75,9 +75,11 @@ top: 5px;
 .Collectionheroleftcol{
     padding-top: 48px;
     padding-bottom: 48px;
-    text-align: center;
+    text-align: left;
+
     @include md-screen{
-        text-align: left;
+    }
+    @include lg-screen {
         padding-top: 195px;
         padding-bottom: 112px;
     }

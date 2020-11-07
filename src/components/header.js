@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import PropTypes from "prop-types"
+import PropTypes, { func } from "prop-types"
 
 import headerStyles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
@@ -18,14 +18,14 @@ import $ from 'jquery'
 import AboveHeader from './above-header'
 const baseUrl = process.env.Base_URL;
 
-const Header = ({ siteTitle, nodeType, menuType,fragment }) => {
+const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
 
-  const {search,setSearchIndex,searchInIndex} = useContext(SearchContext)
+  const { search, setSearchIndex, searchInIndex } = useContext(SearchContext)
 
-  const {user, handleLogout} = useContext(UserContext);
- 
+  const { user, handleLogout } = useContext(UserContext);
+
   const location = useLocation();
- 
+
   const data = useStaticQuery(graphql`
     query {
       ClinicalProduct: allNodeClinicalProduct {
@@ -225,28 +225,28 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
     }
   `)
-  setSearchIndex(data.ClinicalProduct,data.MedicalProduct)
+  setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
     if (typeof window !== "undefined") {
 
-      (function(c,b,f,k,a){c[b]=c[b]||{};for(c[b].q=c[b].q||[];a<k.length;)f(k[a++],c[b])})(window,"extole",function (c,b){b[c]=b[c]||function (){b.q.push([c,arguments])}},["createZone"],0);
+      (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
       window.extole.createZone({
-          name: "mobile_menu",
-          element_id: 'extole_zone_mobile_menu',
-          data: {
-            "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
-            "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
-            "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
-            "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
-          }
+        name: "mobile_menu",
+        element_id: 'extole_zone_mobile_menu',
+        data: {
+          "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+          "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+          "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+          "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+        }
       });
 
     }
 
   }, []);
 
- 
-  async  function  inputval(e){
+
+  async function inputval(e) {
     e.preventDefault();
     var search = document.getElementById("search-wrapper");
     var deskNav = document.getElementById("desk-navigation");
@@ -261,14 +261,14 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       // Trigger the button element with a click
       document.querySelector(".searchIcon").click();
     }
-    let searchkey= e.target.value.toLowerCase();
+    let searchkey = e.target.value.toLowerCase();
     searchInIndex(searchkey)
-    
+
     // if ( searchkey.length >2) {
     //   search(searchkey)
-      
+
     // }
-   }
+  }
   function removeFirstIcons() {
     var x = document.getElementById("first-icons");
     if (x.style.display === "none") {
@@ -279,7 +279,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   }
 
   function openBag() {
-    if(document.querySelector(".Notify")) {
+    if (document.querySelector(".Notify")) {
       document.querySelector(".Notify").style.display = "block";
     }
   }
@@ -300,51 +300,51 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     var not = document.getElementById("notificationMob");
     var body = document.querySelector("body");
 
-    if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical"))  {
+    if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) {
 
       search.style.display = "block";
       nav.style.display = "none";
-      document.querySelector(".node-clinical").style.marginTop= "134.5px";
+      // document.querySelector(".node-clinical").style.marginTop= "134.5px";
 
 
-    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-medical"))  {
-
-      search.style.display = "block";
-      nav.style.display = "none";
-      document.querySelector(".node-medical").style.marginTop= "134.5px";
-
-    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-home"))  {
+    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-medical")) {
 
       search.style.display = "block";
       nav.style.display = "none";
-      document.querySelector(".node-home").style.marginTop= "134.5px";
+      // document.querySelector(".node-medical").style.marginTop= "134.5px";
+
+    } else if (search.style.display === "none" && not.style.display !== "none" && document.querySelector(".node-home")) {
+
+      search.style.display = "block";
+      nav.style.display = "none";
+      // document.querySelector(".node-home").style.marginTop= "134.5px";
 
 
-    } 
-    
+    }
+
     else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-home")) {
       search.style.display = "block";
       nav.style.display = "none";
-      document.querySelector(".node-home").style.marginTop= "78.5px";
+      // document.querySelector(".node-home").style.marginTop= "78.5px";
 
 
       // body.classList.remove("body-search-notif");
-    }    else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-clinical")) {
+    } else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-clinical")) {
       search.style.display = "block";
       nav.style.display = "none";
-      document.querySelector(".node-clinical").style.marginTop= "78.5px";
+      // document.querySelector(".node-clinical").style.marginTop= "78.5px";
 
 
       // body.classList.remove("body-search-notif");
-    }     else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-medical")) {
+    } else if (search.style.display === "none" && not.style.display === "none" && document.querySelector(".node-medical")) {
       search.style.display = "block";
       nav.style.display = "none";
-      document.querySelector(".node-medical").style.marginTop= "78.5px";
+      // document.querySelector(".node-medical").style.marginTop= "78.5px";
 
 
       // body.classList.remove("body-search-notif");
     }
-     else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-home")) {
+    else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-home")) {
       search.style.display = "none";
       nav.style.display = "block";
       // document.querySelector(".node-home").style.marginTop= "192.5px";
@@ -353,37 +353,37 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-clinical")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-clinical").style.marginTop= "135.5px";
+      // document.querySelector(".node-clinical").style.marginTop= "135.5px";
 
     }
     else if (search.style.display !== "none" && not.style.display !== "none" && document.querySelector(".node-medical")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-medical").style.marginTop= "135.5px";
+      // document.querySelector(".node-medical").style.marginTop= "135.5px";
 
-    }    else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-home")) {
+    } else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-home")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-home").style.marginTop= "136.5px";
+      // document.querySelector(".node-home").style.marginTop= "136.5px";
 
     }
     else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-medical")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-medical").style.marginTop= "79.5px";
+      // document.querySelector(".node-medical").style.marginTop= "79.5px";
 
     }
     else if (search.style.display !== "none" && not.style.display === "none" && document.querySelector(".node-clinical")) {
       search.style.display = "none";
       nav.style.display = "block";
-      document.querySelector(".node-clinical").style.marginTop= "79.5px";
+      // document.querySelector(".node-clinical").style.marginTop= "79.5px";
 
     }
     else {
       search.style.display = "none";
       nav.style.display = "block";
 
-      
+
     }
   }
 
@@ -422,21 +422,62 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       deskNav.classList.add("d-lg-block");
     }
   }
+//   let homeMargin
+//   let medicalMargin
+//   let clinicalMargin
+
+//   homeMargin = $(".node-home").css('margin-top');
+//   clinicalMargin = $(".node-clinical").css('margin-top');
+//   medicalMargin = $(".node-medical").css('margin-top');
+//   console.log("css", homeMargin, clinicalMargin, medicalMargin)
+
+//   function adjustHeight() {
+//     let headerHeight
+//     if ($(window).width() < 992) {
+//       headerHeight = $("header").outerHeight() + 'px';
+//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", headerHeight);
+//     } else {
+//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", '0');
+//     }
+//     console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div:first-child"))
+//   }
+
+//   function defer(method) {
+//     if (window.jQuery) {
+//         method();
+//     } else {
+//         setTimeout(function() { defer(method) }, 50);
+//     }
+// }
+//   $(window).on('load', function () {
+//     defer(adjustHeight())
+
+//   })
+
+//   $(window).on('resize', function () {
+//     defer(adjustHeight())
+//   })
 
   // $(window).on('resize', function () {
-  //   if ($(window).width() > 768) {
-  //     $(".node-clinical").css("margin-top", "0");
-  //     $(".node-medical").css("margin-top", "0");
-  //     $(".node-home").css("margin-top", "0");
-  //   }
 
-  //   if ($(window).width() <= 768) {
-      
-  //     if($(".search-margin")) {
-  //       $(".search-margin").removeClass("search-margin");
-  //     }
-  //   }
-  // })
+
+  // //   if ($(window).width() > 768) {
+  // //     $(".node-clinical").css("margin-top", "0");
+  // //     $(".node-medical").css("margin-top", "0");
+  // //     $(".node-home").css("margin-top", "0");
+  // //   } else if ($(window).width() <= 768){
+  // //     $(".node-clinical").css("margin-top", homeMargin);
+  // //     $(".node-medical").css("margin-top", clinicalMargin);
+  // //     $(".node-home").css("margin-top", medicalMargin);
+  // //     console.log("cssss", homeMargin, clinicalMargin, medicalMargin)
+  // //   }
+  // //   // if ($(window).width() <= 768) {
+
+  // //   //   if($(".search-margin")) {
+  // //   //     $(".search-margin").removeClass("search-margin");
+  // //   //   }
+  // //   // }
+  // // })
 
 
   return (
@@ -445,12 +486,12 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     <header>
       <div className={[headerStyles.header, "d-lg-none"].join(" ")} id="mob-navigation">
         <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
-        <AboveHeader menuType={menuType} id="notificationMob" className="d-lg-none"/>
+          <AboveHeader menuType={menuType} id="notificationMob" className="d-lg-none" />
 
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo}/></Link>
+                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
@@ -461,7 +502,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
-                            <button type="button" className={'locker'} onClick={() => {value.addNotification('Item added successfully'); openBag();}} className={headerStyles.navButton}>
+                            <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
                               <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                               {value &&
                                 value.state.cart &&
@@ -487,10 +528,10 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={headerStyles.lowerSection}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
                   <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
                 </div>
-                
+
               </div>
             </div>
           </div>
@@ -517,8 +558,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
-                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon,"searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
-                  <input  type="search" onKeyUp={inputval} className={[headerStyles.searchInput,"searchInputm"].join(" ")}></input>
+                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
+                  <input type="search" onKeyUp={inputval} className={[headerStyles.searchInput, "searchInputm"].join(" ")}></input>
                   <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                   <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
                 </div>
@@ -526,13 +567,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
             </div>
 
 
-              <div className={["row", headerStyles.searchResultWrapper].join(" ")}>
-                <div className="col-12 col-lg-10 offset-lg-1">
-                  <div className={[headerStyles.results,"pb-48"].join(" ")}>
-                    <Search />
-                  </div>
+            <div className={["row", headerStyles.searchResultWrapper].join(" ")}>
+              <div className="col-12 col-lg-10 offset-lg-1">
+                <div className={[headerStyles.results, "pb-48"].join(" ")}>
+                  <Search />
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -555,17 +596,17 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 </div>
 
                 <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo}/></Link>
+                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
                 </div>
 
                 <div className="col col-padding">
                   <div className={headerStyles.navLastSection}>
                     <p>
                       {
-                        user?
+                        user ?
                           <>
                             <button type="button" data-toggle="modal" data-target="#show-account">
-                              <Img fixed={data.personIcon.childImageSharp.fixed}/> Welcome, {user.first_name}
+                              <Img fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
                             </button>
                             {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
@@ -579,7 +620,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                         return (
                           <div className={headerStyles.navButton}>
                             <div className={headerStyles.cartWrapper}>
-                              <button type="button" className={'locker'} onClick={() => {value.addNotification('Item added successfully'); openBag();}}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
                                   value.state.cart &&
                                   value.state.cart.numberItems > 0 && (
@@ -605,9 +646,9 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 <div className="col-12 col-padding">
 
                   {nodeType ? (nodeType.includes('clinical') ? <Menu menuName={`clinical-navigation`} menuClass={`navbar extended-nav`} />
-                    : nodeType.includes('medical') ? <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} /> 
-                    : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />))
-                    : (menuType === 'absolute'? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />)}
+                    : nodeType.includes('medical') ? <Menu menuName={`medical-navigation`} menuClass={`navbar extended-nav`} />
+                      : (menuType === 'absolute' ? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />))
+                    : (menuType === 'absolute' ? <MegaMenu menuClass={`navbar nav-desk`} isExpandable={true} /> : <MegaMenu menuClass={`navbar nav-desk relative-nav-desk`} isExpandable={true} />)}
 
 
                 </div>
@@ -617,9 +658,9 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
           </div>
         </div>
       </div>
-     
 
-      {isLoggedIn()? <ShowAccount />: ''}
+
+      {isLoggedIn() ? <ShowAccount /> : ''}
 
 
 

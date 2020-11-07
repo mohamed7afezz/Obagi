@@ -12,12 +12,12 @@ pool:
 steps:
 - task: Cache@2
   inputs:
-    key: 'gatsby-cache-folder0611-0'
+    key: 'gatsby-cache-folder0611-2'
     path: .cache
   displayName: Cache gatsby-cache-folder
 - task: Cache@2
   inputs:
-    key: 'gatsby-public-folder0611-0'
+    key: 'gatsby-public-folder0611-2'
     path: public
   displayName: Cache gatsby-public-folder
 - task: NodeTool@0

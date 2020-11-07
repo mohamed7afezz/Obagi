@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import basichero from '../assets/scss/components/basic-hero.module.scss'
 const Basichero = ({ node }) => {
-  console.log('hassan',node)
+
     return (
       <div className={basichero.sectionBg}>
       <div className={["container-fluid ","basicbg",basichero.givepadding].join(" ")}>

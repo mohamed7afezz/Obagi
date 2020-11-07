@@ -656,7 +656,6 @@ console.log('hassan16',node)
           ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
               
-              console.log('hassan221' ,item)
               return (
                 <>
                   {item.field_medical_is_system ? (
@@ -927,7 +926,6 @@ console.log('hassan16',node)
               (item.relationships && item.relationships.node__clinical_product)
                 ? item.relationships.node__clinical_product.map(
                     (product, index) => {
-                     console.log('hassan12',product)
                       let ingredient = getIngredient(product);
                       
                       

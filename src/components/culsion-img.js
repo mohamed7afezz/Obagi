@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import basichero from '../assets/scss/components/basic-hero.module.scss'
 const CulsionImage = ({ node }) => {
-  console.log('zzz',node)
+
     return (
       <div className={basichero.BigImg}>
       <div className={["container-fluid "].join(" ")}>
