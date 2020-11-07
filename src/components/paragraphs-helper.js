@@ -59,7 +59,7 @@ import CulsionFinalSection from './CulsionFinalSection';
 import Sepratorimg from './seprator';
 import TwoCol from './scientific-two-col';
 import SintificFooter from './scientific-big-desc';
-
+import International from './international'
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -120,6 +120,7 @@ const componentsMap = {
     paragraph__separator_image:Sepratorimg,
     paragraph__scientific_innovation_two_col:TwoCol,
     paragraph__scientific_describtion_big_link:SintificFooter,
+    paragraph__international: International,
 }
 
 export const getParagraph = node => {

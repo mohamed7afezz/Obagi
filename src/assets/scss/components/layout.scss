@@ -3589,3 +3589,14 @@ p {
         display: none;
     }
 }
+
+.collectionhero .collection-footnote-strong {
+    @include fontStyle(16, 24);
+    @extend %futurapt-bold;
+    color: #132466;
+    margin-top: 16px;
+
+    @include lg-screen {
+        margin-top: 32px;
+    }
+}
