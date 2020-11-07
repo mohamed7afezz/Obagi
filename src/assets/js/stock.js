@@ -6,7 +6,7 @@ function onlyUnique(value, index, self) {
 export function checkStock(baseUrl) {
 
   var skus = [];
-  $.each($('button[data-sku]'), function () {
+  $.each($('[data-sku]'), function () {
     skus.push($(this).attr('data-sku'));
   })
   
@@ -34,7 +34,7 @@ export function checkStock(baseUrl) {
       }
     }
     
-    $('button[data-sku]').addClass('add-btn-ready');
-    $('button[data-sku]').removeAttr("data-sku");
+    $('[data-sku]').addClass('add-btn-ready');
+    $('[data-sku]').removeAttr("data-sku");
   });
 }

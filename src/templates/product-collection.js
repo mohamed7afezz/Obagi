@@ -218,7 +218,63 @@ export const productPageQuery = graphql`
           name
           id
           relationships {
-      
+            field_footer_two_section_cli_ing {
+    
+              id
+                 field_featured_paragraph_id {
+                   processed
+                 }
+                 field_featured_button {
+                   title
+                   uri
+                 }
+                 field_featured_description {
+                   processed
+                 }
+                 field_featured_title {
+                   processed
+                 }
+                 field_featured_perfect_title {
+                   processed
+                 }
+                 field_featured_products_title {
+                   processed
+                 }
+                 field_featured_subtitle {
+                   processed
+                 }
+                 field_image_right
+                 
+                 relationships {
+                   field_issues_categories {
+                     path {
+                       alias
+                     }
+                     ... on taxonomy_term__clinical_skin_concern {
+                       id
+                       name
+                     }
+                   }
+                   field_featured_video {
+                     field_video_link
+                     relationships {
+                       field_video_poster {
+                         localFile {
+                           childImageSharp {
+                             fluid (quality: 100) {
+                              src
+                             }
+                             original{
+                               src
+                             }
+                           }
+                         }
+                       }
+                     }
+                   }
+                 }
+               
+             }
 
               node__clinical_product {     
                   field_clinical_id   
@@ -937,6 +993,61 @@ export const productPageQuery = graphql`
             alias
           }
           relationships {
+            field_footer_two_sections {
+              id
+                 field_featured_paragraph_id {
+                   processed
+                 }
+                 field_featured_button {
+                   title
+                   uri
+                 }
+                 field_featured_description {
+                   processed
+                 }
+                 field_featured_title {
+                   processed
+                 }
+                 field_featured_perfect_title {
+                   processed
+                 }
+                 field_featured_products_title {
+                   processed
+                 }
+                 field_featured_subtitle {
+                   processed
+                 }
+                 field_image_right
+                 
+                 relationships {
+                   field_issues_categories {
+                     path {
+                       alias
+                     }
+                     ... on taxonomy_term__clinical_skin_concern {
+                       id
+                       name
+                     }
+                   }
+                   field_featured_video {
+                     field_video_link
+                     relationships {
+                       field_video_poster {
+                         localFile {
+                           childImageSharp {
+                             fluid (quality: 100) {
+                              src
+                             }
+                             original{
+                               src
+                             }
+                           }
+                         }
+                       }
+                     }
+                   }
+                 }
+               }
             field_taxonomy_hero {
               field_taxonomy_hero_para_descrip {
                 processed

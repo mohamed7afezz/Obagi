@@ -2,7 +2,30 @@ import React  from 'react'
 import { useStaticQuery,graphql, Link } from "gatsby"
 import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
 import servicesStyles from '../../assets/scss/components/services.module.scss'
+import featuredStyles from '../../assets/scss/components/featured.module.scss'
 import Img from 'gatsby-image'
+import Player from '@vimeo/player'
+import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
+function playvideo(event) {
+  let iframeContainer, player, playerOpts = {
+    url: ''
+  }
+  
+  let url = event.target.parentNode.getAttribute("href");  
+  playerOpts.url = url;
+
+  if (!playerOpts.url.indexOf('youtube') > -1) {
+    document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    
+    return;
+  }
+
+  player = new Player.Vimeo(document.querySelector('#VideoPopUp iframe'), playerOpts);
+
+  player.play();
+ 
+
+}
 const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
 
   const FooterBlockList = useStaticQuery(graphql`
@@ -40,6 +63,8 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   let checkfooter = "";
   let pageNodeType = nodetype ? nodetype : ""
   let getTwoSection="";
+  let getfeature="";
+  let paragraphId = "";
   if (pageNodeType == "medicalConcern") {
     
     getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski?node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
@@ -87,6 +112,9 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'ClinicalIngredients'){
+    paragraphId = node.taxonomyTermClinicalIngredients.field_featured_paragraph_id? node.taxonomyTermClinicalIngredients.field_featured_paragraph_id.processed : null;
+  getfeature=node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing?
+    node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing:null;
     getTwoSection=node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing?node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0]?
     node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0].relationships?
     node.taxonomyTermClinicalIngredients.relationships.field_footer_two_section_cli_ing[0].relationships.field_service_card:"":"":""
@@ -97,6 +125,9 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     node.taxonomyTermClinicalSkinConcern.relationships.field_footer_two_section[0].relationships.field_service_card:"":"":""
   }
   else if(pageNodeType == 'clinicalGroups'){
+    paragraphId = node.taxonomyTermClinicalGroups.field_featured_paragraph_id? node.taxonomyTermClinicalGroups.field_featured_paragraph_id.processed : null;
+   getfeature=node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections?
+    node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections:null;
     getTwoSection=node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections?node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0]?
     node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0].relationships?
     node.taxonomyTermClinicalGroups.relationships.field_footer_two_sections[0].relationships.field_service_card:"":"":""
@@ -111,7 +142,7 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   else{
     checkfooter = ""
   }
-
+console.log('osama',getfeature[0])
 
   let getdata;
 
@@ -131,8 +162,44 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   }
  
 return (
-    <>
+  <>
+    {getfeature[0] ?   
+     <div className={["container-fluid d-none d-lg-block", featuredStyles.containerWrapper].join(" ")} name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""}>
+            <div className={["row", featuredStyles.imageLeft].join(" ")}>
+
+              <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
+                <div className="video-wrapper">
+                  <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+                    <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={getfeature[0].relationships.field_featured_video ? getfeature[0].relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                      <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                    </a>
+                    {getfeature[0].relationships.field_featured_video ? (getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile?
+                       <Img className={featuredStyles.videoimg}  fluid={getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
+                  </div>
+                </div>
+              </div>
+
+              <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
+                <div className="col-lg-7 offset-lg-2">
+                  {getfeature[0].field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_subtitle.processed}}></div> : ""}
+                  <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_title.processed }} className={featuredStyles.title}></div>
+                  {getfeature[0].field_featured_products_title? <div className={featuredStyles.products}>
+                    <div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}></span>) 
+                    {getfeature[0].field_featured_button? <span className={featuredStyles.view}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
+                  <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_description.processed }} className={featuredStyles.description}></div>
+                  {getfeature[0].field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_perfect_title.processed}}></div> {getfeature[0].relationships.field_issues_categories.map((item, index) => {
+                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === getfeature[0].relationships.field_issues_categories.length - 1? '' : ', '}</span>
+              })} </div> : ""}
+                  {getfeature[0].field_featured_button? <div className={featuredStyles.linkSection}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{getfeature[0].field_featured_button.title}</Link></div> : ""}
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+       
     
+    :<div>   
    <div 
    className={checktaxonomyType === "clinical"? 
     "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
@@ -177,7 +244,6 @@ return (
              </div>
             
           </div>
-
           {checktaxonomyType === 'clinical'? ""
                :checkfooter?
                <div className={Collectionfooterstyle.footerModCon}>
@@ -194,8 +260,8 @@ return (
                </div>
                </div>:""
                }
-
-          </>
+          </div>
+   } </>
     )
 }
 

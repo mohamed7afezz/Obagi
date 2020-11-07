@@ -561,7 +561,7 @@ let getallcheck =()=>{
                         <div className={orderDetailsStyles.productWrapper}>
                             <form>
                                 <div class="form-check">
-                                    <input class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                    <input data-Sku={item.sku} class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} />
                                 </div>
                             </form>
                             {item.images.data.map((item, index) => {
@@ -605,7 +605,7 @@ let getallcheck =()=>{
                         <div className={orderDetailsStyles.productName}>
                             <form>
                                 <div class="form-check">
-                                    <input class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                    <input data-Sku={item.sku} class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                 </div>
                             </form>
                             <div className={orderDetailsStyles.productImage}>
