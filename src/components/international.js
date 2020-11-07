@@ -15,24 +15,24 @@ const International = ({ node }) => {
     //         }, 50);
     //     }
     // }
-
-    $(window).on('resize', function () {
-        if ($(window).width() < 992) {
-            $(".international h3").next( ".international div div div div div" ).slideUp();
-            $(".international h3" ).on('click', function() {
-                $(this).next( ".international div div div div div" ).slideToggle( "slow" );
-              });
-              console.log("ashhh", $( ".international h3" ), $(".international h3" ).next( ".international div div div div div" ));
-        } else {
-            
-                $(".international h3").next( ".international div div div div div" ).slideDown();
-                setTimeout(function () {
-                    $(".international h3").off();
-                }, 1000 )
-            
-        }
-    });
- 
+    if (typeof window !== "undefined") {
+        $(window).on('resize', function () {
+            if ($(window).width() < 992) {
+                $(".international h3").next( ".international div div div div div" ).slideUp();
+                $(".international h3" ).on('click', function() {
+                    $(this).next( ".international div div div div div" ).slideToggle( "slow" );
+                });
+                console.log("ashhh", $( ".international h3" ), $(".international h3" ).next( ".international div div div div div" ));
+            } else {
+                
+                    $(".international h3").next( ".international div div div div div" ).slideDown();
+                    setTimeout(function () {
+                        $(".international h3").off();
+                    }, 1000 )
+                
+            }
+        });
+    }
     return (
         <div className={["container-fluid international", internationalStyles.wrapper].join(" ")}>
             <div className="row justify-content-center">
