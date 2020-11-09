@@ -20,8 +20,8 @@ const CareersHero = ({ node }) => {
 
 
 
-            <div className={careersHeroStyles.heroWrapper}>
-                <div style={{ backgroundImage: `url(${node.relationships.field_background_image.localFile.childImageSharp.original.src})` }} className={["d-none d-lg-block", careersHeroStyles.bgWrapper].join(" ")}>
+            <div className="d-none d-lg-block" style={{ backgroundImage: `url(${node.relationships.field_background_image.localFile.childImageSharp.original.src})` }}>
+                <div  className={[ careersHeroStyles.bgWrapper, careersHeroStyles.heroWrapper].join(" ")}>
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-lg-5 offset-lg-1">
