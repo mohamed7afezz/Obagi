@@ -138,6 +138,9 @@ const OrderDetails = (props, { node }) => {
     getProducts()
     getshipment()
     getShippingAddresses()
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+  }
   }, [])
 
   const data = useStaticQuery(graphql`

@@ -163,6 +163,22 @@ function saveuri(){
           </div>
           {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
             <div
+            style={{background:`url(${checkTaxonomy.field_hero_paraprapgh_taxonomy
+              .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_paraprapgh_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+                    
+                        checkTaxonomy.field_hero_paraprapgh_taxonomy
+                          .relationships.field_taxonomy_hero_paraprapgh_i
+                          .localFile.childImageSharp.original.src
+                     
+                  ) : (
+                    ""
+                  )
+              ) : (
+                ""
+              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+            
               className={[
                 "col-lg-7",
                 "col-12",
@@ -170,25 +186,6 @@ function saveuri(){
                 "Collectionherorightcol",
               ].join(" ")}
             >
-
-              {checkTaxonomy.field_hero_paraprapgh_taxonomy
-                .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                  checkTaxonomy.field_hero_paraprapgh_taxonomy
-                    .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <img
-                        className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                        src={
-                          checkTaxonomy.field_hero_paraprapgh_taxonomy
-                            .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.original.src
-                        }
-                      />
-                    ) : (
-                      ""
-                    )
-                ) : (
-                  ""
-                )}
             </div>
           ) : (
               ""
@@ -260,6 +257,23 @@ function saveuri(){
           </div>
           {checkTaxonomy.field_hero_categories_taxonomy ? (
             <div
+            style={{background:`url(${checkTaxonomy.field_hero_categories_taxonomy
+              .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_categories_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+                    
+                     
+                        checkTaxonomy.field_hero_categories_taxonomy
+                          .relationships.field_taxonomy_hero_paraprapgh_i
+                          .localFile.childImageSharp.original.src
+                  
+                   
+                  ) : (
+                    ""
+                  )
+              ) : (
+                ""
+              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
               className={[
                 "col-lg-7",
                 "col-12",
@@ -268,24 +282,6 @@ function saveuri(){
               ].join(" ")}
             >
 
-              {checkTaxonomy.field_hero_categories_taxonomy
-                .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                  checkTaxonomy.field_hero_categories_taxonomy
-                    .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <img
-                        className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                        src={
-                          checkTaxonomy.field_hero_categories_taxonomy
-                            .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.original.src
-                        }
-                      />
-                    ) : (
-                      ""
-                    )
-                ) : (
-                  ""
-                )}
             </div>
           ) : (
               ""
@@ -364,6 +360,21 @@ function saveuri(){
           </div>
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
+            style={{background:`url(${checkTaxonomy.field_hero_productline_taxonomy
+              .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_productline_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+                  
+                        checkTaxonomy.field_hero_productline_taxonomy
+                          .relationships.field_taxonomy_hero_paraprapgh_i
+                          .localFile.childImageSharp.original.src
+                     
+                  ) : (
+                    ""
+                  )
+              ) : (
+                ""
+              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
               className={[
                 "col-lg-7",
                 "col-12",
@@ -372,24 +383,7 @@ function saveuri(){
               ].join(" ")}
             >
 
-              {checkTaxonomy.field_hero_productline_taxonomy
-                .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                  checkTaxonomy.field_hero_productline_taxonomy
-                    .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <img
-                        className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                        src={
-                          checkTaxonomy.field_hero_productline_taxonomy
-                            .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.original.src
-                        }
-                      />
-                    ) : (
-                      ""
-                    )
-                ) : (
-                  ""
-                )}
+            
             </div>
 
           ) : (
@@ -462,6 +456,21 @@ function saveuri(){
           </div>
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
             <div
+            style={{background:`url(${checkTaxonomy.field_hero_ingredients_taxonomy.relationships
+              .field_taxonomy_hero_paraprapgh_i ? (
+                checkTaxonomy.field_hero_ingredients_taxonomy.relationships
+                  .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                   
+                        checkTaxonomy.field_hero_ingredients_taxonomy
+                          .relationships.field_taxonomy_hero_paraprapgh_i
+                          .localFile.childImageSharp.original.src
+                     
+                  ) : (
+                    ""
+                  )
+              ) : (
+                ""
+              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
               className={[
                 "col-lg-7",
                 "col-12",
@@ -470,24 +479,7 @@ function saveuri(){
               ].join(" ")}
             >
 
-              {checkTaxonomy.field_hero_ingredients_taxonomy.relationships
-                .field_taxonomy_hero_paraprapgh_i ? (
-                  checkTaxonomy.field_hero_ingredients_taxonomy.relationships
-                    .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                      <img
-                        className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                        src={
-                          checkTaxonomy.field_hero_ingredients_taxonomy
-                            .relationships.field_taxonomy_hero_paraprapgh_i
-                            .localFile.childImageSharp.original.src
-                        }
-                      />
-                    ) : (
-                      ""
-                    )
-                ) : (
-                  ""
-                )}
+              
             </div>
 
           ) : (
@@ -557,6 +549,21 @@ function saveuri(){
         </div>
         {checkTaxonomy.field_taxonomy_hero ? (
           <div
+          style={{background:`url(${checkTaxonomy.field_taxonomy_hero.relationships
+            .field_taxonomy_hero_paraprapgh_i ? (
+              checkTaxonomy.field_taxonomy_hero.relationships
+                .field_taxonomy_hero_paraprapgh_i.localFile ? (
+               
+                      checkTaxonomy.field_taxonomy_hero
+                        .relationships.field_taxonomy_hero_paraprapgh_i
+                        .localFile.childImageSharp.original.src
+                  
+                ) : (
+                  ""
+                )
+            ) : (
+              ""
+            )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
             className={[
               "col-lg-7",
               "col-12",
@@ -565,24 +572,7 @@ function saveuri(){
             ].join(" ")}
           >
 
-            {checkTaxonomy.field_taxonomy_hero.relationships
-              .field_taxonomy_hero_paraprapgh_i ? (
-                checkTaxonomy.field_taxonomy_hero.relationships
-                  .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                    <img
-                      className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                      src={
-                        checkTaxonomy.field_taxonomy_hero
-                          .relationships.field_taxonomy_hero_paraprapgh_i
-                          .localFile.childImageSharp.original.src
-                      }
-                    />
-                  ) : (
-                    ""
-                  )
-              ) : (
-                ""
-              )}
+         
           </div>
 
         ) : (
@@ -612,8 +602,7 @@ function saveuri(){
                         <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
-                              {" "}
-                              {
+                                    {
                                 checkTaxonomy.field_hero_taxonomy_skintype
                                   .field_taxonomy_hero_paraprapgh_t
                               }
@@ -654,6 +643,24 @@ function saveuri(){
                     </div>
                     {checkTaxonomy.field_hero_taxonomy_skintype ? (
                       <div
+                      style={{background:`url(${checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                        .field_taxonomy_hero_paraprapgh_i ? (
+                          checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                              <img
+                                className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
+                                src={
+                                  checkTaxonomy.field_hero_taxonomy_skintype
+                                    .relationships.field_taxonomy_hero_paraprapgh_i
+                                    .localFile.childImageSharp.original.src
+                                }
+                              />
+                            ) : (
+                              ""
+                            )
+                        ) : (
+                          ""
+                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
                         className={[
                           "col-lg-7",
                           "col-12",
@@ -661,26 +668,6 @@ function saveuri(){
                           "Collectionherorightcol",
                         ].join(" ")}
                       >
-
-                        {checkTaxonomy.field_hero_taxonomy_skintype.relationships
-                          .field_taxonomy_hero_paraprapgh_i ? (
-                            checkTaxonomy.field_hero_taxonomy_skintype.relationships
-                              .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                <img
-                                  className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                  src={
-                                    checkTaxonomy.field_hero_taxonomy_skintype
-                                      .relationships.field_taxonomy_hero_paraprapgh_i
-                                      .localFile.childImageSharp.original.src
-                                  }
-                                />
-                              ) : (
-                                ""
-                              )
-                          ) : (
-                            ""
-                          )}
-
                       </div>
                     ) : (
                         ""
@@ -752,6 +739,20 @@ function saveuri(){
                     </div>
                     {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                       <div
+                      style={{background:`url(${checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
+                        .field_taxonomy_hero_paraprapgh_i ? (
+                          checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                                  checkTaxonomy.field_hero_clinical_ing_taxonomy
+                                    .relationships.field_taxonomy_hero_paraprapgh_i
+                                    .localFile.childImageSharp.original.src
+                             
+                            ) : (
+                              ""
+                            )
+                        ) : (
+                          ""
+                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
                         className={[
                           "col-lg-7",
                           "col-12",
@@ -760,24 +761,6 @@ function saveuri(){
                         ].join(" ")}
                       >
 
-                        {checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
-                          .field_taxonomy_hero_paraprapgh_i ? (
-                            checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
-                              .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                <img
-                                  className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                  src={
-                                    checkTaxonomy.field_hero_clinical_ing_taxonomy
-                                      .relationships.field_taxonomy_hero_paraprapgh_i
-                                      .localFile.childImageSharp.original.src
-                                  }
-                                />
-                              ) : (
-                                ""
-                              )
-                          ) : (
-                            ""
-                          )}
                       </div>
 
                     ) : (
@@ -847,6 +830,20 @@ function saveuri(){
                     </div>
                     {checkTaxonomy.field_hero_parag_taxonomy ? (
                       <div
+                      style={{background:`url(${checkTaxonomy.field_hero_parag_taxonomy.relationships
+                        .field_taxonomy_hero_paraprapgh_i ? (
+                          checkTaxonomy.field_hero_parag_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                           
+                                  checkTaxonomy.field_hero_parag_taxonomy
+                                    .relationships.field_taxonomy_hero_paraprapgh_i
+                             
+                            ) : (
+                              ""
+                            )
+                        ) : (
+                          ""
+                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
                         className={[
                           "col-lg-7",
                           "col-12",
@@ -854,24 +851,7 @@ function saveuri(){
                           "Collectionherorightcol",
                         ].join(" ")}
                       >
-                        {checkTaxonomy.field_hero_parag_taxonomy.relationships
-                          .field_taxonomy_hero_paraprapgh_i ? (
-                            checkTaxonomy.field_hero_parag_taxonomy.relationships
-                              .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                <img
-                                  className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                  src={
-                                    checkTaxonomy.field_hero_parag_taxonomy
-                                      .relationships.field_taxonomy_hero_paraprapgh_i
-                                      .localFile.childImageSharp.original.src
-                                  }
-                                />
-                              ) : (
-                                ""
-                              )
-                          ) : (
-                            ""
-                          )}
+                   
                       </div>
 
                     ) : (
@@ -942,6 +922,21 @@ function saveuri(){
                     </div>
                     {checkTaxonomy.field_hero_taxonomy ? (
                       <div
+                      style={{background:`url(${checkTaxonomy.field_hero_taxonomy.relationships
+                        .field_taxonomy_hero_paraprapgh_i ? (
+                          checkTaxonomy.field_hero_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+
+                                  checkTaxonomy.field_hero_taxonomy
+                                    .relationships.field_taxonomy_hero_paraprapgh_i
+                                    .localFile.childImageSharp.original.src
+                           
+                            ) : (
+                              ""
+                            )
+                        ) : (
+                          ""
+                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
                         className={[
                           "col-lg-7",
                           "col-12",
@@ -950,24 +945,7 @@ function saveuri(){
                         ].join(" ")}
                       >
 
-                        {checkTaxonomy.field_hero_taxonomy.relationships
-                          .field_taxonomy_hero_paraprapgh_i ? (
-                            checkTaxonomy.field_hero_taxonomy.relationships
-                              .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                <img
-                                  className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                  src={
-                                    checkTaxonomy.field_hero_taxonomy
-                                      .relationships.field_taxonomy_hero_paraprapgh_i
-                                      .localFile.childImageSharp.original.src
-                                  }
-                                />
-                              ) : (
-                                ""
-                              )
-                          ) : (
-                            ""
-                          )}
+              
                       </div>
 
                     ) : (
@@ -1038,6 +1016,21 @@ function saveuri(){
                     </div>
                     {checkTaxonomy.field_hero_category_taxonomy ? (
                       <div
+                      style={{background:`url(${checkTaxonomy.field_hero_category_taxonomy
+                        .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                          checkTaxonomy.field_hero_category_taxonomy
+                            .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+                             
+                                  checkTaxonomy.field_hero_category_taxonomy
+                                    .relationships.field_taxonomy_hero_paraprapgh_i
+                                    .localFile.childImageSharp.original.src
+                              
+                            ) : (
+                              ""
+                            )
+                        ) : (
+                          ""
+                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
                         className={[
                           "col-lg-7",
                           "col-12",
@@ -1045,24 +1038,7 @@ function saveuri(){
                           "Collectionherorightcol",
                         ].join(" ")}
                       >
-                        {checkTaxonomy.field_hero_category_taxonomy
-                          .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                            checkTaxonomy.field_hero_category_taxonomy
-                              .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                                <img
-                                  className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                  src={
-                                    checkTaxonomy.field_hero_category_taxonomy
-                                      .relationships.field_taxonomy_hero_paraprapgh_i
-                                      .localFile.childImageSharp.original.src
-                                  }
-                                />
-                              ) : (
-                                ""
-                              )
-                          ) : (
-                            ""
-                          )}
+                   
                       </div>
 
                     ) : (
