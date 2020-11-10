@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
-
+import $ from 'jquery'
 
 const AboveHeader = ({ menuType, id, notifClass }) => {
 
@@ -76,6 +76,14 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
       document.querySelector(".node-home").classList.add("node-home-margin");
       document.querySelector(".search-margin").style.marginTop = "0";
 
+    }
+
+    let headerHeight
+    if ($(window).width() < 992) {
+      headerHeight = $("#mob-navigation").outerHeight() + 'px';
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", headerHeight);
+    } else {
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
     }
 
   }

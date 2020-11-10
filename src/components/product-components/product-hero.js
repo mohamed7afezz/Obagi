@@ -343,7 +343,7 @@ if ( typeof window !== "undefined"){
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
-          {feild_preimer?
+          {feild_preimer && field_medical_rx !== "RX"?
           <div
               className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
                 " "

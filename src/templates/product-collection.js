@@ -15,6 +15,8 @@ const ClinicalCollectionTemp = (props, data)  => {
                     : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta? props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta
                     : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags? props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags
                     : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
+                    : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags? props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags
+                    : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.field_meta_tag? props.data.taxonomyTermClinicalIngredients.field_meta_tag
                     : "";
     // let medicalProLi = props.data.tax
   
@@ -217,6 +219,10 @@ export const productPageQuery = graphql`
            taxonomyTermClinicalIngredients(path: {alias: {eq: $slug}}) {
           name
           id
+          field_meta_tag {
+            title
+            description
+          }
           relationships {
             field_footer_two_section_cli_ing {
     
@@ -989,6 +995,10 @@ export const productPageQuery = graphql`
         taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
           id
           name
+          field_clinical_groups_meta_tags {
+            title
+            description
+          }
           path {
             alias
           }

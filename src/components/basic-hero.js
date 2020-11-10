@@ -6,7 +6,7 @@ const Basichero = ({ node }) => {
 
     return (
       <div className={basichero.sectionBg}>
-      <div className={["container-fluid ","basicbg",basichero.givepadding].join(" ")}>
+      <div className={["container-fluid ","basicbg",basichero.givepadding, `${node.field_basic_hero_custom_class_?node.field_basic_hero_custom_class_:""}`].join(" ")}>
       <div className={"row hero-row-wrapper"}>
           <div
             className={[
@@ -14,12 +14,12 @@ const Basichero = ({ node }) => {
               "col-lg-5",
               "offset-lg-1",
               basichero.Collectionheroleftcol,
-              "Collectionheroleftcol",
-              `${node.field_basic_hero_custom_class_?node.field_basic_hero_custom_class_:""}`,
+              "Collectionheroleftcol"
+              
             ].join(" ")}
           >
             <div className="row remove-mob-padding">
-              <div className="offset-lg-1">
+              <div className="col col-lg-12 general-basic-column">
              
               { 
                   node.relationships.field_basic_hero_left_img_paragr?
@@ -35,7 +35,7 @@ const Basichero = ({ node }) => {
                 
                 }
     {
-                  <h1 className={basichero.collectiontitle}>
+                  <h1 className={[basichero.collectiontitle, "general-basic-title"].join(" ")}>
                     {
                       node.field_basic_hero_title_paragrapg?
                       <div dangerouslySetInnerHTML={{__html: node.field_basic_hero_title_paragrapg

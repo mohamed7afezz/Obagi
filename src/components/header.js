@@ -241,7 +241,9 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
         }
       });
 
+
     }
+      adjustHeight();
 
   }, []);
 
@@ -431,16 +433,16 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //   medicalMargin = $(".node-medical").css('margin-top');
 //   console.log("css", homeMargin, clinicalMargin, medicalMargin)
 
-//   function adjustHeight() {
-//     let headerHeight
-//     if ($(window).width() < 992) {
-//       headerHeight = $("header").outerHeight() + 'px';
-//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", headerHeight);
-//     } else {
-//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", '0');
-//     }
-//     console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div:first-child"))
-//   }
+  function adjustHeight() {
+    let headerHeight
+    if ($(window).width() < 992) {
+      headerHeight = $("#mob-navigation").outerHeight() + 'px';
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", headerHeight);
+    } else {
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
+    }
+    console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div").first())
+  }
 
 //   function defer(method) {
 //     if (window.jQuery) {
@@ -449,14 +451,12 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //         setTimeout(function() { defer(method) }, 50);
 //     }
 // }
-//   $(window).on('load', function () {
-//     defer(adjustHeight())
 
-//   })
-
-//   $(window).on('resize', function () {
-//     defer(adjustHeight())
-//   })
+  if(typeof window !== "undefined") {  
+    $(window).on('resize', function () {
+      adjustHeight();
+    })
+  }
 
   // $(window).on('resize', function () {
 

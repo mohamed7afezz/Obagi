@@ -4,10 +4,13 @@
 
 .hero-wrapper {
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(19,36,102,0.4));
+    @include lg-screen {
+        margin-left: -15px;
+    }
 }
 
 .bg-wrapper {
-    mix-blend-mode: multiply;
+    // mix-blend-mode: multiply;
 }
 
 .headline {
