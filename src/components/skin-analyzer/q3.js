@@ -31,7 +31,7 @@ const Q3 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">Are you looking for a preventative solution or corrective solution?</div>
-                    <div className="question-text">The difference between the two is important when determining your Skin care routine. Lorem ipsum dolor sit amet consectetur adipiscing hasellus .</div>
+                    <div className="question-text">The difference between the two is important when determining your skin care routine.</div>
                 </div>
             </div>
 

@@ -20,58 +20,58 @@ body {
     // }
 }
 .node-home{
-    margin-top: 212.5px;
-    @include md-screen {
-        margin-top: 192.5px;
-    }
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // margin-top: 212.5px;
+    // @include md-screen {
+    //     margin-top: 192.5px;
+    // }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 p {
     margin-bottom: 0;
 }
 .node-medical, .node-clinical{
    
-    margin-top:  155.5px;
-    @include md-screen {
-        margin-top: 135.5px;
-    }
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // margin-top:  155.5px;
+    // @include md-screen {
+    //     margin-top: 135.5px;
+    // }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 
 .node-big-general-margin {
-    margin-top: 79.5px;
+    // margin-top: 79.5px;
 
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 
 .node-big-home-margin {
-    margin-top: 136.5px;
+    // margin-top: 136.5px;
 
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 
 .node-general-margin {
-    margin-top: 77.5px;
+    // margin-top: 77.5px;
 
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 
 .node-home-margin {
-    margin-top: 135.5px;
+    // margin-top: 135.5px;
 
-    @include lg-screen {
-        margin-top: 0;
-    }
+    // @include lg-screen {
+    //     margin-top: 0;
+    // }
 }
 
 
@@ -3676,4 +3676,12 @@ p {
     .international-partners .general-basic-column {
         padding: 0;
     }
+}
+
+.order-details .form-check {
+    padding-left: 0;
+}
+
+.order-details .terms {
+    margin: 0;
 }

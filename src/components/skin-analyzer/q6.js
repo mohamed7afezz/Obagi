@@ -40,12 +40,12 @@ const Q6 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">
-                        What is your skin tone on the Fitzpatrick Scale?
+                        What is your skin tone on the Fitzspatrick Scale?
                         <button type="button" className="analyzer-info-button" data-toggle="modal" data-target="#infoModal">
                             &#8520;
                         </button>
                     </div>
-                    <div className="question-text">The fitzpatrick is a universal scale that allows us to lorem ipsum dolor sit amet consectetur adipiscing elitp hasellus sodales ipsum commodo euismod.</div>
+                    <div className="question-text">The Fitzpatrick Skin Tone Scale classifies skin by pigmentation and reaction to sun exposure. Type I skin generally burns; Type VI skin rarely burns.</div>
                 </div>
             </div>
 

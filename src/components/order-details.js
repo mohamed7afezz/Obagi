@@ -8,7 +8,7 @@ import CartContext from "../providers/cart-provider"
 import orderHistoryStyles from "../assets/scss/components/order-history.module.scss"
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import {checkStock} from '../assets/js/stock';
+import { checkStock } from '../assets/js/stock';
 import $ from "jquery"
 // const $ = require('jQuery');
 
@@ -18,18 +18,18 @@ const spinner = css`
   margin: 0 auto;
  
 `;
-var savearr =[];
- var saveprodarr = [];
- var productsPremierPoints=[];
+var savearr = [];
+var saveprodarr = [];
+var productsPremierPoints = [];
 const OrderDetails = (props, { node }) => {
   var productsOid = [];
-  var total = 0 ;
+  var total = 0;
 
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addMultiToCart = value && value.addMultiToCart;
   const addingToCart = value && value.state.addingToCart;
- 
+
   const [details, setDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [getshiping, setShipment] = useState(false);
@@ -38,12 +38,12 @@ const OrderDetails = (props, { node }) => {
     if (a === b) return true;
     if (a == null || b == null) return false;
     if (a.length !== b.length) return false;
-  
+
     // If you don't care about the order of the elements inside
     // the array, you should sort both arrays here.
     // Please note that calling sort on an array will modify that array.
     // you might want to clone your array first.
-  
+
     for (var i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) return false;
     }
@@ -131,9 +131,9 @@ const OrderDetails = (props, { node }) => {
   }
 
   useEffect(() => {
-    if(typeof window != undefined ){
+    if (typeof window != undefined) {
       checkStock(baseUrl);
-  }
+    }
     getDetails()
     getProducts()
     getshipment()
@@ -154,26 +154,26 @@ const OrderDetails = (props, { node }) => {
 
   const location = useLocation()
   const { user } = useContext(UserContext)
-let getallcheck =()=>{
-  saveprodarr =[];
-  productsPremierPoints= [];
-  document
-          .querySelectorAll(".desk-details-check")
-          .forEach((el,index) => {
-            if (el.checked && !saveprodarr.includes(el.value)) {
-              // 3 - send cart request
-              
-              saveprodarr.push(el.value)
-                productsPremierPoints.push(
-                  {
-                      productId:el.value,
-                      premierId:el.getAttribute('premid'),
-                      premierPoints:el.getAttribute('prempoints')
-                  });
-            }
-          })
-          // console.log(document.querySelectorAll(".details-check"))
-}
+  let getallcheck = () => {
+    saveprodarr = [];
+    productsPremierPoints = [];
+    document
+      .querySelectorAll(".desk-details-check")
+      .forEach((el, index) => {
+        if (el.checked && !saveprodarr.includes(el.value)) {
+          // 3 - send cart request
+
+          saveprodarr.push(el.value)
+          productsPremierPoints.push(
+            {
+              productId: el.value,
+              premierId: el.getAttribute('premid'),
+              premierPoints: el.getAttribute('prempoints')
+            });
+        }
+      })
+    // console.log(document.querySelectorAll(".details-check"))
+  }
   if (!user && location.pathname.includes(`/my-account/orders/order-details`)) {
     if (typeof window !== "undefined") {
       navigate("/my-account/signin")
@@ -197,17 +197,17 @@ let getallcheck =()=>{
 
   let elementId = products.map(item => {
 
-    return item.product_options[0]?item.product_options[0].product_option_id:""
+    return item.product_options[0] ? item.product_options[0].product_option_id : ""
   })
   let elementPoints = products.map(item => {
 
-    return item.product_options[0]?item.product_options[0].value:""
+    return item.product_options[0] ? item.product_options[0].value : ""
   })
   return (
     <>
       <div
         className={[
-          "container-fluid",
+          "container-fluid order-details",
           orderDetailsStyles.orderDetailsWrapper,
         ].join(" ")}
       >
@@ -233,497 +233,507 @@ let getallcheck =()=>{
         </div>
 
         <div className="row">
-            {getshiping ?   <>
-          <div class="col-lg-7 offset-lg-1">
-            <div className={orderDetailsStyles.shipmentsplit}>
-              <p>
-                Your order has been split into {getshiping.length} shipments. The details and
+          {getshiping ? <>
+            <div class="col-lg-7 offset-lg-1">
+              <div className={orderDetailsStyles.shipmentsplit}>
+                <p>
+                  Your order has been split into {getshiping.length} shipments. The details and
                 status are listed below.
               </p>
-            </div>
+              </div>
 
-            
-                  {isLoading ? (
-                        
-                    <ClipLoader
-                    css={spinner}
-                      size={150}
-                      color={"#123abc"}
-                    
-              />
-                  ) : (
-                    
-                    getshiping? getshiping.map((getshipm, index1) => {
-                   return(   products? products.map((item,index)=>{
-                     
-                    {total = parseFloat(total).toFixed(2) +  parseFloat(item.total_inc_taxtotal).toFixed(2)}
-                    return(  getshipm.items.map((getProdId,index2) =>{
-                        
-                       return(
-                        getProdId.product_id === item.product_id?
+
+              {isLoading ? (
+
+                <ClipLoader
+                  css={spinner}
+                  size={150}
+                  color={"#123abc"}
+
+                />
+              ) : (
+
+                  getshiping ? getshiping.map((getshipm, index1) => {
+                    return (products ? products.map((item, index) => {
+
+                      { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
+                      return (getshipm.items.map((getProdId, index2) => {
+
+                        return (
+                          getProdId.product_id === item.product_id ?
                             <div className={orderDetailsStyles.shipmentstate}>
-                              {index2 < 1?  
-                              <>
-                                 <div className={orderDetailsStyles.shipment}>
-                              <p>Shipment #{index+1} : {getshipm.tracking_number}</p>
-                                </div>
-                                <table className={orderHistoryStyles.tableCon}>
-                  <thead className={orderHistoryStyles.tHead}>
-                    <tr>
-                      <th scope="col">Last Updated</th>
-                      <th scope="col">Items</th>
-                      <th scope="col">Total</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                </table>
-                    
+                              {index2 < 1 ?
+                                <>
+                                  <div className={orderDetailsStyles.shipment}>
+                                    <p>Shipment #{index + 1} : {getshipm.tracking_number}</p>
+                                  </div>
+                                  <table className={orderHistoryStyles.tableCon}>
+                                    <thead className={orderHistoryStyles.tHead}>
+                                      <tr>
+                                        <th scope="col">Last Updated</th>
+                                        <th scope="col">Items</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Status</th>
+                                      </tr>
+                                    </thead>
+                                  </table>
+
                                 </>
-                                :""
-                                }
-                      <div className="col-12  d-lg-none">
-                  <div>
-                          <div className={orderDetailsStyles.productWrapper}>
-                            {/* <form>
+                                : ""
+                              }
+                              <div className="col-12  d-lg-none">
+                                <div>
+                                  <div className={orderDetailsStyles.productWrapper}>
+                                    {/* <form>
                                              <div class="form-check">
                                                  <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
                                              </div>
                                          </form> */}
-                            {
-                              item.images.data.map((item, index) => {
-                                return <img class="img-mob" src={item.url_thumbnail} />
-                              })[0]
-                            }
-                            <div
-                              className={orderDetailsStyles.productInfoWrapper}
-                            >
-                              <div className={orderDetailsStyles.productName}>
-                                {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}
-                              </div>
-                              <div
-                                className={orderDetailsStyles.priceAndQuantity}
-                              >
-                                <div
-                                  className={orderDetailsStyles.productQuantity}
-                                >
-                                  Qty. {item.quantity ? item.quantity : ""}
+                                    {
+                                      item.images.data.map((item, index) => {
+                                        return <img class="img-mob" src={item.url_thumbnail} />
+                                      })[0]
+                                    }
+                                    <div
+                                      className={orderDetailsStyles.productInfoWrapper}
+                                    >
+                                      <div className={orderDetailsStyles.productName}>
+                                        {item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}
+                                      </div>
+                                      <div
+                                        className={orderDetailsStyles.priceAndQuantity}
+                                      >
+                                        <div
+                                          className={orderDetailsStyles.productQuantity}
+                                        >
+                                          Qty. {item.quantity ? item.quantity : ""}
+                                        </div>
+                                        <div className={orderDetailsStyles.productPrice}>
+                                          {item.total_inc_tax
+                                            ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
+                                            : ""}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
                                 </div>
-                                <div className={orderDetailsStyles.productPrice}>
-                                  {item.total_inc_tax
-                                    ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
-                                    : ""}
-                                </div>
                               </div>
-                            </div>
-                          </div>
-                      
-                      </div>
-                      </div>
-                      <div className="d-none d-lg-block">
-          
-                        <div className={orderDetailsStyles.productWrapper}>
-                          <div className={orderDetailsStyles.productInfoWrapper}>
-                            <div className={orderDetailsStyles.productName}>
-                              <form>
-                                <div class="form-check">
-                                  {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                              <div className="d-none d-lg-block">
+
+                                <div className={orderDetailsStyles.productWrapper}>
+                                  <div className={orderDetailsStyles.productInfoWrapper}>
+                                    <div className={orderDetailsStyles.productName}>
+                                      <form>
+                                        <div class="form-check">
+                                          {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
                                    */}
+                                        </div>
+                                      </form>
+                                      <div className={orderDetailsStyles.productImage}>
+                                        {
+                                          item.images.data.map((item, index) => {
+                                            return <img src={item.url_thumbnail} />
+                                          })[0]
+                                        }
+                                      </div>
+                                      {item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}
+                                    </div>
+                                    <div className={orderDetailsStyles.productQuantity}>
+                                      {item.quantity ? "Qty. " + item.quantity : ""}
+                                    </div>
+                                    <div className={orderDetailsStyles.productPrice}>
+                                      {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
+                                    </div>
+                                    <div className={orderDetailsStyles.productstatus}>
+                                      {item.order_status}
+                                    </div>
+                                  </div>
                                 </div>
-                              </form>
-                              <div className={orderDetailsStyles.productImage}>
-                                {
-                                  item.images.data.map((item, index) => {
-                                    return <img src={item.url_thumbnail} />
-                                  })[0]
-                                }
+
+
+
                               </div>
-                              {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span>: ""}
-                            </div>
-                            <div className={orderDetailsStyles.productQuantity}>
-                              {item.quantity ? "Qty. " + item.quantity : ""}
-                            </div>
-                            <div className={orderDetailsStyles.productPrice}>
-                              {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
-                            </div>
-                            <div className={orderDetailsStyles.productstatus}>
-                              {item.order_status}
-                            </div>
-                          </div>
-                        </div>
-                    
-                    
-             
-                </div>
-          
-                      </div>
-                         :""  )    
-                        })
-                        )
-                     
 
-                      }):"")
-                    
-                    })
-                 :"" )}
-             
+                            </div>
+                            : "")
+                      })
+                      )
 
-           
-          </div>
 
-          <div className="col-12 col-lg-3">
-            {isLoading ? (
-           
-                      <ClipLoader
+                    }) : "")
+
+                  })
+                    : "")}
+
+
+
+            </div>
+
+            <div className="col-12 col-lg-3">
+              {isLoading ? (
+
+                <ClipLoader
                   css={spinner}
                   size={150}
                   color={"#123abc"}
-                
-            />
-            ) : (
-              <div className={orderDetailsStyles.orderWrapper}>
-                <div className={orderDetailsStyles.detailsHeader}>
-                  <div className={orderDetailsStyles.detailsTitle}>
-                    Order Details
+
+                />
+              ) : (
+                  <div className={orderDetailsStyles.orderWrapper}>
+                    <div className={orderDetailsStyles.detailsHeader}>
+                      <div className={orderDetailsStyles.detailsTitle}>
+                        Order Details
                   </div>
-                  <a
-                    href={
-                      "https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" +
-                      props.id
-                    }
-                    target="_blank"
-                    className={orderDetailsStyles.print}
-                  >
-                    Print Invoice
+                      <a
+                        href={
+                          "https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" +
+                          props.id
+                        }
+                        target="_blank"
+                        className={orderDetailsStyles.print}
+                      >
+                        Print Invoice
                   </a>
-                </div>
+                    </div>
 
-                <div className={orderDetailsStyles.detailPart}>
-                  <p className={orderDetailsStyles.informdetail}>Status</p>
-                  <p>{details.status ? details.status : ""}</p>
-                </div>
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>Status</p>
+                      <p>{details.status ? details.status : ""}</p>
+                    </div>
 
-                <div className={orderDetailsStyles.detailPart}>
-                  <p className={orderDetailsStyles.informdetail}>
-                    Order Placed
-                  </p>
-                  <p>
-                    {placedOnDate
-                      ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`
-                      : ""}
-                  </p>
-                </div>
-
-                {shippingAddresses.map((item, index) => {
-                  return (
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>
-                        Shipping Address
-                      </p>
+                        Order Placed
+                  </p>
                       <p>
-                        {item.first_name ? item.first_name : ""}{" "}
-                        {item.last_name ? item.last_name : ""}
+                        {placedOnDate
+                          ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`
+                          : ""}
                       </p>
-                      <p>{item.street_1 ? item.street_1 : ""}</p>
-                      <p>
-                        {item.city ? item.city : ""},{" "}
-                        {item.state ? item.state : ""}{" "}
-                        {item.zip ? item.zip : ""}
-                      </p>
-                      <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
                     </div>
-                  )
-                })}
 
-                <div className={orderDetailsStyles.detailPart}>
-                  <p className={orderDetailsStyles.informdetail}>
-                    Billing Address
-                  </p>
-                  <p>
-                    {details.billing_address
-                      ? details.billing_address.first_name
-                      : ""}{" "}
-                    {details.billing_address
-                      ? details.billing_address.last_name
-                      : ""}
-                  </p>
-                  <p>
-                    {details.billing_address
-                      ? details.billing_address.street_1
-                      : ""}
-                  </p>
-                  <p>
-                    {details.billing_address
-                      ? details.billing_address.city
-                      : ""},{" "}
-                    {details.billing_address
-                      ? details.billing_address.state
-                      : ""}
-                    {" "}
-                    {details.billing_address ? details.billing_address.zip : ""}
-                  </p>
-                  <p>
-                    {details.billing_address
-                      ? details.billing_address.country_iso2
-                      : ""}
-                  </p>
-                </div>
+                    {shippingAddresses.map((item, index) => {
+                      return (
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Shipping Address
+                      </p>
+                          <p>
+                            {item.first_name ? item.first_name : ""}{" "}
+                            {item.last_name ? item.last_name : ""}
+                          </p>
+                          <p>{item.street_1 ? item.street_1 : ""}</p>
+                          <p>
+                            {item.city ? item.city : ""},{" "}
+                            {item.state ? item.state : ""}{" "}
+                            {item.zip ? item.zip : ""}
+                          </p>
+                          <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
+                        </div>
+                      )
+                    })}
 
-                <div className={orderDetailsStyles.detailPart}>
-                  <p className={orderDetailsStyles.informdetail}>Payment</p>
-                  <p>
-                    {details.payment_method ? details.payment_method : ""}:
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Billing Address
+                  </p>
+                      <p>
+                        {details.billing_address
+                          ? details.billing_address.first_name
+                          : ""}{" "}
+                        {details.billing_address
+                          ? details.billing_address.last_name
+                          : ""}
+                      </p>
+                      <p>
+                        {details.billing_address
+                          ? details.billing_address.street_1
+                          : ""}
+                      </p>
+                      <p>
+                        {details.billing_address
+                          ? details.billing_address.city
+                          : ""},{" "}
+                        {details.billing_address
+                          ? details.billing_address.state
+                          : ""}
+                        {" "}
+                        {details.billing_address ? details.billing_address.zip : ""}
+                      </p>
+                      <p>
+                        {details.billing_address
+                          ? details.billing_address.country_iso2
+                          : ""}
+                      </p>
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>Payment</p>
+                      <p>
+                        {details.payment_method ? details.payment_method : ""}:
                     ending in 7320
                   </p>
-                </div>
+                    </div>
 
-                <div className={orderDetailsStyles.totalWrapper}>
-                  <div>Order Total</div>
-                  <div className={orderDetailsStyles.totalPrice}>
-                    {details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Order Total</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}
+                      </div>
+                    </div>
+
+                    <div
+                      className={[
+                        orderDetailsStyles.orderButtonSection,
+                        "d-lg-none",
+                      ].join(" ")}
+                    >
+                      <button
+                        type="button"
+                        id="mob-reorder-button"
+                        className={orderDetailsStyles.orderButton}
+                        onClick={() => {
+                          productsOid = saveprodarr; let quantity = 1;
+                          savearr = productsPremierPoints
+                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                        }}
+                        disabled={arraysEqual(addingToCart, productsOid)}
+                      // disabled={addingToCart === productId}
+                      >
+                        {arraysEqual(addingToCart, productsOid) ? "Re-ordering" : "Re-order"}
+                      </button>
+                    </div>
+
+                    <div
+                      className={[
+                        orderDetailsStyles.orderButtonSection,
+                        "d-none d-lg-block",
+                      ].join(" ")}
+                    >
+                      <button
+                        type="button"
+                        id="reorder-button"
+
+                        className={orderDetailsStyles.orderButton}
+                        onClick={() => {
+                          productsOid = saveprodarr; let quantity = 1;
+                          savearr = productsPremierPoints
+                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                        }}
+                        disabled={arraysEqual(addingToCart, productsOid)}
+                      // disabled={addingToCart === elementId}
+                      >
+                        {arraysEqual(addingToCart, productsOid) ? "Re-ordering" : "Re-order"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+            </div>
+
+
+          </> :
+            <>
+              <div className="col-12  d-lg-none">
+                <div className={orderDetailsStyles.accordion}>
+                  <div className={orderDetailsStyles.accordionHeader}>
+                    <div className={orderDetailsStyles.itemsCount}>{products ? (products.length > 1 ? products.length + " Items" : products.length + " Item") : ""}</div>
+                    <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
+                      View Details
+            </button>
+                  </div>
+
+                  <div className="collapse" id="detailsAccordion">
+
+                    {isLoading ?
+
+                      <ClipLoader
+                        css={spinner}
+                        size={150}
+                        color={"#123abc"}
+
+                      />
+                      :
+                      (products.map((item, index) => {
+
+                        { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
+                        return (
+                          <div className={orderDetailsStyles.productWrapper}>
+                            <form>
+                              <div class="form-check">
+                                <label className="terms">
+                                  {/* <input data-Sku={item.sku} class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} /> */}
+                                  <input type="checkbox" data-Sku={item.sku} onChange={getallcheck} className="form-check-input details-check" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                  <span className="checkmark"></span>
+
+                                </label>
+                              </div>
+                            </form>
+                            {/* {item.images.data.map((item, index) => {
+                              return ( */}
+                                <img src={item.images.data[0].url_thumbnail} />
+                              {/* )
+                            })} */}
+                            <div className={orderDetailsStyles.productInfoWrapper}>
+                              <div className={orderDetailsStyles.productName}>{item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}</div>
+                              <div className={orderDetailsStyles.priceAndQuantity}>
+                                <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
+                                <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      }))
+                    }
+
                   </div>
                 </div>
-
-                <div
-                  className={[
-                    orderDetailsStyles.orderButtonSection,
-                    "d-lg-none",
-                  ].join(" ")}
-                >
-                  <button
-                    type="button"
-                    id="mob-reorder-button"
-                    className={orderDetailsStyles.orderButton}
-                    onClick={() => {
-                      productsOid= saveprodarr;let quantity = 1;
-                      savearr =productsPremierPoints
-                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
-                  }}
-                  disabled={arraysEqual(addingToCart,productsOid)}
-                    // disabled={addingToCart === productId}
-                  >
-                    {arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}
-                  </button>
-                </div>
-
-                <div
-                  className={[
-                    orderDetailsStyles.orderButtonSection,
-                    "d-none d-lg-block",
-                  ].join(" ")}
-                >
-                  <button
-                    type="button"
-                    id="reorder-button"
-                
-                    className={orderDetailsStyles.orderButton}
-                    onClick={() => {
-                      productsOid= saveprodarr;let quantity = 1;
-                      savearr =productsPremierPoints
-                      addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
-                  }}
-                  disabled={arraysEqual(addingToCart,productsOid)}
-                    // disabled={addingToCart === elementId}
-                  >
-                    {arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}
-                  </button>
-                </div>
               </div>
-            )}
-          </div>
-       
-       
-       </>:
-       <>
-       <div className="col-12  d-lg-none">
-    <div className={orderDetailsStyles.accordion}>
-        <div className={orderDetailsStyles.accordionHeader}>
-            <div className={orderDetailsStyles.itemsCount}>{products ? (products.length > 1 ? products.length + " Items" : products.length + " Item") : ""}</div>
-            <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
-                View Details
-            </button>
-        </div>
 
-        <div className="collapse" id="detailsAccordion">
 
-            {isLoading ?
-          
-                    <ClipLoader
-                css={spinner}
-                  size={150}
-                  color={"#123abc"}
-                
-                    />
-                :
-                (products.map((item, index) => {
 
-                  {total = parseFloat(total).toFixed(2) +  parseFloat(item.total_inc_taxtotal).toFixed(2)}
+              <div className="col-lg-7 offset-lg-1 d-none d-lg-block">
+
+                {isLoading ?
+
+                  <ClipLoader
+                    css={spinner}
+                    size={150}
+                    color={"#123abc"}
+
+                  />
+                  :
+                  (products.map((item, index) => {
                     return (
-                        <div className={orderDetailsStyles.productWrapper}>
+                      <div className={orderDetailsStyles.productWrapper}>
+                        <div className={orderDetailsStyles.productInfoWrapper}>
+                          <div className={orderDetailsStyles.productName}>
                             <form>
-                                <div class="form-check">
-                                    <input data-Sku={item.sku} class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} />
-                                </div>
-                            </form>
-                            {item.images.data.map((item, index) => {
-                                return (
-                                    <img src={item.url_thumbnail} />
-                                )
-                            })}
-                            <div className={orderDetailsStyles.productInfoWrapper}>
-                                <div className={orderDetailsStyles.productName}>{item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}</div>
-                                <div className={orderDetailsStyles.priceAndQuantity}>
-                                    <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
-                                    <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                }))
-            }
+                              <div class="form-check">
+                                <label className="terms">
+                                  {/* <input data-Sku={item.sku} class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
+                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  <span className="checkmark"></span>
 
-        </div>
-    </div>
-</div>
-
-
-
-<div className="col-lg-7 offset-lg-1 d-none d-lg-block">
-
-    {isLoading ?
-      
-            <ClipLoader
-        css={spinner}
-          size={150}
-          color={"#123abc"}
-        
-            />
-        :
-        (products.map((item, index) => {
-            return (
-                <div className={orderDetailsStyles.productWrapper}>
-                    <div className={orderDetailsStyles.productInfoWrapper}>
-                        <div className={orderDetailsStyles.productName}>
-                            <form>
-                                <div class="form-check">
-                                    <input data-Sku={item.sku} class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
-                                </div>
+                                </label>
+                              </div>
                             </form>
                             <div className={orderDetailsStyles.productImage}>
-                                {item.images.data.map((item, index) => {
-                                    return (
-                                        <img src={item.url_thumbnail} />
-                                    )
-                                })[0]}
+                              {item.images.data.map((item, index) => {
+                                return (
+                                  <img src={item.url_thumbnail} />
+                                )
+                              })[0]}
                             </div>
-                            {item.name ? <span dangerouslySetInnerHTML={{__html: item.name}}></span> : ""}
-                        </div>
-                        <div className={orderDetailsStyles.productQuantity}>
+                            {item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}
+                          </div>
+                          <div className={orderDetailsStyles.productQuantity}>
                             {item.quantity ? "Qty. " + item.quantity : ""}
-                        </div>
-                        <div className={orderDetailsStyles.productPrice}>
+                          </div>
+                          <div className={orderDetailsStyles.productPrice}>
                             {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
+                          </div>
                         </div>
+                      </div>
+                    )
+                  }))
+                }
+
+
+              </div>
+
+              <div className="col-12 col-lg-3">
+                {isLoading ?
+
+                  <ClipLoader
+                    css={spinner}
+                    size={150}
+                    color={"#123abc"}
+
+                  />
+                  :
+                  <div className={orderDetailsStyles.orderWrapper}>
+                    <div className={orderDetailsStyles.detailsHeader}>
+                      <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
+                      <a href={"https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
                     </div>
-                </div>
-            )
-        }))
-    }
 
-
-</div>
-
-<div className="col-12 col-lg-3">
-    {isLoading ?
- 
-             <ClipLoader
-         css={spinner}
-           size={150}
-           color={"#123abc"}
-         
-             />
-        :
-        <div className={orderDetailsStyles.orderWrapper}>
-            <div className={orderDetailsStyles.detailsHeader}>
-                <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
-                <a href={"https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
-            </div>
-
-            <div className={orderDetailsStyles.detailPart}>
-                <p>Status</p>
-                <p>{details.status ? details.status : ""}</p>
-            </div>
-
-            <div className={orderDetailsStyles.detailPart}>
-                <p>Order Placed</p>
-                <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
-            </div>
-
-            {shippingAddresses.map((item, index) => {
-                return (
                     <div className={orderDetailsStyles.detailPart}>
-                        <p>Shipping Address</p>
-                        <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
-                        <p>{item.street_1 ? item.street_1 : ""}</p>
-                        <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
-                        <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
+                      <p>Status</p>
+                      <p>{details.status ? details.status : ""}</p>
                     </div>
-                )
-            })}
 
-            <div className={orderDetailsStyles.detailPart}>
-                <p>Billing Address</p>
-                <p>{details.billing_address ? details.billing_address.first_name : ""} {details.billing_address ? details.billing_address.last_name : ""}</p>
-                <p>{details.billing_address ? details.billing_address.street_1 : ""}</p>
-                <p>{details.billing_address ? details.billing_address.city : ""} {details.billing_address ? details.billing_address.state : ""}, {details.billing_address ? details.billing_address.zip : ""}</p>
-                <p>{details.billing_address ? details.billing_address.country_iso2 : ""}</p>
-            </div>
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p>Order Placed</p>
+                      <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
+                    </div>
 
-            <div className={orderDetailsStyles.detailPart}>
-                <p>Payment</p>
-                <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
-            </div>
+                    {shippingAddresses.map((item, index) => {
+                      return (
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p>Shipping Address</p>
+                          <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
+                          <p>{item.street_1 ? item.street_1 : ""}</p>
+                          <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
+                          <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
+                        </div>
+                      )
+                    })}
 
-            <div className={orderDetailsStyles.detailPart}>
-                <p>Actions</p>
-                <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
-            </div>
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p>Billing Address</p>
+                      <p>{details.billing_address ? details.billing_address.first_name : ""} {details.billing_address ? details.billing_address.last_name : ""}</p>
+                      <p>{details.billing_address ? details.billing_address.street_1 : ""}</p>
+                      <p>{details.billing_address ? details.billing_address.city : ""} {details.billing_address ? details.billing_address.state : ""}, {details.billing_address ? details.billing_address.zip : ""}</p>
+                      <p>{details.billing_address ? details.billing_address.country_iso2 : ""}</p>
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p>Payment</p>
+                      <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p>Actions</p>
+                      <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
+                    </div>
 
 
-            <div className={orderDetailsStyles.totalWrapper}>
-                <div>Order Total</div>
-                <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" +  parseFloat(details.total_inc_tax).toFixed(2) : ""}</div>
-            </div>
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Order Total</div>
+                      <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}</div>
+                    </div>
 
-            <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
-                <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
-                onClick={() => {
-                  productsOid= saveprodarr;let quantity = 1;
-                  savearr =productsPremierPoints
-                  addMultiToCart(productsOid, false, quantity,total,savearr );
-              }}
-              disabled={arraysEqual(addingToCart,productsOid)}
-                // disabled={addingToCart === productId}
-                >{arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}</button>
-            </div>
+                    <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
+                      <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
+                        onClick={() => {
+                          productsOid = saveprodarr; let quantity = 1;
+                          savearr = productsPremierPoints
+                          addMultiToCart(productsOid, false, quantity, total, savearr);
+                        }}
+                        disabled={arraysEqual(addingToCart, productsOid)}
+                      // disabled={addingToCart === productId}
+                      >{arraysEqual(addingToCart, productsOid) ? "Re-ordering" : "Re-order"}</button>
+                    </div>
 
-            <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
-                <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
-               onClick={() => {
-                productsOid= saveprodarr;let quantity = 1;
-                savearr =productsPremierPoints
-                console.log(saveprodarr,"hassan33")
-                addMultiToCart(productsOid, false, quantity,details.total_inc_tax,savearr );
-            }}
-            disabled={arraysEqual(addingToCart,productsOid)}
-                // disabled={addingToCart === elementId}
-                >{arraysEqual(addingToCart,productsOid) ? "Re-ordering" : "Re-order"}</button>
-            </div>
-        </div>
-    }
-</div>
+                    <div className={[orderDetailsStyles.orderButtonSection, "d-none d-lg-block"].join(" ")}>
+                      <button type="button" id="reorder-button" className={orderDetailsStyles.orderButton}
+                        onClick={() => {
+                          productsOid = saveprodarr; let quantity = 1;
+                          savearr = productsPremierPoints
+                          console.log(saveprodarr, "hassan33")
+                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                        }}
+                        disabled={arraysEqual(addingToCart, productsOid)}
+                      // disabled={addingToCart === elementId}
+                      >{arraysEqual(addingToCart, productsOid) ? "Re-ordering" : "Re-order"}</button>
+                    </div>
+                  </div>
+                }
+              </div>
 
-       </>
-       }
+            </>
+          }
 
 
         </div>

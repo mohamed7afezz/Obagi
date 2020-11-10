@@ -29,8 +29,8 @@ const Q2 = (props) => {
             </div>
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">Do you see a dermatoloist regularly or are you willing to see one?</div>
-                    <div className="question-text">Seeing a dermatologist has it’s benefits depending on your skin concerns and age. Lorem ipsum dolor sit amet consectetur adipiscing hasellus sodales ipsum commodo euismod.</div>
+                    <div className="question-header">Do you see a Skin Care Expert regularly or would you be willing to go see one?</div>
+                    <div className="question-text">Obagi has been backed by physicians for 30 years. To inquire about specific skin care needs, we always recommend you speak with an Obagi skin care professional before starting a new regimen.</div>
                 </div>
             </div>
 

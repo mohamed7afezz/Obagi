@@ -39,7 +39,7 @@ const Q5 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">What is your skin type?</div>
-                    <div className="question-text">All Skin care products will react differently depending on your skin type. Lorem ipsum dolor sit amet consectetur adipiscing elitp hasellus sodales.</div>
+                    <div className="question-text">How you care for your skin depends largely on your skin type. Would you say your skin is normal, dry, oily, or sensitive?</div>
                 </div>
             </div>
 

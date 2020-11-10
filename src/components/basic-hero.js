@@ -19,7 +19,7 @@ const Basichero = ({ node }) => {
             ].join(" ")}
           >
             <div className="row remove-mob-padding">
-              <div className="col col-lg-11 offset-lg-1 general-basic-column">
+              <div className="col col-lg-12 general-basic-column">
              
               { 
                   node.relationships.field_basic_hero_left_img_paragr?

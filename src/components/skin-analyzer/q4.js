@@ -38,8 +38,8 @@ const Q4 = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">What area are you most concerned about?</div>
-                    <div className="question-text">Tell us your main skin concern so we can make sure we deliver the products with the right effect. Lorem ipsum dolor sit amet consectetur adipiscing.</div>
+                    <div className="question-header">What Areas Are You Most Concerned About?</div>
+                    <div className="question-text">Your skin concern is our concern, too. What’s the number one skin concern that you are looking to address?</div>
                 </div>
             </div>
 
