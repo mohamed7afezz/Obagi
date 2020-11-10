@@ -80,7 +80,11 @@ const Beforeafter = ({ node }) => {
                                     <div className={[beforeafter.cardhead, "card-header"].join(" ")}  >
                                         <h5 class="mb-16">
                                             <button className={[beforeafter.btnLink1, "btn-link", "collapsebtn1", "btn ", index == 0 ? '' : 'collapsed'].join(" ")}  >
+                                                {item.field_example_title && item.field_example_title.processed? 
                                                 <span onClick={(e) => { bcollapse(e); }} data-target={'Example' + index} dangerouslySetInnerHTML={{ __html: item.field_example_title.processed }}></span>
+                                                :
+                                                ""
+                                                }
                                             </button>
                                         </h5>
                                     </div>
