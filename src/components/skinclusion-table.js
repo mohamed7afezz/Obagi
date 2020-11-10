@@ -6,45 +6,45 @@ import tableStyle from '../assets/scss/components/table.module.scss'
 
 
 const SkinClusionTable = ({ node }) => {
- 
-  return(
-   
+
+  return (
+
     <div className={tableStyle.tableContainer}>
-        <div className='container-fluid'>
-        <div dangerouslySetInnerHTML={{ __html: node.field_table_title.processed }} className={["offset-lg-3",tableStyle.tabletitle].join(" ")}></div>
-     <div className="row">
-    <div className="col-12">
-       
-          <div className={["d-flex",tableStyle.tabelContainer].join(" ")}>
-          {node.relationships.field_skin_culsion_tabel_cells.map((item,index)=>
-          <div className={[tableStyle.coldeskRowMob,`cell-${index}`].join(" ")}>
-            
-            <div className={[tableStyle.tabelImage,"tabelImage"].join(" ")}>
-             {item.relationships?  item.relationships.field_cell_image?
-             <Img className={[tableStyle.tableimg,"tableimg"].join(" ")} fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid}/>:"":""}
-                     <div className={tableStyle.skinType}>
-            {item.field_tabel_type_cell_desc?
-            <div className={[tableStyle.tableCell,tableStyle.skincolor,`type-${index}`].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_tabel_type_cell_desc.processed }}></div>:""
-          }</div>
+      <div className='container-fluid'>
+        <div dangerouslySetInnerHTML={{ __html: node.field_table_title.processed }} className={["offset-lg-3", tableStyle.tabletitle].join(" ")}></div>
+        <div className="row">
+          <div className="col-12">
+
+            <div className={["d-flex", tableStyle.tabelContainer].join(" ")}>
+              {node.relationships.field_skin_culsion_tabel_cells.map((item, index) =>
+                <div className={[tableStyle.coldeskRowMob, `cell-${index}`].join(" ")}>
+
+                  <div className={[tableStyle.tabelImage, "tabelImage"].join(" ")}>
+                    {item.relationships && item.relationships.field_cell_image && item.relationships.field_cell_image.localFile && item.relationships.field_cell_image.localFile.childImageSharp?
+                      <Img className={[tableStyle.tableimg, "tableimg"].join(" ")} fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid} /> : ""}
+                    <div className={tableStyle.skinType}>
+                      {item.field_tabel_type_cell_desc ?
+                        <div className={[tableStyle.tableCell, tableStyle.skincolor, `type-${index}`].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_tabel_type_cell_desc.processed }}></div> : ""
+                      }</div>
+                  </div>
+
+                  <div className={[tableStyle.firstcell, "firstcell"].join(" ")}>
+                    {item.field_first_cell_text ?
+                      <div className={tableStyle.tableCell} dangerouslySetInnerHTML={{ __html: item.field_first_cell_text.processed }}></div> : ""
+                    }</div>
+                  <div className={tableStyle.secondcell}>
+                    {item.field_second_cell ?
+                      <div className={[tableStyle.tableCell, tableStyle.lastCell, "lastCell"].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_second_cell.processed }}></div> : ""
+                    }</div>
+                </div>
+              )
+              }
             </div>
-   
-            <div className={[tableStyle.firstcell,"firstcell"].join(" ")}>
-            {item.field_first_cell_text?
-            <div className={tableStyle.tableCell} dangerouslySetInnerHTML={{ __html: item.field_first_cell_text.processed }}></div>:""
-          }</div>
-         <div className={tableStyle.secondcell}>
-            {item.field_second_cell?
-            <div className={[tableStyle.tableCell,tableStyle.lastCell,"lastCell"].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_second_cell.processed }}></div>:""
-          }</div>
+
           </div>
-          )
-          }
-          </div>
-       
-          </div>
-     </div>
         </div>
-        {/* <table>
+      </div>
+      {/* <table>
             
             <tr>
                 {node.relationships.field_skin_culsion_tabel_cells.map(item=>
@@ -73,10 +73,10 @@ const SkinClusionTable = ({ node }) => {
             </tr>
         </table> */}
     </div>
-    
+
 
   )
-             }
+}
 export default SkinClusionTable
 
 
@@ -114,4 +114,3 @@ export const fragment = graphql`
           }
         }
       }`
-        
