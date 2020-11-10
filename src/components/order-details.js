@@ -131,13 +131,14 @@ const OrderDetails = (props, { node }) => {
   }
 
   useEffect(() => {
-    if(typeof window != undefined ){
-      checkStock(baseUrl);
-  }
+  
     getDetails()
     getProducts()
     getshipment()
     getShippingAddresses()
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+  }
   }, [])
 
   const data = useStaticQuery(graphql`

@@ -364,7 +364,7 @@ if ( typeof window !== "undefined"){
         <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-10","md-pl0"].join(" ")}>
           {field_medical_rx == "RX"?
           <Link
-            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
+            className={["btn", ProductStyles.btnCart,"btnCart", "locate-physician"].join(" ")}
             to="/medical/hcpfinder">      
             Locate a Physician
          </Link>
