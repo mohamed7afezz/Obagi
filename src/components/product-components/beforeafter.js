@@ -59,8 +59,8 @@ const Beforeafter = ({ node }) => {
                         node.relationships.field_before_meet_after_example.map((item, index) => (
                             <div id={"Example" + index} class={index == 0 ? 'beforeimgs ' : ' beforeimgs showimg'}>
                                 <Beforeafterimages
-                                    beforeimage={item.relationships.field_before_image?(item.relationships.field_before_image.localFile? item.relationships.field_before_image.localFile.childImageSharp.original.src : ''):(item.relationships.field_after_im.localFile? item.relationships.field_after_im.localFile.childImageSharp.original.src : '')}
-                                    afterimage={item.relationships.field_after_im?(item.relationships.field_after_im.localFile? item.relationships.field_after_im.localFile.childImageSharp.original.src : ''):(item.relationships.field_before_image.localFile? item.relationships.field_before_image.localFile.childImageSharp.original.src : '')}
+                                    beforeimage={item.relationships.field_before_image ? (item.relationships.field_before_image.localFile ? item.relationships.field_before_image.localFile.childImageSharp.original.src : '') : (item.relationships.field_after_im.localFile ? item.relationships.field_after_im.localFile.childImageSharp.original.src : '')}
+                                    afterimage={item.relationships.field_after_im ? (item.relationships.field_after_im.localFile ? item.relationships.field_after_im.localFile.childImageSharp.original.src : '') : (item.relationships.field_before_image.localFile ? item.relationships.field_before_image.localFile.childImageSharp.original.src : '')}
                                 />
 
                             </div>
@@ -80,7 +80,11 @@ const Beforeafter = ({ node }) => {
                                     <div className={[beforeafter.cardhead, "card-header"].join(" ")}  >
                                         <h5 class="mb-16">
                                             <button className={[beforeafter.btnLink1, "btn-link", "collapsebtn1", "btn ", index == 0 ? '' : 'collapsed'].join(" ")}  >
+                                                {item.field_example_title && item.field_example_title.processed? 
                                                 <span onClick={(e) => { bcollapse(e); }} data-target={'Example' + index} dangerouslySetInnerHTML={{ __html: item.field_example_title.processed }}></span>
+                                                :
+                                                ""
+                                                }
                                             </button>
                                         </h5>
                                     </div>
@@ -98,16 +102,19 @@ const Beforeafter = ({ node }) => {
                                         {/* Boxes */}
                                         {
                                             item.relationships.field_boxes.map(item => (
-                                                <div className={[beforeafter.box, "box", "col-5"].join(" ")}>
-                                                    <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage?item.field_percentage.processed:'' }}></h1>
-                                                    <div dangerouslySetInnerHTML={{ __html: item.field_box_des?item.field_box_des.processed:'' }}></div>
-                                                </div>
-                                            ))
+                                                
+                                                item.field_box_des ?
+                                                    <div className={[beforeafter.box, "box", "col-5"].join(" ")}>
+                                                        <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>
+                                                        <div dangerouslySetInnerHTML={{ __html: item.field_box_des ? item.field_box_des.processed : '' }}></div>
+                                                    </div> : ""
+                                            )
+                                            )
                                         }
                                     </div>
                                     {
                                         item.field_before_after_footnote.map((footNote, index) => (
-                                            footNote?<div className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{ __html: footNote.processed }}></div>
+                                            footNote ? <div className={beforeafter.beforeafterfooter} dangerouslySetInnerHTML={{ __html: footNote.processed }}></div>
                                                 :
                                                 ""
                                         ))

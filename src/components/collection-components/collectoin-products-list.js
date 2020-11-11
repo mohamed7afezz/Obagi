@@ -155,7 +155,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   } else {
     checkTaxonomy = node
   }
-console.log('hassan16',node)
+
   function checkProductExisitance(product) {
    
     return products.some(item => product.path.alias == item.path.alias)

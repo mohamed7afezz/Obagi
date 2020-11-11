@@ -890,7 +890,6 @@ export const productPageQuery = graphql`
           }
         },
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
-    
           field_medical_prod_lines_meta_ta {
             description
             title
