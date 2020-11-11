@@ -182,6 +182,10 @@ const ProductLine = ({ node }) => {
           node {
             name
             field_product_lines_cta_title
+            field_product_line_perfect_for {
+              title
+              uri
+            }
             description {
               processed
             }
@@ -366,23 +370,22 @@ const ProductLine = ({ node }) => {
                                 {item.node.description ? <div dangerouslySetInnerHTML={{ __html: item.node.description.processed }}></div> : ""}
                                 {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae. */}
                               </div>
-{/* 
-                              {item.node.relationships &&
-                                item.node.relationships.field_product_line_perfect_for &&
-                                item.node.relationships.field_product_line_perfect_for.length > 0 ?
+
+                              {item.node.field_product_line_perfect_for &&
+                                item.node.field_product_line_perfect_for.length > 0 ?
                                 <div className={lineStyles.perfect}>
                                   <span>PERFECT FOR:&nbsp;</span>
                                   <span>
-                                    {item.node.relationships.field_product_line_perfect_for.map(
+                                    {item.node.field_product_line_perfect_for.map(
                                       (it, index) => {
                                         return (
                                           <>
                                             {index === 1 ? " " : ""}
-                                            <Link to={it.path.alias}>
-                                              {it.name}
+                                            <Link to={it.uri.replace('internal:', '')}>
+                                              {it.title}
                                             </Link>
                                             {index ===
-                                              item.node.relationships
+                                              item.node
                                                 .field_product_line_perfect_for
                                                 .length -
                                               1
@@ -393,7 +396,7 @@ const ProductLine = ({ node }) => {
                                       }
                                     )}
                                   </span>
-                                </div> : ""} */}
+                                </div> : ""}
                               {item.node.relationships
                                 && item.node.relationships.field_hero_productline_taxonomy
                                 && item.node.relationships.field_hero_productline_taxonomy.relationships
