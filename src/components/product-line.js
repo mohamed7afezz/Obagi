@@ -181,9 +181,7 @@ const ProductLine = ({ node }) => {
         edges {
           node {
             name
-            field_medical_pro_col_footer_mod {
-              processed
-            }
+        
             field_product_lines_cta_title
             description {
               processed
@@ -375,7 +373,7 @@ const ProductLine = ({ node }) => {
                               (item, index, array) => {
                                 return ( */}
                                   <span className={lineStyles.category}>
-                                    <Link to="#">Anti-Aging, </Link>
+                                    <Link to="#">Skin-Aging, </Link>
                                     <Link to="#"> Breakouts</Link>
                                     {/* {index === array.length - 1 ? "" : ", "} */}
                                   </span>

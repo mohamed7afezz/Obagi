@@ -157,7 +157,7 @@ function saveuri(){
                     ""
                   )}
               </div>
-
+                  
             </div>
 
           </div>
@@ -315,7 +315,9 @@ function saveuri(){
                       }
                 </p>
               </div> }
-              <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+         
+            </div>
+            <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -356,7 +358,6 @@ function saveuri(){
                   )}
               </div>
 
-            </div>
           </div>
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
@@ -451,7 +452,7 @@ function saveuri(){
                     ""
                   )}
               </div>
-
+                  
             </div>
           </div>
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
@@ -505,7 +506,9 @@ function saveuri(){
                 <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title:getname}</Link>:""}
               </p>
             </div> }
-            <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+         
+          </div>
+          <div className="col-12 col-lg-11 offset-lg-1 pl-0">
               {checkTaxonomy.field_taxonomy_hero ? (
                 <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
                   {
@@ -544,8 +547,7 @@ function saveuri(){
                   ""
                 )}
             </div>
-
-          </div>
+                
         </div>
         {checkTaxonomy.field_taxonomy_hero ? (
           <div
@@ -599,7 +601,9 @@ function saveuri(){
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> }
-                        <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                
+                      </div>
+                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                                     {
@@ -639,7 +643,6 @@ function saveuri(){
                             )}
                         </div>
 
-                      </div>
                     </div>
                     {checkTaxonomy.field_hero_taxonomy_skintype ? (
                       <div
@@ -694,7 +697,9 @@ function saveuri(){
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> }
-                        <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                       
+                      </div>
+                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
 
@@ -734,8 +739,7 @@ function saveuri(){
                               ""
                             )}
                         </div>
-
-                      </div>
+                         
                     </div>
                     {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                       <div
@@ -1066,7 +1070,9 @@ function saveuri(){
                                       </p>
                                     </div>
                                     
-                                  <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                                     
+                                </div>
+                                <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                                     {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
                                       <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')
                                        || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general, "general"].join(' ')}>
@@ -1106,8 +1112,7 @@ function saveuri(){
                                       <Link to={checkTaxonomy.field_taxonomy_hero_link.uri.replace('internal:', '')} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
                                     ) : ""}
                                   </div>
-
-                                </div>
+                              
                               </div>
                               {checkTaxonomy.relationships ? (
                                 <div
