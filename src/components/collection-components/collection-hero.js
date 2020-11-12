@@ -6,42 +6,42 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
   let checkTaxonomy;
   let getname;
   if (nodetype == "clinicalConcern") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.name;
+    getname = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
   } else if (nodetype == "clinicalCategories") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalCategories.name;
+    getname = node.data.taxonomyTermClinicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermClinicalCategories.relationships
   } else if (nodetype == "medicalConcern") {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.name;
+    getname = node.data.taxonomyTermMedicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships
   } else if (nodetype == "medicalCategories") {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalCategories.name;
+    getname = node.data.taxonomyTermMedicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships
   } else if (nodetype == "clinicalGroups") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalGroups.name;
+    getname = node.data.taxonomyTermClinicalGroups.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
 
   } else if (nodetype == 'medicalLine') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalProductLines.name;
+    getname = node.data.taxonomyTermMedicalProductLines.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
   } else if (nodetype == 'skinClinicalType') {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinType.name;
+    getname = node.data.taxonomyTermClinicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
 
   } else if (nodetype == 'skinMedicalType') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinType.name;
+    getname = node.data.taxonomyTermMedicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalSkinType.relationships;
   } else if (nodetype == 'MedicalIngredients') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalIngredients.name;
+    getname = node.data.taxonomyTermMedicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalIngredients.relationships
 
   } else if (nodetype == "ClinicalIngredients") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalIngredients.name;
+    getname = node.data.taxonomyTermClinicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalIngredients.relationships
 
@@ -841,7 +841,7 @@ function saveuri(){
                            
                                   checkTaxonomy.field_hero_parag_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
-                             
+                             .localFile.childImageSharp.original.src
                             ) : (
                               ""
                             )
