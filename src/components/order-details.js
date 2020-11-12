@@ -12,7 +12,7 @@ import { checkStock } from '../assets/js/stock';
 import $ from "jquery"
 // const $ = require('jQuery');
 
-const baseUrl = process.env.Base_URL
+const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
   margin: 0 auto;
@@ -49,7 +49,7 @@ const OrderDetails = (props, { node }) => {
     }
     return true;
   }
-  const baseUrl = process.env.Base_URL;
+
   async function getDetails() {
     // setIsLoading(true);
     const detailsData = await (
@@ -106,6 +106,9 @@ const OrderDetails = (props, { node }) => {
     }
 
     setIsLoading(false)
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
   }
 
   const [shippingAddresses, setShippingAddresses] = useState([])
@@ -131,16 +134,10 @@ const OrderDetails = (props, { node }) => {
   }
 
   useEffect(() => {
-    if (typeof window != undefined) {
-      checkStock(baseUrl);
-    }
     getDetails()
     getProducts()
     getshipment()
     getShippingAddresses()
-    if(typeof window != undefined ){
-      checkStock(baseUrl);
-  }
   }, [])
 
   const data = useStaticQuery(graphql`
@@ -161,11 +158,9 @@ const OrderDetails = (props, { node }) => {
     saveprodarr = [];
     productsPremierPoints = [];
     document
-      .querySelectorAll(".desk-details-check")
+      .querySelectorAll(".desk-details-check.order-check")
       .forEach((el, index) => {
-        if (el.checked && !saveprodarr.includes(el.value)) {
-          // 3 - send cart request
-
+        if (el.checked) {
           saveprodarr.push(el.value)
           productsPremierPoints.push(
             {
@@ -175,7 +170,6 @@ const OrderDetails = (props, { node }) => {
             });
         }
       })
-    // console.log(document.querySelectorAll(".details-check"))
   }
   if (!user && location.pathname.includes(`/my-account/orders/order-details`)) {
     if (typeof window !== "undefined") {
@@ -329,7 +323,7 @@ const OrderDetails = (props, { node }) => {
                                     <div className={orderDetailsStyles.productName}>
                                       <form>
                                         <div class="form-check">
-                                          {/* <input class="form-check-input desk-details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
+                                          {/* <input class="form-check-input desk-details-check order-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index]} />
                                    */}
                                         </div>
                                       </form>
@@ -614,8 +608,8 @@ const OrderDetails = (props, { node }) => {
                             <form>
                               <div class="form-check">
                                 <label className="terms">
-                                  {/* <input data-Sku={item.sku} class="form-check-input desk-details-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  {/* <input data-Sku={item.sku} class="form-check-input desk-details-check order-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
+                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                   <span className="checkmark"></span>
 
                                 </label>
@@ -696,10 +690,10 @@ const OrderDetails = (props, { node }) => {
                       <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Actions</p>
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
-                    </div>
+                    </div> */}
 
 
                     <div className={orderDetailsStyles.totalWrapper}>

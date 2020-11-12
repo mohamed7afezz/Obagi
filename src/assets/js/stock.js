@@ -3,7 +3,7 @@ import $ from 'jquery';
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
-export function checkStock(baseUrl) {
+export function checkStock(baseUrl,cb) {
 
   var skus = [];
   $.each($('[data-sku]'), function () {
@@ -24,7 +24,7 @@ export function checkStock(baseUrl) {
       if (response.hasOwnProperty(sku)) {
         var skuNumber = response[sku];
         if (skuNumber < 100) {
-          $.each($('button[data-sku=' + sku + ']'), function () {
+          $.each($('[data-sku=' + sku + ']'), function () {
             $(this).html('Temporarily out of stock');
             $(this).addClass('out-of-stock');
             this.onclick = function (e) { e.stopPropagation(); return false };
@@ -36,5 +36,9 @@ export function checkStock(baseUrl) {
     
     $('[data-sku]').addClass('add-btn-ready');
     $('[data-sku]').removeAttr("data-sku");
+
+    if(cb){
+      cb(response);
+    }
   });
 }

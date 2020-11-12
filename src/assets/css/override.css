@@ -2839,3 +2839,18 @@ font-weight: 300;font-size: 20px;line-height: 34px;padding-top: 20px;padding-bot
 .locate-physician{
   display: block !important;
 }
+.ingredientcontent li {
+  font-size :  18px ;
+  line-height: 32px ;
+  color: #fff;
+  margin-top: 8px;
+}
+.order-check ~ .checkmark{
+  display: none !important;
+}
+.order-check.add-btn-ready ~ .checkmark{
+  display: block !important;
+}
+input.order-check.out-of-stock ~ .checkmark {
+  display: none !important;
+}

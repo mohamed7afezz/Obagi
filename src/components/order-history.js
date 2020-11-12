@@ -5,60 +5,16 @@ import orderHistoryStyles from '../assets/scss/components/order-history.module.s
 import OrderHistoryRow from "./order-history-row"
 import Paginator from './paginator'
 import OrderNoHistory from "./order-no-history"
-import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
-const spinner = css`
-  display: block;
-  margin: 0 auto;
- 
-`;
+
 const baseUrl = process.env.Base_URL;
 
-const OrderHistory = ({ node }) => {
+const OrderHistory = ({ ordersList }) => {
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [orders, setOrders] = useState({});
-
-    async function getOrders() {
-
-        setIsLoading(true);
-        const ordersData =  await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
-            method: 'GET',
-            credentials: 'include',
-        })
-
-        if(ordersData.status == 200) {
-            let ordersResponse = await ordersData.json();
-
-            if (ordersResponse !== "User not login.") {
-                setOrders(ordersResponse);
-            }
-        }
-
-      
-        setIsLoading(false);
-        
-    }
-
-    useEffect(() => {
-        getOrders();
-    }, [])
-
-    // console.log("orders", orders)
+    
+    let orders = ordersList;
     
 
-    if(isLoading) {
-        return    <div>
-        <ClipLoader
-    css={spinner}
-     size={150}
-     color={"#123abc"}
-/>           
-</div>   
-    }
-
-    else if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
+    if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
 
         return (<OrderNoHistory />)
 
