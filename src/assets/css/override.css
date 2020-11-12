@@ -2845,3 +2845,10 @@ font-weight: 300;font-size: 20px;line-height: 34px;padding-top: 20px;padding-bot
   transform: translateX(-50%) !important ;
   
 }
+
+.ingredientcontent li {
+  font-size :  18px ;
+  line-height: 32px ;
+  color: #fff;
+  margin-top: 8px;
+}
