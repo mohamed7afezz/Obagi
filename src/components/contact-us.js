@@ -162,7 +162,7 @@ export default function Contact() {
                             </div>
 
                             <div className="form-group select-group">
-                                <label for="state" className="form-label">*Subject</label>
+                                <label  className="form-label">*Subject</label>
                                 <div className="select-wrapper custom-select">
                                     <select className="form-control" name="subject" id="subject">
                                         <option value="Select">Select</option>
