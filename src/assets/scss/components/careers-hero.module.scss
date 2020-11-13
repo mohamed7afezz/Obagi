@@ -19,7 +19,7 @@
     padding-top: 42px;
 
     @include lg-screen {
-        padding: 242px 0 40px;
+        padding: 190px 0 40px;
         @include fontStyle(72, 88);
         color: #ffffff;
     }
@@ -45,7 +45,7 @@
         color: #ffffff;
         border: 1px solid #ffffff;
         padding: 28px 43px;
-        margin-bottom: 102px;
+        margin-bottom: 40px;
         &:hover {
             border: 1px solid #132466;
         }

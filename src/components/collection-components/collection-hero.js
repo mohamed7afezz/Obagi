@@ -6,42 +6,42 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
   let checkTaxonomy;
   let getname;
   if (nodetype == "clinicalConcern") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.name;
+    getname = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
   } else if (nodetype == "clinicalCategories") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalCategories.name;
+    getname = node.data.taxonomyTermClinicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermClinicalCategories.relationships
   } else if (nodetype == "medicalConcern") {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.name;
+    getname = node.data.taxonomyTermMedicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermMedicalSkinConcern.relationships
   } else if (nodetype == "medicalCategories") {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalCategories.name;
+    getname = node.data.taxonomyTermMedicalCategories.name;
     checkTaxonomy = node.data.taxonomyTermMedicalCategories.relationships
   } else if (nodetype == "clinicalGroups") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalGroups.name;
+    getname = node.data.taxonomyTermClinicalGroups.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
 
   } else if (nodetype == 'medicalLine') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalProductLines.name;
+    getname = node.data.taxonomyTermMedicalProductLines.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
   } else if (nodetype == 'skinClinicalType') {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalSkinType.name;
+    getname = node.data.taxonomyTermClinicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
 
   } else if (nodetype == 'skinMedicalType') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalSkinType.name;
+    getname = node.data.taxonomyTermMedicalSkinType.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalSkinType.relationships;
   } else if (nodetype == 'MedicalIngredients') {
-    getname=checkTaxonomy = node.data.taxonomyTermMedicalIngredients.name;
+    getname = node.data.taxonomyTermMedicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermMedicalIngredients.relationships
 
   } else if (nodetype == "ClinicalIngredients") {
-    getname=checkTaxonomy = node.data.taxonomyTermClinicalIngredients.name;
+    getname = node.data.taxonomyTermClinicalIngredients.name;
     checkTaxonomy =
       node.data.taxonomyTermClinicalIngredients.relationships
 
@@ -157,7 +157,7 @@ function saveuri(){
                     ""
                   )}
               </div>
-
+                  
             </div>
 
           </div>
@@ -315,7 +315,9 @@ function saveuri(){
                       }
                 </p>
               </div> }
-              <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+         
+            </div>
+            <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -356,7 +358,6 @@ function saveuri(){
                   )}
               </div>
 
-            </div>
           </div>
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
@@ -451,7 +452,7 @@ function saveuri(){
                     ""
                   )}
               </div>
-
+                  
             </div>
           </div>
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
@@ -505,7 +506,9 @@ function saveuri(){
                 <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title:getname}</Link>:""}
               </p>
             </div> }
-            <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+         
+          </div>
+          <div className="col-12 col-lg-11 offset-lg-1 pl-0">
               {checkTaxonomy.field_taxonomy_hero ? (
                 <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
                   {
@@ -544,8 +547,7 @@ function saveuri(){
                   ""
                 )}
             </div>
-
-          </div>
+                
         </div>
         {checkTaxonomy.field_taxonomy_hero ? (
           <div
@@ -599,7 +601,9 @@ function saveuri(){
                             <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> }
-                        <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                
+                      </div>
+                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                                     {
@@ -639,7 +643,6 @@ function saveuri(){
                             )}
                         </div>
 
-                      </div>
                     </div>
                     {checkTaxonomy.field_hero_taxonomy_skintype ? (
                       <div
@@ -694,7 +697,9 @@ function saveuri(){
                   <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
                           </p>
                         </div> }
-                        <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                       
+                      </div>
+                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
 
@@ -734,8 +739,7 @@ function saveuri(){
                               ""
                             )}
                         </div>
-
-                      </div>
+                         
                     </div>
                     {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                       <div
@@ -837,7 +841,7 @@ function saveuri(){
                            
                                   checkTaxonomy.field_hero_parag_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
-                             
+                             .localFile.childImageSharp.original.src
                             ) : (
                               ""
                             )
@@ -1066,7 +1070,9 @@ function saveuri(){
                                       </p>
                                     </div>
                                     
-                                  <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                                     
+                                </div>
+                                <div className="col-12 col-lg-11 offset-lg-1 pl-0">
                                     {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
                                       <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')
                                        || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general, "general"].join(' ')}>
@@ -1106,8 +1112,7 @@ function saveuri(){
                                       <Link to={checkTaxonomy.field_taxonomy_hero_link.uri.replace('internal:', '')} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
                                     ) : ""}
                                   </div>
-
-                                </div>
+                              
                               </div>
                               {checkTaxonomy.relationships ? (
                                 <div

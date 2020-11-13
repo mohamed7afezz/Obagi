@@ -165,12 +165,24 @@ export default function Contact() {
                                 <label for="state" className="form-label">*Subject</label>
                                 <div className="select-wrapper custom-select">
                                     <select className="form-control" name="subject" id="subject">
-                                        <option value="Select">Subject 1</option>
-                                        <option value="Select">Subject 2</option>
-                                        <option value="Select">Subject 2</option>
-                                        <option value="Select">Subject 3</option>
-                                        <option value="Select">Subject 4</option>
-                                        <option value="Select">Subject 5</option>
+                                        <option value="Select">Select</option>
+                                        <option value="1">Business Center</option>
+                                        <option value="2">Customer Service</option>
+                                        <option value="3">International Inquiries - Latin America & Mexico</option>
+                                        <option value="4">International Inquiries - Asia Pacific</option>
+                                        <option value="5">International Inquiries - Brazil, Argentina</option>
+                                        <option value="6">International Inquiries - Canada</option>
+                                        <option value="7">International Inquiries - Western Europe</option>
+                                        <option value="8">International Inquiries - Europe</option>
+                                        <option value="9">International Inquiries - Middle East, Africa</option>
+                                        <option value="10">US Product Complaint</option>
+                                        <option value="11">Non-US Product Complaint</option>
+                                        <option value="12">US Medical­-Related Question / Adverse Event</option>
+                                        <option value="13">Non­-US Adverse Event</option>
+                                        <option value="14">Questions About My Order</option>
+                                        <option value="15">Request A Return Authorization</option>
+
+
                                     </select>
                                 </div>
                             </div>

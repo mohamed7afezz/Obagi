@@ -2839,6 +2839,13 @@ font-weight: 300;font-size: 20px;line-height: 34px;padding-top: 20px;padding-bot
 .locate-physician{
   display: block !important;
 }
+.product-card-img .custom-img picture img{
+  width: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important ;
+  
+}
+
 .ingredientcontent li {
   font-size :  18px ;
   line-height: 32px ;

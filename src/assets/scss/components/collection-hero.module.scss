@@ -78,6 +78,7 @@ top: 5px;
     text-align: left;
 
     @include md-screen{
+        padding-left: 0;
     }
     @include lg-screen {
         padding-top: 195px;

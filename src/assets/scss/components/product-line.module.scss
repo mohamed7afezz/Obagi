@@ -125,10 +125,24 @@
     
     @extend %futurapt-bold;
     @include fontStyle(14, 16);
+    text-transform: uppercase;
     @include md-screen{
         padding-bottom: 45px;
         @include fontStyle(16,24)
 
+    }
+
+    a {
+        display: inline-block;
+        color: #ffffff;
+        text-decoration: underline;
+        margin-top: 8px;
+        @extend %futurapt-book;
+        text-transform: none;
+
+        &:hover {
+            color: #ffffff;
+        }
     }
 }
 
