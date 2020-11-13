@@ -15,12 +15,14 @@ import info from "../../assets/images/info.svg"
 import infoselected from "../../assets/images/info-selected.svg"
 import freeimg from "../../assets/images/rsz_thumbnail.png"
 import { func } from "prop-types"
-import {checkStock} from '../../assets/js/stock';
+import { checkStock } from '../../assets/js/stock';
+import fb from "../../assets/images/product-images/facebook.svg"
+import tw from "../../assets/images/product-images/twitter.svg"
 const baseUrl = process.env.Base_URL;
 
 const ProductHero = ({ data, nodeType }) => {
   useEffect(() => {
-    if(typeof window != undefined ){
+    if (typeof window != undefined) {
       checkStock(baseUrl);
     }
   }, [])
@@ -32,16 +34,16 @@ const ProductHero = ({ data, nodeType }) => {
   let field_image = isClincal
     ? node.relationships.field_clinical_image
     : node.relationships.field_medical_image
-    let reviewimg = isClincal
-    ? node.relationships.field_clinical_image[0]?(node.relationships.field_clinical_image[0].localFile? node.relationships.field_clinical_image[0].localFile.childImageSharp.original.src : ""):""
-    : node.relationships.field_medical_image[0]?(node.relationships.field_medical_image[0].localFile? node.relationships.field_medical_image[0].localFile.childImageSharp.original.src : ""):""
-    let field_medical_rx = isClincal
+  let reviewimg = isClincal
+    ? node.relationships.field_clinical_image[0] ? (node.relationships.field_clinical_image[0].localFile ? node.relationships.field_clinical_image[0].localFile.childImageSharp.original.src : "") : ""
+    : node.relationships.field_medical_image[0] ? (node.relationships.field_medical_image[0].localFile ? node.relationships.field_medical_image[0].localFile.childImageSharp.original.src : "") : ""
+  let field_medical_rx = isClincal
     ? ""
     : node.relationships.field_medical_rx.name
-   
+
   let field_description = isClincal
     ? node.field_clinical_description.processed
-    : node.field_medical_description?node.field_medical_description.processed:''
+    : node.field_medical_description ? node.field_medical_description.processed : ''
   let field_medical_type = isClincal
     ? node.field_clinical_medical_type
     : node.field_medical_form_list
@@ -57,25 +59,25 @@ const ProductHero = ({ data, nodeType }) => {
   let field_skin_concern = isClincal
     ? node.relationships.field_clinical_skin_concern
     : node.relationships.field_medical_skin_concern
-    let field_info =  node.field_medical_info
-  let feild_preimer = node.field_medical_premier_points?
-  node.field_medical_premier_points:"";
-  let premierid = node.field_medical_premier_points_id?
-  node.field_medical_premier_points_id :""
-  let field_weight_unit  = isClincal
+  let field_info = node.field_medical_info
+  let feild_preimer = node.field_medical_premier_points ?
+    node.field_medical_premier_points : "";
+  let premierid = node.field_medical_premier_points_id ?
+    node.field_medical_premier_points_id : ""
+  let field_weight_unit = isClincal
     ? node.field_clinical_weight_unit
-     :node.field_medical_weight_unit
-  let Sku= isClincal ? node.field_clinical_sku
-  : node.field_medical_sku
-  let key_benefit  = isClincal
+    : node.field_medical_weight_unit
+  let Sku = isClincal ? node.field_clinical_sku
+    : node.field_medical_sku
+  let key_benefit = isClincal
     ? node.field_clinical_key_benefit
     : node.field_medical_key_benefits
-    let productSubTitle =isClincal
+  let productSubTitle = isClincal
     ? "" //node.field_clinical_description_sub
     : node.field_medical_description_sub
-    let key_benfitList = isClincal
-    ? node.relationships.field_key_benefits_list?node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists:""
-    : node.relationships.field_medical_benefits_lists?node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists:""
+  let key_benfitList = isClincal
+    ? node.relationships.field_key_benefits_list ? node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists : ""
+    : node.relationships.field_medical_benefits_lists ? node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists : ""
   const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
@@ -85,74 +87,74 @@ const ProductHero = ({ data, nodeType }) => {
   })
   const slider1 = useRef()
   const slider2 = useRef()
-    // document.querySelector('body').addEventListener('click',function(){
-    //   if (document.querySelector('.popoverContainer').classList.contains('show')) {
-    //     document.querySelector('.popoverContainer').classList.remove('show')
-    //   }
-    // })
-  function showpopover(e){
-     
-      
+  // document.querySelector('body').addEventListener('click',function(){
+  //   if (document.querySelector('.popoverContainer').classList.contains('show')) {
+  //     document.querySelector('.popoverContainer').classList.remove('show')
+  //   }
+  // })
+  function showpopover(e) {
+
+
     document.querySelector('.popoverContainer').classList.toggle('show')
-    
+
   }
-//////////////////////
+  //////////////////////
 
-if ( typeof window !== "undefined"){
-  window.bvDCC = {
-  
-    catalogData: {
-    
-    locale: "en_US",
-    
-    catalogProducts: [{
-    
-    "productId" : `${productId}`,
-    
-    "productName" : `${node.title}`,
-    
-    
+  if (typeof window !== "undefined") {
+    window.bvDCC = {
 
-    "productImageURL": `https://dev-obagi.azurewebsites.net${reviewimg}`,
-    
-    //ex. https:\\site.com\pub\media\mh02-black_main.jpg
-    
-    "productPageURL":`https://dev-obagi.azurewebsites.net${productpath}`,
-    
-      
-    //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
-    
-    "brandName" : "Obagi",
-    
-    "upcs" : ["724742001735","724742006907"],
-    
-    "inactive": false, //default
-    
-    "family": ""
-    
-    }]
-    
-    }
-    
+      catalogData: {
+
+        locale: "en_US",
+
+        catalogProducts: [{
+
+          "productId": `${productId}`,
+
+          "productName": `${node.title}`,
+
+
+
+          "productImageURL": `https://dev-obagi.azurewebsites.net${reviewimg}`,
+
+          //ex. https:\\site.com\pub\media\mh02-black_main.jpg
+
+          "productPageURL": `https://dev-obagi.azurewebsites.net${productpath}`,
+
+
+          //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
+
+          "brandName": "Obagi",
+
+          "upcs": ["724742001735", "724742006907"],
+
+          "inactive": false, //default
+
+          "family": ""
+
+        }]
+
+      }
+
     };
-    
+
     window.bvCallback = function (BV) {
-    
-    BV.pixel.trackEvent("CatalogUpdate", {
-    
-    type: 'Product',
-    
-    locale: window.bvDCC.catalogData.locale,
-    
-    catalogProducts: window.bvDCC.catalogData.catalogProducts
-    
-    });
-    
+
+      BV.pixel.trackEvent("CatalogUpdate", {
+
+        type: 'Product',
+
+        locale: window.bvDCC.catalogData.locale,
+
+        catalogProducts: window.bvDCC.catalogData.catalogProducts
+
+      });
+
     };
   }
-/////////////////////////
+  /////////////////////////
   useEffect(() => {
- 
+
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
@@ -172,7 +174,7 @@ if ( typeof window !== "undefined"){
           .classList.remove("myslickactive")
         document
           .querySelectorAll("#product-hero-slick .imageContainer")
-          [next].classList.add("myslickactive")
+        [next].classList.add("myslickactive")
       }
     },
     responsive: [
@@ -188,13 +190,13 @@ if ( typeof window !== "undefined"){
   function slickGoToslide(int) {
     slider1.current.slickGoTo(int)
   }
-  
+
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
 
   return (
-    <div 
+    <div
       className={[
         "container-fluid",
         ProductStyles.productHero,
@@ -205,21 +207,21 @@ if ( typeof window !== "undefined"){
         <div className={["pathname", "col-12"].join(" ")}>
           <p className="pathtitle">
             <Link to="/homepage"> Home</Link> /{" "}
-            <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{__html: node.title}}></span>
+            <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{ __html: node.title }}></span>
           </p>
         </div>
-        <div className={["col-12",""].join(" ")}>
-        <p className={[ProductStyles.productcat,"mt-24", "productcat","show-mob"].join(" ")}>
+        <div className={["col-12", ""].join(" ")}>
+          <p className={[ProductStyles.productcat, "mt-24", "productcat", "show-mob"].join(" ")}>
             {nodeType}
           </p>
           <div>
-            <h1 className={[ProductStyles.productname,"show-mob"].join(" ")}><span dangerouslySetInnerHTML={{__html: node.title}}></span></h1>
-            <div className={["d-flex", ProductStyles.review,"show-mob"].join(" ")}>
+            <h1 className={[ProductStyles.productname, "show-mob"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
+            <div className={["d-flex", ProductStyles.review, "show-mob"].join(" ")}>
 
 
-            <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-          </div>
- 
+              <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
+            </div>
+
 
           </div></div>
         <div
@@ -241,8 +243,8 @@ if ( typeof window !== "undefined"){
                         src={item.localFile.childImageSharp.original.src}
                       />
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </div>
                   <div class="zoom-desk" data-arrange={index}>
                     {item.localFile ? (
@@ -253,8 +255,8 @@ if ( typeof window !== "undefined"){
                         height={615}
                       />
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </div>
                 </React.Fragment>
               )
@@ -269,24 +271,24 @@ if ( typeof window !== "undefined"){
             ProductStyles.productdetail,
           ].join(" ")}
         >
-          <p className={[ProductStyles.productcat, "productcat","hide-mob"].join(" ")}>
+          <p className={[ProductStyles.productcat, "productcat", "hide-mob"].join(" ")}>
             {nodeType}
           </p>
           <div>
-          <h1 className={[ProductStyles.productname,"hide-mob"].join(" ")} itemprop="name"><span dangerouslySetInnerHTML={{__html: node.title}}></span></h1>
-          <div className={["d-flex", ProductStyles.review,"hide-mob"].join(" ")}>
- 
-          {field_medical_rx == "RX"? 
-          ""
-          :
-          <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
-        }
+            <h1 className={[ProductStyles.productname, "hide-mob"].join(" ")} itemprop="name"><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
+            <div className={["d-flex", ProductStyles.review, "hide-mob"].join(" ")}>
 
-          </div>
+              {field_medical_rx == "RX" ?
+                ""
+                :
+                <div data-bv-show="rating_summary" data-bv-product-id={productId}></div>
+              }
+
+            </div>
           </div>
           <div
             className={ProductStyles.productSubDesc}
-        
+
           >{productSubTitle}</div>
           <div
             className={ProductStyles.productdesc}
@@ -294,193 +296,192 @@ if ( typeof window !== "undefined"){
           ></div>
           <div className={ProductStyles.keyBenefitcon}>
             <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
-            
+
             <ul className={ProductStyles.keyBenefitul}>
-            {key_benfitList?key_benfitList.map((item, index) => {
-              return (
-                
+              {key_benfitList ? key_benfitList.map((item, index) => {
+                return (
+
                   <li className={ProductStyles.keyBenefitli}>
-                    <span  dangerouslySetInnerHTML={{ __html: item.field_list_item }}></span>
+                    <span dangerouslySetInnerHTML={{ __html: item.field_list_item }}></span>
                   </li>
-            
-              )
-            }):""}
+
+                )
+              }) : ""}
             </ul>
           </div>
           <div className={ProductStyles.skintypes}>
-          {field_skin_type.length > 0? <p className={ProductStyles.canuse}>
-            Skin Type:{" "}
-            {field_skin_type.map((item, index) => {
-              return (
-                <span className={ProductStyles.canusedata}>
-                  <Link to={item.path.alias}> {item.name}</Link>
-                  {index === field_skin_type.length - 1 ? "" : ", "}
-                </span>
-              )
-            })}
-          </p> : ""}
-          {field_skin_concern.length > 0? <p className={ProductStyles.Indications}>
-            Skin Concerns:{" "}
-            {field_skin_concern.map((item, index) => {
-              return (
-                <span className={ProductStyles.Indicationsdata}>
-                  <Link to={item.path.alias}> {item.name}</Link>
-                  {index === field_skin_concern.length - 1 ? "" : ", "}
-                </span>
-              )
-            })}
-          </p> : ""}
-        
+            {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
+              Skin Type:{" "}
+              {field_skin_type.map((item, index) => {
+                return (
+                  <span className={ProductStyles.canusedata}>
+                    <Link to={item.path.alias}> {item.name}</Link>
+                    {index === field_skin_type.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })}
+            </p> : ""}
+            {field_skin_concern.length > 0 ? <p className={ProductStyles.Indications}>
+              Skin Concerns:{" "}
+              {field_skin_concern.map((item, index) => {
+                return (
+                  <span className={ProductStyles.Indicationsdata}>
+                    <Link to={item.path.alias}> {item.name}</Link>
+                    {index === field_skin_concern.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })}
+            </p> : ""}
+
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
-          <p className={ProductStyles.price}>
-            <span>${field_price}</span>
-          </p>
-      
+            <p className={ProductStyles.price}>
+              <span>${field_price}</span>
+            </p>
+
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
-            {field_weight !== "0"? <ul>
+            {field_weight !== "0" ? <ul>
               {" "}
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
-          {feild_preimer && field_medical_rx !== "RX"?
-          <div
+          {feild_preimer && field_medical_rx !== "RX" ?
+            <div
               className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
                 " "
               )}
             >
-           <img src={modal} />  
+              <img src={modal} />
               <p>
-               Earn {feild_preimer} Premier Points 
+                Earn {feild_preimer} Premier Points
               </p>
-              
-            </div>:""
+
+            </div> : ""
           }
-           {field_medical_rx == "RX"? 
-          <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-         
-            
-      
-        <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-10","md-pl0"].join(" ")}>
-          {field_medical_rx == "RX"?
-          <Link
-            className={["btn", ProductStyles.btnCart,"btnCart", "locate-physician"].join(" ")}
-            to="/medical/hcpfinder">      
-            Locate a Physician
+          {field_medical_rx == "RX" ?
+            <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
+
+
+
+              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-lg-10", "md-pl0"].join(" ")}>
+                {field_medical_rx == "RX" ?
+                  <Link
+                    className={["btn", ProductStyles.btnCart, "btnCart", "locate-physician"].join(" ")}
+                    to="/medical/hcpfinder">
+                    Locate a Physician
          </Link>
-          :  <button
-            className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-            data-Sku={Sku}
-            onClick={() => {
-              let quantity = document.querySelector("#quantityBox").value;
-              premierid && feild_preimer?
-              addToCart(productId,false,quantity,field_price,premierid,feild_preimer):addToCart(productId,false,quantity,field_price)
-             }}
-            disabled={addingToCart === productId}
-          >
-            {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-          </button>
-          }
-         {field_info?
-          <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
-            <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
-            {field_info}
-            </p>
+                  : <button
+                    className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
+                    data-Sku={Sku}
+                    onClick={() => {
+                      let quantity = document.querySelector("#quantityBox").value;
+                      premierid && feild_preimer ?
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer) : addToCart(productId, false, quantity, field_price)
+                    }}
+                    disabled={addingToCart === productId}
+                  >
+                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+                  </button>
+                }
+                {field_info ?
+                  <div className={[ProductStyles.popoverContainer, "popoverContainer"].join(" ")}>
+                    <div dangerouslySetInnerHTML={{ __html: field_info }} className={[ProductStyles.popcontent, 'popcontent'].join(" ")}>
+                    </div>
 
-            <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
-              <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
-              <img
-                src={infoselected}
-                className={[ProductStyles.infoselected,"infoselected"].join(" ")}
-              />
-            </button>
-          </div>
-          :""}
-          
-        </div>
-    
-          <button
-            className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
-          >
-          
-            <img src={share} /> Share
-          </button>
-        </div>
-       : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-         
-            
-            
-       <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
-         <select id="quantityBox">
-           <option>1</option>
-           <option>2</option>
-           <option>3</option>
-         </select>
-       </div>
+                    <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
+                      <img src={info} className={[ProductStyles.info, "info"].join(" ")} />
+                      <img
+                        src={infoselected}
+                        className={[ProductStyles.infoselected, "infoselected"].join(" ")}
+                      />
+                    </button>
+                  </div>
+                  : ""}
 
-     <div className={["d-flex",ProductStyles.centeralign,"centeralign","col-12","col-lg-8"].join(" ")}>
-       {field_medical_rx == "RX"?
-       <Link
-         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-         to="/medical/hcpfinder">      
-         Find a Physician
+              </div>
+
+              <button
+              data-toggle="modal" data-target="#sharing"   className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+              >
+
+                <img src={share} /> Share
+          </button>
+            </div>
+            : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
+
+
+
+              <div className={[ProductStyles.selectdiv, "col-3"].join(" ")}>
+                <select id="quantityBox">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+
+              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-lg-8"].join(" ")}>
+                {field_medical_rx == "RX" ?
+                  <Link
+                    className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
+                    to="/medical/hcpfinder">
+                    Find a Physician
       </Link>
-       : <button
-         className={["btn", ProductStyles.btnCart,"btnCart"].join(" ")}
-         data-Sku={Sku}
-         onClick={() => {
-           let quantity = document.querySelector("#quantityBox").value;
-           premierid && feild_preimer?
-           addToCart(productId,false,quantity,field_price,premierid,feild_preimer):addToCart(productId,false,quantity,field_price)
-         }}
-         disabled={addingToCart === productId}
-       >
-         {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-       </button>
-       }
-      {field_info?
-       <div className={[ProductStyles.popoverContainer,"popoverContainer"].join(" ")}>
-         <p className={[ProductStyles.popcontent,'popcontent'].join(" ")}>
-         {field_info}
-         </p>
+                  : <button
+                    className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
+                    data-Sku={Sku}
+                    onClick={() => {
+                      let quantity = document.querySelector("#quantityBox").value;
+                      premierid && feild_preimer ?
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer) : addToCart(productId, false, quantity, field_price)
+                    }}
+                    disabled={addingToCart === productId}
+                  >
+                    {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
+                  </button>
+                }
+                {field_info ?
+                  <div className={[ProductStyles.popoverContainer, "popoverContainer"].join(" ")}>
+                    <div className={[ProductStyles.popcontent, 'popcontent'].join(" ")}>
+                      
+                    </div>
 
-         <button  onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover,"popover"].join(" ")}>
-           <img src={info} className={[ProductStyles.info,"info"].join(" ")} />
-           <img
-             src={infoselected}
-             className={[ProductStyles.infoselected,"infoselected"].join(" ")}
-           />
-         </button>
-       </div>
-       :""}
-       
-     </div>
- 
-       <button
-         className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
-       >
-       
-         <img src={share} /> Share
+                    <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
+                      <img src={info} className={[ProductStyles.info, "info"].join(" ")} />
+                      <img
+                        src={infoselected}
+                        className={[ProductStyles.infoselected, "infoselected"].join(" ")}
+                      />
+                    </button>
+                  </div>
+                  : ""}
+
+              </div>
+
+              <button
+            data-toggle="modal" data-target="#sharing"   className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+              >
+
+                <img src={share} /> Share
        </button>
-     </div>
-      }
-      {field_medical_rx == "RX"? "":
-             <div className={ProductStyles.offer}> 
-            <div className={["col-3",ProductStyles.offerimg].join(" ")}>
-            <img src={freeimg}/>
             </div>
-            <div className={["col-9",ProductStyles.offercontent].join(" ")}>
-            <p className={ProductStyles.offertitle}>
-            COMPLIMENTARY SHIPPING
+          }
+          {field_medical_rx == "RX" ? "" :
+            <div className={ProductStyles.offer}>
+              <div className={["col-3", ProductStyles.offerimg].join(" ")}>
+                <img src={freeimg} />
+              </div>
+              <div className={["col-9", ProductStyles.offercontent].join(" ")}>
+                <p className={ProductStyles.offertitle}>
+                  COMPLIMENTARY SHIPPING
             </p>
-            <p className={ProductStyles.offerdesc}>Sign up for a free Obagi account and receive free ground shipping on orders $125 or more.</p>
-            <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
+                <p className={ProductStyles.offerdesc}>Sign up for a free Obagi account and receive free ground shipping on orders $125 or more.</p>
+                <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
             </p>
 
-             {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
+                {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
+              </div>
             </div>
-            </div>
-}
+          }
         </div>
         <div
           id="product-hero-slick"
@@ -505,13 +506,45 @@ if ( typeof window !== "undefined"){
                     src={item.localFile.childImageSharp.original.src}
                   />
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </div>
             )
           })}
         </div>
       </div>
+
+      <div
+        class="modal fade"
+        id="sharing"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="checkModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+            <div class="share-wrap  mt-35 mb-50">
+                <h1 className={[ProductStyles.productname,"text-center"].join(" ")}><span>Share the</span></h1>
+                <h1 className={[ProductStyles.productname,"text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
+                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
+                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+ 
+
     </div>
   )
 }

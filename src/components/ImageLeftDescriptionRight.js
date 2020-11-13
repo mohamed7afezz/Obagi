@@ -32,9 +32,10 @@ const ImageLeftDescRight = ({ node }) => {
                   <div dangerouslySetInnerHTML={{ __html: item.field_premier_card_title.processed }} className={primerstyle.primercradtitle}></div>
                   <div dangerouslySetInnerHTML={{ __html: item.field_premier_cards_desc.processed }} className={primerstyle.primercradDesc}></div>
                   <div className={primerstyle.primerimg}>
-                    {item.relationships.field_premier_cards_images.map(imgs => (
-                      <img src={imgs.localFile.childImageSharp.original.src} alt="img" />
-
+                    {item.relationships.field_premier_cards_images.map((imgs,index) => (
+                    index ===1? <a href={node.field_play_store_link}><img src={imgs.localFile.childImageSharp.original.src} alt="img" /></a>
+                   :index ===0? <a href={node.field_app_store_link_}><img src={imgs.localFile.childImageSharp.original.src} alt="img" /></a>
+                   :""
                     ))}
                   </div>
                 </li>
@@ -56,6 +57,8 @@ export const fragment = graphql`
     field_premier_title {
       processed
     }
+    field_play_store_link
+    field_app_store_link_
     relationships {
       field_premier_cards_section {
         field_premier_card_title {
