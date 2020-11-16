@@ -9,7 +9,8 @@ export default function HTML(props) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&libraries=places"></script>
-       
+
+
         {/* <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script> */}
         {/* <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/jquery.validate.min.js"></script> */}
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script> */}
@@ -20,11 +21,29 @@ export default function HTML(props) {
         {/* <script src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/js/templates/templates.js"></script> */}
 
         {/* <!-- //OneTrust Cookies Consent Notice end for www.obagi.com - --> */}
-        <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charSet="UTF-8" data-domain-script="359f2fcf-2d57-4b0d-89ac-8c5045c52021-test" ></script>
-        <script type="text/javascript">function OptanonWrapper() { }</script>      
-         {/* <!--//OneTrust Cookies Consent Notice end for www.obagi.com ---> */}
+        <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="359f2fcf-2d57-4b0d-89ac-8c5045c52021-test" ></script>
+        <script type="text/javascript">function OptanonWrapper() { }</script>
+        {/* <!--//OneTrust Cookies Consent Notice end for www.obagi.com ---> */}
+        {/* <script type="text/javascript">
+          {(function (url) {
+            if (!window.DataLayer) {
+              window.DataLayer = {};
+            }
+            if (!DataLayer.events) {
+              DataLayer.events = {};
+            }
+            DataLayer.events.SPIVersion = DataLayer.events.SPIVersion || "3.4.1";
+            DataLayer.events.SiteSection = "1";
+
+            var loc, ct = document.createElement("script");
+            ct.type = "text/javascript";
+            ct.async = true; ct.src = url; loc = document.getElementsByTagName('script')[0];
+            loc.parentNode.insertBefore(ct, loc);
+          })(document.location.protocol + "//tag.rmp.rakuten.com/122741.ct.js")}
+        </script> */}
         {props.headComponents}
-       
+
+
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
