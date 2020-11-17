@@ -846,7 +846,7 @@ span{
   @include md-screen-only {
     justify-content: start;
     .checkcon {
-      width: 31%;
+      width: 32.5%;
     }
   }
   @include lg-screen {
@@ -994,9 +994,7 @@ flex-direction: column;
       height: 18px;
       border-radius: 50%;
       background: #132466;
-      @include md-screen-only {
-        top: 4.5px
-      }
+  
   }
 
   .selctfinder{
@@ -1182,7 +1180,7 @@ fill : #fff !important;
   .finder-input.showlocation {
     @include md-screen-only {
       width: 41%;
-      margin-right: 25px;
+      margin-right: 34px;
     }
   }
    .radius-wrapper{

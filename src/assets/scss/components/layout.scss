@@ -3740,3 +3740,12 @@ p {
         min-height: 600px; 
     }
 }
+
+.ordering-table {
+    @include md-screen {
+        width: 460px;
+    }
+    @include lg-screen {
+        width: 500px;
+    }
+}
