@@ -28,7 +28,7 @@ const SkinClusionLeftImgLeft = ({ node }) => {
       </div>
 
      
-      <div className={["col-lg-4 offset-lg-1",skinClusionStyle.giveborderbottm].join(" ")}>
+      <div className={["col-lg-4 offset-lg-1"].join(" ")}>
           <div className={skinClusionStyle.title} dangerouslySetInnerHTML={{ __html: node.field_skin_clusion_title.processed }}>
 
           </div>

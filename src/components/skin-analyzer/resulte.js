@@ -168,7 +168,7 @@ const Resulte = (props) => {
 
                                 </div>
                                 <div className={["offset-lg-1 col-12 col-lg-11", resulteSkinStyle.resultsBody].join(' ')}>
-                                    <div className="col-lg-2 d-mob-none">
+                                    <div className="col-md-2 col-lg-2 d-mob-none">
                                         <p className={resulteSkinStyle.yourAnswer}>Your Answers</p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Age:</span> {props.questionsResult.q1} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Willing to see a physician:</span> {props.questionsResult.q2} </p>
@@ -181,7 +181,7 @@ const Resulte = (props) => {
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
 
                                     </div>
-                                    <div className="col-12 col-lg-7 results-card-container">
+                                    <div className="col-12 col-md-10 col-lg-7 results-card-container">
                                         {clinicalProduct.length > 0 ? clinicalProduct.map((data, index) => {
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_clinical_price)
                                             return <ProductCard
@@ -272,7 +272,7 @@ const Resulte = (props) => {
 
                                 </div>
                                 <div className={["offset-lg-1 col-12 col-lg-11", resulteSkinStyle.resultsBody].join(' ')}>
-                                    <div className="col-lg-2 d-mob-none">
+                                    <div className="col-md-2 col-lg-2 d-mob-none">
                                         <p className={resulteSkinStyle.yourAnswer}>Your Answers</p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Age:</span> {props.questionsResult.q1} </p>
                                         <p className={resulteSkinStyle.answers}><span className={resulteSkinStyle.qtitle}>Willing to see a physician:</span> {props.questionsResult.q2} </p>
@@ -287,7 +287,7 @@ const Resulte = (props) => {
                                             <p>If you have detailed questions about your individual Skin care or products, it is best to talk to a Skin care specialist. Find a Physician</p>
                                         </div>
                                     </div>
-                                    <div className="col-12 col-lg-7 results-card-container">
+                                    <div className="col-12 col-md-10 col-lg-7 results-card-container">
                                         {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_medical_price)
                                             productsPremierPoints.push(

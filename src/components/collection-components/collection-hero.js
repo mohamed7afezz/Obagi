@@ -183,7 +183,7 @@ function saveuri(){
                 "col-lg-7",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
-                "Collectionherorightcol",
+                "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
             </div>
@@ -278,7 +278,7 @@ function saveuri(){
                 "col-lg-7",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
-                "Collectionherorightcol",
+                "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
 
@@ -380,7 +380,7 @@ function saveuri(){
                 "col-lg-7",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
-                "Collectionherorightcol",
+                "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
 
@@ -476,7 +476,7 @@ function saveuri(){
                 "col-lg-7",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
-                "Collectionherorightcol",
+                "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
 
@@ -570,7 +570,7 @@ function saveuri(){
               "col-lg-7",
               "col-12",
               Collectionherostyle.Collectionherorightcol,
-              "Collectionherorightcol",
+              "Collectionherorightcol collectionheroimage",
             ].join(" ")}
           >
 
@@ -668,7 +668,7 @@ function saveuri(){
                           "col-lg-7",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
-                          "Collectionherorightcol",
+                          "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
                       </div>
@@ -761,7 +761,7 @@ function saveuri(){
                           "col-lg-7",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
-                          "Collectionherorightcol",
+                          "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
 
@@ -852,7 +852,7 @@ function saveuri(){
                           "col-lg-7",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
-                          "Collectionherorightcol",
+                          "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
                    
@@ -945,7 +945,7 @@ function saveuri(){
                           "col-lg-7",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
-                          "Collectionherorightcol",
+                          "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
 
@@ -1039,7 +1039,7 @@ function saveuri(){
                           "col-lg-7",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
-                          "Collectionherorightcol",
+                          "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
                    
@@ -1124,7 +1124,7 @@ function saveuri(){
                                     "col-lg-5",
                                     "col-12",
                                     "offset-lg-1",
-                                    "Collectionherorightcol",
+                                    "Collectionherorightcol collectionheroimage",
                                   ].join(" ")}
                                 >
 

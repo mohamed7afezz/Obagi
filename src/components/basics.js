@@ -58,9 +58,9 @@ const Basics = ({ node }) => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1.05,
-          dots: false,
+          dots: true,
           arrows: false,
-          adaptiveHeight: true,
+          // adaptiveHeight: true,
         },
       },
     ]

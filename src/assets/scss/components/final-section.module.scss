@@ -46,9 +46,17 @@ padding-bottom: 8px;
     color: #132466;
     margin-top: 16px;
     display: inline-block;
-    @include md-screen{
+
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+        background: #132466;
+    }
+    @include lg-screen{
      margin-top: 40px;
         padding-top: 24px;
         padding-bottom: 24px;
+        padding-left: 103px;
+        padding-right: 103px;
     }
 }

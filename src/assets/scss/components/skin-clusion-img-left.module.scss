@@ -1,11 +1,11 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
-.giveborderbottm{
-    border-bottom: 1px solid #d6d6d6;
-    @include md-screen{
-        border-bottom: 0;
-    }
-}
+// .giveborderbottm{
+//     border-bottom: 1px solid #d6d6d6;
+//     @include md-screen{
+//         border-bottom: 0;
+//     }
+// }
 .aligncenter{
     align-items: center;
 }
@@ -103,6 +103,14 @@
 .list {
     list-style: none; /* Remove default bullets */
     padding-left: 0;
+    padding-bottom: 51.5px;
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 0;
+
+    @include lg-screen {
+        border-bottom: 0;
+    }
+    
 }
   .listItem{
       position: relative;

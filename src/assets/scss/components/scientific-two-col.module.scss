@@ -167,3 +167,10 @@ border-bottom: 1px solid #d6d6d6;
     }
 }
 }
+
+.description {
+    text-align: center;
+    @include md-screen {
+        text-align: left;
+    }
+}

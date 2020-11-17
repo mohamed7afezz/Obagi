@@ -217,7 +217,7 @@ return (
             :"":""
             }
             </div>
-            <div className={['col-10 offset-lg-1','col-lg-4','offset-lg-1',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
+            <div className={['col-12 offset-lg-1','col-lg-4',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
                       <p className={[Collectionfooterstyle.typecon, "collection-footer-typecon"].join(" ")}>{getdata.field_taxonomy_footer_type}</p>
                       <h1 className={[Collectionfooterstyle.collectionFooterTitle, "collection-footer-title"].join(" ")}>{getdata.field_taxonomy_footer_title}</h1>
                       <p className={Collectionfooterstyle.subtitle}>{getdata.field_taxonomy_footer_subtitle}</p>

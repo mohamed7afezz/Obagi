@@ -2681,7 +2681,12 @@ p {
 }
 
 .node-home .collectionfooter {
-    background: #fff;
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+
+    @include lg-screen {
+        background: #fff;
+
+    }
 }
 
 .node-home .collection-footer-container {
@@ -2811,11 +2816,16 @@ p {
 }
 
 .basics-paragraph .slick-initialized .slick-list {
+    padding-bottom: 10px;
     @include lg-screen {
         height: 100%;
         padding-bottom: 111px;
         padding-top: 48px;
     }
+}
+
+.basics-paragraph .slick-dots {
+    bottom: 40px
 }
 
 .basics-paragraph .the-product-card,
@@ -2858,18 +2868,23 @@ p {
 }
 
 .basics-paragraph .the-product-button {
-    color: #132466;
-    background: #fff;
-    border: 1px solid #132466;
+    // color: #132466;
+    // background: #fff;
+    // border: 1px solid #132466;
 
-    &:hover {
-        color: #132466;
-        // background: #132466;
-    }
+    // &:hover {
+    //     color: #132466;
+    //     // background: #132466;
+    // }
 
 }
 
-
+.slides-number {
+    display: none;
+    @include lg-screen {
+        display: block;
+    }
+}
 
 .basics-paragraph .slick-track::before, .slick-track::after {
     @include lg-screen {
@@ -3684,4 +3699,16 @@ p {
 
 .order-details .terms {
     margin: 0;
+}
+
+.collectionheroimage {
+//   min-height: 300px;
+//     @include md-screen {
+//         min-height: 824px;
+
+//     }
+//     @include lg-screen {
+//       min-height: 300px;
+
+//     }
 }

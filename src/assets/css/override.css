@@ -280,8 +280,8 @@ right: 0;
   }
 
   .Collectionherorightcol,
-  .collectionFooterleftcol,
-  .collectionFooterRightcol {
+  .collectionFooterleftcol
+ {
     padding-left: 0;
     padding-right: 0;
   }
@@ -1594,6 +1594,7 @@ right: 10px;
     margin: 25px 0 0 0;
     width: 100%;
   }
+
 }
 
 .spaceBetween{
@@ -1687,6 +1688,13 @@ z-index: 999;
   }
   .producTypeSelect {
     margin-bottom: 20px;
+  }
+  .collectionFooterRightcol {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .results-card-container .cardContainerflex {
+    flex-wrap: wrap;
   }
 }
 

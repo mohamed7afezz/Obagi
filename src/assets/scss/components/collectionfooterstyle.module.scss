@@ -28,9 +28,9 @@ background-color: #868cd2;
 .collectionfooter{
     padding-top: 0;
     padding-bottom: 48px;
-    @include md-screen{
+    @include lg-screen{
         padding-top: 0;
-    padding-bottom: 96px;
+        padding-bottom: 96px;
     }
 }
 .twoCards{
@@ -41,7 +41,7 @@ background-color: #868cd2;
         padding-bottom: 112px;
     }
 }
-@media (max-width:767px){
+@media (max-width:991px){
     .CollectionFooterContainer{
         margin-left: 0;
         margin-right: 0;
@@ -50,14 +50,17 @@ background-color: #868cd2;
 .CollectionFooterContainer{
     margin-top: 48px;
     margin-bottom: 48px;
- padding-left: 15px;
+    padding-left: 15px;
   
     @include md-screen {
         border-radius: 6px;
-        margin-top: 137px;
-        padding-left: 0;
         background-color: #edfafc;
         
+    }
+    @include lg-screen {
+        padding-left: 0;
+        margin-top: 137px;
+
     }
 }
 .collectionFooterleftcol{
@@ -132,8 +135,7 @@ top: 5px;
     }
 .collectionFooterRightcol{
     padding-top: 48px;
-    padding-top: 48px;
-    @include md-screen{
+    @include lg-screen{
         padding-top: 120px;
         padding-bottom: 120px;
     }
