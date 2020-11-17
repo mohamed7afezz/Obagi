@@ -764,7 +764,7 @@
   border: 1px solid #d6d6d6;
   padding:14px 16px;
  
-  border-radius: 4px;;
+  border-radius: 4px;
   input{
     border: 0;
   }
@@ -779,15 +779,22 @@
   flex-direction: column;
 }
 .miles{
-  padding-top: 4px;
-  padding-bottom: 4px;
   display: flex;
   flex-direction: column;
   width: 40%;
   border: 1px solid #d6d6d6;
   border-radius: 4px;
+  padding: 14px 3px 2px;
+  @include md-screen-only {
+    width: 30%;
+  }
 span{
   padding-left: 12px;
+  font-weight: 700 !important;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
   .select-selected{
     padding: 0;
@@ -819,6 +826,11 @@ span{
 }
 .search-drop{
   justify-content: space-between;
+
+  @include md-screen-only {
+    justify-content: left;
+
+  }
 }
 .miles .custom-select{
   border: 0;
@@ -830,9 +842,16 @@ span{
 .search-con{
   justify-content: space-evenly;
   margin-bottom: 16px;
-  @include md-screen{
-    justify-content: space-between;
+
+  @include md-screen-only {
+    justify-content: start;
+    .checkcon {
+      width: 31%;
+    }
+  }
+  @include lg-screen {
     margin-bottom: 0;
+
   }
   padding-right: 0;
   align-items: center;
@@ -852,6 +871,9 @@ span{
   @include md-screen{
     padding-right: 0;
     flex-direction:row
+  }
+  @include md-screen-only {
+    margin-bottom: 16px;
   }
  
 }
@@ -972,6 +994,9 @@ flex-direction: column;
       height: 18px;
       border-radius: 50%;
       background: #132466;
+      @include md-screen-only {
+        top: 4.5px
+      }
   }
 
   .selctfinder{
@@ -1145,6 +1170,20 @@ fill : #fff !important;
   text-align: center;
 
   margin-bottom: 16px;
+
+  @include md-screen-only {
+    flex: unset;
+    margin-right: 20px;
+    margin-bottom: 0;
+
+  }
+  }
+
+  .finder-input.showlocation {
+    @include md-screen-only {
+      width: 41%;
+      margin-right: 25px;
+    }
   }
    .radius-wrapper{
     padding-bottom: 0;
@@ -1201,11 +1240,23 @@ fill : #fff !important;
   font-size: 12px;
   letter-spacing: 1.2px;
   line-height: 16px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
+  text-transform: uppercase;
 }
 .f-buttons {
   justify-content: space-evenly;
+
+  @include md-screen-only {
+    justify-content: left;
+    button {
+      margin-right: auto;
+    }
+    
+  }
+  @include lg-screen {
+    justify-content: space-between;
+
+  }
   #search-btn{
     background-color: #132466;
     color: #fff;
@@ -1214,9 +1265,14 @@ fill : #fff !important;
     text-transform: uppercase;
     padding: 20px !important;
     border-radius: 6px;
-  box-shadow: none !important;
-  
-  outline: 0;
+    box-shadow: none !important;
+    outline: 0;
+    border: 1px solid #132466;
+
+    &:hover {
+      color: #132466;
+      background: #fff;
+    }
 
   }
   #search-btn:active{
@@ -1230,6 +1286,11 @@ fill : #fff !important;
   border-radius: 6px;
   box-shadow: 0;
   outline: 0;
+  padding: 20px 10px;
+  &:hover {
+    color: #fff;
+    background: #132466;
+  }
 }
 .results-wrapper{
   border-radius: 6px;

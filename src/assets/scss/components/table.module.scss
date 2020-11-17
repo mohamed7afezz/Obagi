@@ -5,7 +5,7 @@ color: #c8775b;
 font-size: 40px;
 line-height: 56px;
 font-weight: 500;
-@include md-screen{
+@include lg-screen{
     font-size: 64px;
     line-height: 72px;
 }
@@ -15,14 +15,14 @@ span{
 }
 .coldeskRowMob{
     display: flex;
-    @include md-screen{
+    @include lg-screen{
         width: 100%;
         flex-direction: column;
     }
 }
 .tabelContainer{
     flex-direction: column;
-    @include md-screen{
+    @include lg-screen{
         flex-direction: row;
     }
 }
@@ -36,7 +36,7 @@ span{
     margin-top: -2px;
     padding-top: 5px;
     padding-bottom: 5px;
-    @include md-screen{
+    @include lg-screen{
         padding-top: 16px;
         padding-bottom: 16px;
         font-size: 24px;
@@ -44,7 +44,7 @@ span{
     }
 }
 .coldeskRowMob+.coldeskRowMob{
-    @include md-screen{
+    @include lg-screen{
   border-left:1px solid #d6d6d6 ;
 }
 }
@@ -60,7 +60,7 @@ margin-left: 0.6px;
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 10px;
-    @include md-screen{
+    @include lg-screen{
         padding-top: 32px;
         padding-bottom: 32px;
         text-align: center;
@@ -72,7 +72,7 @@ margin-left: 0.6px;
     }
 }
 .lastCell{
-    @include md-screen{
+    @include lg-screen{
     border-top: 1px solid #d6d6d6;
     border-bottom: 0;
 }
@@ -80,7 +80,7 @@ margin-left: 0.6px;
 .firstcell{
    
     flex: 0 0 33%;
-    @include md-screen{
+    @include lg-screen{
         margin-top: auto;
         margin-bottom: auto;
         flex: 0;
@@ -91,7 +91,7 @@ margin-left: 0.6px;
     flex-direction: column;
     flex: 0 0 33%;
     height: 100%;
-    @include md-screen{
+    @include lg-screen{
         flex: 0;
         height: auto;
     }
@@ -102,14 +102,14 @@ margin-left: 0.6px;
   
 }
 .firstcell{
-    @include md-screen{
+    @include lg-screen{
         border: 0;
     }
 }
 }
 .coldeskRowMob .firstcell{
     border-right: 1px solid #d6d6d6;
-    @include md-screen{
+    @include lg-screen{
  border-right: 0;
 }
 }

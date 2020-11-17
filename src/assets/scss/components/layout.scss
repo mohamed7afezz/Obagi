@@ -3712,3 +3712,23 @@ p {
 
 //     }
 }
+
+#err-msg {
+    text-align: center;
+}
+
+.Skinclusion .Collectionherorightcol {
+    order: 2;
+}
+
+.text-wrap {
+    top: 58%;
+
+    @include md-screen {
+        top: 67%
+    }
+
+    @include lg-screen {
+        top: 61%;
+    }
+}
