@@ -41,12 +41,12 @@ const Customer = ({ node, children, activeTab }) => {
                 <div className="col-12">
                     <div className="dropdown">
                         <button className="dropdown-toggle myaccount-toggle" type="button" id="accountDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Shipping & Returns" : activeTab === "faq"? "FAQs" : activeTab === "my-account"? "My Account" : "Select"}
+                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "faq"? "FAQs" : activeTab === "my-account"? "My Account" : "Select"}
                         </button>
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
                             <Link to="/covid-19" className={activeTab == "covid-19" ? "active account-tab" : "account-tab"}  id="covid">COVID-19 Information</Link>
                             <Link to="/customer-care/contact-us" className={activeTab == "contact-us" ? "active account-tab" : "account-tab"} id="contact">Contact Us</Link>
-                            <Link to="#" className={activeTab == "shipping-returns" ? "active account-tab" : "account-tab"} id="shipping">Shipping & Returns</Link>
+                            <Link to="/online-ordering-and-returns-policy" className={activeTab == "shipping-returns" ? "active account-tab" : "account-tab"} id="shipping">Online Ordering & Returns Policy</Link>
                             <Link to="/FAQ" className={activeTab == "faq" ? "active account-tab" : "account-tab"} id="faqs">FAQs</Link>
                             <Link to="/my-account/orders" className={activeTab == "my-account" ? "active account-tab" : "account-tab"} id="account">My Account</Link>
 
@@ -61,7 +61,7 @@ const Customer = ({ node, children, activeTab }) => {
                         <div className="list-group" id="myList" role="tablist">
                             <Link className={activeTab == "covid-19" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/covid-19">COVID-19 Information</Link>
                             <Link className={activeTab == "contact-us" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/customer-care/contact-us" >Contact Us</Link>
-                            <Link className={activeTab == "shipping-returns" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="#" >Shipping & Returns</Link>
+                            <Link className={activeTab == "shipping-returns" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/online-ordering-and-returns-policy" >Online Ordering & Returns Policy</Link>
                             <Link className={activeTab == "faq" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/FAQ" >FAQs</Link>
                             <Link className={activeTab == "my-account" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/orders" >My Account</Link>
 
