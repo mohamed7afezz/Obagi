@@ -3732,3 +3732,11 @@ p {
         top: 61%;
     }
 }
+
+.basic-bg-img, .collectionheroimage {
+    @include md-screen-only {
+        background-size: 100% 100%;
+        min-width: 600px;
+        min-height: 600px; 
+    }
+}
