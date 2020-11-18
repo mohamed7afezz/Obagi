@@ -1177,7 +1177,7 @@ fill : #fff !important;
   }
   }
 
-  .finder-input.showlocation {
+  .finder-input.showlocation, .finder-input.showphysician {
     @include md-screen-only {
       width: 41%;
       margin-right: 34px;

@@ -92,6 +92,7 @@
   width: 55px;
   height: 55px;
   left: -110px;
+  z-index: 9;
 }
 .productHero .slick-prev::before{
   content: "➝";
@@ -1634,20 +1635,7 @@ right: 10px;
  .productHero .pathname {
     display: none;
   }
-  .productHero .slick-prev,
-  .productHero .slick-prev:hover,
-  .productHero .slick-prev:active,
-  .productHero .slick-prev:focus {
-    left: 0;
-    z-index: 999;
-  }
-  .productHero  .slick-next,
-.productHero .slick-next:hover,
-.productHero .slick-next:active,
-.productHero .slick-next:focus {
-right: 0;
-z-index: 999;
-}
+
   .footerprivacyli{
     /* margin-top: 30px; */
     /* margin-left: 10px; */
@@ -1668,6 +1656,20 @@ z-index: 999;
 }
 
 @media (max-width: 991px) {
+  .productHero .slick-prev,
+  .productHero .slick-prev:hover,
+  .productHero .slick-prev:active,
+  .productHero .slick-prev:focus {
+    left: 0;
+    z-index: 999;
+  }
+  .productHero  .slick-next,
+.productHero .slick-next:hover,
+.productHero .slick-next:active,
+.productHero .slick-next:focus {
+right: 0;
+z-index: 999;
+}
   .text-wrap{
  
     font-size: 32px;
@@ -2508,6 +2510,7 @@ padding-bottom: 0;
   display: flex;
   height: 100%;
   flex-direction: column;
+  padding: 0 24px;
 }
 .results-card-container .Productcardtype.d-none.show-mob-result{
   display: none !important;
@@ -2670,12 +2673,12 @@ background-color: rgba(0,0,0,.5);
 margin-left: -15px;
 }
 .product-card-img .custom-img{
-  max-height: 250px;
+  max-height: 463px;
   max-width: none;
   width: auto;
   margin-left: auto;
   margin-right: auto;
-  height: 250px;
+  height: 463px;
 }
 .shipmenttxt{
   margin-top: 8px;
@@ -2781,15 +2784,21 @@ min-height: 0;
   width: 100%;
   white-space: nowrap;
   padding: 7px 12px;
- font-size: 12px;
- line-height: 16px;
-  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 900;
   letter-spacing: 1.2px;
   text-align: center;
   background: #ffffff;
   border: 1px solid #132466;
+  color: #132466;
   border-radius: 6px;
 
+}
+
+.cartButton:hover {
+  color: #fff;
+  background: #132466;
 }
 @media (min-width:768px){
   .cartButton {

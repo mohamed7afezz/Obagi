@@ -246,6 +246,10 @@
     padding-left: 16px;
 
     @extend %futurapt-medium;
+    @include md-screen-only {
+        align-items: left;
+
+    }
 
     @include lg-screen {
         flex-direction: row;

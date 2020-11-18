@@ -59,7 +59,7 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
   return currentName.includes(item.node.name.split(' ')[0])
 })[0];
 let paragraphId = node.field_featured_paragraph_id? node.field_featured_paragraph_id.processed : null;
-console.log("ash", paragraphId)
+// console.log("ash", paragraphId)
 
 //console.log('current', currentName)
 

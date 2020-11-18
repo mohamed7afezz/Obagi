@@ -347,7 +347,7 @@ const ProductHero = ({ data, nodeType }) => {
           </div>
           {feild_preimer && field_medical_rx !== "RX" ?
             <div
-              className={["col-12", "col-lg-6", ProductStyles.codeoff].join(
+              className={["col-12 col-md-3", "col-lg-6", ProductStyles.codeoff].join(
                 " "
               )}
             >
@@ -419,7 +419,7 @@ const ProductHero = ({ data, nodeType }) => {
                 </select>
               </div>
 
-              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-lg-8"].join(" ")}>
+              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12 col-md-6", "col-lg-8"].join(" ")}>
                 {field_medical_rx == "RX" ?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
@@ -458,7 +458,7 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <button
-            data-toggle="modal" data-target="#sharing"   className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+            data-toggle="modal" data-target="#sharing"   className={["col-12 col-md-2", "col-lg-2", ProductStyles.share].join(" ")}
               >
 
                 <img src={share} /> Share

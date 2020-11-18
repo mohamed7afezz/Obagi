@@ -215,7 +215,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                console.log(err)
+                // console.log(err)
             });
 
         } else if(searchOptions.location) {
@@ -227,7 +227,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                console.log(err)
+                // console.log(err)
             });
 
         } else {

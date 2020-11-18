@@ -142,7 +142,7 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
   else{
     checkfooter = ""
   }
-console.log('osama',getfeature[0])
+// console.log('osama',getfeature[0])
 
   let getdata;
 

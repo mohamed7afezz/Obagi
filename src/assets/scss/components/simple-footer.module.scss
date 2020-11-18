@@ -46,10 +46,17 @@ line-height: 64px;
     border-radius: 6px;
     border: 1px solid #fff;
     text-transform: uppercase;
-    padding: 30px 24px;
+    padding: 16px;
+    width: 100%;
     transition: all ease 300ms;
+
+    @include md-screen {
+        width: unset;
+        padding: 24px 58px;
+    }
 }
 .Flink:hover{
     background-color: #fff;
     color: #132466;
+    text-decoration: none;
 }

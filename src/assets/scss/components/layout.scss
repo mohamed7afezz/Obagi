@@ -2314,7 +2314,7 @@ p {
 }
 
 .login .button-link {
-    padding: 24px 0;
+    padding: 24px;
 
     @include lg-screen {
         width: 100%;
@@ -3747,5 +3747,17 @@ p {
     }
     @include lg-screen {
         width: 500px;
+    }
+}
+
+.bottomBox {
+    height: 117px;
+    width: 117px;
+    position: absolute;
+    right: -24px;
+    bottom: 0;
+    background: #132466;
+    @include md-screen-only {
+        display: none;
     }
 }

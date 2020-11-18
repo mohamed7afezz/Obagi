@@ -718,7 +718,7 @@ const OrderDetails = (props, { node }) => {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          console.log(saveprodarr, "hassan33")
+                          // console.log(saveprodarr, "hassan33")
                           addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}

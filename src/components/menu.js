@@ -116,7 +116,7 @@ function createMenuHierarchy(menuData, menuName) {
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
         if(mappedArr[mappedElem.drupal_parent_menu_item] == undefined){
-          console.log("Menu items that not have parent",mappedElem)
+          // console.log("Menu items that not have parent",mappedElem)
         }
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }
@@ -132,13 +132,12 @@ function createMenuHierarchy(menuData, menuName) {
 
 
 function buildLink(link, itemId, collapseTarget, isExpandable) {
-
-  if (isExpandable == false) {
+  
+ if (isExpandable == false) {
     return (<Link to={link.link.uri.replace('internal:', '')}>
       {link.title}
     </Link>)
-  } else {
-    if (!collapseTarget && itemId) {
+  } else if (!collapseTarget && itemId) {
       return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
         {link.title}
       </Link>)
@@ -177,23 +176,24 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
         </>
       )
     }
-  }
 
-  if (!link.external && link.link.uri) {
-    return (<Link activeClassName="active" to={link.link.uri}>
-      {link.title}
-    </Link>)
-  } else if (!link.external && link.link.uri.includes('internal:')) {
-    return (<Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
-      {link.title}
-    </Link>)
-  } else {
-    return (<a href={link.link.uri} className={'external'}>
-      {link.title}
-    </a>)
-  }
+  // if (!link.external && link.link.uri) {
+  //   return (<Link activeClassName="active" to={link.link.uri}>
+  //     {link.title}
+  //   </Link>)
+  // } else if (!link.external && link.link.uri.includes('internal:')) {
+  //   return (<Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
+  //     {link.title}
+  //   </Link>)
+  // } else {
+  //   return (<a href={link.link.uri} className={'external'}>
+  //     {link.title}
+  //   </a>)
+  // }
 
 }
+
+
 
 // function _onHeaderClick(event) {
 //   event.preventDefault();
