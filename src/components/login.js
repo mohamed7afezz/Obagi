@@ -116,7 +116,7 @@ const Login = () => {
                     </label>
                   </div> */}
 
-                  <a href="https://gtotest.mybigcommerce.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
+                  <a href="https://secure.obagi.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
                 </div>
 
                 <input className="submit-input" type="submit" value="Sign In" />
