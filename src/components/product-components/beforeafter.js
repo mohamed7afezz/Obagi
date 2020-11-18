@@ -75,17 +75,17 @@ const Beforeafter = ({ node }) => {
 
                     <div className={["row", beforeafter.tabs].join(" ")}>
                         {
-                            node.relationships.field_before_meet_after_example.map((item, index) => (
+                            node.relationships.field_before_meet_after_example.map((item, index, array) => (
                                 <div className={[beforeafter.tab, "card ", "col-lg-4", "col-6"].join(" ")}>
                                     <div className={[beforeafter.cardhead, "card-header"].join(" ")}  >
                                         <h5 class="mb-16">
-                                            <button className={[beforeafter.btnLink1, "btn-link", "collapsebtn1", "btn ", index == 0 ? '' : 'collapsed'].join(" ")}  >
+                                            {array.length > 1? <button className={[beforeafter.btnLink1, "btn-link", "collapsebtn1", "btn ", index == 0 ? '' : 'collapsed'].join(" ")}  >
                                                 {item.field_example_title && item.field_example_title.processed? 
                                                 <span onClick={(e) => { bcollapse(e); }} data-target={'Example' + index} dangerouslySetInnerHTML={{ __html: item.field_example_title.processed }}></span>
                                                 :
                                                 ""
                                                 }
-                                            </button>
+                                            </button> : ""}
                                         </h5>
                                     </div>
                                 </div>

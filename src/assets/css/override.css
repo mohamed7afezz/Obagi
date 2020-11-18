@@ -1206,6 +1206,7 @@ font-size: 52px;
 line-height: 64px;
 color: #fff;
 font-weight: 300;
+text-align: center;
 }
 .tab-slider .active.line-tab::after {
         content: '';
@@ -1244,16 +1245,7 @@ font-weight: 300;
   .playbtnimg.mob-change{
     top: 41%;
   }
-  .text-wrap{
- 
-    font-size: 32px;
-    line-height: 48px;
-    width: 100%;
-    text-align: center;
-    max-width: 86%;
-    top: 58%;
 
-  }
   .tab-slider .slick-dots {
     display: none !important;
   }
@@ -1676,6 +1668,15 @@ z-index: 999;
 }
 
 @media (max-width: 991px) {
+  .text-wrap{
+ 
+    font-size: 32px;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
+    max-width: 86%;
+
+  }
   #Showbag .modal-header .close{
     top: 16px;
   }

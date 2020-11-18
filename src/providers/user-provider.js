@@ -80,7 +80,7 @@ export const UserProvider = ({ children }) => {
             mode: 'cors'
         });
 
-        fetch('https://gtotest.mybigcommerce.com/login.php?action=logout', {
+        fetch('https://secure.obagi.com/login.php?action=logout', {
             method: 'GET', mode: 'no-cors', credentials: 'include'
         });
 

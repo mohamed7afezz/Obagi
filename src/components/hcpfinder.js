@@ -249,7 +249,7 @@ export default function Finder() {
           <div className="col search-filters">
             <div class="row">
               <div class="col-lg-4 d-flex search-con">
-                <p class="selctfinder"> search by: </p>
+                <p class="selctfinder"> Search by: </p>
                 <label class="checkcon" onClick={searchBy}>
                   <input
                     type="radio"

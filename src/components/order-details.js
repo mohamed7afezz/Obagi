@@ -384,7 +384,7 @@ const OrderDetails = (props, { node }) => {
                   </div>
                       <a
                         href={
-                          "https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" +
+                          "https://secure.obagi.com/account.php?action=print_invoice&order_id=" +
                           props.id
                         }
                         target="_blank"
@@ -652,7 +652,7 @@ const OrderDetails = (props, { node }) => {
                   <div className={orderDetailsStyles.orderWrapper}>
                     <div className={orderDetailsStyles.detailsHeader}>
                       <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
-                      <a href={"https://gtotest.mybigcommerce.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
+                      <a href={"https://secure.obagi.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>

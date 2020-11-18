@@ -3712,3 +3712,40 @@ p {
 
 //     }
 }
+
+#err-msg {
+    text-align: center;
+}
+
+.Skinclusion .Collectionherorightcol {
+    order: 2;
+}
+
+.text-wrap {
+    top: 58%;
+
+    @include md-screen {
+        top: 67%
+    }
+
+    @include lg-screen {
+        top: 61%;
+    }
+}
+
+.basic-bg-img, .collectionheroimage {
+    @include md-screen-only {
+        background-size: 100% 100%;
+        min-width: 600px;
+        min-height: 600px; 
+    }
+}
+
+.ordering-table {
+    @include md-screen {
+        width: 460px;
+    }
+    @include lg-screen {
+        width: 500px;
+    }
+}

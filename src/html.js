@@ -22,9 +22,16 @@ export default function HTML(props) {
 
         {/* <!-- //OneTrust Cookies Consent Notice end for www.obagi.com - --> */}
         <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="359f2fcf-2d57-4b0d-89ac-8c5045c52021-test" ></script>
-        <script type="text/javascript" dangerouslySetInnerHTML={{__html: `function OptanonWrapper() { }`}}></script>
+        <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `
+          function OptanonWrapper() { }
+        `
+        }}></script>
+
+
         {/* <!--//OneTrust Cookies Consent Notice end for www.obagi.com ---> */}
-        <script type="text/javascript" dangerouslySetInnerHTML={{__html: `
+        <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `
           (function (url) {
             if (!window.DataLayer) {
               window.DataLayer = {};
@@ -34,13 +41,14 @@ export default function HTML(props) {
             }
             DataLayer.events.SPIVersion = DataLayer.events.SPIVersion || "3.4.1";
             DataLayer.events.SiteSection = "1";
-
+          
             var loc, ct = document.createElement("script");
             ct.type = "text/javascript";
             ct.async = true; ct.src = url; loc = document.getElementsByTagName('script')[0];
             loc.parentNode.insertBefore(ct, loc);
           })(document.location.protocol + "//tag.rmp.rakuten.com/122741.ct.js")
-        `}}></script>
+        `
+        }}></script>
         {props.headComponents}
 
 

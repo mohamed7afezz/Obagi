@@ -70,6 +70,7 @@ const Basichero = ({ node }) => {
                 "col-12",
                 basichero.Collectionherorightcol,
                 "Collectionherorightcol",
+                "basic-bg-img"
               ].join(" ")}
             >
 
