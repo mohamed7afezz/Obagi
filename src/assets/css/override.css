@@ -2975,3 +2975,8 @@ font-weight:900;
   color: #fff;
   text-decoration: none;
 }
+.productHero [data-bv-show="rating_summary"] .bv_main_container{
+  padding-top: 8px !important;
+  padding-left: 0 !important;
+  padding-bottom: 16px !important;
+}

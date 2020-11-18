@@ -286,18 +286,19 @@ const ProductHero = ({ data, nodeType }) => {
 
             </div>
           </div>
-          <div
+          {productSubTitle?<div
             className={ProductStyles.productSubDesc}
 
-          >{productSubTitle}</div>
+          >{productSubTitle}</div>:""}
           <div
             className={ProductStyles.productdesc}
             dangerouslySetInnerHTML={{ __html: field_description }}
           ></div>
-          <div className={ProductStyles.keyBenefitcon}>
-            <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
-
-            <ul className={ProductStyles.keyBenefitul}>
+          
+          {key_benefit || key_benfitList?  <div className={ProductStyles.keyBenefitcon}>
+         {key_benefit?     <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
+          :""}
+          {key_benfitList ?   <ul className={ProductStyles.keyBenefitul}>
               {key_benfitList ? key_benfitList.map((item, index) => {
                 return (
 
@@ -307,8 +308,8 @@ const ProductHero = ({ data, nodeType }) => {
 
                 )
               }) : ""}
-            </ul>
-          </div>
+            </ul>:""}
+          </div>:""} 
           <div className={ProductStyles.skintypes}>
             {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
               Skin Type:{" "}
