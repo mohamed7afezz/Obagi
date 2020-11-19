@@ -40,7 +40,7 @@ const Q6 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">
-                        What is your skin tone on the Fitzspatrick Scale?
+                        What Is Your Skin Tone on the Fitzspatrick Scale?
                         <button type="button" className="analyzer-info-button" data-toggle="modal" data-target="#infoModal">
                             &#8520;
                         </button>

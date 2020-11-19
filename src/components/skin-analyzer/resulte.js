@@ -117,7 +117,7 @@ const Resulte = (props) => {
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>
                                         <h1 className={resulteSkinStyle.resPageTitle}>
-                                            We found these Obagi <Link to="/clinical"> Clinical products</Link> for your Skin care routine.
+                                            We found these <Link to="/clinical">Obagi Clinical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
                                             <div className={[resulteSkinStyle.collapseContainer, "d-none"].join(" ")}>
@@ -153,7 +153,7 @@ const Resulte = (props) => {
                                             </div>
                                         </div>
                                         <div className={[resulteSkinStyle.addtobagcon].join(" ")}>
-                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
+                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skin care regimen:</p>
                                             <button
                                                 onClick={() => {
                                                     let quantity = 1;                                                 
@@ -197,7 +197,7 @@ const Resulte = (props) => {
                                             />
                                         }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
-                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
+                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skin care regimen:</p>
                                             <button
                                                 onClick={() => {
                                                     let quantity = 1;
@@ -219,7 +219,7 @@ const Resulte = (props) => {
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>
                                         <h1 className={resulteSkinStyle.resPageTitle}>
-                                            We found these Obagi <Link to="/medical"> Medical products</Link> for your Skin care routine.
+                                            We found these <Link to="/medical">Obagi Medical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
                                             <div className={[resulteSkinStyle.collapseContainer, "d-none"].join(" ")}>
@@ -256,7 +256,7 @@ const Resulte = (props) => {
                                         </div>
 
                                         <div className={resulteSkinStyle.addtobagcon}>
-                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
+                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skin care regimen:</p>
                                             <button
                                                 onClick={() => {
                                                     let quantity = 1;
@@ -266,8 +266,8 @@ const Resulte = (props) => {
                                                 className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn,"hide-mob", "col-lg-2"].join(" ")}>
                                                 {arraysEqual(addingToCart,GetProductsIds()) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>                                        </div>
-                                        <p className={[resulteSkinStyle.resPageSubdetail, "show-mob"].join(" ")}>If you have detailed questions about your individual Skin care or products,
-                                            it is best to talk to a Skin care specialist. <Link to="/medical/phcfinder" >Find a Physician</Link></p>
+                                        <p className={[resulteSkinStyle.resPageSubdetail, "show-mob"].join(" ")}>If you have detailed questions about your individual skin care or products needs,
+                                        it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here</Link> to find an Obagi physician near you.</p>
                                     </div>
 
                                 </div>
@@ -284,7 +284,7 @@ const Resulte = (props) => {
 
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
                                         <div className={resulteSkinStyle.talktophy}>
-                                            <p>If you have detailed questions about your individual Skin care or products, it is best to talk to a Skin care specialist. Find a Physician</p>
+                                            <p>If you have detailed questions about your individual skin care or products, it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here</Link> to find an Obagi physician near you.</p>
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-10 col-lg-7 results-card-container">
@@ -311,7 +311,7 @@ const Resulte = (props) => {
                                             />
                                         }) : ''}
                                         <div className={[resulteSkinStyle.addtobagcon, resulteSkinStyle.addtobagcondata].join(" ")}>
-                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic Skin care regimen:</p>
+                                            <p className={resulteSkinStyle.resPageSubTitle}>These products offer a foundation for any basic skin care regimen:</p>
                                             <button
                                                 onClick={() => {
                                                     let quantity = 1

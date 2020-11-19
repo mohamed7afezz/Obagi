@@ -27,14 +27,19 @@ const Q2 = (props) => {
                     <div className="quiz-title">Skin Analyzer Quiz</div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">Do you see a Skin Care Expert regularly or would you be willing to go see one?</div>
-                    <div className="question-text">Obagi has been backed by physicians for 30 years. To inquire about specific skin care needs, we always recommend you speak with an Obagi skin care professional before starting a new regimen.</div>
+            <div className="row justify-content-center">
+                <div className="col-12 col-lg-auto ">
+                    <div className="question-header">Do You See a Skin Care Expert Regularly or Would You Be Willing to Go See One?</div>
                 </div>
             </div>
+            <div className="row">
+                <div className="col-12 col-lg-6 offset-lg-3 p-lg-0">
+                <div className="question-text">Obagi has been backed by physicians for over 30 years. To inquire about specific skin care needs, we always recommend you speak with an Obagi skin care professional before starting a new regimen.</div>
 
-            <div className="row first-three justify-content-center">
+                </div>
+                </div>
+
+            <di className="row first-three justify-content-center">
                 <div className="col-12 col-lg-auto">
                     <input type="radio" id="Yes" name="q2" value="Yes" onChange={sendBackData} />
                     <label htmlFor="Yes">Yes</label>
@@ -43,7 +48,7 @@ const Q2 = (props) => {
                     <input type="radio" id="No" name="q2" value="No" onChange={sendBackData} />
                     <label htmlFor="No">No</label>
                 </div>
-            </div>
+            </di>
             <div className="row d-lg-none">
                 <div className="col-12">
                     <button onClick={startOver} className="start-over">Start Over</button>

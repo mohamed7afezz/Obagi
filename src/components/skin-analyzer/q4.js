@@ -39,9 +39,14 @@ const Q4 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">What Areas Are You Most Concerned About?</div>
-                    <div className="question-text">Your skin concern is our concern, too. What’s the number one skin concern that you are looking to address?</div>
                 </div>
             </div>
+            <div className="row justify-content-center">
+                <div className="col-12 col-lg-auto">
+                <div className="question-text">Your skin concern is our concern, too. What’s the number one skin concern that you are looking to address?</div>
+
+                </div>
+                </div>
 
             <>
                 {checkDataCondition((props.brandJourney == "Clinical Persona"),
