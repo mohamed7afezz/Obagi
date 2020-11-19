@@ -68,7 +68,7 @@ top: 4px;
 
 }
 .type{
-
+    align-items: center;
     margin-top: 24px;
     margin-bottom: 24px;
 
@@ -100,8 +100,12 @@ top: 4px;
     }
 }
 .price{
+    font-size: 18px;
+    line-height: 32px;
     span{
         @extend %futurapt-bold;
+        font-size: 18px;
+        line-height: 32px;
     }
     padding-right: 32px;
 }
@@ -187,6 +191,7 @@ margin-bottom: 10px;
     }
 }
 .productHero .selectdiv{
+    max-width: 117px;
     padding: 0;
     display: none;
     @include md-screen{
@@ -215,6 +220,7 @@ margin-bottom: 10px;
   border: 0;
   color: #132466;
   @include md-screen{
+      text-align: left;
       display: block;
   }
   
@@ -232,7 +238,8 @@ margin-bottom: 10px;
     line-height: 16px;
     letter-spacing: 1.2px;
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 8px 0px;
+    max-width: 221px;
     img{
         height: 16px;
         width:auto;
