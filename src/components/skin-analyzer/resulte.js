@@ -160,7 +160,7 @@ const Resulte = (props) => {
                                                     addMultiToCart(GetProductsIds(), false, quantity, totalprice);
                                                 }}
                                                 disabled={arraysEqual(addingToCart, GetProductsIds())}
-                                                className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-3"].join(" ")}>
+                                                className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "hide-mob","col-lg-3"].join(" ")}>
                                                 {arraysEqual(addingToCart, GetProductsIds()) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>
                                         </div>
@@ -263,7 +263,7 @@ const Resulte = (props) => {
                                                     addMultiToCart(GetProductsIds(), false, quantity, totalprice,productsPremierPoints);
                                                 }}
                                                 disabled={arraysEqual(addingToCart, GetProductsIds())}
-                                                className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn, "col-lg-2"].join(" ")}>
+                                                className={[resulteSkinStyle.addtobag, resulteSkinStyle.addtobagheadbtn,"hide-mob", "col-lg-2"].join(" ")}>
                                                 {arraysEqual(addingToCart,GetProductsIds()) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>                                        </div>
                                         <p className={[resulteSkinStyle.resPageSubdetail, "show-mob"].join(" ")}>If you have detailed questions about your individual Skin care or products,

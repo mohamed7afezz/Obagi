@@ -29,7 +29,7 @@
 }
 }
 .addtobagheadbtn{
-    display: none;
+   
     @include md-screen{
         display: inline-block;
     }
