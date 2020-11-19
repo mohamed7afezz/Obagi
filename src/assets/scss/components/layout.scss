@@ -3761,3 +3761,18 @@ p {
         display: none;
     }
 }
+
+.product-card-img .custom-img{
+    max-height: 201px;
+    height: 201px;
+
+    max-width: none;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include lg-screen {
+        max-height: 463px;
+        height: 463px;
+    }
+  }

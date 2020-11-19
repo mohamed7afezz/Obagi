@@ -1656,6 +1656,9 @@ right: 10px;
 }
 
 @media (max-width: 991px) {
+  .product-card-con{
+    padding: 0 16px;
+  }
   .productHero .slick-prev,
   .productHero .slick-prev:hover,
   .productHero .slick-prev:active,
@@ -2673,14 +2676,7 @@ height: 80vh;
 background-color: rgba(0,0,0,.5);
 margin-left: -15px;
 }
-.product-card-img .custom-img{
-  max-height: 463px;
-  max-width: none;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-  height: 463px;
-}
+
 .shipmenttxt{
   margin-top: 8px;
   margin-bottom: 16px;
