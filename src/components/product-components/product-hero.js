@@ -420,7 +420,7 @@ const ProductHero = ({ data, nodeType }) => {
                 </select>
               </div>
 
-              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12 col-md-6", "col-lg-8"].join(" ")}>
+              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12 col-md-6", "col-lg-6"].join(" ")}>
                 {field_medical_rx == "RX" ?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
