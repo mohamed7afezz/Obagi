@@ -35,13 +35,14 @@
   background-color: #ffcd00;
   opacity: 1;
 }
+.productHero .slick-dots li.slick-active button::before{
+  background-color: #44c4d9;
+}
 @media (max-width:767px){
   .offercontent{
     padding-right: 26px;
   }
- .productHero .slick-dots li.slick-active button::before{
-    background-color: #44c4d9;
-  }
+
   .productHero .slick-initialized .slick-slide{
     padding-left: 8px;
     padding-right: 8px;
@@ -2984,7 +2985,7 @@ font-weight:900;
   text-decoration: none;
 }
 .mb-24 {
-  margin-bottom: 24px !important;
+  margin-bottom: 24px !;
 }
 .mt-16{
   margin-top: 16px !important;
