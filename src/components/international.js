@@ -17,7 +17,7 @@ const International = ({ node }) => {
             $(".international h3").off();
 
             $(".international h3").on('click', function () {
-                console.log("ashraqat");
+                // console.log("ashraqat");
 
                 $(this).next(".international div div div div div").slideToggle("slow");
                 $(this).toggleClass(internationalStyles.open);

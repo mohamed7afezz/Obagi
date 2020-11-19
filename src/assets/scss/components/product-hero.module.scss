@@ -14,10 +14,10 @@ color: #132466;
 padding-left: 30px;
 position:relative;
 
-@include md-screen{
+@include lg-screen{
     font-size: 16px;
-line-height: 24px;
-letter-spacing: 1.6px;
+    line-height: 24px;
+    letter-spacing: 1.6px;
 }
 }
 .productdetail{
@@ -30,11 +30,16 @@ letter-spacing: 1.6px;
     content: "";
    position: absolute;
    display: block;
-   width: 12px;
-   height: 12px;
+   width: 8px;
+   height: 8px;
    left: 0;
-top: 3px;
+top: 4px;
    background-color: #44c4d9;
+   @include lg-screen {
+       top: 6px;
+       width: 12px;
+       height: 12px;
+   }
     }
     .bv_main_container{
         padding-top: 8px;
@@ -64,9 +69,9 @@ top: 3px;
 }
 .type{
 
-    margin-top: 16px;
-}
-.type {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
     p{
         @extend %futurapt-book;
         font-size: 16px;
@@ -78,7 +83,7 @@ top: 3px;
         line-height: 24px;
     }
     ul{
-        margin-bottom: 16px;
+        margin-bottom: 0;
     }
 }
 .review{
@@ -222,22 +227,25 @@ margin-bottom: 10px;
     @extend %futurapt-medium;
 }
 .codeoff{
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    border-radius: 6px;
+    padding: 8px 12px;
     img{
         height: 16px;
         width:auto;
     }
     text-transform: uppercase;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing:1.2px;
-    border-radius: 6px;
-    padding: 8px;
-    font-weight: 700;
     border: 2px solid #132466;
     order: 1;
-    justify-content: space-between;
     align-items: center;
-   display: flex;
+    display: flex;
+    p {
+        padding-left: 8px;
+    }
+    @extend %futurapt-bold;
     justify-content: space-evenly;
     @include  md-screen-only {
         flex: 1;

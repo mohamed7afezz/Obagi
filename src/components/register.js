@@ -11,20 +11,20 @@ const Register = () => {
     let screenWidth = size.width;
     let largeScreen = 992;
 
-    const {user, err, handleRegister} = useContext(UserContext);
+    const { user, err, handleRegister } = useContext(UserContext);
 
-    if(user) {
-        if(typeof window !== 'undefined') {
+    if (user) {
+        if (typeof window !== 'undefined') {
             navigate('/my-account/orders');
         }
     }
-    function checkvaild(){
-        
+    function checkvaild() {
+
         if (!document.querySelector(".regform").checkValidity()) {
             // console.log( document.querySelector(".regform").validationMessage)
-          } else {
+        } else {
             // console.log("hassan",document.querySelector(".regform").checkValidity())
-          } 
+        }
     }
     useEffect(() => {
         // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
@@ -43,13 +43,13 @@ const Register = () => {
         //compare pass
         let confPass = '';
         let check = false;
-        if(event.target.name === 'password') {
+        if (event.target.name === 'password') {
             confPass = document.querySelector('.conf-password').value;
         } else {
             confPass = document.querySelector('.password').value;
         }
 
-        if(confPass === event.target.value) {
+        if (confPass === event.target.value) {
             setIsPassMatch(true);
             check = true;
             $('.submit-input').removeAttr('disabled');
@@ -57,87 +57,87 @@ const Register = () => {
             setIsPassMatch(false);
             check = false;
             // document.querySelectorAll(".submit-input").disabled = true;
-            $('.submit-input').attr('disabled','disabled');
+            $('.submit-input').attr('disabled', 'disabled');
 
 
         }
-        
+
         // console.log("dis", document.querySelectorAll(".submit-input").disabled)
 
         return check;
     }
 
     const [newUser, setNewUser] = useState({
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone: "",
-      authentication: {
-        force_password_reset: false,
-        new_password: "",
-      },
-      attributes: [
-        {
-        // Date of birth
-          attribute_id: 1,
-          attribute_value: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        authentication: {
+            force_password_reset: false,
+            new_password: "",
         },
+        attributes: [
+            {
+                // Date of birth
+                attribute_id: 1,
+                attribute_value: "",
+            },
 
-        {
-        // Postal Code
-          attribute_id: 2,
-          attribute_value: "",
-        },
+            {
+                // Postal Code
+                attribute_id: 2,
+                attribute_value: "",
+            },
 
-        {
-        // email subscribtion
-          attribute_id: 4,
-          attribute_value: "no",
-        }
-      ]
+            {
+                // email subscribtion
+                attribute_id: 4,
+                attribute_value: "no",
+            }
+        ]
     })
 
-    
+
     function handleUpdate(event) {
-        
+
         setNewUser({
             ...newUser,
             [event.target.name]: event.target.value
         });
 
-        
+
 
     }
 
     function handlePassword(event) {
-        if(checkPassMatch(event)) {
-           
+        if (checkPassMatch(event)) {
+
             setNewUser({
                 ...newUser,
                 authentication: {
                     ...newUser.authentication,
                     new_password: event.target.value
                 }
-                
+
             })
-       
+
 
         } else {
-        
+
 
             return false;
         }
     }
 
     function handleAttr(event) {
-        
+
 
         switch (event.target.name) {
-            
-            case 'date':
-                
 
-                
+            case 'date':
+
+
+
                 // var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
                 // if(event.target.classList.contains('day')) {
                 //     dateOfBirth[2] = event.target.value
@@ -148,11 +148,11 @@ const Register = () => {
                 // }
                 // dateOfBirth = dateOfBirth.join('-');
 
-                
+
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
-                        if(item.attribute_id === 1) {
+                        if (item.attribute_id === 1) {
                             item.attribute_value = event.target.value;
                         }
                         return item;
@@ -164,7 +164,7 @@ const Register = () => {
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
-                        if(item.attribute_id === 2) {
+                        if (item.attribute_id === 2) {
                             item.attribute_value = event.target.value;
                         }
                         return item;
@@ -175,18 +175,18 @@ const Register = () => {
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
-                        if(item.attribute_id === 4) {
-                            item.attribute_value = event.target.checked? 'yes' : 'no';
+                        if (item.attribute_id === 4) {
+                            item.attribute_value = event.target.checked ? 'yes' : 'no';
                         }
                         return item;
                     })
                 })
                 break;
             default:
-                console.log('not in the attributes');
+                // console.log('not in the attributes');
                 break;
         }
-       
+
     }
 
 
@@ -239,19 +239,19 @@ const Register = () => {
                     </div>
 
                     <div className="col-12 col-lg-4">
-                        
+
                         <div className="required-field">*Required fields</div>
 
-                        <div className={`errors ${err != undefined? 'errors bg-light' : ''}`}>
+                        <div className={`errors ${err != undefined ? 'errors bg-light' : ''}`}>
                             <ul>
-                                {err !== undefined? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>): ''}
+                                {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
                             </ul>
-                            
+
                         </div>
 
                         <form class="regform" onSubmit={e => {
                             handleSubmit(e);
-                    
+
                         }}>
                             <div className="form-group">
                                 <label for="firstname">*First name</label>
@@ -283,10 +283,10 @@ const Register = () => {
                             <div className="day-mon-year">
                                 <div className="day-month">
                                     <div className="form-group select-group">
-                                        <label for="reviewFormSelect" className="form-label">*Day</label>
+                                        <label for="reviewFormSelect" className="form-label">*Date</label>
                                         {/* <div className="select-wrapper custom-select"> */}
-                                            <input required className="form-control day" name="date" type="date" id="reviewFormSelect" onChange={handleAttr}/>
-                                                {/* <option>Select</option>
+                                        <input required className="form-control day" name="date" type="date" id="reviewFormSelect" onChange={handleAttr} />
+                                        {/* <option>Select</option>
                                                 <option>Select</option>
                                                 <option value="01">1</option>
                                                 <option value="02">2</option>
@@ -296,7 +296,7 @@ const Register = () => {
                                             </select> */}
                                         {/* </div> */}
                                     </div>
-{/* 
+                                    {/* 
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Month</label>
                                         <div className="select-wrapper custom-select" >
@@ -326,7 +326,7 @@ const Register = () => {
                                         <option value="1995">1995</option>
                                     </select>
                                 </div>  */}
-                            </div>
+                                </div>
                             </div>
 
                             <div className="group-title">Create Password</div>
@@ -334,28 +334,28 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input required type="password" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${isPassMatch == false? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input required type="password" className={`form-control conf-password ${isPassMatch == false ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
-                            <p className={`form-control ${isPassMatch == false? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
+                            <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
                             <p id="json-errors"></p>
 
                             <div className="form-check">
 
                                 <label className="form-check-label terms" for="registerCheck">
                                     Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
-                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true}/>
+                                    <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true} />
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
 
                             <div className="submit-wrapper">
-                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account"/>
+                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account" />
                             </div>
 
                         </form>

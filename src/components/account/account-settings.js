@@ -90,7 +90,7 @@ export default function AccountSettings() {
       window.location.reload();
 
     }
-  
+
   }
 
   async function getData() {
@@ -107,7 +107,7 @@ export default function AccountSettings() {
     }
 
     // setIsLoading(false);
-    
+
   }
 
   function handleAttr(event) {
@@ -118,7 +118,7 @@ export default function AccountSettings() {
           email: event.target.value
         })
 
-    break;
+        break;
 
       case 'settingsmob':
         setData({
@@ -126,109 +126,102 @@ export default function AccountSettings() {
           phone: event.target.value
         })
 
-    default: 
-      
-      break;
+      default:
+
+        break;
+
+    }
 
   }
-  
-}
 
 
 
 
-return (
-  <UserAccount activeTab="account-settings">
-    <form method="post"
-      onSubmit={event => {
-        updateData(event)
-      }}>
-      <div className="tab-pane active account-settings" id="accountsetting" role="tabpanel">
-        <div
-          className={[
-            accountsettings.secondTitleWrapper,
-            "d-none d-lg-flex",
-          ].join(" ")}
-        >
-          <div className={accountsettings.secondTitle}>Account Settings</div>
-          <button
-            type="submit"
-            className={accountsettings.addressButton}
+  return (
+    <UserAccount activeTab="account-settings">
+      <form method="post"
+        onSubmit={event => {
+          updateData(event)
+        }}>
+        <div className="tab-pane active account-settings" id="accountsetting" role="tabpanel">
+          <div
+            className={[
+              accountsettings.secondTitleWrapper,
+              "d-none d-lg-flex",
+            ].join(" ")}
           >
-            Save Settings
+            <div className={accountsettings.secondTitle}>Account Settings</div>
+            <button
+              type="submit"
+              className={accountsettings.addressButton}
+            >
+              Save Settings
           </button>
-        </div>
-        <div className="row">
-          <div className="col-lg-5 col-12">
-            <div className={accountsettings.updatePasswordCon}>
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <p className={accountsettings.updateP}>Update Password</p>
-                <p className={accountsettings.UpdateOption}>*Required fields</p>
-              </div>
-
-              <div class="form-group">
-                <label for="current-password">*Current Password</label>
-                <input type="password" class="form-control" name="current-password" id="current-password" aria-describedby="passhelp" placeholder="" />
-              </div>
-
-              <div class="form-group">
-                <label for="new-password">*New Password</label>
-                <input type="password" id="new-password" placeholder="" name="new-password" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onChange={handlePassword} />
-              </div>
-
-              <div class="form-group">
-                <label for="conf-pw">*Confirm New Password</label>
-                <input type="password" id="conf-pw" placeholder="" name="conf-pw" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onChange={handlePassword} />
-              </div>
-
-              <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
-
-            </div>
           </div>
-        </div>
-        <div className={accountsettings.Communicationcon}>
           <div className="row">
             <div className="col-lg-5 col-12">
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <p className={accountsettings.updateP}>Communication</p>
+              <div className={accountsettings.updatePasswordCon}>
+                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                  <p className={accountsettings.updateP}>Update Password</p>
+                  <p className={accountsettings.UpdateOption}>*Required fields</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="current-password">*Current Password</label>
+                  <input type="password" class="form-control" name="current-password" id="current-password" aria-describedby="passhelp" placeholder="" />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-password">*New Password</label>
+                  <input type="password" id="new-password" placeholder="" name="new-password" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onChange={handlePassword} />
+                </div>
+
+                <div class="form-group">
+                  <label for="conf-pw">*Confirm New Password</label>
+                  <input type="password" id="conf-pw" placeholder="" name="conf-pw" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onChange={handlePassword} />
+                </div>
+
+                <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
+
               </div>
-
-
-
-
-                    <div class="form-group">
-                      <label for="settingsemail">Email Address</label>
-                      <input type="" class="form-control" name="settingsemail" id="settingsemail" aria-describedby="settingsemailhelp" placeholder="" value={userAccount.email} onChange={handleAttr}/>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="settingsmob">Mobile Number</label>
-                      <input type="tel" class="form-control" id="settingsmob" placeholder="" name="settingsmob" value={userAccount.phone} onChange={handleAttr}/>
-                    </div>
-
             </div>
           </div>
-        </div>
-        <div className={accountsettings.DateBirthCon}>
-          <div className="row">
-            <div className="col-lg-6 col-12">
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <p className={accountsettings.updateP}>Date of Birth</p>
+          <div className={accountsettings.Communicationcon}>
+            <div className="row">
+              <div className="col-lg-5 col-12">
+                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                  <p className={accountsettings.updateP}>Communication</p>
+                </div>
+
+
+
+
+                <div class="form-group">
+                  <label for="settingsemail">Email Address</label>
+                  <input type="" class="form-control" name="settingsemail" id="settingsemail" aria-describedby="settingsemailhelp" placeholder="" value={userAccount.email} onChange={handleAttr} />
+                </div>
+
+                <div class="form-group">
+                  <label for="settingsmob">Mobile Number</label>
+                  <input type="tel" class="form-control" id="settingsmob" placeholder="" name="settingsmob" value={userAccount.phone} onChange={handleAttr} />
+                </div>
+
               </div>
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <div className={accountsettings.selectcontainer}>
-                  <p className={accountsettings.selectTitle}>DAY</p>
-                  <div className="custom-select birthselect">
-
-                    <select id="birth-select" name="filter by">
-                      <option vlaue="Select">Select</option>
-                      <option vlaue="Select">Select</option>
-                      <option value="Aloe">31</option>
-
-                    </select>
+            </div>
+          </div>
+          <div className={accountsettings.DateBirthCon}>
+            <div className="row">
+              <div className="col-lg-6 col-12">
+                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                  <p className={accountsettings.updateP}>Date of Birth</p>
+                </div>
+                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                  <div className={accountsettings.selectcontainer}>
+                    <p className={accountsettings.selectTitle}>DATE</p>
+                    <input className="form-control day" name="date" type="date" id="dateSelect" />
                   </div>
                 </div>
-                <div className={accountsettings.selectcontainer}>
+                {/* <div className={accountsettings.selectcontainer}>
                   <p className={accountsettings.selectTitle}>MONTH</p>
                   <div className="custom-select birthselect">
 
@@ -250,10 +243,10 @@ return (
                       <option value="Aloe">2020</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
 
 
-              </div>
+              {/* </div> */}
             </div>
           </div>
 
@@ -265,12 +258,12 @@ return (
             <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={accountsettings.csNumber}>1-800-636-7546</span>.</div>
           </div>
         </div>
-          <div class="row">
-            <div class=" col-12">
+        <div class="row">
+          <div class=" col-12">
             <p class="mb-16">Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
 
-            </div>
           </div>
+        </div>
         <div className={["row", accountsettings.saveRow].join(" ")}>
           <div className="col-lg-4 col-12">
             <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>
@@ -282,6 +275,6 @@ return (
         </div>
       </div>
     </form>
-  </UserAccount>
+  </UserAccount >
 )
 }

@@ -441,7 +441,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     } else {
       $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
     }
-    console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div").first())
+    // console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div").first())
   }
 
 //   function defer(method) {

@@ -29,14 +29,18 @@
 .productCardHero{
     background-color: #fff;
     height: 100%;
-  
+    border-radius: 6px;
+
+    &:hover {
+        box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+    }  
 }
 .productCardHero .starspd{
     padding-left: 16px;
     padding-top: 24px;
 }
 .productCardHero{
-    padding-top: 25px;
+    padding: 0;
 }
 
 .productcarddesc{

@@ -22,7 +22,7 @@ const OrderHistoryRow = ({ node,
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
 
-console.log("date", placedOn, lastUpdated)
+// console.log("date", placedOn, lastUpdated)
 
 
  

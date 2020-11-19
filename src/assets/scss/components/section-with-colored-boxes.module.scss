@@ -127,6 +127,8 @@
     &::before {
         width: 46px;
         height: 47px;
+        left: unset;
+        right: 0;
     }
 }
 
@@ -171,6 +173,10 @@
 }
 
 .image-right .image {
+    &::after {
+        right: unset;
+        left: 0;
+    }
     @include lg-screen {
         margin-right: 157px;
         margin-left: -157px;

@@ -51,9 +51,10 @@
 
 .card-desc {
     @include fontStyle(18, 27);
-
+    margin-bottom: 48px;
     @include lg-screen {
         @include fontStyle(18, 32);
+        margin-bottom: 0;
     }
 }
 
