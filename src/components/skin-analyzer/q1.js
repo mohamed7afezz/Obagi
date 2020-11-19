@@ -22,7 +22,7 @@ const Q1 = (props) => {
                     <div className="quiz-header-wrapper">
                         <div className="quiz-title">Skin Analyzer Quiz</div>
                     </div>
-                    <div className="question-header">What is your age group?</div>
+                    <div className="question-header">What Is Your Age Group?</div>
                     <div className="question-text">Obagi offers transformative solutions at every stage of the skin care journey to help you greet the future with confidence.</div>
                 </div>
             </div>
