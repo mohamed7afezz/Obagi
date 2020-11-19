@@ -181,7 +181,8 @@ const ProductHero = ({ data, nodeType }) => {
       {
         breakpoint: 1024,
         settings: {
-          dots: false,
+          slidesToShow: 1.05,
+          dots: true,
         },
       },
     ],
@@ -205,13 +206,13 @@ const ProductHero = ({ data, nodeType }) => {
     >
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname", "col-12"].join(" ")}>
-          <p className="pathtitle">
+          <p className="pathtitle mb-24 mt-16">
             <Link to="/homepage"> Home</Link> /{" "}
             <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{ __html: node.title }}></span>
           </p>
         </div>
         <div className={["col-12", ""].join(" ")}>
-          <p className={[ProductStyles.productcat, "mt-24", "productcat", "show-mob"].join(" ")}>
+          <p className={[ProductStyles.productcat,  "productcat", "show-mob"].join(" ")}>
             {nodeType}
           </p>
           <div>
@@ -471,7 +472,7 @@ const ProductHero = ({ data, nodeType }) => {
               <div className={["col-3", ProductStyles.offerimg].join(" ")}>
                 <img src={freeimg} />
               </div>
-              <div className={["col-9", ProductStyles.offercontent].join(" ")}>
+              <div className={["col-9", ProductStyles.offercontent,"offercontent"].join(" ")}>
                 <p className={ProductStyles.offertitle}>
                   COMPLIMENTARY SHIPPING
             </p>

@@ -35,7 +35,18 @@
   background-color: #ffcd00;
   opacity: 1;
 }
-
+@media (max-width:767px){
+  .offercontent{
+    padding-right: 26px;
+  }
+ .productHero .slick-dots li.slick-active button::before{
+    background-color: #44c4d9;
+  }
+  .productHero .slick-initialized .slick-slide{
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
 .slick-next::before {
   content: " ";
 }
@@ -2972,6 +2983,13 @@ font-weight:900;
   color: #fff;
   text-decoration: none;
 }
+.mb-24 {
+  margin-bottom: 24px !important;
+}
+.mt-16{
+  margin-top: 16px !important;
+}
+
 .productHero [data-bv-show="rating_summary"] .bv_main_container{
   padding-top: 8px !important;
   padding-left: 0 !important;
