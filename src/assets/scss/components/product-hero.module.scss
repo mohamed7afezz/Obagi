@@ -70,10 +70,7 @@ top: 4px;
     align-items: center;
     margin-top: 18px;
     margin-bottom: 21px;
-   @include md-screen{
-    margin-top: 24px;
-    margin-bottom: 24px;
-   }
+
     p{
         @extend %futurapt-book;
         font-size: 16px;
