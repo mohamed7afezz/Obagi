@@ -206,7 +206,7 @@ const ProductHero = ({ data, nodeType }) => {
     >
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname", "col-12"].join(" ")}>
-          <p className="pathtitle mb-24 mt-16">
+          <p className="pathtitle pb-24 pt-16">
             <Link to="/homepage"> Home</Link> /{" "}
             <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{ __html: node.title }}></span>
           </p>
@@ -349,7 +349,7 @@ const ProductHero = ({ data, nodeType }) => {
           </div>
           {feild_preimer && field_medical_rx !== "RX" ?
             <div
-              className={["col-12 col-md-3", "col-lg-5", ProductStyles.codeoff].join(
+              className={[ ProductStyles.codeoff].join(
                 " "
               )}
             >

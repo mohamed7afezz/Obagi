@@ -237,22 +237,21 @@ margin-bottom: 10px;
     line-height: 16px;
     letter-spacing: 1.2px;
     border-radius: 6px;
-    padding: 8px 0px;
+    padding: 8px 12px;
+    display: flex;
     @include md-screen{
-    max-width: 221px;
+        display: inline-flex;
 }
     img{
         height: 16px;
         width:auto;
     }
     text-transform: uppercase;
-    border: 2px solid #132466;
+    border: 1px solid #132466;
     order: 1;
     align-items: center;
     display: flex;
-    p {
-        padding-left: 8px;
-    }
+ 
     @extend %futurapt-bold;
     justify-content: center;
     @include  md-screen-only {
@@ -373,7 +372,7 @@ margin-bottom: 10px;
     display: flex;
 }
 .productimage {
-    margin-bottom: 48px;
+    margin-bottom: 56px;
     margin-top: 8px;
     @include md-screen{
         margin-top: 0;
@@ -458,9 +457,7 @@ margin-bottom: 10px;
 }
 .skintypes{
     margin-top: 16px;
-    @include md-screen{
-        margin-top: 25px;
-    }
+
     padding-bottom: 25px;
     border-bottom: 1px solid #d6d6d6;
 }

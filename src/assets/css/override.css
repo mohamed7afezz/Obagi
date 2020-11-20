@@ -2984,13 +2984,25 @@ font-weight:900;
   color: #fff;
   text-decoration: none;
 }
-.mb-24 {
-  margin-bottom: 24px !;
+.pb-24  {
+  padding-bottom: 24px !important;
 }
-.mt-16{
-  margin-top: 16px !important;
+.pt-16{
+  padding-top: 16px !important;
 }
-
+.productHero .slick-prev, .slick-next{
+  background-color: #fff !important;
+  z-index: 9 !important;
+}
+@media (max-width:767px){
+  .slick-prev::before, .slick-next::before{
+    top: -1px;
+    position: relative;
+  }
+  .productHero  .productimage .slick-dots{
+    bottom: -40px;
+  }
+}
 .productHero [data-bv-show="rating_summary"] .bv_main_container{
   padding-top: 8px !important;
   padding-left: 0 !important;

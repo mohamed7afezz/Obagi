@@ -1,0 +1,55 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.NudermCon{
+    padding-top: 32px;
+    padding-bottom: 48px;
+    @include md-screen{
+        padding-top: 65px;
+        padding-bottom: 80px;
+    }
+}
+.title{
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    @include lg-screen{
+    font-size: 64px;
+    line-height: 72px;
+    margin-bottom: 8px;
+}
+}
+.describtion{
+   margin-top: 35px;
+   margin-bottom: 16px;
+   font-size: 18px;
+   line-height: 32px;
+   @include md-screen{
+       margin-bottom: 32px;
+       margin-top: 0;
+   }
+}
+.imgResponsive{
+    max-width: 100%;
+}
+.Link{
+    color: #fff !important;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    width: 100%;
+    background-color: #132466;
+    border-radius: 6px;
+    text-transform: uppercase;
+    justify-content: center;
+    @include md-screen{
+        display: inline-block;
+        width: auto;
+      padding: 24px 50px;
+
+    }
+}

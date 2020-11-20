@@ -12,6 +12,7 @@ import ImagesBoxes from './images-boxes'
 import Details from './product-components/thedetails'
 import Needtoknow from './product-components/needtoknow'
 import Ingredient from './product-components/ingredient';
+import Nuderm from './product-components/nu-Derm';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
 import RecommendedParing from './product-components/recommendedparing'
@@ -90,6 +91,7 @@ const componentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter,
     paragraph__recomended_paring : RecommendedParing,
+    paragraph__nu_derm : Nuderm,
     paragraph__you_might_also_like : YouMayLike,
     paragraph__faq_hero: FaqHero,
     paragraph__faq_wrapper: FaqWrapper,

@@ -177,7 +177,7 @@ export const productPageQuery = graphql`
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
                     ...sysRelatedProduct
-  
+                    ...nuDermParagraph
                 }
             }
             
