@@ -316,7 +316,39 @@ right: 0;
   mix-blend-mode: multiply;
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 42%, rgba(81, 87, 162, 0.65));
 }
+.mob-colap{
+  justify-content: space-between;
+}
+.mob-colap .readmorefix[aria-expanded="true"]::before{
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  left: auto;
+  background-repeat: no-repeat;
+  transition: all ease 300ms;
+  top: 46%;
+  transform: translateY(-60%);
+  right: 0;
+
+}
+.mob-colap .readmorefix[aria-expanded="false"]::before{
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  left: auto;
+  background-repeat: no-repeat;
+  transition: all ease 300ms;
+  top: 46%;
+  transform: translateY(-60%);
+  right: 0;
+
+}
 @media (min-width: 768px) {
+  #ing{
+    display: block !important;
+    }
   .medicalcollectionhero {
  
 
@@ -2994,7 +3026,14 @@ font-weight:900;
   background-color: #fff !important;
   z-index: 9 !important;
 }
+
+.show-mob-d-flex{
+  display: none;
+}
 @media (max-width:767px){
+  .show-mob-d-flex{
+   display: flex; 
+  }
   .slick-prev::before, .slick-next::before{
     top: -1px;
     position: relative;
