@@ -1245,50 +1245,62 @@ p {
 //     }
 // }
 
-.faq-wrapper {
-    .pagination {
-        margin: 80px 0 0;
-        flex-wrap: wrap;
-        .page-item {
-            margin-bottom: 10px;
-        }
-        .page-item .page-link {
-            color: #132466;
-            @extend %futurapt-medium;
-            @include fontStyle(14, 16);
-            border: 1px solid #d6d6d6;
-            border-radius: 6px;
-            margin-right: 16px;
+.pagination {
+    margin: 80px 0 0;
+    flex-wrap: wrap;
+    .page-item {
+        margin-bottom: 10px;
+    }
+    .page-item .page-link {
+        color: #132466;
+        @extend %futurapt-medium;
+        @include fontStyle(14, 16);
+        border: 1px solid #d6d6d6;
+        border-radius: 6px;
+        margin-right: 16px;
+        
+        &.active {
+            box-shadow: unset;
+            background: #132466;
+            color: #ffffff;
+            border: 1px solid #132466;
             
-            &.active {
-                box-shadow: unset;
-                background: #132466;
-                color: #ffffff;
-                border: 1px solid #132466;
-                
-            }
-
-            &:hover {
-                border: 1px solid #132466;
-                background: unset;
-                color: #132466;
-            }
         }
 
-        .page-item:last-child .page-link {
-            margin-right: 0;
-        }
-
-        .page-item:first-child .page-link, .page-item:last-child .page-link {
-            border: unset;
-        }
-
-        @include lg-screen {
-            margin: 160px 0 0;
+        &:hover{
+            border: 1px solid #132466;
+            background: unset;
+            color: #132466;
         }
     }
 
+    .page-item:last-child .page-link {
+        margin-right: 0;
+    }
 
+    .page-item:first-child .page-link, .page-item:last-child .page-link {
+        border: unset;
+    }
+
+    @include lg-screen {
+        margin: 160px 0 0;
+    }
+}
+
+.orders-comp .pagination {
+    margin: 48px 0 0;
+
+    @include lg-screen {
+        margin: 32px 0 0;
+    }
+}
+
+.orders-comp .pages-wrapper {
+    @include lg-screen {
+        margin-top: -16px;
+    }
+}
+.faq-wrapper {
 
     .faq-sign {
         position: absolute;

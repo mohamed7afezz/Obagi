@@ -210,18 +210,25 @@ export default function AccountSettings() {
             </div>
           </div>
           <div className={accountsettings.DateBirthCon}>
-            <div className="row">
-              <div className="col-lg-6 col-12">
-                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                  <p className={accountsettings.updateP}>Date of Birth</p>
-                </div>
-                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                  <div className={accountsettings.selectcontainer}>
-                    <p className={accountsettings.selectTitle}>DATE</p>
-                    <input className="form-control day" name="date" type="date" id="dateSelect" />
+          <div className="row">
+            <div className="col-lg-6 col-12">
+              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                <p className={accountsettings.updateP}>Date of Birth</p>
+              </div>
+              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                <div className={accountsettings.selectcontainer}>
+                  <p className={accountsettings.selectTitle}>DAY</p>
+                  <div className="custom-select birthselect">
+
+                    <select id="birth-select" name="filter by">
+                      <option vlaue="Select">Select</option>
+                      <option vlaue="Select">Select</option>
+                      <option value="Aloe">31</option>
+
+                    </select>
                   </div>
                 </div>
-                {/* <div className={accountsettings.selectcontainer}>
+                <div className={accountsettings.selectcontainer}>
                   <p className={accountsettings.selectTitle}>MONTH</p>
                   <div className="custom-select birthselect">
 
@@ -243,38 +250,38 @@ export default function AccountSettings() {
                       <option value="Aloe">2020</option>
                     </select>
                   </div>
-                </div> */}
+                </div>
 
 
-              {/* </div> */}
+              </div>
             </div>
           </div>
 
         </div>
 
-        <div className="row d-lg-none">
-          <div className="col-12">
-            <div className={accountsettings.csTitle}>Customer Service</div>
-            <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={accountsettings.csNumber}>1-800-636-7546</span>.</div>
+          <div className="row d-lg-none">
+            <div className="col-12">
+              <div className={accountsettings.csTitle}>Customer Service</div>
+              <div className={accountsettings.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={accountsettings.csNumber}>1-800-636-7546</span>.</div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class=" col-12">
-            <p class="mb-16">Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
+          <div class="row">
+            <div class=" col-12">
+              <p class="mb-16">Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy.</p>
 
+            </div>
           </div>
-        </div>
-        <div className={["row", accountsettings.saveRow].join(" ")}>
-          <div className="col-lg-4 col-12">
-            <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>
-              <button className={accountsettings.saveSitting}>
-                SAVE SETTINGS
+          <div className={["row", accountsettings.saveRow].join(" ")}>
+            <div className="col-lg-4 col-12">
+              <div className={accountsettings.SaveButton} id="save-button" onTouchStart={() => { changePosition(); }}>
+                <button className={accountsettings.saveSitting}>
+                  SAVE SETTINGS
                 </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
-  </UserAccount >
-)
+      </form>
+    </UserAccount >
+  )
 }

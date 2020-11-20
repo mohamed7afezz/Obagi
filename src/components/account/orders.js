@@ -39,7 +39,7 @@ export default function Orders() {
 
     return (
         <UserAccount activeTab="orders">
-            <div className="tab-pane active" id="orders" role="tabpanel">
+            <div className="tab-pane active orders-comp" id="orders" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
                     <div className={myAccountStyles.secondTitle}>Order History</div>

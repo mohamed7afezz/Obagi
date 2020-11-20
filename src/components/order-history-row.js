@@ -3,14 +3,21 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import orderHistoryRowStyles from '../assets/scss/components/order-history-row.module.scss'
 
-const OrderHistoryRow = ({ node,
+const OrderHistoryRow = ({ data,
     orderNum,
     placedOn,
     lastUpdated,
     itemsNum,
     total,
     status }) => {
- 
+
+    // console.log("ashhshsh", data);
+    orderNum = data.id;
+    placedOn = data.date_created;
+    lastUpdated = data.date_modified;
+    itemsNum = data.items_total;
+    total = parseFloat(data.total_inc_tax).toFixed(2);
+    status = data.status;
 
     const placedOnDate = new Date(placedOn)
         .toLocaleDateString({},
@@ -22,10 +29,10 @@ const OrderHistoryRow = ({ node,
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
 
-// console.log("date", placedOn, lastUpdated)
+    // console.log("date", placedOn, lastUpdated)
 
 
- 
+
     return (
         <>
             <div className={["d-lg-none", orderHistoryRowStyles.orderWrapper].join(" ")}>

@@ -10,11 +10,11 @@ const baseUrl = process.env.Base_URL;
 
 const OrderHistory = ({ ordersList }) => {
 
-    
-    let orders = ordersList;
-    
 
-    if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
+    let orders = ordersList;
+
+
+    if (orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
 
         return (<OrderNoHistory />)
 
@@ -23,20 +23,10 @@ const OrderHistory = ({ ordersList }) => {
         return (
             <div>
                 <div className="d-lg-none">
-                {orders === "undefined" || Object.keys(orders).length == 0? "": <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
-                    {orders.map((item, index) => {
-                        return (
-                            <OrderHistoryRow 
-                            orderNum = {item.id}
-                            placedOn = {item.date_created}
-                            lastUpdated = {item.date_modified}
-                            itemsNum = {item.items_total}
-                            total = {parseFloat(item.total_inc_tax).toFixed(2)}
-                            status = {item.status}
-                        
-                        />
-                        )
-                    })}
+                    {orders === "undefined" || Object.keys(orders).length == 0 ? "" : <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
+
+                    <Paginator pagerData={orders} rowComponent={OrderHistoryRow} rowsPerPage={4} />
+
                 </div>
 
                 <div className={["d-none d-lg-block"].join(" ")}>
@@ -54,20 +44,12 @@ const OrderHistory = ({ ordersList }) => {
                         </thead>
 
                         <tbody>
-                            {orders.map((item, index) => {
-                                
-                                return (
-                                    <OrderHistoryRow 
-                                        orderNum = {item.id}
-                                        placedOn = {item.date_created}
-                                        lastUpdated = {item.date_modified}
-                                        itemsNum = {item.items_total}
-                                        total = {parseFloat(item.total_inc_tax).toFixed(2)}
-                                        status = {item.status}
-                                    
-                                    />
-                                )
-                            })}
+                            <tr>
+                                <td colSpan="7">
+                                    <Paginator pagerData={orders} rowComponent={OrderHistoryRow} rowsPerPage={8} />
+                                </td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
