@@ -2990,7 +2990,7 @@ font-weight:900;
 .pt-16{
   padding-top: 16px !important;
 }
-.productHero .slick-prev, .slick-next{
+.productHero .slick-prev, .productHero .slick-next{
   background-color: #fff !important;
   z-index: 9 !important;
 }
