@@ -1,8 +1,8 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 .ingredientcontent{
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 32px;
+    padding-bottom: 32px;
       @include md-screen{
         padding-top: 112px;
         padding-bottom: 112px;
@@ -76,9 +76,9 @@
 }
 .ingredientimagehead{
     display: block;
-    margin-bottom: 24px;
+   
     @include md-screen {
-        
+        margin-bottom: 24px;
         display: none;
     }
 }

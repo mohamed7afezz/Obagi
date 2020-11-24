@@ -1,0 +1,186 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.pagehero{
+  margin-top: 40px;
+}
+.title{
+    font-size: 32px;
+    line-height: 42px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d6d6d6;
+    @include lg-screen{
+    font-size: 52px;
+    line-height: 64px;
+    text-align: center;
+    padding-bottom: 40px;
+    sup{
+        font-size: 24px;
+    }
+    }
+}
+.subtitle{
+    font-size: 24px;
+    line-height: 32px;
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+    @include lg-screen{
+    font-size: 32px;
+    line-height: 48px;
+    }
+}
+.desc{
+    font-size: 18px;
+    line-height: 32px;
+    color: #060076;
+    sup{
+        font-size: 12px;
+    }
+}
+.brief{
+    font-size: 14px;
+    line-height: 16px;
+    color: #0b116f;
+    sup{
+        font-size: 10px;
+    }
+    margin-top: 16px;
+    margin-bottom: 26px;
+}
+.secondSec{
+    margin-bottom: 24px;
+    margin-top: 24px;
+    @include lg-screen{
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+}
+.reqField{
+    font-size: 16px;
+    line-height: 24px;
+    color: #7c858a;
+    margin-bottom: 24px;
+}
+.RadioLabel{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+.underselect{
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 24px;
+    color: #132466;
+    a{
+        color: #132466;
+        text-decoration: underline;
+    }
+    @include lg-screen{
+        margin-bottom: 40px;
+    }
+}
+.CustomSelect{
+    padding: 0;
+    border: 0;
+    border:1px solid #d6d6d6;
+    background: none;
+    height: 100%;
+    .customlabel{
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 12px;
+        line-height: 16px;
+        @extend %futurapt-bold;
+        letter-spacing: 1.2px;
+        padding: 16px;
+        padding-bottom: 0;
+    }
+}
+.inputfield{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    padding: 16px;
+    flex-direction: column;
+    input{
+        border: 0;
+    }
+}
+.inputfield + .inputfield{
+    margin-top: 16px;
+   
+}
+.calenderName{
+    margin-top: 32px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    @extend %futurapt-bold;
+}
+.showflex{
+    display: flex;
+    justify-content: space-between;
+}
+.optional{
+    position: relative;
+    display: flex;
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold;
+    margin-top: 48px;
+    margin-bottom: 32px;
+    padding-left: 32px;
+    
+}
+.optional::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ffcd00;
+}
+.optionalWrap + .optionalWrap{
+margin-top: 24px;
+}
+.inputfield{
+    text-transform: uppercase;
+}
+.mt24{
+    margin-top: 24px !important;
+}
+.formnNote{
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+.signup{
+    background-color: #132466;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    display: block;
+    width: 100%;
+}
+.ffootnote{
+    font-size: 14px;
+    line-height: 16px;
+}
+.ffootnote +.ffootnote{
+    margin-top: 16px;
+}
