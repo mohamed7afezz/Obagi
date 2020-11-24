@@ -27,14 +27,14 @@ const Register = () => {
         }
     }
     useEffect(() => {
-        // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
-        //     // CustomSelect();
+        if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
+            CustomSelect();
 
-        //     //the issue is here
-        //     // document.querySelectorAll('input[type="date"]').forEach(item => {
-        //     //     item.addEventListener('change', handleAttr)
-        //     // });
-        // }
+            //the issue is here
+            document.querySelectorAll('input[type="date"]').forEach(item => {
+                item.addEventListener('change', handleAttr)
+            });
+        }
     });
 
     const [isPassMatch, setIsPassMatch] = useState();
@@ -283,20 +283,20 @@ const Register = () => {
                             <div className="day-mon-year">
                                 <div className="day-month">
                                     <div className="form-group select-group">
-                                        <label for="reviewFormSelect" className="form-label">*Date</label>
-                                        {/* <div className="select-wrapper custom-select"> */}
-                                        <input required className="form-control day" name="date" type="date" id="reviewFormSelect" onChange={handleAttr} />
-                                        {/* <option>Select</option>
+                                        <label for="reviewFormSelect" className="form-label">*Day</label>
+                                        <div className="select-wrapper custom-select">
+                                            <select required className="form-control day" name="date" id="reviewFormSelect">
+                                                <option>Select</option>
                                                 <option>Select</option>
                                                 <option value="01">1</option>
                                                 <option value="02">2</option>
                                                 <option value="03">3</option>
                                                 <option value="04">4</option>
                                                 <option value="05">5</option>
-                                            </select> */}
-                                        {/* </div> */}
+                                            </select>
+                                        </div>
                                     </div>
-                                    {/* 
+
                                     <div className="form-group select-group">
                                         <label for="reviewFormSelect" className="form-label">*Month</label>
                                         <div className="select-wrapper custom-select" >
@@ -314,18 +314,18 @@ const Register = () => {
                                 </div>
 
                                 <div className="form-group select-group">
-                                <label for="reviewFormSelect" className="form-label">*Year</label>
-                                <div className="select-wrapper custom-select">
-                                    <select required className="form-control year" name="date" id="reviewFormSelect">
-                                        <option>Select</option>
-                                        <option>Select</option>
-                                        <option value="1999">1999</option>
-                                        <option value="1998">1998</option>
-                                        <option value="1997">1997</option>
-                                        <option value="1996">1996</option>
-                                        <option value="1995">1995</option>
-                                    </select>
-                                </div>  */}
+                                    <label for="reviewFormSelect" className="form-label">*Year</label>
+                                    <div className="select-wrapper custom-select">
+                                        <select required className="form-control year" name="date" id="reviewFormSelect">
+                                            <option>Select</option>
+                                            <option>Select</option>
+                                            <option value="1999">1999</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1997">1997</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1995">1995</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
