@@ -22,6 +22,7 @@ const Recommendedparing = ({ node }) => {
         breakpoint: 1024,
         settings: {
           arrows: false,
+          slidesToShow: 1.05,
         }
       },
     ]

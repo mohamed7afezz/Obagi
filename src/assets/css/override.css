@@ -327,11 +327,12 @@ right: 0;
   left: auto;
   background-repeat: no-repeat;
   transition: all ease 300ms;
-  top: 46%;
-  transform: translateY(-60%);
+  top: 53%;
+  transform: translateY(-40%);
   right: 0;
 
 }
+
 .mob-colap .readmorefix[aria-expanded="false"]::before{
   position: absolute;
   content: '';
@@ -340,8 +341,8 @@ right: 0;
   left: auto;
   background-repeat: no-repeat;
   transition: all ease 300ms;
-  top: 46%;
-  transform: translateY(-60%);
+  top: 53%;
+  transform: translateY(-40%);
   right: 0;
 
 }
@@ -1009,6 +1010,9 @@ button:focus{
 @media (max-width: 767px) {
   .node-medical .howrightcol {
     background-color: #f3f3fb;
+}
+.mob-mt-24{
+  margin-top: 24px;
 }
 .cell-0 .tabelImage{
   opacity: 0;
@@ -2669,6 +2673,9 @@ display: flex !important;
   display: none !important;
 }
 @media (max-width:767px){
+  .mob-mb-40{
+    margin-bottom: 40px;
+  }
   .show-mob{
     display: block !important;
   }
@@ -2842,6 +2849,9 @@ min-height: 0;
   background: #132466;
 }
 @media (min-width:768px){
+  #ingm{
+    display: block !important;
+  }
   .cartButton {
   margin-left: 84px;
   }

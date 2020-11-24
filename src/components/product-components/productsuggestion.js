@@ -15,7 +15,7 @@ const ProductSuggestion = ({ node }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.05,
           slidesToScroll: 1,
           dots: true,
           arrows:false,
