@@ -3,19 +3,60 @@ import UserAccount from "../../components/user-account"
 import { Link } from 'gatsby'
 import accountsettings from "../../assets/scss/components/myaccountsettings.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
+import Scrollbars from 'react-custom-scrollbars';
+import $ from 'jquery'
+
 const baseUrl = process.env.Base_URL
 
 export default function AccountSettings() {
 
   useEffect(() => {
     getData();
-    if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
-      CustomSelect();
-    }
+    // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
+    //   CustomSelect();
+    // }
   }, [])
 
-  const [userAccount, setData] = useState({});
+  // Date format must be yyyy/mm/dd
+  function isValidDate(dateString) {
+    // // First check for the pattern
+    // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+    //     return false;
 
+    // Parse the date parts to integers
+    var parts = dateString.split("-");
+    var day = parseInt(parts[2], 10);
+    var month = parseInt(parts[1], 10);
+    var year = parseInt(parts[0], 10);
+
+    // Check the ranges of month and year
+    if (year < 1000 || year > 3000 || month == 0 || month > 12)
+      return false;
+
+    var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    // Adjust for leap years
+    if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+      monthLength[1] = 29;
+
+    // Check the range of the day
+    return day > 0 && day <= monthLength[month - 1];
+  };
+
+  let today = new Date();
+  let dd = String(today.getDate());
+  let mm = String(today.getMonth() + 1); //January is 0!
+  let yyyy = today.getFullYear();
+  const [isToday, setIsToday] = useState();
+
+
+  let yearsList = [];
+  let currentYear = new Date().getFullYear()
+  for (let i = 1900; i <= currentYear; i++) {
+    yearsList.push(i.toString());
+  }
+
+  const [userAccount, setData] = useState({});
 
   function checkvaild() {
 
@@ -112,6 +153,7 @@ export default function AccountSettings() {
 
   function handleAttr(event) {
     switch (event.target.name) {
+      
       case 'settingsemail':
         setData({
           ...userAccount,
@@ -134,7 +176,51 @@ export default function AccountSettings() {
 
   }
 
+  $('.new-select').on('click', function () {
+    $(this).next().removeClass('hide');
+    $(this).addClass('hide');
+    
 
+})
+$('.Give-val').on('click', function (e) {
+    $(this).closest('.old-select').prev().removeClass('hide');
+    $(this).closest('.old-select').addClass('hide');
+
+
+
+    if ($(this).closest('.day-select').prev().hasClass('day-select')) {
+
+        $(this).closest('.day-select').prev().children('.select-selected').html($(this).text());
+        // let dayVal = $(this).attr("value")
+        // $("#dayHidden").val(dayVal);
+        // $("#dayHidden").trigger('change');
+        //  console.log("hideennn", $("#dayHidden").attr("value"), dayVal)
+         
+
+    } else if ($(this).closest('.month-select').prev().hasClass('month-select')) {
+
+        $(this).closest('.month-select').prev().children('.select-selected').html($(this).text())
+        // let monthVal = $(this).attr("value")
+        // $("#monthHidden").val(monthVal);
+        // $("#monthHidden").trigger('change');
+
+        // console.log("hideennn", $("#monthHidden").attr("value"), monthVal)
+
+
+
+    } else if ($(this).closest('.year-select').prev().hasClass('year-select')) {
+
+        $(this).closest('.year-select').prev().children('.select-selected').html($(this).text())
+        // let yearVal = $(this).attr("value")
+        // $("#yearHidden").val(yearVal);
+        // $("#yearHidden").trigger('change');
+
+        // console.log("hideennn", $("#yearHidden").attr("value"), yearVal)
+
+    }
+})
+
+console.log("ashhh user", userAccount)
 
 
   return (
@@ -210,54 +296,90 @@ export default function AccountSettings() {
             </div>
           </div>
           <div className={accountsettings.DateBirthCon}>
-          <div className="row">
-            <div className="col-lg-6 col-12">
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <p className={accountsettings.updateP}>Date of Birth</p>
-              </div>
-              <div className={["d-flex", accountsettings.formTitle].join(" ")}>
-                <div className={accountsettings.selectcontainer}>
-                  <p className={accountsettings.selectTitle}>DAY</p>
-                  <div className="custom-select birthselect">
-
-                    <select id="birth-select" name="filter by">
-                      <option vlaue="Select">Select</option>
-                      <option vlaue="Select">Select</option>
-                      <option value="Aloe">31</option>
-
-                    </select>
-                  </div>
+            <div className="row">
+              <div className="col-lg-6 col-12 register">
+                <div className={["d-flex", accountsettings.formTitle].join(" ")}>
+                  <p className={accountsettings.updateP}>Date of Birth</p>
                 </div>
-                <div className={accountsettings.selectcontainer}>
-                  <p className={accountsettings.selectTitle}>MONTH</p>
-                  <div className="custom-select birthselect">
+                <div className="day-mon-year">
+                                <div className="day-month">
+                                    <div class="form-group select-group new-select  day-select">
+                                        <label for="reviewFormSelect" class="form-label">*Day</label>
+                                        <div class="select-selected">Select</div>
+                                    </div>
+                                    <div className="form-group select-group  old-select day-select hide">
+                                        <label for="reviewFormSelect" className="form-label">*Day</label>
+                                        <div className="select-wrap">
+                                            <Scrollbars style={{ height: 200 }}>
+                                                <div className="form-control" id="reviewFormSelectDay">
+                                                    {
+                                                        Array.apply(null, {length: 32}).map(Function.call, Number).map((day) => {
+                                                            if(day > 0)
+                                                                return <div className="Give-val day" data-value={day < 10? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10? `0${day}` : day}</div>
+                                                        })
+                                                    }
 
-                    <select id="birth-select" name="filter by">
-                      <option vlaue="Select">Select</option>
-                      <option vlaue="Select">Select</option>
-                      <option value="Aloe">dec</option>
+                                                </div>
+                                            </Scrollbars>
+                                        </div>
+                                    </div>
+                                    <div class="form-group select-group new-select  month-select">
+                                        <label for="reviewFormSelect" class="form-label">*Month</label>
+                                        <div class="select-selected">Select</div>
+                                    </div>
+                                    <div className="form-group select-group old-select  month-select hide">
+                                        <label for="reviewFormSelect" className="form-label">*Month</label>
+                                        <div className="select-wrap" >
+                                            <Scrollbars style={{ height: 200 }}>
 
-                    </select>
-                  </div>
-                </div>
-                <div className={[accountsettings.selectcontainer, accountsettings.endselect].join(" ")}>
-                  <p className={accountsettings.selectTitle}>YEAR</p>
-                  <div className="custom-select birthselect">
+                                                <div required className="form-control" name="date" id="reviewFormSelect">
 
-                    <select id="birth-select" name="filter by">
-                      <option vlaue="Select">Select</option>
-                      <option vlaue="Select">Select</option>
-                      <option value="Aloe">2020</option>
-                    </select>
-                  </div>
-                </div>
+                                                    <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
+                                                    <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
+                                                    <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
+                                                    <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
+                                                    <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
+                                                    <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
+                                                    <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
+                                                    <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
+                                                    <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
+                                                    <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
+                                                    <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
+                                                    <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
 
+                                                </div>
+                                            </Scrollbars>
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <div class="form-group select-group new-select  year-select">
+                                    <label for="reviewFormSelect" class="form-label">*Year</label>
+                                    <div class="select-selected">Select</div>
+                                </div>
+
+                                <div className="form-group select-group old-select  year-select hide">
+                                    <label for="reviewFormSelect" className="form-label">*Year</label>
+
+                                    <div className="select-wrap">
+                                        <Scrollbars style={{ height: 200 }}>
+                                            <div required className="form-control" name="date" id="reviewFormSelectYear">
+
+                                                {yearsList.reverse().map((item, index) => {
+                                                    return (
+                                                        <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
+                                                    )
+                                                })}
+                                            </div>
+                                        </Scrollbars>
+                                    </div>
+                                </div>
+
+                            </div>
               </div>
             </div>
-          </div>
 
-        </div>
+          </div>
 
           <div className="row d-lg-none">
             <div className="col-12">

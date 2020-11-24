@@ -1778,7 +1778,8 @@ p {
 .review-modal .select-group .select-selected, 
 .review-modal .select-items div,
 .contact-us .select-group .select-selected, 
-.contact-us .select-items div {
+.contact-us .select-items div,
+.Give-val {
     padding: 20px 16px;
     @include fontStyle(14, 16);
     @extend %futurapt-book;
@@ -2513,19 +2514,25 @@ p {
 .register .day-month {
     display: flex;
 
+    justify-content: space-between;
+
     @include lg-screen {
         width: 100%;
         margin-right: 16px;
-        justify-content: space-between;
     }
 }
 
 .register .day-month .form-group {
     flex: 0 0 47.5%;
     position: relative;
-    &:first-child {
-        margin-right: 16px;
-    }
+    // &:first-child {
+    //     margin-right: 16px;
+    // }
+}
+.Give-val {
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 0;
 }
 
 .register .group-title {

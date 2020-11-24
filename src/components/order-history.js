@@ -13,10 +13,19 @@ const OrderHistory = ({ ordersList }) => {
 
     let orders = ordersList;
 
+    console.log('bahiiii', orders, Object.keys(orders).length , orders.length )
+    function isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
 
-    if (orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
 
-        return (<OrderNoHistory />)
+    if (orders === "undefined" || Object.keys(orders).length == "0" || orders.length == 0 ) {
+        {console.log("bahiii no history")}
+        return <OrderNoHistory />
 
     } else {
 

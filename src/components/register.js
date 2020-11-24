@@ -27,16 +27,17 @@ const Register = () => {
             // console.log("hassan",document.querySelector(".regform").checkValidity())
         }
     }
-    useEffect(() => {
-        if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
-            CustomSelect();
+    // useEffect(() => {
+    //     if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
+    //         CustomSelect();
 
-            //the issue is here
-            document.querySelectorAll('select[name="date"]').forEach(item => {
-                item.addEventListener('change', handleAttr)
-            });
-        }
-    });
+    //         //the issue is here
+       
+    //     }
+    //     // document.querySelectorAll('.Give-val').forEach(item => {
+    //     //     item.addEventListener('click', handleAttr)
+    //     // });
+    // });
 
     const [isPassMatch, setIsPassMatch] = useState();
 
@@ -131,8 +132,7 @@ const Register = () => {
     }
 
     // Date format must be yyyy/mm/dd
-    function isValidDate(dateString)
-    {
+    function isValidDate(dateString) {
         // // First check for the pattern
         // if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
         //     return false;
@@ -144,13 +144,13 @@ const Register = () => {
         var year = parseInt(parts[0], 10);
 
         // Check the ranges of month and year
-        if(year < 1000 || year > 3000 || month == 0 || month > 12)
+        if (year < 1000 || year > 3000 || month == 0 || month > 12)
             return false;
 
-        var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+        var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
         // Adjust for leap years
-        if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
             monthLength[1] = 29;
 
         // Check the range of the day
@@ -158,22 +158,21 @@ const Register = () => {
     };
 
     function handleAttr(event) {
-        switch (event.target.name) {
-
+        
+        switch (event.target.name || event.target.attributes['data-name'].value) {
+            
             case 'date':
 
-
-
                 var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
-                if(event.target.classList.contains('day')) {
-                    dateOfBirth[2] = event.target.value;
+                if (event.target.classList.contains('day')) {
+                    dateOfBirth[2] = event.target.attributes['data-value'].value;
                 } else if (event.target.classList.contains('month')) {
-                    dateOfBirth[1] = event.target.value;
+                    dateOfBirth[1] = event.target.attributes['data-value'].value;
                 } else {
-                    dateOfBirth[0] = event.target.value
+                    dateOfBirth[0] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('-');
-
+                console.log('bahiiii date', dateOfBirth)
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
@@ -183,6 +182,7 @@ const Register = () => {
                         return item;
                     })
                 })
+                // console.log("ashhuser", newUser)
 
                 break;
             case 'postal_code':
@@ -195,6 +195,8 @@ const Register = () => {
                         return item;
                     })
                 })
+        // console.log("ashhuser", newUser)
+
                 break;
             case 'email_sub':
                 setNewUser({
@@ -206,11 +208,14 @@ const Register = () => {
                         return item;
                     })
                 })
+        // console.log("ashhuser", newUser)
+
                 break;
             default:
                 // console.log('not in the attributes');
                 break;
         }
+
 
     }
     let today = new Date();
@@ -221,14 +226,14 @@ const Register = () => {
     today = yyyy + '-' + mm + '-' + dd;
     // console.log("today", today)
 
-    console.log("ashhh input", newUser.attributes[0].attribute_value, newUser.attributes[0].attribute_value.type, today.toString())
+    // console.log("ashhh input", newUser.attributes[0].attribute_value, newUser.attributes[0].attribute_value.type, today.toString())
 
     const [isToday, setIsToday] = useState();
 
     function handleSubmit(event) {
         event.preventDefault();
         // check date validality
-        if(!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() ) {
+        if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString()) {
             // show error message for date of birth field
             // console.log('bahiii', 'date wrong')
             setIsToday(true);
@@ -239,27 +244,48 @@ const Register = () => {
 
     let yearsList = [];
     let currentYear = new Date().getFullYear()
-    for(let i=1900; i <= currentYear; i++) {
+    for (let i = 1900; i <= currentYear; i++) {
         yearsList.push(i.toString());
     }
     // console.log("ashhh", yearsList)
-    $('.new-select').on('click',function(){
+    $('.new-select').on('click', function () {
         $(this).next().removeClass('hide');
         $(this).addClass('hide')
     })
-    $('.Give-val').on('click',function(e){
+    $('.Give-val').on('click', function (e) {
         $(this).closest('.old-select').prev().removeClass('hide');
         $(this).closest('.old-select').addClass('hide');
-      
-        if($(this).closest('.day-select').prev().hasClass('day-select')){
-         $(this).closest('.day-select').prev().children('.select-selected').html($(this).text());
-        //  $('input[name="day"]').val()=$(this).attr('value')
 
-        }else if($(this).closest('.month-select').prev().hasClass('month-select')){
-         $(this).closest('.month-select').prev().children('.select-selected').html($(this).text())
-        }else if($(this).closest('.year-select').prev().hasClass('year-select')){
-        $(this).closest('.year-select').prev().children('.select-selected').html($(this).text())
-        } 
+        if ($(this).closest('.day-select').prev().hasClass('day-select')) {
+
+            $(this).closest('.day-select').prev().children('.select-selected').html($(this).text());
+            // let dayVal = $(this).attr("value")
+            // $("#dayHidden").val(dayVal);
+            // $("#dayHidden").trigger('change');
+            //  console.log("hideennn", $("#dayHidden").attr("value"), dayVal)
+             
+
+        } else if ($(this).closest('.month-select').prev().hasClass('month-select')) {
+
+            $(this).closest('.month-select').prev().children('.select-selected').html($(this).text())
+            // let monthVal = $(this).attr("value")
+            // $("#monthHidden").val(monthVal);
+            // $("#monthHidden").trigger('change');
+
+            // console.log("hideennn", $("#monthHidden").attr("value"), monthVal)
+
+
+
+        } else if ($(this).closest('.year-select').prev().hasClass('year-select')) {
+
+            $(this).closest('.year-select').prev().children('.select-selected').html($(this).text())
+            // let yearVal = $(this).attr("value")
+            // $("#yearHidden").val(yearVal);
+            // $("#yearHidden").trigger('change');
+
+            // console.log("hideennn", $("#yearHidden").attr("value"), yearVal)
+
+        }
     })
 
     return (
@@ -310,7 +336,7 @@ const Register = () => {
                         <div className={`errors ${err != undefined ? 'errors bg-light' : ''}`}>
                             <ul>
                                 {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
-                                {isToday == true? <li className="text-danger">You can't submit today's date</li> : ""}
+                                {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""}
                             </ul>
 
                         </div>
@@ -348,106 +374,78 @@ const Register = () => {
 
                             <div className="day-mon-year">
                                 <div className="day-month">
-                                <div class="form-group select-group new-select  day-select">
-                                    <label for="reviewFormSelect" class="form-label">*Day</label>
-                                    <div class="select-selected">Select</div>
-                                </div>
+                                    <div class="form-group select-group new-select  day-select">
+                                        <label for="reviewFormSelect" class="form-label">*Day</label>
+                                        <div class="select-selected">Select</div>
+                                    </div>
                                     <div className="form-group select-group  old-select day-select hide">
-                                        <input name="day"/>
                                         <label for="reviewFormSelect" className="form-label">*Day</label>
                                         <div className="select-wrap">
-                                        <Scrollbars style={{ height: 200 }}>
-                                            <div required className="form-control day" name="date" id="reviewFormSelect">
-                                              
-                                                <div className="Give-val"  value="01">01</div >
-                                                <div className="Give-val"  value="02">02</div >
-                                                <div className="Give-val"  value="03">03</div >
-                                                <div className="Give-val"  value="04">04</div >
-                                                <div className="Give-val"  value="05">05</div >
-                                                <div className="Give-val"  value="06">06</div >
-                                                <div className="Give-val"  value="07">07</div >
-                                                <div className="Give-val"  value="08">08</div >
-                                                <div className="Give-val"  value="09">09</div >
-                                                <div className="Give-val"  value="10">10</div >
-                                                <div className="Give-val"  value="11">11</div >
-                                                <div className="Give-val"  value="12">12</div >
-                                                <div className="Give-val"  value="13">13</div >
-                                                <div className="Give-val"  value="14">14</div >
-                                                <div className="Give-val"  value="15">15</div >
-                                                <div className="Give-val"  value="16">16</div >
-                                                <div className="Give-val"  value="17">17</div >
-                                                <div className="Give-val"  value="18">18</div >
-                                                <div className="Give-val"  value="19">19</div >
-                                                <div className="Give-val"  value="20">20</div >
-                                                <div className="Give-val"  value="21">21</div >
-                                                <div className="Give-val"  value="22">22</div >
-                                                <div className="Give-val"  value="23">23</div >
-                                                <div className="Give-val"  value="24">24</div >
-                                                <div className="Give-val"  value="25">25</div >
-                                                <div className="Give-val"  value="26">26</div >
-                                                <div className="Give-val"  value="27">27</div >
-                                                <div className="Give-val"  value="28">28</div >
-                                                <div className="Give-val"  value="29">29</div >
-                                                <div className="Give-val"  value="30">30</div >
-                                                <div className="Give-val"  value="31">31</div >
+                                            <Scrollbars style={{ height: 200 }}>
+                                                <div className="form-control" id="reviewFormSelectDay">
+                                                    {
+                                                        Array.apply(null, {length: 32}).map(Function.call, Number).map((day) => {
+                                                            if(day > 0)
+                                                                return <div className="Give-val day" data-value={day < 10? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10? `0${day}` : day}</div>
+                                                        })
+                                                    }
 
-                                            </div>
-                                        </Scrollbars>
-                                        </div>
-                                    </div>
-                                    <div class="form-group select-group new-select  month-select">
-                                    <label for="reviewFormSelect" class="form-label">*Month</label>
-                                    <div class="select-selected">Select</div>
-                                </div>
-                                    <div className="form-group select-group old-select  month-select hide">
-                                        <label for="reviewFormSelect" className="form-label">*Month</label>
-                                        <div className="select-wrap" >
-                                <Scrollbars style={{ height: 200 }}>
-                                            
-                                        <div required className="form-control month" name="date" id="reviewFormSelect">
-
-                                                <div className="Give-val"  value="01">January</div >
-                                                <div className="Give-val"  value="02">February</div >
-                                                <div className="Give-val"  value="03">March</div >
-                                                <div className="Give-val"  value="04">April</div >
-                                                <div className="Give-val"  value="05">May</div >
-                                                <div className="Give-val"  value="06">June</div >
-                                                <div className="Give-val"  value="07">July</div >
-                                                <div className="Give-val"  value="08">August</div >
-                                                <div className="Give-val"  value="09">September</div >
-                                                <div className="Give-val"  value="10">October</div >
-                                                <div className="Give-val"  value="11">November</div >
-                                                <div className="Give-val"  value="12">December</div >
-
-                                            </div>
+                                                </div>
                                             </Scrollbars>
                                         </div>
                                     </div>
-                           
+                                    <div class="form-group select-group new-select  month-select">
+                                        <label for="reviewFormSelect" class="form-label">*Month</label>
+                                        <div class="select-selected">Select</div>
+                                    </div>
+                                    <div className="form-group select-group old-select  month-select hide">
+                                        <label for="reviewFormSelect" className="form-label">*Month</label>
+                                        <div className="select-wrap" >
+                                            <Scrollbars style={{ height: 200 }}>
+
+                                                <div required className="form-control" name="date" id="reviewFormSelect">
+
+                                                    <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
+                                                    <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
+                                                    <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
+                                                    <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
+                                                    <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
+                                                    <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
+                                                    <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
+                                                    <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
+                                                    <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
+                                                    <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
+                                                    <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
+                                                    <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
+
+                                                </div>
+                                            </Scrollbars>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="form-group select-group new-select  year-select">
                                     <label for="reviewFormSelect" class="form-label">*Year</label>
                                     <div class="select-selected">Select</div>
                                 </div>
-                         
+
                                 <div className="form-group select-group old-select  year-select hide">
                                     <label for="reviewFormSelect" className="form-label">*Year</label>
-                                    
-                                    <div className="select-wrap">
-                                    <Scrollbars style={{ height: 200 }}>
-                                        <div required className="form-control year" name="date" id="reviewFormSelect">
 
-                                            {yearsList.reverse().map((item, index)=> {
-                                                // console.log("ashhh year", item)
-                                                return (
-                                                    <div className="Give-val"  value={item}>{item}</div >
-                                                )
-                                            })}
-                                        </div>
+                                    <div className="select-wrap">
+                                        <Scrollbars style={{ height: 200 }}>
+                                            <div required className="form-control" name="date" id="reviewFormSelectYear">
+
+                                                {yearsList.reverse().map((item, index) => {
+                                                    return (
+                                                        <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
+                                                    )
+                                                })}
+                                            </div>
                                         </Scrollbars>
                                     </div>
                                 </div>
-                           
+
                             </div>
 
                             <div className="group-title">Create Password</div>
