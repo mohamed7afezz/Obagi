@@ -1472,7 +1472,8 @@ right: 10px;
 .address-modal .select-selected::after, 
 .review-modal .select-selected::after, 
 .register .select-selected::after,
-.contact-us .select-selected::after{
+.contact-us .select-selected::after,
+.nudermCustomSelect  .select-selected::after{
   background-image: url(../images/path-copy.png);
   border: 0;
   top: 24px;
@@ -1497,7 +1498,8 @@ right: 10px;
 .address-modal .select-selected.select-arrow-active::after, 
 .review-modal .select-selected.select-arrow-active::after, 
 .register .select-selected.select-arrow-active::after,
-.contact-us .select-selected.select-arrow-active::after {
+.contact-us .select-selected.select-arrow-active::after,
+.nudermCustomSelect  .select-selected.select-arrow-active::after{
   transform: rotate(0);
   transition: all ease 300ms;
 }
@@ -1505,7 +1507,7 @@ right: 10px;
 .address-modal .select-selected.select-arrow-active::before, 
 .review-modal .select-selected.select-arrow-active::before, 
 .register .select-selected.select-arrow-active::before,
-.contact-us .select-selected.select-arrow-active::before {
+.contact-us .select-selected.select-arrow-active::before{
   content: "";
   position: absolute;
   bottom: 0;
@@ -3059,4 +3061,41 @@ font-weight:900;
 }
 .skinanalyzer .out-of-stock.add-btn-ready{
   margin-top: 5px;;
+}.nudermCustomSelect .select-items{
+  overflow-y: auto;
+  max-height: 300px;
+  background-color: #fff;
+}
+.nudermCustomSelect .select-items{
+  top: auto;
+}
+.nudermCustomSelect .select-items div,.nudermCustomSelect .select-selected{
+  border: 0;
+}
+.nudermCustomSelect  .select-selected{
+  padding-top: 4px;
+  padding-bottom: 12px;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 400;
+  color: #7c858a;
+  font-family:  futura-pt,   sans-serif; 
+}
+.showflex .group-wrapper{
+  flex: 0 0 31%;
+}
+#monthCustom,#dayCustom,#yearCustom,#AgeRange,#PrimarySkinConcern,#GenderCustom{
+  display: none;
+}
+.terms.footnote{
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  
+}
+.terms.footnote .checkmark,.terms.footnote:hover input:not(checked) ~ .checkmark{
+  background-color: transparent;
+  border: 1px solid #132466;
+} .terms.footnote:hover input:checked ~ .checkmark{
+ background-color: #132466;
 }
