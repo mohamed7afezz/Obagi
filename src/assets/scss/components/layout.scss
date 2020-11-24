@@ -2487,6 +2487,10 @@ p {
 .register .select-items {
     background: #fff;
     padding-top: 16px;
+    left: -15px;
+    right: -10px;
+    padding-left: 16px;
+    padding-right: 16px;
 
 }
 
@@ -2500,6 +2504,7 @@ p {
 }
 
 .register .day-mon-year .form-group {
+    position: relative;
     @include lg-screen {
         width: 43.4%;
     }
@@ -2511,12 +2516,13 @@ p {
     @include lg-screen {
         width: 100%;
         margin-right: 16px;
+        justify-content: space-between;
     }
 }
 
 .register .day-month .form-group {
-    width: 50%;
-
+    flex: 0 0 47.5%;
+    position: relative;
     &:first-child {
         margin-right: 16px;
     }
