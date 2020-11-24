@@ -14,6 +14,9 @@
     line-height: 56px;
     color: #c8775b;
     font-weight: 500;
+    display: flex;
+flex-direction: column;
+padding-bottom: 16px;
     span{
         font-weight: 300;
     }
@@ -52,5 +55,16 @@ height: 166px;
     height: 240px;
   margin-left: 0;
   margin-right: 0;
+}
+}
+.describtion{
+    p{
+    font-size: 24px;
+    line-height: 40px;
+    @extend %futurapt-light;
+    max-width: 587px;
+    @include md-screen{
+        padding-right: 16px;
+    }
 }
 }

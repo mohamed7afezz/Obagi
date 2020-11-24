@@ -108,6 +108,7 @@
     flex-direction: column;
     input{
         border: 0;
+        margin-bottom: 12px;
     }
 }
 .inputfield + .inputfield{
@@ -184,3 +185,34 @@ margin-top: 24px;
 .ffootnote +.ffootnote{
     margin-top: 16px;
 }
+.thankYou{
+    @extend %futurapt-bold;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+    @include lg-screen{
+        font-size: 32px;
+        line-height: 48px;
+    }
+}
+.servayDesc{
+    font-size: 18px;
+    line-height: 32px;
+}
+.Qtitle{
+    font-size: 24px;
+    line-height: 40px;
+    margin-bottom: 24px;
+    sup{
+        font-size: 12px;
+        line-height: 40px;
+    }
+}
+.Servayform{
+    margin-top: 48px;
+    width: 100%;
+    @include md-screen{
+        margin-top: 80px;
+    }
+}
+.QuestionContainer{margin-bottom: 40px;}

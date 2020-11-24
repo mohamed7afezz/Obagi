@@ -14,20 +14,8 @@ const Level1 = props => {
   })
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          <div
-            className={[
-              "col-lg-10",
-              "col-12",
-              "offset-lg-1",
-              nudermStyle.pagehero,
-            ].join(" ")}
-          >
-            <h1 className={nudermStyle.title}>
-              New to Nu-Derm<sup>®</sup>
-            </h1>
-          </div>
+  
+      
           <div
             className={[
               "col-lg-6",
@@ -318,7 +306,7 @@ const Level1 = props => {
               </label>
            </div>
            <div className={" col-12 col-lg-2 offset-lg-3"}>
-              <button className={nudermStyle.signup} >
+              <button onClick={SetLevelNumber} className={nudermStyle.signup} >
                 Sign Up
               
               </button>
@@ -328,14 +316,13 @@ const Level1 = props => {
               By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy and Legal Notice.
               
               </p>
-              <p className={nudermStyle.ffootnote}>             Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. View full Privacy Policy.
+              <p className={nudermStyle.ffootnote}>  Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. View full Privacy Policy.
 </p>
             </div>
         
           </form>
 
-        </div>
-      </div>
+    
     </>
   )
 }
