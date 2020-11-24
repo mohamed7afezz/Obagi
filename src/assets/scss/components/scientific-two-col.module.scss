@@ -4,9 +4,24 @@
 .givepadding {
     padding-top: 40px;
     padding-bottom: 40px;
-border-bottom: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
     @include md-screen {
         padding-top: 165px;
+        padding-bottom: 175px;
+    }
+}
+
+.padding-top {
+    padding-top: 40px;
+    @include md-screen {
+        padding-top: 165px;
+    }
+}
+
+.padding-bottom {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #d6d6d6;
+    @include md-screen {
         padding-bottom: 175px;
     }
 }
@@ -166,6 +181,9 @@ border-bottom: 1px solid #d6d6d6;
         line-height: 82px;
         
     }
+}
+@include lg-screen {
+    margin-left: 34px;
 }
 }
 

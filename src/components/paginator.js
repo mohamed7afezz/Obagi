@@ -97,7 +97,7 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
                                 <span class="sr-only">First Page</span>
                             </a>
                         </li> */}
-                        <li className="page-item">
+                        <li className={`page-item ${currPage == 1? 'd-none' : ''}`}>
                             <a class="page-link prev-link" href="prev" aria-label="Previous" onClick={prevPage}>
                                 <span aria-hidden="true">&#60;</span>
                                 <span class="sr-only">Previous</span>

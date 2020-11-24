@@ -1520,6 +1520,9 @@ right: 10px;
   z-index: 9999999999;
   background: #fff;
 }
+.register .select-selected.select-arrow-active::before {
+  top: 100%;
+}
 
 .contact-us .select-selected.select-arrow-active::before  {
   left: -16px;
@@ -1534,6 +1537,16 @@ right: 10px;
 .contact-us .select-items  {
   background-color: #fff;
  
+}
+.new-select{
+  max-height: 82px;
+}
+.select-wrap{
+  position: absolute;
+width: 100%;
+z-index: 999;
+background-color: #fff;
+left: 0;
 }
 .terms {
   display: block;
