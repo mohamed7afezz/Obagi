@@ -176,26 +176,31 @@ export default function AccountSettings() {
 
   }
 
-  document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
-    this.nextSibling.classList.remove('hide');
-    this.classList.add('hide');
-  }));
+  useEffect(() => {
+    if(typeof window != undefined) {
+        // console.log("ashhh", yearsList)
+        document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click',function(){
+            this.nextSibling.classList.remove('hide');
+            this.classList.add('hide');
+        }));
+        
+        document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click',function(e){
+            this.closest('.old-select').previousSibling.classList.remove('hide');
+            this.closest('.old-select').classList.add('hide');
+            
+            if(this.closest('.day-select')){
+                this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+            //  $('input[name="day"]').val()=$(this).attr('value')
 
-  document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click', function (e) {
-    this.closest('.old-select').previousSibling.classList.remove('hide');
-    this.closest('.old-select').classList.add('hide');
-
-    if (this.closest('.day-select')) {
-      this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-      //  $('input[name="day"]').val()=$(this).attr('value')
-
-    } else if (this.closest('.month-select')) {
-      this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-
-    } else if (this.closest('.year-select')) {
-      this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+            }else if(this.closest('.month-select')){
+                this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+                
+            }else if(this.closest('.year-select')){
+                this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+            } 
+        }));
     }
-  }));
+  }, [])
 
 
   return (
