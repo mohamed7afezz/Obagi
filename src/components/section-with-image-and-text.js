@@ -12,7 +12,7 @@ const SectionWithImageAndText = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_sub_title.processed }} className={["subtitle", imageAndText.subtitle].join(" ")}></div>
             <h1 dangerouslySetInnerHTML={{ __html: node.field_text_title.processed }} className={[imageAndText.title, "title"].join(" ")}></h1>
             <div dangerouslySetInnerHTML={{ __html: node.field_text_paragraph.processed }} className={[imageAndText.description, "description"].join(" ")}></div>
-            <div className={[imageAndText.linkDesk,  "d-none", "d-lg-block"].join(" ")}><Link to={node.field_text_button.uri?node.field_text_button.uri.replace('internal:', '') : '#'} className={["button-link"].join(" ")}>{node.field_text_button.title}</Link></div>
+            {node.field_text_button? <div className={[imageAndText.linkDesk,  "d-none", "d-lg-block"].join(" ")}><Link to={node.field_text_button.uri?node.field_text_button.uri.replace('internal:', '') : '#'} className={["button-link"].join(" ")}>{node.field_text_button.title}</Link></div> : ""}
           </div>
         </div>
 
@@ -21,7 +21,7 @@ const SectionWithImageAndText = ({ node }) => {
         </div>
 
         <div className="col-8 offset-2 col-md-4 col-lg-2 offset-lg-1 d-lg-none">
-          <div className={[imageAndText.linkSection].join(" ")}><Link to={node.field_text_button.uri.replace('internal:', '')} className={["button-link", imageAndText.link].join(" ")}>{node.field_text_button.title}</Link></div>
+          {node.field_text_button? <div className={[imageAndText.linkSection].join(" ")}><Link to={node.field_text_button.uri?node.field_text_button.uri.replace('internal:', '') : '#'} className={["button-link", imageAndText.link].join(" ")}>{node.field_text_button.title}</Link></div> : ""}
         </div>
 
       </div>
