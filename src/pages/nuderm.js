@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import NudermSignUp from "../components/nu-derm/Start"
+import NudermSignUp from '../components/nuderm/Start'
 const NudermSp = () => (
     <Layout>
   
