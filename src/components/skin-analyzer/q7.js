@@ -44,12 +44,12 @@ const Q7 = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">What Key Ingredients Are You Looking For?</div>
+                    <div className="question-header">Which key ingredient would you like to include in your skin care regimen?</div>
                 </div>
             </div>
             <div className="row justify-content-center">
                 <div className="col-12 col-lg-auto">
-                    <div className="question-text">Please specify any key ingredients you are interested in incorporating to your daily skin care regimen.</div>
+                    <div className="question-text">Please specify the one, main key ingredient you are interested in adding to your daily skin care regimen.</div>
 
                 </div>
             </div>
