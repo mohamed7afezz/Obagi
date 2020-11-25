@@ -71,10 +71,14 @@ export const fragment = graphql`
               field_sectiondescription {
                 processed
               }
-              field_read_more_extra {
-                processed
-              }
+            
             }
         }
     }
 `;
+
+// THIS FIELD IS REMOVED FROM QUERY UNTIL THEY ADD DATA IN IT
+
+// field_read_more_extra {
+//     processed
+//   }

@@ -153,7 +153,7 @@ export default function AccountSettings() {
 
   function handleAttr(event) {
     switch (event.target.name) {
-      
+
       case 'settingsemail':
         setData({
           ...userAccount,
@@ -176,51 +176,26 @@ export default function AccountSettings() {
 
   }
 
-  $('.new-select').on('click', function () {
-    $(this).next().removeClass('hide');
-    $(this).addClass('hide');
-    
+  document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
+    this.nextSibling.classList.remove('hide');
+    this.classList.add('hide');
+  }));
 
-})
-$('.Give-val').on('click', function (e) {
-    $(this).closest('.old-select').prev().removeClass('hide');
-    $(this).closest('.old-select').addClass('hide');
+  document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click', function (e) {
+    this.closest('.old-select').previousSibling.classList.remove('hide');
+    this.closest('.old-select').classList.add('hide');
 
+    if (this.closest('.day-select')) {
+      this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+      //  $('input[name="day"]').val()=$(this).attr('value')
 
+    } else if (this.closest('.month-select')) {
+      this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
 
-    if ($(this).closest('.day-select').prev().hasClass('day-select')) {
-
-        $(this).closest('.day-select').prev().children('.select-selected').html($(this).text());
-        // let dayVal = $(this).attr("value")
-        // $("#dayHidden").val(dayVal);
-        // $("#dayHidden").trigger('change');
-        //  console.log("hideennn", $("#dayHidden").attr("value"), dayVal)
-         
-
-    } else if ($(this).closest('.month-select').prev().hasClass('month-select')) {
-
-        $(this).closest('.month-select').prev().children('.select-selected').html($(this).text())
-        // let monthVal = $(this).attr("value")
-        // $("#monthHidden").val(monthVal);
-        // $("#monthHidden").trigger('change');
-
-        // console.log("hideennn", $("#monthHidden").attr("value"), monthVal)
-
-
-
-    } else if ($(this).closest('.year-select').prev().hasClass('year-select')) {
-
-        $(this).closest('.year-select').prev().children('.select-selected').html($(this).text())
-        // let yearVal = $(this).attr("value")
-        // $("#yearHidden").val(yearVal);
-        // $("#yearHidden").trigger('change');
-
-        // console.log("hideennn", $("#yearHidden").attr("value"), yearVal)
-
+    } else if (this.closest('.year-select')) {
+      this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
     }
-})
-
-console.log("ashhh user", userAccount)
+  }));
 
 
   return (
@@ -302,80 +277,80 @@ console.log("ashhh user", userAccount)
                   <p className={accountsettings.updateP}>Date of Birth</p>
                 </div>
                 <div className="day-mon-year">
-                                <div className="day-month">
-                                    <div class="form-group select-group new-select  day-select">
-                                        <label for="reviewFormSelect" class="form-label">*Day</label>
-                                        <div class="select-selected">Select</div>
-                                    </div>
-                                    <div className="form-group select-group  old-select day-select hide">
-                                        <label for="reviewFormSelect" className="form-label">*Day</label>
-                                        <div className="select-wrap">
-                                            <Scrollbars style={{ height: 200 }}>
-                                                <div className="form-control" id="reviewFormSelectDay">
-                                                    {
-                                                        Array.apply(null, {length: 32}).map(Function.call, Number).map((day) => {
-                                                            if(day > 0)
-                                                                return <div className="Give-val day" data-value={day < 10? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10? `0${day}` : day}</div>
-                                                        })
-                                                    }
+                  <div className="day-month">
+                    <div class="form-group select-group new-select  day-select">
+                      <label for="reviewFormSelect" class="form-label">*Day</label>
+                      <div class="select-selected">Select</div>
+                    </div>
+                    <div className="form-group select-group  old-select day-select hide">
+                      <label for="reviewFormSelect" className="form-label">*Day</label>
+                      <div className="select-wrap">
+                        <Scrollbars style={{ height: 200 }}>
+                          <div className="form-control" id="reviewFormSelectDay">
+                            {
+                              Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
+                                if (day > 0)
+                                  return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
+                              })
+                            }
 
-                                                </div>
-                                            </Scrollbars>
-                                        </div>
-                                    </div>
-                                    <div class="form-group select-group new-select  month-select">
-                                        <label for="reviewFormSelect" class="form-label">*Month</label>
-                                        <div class="select-selected">Select</div>
-                                    </div>
-                                    <div className="form-group select-group old-select  month-select hide">
-                                        <label for="reviewFormSelect" className="form-label">*Month</label>
-                                        <div className="select-wrap" >
-                                            <Scrollbars style={{ height: 200 }}>
+                          </div>
+                        </Scrollbars>
+                      </div>
+                    </div>
+                    <div class="form-group select-group new-select  month-select">
+                      <label for="reviewFormSelect" class="form-label">*Month</label>
+                      <div class="select-selected">Select</div>
+                    </div>
+                    <div className="form-group select-group old-select  month-select hide">
+                      <label for="reviewFormSelect" className="form-label">*Month</label>
+                      <div className="select-wrap" >
+                        <Scrollbars style={{ height: 200 }}>
 
-                                                <div required className="form-control" name="date" id="reviewFormSelect">
+                          <div required className="form-control" name="date" id="reviewFormSelect">
 
-                                                    <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
-                                                    <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
-                                                    <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
-                                                    <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
-                                                    <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
-                                                    <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
-                                                    <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
-                                                    <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
-                                                    <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
-                                                    <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
-                                                    <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
-                                                    <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
+                            <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
+                            <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
+                            <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
+                            <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
+                            <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
+                            <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
+                            <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
+                            <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
+                            <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
+                            <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
+                            <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
+                            <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
 
-                                                </div>
-                                            </Scrollbars>
-                                        </div>
-                                    </div>
+                          </div>
+                        </Scrollbars>
+                      </div>
+                    </div>
 
-                                </div>
-                                <div class="form-group select-group new-select  year-select">
-                                    <label for="reviewFormSelect" class="form-label">*Year</label>
-                                    <div class="select-selected">Select</div>
-                                </div>
+                  </div>
+                  <div class="form-group select-group new-select  year-select">
+                    <label for="reviewFormSelect" class="form-label">*Year</label>
+                    <div class="select-selected">Select</div>
+                  </div>
 
-                                <div className="form-group select-group old-select  year-select hide">
-                                    <label for="reviewFormSelect" className="form-label">*Year</label>
+                  <div className="form-group select-group old-select  year-select hide">
+                    <label for="reviewFormSelect" className="form-label">*Year</label>
 
-                                    <div className="select-wrap">
-                                        <Scrollbars style={{ height: 200 }}>
-                                            <div required className="form-control" name="date" id="reviewFormSelectYear">
+                    <div className="select-wrap">
+                      <Scrollbars style={{ height: 200 }}>
+                        <div required className="form-control" name="date" id="reviewFormSelectYear">
 
-                                                {yearsList.reverse().map((item, index) => {
-                                                    return (
-                                                        <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
-                                                    )
-                                                })}
-                                            </div>
-                                        </Scrollbars>
-                                    </div>
-                                </div>
+                          {yearsList.reverse().map((item, index) => {
+                            return (
+                              <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
+                            )
+                          })}
+                        </div>
+                      </Scrollbars>
+                    </div>
+                  </div>
 
-                            </div>
+                </div>
               </div>
             </div>
 

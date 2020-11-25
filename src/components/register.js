@@ -248,45 +248,26 @@ const Register = () => {
         yearsList.push(i.toString());
     }
     // console.log("ashhh", yearsList)
-    $('.new-select').on('click', function () {
-        $(this).next().removeClass('hide');
-        $(this).addClass('hide')
-    })
-    $('.Give-val').on('click', function (e) {
-        $(this).closest('.old-select').prev().removeClass('hide');
-        $(this).closest('.old-select').addClass('hide');
+    document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click',function(){
+        this.nextSibling.classList.remove('hide');
+        this.classList.add('hide');
+    }));
+    
+    document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click',function(e){
+        this.closest('.old-select').previousSibling.classList.remove('hide');
+        this.closest('.old-select').classList.add('hide');
+        
+        if(this.closest('.day-select')){
+            this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+        //  $('input[name="day"]').val()=$(this).attr('value')
 
-        if ($(this).closest('.day-select').prev().hasClass('day-select')) {
-
-            $(this).closest('.day-select').prev().children('.select-selected').html($(this).text());
-            // let dayVal = $(this).attr("value")
-            // $("#dayHidden").val(dayVal);
-            // $("#dayHidden").trigger('change');
-            //  console.log("hideennn", $("#dayHidden").attr("value"), dayVal)
-             
-
-        } else if ($(this).closest('.month-select').prev().hasClass('month-select')) {
-
-            $(this).closest('.month-select').prev().children('.select-selected').html($(this).text())
-            // let monthVal = $(this).attr("value")
-            // $("#monthHidden").val(monthVal);
-            // $("#monthHidden").trigger('change');
-
-            // console.log("hideennn", $("#monthHidden").attr("value"), monthVal)
-
-
-
-        } else if ($(this).closest('.year-select').prev().hasClass('year-select')) {
-
-            $(this).closest('.year-select').prev().children('.select-selected').html($(this).text())
-            // let yearVal = $(this).attr("value")
-            // $("#yearHidden").val(yearVal);
-            // $("#yearHidden").trigger('change');
-
-            // console.log("hideennn", $("#yearHidden").attr("value"), yearVal)
-
-        }
-    })
+        }else if(this.closest('.month-select')){
+            this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+            
+        }else if(this.closest('.year-select')){
+            this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+        } 
+    }));
 
     return (
         <>
