@@ -819,8 +819,7 @@ margin-bottom: 35px;
 }
 @media (min-width: 768px) {
   .howrightcol .collapse,
-  .howrightcol .card-body,
-  .howrightcol .gatsby-image-wrapper {
+  .howrightcol .card-body {
     height: 100%;
     width: auto;
   }
@@ -845,12 +844,12 @@ margin-bottom: 35px;
   transform: translate(-50%, -50%);
   z-index: 3;
 }
-.video-wrapper .img-wrap {
+/* .video-wrapper .img-wrap {
   position: absolute;
   width: 100%;
   top: 0;
   height: 100%;
-}
+} */
 .video-wrapper {
   height: 100%;
   position: relative;

@@ -71,9 +71,7 @@ export const fragment = graphql`
               field_sectiondescription {
                 processed
               }
-              field_read_more_extra {
-                processed
-              }
+             
             }
         }
     }

@@ -42,7 +42,6 @@ function SetVideoTime(time, video, endTime) {
 
 const Howtouse = ({ node }) => {
 
-
     function hcollapse(e) {
         var $collapsedata = document.querySelectorAll('.allstep')
         var $collapsebtn = document.querySelectorAll('.collapsebtn')
@@ -147,12 +146,12 @@ const Howtouse = ({ node }) => {
                                                             :
                                                             <div className="video-wrapper">
                                                                 {
-                                                                    item.relationships.field_video.relationships && item.relationships.field_video.relationships.field_video_poster ?
+                                                                     item.relationships.field_video.relationships.field_video_poster ?
                                                                         <div className="img-wrap">
                                                                             <a class="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={item.relationships.field_video.field_video_link} class="playbtn">
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
-                                                                            {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile? 
+                                                                            { item.relationships.field_video.relationships.field_video_poster.localFile? 
                                                                                 <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                             :''}
                                                                         </div>
