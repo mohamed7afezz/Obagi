@@ -1,0 +1,109 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.container-wrapper {
+    @include lg-screen {
+        background-color: #132466;
+        margin-bottom: 232px;
+    }
+}
+
+.image {
+    bottom: -32px;
+    top: 32px;
+    position: relative;
+    z-index: 99;
+
+    @include lg-screen {
+        top: 196px;
+        bottom: -113px;
+        height: auto;
+    }
+}
+
+.image > div {
+    height: auto;
+}
+
+.image-col-wrapper {
+
+    @include lg-screen {
+        order: 2;
+    }
+}
+
+.text-col-wrapper {
+    background-color: #132466;
+    padding-top: 64px;
+    padding-bottom: 32px;
+    color: #fff;
+
+    @include lg-screen {
+        padding-top: 181px;
+        padding-bottom: 192px;
+    }
+}
+
+.image::before {
+    position: absolute;
+    content: '';
+    background-color: #44c4d9;
+    width: 65px;
+    height: 62px;
+    bottom: 32px;
+    left: -65px;
+
+    @include lg-screen {
+        width: 117px;
+        height: 111px;
+        left: -117px;
+        bottom: 0;
+    }
+}
+
+
+.title {
+    @include fontStyle(40, 56);
+    margin-bottom: 16px;
+    @extend %futurapt-light;
+
+    @include lg-screen {
+        @include fontStyle(72, 88);
+        margin-bottom: 32px;
+    }
+}
+
+.description {
+    @include fontStyle(16, 24);
+    margin-bottom: 24px;
+
+    @include lg-screen {
+        @include fontStyle(28, 40);
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+
+        margin-bottom: 80px;
+    }
+}
+
+.link a{
+    border-color: #fff;
+    color: #fff;
+    padding: 16px;
+
+    &:hover {
+        background-color: #fff;
+        color: #132466;
+    }
+
+    @include lg-screen {
+        padding: 28px 94px;
+    }
+}
+
+@media (max-width: 991px) {
+    .image-col-wrapper {
+        padding-left: 0;
+    }
+}

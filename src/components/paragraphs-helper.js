@@ -61,6 +61,7 @@ import Sepratorimg from './seprator';
 import TwoCol from './scientific-two-col';
 import SintificFooter from './scientific-big-desc';
 import International from './international'
+import FullWidthWithImage from './full-width-with-image';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -123,6 +124,7 @@ const componentsMap = {
     paragraph__scientific_innovation_two_col:TwoCol,
     paragraph__scientific_describtion_big_link:SintificFooter,
     paragraph__international: International,
+    paragraph__full_width_with_image: FullWidthWithImage,
 }
 
 export const getParagraph = node => {

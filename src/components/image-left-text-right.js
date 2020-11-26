@@ -5,15 +5,15 @@ import imageLeft from '../assets/scss/components/image-left-text-right.module.sc
 
 const ImageLeftTextRight = ({ node }) => {
   return (
-    <div className={["container-fluid", imageLeft.imageContainer].join(" ")}>
+    <div className={["container-fluid", imageLeft.imageContainer, `${node.field_text_custom_class? node.field_text_custom_class : ""}`].join(" ")}>
       <div className="row">
-        <div className={["col-12", "col-lg-5", imageLeft.colPadding, imageLeft.firstSection].join(" ")}>
+        <div className={[`${node.field_text_custom_class? "col-10 col-lg-5 text-first-section" : "col-12 col-lg-5 text-first-section " + imageLeft.colPadding}`, imageLeft.firstSection ].join(" ")}>
           
-          <div className={imageLeft.image}><Img fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
+          <div className={[imageLeft.image, "text-image"].join(" ")}><Img fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
         </div>
 
-          <div className={["col-12", "col-lg-6", "offset-lg-1", imageLeft.colFullPadding].join(" ")}>
-            <div className={imageLeft.smallSection}>
+          <div className={["col-12 col-lg-6 offset-lg-1", `${node.field_text_custom_class? "text-second-section" : imageLeft.colFullPadding}`].join(" ")}>
+            <div className={[imageLeft.smallSection, "text-small-section"].join(" ")}>
               <div dangerouslySetInnerHTML={{ __html: node.field_image_left_subtitle.processed }} className={["subtitle", imageLeft.subtitle].join(" ")}></div>
               <h1 dangerouslySetInnerHTML={{ __html: node.field_image_left_title.processed }} className={[imageLeft.title, "title"].join(" ")}></h1>
               <div dangerouslySetInnerHTML={{ __html: node.field_image_left_paragraph.processed }} className={[imageLeft.description, "description"].join(" ")}></div>
@@ -49,6 +49,7 @@ export const fragment = graphql`
     field_image_left {
       alt
     }
+    field_text_custom_class
     relationships {
       field_image_left {
         localFile {

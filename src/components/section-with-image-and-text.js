@@ -5,9 +5,9 @@ import imageAndText from '../assets/scss/components/section-with-image-and-text.
 
 const SectionWithImageAndText = ({ node }) => {
   return (
-    <div className={["container-fluid SectionWithImageAndText"].join(" ")}>
-      <div className={["row align-items-center", imageAndText.section, imageAndText.rowPadding].join(" ")}>
-        <div className={["col-9", "offset-2", "col-lg-4", "offset-lg-1"].join(" ")}>
+    <div className={["container-fluid SectionWithImageAndText", `${node.field_custom_class? node.field_custom_class : ""}` ].join(" ")}>
+      <div className={["row align-items-center image-text-row", imageAndText.section, imageAndText.rowPadding].join(" ")}>
+        <div className={[`${node.field_custom_class? "col-12 col-lg-4 offset-lg-1" : "col-9 offset-2 col-lg-4 offset-lg-1"}`].join(" ")}>
           <div className={[imageAndText.textSection].join(" ")}>
             <div dangerouslySetInnerHTML={{ __html: node.field_sub_title.processed }} className={["subtitle", imageAndText.subtitle].join(" ")}></div>
             <h1 dangerouslySetInnerHTML={{ __html: node.field_text_title.processed }} className={[imageAndText.title, "title"].join(" ")}></h1>
@@ -16,7 +16,7 @@ const SectionWithImageAndText = ({ node }) => {
           </div>
         </div>
 
-        <div className={["col-12", "col-lg-6", imageAndText.colPadding].join(" ")}>
+        <div className={[`${node.field_custom_class? "col-12 col-lg-7 imageTextColPadding " + imageAndText.colPadding : "col-12 col-lg-6 imageTextColPadding " + imageAndText.colPadding}`].join(" ")}>
           {node.relationships && node.relationships.field_image && node.relationships.field_image.localFile && node.relationships.field_image.localFile.childImageSharp? <div className={imageAndText.image}><Img fluid={node.relationships.field_image.localFile.childImageSharp.fluid} /></div> : ""}
         </div>
 
@@ -51,6 +51,7 @@ export const fragment = graphql`
     field_text_title {
       processed
     }
+    field_custom_class
     relationships {
       field_image {
         localFile {

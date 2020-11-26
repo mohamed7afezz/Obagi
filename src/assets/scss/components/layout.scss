@@ -3819,12 +3819,19 @@ p {
   }
 
   .our-history-colored .colored-subtitle {
+      padding-top: 59px;
+      padding-bottom: 16px;
       @include lg-screen {
         padding-top: 176px;
+        padding-bottom: 32px;
       }
   }
 
   .our-history-colored .colored-description {
+      margin-top: 8px;
+      margin-bottom: 32px;
+      @include fontStyle(16, 24);
+
       @include lg-screen {
           margin-top: 32px;
           margin-bottom: 0;
@@ -3835,8 +3842,206 @@ p {
       }
   }
 
+  .our-history-image .subtitle {
+      @include lg-screen {
+          margin-top: 209px;
+      }
+  }
+
+  .our-history-image .description {
+      @include lg-screen {
+          margin-top: 32px;
+          @include fontStyle(28, 40);
+          font-family:  futura-pt,   sans-serif;
+          font-weight: 300;
+          font-style: normal;
+      }
+  }
+
+
+
+  .our-history-text {
+      @include lg-screen{
+          margin-bottom: 0 !important;
+      }
+  }
+
+  .our-history-text .text-first-section {
+    padding-left: 0;
+
+  }
+
+.our-history-text .text-second-section {
+          background-color: #44c4d9;
+          color: #fff;
+
+          @include lg-screen {
+              position: relative;
+            
+              &::after {
+            
+                position: absolute;
+                content: '';
+                height: 175px;
+                width: 175px;
+                left: -175px;
+                bottom: 0;
+                background-color: #132466;
+              }
+          }
+}
+
+.our-history-text .subtitle {
+    &::before {
+        background-color: #ffcd00;
+    }
+}
+
+.our-history-text .text-small-section {
+    background-color: unset;
+    &::after {
+        content: none;
+    }
+
+    @include lg-screen {
+        padding-bottom: 442px;
+    }
+
+}
+
+.our-history-text .text-image {
+    &::before {
+        height: 45px;
+        width: 45px;
+        top: -45px;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        height: 75px;
+        width: 75px;
+        background-color: #132466;
+        bottom: -48px;
+        right: -75px;
+        z-index: 99;
+    }
+
+    @include lg-screen {
+        &::before {
+            height: 117px;
+            width: 117px;
+            top: -117px;
+        }
+
+        &::after {
+           content: none;
+        }
+    }
+}
+
+.our-history-text .description {
+    @include lg-screen {
+        margin-top: 32px;
+        margin-bottom: 0;
+        @include fontStyle(28, 40);
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
   @media (max-width: 991px) {
       .our-history-colored .colored-first-section {
           padding-right: 0;
+          background: #fff;
+      }
+
+      .our-history-colored .colored-first-section::before {
+          height: 65px;
+          width: 65px;
+          left: -65px;
+          bottom: 0;
+      }
+      .our-history-colored .colored-image {
+          margin-top: 80px;
+          margin-bottom: -32px;
+      }
+      .our-history-colored .colored-image::after {
+          right: 0;
+          height: 66px;
+          width: 66px;
+          bottom: -260px;
+      }
+
+      .our-history-colored .colored-title {
+          @include fontStyle(40, 56);
+      }
+
+      .our-history-colored .colored-big-section {
+          background-color: #fff;
+      }
+
+      .our-history-colored .colored-col-right {
+          background-color: #132466;
+      }
+
+
+
+
+      .our-history-image .image-text-row {
+          padding-top: 0;
+      }
+
+      .our-history-image .subtitle {
+        margin: 130px 0 16px;
+      }
+
+      .our-history-image .title {
+          @include fontStyle(40, 56);
+      }
+      .our-history-image .description {
+          @include fontStyle(16, 24);
+          margin: 8px 0 64px;
+      }
+      .our-history-image .imageTextColPadding {
+          padding-right: 0;
+      }
+
+
+
+      .our-history-text {
+          margin-bottom: 96px !important;
+      }
+      .our-history-text .text-first-section {
+          order: 2;
+      } 
+      .our-history-text .text-small-section {
+          padding: 59px 0 32px;
+         
+      }
+
+      .our-history-text .subtitle {
+          margin-bottom: 16px;
+      }
+
+      .our-history-text .title {
+          @include fontStyle(40, 56);
+      }
+      .our-history-text .description {
+          @include fontStyle(16, 24);
+          margin: 8px 0 0;
+      }
+      .our-history-text .text-image {
+        margin-top: 45px;
+        margin-bottom: 0;
+      
+      }
+  }
+
+  @media (max-width: 767px) {
+      .our-history-colored .colored-image::after {
+            bottom: -390px;
+
       }
   }
