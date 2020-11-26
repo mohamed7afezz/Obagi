@@ -3801,3 +3801,42 @@ p {
         height: 463px;
     }
   }
+  .our-history-colored {
+      @include lg-screen {
+          margin-top: 196px;
+      }
+  }
+  .our-history-colored .colored-small-section {
+      @include lg-screen {
+          padding-bottom: 267px;
+      }
+  }
+
+  .our-history-colored .colored-small-section::after {
+      @include lg-screen {
+        left: 142px;
+      }
+  }
+
+  .our-history-colored .colored-subtitle {
+      @include lg-screen {
+        padding-top: 176px;
+      }
+  }
+
+  .our-history-colored .colored-description {
+      @include lg-screen {
+          margin-top: 32px;
+          margin-bottom: 0;
+          @include fontStyle(28, 40);
+          font-family:  futura-pt,   sans-serif;
+          font-weight: 300;
+          font-style: normal;
+      }
+  }
+
+  @media (max-width: 991px) {
+      .our-history-colored .colored-first-section {
+          padding-right: 0;
+      }
+  }
