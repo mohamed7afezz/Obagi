@@ -3861,6 +3861,9 @@ p {
 
 
   .our-history-text {
+      li{
+          margin-bottom: 8px;
+      }
       @include lg-screen{
           margin-bottom: 0 !important;
       }

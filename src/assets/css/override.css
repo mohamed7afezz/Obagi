@@ -3136,8 +3136,8 @@ font-weight:900;
 .generalcollectionhero + .finalpa{
   padding-bottom: 80px;
 }
-.ourHistory .general-basic-column{
-  font-weight: 300;
-  font-size: 32px;
-  line-height: 48px;
+.ourHistory .general-basic-column p{
+  font-weight: 300 !important;
+  font-size: 32px !important;
+  line-height: 48px !important;
 }
