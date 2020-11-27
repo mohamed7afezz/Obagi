@@ -17,7 +17,7 @@ const FullWidthWithImage = ({ node }) => {
                 <div className={["col-12 col-lg-4 offset-lg-1", fullWidthStyles.textColWrapper].join(" ")}>
                     {node.field_full_width_title ? <div className={fullWidthStyles.title} dangerouslySetInnerHTML={{ __html: node.field_full_width_title.processed }}></div> : ""}
                     {node.field_full_width_description ? <div className={fullWidthStyles.description} dangerouslySetInnerHTML={{ __html: node.field_full_width_description.processed }}></div> : ""}
-                    {node.field_full_width_link ? <div className={fullWidthStyles.link}><Link className="button-link" to={node.field_full_width_link.uri}>{node.field_full_width_link.title}</Link></div> : ""}
+                    {node.field_full_width_link ? <div className={fullWidthStyles.link}><Link className="button-link" to={node.field_full_width_link.uri.replace('internal:', '')}>{node.field_full_width_link.title}</Link></div> : ""}
                 </div>
 
             </div>
