@@ -3133,3 +3133,6 @@ font-weight:900;
 }.mb-40{
     margin-bottom: 40px;
 }
+.generalcollectionhero + .finalpa{
+  padding-bottom: 80px;
+}

@@ -62,6 +62,7 @@ import TwoCol from './scientific-two-col';
 import SintificFooter from './scientific-big-desc';
 import International from './international'
 import FullWidthWithImage from './full-width-with-image';
+import CustomList from './List-Paragrapgh';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -125,6 +126,7 @@ const componentsMap = {
     paragraph__scientific_describtion_big_link:SintificFooter,
     paragraph__international: International,
     paragraph__full_width_with_image: FullWidthWithImage,
+    paragraph__list : CustomList
 }
 
 export const getParagraph = node => {

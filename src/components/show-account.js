@@ -33,6 +33,7 @@ const ShowAccount = () => {
                         <Link to="/my-account/address-book" onClick={() => {closeModal();}}>Address Book</Link>
                         <Link to="/my-account/account-settings" onClick={() => {closeModal();}}>Account Settings</Link>
                         <Link to="/my-account/premier-points" onClick={() => {closeModal();}}>Premier Points</Link>
+                        <Link to="/authorized-retailers" onClick={() => {closeModal();}}>Authorized Retailers</Link>
                         <button type="button" onClick={handleLogout} data-dismiss="modal">Sign Out</button>
                     </div>
                 </div>
