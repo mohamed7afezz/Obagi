@@ -113,7 +113,7 @@ const Level2 = () => {
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input name="Other" type="text" />
+                <input className="otherInput" name="Other" type="text" />
               </div>
                 </label>
                </div>
