@@ -108,6 +108,7 @@
     padding-bottom: 4px;
     flex-direction: column;
     input{
+        font-size: 16px;
         border: 0;
         margin-bottom: 12px;
         @extend %futurapt-book;
@@ -219,3 +220,16 @@ margin-top: 24px;
     }
 }
 .QuestionContainer{margin-bottom: 40px;}
+.textarea{
+    display: inline-block;
+    label{
+        display: block;
+    }
+    textarea{
+        resize: both;
+        font-size: 18px;
+        line-height: 32px;
+        @extend %futurapt-book;
+    width: 100%;
+    }
+}
