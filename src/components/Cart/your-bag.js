@@ -512,7 +512,7 @@ const YourBag = (props, { notificationId }) => {
   }
   let shipmenttext = (id) => {
     if (id === 2) {
-      return <p className="shipmenttext">5-7 Business Days*</p>
+      return <p className="shipmenttext">Up to 3  Business Days*</p>
     } else if (id === 4) {
       return <p className="shipmenttext">2 Business Days*</p>
     } else if (id === 5) {

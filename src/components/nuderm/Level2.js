@@ -113,13 +113,102 @@ const Level2 = () => {
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input name="Other" type="text" />
+                <input className="otherInput" name="Other" type="text" />
               </div>
                 </label>
                </div>
                <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
             <p className={nudermStyle.Qtitle}>
             2. Please rank the following topics you would be interested in learning about in order of most interested (1) to least interested (5).            </p>
+            <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I wanted to see if I used Nu-Derm correctly."
+                  required
+                  type="checkbox"
+                  name="reason"
+                />
+                <span class="checkmark"></span>I wanted to see if I used Nu-Derm correctly.
+              </label>
+              <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I wanted to learn how to maintain and optimize results."
+                  required
+                  type="checkbox"
+                  name="reason"
+                />
+                <span class="checkmark"></span>I wanted to learn how to maintain and optimize results.
+              </label>
+              <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I’m considering using the Nu-Derm System again in the future."
+                  required
+                  type="checkbox"
+                  name="reason"
+                />
+                <span class="checkmark"></span>I’m considering using the Nu-Derm System again in the future.
+              </label>
+              <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I was looking for exclusive offers or rebate opportunities."
+                  required
+                  type="checkbox"
+                  name="reason"
+                />
+                <span class="checkmark"></span>I was looking for exclusive offers or rebate opportunities.
+              </label>
+              <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  required
+                  type="checkbox"
+                  name="reason"
+                />
+                <span class="checkmark"></span>I didn’t know it was designed for those just starting the Nu-Derm System.
+              </label>
+              <label
+                className={[nudermStyle.RadioLabel, "radioLabel form-check-label "].join(" ")}
+
+              >
+                <input
+                  className={[nudermStyle.radio, "form-check-input"].join(" ")}
+                  id={nudermStyle.formradio}
+                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  required
+                  type="radio"
+                  name="reason"
+                />
+                <span class="checkmark"></span>
+                <div className={nudermStyle.inputfield}>
+                <label>Other</label>
+                <input className="otherInput" name="Other" type="text" />
+              </div>
+                </label>
+               
             </div>
            </form>
         </>
