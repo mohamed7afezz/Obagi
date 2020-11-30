@@ -120,20 +120,26 @@ const Resulte = (props) => {
                                             We found these <Link to="/clinical">Obagi Clinical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
-                                            <div className={[resulteSkinStyle.collapseContainer, "d-none"].join(" ")}>
-                                                <button class="toggle-icon" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skin care</button>
+                                            <div className={[resulteSkinStyle.collapseContainer].join(" ")}>
+                                                <button class="toggle-icon collapsed" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skin care</button>
 
-                                                <div class="collapse multi-collapse show" id="abc">
-                                                    <div class="card card-body">
-                                                        loaram  loaram  loaram  loaram  loaram  loaram  loaram  loaram
-                                        </div>
+                                                <div class="collapse multi-collapse " id="abc">
+                                                <div class="card card-body">
+                                                 <p className={resulteSkinStyle.cardDesc}>   These three vitamins offer a foundation for any basic skincare regimen:
+                                                 </p><p className={resulteSkinStyle.cardtitle}>Vitamin A:</p>
+                                                 <p className={resulteSkinStyle.cardDesc}>  Includes a family of ingredients also known as retinoids. Retinoids can help dimish the appearance of fine lines, wrinkles and photoaging
+                                                 </p> <p className={resulteSkinStyle.cardtitle}>Vitamin B:</p>
+                                                    <p className={resulteSkinStyle.cardDesc}>Broad-spectrum UV protection. Every patient is a candidate for a sunscreen product.
+                                                    </p> <p className={resulteSkinStyle.cardtitle}>Vitamin C:</p>
+                                                    <p className={resulteSkinStyle.cardDesc}>   Improves overall photodamaged appearance, bright skin, provides antioxidant defense, evens skin tone, and reduces the appearance of fine lines and wrinkles.
+                                                    </p></div>
                                                 </div>
                                             </div>
                                             <div className={resulteSkinStyle.collapseContainer}>
 
-                                                <button class="toggle-icon" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="false" aria-controls="answersmob">Your Answers</button>
+                                                <button class="toggle-icon collapsed" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="false" aria-controls="answersmob">Your Answers</button>
 
-                                                <div class="collapse multi-collapse show" id="answersmob">
+                                                <div class="collapse multi-collapse " id="answersmob">
                                                     <div class="card card-body">
                                                         <div className="col-12 ">
 
@@ -222,20 +228,26 @@ const Resulte = (props) => {
                                             We found these <Link to="/medical">Obagi Medical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
-                                            <div className={[resulteSkinStyle.collapseContainer, "d-none"].join(" ")}>
-                                                <button class="toggle-icon" data-toggle="collapse" href="#abc" role="button" aria-expanded="true" aria-controls="abc">ABC’s of Skin care</button>
+                                            <div className={[resulteSkinStyle.collapseContainer].join(" ")}>
+                                                <button class="toggle-icon collapsed" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skin care</button>
 
-                                                <div class="collapse multi-collapse show " id="abc">
-                                                    <div class="card card-body">
-                                                        loaram  loaram  loaram  loaram  loaram  loaram  loaram  loaram
-                                        </div>
+                                                <div class="collapse multi-collapse " id="abc">
+                                                <div class="card card-body">
+                                                 <p className={resulteSkinStyle.cardDesc}>   These three vitamins offer a foundation for any basic skincare regimen:
+                                                 </p><p className={resulteSkinStyle.cardtitle}>Vitamin A:</p>
+                                                 <p className={resulteSkinStyle.cardDesc}>  Includes a family of ingredients also known as retinoids. Retinoids can help dimish the appearance of fine lines, wrinkles and photoaging
+                                                 </p> <p className={resulteSkinStyle.cardtitle}>Vitamin B:</p>
+                                                    <p className={resulteSkinStyle.cardDesc}>Broad-spectrum UV protection. Every patient is a candidate for a sunscreen product.
+                                                    </p> <p className={resulteSkinStyle.cardtitle}>Vitamin C:</p>
+                                                    <p className={resulteSkinStyle.cardDesc}>   Improves overall photodamaged appearance, bright skin, provides antioxidant defense, evens skin tone, and reduces the appearance of fine lines and wrinkles.
+                                                    </p></div>
                                                 </div>
                                             </div>
                                             <div className={resulteSkinStyle.collapseContainer}>
 
-                                                <button class="toggle-icon" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="true" aria-controls="answersmob">Your Answers</button>
+                                                <button class="toggle-icon collapsed" type="button" data-toggle="collapse" data-target="#answersmob" aria-expanded="false" aria-controls="answersmob">Your Answers</button>
 
-                                                <div class="collapse multi-collapse show " id="answersmob">
+                                                <div class="collapse multi-collapse " id="answersmob">
                                                     <div class="card card-body">
                                                         <div className="col-12 ">
 

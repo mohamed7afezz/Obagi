@@ -447,7 +447,7 @@ const Register = () => {
                                 <input required type="password" className={`form-control conf-password ${isPassMatch == false ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
-                            <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
+                            <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
                             <p id="json-errors"></p>
 
                             <div className="form-check">

@@ -247,7 +247,7 @@ export default function AccountSettings() {
                   <input type="password" id="conf-pw" placeholder="" name="conf-pw" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onChange={handlePassword} />
                 </div>
 
-                <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Pass doesn't match</p>
+                <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}>Those passwords doesn't match. Try again.</p>
 
               </div>
             </div>

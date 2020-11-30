@@ -143,6 +143,19 @@ border: 1px solid #fff;
     background-color: #132466;
     color: #fff;
 }
+.cardDesc{
+    font-size: 18px;
+    line-height: 32px;
+  
+
+}
+.cardtitle{
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    @extend %futurapt-bold;
+    margin-top: 16px;
+}
 .collapseContainer + .collapseContainer{
   
     margin-bottom: 24px;
