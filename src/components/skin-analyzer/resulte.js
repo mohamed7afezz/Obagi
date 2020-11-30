@@ -120,7 +120,7 @@ const Resulte = (props) => {
                                             We found these <Link to="/clinical">Obagi Clinical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
-                                            <div className={[resulteSkinStyle.collapseContainer].join(" ")}>
+                                            <div className={[resulteSkinStyle.collapseContainer,"d-none"].join(" ")}>
                                                 <button class="toggle-icon collapsed" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skin care</button>
 
                                                 <div class="collapse multi-collapse " id="abc">
@@ -228,7 +228,7 @@ const Resulte = (props) => {
                                             We found these <Link to="/medical">Obagi Medical</Link><sup>®</sup> products for your skin care routine.
                                     </h1>
                                         <div className="show-mob">
-                                            <div className={[resulteSkinStyle.collapseContainer].join(" ")}>
+                                            <div className={[resulteSkinStyle.collapseContainer,"d-none"].join(" ")}>
                                                 <button class="toggle-icon collapsed" data-toggle="collapse" href="#abc" role="button" aria-expanded="false" aria-controls="abc">ABC’s of Skin care</button>
 
                                                 <div class="collapse multi-collapse " id="abc">
@@ -279,7 +279,7 @@ const Resulte = (props) => {
                                                 {arraysEqual(addingToCart,GetProductsIds()) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>                                        </div>
                                         <p className={[resulteSkinStyle.resPageSubdetail, "show-mob"].join(" ")}>If you have detailed questions about your individual skin care or products needs,
-                                        it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here</Link> to find an Obagi physician near you.</p>
+                                        it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here to find an Obagi physician</Link> near you.</p>
                                     </div>
 
                                 </div>
@@ -296,7 +296,7 @@ const Resulte = (props) => {
 
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
                                         <div className={resulteSkinStyle.talktophy}>
-                                            <p>If you have detailed questions about your individual skin care or products, it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here</Link> to find an Obagi physician near you.</p>
+                                            <p>If you have detailed questions about your individual skin care or products, it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here to find an Obagi physician</Link> near you.</p>
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-10 col-lg-7 results-card-container">

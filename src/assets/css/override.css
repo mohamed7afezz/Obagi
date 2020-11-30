@@ -2614,6 +2614,10 @@ padding-bottom: 0;
   color: red !important;
 }
 @media (max-width:767px){
+  .f-Qu-wrap{
+    height: 91vh;
+    padding-bottom: 0 !important;
+  }
    .results-card-container .Productcardtype.d-none.show-mob-result{
 display: flex !important;
   }

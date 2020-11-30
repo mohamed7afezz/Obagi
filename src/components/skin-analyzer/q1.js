@@ -7,7 +7,7 @@ const Q1 = (props) => {
         props.passChildData('q1', e.target.value, 2);
     }
     return (
-        <div className="skinanalyzer-questions-wrapper">
+        <div className="skinanalyzer-questions-wrapper f-Qu-wrap">
             <div className="row question-progress-wrapper first-question-progress d-lg-none justify-content-center">
                 <div className="col-auto">
                     <ProgressBar 
