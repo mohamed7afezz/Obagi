@@ -1,143 +1,159 @@
-@import '../typography/typography.scss';
-@import '../grid/grid.scss';
-
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
 
 .type {
-    @extend %futurapt-bold;
-    text-transform: capitalize;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 1.6px;
-    color: #132466;
-    padding-left: 30px;
-    
-    position:relative;
-    padding-bottom: 24px;
-    @include md-screen{
-        padding-bottom: 40px;
-    }
+  @extend %futurapt-bold;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.6px;
+  color: #132466;
+  padding-left: 28px;
+
+  position: relative;
+  padding-bottom: 24px;
+  @include md-screen {
+    padding-bottom: 7px;
+  }
 }
-.type:before{
-    content: "";
-   position: absolute;
-   display: block;
-   width: 12px;
-   height: 12px;
-   left: 0;
-top: 5px;
-   background-color: #44c4d9;
-    }
+.type:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 6px;
+  background-color: #44c4d9;
+}
 .clinicalcollectionhero {
-    mix-blend-mode: multiply;
-    background-image: linear-gradient(to top, rgba(91, 140, 164, 0) 42%, rgba(91, 140, 164, 0.18));
+  mix-blend-mode: multiply;
+  background-image: linear-gradient(
+    to top,
+    rgba(91, 140, 164, 0) 42%,
+    rgba(91, 140, 164, 0.18)
+  );
 
-    @include lg-screen {
-        mix-blend-mode: multiply;
-        background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
-    }
+  @include lg-screen {
+    mix-blend-mode: multiply;
+    background-image: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(91, 140, 164, 0.75)
+    );
+  }
 }
 
-
-
-
-
-
-
-
-.collectiontitle{
+.collectiontitle {
+  font-size: 36px;
+  line-height: 46px;
+  h1 {
     font-size: 36px;
     line-height: 46px;
     @extend %futurapt-light;
-    @include md-screen{
-        font-size: 54px;
-        line-height: 72px;
-        padding-bottom: 16px;
-    }
-}
-.collectiondescription{
-    h2{
-        font-size: 28px;
-        line-height: 40px;
-    }
-    @extend %futurapt-light;
-
-    font-size: 18px;
-    line-height: 27px;
-    @include md-screen{    
-    font-size: 20px;
-    
-    line-height: 40px;
-    }
-    small{
-        font-weight: 300;
-    }
-}
-.Collectionheroleftcol{
-    padding-top: 48px;
-    padding-bottom: 48px;
-    text-align: left;
-
-    @include md-screen{
-    }
-    @include lg-screen {
-        padding-left: 0;
-        padding-top: 195px;
-        padding-bottom: 112px;
-    }
-}
-.breadcramp-con{
-    padding-bottom: 72px;
-}
-.allheight{
-    height: 100%;
- 
-}
-.Collectionherorightcol{
-    max-width: 100%;
-    overflow: hidden;
-    order: -1;
-    @include md-screen{
-        order: 2;
-    }
-}
-.node-medicalConcerntype .medical-bg ,.node-medicalCategoriestype .medical-bg{
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) , rgba(81, 87, 162, 0.65) );
-   }
-   .medical.type:before{
-   background-color: #868cd2;    
   }
+  @include md-screen {
+    h1 {
+      @include fontStyle(40, 56);
+    }
+    @include fontStyle(40, 56);
+
+    padding-bottom: 8px;
+  }
+}
+.collectiondescription {
+  h2 {
+    font-size: 28px;
+    line-height: 40px;
+    @extend %futurapt-book;
+    margin-bottom: 0;
+  }
+  // @extend %futurapt-light;
+
+  font-size: 18px;
+  line-height: 27px;
+  @include md-screen {
+    h2 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    font-size: 16px;
+    line-height: 24px;
+  }
+  small {
+    font-weight: 300;
+  }
+}
+.Collectionheroleftcol {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  text-align: left;
+
+  @include md-screen {
+  }
+  @include lg-screen {
+    // padding-left: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+.breadcramp-con {
+  padding-bottom: 72px;
+}
+.allheight {
+  height: 100%;
+}
+.Collectionherorightcol {
+  max-width: 100%;
+  overflow: hidden;
+  order: -1;
+  @include md-screen {
+    order: 2;
+  }
+}
+.node-medicalConcerntype .medical-bg,
+.node-medicalCategoriestype .medical-bg {
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0),
+    rgba(81, 87, 162, 0.65)
+  );
+}
+.medical.type:before {
+  background-color: #868cd2;
+}
 
 .general.type::before {
-    background-color: #ffcd00;
+  background-color: #ffcd00;
 }
 
 .general {
-    color: #fff;
+  color: #fff;
 }
 
 .hero-link {
-    color: #fff;
-    border: 1px solid #fff;
-    @extend %futurapt-bold;
-    @include fontStyle(12, 16);
-    padding: 16px 14px;
-    width: 100%;
-    letter-spacing: 1.2px;
-    text-align: center;
-    border-radius: 6px;
-    text-transform: uppercase;
-    margin-top: 16px;
-    display: block;
-    &:hover {
-        color: #132466;
-        background: #fff;
-        text-decoration: none;
-    }
+  color: #fff;
+  border: 1px solid #fff;
+  @extend %futurapt-bold;
+  @include fontStyle(12, 16);
+  padding: 16px 14px;
+  width: 100%;
+  letter-spacing: 1.2px;
+  text-align: center;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  display: block;
+  &:hover {
+    color: #132466;
+    background: #fff;
+    text-decoration: none;
+  }
 
-    @include lg-screen {
-        margin-top: 40px;
-        display: inline-block;
-        width: unset;
-        padding: 24px 47px;
-    }
+  @include lg-screen {
+    margin-top: 40px;
+    display: inline-block;
+    width: unset;
+    padding: 24px 47px;
+  }
 }
