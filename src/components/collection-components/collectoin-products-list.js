@@ -249,7 +249,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
   }, [])
   function handlePrescribe(e) {
     if(e.target.checked) {
-      isoFilter('rx', ':not(.Non-RX)');
+      isoFilter('rx', ':not(.RX)');
     } else {
       isoFilter('rx', 'All');
     }
