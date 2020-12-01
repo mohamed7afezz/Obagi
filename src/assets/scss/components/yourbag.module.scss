@@ -194,9 +194,14 @@ color: #132466;
     line-height: 16px;
     text-align: center;
     width: 100%;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    @include md-screen{
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
     display: block;
+    text-transform: uppercase;
     border-radius: 6px;
     border: 1px solid #132466;
     &:hover{
@@ -320,7 +325,22 @@ label{
     padding-left: 16px;
 }
 }
-
+.FfreeShipping{
+    padding: 16px;
+    @include fontStyle(16, 24);
+    text-align: center;
+    background-image: linear-gradient(to right, #89b3ea, #73a3e2 36%, #748acb 100%);
+    color: #fff;
+    margin:  0;
+    
+span{
+    font-weight: 500;
+}
+    @include lg-screen {
+        padding: 16px 24px;
+        margin: 0 0 40px;
+    }
+}
 .free-shipping {
     border-radius: 6px;
     padding: 16px;

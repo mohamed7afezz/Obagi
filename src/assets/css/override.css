@@ -591,7 +591,7 @@ border: 0;
 }
 
 #Showbag .show-bag-header {
-  background-color: #f8f8f8;
+  background-color: #fff;
 
 }
 #Showbag .modal-body {
@@ -733,7 +733,7 @@ right: -8%;
 }
 
 #Showbag .show-bag-header {
-  background-color: #f8f8f8;
+  background-color: #fff;
 
 }
 #Showbag .modal-footer{
@@ -752,6 +752,7 @@ text-align: center;
   padding-left: 32px;
  
 }
+
 #Showbag .empatyState{
   padding-top: 90px;
   
@@ -1009,6 +1010,10 @@ button:focus{
   display: none;
 }
 @media (max-width: 767px) {
+  #Showbag .show-bag-header{
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
   .node-medical .howrightcol {
     background-color: #f3f3fb;
 }

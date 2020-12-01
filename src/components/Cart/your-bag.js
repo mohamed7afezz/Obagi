@@ -530,6 +530,9 @@ const YourBag = (props, { notificationId }) => {
         //showpage content
         bagContent = (
           <>
+                        <div className={BagStyle.FfreeShipping}>
+                        Spend <span>$29.00</span> more for FREE shipping!
+                                          </div>
             <StandardItem
               currency={currency}
               updatingItem={updatingItem}
