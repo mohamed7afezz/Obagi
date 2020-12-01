@@ -75,18 +75,25 @@ function addOverview(e) {
   var medicalOV = document.getElementById("overview-medicalLink");
   var clinicalOV = document.getElementById("overview-clinicalLink")
 
+  document.querySelector(".mob-menu-lower-section").classList.toggle("d-none");
+
   if (e.target === medicalLink) {
     if (medicalOV.style.display === "none") {
       medicalOV.style.display = "inline-block";
     } else {
       medicalOV.style.display = "none";
     }
+    medicalLink.parentElement.classList.toggle("medical-menu-link");
   } else if (e.target === clinicalLink) {
     if (clinicalOV.style.display === "none") {
       clinicalOV.style.display = "inline-block";
     } else {
       clinicalOV.style.display = "none";
     }
+    clinicalLink.parentElement.classList.toggle("clinical-menu-link");
+    clinicalLink.parentElement.previousSibling.classList.toggle("d-none");
+
+
   }
 }
 
