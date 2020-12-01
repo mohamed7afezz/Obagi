@@ -813,10 +813,14 @@ p {
 
 .card-body {
     padding-top: 40px;
+    img {
+        width: 100%;
+    }
 
     @include md-screen {
         padding-bottom: 0;
         padding-left: 0;
+    
     }
 }
 
@@ -4064,7 +4068,7 @@ top: 78.5px !important;
       }
   }
 
-  .collectionherorow {
+  .collectionherorow, .node-medical .generalcollectionherorow, .node-clinical .generalcollectionherorow {
       @include lg-screen {
           align-items: center;
           height: calc(100% - 198px);
@@ -4076,4 +4080,31 @@ top: 78.5px !important;
         align-items: center;
         height: 100%;
       }
+  }
+
+  main > .container-fluid, main > div > .container-fluid {
+    padding-left: 24px;
+    padding-right: 24px;
+      @include lg-screen {
+          padding-left: 40px;
+          padding-right: 40px;
+      }
+  }
+
+  main > .container-fluid > .row, main > div > .container-fluid > .row {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    @include lg-screen {
+        margin-right: -40px;
+        margin-left: -15px;
+    }
+  }
+
+  .medical-menu-link ~ li {
+      display: none;
+  }
+
+  .clinical-menu-link ~ * {
+      display: none;
   }

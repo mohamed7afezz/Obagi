@@ -527,7 +527,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
               <div className="collapse navbar-collapse nav-container" id="navbar">
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
-                <div className={headerStyles.lowerSection}>
+                <div className={[headerStyles.lowerSection, "mob-menu-lower-section"].join(" ")}>
                   <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
                   <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
                 </div>
@@ -584,7 +584,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
-              <div className="row mr-0 ml-0">
+              <div className="row mr-0">
 
 
 

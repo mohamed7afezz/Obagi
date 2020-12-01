@@ -103,8 +103,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           <div
             className={[
               "col-12",
-              "col-lg-5",
-              "offset-lg-1",
+              "col-lg-6",
+              ,
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -117,7 +117,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                   <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                 </p>
               </div>}
-              <div className="offset-lg-1">
+              <div className="col-11 offset-lg-1">
                 {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -198,21 +198,20 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           <div
             className={[
               "col-12",
-              "col-lg-5",
-              "offset-lg-1",
+              "col-lg-6",
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
             ].join(" ")}
           >
             <div className="row">
-              {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+              {<div className={[" breadcramp-con hide", "col-11", "offset-lg-1"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
                   <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                 </p>
               </div>}
-              <div className=" offset-lg-1">
+              <div className="col-12 col-lg-11 offset-lg-1">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -296,8 +295,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           <div
             className={[
               "col-12",
-              "col-lg-5",
-              "offset-lg-1",
+              "col-lg-6",
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -323,7 +321,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
             </div>
             <div className="row collectionherorow">
-              <div className="col-12">
+              <div className="col-12 col-lg-11 offset-lg-1">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -406,8 +404,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
             className={[
               "col-12",
               "ClinicalIngredientsclass",
-              "col-lg-5",
-              "offset-lg-1",
+              "col-lg-6",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
             ].join(" ")}
@@ -423,7 +420,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
               </div>}
               </div>
               <div className="row collectionherorow">
-              <div className="col-12    ">
+              <div className="col-12 col-lg-11 offset-lg-1">
                 {checkTaxonomy.field_hero_ingredients_taxonomy ? (
                   <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
 
@@ -505,8 +502,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
         <div
           className={[
             "col-12",
-            "col-lg-5",
-            "offset-lg-1",
+            "col-lg-6",
             "ClinicalIngredientsclass",
             Collectionherostyle.Collectionheroleftcol,
             "Collectionheroleftcol",
@@ -522,7 +518,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
           </div>
           <div class="row collectionherorow">
-            <div className="col-12">
+            <div className="col-12 col-lg-11 offset-lg-1">
               {checkTaxonomy.field_taxonomy_hero ? (
                 <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
                   {
@@ -603,8 +599,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     <div
                       className={[
                         "col-12",
-                        "col-lg-5",
-                        "offset-lg-1",
+                        "col-lg-6",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
@@ -620,7 +615,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
                       </div>
                       <div className="row collectionherorow">
-                        <div className="col-12">
+                        <div className="col-12 col-lg-11  offset-lg-1">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                               {
@@ -703,9 +698,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     <div
                       className={[
                         "col-12",
-                        "col-lg-5",
+                        "col-lg-6",
                         "ClinicalIngredientsclass",
-                        "offset-lg-1",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
                       ].join(" ")}
@@ -720,7 +714,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
                       </div>
                       <div class="row collectionherorow">
-                        <div className="col-12">
+                        <div className="col-12 col-lg-11 offset-lg-1">
                           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
 
@@ -800,8 +794,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     <div
                       className={[
                         "col-12",
-                        "col-lg-5",
-                        "offset-lg-1",
+                        "col-lg-6",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
@@ -816,7 +809,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                         </div>}
                       </div>
                       <div className="row collectionherorow">
-                        <div className="col-12">
+                        <div className="col-12 col-lg-11 offset-lg-1">
                           {checkTaxonomy.field_hero_parag_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                               {" "}
@@ -895,8 +888,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     <div
                       className={[
                         "col-12",
-                        "col-lg-5",
-                        "offset-lg-1",
+                        "col-lg-6",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
@@ -912,7 +904,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                         </div>}
                       </div>
                       <div className="row collectionherorow">
-                      <div className="col-12">
+                      <div className="col-12 col-lg-11 offset-lg-1">
                         {checkTaxonomy.field_hero_taxonomy ? (
                           <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                             {" "}
@@ -993,8 +985,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     <div
                       className={[
                         "col-12",
-                        "col-lg-5",
-                        "offset-lg-1",
+                        "col-lg-6",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
                         "Collectionheroleftcol",
@@ -1010,7 +1001,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                         </div>}
                       </div>
                       <div className="row collectionherorow">
-                      <div className="col-12">
+                      <div className="col-12 col-lg-11 offset-lg-1">
                         {checkTaxonomy.field_hero_category_taxonomy ? (
                           <p className={[Collectionherostyle.type, nodetype.includes('medical') ? Collectionherostyle.medical : ""].join(' ')}>
                             {" "}
@@ -1090,14 +1081,13 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                               <div
                                 className={[
                                   "col-12",
-                                  "col-lg-5",
-                                  "offset-lg-1",
+                                  "col-lg-6",
                                   "ClinicalIngredientsclass",
                                   Collectionherostyle.Collectionheroleftcol,
                                   "Collectionheroleftcol",
                                 ].join(" ")}
                               >
-                                <div className="row m-0">
+                                <div className="row">
 
                                   <div className=" breadcramp-con hide col-12">
                                     <p className="breadcramp">
@@ -1109,7 +1099,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 
                                 </div>
                                 <div className="row generalcollectionherorow">
-                                <div className="col-12">
+                                <div className="col-12 col-lg-11 offset-lg-1">
                                   {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
                                     <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')
                                       || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general, "general"].join(' ')}>
@@ -1161,9 +1151,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   }}
 
                                   className={[
-                                    "col-lg-5",
+                                    "col-lg-5 offset-lg-1",
                                     "col-12",
-                                    "offset-lg-1",
                                     "Collectionherorightcol collectionheroimage",
                                   ].join(" ")}
                                 >

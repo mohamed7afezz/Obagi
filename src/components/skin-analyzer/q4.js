@@ -54,7 +54,7 @@ const Q4 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="FineLinesAndWrinklesC" name="q" value="Fine Lines And Wrinkles" onChange={sendBackData} />
-                                <label htmlFor="FineLinesAndWrinklesC">Fine Lines And Wrinkles</label>
+                                <label htmlFor="FineLinesAndWrinklesC">Fine Lines and Wrinkles</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
@@ -81,7 +81,7 @@ const Q4 = (props) => {
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="TiredPuffyEyesC" name="q" value="Tired & Puffy Eyes" onChange={sendBackData} />
-                                <label htmlFor="TiredPuffyEyesC">Tired & Puffy Eyes</label>
+                                <label htmlFor="TiredPuffyEyesC">Tired and Puffy Eyes</label>
                             </div>
                             </div>
                             <div className="row justify-content-center">
@@ -92,7 +92,7 @@ const Q4 = (props) => {
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ElasticitySaggingSkinC" name="q" value="Elasticity & Sagging Skin" onChange={sendBackData} />
-                                <label htmlFor="ElasticitySaggingSkinC">Elasticity & Sagging Skin</label>
+                                <label htmlFor="ElasticitySaggingSkinC">Elasticity and Sagging Skin</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
@@ -122,7 +122,7 @@ const Q4 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="FineLinesAndWrinkles" name="q" value="Fine Lines And Wrinkles" onChange={sendBackData} />
-                                <label htmlFor="FineLinesAndWrinkles">Fine Lines And Wrinkles</label>
+                                <label htmlFor="FineLinesAndWrinkles">Fine Lines and Wrinkles</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
@@ -148,7 +148,7 @@ const Q4 = (props) => {
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="EyeBagsAndDarkCircles" name="q" value="Eye Bags And Dark Circles" onChange={sendBackData} />
-                                <label htmlFor="EyeBagsAndDarkCircles">Eye Bags And Dark Circles</label>
+                                <label htmlFor="EyeBagsAndDarkCircles">Eye Bags and Dark Circles</label>
                             </div>
                         </div>
                         <div className="row justify-content-center">
@@ -159,12 +159,12 @@ const Q4 = (props) => {
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ElastisitySagging" name="q" value="Elastisity & Sagging" onChange={sendBackData} />
-                                <label htmlFor="ElastisitySagging">Elastisity & Sagging</label>
+                                <label htmlFor="ElastisitySagging">Elastisity and Sagging</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="HyperpigmentationMelasma" name="q" value="Hyperpigmentation & Melasma" onChange={sendBackData} />
-                                <label htmlFor="HyperpigmentationMelasma">Hyperpigmentation & Melasma</label>
+                                <label htmlFor="HyperpigmentationMelasma">Hyperpigmentation and Melasma</label>
                             </div>
                         </div>
                     </div>
