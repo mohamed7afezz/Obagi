@@ -76,8 +76,9 @@ const FaqWrapper = ({ node }) => {
           <div className="col-12">
             <div id="list">
               {node.relationships.field_faq_section ?
-                <Paginator pagerData={node.relationships.field_faq_section} rowComponent={FaqRow} rowsPerPage={2} />
-                : ''}
+              node.relationships.field_faq_section.map(item=>(
+                <FaqRow data={item}/>
+              )): ''}
             </div>
           </div>
         </div>
