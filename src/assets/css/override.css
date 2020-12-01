@@ -3116,6 +3116,14 @@ font-weight:900;
   .show-mob-d-flex{
    display: flex; 
   }
+  
+  .showflex .group-wrapper +  .group-wrapper{
+    margin-top: 24px;
+  }
+  .showflex .group-wrapper{
+    flex: 0 0 100% !important;
+
+  }
   .slick-prev::before, .slick-next::before{
     top: -1px;
     position: relative;

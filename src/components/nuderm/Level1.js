@@ -3,15 +3,94 @@ import React, { useEffect, useState } from "react"
 import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 const Level1 = props => {
+  const baseUrl = process.env.Base_URL;
   const [level, setLevel] = useState(1)
-  function SetLevelNumber() {
-    props.GetLevelNumber(2)
-  }
+  // function SetLevelNumber() {
+  //   props.GetLevelNumber(2)
+  // }
   useEffect(() => {
     if (document.querySelectorAll('.custom-select .select-selected ').length < 1) {
       CustomSelect();
     }
   })
+  function removevaild(e) {
+    let item = e.target
+
+    item.parentElement.classList.remove('error')
+
+    let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
+
+    for (let j = 0; j < i.length; j++) {
+
+        i[j].parentElement.classList.remove('error')
+    }
+    if (item.classList.contains('error-msg')) {
+        item.classList.add('hide')
+    } else
+        if (item.classList.contains('error')) {
+            item.classList.remove('error');
+
+        } else if (item.nextSibling != null && !item.nextSibling.classList.contains('radiomark')) {
+
+            item.nextSibling.classList.add('hide')
+
+
+        }
+
+
+
+}
+
+  function submitforming(e) {
+    var obj = { webform_id: "prc_new_to_nu_derm" };
+    var list = document.querySelectorAll('.needs-validations input:invalid');
+    if (list.length > 0) {
+        for (var item of list) {
+            item.parentElement.classList.add('error')
+            // item.nextSibling.classList.remove('hide')
+        }
+    } else {
+        let list2 = document.querySelectorAll('.needs-validations input');
+        for (let item of list2) {
+
+            obj[item.getAttribute("name")] = item.value;
+          
+        }
+        let listSelect = document.querySelectorAll('.needs-validations select');
+        for (let item1 of listSelect) {
+       let i ="";
+       i=item1.getAttribute("name");
+     
+          if (i != "month" && i != "day" && i != "year") {
+            obj[item1.getAttribute("name")] = item1.value;
+          }  
+      }
+      let getDate=`${document.querySelector('select[name="day"]').value}/${document.querySelector('select[name="month"]').value}/${document.querySelector('select[name="year"]').value}`
+      obj['date']=getDate;
+        // obj['description'] = `${document.querySelector("#contactDesc").value}`
+        // obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
+        sendFormValues({ obj })
+    }
+}
+  const sendFormValues = (updatedItemData) => {
+    fetch(
+        `${baseUrl}webform_rest/submit`,
+        {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: 'POST',
+            body: JSON.stringify(updatedItemData.obj)
+        }
+    )
+        .then(res => res.json())
+        .then(response => {
+          props.GetLevelNumber(2)
+        })
+        .catch(error => {
+            // console.log('error', error)
+        });
+};
   return (
     <>
   
@@ -37,7 +116,7 @@ const Level1 = props => {
             </p>
           </div>
 
-          <form>
+          <form class="needs-validations" onSubmit={(e) => { e.preventDefault(); }}>
             <div className={[nudermStyle.formContainer, "offset-lg-3", "col-12", "col-lg-4"].join(" ")}>
               <p className={nudermStyle.reqField}>*All fields required</p>
               <label
@@ -47,9 +126,11 @@ const Level1 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I am a resident of the U.S."
+                  value="residen_of_the_U.S"
                   required
                   type="radio"
+                  onChange={removevaild}
+                  name="resident_of_the_u_s_"
                 />
                 <span class="radiomark"></span>I am a resident of the U.S.
               </label>
@@ -62,7 +143,7 @@ const Level1 = props => {
 
                   <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                     <label for="state" className={["form-label", nudermStyle.customlabel].join(" ")}>*STATE</label>
-                    <select className="form-control" id="state">
+                    <select name="state" className="form-control" id="state">
                       <option value="">- None -</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -155,15 +236,15 @@ const Level1 = props => {
             and helpful tips as well.</p>
               <div className={nudermStyle.inputfield}>
                 <label>*EMAIL</label>
-                <input name="email" type="email" />
+                <input required name="email" type="email"  onChange={removevaild}/>
               </div>
               <div className={nudermStyle.inputfield}>
                 <label>*FIRST NAME</label>
-                <input name="email" type="text" />
+                <input required name="first_name" type="text" onChange={removevaild}/>
               </div>
               <div className={nudermStyle.inputfield}>
                 <label>*LAST NAME</label>
-                <input name="email" type="text" />
+                <input required name="last_name" type="text" onChange={removevaild}/>
               </div>
               <p className={nudermStyle.calenderName}>Date You Will Start or Started Using the Nu-Derm System *</p>
               <div className={[nudermStyle.showflex, "showflex"].join(" ")}>
@@ -172,16 +253,11 @@ const Level1 = props => {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="monthCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>MONTH</label>
-                      <select className="form-control" id="monthCustom">
+                      <select name="month" className="form-control" id="monthCustom">
                         <option value="">- None -</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AS">American Samoa</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                        <option value="AA">Armed Forces Americas</option>
-                        <option value="AP">Armed Forces Pacific</option>
+                        <option value="1">jan</option>
+                        <option value="2">feb</option>
+                        <option value="3">mar</option>
                       </select>
                     </div>
                   </div>
@@ -191,16 +267,12 @@ const Level1 = props => {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="dayCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>DAY</label>
-                      <select className="form-control" id="dayCustom">
+                      <select name="day" className="form-control" id="dayCustom">
                         <option value="">- None -</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AS">American Samoa</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                        <option value="AA">Armed Forces Americas</option>
-                        <option value="AP">Armed Forces Pacific</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+          
                       </select>
                     </div>
                   </div>
@@ -210,16 +282,12 @@ const Level1 = props => {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="yearCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>YEAR</label>
-                      <select className="form-control" id="yearCustom">
+                      <select name="year" className="form-control" id="yearCustom">
                         <option value="">- None -</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AS">American Samoa</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                        <option value="AA">Armed Forces Americas</option>
-                        <option value="AP">Armed Forces Pacific</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+
                       </select>
                     </div>
                   </div>
@@ -231,16 +299,12 @@ const Level1 = props => {
 
                   <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                     <label for="AgeRange" className={["form-label", nudermStyle.customlabel].join(" ")}>Age Range</label>
-                    <select className="form-control" id="AgeRange">
+                    <select className="form-control" name="age_range" id="AgeRange">
                       <option value="">- None -</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AS">American Samoa</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                      <option value="AA">Armed Forces Americas</option>
-                      <option value="AP">Armed Forces Pacific</option>
+                      <option value="18-24">18-24</option>
+                      <option value="24-26">24-26</option>
+                      <option value="26-30">26-30</option>
+                      <option value="30-32">30-32</option>
                     </select>
                   </div>
                 </div>
@@ -251,16 +315,12 @@ const Level1 = props => {
 
                   <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                     <label for="PrimarySkinConcern" className={["form-label", nudermStyle.customlabel].join(" ")}>Primary Skin Concern</label>
-                    <select className="form-control" id="PrimarySkinConcern">
+                    <select className="form-control" name="primary_skin_concern" id="PrimarySkinConcern">
                       <option value="">- None -</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AS">American Samoa</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                      <option value="AA">Armed Forces Americas</option>
-                      <option value="AP">Armed Forces Pacific</option>
+                      <option value="Dehydrated_Skin">Dehydrated Skin</option>
+                      <option value="Dehydrated_Skin1">Dehydrated_Skin1</option>
+                      <option value="Dehydrated_Skin2">Dehydrated_Skin2</option>
+                      <option value="Dehydrated_Skin3">Dehydrated_Skin3</option>
                     </select>
                   </div>
                 </div>
@@ -271,27 +331,22 @@ const Level1 = props => {
 
                   <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                     <label for="GenderCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>Gender</label>
-                    <select className="form-control" id="GenderCustom">
+                    <select className="form-control" name="gender" id="GenderCustom">
                       <option value="">- None -</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AS">American Samoa</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="AE">Armed Forces (Canada, Europe, Africa, or Middle East)</option>
-                      <option value="AA">Armed Forces Americas</option>
-                      <option value="AP">Armed Forces Pacific</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+
                     </select>
                   </div>
                 </div>
               </div>
               <div className={[nudermStyle.inputfield, "mt-24"].join(" ")}>
                 <label>Your Skin Care Physician's Name</label>
-                <input name="fName" type="text" />
+                <input name="your_skin_care_physician_s_name" type="text" />
               </div>
               <div className={[nudermStyle.inputfield, nudermStyle.mt24].join(" ")}>
                 <label>Physician's Affiliated Practice Name</label>
-                <input name="email" type="text" />
+                <input name="physician_s_affiliated_practice_name" type="text" />
               </div>
               <p className={nudermStyle.formnNote}>By submitting your physician’s information,
               you are consenting to allow Obagi Medical to send your information to your physician and notify him/her of your enrollment.
@@ -301,12 +356,12 @@ const Level1 = props => {
                 Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi.
                 By registering, your information will be collected and used in the U.S. subject to our U.S.
                 Privacy Policy and Terms of Use. For U.S. consumers only.
-                <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
+                <input type="checkbox" defaultChecked={true} required name="yes_agreement" />
                 <span className="checkmark"></span>
               </label>
            </div>
            <div className={" col-12 col-lg-2 offset-lg-3"}>
-              <button onClick={SetLevelNumber} className={nudermStyle.signup} >
+              <button onClick={submitforming} type="submit" className={nudermStyle.signup} >
                 Sign Up
               
               </button>

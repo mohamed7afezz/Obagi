@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 import Level1 from "./Level1"
 import Level2 from "./Level2"
+import ThankYou from "./thank-You"
 const NudermSignUp = () => {
     const [level, setLevel] = useState(1);
     function checkDataCondition(condition, data) {
@@ -30,6 +31,7 @@ const NudermSignUp = () => {
                     </div>
                     {checkDataCondition((level == 1), <Level1 GetLevelNumber={setLevel} />)}
                     {checkDataCondition((level == 2), <Level2 GetLevelNumber={setLevel} />)}
+                    {checkDataCondition((level == 3), <ThankYou GetLevelNumber={setLevel} />)}
                 </div>
             </div>
         </>

@@ -1,8 +1,86 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
-const Level2 = () => {
+const Level2 = props => {
+  const baseUrl = process.env.Base_URL;
+
     const [level, setLevel] = useState(1);
+    function removevaild(e) {
+      let item = e.target
+  
+      item.parentElement.classList.remove('error')
+  
+      let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
+  
+      for (let j = 0; j < i.length; j++) {
+  
+          i[j].parentElement.classList.remove('error')
+      }
+      if (item.classList.contains('error-msg')) {
+          item.classList.add('hide')
+      } else
+          if (item.classList.contains('error')) {
+              item.classList.remove('error');
+  
+          } else if (item.nextSibling != null && !item.nextSibling.classList.contains('radiomark')) {
+  
+              item.nextSibling.classList.add('hide')
+  
+  
+          }
+  
+  
+  
+  }
+  
+    function submitforming(e) {
+      var obj = { webform_id: "nu_derm_survey" };
+      var list = document.querySelectorAll('.needs-validations input:invalid');
+      if (list.length > 0) {
+          for (var item of list) {
+              item.parentElement.classList.add('error')
+              // item.nextSibling.classList.remove('hide')
+          }
+      } else {
+          let list2 = document.querySelectorAll('.needs-validations input');
+          for (let item of list2) {
+  
+              obj[item.getAttribute("name")] = item.value;
+            
+          }
+          let listSelect = document.querySelectorAll('.needs-validations select');
+          for (let item1 of listSelect) {
+         let i ="";
+         i=item1.getAttribute("name");
+       
+            if (i != "month" && i != "day" && i != "year") {
+              obj[item1.getAttribute("name")] = item1.value;
+            }  
+        }
+          // obj['description'] = `${document.querySelector("#contactDesc").value}`
+          // obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
+          sendFormValues({ obj })
+      }
+  }
+    const sendFormValues = (updatedItemData) => {
+      fetch(
+          `${baseUrl}webform_rest/submit`,
+          {
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              method: 'POST',
+              body: JSON.stringify(updatedItemData.obj)
+          }
+      )
+          .then(res => res.json())
+          .then(response => {
+            props.GetLevelNumber(3)
+          })
+          .catch(error => {
+              // console.log('error', error)
+          });
+  };
     function checkDataCondition(condition, data) {
         if (condition) {
             return data;
@@ -23,7 +101,7 @@ const Level2 = () => {
                     </p>
                 <p className={nudermStyle.servayDesc}>      In the meantime, we’d love to get your feedback on the type of information you’d like to see and how we can build a program that can better meet the needs and expectations of experienced users like you. Please answer the 5 brief questions below; the survey should only take 2-3 minutes of your time.</p>
            </div>
-           <form className={[nudermStyle.Servayform].join(" ")}>
+           <form onSubmit={(e) => { e.preventDefault(); }} className={[nudermStyle.Servayform,"needs-validations"].join(" ")}>
                <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
             <p className={nudermStyle.Qtitle}>
             1. Please select the primary reason you signed up for the New to Nu-Derm<sup>®</sup> Program.
@@ -36,9 +114,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I wanted to see if I used Nu-Derm correctly."
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I wanted to see if I used Nu-Derm correctly.
               </label>
@@ -50,9 +128,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I wanted to learn how to maintain and optimize results."
-                  required
+                  
                   type="radio"
-                  name="reason"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -64,9 +142,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I’m considering using the Nu-Derm System again in the future."
-                  required
+                  
                   type="radio"
-                  name="reason"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I’m considering using the Nu-Derm System again in the future.
               </label>
@@ -78,9 +156,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I was looking for exclusive offers or rebate opportunities."
-                  required
+                  
                   type="radio"
-                  name="reason"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I was looking for exclusive offers or rebate opportunities.
               </label>
@@ -92,9 +170,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  required
+                  
                   type="radio"
-                  name="reason"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I didn’t know it was designed for those just starting the Nu-Derm System.
               </label>
@@ -106,14 +184,14 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
                   value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  required
+                  
                   type="radio"
-                  name="reason"
+                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input className="otherInput" name="Other" type="text" />
+                <input className="otherInput" name="please_select_the_primary_reason_you_signed_up_for_the_new_to_" type="text" />
               </div>
                 </label>
                </div>
@@ -128,9 +206,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I wanted to see if I used Nu-Derm correctly."
-                  required
+                  
                   type="checkbox"
-                  name="rank"
+                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to see if I used Nu-Derm correctly.
               </label>
@@ -142,9 +220,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I wanted to learn how to maintain and optimize results."
-                  required
+                  
                   type="checkbox"
-                  name="rank"
+                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -156,9 +234,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I wanted to learn how to maintain and optimize results."
-                  required
+                  
                   type="checkbox"
-                  name="rank"
+                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -170,9 +248,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I was looking for exclusive offers or rebate opportunities."
-                  required
+                  
                   type="checkbox"
-                  name="rank"
+                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I was looking for exclusive offers or rebate opportunities.
               </label>
@@ -184,9 +262,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  required
+                  
                   type="checkbox"
-                  name="rank"
+                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>
                 <div className={nudermStyle.inputfield}>
@@ -196,7 +274,7 @@ const Level2 = () => {
                 </label>
                
             </div>
-            <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
+               <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
             <p className={nudermStyle.Qtitle}>
               3. How would you prefer to receive this type of information?
               </p>
@@ -208,9 +286,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Email Only"
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="3_how_would_you_prefer_to_receive_this_type_of_information_"
                 />
                 <span class="radiomark"></span>Email Only
               </label>
@@ -222,9 +300,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Text message only"
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="3_how_would_you_prefer_to_receive_this_type_of_information_"
                 />
                 <span class="radiomark"></span>Text message only
               </label>
@@ -236,9 +314,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Email and text message"
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="3_how_would_you_prefer_to_receive_this_type_of_information_"
                 />
                 <span class="radiomark"></span>Email and text message
               </label>
@@ -250,9 +328,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Blog or website"
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="3_how_would_you_prefer_to_receive_this_type_of_information_"
                 />
                 <span class="radiomark"></span>Blog or website
               </label>
@@ -264,9 +342,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
                   value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  required
+                  
                   type="radio"
-                  name="contact"
+                  name="3_how_would_you_prefer_to_receive_this_type_of_information_"
                 />
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
@@ -286,9 +364,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Once a week"
-                  required
+                  
                   type="radio"
-                  name="period"
+                  name="_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once a week
               </label>
@@ -300,9 +378,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Once a month"
-                  required
+                  
                   type="radio"
-                  name="period"
+                  name="_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once a month
               </label>
@@ -314,9 +392,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Twice a month"
-                  required
+                  
                   type="radio"
-                  name="period"
+                  name="_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Twice a month
               </label>
@@ -328,9 +406,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
                   value="Once every 3 months"
-                  required
+                  
                   type="radio"
-                  name="period"
+                  name="_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once every 3 months
               </label>
@@ -342,9 +420,9 @@ const Level2 = () => {
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
                   value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  required
+                  
                   type="radio"
-                  name="period"
+                  name="_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
@@ -354,14 +432,21 @@ const Level2 = () => {
                 </label>
                </div>
                <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
-            <p className={nudermStyle.Qtitle}>
-            5. Please provide any additional thoughts or ideas you would like to share.              </p>
+              <p className={nudermStyle.Qtitle}>
+               5. Please provide any additional thoughts or ideas you would like to share.              </p>
               <div className={[nudermStyle.inputfield,nudermStyle.textarea].join(" ")}>
                 <label>DESCRIPTION</label>
 
-                <textarea placeholder="Type here…" className="textareainput" name="textareaa" type="text" ></textarea>
+                <textarea placeholder="Type here…" className="textareainput" name="5_please_provide_any_additional_thoughts_or_ideas_you_would_like" type="text" ></textarea>
               </div>
+              <p className={nudermStyle.formfooter}>
+              By submitting your information, you confirm you have read and agree with the terms of our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="#">Legal Notice</Link>.</p>
+              <p className={nudermStyle.formfooter}>
+        Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. View full Privacy Policy.</p>
             </div>
+               <div className={["offset-lg-3","col-12","col-lg-2",nudermStyle.QuestionContainer].join(" ")}>    
+               <button onClick={submitforming} type="submit" className={nudermStyle.signup} >submit survey</button>
+               </div>
            </form>
         </>
     )
