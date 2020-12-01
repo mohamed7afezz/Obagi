@@ -257,7 +257,9 @@
 
     }
 }
-
+.bottomArrow{
+    font-size: 18px;
+}
 .bottom-link {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;

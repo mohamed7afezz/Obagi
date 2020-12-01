@@ -2814,6 +2814,9 @@ p {
     }
 }
 
+.node-clinical .showbag-top,  .node-medical .showbag-top {
+top: 78.5px !important;
+}
 .basics-paragraph .slick-track {
     @include lg-screen {    
         display: flex;

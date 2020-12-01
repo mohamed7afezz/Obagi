@@ -39,7 +39,7 @@
 }
 
 .box-margin {
-    margin-bottom: 115px;
+    margin-bottom: 40px;
 
     @include md-screen {
         margin-bottom: 0;
@@ -51,7 +51,7 @@
     @include fontStyle(40, 56);
     text-align: center;
     @extend %futurapt-light;
-    margin: 127px 0 8px;
+    margin: 125px 0 8px;
 
 
     @include lg-screen {

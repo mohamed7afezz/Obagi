@@ -479,7 +479,7 @@ height: 691px !important;
 .collection-hero-p{
   font-size: 24px;
   line-height: 40px;
-  /* font-weight: 300; */
+  font-weight: 300;
 }
 .clinicalcollectionhero{
   mix-blend-mode: multiply;
@@ -1064,12 +1064,16 @@ button:focus{
   #Showbag {
     z-index: 999999999;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
+    overflow-y: scroll;
     margin-bottom: 0;
     position: fixed;
-    top: 192px;
+    top: 211px;
     right: 0;
   }  
+  .node-clinical #Showbag,  .node-medical #Showbag{
+    top: 154px;
+  }
   #Showbag .modal-content {
     border: 0;
     border-radius: 0;
@@ -1665,15 +1669,6 @@ right: 10px;
 }
 
 @media (min-width: 992px) {
-  .breadcramp-con{
-    padding-bottom: 0;
-    padding-top: 174px;
-
-    }
-  .Collectionherorightcol {
-    /* height: 744px; */
-    background-size: auto 100% !important;
-  }
   .signup-btn {
     padding-left: 0;
     padding-right: 0;
@@ -1700,6 +1695,9 @@ right: 10px;
   height: auto;
 }
 @media (max-width:767px){
+  .allstep  img{
+    max-width: 100%;
+  }
   .mob-mt-50{
     margin-top: 50px;
   }
@@ -1749,10 +1747,6 @@ right: 10px;
 }
 
 @media (max-width: 991px) {
-  .breadcramp-con{
-    padding-bottom: 24px;
-    
-  }
   .product-card-con{
     padding: 0 16px;
   }
@@ -2021,8 +2015,9 @@ height:  32px;
 }
 
 .breadcramp-con{
+  padding-bottom: 70px;
   text-transform: capitalize;
-}
+  }
   .breadcramp a,.general a{
     color: #132466;
     text-transform: capitalize;
@@ -2047,6 +2042,10 @@ height:  32px;
     margin-top: 24px !important;
   }
   
+.breadcramp-con{
+  padding-bottom: 24px;
+  
+  }
 }
 #appointment .select-items div:hover, #appointment .same-as-selected{
   background-color: #fff;
@@ -2794,9 +2793,14 @@ width: 100%;
 #Showbag .BagContainer  .recommendedTitle{
   display: block;
 }
+@media(min-width:1024px){
+#Showbag{
+  top: 0 !important;
+}
+}
 #Showbag{
   position: fixed;
-  top: 0 !important;
+
 }
 #loader{
 
