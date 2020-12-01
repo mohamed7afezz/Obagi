@@ -6,6 +6,7 @@
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(19,36,102,0.4));
     @include lg-screen {
         margin-left: -15px;
+        height: 744px;
     }
 }
 
@@ -19,8 +20,8 @@
     padding-top: 42px;
 
     @include lg-screen {
-        padding: 190px 0 40px;
-        @include fontStyle(72, 88);
+        padding: 0 0 8px;
+        @include fontStyle(40, 56);
         color: #ffffff;
     }
 }
@@ -34,7 +35,7 @@
         font-weight: 300;
         font-style: normal;
 
-        @include fontStyle(32, 48);
+        @include fontStyle(16, 24);
         color: #ffffff;
         padding-bottom: 56px;
     }
@@ -62,4 +63,8 @@
     @include lg-screen{
         height: 100%;
     }
+}
+
+.row-wrapper {
+    height: 100%;
 }

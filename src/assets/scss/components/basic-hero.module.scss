@@ -4,9 +4,9 @@
     padding-top: 48px;
     padding-bottom: 48px;
     @include lg-screen{
-        padding-top: 195px;
-        padding-bottom: 112px;
-        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        // padding-left: 0;
     }
 }
 .heroLeft{
@@ -32,13 +32,18 @@
        &:first-child{
            font-size: 16px;
            line-height: 24px;
-           font-weight: 700;
+           font-family:  futura-pt,   sans-serif; 
+           font-weight:  500; 
+           font-style:  normal;
+           padding-top: 24px;
+           padding-bottom: 24px;
            @include md-screen{
+            padding-top: 8px;
+            padding-bottom: 16px;
                font-size: 18px;
                line-height: 32px;
            }
-        padding-top: 24px;
-        padding-bottom: 24px;
+      
        }
    }
    small{
@@ -58,8 +63,8 @@
     line-height: 48px;
     font-weight: 300;
     @include md-screen{
-        font-size: 64px;
-        line-height: 72px;
+        font-size: 40px;
+        line-height: 56px;
     }
 }
 .BigText{

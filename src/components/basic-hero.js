@@ -18,7 +18,7 @@ const Basichero = ({ node }) => {
               
             ].join(" ")}
           >
-            <div className="row remove-mob-padding">
+            <div className="row remove-mob-padding generalcollectionherorow">
               <div className="col col-lg-12 general-basic-column">
              
               { 

@@ -23,11 +23,15 @@ const CareersHero = ({ node }) => {
             <div className="container-fluid d-none d-lg-block" style={{ backgroundImage: `url(${node.relationships.field_background_image.localFile.childImageSharp.original.src})` }}>
                 <div className={[careersHeroStyles.bgWrapper, careersHeroStyles.heroWrapper].join(" ")}>
 
-                    <div className="row">
+                    <div className={["row", careersHeroStyles.rowWrapper].join(" ")}>
                         <div className="col-lg-5 offset-lg-1">
-                            {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
-                            {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
-                            {node.field_button ? <div><Link to={node.field_button.uri} className={["button-link", careersHeroStyles.link].join(" ")}>{node.field_button.title}</Link></div> : ''}
+                            <div className="row generalcollectionherorow">
+                                <div className="col-lg-12">
+                                    {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
+                                    {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
+                                    {node.field_button ? <div><Link to={node.field_button.uri} className={["button-link", careersHeroStyles.link].join(" ")}>{node.field_button.title}</Link></div> : ''}
+                                </div>
+                            </div>
                         </div>
                         <div className="col-lg-5 offset-lg-1 p-0">
                             {node.relationships && node.relationships.field_careers_image && node.relationships.field_careers_image.localFile && node.relationships.field_careers_image.localFile.childImageSharp ? <div className={careersHeroStyles.imageWrapper}><Img fluid={node.relationships.field_careers_image.localFile.childImageSharp.fluid} className={careersHeroStyles.image} /></div> : ''}

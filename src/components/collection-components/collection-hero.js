@@ -1,4 +1,4 @@
-import React , {useEffect} from "react"
+import React, { useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
@@ -56,43 +56,43 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var geturi = pathname.split('/')
     var first_url = geturi[3];
     var sec_url = geturi[4];
-   
+
   }
   useEffect(() => {
-    
+
     saveuri()
   }, [])
-function saveuri(){
-  if (first_url != "medical") {
-    if (first_url != "clinical") {
-      
-      if (document.querySelector('.collectionhero')) {
-      
-        document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
-        document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
-        document.querySelector('.collectionhero').classList.remove('medical-bg')
+  function saveuri() {
+    if (first_url != "medical") {
+      if (first_url != "clinical") {
+
+        if (document.querySelector('.collectionhero')) {
+
+          document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
+          document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
+          document.querySelector('.collectionhero').classList.remove('medical-bg')
+        }
+      } else {
+        if (document.querySelector('.collectionhero')) {
+          document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
+          document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
+          document.querySelector('.collectionhero').classList.remove('medical-bg')
+          document.querySelector('.breadcramp-con').classList.remove('hide')
+        }
       }
     } else {
       if (document.querySelector('.collectionhero')) {
-        document.querySelector('.collectionhero').classList.remove('medicalcollectionhero')
         document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
-        document.querySelector('.collectionhero').classList.remove('medical-bg')
+        document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
         document.querySelector('.breadcramp-con').classList.remove('hide')
       }
     }
-  } else {
-    if (document.querySelector('.collectionhero')) {
-      document.querySelector('.collectionhero').classList.remove('generalcollectionhero')
-      document.querySelector('.collectionhero').classList.remove('clinicalcollectionhero')
-      document.querySelector('.breadcramp-con').classList.remove('hide')
-    }
   }
-}
   return (
     <div
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : (first_url === "medical" ||  nodetype === "medical" ||checktaxonomyType === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
+        : (first_url === "medical" || nodetype === "medical" || checktaxonomyType === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
           : "container-fluid collectionhero  generalcollectionhero clinicalcollectionhero medical-bg"}
 
     >
@@ -103,7 +103,7 @@ function saveuri(){
           <div
             className={[
               "col-12",
-              "col-lg-4",
+              "col-lg-5",
               "offset-lg-1",
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
@@ -111,12 +111,12 @@ function saveuri(){
             ].join(" ")}
           >
             <div className="row">
-              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+              {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                 </p>
-              </div> }
+              </div>}
               <div className="offset-lg-1">
                 {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -157,30 +157,32 @@ function saveuri(){
                     ""
                   )}
               </div>
-                  
+
             </div>
 
           </div>
           {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
             <div
-            style={{background:`url(${checkTaxonomy.field_hero_paraprapgh_taxonomy
-              .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                checkTaxonomy.field_hero_paraprapgh_taxonomy
-                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                    
+              style={{
+                background: `url(${checkTaxonomy.field_hero_paraprapgh_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                    checkTaxonomy.field_hero_paraprapgh_taxonomy
+                      .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                         checkTaxonomy.field_hero_paraprapgh_taxonomy
                           .relationships.field_taxonomy_hero_paraprapgh_i
                           .localFile.childImageSharp.original.src
-                     
+
+                      ) : (
+                        ""
+                      )
                   ) : (
                     ""
-                  )
-              ) : (
-                ""
-              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
-            
+                  )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+              }}
+
               className={[
-                "col-lg-7",
+                "col-lg-5 offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
                 "Collectionherorightcol collectionheroimage",
@@ -196,7 +198,7 @@ function saveuri(){
           <div
             className={[
               "col-12",
-              "col-lg-4",
+              "col-lg-5",
               "offset-lg-1",
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
@@ -204,12 +206,12 @@ function saveuri(){
             ].join(" ")}
           >
             <div className="row">
-              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+              {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                 </p>
-              </div> }
+              </div>}
               <div className=" offset-lg-1">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -257,25 +259,27 @@ function saveuri(){
           </div>
           {checkTaxonomy.field_hero_categories_taxonomy ? (
             <div
-            style={{background:`url(${checkTaxonomy.field_hero_categories_taxonomy
-              .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                checkTaxonomy.field_hero_categories_taxonomy
-                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                    
-                     
+              style={{
+                background: `url(${checkTaxonomy.field_hero_categories_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                    checkTaxonomy.field_hero_categories_taxonomy
+                      .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+
+
                         checkTaxonomy.field_hero_categories_taxonomy
                           .relationships.field_taxonomy_hero_paraprapgh_i
                           .localFile.childImageSharp.original.src
-                  
-                   
+
+
+                      ) : (
+                        ""
+                      )
                   ) : (
                     ""
-                  )
-              ) : (
-                ""
-              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                  )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+              }}
               className={[
-                "col-lg-7",
+                "col-lg-5 offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
                 "Collectionherorightcol collectionheroimage",
@@ -292,7 +296,7 @@ function saveuri(){
           <div
             className={[
               "col-12",
-              "col-lg-4",
+              "col-lg-5",
               "offset-lg-1",
               "ClinicalIngredientsclass",
               Collectionherostyle.Collectionheroleftcol,
@@ -300,24 +304,26 @@ function saveuri(){
             ].join(" ")}
           >
             <div className="row">
-              { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+              {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?
-                    <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?
-                      checkTaxonomy.field_taxonomy_page_title:getname}</Link>:
-                      checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url?
-                       <Link dangerouslySetInnerHTML={{
-                        __html: checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title?
-                        checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title:getname}} to={checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url}>
-                         </Link>
-                      :""
-                      }
+                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ?
+                    <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title ?
+                      checkTaxonomy.field_taxonomy_page_title : getname}</Link> :
+                    checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url ?
+                      <Link dangerouslySetInnerHTML={{
+                        __html: checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title ?
+                          checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title : getname
+                      }} to={checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url}>
+                      </Link>
+                      : ""
+                  }
                 </p>
-              </div> }
-         
+              </div>}
+
             </div>
-            <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+            <div className="row collectionherorow">
+              <div className="col-12">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
                     {" "}
@@ -357,34 +363,37 @@ function saveuri(){
                     ""
                   )}
               </div>
+            </div>
 
           </div>
           {checkTaxonomy.field_hero_productline_taxonomy ? (
             <div
-            style={{background:`url(${checkTaxonomy.field_hero_productline_taxonomy
-              .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                checkTaxonomy.field_hero_productline_taxonomy
-                  .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                  
+              style={{
+                background: `url(${checkTaxonomy.field_hero_productline_taxonomy
+                  .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                    checkTaxonomy.field_hero_productline_taxonomy
+                      .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                         checkTaxonomy.field_hero_productline_taxonomy
                           .relationships.field_taxonomy_hero_paraprapgh_i
                           .localFile.childImageSharp.original.src
-                     
+
+                      ) : (
+                        ""
+                      )
                   ) : (
                     ""
-                  )
-              ) : (
-                ""
-              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                  )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+              }}
               className={[
-                "col-lg-7",
+                "col-lg-5 offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
                 "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
 
-            
+
             </div>
 
           ) : (
@@ -397,7 +406,7 @@ function saveuri(){
             className={[
               "col-12",
               "ClinicalIngredientsclass",
-              "col-lg-4",
+              "col-lg-5",
               "offset-lg-1",
               Collectionherostyle.Collectionheroleftcol,
               "Collectionheroleftcol",
@@ -407,15 +416,17 @@ function saveuri(){
               {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                 <p className="breadcramp ">
                   <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url? 
-                  <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title?
-                  checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url ?
+                    <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title ?
+                      checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                 </p>
-              </div> }
-              <div className="col-12  col-lg-11 offset-lg-1 ">
+              </div>}
+              </div>
+              <div className="row collectionherorow">
+              <div className="col-12    ">
                 {checkTaxonomy.field_hero_ingredients_taxonomy ? (
                   <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
-                   
+
                     {
                       checkTaxonomy.field_hero_ingredients_taxonomy
                         .field_taxonomy_hero_paraprapgh_t
@@ -452,35 +463,37 @@ function saveuri(){
                     ""
                   )}
               </div>
-                  
+
             </div>
           </div>
           {checkTaxonomy.field_hero_ingredients_taxonomy ? (
             <div
-            style={{background:`url(${checkTaxonomy.field_hero_ingredients_taxonomy.relationships
-              .field_taxonomy_hero_paraprapgh_i ? (
-                checkTaxonomy.field_hero_ingredients_taxonomy.relationships
-                  .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                   
+              style={{
+                background: `url(${checkTaxonomy.field_hero_ingredients_taxonomy.relationships
+                  .field_taxonomy_hero_paraprapgh_i ? (
+                    checkTaxonomy.field_hero_ingredients_taxonomy.relationships
+                      .field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                         checkTaxonomy.field_hero_ingredients_taxonomy
                           .relationships.field_taxonomy_hero_paraprapgh_i
                           .localFile.childImageSharp.original.src
-                     
+
+                      ) : (
+                        ""
+                      )
                   ) : (
                     ""
-                  )
-              ) : (
-                ""
-              )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                  )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+              }}
               className={[
-                "col-lg-7",
+                "col-lg-5 offset-lg-1",
                 "col-12",
                 Collectionherostyle.Collectionherorightcol,
                 "Collectionherorightcol collectionheroimage",
               ].join(" ")}
             >
 
-              
+
             </div>
 
           ) : (
@@ -492,7 +505,7 @@ function saveuri(){
         <div
           className={[
             "col-12",
-            "col-lg-4",
+            "col-lg-5",
             "offset-lg-1",
             "ClinicalIngredientsclass",
             Collectionherostyle.Collectionheroleftcol,
@@ -500,15 +513,16 @@ function saveuri(){
           ].join(" ")}
         >
           <div className="row">
-            { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+            {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link> /{" "}
-                <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title:getname}</Link>:""}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ? checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
               </p>
-            </div> }
-         
+            </div>}
+
           </div>
-          <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+          <div class="row collectionherorow">
+            <div className="col-12">
               {checkTaxonomy.field_taxonomy_hero ? (
                 <p className={[Collectionherostyle.type, Collectionherostyle.clinical].join(' ')}>
                   {
@@ -547,34 +561,36 @@ function saveuri(){
                   ""
                 )}
             </div>
-                
+          </div>
         </div>
         {checkTaxonomy.field_taxonomy_hero ? (
           <div
-          style={{background:`url(${checkTaxonomy.field_taxonomy_hero.relationships
-            .field_taxonomy_hero_paraprapgh_i ? (
-              checkTaxonomy.field_taxonomy_hero.relationships
-                .field_taxonomy_hero_paraprapgh_i.localFile ? (
-               
+            style={{
+              background: `url(${checkTaxonomy.field_taxonomy_hero.relationships
+                .field_taxonomy_hero_paraprapgh_i ? (
+                  checkTaxonomy.field_taxonomy_hero.relationships
+                    .field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                       checkTaxonomy.field_taxonomy_hero
                         .relationships.field_taxonomy_hero_paraprapgh_i
                         .localFile.childImageSharp.original.src
-                  
+
+                    ) : (
+                      ""
+                    )
                 ) : (
                   ""
-                )
-            ) : (
-              ""
-            )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+            }}
             className={[
-              "col-lg-7",
+              "col-lg-5 offset-lg-1",
               "col-12",
               Collectionherostyle.Collectionherorightcol,
               "Collectionherorightcol collectionheroimage",
             ].join(" ")}
           >
 
-         
+
           </div>
 
         ) : (
@@ -587,7 +603,7 @@ function saveuri(){
                     <div
                       className={[
                         "col-12",
-                        "col-lg-4",
+                        "col-lg-5",
                         "offset-lg-1",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
@@ -598,15 +614,16 @@ function saveuri(){
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title:getname}</Link>:""}
+                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title ? checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title : getname}</Link> : ""}
                           </p>
-                        </div> }
-                
+                        </div>}
+
                       </div>
-                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                      <div className="row collectionherorow">
+                        <div className="col-12">
                           {checkTaxonomy.field_hero_taxonomy_skintype ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
-                                    {
+                              {
                                 checkTaxonomy.field_hero_taxonomy_skintype
                                   .field_taxonomy_hero_paraprapgh_t
                               }
@@ -642,30 +659,33 @@ function saveuri(){
                               ""
                             )}
                         </div>
+                      </div>
 
                     </div>
                     {checkTaxonomy.field_hero_taxonomy_skintype ? (
                       <div
-                      style={{background:`url(${checkTaxonomy.field_hero_taxonomy_skintype.relationships
-                        .field_taxonomy_hero_paraprapgh_i ? (
-                          checkTaxonomy.field_hero_taxonomy_skintype.relationships
-                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                              <img
-                                className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
-                                src={
-                                  checkTaxonomy.field_hero_taxonomy_skintype
-                                    .relationships.field_taxonomy_hero_paraprapgh_i
-                                    .localFile.childImageSharp.original.src
-                                }
-                              />
+                        style={{
+                          background: `url(${checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                            .field_taxonomy_hero_paraprapgh_i ? (
+                              checkTaxonomy.field_hero_taxonomy_skintype.relationships
+                                .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                                  <img
+                                    className={[Collectionherostyle.allheight, "img-fluid-height"].join(" ")}
+                                    src={
+                                      checkTaxonomy.field_hero_taxonomy_skintype
+                                        .relationships.field_taxonomy_hero_paraprapgh_i
+                                        .localFile.childImageSharp.original.src
+                                    }
+                                  />
+                                ) : (
+                                  ""
+                                )
                             ) : (
                               ""
-                            )
-                        ) : (
-                          ""
-                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                            )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                        }}
                         className={[
-                          "col-lg-7",
+                          "col-lg-5 offset-lg-1",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
                           "Collectionherorightcol collectionheroimage",
@@ -683,7 +703,7 @@ function saveuri(){
                     <div
                       className={[
                         "col-12",
-                        "col-lg-4",
+                        "col-lg-5",
                         "ClinicalIngredientsclass",
                         "offset-lg-1",
                         Collectionherostyle.Collectionheroleftcol,
@@ -691,15 +711,16 @@ function saveuri(){
                       ].join(" ")}
                     >
                       <div className="row">
-                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+                        {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                           </p>
-                        </div> }
-                       
+                        </div>}
+
                       </div>
-                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                      <div class="row collectionherorow">
+                        <div className="col-12">
                           {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                             <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
 
@@ -739,26 +760,29 @@ function saveuri(){
                               ""
                             )}
                         </div>
-                         
+
+                      </div>
                     </div>
                     {checkTaxonomy.field_hero_clinical_ing_taxonomy ? (
                       <div
-                      style={{background:`url(${checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
-                        .field_taxonomy_hero_paraprapgh_i ? (
-                          checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
-                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                        style={{
+                          background: `url(${checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i ? (
+                              checkTaxonomy.field_hero_clinical_ing_taxonomy.relationships
+                                .field_taxonomy_hero_paraprapgh_i.localFile ? (
                                   checkTaxonomy.field_hero_clinical_ing_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
                                     .localFile.childImageSharp.original.src
-                             
+
+                                ) : (
+                                  ""
+                                )
                             ) : (
                               ""
-                            )
-                        ) : (
-                          ""
-                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                            )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                        }}
                         className={[
-                          "col-lg-7",
+                          "col-lg-5 offset-lg-1",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
                           "Collectionherorightcol collectionheroimage",
@@ -776,7 +800,7 @@ function saveuri(){
                     <div
                       className={[
                         "col-12",
-                        "col-lg-4",
+                        "col-lg-5",
                         "offset-lg-1",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
@@ -784,78 +808,82 @@ function saveuri(){
                       ].join(" ")}
                     >
                       <div className="row">
-                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+                        {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                           </p>
-                        </div> }
+                        </div>}
                       </div>
-                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
-                        {checkTaxonomy.field_hero_parag_taxonomy ? (
-                          <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
-                            {" "}
-                            {
-                              checkTaxonomy.field_hero_parag_taxonomy
-                                .field_taxonomy_hero_paraprapgh_t
-                            }
-                          </p>
-                        ) : (
-                            ""
-                          )}
-
-                        {checkTaxonomy.field_hero_parag_taxonomy ? (
-                          <h1 className={Collectionherostyle.collectiontitle}>
-                            {
-                              <div dangerouslySetInnerHTML={{
-                                __html: checkTaxonomy.field_hero_parag_taxonomy
-                                  .field_taxonomy_hero_para_title
-                              }}></div>
-                            }
-                          </h1>
-                        ) : (
-                            ""
-                          )}
-                        {checkTaxonomy.field_hero_parag_taxonomy ? (
-                          <div className={Collectionherostyle.collectiondescription}
-                            dangerouslySetInnerHTML={{
-                              __html: checkTaxonomy.field_hero_parag_taxonomy
-                                .field_taxonomy_hero_para_descrip ?
+                      <div className="row collectionherorow">
+                        <div className="col-12">
+                          {checkTaxonomy.field_hero_parag_taxonomy ? (
+                            <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
+                              {" "}
+                              {
                                 checkTaxonomy.field_hero_parag_taxonomy
-                                  .field_taxonomy_hero_para_descrip.processed : ""
-                            }}
-                          >
+                                  .field_taxonomy_hero_paraprapgh_t
+                              }
+                            </p>
+                          ) : (
+                              ""
+                            )}
 
-                          </div>
-                        ) : (
-                            ""
-                          )}
+                          {checkTaxonomy.field_hero_parag_taxonomy ? (
+                            <h1 className={Collectionherostyle.collectiontitle}>
+                              {
+                                <div dangerouslySetInnerHTML={{
+                                  __html: checkTaxonomy.field_hero_parag_taxonomy
+                                    .field_taxonomy_hero_para_title
+                                }}></div>
+                              }
+                            </h1>
+                          ) : (
+                              ""
+                            )}
+                          {checkTaxonomy.field_hero_parag_taxonomy ? (
+                            <div className={Collectionherostyle.collectiondescription}
+                              dangerouslySetInnerHTML={{
+                                __html: checkTaxonomy.field_hero_parag_taxonomy
+                                  .field_taxonomy_hero_para_descrip ?
+                                  checkTaxonomy.field_hero_parag_taxonomy
+                                    .field_taxonomy_hero_para_descrip.processed : ""
+                              }}
+                            >
+
+                            </div>
+                          ) : (
+                              ""
+                            )}
+                        </div>
                       </div>
                     </div>
                     {checkTaxonomy.field_hero_parag_taxonomy ? (
                       <div
-                      style={{background:`url(${checkTaxonomy.field_hero_parag_taxonomy.relationships
-                        .field_taxonomy_hero_paraprapgh_i ? (
-                          checkTaxonomy.field_hero_parag_taxonomy.relationships
-                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
-                           
+                        style={{
+                          background: `url(${checkTaxonomy.field_hero_parag_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i ? (
+                              checkTaxonomy.field_hero_parag_taxonomy.relationships
+                                .field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                                   checkTaxonomy.field_hero_parag_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
-                             .localFile.childImageSharp.original.src
+                                    .localFile.childImageSharp.original.src
+                                ) : (
+                                  ""
+                                )
                             ) : (
                               ""
-                            )
-                        ) : (
-                          ""
-                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                            )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                        }}
                         className={[
-                          "col-lg-7",
+                          "col-lg-5 offset-lg-1",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
                           "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
-                   
+
                       </div>
 
                     ) : (
@@ -867,7 +895,7 @@ function saveuri(){
                     <div
                       className={[
                         "col-12",
-                        "col-lg-4",
+                        "col-lg-5",
                         "offset-lg-1",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
@@ -875,15 +903,16 @@ function saveuri(){
                       ].join(" ")}
                     >
                       <div className="row">
-                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+                        {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
 
                           <p className="breadcramp">
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                           </p>
-                        </div> }
+                        </div>}
                       </div>
-                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                      <div className="row collectionherorow">
+                      <div className="col-12">
                         {checkTaxonomy.field_hero_taxonomy ? (
                           <p className={[Collectionherostyle.type, Collectionherostyle.medical].join(' ')}>
                             {" "}
@@ -923,33 +952,36 @@ function saveuri(){
                             ""
                           )}
                       </div>
+                      </div>
                     </div>
                     {checkTaxonomy.field_hero_taxonomy ? (
                       <div
-                      style={{background:`url(${checkTaxonomy.field_hero_taxonomy.relationships
-                        .field_taxonomy_hero_paraprapgh_i ? (
-                          checkTaxonomy.field_hero_taxonomy.relationships
-                            .field_taxonomy_hero_paraprapgh_i.localFile ? (
+                        style={{
+                          background: `url(${checkTaxonomy.field_hero_taxonomy.relationships
+                            .field_taxonomy_hero_paraprapgh_i ? (
+                              checkTaxonomy.field_hero_taxonomy.relationships
+                                .field_taxonomy_hero_paraprapgh_i.localFile ? (
 
                                   checkTaxonomy.field_hero_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
                                     .localFile.childImageSharp.original.src
-                           
+
+                                ) : (
+                                  ""
+                                )
                             ) : (
                               ""
-                            )
-                        ) : (
-                          ""
-                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                            )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                        }}
                         className={[
-                          "col-lg-7",
+                          "col-lg-5 offset-lg-1",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
                           "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
 
-              
+
                       </div>
 
                     ) : (
@@ -961,7 +993,7 @@ function saveuri(){
                     <div
                       className={[
                         "col-12",
-                        "col-lg-4",
+                        "col-lg-5",
                         "offset-lg-1",
                         "ClinicalIngredientsclass",
                         Collectionherostyle.Collectionheroleftcol,
@@ -969,15 +1001,16 @@ function saveuri(){
                       ].join(" ")}
                     >
                       <div className="row">
-                        { <div className={[" breadcramp-con hide", "col-12"].join(" ")}>
+                        {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
                           <p className="breadcramp">
-              
+
                             <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title?checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title:getname}</Link>:""}
+                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                           </p>
-                        </div> }
+                        </div>}
                       </div>
-                      <div className="col-12 col-lg-11 offset-lg-1 pl-0">
+                      <div className="row collectionherorow">
+                      <div className="col-12">
                         {checkTaxonomy.field_hero_category_taxonomy ? (
                           <p className={[Collectionherostyle.type, nodetype.includes('medical') ? Collectionherostyle.medical : ""].join(' ')}>
                             {" "}
@@ -1017,32 +1050,35 @@ function saveuri(){
                             ""
                           )}
                       </div>
+                      </div>
                     </div>
                     {checkTaxonomy.field_hero_category_taxonomy ? (
                       <div
-                      style={{background:`url(${checkTaxonomy.field_hero_category_taxonomy
-                        .relationships.field_taxonomy_hero_paraprapgh_i ? (
-                          checkTaxonomy.field_hero_category_taxonomy
-                            .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
-                             
+                        style={{
+                          background: `url(${checkTaxonomy.field_hero_category_taxonomy
+                            .relationships.field_taxonomy_hero_paraprapgh_i ? (
+                              checkTaxonomy.field_hero_category_taxonomy
+                                .relationships.field_taxonomy_hero_paraprapgh_i.localFile ? (
+
                                   checkTaxonomy.field_hero_category_taxonomy
                                     .relationships.field_taxonomy_hero_paraprapgh_i
                                     .localFile.childImageSharp.original.src
-                              
+
+                                ) : (
+                                  ""
+                                )
                             ) : (
                               ""
-                            )
-                        ) : (
-                          ""
-                        )})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
+                            )})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                        }}
                         className={[
-                          "col-lg-7",
+                          "col-lg-5 offset-lg-1",
                           "col-12",
                           Collectionherostyle.Collectionherorightcol,
                           "Collectionherorightcol collectionheroimage",
                         ].join(" ")}
                       >
-                   
+
                       </div>
 
                     ) : (
@@ -1052,7 +1088,7 @@ function saveuri(){
                 ) : (
                             <div className={"row hero-row-wrapper"}>
                               <div
-                               className={[
+                                className={[
                                   "col-12",
                                   "col-lg-5",
                                   "offset-lg-1",
@@ -1062,64 +1098,68 @@ function saveuri(){
                                 ].join(" ")}
                               >
                                 <div className="row m-0">
-                                  
-                                    <div className=" breadcramp-con hide col-12">
-                                      <p className="breadcramp">
-                                        <Link to="/">Home</Link> /{" "}
-                                        <Link to={'/' + first_url}> {first_url}</Link> / { checkTaxonomy.field_taxonomy_page_url?  <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title?checkTaxonomy.field_taxonomy_page_title:getname}</Link>:""}
-                                      </p>
-                                    </div>
-                                    
-                                     
-                                </div>
-                                <div className="col-12 col-lg-11 offset-lg-1 pl-0">
-                                    {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
-                                      <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')
-                                       || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general, "general"].join(' ')}>
 
-                                        {
-                                          checkTaxonomy.field_taxonomy_hero_paraprapgh_t
-                                        }
-                                      </p>
-                                    ) : (
-                                        ""
-                                      )}
-
-                                    {checkTaxonomy.field_taxonomy_hero_para_title ? (
-                                      <h1 className={Collectionherostyle.collectiontitle}>
-                                        {
-                                          <div dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title }}></div>
-                                        }
-                                      </h1>
-                                    ) : (
-                                        ""
-                                      )}
-                                    {checkTaxonomy.field_taxonomy_hero_para_descrip ? (
-                                      <div className={Collectionherostyle.collectiondescription}
-                                        dangerouslySetInnerHTML={{
-                                          __html: checkTaxonomy
-                                            .field_taxonomy_hero_para_descrip ?
-                                            checkTaxonomy.field_taxonomy_hero_para_descrip
-                                              .processed : ""
-                                        }}
-                                      >
-
-                                      </div>
-                                    ) : (
-                                        ""
-                                      )}
-                                    {checkTaxonomy.field_taxonomy_hero_link ? (
-                                      <Link to={checkTaxonomy.field_taxonomy_hero_link.uri.replace('internal:', '')} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
-                                    ) : ""}
+                                  <div className=" breadcramp-con hide col-12">
+                                    <p className="breadcramp">
+                                      <Link to="/">Home</Link> /{" "}
+                                      <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title ? checkTaxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                                    </p>
                                   </div>
-                              
+
+
+                                </div>
+                                <div className="row generalcollectionherorow">
+                                <div className="col-12">
+                                  {checkTaxonomy.field_taxonomy_hero_paraprapgh_t ? (
+                                    <p className={[Collectionherostyle.type, checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('medical')
+                                      || checkTaxonomy.field_taxonomy_hero_paraprapgh_t.includes('clinical') ? Collectionherostyle.medical : Collectionherostyle.general, "general"].join(' ')}>
+
+                                      {
+                                        checkTaxonomy.field_taxonomy_hero_paraprapgh_t
+                                      }
+                                    </p>
+                                  ) : (
+                                      ""
+                                    )}
+
+                                  {checkTaxonomy.field_taxonomy_hero_para_title ? (
+                                    <h1 className={Collectionherostyle.collectiontitle}>
+                                      {
+                                        <div dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title }}></div>
+                                      }
+                                    </h1>
+                                  ) : (
+                                      ""
+                                    )}
+                                  {checkTaxonomy.field_taxonomy_hero_para_descrip ? (
+                                    <div className={Collectionherostyle.collectiondescription}
+                                      dangerouslySetInnerHTML={{
+                                        __html: checkTaxonomy
+                                          .field_taxonomy_hero_para_descrip ?
+                                          checkTaxonomy.field_taxonomy_hero_para_descrip
+                                            .processed : ""
+                                      }}
+                                    >
+
+                                    </div>
+                                  ) : (
+                                      ""
+                                    )}
+                                  {checkTaxonomy.field_taxonomy_hero_link ? (
+                                    <Link to={checkTaxonomy.field_taxonomy_hero_link.uri.replace('internal:', '')} className={[Collectionherostyle.heroLink].join(" ")}>{checkTaxonomy.field_taxonomy_hero_link.title}</Link>
+                                  ) : ""}
+                                </div>
+                                </div>
+
                               </div>
                               {checkTaxonomy.relationships ? (
                                 <div
-                                style={{background:`url(${checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ? 
-                                  checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ?
-                                   checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src:"":""})`,backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundPosition:"center"}}
-                                
+                                  style={{
+                                    background: `url(${checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i ?
+                                      checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ?
+                                        checkTaxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.original.src : "" : ""})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"
+                                  }}
+
                                   className={[
                                     "col-lg-5",
                                     "col-12",
@@ -1129,7 +1169,7 @@ function saveuri(){
                                 >
 
 
-                                
+
                                 </div>
 
                               ) : (
