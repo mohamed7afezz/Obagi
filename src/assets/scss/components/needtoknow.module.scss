@@ -33,7 +33,7 @@
     }
 }
 
-.read-more {
+.needtoknowcontent .read-more {
   color: #fff;
   display: block;
   padding-top: 24px;
@@ -41,8 +41,9 @@
   letter-spacing: 1.2px;
   @extend %futurapt-bold;
   text-transform: uppercase;
+  text-decoration: none;
   &:hover {
     color: #fff;
-    text-decoration: none;
+    
   }
 }
