@@ -219,6 +219,10 @@ top: 49%;
 right: 0;
 }
 @media (max-width: 767px) {
+  .colectionBrand{
+    padding-top: 0 !important;
+    padding-bottom: 64px !important;
+  }
   #Showbag .modal-header .close{
     right: 4%;
   }
@@ -3237,4 +3241,7 @@ top: 10px;
 }
 .textareainput{
   border: 0;
+}
+.colectionBrand .img-wrap{
+height: 100%;
 }

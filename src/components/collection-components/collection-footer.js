@@ -164,7 +164,7 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
 return (
   <>
     {getfeature[0] ?   
-     <div className={["container-fluid d-none d-lg-block", featuredStyles.containerWrapper].join(" ")} name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""}>
+     <div className={["container-fluid d-lg-block colectionBrand", featuredStyles.containerWrapper].join(" ")} name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""}>
             <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
               <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
