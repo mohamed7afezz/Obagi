@@ -32,8 +32,9 @@ const Level2 = props => {
   
   
   }
-  
     function submitforming(e) {
+      let savecheckvalue=[];
+
       var obj = { webform_id: "nu_derm_survey" };
       var list = document.querySelectorAll('.needs-validations input:invalid');
       if (list.length > 0) {
@@ -42,12 +43,32 @@ const Level2 = props => {
               // item.nextSibling.classList.remove('hide')
           }
       } else {
-          let list2 = document.querySelectorAll('.needs-validations input');
+          let list2 = document.querySelectorAll('.needs-validations input[type="radio"]:checked');
           for (let item of list2) {
-  
-              obj[item.getAttribute("name")] = item.value;
             
+              obj[item.getAttribute("name")] = item.value;
+              if (item.value === "taketext") {
+                obj[item.getAttribute("name")]= document.querySelector('.taketext').value;
+              }
+              else if (item.value === "taketext2"){
+                obj[item.getAttribute("name")]= document.querySelector('.taketext2').value;
+              }
+              else if (item.value === "taketext3"){
+                obj[item.getAttribute("name")]= document.querySelector('.taketext3').value;
+              }
           }
+              let listCheck = document.querySelectorAll('.needs-validations.servay input[type="checkbox"]:checked')
+
+          for (let item2 of listCheck) {
+            if (item2.value != "taketext1"){
+            savecheckvalue.push(item2.value)}
+             else if(item2.value === "taketext1"){
+              obj[item2.getAttribute("name")]= savecheckvalue.push(document.querySelector('.taketext1').value);
+            }
+          }
+          let savetextArea=document.querySelector('textarea').value;
+          obj['2_please_rank_the_following_topics_you_would_be_interested_in_le']=savecheckvalue;
+          obj['5_please_provide_any_additional_thoughts_or_ideas_you_would_like']=savetextArea
           let listSelect = document.querySelectorAll('.needs-validations select');
           for (let item1 of listSelect) {
          let i ="";
@@ -75,8 +96,10 @@ const Level2 = props => {
       )
           .then(res => res.json())
           .then(response => {
-            props.GetLevelNumber(3)
-          })
+            if (response["sid"]) {
+         
+              props.GetLevelNumber(3)
+             }          })
           .catch(error => {
               // console.log('error', error)
           });
@@ -101,7 +124,7 @@ const Level2 = props => {
                     </p>
                 <p className={nudermStyle.servayDesc}>      In the meantime, we’d love to get your feedback on the type of information you’d like to see and how we can build a program that can better meet the needs and expectations of experienced users like you. Please answer the 5 brief questions below; the survey should only take 2-3 minutes of your time.</p>
            </div>
-           <form onSubmit={(e) => { e.preventDefault(); }} className={[nudermStyle.Servayform,"needs-validations"].join(" ")}>
+           <form onSubmit={(e) => { e.preventDefault(); }} className={[nudermStyle.Servayform,"needs-validations servay"].join(" ")}>
                <div className={["offset-lg-3","col-12","col-lg-6",nudermStyle.QuestionContainer].join(" ")}>
             <p className={nudermStyle.Qtitle}>
             1. Please select the primary reason you signed up for the New to Nu-Derm<sup>®</sup> Program.
@@ -113,10 +136,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I wanted to see if I used Nu-Derm correctly."
+                  value="correctly_use"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I wanted to see if I used Nu-Derm correctly.
               </label>
@@ -127,10 +150,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I wanted to learn how to maintain and optimize results."
+                  value="maintain_results"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -141,10 +164,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I’m considering using the Nu-Derm System again in the future."
+                  value="future_use"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I’m considering using the Nu-Derm System again in the future.
               </label>
@@ -155,10 +178,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I was looking for exclusive offers or rebate opportunities."
+                  value="exclusive_offers"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I was looking for exclusive offers or rebate opportunities.
               </label>
@@ -169,10 +192,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  value="start_system"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>I didn’t know it was designed for those just starting the Nu-Derm System.
               </label>
@@ -183,15 +206,15 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  value="taketext"
                   
                   type="radio"
-                  name="please_select_the_primary_reason_you_signed_up_for_the_new_to_"
+                  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_"
                 />
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input className="otherInput" name="please_select_the_primary_reason_you_signed_up_for_the_new_to_" type="text" />
+                <input className="otherInput taketext"  name="1_please_select_the_primary_reason_you_signed_up_for_the_new_to_" type="text" />
               </div>
                 </label>
                </div>
@@ -200,15 +223,14 @@ const Level2 = props => {
             2. Please rank the following topics you would be interested in learning about in order of most interested (1) to least interested (5).            </p>
             <label
                 className={[nudermStyle.RadioLabel, "new-check terms  form-check-label "].join(" ")}
-
               >
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I wanted to see if I used Nu-Derm correctly."
+                  value="correctly_use_2"
                   
                   type="checkbox"
-                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
+                  name="2_please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to see if I used Nu-Derm correctly.
               </label>
@@ -219,10 +241,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I wanted to learn how to maintain and optimize results."
+                  value="maintain_results_2"
                   
                   type="checkbox"
-                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
+                  name="2_please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -233,10 +255,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I wanted to learn how to maintain and optimize results."
+                  value="future_use_2"
                   
                   type="checkbox"
-                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
+                  name="2_please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I wanted to learn how to maintain and optimize results.
               </label>
@@ -247,10 +269,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I was looking for exclusive offers or rebate opportunities."
+                  value="exclusive_offers_2"
                   
                   type="checkbox"
-                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
+                  name="2_please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>I was looking for exclusive offers or rebate opportunities.
               </label>
@@ -261,15 +283,15 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  value="taketext1"
                   
                   type="checkbox"
-                  name="please_rank_the_following_topics_you_would_be_interested_in_le"
+                  name="2_please_rank_the_following_topics_you_would_be_interested_in_le"
                 />
                 <span class="checkmark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input className="otherInput" name="Other" type="text" />
+                <input className="otherInput taketext1" name="2_please_rank_the_following_topics_you_would_be_interested_in_le" type="text" />
               </div>
                 </label>
                
@@ -285,7 +307,7 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Email Only"
+                  value="email_only"
                   
                   type="radio"
                   name="3_how_would_you_prefer_to_receive_this_type_of_information_"
@@ -299,7 +321,7 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Text message only"
+                  value="msg_only"
                   
                   type="radio"
                   name="3_how_would_you_prefer_to_receive_this_type_of_information_"
@@ -313,7 +335,7 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Email and text message"
+                  value="mail_text"
                   
                   type="radio"
                   name="3_how_would_you_prefer_to_receive_this_type_of_information_"
@@ -327,7 +349,7 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Blog or website"
+                  value="blog_site"
                   
                   type="radio"
                   name="3_how_would_you_prefer_to_receive_this_type_of_information_"
@@ -341,7 +363,7 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
+                  value="taketext2"
                   
                   type="radio"
                   name="3_how_would_you_prefer_to_receive_this_type_of_information_"
@@ -349,7 +371,7 @@ const Level2 = props => {
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input className="otherInput" name="Other" type="text" />
+                <input className="otherInput taketext2" name="3_how_would_you_prefer_to_receive_this_type_of_information_" type="text" />
               </div>
                 </label>
                </div>
@@ -363,10 +385,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Once a week"
+                  value="once_week"
                   
                   type="radio"
-                  name="_how_often_would_you_prefer_to_receive_the_information_"
+                  name="4_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once a week
               </label>
@@ -377,10 +399,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Once a month"
+                  value="once_month"
                   
                   type="radio"
-                  name="_how_often_would_you_prefer_to_receive_the_information_"
+                  name="4_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once a month
               </label>
@@ -391,10 +413,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Twice a month"
+                  value="twice_month"
                   
                   type="radio"
-                  name="_how_often_would_you_prefer_to_receive_the_information_"
+                  name="4_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Twice a month
               </label>
@@ -405,10 +427,10 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input"].join(" ")}
                   id={nudermStyle.formradio}
-                  value="Once every 3 months"
+                  value="once_3_months"
                   
                   type="radio"
-                  name="_how_often_would_you_prefer_to_receive_the_information_"
+                  name="4_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>Once every 3 months
               </label>
@@ -419,15 +441,14 @@ const Level2 = props => {
                 <input
                   className={[nudermStyle.radio, "form-check-input "].join(" ")}
                   id={nudermStyle.formradio}
-                  value="I didn’t know it was designed for those just starting the Nu-Derm System."
-                  
+                  value="taketext3"
                   type="radio"
-                  name="_how_often_would_you_prefer_to_receive_the_information_"
+                  name="4_how_often_would_you_prefer_to_receive_the_information_"
                 />
                 <span class="radiomark"></span>
                 <div className={nudermStyle.inputfield}>
                 <label>Other</label>
-                <input className="otherInput" name="Other" type="text" />
+                <input className="otherInput taketext3" name="4_how_often_would_you_prefer_to_receive_the_information_" type="text" />
               </div>
                 </label>
                </div>

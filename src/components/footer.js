@@ -82,6 +82,10 @@ const Footer = ({ siteTitle }) => {
         }
 
         obj[item.getAttribute("name")] = item.value;
+        if (document.querySelector('.newsignup[checked]')) {
+          obj["want_to_receive_emails"] = ["on"]
+
+        }
         thanksmodal();
       }
 
@@ -257,7 +261,7 @@ const Footer = ({ siteTitle }) => {
                       registering, your information will be collected and used
                       in the US subject to our US <Link className={footerStyles.termslink} to="/privacy-policy"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="/terms-of-use">Terms
                       of Use</Link>. For US consumers only.
-                      <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
+                      <input type="checkbox" className="newsignup" defaultChecked={true} vlaue="on" required name="want_to_receive_emails" />
                       <span className="checkmark"></span>
                     </label>
                     <button type="button" onClick={(e) => { submitforming(e) }} className="btn signup-btn d-none d-lg-block">SIGN UP</button>

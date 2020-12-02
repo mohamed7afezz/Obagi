@@ -3,14 +3,14 @@
 
 .ListCon{
     text-align: center;
+    width: 100%;
     ul{
-    display: flex;
-
-    justify-content: space-between;
-
-    flex-wrap: wrap;
-    @include md-screen{
+    @include lg-screen{
     padding-left: 0;
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    -o-colums:3;
     }
     padding-left: 20px;
 }
