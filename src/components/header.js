@@ -288,13 +288,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
   function removeCategory() {
     var y = document.getElementById("category-section");
-    if (y.style.display === "none") {
+    if (y.style.display === "none" &&  (!nodeType === "medical" || !nodeType === "clinical") ) {
       y.style.display = "block";
     } else {
       y.style.display = "none";
     }
   }
-
+console.log("ashhhhh", nodeType)
 
   function openSearch() {
     var search = document.getElementById("search-wrapper");

@@ -310,6 +310,7 @@ p {
     ul {
         padding: 0;
         width: 100%;
+        margin-bottom: 0;
     }
 
     ul li {
@@ -2777,6 +2778,7 @@ p {
 
 #mob-navigation #navbar {
     padding-bottom: 15px;
+    height: 100vh;
 }
 
 .hero-slider.clinical-slider, 
