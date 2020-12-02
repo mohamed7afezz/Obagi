@@ -35,7 +35,7 @@
 
 .needtoknowcontent .read-more {
   color: #fff;
-  display: block;
+  display: inline-block;
   padding-top: 24px;
   @include fontStyle(12, 16);
   letter-spacing: 1.2px;
