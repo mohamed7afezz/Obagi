@@ -2665,6 +2665,7 @@ width: 100%;
   .results-card-container .product-card-img .custom-img{
 width: 100%;
   }
+ 
   .results-card-container  .product-card-con{
     padding-left: 0;
     padding-right: 0;
@@ -2758,6 +2759,9 @@ width: 100%;
 }
 .show-mob{
   display: none !important;
+}
+#needReadMore.collapse.show{
+  margin-top: 16px;
 }
 @media (max-width:767px){
   .mob-mb-40{
