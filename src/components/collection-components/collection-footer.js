@@ -70,17 +70,17 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     getTwoSection=node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski?node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0]?
     node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships?
     node.taxonomyTermMedicalSkinConcern.relationships.field_footer_two_section_med_ski[0].relationships.field_service_card:"":"":"";
-    // checkfooter =
-    // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod?
-    // node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod.processed:""
+    checkfooter =
+    node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod?
+    node.taxonomyTermMedicalSkinConcern.field_medical_sk_col_footer_mod.processed:""
   } else if (pageNodeType == "medicalCategories") {
     
     getTwoSection=node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat?node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0]?
     node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0].relationships?
     node.taxonomyTermMedicalCategories.relationships.field_footer_two_section_med_cat[0].relationships.field_service_card:"":"":"";
-    // checkfooter =
-    //   node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod?
-    //   node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod.processed:""
+    checkfooter =
+      node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod?
+      node.taxonomyTermMedicalCategories.field_medical_cat_col_footer_mod.processed:""
   }else if(pageNodeType == 'medicalLine'){
     
     getTwoSection=node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title?node.taxonomyTermMedicalProductLines.relationships.field_footer_two_section_title[0]?
@@ -94,17 +94,17 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
     getTwoSection=node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two?node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0]?
     node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships?
     node.taxonomyTermMedicalSkinType.relationships.field_taxonomy_footer_two[0].relationships.field_service_card:"":"":"";
-    // checkfooter =
-    // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod?
-    // node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod.processed:"" 
+    checkfooter =
+    node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod?
+    node.taxonomyTermMedicalSkinType.field_medical_skt_col_footer_mod.processed:"" 
   } else if(pageNodeType == 'MedicalIngredients'){
  
     getTwoSection=node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing?node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0]?
     node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships?
     node.taxonomyTermMedicalIngredients.relationships.field_footer_two_section_med_ing[0].relationships.field_service_card:"":"":"";
-    // checkfooter =
-    // node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
-    // node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:"";
+    checkfooter =
+    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod?
+    node.taxonomyTermMedicalIngredients.field_medical_ing_col_footer_mod.processed:"";
   }
   else if(pageNodeType == 'clinicalCategories'){
     getTwoSection=node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat?node.taxonomyTermClinicalCategories.relationships.field_footer_two_section_cat[0]?
@@ -199,7 +199,32 @@ return (
           </div>
        
     
-    :<div>   
+    :getTwoSection?
+    <div 
+    className={
+    "container-fluid   " + Collectionfooterstyle.TwoSection 
+    }
+   >
+    <div className={["row",servicesStyles.twoCards,].join(" ")} >
+       
+           
+    {getTwoSection?getTwoSection.map((item, index) => {
+                 return (
+                     <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding}>
+                         <div className={servicesStyles.cardWrapper}>
+                             {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name?item.field_service_name.processed:"" }} className={item.field_card_type === "clinical"? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
+                             {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img fluid={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.fluid:"":"":""} /></div>:"" : "":''}
+                             {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
+                             {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
+                             {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
+                         </div>
+                     </div>
+                 )
+             }):""}
+  </div>
+  </div>:
+    
+    <div>   
    <div 
    className={checktaxonomyType === "clinical"? 
     "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
@@ -236,7 +261,7 @@ return (
                                         {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img fluid={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.fluid:"":"":""} /></div>:"" : "":''}
                                         {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
                                         {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
-                                        {item.field_se ? <div className={servicesStyles.butttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
+                                        {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
                                     </div>
                                 </div>
                             )

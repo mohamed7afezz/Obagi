@@ -23,7 +23,7 @@ const SkinClusionTextLeft = ({ node }) => {
       <div className="col-lg-4 offset-lg-1 mob-mt-40">
       {node.relationships?node.relationships.field_skin_clusion_left_image?
         node.relationships.field_skin_clusion_left_image.localFile?
-        <Img fluid={node.relationships.field_skin_clusion_left_image.localFile.childImageSharp.fluid}/>:"":"":""}
+        <img src={node.relationships.field_skin_clusion_left_image.localFile.publicURL}/>:"":"":""}
      
        
       </div>
@@ -48,6 +48,7 @@ export const fragment = graphql`
         relationships {
           field_skin_clusion_left_image {
             localFile {
+              publicURL
               childImageSharp {
                 fluid (quality: 100){
                     ...GatsbyImageSharpFluid

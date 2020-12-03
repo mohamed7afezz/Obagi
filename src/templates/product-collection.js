@@ -371,7 +371,38 @@ export const productPageQuery = graphql`
               title
             }
             relationships {
-              
+              field_footer_two_section_med_ski {
+                relationships {
+                  field_service_card {
+                    field_service_name {
+                      processed
+                    }
+                    field_service_description {
+                      processed
+                    }
+                    field_se {
+                      title
+                      uri
+                    }
+                    field_service_title {
+                      processed
+                    }
+                    relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                                fluid (quality: 100) {
+                                  ...GatsbyImageSharpFluid
+                                } original{
+                                  src
+                                }
+                              }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
                 node__medical_product {
                   field_medical_premier_points
                   field_medical_sku
@@ -591,7 +622,38 @@ export const productPageQuery = graphql`
           alias
         }
         relationships {
-          
+          field_taxonomy_footer_two {
+            relationships {
+              field_service_card {
+                field_service_title {
+                  processed
+                }
+                field_service_name {
+                  processed
+                }
+                field_service_description {
+                  processed
+                }
+                field_se {
+                  uri
+                  title
+                }
+               relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                            fluid (quality: 100) {
+                              ...GatsbyImageSharpFluid
+                            } original{
+                              src
+                            }
+                          }
+                        }
+                      }
+                    }
+              }
+            }
+          }
               field_hero_parag_taxonomy {
                 field_taxonomy_hero_para_title
                 field_taxonomy_page_url
@@ -678,7 +740,39 @@ export const productPageQuery = graphql`
             }
            
             relationships {
-              
+              field_footer_two_section_med_cat {
+                relationships {
+                  field_service_card {
+                    field_service_title {
+                      processed
+                    }
+                    field_service_name {
+                      processed
+                    }
+                    field_service_description {
+                      processed
+                    }
+                    field_se {
+                      uri
+                      title
+                    }
+                    relationships {
+                      field_service_image {
+                        localFile {
+                          childImageSharp {
+                            fluid(quality: 100) {
+                              ...GatsbyImageSharpFluid
+                            }
+                            original {
+                              src
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
                 node__medical_product {
                   field_medical_premier_points
                   field_medical_sku
@@ -895,7 +989,39 @@ export const productPageQuery = graphql`
             title
           }
           relationships {
-            
+            field_footer_two_section_title {
+              relationships {
+                field_service_card {
+                  field_service_title {
+                    processed
+                  }
+                  field_service_name {
+                    processed
+                  }
+                  field_se {
+                    uri
+                    title
+                  }
+                  field_service_description {
+                    processed
+                  }
+                  relationships {
+                    field_service_image {
+                      localFile {
+                        childImageSharp {
+                          fluid {
+                            ...GatsbyImageSharpFluid
+                          }
+                          original {
+                            src
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
             field_hero_productline_taxonomy {
               field_taxonomy_hero_paraprapgh_t
               field_taxonomy_hero_para_title

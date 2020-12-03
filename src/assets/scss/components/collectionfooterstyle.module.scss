@@ -239,3 +239,12 @@ top: 5px;
 .footer-general-bg {
     padding-top: 0;
 }
+.TwoSection{
+    background-color: #868cd2;
+padding-top: 40px;
+padding-bottom: 40px;
+@include lg-screen{
+    padding-top: 80px;
+padding-bottom: 80px;
+}
+}
