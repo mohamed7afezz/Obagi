@@ -164,10 +164,10 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       } else {
         return (
           <>
-            <Link to={link.link.uri.replace('internal:', '')}>
+            <a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
               {link.title}
 
-            </Link>
+            </a>
             {/* <span className=""> */}
             <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
             {/* </span> */}
