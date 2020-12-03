@@ -64,7 +64,7 @@ class Temps {
                 <p class="doctitle">${obj.name}</p>
                 <div class="address-res-wrap">
                     <span class="address-one">${obj.address1}</span>
-                    <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
+                    <span class="city"> •  ${obj.city}, ${obj.state} ${obj.zip}</span><span class="phone"> •  <a href="tel:${obj.phone}"> ${obj.phone}</a></span>
                 </div>
                 </div>
                 ${isProd? `<button   class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}

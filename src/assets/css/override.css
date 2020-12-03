@@ -218,7 +218,16 @@ padding-right: 0;
 top: 49%;
 right: 0;
 }
+.changetogray{
+  color: #7c858a !important;
+}
 @media (max-width: 767px) {
+  #err-msg{
+    margin-top: 32px;
+  }
+  #related-products .modal-content{
+    height: 100vh;
+  }
   .colectionBrand{
     padding-top: 0 !important;
     padding-bottom: 64px !important;
@@ -3257,4 +3266,17 @@ top: 10px;
 }
 .colectionBrand .img-wrap{
 height: 100%;
+}
+.card-body .playbtnimg{
+  width: auto;
+}
+.phy-title{
+  padding-top: 32px;
+}
+
+@media (min-width:1024px){
+  
+  .phy-title{
+    padding-top: 56px;
+  }
 }

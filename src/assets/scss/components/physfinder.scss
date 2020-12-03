@@ -1658,6 +1658,7 @@ padding-bottom: 16px;
 }
 .submit-search-physician{
   padding-top: 24px;
+  text-transform: uppercase;
   padding-bottom: 24px;
   color: #fff;
   background-color: #132466;
@@ -1741,7 +1742,11 @@ margin-bottom: 16px;
  
 }
 #prodLinesSelected{
+  
   margin-bottom: 16px;
+}
+#prodLinesSelected.ProdprodLinesSelected{
+  margin-bottom: 0;
 }
 #advancedSearch .terms{
   font-size: 16px;
@@ -1793,13 +1798,23 @@ ul{
   >div{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+  
+    flex-direction: column;
+    @include md-screen{
+      align-items: center;
+
+      flex-direction: row;
+    }
     span:first-of-type{
       flex: 0 0 70%;
     }
     a{
       color: #132466;
       text-decoration: underline;
+      text-transform: capitalize;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
     }
   }
   span{
@@ -1822,10 +1837,7 @@ ul{
     line-height: 24px;
     margin-bottom: 8px;
   }
-  .address-res-wrap{
-    display: flex;
-    justify-content: space-between;
-  }
+  
   .data-wrapper{
     justify-content: space-between;
 flex: 0 0 70%;

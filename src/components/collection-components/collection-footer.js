@@ -216,7 +216,7 @@ return (
                              {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img fluid={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.fluid:"":"":""} /></div>:"" : "":''}
                              {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
                              {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
-                             {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
+                             {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri.replace('internal:', '')} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
                          </div>
                      </div>
                  )

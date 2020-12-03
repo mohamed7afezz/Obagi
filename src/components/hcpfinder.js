@@ -226,10 +226,10 @@ export default function Finder() {
   return (
     <>
 
-      <div className="container">
+      <div className="container phy-container">
         <div className="row">
           <div className="col">
-            <h2 class="finder-title text-center">
+            <h2 class="finder-title phy-title text-center">
               Locate an Obagi Skin Care Professional
             </h2>
             <p class="finder-subtitle text-center">
@@ -257,12 +257,12 @@ export default function Finder() {
                     name="search-radio"
                     value="loc"
                   />
-                  <span class="checkmarkfinder"></span>by location
+                  <span class="checkmarkfinder"></span>By Location
                 </label>
 
                 <label class="checkcon" onClick={searchBy}>
                   <input type="radio" name="search-radio" value="phy" />
-                  <span class="checkmarkfinder"></span>by physician
+                  <span class="checkmarkfinder"></span>By Physician
                 </label>
               </div>
               <div class="col-lg-4 d-flex search-drop">
@@ -275,23 +275,23 @@ export default function Finder() {
                   <input id="input-physician" type="text" />
                 </label>
                 <div class="miles ">
-                  <span>miles </span>
+                  <span>DISTANCE </span>
                   <div class="custom-select">
                     <select id="miles">
-                      <option value="1">1</option>
-                      <option value="5">5</option>
+                      <option value="1">1 miles</option>
+                      <option value="5">5 miles</option>
                       <option value="10" selected>
-                        10
+                        10 miles
                       </option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
+                      <option value="25">25 miles</option>
+                      <option value="50">50 miles</option>
+                      <option value="100">100 miles</option>
                     </select>
                   </div>
                 </div>
               </div>
               <p class="covid show-mob">
-                -19 UPDATE: Skin care professional partners' openings and
+              COVID-19 UPDATE: Skin care professional partners' openings and
                 hours may vary based on location. Please contact your Skin care
                 professional directly to learn more.
               </p>
@@ -304,7 +304,7 @@ export default function Finder() {
                   data-toggle="modal"
                   data-target="#advancedSearch"
                 >
-                  Revise Product Search
+                  Search By Product
                 </button>
               </div>
               <p class="covid hide-mob">
@@ -588,7 +588,7 @@ export default function Finder() {
                 <form onSubmit={(e) => { e.preventDefault(); }}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Location</p>
+                      <p class="input-name">LOCATION</p>
                       <input
                         class="appointmentInput"
                         id="prodLoc"
@@ -596,7 +596,7 @@ export default function Finder() {
                       />
                     </div>
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Distance</p>
+                      <p class="input-name">DISTANCE</p>
                       <div class="custom-select">
                         <select
                           id="prodDistance"
@@ -612,9 +612,9 @@ export default function Finder() {
                       </div>
                     </div>
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Product Lines</p>
-                      <div id="prodLinesSelected" onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
-                        {prodLines.length > 0 ? prodLines[0] : 'Select Product Line'} {prodLines.length > 1 ? '+' + (prodLines.length - 1) : ''}
+                      <p class="input-name">PRODUCT LINES</p>
+                      <div id="prodLinesSelected" className="ProdprodLinesSelected changetogray" onClick={(e) => { document.querySelector('.ProdprodLinesSelected').text="Select"?document.querySelector('.ProdprodLinesSelected').classList.remove('changetogray'):document.querySelector('.ProdprodLinesSelected').classList.remove('changetogray'); document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                        {prodLines.length > 0 ? prodLines[0] : 'Select'} {prodLines.length > 1 ? '+' + (prodLines.length - 1) : ''}
 
                       </div>
                       <div class="product-lines d-none" id="prodLines">
@@ -700,7 +700,7 @@ export default function Finder() {
               </button>
             </div>
             <div class="modal-body">
-              <h5 class="modal-title">Related products</h5>
+              <h5 class="modal-title">Products available through:</h5>
 
               <div id="related-phy-info"></div>
               <Scrollbars style={{ height: 300 }}>
