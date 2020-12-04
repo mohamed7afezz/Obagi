@@ -4140,3 +4140,10 @@ top: 78.5px !important;
       font-size: 37.5%;
       top: -1.5em;
   }
+
+  .skinclusion-sec .row {
+      @include lg-screen {
+          margin-left: -40px !important;
+
+      }
+  }
