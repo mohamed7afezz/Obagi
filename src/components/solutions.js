@@ -15,7 +15,7 @@ const Solutions = ({ node }) => {
                     <div className="col-12 d-lg-none">
                         <div className={solutionsStyles.containerWrapper}>
                             {node.field_solutions_paragraph_title ? <div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></div> : ''}
-                            {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.describtion}></div>:""}
+                            {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph.processed }} className={solutionsStyles.describtion}></div>:""}
                             {node.relationships.field_solution_box ? node.relationships.field_solution_box.map((item, index) => {
                                 return (
                                     <div>
@@ -34,7 +34,7 @@ const Solutions = ({ node }) => {
 
                     <div className="col-lg-5 pl-0 offset-lg-1 d-none d-lg-block">
                             {node.field_solutions_paragraph_title ? <div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></div> : ''}
-                            {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.describtion}></div>:""}
+                            {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph.processed }} className={solutionsStyles.describtion}></div>:""}
                             {node.field_solutions_paragraph_button ? <div className={solutionsStyles.linkSection}><Link to={fixlink(node.field_solutions_paragraph_button)} className={["button-link", solutionsStyles.link].join(" ")}>{node.field_solutions_paragraph_button.title}</Link></div> : ''}
                     </div>
 

@@ -16,6 +16,10 @@
     @include fontStyle(32, 48);
     text-align: center;
     padding-bottom: 39px;
+    // sup {
+    //     font-size: 37.5%;
+    //     top: -1.5em;
+    // }
 }
 .sliderFlex{
     display: flex !important;
@@ -98,6 +102,11 @@
     @extend %futurapt-light;
     @include fontStyle(32, 48);
     padding: 18px 0 6px;
+
+    // sup {
+    //     font-size: 37.5%;
+    //     top: -1.5em;
+    // }
 }
 
 .products {
