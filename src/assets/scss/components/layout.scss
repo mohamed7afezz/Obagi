@@ -227,10 +227,14 @@ p {
             }
 
             @include md-screen {
-                display: unset;
                 &::after, &::before {
                     content: none;
                 }
+            }
+        }
+        li a {
+            @include md-screen {
+                display: unset;
             }
         }
 
