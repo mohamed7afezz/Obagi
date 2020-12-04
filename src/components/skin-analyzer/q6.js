@@ -17,6 +17,10 @@ const Q6 = (props) => {
             return '';
         }
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <div className="skinanalyzer-questions-wrapper sixth-question-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
@@ -55,32 +59,32 @@ const Q6 = (props) => {
                         <div className="row sixth-question">
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIC" name="q" value="Type I" onChange={sendBackData} />
-                                <label htmlFor="TypeIC" id="firstColorC">Type I</label>
+                                <label onClick={topFunction}  htmlFor="TypeIC" id="firstColorC">Type I</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIIC" name="q" value="Type II" onChange={sendBackData} />
-                                <label htmlFor="TypeIIC" id="secondColorC">Type II</label>
+                                <label onClick={topFunction}  htmlFor="TypeIIC" id="secondColorC">Type II</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIIIC" name="q" value="Type III" onChange={sendBackData} />
-                                <label htmlFor="TypeIIIC" id="thirdColorC">Type III</label>
+                                <label onClick={topFunction}  htmlFor="TypeIIIC" id="thirdColorC">Type III</label>
                             </div>
 
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIVC" name="q" value="Type IV" onChange={sendBackData} />
-                                <label htmlFor="TypeIVC" id="fourthColorC">Type IV</label>
+                                <label onClick={topFunction}  htmlFor="TypeIVC" id="fourthColorC">Type IV</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVC" name="q" value="Type V" onChange={sendBackData} />
-                                <label htmlFor="TypeVC" id="fifthColorC">Type V</label>
+                                <label onClick={topFunction}  htmlFor="TypeVC" id="fifthColorC">Type V</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVIC" name="q" value="Type VI" onChange={sendBackData} />
-                                <label htmlFor="TypeVIC" id="sixthColorC">Type VI</label>
+                                <label onClick={topFunction}  htmlFor="TypeVIC" id="sixthColorC">Type VI</label>
                             </div>
                         </div>
                     </>
@@ -90,32 +94,32 @@ const Q6 = (props) => {
                         <div className="row sixth-question">
                             <div className="col-6  col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeI" name="q" value="Type I" onChange={sendBackData} />
-                                <label htmlFor="TypeI" id="firstColor">Type I</label>
+                                <label onClick={topFunction}  htmlFor="TypeI" id="firstColor">Type I</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeII" name="q" value="Type II" onChange={sendBackData} />
-                                <label htmlFor="TypeII" id="secondColor">Type II</label>
+                                <label onClick={topFunction}  htmlFor="TypeII" id="secondColor">Type II</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIII" name="q" value="Type III" onChange={sendBackData} />
-                                <label htmlFor="TypeIII" id="thirdColor">Type III</label>
+                                <label onClick={topFunction}  htmlFor="TypeIII" id="thirdColor">Type III</label>
                             </div>
 
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIV" name="q" value="Type IV" onChange={sendBackData} />
-                                <label htmlFor="TypeIV" id="fourthColor">Type IV</label>
+                                <label onClick={topFunction}  htmlFor="TypeIV" id="fourthColor">Type IV</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeV" name="q" value="Type V" onChange={sendBackData} />
-                                <label htmlFor="TypeV" id="fifthColor">Type V</label>
+                                <label onClick={topFunction}  htmlFor="TypeV" id="fifthColor">Type V</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVI" name="q" value="Type VI" onChange={sendBackData} />
-                                <label htmlFor="TypeVI" id="sixthColor">Type VI</label>
+                                <label onClick={topFunction}  htmlFor="TypeVI" id="sixthColor">Type VI</label>
                             </div>
                         </div>
                     </>

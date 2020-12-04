@@ -3089,8 +3089,28 @@ top: 78.5px !important;
         margin-bottom: 40px;
     }
 }
-
-
+.analyzer-intro{
+    padding-bottom: 40px;
+    @include lg-screen{
+        padding-bottom: 0;
+    }
+}
+.analyzer-questions{
+    margin-top: -40px;
+    padding-bottom: 65px;
+    @include lg-screen{
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+}
+.analyzer-result{
+    margin-top: -65px;
+    padding-bottom: 65px;
+    @include lg-screen{
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+}
 
 .skinanalyzer .analyzer-intro {
     

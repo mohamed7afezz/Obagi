@@ -8,6 +8,10 @@ const Q3 = (props) => {
     function startOver(e) {
         props.passChildData('q2', '', 1);
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
@@ -38,12 +42,12 @@ const Q3 = (props) => {
             <div className="row first-three justify-content-center">
                 <div className="col-12 col-lg-auto">
                     <input type="radio" id="Preventative" name="q" value="Preventative" onChange={sendBackData} />
-                    <label htmlFor="Preventative">Preventative</label>
+                    <label onClick={topFunction}  htmlFor="Preventative">Preventative</label>
                 </div>
 
                 <div className="col-12 col-lg-auto">
                     <input type="radio" id="Corrective" name="q" value="Corrective" onChange={sendBackData} />
-                    <label htmlFor="Corrective">Corrective</label>
+                    <label onClick={topFunction}  htmlFor="Corrective">Corrective</label>
                 </div>
             </div>
 

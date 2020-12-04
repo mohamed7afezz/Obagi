@@ -99,6 +99,7 @@ const Level2 = props => {
             if (response["sid"]) {
          
               props.GetLevelNumber(3)
+              topFunction()
              }          })
           .catch(error => {
               // console.log('error', error)
@@ -111,6 +112,10 @@ const Level2 = props => {
             return '';
         }
     }
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    } 
     return (
         <>
            <div className={["col-12","offset-lg-3","col-lg-6","mt-24"].join(" ")}>

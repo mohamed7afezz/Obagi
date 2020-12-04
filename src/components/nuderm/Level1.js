@@ -87,16 +87,20 @@ const Level1 = props => {
     )
         .then(res => res.json())
         .then(response => {
-       console.log(response["sid"])
          if (response["sid"]) {
          
           props.GetLevelNumber(2)
+          topFunction()
          }
         })
         .catch(error => {
             // console.log('error', error)
         });
 };
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
   return (
     <>
   

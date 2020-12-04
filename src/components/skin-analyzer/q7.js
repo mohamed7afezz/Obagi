@@ -11,6 +11,7 @@ const Q7 = (props) => {
     }
     function sendBackData(e) {
         props.passChildData('q7', ingredients, 8);
+        topFunction();
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
@@ -22,6 +23,10 @@ const Q7 = (props) => {
             return '';
         }
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper last-question-progress d-lg-none justify-content-center">

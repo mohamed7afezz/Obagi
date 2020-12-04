@@ -5,6 +5,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 const Intro = (props) => {
     function sendBackData() {
         props.passChildData(1);
+        topFunction();
     }
 
     const data = useStaticQuery(graphql`
@@ -18,7 +19,10 @@ const Intro = (props) => {
       }
     }`)
 
-
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <>
             <div className="container-fluid">

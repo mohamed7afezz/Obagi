@@ -15,7 +15,10 @@ const Q5 = (props) => {
         } else {
             return '';
         }
-    }
+    }  function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
@@ -49,11 +52,11 @@ const Q5 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="NormalSkinC" name="q" value="Normal Skin" onChange={sendBackData} />
-                                <label htmlFor="NormalSkinC">Normal Skin</label>
+                                <label onClick={topFunction}  htmlFor="NormalSkinC">Normal Skin</label>
                             </div>
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkinC" name="q" value="Dry Skin" onChange={sendBackData} />
-                                <label htmlFor="DrySkinC">Dry Skin</label>
+                                <label onClick={topFunction}  htmlFor="DrySkinC">Dry Skin</label>
                             </div>
 
 
@@ -61,12 +64,12 @@ const Q5 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="OilySkinC" name="q" value="Oily Skin" onChange={sendBackData} />
-                                <label htmlFor="OilySkinC">Oily Skin</label>
+                                <label onClick={topFunction}  htmlFor="OilySkinC">Oily Skin</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkinC" name="q" value="Combination Skin" onChange={sendBackData} />
-                                <label htmlFor="CombinationSkinC">Combination Skin</label>
+                                <label onClick={topFunction}  htmlFor="CombinationSkinC">Combination Skin</label>
                             </div>
 
 
@@ -78,11 +81,11 @@ const Q5 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="NormalSkin" name="q" value="Normal Skin" onChange={sendBackData} />
-                                <label htmlFor="NormalSkin">Normal Skin</label>
+                                <label onClick={topFunction}  htmlFor="NormalSkin">Normal Skin</label>
                             </div>
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkin" name="q" value="Dry Skin" onChange={sendBackData} />
-                                <label htmlFor="DrySkin">Dry Skin</label>
+                                <label onClick={topFunction}  htmlFor="DrySkin">Dry Skin</label>
                             </div>
 
 
@@ -91,12 +94,12 @@ const Q5 = (props) => {
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="OilySkin" name="q" value="Oily Skin" onChange={sendBackData} />
-                                <label htmlFor="OilySkin">Oily Skin</label>
+                                <label onClick={topFunction}  htmlFor="OilySkin">Oily Skin</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkin" name="q" value="Combination Skin" onChange={sendBackData} />
-                                <label htmlFor="CombinationSkin">Combination Skin</label>
+                                <label onClick={topFunction}  htmlFor="CombinationSkin">Combination Skin</label>
                             </div>
 
 

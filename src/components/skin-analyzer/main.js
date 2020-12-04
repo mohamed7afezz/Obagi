@@ -23,6 +23,7 @@ const SkinAnalyzerMain = () => {
         questionsResult[qName] = qValue;
         setStep(setpValue);
     }
+  
     return (
         <div className="skinanalyzer">
             <div className="analyzer-intro">
