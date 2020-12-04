@@ -87,16 +87,27 @@ const Level1 = props => {
     )
         .then(res => res.json())
         .then(response => {
-       console.log(response["sid"])
          if (response["sid"]) {
-         
+          var d = new Date();
+          var otherDate = new Date(document.querySelector('select[name="year"]').value,document.querySelector('select[name="month"]').value - 1,document.querySelector('select[name="day"]').value);
+          var bool = (otherDate.getTime() >= d.getTime());
+         if (bool === true) {
+          props.GetLevelNumber(3)
+         }else{
           props.GetLevelNumber(2)
+         }
+          
+          topFunction()
          }
         })
         .catch(error => {
             // console.log('error', error)
         });
 };
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
   return (
     <>
   
