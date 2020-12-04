@@ -138,6 +138,7 @@
     z-index: 80;
 
     &::after {
+        @include lg-screen{
         background: #44c4d9;
         content: '';
         position: absolute;
@@ -147,7 +148,7 @@
         height: 105px;
         width: 104px;
     }
-    
+}
     @include lg-screen {
         margin: 118px -157px 0 157px;
         
@@ -232,6 +233,12 @@
     @include lg-screen {
         margin: 16px auto 40px;
         max-width: 587px;
+    }
+    p{
+        padding-bottom: 25px;
+    }
+    li{
+        padding-bottom: 20px;
     }
 }
 
