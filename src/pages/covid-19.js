@@ -3,11 +3,12 @@ import Layout from "../components/layout"
 import YourBag from "../components/Cart/your-bag"
 import SEO from '../components/seo';
 import { graphql } from 'gatsby';
+import Customer from "../components/customer-care";
 
 const Covid = ({ data }) => (
     <Layout> 
       <SEO title="Cart" description="Cart Page Description" />
-
+      <Customer activeTab="covid-19">
 <div class="container-fluid">
 
 
@@ -38,6 +39,7 @@ In our 30+ years as Obagi we have seen the world change many times and have evol
 </div>
 </div>
 </div>
+</Customer>
 </Layout>
 )
 
