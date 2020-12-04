@@ -13,7 +13,7 @@ const Covid = ({ data }) => (
 
 
 <div class="row">
-<div class="col-12 col-md-8 offset-md-2" >
+<div class="col-12 col-md-8 " >
 <p class="common-p"><img alt="Covid" class="img-responsive" data-entity-type="file" data-entity-uuid="72a2ce7d-0b20-4dd2-9915-70834fc1d578" src="/api/sites/default/files/inline-images/Covidlogo_0.jpg"/></p>
 
 <h3 class="common-p">Our Covid-19 Response</h3>

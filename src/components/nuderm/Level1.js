@@ -88,8 +88,15 @@ const Level1 = props => {
         .then(res => res.json())
         .then(response => {
          if (response["sid"]) {
-         
+          var d = new Date();
+          var otherDate = new Date(document.querySelector('select[name="year"]').value,document.querySelector('select[name="month"]').value - 1,document.querySelector('select[name="day"]').value);
+          var bool = (d.toDateString() === otherDate.toDateString());
+         if (bool === true) {
+          props.GetLevelNumber(3)
+         }else{
           props.GetLevelNumber(2)
+         }
+          
           topFunction()
          }
         })
