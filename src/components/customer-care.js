@@ -41,7 +41,7 @@ const Customer = ({ node, children, activeTab }) => {
                 <div className="col-12">
                     <div className="dropdown">
                         <button className="dropdown-toggle myaccount-toggle" type="button" id="accountDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "faq"? "FAQs" : activeTab === "my-account"? "My Account" : "Select"}
+                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "covid-19"? "FAQs" : activeTab === "my-account"? "My Account" :activeTab === "covid-19"? "COVID-19 Information" : activeTab === "my-account"? "My Account": "Select"}
                         </button>
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
                             <Link to="/covid-19" className={activeTab == "covid-19" ? "active account-tab" : "account-tab"}  id="covid">COVID-19 Information</Link>
@@ -59,7 +59,7 @@ const Customer = ({ node, children, activeTab }) => {
 
                     <div className="col-lg-2 offset-lg-1 d-none d-lg-block">
                         <div className="list-group" id="myList" role="tablist">
-                            <Link className={activeTab == "covid-19" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/covid-19">COVID-19 Information</Link>
+                            <Link className={activeTab == "covid-19" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/customer-care/covid-19">COVID-19 Information</Link>
                             <Link className={activeTab == "contact-us" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/customer-care/contact-us" >Contact Us</Link>
                             <Link className={activeTab == "shipping-returns" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/online-ordering-and-returns-policy" >Online Ordering & Returns Policy</Link>
                             <Link className={activeTab == "faq" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/FAQ" >FAQs</Link>
