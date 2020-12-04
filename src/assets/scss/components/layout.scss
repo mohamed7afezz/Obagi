@@ -207,7 +207,7 @@ p {
             }
         }
 
-        li a {
+        li a, li span {
             @extend %futurapt-bold;
             @include fontStyle(16, 24);
             color: #132466;

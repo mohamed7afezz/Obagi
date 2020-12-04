@@ -122,7 +122,7 @@ function createMenuHierarchy(menuData, menuName) {
       mappedElem = mappedArr[id]
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
-        if(mappedArr[mappedElem.drupal_parent_menu_item] == undefined){
+        if (mappedArr[mappedElem.drupal_parent_menu_item] == undefined) {
           // console.log("Menu items that not have parent",mappedElem)
         }
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
@@ -139,50 +139,50 @@ function createMenuHierarchy(menuData, menuName) {
 
 
 function buildLink(link, itemId, collapseTarget, isExpandable) {
-  
- if (isExpandable == false) {
+
+  if (isExpandable == false) {
     return (<Link to={link.link.uri.replace('internal:', '')}>
       {link.title}
     </Link>)
   } else if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
-        {link.title}
-      </Link>)
-    }
-    else if (itemId && collapseTarget && isExpandable) {
+    return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+      {link.title}
+    </Link>)
+  }
+  else if (itemId && collapseTarget && isExpandable) {
 
-      if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
-        let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
-        return (
-          <>
-            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
-              {link.title}
-            </a>
-            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
-          </>
-        )
-      } else {
-        return (
-          <>
-            <a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-              {link.title}
-
-            </a>
-            {/* <span className=""> */}
-            <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
-            {/* </span> */}
-          </>
-        )
-      }
+    if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
+      let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
+      return (
+        <>
+          <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
+            {link.title}
+          </a>
+          {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
+        </>
+      )
     } else {
       return (
         <>
-          <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+          <a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
             {link.title}
+
           </a>
+          {/* <span className=""> */}
+          <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
+          {/* </span> */}
         </>
       )
     }
+  } else {
+    return (
+      <>
+        <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+          {link.title}
+        </a>
+      </>
+    )
+  }
 
   // if (!link.external && link.link.uri) {
   //   return (<Link activeClassName="active" to={link.link.uri}>
@@ -227,7 +227,10 @@ function buildMenu(menuArray, isExpandable, menuName) {
               ((menuName == 'first-footer' && isExpandable === true) || (menuName == 'second-footer' && isExpandable === true) || (menuName == 'third-footer' && isExpandable === true) || (menuName == 'fourth-footer' && isExpandable === true)) ?
                 buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id)
                 :
-                buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
+                ((menuName == 'first-footer' && isExpandable === false) || (menuName == 'second-footer' && isExpandable === false) || (menuName == 'third-footer' && isExpandable === false) || (menuName == 'fourth-footer' && isExpandable === false)) ?
+                  <span className="single-tab">{menuArray[item].title}</span>
+                  :
+                  buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
