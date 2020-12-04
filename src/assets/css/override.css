@@ -2828,6 +2828,9 @@ width: 100%;
 #Showbag{
   top: 0 !important;
 }
+.twosec-sep{
+  padding-left: 0;
+}
 }
 #Showbag{
   position: fixed;
@@ -2913,9 +2916,7 @@ min-height: 0;
   display: flex;
   flex-direction: column;
 }
-.twosec-sep{
-  padding-left: 0;
-}
+
 
 #WAR,.bv_button_buttonMinimalist,.bv_avgRating_component_container,[data-bv-show="rating_summary"] .bv_main_container .bv_button_buttonMinimalist:hover
 ,[data-bv-show="rating_summary"] .bv_main_container .bv_button_buttonMinimalist{
@@ -3225,11 +3226,11 @@ font-weight:900;
 .generalcollectionhero + .finalpa{
   padding-bottom: 80px;
 }
-.ourHistory .general-basic-column p{
+/* .ourHistory .general-basic-column p{
   font-weight: 300 !important;
   font-size: 32px !important;
   line-height: 48px !important;
-}
+} */
 .new-check.terms .checkmark,.new-check.terms:hover .checkmark{
   width: 40px;
   height: 40px;

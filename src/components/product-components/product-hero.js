@@ -313,7 +313,16 @@ const ProductHero = ({ data, nodeType }) => {
           </div>:""} 
           <div className={ProductStyles.skintypes}>
             {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
-              Skin Type:{" "}
+              Skin Type:
+              {isClincal ?<>      {field_skin_type.map((item, index) => {
+                return (
+                  <span className={ProductStyles.canusedata}>
+                   {item.name}
+                    {index === field_skin_type.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })} </>:
+              <>
               {field_skin_type.map((item, index) => {
                 return (
                   <span className={ProductStyles.canusedata}>
@@ -322,10 +331,21 @@ const ProductHero = ({ data, nodeType }) => {
                   </span>
                 )
               })}
+              </>
+              }
             </p> : ""}
             {field_skin_concern.length > 0 ? <p className={ProductStyles.Indications}>
-              Skin Concerns:{" "}
-              {field_skin_concern.map((item, index) => {
+              Skin Concerns:
+            {isClincal ?<>   {field_skin_concern.map((item, index) => {
+                return (
+                  <span className={ProductStyles.Indicationsdata}>
+                 {item.name}
+                    {index === field_skin_concern.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })}</>
+            :<>
+            {field_skin_concern.map((item, index) => {
                 return (
                   <span className={ProductStyles.Indicationsdata}>
                     <Link to={item.path.alias}> {item.name}</Link>
@@ -333,7 +353,11 @@ const ProductHero = ({ data, nodeType }) => {
                   </span>
                 )
               })}
-            </p> : ""}
+            </>
+            
+            
+            
+            }</p> : ""}
 
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>

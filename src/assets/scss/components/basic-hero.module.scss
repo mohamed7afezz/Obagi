@@ -21,6 +21,21 @@
     }
 }
 .collectiondescription{
+    h2{
+        font-size: 16px;
+        line-height: 24px;
+        font-family:  futura-pt,   sans-serif; 
+        font-weight:  500; 
+        font-style:  normal;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        @include md-screen{
+         padding-top: 8px;
+         padding-bottom: 16px;
+            font-size: 18px;
+            line-height: 32px;
+        }   
+    }
    p{
        font-size: 16px;
        line-height: 24px;
@@ -43,8 +58,8 @@
                font-size: 18px;
                line-height: 32px;
            }
-      
        }
+    
    }
    small{
     font-weight: 300;
