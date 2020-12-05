@@ -279,7 +279,7 @@ const Resulte = (props) => {
                                                 {arraysEqual(addingToCart,GetProductsIds()) ? "Adding all to Bag" : "Add all to Bag"}
                                             </button>                                        </div>
                                         <p className={[resulteSkinStyle.resPageSubdetail, "show-mob"].join(" ")}>If you have detailed questions about your individual skin care or products needs,
-                                        it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here to find an Obagi physician</Link> near you.</p>
+                                        it is best to talk to a physician. <Link to="/medical/hcpfinder" >Click here to find an Obagi physician</Link> near you.</p>
                                     </div>
 
                                 </div>
@@ -296,7 +296,7 @@ const Resulte = (props) => {
 
                                         <button className={resulteSkinStyle.startover} onClick={startOver}>Start Over</button>
                                         <div className={resulteSkinStyle.talktophy}>
-                                            <p>If you have detailed questions about your individual skin care or products, it is best to talk to a physician. <Link to="/medical/phcfinder" >Click here to find an Obagi physician</Link> near you.</p>
+                                            <p>If you have detailed questions about your individual skin care or products, it is best to talk to a physician. <Link to="/medical/hcpfinder" >Click here to find an Obagi physician</Link> near you.</p>
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-10 col-lg-7 results-card-container">
