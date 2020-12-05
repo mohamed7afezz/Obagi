@@ -4147,3 +4147,13 @@ top: 78.5px !important;
 
       }
   }
+
+.upsideButton {
+    transform: rotate(180deg);
+    transition: all ease 300ms;
+}
+
+.downButton {
+    transform: rotate(0);
+    transition: all ease 300ms;
+} 

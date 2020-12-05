@@ -8,19 +8,33 @@ import Logo from '../assets/images/200x200.png'
 
 const HeroSlider = ({ node }) => {
 
-    // let scrollSection = document.querySelector("#here");
-    // let scrollButton = document.querySelector("#slideDownButton");
+
     // useEffect(() => {
      
+    //     let scrollSection = document.querySelector("#here");
+    //     let scrollButton = document.querySelector("#slideDownButton");
+    //     if (typeof window !== "undefined" ) {
+    //         window.addEventListener("scroll", function () {
+    //             if (window.scrollY > (scrollSection.offsetTop - 550)) {
+    //                 scrollButton.classList.remove("d-none");
+    //                 scrollButton.classList.add("downButton");
+    //                 scrollButton.classList.remove("upsideButton");
 
-    //     window.addEventListener("scroll", function () {
-    //         if (window.scrollY > (scrollSection.offsetTop + scrollSection.offsetHeight)) {
-    //             scrollButton.style.display = "block";
-    //             scrollButton.classList.add("upsideButton");
+    
+    //             } else if (window.scrollY > (scrollSection.offsetTop + window.innerHeight)) {
 
-    //         }
-
-    //     })
+    //                 scrollButton.classList.remove("downButton");
+    //                 scrollButton.classList.add("upsideButton");
+                    
+    
+    //             } else {
+    //                 scrollButton.classList.add("d-none");
+    //                 scrollButton.classList.remove("downButton");
+    //                 scrollButton.classList.remove("upsideButton");
+    //             }
+    
+    //         })
+    //     }
     // }, [])
 
     const SliderSetting = {
