@@ -3849,15 +3849,24 @@ top: 78.5px !important;
   }
   .our-history-colored .colored-small-section {
       @include lg-screen {
-          padding-bottom: 267px;
+          padding-bottom: 237px;
       }
   }
+.our-history-colored {
+    .title{
+        font-size: 40px;
+        line-height: 56px;
+        @include lg-screen{
+            font-size: 72px;
+            line-height: 88px;
+        }
+    }
+}
 
   .our-history-colored .colored-small-section::after {
-      @include lg-screen {
-        left: 142px;
-      }
-  }
+    left: 142px;
+    bottom: -196px;
+}
 
   .our-history-colored .colored-subtitle {
       padding-top: 59px;
@@ -4009,7 +4018,9 @@ top: 78.5px !important;
       }
       .our-history-colored .colored-image {
           margin-top: 80px;
+          @include lg-screen{
           margin-bottom: -32px;
+        }
       }
       .our-history-colored .colored-image::after {
           right: 0;

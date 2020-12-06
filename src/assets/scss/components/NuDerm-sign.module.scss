@@ -194,6 +194,7 @@ margin-top: 24px;
     @extend %futurapt-bold;
     padding-top: 24px;
     padding-bottom: 24px;
+    text-transform: uppercase;
     @include md-screen{
         margin-bottom: 32px;
         

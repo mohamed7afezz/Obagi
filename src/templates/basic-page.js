@@ -72,8 +72,9 @@ query($slug: String!) {
                 ...paragraphScientificTowCols
                 ...paragraphScientificFooter
                 ...paragraphInternational
-                ...paragraphFullWidthWithImage
                 ...paragraphCustomList
+                ...paragraphStoryFinal
+                ...paragraphLeftSubImgRightText
             }
         }
         field_meta_tags {

@@ -63,6 +63,8 @@ import SintificFooter from './scientific-big-desc';
 import International from './international'
 import FullWidthWithImage from './full-width-with-image';
 import CustomList from './List-Paragrapgh';
+import FinalStory from './final-story';
+import LeftSubimg from './left-sub-img';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -126,7 +128,9 @@ const componentsMap = {
     paragraph__scientific_describtion_big_link:SintificFooter,
     paragraph__international: International,
     paragraph__full_width_with_image: FullWidthWithImage,
-    paragraph__list : CustomList
+    paragraph__list : CustomList,
+    paragraph__story_final : FinalStory,
+    paragraph__left_sub_img_right_text: LeftSubimg
 }
 
 export const getParagraph = node => {

@@ -312,3 +312,150 @@
         margin-top: 186px;
     }
 }
+.ourStory .title{
+    font-size: 40px;
+    line-height: 56px;
+    @include lg-screen{
+        font-size: 72px;
+        line-height: 88px;
+    }
+}
+.ourStory{
+position: relative;
+    &::after{
+        content: " ";
+        width: 65px;
+        height: 65px;
+        position: absolute;
+        bottom: 65px;
+        left: 0;
+        display: block;
+        background: #868cd2;
+
+        @include lg-screen{
+            display: none;
+        }
+    }
+    .big-section{
+        flex-direction: column-reverse;
+        background-color: #fff;
+        @include lg-screen{
+            flex-direction: row;
+        }
+    }
+    .col-right-padding{
+        padding-right: 15px;
+        padding-bottom: 70px;
+        @include lg-screen{
+            
+        background-color: #132466;
+                padding-right: 0;
+          padding-bottom: 0;
+        }
+    }
+   .col-left-padding{  padding-right: 0;
+       @include lg-screen{
+         padding-right: 15px;
+       }
+   }
+    .title{
+        margin-left: 0;
+    }
+    .subtitle{
+        margin-left: 0;
+        padding-top: 70px;
+        padding-bottom: 16px;
+        @include lg-screen{
+            padding-top: 238px;
+            padding-bottom: 28px;
+        }
+     
+    }
+    .description{
+        margin-left: 0;
+        @include lg-screen{
+        margin-top: 40px;
+        }
+        margin-top: 16px;
+        max-width: 600px;
+        margin-bottom: 0;
+        p{
+            padding-bottom: 0;
+        }
+    }
+    .image{
+        margin: 0;
+        @include lg-screen{
+        margin: 118px 157px 0 -157px;
+    }
+}
+.first-section{
+    &::before {
+        height: 65px;
+        width: 65px;
+        content: '';
+        background: #ffcd00;
+        position: absolute;
+        right:  -65px;
+        z-index: 99;
+        left: auto;
+        bottom: 0;
+    }
+}
+    .small-section {
+        color: #fff;
+        background: #132466;
+      position: relative;
+
+        @include lg-screen {
+            background: #132466;
+            padding: 0 30px 236px 187px;
+            &::before {
+                height: 118px;
+                width: 118px;
+                content: '';
+                background: #ffcd00;
+                position: absolute;
+                right:  -103px;
+                z-index: 99;
+                left: auto;
+            }
+    
+            &::after {
+                background: #868cd2;
+                content: '';
+                position: absolute;
+                z-index: 999;
+                right: 157px;
+                bottom: -196px;
+                height: 196px;
+                width: 197px;
+                left: auto;
+            }
+        }
+    
+        @include xl-screen {
+                // margin-bottom: 196px;
+        }
+    }
+}
+@media (min-width:1120px) and (max-width:1710px){
+    .ourStory  { .image{
+        margin: 118px 0 0 -15px;
+        .gatsby-image-wrapper{
+            height: 100vh;
+        }
+    }
+}
+    .ourStory .small-section::after{
+        right: 15px;
+    }
+}
+.ourStory{
+    padding-top: 64px;
+    padding-bottom: 130px;
+    @include lg-screen{
+        padding-top: 192px;
+        padding-bottom: 196px;
+    }
+}
