@@ -227,10 +227,14 @@ p {
             }
 
             @include md-screen {
-                display: unset;
                 &::after, &::before {
                     content: none;
                 }
+            }
+        }
+        li a {
+            @include md-screen {
+                display: unset;
             }
         }
 
@@ -4142,3 +4146,25 @@ top: 78.5px !important;
   .clinical-menu-link ~ * {
       display: none;
   }
+
+  h1 sup {
+      font-size: 37.5%;
+      top: -1.5em;
+  }
+
+  .skinclusion-sec .row {
+      @include lg-screen {
+          margin-left: -40px !important;
+
+      }
+  }
+
+.upsideButton {
+    transform: rotate(180deg);
+    transition: all ease 300ms;
+}
+
+.downButton {
+    transform: rotate(0);
+    transition: all ease 300ms;
+} 
