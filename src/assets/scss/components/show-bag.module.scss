@@ -74,6 +74,12 @@
       overflow: visible;
   }
   .productCounter{
+      padding-top: 15px;
+      padding-bottom: 15px;
+      @include lg-screen{
+          padding-top: 0;
+          padding-bottom: 0;
+      }
       width: 100%;
     a{
     background-color: transparent;

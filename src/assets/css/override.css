@@ -1024,8 +1024,7 @@ button:focus{
 }
 @media (max-width: 767px) {
   #Showbag .show-bag-header{
-    margin-top: 16px;
-    margin-bottom: 16px;
+  
     padding-bottom: 0;
     padding-top: 0;
   }
