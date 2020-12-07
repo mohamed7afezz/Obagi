@@ -21,25 +21,30 @@ export default function Orders() {
     const [isLoading, setIsLoading] = useState(false);
     async function getOrders() {
         setIsLoading(true);
-        console.log("bahiii shaghala")
 
-        const ordersData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
+        const ordersDataRequest = await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
             method: 'GET',
             credentials: 'include',
             mode: 'cors'
         }).catch(error => {
             console.log("bahiii error", error)
             setIsLoading(false);
-        })).json();
-
-        if (ordersData !== "User not login.") {
-            setOrders(ordersData);
+        })
+        console.log("bahiiii req", ordersDataRequest.status, (ordersDataRequest.status === 204 || ordersDataRequest.status === 404))
+        if (ordersDataRequest.status === 204 || ordersDataRequest.status === 404) {
+   
+        } else {
+            const ordersData = await ordersDataRequest.json();
+            if (ordersData !== "User not login.") {
+                setOrders(ordersData);
+            }
         }
         setIsLoading(false);
+
+        
     }
 
     useEffect(() => {
-        console.log("bahiiii use effect")
         getOrders();
     }, [])
 
