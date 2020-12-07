@@ -50,7 +50,7 @@ const ProductCard = ({
                     <p>new</p>
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
-                <h1  className="d-none Productcardtype show-mob-result">{Type}</h1>
+                {/* <h1  className="d-none Productcardtype show-mob-result">{Type}</h1> */}
                 {productdescription ? (
           <div
             className={[Productcard.productcardcon,"productcardcon","analyzr"].join(" ")}

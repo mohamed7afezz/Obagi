@@ -124,6 +124,7 @@
 
 .row-wrapper {
     position: relative;
+    z-index: 9;
 }
 .yellow-square {
     position: absolute;
@@ -153,6 +154,7 @@
 
 .slide-down {
     position: fixed;
-    bottom: 0;
+    bottom: 100px;
     background-color: #132466;
+    height: 48px;
 }
