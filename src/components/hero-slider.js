@@ -9,33 +9,35 @@ import Logo from '../assets/images/200x200.png'
 const HeroSlider = ({ node }) => {
 
 
-    // useEffect(() => {
+    useEffect(() => {
      
-    //     let scrollSection = document.querySelector("#here");
-    //     let scrollButton = document.querySelector("#slideDownButton");
-    //     if (typeof window !== "undefined" ) {
-    //         window.addEventListener("scroll", function () {
-    //             if (window.scrollY > (scrollSection.offsetTop - 550)) {
-    //                 scrollButton.classList.remove("d-none");
-    //                 scrollButton.classList.add("downButton");
-    //                 scrollButton.classList.remove("upsideButton");
+        let scrollSection = document.querySelector("#here");
+        let scrollButton = document.querySelector("#slideDownButton");
+        if (typeof window !== "undefined" ) {
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > (scrollSection.offsetTop - 550) && window.scrollY < (scrollSection.offsetTop + window.innerHeight)) {
+                    scrollButton.classList.remove("d-none");
+                    scrollButton.classList.add("downButton");
+                    scrollButton.classList.remove("upsideButton");
 
     
-    //             } else if (window.scrollY > (scrollSection.offsetTop + window.innerHeight)) {
+                } else if (window.scrollY > (scrollSection.offsetTop + window.innerHeight)) {
 
-    //                 scrollButton.classList.remove("downButton");
-    //                 scrollButton.classList.add("upsideButton");
+                    scrollButton.classList.remove("downButton");
+                    scrollButton.classList.add("upsideButton");
                     
     
-    //             } else {
-    //                 scrollButton.classList.add("d-none");
-    //                 scrollButton.classList.remove("downButton");
-    //                 scrollButton.classList.remove("upsideButton");
-    //             }
+                } else {
+                    scrollButton.classList.add("d-none");
+                    scrollButton.classList.remove("downButton");
+                    scrollButton.classList.remove("upsideButton");
+                }
     
-    //         })
-    //     }
-    // }, [])
+            })
+        }
+    console.log("ashhh",window.scrollY, scrollSection.offsetTop - 550, scrollSection.offsetTop + window.innerHeight)
+
+    }, [])
 
     const SliderSetting = {
         infinite: true,
