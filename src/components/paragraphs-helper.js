@@ -65,6 +65,7 @@ import FullWidthWithImage from './full-width-with-image';
 import CustomList from './List-Paragrapgh';
 import FinalStory from './final-story';
 import LeftSubimg from './left-sub-img';
+import OrderStatus from './order-status';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -130,7 +131,8 @@ const componentsMap = {
     paragraph__full_width_with_image: FullWidthWithImage,
     paragraph__list : CustomList,
     paragraph__story_final : FinalStory,
-    paragraph__left_sub_img_right_text: LeftSubimg
+    paragraph__left_sub_img_right_text: LeftSubimg,
+    paragraph__order_status : OrderStatus
 }
 
 export const getParagraph = node => {

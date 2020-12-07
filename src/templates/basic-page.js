@@ -75,6 +75,7 @@ query($slug: String!) {
                 ...paragraphCustomList
                 ...paragraphStoryFinal
                 ...paragraphLeftSubImgRightText
+                ...paragraphOrderStatus
             }
         }
         field_meta_tags {
