@@ -209,3 +209,67 @@
 .cs-number {
     white-space: nowrap;
 }
+.FsectionWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttonWrapper{
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    padding: 16px 32px;
+    border: 1px solid #132466;
+    color: #132466 !important;
+    border-radius: 6px;
+}
+.buttonWrapper:hover{
+    background-color:  #132466;
+    color: #fff !important;
+}
+.fsubtitle{
+    font-size: 32px;
+line-height: 48px;
+margin-top: 32px;
+margin-bottom: 8px;
+@extend %futurapt-light;
+}
+.formContainer{
+    margin-top: 32px;
+}
+.formNote{
+    font-size: 14px;
+    color: #7c858a;
+
+margin-bottom: 16px;
+    @include lg-screen{
+    margin-bottom: 24px;
+}
+}
+.orderButton{
+    color: #fff;
+    background-color: #132466;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 16px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: 1px solid #132466;
+    padding-top: 16px;
+    padding-bottom: 16px;
+ width: 100%;
+    @include lg-screen{
+    width: 280px;
+}
+    @extend %futurapt-bold;
+
+}
+.orderButtonContainer{
+    width: 100%;
+    display: inline-block;
+    @include lg-screen{
+     width: auto;
+    }
+}
