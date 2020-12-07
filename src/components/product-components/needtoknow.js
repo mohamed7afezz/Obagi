@@ -16,7 +16,7 @@ const Needtoknow = ({ node }) => {
         }
     }
     return (
-        <div className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
+        <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
 
             <div className={"row"}>
                 <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>

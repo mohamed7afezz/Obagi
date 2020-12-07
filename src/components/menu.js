@@ -37,7 +37,7 @@ function addMainStyles(e) {
 
   if (e.target.closest(".extended-nav > ul > li > a")) {
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-    document.querySelector(".extended-nav ul span").classList.add("not-selected");
+    document.querySelector(".extended-nav ul > span").classList.add("not-selected");
 
 
     document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
@@ -51,7 +51,7 @@ function addMainStyles(e) {
   if (e.target.closest(".extended-nav > ul > span")) {
 
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-    document.querySelector(".extended-nav ul span").classList.add("not-selected");
+    document.querySelector(".extended-nav ul > span").classList.add("not-selected");
 
     let selectedSpan = e.target.closest(".extended-nav > ul > span");
     selectedSpan.classList.remove("not-selected");
@@ -64,8 +64,8 @@ function removeMainStyles() {
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("hovered"));
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
 
-  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("hovered"));
-  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("not-selected"));
+  document.querySelectorAll(".extended-nav ul > span").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".extended-nav ul > span").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 function addOverview(e) {
@@ -142,11 +142,11 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
     return (<Link to={link.link.uri.replace('internal:', '')}>
-      {link.title}
+      <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
     </Link>)
   } else if (!collapseTarget && itemId) {
     return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
-      {link.title}
+      <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
     </Link>)
   }
   else if (itemId && collapseTarget && isExpandable) {
@@ -156,7 +156,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       return (
         <>
           <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
-            {link.title}
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
           </a>
           {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
         </>
@@ -165,7 +165,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       return (
         <>
           <a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-            {link.title}
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
 
           </a>
           {/* <span className=""> */}
@@ -178,7 +178,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     return (
       <>
         <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-          {link.title}
+          <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
         </a>
       </>
     )
