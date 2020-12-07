@@ -215,15 +215,21 @@
     align-items: center;
 }
 .buttonWrapper{
-    text-transform: uppercase;
+    text-decoration: underline;
+    color: #132466 !important;
+  font-weight: 300;
+    @include lg-screen{
+        text-transform: uppercase;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 1.2px;
-    @extend %futurapt-bold;
+   font-weight: 300;
     padding: 16px 32px;
     border: 1px solid #132466;
-    color: #132466 !important;
+    font-weight: 700;
     border-radius: 6px;
+    text-decoration: none; 
+    }
 }
 .buttonWrapper:hover{
     background-color:  #132466;
@@ -234,10 +240,18 @@
 line-height: 48px;
 margin-top: 32px;
 margin-bottom: 8px;
+display: none;
+@include lg-screen{
+    display: block;
+}
 @extend %futurapt-light;
 }
 .formContainer{
     margin-top: 32px;
+    @include lg-screen{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 }
 .formNote{
     font-size: 14px;
@@ -273,10 +287,10 @@ margin-bottom: 16px;
     
     max-width: 224px;
 margin-top: 25px;
-font-weight: 400;
+font-weight: 500;
     @include lg-screen{
         max-width: none;
-        margin-top: 0;
+     
     }
 }
 .orderButtonContainer{
@@ -284,5 +298,13 @@ font-weight: 400;
     display: inline-block;
     @include lg-screen{
      width: auto;
+    }
+}
+.removemobpadding{
+    padding-left: 0;
+    padding-right: 0;
+    @include lg-screen{
+        padding-right: 15px;
+        padding-left: 15px;
     }
 }

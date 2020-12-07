@@ -46,10 +46,10 @@ const Customer = ({ node, children, activeTab }) => {
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
                             <Link to="/covid-19" className={activeTab == "covid-19" ? "active account-tab" : "account-tab"}  id="covid">COVID-19 Information</Link>
                             <Link to="/customer-care/contact-us" className={activeTab == "contact-us" ? "active account-tab" : "account-tab"} id="contact">Contact Us</Link>
+                            <Link to="/order-status" className={activeTab == "order-status" ? "active account-tab" : "account-tab"}  id="covid">Order Status</Link>
                             <Link to="/online-ordering-and-returns-policy" className={activeTab == "shipping-returns" ? "active account-tab" : "account-tab"} id="shipping">Online Ordering & Returns Policy</Link>
                             <Link to="/FAQ" className={activeTab == "faq" ? "active account-tab" : "account-tab"} id="faqs">FAQs</Link>
                             <Link to="/my-account/orders" className={activeTab == "my-account" ? "active account-tab" : "account-tab"} id="account">My Account</Link>
-                            <Link to="/order-status" className={activeTab == "order-status" ? "active account-tab" : "account-tab"}  id="covid">Order Status</Link>
 
                         </div>
                     </div>
@@ -62,10 +62,10 @@ const Customer = ({ node, children, activeTab }) => {
                         <div className="list-group" id="myList" role="tablist">
                             <Link className={activeTab == "covid-19" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/covid-19">COVID-19 Information</Link>
                             <Link className={activeTab == "contact-us" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/customer-care/contact-us" >Contact Us</Link>
+                            <Link className={activeTab == "order-status" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/order-status" >Order Status</Link>
                             <Link className={activeTab == "shipping-returns" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/online-ordering-and-returns-policy" >Online Ordering & Returns Policy</Link>
                             <Link className={activeTab == "faq" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/FAQ" >FAQs</Link>
                             <Link className={activeTab == "my-account" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/orders" >My Account</Link>
-                            <Link className={activeTab == "order-status" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/order-status" >Order Status</Link>
 
                             <div className={myAccountStyles.csTitle}>Customer Service</div>
                             <div className={myAccountStyles.csText}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={myAccountStyles.csNumber}>1-800-636-7546</span>.</div>

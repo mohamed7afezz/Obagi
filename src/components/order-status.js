@@ -9,7 +9,7 @@ const OrderStatus = ({ node }) => {
         <Customer activeTab="order-status">
             <div className="container-fluid contact-us ">
                 <div className="row">
-                    <div class="col-12 col-md-12">
+                    <div class={["col-12 col-md-12",myAccountStyles.removemobpadding].join(" ")}>
                         <div className={myAccountStyles.FsectionWrap}>
                             <div>
                                 <div className={myAccountStyles.fsubtitle}>Order Status</div>
@@ -19,7 +19,7 @@ const OrderStatus = ({ node }) => {
                             </div>
                             <Link className={myAccountStyles.buttonWrapper} to={"/my-account/signin"}>Sign In</Link>
                         </div>
-                        <p className={myAccountStyles.Needpara}>Need Your Tracking or return info? Find your order here</p>
+                        <p className={myAccountStyles.Needpara}>Need Your Tracking or return info? Find your order here.</p>
                     </div>
                     <form className={[myAccountStyles.formContainer].join(" ")}>
 
