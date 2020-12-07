@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;
   let getname;
+  console.log("hassan1",nodetype)
   if (nodetype == "clinicalConcern") {
     getname = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -49,7 +50,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-
+  console.log("hassan",nodetype)
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
@@ -1092,7 +1093,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   <div className=" breadcramp-con hide col-12">
                                     <p className="breadcramp">
                                       <Link to="/">Home</Link> /{" "}
-                                      <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title ? checkTaxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                                      <Link to={'/' + first_url}> {first_url}</Link> / {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""}
                                     </p>
                                   </div>
 
