@@ -13,13 +13,13 @@ const OrderStatus = ({ node }) => {
                         <div className={myAccountStyles.FsectionWrap}>
                             <div>
                                 <div className={myAccountStyles.fsubtitle}>Order Status</div>
-                                <div className={"contact-text"}>
+                                <div className={["contact-text",myAccountStyles.alAccount].join(" ")}>
                                     ALeardy have an account ?
                                   </div>
                             </div>
                             <Link className={myAccountStyles.buttonWrapper} to={"/my-account/signin"}>Sign In</Link>
                         </div>
-                        <p>Need Your Tracking or return info? Find your order here</p>
+                        <p className={myAccountStyles.Needpara}>Need Your Tracking or return info? Find your order here</p>
                     </div>
                     <form className={[myAccountStyles.formContainer].join(" ")}>
 

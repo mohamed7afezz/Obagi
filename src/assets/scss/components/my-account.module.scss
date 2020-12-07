@@ -266,6 +266,19 @@ margin-bottom: 16px;
     @extend %futurapt-bold;
 
 }
+.alAccount{
+    font-weight: 300;
+}
+.Needpara{
+    
+    max-width: 224px;
+margin-top: 25px;
+font-weight: 400;
+    @include lg-screen{
+        max-width: none;
+        margin-top: 0;
+    }
+}
 .orderButtonContainer{
     width: 100%;
     display: inline-block;
