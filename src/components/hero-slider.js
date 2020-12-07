@@ -35,7 +35,6 @@ const HeroSlider = ({ node }) => {
     
             })
         }
-    console.log("ashhh",window.scrollY, scrollSection.offsetTop - 550, scrollSection.offsetTop + window.innerHeight)
 
     }, [])
 

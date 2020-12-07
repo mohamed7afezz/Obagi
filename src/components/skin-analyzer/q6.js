@@ -143,32 +143,50 @@ const Q6 = (props) => {
                         <div class="modal-body">
                             <div className="skin-type-title">Skin Type I</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): ivory Eye Color: light blue, light gray, or light green Natural Hair Color: red or light blonde Sun Reaction: skin always freckles, always burns and peels, and never tans
+                                <p>Skin Color (before sun exposure): ivory</p>
+                                <p>Eye Color: light blue, light gray, or light green</p>
+                                <p>Natural Hair Color: red or light blonde</p>
+                                <p>Sun Reaction: skin always freckles, always burns and peels, and never tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type II</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): fair or pale Eye Color: blue, gray, or green Natural Hair Color: blonde Sun Reaction: skin usually freckles, burns and peels often, and rarely tans
+                                <p>Skin Color (before sun exposure): fair or pale</p>
+                                <p>Eye Color: blue, gray, or green</p>
+                                <p>Natural Hair Color: blonde</p>
+                                <p>Sun Reaction: skin usually freckles, burns and peels often, and rarely tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type III</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): fair to beige, with golden undertones Eye Color: hazel or light brown Natural Hair Color: dark blonde or light brown Sun Reaction: skin might freckle, burns on occasion, and sometimes tans
+                                <p>Skin Color (before sun exposure): fair to beige, with golden undertones</p>
+                                <p>Eye Color: hazel or light brown</p>
+                                <p>Natural Hair Color: dark blonde or light brown</p>
+                                <p>Sun Reaction: skin might freckle, burns on occasion, and sometimes tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type IV</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): olive or light brown Eye Color: dark brown Natural Hair Color: dark brown Sun Reaction: doesn’t really freckle, burns rarely, and tans often
+                                <p>Skin Color (before sun exposure): olive or light brown</p>
+                                <p>Eye Color: dark brown</p>
+                                <p>Natural Hair Color: dark brown</p>
+                                <p>Sun Reaction: doesn’t really freckle, burns rarely, and tans often</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type V</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): dark brown Eye Color: dark brown to black Natural Hair Color: dark brown to black Sun Reaction: rarely freckles, almost never burns, and always tans
+                                <p>Skin Color (before sun exposure): dark brown</p>
+                                <p>Eye Color: dark brown to black</p>
+                                <p>Natural Hair Color: dark brown to black</p>
+                                <p>Sun Reaction: rarely freckles, almost never burns, and always tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type VI</div>
                             <div className="skin-type-desc">
-                                Skin Color (before sun exposure): deeply pigmented dark brown to darkest brown Eye Color: brownish black Natural Hair Color: black Sun Reaction: never freckles, never burns, and always tans darkly
+                                <p>Skin Color (before sun exposure): deeply pigmented dark brown to darkest brown</p>
+                                <p>Eye Color: brownish black</p>
+                                <p>Natural Hair Color: black</p>
+                                <p>Sun Reaction: never freckles, never burns, and always tans darkly</p>
                             </div>
                         </div>
                     </div>
