@@ -294,7 +294,6 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       y.style.display = "none";
     }
   }
-console.log("ashhhhh", nodeType)
 
   function openSearch() {
     var search = document.getElementById("search-wrapper");

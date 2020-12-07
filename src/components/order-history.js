@@ -24,7 +24,6 @@ const OrderHistory = ({ ordersList }) => {
 
 
     if (orders === "undefined" || Object.keys(orders).length == "0" || orders.length == 0 ) {
-        {console.log("bahiii no history")}
         return <OrderNoHistory />
 
     } else {

@@ -163,7 +163,7 @@ const Q4 = (props) => {
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ElastisitySagging" name="q" value="Elastisity & Sagging" onChange={sendBackData} />
-                                <label onClick={topFunction}  htmlFor="ElastisitySagging">Elastisity and Sagging</label>
+                                <label onClick={topFunction}  htmlFor="ElastisitySagging">Elasticity and Sagging</label>
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
