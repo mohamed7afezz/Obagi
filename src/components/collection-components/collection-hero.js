@@ -50,7 +50,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-  console.log("hassan",nodetype)
+  console.log("hassan",nodetype,node,checkTaxonomy)
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
@@ -93,7 +93,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     <div
       className={checktaxonomyType === "clinical" || nodetype === "clinical" || first_url === "clinical" ?
         "container-fluid collectionhero " + Collectionherostyle.clinicalcollectionhero
-        : (first_url === "medical" || nodetype === "medical" || checktaxonomyType === "medical") ? "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
+        : (first_url === "medical" || nodetype === "medical" || checktaxonomyType === "medical") ?
+         "container-fluid collectionhero medical-bg " + Collectionherostyle.medicalcollectionhero + " " + Collectionherostyle.medicalBg
           : "container-fluid collectionhero  generalcollectionhero clinicalcollectionhero medical-bg"}
 
     >
@@ -113,10 +114,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           >
             <div className="row">
               {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                <p className="breadcramp">
-                  <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_paraprapgh_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                </p>
+              <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
+                    checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+           
               </div>}
               <div className="col-11 offset-lg-1">
                 {checkTaxonomy.field_hero_paraprapgh_taxonomy ? (
@@ -207,11 +215,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           >
             <div className="row">
               {<div className={[" breadcramp-con hide", "col-11", "offset-lg-1"].join(" ")}>
-                <p className="breadcramp">
-                  <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_categories_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                </p>
-              </div>}
+              <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
+                    checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+            </div>}
               <div className="col-12 col-lg-11 offset-lg-1">
                 {checkTaxonomy.field_hero_categories_taxonomy ? (
                   <p className={Collectionherostyle.type}>
@@ -304,21 +318,19 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           >
             <div className="row">
               {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                <p className="breadcramp">
-                  <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_page_url ?
-                    <Link to={checkTaxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_page_title ?
-                      checkTaxonomy.field_taxonomy_page_title : getname}</Link> :
-                    checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url ?
-                      <Link dangerouslySetInnerHTML={{
-                        __html: checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title ?
-                          checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title : getname
-                      }} to={checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url}>
-                      </Link>
-                      : ""
-                  }
-                </p>
-              </div>}
+              <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                 / {checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_hero_para_title?
+                   <span dangerouslySetInnerHTML={{
+                    __html: checkTaxonomy.field_hero_productline_taxonomy.field_taxonomy_hero_para_title
+                  }}></span>
+                   :""}
+                    </p>
+            </div>}
 
             </div>
             <div className="row collectionherorow">
@@ -412,12 +424,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
           >
             <div className="row">
               {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                <p className="breadcramp ">
-                  <Link to="/">Home</Link> /{" "}
-                  <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url ?
-                    <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title ?
-                      checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                </p>
+              <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+            
               </div>}
               </div>
               <div className="row collectionherorow">
@@ -511,11 +528,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
         >
           <div className="row">
             {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-              <p className="breadcramp">
+            <p className="breadcramp">
                 <Link to="/">Home</Link> /{" "}
-                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>{checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ? checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
-              </p>
-            </div>}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
+                    checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+              </div>}
 
           </div>
           <div class="row collectionherorow">
@@ -608,11 +631,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     >
                       <div className="row">
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                          <p className="breadcramp">
-                            <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title ? checkTaxonomy.field_hero_taxonomy_skintype.field_taxonomy_page_title : getname}</Link> : ""}
-                          </p>
-                        </div>}
+                        <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
+                    checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+              </div>}
 
                       </div>
                       <div className="row collectionherorow">
@@ -707,10 +736,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     >
                       <div className="row">
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                          <p className="breadcramp">
-                            <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                          </p>
+                        <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+           
                         </div>}
 
                       </div>
@@ -803,10 +839,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     >
                       <div className="row">
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                          <p className="breadcramp">
-                            <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                          </p>
+                        <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+           
                         </div>}
                       </div>
                       <div className="row collectionherorow">
@@ -898,10 +941,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                       <div className="row">
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
 
-                          <p className="breadcramp">
-                            <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                          </p>
+                        <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_hero_taxonomy.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_hero_taxonomy.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+           
                         </div>}
                       </div>
                       <div className="row collectionherorow">
@@ -994,11 +1044,17 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                     >
                       <div className="row">
                         {<div className={[" breadcramp-con hide", "col-12"].join(" ")}>
-                          <p className="breadcramp">
-
-                            <Link to="/">Home</Link> /{" "}
-                            <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url ? <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>{checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title ? checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
-                          </p>
+                        <p className="breadcramp">
+                <Link to="/">Home</Link> /{" "}
+                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url ?
+                 <Link to={checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_url}>
+                   {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title ?
+                    checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
+                  {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_hero_para_title?
+                   <span to={"#"}>/ {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_hero_para_title}</span>
+                   :""}
+                    </p>
+           
                         </div>}
                       </div>
                       <div className="row collectionherorow">
@@ -1078,7 +1134,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                       )}
                   </div>
                 ) : (
-                            <div className={"row hero-row-wrapper"}>
+                  <div className={"row hero-row-wrapper"}>
                               <div
                                 className={[
                                   "col-12",
@@ -1096,8 +1152,6 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                       <Link to={'/' + first_url}> {first_url}</Link> / {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""}
                                     </p>
                                   </div>
-
-
                                 </div>
                                 <div className="row generalcollectionherorow">
                                 <div className="col-12 col-lg-11 offset-lg-1">
@@ -1166,7 +1220,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   ""
                                 )}
                             </div>
-                          )}
+                )}
     </div>
 
   )
