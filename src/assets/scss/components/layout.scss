@@ -207,7 +207,7 @@ p {
             }
         }
 
-        li a, li span {
+        li a, li > span {
             @extend %futurapt-bold;
             @include fontStyle(16, 24);
             color: #132466;
@@ -1183,11 +1183,11 @@ p {
     }
 }
 
-.not-selected, .not-selected a {
+.not-selected, .not-selected a, .not-selected span {
     color: #7c858a !important;
 }
 
-.hovered, .hovered a {
+.hovered, .hovered a, .hovered span {
     color: #132466;
 }
 
