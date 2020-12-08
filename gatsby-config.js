@@ -33,6 +33,10 @@ module.exports = {
         baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
         concurrentFileRequests: 1,
+        basicAuth: {
+					username: 'gatsby-user',
+					password: 'ndVn8Xk7iahMny4'
+				}
       },
     },
  {
