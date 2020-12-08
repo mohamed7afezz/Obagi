@@ -158,7 +158,7 @@ function topFunction() {
 
                   <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                     <label for="state" className={["form-label", nudermStyle.customlabel].join(" ")}>*STATE</label>
-                    <select name="state" className="form-control" id="state">
+                    <select name="state" className="form-control" required id="state">
                       <option value="">- None -</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -268,7 +268,7 @@ function topFunction() {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="monthCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>MONTH</label>
-                      <select name="month" className="form-control" id="monthCustom">
+                      <select required name="month" className="form-control" id="monthCustom">
                         <option value="">Month</option><option value="1" >Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
                       </select>
                     </div>
@@ -279,7 +279,7 @@ function topFunction() {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="dayCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>DAY</label>
-                      <select name="day" className="form-control" id="dayCustom">
+                      <select required name="day" className="form-control" id="dayCustom">
                       <option value="">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
                       </select>
                     </div>
@@ -290,14 +290,11 @@ function topFunction() {
 
                     <div className={["select-wrapper", "nudermCustomSelect", "custom-select", nudermStyle.CustomSelect].join(" ")}>
                       <label for="yearCustom" className={["form-label", nudermStyle.customlabel].join(" ")}>YEAR</label>
-                      <select name="year" className="form-control" id="yearCustom">
+                      <select required name="year" className="form-control" id="yearCustom">
                       <option value="">Year</option>
+                      <option value="2019">2019</option>
                       <option value="2020">2020</option>
                       <option value="2021">2021</option>
-                      <option value="2022">2022</option>
-                      <option value="2023">2023</option>
-                      <option value="2024">2024</option>
-                      <option value="2025">2025</option>
                       </select>
                     </div>
                   </div>
@@ -363,8 +360,8 @@ function topFunction() {
             <div className={"col-12 col-lg-6 offset-lg-3"}>
               <label className="terms footnote" >
                 Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi.
-                By registering, your information will be collected and used in the U.S. subject to our U.S.
-                Privacy Policy and Terms of Use. For U.S. consumers only.
+                By registering, your information will be collected and used in the U.S. subject to our <Link to={"/privacy-policy"}> U.S.
+                Privacy Policy</Link> and <Link to={"/terms-of-use"}>Terms of Use</Link>. For U.S. consumers only.
                 <input type="checkbox" defaultChecked={true} required name="yes_agreement" />
                 <span className="checkmark"></span>
               </label>
@@ -375,14 +372,7 @@ function topFunction() {
               
               </button>
             </div>
-            <div className={" col-12 col-lg-6 offset-lg-3"}>
-              <p className={nudermStyle.ffootnote} >
-              By submitting your information, you confirm you have read and agree with the terms of our Privacy Policy and Legal Notice.
-              
-              </p>
-              <p className={nudermStyle.ffootnote}>  Obagi will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission. View full Privacy Policy.
-</p>
-            </div>
+           
         
           </form>
 

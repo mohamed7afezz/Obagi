@@ -584,6 +584,10 @@ border: 0;
     flex-wrap: wrap;
   }
 }
+.nuderm-start .select-items{
+  left: -1px;
+  top: -1px;
+}
 #Showbag .modal-footer{
   padding: 24px;
 }
@@ -3220,7 +3224,11 @@ font-weight:900;
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 24px;
-  
+  color: #132466;
+}
+.terms.footnote a{
+text-decoration: underline;
+  color: #132466;
 }
 .terms.footnote .checkmark,.terms.footnote:hover input:not(checked) ~ .checkmark{
   background-color: transparent;

@@ -22,6 +22,7 @@ const NudermSignUp = () => {
                             "col-lg-10",
                             "col-12",
                             "offset-lg-1",
+                            "nuderm-start",
                             nudermStyle.pagehero,
                         ].join(" ")}
                     >

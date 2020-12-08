@@ -530,9 +530,10 @@ const YourBag = (props, { notificationId }) => {
         //showpage content
         bagContent = (
           <>
+          {125 - parseFloat(cartAmount).toFixed(2) > 0 ?
                         <div className={BagStyle.FfreeShipping}>
-                        Spend <span>$29.00</span> more for FREE shipping!
-                                          </div>
+                        Spend <span>${125 - parseFloat(cartAmount).toFixed(2)}</span> more for FREE shipping!
+                                          </div>:""}
             <StandardItem
               currency={currency}
               updatingItem={updatingItem}
