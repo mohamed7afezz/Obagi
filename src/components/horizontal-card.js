@@ -84,9 +84,9 @@ const HorizontalCard = ({
         )}
         {price ? (
           <div className={Productcard.priceCon}>
-           {price !== "0"? <p className={Productcard.price}>
+            <p className={[Productcard.price, `${price === "0"? "price-opacity" : ""}`].join(" ")}>
               $ <span className="prod-price">{price}</span>
-            </p> : ""}
+            </p>
             {isrx == 'RX'?
             <Link className={Productcard.addtocart} to="/medical/hcpfinder">
               

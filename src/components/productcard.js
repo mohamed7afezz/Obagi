@@ -69,9 +69,9 @@ const ProductCard = ({
         <div className={"product-card-con"}>
           {isrx !== "RX" ? <div className={[Productcard.starspd, "starspd"].join(" ")}>
             <div className="analyzer-rate">
-              {price !== "0" ? <p className={[Productcard.price, "cardProdprice"].join(" ")}>
+              <p className={[Productcard.price, "cardProdprice", `${price === "0"? "price-opacity" : ""}`].join(" ")}>
                 $ <span className="prod-price">{price}</span>
-              </p> : ""}
+              </p>
 
               <div
 
@@ -114,9 +114,9 @@ const ProductCard = ({
             )}
           {price ? (
             <div className={[Productcard.priceCon, "priceCon"].join(" ")}>
-              {price !== "0"? <p className={[Productcard.price, "prod-price-con"].join(" ")}>
+              <p className={[Productcard.price, "prod-price-con", `${price === "0"? "price-opacity" : ""}`].join(" ")}>
                 $<span className="prod-price">{price}</span>
-              </p> : ""}
+              </p>
               {isrx == 'RX' ?
                 <Link className={Productcard.addtocart} to="/medical/hcpfinder">
 
