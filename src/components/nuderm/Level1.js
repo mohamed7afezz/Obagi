@@ -110,8 +110,6 @@ function topFunction() {
 } 
   return (
     <>
-  
-      
           <div
             className={[
               "col-lg-6",
@@ -124,8 +122,8 @@ function topFunction() {
               Stay on Track for Beautiful, Healthy-Looking Skin
             </h3>
             <p className={nudermStyle.desc}>
-              Are you new to the Nu-Derm<sup>®</sup> System and excited to start
-              your transformation? Join the New to Nu-Derm<sup>®</sup> Program
+              Are you new to the Nu-Derm System and excited to start
+              your transformation? Join the New to Nu-Derm Program
               and partner with us on your journey to beautiful, healthy-looking
               skin. By signing up below, you’ll receive timely information,
               inspiration, and encouragement every step of the way to help
@@ -153,7 +151,7 @@ function topFunction() {
               </label>
               <p className={nudermStyle.underselect}>
                 This program is currently available only to U.S. residents.
-               If you would like to receive updates on when it may become available in your country, <Link to="/careers">contact us.</Link>
+               If you would like to receive updates on when it may become available in your country, <Link to="/customer-care/contact-us">contact us.</Link>
               </p>
               <div className="group-wrapper">
                 <div className="form-group select-group mb-0">
@@ -248,8 +246,8 @@ function topFunction() {
               may not be sold in physicians’ offices in the following states:
                MA, MT, NH, NY, and TX. For an effective, cosmetic skin-brightening option, the Obagi Nu-Derm Fx<sup>™</sup>
                System is available for residents in these 5
-              states. While the New to Nu-Derm® Program is specifically designed for the Obagi Nu-Derm™ System,
-               Obagi Nu-Derm Fx<sup>™</sup> System users may also benefit from the program and receive valuable information
+              states. While the New to Nu-Derm Program is specifically designed for the Obagi Nu-Derm System,
+               Obagi Nu-Derm Fx System users may also benefit from the program and receive valuable information
             and helpful tips as well.</p>
               <div className={nudermStyle.inputfield}>
                 <label>*EMAIL</label>

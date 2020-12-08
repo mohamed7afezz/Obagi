@@ -123,6 +123,7 @@ const Footer = ({ siteTitle }) => {
   return (
     <footer>
       <div className="container-fluid footer">
+      <div class="be-ix-link-block"></div>
         <div className={footerStyles.footerSection}>
           <div className="row">
             <div className={["col-12 offset-lg-1 col-lg-2", footerStyles.firstCol].join(" ")}>
