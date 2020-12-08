@@ -212,7 +212,7 @@ const ProductHero = ({ data, nodeType }) => {
           </p>
         </div>
         <div className={["col-12", ""].join(" ")}>
-          <p className={[ProductStyles.productcat,  "productcat", "show-mob"].join(" ")}>
+          <p className={[ProductStyles.productcat, "productcat", "show-mob"].join(" ")}>
             {nodeType}
           </p>
           <div>
@@ -287,19 +287,19 @@ const ProductHero = ({ data, nodeType }) => {
 
             </div>
           </div>
-          {productSubTitle?<div
+          {productSubTitle ? <div
             className={ProductStyles.productSubDesc}
 
-          >{productSubTitle}</div>:""}
+          >{productSubTitle}</div> : ""}
           <div
             className={ProductStyles.productdesc}
             dangerouslySetInnerHTML={{ __html: field_description }}
           ></div>
-          
-          {key_benefit || key_benfitList?  <div className={ProductStyles.keyBenefitcon}>
-         {key_benefit?     <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
-          :""}
-          {key_benfitList ?   <ul className={ProductStyles.keyBenefitul}>
+
+          {key_benefit || key_benfitList ? <div className={ProductStyles.keyBenefitcon}>
+            {key_benefit ? <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
+              : ""}
+            {key_benfitList ? <ul className={ProductStyles.keyBenefitul}>
               {key_benfitList ? key_benfitList.map((item, index) => {
                 return (
 
@@ -309,61 +309,63 @@ const ProductHero = ({ data, nodeType }) => {
 
                 )
               }) : ""}
-            </ul>:""}
-          </div>:""} 
+            </ul> : ""}
+          </div> : ""}
           <div className={ProductStyles.skintypes}>
             {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
               Skin Type:
-              {isClincal ?<>      {field_skin_type.map((item, index) => {
-                return (
-                  <span className={ProductStyles.canusedata}>
-                   {item.name}
-                    {index === field_skin_type.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })} </>:
-              <>
-              {field_skin_type.map((item, index) => {
-                return (
-                  <span className={ProductStyles.canusedata}>
-                    <Link to={item.path.alias}> {item.name}</Link>
-                    {index === field_skin_type.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })}
-              </>
+              {isClincal ? <>      {field_skin_type.map((item, index) => {
+              return (
+                <span className={ProductStyles.canusedata}>
+                  {item.name}
+                  {index === field_skin_type.length - 1 ? "" : ", "}
+                </span>
+              )
+            })} </> :
+                <>
+                  {field_skin_type.map((item, index) => {
+                    return (
+                      <span className={ProductStyles.canusedata}>
+                        <Link to={item.path.alias}> {item.name}</Link>
+                        {index === field_skin_type.length - 1 ? "" : ", "}
+                      </span>
+                    )
+                  })}
+                </>
               }
             </p> : ""}
             {field_skin_concern.length > 0 ? <p className={ProductStyles.Indications}>
               Skin Concerns:
-            {isClincal ?<>   {field_skin_concern.map((item, index) => {
-                return (
-                  <span className={ProductStyles.Indicationsdata}>
-                 {item.name}
-                    {index === field_skin_concern.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })}</>
-            :<>
-            {field_skin_concern.map((item, index) => {
-                return (
-                  <span className={ProductStyles.Indicationsdata}>
-                    <Link to={item.path.alias}> {item.name}</Link>
-                    {index === field_skin_concern.length - 1 ? "" : ", "}
-                  </span>
-                )
-              })}
-            </>
-            
-            
-            
-            }</p> : ""}
+            {isClincal ? <>   {field_skin_concern.map((item, index) => {
+              return (
+                <span className={ProductStyles.Indicationsdata}>
+                  {item.name}
+                  {index === field_skin_concern.length - 1 ? "" : ", "}
+                </span>
+              )
+            })}</>
+                : <>
+                  {field_skin_concern.map((item, index) => {
+                    return (
+                      <span className={ProductStyles.Indicationsdata}>
+                        <Link to={item.path.alias}> {item.name}</Link>
+                        {index === field_skin_concern.length - 1 ? "" : ", "}
+                      </span>
+                    )
+                  })}
+                </>
+
+
+
+              }</p> : ""}
 
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
-            <p className={ProductStyles.price}>
-              <span>${field_price}</span>
-            </p>
+            {field_price && field_price !== "0" ?
+              <p className={ProductStyles.price}>
+                <span>${field_price}</span>
+              </p>
+              : ""}
 
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             {field_weight !== "0" ? <ul>
@@ -373,7 +375,7 @@ const ProductHero = ({ data, nodeType }) => {
           </div>
           {feild_preimer && field_medical_rx !== "RX" ?
             <div
-              className={[ ProductStyles.codeoff].join(
+              className={[ProductStyles.codeoff].join(
                 " "
               )}
             >
@@ -427,7 +429,7 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <button
-              data-toggle="modal" data-target="#sharing"   className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+                data-toggle="modal" data-target="#sharing" className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
               >
 
                 <img src={share} /> Share
@@ -468,7 +470,7 @@ const ProductHero = ({ data, nodeType }) => {
                 {field_info ?
                   <div className={[ProductStyles.popoverContainer, "popoverContainer"].join(" ")}>
                     <div className={[ProductStyles.popcontent, 'popcontent'].join(" ")}>
-                      
+
                     </div>
 
                     <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
@@ -484,7 +486,7 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <button
-            data-toggle="modal" data-target="#sharing"   className={["col-12 col-md-2", "col-lg-2", ProductStyles.share].join(" ")}
+                data-toggle="modal" data-target="#sharing" className={["col-12 col-md-2", "col-lg-2", ProductStyles.share].join(" ")}
               >
 
                 <img src={share} /> Share
@@ -496,7 +498,7 @@ const ProductHero = ({ data, nodeType }) => {
               <div className={["col-3", ProductStyles.offerimg].join(" ")}>
                 <img src={freeimg} />
               </div>
-              <div className={["col-9", ProductStyles.offercontent,"offercontent"].join(" ")}>
+              <div className={["col-9", ProductStyles.offercontent, "offercontent"].join(" ")}>
                 <p className={ProductStyles.offertitle}>
                   COMPLIMENTARY SHIPPING
             </p>
@@ -559,17 +561,17 @@ const ProductHero = ({ data, nodeType }) => {
               ></button>
             </div>
             <div class="modal-body">
-            <div class="share-wrap  mt-35 mb-50">
-                <h1 className={[ProductStyles.productname,"text-center"].join(" ")}><span>Share the</span></h1>
-                <h1 className={[ProductStyles.productname,"text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
+              <div class="share-wrap  mt-35 mb-50">
+                <h1 className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></h1>
+                <h1 className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
             </div>
-        </div>
+          </div>
         </div>
       </div>
- 
+
 
     </div>
   )
