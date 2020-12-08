@@ -5,6 +5,8 @@ import Slider from "react-slick"
 import heroSlider from '../assets/scss/components/hero-slider.module.scss'
 import Logo from '../assets/images/200x200.png'
 
+const $ = require("jquery");
+
 
 const HeroSlider = ({ node }) => {
 
@@ -15,21 +17,13 @@ const HeroSlider = ({ node }) => {
         let scrollButton = document.querySelector("#slideDownButton");
         if (typeof window !== "undefined" ) {
             window.addEventListener("scroll", function () {
-                if (window.scrollY > (scrollSection.offsetTop - 550) && window.scrollY < (scrollSection.offsetTop + window.innerHeight)) {
+                if (window.scrollY > (scrollSection.offsetTop - 550)) {
                     scrollButton.classList.remove("d-none");
-                    scrollButton.classList.add("downButton");
-                    scrollButton.classList.remove("upsideButton");
-
-    
-                } else if (window.scrollY > (scrollSection.offsetTop + window.innerHeight)) {
-
-                    scrollButton.classList.remove("downButton");
                     scrollButton.classList.add("upsideButton");
-                    
+
     
                 } else {
                     scrollButton.classList.add("d-none");
-                    scrollButton.classList.remove("downButton");
                     scrollButton.classList.remove("upsideButton");
                 }
     
@@ -68,6 +62,18 @@ const HeroSlider = ({ node }) => {
         return (<Link className={["button-link", heroSlider.link].join(" ")} to={changelink.field_slide_button.uri.replace('internal:', '')}>
             {changelink.field_slide_button.title}
         </Link>)
+    }
+
+    function scrollUp(e, id) {
+        e.preventDefault();
+        // document.body.scrollTop = 0; // For Safari
+        // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        // window.scroll({ top: 0, behavior: 'smooth' });
+
+
+        if (typeof window != undefined) {
+            $('html,body').animate({scrollTop: 0});
+        }
     }
     return (
 
@@ -124,7 +130,7 @@ const HeroSlider = ({ node }) => {
                 </div>
 
                 <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
-                    {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <Link to="#here" id="slideDownButton" className={[heroSlider.slideDown, "d-none"].join(" ")}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
+                    {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <Link to="#here" id="slideDownButton" className={[heroSlider.slideDown, "d-none"].join(" ")} onClick={(e) => {scrollUp(e);}}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
                     {node.relationships.field_obagi_logo ? (node.relationships.field_obagi_logo.localFile ? <div className={heroSlider.sliderLogo}><Img fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : '') : ''}
                 </div>
                 <div id="here" className={heroSlider.here}></div>
