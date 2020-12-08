@@ -65,7 +65,7 @@ import FullWidthWithImage from './full-width-with-image';
 import CustomList from './List-Paragrapgh';
 import FinalStory from './final-story';
 import LeftSubimg from './left-sub-img';
-import OrderStatus from './order-status';
+import OrderStatus from './Order-Status/Start';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,

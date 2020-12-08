@@ -1,9 +1,16 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import basichero from '../assets/scss/components/basic-hero.module.scss'
 const Basichero = ({ node }) => {
+  if (typeof window !== "undefined") {
+    var pathname = window.location.href;
 
+    var geturi = pathname.split('/')
+    var first_url = geturi[3];
+    var sec_url = geturi[4];
+
+  }
     return (
       <div className={basichero.sectionBg}>
       <div className={["container-fluid ","basicbg",basichero.givepadding, `${node.field_basic_hero_custom_class_?node.field_basic_hero_custom_class_:""}`].join(" ")}>
@@ -11,15 +18,18 @@ const Basichero = ({ node }) => {
           <div
             className={[
               "col-12",
-              "col-lg-5",
-              "offset-lg-1",
+              "col-lg-6",
               basichero.Collectionheroleftcol,
               "Collectionheroleftcol"
               
             ].join(" ")}
           >
-            <div className="row remove-mob-padding generalcollectionherorow">
-              <div className="col col-lg-12 general-basic-column">
+            <div className="row remove-mob-padding collectionherorow">
+            <p className="breadcramp">
+                    <Link to="/">Home</Link> /{first_url?
+                    <span > {first_url}</span>:""}
+                  </p>
+              <div className="col col-lg-11 offset-lg-1 general-basic-column">
              
               { 
                   node.relationships.field_basic_hero_left_img_paragr?
@@ -34,6 +44,7 @@ const Basichero = ({ node }) => {
                   :""
                 
                 }
+                 
     {
                   <h1 className={[basichero.collectiontitle, "general-basic-title"].join(" ")}>
                     {

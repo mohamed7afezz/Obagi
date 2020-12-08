@@ -1,12 +1,12 @@
 import React ,{useContext} from 'react'
 import { graphql, Link,navigate } from 'gatsby'
 import Img from 'gatsby-image'
-import Customer from './customer-care'
-import myAccountStyles from '../assets/scss/components/my-account.module.scss'
-import UserContext from "../providers/user-provider"
+import Customer from '../customer-care'
+import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
+import UserContext from "../../providers/user-provider"
 import { useLocation } from "@reach/router"
 
-const OrderStatus = ({ node }) => {
+const StartOrderStatus = ({ node }) => {
     const location = useLocation()
     const { user } = useContext(UserContext)
     if (user && location.pathname.includes(`/order-status`)) {
@@ -56,7 +56,7 @@ const OrderStatus = ({ node }) => {
     )
 }
 
-export default OrderStatus
+export default StartOrderStatus
 
 export const fragment = graphql`
     fragment paragraphOrderStatus on paragraph__order_status {
