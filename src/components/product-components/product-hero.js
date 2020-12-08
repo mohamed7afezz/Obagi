@@ -361,11 +361,11 @@ const ProductHero = ({ data, nodeType }) => {
 
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
-            {field_price && field_price !== "0" ?
-              <p className={ProductStyles.price}>
+            
+              <p className={[ProductStyles.price, `${!field_price || field_price === "0" ? "hide" : ""}`].join(" ")}>
                 <span>${field_price}</span>
               </p>
-              : ""}
+             
 
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             {field_weight !== "0" ? <ul>
