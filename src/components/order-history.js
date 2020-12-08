@@ -13,7 +13,6 @@ const OrderHistory = ({ ordersList }) => {
 
     let orders = ordersList;
 
-    console.log('bahiiii', orders, Object.keys(orders).length , orders.length )
     function isEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))

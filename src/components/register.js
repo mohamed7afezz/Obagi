@@ -197,7 +197,7 @@ const Register = () => {
                     dateOfBirth[0] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('-');
-                console.log('bahiiii date', dateOfBirth)
+    
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {

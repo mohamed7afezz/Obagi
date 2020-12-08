@@ -51,6 +51,12 @@
     font-size: 36px;
     line-height: 46px;
     @extend %futurapt-light;
+
+
+  }
+  sup {
+    font-size: 50%;
+    top: -1em;
   }
   @include md-screen {
     h1 {

@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;
   let getname;
-  console.log("hassan1",nodetype)
+  // console.log("hassan1",nodetype)
   if (nodetype == "clinicalConcern") {
     getname = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -50,7 +50,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-  console.log("hassan",nodetype,node,checkTaxonomy)
+  // console.log("hassan",nodetype,node,checkTaxonomy)
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 

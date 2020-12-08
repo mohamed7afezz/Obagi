@@ -27,10 +27,10 @@ export default function Orders() {
             credentials: 'include',
             mode: 'cors'
         }).catch(error => {
-            console.log("bahiii error", error)
+        
             setIsLoading(false);
         })
-        console.log("bahiiii req", ordersDataRequest.status, (ordersDataRequest.status === 204 || ordersDataRequest.status === 404))
+        
         if (ordersDataRequest.status === 204 || ordersDataRequest.status === 404) {
    
         } else {

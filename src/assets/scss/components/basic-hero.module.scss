@@ -77,6 +77,10 @@
     font-size: 32px;
     line-height: 48px;
     font-weight: 300;
+    sup {
+        font-size: 50%;
+        top: -1em;
+      }
     @include md-screen{
         font-size: 40px;
         line-height: 56px;

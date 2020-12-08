@@ -112,7 +112,7 @@ export const CartProvider = ({ children }) => {
     if(findedProduct != undefined && findedProduct.quantity == 3){
       return;
     }
-   console.log("hassan",  quantity)
+  //  console.log("hassan",  quantity)
     if (parseFloat(state.cart.cartAmount) + (parseFloat(price) * quantity) > 750) {
       maxprice();
       return
