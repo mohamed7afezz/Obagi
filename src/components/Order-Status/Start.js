@@ -4,6 +4,7 @@ import { useLocation } from "@reach/router"
 import StartOrderStatus from "./Level-1";
 import UserContext from "../../providers/user-provider"
 import OrderStatusHistory from './Level-2';
+import OrderStatusDetails from './order-status-detail';
 
 const OrderStatus = () => {
     const [level, ordersetLevel] = useState(1);
@@ -27,7 +28,7 @@ const OrderStatus = () => {
     return (
         <>
          {checkDataCondition((level == 1), <StartOrderStatus RequestData={GetAlldata} SetRequestData={setData}  GetLevelorder={ordersetLevel} />)}
-         {checkDataCondition((level == 2), <OrderStatusHistory RequestData={GetAlldata} SetRequestData={setData} GetLevelorder={ordersetLevel} />)}
+         {checkDataCondition((level == 2), <OrderStatusDetails RequestData={GetAlldata} SetRequestData={setData} GetLevelorder={ordersetLevel} />)}
         </>
     )
 }
