@@ -20,13 +20,12 @@ const StartOrderStatus = ({ node }) => {
       const sendOrder = (updatedItemData) => {
           console.log(document.querySelector(".form-email").value)
         fetch(
-            `${baseUrl}/bigcommerce/v1/guest_order/${document.querySelector("#orderNumber").value}`,
+            `${baseUrl}bigcommerce/v1/order/139`,
             {
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 method: 'POST',
-                body: JSON.stringify({"email": `${document.querySelector(".form-email").value}`})
+                credentials: 'same-origin',
+                mode: 'cors',
+                body: JSON.stringify({"email": "greaterthanone32+01@gmail.com"})
             }
         )
             .then(res => res.json())
