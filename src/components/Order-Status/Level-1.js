@@ -7,7 +7,7 @@ import myAccountStyles from '../../assets/scss/components/my-account.module.scss
 import UserContext from "../../providers/user-provider"
 const baseUrl = process.env.Base_URL;
 
-const StartOrderStatus = ({ node }) => {
+const StartOrderStatus = props => {
     const location = useLocation()
     const { user } = useContext(UserContext)
     if (user && location.pathname.includes(`/order-status`)) {
@@ -17,20 +17,29 @@ const StartOrderStatus = ({ node }) => {
     
         return null
       }
-      const sendOrder = (updatedItemData) => {
+      const sendOrder = () => {
           console.log(document.querySelector(".form-email").value)
         fetch(
-            `${baseUrl}bigcommerce/v1/order/139`,
+            `${baseUrl}bigcommerce/v1/guest_order/${document.querySelector("#orderNumber").value}`,
             {
                 method: 'POST',
                 credentials: 'same-origin',
                 mode: 'cors',
-                body: JSON.stringify({"email": "greaterthanone32+01@gmail.com"})
+                body: JSON.stringify({"email": `${document.querySelector(".form-email").value}`})
             }
         )
             .then(res => res.json())
             .then(response => {
-                // console.log(response)
+               
+                if(response.id){
+                    console.log("hassan",response)
+                    props.SetRequestData(response)
+                    props.GetLevelorder(2)
+                  
+                }
+                if (props.status_id) {
+                    props.SetRequestData(response)
+                }
             })
             .catch(error => {
                 // console.log('error', error)
