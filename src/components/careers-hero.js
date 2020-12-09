@@ -6,19 +6,27 @@ import careersHeroStyles from '../assets/scss/components/careers-hero.module.scs
 const CareersHero = ({ node }) => {
     if (typeof window !== "undefined") {
         var pathname = window.location.href;
-    
+
         var geturi = pathname.split('/')
         var first_url = geturi[3];
         var sec_url = geturi[4];
-    
-      }
+
+    }
     return (
-        <div>
+        <div className="careers-hero">
             <div className="container-fluid d-lg-none">
                 <div className="row">
                     <div className="col-12 p-0">
                         {node.relationships.field_careers_image ? <div><Img fluid={node.relationships.field_careers_image.localFile.childImageSharp.fluid} /></div> : ''}
                     </div>
+
+                    <div className="breadcramp-con d-block col-12">
+                        <p className="breadcramp">
+                            <Link to="/">Home</Link> /{first_url ?
+                                <span > {first_url}</span> : ""}
+                        </p>
+                    </div>
+
                     <div className="col-12">
                         {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
                         {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
@@ -33,15 +41,18 @@ const CareersHero = ({ node }) => {
 
                     <div className={["row", careersHeroStyles.rowWrapper].join(" ")}>
                         <div className="col-lg-6 ">
-                            <div className="row collectionherorow">
-                            <div className="breadcramp-con d-block col-12">
-                                <p className="breadcramp">
-                                    <Link to="/">Home</Link> /{first_url?
-                                    <span > {first_url}</span>:""}
-                                </p>
+                            <div className="row">
+                                <div className="breadcramp-con d-block col-12">
+                                    <p className="breadcramp">
+                                        <Link to="/">Home</Link> /{first_url ?
+                                            <span > {first_url}</span> : ""}
+                                    </p>
                                 </div>
+                            </div>
+                            <div className="row collectionherorow">
+
                                 <div className="col-lg-11 offset-lg-1">
-                                    
+
                                     {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
                                     {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
                                     {node.field_button ? <div><Link to={node.field_button.uri} className={["button-link", careersHeroStyles.link].join(" ")}>{node.field_button.title}</Link></div> : ''}

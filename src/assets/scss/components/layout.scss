@@ -4113,6 +4113,36 @@ top: 78.5px !important;
       }
   }
 
+  .node-home .collectionherorow {
+    height: calc(100% - 40px);
+  }
+
+  .node-home .breadcramp-con {
+      padding-bottom: 24px;
+      @include lg-screen {
+          padding-top: 16px;
+          padding-bottom: 0;
+      }
+  }
+
+  .careers-hero .collectionherorow {
+    height: calc(100% - 200px); 
+  }
+
+  .careers-hero .breadcramp-con {
+      padding-top: 24px;
+      padding-bottom: 0;
+
+      @include lg-screen {
+          padding-top: 176px;
+          color: #fff;
+          a {
+              color: #fff;
+          }
+      }
+  }
+
+
 .generalcollectionherorow {
       @include lg-screen {
         align-items: center;
