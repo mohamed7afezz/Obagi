@@ -91,7 +91,9 @@ const OrderStatusDetails = (props) => {
 
     return null
   }
-
+  if(typeof window != undefined ){
+    checkStock(baseUrl);
+  }
   const placedOnDate = new Date(
     detailorder.date_created ? detailorder.date_created : ""
   )
@@ -129,13 +131,7 @@ const OrderStatusDetails = (props) => {
               <Link to="/my-account/orders" className={orderDetailsStyles.accountLink}>
                 My Account
               </Link>
-              <Link
-                to="/my-account/orders"
-                className={[
-                  "d-none d-lg-block",
-                  orderDetailsStyles.orderArrow,
-                ].join(" ")}
-              ></Link>
+              
             </div>
             <div className={orderDetailsStyles.orderNumber}>
               {detailorder.id ? "#" + detailorder.id : ""}
@@ -171,10 +167,12 @@ const OrderStatusDetails = (props) => {
                       return (getshipm.items.map((getProdId, index2) => {
 
                         return (
+                           
                           getProdId.product_id === item.product_id ?
                             <div className={orderDetailsStyles.shipmentstate}>
                               {index2 < 1 ?
                                 <>
+                                
                                   <div className={orderDetailsStyles.shipment}>
                                     <p>Shipment #{index + 1} : {getshipm.tracking_number}</p>
                                   </div>
@@ -219,11 +217,17 @@ const OrderStatusDetails = (props) => {
                                         >
                                           Qty. {item.quantity ? item.quantity : ""}
                                         </div>
+                                        
                                         <div className={orderDetailsStyles.productPrice}>
                                           {item.total_inc_tax
                                             ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
                                             : ""}
                                         </div>
+                                        
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {item.status}
+                                      </div>
+                                         
                                       </div>
                                     </div>
                                   </div>
@@ -256,9 +260,13 @@ const OrderStatusDetails = (props) => {
                                     <div className={orderDetailsStyles.productPrice}>
                                       {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                                     </div>
-                                    <div className={orderDetailsStyles.productstatus}>
-                                      {item.order_status}
-                                    </div>
+                                  
+                                   
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {item.status}
+                                      </div>:""
+                                   
+                                   
                                   </div>
                                 </div>
 
@@ -296,16 +304,7 @@ const OrderStatusDetails = (props) => {
                       <div className={orderDetailsStyles.detailsTitle}>
                         Order Details
                   </div>
-                      <a
-                        href={
-                          "https://secure.obagi.com/account.php?action=print_invoice&order_id=" +
-                          props.RequestData.id
-                        }
-                        target="_blank"
-                        className={orderDetailsStyles.print}
-                      >
-                        Print Invoice
-                  </a>
+                    
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -490,6 +489,10 @@ const OrderStatusDetails = (props) => {
                               <div className={orderDetailsStyles.priceAndQuantity}>
                                 <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
                                 <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
+                               
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {item.status}
+                                      </div>
                               </div>
                             </div>
                           </div>
@@ -544,6 +547,10 @@ const OrderStatusDetails = (props) => {
                           <div className={orderDetailsStyles.productPrice}>
                             {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                           </div>
+                       
+                          <div className={orderDetailsStyles.productstatus}>{detailorder.custom_status}</div> 
+                                
+                              
                         </div>
                       </div>
                     )
@@ -566,7 +573,6 @@ const OrderStatusDetails = (props) => {
                   <div className={orderDetailsStyles.orderWrapper}>
                     <div className={orderDetailsStyles.detailsHeader}>
                       <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
-                      <a href={"https://secure.obagi.com/account.php?action=print_invoice&order_id=" + props.RequestData.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>

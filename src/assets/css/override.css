@@ -2423,6 +2423,12 @@ padding-bottom: 0;
  border-bottom: 1px solid red !important;
 
 }
+.dangermessage{
+  color: #f00;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 24px;;
+}
 .appointment-elemnt.error,.form-element-con.error{
   border-color: red !important;
   position: relative;
