@@ -3,7 +3,6 @@ import { graphql, Link,navigate } from 'gatsby'
 import { useLocation } from "@reach/router"
 import StartOrderStatus from "./Level-1";
 import UserContext from "../../providers/user-provider"
-import OrderStatusHistory from './Level-2';
 import OrderStatusDetails from './order-status-detail';
 
 const OrderStatus = () => {
