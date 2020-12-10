@@ -25,7 +25,7 @@ const Basichero = ({ node }) => {
             ].join(" ")}
           >
             <div className="row">
-              <div className={[" breadcramp-con hide d-block col-12"].join(" ")}>
+              <div className={[" breadcramp-con  d-block col-12"].join(" ")}>
                 <p className="breadcramp">
                   <Link to="/">Home</Link> /{first_url ?
                     <span > {first_url}</span> : ""}

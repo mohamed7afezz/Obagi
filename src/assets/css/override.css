@@ -498,9 +498,9 @@ height: 691px !important;
   mix-blend-mode: multiply;
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(91, 140, 164, 0.75));
 }
-.node-home .breadcramp-con{
+/* .node-home .breadcramp-con{
   display: none;
-}
+} */
 .node-home .img-fluid-height {
   position: relative;
   transform: none;
@@ -1028,6 +1028,16 @@ button:focus{
 }
 .analyzr{
   display: none;
+}
+.breadcramp-con{
+  display: block;
+  
+}
+.node-home .ourHistory .breadcramp-con p a,.node-home .Skinclusion .breadcramp-con p a{
+  color: #132466;
+}
+.node-home .breadcramp-con p a {
+  color: #fff;
 }
 @media (max-width: 767px) {
   #Showbag .show-bag-header{
