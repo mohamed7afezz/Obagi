@@ -1153,7 +1153,8 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                   <div className=" breadcramp-con  col-12">
                                     <p className="breadcramp">
                                       <Link to="/">Home</Link> /{" "}
-                                      <Link to={'/' + first_url}> {first_url}</Link> / {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""}
+                                      <span > {first_url}</span>
+                                       {/* / {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""} */}
                                     </p>
                                   </div>
                                 </div>
