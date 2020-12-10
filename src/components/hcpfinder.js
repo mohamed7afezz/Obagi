@@ -297,7 +297,7 @@ export default function Finder() {
               </div>
               <p class="covid show-mob">
               COVID-19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
@@ -314,7 +314,7 @@ export default function Finder() {
               </div>
               <p class="covid hide-mob">
                 COVID-19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
             </div>
