@@ -686,7 +686,7 @@ export default function Finder() {
                         {
                           lines.length > 0 ? lines.map(({ node }) => (
                             <div class="product-line-masonry" key={node.id + '1'}>
-                              <ProductLineComp line={node} />)
+                              <ProductLineComp line={node} />
                             </div>
                           )) : '<div class="search-res left-res product-line-masonry"></div>'
                         }
