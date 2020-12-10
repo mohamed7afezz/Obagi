@@ -185,7 +185,7 @@ function topFunction() {
              <option value="Vermont">Vermont</option><option value="Virginia">Virginia</option>
              <option value="Washington">Washington</option><option value="West Virginia">West Virginia</option>
              <option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option>
-             <option value="porto rico">Porto Rico</option><option value="DC">DC</option>
+             <option value="porto rico">Porto Rico</option>
                     </select>
                   </div>
                 </div>
