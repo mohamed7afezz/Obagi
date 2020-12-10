@@ -49,7 +49,12 @@ const sendFormValues = (updatedItemData) => {
     });
 };
 
-
+const createFullPostMarkup = (data) => {
+  return { __html: `${data }` }
+}
+const createFullPostMarkup2 = (data,data2) => {
+  return { __html: `${data } + ${data2}` }
+}
 function submitforming(e) {
   var obj = { webform_id: "request_appointment" };
   var forms = document.getElementsByClassName('needs-validations');
@@ -100,7 +105,7 @@ export const ProductLineComp = ({line}) => {
     return (
       <>
         
-          <p class="result-tax">{line.name}</p>
+          <div  dangerouslySetInnerHTML={createFullPostMarkup(line.name)} class="result-tax"></div>
           <div class="d-flex d-col results-input-list">
             {(line.relationships && line.relationships.products)? line.relationships.products.map(product => {
                 return (
@@ -292,7 +297,7 @@ export default function Finder() {
               </div>
               <p class="covid show-mob">
               COVID-19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
@@ -309,7 +314,7 @@ export default function Finder() {
               </div>
               <p class="covid hide-mob">
                 COVID-19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
             </div>
@@ -613,10 +618,23 @@ export default function Finder() {
                     </div>
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">PRODUCT LINES</p>
-                      <div id="prodLinesSelected" className="ProdprodLinesSelected changetogray" onClick={(e) => { document.querySelector('.ProdprodLinesSelected').text="Select"?document.querySelector('.ProdprodLinesSelected').classList.remove('changetogray'):document.querySelector('.ProdprodLinesSelected').classList.remove('changetogray'); document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
-                        {prodLines.length > 0 ? prodLines[0] : 'Select'} {prodLines.length > 1 ? '+' + (prodLines.length - 1) : ''}
 
+                      
+                      {prodLines.length > 1 ?
+                      <div dangerouslySetInnerHTML={createFullPostMarkup2(prodLines[0],(prodLines.length - 1))} id="prodLinesSelected" className="ProdprodLinesSelected " onClick={(e) => {  document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
                       </div>
+                        : prodLines.length > 0 ?
+                        <div dangerouslySetInnerHTML={createFullPostMarkup(prodLines[0])} id="prodLinesSelected" className="ProdprodLinesSelected " onClick={(e) => {  document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                        </div>
+                          :
+                          <div id="prodLinesSelected" className="ProdprodLinesSelected changetogray" onClick={(e) => {  document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                            Select
+                        </div>
+                        
+                        }
+                       
+                        
+                     
                       <div class="product-lines d-none" id="prodLines">
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl">
@@ -668,9 +686,9 @@ export default function Finder() {
                         {
                           lines.length > 0 ? lines.map(({ node }) => (
                             <div class="product-line-masonry" key={node.id + '1'}>
-                              <ProductLineComp line={node} />)
+                              <ProductLineComp line={node} />
                             </div>
-                          )) : '<div class="search-res left-res product-line-masonry"></dvi>'
+                          )) : '<div class="search-res left-res product-line-masonry"></div>'
                         }
                       </div>
                     </div>
