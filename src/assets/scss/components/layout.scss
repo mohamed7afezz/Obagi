@@ -1446,6 +1446,8 @@ p {
 
     @include lg-screen {
         padding-bottom: 0;
+        position: relative;
+        z-index: 99;
     }
 }
 
@@ -3678,6 +3680,16 @@ top: 78.5px !important;
     }
 }
 
+.collectionhero, .basicbg, .careers-hero {
+    @include lg-screen {
+        position: relative;
+        z-index: 99;
+    }
+}
+.collectionhero.collectionList {
+    position: unset;
+}
+
 .international-partners {
     @include lg-screen {
         background: #eceae8;
@@ -4194,6 +4206,21 @@ top: 78.5px !important;
     transform: rotate(0);
     transition: all ease 300ms;
 } 
+
+.scroll-button {
+
+    @include lg-screen {
+        height: 48px;
+        width: 48px;
+        position: fixed;
+        bottom: 100px;
+        left: 56px;
+        z-index: 100;
+        background-color: #132466;
+        border: 0;
+        padding: 0;
+    }
+}
 
 .price-opacity {
     opacity: 0;

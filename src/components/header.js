@@ -288,9 +288,9 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
   function removeCategory() {
     var y = document.getElementById("category-section");
-    if (y.style.display === "none" &&  (!nodeType === "medical" || !nodeType === "clinical") ) {
+    if (y.style.display === "none" &&  (nodeType !== "medical" || nodeType !== "clinical") ) {
       y.style.display = "block";
-    } else {
+    } else if (y.style.display !== "none" &&  (nodeType !== "medical" || nodeType !== "clinical")){
       y.style.display = "none";
     }
   }

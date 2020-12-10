@@ -35,7 +35,7 @@ const HomeHero = ({ node }) => {
               </div>
             )
           })}
-          <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div>
+          {/* <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div> */}
         </div>
       </div>
     </div>
