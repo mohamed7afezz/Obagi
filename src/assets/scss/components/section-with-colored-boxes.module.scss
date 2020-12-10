@@ -151,7 +151,10 @@
 }
     @include lg-screen {
         margin: 118px -157px 0 157px;
-        
+        height: 100%;
+       & > div{
+        height: calc(100% + 79px);
+        }
         &::after {
             content: none;
         }
@@ -387,6 +390,10 @@ position: relative;
         margin: 0;
         @include lg-screen{
         margin: 118px 157px 0 -157px;
+       
+                & > div{
+                    height: auto;
+                }
     }
 }
 .first-section{
@@ -408,6 +415,7 @@ position: relative;
       position: relative;
 
         @include lg-screen {
+            
             background: #132466;
             padding: 0 30px 236px 187px;
             &::before {

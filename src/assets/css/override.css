@@ -1031,7 +1031,8 @@ button:focus{
 }
 @media (max-width: 767px) {
   #Showbag .show-bag-header{
-  
+  height: 62px;
+  min-height: 62px !important;
     padding-bottom: 0;
     padding-top: 0;
   }
@@ -3255,6 +3256,10 @@ text-decoration: underline;
   font-size: 32px !important;
   line-height: 48px !important;
 } */
+.ourHistory .general-basic-column p{
+  font-size: 16px;
+  line-height: 24px;
+}
 .new-check.terms .checkmark,.new-check.terms:hover .checkmark{
   width: 40px;
   height: 40px;
