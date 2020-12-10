@@ -3061,6 +3061,7 @@ font-weight: 300;font-size: 20px;line-height: 34px;padding-top: 20px;padding-bot
   line-height: 32px ;
   color: #fff;
   margin-top: 8px;
+  
 }
 .order-check ~ .checkmark{
   display: none !important;

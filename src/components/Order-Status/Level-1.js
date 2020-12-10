@@ -1,14 +1,21 @@
-import React ,{useContext} from 'react'
+import React ,{useContext, useState} from 'react'
 import { graphql, Link,navigate } from 'gatsby'
 import { useLocation } from "@reach/router"
 import Img from 'gatsby-image'
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 import Customer from '../customer-care'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import UserContext from "../../providers/user-provider"
 const baseUrl = process.env.Base_URL;
-
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const StartOrderStatus = props => {
-    const location = useLocation()
+    const location = useLocation();
+    const [isLoading, setIsLoading] = useState(false)
     const { user } = useContext(UserContext);
     let obj = {};
     if (user && location.pathname.includes(`/order-status`)) {
@@ -26,7 +33,7 @@ const StartOrderStatus = props => {
                 item.nextSibling.classList.remove('hide')
             }
         } else {
-               
+            setIsLoading(true)
             fetch(
                 `${baseUrl}bigcommerce/v1/guest_order/${document.querySelector("#orderNumber").value}`,
                 {
@@ -39,21 +46,28 @@ const StartOrderStatus = props => {
                 .then(res => res.json())
                 .then(response => {
                    if(response === "There is no order for this email."){
+                    setIsLoading(false)
                    document.querySelector(".dangermessage").classList.remove('hide')
                    }else if(response.id){    
                         props.SetRequestData(response)
                         props.GetLevelorder(2);
+                        setIsLoading(false)
                         document.querySelector(".dangermessage").classList.add('hide')
+                      
                     }
                     if(response === "There is no order for this email."){
+                        setIsLoading(false)
                         document.querySelector(".dangermessage").classList.remove('hide')
-                        }else if (props.status_id) {
+                       }else if (props.status_id) {
                         props.SetRequestData(response)
+                        setIsLoading(false)
                         document.querySelector(".dangermessage").classList.add('hide')
-
+                    
                     }
+                 
                 })
                 .catch(error => {
+                   
                     // console.log('error', error)
                 });
         }
@@ -78,9 +92,17 @@ const StartOrderStatus = props => {
                 item.nextSibling.classList.add('hide')
             }
     }
-     
+   
     return (
         <Customer activeTab="order-status">
+            { isLoading ?
+ 
+ <ClipLoader
+   css={spinner}
+   size={150}
+   color={"#123abc"}
+
+ />:
             <div className="container-fluid contact-us ">
                 <div className="row">
                     <div class={["col-12 col-md-12",myAccountStyles.removemobpadding].join(" ")}>
@@ -116,7 +138,8 @@ const StartOrderStatus = props => {
                     </form>
                 </div>
             </div>
-        </Customer>
+       
+       } </Customer>
     )
 }
 

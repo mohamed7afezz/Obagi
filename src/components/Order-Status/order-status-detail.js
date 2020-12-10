@@ -24,6 +24,10 @@ var saveprodarr = [];
 var productsPremierPoints = [];
 const OrderStatusDetails = (props) => {
     console.log("hassan4",props)
+    useEffect(() => {
+      checkStock(baseUrl);
+    
+})
   var productsOid = [];
   var total = 0;
     let detailorder =props.RequestData.main_order;
@@ -91,9 +95,8 @@ const OrderStatusDetails = (props) => {
 
     return null
   }
-  if(typeof window != undefined ){
-    checkStock(baseUrl);
-  }
+ 
+  
   const placedOnDate = new Date(
     detailorder.date_created ? detailorder.date_created : ""
   )
@@ -526,7 +529,7 @@ const OrderStatusDetails = (props) => {
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input desk-details-check order-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                   <span className="checkmark"></span>
 
                                 </label>
