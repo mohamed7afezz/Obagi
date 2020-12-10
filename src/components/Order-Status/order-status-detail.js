@@ -266,8 +266,8 @@ const OrderStatusDetails = (props) => {
                                   
                                    
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {item.status}
-                                      </div>:""
+                                        {detailorder.status}
+                                      </div>
                                    
                                    
                                   </div>
