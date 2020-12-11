@@ -244,7 +244,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     }
       adjustHeight();
 
-      $('#mobNavButton').attr('disabled',false);
+      $('#mobNavButton').css('display','block');
 
   }, []);
 
@@ -288,12 +288,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   }
 
   function removeCategory() {
-    var y = document.getElementById("category-section");
-    if (y.style.display === "none" &&  (nodeType !== "medical" || nodeType !== "clinical") ) {
+    let y = document.querySelector("#category-section");
+    if (y.style.display === "none" &&  (!nodeType.includes('medical') && !nodeType.includes('clinical') )) {
       y.style.display = "block";
-    } else if (y.style.display !== "none" &&  (nodeType !== "medical" || nodeType !== "clinical")){
+    } else {
       y.style.display = "none";
     }
+    console.log("ashh func working")
   }
 
   function openSearch() {
@@ -515,7 +516,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     </CartContext.Consumer>
 
                   </div>
-                  <button id="mobNavButton" className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} disabled type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
+                  <button id="mobNavButton" style={{display: "none"}} className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
                 </div>
               </div>
             </div>

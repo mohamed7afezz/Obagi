@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { getParagraph } from './paragraphs-helper';
 import homeHero from '../assets/scss/components/home-hero.module.scss'
 import HeroBox from './hero-box'
 import Img from 'gatsby-image'
+const $ = require("jquery");
 
 const HomeHero = ({ node }) => {
+
+  useEffect(() => {
+
+    node.relationships.field_box.map((box, i) => {
+      let firstbox = "box" + i;
+     console.log("box", firstbox)
+    })
+
+    let firstBox = document.querySelector("#box0");
+    let secondBox = document.querySelector("#box1")
+
+    // if (typeof window !== "undefined") {
+    //   window.addEventListener("scroll", function () {
+    //     if (window.scrollY > (firstBox.offset)) {
+       
+
+
+    //     } else {
+    //       scrollButton.classList.add("d-none");
+    //       scrollButton.classList.remove("upsideButton");
+    //     }
+
+    //   })
+    // }
+  }, [])
 
   function changeBackground(bg) {
     document.getElementById("hero").style.backgroundImage = `url(${bg})`;
   }
+
+
 
   return (
     <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle].join(" ")} id="hero">
@@ -31,7 +59,7 @@ const HomeHero = ({ node }) => {
           {node.relationships.field_box.map((box, i) => {
             return (
               <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.original.src); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src); }}>
-                <HeroBox node={box} />
+                <HeroBox node={box} id={"box" + i} />
               </div>
             )
           })}

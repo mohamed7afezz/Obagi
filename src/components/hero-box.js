@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 
 import boxStyle from '../assets/scss/components/hero-box.module.scss';
 
-const HeroBox = ({ node }) => {
+const HeroBox = ({ node, id }) => {
     let link;
     if (node.field_link) {
         link = <Link to={fixlink(node.field_link)}>{node.field_link.title}</Link>
@@ -15,7 +15,7 @@ const HeroBox = ({ node }) => {
   }
     // 
     return (
-        <div className={boxStyle.heroBox} >
+        <div className={boxStyle.heroBox} id={id}>
             <p dangerouslySetInnerHTML={{ __html: node.field_name.processed }} className={["logo", boxStyle.logo].join(" ")}></p>
             <h1 dangerouslySetInnerHTML={{ __html: node.field_title.processed }} className={[boxStyle.title].join(" ")}></h1>
             <p dangerouslySetInnerHTML={{ __html: node.field_subtitle.processed }} className={[boxStyle.subtitle].join(" ")}></p>
