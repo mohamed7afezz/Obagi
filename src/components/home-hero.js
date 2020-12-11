@@ -11,27 +11,44 @@ const HomeHero = ({ node }) => {
 
   useEffect(() => {
 
-    node.relationships.field_box.map((box, i) => {
-      let firstbox = "box" + i;
-     console.log("box", firstbox)
-    })
 
-    let firstBox = document.querySelector("#box0");
-    let secondBox = document.querySelector("#box1")
-
-    // if (typeof window !== "undefined") {
-    //   window.addEventListener("scroll", function () {
-    //     if (window.scrollY > (firstBox.offset)) {
-       
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", function () {
+        var scrollAmount = window.scrollY;
+        var isNotiBox = (document.querySelector("#notificationMob").display == "none");
+        var medicalSelector = document.querySelector("#box0");
+        var clincialSelector = document.querySelector("#box1");
+        var menuheight = document.querySelector("#mob-navigation").offsetHeight;
+        var notibox = document.querySelector("#notificationMob").offsetHeight;
 
 
-    //     } else {
-    //       scrollButton.classList.add("d-none");
-    //       scrollButton.classList.remove("upsideButton");
-    //     }
+        if (inView(clincialSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) :  window.innerHeight - (menuheight))){
+          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src})`;
+         
+        } else if (inView(medicalSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
+          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[0].relationships.field_background.localFile.childImageSharp.original.src})`;
+    
+        } else {
+          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`;
+                 
+        }
+      })
+    }
 
-    //   })
-    // }
+
+    function inView(elSelector, scrolled, offset) {
+      var viewed = window.innerHeight + scrolled;
+      if (offset) {
+        var bottomOffset = elSelector.offsetParent.offsetTop + offset;
+      } else {
+        var bottomOffset = elSelector.offsetParent.offsetTop;
+      }
+      if (bottomOffset < viewed) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }, [])
 
   function changeBackground(bg) {

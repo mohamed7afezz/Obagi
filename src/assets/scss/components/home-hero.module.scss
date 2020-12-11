@@ -6,12 +6,8 @@
     text-align: center;
     // background-repeat: no-repeat;
     background: no-repeat center center fixed;
-    background-size: 233%;
+    background-size: cover !important;
     position: relative;
-
-    @include md-screen {
-        background-size: cover !important;
-    }
     
     @include lg-screen {
         // padding-left: 196px;
