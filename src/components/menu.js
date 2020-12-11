@@ -69,22 +69,22 @@ function removeMainStyles() {
 }
 
 function addOverview(e) {
-  var medicalLink = document.getElementById("medicalLink");
-  var clinicalLink = document.getElementById("clinicalLink");
+  var medicalLink = document.querySelector("a#medicalLink");
+  var clinicalLink = document.querySelector("a#clinicalLink");
 
   var medicalOV = document.getElementById("overview-medicalLink");
   var clinicalOV = document.getElementById("overview-clinicalLink")
 
   document.querySelector(".mob-menu-lower-section").classList.toggle("d-none");
 
-  if (e.target === medicalLink) {
+  if (e.currentTarget === medicalLink) {
     if (medicalOV.style.display === "none") {
       medicalOV.style.display = "inline-block";
     } else {
       medicalOV.style.display = "none";
     }
     medicalLink.parentElement.classList.toggle("medical-menu-link");
-  } else if (e.target === clinicalLink) {
+  } else if (e.currentTarget === clinicalLink) {
     if (clinicalOV.style.display === "none") {
       clinicalOV.style.display = "inline-block";
     } else {
@@ -95,6 +95,7 @@ function addOverview(e) {
 
 
   }
+
 }
 
 

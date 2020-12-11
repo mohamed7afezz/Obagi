@@ -19,6 +19,9 @@ import '../assets/scss/components/layout.scss'
 import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 import Showbag from "./Cart/bag-preview"
+import scrollDown from '../assets/images/scroll-down.png'
+
+const $ = require("jquery");
 
 const Layout = ({ children,nodeType,menuType}) => {
   if(!nodeType){
@@ -33,6 +36,36 @@ const Layout = ({ children,nodeType,menuType}) => {
       }
     }
   `)
+
+  
+  useEffect(() => {
+
+    let scrollSection = window.innerHeight
+    let scrollButton = document.querySelector("#slideDownButton");
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > (scrollSection)) {
+          scrollButton.classList.remove("d-none");
+          scrollButton.classList.add("upsideButton");
+
+
+        } else {
+          scrollButton.classList.add("d-none");
+          scrollButton.classList.remove("upsideButton");
+        }
+
+      })
+    }
+  }, [])
+
+  function scrollUp(e, id) {
+    e.preventDefault();
+
+    if (typeof window != undefined) {
+      $('html,body').animate({ scrollTop: 0 });
+    }
+  }
+
   // Similar to componentDidMount and componentDidUpdate: 
   return (
     <div className={`node-${nodeType}`}>
@@ -40,7 +73,11 @@ const Layout = ({ children,nodeType,menuType}) => {
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
       {/* <NavBlocks /> */}
       <div>
-        <main>{children}</main>
+        <main>
+          {children}
+          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} /></button></div>
+
+        </main>
         <Showbag />
         <Footer />
         <Popup/>

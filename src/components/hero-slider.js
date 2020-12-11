@@ -11,26 +11,26 @@ const $ = require("jquery");
 const HeroSlider = ({ node }) => {
 
 
-    useEffect(() => {
+    // useEffect(() => {
      
-        let scrollSection = document.querySelector("#here");
-        let scrollButton = document.querySelector("#slideDownButton");
-        if (typeof window !== "undefined" ) {
-            window.addEventListener("scroll", function () {
-                if (window.scrollY > (scrollSection.offsetTop - 550)) {
-                    scrollButton.classList.remove("d-none");
-                    scrollButton.classList.add("upsideButton");
+    //     let scrollSection = document.querySelector("#here");
+    //     let scrollButton = document.querySelector("#slideDownButton");
+    //     if (typeof window !== "undefined" ) {
+    //         window.addEventListener("scroll", function () {
+    //             if (window.scrollY > (scrollSection.offsetTop - 550)) {
+    //                 scrollButton.classList.remove("d-none");
+    //                 scrollButton.classList.add("upsideButton");
 
     
-                } else {
-                    scrollButton.classList.add("d-none");
-                    scrollButton.classList.remove("upsideButton");
-                }
+    //             } else {
+    //                 scrollButton.classList.add("d-none");
+    //                 scrollButton.classList.remove("upsideButton");
+    //             }
     
-            })
-        }
+    //         })
+    //     }
 
-    }, [])
+    // }, [])
 
     const SliderSetting = {
         infinite: true,
@@ -64,17 +64,17 @@ const HeroSlider = ({ node }) => {
         </Link>)
     }
 
-    function scrollUp(e, id) {
-        e.preventDefault();
-        // document.body.scrollTop = 0; // For Safari
-        // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        // window.scroll({ top: 0, behavior: 'smooth' });
+    // function scrollUp(e, id) {
+    //     e.preventDefault();
+    //     // document.body.scrollTop = 0; // For Safari
+    //     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    //     // window.scroll({ top: 0, behavior: 'smooth' });
 
 
-        if (typeof window != undefined) {
-            $('html,body').animate({scrollTop: 0});
-        }
-    }
+    //     if (typeof window != undefined) {
+    //         $('html,body').animate({scrollTop: 0});
+    //     }
+    // }
     return (
 
 
@@ -130,7 +130,7 @@ const HeroSlider = ({ node }) => {
                 </div>
 
                 <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
-                    {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <Link to="#here" id="slideDownButton" className={[heroSlider.slideDown, "d-none"].join(" ")} onClick={(e) => {scrollUp(e);}}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></Link> : '') : ''}
+                    {/* {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <button id="slideDownButton" className="scroll-button d-none" onClick={(e) => {scrollUp(e);}}><Img fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></button> : '') : ''} */}
                     {node.relationships.field_obagi_logo ? (node.relationships.field_obagi_logo.localFile ? <div className={heroSlider.sliderLogo}><Img fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : '') : ''}
                 </div>
                 <div id="here" className={heroSlider.here}></div>
