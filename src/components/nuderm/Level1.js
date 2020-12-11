@@ -46,6 +46,23 @@ const Level1 = props => {
   function submitforming(e) {
     var obj = { webform_id: "prc_new_to_nu_derm" };
     var list = document.querySelectorAll('.needs-validations input:invalid');
+    console.log("hassan",getday)
+    if (getday === undefined) {
+      document.querySelector('.globaldaySelect').classList.add("errorselect")
+
+    }
+    if (getmonth === undefined) {
+      document.querySelector('.globalmonthSelect').classList.add("errorselect")
+
+    }
+    if (getyear === undefined) {
+      document.querySelector('.globalyearSelect').classList.add("errorselect")
+
+    }
+    if (getState === undefined) {
+      document.querySelector('.globalstateSelect').classList.add("errorselect")
+    }
+    
     if (list.length > 0) {
         for (var item of list) {
           console.log(item)
@@ -53,7 +70,7 @@ const Level1 = props => {
             // item.nextSibling.classList.remove('hide')
         }
     } else {
-console.log("hassan")
+
       let list = document.querySelectorAll('.needs-validations input:checked');
       for (let item of list) {
         
@@ -74,9 +91,15 @@ console.log("hassan")
     
       obj['date']=getDate;
       obj['state']=getState;
-      obj['age_range']=getage;
+      if(getage){
+        obj['age_range']=getage;
+      }
+     if (getGender) {
       obj['gender']=getGender;
+     }
+     if (getSkinConcern) {
       obj['primary_skin_concern']=getSkinConcern;
+     }
       obj["yes_agreement"] =["recieve_email"]
         // obj['description'] = `${document.querySelector("#contactDesc").value}`
         // obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
@@ -126,7 +149,8 @@ function monthSelectcon(e){
 }
 function monthSelectData(){
   let i =document.querySelectorAll('#monthSelect');
- 
+  document.querySelector('.globalmonthSelect').classList.remove("errorselect")
+
   for(let item of i ){
     if(  
       item.classList.contains('hide')){
@@ -151,7 +175,8 @@ function yearSelectcon(e){
 }
 function yearSelectData(){
   let i =document.querySelectorAll('#yearSelect');
- 
+  document.querySelector('.globalyearSelect').classList.remove("errorselect")
+
   for(let item of i ){
     if(  
       item.classList.contains('hide')){
@@ -177,7 +202,8 @@ function daySelectcon(e){
 }
 function daySelectData(){
   let i =document.querySelectorAll('#daySelect');
- 
+  document.querySelector('.globaldaySelect').classList.remove("errorselect")
+
   for(let item of i ){
     if(  
       item.classList.contains('hide')){
@@ -279,7 +305,8 @@ function StateSelectcon(e){
 }
 function StateSelectData(){
   let i =document.querySelectorAll('#StateSelect');
- 
+  document.querySelector('.globalstateSelect').classList.remove("errorselect")
+
   for(let item of i ){
     if(  
       item.classList.contains('hide')){
@@ -340,7 +367,7 @@ return (
                 This program is currently available only to U.S. residents.
                If you would like to receive updates on when it may become available in your country, <Link to="/customer-care/contact-us">contact us.</Link>
               </p>
-              <div  onClick={() => { StateSelectData(); }} class="appointment-elemnt advanced-search global-select filterprodline transparent-bg">
+              <div  onClick={() => { StateSelectData(); }} class="appointment-elemnt advanced-search global-select globalstateSelect filterprodline transparent-bg">
                   <p className={["form-label", nudermStyle.customlabel].join(" ")}>*State</p>
                 <div id="prodLinesSelected">
                  <p class="input-name filtersearch StateSelect global-select-placeholder" >Select Sate</p>
@@ -432,7 +459,7 @@ return (
              
           
               <div className={[nudermStyle.showflex, "showflex"].join(" ")}>
-              <div  onClick={() => { monthSelectData(); }} class="appointment-elemnt advanced-search global-select filterprodline transparent-bg">
+              <div  onClick={() => { monthSelectData(); }} class="appointment-elemnt advanced-search globalmonthSelect global-select filterprodline transparent-bg">
             <p className={["form-label", nudermStyle.customlabel].join(" ")}>Month</p>
            <div id="prodLinesSelected">
            <p class="input-name filtersearch monthSelect global-select-placeholder" >Choose Month</p>
@@ -504,7 +531,7 @@ return (
                       </div>
                </div>
           </div>
-              <div  onClick={() => { daySelectData(); }} class="appointment-elemnt advanced-search global-select filterprodline transparent-bg">
+              <div  onClick={() => { daySelectData(); }} class="appointment-elemnt advanced-search globaldaySelect global-select filterprodline transparent-bg">
                  <p className={["form-label", nudermStyle.customlabel].join(" ")}>DAY</p>
                   <div id="prodLinesSelected">
                    <p class="input-name filtersearch daySelect global-select-placeholder" >Choose day</p>
@@ -666,7 +693,7 @@ return (
                       </div>
                </div>
           </div>
-              <div  onClick={() => { yearSelectData(); }} class="appointment-elemnt advanced-search global-select filterprodline transparent-bg">
+              <div  onClick={() => { yearSelectData(); }} class="appointment-elemnt advanced-search globalyearSelect global-select filterprodline transparent-bg">
                   <p className={["form-label", nudermStyle.customlabel].join(" ")}>Year</p>
                 <div id="prodLinesSelected">
                  <p class="input-name filtersearch yearSelect global-select-placeholder" >Choose Year</p>
@@ -704,47 +731,47 @@ return (
                           <ul class="popupUl popupFilter">
                             <li>
                               <label class=" select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="18-24"/><span>18-24</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="18-24"/><span>18-24</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="25-29"/><span>25-29</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="25-29"/><span>25-29</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="30-34"/><span>30-34</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="30-34"/><span>30-34</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="35-39"/><span>35-39</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="35-39"/><span>35-39</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="40-44"/><span>40-44</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="40-44"/><span>40-44</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="45-49"/><span>45-49</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="45-49"/><span>45-49</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="50-54"/><span>50-54</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="50-54"/><span>50-54</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="55-59"/><span>55-59</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="55-59"/><span>55-59</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput" required onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="60-64"/><span>60-64</span>
+                              <input class="popupVideoInput"  onChange={(e) => { ageSelectcon(e);}} name="age" type="radio" value="60-64"/><span>60-64</span>
                               </label>
                             </li>
                             
@@ -818,16 +845,16 @@ return (
                 <div id="prodLinesSelected">
                  <p class="input-name filtersearch GenderSelect global-select-placeholder" >Select Gender</p>
                   <div class="product-lines hide" id="GenderSelect">
-                        <Scrollbars style={{ height: 80 }}>
+                        <Scrollbars style={{ height: 120 }}>
                           <ul class="popupUl popupFilter">
                             <li>
                               <label class=" select-term">
-                              <input class="popupVideoInput"  onChange={(e) => { GenderSelectcon(e);}} name="gender" type="radio" value="Male"/><span>Male</span>
+                              <input class="popupVideoInput"  onChange={(e) => { GenderSelectcon(e);}} name="gender" type="radio" value="male"/><span>Male</span>
                               </label>
                             </li>
                             <li>
                               <label class="select-term">
-                              <input class="popupVideoInput"  onChange={(e) => { GenderSelectcon(e);}} name="gender" type="radio" value="Dehydrated_Skin"/><span>Female</span>
+                              <input class="popupVideoInput"  onChange={(e) => { GenderSelectcon(e);}} name="gender" type="radio" value="female"/><span>Female</span>
                               </label>
                             </li>
                           
