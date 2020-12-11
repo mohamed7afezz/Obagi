@@ -93,16 +93,18 @@ margin-bottom: 24px;
     border:1px solid #d6d6d6;
     background: none;
     height: 100%;
-    .customlabel{
-        text-transform: uppercase;
-        margin-bottom: 0;
-        font-size: 12px;
-        line-height: 16px;
-        @extend %futurapt-bold;
-        letter-spacing: 1.2px;
-        padding: 16px;
-        padding-bottom: 0;
-    }
+   
+}
+.customlabel{
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 16px;
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    padding-left: 16px;
+padding-right: 16px;
+    
 }
 .inputfield{
     font-size: 12px;

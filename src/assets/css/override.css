@@ -2184,11 +2184,96 @@ height:  32px;
   column-gap: 30px;
 }
 */
-
+.input-name.global-select-placeholder{
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 32px;
+  color: #7c858a;
+  position: relative;
+  display: flex;
+  margin-right: 15px;
+}
+.global-select .product-lines {
+  width: 100.3%;
+z-index: 999999;
+border: 1px solid #d6d6d6;
+  position: absolute;
+border-top: 0;
+left: -1px;
+border-bottom-right-radius: 6px;
+border-bottom-left-radius: 6px;
+padding-left: 0;
+top: 41px;
+background-color: #fff;
+}
+.global-select .product-lines li{
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.global-select.appointment-elemnt ~ .error{
+  border-color:#f00 !important ;
+}
+.global-select .product-lines li:hover{
+background-color: #d6d6d6;
+}
+.global-select.optionalWrap + .global-select.optionalWrap{
+  margin-top: 24px !important; 
+}
+@media (max-width:767px){
+  .showflex .global-select{
+    margin-top: 24px !important;
+  }
+}
+.global-select .select-term{
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0;;
+}
+.global-select .global-select-placeholder::after{
+  content: " ";
+  background-image: url(../images/path-copy.png);
+  border: 0;
+  display: block;
+  transform: rotate(180deg);
+  width: 10px;
+  height: 8px;
+  background-repeat: no-repeat;
+  transition: all ease 300ms;
+  position: absolute;
+right: 0;
+}
+.global-select #prodLinesSelected{
+  margin-bottom: 0;
+  padding-left: 15px;
+  position: relative;
+}
+.appointment-elemnt.global-select{
+  flex: 0 0 31%;
+  padding-bottom: 14px;
+  padding-right: 0;
+  padding-left: 0;
+}
+.showflex .global-select .product-lines{
+width: 101%;
+}
+.global-select .popupFilter{
+  margin-bottom: 0;
+}
+.global-select{
+  margin-top: 0 !important;
+}
 .product-line-masonry {
   width: 50%;
   margin-bottom: 15px;
 } 
+.select-term  input{
+  display: none;
+}
 .allcon .mobflexwrap{
     
   align-items: center;
@@ -3303,7 +3388,8 @@ padding-left: 50px;
 top: 10px;
 }
 .textareainput{
-  border: 0;
+  outline: 0 !important;
+  border: 0 !important;
 }
 .colectionBrand .img-wrap{
 height: 100%;
