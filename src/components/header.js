@@ -14,10 +14,9 @@ import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import SearchContext from "../providers/search-provider"
-import $ from 'jquery'
 import AboveHeader from './above-header'
 const baseUrl = process.env.Base_URL;
-
+const $ = require("jquery");
 const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
 
   const { search, setSearchIndex, searchInIndex } = useContext(SearchContext)
@@ -244,6 +243,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
     }
       adjustHeight();
+
+      $('#mobNavButton').attr('disabled',false);
 
   }, []);
 
@@ -514,7 +515,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     </CartContext.Consumer>
 
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
+                  <button id="mobNavButton" className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} disabled type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
                 </div>
               </div>
             </div>
