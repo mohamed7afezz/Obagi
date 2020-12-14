@@ -24,13 +24,16 @@ const HomeHero = ({ node }) => {
 
         if (inView(clincialSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
           document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src}`;
-
+          document.querySelector("#hero #box0").classList.remove('active');
+          document.querySelector("#hero #box1").classList.add('active');
         } else if (inView(medicalSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
           document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_box[0].relationships.field_background.localFile.childImageSharp.original.src}`;
-
+          document.querySelector("#hero #box0").classList.add('active');
+          document.querySelector("#hero #box1").classList.remove('active');
         } else {
           document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_default_bg.localFile.childImageSharp.original.src}`;
-
+          document.querySelector("#hero #box0").classList.remove('active');
+          document.querySelector("#hero #box1").classList.remove('active');
         }
       })
 

@@ -49,6 +49,11 @@ body {
             display: none;
         }
     }
+
+    .active {
+        background: rgba(19, 36, 102, 0.2);
+        border: 1px solid rgba(19, 36, 102, 0.2);
+    }
 }
 
 .node-home{
