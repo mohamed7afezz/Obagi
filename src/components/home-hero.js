@@ -14,6 +14,9 @@ const HomeHero = ({ node }) => {
 
     if (typeof window !== "undefined" && ($(window).width() < 768)) {
       window.addEventListener("scroll", function () {
+        if(!document.getElementById('hero')) {
+          return;
+        }
         var scrollAmount = window.scrollY;
         var isNotiBox = (document.querySelector("#notificationMob").display == "none");
         var medicalSelector = document.querySelector("#box0");
