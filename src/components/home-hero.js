@@ -64,10 +64,10 @@ const HomeHero = ({ node }) => {
 
   return (
     <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle].join(" ")} id="hero">
-      <div id="hero-bg">
-        <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} />
-      </div>
       <div className={[homeHero.containerWrapper, "container-fluid"].join(" ")}>
+        <div id="hero-bg">
+          <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} />
+        </div>
         <div className={["row"].join(" ")}>
           <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
             {node.field_main_header ? <div dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></div> : ""}
