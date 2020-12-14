@@ -4,11 +4,13 @@ import { Link } from 'gatsby'
 import accountsettings from "../../assets/scss/components/myaccountsettings.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 import Scrollbars from 'react-custom-scrollbars';
+import UserContext from '../../providers/user-provider';
 import $ from 'jquery'
 
 const baseUrl = process.env.Base_URL
 
 export default function AccountSettings() {
+  const { err } = useContext(UserContext);
 
   useEffect(() => {
     getData();
@@ -47,6 +49,10 @@ export default function AccountSettings() {
   let dd = String(today.getDate());
   let mm = String(today.getMonth() + 1); //January is 0!
   let yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+
+
   const [isToday, setIsToday] = useState();
 
 
@@ -130,6 +136,18 @@ export default function AccountSettings() {
     if (userSettingsData.status == 200 && typeof window !== "undefined") {
       window.location.reload();
 
+    } 
+  //   else {
+  //     let res = await userSettingsData.json();
+  //     setErr(res.errors);
+  // }
+    console.log("ashh user", !isValidDate(userAccount.birthdate), userAccount.birthdate === today.toString(), userAccount.birthdate, today.toString())
+
+    if (!isValidDate(userAccount.birthdate) || userAccount.birthdate === today.toString()) {
+      // show error message for date of birth field
+      // console.log('bahiii', 'date wrong')
+      setIsToday(true);
+      return false;
     }
 
   }
@@ -152,7 +170,27 @@ export default function AccountSettings() {
   }
 
   function handleAttr(event) {
-    switch (event.target.name) {
+    switch (event.target.name || event.target.attributes['data-name'].value) {
+
+      case 'date':
+
+        var dateOfBirth = userAccount.birthdate.split('-');
+        if (event.target.classList.contains('day')) {
+          dateOfBirth[2] = event.target.attributes['data-value'].value;
+        } else if (event.target.classList.contains('month')) {
+          dateOfBirth[1] = event.target.attributes['data-value'].value;
+        } else {
+          dateOfBirth[0] = event.target.attributes['data-value'].value;
+        }
+        dateOfBirth = dateOfBirth.join('-');
+
+        setData({
+          ...userAccount,
+          birthdate: dateOfBirth
+        })
+        // console.log("ashhuser", newUser)
+
+        break;
 
       case 'settingsemail':
         setData({
@@ -177,31 +215,33 @@ export default function AccountSettings() {
   }
 
   useEffect(() => {
-    if(typeof window != undefined) {
-        // console.log("ashhh", yearsList)
-        document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click',function(){
-            this.nextSibling.classList.remove('hide');
-            this.classList.add('hide');
-        }));
-        
-        document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click',function(e){
-            this.closest('.old-select').previousSibling.classList.remove('hide');
-            this.closest('.old-select').classList.add('hide');
-            
-            if(this.closest('.day-select')){
-                this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-            //  $('input[name="day"]').val()=$(this).attr('value')
+    if (typeof window != undefined) {
+      // console.log("ashhh", yearsList)
+      document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
+        this.nextSibling.classList.remove('hide');
+        this.classList.add('hide');
+      }));
 
-            }else if(this.closest('.month-select')){
-                this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                
-            }else if(this.closest('.year-select')){
-                this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-            } 
-        }));
+      document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click', function (e) {
+        this.closest('.old-select').previousSibling.classList.remove('hide');
+        this.closest('.old-select').classList.add('hide');
+
+        if (this.closest('.day-select')) {
+          this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+          //  $('input[name="day"]').val()=$(this).attr('value')
+
+        } else if (this.closest('.month-select')) {
+          this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+
+        } else if (this.closest('.year-select')) {
+          this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
+        }
+      }));
     }
   }, [])
 
+
+console.log("ashh" , err)
 
   return (
     <UserAccount activeTab="account-settings">
@@ -226,6 +266,13 @@ export default function AccountSettings() {
           </div>
           <div className="row">
             <div className="col-lg-5 col-12">
+              <div className={`errors ${err != undefined ? 'errors bg-light' : ''}`}>
+                <ul>
+                  {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
+                  {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""}
+                </ul>
+
+              </div>
               <div className={accountsettings.updatePasswordCon}>
                 <div className={["d-flex", accountsettings.formTitle].join(" ")}>
                   <p className={accountsettings.updateP}>Update Password</p>
@@ -356,6 +403,7 @@ export default function AccountSettings() {
                   </div>
 
                 </div>
+
               </div>
             </div>
 

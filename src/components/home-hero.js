@@ -12,7 +12,7 @@ const HomeHero = ({ node }) => {
   useEffect(() => {
 
 
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && ($(window).width() < 768)) {
       window.addEventListener("scroll", function () {
         var scrollAmount = window.scrollY;
         var isNotiBox = (document.querySelector("#notificationMob").display == "none");
@@ -22,33 +22,35 @@ const HomeHero = ({ node }) => {
         var notibox = document.querySelector("#notificationMob").offsetHeight;
 
 
-        if (inView(clincialSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) :  window.innerHeight - (menuheight))){
+        if (inView(clincialSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
           document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src})`;
-         
+
         } else if (inView(medicalSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
           document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[0].relationships.field_background.localFile.childImageSharp.original.src})`;
-    
+
         } else {
           document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`;
-                 
+
         }
       })
+
+
+      function inView(elSelector, scrolled, offset) {
+        var viewed = window.innerHeight + scrolled;
+        if (offset) {
+          var bottomOffset = elSelector.offsetParent.offsetTop + offset;
+        } else {
+          var bottomOffset = elSelector.offsetParent.offsetTop;
+        }
+        if (bottomOffset < viewed) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
 
 
-    function inView(elSelector, scrolled, offset) {
-      var viewed = window.innerHeight + scrolled;
-      if (offset) {
-        var bottomOffset = elSelector.offsetParent.offsetTop + offset;
-      } else {
-        var bottomOffset = elSelector.offsetParent.offsetTop;
-      }
-      if (bottomOffset < viewed) {
-        return true;
-      } else {
-        return false;
-      }
-    }
   }, [])
 
   function changeBackground(bg) {
