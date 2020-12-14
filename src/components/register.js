@@ -13,6 +13,7 @@ const Register = () => {
     let largeScreen = 992;
 
     const { user, err, handleRegister } = useContext(UserContext);
+
     useEffect(() => {
         if(typeof window != undefined) {
             // console.log("ashhh", yearsList)
@@ -65,6 +66,7 @@ const Register = () => {
     // });
 
     const [isPassMatch, setIsPassMatch] = useState();
+    const [passConfirm, setPassConfirm] = useState(false);
 
     function checkPassMatch(event) {
         //compare pass
@@ -439,15 +441,15 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${isPassMatch == false ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${isPassMatch == false ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => {setPassConfirm(true)}} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
                             </div>
 
-                            <p className={`form-control ${isPassMatch == false ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
+                            <p className={`form-control ${((isPassMatch == false) && passConfirm) ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
                             <p id="json-errors"></p>
 
                             <div className="form-check">
