@@ -23,13 +23,13 @@ const HomeHero = ({ node }) => {
 
 
         if (inView(clincialSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
-          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src})`;
+          document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src}`;
 
         } else if (inView(medicalSelector, scrollAmount, isNotiBox ? window.innerHeight - (menuheight + notibox) : window.innerHeight - (menuheight))) {
-          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_box[0].relationships.field_background.localFile.childImageSharp.original.src})`;
+          document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_box[0].relationships.field_background.localFile.childImageSharp.original.src}`;
 
         } else {
-          document.getElementById("hero").style.backgroundImage = `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})`;
+          document.querySelector("#hero #hero-bg img").src = `${node.relationships.field_default_bg.localFile.childImageSharp.original.src}`;
 
         }
       })
@@ -61,6 +61,9 @@ const HomeHero = ({ node }) => {
 
   return (
     <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle].join(" ")} id="hero">
+      <div id="hero-bg">
+        <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} />
+      </div>
       <div className={[homeHero.containerWrapper, "container-fluid"].join(" ")}>
         <div className={["row"].join(" ")}>
           <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>

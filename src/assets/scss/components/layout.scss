@@ -20,22 +20,37 @@ body {
     // }
 }
 
-// #hero {
-//     position: relative;
+#hero {
+    position: relative;
+    overflow: hidden;
+    @include mobile-screen-only {
+        background-image: none !important;
+    }
 
-//     &::before {
-//         content: url('../../images/hero-bg.jpg');
-//         display: block;
-//     }
+    #hero-bg {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        clip: rect(0, auto, auto, 0);
 
-//     &.medical::before {
-//         content: url('../../images/hero-medical-bg.jpg');
-//     }
+        img  {
+            position: fixed;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: auto;
+            transform: translateX(-50%);
+        }
 
-//     &.clinical::before {
-//         content: url('../../images/hero-clinical-bg.jpg');
-//     }
-// }
+        @include md-screen {
+            display: none;
+        }
+    }
+}
+
 .node-home{
     // margin-top: 212.5px;
     // @include md-screen {
