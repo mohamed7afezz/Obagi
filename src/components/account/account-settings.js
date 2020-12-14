@@ -10,7 +10,7 @@ import $ from 'jquery'
 const baseUrl = process.env.Base_URL
 
 export default function AccountSettings() {
-  const { err } = useContext(UserContext);
+  const [err, setErr] = useState();
 
   useEffect(() => {
     getData();
@@ -136,11 +136,10 @@ export default function AccountSettings() {
     if (userSettingsData.status == 200 && typeof window !== "undefined") {
       window.location.reload();
 
-    } 
-  //   else {
-  //     let res = await userSettingsData.json();
-  //     setErr(res.errors);
-  // }
+    } else {
+      let res = await userSettingsData.json();
+      setErr(res.errors);
+  }
     console.log("ashh user", !isValidDate(userAccount.birthdate), userAccount.birthdate === today.toString(), userAccount.birthdate, today.toString())
 
     if (!isValidDate(userAccount.birthdate) || userAccount.birthdate === today.toString()) {
@@ -332,7 +331,7 @@ console.log("ashh" , err)
                   <div className="day-month">
                     <div class="form-group select-group new-select  day-select">
                       <label for="reviewFormSelect" class="form-label">*Day</label>
-                      <div class="select-selected">Select</div>
+                      <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[2] : ""}</div>
                     </div>
                     <div className="form-group select-group  old-select day-select hide">
                       <label for="reviewFormSelect" className="form-label">*Day</label>
@@ -352,7 +351,7 @@ console.log("ashh" , err)
                     </div>
                     <div class="form-group select-group new-select  month-select">
                       <label for="reviewFormSelect" class="form-label">*Month</label>
-                      <div class="select-selected">Select</div>
+                      <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[1] : ""}</div>
                     </div>
                     <div className="form-group select-group old-select  month-select hide">
                       <label for="reviewFormSelect" className="form-label">*Month</label>
@@ -382,7 +381,7 @@ console.log("ashh" , err)
                   </div>
                   <div class="form-group select-group new-select  year-select">
                     <label for="reviewFormSelect" class="form-label">*Year</label>
-                    <div class="select-selected">Select</div>
+                    <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[0] : ""}</div>
                   </div>
 
                   <div className="form-group select-group old-select  year-select hide">

@@ -117,12 +117,12 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
               <p className="breadcramp">
                 <Link to="/">Home</Link> /{" "}
                 {checkTaxonomy.field_taxonomy_hero?<>
-                <Link to={'/' + first_url}> {first_url}</Link> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
+                <Link to={'/' + first_url}> {first_url}</Link> /{" "} {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url ?
                  <Link to={checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_url}>
                    {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
                     checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   <span> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
                    :""}</>:""}
                     </p>
            

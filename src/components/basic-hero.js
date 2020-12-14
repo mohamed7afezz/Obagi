@@ -27,8 +27,14 @@ const Basichero = ({ node }) => {
             <div className="row">
               <div className={[" breadcramp-con  d-block col-12"].join(" ")}>
                 <p className="breadcramp">
-                  <Link to="/">Home</Link> /{first_url ?
-                    <span > {first_url}</span> : ""}
+                  <Link to="/">Home</Link> / {first_url && sec_url ?
+                    <>
+                      <Link to={`${'/' + first_url}`}> {first_url}</Link>
+                      <span>{" / " + sec_url}</span>
+                    </>
+                     : 
+                    first_url? <span>{first_url}</span>
+                  : ""}
                 </p>
               </div>
             </div>

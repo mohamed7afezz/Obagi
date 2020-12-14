@@ -1033,7 +1033,9 @@ button:focus{
   display: block;
   
 }
-.node-home .ourHistory .breadcramp-con p a,.node-home .Skinclusion .breadcramp-con p a{
+.node-home .ourHistory .breadcramp-con p a,
+.node-home .Skinclusion .breadcramp-con p a,
+.node-home .premier-points-hero .breadcramp-con p a{
   color: #132466;
 }
 .node-home .breadcramp-con p a {
