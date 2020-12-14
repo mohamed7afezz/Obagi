@@ -19,6 +19,23 @@ body {
     //     margin-top: 0;
     // }
 }
+
+// #hero {
+//     position: relative;
+
+//     &::before {
+//         content: url('../../images/hero-bg.jpg');
+//         display: block;
+//     }
+
+//     &.medical::before {
+//         content: url('../../images/hero-medical-bg.jpg');
+//     }
+
+//     &.clinical::before {
+//         content: url('../../images/hero-clinical-bg.jpg');
+//     }
+// }
 .node-home{
     // margin-top: 212.5px;
     // @include md-screen {
