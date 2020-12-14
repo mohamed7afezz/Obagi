@@ -2444,27 +2444,28 @@ p {
 }
 
 .register .question-header.collapsed::after {
-    content: " ";
+    content: "+";
     position: absolute;
     display: block;
-    background-color: #fff;
-    height: 10px;
-    width: 1px;
-    top: 27.9px;
-    right: 36.508px;
-    z-index: 9;
-}
-.register .question-header.collapsed::before {
-    content: " ";
-    position: absolute;
-    display: block;
-    background-color: #fff;
-    width: 10px;
-    height: 1px;
+    // background-color: #fff;
+    // height: 10px;
+    // width: 1px;
+    // top: 27.9px;
     right: 32px;
-    top: 31px;
+    top: 16px;
     z-index: 9;
 }
+// .register .question-header.collapsed::before {
+//     content: " ";
+//     position: absolute;
+//     display: block;
+//     background-color: #fff;
+//     width: 10px;
+//     height: 1px;
+//     right: 32px;
+//     top: 31px;
+//     z-index: 9;
+// }
 
 .register .question-header.collapsed {
     border-radius: 6px;
