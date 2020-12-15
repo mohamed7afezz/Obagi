@@ -109,10 +109,18 @@ const Resulte = (props) => {
     }
     return (
         <>
+     
+        
             {checkDataCondition(loading,
                 <>
                     {checkDataCondition((props.brandJourney == "Clinical Persona"),
                         <div className={["clinical", resulteSkinStyle.clinical].join(" ")}>
+                                {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+                <p className="breadcramp">
+                    <Link to="/">Home</Link>{" "} / <span>Skin Analyzer</span>
+                        </p>
+                
+                </div>}
                             <div className="container-fluid"><div className="row">
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>
@@ -221,6 +229,13 @@ const Resulte = (props) => {
                     )}
                     {checkDataCondition((props.brandJourney != "Clinical Persona"),
                         <div className="medical">
+                            {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
                             <div className="container-fluid"><div className="row">
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>

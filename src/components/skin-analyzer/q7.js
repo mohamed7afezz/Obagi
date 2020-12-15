@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React, { useState } from 'react'
 import ProgressBar from '../../components/progress-bar'
 
@@ -28,6 +29,14 @@ const Q7 = (props) => {
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       } 
     return (
+        <>
+        {<div className={["white-color give-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper last-question-progress d-lg-none justify-content-center">
                 <div className="col-auto">
@@ -224,6 +233,7 @@ const Q7 = (props) => {
                 </div>
             </div> */}
         </div>
+            </>
     )
 }
 export default Q7
