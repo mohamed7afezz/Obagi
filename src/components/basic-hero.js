@@ -31,7 +31,7 @@ const Basichero = ({ node }) => {
                   <Link to="/">Home</Link>{" "}  {first_url && sec_url ?
                     <>
                    /   <Link to={`${'/' + first_url}`}> {first_url}</Link>
-                      {node.field_bread_crumb?<span>{" / " + node.field_bread_crumb.title}</span>:<span>{" / " + sec_url}</span>}
+                      {node.field_bread_crumb?<span>{" / " + node.field_bread_crumb[0].title}</span>:<span>{" / " + sec_url}</span>}
                     </>
                      : node.field_bread_crumb?
                      <span>{" / " + node.field_bread_crumb[0].title}</span>:<span>{" / " + sec_url}</span>}
