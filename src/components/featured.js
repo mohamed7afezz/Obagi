@@ -74,11 +74,17 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
 
             <div className="video-wrapper">
 
-              <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+              <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>    
+              {node.relationships.field_featured_video ?  
+                <>
                 <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                </a>
-                {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : "") : ''}
+                </a>   
+                 {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
+                 <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?
+                 node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ""}</>
+                  : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                    node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
               </div>
             </div>
           </div>
@@ -118,10 +124,15 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
             <div className={["col-lg-5", "col-right-padding", "pl-0", featuredStyles.columnsWrapper].join(" ")}>
               <div className="video-wrapper">
                 <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                  <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                {node.relationships.field_featured_video ? 
+                <>
+                <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                  </a>
-                  {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
+                  </a>              
+                  {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
+                  <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+                  : ""}</> : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                    node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                 </div>
               </div>
             </div>
@@ -135,10 +146,16 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
               <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
                 <div className="video-wrapper">
                   <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+                  {node.relationships.field_featured_video ? 
+                    <>
                     <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                       <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
+                    
+                    {node.relationships.field_featured_video.relationships.field_video_poster.localFile?
+                     <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> 
+                     : ""}</> : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                      node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                   </div>
                 </div>
               </div>
@@ -194,6 +211,18 @@ export const fragment = graphql`
           field_image_right
           
           relationships {
+            field_featured_image {
+              localFile {
+                childImageSharp {
+                  fluid (quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                  original {
+                    src
+                  }
+                }
+              }
+            }
             field_issues_categories {
               path {
                 alias
