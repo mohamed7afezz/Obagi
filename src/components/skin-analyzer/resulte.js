@@ -115,7 +115,7 @@ const Resulte = (props) => {
                 <>
                     {checkDataCondition((props.brandJourney == "Clinical Persona"),
                         <div className={["clinical", resulteSkinStyle.clinical].join(" ")}>
-                                {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+                                {<div className={["blue-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
                 <p className="breadcramp">
                     <Link to="/">Home</Link>{" "} / <span>Skin Analyzer</span>
                         </p>
@@ -229,7 +229,7 @@ const Resulte = (props) => {
                     )}
                     {checkDataCondition((props.brandJourney != "Clinical Persona"),
                         <div className="medical">
-                            {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+                            {<div className={["blue-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link>{" "}
                / <span>Skin Analyzer</span>

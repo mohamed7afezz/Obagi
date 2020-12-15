@@ -15,7 +15,7 @@ const Q2 = (props) => {
       } 
     return (
         <>
-        {<div className={["white-color give-padding breadcramp-con", "col-12"].join(" ")}>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link>{" "}
                / <span>Skin Analyzer</span>

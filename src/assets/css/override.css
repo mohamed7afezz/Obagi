@@ -2786,7 +2786,9 @@ padding-bottom: 0;
     height: 91vh;
     padding-bottom: 0 !important;
   }
-  
+  .Analyzer-padding{
+    padding-top: 16px;
+  }
   .node-home .breadcramp-con.give-padding{
   padding-bottom: 0;
   margin-top: 15px;
