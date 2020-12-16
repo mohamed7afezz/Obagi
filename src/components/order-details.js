@@ -21,18 +21,71 @@ const spinner = css`
 var savearr = [];
 var saveprodarr = [];
 var productsPremierPoints = [];
+var detailorder ="";
+var shipmedntorder="";
+var productorder ="";
+var adressesorder ="";
+let productId="";
+let elementId="";
+let elementPoints ="";
+async function getShippingAddresses(e) {
+  // setIsLoading(true);
+  await fetch(
+    `${baseUrl}bigcommerce/v1/order/${e}`,
+    {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+    }
+)
+    .then(res => res.json())
+    .then(response => {
+        if(response.id){    
+           detailorder =response.main_order;
+           shipmedntorder = response.shipments;
+           productorder = response.products;
+           adressesorder =response.shipping_addresses;
+          
+   productId = response.products.map(item => {
+    return item.product_id
+  })
+
+   elementId = response.products.map(item => {
+
+    return item.product_options[0] ? item.product_options[0].product_option_id : ""
+  })
+   elementPoints = response.products.map(item => {
+
+    return item.product_options[0] ? item.product_options[0].value : ""
+  })
+        }
+        
+    })
+    .catch(error => {
+       
+        // console.log('error', error)
+    });
+
+  // setIsLoading(false);
+}
 const OrderDetails = (props, { node }) => {
+  getShippingAddresses(props.id);
+    useEffect(() => {
+      checkStock(baseUrl);
+    
+
+})
+
   var productsOid = [];
   var total = 0;
-
+  
+  
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addMultiToCart = value && value.addMultiToCart;
   const addingToCart = value && value.state.addingToCart;
 
-  const [details, setDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
-  const [getshiping, setShipment] = useState(false);
   const [saveprod, setprod] = useState({})
   function arraysEqual(a, b) {
     if (a === b) return true;
@@ -49,97 +102,6 @@ const OrderDetails = (props, { node }) => {
     }
     return true;
   }
-
-  async function getDetails() {
-    // setIsLoading(true);
-    const detailsData = await (
-      await fetch(`${baseUrl}bigcommerce/v1/customer_orders/${props.id}`, {
-        method: "GET",
-        credentials: "include",
-        mode: "cors",
-      })
-    ).json()
-
-    if (detailsData !== "User not login.") {
-      setDetails(detailsData)
-      // console.log("detail", detailsData)
-    }
-
-    // setIsLoading(false);
-  }
-
-  const [products, setProducts] = useState([])
-
-  async function getshipment() {
-    const getshipping = await (
-      await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipments`,
-        {
-          method: "GET",
-          credentials: "include",
-          mode: "cors",
-        }
-      )
-    ).json()
-
-    if (getshipping !== "User not login.") {
-      setShipment(getshipping)
-    }
-  }
-
-  async function getProducts() {
-    setIsLoading(true)
-    const productsData = await (
-      await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/products`,
-        {
-          method: "GET",
-          credentials: "include",
-          mode: "cors",
-        }
-      )
-    ).json()
-
-    if (productsData !== "User not login.") {
-      setProducts(productsData)
-      console.log("zaki",products)
-    }
-
-    setIsLoading(false)
-    if(typeof window != undefined ){
-      checkStock(baseUrl);
-    }
-  }
-
-  const [shippingAddresses, setShippingAddresses] = useState([])
-
-  async function getShippingAddresses() {
-    // setIsLoading(true);
-    const shippingAddressesData = await (
-      await fetch(
-        `${baseUrl}bigcommerce/v1/customer_orders/${props.id}/shipping_addresses`,
-        {
-          method: "GET",
-          credentials: "include",
-          mode: "cors",
-        }
-      )
-    ).json()
-
-    if (shippingAddressesData !== "User not login.") {
-      setShippingAddresses(shippingAddressesData);
-      console.log("hassan3",shippingAddressesData)
-    }
-
-    // setIsLoading(false);
-  }
-
-  useEffect(() => {
-    getDetails()
-    getProducts()
-    getshipment()
-    getShippingAddresses()
-  }, [])
 
   const data = useStaticQuery(graphql`
     query {
@@ -179,9 +141,10 @@ const OrderDetails = (props, { node }) => {
 
     return null
   }
-console.log("hassan2",details)
+ 
+  
   const placedOnDate = new Date(
-    details.date_created ? details.date_created : ""
+    detailorder.date_created ? detailorder.date_created : ""
   )
     .toLocaleDateString(
       {},
@@ -189,53 +152,35 @@ console.log("hassan2",details)
     )
     .split(" ")
 
-  let productId = products.map(item => {
-    return item.product_id
-  })
-
-  let elementId = products.map(item => {
-
-    return item.product_options[0] ? item.product_options[0].product_option_id : ""
-  })
-  let elementPoints = products.map(item => {
-
-    return item.product_options[0] ? item.product_options[0].value : ""
-  })
   return (
     <>
-      <div
+              <div
         className={[
           "container-fluid order-details",
           orderDetailsStyles.orderDetailsWrapper,
         ].join(" ")}
       >
         <div className="row">
-          <div className="col-12 col-lg-10 offset-lg-1">
+          <div className="col-12">
             <div className={orderDetailsStyles.headerWrapper}>
               <div className={orderDetailsStyles.heading}>Order</div>
               <Link to="/my-account/orders" className={orderDetailsStyles.accountLink}>
                 My Account
               </Link>
-              <Link
-                to="/my-account/orders"
-                className={[
-                  "d-none d-lg-block",
-                  orderDetailsStyles.orderArrow,
-                ].join(" ")}
-              ></Link>
+              
             </div>
             <div className={orderDetailsStyles.orderNumber}>
-              {details.id ? "#" + details.id : ""}
+              {detailorder.id ? "#" + detailorder.id : ""}
             </div>
           </div>
         </div>
 
         <div className="row">
-          {getshiping ? <>
-            <div class="col-lg-7 offset-lg-1">
+          {shipmedntorder ? <>
+            <div class="col-lg-9 ">
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
-                  Your order has been split into {getshiping.length} shipments. The details and
+                  Your order has been split into {shipmedntorder.length} shipments. The details and
                 status are listed below.
               </p>
               </div>
@@ -251,17 +196,19 @@ console.log("hassan2",details)
                 />
               ) : (
 
-                  getshiping ? getshiping.map((getshipm, index1) => {
-                    return (products ? products.map((item, index) => {
+                shipmedntorder ? shipmedntorder.map((getshipm, index1) => {
+                    return (productorder ? productorder.map((item, index) => {
 
                       { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                       return (getshipm.items.map((getProdId, index2) => {
 
                         return (
+                           
                           getProdId.product_id === item.product_id ?
                             <div className={orderDetailsStyles.shipmentstate}>
                               {index2 < 1 ?
                                 <>
+                                
                                   <div className={orderDetailsStyles.shipment}>
                                     <p>Shipment #{index + 1} : {getshipm.tracking_number}</p>
                                   </div>
@@ -306,11 +253,17 @@ console.log("hassan2",details)
                                         >
                                           Qty. {item.quantity ? item.quantity : ""}
                                         </div>
+                                        
                                         <div className={orderDetailsStyles.productPrice}>
                                           {item.total_inc_tax
                                             ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
                                             : ""}
                                         </div>
+                                        
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {item.status}
+                                      </div>
+                                         
                                       </div>
                                     </div>
                                   </div>
@@ -343,9 +296,13 @@ console.log("hassan2",details)
                                     <div className={orderDetailsStyles.productPrice}>
                                       {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                                     </div>
-                                    <div className={orderDetailsStyles.productstatus}>
-                                      {item.order_status}
-                                    </div>
+                                  
+                                   
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {detailorder.status}
+                                      </div>
+                                   
+                                   
                                   </div>
                                 </div>
 
@@ -383,21 +340,12 @@ console.log("hassan2",details)
                       <div className={orderDetailsStyles.detailsTitle}>
                         Order Details
                   </div>
-                      <a
-                        href={
-                          "https://secure.obagi.com/account.php?action=print_invoice&order_id=" +
-                          props.id
-                        }
-                        target="_blank"
-                        className={orderDetailsStyles.print}
-                      >
-                        Print Invoice
-                  </a>
+                    
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Status</p>
-                      <p>{details.status ? details.status : ""}</p>
+                      <p>{detailorder.status ? detailorder.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -411,7 +359,7 @@ console.log("hassan2",details)
                       </p>
                     </div>
 
-                    {shippingAddresses.map((item, index) => {
+                    {adressesorder.map((item, index) => {
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
@@ -437,31 +385,31 @@ console.log("hassan2",details)
                         Billing Address
                   </p>
                       <p>
-                        {details.billing_address
-                          ? details.billing_address.first_name
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.first_name
                           : ""}{" "}
-                        {details.billing_address
-                          ? details.billing_address.last_name
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.last_name
                           : ""}
                       </p>
                       <p>
-                        {details.billing_address
-                          ? details.billing_address.street_1
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.street_1
                           : ""}
                       </p>
                       <p>
-                        {details.billing_address
-                          ? details.billing_address.city
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.city
                           : ""},{" "}
-                        {details.billing_address
-                          ? details.billing_address.state
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.state
                           : ""}
                         {" "}
-                        {details.billing_address ? details.billing_address.zip : ""}
+                        {detailorder.billing_address ? detailorder.billing_address.zip : ""}
                       </p>
                       <p>
-                        {details.billing_address
-                          ? details.billing_address.country_iso2
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.country_iso2
                           : ""}
                       </p>
                     </div>
@@ -469,7 +417,7 @@ console.log("hassan2",details)
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
-                        {details.payment_method ? details.payment_method : ""}:
+                        {detailorder.payment_method ? detailorder.payment_method : ""}:
                     ending in 7320
                   </p>
                     </div>
@@ -477,7 +425,7 @@ console.log("hassan2",details)
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
                       <div className={orderDetailsStyles.totalPrice}>
-                        {details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}
+                        {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
                       </div>
                     </div>
 
@@ -494,7 +442,7 @@ console.log("hassan2",details)
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === productId}
@@ -517,7 +465,7 @@ console.log("hassan2",details)
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}
@@ -535,7 +483,7 @@ console.log("hassan2",details)
               <div className="col-12  d-lg-none">
                 <div className={orderDetailsStyles.accordion}>
                   <div className={orderDetailsStyles.accordionHeader}>
-                    <div className={orderDetailsStyles.itemsCount}>{products ? (products.length > 1 ? products.length + " Items" : products.length + " Item") : ""}</div>
+                    <div className={orderDetailsStyles.itemsCount}>{productorder ? (productorder.length > 1 ? productorder.length + " Items" : productorder.length + " Item") : ""}</div>
                     <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
                       View Details
             </button>
@@ -552,7 +500,7 @@ console.log("hassan2",details)
 
                       />
                       :
-                      (products.map((item, index) => {
+                      (productorder.map((item, index) => {
 
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
@@ -577,6 +525,10 @@ console.log("hassan2",details)
                               <div className={orderDetailsStyles.priceAndQuantity}>
                                 <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
                                 <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
+                               
+                                        <div className={orderDetailsStyles.productstatus}>
+                                        {item.status}
+                                      </div>
                               </div>
                             </div>
                           </div>
@@ -590,7 +542,7 @@ console.log("hassan2",details)
 
 
 
-              <div className="col-lg-7 offset-lg-1 d-none d-lg-block">
+              <div className="col-lg-9 d-none d-lg-block">
 
                 {isLoading ?
 
@@ -601,7 +553,7 @@ console.log("hassan2",details)
 
                   />
                   :
-                  (products.map((item, index) => {
+                  (productorder.map((item, index) => {
                     return (
                       <div className={orderDetailsStyles.productWrapper}>
                         <div className={orderDetailsStyles.productInfoWrapper}>
@@ -610,7 +562,7 @@ console.log("hassan2",details)
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input desk-details-check order-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                   <span className="checkmark"></span>
 
                                 </label>
@@ -631,6 +583,10 @@ console.log("hassan2",details)
                           <div className={orderDetailsStyles.productPrice}>
                             {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                           </div>
+                       
+                          <div className={orderDetailsStyles.productstatus}>{detailorder.custom_status}</div> 
+                                
+                              
                         </div>
                       </div>
                     )
@@ -653,12 +609,11 @@ console.log("hassan2",details)
                   <div className={orderDetailsStyles.orderWrapper}>
                     <div className={orderDetailsStyles.detailsHeader}>
                       <div className={orderDetailsStyles.detailsTitle}>Order Details</div>
-                      <a href={"https://secure.obagi.com/account.php?action=print_invoice&order_id=" + props.id} target="_blank" className={orderDetailsStyles.print}>Print Invoice</a>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Status</p>
-                      <p>{details.status ? details.status : ""}</p>
+                      <p>{detailorder.status ? detailorder.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -666,7 +621,7 @@ console.log("hassan2",details)
                       <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
                     </div>
 
-                    {shippingAddresses.map((item, index) => {
+                    {adressesorder.map((item, index) => {
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p>Shipping Address</p>
@@ -680,15 +635,15 @@ console.log("hassan2",details)
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Billing Address</p>
-                      <p>{details.billing_address ? details.billing_address.first_name : ""} {details.billing_address ? details.billing_address.last_name : ""}</p>
-                      <p>{details.billing_address ? details.billing_address.street_1 : ""}</p>
-                      <p>{details.billing_address ? details.billing_address.city : ""} {details.billing_address ? details.billing_address.state : ""}, {details.billing_address ? details.billing_address.zip : ""}</p>
-                      <p>{details.billing_address ? details.billing_address.country_iso2 : ""}</p>
+                      <p>{detailorder.billing_address ? detailorder.billing_address.first_name : ""} {detailorder.billing_address ? detailorder.billing_address.last_name : ""}</p>
+                      <p>{detailorder.billing_address ? detailorder.billing_address.street_1 : ""}</p>
+                      <p>{detailorder.billing_address ? detailorder.billing_address.city : ""} {detailorder.billing_address ? detailorder.billing_address.state : ""}, {detailorder.billing_address ? detailorder.billing_address.zip : ""}</p>
+                      <p>{detailorder.billing_address ? detailorder.billing_address.country_iso2 : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Payment</p>
-                      <p>{details.payment_method ? details.payment_method : ""}: ending in 7320</p>
+                      <p>{detailorder.payment_method ? detailorder.payment_method : ""}: ending in 7320</p>
                     </div>
 
                     {/* <div className={orderDetailsStyles.detailPart}>
@@ -699,7 +654,7 @@ console.log("hassan2",details)
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
-                      <div className={orderDetailsStyles.totalPrice}>{details.total_inc_tax ? "$" + parseFloat(details.total_inc_tax).toFixed(2) : ""}</div>
+                      <div className={orderDetailsStyles.totalPrice}>{detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}</div>
                     </div>
 
                     <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
@@ -720,7 +675,7 @@ console.log("hassan2",details)
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
                           // console.log(saveprodarr, "hassan33")
-                          addMultiToCart(productsOid, false, quantity, details.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}
@@ -770,6 +725,7 @@ console.log("hassan2",details)
           </div>
         </div>
       </div>
+
     </>
   )
 }
