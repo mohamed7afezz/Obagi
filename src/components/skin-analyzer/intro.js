@@ -25,6 +25,13 @@ const Intro = (props) => {
       } 
     return (
         <>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 d-lg-none">

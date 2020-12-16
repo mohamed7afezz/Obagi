@@ -22,7 +22,7 @@ const CareersHero = ({ node }) => {
 
                     <div className="breadcramp-con d-block col-12">
                         <p className="breadcramp">
-                            <Link to="/">Home</Link> /{first_url ?
+                            <Link to="/">Home</Link>{" "} /{first_url ?
                                 <span > {first_url}</span> : ""}
                         </p>
                     </div>
@@ -44,7 +44,7 @@ const CareersHero = ({ node }) => {
                             <div className="row">
                                 <div className="breadcramp-con d-block col-12">
                                     <p className="breadcramp">
-                                        <Link to="/">Home</Link> /{first_url ?
+                                        <Link to="/">Home</Link>{" "} /{first_url ?
                                             <span > {first_url}</span> : ""}
                                     </p>
                                 </div>

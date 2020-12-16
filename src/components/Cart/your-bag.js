@@ -916,7 +916,7 @@ const YourBag = (props, { notificationId }) => {
             <div className={ShowBagStyle.bottomHalf}>
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-              <div className={ShowBagStyle.bottomLink}><Link to="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></Link></div>
+              <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></a></div>
               <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
@@ -931,7 +931,7 @@ const YourBag = (props, { notificationId }) => {
               <div className={ShowBagStyle.bottomHalf}>
                 <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
                 <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-                <Link to="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></Link>
+                <a data-dismiss="modal" aria-label="Close" href="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></a>
                 {/* </div> */}
                 {/* </div> */}
               </div>

@@ -11,6 +11,7 @@ const Basichero = ({ node }) => {
     var sec_url = geturi[4];
 
   }
+  console.log("hassan",node)
   return (
     <div className={basichero.sectionBg}>
       <div className={["container-fluid ", "basicbg", basichero.givepadding, `${node.field_basic_hero_custom_class_ ? node.field_basic_hero_custom_class_ : ""}`].join(" ")}>
@@ -25,23 +26,20 @@ const Basichero = ({ node }) => {
             ].join(" ")}
           >
             <div className="row">
-              <div className={[" breadcramp-con  d-block col-12"].join(" ")}>
+              <div className={[" breadcramp-con  d-block col-12",`${node.field_brea?node.field_brea:""}`].join(" ")}>
                 <p className="breadcramp">
-                  <Link to="/">Home</Link> / {first_url && sec_url ?
+                  <Link to="/">Home</Link>{" "}  {first_url && sec_url ?
                     <>
-                      <Link to={`${'/' + first_url}`}> {first_url}</Link>
-                      <span>{" / " + sec_url}</span>
+                   /   <Link to={`${'/' + first_url}`}> {first_url}</Link>
+                      {node.field_bread_crumb?<span>{" / " + node.field_bread_crumb[0].title}</span>:<span>{" / " + sec_url}</span>}
                     </>
-                     : 
-                    first_url? <span>{first_url}</span>
-                  : ""}
+                     : node.field_bread_crumb?
+                     <span>{" / " + node.field_bread_crumb[0].title}</span>:<span>{" / " + sec_url}</span>}
                 </p>
               </div>
             </div>
             <div className="row remove-mob-padding collectionherorow">
-
               <div className="col col-lg-11 offset-lg-1 p-0 general-basic-column">
-
                 {
                   node.relationships.field_basic_hero_left_img_paragr ?
                     <img
@@ -119,6 +117,10 @@ fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
     field_basic_hero_title_paragrapg {
       processed
     }
+    field_bread_crumb {
+      title
+    }
+    field_brea
     field_basic_hero_desc_paragrapgh {
       processed
     }

@@ -230,7 +230,14 @@ export default function Finder() {
 
   return (
     <>
-
+ {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "} /
+                <Link to={'/medical'}> medical</Link> 
+               / <span>Physician Finder</span>
+                    </p>
+            
+              </div>}
       <div className="container phy-container">
         <div className="row">
           <div className="col">

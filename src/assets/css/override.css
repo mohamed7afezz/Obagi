@@ -1793,7 +1793,9 @@ right: 10px;
     text-align: center;
   }
 }
-
+.blue-color a{
+  color: #132466 !important;
+}
 @media (max-width: 991px) {
   .product-card-con{
     padding: 0 16px;
@@ -2627,7 +2629,9 @@ min-height: 16px;;
     display: flex !important;
  
   }
- 
+.give-padding{
+  padding-left: 41px;
+}
   .results-card-container  .Productcardtype.d-none.show-mob{
     display: none !important;
   }
@@ -2763,11 +2767,32 @@ padding-bottom: 0;
 .register .text-warning{
   color: red !important;
 }
+.international-partners .breadcramp-con p:last-child{
+  color: #132466;
+  display: block;
+}
+.international-partners .breadcramp-con p:last-child a{
+  color: #132466;
+
+}
+.white-color{
+  color: #fff;
+}
+.skinanalyzer .breadcramp-con{
+  text-align: left;
+}
 @media (max-width:767px){
   .f-Qu-wrap{
     height: 91vh;
     padding-bottom: 0 !important;
   }
+  .Analyzer-padding{
+    padding-top: 16px;
+  }
+  .node-home .breadcramp-con.give-padding{
+  padding-bottom: 0;
+  margin-top: 15px;
+}
    .results-card-container .Productcardtype.d-none.show-mob-result{
 display: flex !important;
   }
