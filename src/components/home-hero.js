@@ -72,6 +72,11 @@ const HomeHero = ({ node }) => {
     dots: true,
     autoplay: true,
     autoplaySpeed: 4000,
+    draggable: false,
+    swipe: false,
+    swipeToSlide: false,
+    touchMove: false,
+    accessibility: false,
     // beforeChange: (current, next) => {
     //     document.querySelector('.myslickactive').classList.remove('myslickactive');
     //     document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
