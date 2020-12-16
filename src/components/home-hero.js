@@ -70,20 +70,12 @@ const HomeHero = ({ node }) => {
     slidesToShow: 1,
     arrows: false,
     dots: true,
-    // autoplay: true,
-    // autoplaySpeed: 4000,
+    autoplay: true,
+    autoplaySpeed: 4000,
     // beforeChange: (current, next) => {
     //     document.querySelector('.myslickactive').classList.remove('myslickactive');
     //     document.querySelectorAll("#product-hero-slick .imageContainer")[next].classList.add('myslickactive')
     // },
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          dots: false,
-        }
-      },
-    ]
   }
 
   console.log("ashh", node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src)
