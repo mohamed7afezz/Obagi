@@ -5,17 +5,23 @@ h1 {
     margin-bottom: 0;
 }
 
-.hero-box {
-    border: 1px solid #fff;
-    
-    background: transparent;
-    height: 100%;
+.hero-box {  
     display: flex;
     flex-direction: column;
- 
+    margin-top: 64px;
+    background: rgba(19, 36, 102, 0.2);
+    border: 1px solid rgba(19, 36, 102, 0.2);
+    
     &:hover {
         background: rgba(19, 36, 102, 0.2);
         border: 1px solid rgba(19, 36, 102, 0.2);
+    }
+
+    @include md-screen {
+        margin-top: 0;
+        height: 100%;
+        background: transparent;
+        border: 1px solid #fff;
     }
 
 }

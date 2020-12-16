@@ -16,7 +16,7 @@ const SectionWithImageAndText = ({ node }) => {
           </div>
         </div>
 
-        <div className={[`${node.field_custom_class? "col-12 col-lg-7 imageTextColPadding hide-mob " + imageAndText.colPadding : "col-12 col-lg-6 imageTextColPadding hide-mob " + imageAndText.colPadding}`].join(" ")}>
+        <div className={[`${node.field_custom_class? "col-12 col-lg-7 imageTextColPadding " + imageAndText.colPadding : "col-12 col-lg-6 imageTextColPadding " + imageAndText.colPadding}`].join(" ")}>
           {node.relationships && node.relationships.field_image && node.relationships.field_image.localFile && node.relationships.field_image.localFile.childImageSharp? <div className={imageAndText.image}><Img fluid={node.relationships.field_image.localFile.childImageSharp.fluid} /></div> : ""}
         </div>
 
