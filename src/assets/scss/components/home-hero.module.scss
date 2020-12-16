@@ -8,18 +8,28 @@
     background: no-repeat center center fixed;
     background-size: cover !important;
     position: relative;
-    
-    @include lg-screen {
+    padding-bottom: 65px;
+
+
+    @include md-screen {
         // padding-left: 196px;
         background: no-repeat center center fixed;
-        position: relative;
         margin-bottom: 308px;
+        padding-bottom: 0;
 
+   
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-style {
+        margin: 0;
+        height: 100%;
     }
 }
 
 .container-wrapper {
-    padding-bottom: 65px;
+    padding-bottom: 0;
     margin-bottom: 142px;
     position: relative;
 
@@ -35,7 +45,7 @@
         z-index: 99;
     }
 
-    @include lg-screen {
+    @include md-screen {
         padding-bottom: 180px;
         margin-bottom: 0;
         &::after {
@@ -51,13 +61,12 @@
     }
 }
 
-.box-margin {
-    margin-bottom: 40px;
-
-    @include md-screen {
-        margin-bottom: 0;
-    }
-}
+// .box-margin {
+//     margin-bottom: 40px;
+//     @include md-screen {
+//         margin-bottom: 0;
+//     }
+// }
 
 
 .header ,.header h1{
@@ -85,12 +94,13 @@
 }
 .subtitle {
     @extend %futurapt-book;
-    margin-bottom: 56px;
 
     @include lg-screen {
         max-width: 870px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 56px;
+
     }
 }
 

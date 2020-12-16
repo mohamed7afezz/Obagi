@@ -1,86 +1,94 @@
-@import '../typography/typography.scss';
-@import '../grid/grid.scss';
-.prublebg{
-    background-color: #868cd2;
-    overflow: hidden;
-    position: relative;
-    padding-top: 64px;
-    padding-bottom: 105px;
-    @include lg-screen{
-        padding-top: 140px;
-        padding-bottom: 195px;
-    }
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
+.prublebg {
+  background-color: #868cd2;
+  overflow: hidden;
+  position: relative;
+  padding-top: 64px;
+  padding-bottom: 105px;
+  @include lg-screen {
+    padding-top: 140px;
+    padding-bottom: 245px;
+  }
 }
-.rightContainer{
-    float: right;
-    @include lg-screen{
-    padding-top: 57px;
+.rightContainer {
+  float: right;
+  @include lg-screen {
+    padding-top: 105px;
     padding-left: 0;
     margin-right: 182px;
-    }
+  }
 }
-.topic{
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 1.2px;
-    display: flex;
-    align-items: center;
-    @extend %futurapt-bold;
-    color: #ffffff;
-    text-transform: uppercase;
-    &::before{
-        background-color: #ffcd00;
-        width: 12px;
-        margin-right: 16px;
+.topic {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  @extend %futurapt-bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  &::before {
+    background-color: #ffcd00;
+    width: 12px;
+    margin-right: 16px;
 
-        height: 12px;
-        content: " ";
-    }
-    @include md-screen{
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: 1.6px;
-    }
+    height: 12px;
+    content: " ";
+  }
+  @include md-screen {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.6px;
+  }
 }
-.title{
-    color: #fff;
-    font-size: 40px;
-    line-height: 56px;
-    @extend %futurapt-light;
-    padding-bottom: 16px;
-    padding-top: 16px;
-    max-width: 500px;
-    @include lg-screen{
-        font-size: 72px;
-        line-height: 88px;
-        padding-top: 28px;
-        padding-bottom: 40px;
-    }
+.title {
+  color: #fff;
+  font-size: 40px;
+  line-height: 56px;
+  @extend %futurapt-light;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  max-width: 500px;
+  @include lg-screen {
+    font-size: 72px;
+    line-height: 88px;
+    padding-top: 51px;
+    padding-bottom: 58px;
+  }
 }
-.imgContainer{
-    position: relative;
-top: -64px;
-padding-right: 0;
-@include lg-screen{
+.imgContainer {
+  position: relative;
+  top: -64px;
+  padding-right: 0;
+  @include lg-screen {
     position: absolute;
     top: 140px;
     padding-right: 15px;
+    height: 100%;
+    
+  }
 }
-}
-.describtion{
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    color: #fff;
-    @include lg-screen{
-font-size: 28px;
-line-height: 40px;
-font-weight: 300;
+
+.imgContainer > div {
+    @include lg-screen {
+        height: 100%;
     }
 }
-.rowCon{
-    position: relative;
-    @include lg-screen{
-        margin-bottom: 90px;
-    }
+.describtion {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #fff;
+  @include lg-screen {
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 300;
+  }
+}
+.rowCon {
+  position: relative;
+  @include lg-screen {
+    margin-bottom: 90px;
+  }
 }

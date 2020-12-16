@@ -27,8 +27,9 @@
         font-family:  futura-pt,   sans-serif; 
         font-weight:  500; 
         font-style:  normal;
-        padding-top: 24px;
-        padding-bottom: 24px;
+        padding-top: 8px;
+        padding-bottom: 16px;
+        margin-bottom: 0;
         @include md-screen{
          padding-top: 8px;
          padding-bottom: 16px;
