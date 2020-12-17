@@ -8,7 +8,7 @@ import compStyles from '../../assets/scss/components/sys-related-products.module
 export default function SysRelatedProducts({node}) {
     const system = node.relationships.node__medical_product[0];
     const products = system.relationships.field_medical_system[0]?system.relationships.field_medical_system[0].relationships.node__medical_product.filter(prod => !(prod.field_medical_is_system)):[];
-
+  console.log("ashhh", products)
     const sliderSettings = {    
         slidesToShow: 2,
         arrows: true,
@@ -71,6 +71,7 @@ export default function SysRelatedProducts({node}) {
                                                     productId={prod.field_medical_id}
                                                     productLink={prod.path? prod.path.alias :''}
                                                     producttitle={prod.title? prod.title : ''}
+                                                    isrx = {prod.relationships && prod.relationships.field_medical_rx? prod.relationships.field_medical_rx.name : "" }
                                                     productdescription={{
                                                         __html: prod.field_medical_description? prod.field_medical_description.processed : ''
                                                     }}
@@ -129,6 +130,9 @@ export const fragment = graphql`
                 }
                 field_medical_price
                 relationships {
+                  field_medical_rx {
+                    name
+                  }
                   field_medical_image {
                     localFile {
                       childImageSharp {
