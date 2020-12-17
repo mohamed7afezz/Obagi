@@ -31,7 +31,7 @@ const spinner = css`
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
-  // console.log("item", item);
+  console.log("item", item);
 
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>

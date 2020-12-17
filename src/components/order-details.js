@@ -443,7 +443,7 @@ function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr, productorder.name);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === productId}
@@ -466,7 +466,7 @@ function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr, productorder.name);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}
@@ -639,7 +639,7 @@ function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, total, savearr);
+                          addMultiToCart(productsOid, false, quantity, total, savearr, productorder.name);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === productId}
@@ -652,7 +652,7 @@ function getShippingAddresses(e) {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
                           // console.log(saveprodarr, "hassan33")
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr, productorder.name);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}

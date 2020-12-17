@@ -404,7 +404,7 @@ const ProductHero = ({ data, nodeType }) => {
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
-                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer) : addToCart(productId, false, quantity, field_price)
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title) : addToCart(productId, false, quantity, field_price)
                     }}
                     disabled={addingToCart === productId}
                   >
@@ -460,7 +460,7 @@ const ProductHero = ({ data, nodeType }) => {
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
-                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer) : addToCart(productId, false, quantity, field_price)
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title) : addToCart(productId, false, quantity, field_price)
                     }}
                     disabled={addingToCart === productId}
                   >
