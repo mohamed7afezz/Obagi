@@ -412,11 +412,12 @@ right: 0;
 }
 .sysRelatedComp  .slick-slide
 {
-  min-height: 691px !important;
+  /* min-height: 691px !important; */
+  height: inherit !important;
 }
 .sysRelatedComp  .slick-slide > div
 {
-height: 691px !important;
+height:100% !important;
 }
 .sysRelatedComp .slide {
   height: 100%;

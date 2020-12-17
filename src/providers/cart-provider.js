@@ -179,6 +179,27 @@ export const CartProvider = ({ children }) => {
             redirectUrls: response.data.redirect_urls
           }
         });
+
+        // if (state.addingToCart == false && typeof window !== "undefined") {
+        //   dataLayer.push({
+        //     'event': 'addToCart',
+        //     'ecommerce': {
+        //       'currencyCode': 'USD',
+        //       'add': {                                // 'add' actionFieldObject measures.
+        //         'products': [{                        //  adding a product to a shopping cart.
+        //           'name': '',
+        //           'id': productId,
+        //           'price': price,
+        //           'brand': '',
+        //           'category': '',
+        //           'variant': '',
+        //           'quantity': quantity
+        //          }]
+        //       }
+        //     }
+        //   });
+          
+        // }
       })
       .catch(error => {
         setState({ ...state, addingToCart: false, addToCartError: error });

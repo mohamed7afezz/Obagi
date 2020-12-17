@@ -333,6 +333,7 @@
     background-color: #fff;
     @include lg-screen {
       flex-direction: row;
+      margin-left: -40px !important;
     }
   }
   .col-right-padding {
@@ -426,7 +427,7 @@
 
     @include lg-screen {
       background: #132466;
-      padding: 0 30px 237px 187px;
+      padding: 0 157px 237px 30px;
       height: 100%;
       &::before {
         height: 118px;
@@ -454,6 +455,7 @@
 
     @include xl-screen {
       // margin-bottom: 196px;
+      padding: 0 30px 237px 187px;
     }
   }
 }
