@@ -31,7 +31,6 @@ const spinner = css`
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
-  console.log("item", item);
 
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
@@ -166,7 +165,8 @@ const YourBag = (props, { notificationId }) => {
     if(typeof window != undefined ){
       checkStock(baseUrl);
     }
-  })
+  }, [])
+  
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
@@ -445,7 +445,40 @@ const YourBag = (props, { notificationId }) => {
   const { updatingItem } = state;
   const { cartType } = props
 
+  function seoEvent(e) {
+    e.preventDefault();
 
+    if(typeof window !== undefined) {
+      let dl = window.dataLayer;
+      
+      let products = [];
+      lineItems.physical_items.forEach(prod => {
+        products.push({
+          'name': prod.name,
+          'id': prod.sku,
+          'price': prod.list_price,
+          'brand': 'Obagi',
+          'category': prod.url.includes('medical')? 'medical' : 'clinical',
+          'variant': '',
+          'quantity': prod.quantity
+       })
+      });
+
+      dl.push({
+        'event': 'checkout',
+        'ecommerce': {
+          'checkout': {
+            'actionField': {'step': 1, 'option': ''},
+            'products': products
+         }
+       }
+      });
+
+      // submit form after pushing data to dataLayer
+      e.target.closest('form').submit()
+    
+    }
+  }
 
   function togglebag(e) {
     if (state.shippingLoading) {
@@ -556,9 +589,10 @@ const YourBag = (props, { notificationId }) => {
                 method="post"
 
                 encType="multipart/form-data">
+                {/* TODO: Add click seo event here */}
                 <button
-                  className={BagStyle.Checkout}
-                  type="submit">
+                  className={`${BagStyle.Checkout} checkout-seo`}
+                  type="submit" onClick={seoEvent}>
                   Checkout
                   </button>
               </form>
@@ -848,9 +882,10 @@ const YourBag = (props, { notificationId }) => {
                       method="post"
                       className={BagStyle.formcont}
                       encType="multipart/form-data">
+                      {/* TODO: Add click seo event here */}
                       <button
-                        className={BagStyle.Checkout}
-                        type="submit">
+                        className={`${BagStyle.Checkout} checkout-seo`}
+                        type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
                       <button
