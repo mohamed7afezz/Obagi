@@ -28,6 +28,7 @@ const initialState = {
   selectedShippingMethodsId: 0,
   shippingMethods: []
 };
+let addld={};
 let maxprice = ()=>{
 
   document.querySelector("#moremaxprice").classList.remove('hidden')
@@ -112,6 +113,30 @@ export const CartProvider = ({ children }) => {
     if(findedProduct != undefined && findedProduct.quantity == 3){
       return;
     }
+    if (findedProduct  ) {
+      window.dataLayer.push({
+        'event': 'addToCart',
+        'ecommerce': {
+          'currencyCode': 'USD',
+          'add': {                                // 'add' actionFieldObject measures.
+            'products': [{                        //  adding a product to a shopping cart.
+              'name': findedProduct.name,
+              'id': findedProduct.id,
+              'price': findedProduct.list_price,
+              'brand': 'Obagi',
+              'category': findedProduct.url.includes('medical')? 'medical' : 'clinical',
+              'variant': '',
+              'quantity': findedProduct.quantity
+             }]
+          }
+        }
+      });
+      
+    }
+    else{
+      console.log('hassan',findedProduct)
+    }
+  
   //  console.log("hassan",  quantity)
     if (parseFloat(state.cart.cartAmount) + (parseFloat(price) * quantity) > 750) {
       maxprice();

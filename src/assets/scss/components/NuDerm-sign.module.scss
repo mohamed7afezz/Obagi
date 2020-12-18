@@ -248,7 +248,9 @@ margin-top: 24px;
 }
 .QuestionContainer{margin-bottom: 40px;}
 .textarea{
+    @include md-screen{
     display: inline-block;
+}
     label{
         display: block;
     }

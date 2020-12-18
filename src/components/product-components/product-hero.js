@@ -207,7 +207,7 @@ const ProductHero = ({ data, nodeType }) => {
       <div className={["row", ProductStyles.ordering].join(" ")}>
         <div className={["pathname", "col-12"].join(" ")}>
           <p className="pathtitle pb-24 pt-16">
-            <Link to="/homepage"> Home</Link> /{" "}
+            <Link to="/"> Home</Link> /{" "}
             <Link to={`/${nodeType}`}> {nodeType}</Link> / <span dangerouslySetInnerHTML={{ __html: node.title }}></span>
           </p>
         </div>

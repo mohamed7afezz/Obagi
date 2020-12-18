@@ -226,7 +226,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
                     checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
                    :""}</>:""}
                     </p>
             </div>}
@@ -435,7 +435,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title ?
                     checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_hero_ingredients_taxonomy.field_taxonomy_hero_para_title}</span>
                    :""}
                     </p>
             
@@ -540,7 +540,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
                     checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
                    :""}</>:""}
                     </p>
               </div>}
@@ -644,7 +644,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title ?
                     checkTaxonomy.field_taxonomy_hero.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_taxonomy_hero.field_taxonomy_hero_para_title}</span>
                    :""}</>:""}
                     </p>
               </div>}
@@ -749,7 +749,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title ?
                     checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_hero_clinical_ing_taxonomy.field_taxonomy_hero_para_title}</span>
                    :""}
                     </p>
            
@@ -852,7 +852,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title ?
                     checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_hero_parag_taxonomy.field_taxonomy_hero_para_title}</span>
                    :""}
                     </p>
            
@@ -954,7 +954,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title ?
                     checkTaxonomy.field_hero_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_hero_taxonomy.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_hero_taxonomy.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_hero_taxonomy.field_taxonomy_hero_para_title}</span>
                    :""}
                     </p>
            
@@ -1057,7 +1057,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                    {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title ?
                     checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_page_title : getname}</Link> : ""}
                   {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_hero_para_title?
-                   <span to={"#"}>/ {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_hero_para_title}</span>
+                   <span to={"#"}> / {checkTaxonomy.field_hero_category_taxonomy.field_taxonomy_hero_para_title}</span>
                    :""}
                     </p>
            

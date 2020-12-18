@@ -2108,7 +2108,7 @@ height:  32px;
    .node-home .breadcramp-con.Analyzer-padding p{
      color: #fff !important;
    }
-  .breadcramp a,.breadcramp span{
+  .breadcramp a,.breadcramp span,.breadcramp{
     font-size: 10px;
   }
   #advancedSearch{
@@ -3450,6 +3450,7 @@ top: 10px;
 }
 .product-lines div{
 overflow-x: hidden !important;
+scrollbar-width: none;
 }
 .errorselect,.errorselect.global-select .product-lines{
   border-color: #f00 !important;
