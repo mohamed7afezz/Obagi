@@ -114,13 +114,17 @@ const Resulte = (props) => {
             {checkDataCondition(loading,
                 <>
                     {checkDataCondition((props.brandJourney == "Clinical Persona"),
-                        <div className={["clinical", resulteSkinStyle.clinical].join(" ")}>
-                                {<div className={["blue-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+                    <>
+                           {
+                               <div className="container-fluid clinical-analyzer">
+                               <div className={["blue-color  Analyzer-padding breadcramp-con"].join(" ")}>
                 <p className="breadcramp">
                     <Link to="/">Home</Link>{" "} / <span>Skin Analyzer</span>
                         </p>
                 
-                </div>}
+                </div> </div> }
+                        <div className={["clinical", resulteSkinStyle.clinical].join(" ")}>
+                            
                             <div className="container-fluid"><div className="row">
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>
@@ -226,16 +230,20 @@ const Resulte = (props) => {
                             </div>
                             </div>
                         </div>
+                    </>
                     )}
                     {checkDataCondition((props.brandJourney != "Clinical Persona"),
-                        <div className="medical">
-                            {<div className={["blue-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+                       <>
+                          { <div className="container-fluid medical-analyzer">
+                              <div className={["blue-color  Analyzer-padding breadcramp-con"].join(" ")}>
               <p className="breadcramp">
                 <Link to="/">Home</Link>{" "}
                / <span>Skin Analyzer</span>
                     </p>
-            
+                    </div> 
               </div>}
+                       <div className="medical">
+                         
                             <div className="container-fluid"><div className="row">
                                 <div className={["offset-lg-1 col-12 col-lg-10", resulteSkinStyle.resultmobhead].join(" ")}>
                                     <div className={[resulteSkinStyle.headercon, "col-lg-8", "offset-lg-2"].join(" ")}>
@@ -352,6 +360,7 @@ const Resulte = (props) => {
                             </div>
                             </div>
                         </div>
+                                                </>
                     )}
 
 

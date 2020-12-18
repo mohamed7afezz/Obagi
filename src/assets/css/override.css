@@ -2079,10 +2079,35 @@ height:  32px;
   .medical-bg{
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0) , rgba(81, 87, 162, 0.65) );
    }
+   .medical-analyzer{
+    background-color: rgba(134, 140, 210,0.1);
+    padding-left: 41px;
+   }
+  .clinical-analyzer{
+    background-color:rgba( 68, 196 ,217,0.1);
+    padding-left: 41px;
+  }
+ 
 @media (max-width:767px){
   #appointment .modal-dialog,#related-products .modal-dialog,#collectionPopup .modal-dialog{
     margin: 0;
   }
+  .medical-analyzer{
+    background-color: rgba(134, 140, 210);
+    padding-left: 15px;
+   }
+   .clinical-analyzer{
+    background-color:rgba( 68, 196 ,217);
+    padding-left: 15px;
+  }
+   .node-home .breadcramp-con.Analyzer-padding{
+     padding-bottom: 0;
+     padding-top: 0;
+   }
+   .node-home .breadcramp-con.Analyzer-padding a ,.node-home .breadcramp-con.Analyzer-padding span ,
+   .node-home .breadcramp-con.Analyzer-padding p{
+     color: #fff !important;
+   }
   .breadcramp a,.breadcramp span{
     font-size: 10px;
   }
@@ -2791,7 +2816,6 @@ padding-bottom: 0;
   }
   .node-home .breadcramp-con.Analyzer-padding{
     padding-top: 16px;
-    padding-bottom: 16px;
   }
   .node-home .breadcramp-con.give-padding{
   padding-bottom: 0;
