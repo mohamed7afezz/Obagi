@@ -85,16 +85,15 @@ const ProductCard = ({
 
               </div>
             </div>
-            {price == "0"? ""
-            : <button data-Sku={Sku} className={["the-new-product-button", "mob-analyzer-btn"].join(" ")}
+             <button data-Sku={Sku} className={["the-new-product-button", "mob-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
-                addToCart(productId, false, quantity, price, premierid, feild_preimer);
+                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
               }}
               disabled={addingToCart === productId}
             >
               {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
-            </button>}
+            </button>
           </div> : <div className="analyzer-rate mt-24 h-27"></div>}
           {Type ? <h1 className="d-none Productcardtype">{Type}</h1> : ''}
 
@@ -113,7 +112,7 @@ const ProductCard = ({
           ) : (
               ""
             )}
-          {price && price !== "0" ? (
+          {price ? (
             <div className={[Productcard.priceCon, "priceCon"].join(" ")}>
               <p className={[Productcard.price, "prod-price-con", `${price === "0"? "price-opacity" : ""}`].join(" ")}>
                 $<span className="prod-price">{price}</span>
@@ -126,7 +125,7 @@ const ProductCard = ({
                 : <button data-Sku={Sku} className={[Productcard.addtocart, "the-product-button"].join(" ")}
                   onClick={() => {
                     let quantity = 1;
-                    addToCart(productId, false, quantity, price, premierid, feild_preimer);
+                    addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
                   }}
                   disabled={addingToCart === productId}
                 >
@@ -139,7 +138,7 @@ const ProductCard = ({
             )}<button data-Sku={Sku} className={["the-new-product-button desk-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
-                addToCart(productId, false, quantity, price, premierid, feild_preimer);
+                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
               }}
               disabled={addingToCart === productId}
             >

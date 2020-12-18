@@ -4369,3 +4369,26 @@ top: 78.5px !important;
         padding-left: 15px !important;
     }
 }
+
+.ourHistory .general-basic-title {
+    @include fontStyle(40, 56);
+
+    @include lg-screen {
+        @include fontStyle(72, 88);
+    }
+
+}
+
+.ourHistory .general-basic-column h2 {
+    @include lg-screen {
+        padding: 24px 0 16px;
+        @include fontStyle(28, 40);
+    }
+}
+
+.foot-note {
+    font-size: 14px;
+    line-height: 16px;
+    @extend %futurapt-light;
+    padding-bottom: 16px;
+}

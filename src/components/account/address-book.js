@@ -70,6 +70,7 @@ export default function AddressBook() {
     }
 
     return (
+        <>
         <UserAccount activeTab="address-book">
 
             <div className="tab-pane active" id="address-book" role="tabpanel">
@@ -121,7 +122,9 @@ export default function AddressBook() {
 
 
 
-            <AddressModal />
         </UserAccount>
+        <AddressModal />
+
+        </>
     )
 }

@@ -32,7 +32,7 @@ const addingToCart = value && value.state.addingToCart
                     data-Sku={Sku}
                         onClick={() => {
                             let quantity = 1;
-                            addToCart(recId, false, quantity,recPrice,premierid,feild_preimer);
+                            addToCart(recId, false, quantity,recPrice,premierid,feild_preimer, recTitle);
                         }}
                         disabled={addingToCart === recId}
                     >

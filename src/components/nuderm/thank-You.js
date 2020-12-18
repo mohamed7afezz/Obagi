@@ -15,7 +15,7 @@ const ThankYou = props => {
            get inspired by testimonials of real people who have used—and loved—Obagi Nu-Derm<sup>&reg;</sup>.</p>
  
     </div>
-    <div className=" col-12 text-center">
+    <div className=" col-12 text-center hide">
     <Link to="/our-story" className={[nudermStyle.seeBtn," col-lg-2 col-12"].join(" ")}>See Obagi Success Stories</Link>
     </div>
 </>

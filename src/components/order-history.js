@@ -30,7 +30,7 @@ const OrderHistory = ({ ordersList }) => {
         return (
             <div>
                 <div className="d-lg-none">
-                    {orders === "undefined" || Object.keys(orders).length == 0 ? "" : <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
+                    {orders === "undefined" || Object.keys(orders).length == "0" || orders.length == 0 ? "" : <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
 
                     <Paginator pagerData={orders} rowComponent={OrderHistoryRow} rowsPerPage={4} />
 
