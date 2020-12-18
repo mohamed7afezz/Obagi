@@ -4392,3 +4392,23 @@ top: 78.5px !important;
     @extend %futurapt-light;
     padding-bottom: 16px;
 }
+
+.extole-hover-on {
+    display: none;
+}
+
+.absolute-extended .navbar:hover .extole-hover-off {
+    display: none;
+}
+
+.absolute-extended .navbar:hover .extole-hover-on {
+    display: inline;
+}
+
+.relative-general-nav .extole-hover-off {
+    display: none;
+}
+
+.relative-general-nav .extole-hover-on {
+    display: inline;
+}

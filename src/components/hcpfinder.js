@@ -242,12 +242,11 @@ export default function Finder() {
         <div className="row">
           <div className="col">
             <h2 class="finder-title phy-title text-center">
-              Locate an Obagi Skin Care Professional
+              Locate an Obagi<sup>®</sup> Skin Care Professional
             </h2>
             <p class="finder-subtitle text-center">
               Use this interactive physician finder to request a skin care
-              consultation with a professional in your area. A certified skin
-              care advisor will consult with you to develop a completely
+              consultation with a professional in your area. A skincare physician will consult with you to develop a completely
               personalized Obagi skin care regimen.
             </p>
 

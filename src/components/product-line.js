@@ -36,6 +36,7 @@ const ProductLine = ({ node }) => {
         settings: {
           dots: false,
           arrows: false,
+          // adaptiveHeight: true,
         },
       },
     ],

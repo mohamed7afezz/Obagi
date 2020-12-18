@@ -1,190 +1,190 @@
-@import '../typography/typography.scss';
-@import '../grid/grid.scss';
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
 
 .wrapper {
-    padding-top: 80px;
-    background: rgba(134, 140, 210, 0.1);
-    padding-bottom: 130px;
-    @include md-screen{
-        padding-top: 112px;
-        padding-bottom: 112px;
-    }
+  padding-top: 80px;
+  background: rgba(134, 140, 210, 0.1);
+  padding-bottom: 130px;
+  @include md-screen {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
 }
 
 .wrapper-title {
-    @extend %futurapt-light;
-    @include fontStyle(32, 48);
-    text-align: center;
-    padding-bottom: 39px;
-    // sup {
-    //     font-size: 37.5%;
-    //     top: -1.5em;
-    // }
+  @extend %futurapt-light;
+  @include fontStyle(32, 48);
+  text-align: center;
+  padding-bottom: 39px;
+  // sup {
+  //     font-size: 37.5%;
+  //     top: -1.5em;
+  // }
 }
-.sliderFlex{
-    display: flex !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    background-color: rgba(134 , 140 , 210 , 0.1);
+.sliderFlex {
+  display: flex !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  background-color: rgba(134, 140, 210, 0.1);
 
-    @include lg-screen {
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-    }
+  @include lg-screen {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
 }
 .tab {
-    cursor: pointer;
-    @extend %futurapt-bold;
-    @include fontStyle(12, 16);
-    letter-spacing: 1.2px;
-    color: #132466;
-    padding: 14px;
-    background: #ffffff;
-    text-align: center;
-    border-radius: 6px;
-    position: relative;
-    margin-right: 24px;
-    margin-bottom: 35px;
-    width: 100%;
+  cursor: pointer;
+  @extend %futurapt-bold;
+  @include fontStyle(12, 16);
+  letter-spacing: 1.2px;
+  color: #132466;
+  padding: 14px;
+  background: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 24px;
+  margin-bottom: 35px;
+  width: 100%;
 
-    &:focus, &:visited, &:active {
-        outline: 0;
-        -moz-outline-style: none;
-    }
- 
+  &:focus,
+  &:visited,
+  &:active {
+    outline: 0;
+    -moz-outline-style: none;
+  }
 
-    &:hover {
-        box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
-    }
+  &:hover {
+    box-shadow: 0 4px 15px 0 rgba(54, 75, 95, 0.15);
+  }
 
-    @include lg-screen {
-        white-space: nowrap;
-    }
-
-
+  @include lg-screen {
+    white-space: nowrap;
+  }
 }
-.leftSliderwapper{
-    @include md-screen{ 
-     padding-top: 120px;
- }
- }
- .productInlineSlider{
-   
+.leftSliderwapper {
+  @include md-screen {
+    padding-top: 120px;
+  }
 }
-.subtitle{
-    @include md-screen{
-        padding-left: 40px;
-    }
+.productInlineSlider {
+}
+.subtitle {
+  @include md-screen {
+    padding-left: 40px;
+  }
 }
 .card-wrapper {
-   
-    background: #868cd5;
-    border-radius: 6px;
-    padding: 53px 16px 48px;
-    color: #ffffff;
-    @include md-screen{
-        padding-top: 40px;
-    }
+  background: #868cd5;
+  border-radius: 6px;
+  padding: 53px 16px 48px;
+  color: #ffffff;
+  @include md-screen {
+    padding-top: 40px;
+  }
 
-    @include lg-screen {
-        padding-left: 0;
-        padding-right: 0;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
+  @include lg-screen {
+    padding-left: 0;
+    padding-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 .card-title {
-    @include md-screen{
-        padding-bottom: 16px;
-        padding-top: 0;
-    }
-    @extend %futurapt-light;
-    @include fontStyle(32, 48);
-    padding: 18px 0 6px;
+  @include md-screen {
+    padding-bottom: 16px;
+    padding-top: 0;
+  }
+  @extend %futurapt-light;
+  @include fontStyle(32, 48);
+  padding: 18px 0 6px;
 
-    // sup {
-    //     font-size: 37.5%;
-    //     top: -1.5em;
-    // }
+  // sup {
+  //     font-size: 37.5%;
+  //     top: -1.5em;
+  // }
 }
 
 .products {
-    
-    @include fontStyle(12, 16);
-    letter-spacing: 1.2px;
-    @extend %futurapt-medium;
-    @include md-screen{
-        @include fontStyle (16,24);
-        letter-spacing:1.6px;
-    }
+  @include fontStyle(12, 16);
+  letter-spacing: 1.2px;
+  @extend %futurapt-medium;
+  @include md-screen {
+    @include fontStyle(16, 24);
+    letter-spacing: 1.6px;
+  }
 }
 
 .description {
-    @include md-screen {
-        padding-bottom: 32px;
-        padding-top: 24px;
-        @include fontStyle(18,32)
+  @include fontStyle(16, 24);
+  padding: 22px 0 20px;
+  h2 {
+    @include fontStyle(18, 32);
+  }
+  @include md-screen {
+    padding-bottom: 32px;
+    padding-top: 24px;
+    @include fontStyle(18, 32);
+    h2 {
+        @include fontStyle(24, 42);
     }
-    @include fontStyle(16, 24);
-    padding: 22px 0 20px;
+  }
 }
 
 .perfect {
-    
-    @extend %futurapt-bold;
-    @include fontStyle(14, 16);
-    text-transform: uppercase;
-    @include md-screen{
-        padding-bottom: 45px;
-        @include fontStyle(16,24)
+  @extend %futurapt-bold;
+  @include fontStyle(14, 16);
+  text-transform: uppercase;
+  @include md-screen {
+    padding-bottom: 45px;
+    @include fontStyle(16, 24);
+  }
 
+  a {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: underline;
+    margin-top: 8px;
+    @extend %futurapt-book;
+    text-transform: none;
+
+    &:hover {
+      color: #ffffff;
     }
-
-    a {
-        display: inline-block;
-        color: #ffffff;
-        text-decoration: underline;
-        margin-top: 8px;
-        @extend %futurapt-book;
-        text-transform: none;
-
-        &:hover {
-            color: #ffffff;
-        }
-    }
+  }
 }
 
 .category {
-    padding-left: 8px;
+  padding-left: 8px;
 
-    a {
-        color: #ffffff;
-        text-decoration: underline;
-        @extend %futurapt-book;
-    }
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+    @extend %futurapt-book;
+  }
 }
 
 .image-wrapper {
-    padding: 44px 37px 35px;
-    @include lg-screen{
-        display: none;
-    }
+  padding: 44px 37px 35px;
+  @include lg-screen {
+    display: none;
+  }
 }
 
 .link {
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 24px 15px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 24px 15px;
 
-    &:hover {
-        color: #868cd5;
-        background: #ffffff;
-    }
+  &:hover {
+    color: #868cd5;
+    background: #ffffff;
+  }
 }
 
 .link-section {
-    @include md-screen-only {
-        text-align: center;
-    }
+  @include md-screen-only {
+    text-align: center;
+  }
 }
