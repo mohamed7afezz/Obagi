@@ -2083,7 +2083,9 @@ height:  32px;
   #appointment .modal-dialog,#related-products .modal-dialog,#collectionPopup .modal-dialog{
     margin: 0;
   }
-
+  .breadcramp a,.breadcramp span{
+    font-size: 10px;
+  }
   #advancedSearch{
     padding-left: 0!important;
   }
@@ -2907,6 +2909,7 @@ width: 100%;
   border-bottom: 1px solid #d6d6d6;
   margin-bottom: 25px;
   padding-bottom: 25px;
+  display: none;
 }
 #formsubmition .modal-body,#moremaxprice .modal-body{
   padding: 100px;

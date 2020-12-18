@@ -21,25 +21,29 @@ const spinner = css`
 var savearr = [];
 var saveprodarr = [];
 var productsPremierPoints = [];
-var detailorder ="";
 let productId="";
 let elementId="";
 let elementPoints ="";
-
+let i;
 const OrderDetails = (props, { node }) => {
-  const [productorder, Setproductorder] = useState([]);
-  const [adressesorder, Setadressesorder] = useState([]);
-  const [shipmedntorder, Setshipmedntorder] = useState([]);
-  const [detailorder, Setdetailorder] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [alldata, Setproductorder] = useState({products :[],
+    main_order :[],
+    shipments: [],
+    shipping_addresses: []});
+  const [isLoading, setIsLoading] = useState(true);
+
   getShippingAddresses(props.id);
     useEffect(() => {
+ 
+        
+
+ 
       checkStock(baseUrl);
+})
+async function getShippingAddresses(e) {
+  if ( i != alldata) {
     
 
-})
-function getShippingAddresses(e) {
-  // setIsLoading(true);
    fetch(
     `${baseUrl}bigcommerce/v1/order/${e}`,
     {
@@ -50,20 +54,19 @@ function getShippingAddresses(e) {
 )
     .then(res => res.json())
     .then(response => {
-        if(response.id){    
-          Setdetailorder(response.main_order);
-           Setshipmedntorder(response.shipments);
-           Setproductorder(response.products)
-           Setadressesorder(response.shipping_addresses)
+
+          i = response;
+           Setproductorder(response)
+           console.log("hassan1",response,alldata)
            setIsLoading(false)
-        }
         
+       
     })
     .catch(error => {
        
         // console.log('error', error)
     });
-
+  }
   // setIsLoading(false);
 }
   var productsOid = [];
@@ -92,15 +95,15 @@ function getShippingAddresses(e) {
     }
     return true;
   }
-  productId = productorder.map(item => {
+  productId = alldata.products.map(item => {
     return item.product_id
   })
 
-   elementId = productorder.map(item => {
+   elementId = alldata.products.map(item => {
 
     return item.product_options[0] ? item.product_options[0].product_option_id : ""
   })
-   elementPoints = productorder.map(item => {
+   elementPoints = alldata.products.map(item => {
 
     return item.product_options[0] ? item.product_options[0].value : ""
   })
@@ -145,7 +148,7 @@ function getShippingAddresses(e) {
  
   
   const placedOnDate = new Date(
-    detailorder.date_created ? detailorder.date_created : ""
+    alldata.main_order.date_created ? alldata.main_order.date_created : ""
   )
     .toLocaleDateString(
       {},
@@ -186,18 +189,18 @@ function getShippingAddresses(e) {
               ></Link>
             </div>
             <div className={orderDetailsStyles.orderNumber}>
-              {detailorder.id ? "#" + detailorder.id : ""}
+              {alldata.main_order.id ? "#" + alldata.main_order.id : ""}
             </div>
           </div>
         </div>
 
         <div className="row">
-          {shipmedntorder ? <>
+          {alldata.shipments ? <>
             <div class="col-lg-7 offset-lg-1">
 
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
-                  Your order has been split into {shipmedntorder.length} shipments. The details and
+                  Your order has been split into {alldata.shipments.length} shipments. The details and
                 status are listed below.
               </p>
               </div>
@@ -205,8 +208,8 @@ function getShippingAddresses(e) {
 
               {
 
-                shipmedntorder ? shipmedntorder.map((getshipm, index1) => {
-                    return (productorder ? productorder.map((item, index) => {
+                alldata.shipments ? alldata.shipments.map((getshipm, index1) => {
+                    return (alldata.products ? alldata.products.map((item, index) => {
 
                       { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                       return (getshipm.items.map((getProdId, index2) => {
@@ -308,7 +311,7 @@ function getShippingAddresses(e) {
                                   
                                    
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {detailorder.status}
+                                        {alldata.main_order.status}
                                       </div>
                                    
                                    
@@ -346,7 +349,7 @@ function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Status</p>
-                      <p>{detailorder.status ? detailorder.status : ""}</p>
+                      <p>{alldata.main_order.status ? alldata.main_order.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -360,7 +363,7 @@ function getShippingAddresses(e) {
                       </p>
                     </div>
 
-                    {adressesorder.map((item, index) => {
+                    {alldata.shipping_addresses.map((item, index) => {
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
@@ -386,31 +389,31 @@ function getShippingAddresses(e) {
                         Billing Address
                   </p>
                       <p>
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.first_name
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.first_name
                           : ""}{" "}
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.last_name
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.last_name
                           : ""}
                       </p>
                       <p>
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.street_1
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.street_1
                           : ""}
                       </p>
                       <p>
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.city
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.city
                           : ""},{" "}
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.state
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.state
                           : ""}
                         {" "}
-                        {detailorder.billing_address ? detailorder.billing_address.zip : ""}
+                        {alldata.main_order.billing_address ? alldata.main_order.billing_address.zip : ""}
                       </p>
                       <p>
-                        {detailorder.billing_address
-                          ? detailorder.billing_address.country_iso2
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.country_iso2
                           : ""}
                       </p>
                     </div>
@@ -418,7 +421,7 @@ function getShippingAddresses(e) {
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
-                        {detailorder.payment_method ? detailorder.payment_method : ""}:
+                        {alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}:
                     ending in 7320
                   </p>
                     </div>
@@ -426,7 +429,7 @@ function getShippingAddresses(e) {
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
                       <div className={orderDetailsStyles.totalPrice}>
-                        {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
+                        {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
                       </div>
                     </div>
 
@@ -443,7 +446,7 @@ function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, alldata.main_order.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === productId}
@@ -466,7 +469,7 @@ function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, alldata.main_order.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}
@@ -484,7 +487,7 @@ function getShippingAddresses(e) {
               <div className="col-12  d-lg-none">
                 <div className={orderDetailsStyles.accordion}>
                   <div className={orderDetailsStyles.accordionHeader}>
-                    <div className={orderDetailsStyles.itemsCount}>{productorder ? (productorder.length > 1 ? productorder.length + " Items" : productorder.length + " Item") : ""}</div>
+                    <div className={orderDetailsStyles.itemsCount}>{alldata.products ? (alldata.products.length > 1 ? alldata.products.length + " Items" : alldata.products.length + " Item") : ""}</div>
                     <button className={orderDetailsStyles.accordionButton} type="button" data-toggle="collapse" data-target="#detailsAccordion" aria-expanded="false" aria-controls="detailsAccordion">
                       View Details
             </button>
@@ -493,7 +496,7 @@ function getShippingAddresses(e) {
                   <div className="collapse" id="detailsAccordion">
 
                     {
-                      (productorder.map((item, index) => {
+                      (alldata.products.map((item, index) => {
 
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
@@ -538,7 +541,7 @@ function getShippingAddresses(e) {
               <div className="col-lg-7 offset-lg-1">
 
                 {
-                  (productorder.map((item, index) => {
+                  (alldata.products.map((item, index) => {
                     return (
                       <div className={orderDetailsStyles.productWrapper}>
                         <div className={orderDetailsStyles.productInfoWrapper}>
@@ -569,7 +572,7 @@ function getShippingAddresses(e) {
                             {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                           </div>
                        
-                          <div className={orderDetailsStyles.productstatus}>{detailorder.custom_status}</div> 
+                          <div className={orderDetailsStyles.productstatus}>{alldata.main_order.custom_status}</div> 
                                 
                               
                         </div>
@@ -590,7 +593,7 @@ function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Status</p>
-                      <p>{detailorder.status ? detailorder.status : ""}</p>
+                      <p>{alldata.main_order.status ? alldata.main_order.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -598,7 +601,7 @@ function getShippingAddresses(e) {
                       <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
                     </div>
 
-                    {adressesorder.map((item, index) => {
+                    {alldata.shipping_addresses.map((item, index) => {
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p>Shipping Address</p>
@@ -612,15 +615,15 @@ function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Billing Address</p>
-                      <p>{detailorder.billing_address ? detailorder.billing_address.first_name : ""} {detailorder.billing_address ? detailorder.billing_address.last_name : ""}</p>
-                      <p>{detailorder.billing_address ? detailorder.billing_address.street_1 : ""}</p>
-                      <p>{detailorder.billing_address ? detailorder.billing_address.city : ""} {detailorder.billing_address ? detailorder.billing_address.state : ""}, {detailorder.billing_address ? detailorder.billing_address.zip : ""}</p>
-                      <p>{detailorder.billing_address ? detailorder.billing_address.country_iso2 : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.first_name : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.last_name : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_1 : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.city : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.state : ""}, {alldata.main_order.billing_address ? alldata.main_order.billing_address.zip : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.country_iso2 : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Payment</p>
-                      <p>{detailorder.payment_method ? detailorder.payment_method : ""}: ending in 7320</p>
+                      <p>{alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}: ending in 7320</p>
                     </div>
 
                     {/* <div className={orderDetailsStyles.detailPart}>
@@ -631,7 +634,7 @@ function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
-                      <div className={orderDetailsStyles.totalPrice}>{detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}</div>
+                      <div className={orderDetailsStyles.totalPrice}>{alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}</div>
                     </div>
 
                     <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
@@ -652,7 +655,7 @@ function getShippingAddresses(e) {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
                           // console.log(saveprodarr, "hassan33")
-                          addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
+                          addMultiToCart(productsOid, false, quantity, alldata.main_order.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}
                       // disabled={addingToCart === elementId}

@@ -840,7 +840,7 @@ const YourBag = (props, { notificationId }) => {
                         <strong>Subtotal</strong>
                       </span>{" "}
                       <span>
-                        <strong>${cartAmount + parseFloat(state.estShipping)}</strong>
+                        <strong>${parseFloat(cartAmount.toFixed(2)) + parseFloat(state.estShipping.toFixed(2))}</strong>
                       </span>
                     </p>
                     <form

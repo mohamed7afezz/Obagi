@@ -83,11 +83,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         name: item => {
           var name = item.querySelector(".productcarddesc").textContent;
           return name },
-        price: item => {
-          var weight = item.querySelector(".prod-price").textContent;
+        // price: item => {
+        //   var weight = item.querySelector(".prod-price").textContent;
           
-          return parseFloat(weight)
-        },
+        //   return parseFloat(weight)
+        // },
       },
       filter: '*',
       transitionDuration: 0
