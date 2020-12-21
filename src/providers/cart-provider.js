@@ -5,7 +5,7 @@ const baseUrl = process.env.Base_URL;
 let cartId = undefined;
 
 if (typeof window !== "undefined") {
-    cartId = window.localStorage.getItem('cartId')? JSON.parse(window.localStorage.getItem('cartId')) : undefined;
+  cartId = window.localStorage.getItem('cartId') ? JSON.parse(window.localStorage.getItem('cartId')) : undefined;
 }
 
 const CartContext = createContext();
@@ -28,8 +28,8 @@ const initialState = {
   selectedShippingMethodsId: 0,
   shippingMethods: []
 };
-let addld={};
-let maxprice = ()=>{
+let addld = {};
+let maxprice = () => {
 
   document.querySelector("#moremaxprice").classList.remove('hidden')
 
@@ -37,24 +37,24 @@ let maxprice = ()=>{
   document.querySelector("#moremaxprice").addEventListener("click", function (e) {
     if (e.target !== document.querySelector("#moremaxprice") && e.target !== container) return;
     document.querySelector("#moremaxprice").classList.add("hidden");
-    
-});
+
+  });
 }
 export const CartProvider = ({ children }) => {
   const [state, setState] = useState(initialState);
   const [notifications, updateNotifications] = useState([]);
 
   const addNotification = (text, type = 'notify') => {
-   updateNotifications([...notifications, { text, type, id: Date.now() }]);
+    updateNotifications([...notifications, { text, type, id: Date.now() }]);
   };
 
   const removeNotification = id => {
-   updateNotifications([]);
+    updateNotifications([]);
   };
 
   const fetchCart = () => {
-    if(!cartId) {
-      setState({ ...state, cartLoading: false})
+    if (!cartId) {
+      setState({ ...state, cartLoading: false })
       return;
     }
 
@@ -73,9 +73,9 @@ export const CartProvider = ({ children }) => {
 
   // eslint-disable-next-line
   useEffect(() => fetchCart(), []);
-  
+
   const refreshCart = response => {
-    
+
     if (response.status === 204 || response.status === 404) {
       setState({ ...state, cartLoading: false });
     } else {
@@ -100,145 +100,171 @@ export const CartProvider = ({ children }) => {
         }
       });
     }
-    
+
   };
-  
-  const addToCart = async (productId ,retry, quantity,price,premierid,feild_preimer, productName) => {
+
+  const addToCart = async (productId, retry, quantity, price, premierid, feild_preimer, productName) => {
     let findedProduct;
-    if(state.cart.lineItems.physical_items){
-      findedProduct = state.cart.lineItems.physical_items.filter(function(itm){
+    if (state.cart.lineItems.physical_items) {
+      findedProduct = state.cart.lineItems.physical_items.filter(function (itm) {
         return itm.product_id == productId;
       })[0];
     }
-    if(findedProduct != undefined && findedProduct.quantity == 3){
+    if (findedProduct != undefined && findedProduct.quantity == 3) {
       return;
     }
-    if (findedProduct  ) {
-      window.dataLayer.push({
-        'event': 'addToCart',
-        'ecommerce': {
-          'currencyCode': 'USD',
-          'add': {                                // 'add' actionFieldObject measures.
-            'products': [{                        //  adding a product to a shopping cart.
-              'name': findedProduct.name,
-              'id': findedProduct.id,
-              'price': findedProduct.list_price,
-              'brand': 'Obagi',
-              'category': findedProduct.url.includes('medical')? 'medical' : 'clinical',
-              'variant': '',
-              'quantity': findedProduct.quantity
-             }]
-          }
-        }
-      });
-      
-    }
-    else{
-      console.log('hassan',findedProduct)
-    }
-  
-  //  console.log("hassan",  quantity)
+    // if (findedProduct) {
+    //   window.dataLayer.push({
+    //     'event': 'addToCart',
+    //     'ecommerce': {
+    //       'currencyCode': 'USD',
+    //       'add': {                                // 'add' actionFieldObject measures.
+    //         'products': [{                        //  adding a product to a shopping cart.
+    //           'name': findedProduct.name,
+    //           'id': findedProduct.id,
+    //           'price': findedProduct.list_price,
+    //           'brand': 'Obagi',
+    //           'category': findedProduct.url.includes('medical') ? 'Medical' : 'Clinical',
+    //           'variant': '',
+    //           'quantity': findedProduct.quantity
+    //         }]
+    //       }
+    //     }
+    //   });
+
+    // }
+    // else {
+    //   console.log('hassan', findedProduct)
+    // }
+
+    //  console.log("hassan",  quantity)
     if (parseFloat(state.cart.cartAmount) + (parseFloat(price) * quantity) > 750) {
       maxprice();
       return
     }
     setState({ ...state, addingToCart: productId });
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
-    if(cartId) {
-        resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
+    if (cartId) {
+      resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
     }
     if (premierid && feild_preimer) {
-      
-   
-    await fetch(resrouce_url, {
-      method: 'POST',
-      credentials: 'same-origin',
-      mode: 'cors',
-      body: JSON.stringify({
-        
-        line_items: [
-          {
-            quantity: (typeof(quantity)==='undefined')? 1 : quantity,
-            product_id: parseInt(productId, 10),
-            option_selections:[{
-              option_id :parseFloat(premierid),
-              option_value: parseFloat(feild_preimer),
-          }]
-          }
-        ]
-      })
-    })
-      .then(async res => ({ response: await res.json(), status: res.status }))
-      .then(async ({ response, status }) => {
-        if (status === 404 && !retry) {
-          // re create a cart if cart was destroyed
-          cartId = undefined;
-          if (typeof window !== "undefined") {
-            window.localStorage.removeItem('cartId')
-          }
-          await addToCart(productId, true, quantity,price,premierid,feild_preimer, productName);
-        }
-       
-        status < 300 && addNotification('Item added successfully');
 
-        const lineItems = response.data.line_items;
-        const cartAmount = response.data.cart_amount;
-        const currency = response.data.currency;
-        cartId = response.data.id;
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem('cartId', JSON.stringify(cartId));
-        }
-        setState({
-          ...state,
-          addingToCart: false,
-          addedToCart: productId,
-          cart: {
-            currency,
-            cartAmount,
-            lineItems,
-            numberItems:
-              lineItems.physical_items.length +
-              lineItems.digital_items.length +
-              lineItems.custom_items.length +
-              lineItems.gift_certificates.length,
-            redirectUrls: response.data.redirect_urls
-          }
-        });
 
-        // if (state.addingToCart == false && typeof window !== "undefined") {
-        //   window.dataLayer.push({
-        //     'event': 'addToCart',
-        //     'ecommerce': {
-        //       'currencyCode': 'USD',
-        //       'add': {                                // 'add' actionFieldObject measures.
-        //         'products': [{                        //  adding a product to a shopping cart.
-        //           'name': productName? productName : '',
-        //           'id': productId? productId : '',
-        //           'price': price? price : '',
-        //           'brand': '',
-        //           'category': '',
-        //           'variant': '',
-        //           'quantity': quantity? quantity : 1
-        //          }]
-        //       }
-        //     }
-        //   });
-          
-        // }
-      })
-      .catch(error => {
-        setState({ ...state, addingToCart: false, addToCartError: error });
-      });
-    }else{
       await fetch(resrouce_url, {
         method: 'POST',
         credentials: 'same-origin',
         mode: 'cors',
         body: JSON.stringify({
-          
+
           line_items: [
             {
-              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              quantity: (typeof (quantity) === 'undefined') ? 1 : quantity,
+              product_id: parseInt(productId, 10),
+              option_selections: [{
+                option_id: parseFloat(premierid),
+                option_value: parseFloat(feild_preimer),
+              }]
+            }
+          ]
+        })
+      })
+        .then(async res => ({ response: await res.json(), status: res.status }))
+        .then(async ({ response, status }) => {
+          if (status === 404 && !retry) {
+            // re create a cart if cart was destroyed
+            cartId = undefined;
+            if (typeof window !== "undefined") {
+              window.localStorage.removeItem('cartId')
+            }
+
+            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName);
+
+          }
+          // console.log("ashh item added", response, productId)
+          // let addedProduct = response.data.lineItems.physical_items.filter(function (itm) {
+          //   return itm.product_id == productId;
+          // })[0];
+
+          
+          //   window.dataLayer.push({
+          //     'event': 'addToCart',
+          //     'ecommerce': {
+          //       'currencyCode': 'USD',
+          //       'add': {                                // 'add' actionFieldObject measures.
+          //         'products': [{                        //  adding a product to a shopping cart.
+          //           'name': addedProduct.name,
+          //           'id': addedProduct.id,
+          //           'price': addedProduct.list_price,
+          //           'brand': 'Obagi',
+          //           'category': addedProduct.url.includes('medical') ? 'medical' : 'clinical',
+          //           'variant': '',
+          //           'quantity': addedProduct.quantity
+          //         }]
+          //       }
+          //     }
+          //   });
+          
+
+          status < 300 && addNotification('Item added successfully');
+
+          const lineItems = response.data.line_items;
+          const cartAmount = response.data.cart_amount;
+          const currency = response.data.currency;
+          cartId = response.data.id;
+          if (typeof window !== "undefined") {
+            window.localStorage.setItem('cartId', JSON.stringify(cartId));
+          }
+          setState({
+            ...state,
+            addingToCart: false,
+            addedToCart: productId,
+            cart: {
+              currency,
+              cartAmount,
+              lineItems,
+              numberItems:
+                lineItems.physical_items.length +
+                lineItems.digital_items.length +
+                lineItems.custom_items.length +
+                lineItems.gift_certificates.length,
+              redirectUrls: response.data.redirect_urls
+            }
+          });
+
+          // if (state.addingToCart == false && typeof window !== "undefined") {
+          //   window.dataLayer.push({
+          //     'event': 'addToCart',
+          //     'ecommerce': {
+          //       'currencyCode': 'USD',
+          //       'add': {                                // 'add' actionFieldObject measures.
+          //         'products': [{                        //  adding a product to a shopping cart.
+          //           'name': productName? productName : '',
+          //           'id': productId? productId : '',
+          //           'price': price? price : '',
+          //           'brand': '',
+          //           'category': '',
+          //           'variant': '',
+          //           'quantity': quantity? quantity : 1
+          //          }]
+          //       }
+          //     }
+          //   });
+
+          // }
+        })
+        .catch(error => {
+          setState({ ...state, addingToCart: false, addToCartError: error });
+        });
+    } else {
+      await fetch(resrouce_url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        body: JSON.stringify({
+
+          line_items: [
+            {
+              quantity: (typeof (quantity) === 'undefined') ? 1 : quantity,
               product_id: parseInt(productId, 10),
             }
           ]
@@ -252,11 +278,11 @@ export const CartProvider = ({ children }) => {
             if (typeof window !== "undefined") {
               window.localStorage.removeItem('cartId')
             }
-            await addToCart(productId, true, quantity,price,premierid,feild_preimer, productName);
+            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName);
           }
-         
+
           status < 300 && addNotification('Item added successfully');
-  
+
           const lineItems = response.data.line_items;
           const cartAmount = response.data.cart_amount;
           const currency = response.data.currency;
@@ -284,84 +310,83 @@ export const CartProvider = ({ children }) => {
         .catch(error => {
           setState({ ...state, addingToCart: false, addToCartError: error });
         });
-     
+
     }
-  
+
   };
 
-  const addMultiToCart = async (productsId ,retry, quantity, price, productsPremierPoints) => {
+  const addMultiToCart = async (productsId, retry, quantity, price, productsPremierPoints) => {
     let findedProduct = productsId;
-    if(state.cart.lineItems.physical_items){
-      findedProduct = productsId.filter(function(element){
+    if (state.cart.lineItems.physical_items) {
+      findedProduct = productsId.filter(function (element) {
         let quantity = 0;
-        state.cart.lineItems.physical_items.forEach( itm => {
-          if(itm.product_id == element){
+        state.cart.lineItems.physical_items.forEach(itm => {
+          if (itm.product_id == element) {
             quantity = itm.quantity;
             return;
           }
         });
-        if(quantity != 3){
+        if (quantity != 3) {
           return true;
         }
-        else
-        {
+        else {
           return false;
         }
       })
     }
     if (parseFloat(state.cart.cartAmount) + parseFloat(price) > 750) {
       maxprice();
-     return
+      return
     }
-    
-    if(!findedProduct.length > 0){
+
+    if (!findedProduct.length > 0) {
       return;
     }
 
     setState({ ...state, addingToCart: productsId });
-  
+
     productsId = findedProduct;
-    let body= [];
-    if(productsId.length > 0){
+    let body = [];
+    if (productsId.length > 0) {
       productsId.forEach(element => {
-        if(productsPremierPoints){
-         
+        if (productsPremierPoints) {
+
           let productPremierPoint = productsPremierPoints.find(x => x.productId === element);
-          if(productPremierPoint && productPremierPoint.premierId && productPremierPoint.premierPoints){
+          if (productPremierPoint && productPremierPoint.premierId && productPremierPoint.premierPoints) {
             body.push({
-              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              quantity: (typeof (quantity) === 'undefined') ? 1 : quantity,
               product_id: parseInt(element, 10),
-              option_selections:[{
-                option_id :parseFloat(productPremierPoint.premierId),
+              option_selections: [{
+                option_id: parseFloat(productPremierPoint.premierId),
                 option_value: parseFloat(productPremierPoint.premierPoints),
-              }]  
+              }]
             })
-          }  else{
+          } else {
             body.push({
-              quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+              quantity: (typeof (quantity) === 'undefined') ? 1 : quantity,
               product_id: parseInt(element, 10),
-              
-            
+
+
             })
           }
-        }else{
+        } else {
           body.push({
-            quantity: (typeof(quantity)==='undefined')? 1 : quantity,
+            quantity: (typeof (quantity) === 'undefined') ? 1 : quantity,
             product_id: parseInt(element, 10),
-            
-          
+
+
           })
         }
-        
-        
-      });  
+
+
+      });
     }
-    
-    
+
+
 
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
-    if(cartId) {
-        resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
+    if (cartId) {
+      resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
     }
     await fetch(resrouce_url, {
       method: 'POST',
@@ -445,7 +470,7 @@ export const CartProvider = ({ children }) => {
     )
       .then(res => res.json())
       .then(response => {
-        refreshCart(response);    
+        refreshCart(response);
       })
       .catch(error => {
         setState({ ...state, cartLoading: false, cartError: error });
@@ -506,7 +531,7 @@ export const CartProvider = ({ children }) => {
     if (newQuantity < 1) {
       return removeItemFromCart(item.id, item);
     }
-    if(newQuantity > 3) {
+    if (newQuantity > 3) {
       return updateItemInCart(item.id, {
         line_item: {
           quantity: 3,
@@ -514,9 +539,9 @@ export const CartProvider = ({ children }) => {
         }
       });
     }
-    if (parseFloat(saveprice) + parseFloat(state.cart.cartAmount) > 750 && action != 'minus' ) {
+    if (parseFloat(saveprice) + parseFloat(state.cart.cartAmount) > 750 && action != 'minus') {
       maxprice();
-      setState({ ...state, updatingItem: false});
+      setState({ ...state, updatingItem: false });
       return;
     }
     let productVariantReferences = null;
@@ -551,35 +576,35 @@ export const CartProvider = ({ children }) => {
       });
   };
   const addShippingMethods = response => {
-    
+
     if (response.status === 204 || response.status === 404) {
       //
       // console.log("Error fetch Shipping Methods", response);
     } else {
-      
+
       let defulteShippingMethodsId = 0;
       let enabledShippingMethods = [];
-      if(response.length>0){
+      if (response.length > 0) {
         response.forEach(element => {
           //show only enabled methods
-          if(element.enabled){
+          if (element.enabled) {
             enabledShippingMethods.push(element);
           }
         });
       }
 
-      if(enabledShippingMethods.length > 0){
+      if (enabledShippingMethods.length > 0) {
         //sort Shipping Methods by rate
-        enabledShippingMethods.sort(function(a, b) {
-          let aRate = a.settings.rate?a.settings.rate:0;
-          let bRate = b.settings.rate?b.settings.rate:0;
+        enabledShippingMethods.sort(function (a, b) {
+          let aRate = a.settings.rate ? a.settings.rate : 0;
+          let bRate = b.settings.rate ? b.settings.rate : 0;
           return parseFloat(aRate) - parseFloat(bRate);
         });
 
         //set defulte Shipping Methods to first one after sorting
         //defulteShippingMethodsId = enabledShippingMethods[0].id;
       }
-     
+
       //update state with methods
       setState({
         ...state,
@@ -589,13 +614,13 @@ export const CartProvider = ({ children }) => {
         shippingMethods: enabledShippingMethods
       });
     }
-    
+
   };
   const changeShippingMethods = (e) => {
-     //update state with methods
-     let id = e.target.id;
-     let rate = e.target.value;
-     setState({
+    //update state with methods
+    let id = e.target.id;
+    let rate = e.target.value;
+    setState({
       ...state,
       selectedShippingMethodsId: id,
       estShipping: rate
@@ -604,13 +629,13 @@ export const CartProvider = ({ children }) => {
   const showShippingMethods = (value) => {
     //update state with methods
     setState({
-     ...state,
-     selectedShippingMethodsId: 0,
-     estShipping: 0,
-     showShippingMethods: value
-   });
+      ...state,
+      selectedShippingMethodsId: 0,
+      estShipping: 0,
+      showShippingMethods: value
+    });
   };
-  
+
   return (
     <CartContext.Provider
       value={{

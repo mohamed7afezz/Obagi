@@ -78,7 +78,7 @@
     @extend %futurapt-light;
     text-transform: uppercase;
     padding-left: 24px;
-
+    margin-bottom: 0;
     @include lg-screen {
         @include fontStyle(32, 48);
         text-align: center;

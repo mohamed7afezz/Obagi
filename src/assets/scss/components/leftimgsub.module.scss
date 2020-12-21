@@ -92,3 +92,18 @@
     margin-bottom: 90px;
   }
 }
+
+
+.link {
+  border-color: #fff;
+  color: #fff;
+  margin-top: 20px;
+  &:hover {
+    background-color: #fff;
+    color: #868cd2;
+  }
+
+  @include lg-screen {
+    margin-top: 40px;
+  }
+}

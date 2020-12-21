@@ -275,12 +275,12 @@ const ProductLine = ({ node }) => {
       <div className="row">
         <div className="col-12">
           {node.field_product_line_title ? (
-            <div
+            <h1
               dangerouslySetInnerHTML={{
                 __html: node.field_product_line_title.processed,
               }}
               className={lineStyles.wrapperTitle}
-            ></div>
+            ></h1>
           ) : (
               ""
             )}

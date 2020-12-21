@@ -10,7 +10,7 @@ const SectionWithImageAndText = ({ node }) => {
         <div className={[`${node.field_custom_class? "col-12 col-lg-4 offset-lg-1" : "col-9 offset-2 col-lg-4 offset-lg-1"}`].join(" ")}>
           <div className={[imageAndText.textSection].join(" ")}>
             <div dangerouslySetInnerHTML={{ __html: node.field_sub_title.processed }} className={["subtitle", imageAndText.subtitle].join(" ")}></div>
-            <h1 dangerouslySetInnerHTML={{ __html: node.field_text_title.processed }} className={[imageAndText.title, "title"].join(" ")}></h1>
+            <h3 dangerouslySetInnerHTML={{ __html: node.field_text_title.processed }} className={[imageAndText.title, "title"].join(" ")}></h3>
             <div dangerouslySetInnerHTML={{ __html: node.field_text_paragraph.processed }} className={[imageAndText.description, "description"].join(" ")}></div>
             {node.field_text_button? <div className={[imageAndText.linkDesk,  "d-none", "d-lg-block"].join(" ")}><Link to={node.field_text_button.uri?node.field_text_button.uri.replace('internal:', '') : '#'} className={["button-link"].join(" ")}>{node.field_text_button.title}</Link></div> : ""}
           </div>

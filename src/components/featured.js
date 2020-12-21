@@ -91,7 +91,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
           <div className="col-12">
             <div className={featuredStyles.textWrapper}>
               {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-              <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+              {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
               {node.field_featured_products_title? <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} ><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>)</Link></div> : ""}
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
               {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
@@ -111,7 +111,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
             <div className={["col-lg-5", "offset-lg-1", featuredStyles.columnsWrapper].join(" ")}>
               <div className="col-lg-7 offset-lg-2">
                 {node.field_featured_subtitle ? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-                <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+                {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                 {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div>(<span className={featuredStyles.productsNo}>{ " " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                 {node.field_featured_perfect_title ? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
@@ -163,7 +163,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
               <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
                 <div className="col-lg-7 offset-lg-2">
                   {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-                  <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+                  {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                   {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
                   {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div> {node.relationships.field_issues_categories.map((item, index) => {

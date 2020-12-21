@@ -13,8 +13,8 @@ const Services = ({ node }) => {
               <div className={servicesStyles.cardWrapper}>
                 {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name.processed }} className={item.field_card_type === "clinical" ? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
                 {item.relationships.field_service_image ? item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img fluid={item.relationships.field_service_image ? item.relationships.field_service_image.localFile ? item.relationships.field_service_image.localFile.childImageSharp.fluid : "" : ""} /></div> : '' : ""}
-                {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title.processed }} className={servicesStyles.title}></div> : ''}
-                {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
+                {item.field_service_title ? <h3 dangerouslySetInnerHTML={{ __html: item.field_service_title.processed }} className={servicesStyles.title}></h3> : ''}
+                {item.field_service_description ? <p dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></p> : ''}
                 {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri.replace('internal:', '')} className={["button-link", servicesStyles.link].join(" ")}><div dangerouslySetInnerHTML={{ __html: item.field_se.title }}></div></Link></div> : ''}
               </div>
             </div>
