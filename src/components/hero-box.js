@@ -17,7 +17,7 @@ const HeroBox = ({ node, id }) => {
     return (
         <div className={boxStyle.heroBox} id={id}>
             <p dangerouslySetInnerHTML={{ __html: node.field_name.processed }} className={["logo", boxStyle.logo].join(" ")}></p>
-            <h1 dangerouslySetInnerHTML={{ __html: node.field_title.processed }} className={[boxStyle.title].join(" ")}></h1>
+            <div dangerouslySetInnerHTML={{ __html: node.field_title.processed }} className={[boxStyle.title].join(" ")}></div>
             <p dangerouslySetInnerHTML={{ __html: node.field_subtitle.processed }} className={[boxStyle.subtitle].join(" ")}></p>
             <div className={boxStyle.linkSection}><Link to={fixlink(node.field_link)} className={["button-link", boxStyle.link].join(" ")}>{node.field_link.title}</Link></div>
             

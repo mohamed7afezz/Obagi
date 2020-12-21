@@ -15,7 +15,7 @@ const ImageLeftTextRight = ({ node }) => {
           <div className={["col-12 col-lg-6 offset-lg-1", `${node.field_text_custom_class? "text-second-section" : imageLeft.colFullPadding}`].join(" ")}>
             <div className={[imageLeft.smallSection, "text-small-section"].join(" ")}>
               <div dangerouslySetInnerHTML={{ __html: node.field_image_left_subtitle.processed }} className={["subtitle", imageLeft.subtitle].join(" ")}></div>
-              <h1 dangerouslySetInnerHTML={{ __html: node.field_image_left_title.processed }} className={[imageLeft.title, "title"].join(" ")}></h1>
+              <div dangerouslySetInnerHTML={{ __html: node.field_image_left_title.processed }} className={[imageLeft.title, "title"].join(" ")}></div>
               <div dangerouslySetInnerHTML={{ __html: node.field_image_left_paragraph.processed }} className={[imageLeft.description, "description"].join(" ")}></div>
               {node.field_image_left_button? <div className={imageLeft.linkSection}><Link to={node.field_image_left_button.uri.replace('internal:', '')} className={["button-link", imageLeft.link].join(" ")}>{node.field_image_left_button.title}</Link></div> : ""}
             </div>

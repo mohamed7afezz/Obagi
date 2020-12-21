@@ -85,7 +85,7 @@ const Layout = ({ children,nodeType,menuType}) => {
           <div class="modal hidden" id="formsubmition">
            <div class="container">
               <div class="modal-body">
-                  <h2>Thank you for your submission</h2>
+                  <h3>Thank you for your submission</h3>
                   <p>Your request has been submitted</p>
               </div>
            </div>
@@ -94,7 +94,7 @@ const Layout = ({ children,nodeType,menuType}) => {
          <div class="modal hidden" id="moremaxprice">
            <div class="container">
               <div class="modal-body">
-                  <h2>Obagi Maximum Purchase Policy</h2>
+                  <h3>Obagi Maximum Purchase Policy</h3>
                   <h5>Orders placed on Obagi.com are limited to 3 units per product, with a maximum allowable purchase of $750 per order.</h5>
               </div>
            </div>

@@ -91,7 +91,7 @@ const Howtouse = ({ node }) => {
                         {node.field_media_right == false ?
                             <div id="accordion" className="col-12 d-flex mobflexwrap">
                                 <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
-                                    <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
+                                    <div className={howto.howtousehead}>{node.field_how_to_use_title.processed}</div>
                                     {/* steps btns */}
                                     <div className={["d-flex", howto.tabs].join(" ")}>
                                         {
@@ -125,7 +125,7 @@ const Howtouse = ({ node }) => {
 
 
                                 <div className={["col-12", "col-lg-6", "offset-lg-1", "howrightcol", howto.howrightcol].join(" ")}>
-                                    <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
+                                    <div className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</div>
 
                                     {/* steps image */}
                                     {
@@ -173,7 +173,7 @@ const Howtouse = ({ node }) => {
 
                             <div id="accordion" className="col-12 d-flex mobflexwrap pl-0">
                                 <div className={["col-12", "col-lg-6", "howrightcol", howto.howrightcol].join(" ")}>
-                                    <h1 className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</h1>
+                                    <div className={howto.howtouseheadimage}>{node.field_how_to_use_title.processed}</div>
 
                                     {/* steps image */}
                                     {
@@ -215,7 +215,7 @@ const Howtouse = ({ node }) => {
                                     }
                                 </div>
                                 <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
-                                    <h1 className={howto.howtousehead}>{node.field_how_to_use_title.processed}</h1>
+                                    <div className={howto.howtousehead}>{node.field_how_to_use_title.processed}</div>
                                     {/* steps btns */}
                                     <div className={["d-flex", howto.tabs].join(" ")}>
                                         {

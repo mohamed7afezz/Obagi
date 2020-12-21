@@ -14,7 +14,7 @@ const Details = ({ node }) => {
                         <div className={detailsStyles.detail}>
                             {
                             item.field_sec?<div className={[detailsStyles.showFlex,"mob-colap"].join(' ')}>
-                                <h1  dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></h1>
+                                <div  dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></div>
                                 {index===1?      <a className={[detailsStyles.expand1,"show-mob", " mt-0"].join(" ")}  data-toggle="collapse" href="#ingm" role="button" aria-expanded="false" aria-controls="ingm"></a> 
                             :""}
                             </div>:

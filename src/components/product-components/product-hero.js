@@ -562,8 +562,8 @@ const ProductHero = ({ data, nodeType }) => {
             </div>
             <div class="modal-body">
               <div class="share-wrap  mt-35 mb-50">
-                <h1 className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></h1>
-                <h1 className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></h1>
+                <p className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></p>
+                <p className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></p>
                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>

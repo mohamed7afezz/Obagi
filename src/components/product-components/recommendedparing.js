@@ -36,7 +36,7 @@ const Recommendedparing = ({ node }) => {
       <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
 
         <p className={ProductStyles.productcat}>{node.field_section_title}</p>
-        <h1 className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</h1>
+        <div className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</div>
         <p className={recommendedparing.recommendedparingdesc}>{node.field_product_description}</p>
         <p className={recommendedparing.recommendedparingsec}><span>{node.field_question}</span> {node.field_product_inform}</p>
       </div>

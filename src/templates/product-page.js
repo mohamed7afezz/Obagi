@@ -12,55 +12,59 @@ import ViewedProductsContext from '../providers/latestview-provider';
 const ProductPage = props => {
     // SEO Events
     useEffect(() => {
-        if(typeof window !== "undefined") {
+        if (typeof window !== "undefined") {
             let dl = window.dataLayer;
             const product = props.pageContext.nodetype === 'clinical' ? props.data.nodeClinicalProduct : props.data.nodeMedicalProduct;
-            
+
             console.log('bahiiiii', props)
             dl.push({
                 'ecommerce': {
-                  'detail': {
-                    'actionField': {},    // 'detail' actions have an optional list property.
-                    'products': [{
-                      'name': product.title,         // Name or ID is required.
-                      'id': product.field_clinical_sku? product.field_clinical_sku : product.field_medical_sku,
-                      'price': product.field_clinical_price? product.field_clinical_price : product.field_medical_price,
-                      'brand': 'Obagi',
-                      'category':  props.pageContext.nodetype,
-                      'variant': ''
-                     }]
-                   }
+                    'detail': {
+                        'actionField': {},    // 'detail' actions have an optional list property.
+                        'products': [{
+                            'name': product.title,         // Name or ID is required.
+                            'id': product.field_clinical_sku ? product.field_clinical_sku : product.field_medical_sku,
+                            'price': product.field_clinical_price ? product.field_clinical_price : product.field_medical_price,
+                            'brand': 'Obagi',
+                            'category': props.pageContext.nodetype,
+                            'variant': ''
+                        }]
+                    }
                 }
             });
-              
+
         }
     }, []);
 
     let data = props.data;
     const nodeType = props.pageContext.nodetype;
-    const product = nodeType === 'clinical'? data.nodeClinicalProduct : data.nodeMedicalProduct;
-    const storageName = nodeType === 'clinical'? 'clinicalViewedProducts' : 'medicalViewedProducts';
+    const product = nodeType === 'clinical' ? data.nodeClinicalProduct : data.nodeMedicalProduct;
+    const storageName = nodeType === 'clinical' ? 'clinicalViewedProducts' : 'medicalViewedProducts';
 
-    const paragraphs = nodeType === 'clinical'?
-    data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
-    
+    const paragraphs = nodeType === 'clinical' ?
+        data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
+
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
-        <SEO title={nodeType === "clinical"? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title? data.nodeClinicalProduct.field_clinical_metatags.title : "" )
-        : nodeType === "medical"? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title? data.nodeMedicalProduct.field_medical_metatags.title : "" ) : ""} />
+            <SEO title={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title ? data.nodeClinicalProduct.field_clinical_metatags.title : "")
+                : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title ? data.nodeMedicalProduct.field_medical_metatags.title : "") : ""}
 
-        <div itemscope="" itemtype="https://schema.org/Product">
-          <ProductHero data={data} nodeType={nodeType} />
-          {paragraphs}
-          {/*Review widget BV */      
-           <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
-          <div data-bv-show="reviews" data-bv-product-id= {nodeType === 'clinical'? data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}></div>
-        </div></div></div>       
-           /*Review widget BV*/  }
-          </div>
+                description={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
+            />
+
+            <div itemscope="" itemtype="https://schema.org/Product">
+                <ProductHero data={data} nodeType={nodeType} />
+                {paragraphs}
+                {/*Review widget BV */
+                    <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                        <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ? data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}></div>
+                    </div></div></div>
+           /*Review widget BV*/}
+            </div>
         </Layout>
     )
 }
