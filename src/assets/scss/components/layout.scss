@@ -4283,7 +4283,7 @@ top: 78.5px !important;
 
     @include lg-screen {
         margin-right: -40px;
-        margin-left: -15px;
+        margin-left: -40px;
     }
   }
 
@@ -4411,4 +4411,12 @@ top: 78.5px !important;
 
 .relative-general-nav .extole-hover-on {
     display: inline;
+}
+
+#desk-navigation:hover .extole-hover-on {
+    display: inline;
+}
+
+#desk-navigation:hover .extole-hover-off {
+    display: none;
 }
