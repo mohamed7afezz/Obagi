@@ -13,7 +13,7 @@ const LeftSubimg = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_topic.processed }} className={Style.topic}></div>
             <div dangerouslySetInnerHTML={{ __html: node.field_title_title.processed }} className={Style.title}></div>
             <div dangerouslySetInnerHTML={{ __html: node.field_describtion.processed }} className={Style.describtion}></div>
-            {node.field_left_link? <Link to={node.field_left_link.uri} className={[Style.link, "button-link"].join(" ")}>{node.field_left_link.title}</Link> : ""}
+            {node.field_left_link? <Link to={node.field_left_link.uri? node.field_left_link.uri.replace('internal:', '') : '#'} className={[Style.link, "button-link"].join(" ")}>{node.field_left_link.title}</Link> : ""}
           </div>
 
         </div>
