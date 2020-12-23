@@ -35,3 +35,16 @@ steps:
     SourceFolder: 'public/'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
+- task: FtpUpload@2
+  inputs:
+    credentialsOption: 'inputs'
+    serverUrl: 'ftps://waws-prod-bay-141.ftp.azurewebsites.windows.net'
+    username: $dev-obagiecommerce
+    password: pcQFTTSlFR9X6kEWgYZZihmv914cvKrFqhjKdhKDQii8H9hmCxxGhM2Ar9NQ
+    rootDirectory: '$(build.artifactstagingdirectory)'
+    filePatterns: '**'
+    remoteDirectory: /site/wwwroot/storefront
+    clean: true
+    cleanContents: false
+    preservePaths: true
+    trustSSL: false
