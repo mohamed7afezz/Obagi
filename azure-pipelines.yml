@@ -40,7 +40,7 @@ steps:
     credentialsOption: 'inputs'
     serverUrl: 'ftps://waws-prod-dm1-101.ftp.azurewebsites.windows.net'
     username: $dev-obagiecommerce
-    password: LKqaGTddJZxrw7nvzZbBni7BcjivXjute5Al9c2SkGl7psiMtXozNBt8F2iR
+    password: CSTYflLcwmb0ntHbMnG6GmalqylXou0vnif0Y6FRw3RalFlWYLqWfchPReK2
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
     remoteDirectory: /site/wwwroot/storefront
