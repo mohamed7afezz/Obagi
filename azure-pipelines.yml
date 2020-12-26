@@ -15,7 +15,7 @@ steps:
     targetType: 'inline'
     script: |
       cat .env.production
-      sed -i 's/dev-obagi/test-obagiecommerce/g' .env.production
+      sed -i 's/dev-obagi/dev-obagiecommerce/g' .env.production
       cat .env.production
 - task: Cache@2
   inputs:
@@ -46,8 +46,8 @@ steps:
   inputs:
     credentialsOption: 'inputs'
     serverUrl: 'ftps://waws-prod-dm1-101.ftp.azurewebsites.windows.net'
-    username: $test-obagiecommerce
-    password: DKdsoiwaDujhoiuXufubL8quK3F7lvPjQdCqbyno6JE9saivjbF9jXwpffQi
+    username: $dev-obagiecommerce
+    password: CSTYflLcwmb0ntHbMnG6GmalqylXou0vnif0Y6FRw3RalFlWYLqWfchPReK2
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
     remoteDirectory: /site/wwwroot/storefront
