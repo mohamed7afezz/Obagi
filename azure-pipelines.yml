@@ -45,9 +45,9 @@ steps:
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'inputs'
-    serverUrl: 'ftps://waws-prod-dm1-101.ftp.azurewebsites.windows.net'
-    username: $dev-obagiecommerce
-    password: CSTYflLcwmb0ntHbMnG6GmalqylXou0vnif0Y6FRw3RalFlWYLqWfchPReK2
+    serverUrl: $(FTPserverUrl)
+    username: $(FTPusername)
+    password: $(FTPpassword)
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
     remoteDirectory: /site/wwwroot/storefront
