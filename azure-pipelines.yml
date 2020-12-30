@@ -19,12 +19,12 @@ steps:
       cat .env.production
 - task: Cache@2
   inputs:
-    key: 'gatsby-cache-folder-20201222'
+    key: $(gatsby-cache-folder)
     path: .cache
   displayName: Cache gatsby-cache-folder
 - task: Cache@2
   inputs:
-    key: 'gatsby-public-folder-20201222'
+    key: $(gatsby-public-folder)
     path: public
   displayName: Cache gatsby-public-folder
 - task: NodeTool@0
