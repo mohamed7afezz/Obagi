@@ -16,12 +16,12 @@ steps:
       cat .env.production
 - task: Cache@2
   inputs:
-    key: 'gatsby-cache-folder-20201222'
+    key: $(gatsby-cache-folder)
     path: .cache
   displayName: Cache gatsby-cache-folder
 - task: Cache@2
   inputs:
-    key: 'gatsby-public-folder-20201222'
+    key: $(gatsby-public-folder)
     path: public
   displayName: Cache gatsby-public-folder
 - task: NodeTool@0
@@ -42,9 +42,9 @@ steps:
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'inputs'
-    serverUrl: 'ftps://waws-prod-dm1-101.ftp.azurewebsites.windows.net'
-    username: $test-obagiecommerce
-    password: DKdsoiwaDujhoiuXufubL8quK3F7lvPjQdCqbyno6JE9saivjbF9jXwpffQi
+    serverUrl: $(FTPserverUrl)
+    username: $(FTPusername)
+    password: $(FTPpassword)
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
     remoteDirectory: /site/wwwroot/storefront
