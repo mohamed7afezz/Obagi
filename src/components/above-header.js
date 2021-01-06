@@ -113,11 +113,4 @@ const AboveHeader = ({ menuType, id, notifClass, node }) => {
   )
 }
 
-{/* <StaticQuery
-    query={graphql`
-            query {
-     
-            }`}
-            /> */}
-
 export default AboveHeader
