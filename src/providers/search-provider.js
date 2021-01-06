@@ -33,6 +33,7 @@ export const SearchProvider = ({ children }) => {
             setsearchWord(savekey)
 
             setIsLoading(false);
+          
         }
     }
     const setSearchIndex = (ClinicalProduct, MedicalProduct) => {
@@ -44,10 +45,16 @@ export const SearchProvider = ({ children }) => {
         setIsLoading(true);
         setsearchWord(searchkey);
         let filterdClinicalProduct = ProductsIndex.ClinicalProduct.nodes.filter(function (itm) {
-            return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+            if (itm.field_clinical_free_sample != true)
+            {
+                return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+            }
         });
         let filterdMedicalProduct = ProductsIndex.MedicalProduct.nodes.filter(function (itm) {
-            return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+            if (itm.field_medical_free_sample != true) {
+                return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+            }
+            
         });
         setClinicalValue(filterdClinicalProduct);
         setMedicalValue(filterdMedicalProduct);

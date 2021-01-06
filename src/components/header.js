@@ -31,6 +31,7 @@ const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
         nodes {
           field_clinical_id
           title
+          field_clinical_free_sample
           field_clinical_price
           field_clinical_sku
           path {
@@ -56,6 +57,7 @@ const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
         nodes {
           field_medical_id
           title
+          field_medical_free_sample
           field_medical_price
           field_medical_premier_points_id
           field_medical_sku
