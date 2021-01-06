@@ -15,7 +15,7 @@ steps:
     targetType: 'inline'
     script: |
       cat .env.production
-      sed -i 's/dev-obagi/dev-obagiecommerce/g' .env.production
+      sed -i 's/dev-obagiecommerce/dev-obagiecommerce/g' .env.production
       cat .env.production
 - task: Cache@2
   inputs:
