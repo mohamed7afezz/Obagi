@@ -95,7 +95,7 @@ const HomeHero = ({ node }) => {
           </div>
           <div className={["row"].join(" ")}>
             <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
-              {node.field_main_header ? <div dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></div> : ""}
+              {node.field_main_header ? <div className={[homeHero.header].join(" ")}>{node.field_main_header}</div> : ""}
               {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
             </div>
           </div>
@@ -127,7 +127,7 @@ const HomeHero = ({ node }) => {
               <>
                 <div className={["row", homeHero.heroStyle].join(" ")} style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }}>
                   <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
-                    {node.field_main_header ? <div dangerouslySetInnerHTML={{ __html: node.field_main_header.processed }} className={[homeHero.header].join(" ")}></div> : ""}
+                    {node.field_main_header ? <div className={[homeHero.header].join(" ")}>{node.field_main_header}</div> : ""}
                     {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
                   </div>
 
@@ -169,9 +169,7 @@ export default HomeHero;
 export const fragment = graphql`
     fragment paragraphHomeHero on paragraph__home_hero {
         id
-        field_main_header {
-          processed
-        }
+        field_main_header
         field_main_subtitle {
           processed
         }
