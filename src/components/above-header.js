@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react"
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { StaticQuery, useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import $ from 'jquery'
 
-const AboveHeader = ({ menuType, id, notifClass }) => {
+const AboveHeader = ({ menuType, id, notifClass, node }) => {
 
   const { notif, setNotif } = useContext(UserContext);
   const data = useStaticQuery(graphql`
@@ -15,6 +15,16 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
           childImageSharp {
             fluid (quality: 100){
               ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        allBlockContentBasic(filter: {id: {eq: "a869412d-dd07-5c0a-89a5-12d82d1493e4"}}) {
+          edges {
+            node {
+              id
+              body {
+                processed
+              }
             }
           }
         }
@@ -93,7 +103,7 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
       {/* <div className="container-fluid"> */}
       <div className={[aboveHeader.wrapper, "row"].join(" ")}>
         <div className={["col", aboveHeader.columnWrapper].join(" ")}>
-          <div className={aboveHeader.text}><p>Obagi Members Enjoy Complimentary Shipping on Orders of $125 or More! <Link to="/my-account/orders">Sign In</Link> or <Link to="/registration">Register Today</Link></p></div>
+          <div className={aboveHeader.text} dangerouslySetInnerHTML={{__html: data.allBlockContentBasic.edges[0].node.body.processed}}></div>
           <div className={aboveHeader.closeButton}><button type="button" onClick={() => { closeNotification(); }}><Img alt="img"  fluid={data.close.childImageSharp.fluid} className={aboveHeader.closeImg} /></button></div>
         </div>
       </div>
@@ -102,5 +112,12 @@ const AboveHeader = ({ menuType, id, notifClass }) => {
     </div>
   )
 }
+
+{/* <StaticQuery
+    query={graphql`
+            query {
+     
+            }`}
+            /> */}
 
 export default AboveHeader
