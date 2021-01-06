@@ -15,7 +15,7 @@ const Trending = ({ node }) => {
                   <div className={index == 0 || index == 1? trendingStyles.cardWrapper : trendingStyles.cardWrapper  +" " + trendingStyles.lastCardWrappers}>
                     <div className={trendingStyles.subtitle}>Trending</div>
                     {item.field_trending_card_title ? <h3 dangerouslySetInnerHTML={{ __html: item.field_trending_card_title.processed }} className={trendingStyles.title}></h3> : ''}
-                    {item.relationships.field_trending_card_image ? (item.relationships.field_trending_card_image.localFile? <div className={trendingStyles.image}><Img fluid={item.relationships.field_trending_card_image.localFile.childImageSharp.fluid} /></div> : '') : ''}
+                    {item.relationships.field_trending_card_image ? (item.relationships.field_trending_card_image.localFile? <div className={trendingStyles.image}><Img  alt="img" fluid={item.relationships.field_trending_card_image.localFile.childImageSharp.fluid} /></div> : '') : ''}
                     {item.field_trending_card_link ? <div className={trendingStyles.linkSection}><Link to={item.field_trending_card_link.uri.replace('internal:', '')} className={["button-link", trendingStyles.link].join(" ")}>Explore</Link></div> : ''}
                   </div>
                 </div>
@@ -23,7 +23,7 @@ const Trending = ({ node }) => {
                 <div className="col-lg-4 d-none d-lg-block">
                   <div className={trendingStyles.cardWrapper}>
                     <div className={trendingStyles.subtitle}>Trending</div>
-                    {item.relationships.field_trending_card_image ? (item.relationships.field_trending_card_image.localFile? <div className={trendingStyles.image}><Img fluid={item.relationships.field_trending_card_image.localFile.childImageSharp.fluid} /></div>:'') : ''}
+                    {item.relationships.field_trending_card_image ? (item.relationships.field_trending_card_image.localFile? <div className={trendingStyles.image}><Img alt="img"  fluid={item.relationships.field_trending_card_image.localFile.childImageSharp.fluid} /></div>:'') : ''}
                     <div className={trendingStyles.lowerCard}>
                       {item.field_trending_card_link ?
                         <Link to={item.field_trending_card_link.uri.replace('internal:', '')} className={trendingStyles.link}>

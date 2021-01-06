@@ -18,7 +18,7 @@ const LeftSubimg = ({ node }) => {
 
         </div>
         <div className={[Style.imgContainer, "offset-2 offset-lg-1 col-lg-5 col-10"].join(" ")}>
-          <Img fluid={node.relationships.field_left_image.localFile.childImageSharp.fluid} />
+          <Img alt="img" fluid={node.relationships.field_left_image.localFile.childImageSharp.fluid} />
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ const Ingredient = ({ node }) => {
           {
             data.field_ingredient_image?
             (data.field_ingredient_image.relationships.field_section_image?
-              <div id="ing" className={"collapse multi-collapse show-block-desk mob-mt-24"}>  <Img  fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
+              <div id="ing" className={"collapse multi-collapse show-block-desk mob-mt-24"}>  <Img alt="img"   fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
                  data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid : ''} alt="ingredientimg" /></div> : '')
                :
             ''

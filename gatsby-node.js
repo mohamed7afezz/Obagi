@@ -13,11 +13,11 @@ module.exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions;
     
     // create slug for each node
-    if (node.internal.type === "node__page" || 
+    if ((node.internal.type === "node__page" || 
         node.internal.type === "node__clinical_product" || 
         node.internal.type === "node__medical_product"  ||
-        node.internal.type === "taxonomy_term__clinical_skin_concern"
-        ) {
+        node.internal.type === "taxonomy_term__clinical_skin_concern")
+         && !node.field_medical_free_sample) {
         const slug = `${node.path.alias}`;
         createNodeField({
             node,
@@ -71,6 +71,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
             allNodeMedicalProduct {
                 edges {
                     node {
+                      field_medical_free_sample
                         fields {
                             slug
                         }
@@ -195,7 +196,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         });
     });
 
+
+
     result.data.allNodeMedicalProduct.edges.forEach(({ node }) => {
+      node.field_medical_free_sample == true? "" :
         createPage({
             path: node.fields.slug,
             component: productTemp,

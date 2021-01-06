@@ -91,7 +91,7 @@ const HomeHero = ({ node }) => {
       <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle, "d-none d-md-block"].join(" ")} id="hero">
         <div className={[homeHero.containerWrapper, "container-fluid"].join(" ")}>
           <div id="hero-bg">
-            <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} />
+            <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} alt="img" />
           </div>
           <div className={["row"].join(" ")}>
             <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
@@ -113,7 +113,7 @@ const HomeHero = ({ node }) => {
                 </div>
               )
             })}
-            {/* <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div> */}
+            {/* <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img alt="img"  fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div> */}
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@ const HomeHero = ({ node }) => {
                   </div>
                 )
               })}
-              {/* <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div> */}
+              {/* <div className="d-none d-lg-block"><Link to="#colored-boxes" className={homeHero.scrollButton}><Img alt="img"  fluid={node.relationships.field_scroll_down.localFile.childImageSharp.fluid} /></Link></div> */}
 
 
 

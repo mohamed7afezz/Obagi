@@ -406,7 +406,7 @@ const ProductLine = ({ node }) => {
                                 && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp ?
                                 (
                                   <div className={lineStyles.imageWrapper}>
-                                    <Img fluid={item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid} />
+                                    <Img alt="img"  fluid={item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid} />
                                   </div>
                                 ) : (
                                   ""

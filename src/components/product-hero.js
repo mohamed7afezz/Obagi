@@ -140,15 +140,15 @@ const ProductHero = ({ node, props }) => {
         <div className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
           <Slider ref={slider => (slider1.current = slider)}  {...SliderSetting}>
    
-          <Img  fluid={data.retinol1.childImageSharp.fluid}/>
+          <Img alt="img"   fluid={data.retinol1.childImageSharp.fluid}/>
 
      
-          <Img  fluid={data.vitamins1.childImageSharp.fluid}/>
+          <Img alt="img"   fluid={data.vitamins1.childImageSharp.fluid}/>
 
  
-          <Img  fluid={data.ob1.childImageSharp.fluid}/>
+          <Img alt="img"   fluid={data.ob1.childImageSharp.fluid}/>
 
-          <Img  fluid={data.f41.childImageSharp.fluid}/>
+          <Img alt="img"   fluid={data.f41.childImageSharp.fluid}/>
 
      
           </Slider>
@@ -177,8 +177,8 @@ const ProductHero = ({ node, props }) => {
                 <option>6</option>
               </select>
             </div>
-            <div className={["col-12", "col-lg-6", ProductStyles.codeoff].join(" ")}> <p >Apply 20% off with code <span>Covid </span></p>   <img src={modal} /> </div>
-            <p className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}> <img src={share} /> Share </p>
+            <div className={["col-12", "col-lg-6", ProductStyles.codeoff].join(" ")}> <p >Apply 20% off with code <span>Covid </span></p>   <img src={modal} alt="img"/> </div>
+            <p className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}> <img src={share} alt="img"/> Share </p>
 
           </div>
           <button className={["btn", ProductStyles.btnCart].join(" ")}>Add to Bag</button>
@@ -187,22 +187,22 @@ const ProductHero = ({ node, props }) => {
 
             <div onClick={() => slickGoToslide(0)} className={["imageContainer",ProductStyles.imageContainer,"Active"].join(" ")}>
           
-            <Img  fixed={data.retinol.childImageSharp.fixed}/>
+            <Img alt="img"   fixed={data.retinol.childImageSharp.fixed}/>
 
             </div>
             <div onClick={() => slickGoToslide(1) } className={["imageContainer",ProductStyles.imageContainer,].join(" ")}>
 
-            <Img  fixed={data.vitamins.childImageSharp.fixed}/>
+            <Img alt="img"   fixed={data.vitamins.childImageSharp.fixed}/>
 
             </div>
             <div onClick={() => slickGoToslide(2)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
 
-            <Img  fixed={data.ob.childImageSharp.fixed}/>
+            <Img alt="img"   fixed={data.ob.childImageSharp.fixed}/>
 
             </div>
             <div onClick={() => slickGoToslide(3)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
 
-            <Img  fixed={data.f4.childImageSharp.fixed}/>
+            <Img alt="img"   fixed={data.f4.childImageSharp.fixed}/>
 
         </div>
         </div>

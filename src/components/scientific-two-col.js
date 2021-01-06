@@ -16,7 +16,7 @@ const TwoCol = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_scientific_describtion.processed }} className={[sientificStyle.desc].join(' ')}>
 
             </div>
-            {node.relationships.field_scientific_image ? <Img className="show-mob img-responsive" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid} /> : ""}
+            {node.relationships.field_scientific_image ? <Img alt="img"  className="show-mob img-responsive" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid} /> : ""}
 
             <div dangerouslySetInnerHTML={{ __html: node.field_scientific_list_title.processed }} className={[sientificStyle.listTitle].join(' ')}>
 
@@ -28,7 +28,7 @@ const TwoCol = ({ node }) => {
             </ul>
           </div>
           <div className="col-12 offset-lg-1 col-lg-5">
-            {node.relationships.field_scientific_image ? <Img className="hide-mob" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid} /> : ""}
+            {node.relationships.field_scientific_image ? <Img alt="img"  className="hide-mob" fluid={node.relationships.field_scientific_image.localFile.childImageSharp.fluid} /> : ""}
           </div>
 
         </div>

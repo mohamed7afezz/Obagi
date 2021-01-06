@@ -140,14 +140,14 @@ const PhysFinder = ({ data }) => {
                 <div id="pf-count-results"></div>
                 <div id="pf-email-print" class="hide">
                   <a href="#" target="_top" id="email-link">
-                    <img
+                    <img alt="img"
                       src="/modules/custom/obagi_finder/images/email.png"
                       style={{ width: "20px;" }}
                     />{" "}
                     Email
                   </a>
                   <a href="javascript:window.print();" id="print-link">
-                    <img
+                    <img alt="img"
                       src="/modules/custom/obagi_finder/images/printer.png"
                       style={{ width: "20px;" }}
                     />{" "}

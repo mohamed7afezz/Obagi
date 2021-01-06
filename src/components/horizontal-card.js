@@ -48,7 +48,7 @@ const HorizontalCard = ({
                 <div className="row">
                     <div className="col-lg-6">
         {productimage ? (
-          <Img className={Productcard.cardimg} fluid={productimage} />
+          <Img alt="img"  className={Productcard.cardimg} fluid={productimage} />
         ) : (
           ""
         )}

@@ -39,8 +39,8 @@ const NavBlocks = () => {
                     <div class="col-12">
                         <p class="nav-title-desk">Obagi Medical</p>
                         <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday Skin care</p>
-                        <div class="nav-img-desk"><Img fluid={data.test.childImageSharp.fluid} /></div>
-                        <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
+                        <div class="nav-img-desk"><Img alt="img"  fluid={data.test.childImageSharp.fluid} /></div>
+                        <div class="nav-arrow-desk"><a href="#"><Img alt="img"  fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                     </div>
 
                 </div>
@@ -56,9 +56,9 @@ const NavBlocks = () => {
 
                             <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday Skin care</p>
 
-                            <div class="nav-img-desk"><Img fluid={data.test.childImageSharp.fluid} /></div>
+                            <div class="nav-img-desk"><Img alt="img"  fluid={data.test.childImageSharp.fluid} /></div>
 
-                            <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
+                            <div class="nav-arrow-desk"><a href="#"><Img alt="img"  fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                         </div>
                     </div>
                 </div>
@@ -70,9 +70,9 @@ const NavBlocks = () => {
 
                             <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday Skin care</p>
 
-                            <div class="nav-img-desk"><Img fluid={data.test.childImageSharp.fluid} /></div>
+                            <div class="nav-img-desk"><Img alt="img"  fluid={data.test.childImageSharp.fluid} /></div>
 
-                            <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
+                            <div class="nav-arrow-desk"><a href="#"><Img alt="img"  fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                         </div>
                     </div>
                 </div>
@@ -88,9 +88,9 @@ const NavBlocks = () => {
 
                         <p class="nav-subtitle-desk">Learn from our medical legacy applied to everyday Skin care</p>
 
-                        <div class="nav-img-desk"><Img fluid={data.test.childImageSharp.fluid} /></div>
+                        <div class="nav-img-desk"><Img alt="img"  fluid={data.test.childImageSharp.fluid} /></div>
 
-                        <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
+                        <div class="nav-arrow-desk"><a href="#"><Img alt="img"  fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                     </div>
                 </div>
             </div> */}
@@ -102,11 +102,11 @@ const NavBlocks = () => {
                 <div class="row">
                     <div class="col-12">
 
-                        <div class="nav-title-img"><Img fluid={data.skinclusion.childImageSharp.fluid} /></div>
+                        <div class="nav-title-img"><Img alt="img"  fluid={data.skinclusion.childImageSharp.fluid} /></div>
 
-                        <div class="nav-img-desk"><Img fluid={data.test.childImageSharp.fluid} /></div>
+                        <div class="nav-img-desk"><Img alt="img"  fluid={data.test.childImageSharp.fluid} /></div>
 
-                        <div class="nav-arrow-desk"><a href="#"><Img fluid={data.testarrow.childImageSharp.fluid} /></a></div>
+                        <div class="nav-arrow-desk"><a href="#"><Img alt="img"  fluid={data.testarrow.childImageSharp.fluid} /></a></div>
                     </div>
                 </div>
             </div>

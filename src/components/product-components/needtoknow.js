@@ -20,7 +20,7 @@ const Needtoknow = ({ node }) => {
 
             <div className={"row"}>
                 <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>
-                    <img src={lightblub} alt="lightblub" />
+                    <img  src={lightblub} alt="lightblub" />
                 </div>
                 <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "medicalclinical"].join(" ")}>
                     <img src={blueblub} alt="lightblub" />

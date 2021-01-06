@@ -2751,7 +2751,8 @@ p {
 
 .node-home .services-wrapper {
     background: #fff;
-    padding: 40px 0 80px;
+    padding-top: 40px;
+    padding-bottom: 80px;
 }
 
 .node-home .services-image::after {
@@ -4182,8 +4183,14 @@ top: 78.5px !important;
               padding-bottom: 32px;
           }
       }
+
+      .imageTextColPadding {
+        margin-bottom: 128px;
+      }
+
       .our-history-image .imageTextColPadding {
           padding-right: 0;
+          margin-bottom: 0;
       }
 
 
@@ -4419,4 +4426,37 @@ top: 78.5px !important;
 
 #desk-navigation:hover .extole-hover-off {
     display: none;
+}
+
+.clinical-header-text {
+    background-color: #ebfafc;
+    padding-top: 80px;
+
+    @include lg-screen {
+        padding-top: 161px;
+    }
+}
+
+.clinical-header-text h1 {
+    text-align: center;
+    font-size: 24px;
+    line-height: 43px;
+    padding-bottom: 15px;
+    
+    @include lg-screen {
+        @include fontStyle(40, 56);
+        padding-bottom: 20px;
+    }
+}
+
+.clinical-header-text h2 {
+    text-align: center;
+    font-size: 20px;
+    line-height: 25px;
+    @extend %futurapt-book;
+
+    @include lg-screen {
+        font-size:27px;
+        line-height: 40px;
+    }
 }

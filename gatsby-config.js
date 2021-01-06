@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,7 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
+        baseUrl: process.env.Drupal_URL,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
         concurrentFileRequests: 1,
         basicAuth: {

@@ -203,7 +203,7 @@ const OrderStatusDetails = (props) => {
                                          </form> */}
                                     {
                                       item.images.data.map((item, index) => {
-                                        return <img class="img-mob" src={item.url_thumbnail} />
+                                        return <img alt="img" class="img-mob" src={item.url_thumbnail} />
                                       })[0]
                                     }
                                     <div
@@ -251,7 +251,7 @@ const OrderStatusDetails = (props) => {
                                       <div className={orderDetailsStyles.productImage}>
                                         {
                                           item.images.data.map((item, index) => {
-                                            return <img src={item.url_thumbnail} />
+                                            return <img alt="img" src={item.url_thumbnail} />
                                           })[0]
                                         }
                                       </div>
@@ -484,7 +484,7 @@ const OrderStatusDetails = (props) => {
                             </form>
                             {/* {item.images.data.map((item, index) => {
                               return ( */}
-                                <img src={item.images.data[0].url_thumbnail} />
+                                <img alt="img" src={item.images.data[0].url_thumbnail} />
                               {/* )
                             })} */}
                             <div className={orderDetailsStyles.productInfoWrapper}>
@@ -538,7 +538,7 @@ const OrderStatusDetails = (props) => {
                             <div className={orderDetailsStyles.productImage}>
                               {item.images.data.map((item, index) => {
                                 return (
-                                  <img src={item.url_thumbnail} />
+                                  <img alt="img" src={item.url_thumbnail} />
                                 )
                               })[0]}
                             </div>

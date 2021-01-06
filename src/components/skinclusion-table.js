@@ -21,7 +21,7 @@ const SkinClusionTable = ({ node }) => {
 
                   <div className={[tableStyle.tabelImage, "tabelImage"].join(" ")}>
                     {item.relationships && item.relationships.field_cell_image && item.relationships.field_cell_image.localFile && item.relationships.field_cell_image.localFile.childImageSharp?
-                      <Img className={[tableStyle.tableimg, "tableimg"].join(" ")} fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid} /> : ""}
+                      <Img alt="img"  className={[tableStyle.tableimg, "tableimg"].join(" ")} fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid} /> : ""}
                     <div className={tableStyle.skinType}>
                       {item.field_tabel_type_cell_desc ?
                         <div className={[tableStyle.tableCell, tableStyle.skincolor, `type-${index}`].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_tabel_type_cell_desc.processed }}></div> : ""
@@ -49,7 +49,7 @@ const SkinClusionTable = ({ node }) => {
             <tr>
                 {node.relationships.field_skin_culsion_tabel_cells.map(item=>
                 item.relationships?  item.relationships.field_cell_image?
-                 <td className={tableStyle.imgcell}><Img fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid}/> </td>:""
+                 <td className={tableStyle.imgcell}><Img alt="img"  fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid}/> </td>:""
                  :"" ) }
             </tr>
             <tr>

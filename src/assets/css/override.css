@@ -1829,9 +1829,9 @@ z-index: 999;
   #Showbag .modal-header .close{
     top: 27px;
   }
-  .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
+  /* .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;
-  }
+  } */
 
   .footerprivacy{
     padding-left: 0;

@@ -65,15 +65,15 @@
     }
 }
 
-.link-section {
-    margin: 27px 0 128px;
+// .link-section {
+//     margin: 27px 0 128px;
 
-}
+// }
 .link-desk {
-    margin-top: 40px;
+    margin: 0 0 40px;
 
     @include lg-screen {
-        margin-bottom: 130px;
+        margin: 40px 0 130px;
     }
 }
 

@@ -69,8 +69,8 @@ function getBlock(item) {
           {item.field_mega_block_title ? <Link className={'titleLink'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><div dangerouslySetInnerHTML={{ __html: item.field_mega_block_title.processed }}></div> </Link> : ''}
           {item.field_mega_block_subtitle ? <div dangerouslySetInnerHTML={{ __html: item.field_mega_block_subtitle.processed }}></div> : ''}
           {item.relationships.field_mega_block_image ? <div style={{ width: '100%' }} className="nav-img-desk">
-            {item.relationships.field_mega_block_image.localFile ? <div to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><Link className={'d-block'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}> <Img className={"img-mega"} fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid} /></Link> </div> : ''}</div> : ''}
-          <div className="nav-arrow-desk"><Link to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}>{item.relationships.field_mega_block_arrow_image.localFile ? <Img fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed} /> : ''}</Link></div>
+            {item.relationships.field_mega_block_image.localFile ? <div to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><Link className={'d-block'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}> <Img alt="img"  className={"img-mega"} fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid} /></Link> </div> : ''}</div> : ''}
+          <div className="nav-arrow-desk"><Link to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}>{item.relationships.field_mega_block_arrow_image.localFile ? <Img alt="img"  fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed} /> : ''}</Link></div>
         </div>
       ))
     }

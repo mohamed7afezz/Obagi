@@ -29,10 +29,10 @@ export default class AsNavFor extends Component {
           ref={slider => (this.slider1 = slider)}
         >
           <div className={ "row" }>
-          <img src ={slide1}/>
-            <img src ={slide2}/>
-            <img src ={slide3}/>
-            <img src ={slide4}/>
+          <img alt="img" src ={slide1}/>
+            <img alt="img" src ={slide2}/>
+            <img alt="img" src ={slide3}/>
+            <img alt="img" src ={slide4}/>
           </div>
         </Slider>
         <h4>Second Slider</h4>
@@ -44,10 +44,10 @@ export default class AsNavFor extends Component {
           focusOnSelect={true}
         >
            <div className={"row" }>
-            <img src ={this.props.slide1}/>
-            <img src ={this.props.slide2}/>
-            <img src ={this.props.slide3}/>
-            <img src ={this.props.slide4}/>
+            <img alt="img" src ={this.props.slide1}/>
+            <img alt="img" src ={this.props.slide2}/>
+            <img alt="img" src ={this.props.slide3}/>
+            <img alt="img" src ={this.props.slide4}/>
           </div>
         </Slider>
       </div>

@@ -35,7 +35,7 @@ const Intro = (props) => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 d-lg-none">
-                        <div><Img fluid={data.header.childImageSharp.fluid} /></div>
+                        <div><Img alt="img"  fluid={data.header.childImageSharp.fluid} /></div>
                     </div>
                     <div className="col-12 col-lg-4 offset-lg-4 intro-text-wrapper">
                         <div className="text-padding">

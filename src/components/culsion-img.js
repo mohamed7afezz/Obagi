@@ -9,7 +9,7 @@ const CulsionImage = ({ node }) => {
       <div className={["container-fluid skinclusion-sec"].join(" ")}>
       <div className={"row "}>
       <div className="w-100">
-     <img className="img-responsive" src={node.relationships.field_culsion_image.localFile.childImageSharp.original.src}/>
+     <img alt="img" className="img-responsive" src={node.relationships.field_culsion_image.localFile.childImageSharp.original.src}/>
      </div>
         </div>
         </div>

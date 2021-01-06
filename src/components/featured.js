@@ -81,9 +81,9 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                 </a>   
                  {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
-                 <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?
+                 <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?
                  node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ""}</>
-                  : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                  : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
                     node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
               </div>
             </div>
@@ -130,8 +130,8 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                   </a>              
                   {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
-                  <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
-                  : ""}</> : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                  <Img alt="img"  className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+                  : ""}</> : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
                     node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                 </div>
               </div>
@@ -153,8 +153,8 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                     </a>
                     
                     {node.relationships.field_featured_video.relationships.field_video_poster.localFile?
-                     <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> 
-                     : ""}</> : <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                     <Img alt="img"  className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> 
+                     : ""}</> : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
                       node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                   </div>
                 </div>

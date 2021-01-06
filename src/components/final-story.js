@@ -20,7 +20,7 @@ const FinalStory = ({ node }) => {
         </div>
   
         <div className={!node.field_not_homepage && node.field_colored_custom_class? "col-10 offset-2 col-lg-5 offset-lg-0 colored-first-section "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.firstSection : !node.field_not_homepage ? "col-10 col-lg-5 "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.firstSection : "col-12  col-lg-5 "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.colRightPadding + " " + coloredBoxesStyle.firstSection}>
-          {node.relationships && node.relationships.field_story_image && node.relationships.field_story_image.localFile && node.relationships.field_story_image.localFile.childImageSharp? <div className={[coloredBoxesStyle.image, "colored-image"].join(" ")}><Img fluid={node.relationships.field_story_image.localFile.childImageSharp.fluid} /></div> : ''}
+          {node.relationships && node.relationships.field_story_image && node.relationships.field_story_image.localFile && node.relationships.field_story_image.localFile.childImageSharp? <div className={[coloredBoxesStyle.image, "colored-image"].join(" ")}><Img alt="img"  fluid={node.relationships.field_story_image.localFile.childImageSharp.fluid} /></div> : ''}
         </div>
       </div>
     </div>

@@ -75,7 +75,7 @@ const Layout = ({ children,nodeType,menuType}) => {
       <div>
         <main>
           {children}
-          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} /></button></div>
+          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} alt="img"/></button></div>
 
         </main>
         <Showbag />

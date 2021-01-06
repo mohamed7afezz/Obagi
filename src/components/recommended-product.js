@@ -4,6 +4,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import CartContext from "../providers/cart-provider"
 
+const $ = require("jquery");
 
 const RecommendedProduct = ({ node,
 recImage,
@@ -18,13 +19,20 @@ feild_preimer}) => {
 const value = useContext(CartContext)
 const addToCart = value && value.addToCart
 const addingToCart = value && value.state.addingToCart
+
+function closeModal() {
+    // $("#Showbag").removeClass("d-block");
+    // $("#Showbag").attr('style', 'display: none !important');
+//    $("body").removeClass("modal-open");
+//    $(".modal-backdrop").remove();
+}
     return (
 
         <div className={ShowBagStyle.productWrapper}>
-            <div className={ShowBagStyle.productImage}><Link to={recLink} ><Img fluid={recImage? recImage: ''} /></Link></div>
+            <div className={ShowBagStyle.productImage}><Link to={recLink} ><Img alt="img"  fluid={recImage? recImage: ''} /></Link></div>
 
             <div className={ShowBagStyle.smallWrapper}>
-                <Link to={recLink} className={ShowBagStyle.productName}><div><span dangerouslySetInnerHTML={{__html: recTitle}}></span></div></Link>
+                <Link to={recLink} className={ShowBagStyle.productName} onClick={closeModal}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></Link>
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>

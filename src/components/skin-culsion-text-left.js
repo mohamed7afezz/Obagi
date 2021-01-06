@@ -23,7 +23,7 @@ const SkinClusionTextLeft = ({ node }) => {
       <div className="col-lg-4 offset-lg-1 mob-mt-40">
       {node.relationships?node.relationships.field_skin_clusion_left_image?
         node.relationships.field_skin_clusion_left_image.localFile?
-        <img className="img-responsive" src={node.relationships.field_skin_clusion_left_image.localFile.publicURL}/>:"":"":""}
+        <img alt="img" className="img-responsive" src={node.relationships.field_skin_clusion_left_image.localFile.publicURL}/>:"":"":""}
      
        
       </div>

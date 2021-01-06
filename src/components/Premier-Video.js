@@ -40,7 +40,7 @@ const PremierVideo = ({ node }) => {
   return (
     <div className="permier-video-link video-link">
       {node.relationships && node.relationships.field_video_poster && node.relationships.field_video_poster.localFile && node.relationships.field_video_poster.localFile.childImageSharp ?
-        <Img className="video-img-mob" fluid={node.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+        <Img alt="img"  className="video-img-mob" fluid={node.relationships.field_video_poster.localFile.childImageSharp.fluid} />
         : ""}
       <div className="video-wrapper">
         {

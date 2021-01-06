@@ -240,7 +240,7 @@ const ProductHero = ({ data, nodeType }) => {
                 <React.Fragment>
                   <div class="zoom-mobile" data-arrange={index}>
                     {item.localFile ? (
-                      <img
+                      <img alt="img"
                         src={item.localFile.childImageSharp.original.src}
                       />
                     ) : (
@@ -379,7 +379,7 @@ const ProductHero = ({ data, nodeType }) => {
                 " "
               )}
             >
-              <img src={modal} />
+              <img alt="img" src={modal} />
               <p>
                 Earn {feild_preimer} Premier Points
               </p>
@@ -417,8 +417,9 @@ const ProductHero = ({ data, nodeType }) => {
                     </div>
 
                     <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
-                      <img src={info} className={[ProductStyles.info, "info"].join(" ")} />
+                      <img alt="img" src={info} className={[ProductStyles.info, "info"].join(" ")} />
                       <img
+                      alt="img"
                         src={infoselected}
                         className={[ProductStyles.infoselected, "infoselected"].join(" ")}
                       />
@@ -432,7 +433,7 @@ const ProductHero = ({ data, nodeType }) => {
                 data-toggle="modal" data-target="#sharing" className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
               >
 
-                <img src={share} /> Share
+                <img alt="img" src={share} /> Share
           </button>
             </div>
             : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
@@ -474,8 +475,9 @@ const ProductHero = ({ data, nodeType }) => {
                     </div>
 
                     <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
-                      <img src={info} className={[ProductStyles.info, "info"].join(" ")} />
+                      <img alt="img" src={info} className={[ProductStyles.info, "info"].join(" ")} />
                       <img
+                      alt="img"
                         src={infoselected}
                         className={[ProductStyles.infoselected, "infoselected"].join(" ")}
                       />
@@ -489,14 +491,14 @@ const ProductHero = ({ data, nodeType }) => {
                 data-toggle="modal" data-target="#sharing" className={["col-12 col-md-2", "col-lg-2", ProductStyles.share].join(" ")}
               >
 
-                <img src={share} /> Share
+                <img alt="img" src={share} /> Share
        </button>
             </div>
           }
           {field_medical_rx == "RX" ? "" :
             <div className={ProductStyles.offer}>
               <div className={["col-3", ProductStyles.offerimg].join(" ")}>
-                <img src={freeimg} />
+                <img alt="img" src={freeimg} />
               </div>
               <div className={["col-9", ProductStyles.offercontent, "offercontent"].join(" ")}>
                 <p className={ProductStyles.offertitle}>
@@ -529,7 +531,7 @@ const ProductHero = ({ data, nodeType }) => {
                 }}
               >
                 {item.localFile ? (
-                  <img
+                  <img alt="img"
                     className={["col-3", "pr-0", "pl-0"].join(" ")}
                     src={item.localFile.childImageSharp.original.src}
                   />
@@ -564,8 +566,8 @@ const ProductHero = ({ data, nodeType }) => {
               <div class="share-wrap  mt-35 mb-50">
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></p>
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></p>
-                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
-                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
+                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} alt="img"/></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
+                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
             </div>
           </div>

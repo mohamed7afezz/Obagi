@@ -43,6 +43,7 @@ const Basichero = ({ node }) => {
                 {
                   node.relationships.field_basic_hero_left_img_paragr ?
                     <img
+                    alt="img"
                       className={[basichero.heroLeft, "col-lg-10"].join(" ")}
                       src={
                         node.relationships.field_basic_hero_left_img_paragr

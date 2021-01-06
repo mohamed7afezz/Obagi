@@ -12,7 +12,7 @@ const Nuderm = ({ node }) => {
             <div className={["col-12","col-lg-3","offset-lg-1",NudermStyles.LeftNudermCon].join(" ")}>
                 <div dangerouslySetInnerHTML={{__html:node.field_nu_derm_title.processed}} className={[NudermStyles.title,"show-mob"].join(" ")}></div>
                 <div className="w-100">
-                {node.relationships && node.relationships.field_nuderm_image && node.relationships.field_nuderm_image.localFile && node.relationships.field_nuderm_image.localFile.childImageSharp ?<Img className={NudermStyles.imgResponsive} fluid={node.relationships.field_nuderm_image.localFile.childImageSharp.fluid}/> : ""}
+                {node.relationships && node.relationships.field_nuderm_image && node.relationships.field_nuderm_image.localFile && node.relationships.field_nuderm_image.localFile.childImageSharp ?<Img alt="img"  className={NudermStyles.imgResponsive} fluid={node.relationships.field_nuderm_image.localFile.childImageSharp.fluid}/> : ""}
             </div>
             </div>
             <div className={["col-12","col-lg-4","offset-lg-2",NudermStyles.LeftNudermCon].join(" ")}>

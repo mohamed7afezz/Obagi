@@ -9,7 +9,7 @@ const ImageLeftTextRight = ({ node }) => {
       <div className="row">
         <div className={[`${node.field_text_custom_class? "col-10 col-lg-5 text-first-section" : "col-12 col-lg-5 text-first-section " + imageLeft.colPadding}`, imageLeft.firstSection ].join(" ")}>
           
-          <div className={[imageLeft.image, "text-image"].join(" ")}><Img fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
+          <div className={[imageLeft.image, "text-image"].join(" ")}><Img alt="img"  fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
         </div>
 
           <div className={["col-12 col-lg-6 offset-lg-1", `${node.field_text_custom_class? "text-second-section" : imageLeft.colFullPadding}`].join(" ")}>

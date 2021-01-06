@@ -14,13 +14,13 @@ const Solutions = ({ node }) => {
                 <div className="row">
                     <div className="col-12 d-lg-none">
                         <div className={solutionsStyles.containerWrapper}>
-                            {node.field_solutions_paragraph_title ? <div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></div> : ''}
+                            {node.field_solutions_paragraph_title ? <h2 dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></h2> : ''}
                             {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph.processed }} className={solutionsStyles.describtion}></div>:""}
                             {node.relationships.field_solution_box ? node.relationships.field_solution_box.map((item, index) => {
                                 return (
                                     <div>
                                         <Link to={fixlink(item.field_solution_link)} className={solutionsStyles.solutionWrapper}>
-                                            {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img fluid={item.relationships.field_problem_icon.localFile.childImageSharp.fluid} /></div> : '') : ''}
+                                            {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img alt="img"  fluid={item.relationships.field_problem_icon.localFile.childImageSharp.fluid} /></div> : '') : ''}
                                             {item.field_solution_name ? <div dangerouslySetInnerHTML={{ __html: item.field_solution_name.processed }} className={solutionsStyles.solution}></div> : ''}
                                         </Link>
                                     </div>
@@ -43,7 +43,7 @@ const Solutions = ({ node }) => {
                             return (
                                 <div>
                                     <Link to={fixlink(item.field_solution_link)} className={solutionsStyles.solutionWrapper}>
-                                        {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img fixed={item.relationships.field_problem_icon.localFile.childImageSharp.fixed} /></div> : '') : ''}
+                                        {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img alt="img"  fixed={item.relationships.field_problem_icon.localFile.childImageSharp.fixed} /></div> : '') : ''}
                                         <div className={solutionsStyles.arrow}></div>
                                         {item.field_solution_name ? <div dangerouslySetInnerHTML={{ __html: item.field_solution_name.processed }} className={solutionsStyles.solution}></div> : ''}
                                     </Link>

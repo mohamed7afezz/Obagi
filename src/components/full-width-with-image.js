@@ -10,7 +10,7 @@ const FullWidthWithImage = ({ node }) => {
                 <div className={["col-10 pr-0 offset-2 col-lg-5", fullWidthStyles.imageColWrapper].join(" ")}>
                     {node.relationships && node.relationships.field_full_width_image && node.relationships.field_full_width_image.localFile && node.relationships.field_full_width_image.localFile.childImageSharp ?
                         <div className={fullWidthStyles.image}>
-                            <Img fluid={node.relationships.field_full_width_image.localFile.childImageSharp.fluid} />
+                            <Img alt="img"  fluid={node.relationships.field_full_width_image.localFile.childImageSharp.fluid} />
                         </div>
                         : ""}
                 </div>

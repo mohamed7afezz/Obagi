@@ -45,7 +45,7 @@ const Howtouse = ({ node }) => {
                         </div>
                         <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>How to Use</h1>
-                            <Img fluid={data.videoimg.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                            <Img alt="img"  fluid={data.videoimg.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                         </div>
                     </div>
                 </div>

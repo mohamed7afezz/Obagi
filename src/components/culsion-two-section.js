@@ -15,8 +15,8 @@ const CulsionFlexTwoSections = ({ node }) => {
       {item.relationships?item.relationships.field_clusion_image?
       index===1?
      
-      <div className="clusion-fimg mob-mt-50">  <Img className={[twoSection.culsionImages,"col-8"].join(" ")} fluid={item.relationships.field_clusion_image.localFile.childImageSharp.fluid}/> </div>
-      : <div className="clusion-simg mob-mt-50"> <Img className={twoSection.culsionImages,twoSection.m80} fluid={item.relationships.field_clusion_image.localFile.childImageSharp.fluid}/> </div>
+      <div className="clusion-fimg mob-mt-50">  <Img alt="img"  className={[twoSection.culsionImages,"col-8"].join(" ")} fluid={item.relationships.field_clusion_image.localFile.childImageSharp.fluid}/> </div>
+      : <div className="clusion-simg mob-mt-50"> <Img alt="img"  className={twoSection.culsionImages,twoSection.m80} fluid={item.relationships.field_clusion_image.localFile.childImageSharp.fluid}/> </div>
       :"":""}
    
     

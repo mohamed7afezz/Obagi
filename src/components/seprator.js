@@ -11,7 +11,7 @@ const Sepratorimg = ({ node }) => {
      <div className="col-12 col-lg-10 offset-lg-1">
        {
          node.relationships?node.relationships.field_divieder_image?
-         <Img className={basichero.Sepimg} fluid={node.relationships.field_divieder_image.localFile.childImageSharp.fluid}/>:"":""
+         <Img alt="img"  className={basichero.Sepimg} fluid={node.relationships.field_divieder_image.localFile.childImageSharp.fluid}/>:"":""
        }
      </div>
           

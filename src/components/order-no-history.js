@@ -36,7 +36,7 @@ const OrderNoHistory = ({ node }) => {
                     <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
                     <div className={myAccountStyles.bottomLink}><Link  to="/skin-analyzer"> TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} >→</span></Link></div>
-                    <div className={myAccountStyles.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+                    <div className={myAccountStyles.image}><Img alt="img"  fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@ const OrderNoHistory = ({ node }) => {
                 </div>
                 <div className="row">
                     <div className="col-4 pr-0">
-                        <div className={myAccountStyles.image}><Img fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+                        <div className={myAccountStyles.image}><Img alt="img"  fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
                     </div>
                     <div className="col-8 pl-0">
                         <div className="d-flex align-items-center h-100">

@@ -136,12 +136,12 @@ const Howtouse = ({ node }) => {
                                                     {node.relationships.field_general_image?
                                                     node.relationships.field_general_image.localFile?
                                                     node.relationships.field_general_image.localFile.childImageSharp?
-                                                        <img src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
+                                                        <img alt="img" src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             (item.relationships.field_step_image.localFile?
                                                                 item.relationships.field_step_image.localFile.childImageSharp?
-                                                            <img src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />:""
+                                                            <img alt="img" src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />:""
                                                             : "")
                                                             :
                                                             <div className="video-wrapper">
@@ -152,7 +152,7 @@ const Howtouse = ({ node }) => {
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
                                                                             { item.relationships.field_video.relationships.field_video_poster.localFile? 
-                                                                                <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                                <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                             :''}
                                                                         </div>
                                                                         :
@@ -184,12 +184,12 @@ const Howtouse = ({ node }) => {
                                                     {node.relationships.field_general_image?
                                                     node.relationships.field_general_image.localFile?
                                                     node.relationships.field_general_image.localFile.childImageSharp?
-                                                        <img src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
+                                                        <img alt="img" src={node.relationships.field_general_image.localFile.childImageSharp.original.src}/>:"":""
                                                         :
                                                         (item.relationships.field_step_image ?
                                                             item.relationships.field_step_image.localFile?
                                                             item.relationships.field_step_image.localFile.childImageSharp?
-                                                            <img src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                            <img alt="img" src={item.relationships.field_step_image.localFile.childImageSharp.original.src} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                 :"":""
                                                             :
                                                             <div className="video-wrapper">
@@ -200,7 +200,7 @@ const Howtouse = ({ node }) => {
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
                                                                             {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile?
-                                                                                <Img fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                                <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                             :''}
                                                                         </div>
                                                                         :

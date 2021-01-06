@@ -248,7 +248,7 @@ async function getShippingAddresses(e) {
                                          </form> */}
                                     {
                                       item.images.data.map((item, index) => {
-                                        return <img class="img-mob" src={item.url_thumbnail} />
+                                        return <img class="img-mob" src={item.url_thumbnail} alt="img"/>
                                       })[0]
                                     }
                                     <div
@@ -296,7 +296,7 @@ async function getShippingAddresses(e) {
                                       <div className={orderDetailsStyles.productImage}>
                                         {
                                           item.images.data.map((item, index) => {
-                                            return <img src={item.url_thumbnail} />
+                                            return <img src={item.url_thumbnail}alt="img" />
                                           })[0]
                                         }
                                       </div>
@@ -513,7 +513,7 @@ async function getShippingAddresses(e) {
                             </form>
                             {/* {item.images.data.map((item, index) => {
                               return ( */}
-                                <img src={item.images.data[0].url_thumbnail} />
+                                <img src={item.images.data[0].url_thumbnail} alt="img"/>
                               {/* )
                             })} */}
                             <div className={orderDetailsStyles.productInfoWrapper}>
@@ -559,7 +559,7 @@ async function getShippingAddresses(e) {
                             <div className={orderDetailsStyles.productImage}>
                               {item.images.data.map((item, index) => {
                                 return (
-                                  <img src={item.url_thumbnail} />
+                                  <img src={item.url_thumbnail} alt="img"/>
                                 )
                               })[0]}
                             </div>

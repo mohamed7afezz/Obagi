@@ -129,7 +129,7 @@ const Footer = ({ siteTitle }) => {
             <div className={["col-12 offset-lg-1 col-lg-2", footerStyles.firstCol].join(" ")}>
 
               <div className={footerStyles.obagiLogo}>
-                <Img className="d-none d-lg-block" fluid={data.placeholderImage.childImageSharp.fluid} />
+                <Img alt="img"  className="d-none d-lg-block" fluid={data.placeholderImage.childImageSharp.fluid} />
                 <div
                   className={[
                     footerStyles.socialMedia,

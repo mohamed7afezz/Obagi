@@ -492,19 +492,19 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><Img alt="img"  fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
                             <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
-                              <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              <Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                               {value &&
                                 value.state.cart &&
                                 value.state.cart.numberItems > 0 && (
@@ -529,7 +529,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
                 <div className={[headerStyles.lowerSection, "mob-menu-lower-section"].join(" ")}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} alt="img"/>{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
                   <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
                 </div>
 
@@ -559,10 +559,10 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
-                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
+                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img alt="img"  fixed={data.searchIcon.childImageSharp.fixed} /></Link>
                   <input type="search" onKeyUp={inputval} className={[headerStyles.searchInput, "searchInputm"].join(" ")}></input>
-                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
-                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
+                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
+                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
                 </div>
               </div>
             </div>
@@ -597,7 +597,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 </div>
 
                 <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                  <Link to="/" ><Img alt="img"  fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
                 </div>
 
                 <div className="col col-padding">
@@ -607,7 +607,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                         user ?
                           <>
                             <button type="button" data-toggle="modal" data-target="#show-account">
-                              <Img fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
+                              <Img alt="img"  fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
                             </button>
                             {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
@@ -615,13 +615,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                           <Link to="/my-account/signin">SIGN IN</Link>
                       }
                     </p>
-                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
+                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
                           <div className={headerStyles.navButton}>
                             <div className={headerStyles.cartWrapper}>
-                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
                                 {value &&
                                   value.state.cart &&
                                   value.state.cart.numberItems > 0 && (

@@ -136,11 +136,11 @@ export default function PhyFinder() {
                 <div id="pf-count-results"></div>
                 <div id="pf-email-print" class="hide">
                   <a href="#" target="_top" id="email-link">
-                    <img src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/images/email.png" />
+                    <img alt="img" src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/images/email.png" />
                     Email
                   </a>
                   <a href="javascript:window.print();" id="print-link">
-                    <img src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/images/printer.png" />
+                    <img  alt="img" src="https://dev-obagi.azurewebsites.net/api/modules/custom/obagi_finder/images/printer.png" />
                     Print
                   </a>
                 </div>

@@ -55,7 +55,7 @@ const InstagramFeed = ({ node }) => {
                         return (
                             <div className={["col-12 col-lg-4", instagramStyles.image].join(" ")}>
                                 <div className={instagramStyles.imageWrapper}>
-                                    {item.localFile ? <div><Img fluid={item.localFile.childImageSharp.fluid} /></div> : ''}
+                                    {item.localFile ? <div><Img alt="img"  fluid={item.localFile.childImageSharp.fluid} /></div> : ''}
                                     <div className={instagramStyles.instagramIcon}><FontAwesomeIcon icon={faInstagram} className={instagramStyles.imageIcon} /></div>
                                 </div>
                             </div>

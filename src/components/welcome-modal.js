@@ -48,7 +48,7 @@ const WelcomeModal = ({ node }) => {
                                             <div>Vitamin C + Arbutin Brightening Serum</div>
                                         </div>
 
-                                        <div className="welcome-product-image"><Img fluid={data.productImage.childImageSharp.fluid} /></div>
+                                        <div className="welcome-product-image"><Img alt="img"  fluid={data.productImage.childImageSharp.fluid} /></div>
                                         <div className="button-section">
                                             <button type="button" className="button-link">Explore More Serums</button>
                                         </div>

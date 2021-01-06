@@ -71,7 +71,7 @@ const StandardItem = props => {
           <div className={["row", ShowBagStyle.selectedproductsCard, "selectedproductsCard"].join(" ")}>
             <div className={["col-4", "mob-pl-0"].join(" ")}>
               <Link href={`${producturl[1]}`}>
-                <img alt="img" src={item.image_url} alt={`${item.name}`} />
+                <img  src={item.image_url} alt={`${item.name}`} />
               </Link>
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
@@ -105,7 +105,7 @@ const StandardItem = props => {
             <div className={["row", "alignFlex"].join(" ")}>
               <div class="hide-desk col-4">
                 <Link to={`${producturl[1]}`}>
-                  <img alt="img" src={item.image_url} alt={`${item.name}`} />
+                  <img  src={item.image_url} alt={`${item.name}`} />
                 </Link>
               </div>
               <div
@@ -113,7 +113,7 @@ const StandardItem = props => {
               >
                 <div className={["col-md-2", "hide-tabmob"].join(" ")}>
                   <Link to={`${producturl[1]}`}>
-                    <img alt="img" src={item.image_url} alt={`${item.name}`} />
+                    <img src={item.image_url} alt={`${item.name}`} />
                   </Link>
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
@@ -651,11 +651,11 @@ const YourBag = (props, { notificationId }) => {
                   <div className="productInBag">
                     <div class="row alignFlex">
                       <div class="hide-desk col-12 col-lg-4">
-                        <img alt="" src={freeimg} /></div>
+                        <img alt="img" src={freeimg} /></div>
                     </div>
                     <div class="row alignFlex col-11 col-lg-12">
                       <div class="col-md-2 hide-tabmob">
-                        <img alt="" src={freeimg} />
+                        <img alt="img" src={freeimg} />
                       </div>
                       <div class="col-12 col-lg-10">
                         <p className={BagStyle.exclusiveOffertitle}>
@@ -891,18 +891,18 @@ const YourBag = (props, { notificationId }) => {
                       <button
                         className={BagStyle.buttonImg}
                         type="submit">
-                        <img type="submit" src={paypal} />
+                        <img alt="img" type="submit" src={paypal} />
                       </button>
 
                       <button
                         className={BagStyle.buttonImg}
                         type="submit">
-                        <img type="submit" src={paycred} />
+                        <img alt="img" type="submit" src={paycred} />
                       </button>
                       <button
                         className={BagStyle.buttonImg}
                         type="submit">
-                        <img type="submit" src={visa} />
+                        <img alt="img" type="submit" src={visa} />
                       </button>
                     </form>
 
@@ -952,14 +952,14 @@ const YourBag = (props, { notificationId }) => {
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
               <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></a></div>
-              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img alt="img"  fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
 
           <div className="d-none d-lg-block">
             <div className={[ShowBagStyle.bottomWrapper].join(" ")}>
               {/* <div className="col-4 pr-0"> */}
-              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <Img fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <Img alt="img"  fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
               {/* </div> */}
               {/* <div className="col-8 pl-0"> */}
               {/* <div className="d-flex align-items-center h-100"> */}

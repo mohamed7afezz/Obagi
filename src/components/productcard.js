@@ -61,7 +61,7 @@ const ProductCard = ({
           )}
         <div className={"product-card-img"}>
           {productimage ? (
-            <Link to={productLink}><Img className={[Productcard.cardimg, 'custom-img'].join(" ")} fluid={productimage} /></Link>
+            <Link to={productLink}><Img alt="img"  className={[Productcard.cardimg, 'custom-img'].join(" ")} fluid={productimage} /></Link>
           ) : (
               ""
             )}

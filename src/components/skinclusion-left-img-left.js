@@ -22,7 +22,7 @@ const SkinClusionLeftImgLeft = ({ node }) => {
    <div className={["col-lg-5 offset-lg-1",skinClusionStyle.boxCon].join(" ")}>
         {node.relationships?node.relationships.field_skinclusion_left_img?
         node.relationships.field_skinclusion_left_img.localFile?
-        <Img fluid={node.relationships.field_skinclusion_left_img.localFile.childImageSharp.fluid}/>:"":"":""}
+        <Img alt="img"  fluid={node.relationships.field_skinclusion_left_img.localFile.childImageSharp.fluid}/>:"":"":""}
       <div className="bottomBox">
       </div>
       </div>

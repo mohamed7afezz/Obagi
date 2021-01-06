@@ -40,7 +40,7 @@ const Notification = ({ id, text, type }) => {
   const removeNotification = value && value.removeNotification;
   const {notif, setNotif} = useContext(UserContext);
 
-  // console.log("val", value)
+  console.log("valash", notif)
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
@@ -95,7 +95,7 @@ const Notification = ({ id, text, type }) => {
         {/* <div class="modal-footer">
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
-              <Img
+              <Img alt="img" 
                 className={ShowBagStyle.prodThumb}
                 fluid={data.prouduct.childImageSharp.fluid}
               />
@@ -120,7 +120,7 @@ const Notification = ({ id, text, type }) => {
 
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
-              <Img
+              <Img alt="img" 
                 className={ShowBagStyle.prodThumb}
                 fluid={data.prouduct.childImageSharp.fluid}
               />

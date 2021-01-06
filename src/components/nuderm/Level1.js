@@ -370,7 +370,7 @@ return (
               <div  onClick={() => { StateSelectData(); }} class="appointment-elemnt advanced-search global-select globalstateSelect filterprodline transparent-bg">
                   <p className={["form-label", nudermStyle.customlabel].join(" ")}>*State</p>
                 <div id="prodLinesSelected">
-                 <p class="input-name filtersearch StateSelect global-select-placeholder" >Select Sate</p>
+                 <p class="input-name filtersearch StateSelect global-select-placeholder" >Select State</p>
                   <div class="product-lines hide" id="StateSelect">
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl popupFilter">
