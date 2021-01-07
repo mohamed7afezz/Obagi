@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 const FinalStory = ({ node }) => {
 
   return (
-    <div className={[coloredBoxesStyle.ourStory].join(" ")}>
+    <div className={[coloredBoxesStyle.ourStory, coloredBoxesStyle.finalStory].join(" ")}>
     <div className={(node.field_not_homepage && node.field_image_is_right)?`${node.field_colored_custom_class? node.field_colored_custom_class : ""}` + " " + coloredBoxesStyle.notHome + " container-fluid " + coloredBoxesStyle.imageRight : (!node.field_image_is_right && node.field_not_homepage)? `${node.field_colored_custom_class? node.field_colored_custom_class : ""}` + " container-fluid " + coloredBoxesStyle.notHome : "container-fluid " + `${node.field_colored_custom_class? node.field_colored_custom_class : ""}`} id="colored-boxes">
       <div className={["row colored-big-section", coloredBoxesStyle.bigSection].join(" ")}>
       <div className={!node.field_not_homepage && node.field_colored_custom_class? "col-12 col-lg-7 colored-col-right " + coloredBoxesStyle.colRightPadding : !node.field_not_homepage? "col-12 col-lg-7 offset-lg-0 " + coloredBoxesStyle.colRightPadding : (node.field_image_is_right && node.field_not_homepage)?  "col-12 col-lg-6 offset-lg-1" : "col-12 col-lg-6 offset-lg-0"}>

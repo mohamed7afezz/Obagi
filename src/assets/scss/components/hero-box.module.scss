@@ -42,6 +42,7 @@ h1 {
     @include fontStyle(40, 48);
     padding: 0 30px;
     text-align: center;
+    @extend %futurapt-book;
 
     @include lg-screen {
         @include fontStyle(52, 64);

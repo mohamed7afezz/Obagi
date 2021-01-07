@@ -4,12 +4,16 @@
     margin-bottom: 35px;
     @extend %futurapt-book ;
     font-size: 18px;
-    margin-top: 16px;
+    margin-top: 8px;
     line-height: 32px;
     a{
         font-size: 18px;
         line-height: 32px;
         color: #132466;
+    }
+
+    @include lg-screen {
+        margin-top: 16px;
     }
 }
 .expand{
@@ -29,7 +33,7 @@
     padding-right: 16px;
 }
 .detailHero{
-    padding-top: 48px;
+    padding-top: 32px;
     padding-bottom: 48px;
     @include md-screen{
         padding-top: 80px;
@@ -71,6 +75,17 @@ a[aria-expanded="true"] .read-less{
 .expand1,.showFlex{
     display: flex;
     align-items: center;
+}
+.showFlex {
+    font-size: 40px;
+    line-height: 56px;
+    @extend %futurapt-light;
+
+    @include lg-screen {
+        font-size: 64px;
+        line-height: 72px;
+    }
+    
 }
 
 .expand1[aria-expanded="false"]{

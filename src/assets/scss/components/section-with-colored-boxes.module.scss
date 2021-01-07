@@ -147,12 +147,18 @@
   }
   @include lg-screen {
     margin: 118px -157px 0 157px;
+
+    &::after {
+      content: none;
+    }
+  }
+}
+
+.final-story .image{
+  @include lg-screen {
     height: 100%;
     & > div {
       height: calc(100% + 79px);
-    }
-    &::after {
-      content: none;
     }
   }
 }
