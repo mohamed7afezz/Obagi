@@ -71,3 +71,4 @@ yarn-error.log
 .vscode/settings.json
 /BC-STencil
 /assets
+package-lock.json
