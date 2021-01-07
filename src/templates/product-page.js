@@ -56,6 +56,15 @@ const ProductPage = props => {
 
                 description={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
                     : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
+
+                ogTitle={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_title ? data.nodeClinicalProduct.field_clinical_metatags.og_title : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_title ? data.nodeMedicalProduct.field_medical_metatags.og_title : "") : ""}
+
+                    ogDescription={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_description ? data.nodeClinicalProduct.field_clinical_metatags.og_description : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_description ? data.nodeMedicalProduct.field_medical_metatags.og_description : "") : ""}
+
+                    metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_image ? data.nodeClinicalProduct.field_clinical_metatags.og_image : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_image ? data.nodeMedicalProduct.field_medical_metatags.og_image : "") : ""}
             />
 
             <div itemscope="" itemtype="https://schema.org/Product">
@@ -80,6 +89,9 @@ export const productPageQuery = graphql`
             field_clinical_metatags {
                 description
                 title
+                og_title
+                og_description
+                og_image
               }
             field_clinical_price
             field_clinical_sku
@@ -147,6 +159,9 @@ export const productPageQuery = graphql`
             field_medical_metatags {
                 description
                 title
+                og_title
+                og_description
+                og_image
             }
             field_medical_premier_points
             field_medical_sku
