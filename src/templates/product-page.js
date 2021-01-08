@@ -16,7 +16,7 @@ const ProductPage = props => {
             let dl = window.dataLayer;
             const product = props.pageContext.nodetype === 'clinical' ? props.data.nodeClinicalProduct : props.data.nodeMedicalProduct;
 
-            console.log('bahiiiii', props)
+            // console.log('bahiiiii', props)
             dl.push({
                 'ecommerce': {
                     'detail': {
@@ -68,9 +68,7 @@ const ProductPage = props => {
                     
                 ogType = {nodeType === "clinical" && data.nodeClinicalProduct? "Clinical" : nodeType === "medical" && data.nodeMedicalProduct? "Medical" : ""}
             />
-{/* 
-{product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image.uri ? product.relationships.field_clinical_image.uri.url
-                    : product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image.uri ? product.relationships.field_medical_image.uri.url : ""} */}
+
             <div itemscope="" itemtype="https://schema.org/Product">
                 <ProductHero data={data} nodeType={nodeType} />
                 {paragraphs}
