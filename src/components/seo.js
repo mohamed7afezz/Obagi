@@ -29,7 +29,7 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
   // const image = metaImage && metaImage.src ? `${site.siteMetadata.siteUrl}${metaImage.src}` : null
   const image = metaImage
 
-  
+  console.log("ashhhh", image, ogTitle, ogDescription)
 
   return (
     <Helmet

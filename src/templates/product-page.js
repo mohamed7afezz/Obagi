@@ -51,24 +51,26 @@ const ProductPage = props => {
     return (
         <Layout nodeType={nodeType} menuType="relative">
             <SEO canonical={props.location.href}
-                title={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title ? data.nodeClinicalProduct.field_clinical_metatags.title : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title ? data.nodeMedicalProduct.field_medical_metatags.title : "") : ""}
+                title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
+                    : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 
-                description={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
+                description={product.field_clinical_metatags && product.field_clinical_metatags.description ? product.field_clinical_metatags.description
+                    : product.field_medical_metatags && product.field_medical_metatags.description ? product.field_medical_metatags.description : ""}
 
-                ogTitle={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title ? data.nodeClinicalProduct.field_clinical_metatags.title : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title ? data.nodeMedicalProduct.field_medical_metatags.title : "") : ""}
+                ogTitle={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
+                    : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 
-                ogDescription={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
+                ogDescription={product.field_clinical_metatags && product.field_clinical_metatags.description ? product.field_clinical_metatags.description
+                    : product.field_medical_metatags && product.field_medical_metatags.description ? product.field_medical_metatags.description : ""}
 
-                metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.relationships && data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri ? data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri.url : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.relationships && data.nodeMedicalProduct.relationships.field_medical_image && data.nodeMedicalProduct.relationships.field_medical_image.uri ? data.nodeMedicalProduct.relationships.field_medical_image.uri.url : "") : ""}
+                metaImage={product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].uri ? product.relationships.field_clinical_image[0].uri.url
+                    : product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image[0].uri ? product.relationships.field_medical_image[0].uri.url : ""}
                     
                 ogType = {nodeType === "clinical" && data.nodeClinicalProduct? "Clinical" : nodeType === "medical" && data.nodeMedicalProduct? "Medical" : ""}
             />
-
+{/* 
+{product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image.uri ? product.relationships.field_clinical_image.uri.url
+                    : product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image.uri ? product.relationships.field_medical_image.uri.url : ""} */}
             <div itemscope="" itemtype="https://schema.org/Product">
                 <ProductHero data={data} nodeType={nodeType} />
                 {paragraphs}
