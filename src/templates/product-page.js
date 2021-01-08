@@ -63,8 +63,8 @@ const ProductPage = props => {
                     ogDescription={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_description ? data.nodeClinicalProduct.field_clinical_metatags.og_description : "")
                     : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_description ? data.nodeMedicalProduct.field_medical_metatags.og_description : "") : ""}
 
-                    metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_image ? data.nodeClinicalProduct.field_clinical_metatags.og_image : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_image ? data.nodeMedicalProduct.field_medical_metatags.og_image : "") : ""}
+                    metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.relationships && data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri ? data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri.url : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.relationships && data.nodeMedicalProduct.relationships.field_medical_image && data.nodeMedicalProduct.relationships.field_medical_image.uri ? data.nodeMedicalProduct.relationships.field_medical_image.uri.url : "") : ""}
             />
 
             <div itemscope="" itemtype="https://schema.org/Product">
