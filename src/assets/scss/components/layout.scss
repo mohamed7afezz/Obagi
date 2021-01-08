@@ -3806,6 +3806,7 @@ top: 78.5px !important;
 }
 
 @media (max-width: 767px) {
+
     .international-partners .general-basic-column {
         padding: 0;
     }
@@ -4114,6 +4115,11 @@ top: 78.5px !important;
 }
 
   @media (max-width: 991px) {
+    .detHrLine {
+        padding-top: 32px;
+        border-top: 1px solid #132466;
+    }
+    
       .our-history-colored .colored-first-section {
           padding-right: 0;
           background: #fff;

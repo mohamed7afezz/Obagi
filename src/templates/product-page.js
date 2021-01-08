@@ -57,14 +57,16 @@ const ProductPage = props => {
                 description={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
                     : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
 
-                ogTitle={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_title ? data.nodeClinicalProduct.field_clinical_metatags.og_title : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_title ? data.nodeMedicalProduct.field_medical_metatags.og_title : "") : ""}
+                ogTitle={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title ? data.nodeClinicalProduct.field_clinical_metatags.title : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title ? data.nodeMedicalProduct.field_medical_metatags.title : "") : ""}
 
-                    ogDescription={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.og_description ? data.nodeClinicalProduct.field_clinical_metatags.og_description : "")
-                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.og_description ? data.nodeMedicalProduct.field_medical_metatags.og_description : "") : ""}
+                ogDescription={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.description ? data.nodeClinicalProduct.field_clinical_metatags.description : "")
+                    : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.description ? data.nodeMedicalProduct.field_medical_metatags.description : "") : ""}
 
-                    metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.relationships && data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri ? data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri.url : "")
+                metaImage={nodeType === "clinical" ? (data.nodeClinicalProduct && data.nodeClinicalProduct.relationships && data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri ? data.nodeClinicalProduct.relationships.field_clinical_image && data.nodeClinicalProduct.relationships.field_clinical_image.uri.url : "")
                     : nodeType === "medical" ? (data.nodeMedicalProduct && data.nodeMedicalProduct.relationships && data.nodeMedicalProduct.relationships.field_medical_image && data.nodeMedicalProduct.relationships.field_medical_image.uri ? data.nodeMedicalProduct.relationships.field_medical_image.uri.url : "") : ""}
+                    
+                ogType = {nodeType === "clinical" && data.nodeClinicalProduct? "Clinical" : nodeType === "medical" && data.nodeMedicalProduct? "Medical" : ""}
             />
 
             <div itemscope="" itemtype="https://schema.org/Product">
@@ -123,6 +125,9 @@ export const productPageQuery = graphql`
                 }
 
                 field_clinical_image {
+                    uri {
+                        url
+                    }
                     localFile {
                         childImageSharp {
                         original {
@@ -201,6 +206,9 @@ export const productPageQuery = graphql`
                     name
                   }
                 field_medical_image {
+                    uri {
+                        url
+                    }
                     localFile {
                         childImageSharp {
                         original {

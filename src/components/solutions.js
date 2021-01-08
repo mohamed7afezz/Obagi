@@ -14,7 +14,7 @@ const Solutions = ({ node }) => {
                 <div className="row">
                     <div className="col-12 d-lg-none">
                         <div className={solutionsStyles.containerWrapper}>
-                            {node.field_solutions_paragraph_title ? <h2 dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></h2> : ''}
+                            {node.field_solutions_paragraph_title ? <p dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph_title.processed }} className={solutionsStyles.title}></p> : ''}
                             {node.field_solutions_paragraph?<div dangerouslySetInnerHTML={{ __html: node.field_solutions_paragraph.processed }} className={solutionsStyles.describtion}></div>:""}
                             {node.relationships.field_solution_box ? node.relationships.field_solution_box.map((item, index) => {
                                 return (

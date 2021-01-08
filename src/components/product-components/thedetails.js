@@ -13,7 +13,7 @@ const Details = ({ node }) => {
                     <div className={["col-12", `${index===0?"col-lg-4":"col-lg-5"}`, "offset-lg-1"].join(" ")}>
                         <div className={detailsStyles.detail}>
                             {
-                            item.field_sec?<div className={[detailsStyles.showFlex,"mob-colap"].join(' ')}>
+                            item.field_sec?<div className={[detailsStyles.showFlex,"mob-colap", `${index > 0? "detHrLine" : ""}`].join(' ')}>
                                 <div  dangerouslySetInnerHTML={{__html: item.field_sec.processed}}></div>
                                 {index===1?      <a className={[detailsStyles.expand1,"show-mob", " mt-0"].join(" ")}  data-toggle="collapse" href="#ingm" role="button" aria-expanded="false" aria-controls="ingm"></a> 
                             :""}
