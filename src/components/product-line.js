@@ -182,6 +182,7 @@ const ProductLine = ({ node }) => {
         edges {
           node {
             name
+            field_product_line_button_title
             field_product_lines_cta_title
             field_product_line_perfect_for {
               title
@@ -411,7 +412,7 @@ const ProductLine = ({ node }) => {
                                 ) : (
                                   ""
                                 )}
-                              {item.node.path.alias ? (
+                              {item.node.field_product_line_button_title ? (
                                 <div className={lineStyles.linkSection}>
                                   <Link
                                     to={item.node.path.alias}
@@ -421,11 +422,22 @@ const ProductLine = ({ node }) => {
                                     ].join(" ")}
                                   >
                                     {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
-                                      Shop&nbsp; <span dangerouslySetInnerHTML={{ __html: item.node.name }}></span>
+                                     <span dangerouslySetInnerHTML={{ __html: item.node.field_product_line_button_title }}></span>
                                   </Link>
                                 </div>
                               ) : (
-                                  ""
+                                <div className={lineStyles.linkSection}>
+                                <Link
+                                  to={item.node.path.alias}
+                                  className={[
+                                    "button-link",
+                                    lineStyles.link,
+                                  ].join(" ")}
+                                >
+                                  {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
+                                    Shop <span dangerouslySetInnerHTML={{ __html: item.node.name }}></span>
+                                </Link>
+                              </div>
                                 )}
                             </div>
                           </div>
