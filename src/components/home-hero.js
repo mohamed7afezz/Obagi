@@ -72,10 +72,10 @@ const HomeHero = ({ node }) => {
     dots: true,
     autoplay: true,
     autoplaySpeed: 4000,
-    draggable: false,
-    swipe: false,
-    swipeToSlide: false,
-    touchMove: false,
+    draggable: true,
+    swipe: true,
+    swipeToSlide: true,
+    touchMove: true,
     accessibility: false,
     // beforeChange: (current, next) => {
     //     document.querySelector('.myslickactive').classList.remove('myslickactive');
