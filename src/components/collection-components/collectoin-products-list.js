@@ -396,7 +396,7 @@ console.log('hassan1',node)
     <>
         {/* Need to know */}
 
-    {node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow?
+    {node.data.taxonomyTermMedicalProductLines?node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow?
         <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
 
 <div className={"row"}>
@@ -408,15 +408,16 @@ console.log('hassan1',node)
     </div>
     <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
         <p className={needtoknow.needtoknowtitle} >
-            {node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow ? node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow.processed : ''}
+            {node.data.taxonomyTermMedicalProductLines?node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow ? node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow.processed : '':""}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti ? node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti.processed : '' }}></div>
+        {node.data.taxonomyTermMedicalProductLines?<div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti ? node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti.processed : '' }}></div>
+        :""}
         <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par ? node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par.processed : '' }}></div>
-      {node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par? <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>:""}
+      {node.data.taxonomyTermMedicalProductLines?node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par? <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>:"":""}
     </div>
 </div>
 </div>
-:""}
+:"":""}
 
     {/* End need to Know */}
     <div
