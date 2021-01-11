@@ -51,8 +51,11 @@ export const SearchProvider = ({ children }) => {
                 item = item.replace("<sup>®</sup>","");
                 item= item.replace("<sup>™</sup>","")
                 item = item.replace("<sup>TM</sup>","");
-                console.log('hassan',item.title,searchkey)
-                return item.toLowerCase().includes(searchkey) && searchkey != "";
+                let itemkey = searchkey.replace("®","");
+                itemkey = itemkey.replace("™","");
+                itemkey.replace("TM","");
+                console.log('hassan',item.title,itemkey)
+                return item.toLowerCase().includes(itemkey) && itemkey != "";
             }
         });
         let filterdMedicalProduct = ProductsIndex.MedicalProduct.nodes.filter(function (itm) {
@@ -61,8 +64,11 @@ export const SearchProvider = ({ children }) => {
                 item = item.replace("<sup>®</sup>","");
                 item= item.replace("<sup>™</sup>","")
                 item = item.replace("<sup>TM</sup>","");
-                console.log('hassan',item.title,searchkey)
-                return item.toLowerCase().includes(searchkey) && searchkey != "";
+                let itemkey = searchkey.replace("®","");
+                itemkey = itemkey.replace("™","");
+                itemkey.replace("TM","");
+                console.log('hassan',item.title,itemkey)
+                return item.toLowerCase().includes(itemkey) && itemkey != "";
             }
             
         });

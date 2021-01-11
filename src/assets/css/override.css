@@ -217,6 +217,7 @@ padding-right: 0;
 #Showbag .modal-header .close {
 top: 49%;
 right: 0;
+z-index: 9;
 }
 .changetogray{
   color: #7c858a !important;
@@ -234,6 +235,7 @@ right: 0;
   }
   #Showbag .modal-header .close{
     right: 4%;
+    z-index: 9;
   }
   h1.common-p{      
   
@@ -771,7 +773,7 @@ text-align: center;
 
 #Showbag .modal-header .close{
   padding-left: 32px;
- 
+ z-index: 9;
 }
 
 #Showbag .empatyState{
@@ -1828,6 +1830,7 @@ z-index: 999;
   }
   #Showbag .modal-header .close{
     top: 27px;
+    z-index: 9;
   }
   /* .footerprivacyli:nth-child(3), .footerprivacyli:nth-child(4), .footerprivacyli:nth-child(5) {
     display: none;
