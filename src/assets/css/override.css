@@ -3130,7 +3130,9 @@ min-height: 0;
   border-radius: 6px;
 
 }
-
+.whitespace{
+  white-space: nowrap;
+}
 .cartButton:hover {
   color: #fff;
   background: #132466;
