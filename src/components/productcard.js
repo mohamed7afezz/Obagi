@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"
 import Stars from "../components/stars"
 import CartContext from "../providers/cart-provider"
+import rxIcon from "../assets/images/product-images/ObagiRx_Final.png"
 const ProductCard = ({
   node,
   producttitle,
@@ -59,6 +60,9 @@ const ProductCard = ({
         ) : (
             ""
           )}
+          {isrx == 'RX' ? <div className={Productcard.rxIconCon}>
+            <img className={Productcard.rxIcon} src={rxIcon} alt=""/>
+          </div>:""}
         <div className={"product-card-img"}>
           {productimage ? (
             <Link to={productLink}><Img alt="img"  className={[Productcard.cardimg, 'custom-img'].join(" ")} fluid={productimage} /></Link>
@@ -121,7 +125,7 @@ const ProductCard = ({
                 <Link className={Productcard.addtocart} to="/medical/hcpfinder">
 
                   Locate a Physician
-          </Link>
+                 </Link>
                 : <button data-Sku={Sku} className={[Productcard.addtocart, "the-product-button"].join(" ")}
                   onClick={() => {
                     let quantity = 1;

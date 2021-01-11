@@ -6,6 +6,10 @@ import {CustomSelect} from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
 import { checkDataCondition } from "../paragraphs-helper"
 import {checkStock} from '../../assets/js/stock';
+import $ from 'jquery'
+import needtoknow from '../../assets/scss/components/needtoknow.module.scss'
+import lightblub from '../../assets/images/product-images/light-bulb-icon.svg'
+import blueblub from '../../assets/images/product-images/bluelamb.svg'
 const baseUrl = process.env.Base_URL;
 
 const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
@@ -379,17 +383,49 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     }
   }
 
-  function updateFilter() {
-
-  }
+  function changeText (e) {
+    if($('#readButton').attr('aria-expanded') === "true") {
+        document.getElementById("readButton").innerHTML = "Read Less -";
+    } else {
+        document.getElementById("readButton").innerHTML = "Read More +"
+    }
+}
   
-
+console.log('hassan1',node)
   return (
+    <>
+        {/* Need to know */}
+
+    {node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow?
+        <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
+
+<div className={"row"}>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>
+        <img  src={lightblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "medicalclinical"].join(" ")}>
+        <img src={blueblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
+        <p className={needtoknow.needtoknowtitle} >
+            {node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow ? node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow.processed : ''}
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti ? node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti.processed : '' }}></div>
+        <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par ? node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par.processed : '' }}></div>
+      {node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par? <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>:""}
+    </div>
+</div>
+</div>
+:""}
+
+    {/* End need to Know */}
     <div
     className={checktaxonomyType === "clinical"? 
       "container-fluid collectionhero collectionList " + productsliststyle.collectionList
       :"container-fluid collectionhero collectionList  "+productsliststyle.listMedicalBg + " " + productsliststyle.listMedicalBg}
     >
+
+
       {/* Fiters */}
       <div
         className={[
@@ -1338,7 +1374,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       </div>
     
     </div>
-  )
+  </>)
 }
 
 export default Collectionproducts

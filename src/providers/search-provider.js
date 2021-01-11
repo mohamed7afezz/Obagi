@@ -47,12 +47,22 @@ export const SearchProvider = ({ children }) => {
         let filterdClinicalProduct = ProductsIndex.ClinicalProduct.nodes.filter(function (itm) {
             if (itm.field_clinical_free_sample != true)
             {
-                return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+                let item =  itm.title.replace("<sup>®</sup>","");
+                item = item.replace("<sup>®</sup>","");
+                item= item.replace("<sup>™</sup>","")
+                item = item.replace("<sup>TM</sup>","");
+                console.log('hassan',item.title,searchkey)
+                return item.toLowerCase().includes(searchkey) && searchkey != "";
             }
         });
         let filterdMedicalProduct = ProductsIndex.MedicalProduct.nodes.filter(function (itm) {
             if (itm.field_medical_free_sample != true) {
-                return itm.title.toLowerCase().includes(searchkey) && searchkey != "";
+                let item =  itm.title.replace("<sup>®</sup>","");
+                item = item.replace("<sup>®</sup>","");
+                item= item.replace("<sup>™</sup>","")
+                item = item.replace("<sup>TM</sup>","");
+                console.log('hassan',item.title,searchkey)
+                return item.toLowerCase().includes(searchkey) && searchkey != "";
             }
             
         });

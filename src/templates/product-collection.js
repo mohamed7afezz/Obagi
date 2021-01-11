@@ -988,6 +988,15 @@ export const productPageQuery = graphql`
             description
             title
           }
+          field_tax_description_second_par {
+            processed
+          }
+          field_tax_need_to_know_descripti {
+            processed
+          }
+          field_tax_needtoknow {
+            processed
+          }
           relationships {
             field_footer_two_section_title {
               relationships {
