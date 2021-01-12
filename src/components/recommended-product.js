@@ -29,10 +29,10 @@ function closeModal() {
     return (
 
         <div className={ShowBagStyle.productWrapper}>
-            <div className={ShowBagStyle.productImage}><Link to={recLink} ><Img alt="img"  fluid={recImage? recImage: ''} /></Link></div>
+            <div className={ShowBagStyle.productImage}><a href={recLink} ><Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
-                <Link to={recLink} className={ShowBagStyle.productName} onClick={closeModal}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></Link>
+                <a href={recLink} className={ShowBagStyle.productName} onClick={closeModal}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>
