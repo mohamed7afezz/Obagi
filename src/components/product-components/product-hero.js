@@ -299,7 +299,7 @@ const ProductHero = ({ data, nodeType }) => {
           {key_benefit || key_benfitList ? <div className={ProductStyles.keyBenefitcon}>
             {key_benefit ? <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
               : ""}
-            {key_benfitList ? <ul className={ProductStyles.keyBenefitul}>
+            {key_benfitList[0].field_list_item ? <ul className={ProductStyles.keyBenefitul}>
               {key_benfitList ? key_benfitList.map((item, index) => {
                 return (
 
