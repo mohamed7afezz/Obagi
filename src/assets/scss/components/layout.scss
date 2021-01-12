@@ -2890,7 +2890,7 @@ top: 78.5px !important;
     @include lg-screen {
         padding-right: 32px;
         padding-left: 32px;
-        height: 100%;
+        height: inherit !important;
         // display: flex;
     
         div {
@@ -4484,4 +4484,33 @@ top: 78.5px !important;
 
 .register .errors-list ul:last-child .error-li:last-child {
     margin-bottom: 20px;
+}
+
+.product-line .product-card-img .custom-img {
+    @include lg-screen {
+        max-width: 100%;
+        height: auto;
+        max-height: unset;
+        width: unset;
+    }
+}
+
+.product-line .slick-track .slick-track {
+    @include lg-screen {
+    display: flex !important;
+
+    }
+}
+
+.product-line-product-slider {
+    @include lg-screen {
+        height: 100%;
+    }
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
 }

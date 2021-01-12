@@ -14,7 +14,7 @@ const NewSearchProductsResult = ({ node }) => {
   const {clinicalSearchResults} = useContext(SearchContext);
   const {medicalSearchResults} = useContext(SearchContext);
   let products = []
-  let isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
+  let isDefultSelectCategoryMedical = medicalSearchResults.length >= clinicalSearchResults.length;
   
   function clinicalbg (){
     document.querySelector('.collectionList').classList.remove('medicalbg')
@@ -32,7 +32,7 @@ const NewSearchProductsResult = ({ node }) => {
     if(typeof window != undefined ){
       checkStock(baseUrl);
     }
-    isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
+    isDefultSelectCategoryMedical = medicalSearchResults.length >= clinicalSearchResults.length;
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
       CustomSelect();
     }
@@ -103,7 +103,7 @@ sortPriceSelect.addEventListener("change", function (event) {
  
   return (
     <div
-      className={medicalSearchResults? (clinicalSearchResults? ( medicalSearchResults.length > clinicalSearchResults.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
+      className={medicalSearchResults? (clinicalSearchResults? ( medicalSearchResults.length >= clinicalSearchResults.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
       <div
         className={[
           "row",

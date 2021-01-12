@@ -288,7 +288,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       document.querySelector(".Notify").style.display = "block";
     }
   }
-
+console.log("ashhh node", nodeType)
   function removeCategory() {
     let y = document.querySelector("#category-section");
     if (y.style.display === "none" &&  (!nodeType.includes('medical') && !nodeType.includes('clinical') )) {
