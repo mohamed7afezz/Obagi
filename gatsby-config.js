@@ -63,12 +63,14 @@ module.exports = {
       resolve: 'gatsby-plugin-load-script',
       options: {
         baseUrl: process.env.Bazaarvoice_URL,
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
         baseUrl: process.env.Extole_URL,
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
         },
     },
     {
