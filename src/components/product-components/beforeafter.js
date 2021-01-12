@@ -58,10 +58,10 @@ const Beforeafter = ({ node }) => {
                     {
                         node.relationships.field_before_meet_after_example.map((item, index) => (
                             <div id={"Example" + index} class={index == 0 ? 'beforeimgs ' : ' beforeimgs showimg'}>
-                                <Beforeafterimages
+                              {item.relationships.field_before_image?  <Beforeafterimages
                                     beforeimage={item.relationships.field_before_image ? (item.relationships.field_before_image.localFile ? item.relationships.field_before_image.localFile.childImageSharp.original.src : '') : (item.relationships.field_after_im.localFile ? item.relationships.field_after_im.localFile.childImageSharp.original.src : '')}
                                     afterimage={item.relationships.field_after_im ? (item.relationships.field_after_im.localFile ? item.relationships.field_after_im.localFile.childImageSharp.original.src : '') : (item.relationships.field_before_image.localFile ? item.relationships.field_before_image.localFile.childImageSharp.original.src : '')}
-                                />
+                                />:<img src={item.relationships.field_after_im.localFile.childImageSharp.original.src} alt=""/>}
 
                             </div>
                         ))
