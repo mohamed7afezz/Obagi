@@ -62,14 +62,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        baseUrl: process.env.Bazaarvoice_URL,
+        src: 'https://apps.bazaarvoice.com/deployments/obagi/main_site/production/en_US/bv.js', // Change to the script filename
       },
     },
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        baseUrl: process.env.Extole_URL,
-        },
+        src: 'https://obagi.extole.io/core.js', // Change to the script filename
+      },
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",
