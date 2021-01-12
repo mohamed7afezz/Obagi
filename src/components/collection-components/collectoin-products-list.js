@@ -391,7 +391,6 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     }
 }
   
-console.log('hassan1',node)
   return (
     <>
         {/* Need to know */}

@@ -57,7 +57,6 @@ async function getShippingAddresses(e) {
 
           i = response;
            Setproductorder(response)
-           console.log("hassan1",response,alldata)
            setIsLoading(false)
         
        
