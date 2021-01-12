@@ -300,7 +300,7 @@ const ProductHero = ({ data, nodeType }) => {
           {key_benefit || key_benfitList ? <div className={ProductStyles.keyBenefitcon}>
             {key_benefit ? <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
               : ""}
-            {key_benfitList[0].field_list_item ? <ul className={ProductStyles.keyBenefitul}>
+            {key_benfitList[0]?key_benfitList[0].field_list_item ? <ul className={ProductStyles.keyBenefitul}>
               {key_benfitList ? key_benfitList.map((item, index) => {
                 return (
 
@@ -310,7 +310,7 @@ const ProductHero = ({ data, nodeType }) => {
 
                 )
               }) : ""}
-            </ul> : ""}
+            </ul> : "":""}
           </div> : ""}
           <div className={ProductStyles.skintypes}>
             {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
