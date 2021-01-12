@@ -4,38 +4,38 @@ import LoginMenu from "./login-menu"
 import { CustomSelect } from '../assets/js/custom-select'
 import UserContext from '../providers/user-provider';
 import { map } from 'jquery';
-import $ from 'jquery'
+// import $ from 'jquery'
 import '../assets/css/override.css';
 import Scrollbars from 'react-custom-scrollbars';
+const $ = require('jquery')
 const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
     let largeScreen = 992;
 
     const { user, err, handleRegister } = useContext(UserContext);
-
     useEffect(() => {
-        if(typeof window != undefined) {
+        if (typeof window != undefined) {
             // console.log("ashhh", yearsList)
-            document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click',function(){
+            document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
                 this.nextSibling.classList.remove('hide');
                 this.classList.add('hide');
             }));
-            
-            document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click',function(e){
+
+            document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click', function (e) {
                 this.closest('.old-select').previousSibling.classList.remove('hide');
                 this.closest('.old-select').classList.add('hide');
-                
-                if(this.closest('.day-select')){
+
+                if (this.closest('.day-select')) {
                     this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                //  $('input[name="day"]').val()=$(this).attr('value')
-    
-                }else if(this.closest('.month-select')){
+                    //  $('input[name="day"]').val()=$(this).attr('value')
+
+                } else if (this.closest('.month-select')) {
                     this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                    
-                }else if(this.closest('.year-select')){
+
+                } else if (this.closest('.year-select')) {
                     this.closest('.year-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                } 
+                }
             }));
         }
     }, [])
@@ -58,7 +58,7 @@ const Register = () => {
     //         CustomSelect();
 
     //         //the issue is here
-       
+
     //     }
     //     // document.querySelectorAll('.Give-val').forEach(item => {
     //     //     item.addEventListener('click', handleAttr)
@@ -185,9 +185,9 @@ const Register = () => {
     };
 
     function handleAttr(event) {
-        
+
         switch (event.target.name || event.target.attributes['data-name'].value) {
-            
+
             case 'date':
 
                 var dateOfBirth = newUser.attributes[0].attribute_value.split('-');
@@ -199,7 +199,7 @@ const Register = () => {
                     dateOfBirth[0] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('-');
-    
+
                 setNewUser({
                     ...newUser,
                     attributes: newUser.attributes.map(item => {
@@ -222,7 +222,7 @@ const Register = () => {
                         return item;
                     })
                 })
-        // console.log("ashhuser", newUser)
+                // console.log("ashhuser", newUser)
 
                 break;
             case 'email_sub':
@@ -235,7 +235,7 @@ const Register = () => {
                         return item;
                     })
                 })
-        // console.log("ashhuser", newUser)
+                // console.log("ashhuser", newUser)
 
                 break;
             default:
@@ -274,8 +274,9 @@ const Register = () => {
     for (let i = 1900; i <= currentYear; i++) {
         yearsList.push(i.toString());
     }
-    
 
+
+ 
     return (
         <>
             <div className="container-fluid register">
@@ -320,8 +321,8 @@ const Register = () => {
                     <div className="col-12 col-lg-4">
 
                         <div className="required-field">*Required fields</div>
-
-                        <div className={`errors ${err != undefined ? 'errors bg-light' : ''}`}>
+                        {console.log("ashhh err", err)}
+                        <div className={`errors  error-list-sec ${err != undefined ? 'errors bg-light' : ''}`}>
                             <ul>
                                 {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
                                 {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""}
@@ -329,23 +330,23 @@ const Register = () => {
 
                         </div>
 
-                        <form class="regform" onSubmit={e => {
+                        <form noValidate="novalidate" class="regform needs-validation" onSubmit={e => {
                             handleSubmit(e);
 
                         }}>
                             <div className="form-group">
                                 <label for="firstname">*First name</label>
-                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" />
+                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name."/>
                             </div>
 
                             <div className="form-group">
                                 <label for="lastname">*Last name</label>
-                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" />
+                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name."/>
                             </div>
 
                             <div className="form-group">
                                 <label for="postalcode">*Postal Code</label>
-                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" />
+                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" data-webform-required-error="Please fill in your postal code." />
                             </div>
 
                             <div className="form-group">
@@ -355,7 +356,7 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="mailaddress">*Email Address</label>
-                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" />
+                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email."/>
                             </div>
 
                             <div className="group-title">Date of Birth</div>
@@ -372,9 +373,9 @@ const Register = () => {
                                             <Scrollbars style={{ height: 200 }}>
                                                 <div className="form-control" id="reviewFormSelectDay">
                                                     {
-                                                        Array.apply(null, {length: 32}).map(Function.call, Number).map((day) => {
-                                                            if(day > 0)
-                                                                return <div className="Give-val day" data-value={day < 10? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10? `0${day}` : day}</div>
+                                                        Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
+                                                            if (day > 0)
+                                                                return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
                                                         })
                                                     }
 
@@ -441,12 +442,12 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" />
+                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" data-webform-required-error="Please fill in a password."/>
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => {setPassConfirm(true)}} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" />
+                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => { setPassConfirm(true) }} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" data-webform-required-error="Please confirm password."/>
                             </div>
 
                             <p className={`form-control ${((isPassMatch == false) && passConfirm) ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
@@ -462,7 +463,7 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <input onClick={() => checkvaild()} className="submit-input" type="submit" value="Create Account" />
+                                <input onClick={() => {checkvaild();}} className="submit-input" type="submit" value="Create Account" />
                             </div>
 
                         </form>
@@ -492,6 +493,45 @@ function useWindowSize() {
 
 
     useEffect(() => {
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(".error-list-sec").html(errorList(form))
+                }
+            }, false)
+        });
+        $(':invalid').change(function () {
+            $(this).closest('.form-group').removeClass('error');
+        })
+        function errorList(form) {
+            var list = '';
+            var lastRadio = '';
+            var listArray =[] 
+            $(form).find(':invalid').each(function () {
+                $(this).closest('.form-group').addClass('error');
+                if (
+                    (
+                        ($(this).attr('type') == 'radio' && lastRadio != $(this).attr('name')) ||
+                        $(this).attr('type') != 'radio'
+                    ) &&
+                    $(this).prop("tagName").toLowerCase() != 'fieldset'
+                ) {
+                 var isExisit = listArray.some(item => {
+                    return item ==  $(this).attr('data-webform-required-error')
+                  })
+                     lastRadio = $(this).attr('name');
+                  if(!isExisit){
+                    listArray.push($(this).attr('data-webform-required-error'))
+                    list += '<li>' + $(this).attr('data-webform-required-error') + '</li>'
+                }
+               }
+            })
+            return '<ul>' + list + '</ul>';
+        }
 
         // Handler to call on window resize
 
