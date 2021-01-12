@@ -259,12 +259,21 @@ const Register = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log("ashhh date", newUser.attributes[0].attribute_value)
         // check date validality
-        if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString()) {
+        if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0) {
             // show error message for date of birth field
             // console.log('bahiii', 'date wrong')
             setIsToday(true);
+            document.querySelectorAll(".form-group.select-group").forEach(item =>{
+                item.classList.add("error")
+            });
             return false;
+        } else {
+            document.querySelectorAll(".form-group.select-group").forEach(item =>{
+                item.classList.remove("error")
+            });
+            setIsToday(false);
         }
         handleRegister(newUser);
     }
@@ -275,8 +284,7 @@ const Register = () => {
         yearsList.push(i.toString());
     }
 
-
- 
+    
     return (
         <>
             <div className="container-fluid register">
@@ -322,13 +330,18 @@ const Register = () => {
 
                         <div className="required-field">*Required fields</div>
                         {console.log("ashhh err", err)}
-                        <div className={`errors  error-list-sec ${err != undefined ? 'errors bg-light' : ''}`}>
-                            <ul>
-                                {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
-                                {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""}
+                        <div className={`errors  errors-list ${err != undefined ? 'errors bg-light' : ''}`}>
+                            <ul className="error-list-sec">
+                                {/* {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
+                                {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""} */}
                             </ul>
-
+                            {isToday == true ?
+                             <ul>
+                                 <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                            </ul>
+ : ""}
                         </div>
+                       
 
                         <form noValidate="novalidate" class="regform needs-validation" onSubmit={e => {
                             handleSubmit(e);
@@ -463,7 +476,9 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <input onClick={() => {checkvaild();}} className="submit-input" type="submit" value="Create Account" />
+                                <input onClick={(event) => {checkvaild();
+                                
+                                }} className="submit-input" type="submit" value="Create Account" />
                             </div>
 
                         </form>
@@ -493,6 +508,7 @@ function useWindowSize() {
 
 
     useEffect(() => {
+        
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
         Array.prototype.filter.call(forms, function (form) {
@@ -507,10 +523,12 @@ function useWindowSize() {
         $(':invalid').change(function () {
             $(this).closest('.form-group').removeClass('error');
         })
+        
         function errorList(form) {
             var list = '';
             var lastRadio = '';
-            var listArray =[] 
+            var listArray =[]
+            
             $(form).find(':invalid').each(function () {
                 $(this).closest('.form-group').addClass('error');
                 if (
@@ -526,11 +544,11 @@ function useWindowSize() {
                      lastRadio = $(this).attr('name');
                   if(!isExisit){
                     listArray.push($(this).attr('data-webform-required-error'))
-                    list += '<li>' + $(this).attr('data-webform-required-error') + '</li>'
+                    list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
                 }
                }
             })
-            return '<ul>' + list + '</ul>';
+            return list;
         }
 
         // Handler to call on window resize

@@ -4467,3 +4467,21 @@ top: 78.5px !important;
         line-height: 40px;
     }
 }
+
+.errors ul {
+    margin-bottom: 0;
+}
+
+.form-group.error {
+    border-color: #dc3545;
+}
+
+.form-group.error .select-wrap {
+    border-left-color: #dc3545;
+    border-bottom-color: #dc3545;
+    border-right-color: #dc3545;
+}
+
+.register .errors-list ul:last-child .error-li:last-child {
+    margin-bottom: 20px;
+}
