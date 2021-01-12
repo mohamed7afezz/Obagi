@@ -51,9 +51,11 @@ export const SearchProvider = ({ children }) => {
                 item = item.replace("<sup>®</sup>","");
                 item= item.replace("<sup>™</sup>","")
                 item = item.replace("<sup>TM</sup>","");
+                item = item.replace("<sup>-</sup>","");
                 let itemkey = searchkey.replace("®","");
                 itemkey = itemkey.replace("™","");
                 itemkey.replace("TM","");
+                itemkey.replace("-","");
                 console.log('hassan',item.title,itemkey)
                 return item.toLowerCase().includes(itemkey) && itemkey != "";
             }
@@ -64,9 +66,11 @@ export const SearchProvider = ({ children }) => {
                 item = item.replace("<sup>®</sup>","");
                 item= item.replace("<sup>™</sup>","")
                 item = item.replace("<sup>TM</sup>","");
+                item = item.replace("<sup>-</sup>","");
                 let itemkey = searchkey.replace("®","");
                 itemkey = itemkey.replace("™","");
                 itemkey.replace("TM","");
+                itemkey.replace("-","");
                 console.log('hassan',item.title,itemkey)
                 return item.toLowerCase().includes(itemkey) && itemkey != "";
             }
