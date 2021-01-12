@@ -160,7 +160,8 @@ const ProductHero = ({ data, nodeType }) => {
       nav2: slider2.current,
     })
   }, [])
-  const { nav1, nav2 } = state
+  const { nav1, nav2 } = state;
+  let slidercount = field_image.length >1 ? 1.05 :1;
   const SliderSetting = {
     infinite: true,
     speed: 500,
@@ -181,7 +182,7 @@ const ProductHero = ({ data, nodeType }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1.05,
+          slidesToShow: slidercount,
           dots: true,
         },
       },
@@ -189,7 +190,7 @@ const ProductHero = ({ data, nodeType }) => {
   }
 
   function slickGoToslide(int) {
-    slider1.current.slickGoTo(int)
+    slider1.current.slickGoTo(int);
   }
 
   const value = useContext(CartContext)
