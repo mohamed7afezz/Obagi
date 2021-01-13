@@ -140,7 +140,6 @@ export default function AccountSettings() {
       let res = await userSettingsData.json();
       setErr(res.errors);
   }
-    console.log("ashh user", !isValidDate(userAccount.birthdate), userAccount.birthdate === today.toString(), userAccount.birthdate, today.toString())
 
     if (!isValidDate(userAccount.birthdate) || userAccount.birthdate === today.toString()) {
       // show error message for date of birth field
@@ -240,7 +239,6 @@ export default function AccountSettings() {
   }, [])
 
 
-console.log("ashh" , err)
 
   return (
     <UserAccount activeTab="account-settings">

@@ -259,7 +259,6 @@ const Register = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log("ashhh date", newUser.attributes[0].attribute_value)
         // check date validality
         if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0) {
             // show error message for date of birth field
@@ -329,7 +328,6 @@ const Register = () => {
                     <div className="col-12 col-lg-4">
 
                         <div className="required-field">*Required fields</div>
-                        {console.log("ashhh err", err)}
                         <div className={`errors  errors-list ${err != undefined ? 'errors bg-light' : ''}`}>
                             <ul className="error-list-sec">
                                 {/* {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}

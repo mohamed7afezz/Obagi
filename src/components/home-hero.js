@@ -83,7 +83,6 @@ const HomeHero = ({ node }) => {
     // },
   }
 
-  console.log("ashh", node.relationships.field_box[1].relationships.field_background.localFile.childImageSharp.original.src)
 
 
   return (
