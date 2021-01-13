@@ -13,7 +13,7 @@ const BasicPageTemp = (node) => {
     
     return (
         <Layout menuType = {menutype} nodeType={pageType}>
-            <SEO canonical={node.location.href} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription= {data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_description? data.nodePage.field_meta_tags.og_description : ""} ogTitle= {data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_title? data.nodePage.field_meta_tags.og_title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image? data.nodePage.field_meta_tags.og_image : ""}/>
+            <SEO canonical={node.location.href} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image? data.nodePage.field_meta_tags.og_image : ""}/>
             {paragraphs}
         </Layout>
     )
