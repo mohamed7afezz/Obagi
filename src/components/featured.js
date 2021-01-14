@@ -53,17 +53,22 @@ const Featured = ({ node }) => {
 `)
 
 
-let currentName = node.field_featured_title? node.field_featured_title.processed : "";
+// let currentName = node.field_featured_title.processed;
 let productCount = 0;
-let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
-  return currentName.includes(item.node.name.split(' ')[0])
-})[0];
+if (node.field_featured_title) {
+  let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
+    return node.field_featured_title.processed.includes(item.node.name.split(' ')[0])
+  })[0];
+
+
+
+  productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
+}
+
 let paragraphId = node.field_featured_paragraph_id? node.field_featured_paragraph_id.processed : null;
 // console.log("ash", paragraphId)
 
 //console.log('current', currentName)
-
-productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
 
   return (
 
@@ -196,9 +201,7 @@ export const fragment = graphql`
           field_featured_description {
             processed
           }
-          field_featured_title {
-            processed
-          }
+      
           field_featured_perfect_title {
             processed
           }

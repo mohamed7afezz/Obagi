@@ -22,6 +22,8 @@ import SearchContext from "../../providers/search-provider"
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import {checkStock} from '../../assets/js/stock';
+import quizarrow from '../../assets/images/arrowquize.png'
+
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -888,22 +890,22 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      <button
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={paypal} />
-                      </button>
+                      </a>
 
-                      <button
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={paycred} />
-                      </button>
-                      <button
+                      </a>
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={visa} />
-                      </button>
+                      </a>
                     </form>
 
                   </div>
@@ -951,7 +953,7 @@ const YourBag = (props, { notificationId }) => {
             <div className={ShowBagStyle.bottomHalf}>
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-              <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></a></div>
+              <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow}/></span></a></div>
               <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img alt="img"  fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
@@ -966,7 +968,7 @@ const YourBag = (props, { notificationId }) => {
               <div className={ShowBagStyle.bottomHalf}>
                 <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
                 <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-                <a data-dismiss="modal" aria-label="Close" href="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} >→</span></a>
+                <a data-dismiss="modal" aria-label="Close" href="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow}/></span></a>
                 {/* </div> */}
                 {/* </div> */}
               </div>
