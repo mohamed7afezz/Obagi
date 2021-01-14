@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect , useState} from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -10,31 +10,7 @@ import ProductHero from '../components/product-components/product-hero';
 import ViewedProductsContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
-    // SEO Events
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            let dl = window.dataLayer;
-            const product = props.pageContext.nodetype === 'clinical' ? props.data.nodeClinicalProduct : props.data.nodeMedicalProduct;
-
-            // console.log('bahiiiii', props)
-            dl.push({
-                'ecommerce': {
-                    'detail': {
-                        'actionField': {},    // 'detail' actions have an optional list property.
-                        'products': [{
-                            'name': product.title,         // Name or ID is required.
-                            'id': product.field_clinical_sku ? product.field_clinical_sku : product.field_medical_sku,
-                            'price': product.field_clinical_price ? product.field_clinical_price : product.field_medical_price,
-                            'brand': 'Obagi',
-                            'category': props.pageContext.nodetype,
-                            'variant': ''
-                        }]
-                    }
-                }
-            });
-
-        }
-    }, []);
+  
 
     let data = props.data;
     const nodeType = props.pageContext.nodetype;
@@ -70,7 +46,7 @@ const ProductPage = props => {
             />
 
             <div itemscope="" itemtype="https://schema.org/Product">
-                <ProductHero data={data} nodeType={nodeType} />
+                <ProductHero data={data} nodeType={nodeType}  />
                 {paragraphs}
                 {/*Review widget BV */
                     <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">

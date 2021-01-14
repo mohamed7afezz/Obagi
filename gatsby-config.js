@@ -18,6 +18,35 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        RewriteBase: '/custom/',
+        https: true,
+        www: true,
+        SymLinksIfOwnerMatch: true,
+        host: process.env.Drupal_URL, // if 'www' is set to 'false', be sure to also remove it here!
+        ErrorDocument: `
+          ErrorDocument 401 /error_pages/401.html
+          ErrorDocument 404 /error_pages/404.html
+          ErrorDocument 500 /error_pages/500.html
+        `,
+        redirect: [
+          'RewriteRule ^not-existing-url/?$ /existing-url [R=301,L,NE]',
+          {
+            from: '/test',
+            to: '/medical',
+          },
+          {
+            from: `${process.env.Drupal_URL}/test1`,
+            to: '/medical',
+          },
+        ],
+      
+      },
+    },
+
+    `gatsby-plugin-meta-redirect`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     {
@@ -65,6 +94,7 @@ module.exports = {
         src: process.env.Bazaarvoice_URL,
       },
     },
+    
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
