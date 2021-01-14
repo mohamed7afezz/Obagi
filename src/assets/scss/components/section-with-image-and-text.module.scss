@@ -30,6 +30,8 @@
 }
 
 .title {
+    @extend %futurapt-book;
+    margin-bottom: 0;
     @include lg-screen {
         font-family:  futura-pt,   sans-serif;
         font-weight: 300;
