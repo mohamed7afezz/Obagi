@@ -53,7 +53,7 @@ const Featured = ({ node }) => {
 `)
 
 
-let currentName = node.field_featured_title.processed;
+let currentName = node.field_featured_title? node.field_featured_title.processed : "";
 let productCount = 0;
 let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
   return currentName.includes(item.node.name.split(' ')[0])

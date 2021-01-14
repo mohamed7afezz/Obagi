@@ -28,7 +28,7 @@ const CareersHero = ({ node }) => {
                     </div>
 
                     <div className="col-12">
-                        {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
+                        {node.field_headline ? <p dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></p> : ''}
                         {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
                     </div>
                 </div>
@@ -53,7 +53,7 @@ const CareersHero = ({ node }) => {
 
                                 <div className="col-lg-11 offset-lg-1">
 
-                                    {node.field_headline ? <div dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></div> : ''}
+                                    {node.field_headline ? <h1 dangerouslySetInnerHTML={{ __html: node.field_headline.processed }} className={careersHeroStyles.headline}></h1> : ''}
                                     {node.field_description ? <div dangerouslySetInnerHTML={{ __html: node.field_description.processed }} className={careersHeroStyles.description}></div> : ''}
                                     {node.field_button ? <div><Link to={node.field_button.uri} className={["button-link", careersHeroStyles.link].join(" ")}>{node.field_button.title}</Link></div> : ''}
                                 </div>

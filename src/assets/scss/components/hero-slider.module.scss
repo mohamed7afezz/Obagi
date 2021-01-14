@@ -22,6 +22,10 @@
         padding-top: 0;
         padding-right: 0;
         @include fontStyle(64, 72);
+        sup {
+            font-size: 50%;
+            top:-1em;
+        }
     }
 }
 

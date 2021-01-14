@@ -4264,12 +4264,15 @@ top: 78.5px !important;
   .careers-hero .breadcramp-con {
       padding-top: 24px;
       padding-bottom: 0;
+      a {
+          color: #132466 !important;
+      }
 
       @include lg-screen {
           padding-top: 176px;
           color: #fff;
           a {
-              color: #fff;
+              color: #fff !important;
           }
       }
   }
@@ -4333,7 +4336,7 @@ top: 78.5px !important;
         width: 48px;
         position: fixed;
         bottom: 100px;
-        left: 56px;
+        right: 56px;
         z-index: 100;
         background-color: #132466;
         border: 0;
