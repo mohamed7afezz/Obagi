@@ -16,12 +16,20 @@ const FinalStory = ({ node }) => {
             {node.field_story_topic? <div dangerouslySetInnerHTML={{ __html: node.field_story_topic.processed }} className={[coloredBoxesStyle.subtitle, "colored-subtitle"].join(" ")}></div> : ""}
             {node.field_story_final_title? <h1 dangerouslySetInnerHTML={{ __html: node.field_story_final_title.processed }} className={[coloredBoxesStyle.title, "title colored-title"].join(" ")}></h1> : ""}
             {node.field_story_final_describtion? <div dangerouslySetInnerHTML={{ __html: node.field_story_final_describtion.processed }} className={[coloredBoxesStyle.description, "description colored-description"].join(" ")}></div> : ""}
+            {node.field_button_name_ctaa?
+        <div className={coloredBoxesStyle.ctabtn}>
+          <a href={node.field_button_url}>{node.field_button_name_ctaa.processed}</a>
+        </div>
+        :""}
           </div>
+          
         </div>
   
         <div className={!node.field_not_homepage && node.field_colored_custom_class? "col-10 offset-2 col-lg-5 offset-lg-0 colored-first-section "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.firstSection : !node.field_not_homepage ? "col-10 col-lg-5 "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.firstSection : "col-12  col-lg-5 "+ coloredBoxesStyle.colLeftPadding + " " + coloredBoxesStyle.colRightPadding + " " + coloredBoxesStyle.firstSection}>
           {node.relationships && node.relationships.field_story_image && node.relationships.field_story_image.localFile && node.relationships.field_story_image.localFile.childImageSharp? <div className={[coloredBoxesStyle.image, "colored-image"].join(" ")}><Img alt="img"  fluid={node.relationships.field_story_image.localFile.childImageSharp.fluid} /></div> : ''}
+    
         </div>
+        
       </div>
     </div>
     </div>

@@ -15,7 +15,28 @@
     background: transparent;
   }
 }
+.ctabtn a{
+  color: #fff;
+padding: 28px 92px;
+border: 1px solid #fff;
+border-radius: 6px;
+background-color: transparent;
+text-decoration: none;
+text-transform: uppercase;
+font-weight: 500;
+display: inline-block;
+}
 
+.ctabtn a:hover{
+  color: #132466;
+padding: 28px 92px;
+border: 1px solid #fff;
+border-radius: 6px;
+background-color: #fff;
+}
+.ctabtn {
+  margin-top: 10px;
+}
 .small-section {
   color: #fff;
   background: #132466;
