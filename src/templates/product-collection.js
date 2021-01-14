@@ -18,11 +18,39 @@ const ClinicalCollectionTemp = (props, data)  => {
                     : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags? props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags
                     : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.field_meta_tag? props.data.taxonomyTermClinicalIngredients.field_meta_tag
                     : "";
+
+    let metaTagImage = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.relationships && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships &&  props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermMedicalIngredients && props.data.allTaxonomyTermMedicalIngredients.relationships && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermMedicalProductLines && props.data.allTaxonomyTermMedicalProductLines.relationships && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermMedicalRxCategory && props.data.allTaxonomyTermMedicalRxCategory.relationships && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermMedicalSkinConcern && props.data.allTaxonomyTermMedicalSkinConcern.relationships && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermMedicalSkinType && props.data.allTaxonomyTermMedicalSkinType.relationships && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermProductSystem && props.data.allTaxonomyTermProductSystem.relationships && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermClinicalCategories && props.data.allTaxonomyTermClinicalCategories.relationships && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermClinicalGroups && props.data.allTaxonomyTermClinicalGroups.relationships && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermClinicalIngredients && props.data.allTaxonomyTermClinicalIngredients.relationships && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermClinicalSkinConcern && props.data.allTaxonomyTermClinicalSkinConcern.relationships && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    :  props.data.allTaxonomyTermClinicalSkinType && props.data.allTaxonomyTermClinicalSkinType.relationships && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    : "";
+
+
+
+
+
+
+
+
+
+
+
     // let medicalProLi = props.data.tax
   
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
-        <SEO canonical={props.location.href} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}/>
+        <SEO canonical={props.location.href} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
+          ogTitle={medicalTaxMeta.title? medicalTaxMeta.title : ""} ogDescription={medicalTaxMeta.description? medicalTaxMeta.description : ""}
+          metaImage = {metaTagImage}
+        />
 
         <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
         <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
@@ -198,6 +226,7 @@ export const productPageQuery = graphql`
                 relationships {
                   field_taxonomy_hero_paraprapgh_i {
                     localFile {
+                      url
                       childImageSharp {
                         fluid (quality: 100){
                             ...GatsbyImageSharpFluid
@@ -346,6 +375,7 @@ export const productPageQuery = graphql`
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
+                    url
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
@@ -471,6 +501,7 @@ export const productPageQuery = graphql`
                   relationships {
                     field_taxonomy_hero_paraprapgh_i {
                       localFile {
+                        url
                         childImageSharp {
                           fluid (quality: 100){
                               ...GatsbyImageSharpFluid
@@ -593,6 +624,7 @@ export const productPageQuery = graphql`
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
+                    url
                     childImageSharp {
                       fluid (quality: 100){
                           ...GatsbyImageSharpFluid
@@ -665,6 +697,7 @@ export const productPageQuery = graphql`
                 relationships {
                   field_taxonomy_hero_paraprapgh_i {
                     localFile {
+                      url
                       childImageSharp {
                         fluid (quality: 100) {
                           ...GatsbyImageSharpFluid
@@ -840,6 +873,7 @@ export const productPageQuery = graphql`
                   relationships {
                     field_taxonomy_hero_paraprapgh_i {
                       localFile {
+                        url
                         childImageSharp {
                           fluid (quality: 100) {
                             ...GatsbyImageSharpFluid
@@ -913,6 +947,7 @@ export const productPageQuery = graphql`
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
+                    url
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
@@ -1042,6 +1077,7 @@ export const productPageQuery = graphql`
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
+                    url
                     childImageSharp {
                       fluid (quality: 100) {
                         ...GatsbyImageSharpFluid
@@ -1201,6 +1237,7 @@ export const productPageQuery = graphql`
               relationships {
                 field_taxonomy_hero_paraprapgh_i {
                   localFile {
+                    url
                     childImageSharp {
                       fluid (quality: 100){
                         ...GatsbyImageSharpFluid

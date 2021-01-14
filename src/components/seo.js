@@ -55,7 +55,7 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
         },
         {
           property: `og:type`,
-          content: ogType,
+          content: `website`,
         },
         {
           name: `twitter:card`,
