@@ -38,6 +38,10 @@ fragment paragraphStoryFinal on paragraph__story_final {
   field_story_final_title {
     processed
   }
+  field_button_name_ctaa{
+    processed
+  }
+  field_button_url
   field_story_topic {
     processed
   }

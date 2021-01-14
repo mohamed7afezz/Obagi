@@ -182,7 +182,9 @@ return (
               <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
                 <div className="col-lg-7 offset-lg-2">
                   {getfeature[0].field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_subtitle.processed}}></div> : ""}
+                  {getfeature[0].field_featured_title?
                   <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_title.processed }} className={featuredStyles.title}></div>
+                    :""}
                   {getfeature[0].field_featured_products_title? <div className={featuredStyles.products}>
                     <div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}></span>) 
                     {getfeature[0].field_featured_button? <span className={featuredStyles.view}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
