@@ -82,7 +82,7 @@
     }
 }
 
-.subtitle h2{
+.subtitle h2, .subtitle{
     @include fontStyle(18, 24);
     margin-bottom: 15px;
     @extend %futurapt-book;
@@ -93,7 +93,6 @@
 
 }
 .subtitle {
-    @extend %futurapt-book;
 
     @include lg-screen {
         max-width: 870px;
