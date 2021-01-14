@@ -13,7 +13,9 @@ const Reviews = ({ node , nodeType}) => {
 
 
  let productId = data[0].field_clinical_id? data[0].field_clinical_id :data[0].field_medical_id
- let productname= data[0].title
+ let productname= data[0].title;
+ let field_medical_rx = data[0].relationships.field_medical_rx.name?
+ data[0].relationships.field_medical_rx.name:""
  let productpath = data[0].path.alias
  let productimg = data[0].relationships.field_clinical_image
  ?data[0].relationships.field_clinical_image[0]?data[0].relationships.field_clinical_image[0].localFile.childImageSharp.original.src:""
@@ -21,6 +23,10 @@ const Reviews = ({ node , nodeType}) => {
  
  
  if ( typeof window !== "undefined"){
+ if(field_medical_rx === "RX"){
+   console.log("Aaaa")
+  return
+}else{
   window.bvDCC = {
   
     catalogData: {
@@ -72,6 +78,7 @@ const Reviews = ({ node , nodeType}) => {
     
     };
   }
+}
  
  return (
 
