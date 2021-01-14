@@ -888,22 +888,22 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      <button
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={paypal} />
-                      </button>
+                      </a>
 
-                      <button
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={paycred} />
-                      </button>
-                      <button
+                      </a>
+                      <a
                         className={BagStyle.buttonImg}
                         type="submit">
                         <img alt="img" type="submit" src={visa} />
-                      </button>
+                      </a>
                     </form>
 
                   </div>
