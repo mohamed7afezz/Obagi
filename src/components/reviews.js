@@ -23,10 +23,8 @@ const Reviews = ({ node , nodeType}) => {
  
  
  if ( typeof window !== "undefined"){
- if(field_medical_rx === "RX"){
-   console.log("Aaaa")
-  return
-}else{
+ 
+
   window.bvDCC = {
   
     catalogData: {
@@ -78,11 +76,11 @@ const Reviews = ({ node , nodeType}) => {
     
     };
   }
-}
+
  
  return (
 
-
+  field_medical_rx !== "RX"?
     <div className={"container-fluid"}>
       <div className={"row"}>
         <div className={["col-12", "col-lg-10", "offset-lg-1"].join(" ")}>
@@ -102,7 +100,8 @@ const Reviews = ({ node , nodeType}) => {
         </div>
       </div>
     </div>
-  )
+          :""
+    )
 }
 export default Reviews;
 
