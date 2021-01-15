@@ -358,6 +358,7 @@ const ProductSuggestion = ({ node }) => {
         <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
    
           <ProductCard
+          productLink={product.path.alias}
                 producttitle={product.title}
                 productId={isClinical? product.field_clinical_id : product.field_medical_id}
                 Sku={isClinical? product.field_clinical_sku : product.field_medical_sku}
