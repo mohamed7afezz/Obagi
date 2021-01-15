@@ -54,7 +54,7 @@ module.exports = {
       options: {
         host: 'https://www.obagi.com',
         sitemap: 'https://www.obagi.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [{ userAgent: '*', disallow:'' }],
         exclude: [
           `/test-page`,
           `/press-releases`,
