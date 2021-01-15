@@ -23,7 +23,7 @@ import scrollDown from '../assets/images/scroll-down.png'
 
 const $ = require("jquery");
 
-const Layout = ({ children,nodeType,menuType}) => {
+const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
   if(!nodeType){
     nodeType='home';
   }

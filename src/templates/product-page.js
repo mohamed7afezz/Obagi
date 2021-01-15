@@ -38,8 +38,8 @@ const ProductPage = props => {
                 ogDescription={product.field_clinical_metatags && product.field_clinical_metatags.description ? product.field_clinical_metatags.description
                     : product.field_medical_metatags && product.field_medical_metatags.description ? product.field_medical_metatags.description : ""}
 
-                metaImage={product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile ? product.relationships.field_clinical_image[0].localFile.url
-                    : product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile ? product.relationships.field_medical_image[0].localFile.url : ""}
+                metaImage={(product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image[0] && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.url
+                    : (product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image[0] && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.url : ""}
 
             />
 
