@@ -902,7 +902,7 @@ const YourBag = (props, { notificationId }) => {
                         <img alt="img" type="submit" src={paycred} />
                       </a>
                       <a
-                        className={BagStyle.buttonImg}
+                        className={[BagStyle.buttonImg,BagStyle.dinb].join(" ")}
                         type="submit">
                         <img alt="img" type="submit" src={visa} />
                       </a>

@@ -3478,11 +3478,11 @@ height: 100%;
   }
 }
 /**********Card**********/
-.products-list .col-12.col-lg-3 .product-card-img .custom-img{
+.product-card-img .custom-img{
   height: auto !important;
 max-height: none !important;
 }
-.products-list .col-12.col-lg-6 .product-card-img .custom-img{
+ .col-12.col-lg-6 .product-card-img .custom-img{
  height: auto !important;
   max-height: none !important;
   margin-left: auto;
