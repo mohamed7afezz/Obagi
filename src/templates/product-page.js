@@ -22,7 +22,6 @@ const ProductPage = props => {
 
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
-    console.log('hassan',data.nodeMedicalProduct.relationships.field_medical_rx.name)
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
