@@ -79,6 +79,7 @@ const Layout = ({ children,nodeType,menuType}) => {
 
         </main>
         <Showbag />
+        <div class="be-ix-link-block"></div>
         <Footer />
         <Popup/>
       </div>
