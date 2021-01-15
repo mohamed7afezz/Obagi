@@ -22,7 +22,7 @@ const ProductPage = props => {
 
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
-
+    console.log('hassan',data)
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
@@ -48,9 +48,13 @@ const ProductPage = props => {
                 <ProductHero data={data} nodeType={nodeType}  />
                 {paragraphs}
                 {/*Review widget BV */
-                    <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+            
+                data.nodeMedicalProduct.relationships.field_medical_rx.name === "RX"?"":
+                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
                         <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
-                         data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}></div>
+                         data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                         </div>
                     </div></div></div>
            /*Review widget BV*/}
             </div>
