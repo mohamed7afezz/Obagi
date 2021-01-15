@@ -122,6 +122,8 @@ const Footer = ({ siteTitle }) => {
 
   return (
     <footer>
+     <div class="be-ix-link-block"></div>
+
       <div className="container-fluid footer">
         <div className={footerStyles.footerSection}>
           <div className="row">

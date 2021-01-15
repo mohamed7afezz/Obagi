@@ -28,6 +28,7 @@ function removevaild(e) {
 
   item.classList.add('hide')
 }
+let savechecked=[];
 const sendFormValues = (updatedItemData) => {
 
   fetch(
@@ -54,6 +55,12 @@ const createFullPostMarkup = (data) => {
 }
 const createFullPostMarkup2 = (data,data2) => {
   return { __html: `${data } + ${data2}` }
+}
+function changeselect(e){
+ 
+  document.querySelector('#miles').value = document.querySelector('#prodDistance').value ;
+  document.querySelector('.miles .select-selected').innerText = e.target.innerText;
+  
 }
 function submitforming(e) {
   var obj = { webform_id: "request_appointment" };
@@ -156,15 +163,35 @@ export default function Finder() {
 `)
 
   function updateProductLines(e) {
+    document.querySelector('.product-lines').classList.add('d-none')
     if (e.target.checked) {
+    
+      savechecked.push(e.target.value);
       let newProdLines = [...prodLines];
       newProdLines.push(e.target.value);
       setProductLines(newProdLines);
+      document.querySelector("#prod-search-btn").removeAttribute("disabled")
+      document.querySelector("#submit-search-physician").removeAttribute("disabled");
+     
+
     } else {
       setProductLines(prodLines.filter(item => item !== e.target.value));
+     
+      for (let i = 0; i < savechecked.length; i++) {
+        if (savechecked[i] === e.target.value) {
+          savechecked.splice(i, 1); 
+         i--
+        }
+        if (savechecked.length === 0) {
+          document.querySelector("#prod-search-btn").setAttribute("disabled",true)
+          document.querySelector("#submit-search-physician").setAttribute("disabled", true)
+
+        }
+      
+    }
     }
     //TODO: add masonry style
-
+   
   }
 
   function searchProducts(e) {
@@ -608,17 +635,19 @@ export default function Finder() {
                     </div>
                     <div class="appointment-elemnt advanced-search">
                       <p class="input-name">DISTANCE</p>
-                      <div class="custom-select">
+                      <div class="custom-select f-select"
+                           onClick={changeselect}>
                         <select
                           id="prodDistance"
                           className="state"
                           defaultValue="10"
+
                         >
                           <option value="5">5 miles</option>
                           <option value="10">10 miles</option>
-                          <option value="20">25 miles</option>
+                          <option value="25">25 miles</option>
                           <option value="50">50 miles</option>
-                          <option value="50">100 miles</option>
+                          <option value="100">100 miles</option>
                         </select>
                       </div>
                     </div>
@@ -666,6 +695,7 @@ export default function Finder() {
                         class="appointment-Submit"
                         id="prod-search-btn"
                         type="button"
+                        disabled="true"
                         onClick={searchProducts}
                       >
                         APPLY
@@ -701,7 +731,7 @@ export default function Finder() {
                   </Scrollbars>
                 </div>
                 <div class="">
-                  <button class="submit-search-physician" type="button" id="submit-search-physician" data-dismiss="modal" >
+                  <button class="submit-search-physician" type="button" disabled="true" id="submit-search-physician" data-dismiss="modal" >
                     Search for a physician
                   </button>
                 </div>
