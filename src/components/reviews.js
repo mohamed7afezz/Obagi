@@ -77,7 +77,7 @@ const Reviews = ({ node , nodeType}) => {
     };
   }
 
- console.log("zaz")
+ 
  return (
 
   field_medical_rx !== "RX"?

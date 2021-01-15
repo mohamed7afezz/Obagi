@@ -49,13 +49,37 @@ const ProductPage = props => {
                 {paragraphs}
                 {/*Review widget BV */
             
-                data.nodeMedicalProduct.relationships.field_medical_rx.name === "RX"?"":
-                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
-                        <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
-                         data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+                data.nodeMedicalProduct?
+                data.nodeMedicalProduct.relationships?
+                data.nodeMedicalProduct.relationships.field_medical_rx?
+                data.nodeMedicalProduct.relationships.field_medical_rx.name === "RX"? ""
+                :<div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
 
-                         </div>
-                    </div></div></div>
+                 </div>
+            </div></div></div>
+                : <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+                :
+                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+                :
+                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+               
            /*Review widget BV*/}
             </div>
         </Layout>
