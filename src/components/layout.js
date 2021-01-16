@@ -79,7 +79,6 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
 
         </main>
         <Showbag />
-        <div class="be-ix-link-block"></div>
         <Footer />
         <Popup/>
       </div>
