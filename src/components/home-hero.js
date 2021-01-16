@@ -108,7 +108,7 @@ const HomeHero = ({ node }) => {
             {node.relationships.field_box.map((box, i) => {
               return (
                 <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.original.src); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src); }}>
-                  <HeroBox node={box} id={"box" + i} />
+                  <HeroBox node={box} id={"box" + i} desktopTag={true}/>
                 </div>
               )
             })}

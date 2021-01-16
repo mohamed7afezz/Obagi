@@ -17,7 +17,7 @@ import SearchContext from "../providers/search-provider"
 import AboveHeader from './above-header'
 const baseUrl = process.env.Base_URL;
 const $ = require("jquery");
-const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
+const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar }) => {
 
   const { search, setSearchIndex, searchInIndex } = useContext(SearchContext)
 
@@ -480,6 +480,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //   // }
   // // })
 
+  console.log("ashhh hide", hideMobBar)
 
   return (
 
@@ -539,7 +540,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
 
 
-          <div className={headerStyles.categorySection} id="category-section" style={{ display: (nodeType ? (nodeType.includes('medical') || nodeType.includes('clinical') ? "none" : "block") : "block") }} >
+          <div className={headerStyles.categorySection} id="category-section" style={{ display: (nodeType.includes('medical') || nodeType.includes('clinical') || hideMobBar == true ? "none" : "block" )}} >
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
