@@ -70,7 +70,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
   return (
     <div className={`node-${nodeType}`}>
       <AboveHeader menuType={menuType} notifClass="d-none d-lg-block" id="notificationDesk"/>
-      <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
+      <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType} hideMobBar={hideMobBar}/>
       {/* <NavBlocks /> */}
       <div>
         <main>
