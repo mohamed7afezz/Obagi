@@ -18,14 +18,14 @@
     font-size: 40px;
     padding-right: 12px;
     padding-top: 16px;
+    sup {
+        font-size: 50%;
+        top:-1em;
+    }
     @include lg-screen {
         padding-top: 0;
         padding-right: 0;
         @include fontStyle(64, 72);
-        sup {
-            font-size: 50%;
-            top:-1em;
-        }
     }
 }
 
