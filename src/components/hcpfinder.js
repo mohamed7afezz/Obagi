@@ -166,12 +166,14 @@ export default function Finder() {
     document.querySelector('.product-lines').classList.add('d-none')
     if (e.target.checked) {
     
-      savechecked.push(e.target.value);
+    
       let newProdLines = [...prodLines];
       newProdLines.push(e.target.value);
+     
       setProductLines(newProdLines);
-      document.querySelector("#prod-search-btn").removeAttribute("disabled")
-      document.querySelector("#submit-search-physician").removeAttribute("disabled");
+      savechecked.push(e.target.value);
+      document.querySelector("#prod-search-btn").classList.remove("disable")
+      document.querySelector("#submit-search-physician").classList.remove("disabled");
      
 
     } else {
@@ -183,8 +185,8 @@ export default function Finder() {
          i--
         }
         if (savechecked.length === 0) {
-          document.querySelector("#prod-search-btn").setAttribute("disabled",true)
-          document.querySelector("#submit-search-physician").setAttribute("disabled", true)
+          document.querySelector("#prod-search-btn").classList.add("disable")
+          document.querySelector("#submit-search-physician").classList.add("disable")
 
         }
       
@@ -195,6 +197,7 @@ export default function Finder() {
   }
 
   function searchProducts(e) {
+    
     if (document.getElementById('prodLoc').value.length < 5) {
       document.getElementById('prod-err-msg').classList.remove('d-none');
       document.getElementById('prod-err-msg').innerHTML = 'Invalid Zip Code';
@@ -279,7 +282,8 @@ export default function Finder() {
 
             <p class="finder-subtitle lastfind text-center">
               Looking for specific product? Try our{" "}
-              <Link to="#">Advanced Search</Link> option.*
+              <a href="#" data-toggle="modal"
+                  data-target="#advancedSearch" to="#">Advanced Search</a> option.*
             </p>
           </div>
         </div>
@@ -692,10 +696,10 @@ export default function Finder() {
                     </div>
                     <div class="advanced-search">
                       <button
-                        class="appointment-Submit"
+                        class="appointment-Submit disable"
                         id="prod-search-btn"
                         type="button"
-                        disabled="true"
+                        
                         onClick={searchProducts}
                       >
                         APPLY
@@ -731,7 +735,7 @@ export default function Finder() {
                   </Scrollbars>
                 </div>
                 <div class="">
-                  <button class="submit-search-physician" type="button" disabled="true" id="submit-search-physician" data-dismiss="modal" >
+                  <button class="submit-search-physician disable" type="button"  id="submit-search-physician" data-dismiss="modal" >
                     Search for a physician
                   </button>
                 </div>

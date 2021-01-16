@@ -3495,6 +3495,6 @@ max-width: 48.5%;
   background-color: #132466;
   border: none;
 }
-#prod-search-btn[disabled],#advancedSearch #submit-search-physician[disabled]{
+#prod-search-btn.disable,#advancedSearch #submit-search-physician.disable{
   background-color: #d6d6d6;
 }
