@@ -39,8 +39,8 @@ const ProductHero = ({ data, nodeType }) => {
     : node.relationships.field_medical_image[0] ? (node.relationships.field_medical_image[0].localFile ? node.relationships.field_medical_image[0].localFile.childImageSharp.original.src : "") : ""
   let field_medical_rx = isClincal
     ? ""
-    : node.relationships.field_medical_rx.name
-
+    : node.relationships?node.relationships.field_medical_rx?node.relationships.field_medical_rx.name:""
+:""
   let field_description = isClincal
     ? node.field_clinical_description.processed
     : node.field_medical_description ? node.field_medical_description.processed : ''
