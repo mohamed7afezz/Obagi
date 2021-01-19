@@ -3498,3 +3498,7 @@ max-width: 48.5%;
 #prod-search-btn.disable,#advancedSearch #submit-search-physician.disable{
   background-color: #d6d6d6;
 }
+#stateselectmenu .select-items{
+  max-height: 200px;
+  overflow-y: scroll;
+}
