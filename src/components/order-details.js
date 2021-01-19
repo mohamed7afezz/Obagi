@@ -421,13 +421,13 @@ async function getShippingAddresses(e) {
                       </p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
                         {alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}:
                     ending in 7320
                   </p>
-                    </div>
+                    </div> */}
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
@@ -624,10 +624,10 @@ async function getShippingAddresses(e) {
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.country_iso2 : ""}</p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Payment</p>
                       <p>{alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}: ending in 7320</p>
-                    </div>
+                    </div> */}
 
                     {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Actions</p>
