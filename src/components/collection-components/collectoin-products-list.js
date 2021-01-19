@@ -262,8 +262,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     return item != "";
   }
   function isoFilter(type, val) {
-    
-    isoFilterData[type] = val === 'All'? '' : val.split(' ').join('_');
+    let item = val.replace('(',`\\(`)
+    item = item.replace(')','\\)');
+    item = item.replace('+','\\+')
+   
+    isoFilterData[type] = item === 'All'? '' : item.split(' ').join('_');
     let p = [];
     let newFilter = '';
     for (const key in isoFilterData) {
