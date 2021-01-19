@@ -126,23 +126,23 @@ fragment youMightAlsoLikeMedicalParagrapgh on paragraph__you_might_also_like {
     relationships {
       field_product_card {
         ... on node__medical_product {
-          id
           title
-          field_medical_price
+          field_medical_id
+          field_medical_premier_points
           field_medical_sku
-          path {
-            alias
-          }
+          field_medical_premier_points_id
           field_medical_description {
             processed
           }
           field_medical_price
-          title
+          path {
+            alias
+          }
           relationships {
             field_medical_image {
               localFile {
                 childImageSharp {
-                  fluid (quality: 100) {
+                  fluid {
                     ...GatsbyImageSharpFluid
                   }
                 }
