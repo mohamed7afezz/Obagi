@@ -393,11 +393,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         document.getElementById("readButton").innerHTML = "Read More +"
     }
 }
-  
+    console.log('hassan',node)
   return (
     <>
         {/* Need to know */}
-
+{/* product Line */}
     {node.data?node.data.taxonomyTermMedicalProductLines?node.data.taxonomyTermMedicalProductLines.field_tax_needtoknow?
         <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
 
@@ -417,7 +417,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti ? 
           node.data.taxonomyTermMedicalProductLines.field_tax_need_to_know_descripti.processed : '' }}></div>
         :"":""}
-        <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par ? node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par.processed : '' }}></div>
+        <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par ?
+           node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par.processed : '' }}></div>
       {node.data?node.data.taxonomyTermMedicalProductLines?
       node.data.taxonomyTermMedicalProductLines.field_tax_description_second_par? 
       <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>
@@ -426,7 +427,99 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
 </div>
 </div>
 :"":"":""}
+    {/* Medical Ingerdient */}
+    {node.data?node.data.taxonomyTermMedicalIngredients?
+    node.data.taxonomyTermMedicalIngredients.field_need__to_know__title?
+        <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
 
+<div className={"row"}>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>
+        <img  src={lightblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "medicalclinical"].join(" ")}>
+        <img src={blueblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
+        <p className={needtoknow.needtoknowtitle} >
+            {node.data?node.data.taxonomyTermMedicalIngredients?node.data.taxonomyTermMedicalIngredients.field_need__to_know__title ?
+             node.data.taxonomyTermMedicalIngredients.field_need__to_know__title.processed : '':"":""}
+        </p>
+        {node.data?node.data.taxonomyTermMedicalIngredients?
+        <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalIngredients.field_need_to__know__description ? 
+          node.data.taxonomyTermMedicalIngredients.field_need_to__know__description.processed : '' }}></div>
+        :"":""}
+        <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalIngredients.field_need_sec__know_description ?
+           node.data.taxonomyTermMedicalIngredients.field_need_sec__know_description.processed : '' }}></div>
+      {node.data?node.data.taxonomyTermMedicalIngredients?
+      node.data.taxonomyTermMedicalIngredients.field_need_sec__know_description? 
+      <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>
+      :"":"":""}
+    </div>
+</div>
+</div>
+:"":"":""}
+  {/* Medical Skin concern */}
+  {node.data?node.data.taxonomyTermMedicalSkinConcern?
+    node.data.taxonomyTermMedicalSkinConcern.field_need_know_title?
+        <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
+
+<div className={"row"}>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>
+        <img  src={lightblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "medicalclinical"].join(" ")}>
+        <img src={blueblub} alt="lightblub" />
+    </div>
+    <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
+        <p className={needtoknow.needtoknowtitle} >
+            {node.data?node.data.taxonomyTermMedicalSkinConcern?node.data.taxonomyTermMedicalSkinConcern.field_need_know_title ?
+             node.data.taxonomyTermMedicalSkinConcern.field_need_know_title.processed : '':"":""}
+        </p>
+        {node.data?node.data.taxonomyTermMedicalSkinConcern?
+        <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalSkinConcern.field_need__know_description ? 
+          node.data.taxonomyTermMedicalSkinConcern.field_need__know_description.processed : '' }}></div>
+        :"":""}
+        <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalSkinConcern.field_need_to_know_second_descri ?
+          node.data.taxonomyTermMedicalSkinConcern.field_need_to_know_second_descri.processed : '' }}></div>
+      {node.data?node.data.taxonomyTermMedicalSkinConcern?
+      node.data.taxonomyTermMedicalSkinConcern.field_need_to_know_second_descri? 
+      <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>
+      :"":"":""}
+    </div>
+</div>
+</div>
+:"":"":""}
+      {/* Medical categories */}
+            {node.data?node.data.taxonomyTermMedicalCategories?
+          node.data.taxonomyTermMedicalCategories.field_need_to_know_title?
+              <div id="needToKnow" className={["container-fluid", needtoknow.needtoknowcontent].join(" ")}>
+
+      <div className={"row"}>
+          <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "imgcolclinical"].join(" ")}>
+              <img  src={lightblub} alt="lightblub" />
+          </div>
+          <div className={["col-12", "col-lg-1", "offset-lg-1", needtoknow.imgcol, "medicalclinical"].join(" ")}>
+              <img src={blueblub} alt="lightblub" />
+          </div>
+          <div className={["col-12", "col-lg-7", needtoknow.rightcontent].join(" ")}>
+              <p className={needtoknow.needtoknowtitle} >
+                  {node.data?node.data.taxonomyTermMedicalCategories?node.data.taxonomyTermMedicalCategories.field_need_to_know_title ?
+                  node.data.taxonomyTermMedicalCategories.field_need_to_know_title.processed : '':"":""}
+              </p>
+              {node.data?node.data.taxonomyTermMedicalCategories?
+              <div dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalCategories.field_need_to_know_description ? 
+                node.data.taxonomyTermMedicalCategories.field_need_to_know_description.processed : '' }}></div>
+              :"":""}
+              <div className="collapse" id="needReadMore" dangerouslySetInnerHTML={{ __html: node.data.taxonomyTermMedicalCategories.field_desc_sec_par ?
+                node.data.taxonomyTermMedicalCategories.field_desc_sec_par.processed : '' }}></div>
+            {node.data?node.data.taxonomyTermMedicalCategories.field_desc_sec_par?
+            node.data.taxonomyTermMedicalCategories.field_desc_sec_par? 
+            <a id="readButton" className={needtoknow.readMore} data-toggle="collapse" href="#needReadMore" role="button" aria-expanded="false" aria-controls="needReadMore" onClick={(e) => {changeText(e);}}>Read More +</a>
+            :"":"":""}
+          </div>
+      </div>
+      </div>
+      :"":"":""}
     {/* End need to Know */}
     <div
     className={checktaxonomyType === "clinical"? 

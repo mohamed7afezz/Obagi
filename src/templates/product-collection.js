@@ -396,6 +396,15 @@ export const productPageQuery = graphql`
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
             name
+            field_need_to_know_second_descri {
+              processed
+            }
+            field_need_know_title {
+              processed
+            }
+            field_need__know_description {
+              processed
+            }
             field_medicla_skin_con_meta_tags {
               description
               title
@@ -523,7 +532,15 @@ export const productPageQuery = graphql`
       
       taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
         name
-       
+        field_need__to_know__title {
+          processed
+        }
+        field_need_to__know__description {
+          processed
+        }
+        field_need_sec__know_description {
+          processed
+        }
         relationships {
           field_footer_two_section_med_ing{
             relationships {
@@ -767,6 +784,15 @@ export const productPageQuery = graphql`
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
             name
+            field_need_to_know_title {
+              processed
+            }
+            field_need_to_know_description {
+              processed
+            }
+            field_desc_sec_par {
+              processed
+            }
             field_medical_cat_meta_tags {
               description
               title
