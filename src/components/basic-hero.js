@@ -11,7 +11,6 @@ const Basichero = ({ node }) => {
     var sec_url = geturi[4];
 
   }
-  console.log("hassan",node)
   return (
     <div className={basichero.sectionBg}>
       <div className={["container-fluid ", "basicbg", basichero.givepadding, `${node.field_basic_hero_custom_class_ ? node.field_basic_hero_custom_class_ : ""}`].join(" ")}>

@@ -3,7 +3,7 @@ import productsuggestion from "../../assets/scss/components/productsuggestion.mo
 import ProductCard from "../../components/productcard"
 import Slider from "react-slick"
 import { useStaticQuery, graphql } from "gatsby"
-const YouMayLike = ({ node }) => {
+const YouMayLike = ({key, node }) => {
   var settings = {
     infinite: true,
     speed: 500,
@@ -21,7 +21,7 @@ const YouMayLike = ({ node }) => {
       },
     ],
   }
-
+console.log('hassan1',node)
 
   return (
     <div
@@ -122,21 +122,27 @@ fragment youMightAlsoLikeParagrapgh on paragraph__you_might_also_like {
 fragment youMightAlsoLikeMedicalParagrapgh on paragraph__you_might_also_like {
     id
     parent_field_name
-    field_you_might_title
+    field_you_might_title  
     relationships {
       field_product_card {
         ... on node__medical_product {
-          id
+          title
+          field_medical_id
+          field_medical_premier_points
+          field_medical_sku
+          field_medical_premier_points_id
           field_medical_description {
             processed
           }
           field_medical_price
-          title
+          path {
+            alias
+          }
           relationships {
             field_medical_image {
               localFile {
                 childImageSharp {
-                  fluid (quality: 100) {
+                  fluid {
                     ...GatsbyImageSharpFluid
                   }
                 }

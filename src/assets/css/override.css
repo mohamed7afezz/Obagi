@@ -3495,6 +3495,24 @@ max-width: 48.5%;
   background-color: #132466;
   border: none;
 }
-#prod-search-btn.disable,#advancedSearch #submit-search-physician.disable{
+#prod-search-btn.disable, #advancedSearch #submit-search-physician.disable{
   background-color: #d6d6d6;
+}
+#stateselectmenu .select-items{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+#prodLinesSelected{
+  position: relative;
+}
+#prodLinesSelected::after {
+content: "";
+width: 10px;
+top: 2px;
+height: 10px;
+position: absolute;
+background-size: contain;
+right:  10px;
+background-repeat: no-repeat;
+background-image: url(mobileArrow.svg);
 }

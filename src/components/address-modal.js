@@ -130,7 +130,7 @@ const AddressModal = ({ node,
                                 </div>
                             </div>
                             <div className="group-wrapper">
-                                <div className="form-group select-group">
+                                <div className="form-group select-group" id="stateselectmenu">
                                     <label for="state" className="form-label">*State/Province</label>
                                     <div className="select-wrapper custom-select">
                                         <select className="form-control" id="state">

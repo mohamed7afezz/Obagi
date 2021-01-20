@@ -480,7 +480,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //   // }
   // // })
 
-  // console.log("ashhh hide", hideMobBar)
+  
 
   return (
 

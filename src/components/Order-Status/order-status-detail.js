@@ -381,13 +381,13 @@ const OrderStatusDetails = (props) => {
                       </p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
                         {detailorder.payment_method ? detailorder.payment_method : ""}:
                     ending in 7320
                   </p>
-                    </div>
+                    </div> */}
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
@@ -608,10 +608,10 @@ const OrderStatusDetails = (props) => {
                       <p>{detailorder.billing_address ? detailorder.billing_address.country_iso2 : ""}</p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Payment</p>
                       <p>{detailorder.payment_method ? detailorder.payment_method : ""}: ending in 7320</p>
-                    </div>
+                    </div> */}
 
                     {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Actions</p>

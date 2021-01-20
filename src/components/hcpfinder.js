@@ -173,7 +173,7 @@ export default function Finder() {
       setProductLines(newProdLines);
       savechecked.push(e.target.value);
       document.querySelector("#prod-search-btn").classList.remove("disable")
-      document.querySelector("#submit-search-physician").classList.remove("disabled");
+      document.querySelector("#submit-search-physician").classList.remove("disable");
      
 
     } else {

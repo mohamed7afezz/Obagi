@@ -196,32 +196,36 @@ async function getShippingAddresses(e) {
         <div className="row">
           {alldata.shipments ? <>
             <div class="col-lg-7 offset-lg-1">
-
+                {alldata.shipments.length > 1?
+                
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
                   Your order has been split into {alldata.shipments.length} shipments. The details and
                 status are listed below.
               </p>
               </div>
-
+              :""
+            }
 
               {
 
                 alldata.shipments ? alldata.shipments.map((getshipm, index1) => {
-                    return (alldata.products ? alldata.products.map((item, index) => {
-
-                      { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
-                      return (getshipm.items.map((getProdId, index2) => {
-
+                 
+                    return ( getshipm.items.map((getProdId, index2)  => {
+                     
+                    
+                      return ( alldata.products.map((item, index)=> {
+                        { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
                            
-                          getProdId.product_id === item.product_id ?
+                          parseFloat(getProdId.order_product_id) === parseFloat(item.id) ?
                             <div className={orderDetailsStyles.shipmentstate}>
+                             
                               {index2 < 1 ?
                                 <>
                                 
                                   <div className={orderDetailsStyles.shipment}>
-                                    <p>Shipment #{index + 1} : {getshipm.tracking_number}</p>
+                                    <p>Shipment #{index1 + 1} : {getshipm.tracking_number}</p>
                                   </div>
                                   <table className={orderHistoryStyles.tableCon}>
                                     <thead className={orderHistoryStyles.tHead}>
@@ -327,7 +331,7 @@ async function getShippingAddresses(e) {
                       )
 
 
-                    }) : "")
+                    }) )
 
                   })
                     : ""}
@@ -417,13 +421,13 @@ async function getShippingAddresses(e) {
                       </p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
                         {alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}:
                     ending in 7320
                   </p>
-                    </div>
+                    </div> */}
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
@@ -620,10 +624,10 @@ async function getShippingAddresses(e) {
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.country_iso2 : ""}</p>
                     </div>
 
-                    <div className={orderDetailsStyles.detailPart}>
+                    {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Payment</p>
                       <p>{alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}: ending in 7320</p>
-                    </div>
+                    </div> */}
 
                     {/* <div className={orderDetailsStyles.detailPart}>
                       <p>Actions</p>

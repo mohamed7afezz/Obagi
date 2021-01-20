@@ -392,7 +392,7 @@ const ProductHero = ({ data, nodeType }) => {
 
 
 
-              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-lg-10", "md-pl0"].join(" ")}>
+              <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-md-10", "md-pl0"].join(" ")}>
                 {field_medical_rx == "RX" ?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart", "locate-physician"].join(" ")}
@@ -431,7 +431,7 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <button
-                data-toggle="modal" data-target="#sharing" className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}
+                data-toggle="modal" data-target="#sharing" className={["col-12", "col-md-2", ProductStyles.share].join(" ")}
               >
 
                 <img alt="img" src={share} /> Share
