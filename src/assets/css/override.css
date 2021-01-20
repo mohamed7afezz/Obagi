@@ -3505,7 +3505,7 @@ max-width: 48.5%;
 #prodLinesSelected{
   position: relative;
 }
-#prodLinesSelected::after {
+.ProdprodLinesSelected::after {
 content: "";
 width: 10px;
 top: 2px;
