@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 import Slider from "react-slick"
 import Stars from './stars'
-import quizarrow from '../assets/images/arrowquize.png'
+import quizarrow from '../assets/images/arrowquize.svg'
 const OrderNoHistory = ({ node }) => {
 
 
@@ -35,7 +35,7 @@ const OrderNoHistory = ({ node }) => {
                 <div className={myAccountStyles.bottomHalf}>
                     <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
-                    <div className={myAccountStyles.bottomLink}><Link  to="/skin-analyzer"> TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} ><img src={quizarrow}/></span></Link></div>
+                    <div className={myAccountStyles.bottomLink}><Link  to="/skin-analyzer"> TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} ><img src={quizarrow} class="iconsvg"/></span></Link></div>
                     <div className={myAccountStyles.image}><Img alt="img"  fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ const OrderNoHistory = ({ node }) => {
                             <div className={myAccountStyles.bottomHalf}>
                                 <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                                 <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
-                                <Link to="/skin-analyzer"  className={myAccountStyles.bottomLink}>TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} ><img src={quizarrow}/></span></Link>
+                                <Link to="/skin-analyzer"  className={myAccountStyles.bottomLink}>TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} ><img src={quizarrow} class="iconsvg"/></span></Link>
                             </div>
                         </div>
                     </div>

@@ -3516,3 +3516,6 @@ right:  10px;
 background-repeat: no-repeat;
 background-image: url(mobileArrow.svg);
 }
+.iconsvg{
+  width: 16px;
+}
