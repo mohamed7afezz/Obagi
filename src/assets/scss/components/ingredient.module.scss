@@ -3,6 +3,11 @@
 .ingredientcontent{
     padding-top: 32px;
     padding-bottom: 32px;
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+    }
       @include md-screen{
         padding-top: 112px;
         padding-bottom: 112px;
@@ -96,6 +101,7 @@
 .ingredientcontent .ingredienttitle{
     margin-top: 20px;
     @extend %futurapt-bold ;
+    text-decoration: none;
     @include md-screen {
         margin-top: 40px;  
     }
