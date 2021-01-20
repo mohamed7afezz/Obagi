@@ -42,15 +42,17 @@ const YouMayLike = ({key, node }) => {
                 <div className={["col-12", productsuggestion.allcon].join(" ")}>
                     
                   <ProductCard
-                  productLink={item.path.alias}
-                  producttitle={item.title} 
-                  productdescription={{__html: item.field_medical_description?item.field_medical_description.processed:"" }}
-                  productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid}
-                  price={item.field_medical_price} rate="5" 
-                  premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                  feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
-                  Sku={item.field_medical_sku?item.field_medical_sku:"" }
-                  />
+                      productLink={item.path.alias}
+                      producttitle={item.title}
+                      productdescription={{__html:item.field_medical_description.processed}}
+                      productimage={ item.relationships.field_medical_image &&  item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      price={item.field_medical_price}
+                      productId={item.field_medical_id}
+                      isrx={item.relationships.field_medical_rx?item.relationships.field_medical_rx.name :""}
+                      premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                       feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                       Sku={item.field_medical_sku?item.field_medical_sku:""}
+                    />
 
                 </div>
               ))
@@ -65,13 +67,15 @@ const YouMayLike = ({key, node }) => {
              node.relationships.field_product_card.map((item, index) => (
                <div className={["col-12", productsuggestion.allcon].join(" ")}>
                     
-                 <ProductCard productLink={item.path.alias} 
-                 producttitle={item.title} 
-                 productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} 
-                 productimage={(item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} 
-                 Sku={item.field_medical_sku}
-                 price={item.field_clinical_price}
-                 rate="5" />
+                 <ProductCard 
+                   productLink={item.path.alias}
+                   producttitle={item.title}
+                   productdescription={{__html:item.field_clinical_description.processed}}
+                   productimage={item.relationships.field_clinical_image && item.relationships.field_clinical_image[0].localFile?item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''}
+                   price={item.field_clinical_price}
+                   productId={item.field_clinical_id}
+                   Sku = {item.field_clinical_sku}
+                 />
 
                </div>
              ))
