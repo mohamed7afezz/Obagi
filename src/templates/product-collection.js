@@ -17,6 +17,7 @@ const ClinicalCollectionTemp = (props, data)  => {
                     : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
                     : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags? props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags
                     : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.field_meta_tag? props.data.taxonomyTermClinicalIngredients.field_meta_tag
+                    : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags? props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags
                     : "";
 
     let metaTagImage = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.relationships && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships &&  props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
@@ -34,20 +35,11 @@ const ClinicalCollectionTemp = (props, data)  => {
     : "";
 
 
-
-
-
-
-
-
-
-
-
     // let medicalProLi = props.data.tax
   
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
-        <SEO canonical={props.location.href} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
+        <SEO canonical={medicalTaxMeta.canonical_url? medicalTaxMeta.canonical_url : props.location.href} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
           ogTitle={medicalTaxMeta.title? medicalTaxMeta.title : ""} ogDescription={medicalTaxMeta.description? medicalTaxMeta.description : ""}
           metaImage = {metaTagImage}
         />
@@ -399,6 +391,7 @@ export const productPageQuery = graphql`
             field_medicla_skin_con_meta_tags {
               description
               title
+              canonical_url
             }
             relationships {
               field_footer_two_section_med_ski {
@@ -523,6 +516,9 @@ export const productPageQuery = graphql`
       
       taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
         name
+        field_medical_ingr_meta_tags {
+          canonical_url
+        }
        
         relationships {
           field_footer_two_section_med_ing{
@@ -770,6 +766,7 @@ export const productPageQuery = graphql`
             field_medical_cat_meta_tags {
               description
               title
+              canonical_url
             }
            
             relationships {
@@ -1166,6 +1163,7 @@ export const productPageQuery = graphql`
           field_clinical_groups_meta_tags {
             title
             description
+            canonical_url
           }
           path {
             alias

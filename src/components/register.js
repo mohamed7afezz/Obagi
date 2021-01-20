@@ -12,8 +12,61 @@ const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
     let largeScreen = 992;
+    const [validForm, setValidForm] = useState();
 
     const { user, err, handleRegister } = useContext(UserContext);
+    useEffect(() => {
+    
+
+        // var forms = document.getElementsByClassName('needs-validation');
+        // // Loop over them and prevent submission
+        // Array.prototype.filter.call(forms, function (form) {
+        //     form.addEventListener('submit', function (event) {
+        //         if (form.checkValidity() === false) {
+        //             event.preventDefault();
+        //             event.stopPropagation();
+        //             $(".error-list-sec").html(errorList(form))
+        //         } else {
+        //             $(".error-list-sec").html('')
+        //            setValidForm(true);
+        //         }
+        //     }, false)
+        // });
+        // $(':invalid').change(function () {
+        //     $(this).closest('.form-group').removeClass('error');
+        // })
+
+        // function errorList(form) {
+        //     var list = '';
+        //     var lastRadio = '';
+        //     var listArray = []
+
+        //     $(form).find(':invalid').each(function () {
+        //         $(this).closest('.form-group').addClass('error');
+        //         if (
+        //             (
+        //                 ($(this).attr('type') == 'radio' && lastRadio != $(this).attr('name')) ||
+        //                 $(this).attr('type') != 'radio'
+        //             ) &&
+        //             $(this).prop("tagName").toLowerCase() != 'fieldset'
+        //         ) {
+        //             var isExisit = listArray.some(item => {
+        //                 return item == $(this).attr('data-webform-required-error')
+        //             })
+        //             lastRadio = $(this).attr('name');
+        //             if (!isExisit) {
+        //                 listArray.push($(this).attr('data-webform-required-error'))
+        //                 list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
+        //             }
+        //         }
+          
+        //     })
+        //     return list;
+        // }
+
+           }, []); // Empty array ensures that effect is only run on mount
+
+
     useEffect(() => {
         if (typeof window != undefined) {
             // console.log("ashhh", yearsList)
@@ -45,25 +98,13 @@ const Register = () => {
             navigate('/my-account/orders');
         }
     }
-    function checkvaild() {
-
-        if (!document.querySelector(".regform").checkValidity()) {
-            // console.log( document.querySelector(".regform").validationMessage)
-        } else {
-            // console.log("hassan",document.querySelector(".regform").checkValidity())
-        }
-    }
-    // useEffect(() => {
-    //     if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
-    //         CustomSelect();
-
-    //         //the issue is here
-
+    // function checkvaild(e) {
+    //     if (!document.querySelector(".regform").checkValidity()) {
+    //         // console.log( document.querySelector(".regform").validationMessage)
+    //     } else {
+    //         // console.log("hassan",document.querySelector(".regform").checkValidity())
     //     }
-    //     // document.querySelectorAll('.Give-val').forEach(item => {
-    //     //     item.addEventListener('click', handleAttr)
-    //     // });
-    // });
+    // }
 
     const [isPassMatch, setIsPassMatch] = useState();
     const [passConfirm, setPassConfirm] = useState(false);
@@ -256,25 +297,88 @@ const Register = () => {
     // console.log("ashhh input", newUser.attributes[0].attribute_value, newUser.attributes[0].attribute_value.type, today.toString())
 
     const [isToday, setIsToday] = useState();
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+    function errorList(form) {
+        var list = '';
+        var lastRadio = '';
+        var listArray = []
 
-    function handleSubmit(event) {
-        event.preventDefault();
+        $(form).find(':invalid').each(function () {
+            $(this).closest('.form-group').addClass('error');
+            if (
+                (
+                    ($(this).attr('type') == 'radio' && lastRadio != $(this).attr('name')) ||
+                    $(this).attr('type') != 'radio'
+                ) &&
+                $(this).prop("tagName").toLowerCase() != 'fieldset'
+            ) {
+                var isExisit = listArray.some(item => {
+                    return item == $(this).attr('data-webform-required-error')
+                })
+                lastRadio = $(this).attr('name');
+                if (!isExisit) {
+                    listArray.push($(this).attr('data-webform-required-error'))
+                    list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
+                }
+            }
+      
+        })
+        return list;
+    }
+
+    function handleSubmit(e) {
+       
+        e.preventDefault();
+        var form = document.querySelector('.needs-validation');
+        // Loop over them and prevent submission
+        if (form.checkValidity() === false) {
+            // event.preventDefault();
+            // event.stopPropagation();
+            $(".error-list-sec").html(errorList(form))
+            setValidForm(false);
+            console.log("ashh form func invalid", form.checkValidity(), validForm)
+
+        } else {
+            $(".error-list-sec").html('')
+            setValidForm(true);
+            console.log("else",validForm)
+            console.log("ashh form func valid", validForm)
+        }
+        
+
+        $(':invalid').change(function () {
+            $(this).closest('.form-group').removeClass('error');
+        })
+
+        
         // check date validality
         if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0) {
             // show error message for date of birth field
             // console.log('bahiii', 'date wrong')
             setIsToday(true);
-            document.querySelectorAll(".form-group.select-group").forEach(item =>{
+            document.querySelectorAll(".form-group.select-group").forEach(item => {
                 item.classList.add("error")
             });
-            return false;
+            // handleRegister(newUser);
+
         } else {
-            document.querySelectorAll(".form-group.select-group").forEach(item =>{
+            document.querySelectorAll(".form-group.select-group").forEach(item => {
                 item.classList.remove("error")
             });
             setIsToday(false);
         }
-        handleRegister(newUser);
+    
+        if(validForm){
+            console.log("ashh form valid", validForm)
+
+            handleRegister(newUser);
+
+           
+        }
+
     }
 
     let yearsList = [];
@@ -283,7 +387,7 @@ const Register = () => {
         yearsList.push(i.toString());
     }
 
-    
+
     return (
         <>
             <div className="container-fluid register">
@@ -329,30 +433,30 @@ const Register = () => {
 
                         <div className="required-field">*Required fields</div>
                         <div className={`errors  errors-list ${err != undefined ? 'errors bg-light' : ''}`}>
+                            <ul>
+                                {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
+                            </ul>
                             <ul className="error-list-sec">
                                 {/* {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
                                 {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""} */}
                             </ul>
                             {isToday == true ?
-                             <ul>
-                                 <li className="text-danger error-li">Please submit the correct date of birth.</li>
-                            </ul>
- : ""}
+                                <ul>
+                                    <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                                </ul>
+                                : ""}
                         </div>
-                       
 
-                        <form noValidate="novalidate" class="regform needs-validation" onSubmit={e => {
-                            handleSubmit(e);
 
-                        }}>
+                        <form noValidate="novalidate" class="regform needs-validation" >
                             <div className="form-group">
                                 <label for="firstname">*First name</label>
-                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name."/>
+                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
                             </div>
 
                             <div className="form-group">
                                 <label for="lastname">*Last name</label>
-                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name."/>
+                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
                             </div>
 
                             <div className="form-group">
@@ -367,7 +471,7 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="mailaddress">*Email Address</label>
-                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email."/>
+                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email." />
                             </div>
 
                             <div className="group-title">Date of Birth</div>
@@ -453,12 +557,12 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" data-webform-required-error="Please fill in a password."/>
+                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" data-webform-required-error="Please fill in a password." />
                             </div>
 
                             <div className="form-group">
                                 <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => { setPassConfirm(true) }} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" data-webform-required-error="Please confirm password."/>
+                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => { setPassConfirm(true) }} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" data-webform-required-error="Please confirm password." />
                             </div>
 
                             <p className={`form-control ${((isPassMatch == false) && passConfirm) ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
@@ -474,9 +578,10 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <input onClick={(event) => {checkvaild();
-                                
-                                }} className="submit-input" type="submit" value="Create Account" />
+                                <button type="submit" onClick={ handleSubmit}
+                                  
+
+                                 className="submit-input"  >Create Account</button>
                             </div>
 
                         </form>
@@ -506,48 +611,7 @@ function useWindowSize() {
 
 
     useEffect(() => {
-        
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    $(".error-list-sec").html(errorList(form))
-                }
-            }, false)
-        });
-        $(':invalid').change(function () {
-            $(this).closest('.form-group').removeClass('error');
-        })
-        
-        function errorList(form) {
-            var list = '';
-            var lastRadio = '';
-            var listArray =[]
-            
-            $(form).find(':invalid').each(function () {
-                $(this).closest('.form-group').addClass('error');
-                if (
-                    (
-                        ($(this).attr('type') == 'radio' && lastRadio != $(this).attr('name')) ||
-                        $(this).attr('type') != 'radio'
-                    ) &&
-                    $(this).prop("tagName").toLowerCase() != 'fieldset'
-                ) {
-                 var isExisit = listArray.some(item => {
-                    return item ==  $(this).attr('data-webform-required-error')
-                  })
-                     lastRadio = $(this).attr('name');
-                  if(!isExisit){
-                    listArray.push($(this).attr('data-webform-required-error'))
-                    list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
-                }
-               }
-            })
-            return list;
-        }
+
 
         // Handler to call on window resize
 
