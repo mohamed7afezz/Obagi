@@ -189,6 +189,7 @@ export const fragment = graphql`
                             relationships {
                                 field_slide_image {
                                     localFile {
+                                        url
                                         childImageSharp {
                                             fluid (quality: 100){
                                                 ...GatsbyImageSharpFluid

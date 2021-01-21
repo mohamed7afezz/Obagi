@@ -1275,6 +1275,7 @@ export const fragment = graphql`
         relationships {
           field_taxonomy_hero_paraprapgh_i {
             localFile {
+              url
               childImageSharp {
                 fluid(maxWidth: 1200) {
                   ...GatsbyImageSharpFluid
@@ -1308,6 +1309,7 @@ export const fragment = graphql`
     relationships {
       field_taxonomy_hero_paraprapgh_i {
         localFile {
+          url
           childImageSharp {
             original {
               src

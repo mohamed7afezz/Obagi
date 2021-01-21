@@ -139,6 +139,7 @@ fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
       }
       field_basic_img_hero_paragrapgh {
         localFile {
+          url
           childImageSharp {
             fluid {
               src

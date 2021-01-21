@@ -96,6 +96,7 @@ export const fragment = graphql`
             }
             field_careers_image {
               localFile {
+                  url
                 childImageSharp {
                     fluid (quality: 100){
                         ...GatsbyImageSharpFluid
