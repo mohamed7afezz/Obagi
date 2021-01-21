@@ -39,7 +39,7 @@ const ClinicalCollectionTemp = (props, data)  => {
   
     return (
       <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
-        <SEO canonical={medicalTaxMeta.canonical_url? medicalTaxMeta.canonical_url : props.location.href} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
+        <SEO canonical={medicalTaxMeta.canonical_url? medicalTaxMeta.canonical_url : props.location.href.split('.com')[1]} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
           ogTitle={medicalTaxMeta.title? medicalTaxMeta.title : ""} ogDescription={medicalTaxMeta.description? medicalTaxMeta.description : ""}
           metaImage = {metaTagImage}
         />
