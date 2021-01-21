@@ -22,10 +22,11 @@ const ProductPage = props => {
 
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
-
+    let seo = props.location.href?props.location.href:"";
+    let seo1 = seo?seo.split('.com'):""
     return (
         <Layout nodeType={nodeType} menuType="relative">
-            <SEO canonical={props.location.href.split('.com')[1]}
+            <SEO canonical={seo1[1]}
                 title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
                     : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 
