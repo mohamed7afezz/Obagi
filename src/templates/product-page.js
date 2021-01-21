@@ -25,7 +25,7 @@ const ProductPage = props => {
 
     return (
         <Layout nodeType={nodeType} menuType="relative">
-            <SEO canonical={props.location.href}
+            <SEO canonical={props.location.href.split('.com')[1]}
                 title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
                     : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 
