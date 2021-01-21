@@ -3,7 +3,11 @@ import React, { createContext, useState, useEffect } from 'react';
 
 const baseUrl = process.env.Base_URL;
 let cartId = undefined;
+let savedatalayer=[];
 
+function checkproduct(dlproduct,cartprod) {
+  return parseFloat( dlproduct) === parseFloat(cartprod);
+}
 if (typeof window !== "undefined") {
   cartId = window.localStorage.getItem('cartId') ? JSON.parse(window.localStorage.getItem('cartId')) : undefined;
 }
@@ -104,6 +108,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (productId, retry, quantity, price, premierid, feild_preimer, productName) => {
+    
     let findedProduct;
     if (state.cart.lineItems.physical_items) {
       findedProduct = state.cart.lineItems.physical_items.filter(function (itm) {
@@ -113,31 +118,7 @@ export const CartProvider = ({ children }) => {
     if (findedProduct != undefined && findedProduct.quantity == 3) {
       return;
     }
-    // if (findedProduct) {
-    //   window.dataLayer.push({
-    //     'event': 'addToCart',
-    //     'ecommerce': {
-    //       'currencyCode': 'USD',
-    //       'add': {                                // 'add' actionFieldObject measures.
-    //         'products': [{                        //  adding a product to a shopping cart.
-    //           'name': findedProduct.name,
-    //           'id': findedProduct.id,
-    //           'price': findedProduct.list_price,
-    //           'brand': 'Obagi',
-    //           'category': findedProduct.url.includes('medical') ? 'Medical' : 'Clinical',
-    //           'variant': '',
-    //           'quantity': findedProduct.quantity
-    //         }]
-    //       }
-    //     }
-    //   });
-
-    // }
-    // else {
-    //   console.log('hassan', findedProduct)
-    // }
-
-    //  console.log("hassan",  quantity)
+   
     if (parseFloat(state.cart.cartAmount) + (parseFloat(price) * quantity) > 750) {
       maxprice();
       return
@@ -180,29 +161,7 @@ export const CartProvider = ({ children }) => {
             await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName);
 
           }
-          // console.log("ashh item added", response, productId)
-          // let addedProduct = response.data.lineItems.physical_items.filter(function (itm) {
-          //   return itm.product_id == productId;
-          // })[0];
-
-          
-          //   window.dataLayer.push({
-          //     'event': 'addToCart',
-          //     'ecommerce': {
-          //       'currencyCode': 'USD',
-          //       'add': {                                // 'add' actionFieldObject measures.
-          //         'products': [{                        //  adding a product to a shopping cart.
-          //           'name': addedProduct.name,
-          //           'id': addedProduct.id,
-          //           'price': addedProduct.list_price,
-          //           'brand': 'Obagi',
-          //           'category': addedProduct.url.includes('medical') ? 'medical' : 'clinical',
-          //           'variant': '',
-          //           'quantity': addedProduct.quantity
-          //         }]
-          //       }
-          //     }
-          //   });
+        
           
 
           status < 300 && addNotification('Item added successfully');
@@ -231,26 +190,29 @@ export const CartProvider = ({ children }) => {
             }
           });
 
-          // if (state.addingToCart == false && typeof window !== "undefined") {
-          //   window.dataLayer.push({
-          //     'event': 'addToCart',
-          //     'ecommerce': {
-          //       'currencyCode': 'USD',
-          //       'add': {                                // 'add' actionFieldObject measures.
-          //         'products': [{                        //  adding a product to a shopping cart.
-          //           'name': productName? productName : '',
-          //           'id': productId? productId : '',
-          //           'price': price? price : '',
-          //           'brand': '',
-          //           'category': '',
-          //           'variant': '',
-          //           'quantity': quantity? quantity : 1
-          //          }]
-          //       }
-          //     }
-          //   });
-
-          // }
+          response.data.line_items.physical_items.forEach(item =>{
+            
+            if (checkproduct(productId,item.product_id)) {
+              savedatalayer.push(response.data.line_items.physical_items);
+                  window.dataLayer.push({
+                  'event': 'addToCart',
+                  'ecommerce': {
+                    'currencyCode': 'USD',
+                    'add': {                                // 'add' actionFieldObject measures.
+                      'products': [{                        //  adding a product to a shopping cart.
+                        'name': item.name,
+                        'id': item.id,
+                        'price': item.list_price,
+                        'brand': 'Obagi',
+                        'category': item.url.includes('medical')? 'medical' : 'clinical',
+                        'variant': '',
+                        'quantity': item.quantity,
+                       }]
+                    }
+                  }
+                });
+              }
+              })
         })
         .catch(error => {
           setState({ ...state, addingToCart: false, addToCartError: error });
@@ -432,26 +394,7 @@ export const CartProvider = ({ children }) => {
           }
         });
 
-        // if (state.addingToCart == false && typeof window !== "undefined") {
-        //   window.dataLayer.push({
-        //     'event': 'addToCart',
-        //     'ecommerce': {
-        //       'currencyCode': 'USD',
-        //       'add': {                                // 'add' actionFieldObject measures.
-        //         'products': [{                        //  adding a product to a shopping cart.
-        //           'name': '',
-        //           'id': productsId,
-        //           'price': price,
-        //           'brand': '',
-        //           'category': '',
-        //           'variant': '',
-        //           'quantity': quantity
-        //          }]
-        //       }
-        //     }
-        //   });
-        //   console.log("ashhh dl", window.dataLayer);
-        // }
+      
       })
       .catch(error => {
         setState({ ...state, addingToCart: false, addToCartError: error });
@@ -492,24 +435,9 @@ export const CartProvider = ({ children }) => {
           cartId = undefined;
           if (typeof window !== "undefined") {
             window.localStorage.removeItem('cartId')
-            // window.dataLayer.push({
-            //   'event': 'removeFromCart',
-            //   'ecommerce': {
-            //     'remove': {                               // 'remove' actionFieldObject measures.
-            //       'products': [{                          //  removing a product to a shopping cart.
-            //           'name': product.name? product.name : '',
-            //           'id': product.product_id? product.product_id : '',
-            //           'price': product.list_price? product.list_price : '',
-            //           'brand': '',
-            //           'category': '',
-            //           'variant': '',
-            //           'quantity': 1
-            //       }]
-            //     }
-            //   }
-            // });
-            // console.log("ashhh dl", window.dataLayer);
+            
           }
+        
           setState({ ...initialState, cartLoading: false });
           return;
         }
@@ -517,6 +445,29 @@ export const CartProvider = ({ children }) => {
         return res.json();
       })
       .then(response => {
+        for (let i = 0; i < state.cart.lineItems.physical_items.length; i++) {
+          if (state.cart.lineItems.physical_items[i].id === itemId) {
+            window.dataLayer.push({
+              'event': 'remove_from_cart',
+              'ecommerce': {
+                'items': [{
+                  'item_name': state.cart.lineItems.physical_items[i].name, // Name or ID is required.
+                  'item_id': state.cart.lineItems.physical_items[i].productId,
+                  'price': state.cart.lineItems.physical_items[i].list_price,
+                  'item_brand': 'Obagi',
+                  'item_category': state.cart.lineItems.physical_items[i].url.includes('medical')? 'medical' : 'clinical',
+                  'item_variant': '',
+                  'item_list_name': '',  // If associated with a list selection.
+                  'item_list_id': '',  // If associated with a list selection.
+                  'index': 1,  // If associated with a list selection.
+                  'quantity': state.cart.lineItems.physical_items[i].quantity
+                }]
+              }
+            });
+            
+          }
+          
+        }
         response && refreshCart(response);
       })
       .catch(error => {
@@ -527,11 +478,58 @@ export const CartProvider = ({ children }) => {
   const updateCartItemQuantity = (item, action) => {
     const newQuantity = item.quantity + (action === 'minus' ? -1 : 1);
     const saveprice = item.list_price + (action === 'minus' ? -1 : 1)
+    if(newQuantity > 0 && newQuantity < 4){
+      for (let i = 0; i < state.cart.lineItems.physical_items.length; i++) {
+        if (state.cart.lineItems.physical_items[i].id === item.id && action === 'minus') {
+          window.dataLayer.push({
+            'event': 'remove_from_cart',
+            'ecommerce': {
+              'items': [{
+                'item_name': state.cart.lineItems.physical_items[i].name, // Name or ID is required.
+                'item_id': state.cart.lineItems.physical_items[i].productId,
+                'price': state.cart.lineItems.physical_items[i].list_price,
+                'item_brand': 'Obagi',
+                'item_category': state.cart.lineItems.physical_items[i].url.includes('medical')? 'medical' : 'clinical',
+                'item_variant': '',
+                'item_list_name': '',  // If associated with a list selection.
+                'item_list_id': '',  // If associated with a list selection.
+                'index': 1,  // If associated with a list selection.
+                'quantity': state.cart.lineItems.physical_items[i].quantity
+              }]
+            }
+          });
+          
+        }
+        
+      }
+      for (let i = 0; i < state.cart.lineItems.physical_items.length; i++) {
+        if (state.cart.lineItems.physical_items[i].id === item.id && action !== 'minus') {
+  
+      window.dataLayer.push({
+      'event': 'addToCart',
+      'ecommerce': {
+        'currencyCode': 'USD',
+        'add': {                                // 'add' actionFieldObject measures.
+          'products': [{                        //  adding a product to a shopping cart.
+            'name': state.cart.lineItems.physical_items[i].name,
+            'id': state.cart.lineItems.physical_items[i].id,
+            'price': state.cart.lineItems.physical_items[i].list_price,
+            'brand': 'Obagi',
+            'category': state.cart.lineItems.physical_items[i].url.includes('medical')? 'medical' : 'clinical',
+            'variant': '',
+            'quantity': state.cart.lineItems.physical_items[i].quantity,
+           }]
+        }
+      }
+    });
+  }}
+    }
     setState({ ...state, updatingItem: item.id });
     if (newQuantity < 1) {
       return removeItemFromCart(item.id, item);
     }
     if (newQuantity > 3) {
+    
       return updateItemInCart(item.id, {
         line_item: {
           quantity: 3,
