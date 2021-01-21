@@ -1160,9 +1160,14 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
                                     { node.field_bread_cramp_title?
                                     <span > {node.field_bread_cramp_title}</span>:
                                     node.field_taxonomy_hero_link?
-                                    <span > {node.field_taxonomy_hero_link.title}</span>:<><Link to={`/${first_url}`} > {first_url}</Link>
-                                   {" "}/ {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""}
-
+                                    <span > {node.field_taxonomy_hero_link.title}</span>
+                                    :<>
+                                    {node.field_taxonomy_hero_paraprapgh_t.toLowerCase()==="medical"?
+                                    <Link to="/medical" > Medical</Link>:<Link to="/clinical" > Clinical</Link>}
+                                    
+                                   {" "}/ {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? 
+                                    checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""}
+                                      
                                     </> }  
                                        {/* / {sec_url ? <span dangerouslySetInnerHTML={{ __html: checkTaxonomy.field_taxonomy_hero_para_title? checkTaxonomy.field_taxonomy_hero_para_title : getname }}></span> : ""} */}
                                     </p>
