@@ -6,9 +6,8 @@ import { useStaticQuery, graphql } from "gatsby"
 const YouMayLike = ({key, node }) => {
   var settings = {
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    
+    slidesToShow: node.relationships.field_product_card.length,
 
     responsive: [
       {
@@ -21,7 +20,7 @@ const YouMayLike = ({key, node }) => {
       },
     ],
   }
-console.log('hassan1',node)
+
 
   return (
     <div

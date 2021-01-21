@@ -40,7 +40,7 @@ const Notification = ({ id, text, type }) => {
   const removeNotification = value && value.removeNotification;
   const {notif, setNotif} = useContext(UserContext);
 
-  console.log("valash", notif)
+  
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
