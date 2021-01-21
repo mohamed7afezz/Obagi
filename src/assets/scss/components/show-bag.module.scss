@@ -45,9 +45,13 @@
         min-height: 88px;
       }
   }
+  .pointer{
+    cursor: pointer;
+  }
   .BagProductDesc,.cartProductTitle,.cartProductTitle:hover{
       font-size: 14px;
       border: 0;
+      cursor: pointer;
       text-decoration: none;
       color: #132466;
       line-height: 16px;

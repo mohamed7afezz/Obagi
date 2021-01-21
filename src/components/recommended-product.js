@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import Img from 'gatsby-image'
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import CartContext from "../providers/cart-provider"
 
@@ -16,23 +16,26 @@ recTitle ,
 premierid,
 feild_preimer}) => {
 
-const value = useContext(CartContext)
-const addToCart = value && value.addToCart
-const addingToCart = value && value.state.addingToCart
-
-function closeModal() {
-    // $("#Showbag").removeClass("d-block");
-    // $("#Showbag").attr('style', 'display: none !important');
-//    $("body").removeClass("modal-open");
-//    $(".modal-backdrop").remove();
-}
+    const value = useContext(CartContext)
+    const addToCart = value && value.addToCart
+    const addingToCart = value && value.state.addingToCart
+    
+    const removeNotification = value && value.removeNotification;
+    function  navigateto(link){
+    console.log('hassan')
+    
+     removeNotification(12);
+      navigate(link)
+    }
     return (
 
         <div className={ShowBagStyle.productWrapper}>
-            <div className={ShowBagStyle.productImage}><a href={recLink} ><Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
+            <div className={ShowBagStyle.productImage}>
+                <a  onClick={() => {navigateto(recLink)}} className={ShowBagStyle.pointer}  >
+                <Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
-                <a href={recLink} className={ShowBagStyle.productName} onClick={closeModal}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
+                <a  className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={() => {navigateto(recLink)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>

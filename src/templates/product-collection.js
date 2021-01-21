@@ -787,9 +787,7 @@ export const productPageQuery = graphql`
             field_need_to_know_description {
               processed
             }
-            field_desc_sec_par {
-              processed
-            }
+          
             field_medical_cat_meta_tags {
               description
               title

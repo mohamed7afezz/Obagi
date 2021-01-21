@@ -7,7 +7,7 @@ const YouMayLike = ({key, node }) => {
   var settings = {
     infinite: true,
     
-    slidesToShow: node.relationships.field_product_card.length,
+    slidesToShow: node.relationships.field_product_card.length <= 3?node.relationships.field_product_card.length  : 3,
 
     responsive: [
       {
@@ -44,7 +44,7 @@ const YouMayLike = ({key, node }) => {
                   <ProductCard
                       productLink={item.path.alias}
                       producttitle={item.title}
-                      productdescription={{__html:item.field_medical_description.processed}}
+                      productdescription={{__html:item.field_medical_description?item.field_medical_description.processed:""}}
                       productimage={ item.relationships.field_medical_image &&  item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                       price={item.field_medical_price}
                       productId={item.field_medical_id}

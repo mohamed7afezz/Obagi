@@ -3519,3 +3519,9 @@ background-image: url(mobileArrow.svg);
 .iconsvg{
   width: 16px;
 }
+#VideoPopUp .modal-header .close{
+  top: -50px;
+}
+#VideoPopUp .modal-header .close::before,#VideoPopUp .modal-header .close::after {
+display: none;
+}
