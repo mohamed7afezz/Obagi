@@ -5,6 +5,7 @@ import OrderHistory from '../../components/order-history'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/core";
+import SEO from "../seo"
 const spinner = css`
   display: block;
   margin: 0 auto;
@@ -50,6 +51,7 @@ export default function Orders() {
 
     return (
         <UserAccount activeTab="orders">
+            <SEO title="Orders | Obagi" ogTitle="Orders | Obagi" />
             <div className="tab-pane active orders-comp" id="orders" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>

@@ -3,6 +3,7 @@ import UserAccount from "../../components/user-account"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import premierStyles from "../../assets/scss/components/premier-points.module.scss"
 import Img from 'gatsby-image'
+import SEO from "../seo"
 
 
 export default function Premier() {
@@ -38,6 +39,8 @@ export default function Premier() {
 
   return (
     <UserAccount activeTab="premier-points">
+      <SEO title="Premier Points | Obagi" ogTitle="Premier Points | Obagi" />
+
       <div className="tab-pane active" id="premier" role="tabpanel">
       <div
           className={[

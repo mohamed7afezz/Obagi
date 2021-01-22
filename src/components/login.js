@@ -5,6 +5,7 @@ import UserContext from "../providers/user-provider"
 import LoginMenu from '../components/login-menu'
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import SEO from "./seo";
 const spinner = css`
   display: block;
   margin: 0 auto;
@@ -56,6 +57,7 @@ const Login = () => {
 
   return (
     <>
+    <SEO title="Account Signin | Obagi" ogTitle="Account Signin | Obagi" />
       <LoginMenu currentPage="login" />
       {isLoading ?
         <div>

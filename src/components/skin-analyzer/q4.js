@@ -160,8 +160,8 @@ const Q4 = (props) => {
                             </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
-                                <input type="radio" id="EyeBagsAndDarkCircles" name="q" value="Eye Bags And Dark Circles" onChange={sendBackData} />
-                                <label onClick={topFunction}  htmlFor="EyeBagsAndDarkCircles">Eye Bags and Dark Circles</label>
+                                <input type="radio" id="EyeBagsAndDarkCircles" name="q" value="Aging Eyes" onChange={sendBackData} />
+                                <label onClick={topFunction}  htmlFor="EyeBagsAndDarkCircles">Aging Eyes</label>
                             </div>
                         </div>
                         <div className="row justify-content-center">
