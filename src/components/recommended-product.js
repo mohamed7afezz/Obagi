@@ -20,22 +20,21 @@ feild_preimer}) => {
     const addToCart = value && value.addToCart
     const addingToCart = value && value.state.addingToCart
     
-    const removeNotification = value && value.removeNotification;
-    function  navigateto(link){
-    console.log('hassan')
-    
-     removeNotification(12);
+    const removeNotification =  value.removeNotification;
+    function  navigateto(link,e){
+        e.preventDefault();
+     removeNotification([]);
       navigate(link)
     }
     return (
 
         <div className={ShowBagStyle.productWrapper}>
             <div className={ShowBagStyle.productImage}>
-                <a  onClick={() => {navigateto(recLink)}} className={ShowBagStyle.pointer}  >
+                <a href={recLink} onClick={(e) => {navigateto(recLink,e)}} className={ShowBagStyle.pointer}  >
                 <Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
-                <a  className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={() => {navigateto(recLink)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
+                <a  className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={() => {navigateto(recLink,recId)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>

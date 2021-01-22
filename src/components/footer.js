@@ -122,7 +122,7 @@ const Footer = ({ siteTitle }) => {
 
   return (
     <footer>
-     <div class="be-ix-link-block"></div>
+    
 
       <div className="container-fluid footer">
         <div className={footerStyles.footerSection}>
@@ -288,6 +288,7 @@ const Footer = ({ siteTitle }) => {
           </div>
         </div>
       </div>
+      <div class="be-ix-link-block"></div>
     </footer>
   )
 }

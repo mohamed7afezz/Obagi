@@ -97,6 +97,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
+        src: '//cdn.bc0a.com/autopilot/f00000000218233/autopilot_sdk.js', // Change to the script filename
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
         src: process.env.Bazaarvoice_URL,
       },
     },

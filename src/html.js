@@ -67,9 +67,7 @@ export default function HTML(props) {
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.instagramFeed/1.3.2/jquery.instagramFeed.min.js" ></script> */}
 
  
-    <Helmet>
-    <script src="//cdn.bc0a.com/autopilot/f00000000218233/autopilot_sdk.js"></script>
-    </Helmet>
+  
       </body>
     </html>
   )
