@@ -5,10 +5,10 @@ import SEO from '../components/seo';
 import obagiLogo from '../assets/images/obagi_logo-og-image.png'
 import { getParagraph } from '../components/paragraphs-helper';
 
-const baseUrl = process.env.Base_URL;
+const baseUrl = process.env.Drupal_URL;
 
 const BasicPageTemp = (node) => {
-    console.log("Bahiii", node);
+    console.log("Bahiii", baseUrl);
     const data = node.data
     const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
