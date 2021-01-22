@@ -18,8 +18,8 @@ const BasicPageTemp = (node) => {
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_careers_image && paragraphs[0].props.node.relationships.field_careers_image.localFile ? paragraphs[0].props.node.relationships.field_careers_image.localFile.url
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i && paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
                     : null
-    let metaImgField = data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image && node.location.href? node.location.href.split("/")[2] + data.nodePage.field_meta_tags.og_image : null
-    let defaultLogo =  node.location.href?  node.location.href.split("/")[2] + obagiLogo : null
+    let metaImgField = data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image && node.location.href? "https://" + node.location.href.split("/")[2] + data.nodePage.field_meta_tags.og_image : null
+    let defaultLogo =  node.location.href? "https://" +  node.location.href.split("/")[2] + obagiLogo : null
 
     console.log("ashhh seo", seo)
     console.log("ashhh paragraphs", paragraphs)
