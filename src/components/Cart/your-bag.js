@@ -60,11 +60,16 @@ const StandardItem = props => {
   const value = useContext(CartContext)
   const removeNotification = value && value.removeNotification;
   const { items, cartType } = props
-  function  navigateto(link,id){
+  
+  function  navigateto(link,e){
+    console.log("hassan")
+ e.preventDefault();
   
   
-   removeNotification(id);
+      removeNotification([]);
+    
     navigate(link)
+  
   }
   const { searchInIndexById } = useContext(SearchContext)
   let itemsContent = items.map(item => {
@@ -79,14 +84,14 @@ const StandardItem = props => {
         <>
           <div className={["row", ShowBagStyle.selectedproductsCard, "selectedproductsCard"].join(" ")}>
             <div className={["col-4", "mob-pl-0"].join(" ")}>
-            <a className={ShowBagStyle.pointer} onClick={() => {navigateto(producturl[1],item.id)}}>
+            <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={() => {navigateto(producturl[1])}}>
                 <img  src={item.image_url} alt={`${item.name}`} />
               </a>
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
                 <p className={[ShowBagStyle.BagProductDesc, BagStyle.cartpre].join(" ")}>
-                  <a className={ShowBagStyle.cartProductTitle} onClick={() => {navigateto(producturl[1],item.id)}}>
+                  <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {navigateto(producturl[1],e)}}>
                   <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
                 {item.premier_points != '' ? <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>Earn {item.premier_points} Premier Points ea.</span> : ''}
               </div>
@@ -115,7 +120,7 @@ const StandardItem = props => {
           <div className={"productInBag"}>
             <div className={["row", "alignFlex"].join(" ")}>
               <div class="hide-desk col-4">
-              <a className={ShowBagStyle.pointer} onClick={() => {navigateto(producturl[1],item.id)}}>
+              <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => {navigateto(producturl[1],e)}}>
                   <img  src={item.image_url} alt={`${item.name}`} />
                 </a>
               </div>
@@ -123,12 +128,12 @@ const StandardItem = props => {
                 className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
               >
                 <div className={["col-md-2", "hide-tabmob"].join(" ")}>
-                  <Link to={`${producturl[1]}`}>
+                  <a onClick={(e) => {navigateto(producturl[1],e)}} href={`${producturl[1]}`}>
                     <img src={item.image_url} alt={`${item.name}`} />
-                  </Link>
+                  </a>
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
-                  <p className={BagStyle.prouductBagDesc}><a onClick={navigateto(producturl[1],item.id)} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
+                  <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {navigateto(producturl[1],e)}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
                   {item.premier_points != '' ? <span className={BagStyle.premire}>Earn {item.premier_points} Premier Points ea.</span> : ''}
                 </div>
                 {/* <div className={"col-md-2"}>

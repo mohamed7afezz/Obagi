@@ -21,17 +21,16 @@ feild_preimer}) => {
     const addingToCart = value && value.state.addingToCart
     
     const removeNotification =  value.removeNotification;
-    function  navigateto(link,id){
-    console.log('hassan')
-    
-     removeNotification(id);
+    function  navigateto(link,e){
+        e.preventDefault();
+     removeNotification([]);
       navigate(link)
     }
     return (
 
         <div className={ShowBagStyle.productWrapper}>
             <div className={ShowBagStyle.productImage}>
-                <a  onClick={() => {navigateto(recLink,recId)}} className={ShowBagStyle.pointer}  >
+                <a href={recLink} onClick={(e) => {navigateto(recLink,e)}} className={ShowBagStyle.pointer}  >
                 <Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
