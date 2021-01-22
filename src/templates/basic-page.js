@@ -17,14 +17,15 @@ const BasicPageTemp = (node) => {
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_slide && paragraphs[0].props.node.relationships.field_slide[0] && paragraphs[0].props.node.relationships.field_slide[0].relationships && paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image && paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image.localFile? paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image.localFile.url
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_careers_image && paragraphs[0].props.node.relationships.field_careers_image.localFile ? paragraphs[0].props.node.relationships.field_careers_image.localFile.url
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i && paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? paragraphs[0].props.node.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-                    : data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image? data.nodePage.field_meta_tags.og_image
                     : null
+    let metaImgField = data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image && node.location.href? node.location.href.split("/")[2] + data.nodePage.field_meta_tags.og_image : null
+    let defaultLogo =  node.location.href?  node.location.href.split("/")[2] + obagiLogo : null
 
-
+    console.log("ashhh seo", seo)
     console.log("ashhh paragraphs", paragraphs)
     return (
         <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar}>
-            <SEO canonical={seo1[1]?seo1[1]:""} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={firstImage? firstImage : obagiLogo}/>
+            <SEO canonical={seo1[1]?seo1[1]:""} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={firstImage? firstImage : metaImgField? metaImgField : defaultLogo? defaultLogo : null}/>
             {paragraphs}
         </Layout>
     )

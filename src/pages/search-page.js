@@ -10,7 +10,7 @@ import SEO from '../components/seo';
 const products = ({ data, nodeType }) => (
  
     <Layout menuType = "relative" nodeType={nodeType}> 
-      <SEO title="Search" description="Search Page Description" />
+      <SEO title="Search Results" description="Search Results" />
       <SearchResult/>
     </Layout>
         

@@ -6,18 +6,24 @@ import { CustomSelect } from '../../assets/js/custom-select'
 import Scrollbars from 'react-custom-scrollbars';
 import UserContext from '../../providers/user-provider';
 import $ from 'jquery'
+import SEO from "../seo"
 
 const baseUrl = process.env.Base_URL
 
 export default function AccountSettings() {
   const [err, setErr] = useState();
 
+
+
   useEffect(() => {
     getData();
+
+    // console.log("ashhh month val", chosenMonth, monthVal)
     // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
     //   CustomSelect();
     // }
   }, [])
+
 
   // Date format must be yyyy/mm/dd
   function isValidDate(dateString) {
@@ -139,7 +145,7 @@ export default function AccountSettings() {
     } else {
       let res = await userSettingsData.json();
       setErr(res.errors);
-  }
+    }
 
     if (!isValidDate(userAccount.birthdate) || userAccount.birthdate === today.toString()) {
       // show error message for date of birth field
@@ -149,6 +155,8 @@ export default function AccountSettings() {
     }
 
   }
+
+
 
   async function getData() {
 
@@ -160,14 +168,28 @@ export default function AccountSettings() {
     })).json();
 
     if (userAccountData !== "User not login.") {
+      // let monthVal = document.querySelectorAll(".Give-val.month")
+      // let chosenMonth = Object.values(monthVal).filter(it => it.getAttribute('data-value') === userAccountData.data[0].birthdate.split('-')[1])[0].innerHTML
+      // let birthdayArr = []
+      // birthdayArr.push(userAccountData.data[0].birthdate.split('-')[0])
+      // birthdayArr.push(chosenMonth)
+      // birthdayArr.push(userAccountData.data[0].birthdate.split('-')[2])
+      // let newBirthday = birthdayArr.join("-")
       setData(userAccountData.data[0]);
-    }
+      // setData({
+      //   ...userAccount,
+      //   birthdate: newBirthday
+      // })
+      // console.log("ashhh user ", userAccountData.data[0], newBirthday)
 
+    }
     // setIsLoading(false);
 
   }
 
+
   function handleAttr(event) {
+
     switch (event.target.name || event.target.attributes['data-name'].value) {
 
       case 'date':
@@ -212,8 +234,19 @@ export default function AccountSettings() {
 
   }
 
+  function getMonthName(val) {
+
+    if (!isNaN(val)) {
+      let monthVal = document.querySelectorAll(".Give-val.month")
+      return Object.values(monthVal).filter(it => it.getAttribute('data-value') === val)[0].innerHTML
+    } else {
+      return val
+    }
+  }
+
   useEffect(() => {
     if (typeof window != undefined) {
+
       // console.log("ashhh", yearsList)
       document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
         this.nextSibling.classList.remove('hide');
@@ -241,7 +274,10 @@ export default function AccountSettings() {
 
 
   return (
+
     <UserAccount activeTab="account-settings">
+      <SEO title="Account Settings | Obagi" ogTitle="Account Settings | Obagi" />
+
       <form method="post"
         onSubmit={event => {
           updateData(event)
@@ -329,7 +365,7 @@ export default function AccountSettings() {
                   <div className="day-month">
                     <div class="form-group select-group new-select  day-select">
                       <label for="reviewFormSelect" class="form-label">*Day</label>
-                      <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[2] : ""}</div>
+                      <div class="select-selected">{userAccount.birthdate ? userAccount.birthdate.split('-')[2] : ""}</div>
                     </div>
                     <div className="form-group select-group  old-select day-select hide">
                       <label for="reviewFormSelect" className="form-label">*Day</label>
@@ -349,7 +385,7 @@ export default function AccountSettings() {
                     </div>
                     <div class="form-group select-group new-select  month-select">
                       <label for="reviewFormSelect" class="form-label">*Month</label>
-                      <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[1] : ""}</div>
+                      <div class="select-selected">{userAccount.birthdate ? getMonthName(userAccount.birthdate.split('-')[1]) : ""}</div>
                     </div>
                     <div className="form-group select-group old-select  month-select hide">
                       <label for="reviewFormSelect" className="form-label">*Month</label>
@@ -379,7 +415,7 @@ export default function AccountSettings() {
                   </div>
                   <div class="form-group select-group new-select  year-select">
                     <label for="reviewFormSelect" class="form-label">*Year</label>
-                    <div class="select-selected">{userAccount.birthdate? userAccount.birthdate.split('-')[0] : ""}</div>
+                    <div class="select-selected">{userAccount.birthdate ? userAccount.birthdate.split('-')[0] : ""}</div>
                   </div>
 
                   <div className="form-group select-group old-select  year-select hide">
@@ -430,5 +466,6 @@ export default function AccountSettings() {
         </div>
       </form>
     </UserAccount >
+
   )
 }
