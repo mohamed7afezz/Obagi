@@ -12,7 +12,7 @@ const Register = () => {
     const size = useWindowSize();
     let screenWidth = size.width;
     let largeScreen = 992;
-    const [validForm, setValidForm] = useState();
+    const [validForm, setValidForm] = useState(false);
 
     const { user, err, handleRegister } = useContext(UserContext);
     useEffect(() => {
@@ -330,7 +330,7 @@ const Register = () => {
     }
 
     function handleSubmit(e) {
-       
+        let isFormValid = false;
         e.preventDefault();
         var form = document.querySelector('.needs-validation');
         // Loop over them and prevent submission
@@ -338,14 +338,16 @@ const Register = () => {
             // event.preventDefault();
             // event.stopPropagation();
             $(".error-list-sec").html(errorList(form))
-            setValidForm(false);
-            console.log("ashh form func invalid", form.checkValidity(), validForm)
+            // setValidForm(false);
+            isFormValid = false;
+            console.log("ashh form func invalid", form.checkValidity(), validForm, isFormValid)
 
         } else {
             $(".error-list-sec").html('')
-            setValidForm(true);
-            console.log("else",validForm)
-            console.log("ashh form func valid", validForm)
+            // setValidForm(true);
+            isFormValid = true;
+            console.log("else",validForm, isFormValid)
+            console.log("ashh form func valid", validForm, isFormValid)
         }
         
 
@@ -371,8 +373,8 @@ const Register = () => {
             setIsToday(false);
         }
     
-        if(validForm){
-            console.log("ashh form valid", validForm)
+        if(isFormValid){
+            console.log("ashh form valid", newUser)
 
             handleRegister(newUser);
 
