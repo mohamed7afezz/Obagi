@@ -15,61 +15,9 @@ const Register = () => {
     const [validForm, setValidForm] = useState(false);
 
     const { user, err, handleRegister } = useContext(UserContext);
-    useEffect(() => {
     
-
-        // var forms = document.getElementsByClassName('needs-validation');
-        // // Loop over them and prevent submission
-        // Array.prototype.filter.call(forms, function (form) {
-        //     form.addEventListener('submit', function (event) {
-        //         if (form.checkValidity() === false) {
-        //             event.preventDefault();
-        //             event.stopPropagation();
-        //             $(".error-list-sec").html(errorList(form))
-        //         } else {
-        //             $(".error-list-sec").html('')
-        //            setValidForm(true);
-        //         }
-        //     }, false)
-        // });
-        // $(':invalid').change(function () {
-        //     $(this).closest('.form-group').removeClass('error');
-        // })
-
-        // function errorList(form) {
-        //     var list = '';
-        //     var lastRadio = '';
-        //     var listArray = []
-
-        //     $(form).find(':invalid').each(function () {
-        //         $(this).closest('.form-group').addClass('error');
-        //         if (
-        //             (
-        //                 ($(this).attr('type') == 'radio' && lastRadio != $(this).attr('name')) ||
-        //                 $(this).attr('type') != 'radio'
-        //             ) &&
-        //             $(this).prop("tagName").toLowerCase() != 'fieldset'
-        //         ) {
-        //             var isExisit = listArray.some(item => {
-        //                 return item == $(this).attr('data-webform-required-error')
-        //             })
-        //             lastRadio = $(this).attr('name');
-        //             if (!isExisit) {
-        //                 listArray.push($(this).attr('data-webform-required-error'))
-        //                 list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
-        //             }
-        //         }
-          
-        //     })
-        //     return list;
-        // }
-
-           }, []); // Empty array ensures that effect is only run on mount
-
-
     useEffect(() => {
         if (typeof window != undefined) {
-            // console.log("ashhh", yearsList)
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
                 this.nextSibling.classList.remove('hide');
                 this.classList.add('hide');
@@ -81,7 +29,7 @@ const Register = () => {
 
                 if (this.closest('.day-select')) {
                     this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                    //  $('input[name="day"]').val()=$(this).attr('value')
+                   
 
                 } else if (this.closest('.month-select')) {
                     this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
@@ -98,13 +46,7 @@ const Register = () => {
             navigate('/my-account/orders');
         }
     }
-    // function checkvaild(e) {
-    //     if (!document.querySelector(".regform").checkValidity()) {
-    //         // console.log( document.querySelector(".regform").validationMessage)
-    //     } else {
-    //         // console.log("hassan",document.querySelector(".regform").checkValidity())
-    //     }
-    // }
+
 
     const [isPassMatch, setIsPassMatch] = useState();
     const [passConfirm, setPassConfirm] = useState(false);
@@ -126,13 +68,12 @@ const Register = () => {
         } else {
             setIsPassMatch(false);
             check = false;
-            // document.querySelectorAll(".submit-input").disabled = true;
+            
             $('.submit-input').attr('disabled', 'disabled');
 
 
         }
 
-        // console.log("dis", document.querySelectorAll(".submit-input").disabled)
 
         return check;
     }
@@ -250,7 +191,7 @@ const Register = () => {
                         return item;
                     })
                 })
-                // console.log("ashhuser", newUser)
+           
 
                 break;
             case 'postal_code':
@@ -263,7 +204,7 @@ const Register = () => {
                         return item;
                     })
                 })
-                // console.log("ashhuser", newUser)
+               
 
                 break;
             case 'email_sub':
@@ -276,11 +217,11 @@ const Register = () => {
                         return item;
                     })
                 })
-                // console.log("ashhuser", newUser)
+                
 
                 break;
             default:
-                // console.log('not in the attributes');
+                
                 break;
         }
 
@@ -292,9 +233,7 @@ const Register = () => {
     let yyyy = today.getFullYear();
 
     today = yyyy + '-' + mm + '-' + dd;
-    // console.log("today", today)
 
-    // console.log("ashhh input", newUser.attributes[0].attribute_value, newUser.attributes[0].attribute_value.type, today.toString())
 
     const [isToday, setIsToday] = useState();
     function topFunction() {
@@ -335,19 +274,15 @@ const Register = () => {
         var form = document.querySelector('.needs-validation');
         // Loop over them and prevent submission
         if (form.checkValidity() === false) {
-            // event.preventDefault();
-            // event.stopPropagation();
+
             $(".error-list-sec").html(errorList(form))
-            // setValidForm(false);
             isFormValid = false;
-            console.log("ashh form func invalid", form.checkValidity(), validForm, isFormValid)
 
         } else {
             $(".error-list-sec").html('')
-            // setValidForm(true);
+         
             isFormValid = true;
-            console.log("else",validForm, isFormValid)
-            console.log("ashh form func valid", validForm, isFormValid)
+      
         }
         
 
@@ -358,13 +293,12 @@ const Register = () => {
         
         // check date validality
         if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0) {
-            // show error message for date of birth field
-            // console.log('bahiii', 'date wrong')
+         
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
                 item.classList.add("error")
             });
-            // handleRegister(newUser);
+   
 
         } else {
             document.querySelectorAll(".form-group.select-group").forEach(item => {
@@ -374,7 +308,7 @@ const Register = () => {
         }
     
         if(isFormValid){
-            console.log("ashh form valid", newUser)
+         
 
             handleRegister(newUser);
 
@@ -439,8 +373,7 @@ const Register = () => {
                                 {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
                             </ul>
                             <ul className="error-list-sec">
-                                {/* {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
-                                {isToday == true ? <li className="text-danger">Please submit the correct date of birth.</li> : ""} */}
+                                
                             </ul>
                             {isToday == true ?
                                 <ul>
@@ -580,7 +513,7 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <button type="submit" onClick={ handleSubmit}
+                                <button type="submit" onClick={ handleSubmit, topFunction}
                                   
 
                                  className="submit-input"  >Create Account</button>
