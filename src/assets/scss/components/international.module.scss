@@ -132,6 +132,6 @@
     @extend %futurapt-bold;
 }
 
-.column-wrapper div div div h5 + p a {
+.column-wrapper div div div h5 ~ p a {
     text-decoration: none;
 }
