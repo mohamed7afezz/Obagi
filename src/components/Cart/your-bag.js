@@ -741,37 +741,7 @@ const YourBag = (props, { notificationId }) => {
                       </div>
                       {state.showShippingMethods ?
                         <div className={"showinfp"}>
-                          {/* <div className={BagStyle.bagSelectContainer}>
-                            <label>Country</label>
-                            <select className={BagStyle.bagSelect} name="Country">
-                              <option value="All">Select</option>
-                              <option value="Hyaluronic Acid">
-                                Hyaluronic Acid
-                            </option>
-                            </select>
-                          </div>
-                          <div className={BagStyle.bagSelectContainer}>
-                            <label>State/Province</label>
-                            <select className={BagStyle.bagSelect} name="Country">
-                              <option value="All">Select</option>
-                              <option value="Hyaluronic Acid">
-                                Hyaluronic Acid
-                            </option>
-                            </select>
-                          </div>
-                          <div className={BagStyle.baginputtext}>
-                            <label>Suburb/City</label>
-                            <input type="text" name="Suburb/City" />
-                          </div>
-                          <div className={BagStyle.baginputtext}>
-                            <label>Zip Code</label>
-                            <input type="text" name="Zip Code" />
-                          </div>
-                          <button
-                            className={["btn", BagStyle.shippingbtn].join(" ")}
-                          >
-                            Estimate Shipping
-                          </button> */}
+                         
                           {!state.shippingLoading ?
                             <>
                               {state.shippingMethods.length > 0 ? state.shippingMethods
