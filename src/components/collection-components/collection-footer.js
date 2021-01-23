@@ -37,7 +37,7 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
               info
               field_taxonomy_footer_type
               field_taxonomy_footer_title
-              field_taxonomy_footer_subtitle
+         
               field_taxonomy_footer_button
               field_button_url
               relationships {
@@ -247,7 +247,7 @@ return (
             <div className={['col-12 offset-lg-1','col-lg-4',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
                       <p className={[Collectionfooterstyle.typecon, "collection-footer-typecon"].join(" ")}>{getdata.field_taxonomy_footer_type}</p>
                       <h1 className={[Collectionfooterstyle.collectionFooterTitle, "collection-footer-title"].join(" ")}>{getdata.field_taxonomy_footer_title}</h1>
-                      <p className={Collectionfooterstyle.subtitle}>{getdata.field_taxonomy_footer_subtitle}</p>
+                      {getdata.field_taxonomy_footer_subtitle?<p className={Collectionfooterstyle.subtitle}>{getdata.field_taxonomy_footer_subtitle}</p>:""}
                       <div className={[Collectionfooterstyle.description, "collection-footer-desc"].join(" ")} dangerouslySetInnerHTML={{__html: getdata.body.processed}}></div>
                       <div className={[Collectionfooterstyle.linkcontainer,"CollectionFooterContainer"].join(' ')}>
                       <a className={[Collectionfooterstyle.link, "collection-footer-link"].join(" ")} href={getdata.field_button_url}>{getdata.field_taxonomy_footer_button}</a>

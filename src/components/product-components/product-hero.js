@@ -19,7 +19,7 @@ import { checkStock } from '../../assets/js/stock';
 import fb from "../../assets/images/product-images/facebook.svg"
 import tw from "../../assets/images/product-images/twitter.svg"
 const baseUrl = process.env.Base_URL;
-
+const URL = process.env.Drupal_URL;
 const ProductHero = ({ data, nodeType }) => {
   useEffect(() => {
     if (typeof window != undefined) {
@@ -115,11 +115,11 @@ const ProductHero = ({ data, nodeType }) => {
 
 
 
-          "productImageURL": `https://dev-obagi.azurewebsites.net${reviewimg}`,
+          "productImageURL": `${URL.replace('api/','')}${reviewimg}`,
 
           //ex. https:\\site.com\pub\media\mh02-black_main.jpg
 
-          "productPageURL": `https://dev-obagi.azurewebsites.net${productpath}`,
+          "productPageURL": `${URL.replace('api/','')}${productpath}`,
 
 
           //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
