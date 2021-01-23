@@ -746,14 +746,19 @@ const YourBag = (props, { notificationId }) => {
                             <>
                               {state.shippingMethods.length > 0 ? state.shippingMethods
                                 .map(method => (
-                                  <>
-                                    {(method.settings
+                               
+                               <>
+                                
+                                    {
+                                     
+                                    (method.settings
                                       && method.settings.carrier_options
                                       && method.settings.carrier_options.minimum_sub_total
                                       && cartAmount < parseFloat(method.settings.carrier_options.minimum_sub_total)) ?
                                       ''
                                       :
                                       <>
+                                      {(method.id === 2 || method.id === 4 || method.id ===5)?
                                         <div class="d-flex shipping-flex">
                                           <label class="radioLabel">
                                             <input type="radio" id={method.id}
@@ -766,11 +771,13 @@ const YourBag = (props, { notificationId }) => {
                                           </label>
                                           <label >{method.settings.rate ? '$' + method.settings.rate : 'FREE'}</label>
                                         </div>
-                                        <p className="shipmenttxt">{shipmenttext(method.id)}</p>
+                                      :""}  <p className="shipmenttxt">{shipmenttext(method.id)}</p>
                                       </>
-                                    }
+                                  
+                                  }
+                                    
                                   </>
-
+                                
                                 )) : ''}
                               <p class="shipping-footnote">*Please allow for up to 1 business day for order processing.</p>
 
