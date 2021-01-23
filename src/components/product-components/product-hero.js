@@ -506,7 +506,7 @@ const ProductHero = ({ data, nodeType }) => {
                   COMPLIMENTARY SHIPPING
             </p>
                 <p className={ProductStyles.offerdesc}>Sign up for a free Obagi account and receive free ground shipping on orders $125 or more.</p>
-                <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin/"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
+                <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
             </p>
 
                 {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
