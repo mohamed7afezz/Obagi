@@ -58,7 +58,13 @@ module.exports = {
           `/page-2/`,
           `/phy-finder/`,
           `/products/`,
-          `/using-typescript/`
+          `/using-typescript/`,
+          `/my-account`,
+          `/my-account/account-settings`,
+          `/my-account/address-book`,
+          `/my-account/orders`,
+          `/my-account/premier-points`,
+          `/my-account/signin`
          
     ],
       }
