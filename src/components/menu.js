@@ -146,9 +146,17 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
       <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
     </Link>)
   } else if (!collapseTarget && itemId) {
-    return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
-      <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
-    </Link>)
+    if(link.link.uri=="internal:#"){
+      return (
+      <a className="single-tab" href="#" id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+        <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+      </a>)
+    }else{
+      return (
+      <Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+        <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+      </Link>)
+    }
   }
   else if (itemId && collapseTarget && isExpandable) {
 
