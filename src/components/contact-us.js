@@ -106,7 +106,7 @@ export default function Contact() {
                 <div className="row">
                     <div className="col-12 col-lg-8">
                         <div className="d-none d-lg-flex second-title-wrapper">
-                            <div className={myAccountStyles.secondTitle}>Contact Us</div>
+                            <h1 className={myAccountStyles.secondTitle}>Contact Us</h1>
                         </div>
                         <div className="contact-text">If you have any questions or want more information about Obagi, please contact us. We love hearing from our customers and we would be glad to further assist you.</div>
                         <div className="contact-title">Email Obagi</div>

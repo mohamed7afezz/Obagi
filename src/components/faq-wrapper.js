@@ -70,7 +70,7 @@ const FaqWrapper = ({ node }) => {
       <div className={[faqStyles.wrapper, "faq-wrapper"].join(" ")}>
         {/* <div className="container-fluid"> */}
         <div className="d-none d-lg-flex second-title-wrapper">
-          <div className={myAccountStyles.secondTitle}>FAQs</div>
+          <h1 className={myAccountStyles.secondTitle}>FAQs</h1>
         </div>
         <div className="row">
           <div className="col-12">

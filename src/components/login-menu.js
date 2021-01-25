@@ -22,9 +22,9 @@ const LoginMenu = ({ node, currentPage }) => {
                             : ""}
 
                         {currentPage === "register" ?
-                            <div className={[loginMenu.deskCreateHeader, "d-none d-lg-block"].join(" ")}>
+                            <h1 className={[loginMenu.deskCreateHeader, "d-none d-lg-block"].join(" ")}>
                                 Create an Account
-                        </div>
+                        </h1>
                             : ""}
                     </div>
                 </div>

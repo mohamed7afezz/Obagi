@@ -55,7 +55,7 @@ export default function Orders() {
             <div className="tab-pane active orders-comp" id="orders" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
-                    <div className={myAccountStyles.secondTitle}>Order History</div>
+                    <h2 className={myAccountStyles.secondTitle}>Order History</h2>
 
                     {orders !== "undefined" && Object.keys(orders).length != 0 && orders.length != 0?
                         <div className={myAccountStyles.ordersCount}>{orders.length} {orders.length > 1? "Orders" : "Order"}</div>

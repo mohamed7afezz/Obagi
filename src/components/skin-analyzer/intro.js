@@ -39,7 +39,7 @@ const Intro = (props) => {
                     </div>
                     <div className="col-12 col-lg-4 offset-lg-4 intro-text-wrapper">
                         <div className="text-padding">
-                            <div className="intro-title">Find your<br /> skin care solution</div>
+                            <h1 className="intro-title">Find your<br /> skin care solution</h1>
                             <div className="intro-text">Discover what works for you and your skin! Answer the following questions, and we'll recommend product with your top concerns in mind.</div>
                         </div>
                         <div className="col-12 col-lg-6 offset-lg-3">

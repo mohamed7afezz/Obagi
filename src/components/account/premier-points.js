@@ -48,7 +48,7 @@ export default function Premier() {
             "d-none d-lg-flex",
           ].join(" ")}
         >
-          <div className={premierStyles.secondTitle}>Premier Points</div>
+          <h2 className={premierStyles.secondTitle}>Premier Points</h2>
        
         </div>
         <div className="row mob-m-0">

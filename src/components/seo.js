@@ -63,7 +63,7 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
         },
         {
           name: `twitter:creator`,
-          content: '@Obagi',
+          content: site.siteMetadata.author,
         },
         {
           name: `twitter:title`,

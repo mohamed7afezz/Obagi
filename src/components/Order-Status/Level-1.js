@@ -108,7 +108,7 @@ const StartOrderStatus = props => {
                     <div class={["col-12 col-md-12",myAccountStyles.removemobpadding].join(" ")}>
                         <div className={myAccountStyles.FsectionWrap}>
                             <div>
-                                <div className={myAccountStyles.fsubtitle}>Order Status</div>
+                                <h1 className={myAccountStyles.fsubtitle}>Order Status</h1>
                                 <div className={["contact-text",myAccountStyles.alAccount].join(" ")}>
                                     ALeardy have an account ?
                                   </div>
