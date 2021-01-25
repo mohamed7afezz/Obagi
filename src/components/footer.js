@@ -254,7 +254,7 @@ const Footer = ({ siteTitle }) => {
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
-                    <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
+                    <button onClick={(e) => { submitforming(e) }} type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
                   <div className={[footerStyles.terms, "formInputCon"].join(" ")}>
                     <label className="terms" onClick={removevaild}>
