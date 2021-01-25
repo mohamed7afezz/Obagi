@@ -41,7 +41,7 @@ const Customer = ({ node, children, activeTab }) => {
                 <div className="col-12">
                     <div className="dropdown">
                         <button className="dropdown-toggle myaccount-toggle" type="button" id="accountDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {activeTab === "covid-19"? "COVID-19 Information":activeTab === "order-status"? "Order Status" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "covid-19"? "FAQs" : activeTab === "my-account"? "My Account" :activeTab === "covid-19"? "COVID-19 Information" : activeTab === "my-account"? "My Account": "Select"}
+                            {activeTab === "covid-19"? "COVID-19 Information":activeTab === "order-status"? "Order Status" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "covid-19"? "FAQs" : activeTab === "my-account"? "My Account" :activeTab === "covid-19"? "COVID-19 Information" : activeTab === "my-account"? "My Account" : activeTab === "faq"? "FAQs" : "Select"}
                         </button>
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
                             <Link to="/covid-19" className={activeTab == "covid-19" ? "active account-tab" : "account-tab"}  id="covid">COVID-19 Information</Link>

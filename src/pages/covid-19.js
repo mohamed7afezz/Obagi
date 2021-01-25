@@ -7,7 +7,7 @@ import Customer from "../components/customer-care";
 
 const Covid = ({ data }) => (
     <Layout> 
-      <SEO title="Cart" description="Cart Page Description" />
+      <SEO title="Our COVID-19 Response | Obagi" description="In our 30+ years as Obagi, we have seen the world change many times and have evolved with the changes to support our physicians, communities, and employees. When COVID-19 began, we pivoted again to further assist our partners and consumers." />
       <Customer activeTab="covid-19">
 <div class="container-fluid">
 
@@ -16,7 +16,7 @@ const Covid = ({ data }) => (
 <div class="col-12 col-md-8 " >
 <p class="common-p"><img alt="Covid" class="img-responsive" data-entity-type="file" data-entity-uuid="72a2ce7d-0b20-4dd2-9915-70834fc1d578" src="/api/sites/default/files/inline-images/Covidlogo_0.jpg"/></p>
 
-<h3 class="common-p">Our Covid-19 Response</h3>
+<h1 class="common-p">Our Covid-19 Response</h1>
 In our 30+ years as Obagi we have seen the world change many times and have evolved with the changes to support our physicians, communities, and employees. When COVID-19 began, we pivoted again to further assist our partners and consumers.
 
 <p>&nbsp;</p>

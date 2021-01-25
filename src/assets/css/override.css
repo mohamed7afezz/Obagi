@@ -247,10 +247,11 @@ z-index: 9;
     font-size: 28px;
     line-height: 40px;
   }
-  h3.common-p{
+  h3.common-p, h1.common-p{
     font-size: 20;
     line-height: 24px;
   }
+  
   p.common-p{
     font-size: 16px;
     line-height: 24px;
@@ -3170,8 +3171,10 @@ font-weight: 300;
   font-family: futura-pt,sans-serif;
 }
 
-h3.common-p {
-font-size: 40px;line-height: 56px;font-weight: 300;
+h3.common-p, h1.common-p {
+font-size: 40px;
+line-height: 56px;
+font-weight: 300;
 }
 
 

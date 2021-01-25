@@ -77,7 +77,7 @@ export default function AddressBook() {
             <div className="tab-pane active" id="address-book" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
-                    <div className={myAccountStyles.secondTitle}>Address Book</div>
+                    <h2 className={myAccountStyles.secondTitle}>Address Book</h2>
                     <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => { removeData(); addAddress(); }}>Add Address</button>
                 </div>
                         {isLoading ?

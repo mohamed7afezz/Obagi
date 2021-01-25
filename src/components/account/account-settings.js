@@ -289,7 +289,7 @@ export default function AccountSettings() {
               "d-none d-lg-flex",
             ].join(" ")}
           >
-            <div className={accountsettings.secondTitle}>Account Settings</div>
+            <h2 className={accountsettings.secondTitle}>Account Settings</h2>
             <button
               type="submit"
               className={accountsettings.addressButton}

@@ -16,7 +16,7 @@ const ProductPage = props => {
     const nodeType = props.pageContext.nodetype;
     const product = nodeType === 'clinical' ? data.nodeClinicalProduct : data.nodeMedicalProduct;
     const storageName = nodeType === 'clinical' ? 'clinicalViewedProducts' : 'medicalViewedProducts';
-
+    console.log("ashhh product", product)
     const paragraphs = nodeType === 'clinical' ?
         data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 

@@ -83,7 +83,7 @@ const Login = () => {
                 Your password has been successfully updated.
               </div>
               <div className="d-none d-lg-block">
-                <div className="desk-signin">Sign In</div>
+                <h1 className="desk-signin">Sign In</h1>
                 <div className="desk-instruction">Enter your email address and password below to sign in.</div>
               </div>
 

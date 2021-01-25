@@ -187,7 +187,7 @@ const UserAccount = ({ node, children, activeTab }) => {
             <div className="container-fluid my-account">
                 <div className="row">
                     <div className="col-12 col-lg-10 offset-lg-1">
-                        <div className={myAccountStyles.title}>My Account</div>
+                        <h1 className={myAccountStyles.title}>My Account</h1>
                     </div>
                 </div>
                 <div className="row d-lg-none">
