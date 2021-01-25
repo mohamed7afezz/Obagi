@@ -62,38 +62,7 @@ export const productPageQuery = graphql`
             ...collectionhero
             ...collectionproducts
             relationships {
-              field_footer_two_section{
-                relationships {
-                  field_service_card {
-                    field_service_name {
-                      processed
-                    }
-                    relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            } original{
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                    field_service_title {
-                      processed
-                    }
-                    field_service_description {
-                      processed
-                    }
-                    field_se {
-                      title
-                      uri
-                    }
-                  }
-                }
-              }
+            
               node__clinical_product {
             relationships {
               field_clinical_ingredients {
