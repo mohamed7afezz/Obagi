@@ -98,7 +98,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
               {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
               {node.field_featured_products_title? <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} ><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>)</Link></div> : ""}
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-              {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
+              {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : " "}
               {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div> : ""}
@@ -118,7 +118,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                 {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                 {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div>(<span className={featuredStyles.productsNo}>{ " " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                {node.field_featured_perfect_title ? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
+                {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {" " + item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : ""}
                 {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
@@ -170,7 +170,7 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
                   {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                   {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                  {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div> {node.relationships.field_issues_categories.map((item, index) => {
+                  {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div> {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : ""}
                   {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
@@ -228,15 +228,7 @@ export const fragment = graphql`
                 }
               }
             }
-            field_issues_categories {
-              path {
-                alias
-              }
-              ... on taxonomy_term__clinical_skin_concern {
-                id
-                name
-              }
-            }
+       
             field_featured_video {
               field_video_link
               relationships {

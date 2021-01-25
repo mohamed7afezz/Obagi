@@ -189,7 +189,8 @@ return (
                     <div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}></span>) 
                     {getfeature[0].field_featured_button? <span className={featuredStyles.view}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_description.processed }} className={featuredStyles.description}></div>
-                  {getfeature[0].field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_perfect_title.processed}}></div> {getfeature[0].relationships.field_issues_categories.map((item, index) => {
+                  {getfeature[0].field_featured_perfect_title && getfeature[0].relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_perfect_title.processed}}></div>
+                  {getfeature[0].relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === getfeature[0].relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : ""}
                   {getfeature[0].field_featured_button? <div className={featuredStyles.linkSection}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{getfeature[0].field_featured_button.title}</Link></div> : ""}
