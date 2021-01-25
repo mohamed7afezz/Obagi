@@ -7,7 +7,7 @@ module.exports = {
     title: `Obagi`,
     description: `Obagi`,
     author: `@Obagi`,
-    siteUrl: `https://www.obagi.com`,
+    siteUrl: process.env.Drupal_URL,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -23,8 +23,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.obagi.com',
-        sitemap: 'https://www.obagi.com/sitemap.xml',
+        host: process.env.Drupal_URL.split('/api/')[0],
+        sitemap: process.env.Drupal_URL.split('/api/')[0] + '/sitemap.xml',
         policy: [{ userAgent: '*', disallow:'' }],
         exclude: [
           `/test-page`,
