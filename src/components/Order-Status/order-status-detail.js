@@ -143,7 +143,7 @@ const OrderStatusDetails = (props) => {
         </div>
 
         <div className="row">
-          {shipmedntorder ? <>
+          {shipmedntorder.length > 1 ? <>
             <div class="col-lg-9 ">
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
@@ -164,11 +164,11 @@ const OrderStatusDetails = (props) => {
               ) : (
 
                 shipmedntorder ? shipmedntorder.map((getshipm, index1) => {
-                    return (productorder ? productorder.map((item, index) => {
+                    return (getshipm?getshipm.items.map((getProdId, index2) => {
 
-                      { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
-                      return (getshipm.items.map((getProdId, index2) => {
-
+                     
+                      return (productorder ? productorder.map((item, index) => {
+                        { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
                            
                           getProdId.product_id === item.product_id ?
@@ -177,7 +177,7 @@ const OrderStatusDetails = (props) => {
                                 <>
                                 
                                   <div className={orderDetailsStyles.shipment}>
-                                    <p>Shipment #{index + 1} : {getshipm.tracking_number}</p>
+                                    <p>Shipment #{index1 + 1} : {getshipm.tracking_number}</p>
                                   </div>
                                   <table className={orderHistoryStyles.tableCon}>
                                     <thead className={orderHistoryStyles.tHead}>
@@ -279,7 +279,7 @@ const OrderStatusDetails = (props) => {
 
                             </div>
                             : "")
-                      })
+                      }):""
                       )
 
 
