@@ -4419,11 +4419,11 @@ top: 78.5px !important;
 }
 
 .absolute-extended .navbar:hover .extole-hover-on {
-    display: inline;
+    display: inline !important;
 }
 
 .relative-general-nav .extole-hover-off {
-    display: none;
+    display: none !important;
 }
 
 .relative-general-nav .extole-hover-on {
