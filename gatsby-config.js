@@ -7,7 +7,7 @@ module.exports = {
     title: `Obagi`,
     description: `Obagi`,
     author: `@Obagi`,
-    siteUrl: process.env.Drupal_URL,
+    siteUrl: process.env.Drupal_URL.split('/api/')[0],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

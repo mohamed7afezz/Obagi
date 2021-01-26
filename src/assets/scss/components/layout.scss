@@ -147,7 +147,7 @@ p {
 }
 
 .title {
-    @include fontStyle(52, 64);
+    @include fontStyle(27, 32);
 
     @include lg-screen {
         @include fontStyle(72, 88);
@@ -1500,7 +1500,7 @@ p {
     @include fontStyle(18, 32);
     color: #7c858a;
     border: 0;
-    padding: 0;
+    padding: 0 10px 0 0;
     margin-bottom: 16px;
 
     &:first-child {
@@ -2711,7 +2711,7 @@ p {
 .my-account .myaccount-dropdown {
 
     width: 100%;
-    padding: 16px;
+    padding: 8px 16px;
     @include fontStyle(18, 32);
     z-index: 99;
     a {
@@ -4419,11 +4419,11 @@ top: 78.5px !important;
 }
 
 .absolute-extended .navbar:hover .extole-hover-on {
-    display: inline;
+    display: inline !important;
 }
 
 .relative-general-nav .extole-hover-off {
-    display: none;
+    display: none !important;
 }
 
 .relative-general-nav .extole-hover-on {
