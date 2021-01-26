@@ -225,7 +225,7 @@ const Basics = ({ node }) => {
                             </div>
                             {/* Start of slider  */}
                             <div
-                              className={index % 2? "col-12 col-lg-6 " + basicsStyles.whiteWrapper + " " + basicsStyles.evenSection : "col-12 col-lg-6 " + basicsStyles.whiteWrapper}
+                              className={index % 2? "col-12 col-lg-6 whiteWrapper " + basicsStyles.whiteWrapper + " " + basicsStyles.evenSection : "col-12 col-lg-6 whiteWrapper " + basicsStyles.whiteWrapper}
                             >
                               <div
                                 className={[
