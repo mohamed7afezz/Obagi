@@ -312,7 +312,7 @@ export default function Finder() {
                 </label>
                 <div class="miles ">
                   <span>DISTANCE </span>
-                  <div class="custom-select">
+                  <div class="custom-select f-select">
                     <select id="miles">
                       <option value="1">1 miles</option>
                       <option value="5">5 miles</option>

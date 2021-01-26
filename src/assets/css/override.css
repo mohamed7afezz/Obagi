@@ -3530,3 +3530,22 @@ background-image: url(mobileArrow.svg);
 #VideoPopUp .modal-header .close::before,#VideoPopUp .modal-header .close::after {
 display: none;
 }
+.f-select{
+  background: none;
+}
+.f-select .select-selected{
+  position: relative;
+}
+.f-select .select-selected::after {
+  content: "";
+  width: 10px;
+  bottom: 4px;
+  height: 10px;
+  position: absolute;
+  background-size: contain;
+  right:  0;
+  background-repeat: no-repeat;
+  background-image: url(mobileArrow.svg);
+  border: 0;
+  top: auto;
+}
