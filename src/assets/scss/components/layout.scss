@@ -4517,3 +4517,13 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
+
+.my-account .list-wrapper > .row {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    @include lg-screen {
+        margin-left: -40px;
+        margin-right: -40px;
+    }
+}
