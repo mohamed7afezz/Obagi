@@ -81,6 +81,13 @@
     }
 }
 
+@media (max-width: 991px) {
+    .icon-wrapper > div {
+        width: 41px !important;
+        height: 41px !important;
+    }
+}
+
 .solution {
     color: #ffffff;
     @extend %futurapt-light;

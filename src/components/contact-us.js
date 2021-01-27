@@ -246,12 +246,9 @@ export default function Contact() {
                             <div className="contact-info-subwrapper">
                                 <div className="contact-title">Write Obagi</div>
                                 <div className="contact-mini-wrapper">
-                                    <div>Phone: 1-800-636-7546</div>
-                                    <div>Fax: 1-877-791-7096</div>
-                                </div>
-                                <div className="contact-mini-wrapper">
-                                    <div>Monday - Friday (excluding holidays)</div>
-                                    <div>7AM - 4PM PST</div>
+                                    <div>OBAGI</div>
+                                    <div>3760 Kilroy Airport Way, Suite 500</div>
+                                    <div>Long Beach, CA 90806</div>
                                 </div>
                             </div>
                         </div>

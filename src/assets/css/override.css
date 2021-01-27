@@ -541,7 +541,7 @@ height:100% !important;
     padding-right: 0;
   }
 .bigSliderContainer .slick-dots{
-  bottom: -54px;
+  bottom: -40px;
 }
   .applied .discoundapplied{
   padding-bottom: 25px;
@@ -3492,7 +3492,9 @@ max-height: none !important;
 margin-right: auto;
 max-width: 48.5%;
 }
-
+.whiteWrapper.col-12.col-lg-6 .product-card-img .custom-img{
+  max-width:none;
+}
 /******************/
 #prod-search-btn,#advancedSearch  #submit-search-physician{
   background-color: #132466;
@@ -3520,7 +3522,7 @@ background-repeat: no-repeat;
 background-image: url(mobileArrow.svg);
 }
 .iconsvg{
-  width: 16px;
+  width: 18px;
 }
 #VideoPopUp .modal-header .close{
   top: -50px;

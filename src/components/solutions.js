@@ -20,7 +20,7 @@ const Solutions = ({ node }) => {
                                 return (
                                     <div>
                                         <Link to={fixlink(item.field_solution_link)} className={solutionsStyles.solutionWrapper}>
-                                            {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img alt="img"  fluid={item.relationships.field_problem_icon.localFile.childImageSharp.fluid} /></div> : '') : ''}
+                                            {item.relationships.field_problem_icon ? (item.relationships.field_problem_icon.localFile ? <div className={solutionsStyles.iconWrapper}><Img alt="img"  fixed={item.relationships.field_problem_icon.localFile.childImageSharp.fixed} /></div> : '') : ''}
                                             {item.field_solution_name ? <div dangerouslySetInnerHTML={{ __html: item.field_solution_name.processed }} className={solutionsStyles.solution}></div> : ''}
                                         </Link>
                                     </div>

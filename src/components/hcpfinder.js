@@ -125,13 +125,7 @@ export const ProductLineComp = ({line}) => {
             }) : ''}
             
           </div>
-          <p class="not-ava">
-            Not available in select states including MA, MT, NH, NY, and TX, due
-            to state regulations regarding the ability of physicians to dispense
-            prescription drug products in their offices. For an effective,
-            cosmetic skin-brightening option, learn about the Obagi-C<sup>®</sup> Fx
-            System.
-          </p>
+      
     </>
   )
 };
