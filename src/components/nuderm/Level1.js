@@ -46,7 +46,7 @@ const Level1 = props => {
   function submitforming(e) {
     var obj = { webform_id: "prc_new_to_nu_derm" };
     var list = document.querySelectorAll('.needs-validations input:invalid');
-    console.log("hassan",getday)
+  
     if (getday === undefined) {
       document.querySelector('.globaldaySelect').classList.add("errorselect")
 
@@ -65,7 +65,7 @@ const Level1 = props => {
     
     if (list.length > 0) {
         for (var item of list) {
-          console.log(item)
+       
             item.parentElement.classList.add('error')
             // item.nextSibling.classList.remove('hide')
         }
@@ -86,7 +86,7 @@ const Level1 = props => {
           }
           
         }
-          console.log(getday)
+     
       let getDate=`${getmonth}/${getday}/${getyear}`
     
       obj['date']=getDate;
@@ -196,7 +196,7 @@ function daySelectcon(e){
   document.querySelector('.daySelect').innerHTML= e.target.nextSibling.innerText ;
   // close 
   getday=e.target.value;
-  console.log(getday)
+ 
   daySelectData();
 
 }

@@ -99,6 +99,7 @@ const Resulte = (props) => {
     }, [])
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function checkDataCondition(condition, data) {
         if (condition) {
@@ -107,6 +108,10 @@ const Resulte = (props) => {
             return '';
         }
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
         <>
      

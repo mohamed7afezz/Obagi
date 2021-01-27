@@ -62,7 +62,7 @@ const StandardItem = props => {
   const { items, cartType } = props
   
   function  navigateto(link,e){
-    console.log("hassan")
+    
  e.preventDefault();
   
   
