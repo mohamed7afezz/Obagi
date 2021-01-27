@@ -228,22 +228,22 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   `)
   setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    // if (typeof window !== "undefined") {
 
-      (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
-      window.extole.createZone({
-        name: "mobile_menu",
-        element_id: 'extole_zone_mobile_menu',
-        data: {
-          "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
-          "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
-          "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
-          "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
-        }
-      });
+    //   (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
+    //   window.extole.createZone({
+    //     name: "mobile_menu",
+    //     element_id: 'extole_zone_mobile_menu',
+    //     data: {
+    //       "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+    //       "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+    //       "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+    //       "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+    //     }
+    //   });
 
 
-    }
+    // }
       adjustHeight();
 
       $('#mobNavButton').css('display','block');
