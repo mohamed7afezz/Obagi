@@ -35,7 +35,7 @@ steps:
 - script: |
     npm install
     npm install -g gatsby-cli
-    gatsby build --no-uglify
+    gatsby build
   displayName: 'npm install and build'
 - task: CopyFiles@2
   inputs:
