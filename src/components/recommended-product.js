@@ -19,7 +19,8 @@ feild_preimer}) => {
     const value = useContext(CartContext)
     const addToCart = value && value.addToCart
     const addingToCart = value && value.state.addingToCart
-    
+   
+   
     const removeNotification =  value.removeNotification;
     function  navigateto(link,e){
         e.preventDefault();
@@ -38,7 +39,7 @@ feild_preimer}) => {
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>
-                    <button className={'cartButton'}
+                    <button className={`cartButton ${Sku?'add-btn-ready':""}`}
                     data-Sku={Sku}
                         onClick={() => {
                             let quantity = 1;

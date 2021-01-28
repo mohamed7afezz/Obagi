@@ -909,6 +909,7 @@ const YourBag = (props, { notificationId }) => {
         )
       }
     } else {
+      
       //if cart have no items show empty cart
       bagContent = (
         <div
