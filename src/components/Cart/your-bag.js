@@ -62,7 +62,7 @@ const StandardItem = props => {
   const { items, cartType } = props
   
   function  navigateto(link,e){
-    console.log("hassan")
+    
  e.preventDefault();
   
   
@@ -510,9 +510,9 @@ const YourBag = (props, { notificationId }) => {
     e.preventDefault()
   }
 
-  // console.log("line", lineItems);
+  
   var checkProduct = lineItems.physical_items ? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
-  // console.log("line", checkProduct)
+
 
   let isClinical = true;
   function getRecommendedProducts(bag) {
@@ -618,7 +618,7 @@ const YourBag = (props, { notificationId }) => {
                   </div>
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
               {/* recommended products section */}
-              {/* {console.log('bahiiii', lineItems.physical_items)} */}
+          
               {/* : ""} */}
               {
                 <div className={[ShowBagStyle.recommendedWrapper, "recommendedWrapper"].join(' ')}>

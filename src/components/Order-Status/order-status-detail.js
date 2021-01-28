@@ -23,7 +23,6 @@ var savearr = [];
 var saveprodarr = [];
 var productsPremierPoints = [];
 const OrderStatusDetails = (props) => {
-    console.log("hassan4",props)
     useEffect(() => {
       checkStock(baseUrl);
     
@@ -171,14 +170,15 @@ const OrderStatusDetails = (props) => {
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
                            
-                          getProdId.product_id === item.product_id ?
+                          parseFloat(getProdId.order_product_id) === parseFloat(item.id) ?
                             <div className={orderDetailsStyles.shipmentstate}>
+                          
                               {index2 < 1 ?
                                 <>
-                                
                                   <div className={orderDetailsStyles.shipment}>
                                     <p>Shipment #{index1 + 1} : {getshipm.tracking_number}</p>
                                   </div>
+                                
                                   <table className={orderHistoryStyles.tableCon}>
                                     <thead className={orderHistoryStyles.tHead}>
                                       <tr>
@@ -201,6 +201,7 @@ const OrderStatusDetails = (props) => {
                                                  <input class="form-check-input details-check" type="checkbox" value={productId[index]} id={"productCheck" + productId[index] + index} />
                                              </div>
                                          </form> */}
+                                        
                                     {
                                       item.images.data.map((item, index) => {
                                         return <img alt="img" class="img-mob" src={item.url_thumbnail} />
@@ -522,8 +523,13 @@ const OrderStatusDetails = (props) => {
                   :
                   (productorder.map((item, index) => {
                     return (
+                     <> 
+                       <div className={orderDetailsStyles.shipment}>
+                                    <p>Shipment #{index + 1} : {shipmedntorder[0].tracking_number}</p>
+                                  </div>
                       <div className={orderDetailsStyles.productWrapper}>
                         <div className={orderDetailsStyles.productInfoWrapper}>
+                        
                           <div className={orderDetailsStyles.productName}>
                             <form>
                               <div class="form-check">
@@ -556,7 +562,7 @@ const OrderStatusDetails = (props) => {
                               
                         </div>
                       </div>
-                    )
+                    </>)
                   }))
                 }
 
@@ -641,7 +647,7 @@ const OrderStatusDetails = (props) => {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          // console.log(saveprodarr, "hassan33")
+               
                           addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}

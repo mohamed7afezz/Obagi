@@ -393,7 +393,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         document.getElementById("readButton").innerHTML = "Read More +"
     }
 }
-    console.log('hassan',node)
+   
   return (
     <>
         {/* Need to know */}

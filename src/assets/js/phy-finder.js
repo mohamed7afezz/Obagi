@@ -215,7 +215,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                // console.log(err)
+              
             });
 
         } else if(searchOptions.location) {
@@ -227,7 +227,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                // console.log(err)
+              
             });
 
         } else {
@@ -355,7 +355,7 @@ class Search extends Temps {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); document.getElementById('related-products-list').innerHTML = 'Please contact us, something went wrong!';});
+        }).catch(err => { document.getElementById('related-products-list').innerHTML = 'Please contact us, something went wrong!';});
         
         let res = [];
         if(req.status == 200) {
@@ -376,7 +376,7 @@ class Search extends Temps {
     }
 
     getRelatedProductLink(id) {
-        // console.log('bahiii', this.productsDataObj);
+       
         let prodIndex = this.productsDataObj.findIndex(item => item.sku == id);
         if (prodIndex > -1) {
             return this.productsDataObj[prodIndex].path
@@ -399,7 +399,7 @@ class Search extends Temps {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); this.setLoading(false)});
+        }).catch(err => { this.setLoading(false)});
 
         let res = {};
         if(req.status === 200) {
@@ -452,7 +452,7 @@ class Search extends Temps {
     }
 
     updateParams(location, paramsFor) {
-        // console.log('update Params')
+       
         this.searchBtn.disabled = true;
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {

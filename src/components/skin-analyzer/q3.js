@@ -8,6 +8,7 @@ const Q3 = (props) => {
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function topFunction() {
         document.body.scrollTop = 0; // For Safari

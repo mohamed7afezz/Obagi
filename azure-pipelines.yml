@@ -35,7 +35,7 @@ steps:
 - script: |
     npm install
     npm install -g gatsby-cli
-    gatsby build --no-uglify
+    gatsby build
   displayName: 'npm install and build'
 - task: CopyFiles@2
   inputs:
@@ -50,7 +50,7 @@ steps:
     password: $(FTPpassword)
     rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
-    remoteDirectory: /site/wwwroot/storefront
+    remoteDirectory: /site/wwwroot/storefront1
     clean: true
     cleanContents: false
     preservePaths: true

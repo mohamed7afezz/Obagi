@@ -720,7 +720,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       if (!params['city'] && !params['state']) {
         if ($('#finder-location-input').value === '') {
           errors['finder-location-input'] = 'ZIP Code is required.';
-          // console.log('ZIP Code is required.');
         } else {
           errors["finder-location-input"] = "Invalid Zip Code";
           console.error("No input in location field when location is selected.");
@@ -728,7 +727,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
     } else if ($("input:radio[name=searchby]:checked").value === "physician") {
       if (!params['physician']) {
-        // console.log(errors);
+      
         errors["finder-physician-input"] = "Physician name is required.";
         console.error("No input in physician field when physician is selected.");
       }
@@ -1453,7 +1452,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     resetErrors();
     errors = new Object();
     errors = {};
-    console.log(errors); // window.location.reload();
+  // window.location.reload();
   });
 
   if ($('input[name="searchby"]:checked').value === 'physician') {
