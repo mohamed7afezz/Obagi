@@ -498,7 +498,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
