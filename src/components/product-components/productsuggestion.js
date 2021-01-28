@@ -349,7 +349,7 @@ const ProductSuggestion = ({ node }) => {
       ].join(" ")}
     >
       <h1 className={productsuggestion.productsuggestionhead}>
-        You might Also Like
+        You might also Like
       </h1>
       <div className={["row", productsuggestion.ordering].join(" ")}>
       {
