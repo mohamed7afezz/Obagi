@@ -24,7 +24,7 @@ import ConfirmationMsg from "./confirmation-msg"
 
 const $ = require("jquery");
 
-const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
+const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage}) => {
   if(!nodeType){
     nodeType='home';
   }
@@ -69,7 +69,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
 
   // Similar to componentDidMount and componentDidUpdate: 
   return (
-    <div className={`node-${nodeType}`}>
+    <div className={`node-${nodeType} ${homepage}`}>
       <AboveHeader menuType={menuType} notifClass="d-none d-lg-block" id="notificationDesk"/>
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType} hideMobBar={hideMobBar}/>
       {/* <NavBlocks /> */}

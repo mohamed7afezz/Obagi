@@ -66,6 +66,7 @@ body {
     //     margin-top: 0;
     // }
 }
+
 p {
     margin-bottom: 0;
 }
@@ -2859,8 +2860,7 @@ p {
 
 
 .showbag-top {
-    top: 136px !important;
-
+  
 
     @include lg-screen {
         top: 98px !important;

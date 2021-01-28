@@ -8,8 +8,10 @@ import { getParagraph } from '../components/paragraphs-helper';
 const baseUrl = process.env.Drupal_URL;
 
 const BasicPageTemp = (node) => {
-   
+
     const data = node.data
+    let ishomepage = node.path === "/"?"homepage":"";
+
     const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
     let pageType = data.nodePage.field_page_type ? (data.nodePage.field_page_type === 'clinical' ? 'clinical' : 'medical') : '';
@@ -25,7 +27,7 @@ const BasicPageTemp = (node) => {
     let defaultLogo =  baseUrl.split('/api/')[0] + obagiLogo;
 
     return (
-        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar}>
+        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar} homepage = {ishomepage}>
             <SEO canonical={seo1[1]?seo1[1]:""} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={metaImgField? metaImgField : firstImage? firstImage : defaultLogo? defaultLogo : null}/>
             {paragraphs}
         </Layout>

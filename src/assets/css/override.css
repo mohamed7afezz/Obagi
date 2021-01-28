@@ -1111,12 +1111,16 @@ button:focus{
     overflow-y: scroll;
     margin-bottom: 0;
     position: fixed;
-    top: 211px;
+    top: 154px;
     right: 0;
   }  
+  .homepage #Showbag{
+    top: 211px;
+  }
   .node-clinical #Showbag,  .node-medical #Showbag{
     top: 154px;
   }
+  
   #Showbag .modal-content {
     border: 0;
     border-radius: 0;
@@ -1124,7 +1128,12 @@ button:focus{
     overflow-y: auto;
     overflow-x: hidden;
 }
-
+.showbag-top{
+  top: 80px !important;
+}
+.homepage .showbag-top{
+  top: 136px !important;
+}
   .zoom-mobile {
     display: block;
   }
