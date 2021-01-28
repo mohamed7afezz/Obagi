@@ -338,7 +338,7 @@ const ProductLine = ({ node }) => {
                     return (
                       (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
 
-                        (<div className={["row", lineStyles.sliderFlex].join(" ")}>
+                        (<div className={["row prodLineSlidFlex", lineStyles.sliderFlex].join(" ")}>
                           <div
                             className={["col-12", "col-lg-6", lineStyles.cardWrapper, "cardWrapper"].join(
                               " "

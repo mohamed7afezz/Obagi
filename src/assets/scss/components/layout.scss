@@ -147,7 +147,7 @@ p {
 }
 
 .title {
-    @include fontStyle(27, 32);
+    @include fontStyle(32, 38);
 
     @include lg-screen {
         @include fontStyle(72, 88);
@@ -4527,3 +4527,34 @@ input[type="search"]::-webkit-search-results-decoration {
         margin-right: -40px;
     }
 }
+
+@media (max-width: 991px) {
+    .bigSliderContainer .slick-track {
+        display: flex !important;
+    }
+    
+    .bigSliderContainer .slick-slide {
+        height: inherit !important;
+    }
+    
+    .bigSliderContainer .slick-slide > div {
+        height: 100%;
+    }
+    .bigSliderContainer .slick-slide .prodLineSlidFlex {
+        height: 100%;
+    }
+}
+
+// sup {
+//     @include lg-screen {
+//         font-size: 35%;
+//         top: -1.5em;
+//     }
+// }
+
+// .productcarddesc sup, a sup, button sup {
+//     @include lg-screen {
+//         font-size: 75%;
+//         top: -0.5em;
+//     }
+// }

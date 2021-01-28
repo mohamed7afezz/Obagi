@@ -86,6 +86,12 @@
         width: 41px !important;
         height: 41px !important;
     }
+    .icon-wrapper:hover, 
+    .icon-wrapper:active, 
+    .solution-wrapper:hover .icon-wrapper, 
+    .solution-wrapper:active .icon-wrapper {
+        background: #00c7d8;
+    }
 }
 
 .solution {

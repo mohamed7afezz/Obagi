@@ -20,6 +20,7 @@ import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 import Showbag from "./Cart/bag-preview"
 import scrollDown from '../assets/images/scroll-down.png'
+import ConfirmationMsg from "./confirmation-msg"
 
 const $ = require("jquery");
 
@@ -82,14 +83,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
         <Footer />
         <Popup/>
       </div>
-          <div class="modal hidden" id="formsubmition">
-           <div class="container">
-              <div class="modal-body">
-                  <h3>Thank you for your submission</h3>
-                  <p>Your request has been submitted</p>
-              </div>
-           </div>
-         </div>
+          <ConfirmationMsg />
 
          <div class="modal hidden" id="moremaxprice">
            <div class="container">
