@@ -883,12 +883,12 @@ const YourBag = (props, { notificationId }) => {
                       </button>
                       <div
                         className={BagStyle.buttonImg}
-                        type="submit">
-                        <img alt="img" type="submit" src={paypal} />
+                      >
+                        <img alt="img" src={paypal} />
                    
-                        <img alt="img" type="submit" src={paycred} />
+                        <img alt="img" src={paycred} />
                 
-                        <img alt="img" type="submit" src={visa} />
+                        <img alt="img" src={visa} />
                       </div>
                     </form>
 
