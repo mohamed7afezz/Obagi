@@ -7,7 +7,7 @@ module.exports = {
     title: `Obagi`,
     description: `Obagi`,
     author: `@Obagi`,
-    siteUrl: process.env.Drupal_URL.split('/api/')[0],
+    siteUrl:  `https://www.obagi.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,13 +19,10 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: `gatsby-plugin-sitemap`,
       options: {
-        host: process.env.Drupal_URL.split('/api/')[0],
-        sitemap: process.env.Drupal_URL.split('/api/')[0] + '/sitemap.xml',
-        policy: [{ userAgent: '*', disallow:'' }],
+      
         exclude: [
           `/test-page`,
           `/press-releases`,
@@ -82,10 +79,18 @@ module.exports = {
           `/my-account/premier-points`,
           `/my-account/signin`,
           `/blog`,
-          `/blog-coming-soon`,
-          
-         
+          `/blog-coming-soon`, 
     ],
+        
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.obagi.com',
+        sitemap: 'https://www.obagi.com/sitemap.xml',
+        policy: [{ userAgent: '*', disallow:'' }],
+       
       }
     },
     `gatsby-plugin-sharp`,
