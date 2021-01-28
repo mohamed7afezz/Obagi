@@ -432,7 +432,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //   homeMargin = $(".node-home").css('margin-top');
 //   clinicalMargin = $(".node-clinical").css('margin-top');
 //   medicalMargin = $(".node-medical").css('margin-top');
-//   console.log("css", homeMargin, clinicalMargin, medicalMargin)
+
 
   function adjustHeight() {
     let headerHeight
@@ -442,7 +442,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     } else {
       $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
     }
-    // console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div").first())
+  
   }
 
 //   function defer(method) {
@@ -470,7 +470,6 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //     $(".node-clinical").css("margin-top", homeMargin);
   // //     $(".node-medical").css("margin-top", clinicalMargin);
   // //     $(".node-home").css("margin-top", medicalMargin);
-  // //     console.log("cssss", homeMargin, clinicalMargin, medicalMargin)
   // //   }
   // //   // if ($(window).width() <= 768) {
 

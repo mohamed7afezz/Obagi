@@ -23,7 +23,6 @@ var savearr = [];
 var saveprodarr = [];
 var productsPremierPoints = [];
 const OrderStatusDetails = (props) => {
-    console.log("hassan4",props)
     useEffect(() => {
       checkStock(baseUrl);
     
@@ -648,7 +647,7 @@ const OrderStatusDetails = (props) => {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          // console.log(saveprodarr, "hassan33")
+               
                           addMultiToCart(productsOid, false, quantity, detailorder.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}

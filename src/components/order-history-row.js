@@ -10,8 +10,6 @@ const OrderHistoryRow = ({ data,
     itemsNum,
     total,
     status }) => {
-
-    // console.log("ashhshsh", data);
     orderNum = data.id;
     placedOn = data.date_created;
     lastUpdated = data.date_modified;
@@ -28,10 +26,6 @@ const OrderHistoryRow = ({ data,
         .toLocaleDateString({},
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
-
-    // console.log("date", placedOn, lastUpdated)
-
-
 
     return (
         <>

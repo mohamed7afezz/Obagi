@@ -63,7 +63,6 @@ async function getShippingAddresses(e) {
     })
     .catch(error => {
        
-        // console.log('error', error)
     });
   }
   // setIsLoading(false);
@@ -657,7 +656,7 @@ async function getShippingAddresses(e) {
                         onClick={() => {
                           productsOid = saveprodarr; let quantity = 1;
                           savearr = productsPremierPoints
-                          // console.log(saveprodarr, "hassan33")
+                       
                           addMultiToCart(productsOid, false, quantity, alldata.main_order.total_inc_tax, savearr);
                         }}
                         disabled={arraysEqual(addingToCart, productsOid)}

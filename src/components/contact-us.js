@@ -50,10 +50,10 @@ export default function Contact() {
         )
             .then(res => res.json())
             .then(response => {
-                // console.log(response)
+               
             })
             .catch(error => {
-                // console.log('error', error)
+             
             });
     };
     let thanksmodal = () => {

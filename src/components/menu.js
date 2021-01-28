@@ -124,7 +124,7 @@ function createMenuHierarchy(menuData, menuName) {
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
         if (mappedArr[mappedElem.drupal_parent_menu_item] == undefined) {
-          // console.log("Menu items that not have parent",mappedElem)
+   
         }
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }

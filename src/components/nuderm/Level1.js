@@ -133,7 +133,7 @@ const Level1 = props => {
          }
         })
         .catch(error => {
-            // console.log('error', error)
+        
         });
 };
 function topFunction() {

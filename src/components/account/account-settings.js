@@ -18,7 +18,6 @@ export default function AccountSettings() {
   useEffect(() => {
     getData();
 
-    // console.log("ashhh month val", chosenMonth, monthVal)
     // if (document.querySelectorAll('.custom-select .select-selected').length < 1) {
     //   CustomSelect();
     // }
@@ -73,9 +72,9 @@ export default function AccountSettings() {
   function checkvaild() {
 
     if (!document.querySelector(".regform").checkValidity()) {
-      // console.log(document.querySelector(".regform").validationMessage)
+   
     } else {
-      // console.log("hassan", document.querySelector(".regform").checkValidity())
+    
     }
   }
 
@@ -149,7 +148,7 @@ export default function AccountSettings() {
 
     if (!isValidDate(userAccount.birthdate) || userAccount.birthdate === today.toString()) {
       // show error message for date of birth field
-      // console.log('bahiii', 'date wrong')
+    
       setIsToday(true);
       return false;
     }
@@ -180,7 +179,6 @@ export default function AccountSettings() {
       //   ...userAccount,
       //   birthdate: newBirthday
       // })
-      // console.log("ashhh user ", userAccountData.data[0], newBirthday)
 
     }
     // setIsLoading(false);
@@ -208,7 +206,7 @@ export default function AccountSettings() {
           ...userAccount,
           birthdate: dateOfBirth
         })
-        // console.log("ashhuser", newUser)
+      
 
         break;
 
@@ -247,7 +245,7 @@ export default function AccountSettings() {
   useEffect(() => {
     if (typeof window != undefined) {
 
-      // console.log("ashhh", yearsList)
+    
       document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
         this.nextSibling.classList.remove('hide');
         this.classList.add('hide');

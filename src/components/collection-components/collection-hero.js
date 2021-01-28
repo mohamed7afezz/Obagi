@@ -6,7 +6,6 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
   let checkTaxonomy;
   let getname;
 
-  // console.log("hassan1", nodetype)
   if (nodetype == "clinicalConcern") {
     getname = node.data.taxonomyTermClinicalSkinConcern.name;
     checkTaxonomy = node.data.taxonomyTermClinicalSkinConcern.relationships;
@@ -51,8 +50,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     // listing pages
     checkTaxonomy = node;
   }
-  // console.log("hassan",first_url)
-  // console.log("hassan",nodetype,node,checkTaxonomy)
+
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
 
@@ -61,7 +59,7 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
     var sec_url = geturi[4];
 
   }
-  // console.log("hassan",first_url)
+
   useEffect(() => {
 
     saveuri()

@@ -36,7 +36,7 @@ export const handleLogin = async ({ email, password }) => {
     //   credentials: 'include',
     //   mode: 'cors'
     // })).json();
-    // console.log('bahii', userData)
+  
     // return window.location.href = `${baseUrl}custmer_login_sso`;
   }
 
