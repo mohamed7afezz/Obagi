@@ -80,6 +80,9 @@ module.exports = {
           `/my-account/signin`,
           `/blog`,
           `/blog-coming-soon`, 
+          `/placeholder-test`,
+          `/search-page/`,
+
     ],
         
       }
