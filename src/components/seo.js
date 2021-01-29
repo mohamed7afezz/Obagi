@@ -18,7 +18,6 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
           siteMetadata {
             title
             description
-            author
           }
         }
       }
@@ -63,7 +62,7 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: '@Obagi',
         },
         {
           name: `twitter:title`,

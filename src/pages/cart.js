@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 
 const cart = ({ data }) => (
     <Layout> 
-      <SEO title="Cart" description="Cart Page Description" />
+      <SEO title="Cart" description="Cart Page Description" canonical="/cart" />
 
       <YourBag/>
     </Layout>  

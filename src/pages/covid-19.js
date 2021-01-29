@@ -7,7 +7,7 @@ import Customer from "../components/customer-care";
 
 const Covid = ({ data }) => (
     <Layout> 
-      <SEO title="Our COVID-19 Response | Obagi" description="In our 30+ years as Obagi, we have seen the world change many times and have evolved with the changes to support our physicians, communities, and employees. When COVID-19 began, we pivoted again to further assist our partners and consumers." />
+      <SEO title="Our COVID-19 Response | Obagi" description="In our 30+ years as Obagi, we have seen the world change many times and have evolved with the changes to support our physicians, communities, and employees. When COVID-19 began, we pivoted again to further assist our partners and consumers." canonical="/covid-19" />
       <Customer activeTab="covid-19">
 <div class="container-fluid">
 

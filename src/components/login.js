@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <>
-    <SEO title="Account Signin | Obagi" ogTitle="Account Signin | Obagi" />
+    <SEO title="Account Signin | Obagi" ogTitle="Account Signin | Obagi" canonical="/my-account/signin" />
       <LoginMenu currentPage="login" />
       {isLoading ?
         <div>
