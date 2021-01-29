@@ -1348,6 +1348,12 @@ p {
         margin-top: -16px;
     }
 }
+.orders-comp .page {
+    @include lg-screen {
+        display: flex;
+        flex-direction: column;
+    }
+}
 .faq-wrapper {
 
     .faq-sign {
