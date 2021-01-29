@@ -60,7 +60,7 @@ const OrderHistoryRow = ({ data,
                 </div>
             </div>
 
-            <tr className={["d-none d-lg-table-row"].join(" ")}>
+            <tr className={["d-none d-lg-table"].join(" ")}>
                 <td scope="row">{orderNum}</td>
                 <td>{`${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`}</td>
                 <td>{`${lastUpdatedDate[0]} ${lastUpdatedDate[1]} ${lastUpdatedDate[2]}`}</td>
