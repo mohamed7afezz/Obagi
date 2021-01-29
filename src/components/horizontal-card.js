@@ -92,7 +92,7 @@ const HorizontalCard = ({
               
              Locate a Physician
           </Link>
-            :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
+            :<button className={[Productcard.addtocart, `the-product-button ${Sku?'add-btn-ready':""}`].join(" ")} 
             onClick={() => {
               let quantity = 1;
               addToCart(productId,false,quantity);
