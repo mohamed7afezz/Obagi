@@ -126,7 +126,7 @@ const ProductCard = ({
 
                   Locate a Physician
                  </Link>
-                : <button data-Sku={Sku} className={[Productcard.addtocart, "the-product-button"].join(" ")}
+                : <button data-Sku={Sku} className={[Productcard.addtocart, `the-product-button ${Sku?'add-btn-ready':""}`].join(" ")}
                   onClick={() => {
                     let quantity = 1;
                     addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
