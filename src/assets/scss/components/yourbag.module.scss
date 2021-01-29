@@ -42,7 +42,10 @@ margin-right: auto;
     max-width: 100%;
     &:last-child{
         display: inline-block;
+        max-width: 140px;
+        @include lg-screen{
         max-width: 166px;
+        }
     }
 }
 
