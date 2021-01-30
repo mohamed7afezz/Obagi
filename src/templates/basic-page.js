@@ -8,14 +8,16 @@ import { getParagraph } from '../components/paragraphs-helper';
 const baseUrl = process.env.Drupal_URL;
 
 const BasicPageTemp = (node) => {
-    console.log("Bahiii", baseUrl);
+
     const data = node.data
+    let ishomepage = node.path === "/"?"homepage":"";
+
     const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
     let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
     let pageType = data.nodePage.field_page_type ? (data.nodePage.field_page_type === 'clinical' ? 'clinical' : 'medical') : '';
     let hideBar = data.nodePage.field_hide_mob_bar && data.nodePage.field_hide_mob_bar == true? true : false
-    let seo = node.location.href?node.location.href:"";
-    let seo1 = seo?seo.split('.com'):""
+    let seo = data.path? data.path.alias : node.location.pathname?node.location.pathname:"";
+    // let seo1 = seo?seo.split('.com'):""
     let firstImage = paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile.url? paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile.url
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_slide && paragraphs[0].props.node.relationships.field_slide[0] && paragraphs[0].props.node.relationships.field_slide[0].relationships && paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image && paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image.localFile? paragraphs[0].props.node.relationships.field_slide[0].relationships.field_slide_image.localFile.url
                     : paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_careers_image && paragraphs[0].props.node.relationships.field_careers_image.localFile ? paragraphs[0].props.node.relationships.field_careers_image.localFile.url
@@ -24,11 +26,9 @@ const BasicPageTemp = (node) => {
     let metaImgField = data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.og_image? baseUrl.split('/api/')[0] + data.nodePage.field_meta_tags.og_image : null
     let defaultLogo =  baseUrl.split('/api/')[0] + obagiLogo;
 
-    console.log("ashhh seo", seo)
-    console.log("ashhh paragraphs", paragraphs)
     return (
-        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar}>
-            <SEO canonical={seo1[1]?seo1[1]:""} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={metaImgField? metaImgField : firstImage? firstImage : defaultLogo? defaultLogo : null}/>
+        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar} homepage = {ishomepage}>
+            <SEO canonical={seo} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={metaImgField? metaImgField : firstImage? firstImage : defaultLogo? defaultLogo : null}/>
             {paragraphs}
         </Layout>
     )
@@ -41,6 +41,9 @@ query($slug: String!) {
     nodePage(fields: { slug: { eq: $slug } }) {
         id
         title
+        path {
+            alias
+          }
         relationships {
             paragraphs: field_paragraphs {
                 type: __typename

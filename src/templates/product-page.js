@@ -16,17 +16,16 @@ const ProductPage = props => {
     const nodeType = props.pageContext.nodetype;
     const product = nodeType === 'clinical' ? data.nodeClinicalProduct : data.nodeMedicalProduct;
     const storageName = nodeType === 'clinical' ? 'clinicalViewedProducts' : 'medicalViewedProducts';
-    console.log("ashhh product", product)
     const paragraphs = nodeType === 'clinical' ?
         data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
-    let seo = props.location.href?props.location.href:"";
-    let seo1 = seo?seo.split('.com'):""
+    let seo = product.path? product.path.alias : props.location.pathname?props.location.pathname:"";
+    // let seo1 = seo?seo.split('.com'):""
     return (
         <Layout nodeType={nodeType} menuType="relative">
-            <SEO canonical={seo1[1]}
+            <SEO canonical={seo}
                 title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
                     : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 

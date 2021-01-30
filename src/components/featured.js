@@ -63,9 +63,7 @@ let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
   }
 })[0];
 let paragraphId = node.field_featured_paragraph_id? node.field_featured_paragraph_id.processed : null;
-// console.log("ash", paragraphId)
 
-//console.log('current', currentName)
 
 productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
 

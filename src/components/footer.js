@@ -31,6 +31,8 @@ let thanksmodal = () => {
 
 const Footer = ({ siteTitle }) => {
 
+  const [submitingForm, setSubmitingForm] = useState(false);
+
   function removevaild(e) {
     let item = e.target
 
@@ -43,6 +45,7 @@ const Footer = ({ siteTitle }) => {
      }
    }
     const sendFormValues = (updatedItemData) => {
+      setSubmitingForm(true);
      fetch(
        `${baseUrl}webform_rest/submit`,
        {
@@ -54,12 +57,21 @@ const Footer = ({ siteTitle }) => {
         body: JSON.stringify(updatedItemData.obj)
       }
     )
+      .then(res => {
+        if(res.status === 200) {
+          thanksmodal();
+          setSubmitingForm(false);
+        } else {
+          alert('Something went wrong! please try again or contact us.');
+          setSubmitingForm(false);
+        }
+      })
       .then(res => res.json())
       .then(response => {
-        // console.log(response)
+    
       })
       .catch(error => {
-        // console.log('error', error)
+    
       });
   };
 
@@ -86,7 +98,6 @@ const Footer = ({ siteTitle }) => {
           obj["want_to_receive_emails"] = ["on"]
 
         }
-        thanksmodal();
       }
 
 
@@ -266,7 +277,7 @@ const Footer = ({ siteTitle }) => {
                       <input type="checkbox" className="newsignup" defaultChecked={true} vlaue="on" required name="want_to_receive_emails" />
                       <span className="checkmark"></span>
                     </label>
-                    <button type="button" onClick={(e) => { submitforming(e) }} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
+                    <button type="button" onClick={(e) => { submitforming(e) }} disabled={submitingForm} className="btn signup-btn d-none d-lg-block">{submitingForm? 'Subcribing...' : 'SIGN UP'}</button>
                   </div>
                 </div>
               </form>

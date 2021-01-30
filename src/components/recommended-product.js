@@ -19,7 +19,8 @@ feild_preimer}) => {
     const value = useContext(CartContext)
     const addToCart = value && value.addToCart
     const addingToCart = value && value.state.addingToCart
-    
+   
+   
     const removeNotification =  value.removeNotification;
     function  navigateto(link,e){
         e.preventDefault();
@@ -34,11 +35,11 @@ feild_preimer}) => {
                 <Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
-                <a  className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={() => {navigateto(recLink,recId)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
+                <a href={recLink} className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={(e) => {navigateto(recLink,e)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>
-                    <button className={'cartButton'}
+                    <button className={`cartButton ${Sku?'add-btn-ready':""}`}
                     data-Sku={Sku}
                         onClick={() => {
                             let quantity = 1;

@@ -107,12 +107,12 @@ export const UserProvider = ({ children }) => {
 
             navigate("/my-account/orders");
             
-            console.log("ashhh success", await newUserRes.json())
+        
 
         } else {
             let res = await newUserRes.json();
             setErr(res.errors);
-            console.log("ashhh errors", res.errors)
+         
         }
     }
 

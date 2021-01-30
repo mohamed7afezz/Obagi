@@ -48,7 +48,7 @@ const Notification = ({ id, text, type }) => {
   //   return () => clearTimeout(timer);
   //   // eslint-disable-next-line
   // }, []);
-// console.log("notif", notif)
+
   return (
     
     <div

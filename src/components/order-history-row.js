@@ -10,8 +10,6 @@ const OrderHistoryRow = ({ data,
     itemsNum,
     total,
     status }) => {
-
-    // console.log("ashhshsh", data);
     orderNum = data.id;
     placedOn = data.date_created;
     lastUpdated = data.date_modified;
@@ -28,10 +26,6 @@ const OrderHistoryRow = ({ data,
         .toLocaleDateString({},
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
-
-    // console.log("date", placedOn, lastUpdated)
-
-
 
     return (
         <>
@@ -66,7 +60,7 @@ const OrderHistoryRow = ({ data,
                 </div>
             </div>
 
-            <tr className={["d-none d-lg-table-row"].join(" ")}>
+            <tr className={["d-none d-lg-table", orderHistoryRowStyles.tRow].join(" ")}>
                 <td scope="row">{orderNum}</td>
                 <td>{`${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`}</td>
                 <td>{`${lastUpdatedDate[0]} ${lastUpdatedDate[1]} ${lastUpdatedDate[2]}`}</td>

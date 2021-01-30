@@ -10,6 +10,7 @@ const Q6 = (props) => {
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function checkDataCondition(condition, data) {
         if (condition) {

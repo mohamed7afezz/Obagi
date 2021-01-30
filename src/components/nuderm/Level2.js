@@ -102,7 +102,7 @@ const Level2 = props => {
               topFunction()
              }          })
           .catch(error => {
-              // console.log('error', error)
+         
           });
   };
     function checkDataCondition(condition, data) {

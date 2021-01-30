@@ -1111,12 +1111,16 @@ button:focus{
     overflow-y: scroll;
     margin-bottom: 0;
     position: fixed;
-    top: 211px;
+    top: 154px;
     right: 0;
   }  
+  .homepage #Showbag{
+    top: 211px;
+  }
   .node-clinical #Showbag,  .node-medical #Showbag{
     top: 154px;
   }
+  
   #Showbag .modal-content {
     border: 0;
     border-radius: 0;
@@ -1124,7 +1128,12 @@ button:focus{
     overflow-y: auto;
     overflow-x: hidden;
 }
-
+.showbag-top{
+  top: 80px !important;
+}
+.homepage .showbag-top{
+  top: 136px !important;
+}
   .zoom-mobile {
     display: block;
   }
@@ -2826,7 +2835,7 @@ padding-bottom: 0;
   padding-bottom: 0;
   margin-top: 15px;
 }
-   .results-card-container .Productcardtype.d-none.show-mob-result{
+ .skinanalyzer  .results-card-container .Productcardtype.d-none.show-mob-result{
 display: flex !important;
   }
   .results-card-container .mob-analyzer-btn{
@@ -3517,7 +3526,7 @@ top: 2px;
 height: 10px;
 position: absolute;
 background-size: contain;
-right:  10px;
+right:  0;
 background-repeat: no-repeat;
 background-image: url(mobileArrow.svg);
 }
@@ -3529,4 +3538,23 @@ background-image: url(mobileArrow.svg);
 }
 #VideoPopUp .modal-header .close::before,#VideoPopUp .modal-header .close::after {
 display: none;
+}
+.f-select{
+  background: none;
+}
+.f-select .select-selected{
+  position: relative;
+}
+.f-select .select-selected::after {
+  content: "";
+  width: 10px;
+  bottom: 4px;
+  height: 10px;
+  position: absolute;
+  background-size: contain;
+  right:  0;
+  background-repeat: no-repeat;
+  background-image: url(mobileArrow.svg);
+  border: 0;
+  top: auto;
 }

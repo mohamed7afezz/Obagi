@@ -27,6 +27,7 @@ const Recommendedparing = ({ node }) => {
       },
     ]
   };
+ 
   return (
     <div className={["container-fluid", recommendedparing.recommendedcon, "recommendedcon"].join(" ")} >
       <div className={["row", recommendedparing.ordering].join(" ")}>

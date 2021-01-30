@@ -267,7 +267,7 @@ Handlebars.getTemplate = function (name) {
         var stack1, helper, alias1 = depth0 != null ? depth0 : (container.nullContext || {}), alias2 = helpers.helperMissing, alias3 = "function", alias4 = container.escapeExpression;
         
         //depth0.physicianName = ( depth0.physicianName == null || depth0.physicianName == "No Physician")? "Obagi Skin Care Professional":  depth0.physicianName ;
-        // console.log(depth0.clinicData.rep_email);
+ 
         return "<div class=\"bodycopy marker-infowindow\" id=\"info-"
           + alias4(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias2), (typeof helper === alias3 ? helper.call(alias1, { "name": "type", "hash": {}, "data": data }) : helper)))
           + "-"

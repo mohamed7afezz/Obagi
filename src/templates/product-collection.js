@@ -8,49 +8,61 @@ import CollectionProducts from '../components/collection-components/collectoin-p
 
 // import { getParagraph } from '../components/paragraphs-helper';
 
-const ClinicalCollectionTemp = (props, data)  => {
-    // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
-  
-    let medicalTaxMeta = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags? props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags
-                    : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta? props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta
-                    : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags? props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags
-                    : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
-                    : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags? props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags
-                    : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.field_meta_tag? props.data.taxonomyTermClinicalIngredients.field_meta_tag
-                    : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags? props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags
-                    : "";
+const ClinicalCollectionTemp = (props, data) => {
+  // const paragraphs = data.nodePage.relationships.paragraphs.map(getParagraph);
+  let medicalTaxMeta = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags ? props.data.taxonomyTermMedicalCategories.field_medical_cat_meta_tags
+    : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta ? props.data.taxonomyTermMedicalProductLines.field_medical_prod_lines_meta_ta
+      : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags ? props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags
+        : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags ? props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags
+          : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag ? props.data.taxonomyTermMedicalSkinType.field_medical_skin_type_meta_tag
+            : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags ? props.data.taxonomyTermClinicalGroups.field_clinical_groups_meta_tags
+              : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.field_meta_tag ? props.data.taxonomyTermClinicalIngredients.field_meta_tag
+                : "";
 
-    let metaTagImage = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.relationships && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships &&  props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermMedicalIngredients && props.data.allTaxonomyTermMedicalIngredients.relationships && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermMedicalProductLines && props.data.allTaxonomyTermMedicalProductLines.relationships && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalProductLines.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermMedicalRxCategory && props.data.allTaxonomyTermMedicalRxCategory.relationships && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermMedicalSkinConcern && props.data.allTaxonomyTermMedicalSkinConcern.relationships && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermMedicalSkinType && props.data.allTaxonomyTermMedicalSkinType.relationships && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermMedicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermProductSystem && props.data.allTaxonomyTermProductSystem.relationships && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermClinicalCategories && props.data.allTaxonomyTermClinicalCategories.relationships && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermClinicalGroups && props.data.allTaxonomyTermClinicalGroups.relationships && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalGroups.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermClinicalIngredients && props.data.allTaxonomyTermClinicalIngredients.relationships && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalIngredients.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermClinicalSkinConcern && props.data.allTaxonomyTermClinicalSkinConcern.relationships && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    :  props.data.allTaxonomyTermClinicalSkinType && props.data.allTaxonomyTermClinicalSkinType.relationships && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships &&  props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.allTaxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
-    : "";
+  let canonicalUrl = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.path ? props.data.taxonomyTermMedicalCategories.path.alias
+    : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.path ? props.data.taxonomyTermMedicalProductLines.path.alias
+      : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.path ? props.data.taxonomyTermMedicalSkinConcern.path.alias
+        : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.path ? props.data.taxonomyTermMedicalIngredients.path.alias
+          : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.path ? props.data.taxonomyTermMedicalSkinType.path.alias
+            : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.path ? props.data.taxonomyTermClinicalGroups.path.alias
+              : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.path ? props.data.taxonomyTermClinicalIngredients.path.alias
+                : props.data.taxonomyTermClinicalSkinConcern && props.data.taxonomyTermClinicalSkinConcern.path ? props.data.taxonomyTermClinicalSkinConcern.path.alias
+                  : props.data.taxonomyTermClinicalCategories && props.data.taxonomyTermClinicalCategories.path ? props.data.taxonomyTermClinicalCategories.path.alias
+                    : props.data.taxonomyTermClinicalSkinType && props.data.taxonomyTermClinicalSkinType.path ? props.data.taxonomyTermClinicalSkinType.path.alias
+                      : props.location.pathname ? props.location.pathname
+                        : "";
+
+  let metaTagImage = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.relationships && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermMedicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+    : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.relationships && props.data.taxonomyTermMedicalIngredients.relationships.field_hero_clinical_ing_taxonomy && props.data.taxonomyTermMedicalIngredients.relationships.field_hero_clinical_ing_taxonomy.relationships && props.data.taxonomyTermMedicalIngredients.relationships.field_hero_clinical_ing_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalIngredients.relationships.field_hero_clinical_ing_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermMedicalIngredients.relationships.field_hero_clinical_ing_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+      : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.relationships && props.data.taxonomyTermMedicalProductLines.relationships.field_hero_productline_taxonomy && props.data.taxonomyTermMedicalProductLines.relationships.field_hero_productline_taxonomy.relationships && props.data.taxonomyTermMedicalProductLines.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalProductLines.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermMedicalProductLines.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+        // :  props.data.taxonomyTermMedicalRxCategory && props.data.taxonomyTermMedicalRxCategory.relationships && props.data.taxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy && props.data.taxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships &&  props.data.taxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.taxonomyTermMedicalRxCategory.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+        : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.relationships && props.data.taxonomyTermMedicalSkinConcern.relationships.field_hero_taxonomy && props.data.taxonomyTermMedicalSkinConcern.relationships.field_hero_taxonomy.relationships && props.data.taxonomyTermMedicalSkinConcern.relationships.field_hero_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalSkinConcern.relationships.field_hero_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermMedicalSkinConcern.relationships.field_hero_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+          : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.relationships && props.data.taxonomyTermMedicalSkinType.relationships.field_hero_parag_taxonomy && props.data.taxonomyTermMedicalSkinType.relationships.field_hero_parag_taxonomy.relationships && props.data.taxonomyTermMedicalSkinType.relationships.field_hero_parag_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermMedicalSkinType.relationships.field_hero_parag_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermMedicalSkinType.relationships.field_hero_parag_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+            // :  props.data.taxonomyTermProductSystem && props.data.taxonomyTermProductSystem.relationships && props.data.taxonomyTermProductSystem.relationships.field_hero_category_taxonomy && props.data.taxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships &&  props.data.taxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile? props.data.taxonomyTermProductSystem.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+            : props.data.taxonomyTermClinicalCategories && props.data.taxonomyTermClinicalCategories.relationships && props.data.taxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy && props.data.taxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships && props.data.taxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermClinicalCategories.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+              : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.relationships && props.data.taxonomyTermClinicalGroups.relationships.field_taxonomy_hero && props.data.taxonomyTermClinicalGroups.relationships.field_taxonomy_hero.relationships && props.data.taxonomyTermClinicalGroups.relationships.field_taxonomy_hero.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermClinicalGroups.relationships.field_taxonomy_hero.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermClinicalGroups.relationships.field_taxonomy_hero.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+                : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.relationships && props.data.taxonomyTermClinicalIngredients.relationships.field_hero_ingredients_taxonomy && props.data.taxonomyTermClinicalIngredients.relationships.field_hero_ingredients_taxonomy.relationships && props.data.taxonomyTermClinicalIngredients.relationships.field_hero_ingredients_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermClinicalIngredients.relationships.field_hero_ingredients_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermClinicalIngredients.relationships.field_hero_ingredients_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+                  : props.data.taxonomyTermClinicalSkinConcern && props.data.taxonomyTermClinicalSkinConcern.relationships && props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy && props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships && props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermClinicalSkinConcern.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+                    : props.data.taxonomyTermClinicalSkinType && props.data.taxonomyTermClinicalSkinType.relationships && props.data.taxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy && props.data.taxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships && props.data.taxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i && props.data.taxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile ? props.data.taxonomyTermClinicalSkinType.relationships.field_hero_category_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.url
+                      : "";
 
 
-    // let medicalProLi = props.data.tax
-    let seo = props.location.href?props.location.href:"";
-    let seo1 = seo?seo.split('.com'):""
-    return (
-      <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
-        <SEO canonical={medicalTaxMeta.canonical_url? 
-        medicalTaxMeta.canonical_url : seo1[1]} title={medicalTaxMeta.title? medicalTaxMeta.title : ""} description={medicalTaxMeta.description? medicalTaxMeta.description : ""}
-          ogTitle={medicalTaxMeta.title? medicalTaxMeta.title : ""} ogDescription={medicalTaxMeta.description? medicalTaxMeta.description : ""}
-          metaImage = {metaTagImage}
-        />
+  // let medicalProLi = props.data.tax
+  // let seo = props.location.pathname ? props.location.pathname : "";
+  // let seo1 = seo ? seo.split('.com') : ""
+  return (
+    <Layout nodeType={props.pageContext.checktaxonomyType} menuType="absolute">
+      <SEO canonical={medicalTaxMeta.canonical_url ?
+        medicalTaxMeta.canonical_url : canonicalUrl} title={medicalTaxMeta.title ? medicalTaxMeta.title : ""} description={medicalTaxMeta.description ? medicalTaxMeta.description : ""}
+        ogTitle={medicalTaxMeta.title ? medicalTaxMeta.title : ""} ogDescription={medicalTaxMeta.description ? medicalTaxMeta.description : ""}
+        metaImage={metaTagImage}
+      />
 
-        <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>                                   
-        <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType}/>
-        <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data} checktaxonomyType={props.pageContext.checktaxonomyType}/>
-      </Layout>
-    )
+      <CollectionHero node={props} collectionUrl={props.pageContext.collectionUrl} collectionName={props.pageContext.collectionName} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType} />
+      <CollectionProducts node={props} nodetype={props.pageContext.nodetype} checktaxonomyType={props.pageContext.checktaxonomyType} />
+      <CollectionFooter node={props.data} nodetype={props.pageContext.nodetype} blockName={props.data} checktaxonomyType={props.pageContext.checktaxonomyType} />
+    </Layout>
+  )
 }
 export default ClinicalCollectionTemp
 export const productPageQuery = graphql`
@@ -58,6 +70,9 @@ export const productPageQuery = graphql`
     
 
         taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
+          path {
+            alias
+          }
             name
             ...collectionhero
             ...collectionproducts
@@ -90,6 +105,9 @@ export const productPageQuery = graphql`
             }
         },
         taxonomyTermClinicalCategories(path: {alias: {eq: $slug}}) {
+          path {
+            alias
+          }
             name
             id
             relationships {
@@ -209,6 +227,9 @@ export const productPageQuery = graphql`
             }
         },   
            taxonomyTermClinicalIngredients(path: {alias: {eq: $slug}}) {
+            path {
+              alias
+            }
           name
           id
           field_meta_tag {
@@ -350,6 +371,9 @@ export const productPageQuery = graphql`
           }
       },
         taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
+          path {
+            alias
+          }
             name
             field_need_to_know_second_descri {
               processed
@@ -487,6 +511,9 @@ export const productPageQuery = graphql`
       },
       
       taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
+        path {
+          alias
+        }
         name
         field_need__to_know__title {
           processed
@@ -499,6 +526,8 @@ export const productPageQuery = graphql`
         }
         field_medical_ingr_meta_tags {
           canonical_url
+          title
+          description
         }
        
         relationships {
@@ -743,6 +772,9 @@ export const productPageQuery = graphql`
         }
       },
          taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
+          path {
+            alias
+          }
             name
             field_need_to_know_title {
               processed
@@ -1004,6 +1036,9 @@ export const productPageQuery = graphql`
           }
         },
          taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
+          path {
+            alias
+          }
           field_medical_prod_lines_meta_ta {
             description
             title
@@ -1135,9 +1170,7 @@ export const productPageQuery = graphql`
               }
             }
           }
-          path {
-            alias
-          }
+         
           name
           field_taxonomy_line_footer {
             settings {
@@ -1146,6 +1179,7 @@ export const productPageQuery = graphql`
           }
         },
         taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
+          
           id
           name
           field_clinical_groups_meta_tags {

@@ -570,14 +570,13 @@ export const CartProvider = ({ children }) => {
         addShippingMethods(response);
       })
       .catch(error => {
-        // console.log("Error fetch Shipping Methods", error);
+      
       });
   };
   const addShippingMethods = response => {
 
     if (response.status === 204 || response.status === 404) {
-      //
-      // console.log("Error fetch Shipping Methods", response);
+ 
     } else {
 
       let defulteShippingMethodsId = 0;

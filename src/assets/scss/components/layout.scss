@@ -66,6 +66,7 @@ body {
     //     margin-top: 0;
     // }
 }
+
 p {
     margin-bottom: 0;
 }
@@ -147,7 +148,7 @@ p {
 }
 
 .title {
-    @include fontStyle(27, 32);
+    @include fontStyle(32, 38);
 
     @include lg-screen {
         @include fontStyle(72, 88);
@@ -1345,6 +1346,12 @@ p {
 .orders-comp .pages-wrapper {
     @include lg-screen {
         margin-top: -16px;
+    }
+}
+.orders-comp .page {
+    @include lg-screen {
+        display: flex;
+        flex-direction: column;
     }
 }
 .faq-wrapper {
@@ -2859,8 +2866,7 @@ p {
 
 
 .showbag-top {
-    top: 136px !important;
-
+  
 
     @include lg-screen {
         top: 98px !important;
@@ -4517,3 +4523,44 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
+
+.my-account .list-wrapper > .row {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    @include lg-screen {
+        margin-left: -40px;
+        margin-right: -40px;
+    }
+}
+
+@media (max-width: 991px) {
+    .bigSliderContainer .slick-track {
+        display: flex !important;
+    }
+    
+    .bigSliderContainer .slick-slide {
+        height: inherit !important;
+    }
+    
+    .bigSliderContainer .slick-slide > div {
+        height: 100%;
+    }
+    .bigSliderContainer .slick-slide .prodLineSlidFlex {
+        height: 100%;
+    }
+}
+
+// sup {
+//     @include lg-screen {
+//         font-size: 35%;
+//         top: -1.5em;
+//     }
+// }
+
+// .productcarddesc sup, a sup, button sup {
+//     @include lg-screen {
+//         font-size: 75%;
+//         top: -0.5em;
+//     }
+// }

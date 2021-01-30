@@ -20,10 +20,11 @@ import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 import Showbag from "./Cart/bag-preview"
 import scrollDown from '../assets/images/scroll-down.png'
+import ConfirmationMsg from "./confirmation-msg"
 
 const $ = require("jquery");
 
-const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
+const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage}) => {
   if(!nodeType){
     nodeType='home';
   }
@@ -68,7 +69,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
 
   // Similar to componentDidMount and componentDidUpdate: 
   return (
-    <div className={`node-${nodeType}`}>
+    <div className={`node-${nodeType} ${homepage}`}>
       <AboveHeader menuType={menuType} notifClass="d-none d-lg-block" id="notificationDesk"/>
       <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType} hideMobBar={hideMobBar}/>
       {/* <NavBlocks /> */}
@@ -82,14 +83,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar}) => {
         <Footer />
         <Popup/>
       </div>
-          <div class="modal hidden" id="formsubmition">
-           <div class="container">
-              <div class="modal-body">
-                  <h3>Thank you for your submission</h3>
-                  <p>Your request has been submitted</p>
-              </div>
-           </div>
-         </div>
+          <ConfirmationMsg />
 
          <div class="modal hidden" id="moremaxprice">
            <div class="container">

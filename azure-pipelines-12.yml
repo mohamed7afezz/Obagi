@@ -3,9 +3,6 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- master
-
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -15,7 +12,7 @@ steps:
     targetType: 'inline'
     script: |
       cat .env.production
-      sed -i 's/dev-obagiecommerce/dev-obagiecommerce/g' .env.production
+      sed -i 's/dev-obagiecommerce/test-obagiecommerce/g' .env.production
       cat .env.production
 - task: Cache@2
   inputs:
@@ -35,23 +32,24 @@ steps:
 - script: |
     npm install
     npm install -g gatsby-cli
-    gatsby build
+    gatsby build --no-uglify
   displayName: 'npm install and build'
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'public/'
     Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-- task: FtpUpload@2
+    TargetFolder: 'storefront'
+- task: ArchiveFiles@2
   inputs:
-    credentialsOption: 'inputs'
-    serverUrl: $(FTPserverUrl)
-    username: $(FTPusername)
-    password: $(FTPpassword)
-    rootDirectory: '$(build.artifactstagingdirectory)'
-    filePatterns: '**'
-    remoteDirectory: /site/wwwroot/storefront1
-    clean: true
-    cleanContents: false
-    preservePaths: true
-    trustSSL: false
+    rootFolderOrFile: 'storefront'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
+    appType: 'webApp'
+    appName: 'test-obagiecommerce'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    deploymentMethod: 'zipDeploy'

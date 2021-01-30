@@ -228,22 +228,22 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   `)
   setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    // if (typeof window !== "undefined") {
 
-      (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
-      window.extole.createZone({
-        name: "mobile_menu",
-        element_id: 'extole_zone_mobile_menu',
-        data: {
-          "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
-          "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
-          "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
-          "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
-        }
-      });
+    //   (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
+    //   window.extole.createZone({
+    //     name: "mobile_menu",
+    //     element_id: 'extole_zone_mobile_menu',
+    //     data: {
+    //       "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+    //       "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+    //       "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+    //       "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+    //     }
+    //   });
 
 
-    }
+    // }
       adjustHeight();
 
       $('#mobNavButton').css('display','block');
@@ -432,7 +432,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //   homeMargin = $(".node-home").css('margin-top');
 //   clinicalMargin = $(".node-clinical").css('margin-top');
 //   medicalMargin = $(".node-medical").css('margin-top');
-//   console.log("css", homeMargin, clinicalMargin, medicalMargin)
+
 
   function adjustHeight() {
     let headerHeight
@@ -442,7 +442,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
     } else {
       $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
     }
-    // console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div").first())
+  
   }
 
 //   function defer(method) {
@@ -470,7 +470,6 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //     $(".node-clinical").css("margin-top", homeMargin);
   // //     $(".node-medical").css("margin-top", clinicalMargin);
   // //     $(".node-home").css("margin-top", medicalMargin);
-  // //     console.log("cssss", homeMargin, clinicalMargin, medicalMargin)
   // //   }
   // //   // if ($(window).width() <= 768) {
 
@@ -499,7 +498,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                         return (

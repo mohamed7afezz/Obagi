@@ -7,7 +7,7 @@ import Customer from '../components/customer-care'
 import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 const FaqWrapper = ({ node }) => {
 
-  // console.log('node', node.relationships.field_faq_section)
+ 
 
 
   // let list = node.relationships.field_faq_section;
@@ -63,7 +63,7 @@ const FaqWrapper = ({ node }) => {
 
   // window.addEventListener('load', load);
 
-  // console.log("list", list);
+ 
 
   return (
     <Customer activeTab="faq">

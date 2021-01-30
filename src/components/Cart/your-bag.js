@@ -62,7 +62,7 @@ const StandardItem = props => {
   const { items, cartType } = props
   
   function  navigateto(link,e){
-    console.log("hassan")
+    
  e.preventDefault();
   
   
@@ -101,7 +101,7 @@ const StandardItem = props => {
                   <div className={[BagStyle.bagCount, "d-flex", "col-lg-7", "col-lg-6"].join(" ")}>
                     <AdjustItem {...props} item={item} cartType={cartType} />
                   </div>
-                  <button href="#" onClick={() => props.removeItemFromCart(item.id)}
+                  <button type="button" onClick={() => props.removeItemFromCart(item.id)}
                     className={[ShowBagStyle.removebtn, "col-5"].join(" ")}
                   >
                     Remove
@@ -510,9 +510,9 @@ const YourBag = (props, { notificationId }) => {
     e.preventDefault()
   }
 
-  // console.log("line", lineItems);
+  
   var checkProduct = lineItems.physical_items ? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
-  // console.log("line", checkProduct)
+
 
   let isClinical = true;
   function getRecommendedProducts(bag) {
@@ -618,7 +618,7 @@ const YourBag = (props, { notificationId }) => {
                   </div>
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
               {/* recommended products section */}
-              {/* {console.log('bahiiii', lineItems.physical_items)} */}
+          
               {/* : ""} */}
               {
                 <div className={[ShowBagStyle.recommendedWrapper, "recommendedWrapper"].join(' ')}>
@@ -883,12 +883,12 @@ const YourBag = (props, { notificationId }) => {
                       </button>
                       <div
                         className={BagStyle.buttonImg}
-                        type="submit">
-                        <img alt="img" type="submit" src={paypal} />
+                      >
+                        <img alt="img" src={paypal} />
                    
-                        <img alt="img" type="submit" src={paycred} />
+                        <img alt="img" src={paycred} />
                 
-                        <img alt="img" type="submit" src={visa} />
+                        <img alt="img" src={visa} />
                       </div>
                     </form>
 
@@ -909,6 +909,7 @@ const YourBag = (props, { notificationId }) => {
         )
       }
     } else {
+      
       //if cart have no items show empty cart
       bagContent = (
         <div

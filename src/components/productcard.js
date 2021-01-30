@@ -51,7 +51,7 @@ const ProductCard = ({
                     <p>new</p>
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
-        {/* <h1  className="d-none Productcardtype show-mob-result">{Type}</h1> */}
+        <h1  className="d-none Productcardtype show-mob-result">{Type}</h1>
         {productdescription ? (
           <div
             className={[Productcard.productcardcon, "productcardcon", "analyzr"].join(" ")}
@@ -126,7 +126,7 @@ const ProductCard = ({
 
                   Locate a Physician
                  </Link>
-                : <button data-Sku={Sku} className={[Productcard.addtocart, "the-product-button"].join(" ")}
+                : <button data-Sku={Sku} className={[Productcard.addtocart, `the-product-button ${Sku?'add-btn-ready':""}`].join(" ")}
                   onClick={() => {
                     let quantity = 1;
                     addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
