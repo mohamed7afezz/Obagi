@@ -48,8 +48,8 @@ steps:
     replaceExistingArchive: true
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Microsoft Azure (7c867e00-c2f7-4bc4-a7fc-2d386121c36d)'
+    azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
     appType: 'webApp'
-    appName: 'prod-obagi'
+    appName: 'test-obagiecommerce'
     package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     deploymentMethod: 'zipDeploy'
