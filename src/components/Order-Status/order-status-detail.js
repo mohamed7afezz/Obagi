@@ -142,15 +142,17 @@ const OrderStatusDetails = (props) => {
         </div>
 
         <div className="row">
-          {shipmedntorder.length > 1 ? <>
+        {shipmedntorder?
+           <>  
             <div class="col-lg-9 ">
+           
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
                   Your order has been split into {shipmedntorder.length} shipments. The details and
                 status are listed below.
               </p>
               </div>
-
+             
 
               {isLoading ? (
 
@@ -182,7 +184,7 @@ const OrderStatusDetails = (props) => {
                                   <table className={orderHistoryStyles.tableCon}>
                                     <thead className={orderHistoryStyles.tHead}>
                                       <tr>
-                                        <th scope="col">Last Updated</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Items</th>
                                         <th scope="col">Total</th>
                                         <th scope="col">Status</th>
@@ -292,6 +294,7 @@ const OrderStatusDetails = (props) => {
 
 
             </div>
+
 
             <div className="col-12 col-lg-3">
               {isLoading ? (
@@ -446,8 +449,10 @@ const OrderStatusDetails = (props) => {
             </div>
 
 
-          </> :
+          </> 
+          :
             <>
+            
               <div className="col-12  d-lg-none">
                 <div className={orderDetailsStyles.accordion}>
                   <div className={orderDetailsStyles.accordionHeader}>
@@ -521,12 +526,19 @@ const OrderStatusDetails = (props) => {
 
                   />
                   :
-                  (productorder.map((item, index) => {
+                  <> <table className={orderHistoryStyles.tableCon}>
+                  <thead className={orderHistoryStyles.tHead}>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Items</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                </table>{productorder.map((item, index) => {
                     return (
                      <> 
-                       <div className={orderDetailsStyles.shipment}>
-                                    <p>Shipment #{index + 1} : {shipmedntorder[0].tracking_number}</p>
-                                  </div>
+                     
                       <div className={orderDetailsStyles.productWrapper}>
                         <div className={orderDetailsStyles.productInfoWrapper}>
                         
@@ -563,7 +575,7 @@ const OrderStatusDetails = (props) => {
                         </div>
                       </div>
                     </>)
-                  }))
+                  })}</>
                 }
 
 
