@@ -87,10 +87,10 @@ const HomeHero = ({ node }) => {
 
   return (
     <div>
-      <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }} className={[homeHero.heroStyle, "d-none d-md-block"].join(" ")} id="hero">
+      <div style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.fluid.srcWebp})` }} className={[homeHero.heroStyle, "d-none d-md-block"].join(" ")} id="hero">
         <div className={[homeHero.containerWrapper, "container-fluid"].join(" ")}>
           <div id="hero-bg">
-            <img src={node.relationships.field_default_bg.localFile.childImageSharp.original.src} alt="img" />
+            <img src={node.relationships.field_default_bg.localFile.childImageSharp.fluid.srcWebp} alt="img" />
           </div>
           <div className={["row"].join(" ")}>
             <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
@@ -107,7 +107,7 @@ const HomeHero = ({ node }) => {
           <div className="row">
             {node.relationships.field_box.map((box, i) => {
               return (
-                <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.original.src); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.original.src); }}>
+                <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} onMouseEnter={() => { changeBackground(box.relationships.field_background.localFile.childImageSharp.fluid.srcWebp); }} onMouseLeave={() => { changeBackground(node.relationships.field_default_bg.localFile.childImageSharp.fluid.srcWebp); }}>
                   <HeroBox node={box} id={"box" + i} desktopTag={true}/>
                 </div>
               )
@@ -124,7 +124,7 @@ const HomeHero = ({ node }) => {
           <div style={{ width: "100%" }}>
             <Slider {...SliderSetting}>
               <>
-                <div className={["row", homeHero.heroStyle].join(" ")} style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.original.src})` }}>
+                <div className={["row", homeHero.heroStyle].join(" ")} style={{ backgroundImage: `url(${node.relationships.field_default_bg.localFile.childImageSharp.fluid.srcWebp})` }}>
                   <div className={["col-12 col-lg-4 offset-lg-4"].join(" ")}>
                     {node.field_main_header ? <p className={[homeHero.header].join(" ")}>{node.field_main_header}</p> : ""}
                     {/* {node.relationships.field_box.map(({ drupal_id }) => (<HeroBox id='asda'/>))} */}
@@ -140,7 +140,7 @@ const HomeHero = ({ node }) => {
               {node.relationships.field_box.map((box, i) => {
                 return (
                   <div>
-                    <div className={[homeHero.heroStyle, "row"].join(" ")} style={{ backgroundImage: `url(${box.relationships.field_background.localFile.childImageSharp.original.src})` }}>
+                    <div className={[homeHero.heroStyle, "row"].join(" ")} style={{ backgroundImage: `url(${box.relationships.field_background.localFile.childImageSharp.fluid.srcWebp})` }}>
                       <div className={i < 1 ? ["col-12", "col-md-6", "col-lg-5", "offset-lg-1", homeHero.boxMargin].join(" ") : "col-12 col-md-6 col-lg-5"} key={box.id} >
                         <HeroBox node={box} />
                       </div>
@@ -187,6 +187,9 @@ export const fragment = graphql`
                 }
                 original {
                     src
+                }
+                fluid (quality: 100){
+                  srcWebp
                 }
               }
             }

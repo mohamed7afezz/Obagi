@@ -53,6 +53,9 @@ export const fragment = graphql`
                   original {
                     src
                   }
+                  fluid (quality: 100) {
+                    srcWebp
+                  }
                 }
               }
             }
