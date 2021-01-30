@@ -21,8 +21,8 @@ const ClinicalCollectionTemp = (props, data) => {
 
   let canonicalUrl = props.data.taxonomyTermMedicalCategories && props.data.taxonomyTermMedicalCategories.path ? props.data.taxonomyTermMedicalCategories.path.alias
     : props.data.taxonomyTermMedicalProductLines && props.data.taxonomyTermMedicalProductLines.path ? props.data.taxonomyTermMedicalProductLines.path.alias
-      : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.path ? props.data.taxonomyTermMedicalSkinConcern.field_medicla_skin_con_meta_tags
-        : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.field_medical_ingr_meta_tags ? props.data.taxonomyTermMedicalIngredients.path.alias
+      : props.data.taxonomyTermMedicalSkinConcern && props.data.taxonomyTermMedicalSkinConcern.path ? props.data.taxonomyTermMedicalSkinConcern.path.alias
+        : props.data.taxonomyTermMedicalIngredients && props.data.taxonomyTermMedicalIngredients.path ? props.data.taxonomyTermMedicalIngredients.path.alias
           : props.data.taxonomyTermMedicalSkinType && props.data.taxonomyTermMedicalSkinType.path ? props.data.taxonomyTermMedicalSkinType.path.alias
             : props.data.taxonomyTermClinicalGroups && props.data.taxonomyTermClinicalGroups.path ? props.data.taxonomyTermClinicalGroups.path.alias
               : props.data.taxonomyTermClinicalIngredients && props.data.taxonomyTermClinicalIngredients.path ? props.data.taxonomyTermClinicalIngredients.path.alias
