@@ -513,7 +513,7 @@ const Register = () => {
                             </div>
 
                             <div className="submit-wrapper">
-                                <button type="submit" onClick={ handleSubmit, topFunction}
+                                <button type="submit" onClick={ (e) => {handleSubmit(e); topFunction(e)}}
                                   
 
                                  className="submit-input"  >Create Account</button>
