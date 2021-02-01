@@ -1795,9 +1795,9 @@ right: 10px;
     /* padding-left: 0 !important; */
     /* border: 0 !important; */
   }
-  .footerprivacyli:nth-child(2){
+  /* .footerprivacyli:nth-child(2){
     padding-right: 0;
-  }
+  } */
 
   .formGroup{
     margin-top: 25px;
