@@ -226,6 +226,9 @@ const ProductLine = ({ node }) => {
                   processed
                 }
                 relationships {
+                  field_medical_rx {
+                    name
+                  }
                   field_medical_image {
                     localFile {
                       childImageSharp {
@@ -466,7 +469,7 @@ const ProductLine = ({ node }) => {
                                           <ProductCard
                                             productLink={item.path.alias}
                                             producttitle={item.title}
-
+                                            isrx = {item.relationships && item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ""}
                                             productdescription={{
 
                                               __html: item.field_medical_description ? item.field_medical_description.processed : ""

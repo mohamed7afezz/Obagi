@@ -28,7 +28,7 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
   // const image = metaImage && metaImage.src ? `${site.siteMetadata.siteUrl}${metaImage.src}` : null
   const image = metaImage
 
-
+  const noindex = process.env.noindex;
   return (
     <Helmet
       htmlAttributes={{
@@ -78,7 +78,14 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
         },
       ].concat(meta)}
     >
-      <link  rel="canonical" href={canonical}  />
+      <link rel="canonical" href={canonical} />
+
+      {noindex === 'true' ?
+        <meta name="robots" content="noindex,nofollow" />
+        :
+        ""
+        
+      }
     </Helmet>
   )
 }

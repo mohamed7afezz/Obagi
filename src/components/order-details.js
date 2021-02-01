@@ -193,9 +193,11 @@ async function getShippingAddresses(e) {
         </div>
 
         <div className="row">
-          {alldata.shipments ? <>
+          {alldata.shipments ?
+           <>
             <div class="col-lg-7 offset-lg-1">
-                {alldata.shipments.length > 1?
+                {
+                alldata.shipments.length > 1?
                 
               <div className={orderDetailsStyles.shipmentsplit}>
                 <p>
@@ -205,6 +207,7 @@ async function getShippingAddresses(e) {
               </div>
               :""
             }
+
 
               {
 
@@ -229,7 +232,7 @@ async function getShippingAddresses(e) {
                                   <table className={orderHistoryStyles.tableCon}>
                                     <thead className={orderHistoryStyles.tHead}>
                                       <tr>
-                                        <th scope="col">Last Updated</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Items</th>
                                         <th scope="col">Total</th>
                                         <th scope="col">Status</th>
@@ -253,6 +256,7 @@ async function getShippingAddresses(e) {
                                         return <img class="img-mob" src={item.url_thumbnail} alt="img"/>
                                       })[0]
                                     }
+                                    
                                     <div
                                       className={orderDetailsStyles.productInfoWrapper}
                                     >
@@ -267,7 +271,7 @@ async function getShippingAddresses(e) {
                                         >
                                           Qty. {item.quantity ? item.quantity : ""}
                                         </div>
-                                        
+                              
                                         <div className={orderDetailsStyles.productPrice}>
                                           {item.total_inc_tax
                                             ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
@@ -541,7 +545,16 @@ async function getShippingAddresses(e) {
 
                     
               <div className="col-lg-7 offset-lg-1">
-
+              <table className={orderHistoryStyles.tableCon}>
+                  <thead className={orderHistoryStyles.tHead}>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Items</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                </table>
                 {
                   (alldata.products.map((item, index) => {
                     return (

@@ -91,7 +91,7 @@ export const UserProvider = ({ children }) => {
 
     // register
     async function handleRegister(user) {
-
+        setIsLoading(true);
 
         const newUserRes = await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
@@ -114,6 +114,8 @@ export const UserProvider = ({ children }) => {
             setErr(res.errors);
          
         }
+        setIsLoading(false);
+
     }
 
     return (

@@ -54,7 +54,7 @@ const Q1 = (props) => {
                 </div>
                 <div className="col-6 col-lg-auto">
                     <input type="radio" id="50" name="q1" value="50+" onChange={sendBackData} />
-                    <label onClick={topFunction}  htmlFor="40">50+</label>
+                    <label onClick={topFunction}  htmlFor="50">50+</label>
                 </div>
             </div>
             <div className="row question-progress-wrapper first-question-progress d-none d-lg-flex">

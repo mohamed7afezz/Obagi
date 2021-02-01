@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { navigate, Link } from "gatsby"
-import LoginMenu from "./login-menu"
-import { CustomSelect } from '../assets/js/custom-select'
 import UserContext from '../providers/user-provider';
-import { map } from 'jquery';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 // import $ from 'jquery'
 import '../assets/css/override.css';
 import Scrollbars from 'react-custom-scrollbars';
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const $ = require('jquery')
 const Register = () => {
     const size = useWindowSize();
@@ -14,8 +18,8 @@ const Register = () => {
     let largeScreen = 992;
     const [validForm, setValidForm] = useState(false);
 
-    const { user, err, handleRegister } = useContext(UserContext);
-    
+    const { user, err, handleRegister, isLoading } = useContext(UserContext);
+
     useEffect(() => {
         if (typeof window != undefined) {
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
@@ -29,7 +33,7 @@ const Register = () => {
 
                 if (this.closest('.day-select')) {
                     this.closest('.day-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                   
+
 
                 } else if (this.closest('.month-select')) {
                     this.closest('.month-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
@@ -68,7 +72,7 @@ const Register = () => {
         } else {
             setIsPassMatch(false);
             check = false;
-            
+
             $('.submit-input').attr('disabled', 'disabled');
 
 
@@ -191,7 +195,7 @@ const Register = () => {
                         return item;
                     })
                 })
-           
+
 
                 break;
             case 'postal_code':
@@ -204,7 +208,7 @@ const Register = () => {
                         return item;
                     })
                 })
-               
+
 
                 break;
             case 'email_sub':
@@ -217,11 +221,11 @@ const Register = () => {
                         return item;
                     })
                 })
-                
+
 
                 break;
             default:
-                
+
                 break;
         }
 
@@ -263,7 +267,7 @@ const Register = () => {
                     list += '<li class="text-danger error-li">' + $(this).attr('data-webform-required-error') + '</li>'
                 }
             }
-      
+
         })
         return list;
     }
@@ -280,25 +284,25 @@ const Register = () => {
 
         } else {
             $(".error-list-sec").html('')
-         
+
             isFormValid = true;
-      
+
         }
-        
+
 
         $(':invalid').change(function () {
             $(this).closest('.form-group').removeClass('error');
         })
 
-        
+
         // check date validality
         if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0) {
-         
+
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
                 item.classList.add("error")
             });
-   
+
 
         } else {
             document.querySelectorAll(".form-group.select-group").forEach(item => {
@@ -306,13 +310,13 @@ const Register = () => {
             });
             setIsToday(false);
         }
-    
-        if(isFormValid){
-         
+
+        if (isFormValid) {
+
 
             handleRegister(newUser);
 
-           
+
         }
 
     }
@@ -326,205 +330,214 @@ const Register = () => {
 
     return (
         <>
-            <div className="container-fluid register">
+            {isLoading ?
+                <div>
+                    <ClipLoader
+                        css={spinner}
+                        size={150}
+                        color={"#123abc"}
+                    />
+                </div>
+                :
+                <div className="container-fluid register">
 
-                <div className="row">
-                    <div className="col-12 col-lg-3 offset-lg-1">
-                        {screenWidth < largeScreen ?
-                            <button className="question-header collapsed" data-toggle="collapse" data-target="#register" aria-expanded="false" aria-controls="register">
-                                Why Register?
+                    <div className="row">
+                        <div className="col-12 col-lg-3 offset-lg-1">
+                            {screenWidth < largeScreen ?
+                                <button className="question-header collapsed" data-toggle="collapse" data-target="#register" aria-expanded="false" aria-controls="register">
+                                    Why Register?
                             </button>
-                            :
-                            <div className="question-header">Why Register?</div>
-                        }
-                        <div id={screenWidth < largeScreen ? "register" : ""} className={screenWidth < largeScreen ? "collapse benefits-wrapper" : "benefits-wrapper"} aria-labelledby={screenWidth < largeScreen ? "headingOne" : ""}>
+                                :
+                                <div className="question-header">Why Register?</div>
+                            }
+                            <div id={screenWidth < largeScreen ? "register" : ""} className={screenWidth < largeScreen ? "collapse benefits-wrapper" : "benefits-wrapper"} aria-labelledby={screenWidth < largeScreen ? "headingOne" : ""}>
 
-                            <div className="benefits-subwrapper">
-                                <div className="benefit-number">1</div>
-                                <div className="title-text">
-                                    <div className="benefits-title">Complimentary Shipping</div>
-                                    <div className="benefits-text">Registered members receive complimentary shipping on orders of $125 or more.</div>
+                                <div className="benefits-subwrapper">
+                                    <div className="benefit-number">1</div>
+                                    <div className="title-text">
+                                        <div className="benefits-title">Complimentary Shipping</div>
+                                        <div className="benefits-text">Registered members receive complimentary shipping on orders of $125 or more.</div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="benefits-subwrapper">
-                                <div className="benefit-number">2</div>
-                                <div className="title-text">
-                                    <div className="benefits-title">Fast Checkout</div>
-                                    <div className="benefits-text">Safely save your shipping and payment information in your account.</div>
+                                <div className="benefits-subwrapper">
+                                    <div className="benefit-number">2</div>
+                                    <div className="title-text">
+                                        <div className="benefits-title">Fast Checkout</div>
+                                        <div className="benefits-text">Safely save your shipping and payment information in your account.</div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="benefits-subwrapper">
-                                <div className="benefit-number">3</div>
-                                <div className="title-text">
-                                    <div className="benefits-title">Exclusive Access</div>
-                                    <div className="benefits-text">Registered members receive first access to new product announcements and insights on the latest formulas and innovations.</div>
+                                <div className="benefits-subwrapper">
+                                    <div className="benefit-number">3</div>
+                                    <div className="title-text">
+                                        <div className="benefits-title">Exclusive Access</div>
+                                        <div className="benefits-text">Registered members receive first access to new product announcements and insights on the latest formulas and innovations.</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="col-12 col-lg-4">
+                        <div className="col-12 col-lg-4">
 
-                        <div className="required-field">*Required fields</div>
-                        <div className={`errors  errors-list ${err != undefined ? 'errors bg-light' : ''}`}>
-                            <ul>
-                                {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
-                            </ul>
-                            <ul className="error-list-sec">
-                                
-                            </ul>
-                            {isToday == true ?
+                            <div className="required-field">*Required fields</div>
+                            <div className={`errors  errors-list ${err != undefined ? 'errors bg-light' : ''}`}>
                                 <ul>
-                                    <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                                    {err !== undefined ? Object.entries(err).map(item => <li className="text-danger">{item[1]}</li>) : ''}
                                 </ul>
-                                : ""}
-                        </div>
+                                <ul className="error-list-sec">
 
-
-                        <form noValidate="novalidate" class="regform needs-validation" >
-                            <div className="form-group">
-                                <label for="firstname">*First name</label>
-                                <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
+                                </ul>
+                                {isToday == true ?
+                                    <ul>
+                                        <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                                    </ul>
+                                    : ""}
                             </div>
 
-                            <div className="form-group">
-                                <label for="lastname">*Last name</label>
-                                <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
-                            </div>
 
-                            <div className="form-group">
-                                <label for="postalcode">*Postal Code</label>
-                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" data-webform-required-error="Please fill in your postal code." />
-                            </div>
+                            <form noValidate="novalidate" class="regform needs-validation" >
+                                <div className="form-group">
+                                    <label for="firstname">*First name</label>
+                                    <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
+                                </div>
 
-                            <div className="form-group">
-                                <label for="phonenum">Phone Number (Optional)</label>
-                                <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" aria-describedby="phonenumber" placeholder="" />
-                            </div>
+                                <div className="form-group">
+                                    <label for="lastname">*Last name</label>
+                                    <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
+                                </div>
 
-                            <div className="form-group">
-                                <label for="mailaddress">*Email Address</label>
-                                <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email." />
-                            </div>
+                                <div className="form-group">
+                                    <label for="postalcode">*Postal Code</label>
+                                    <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" data-webform-required-error="Please fill in your postal code." />
+                                </div>
 
-                            <div className="group-title">Date of Birth</div>
+                                <div className="form-group">
+                                    <label for="phonenum">Phone Number (Optional)</label>
+                                    <input type="tel" className="form-control" name="phone" onChange={handleUpdate} id="phonenum" aria-describedby="phonenumber" placeholder="" />
+                                </div>
 
-                            <div className="day-mon-year">
-                                <div className="day-month">
-                                    <div class="form-group select-group new-select  day-select">
-                                        <label for="reviewFormSelect" class="form-label">*Day</label>
+                                <div className="form-group">
+                                    <label for="mailaddress">*Email Address</label>
+                                    <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email." />
+                                </div>
+
+                                <div className="group-title">Date of Birth</div>
+
+                                <div className="day-mon-year">
+                                    <div className="day-month">
+                                        <div class="form-group select-group new-select  day-select">
+                                            <label for="reviewFormSelect" class="form-label">*Day</label>
+                                            <div class="select-selected">Select</div>
+                                        </div>
+                                        <div className="form-group select-group  old-select day-select hide">
+                                            <label for="reviewFormSelect" className="form-label">*Day</label>
+                                            <div className="select-wrap">
+                                                <Scrollbars style={{ height: 200 }}>
+                                                    <div className="form-control" id="reviewFormSelectDay">
+                                                        {
+                                                            Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
+                                                                if (day > 0)
+                                                                    return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
+                                                            })
+                                                        }
+
+                                                    </div>
+                                                </Scrollbars>
+                                            </div>
+                                        </div>
+                                        <div class="form-group select-group new-select  month-select">
+                                            <label for="reviewFormSelect" class="form-label">*Month</label>
+                                            <div class="select-selected">Select</div>
+                                        </div>
+                                        <div className="form-group select-group old-select  month-select hide">
+                                            <label for="reviewFormSelect" className="form-label">*Month</label>
+                                            <div className="select-wrap" >
+                                                <Scrollbars style={{ height: 200 }}>
+
+                                                    <div required className="form-control" name="date" id="reviewFormSelect">
+
+                                                        <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
+                                                        <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
+                                                        <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
+                                                        <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
+                                                        <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
+                                                        <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
+                                                        <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
+                                                        <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
+                                                        <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
+                                                        <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
+                                                        <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
+                                                        <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
+
+                                                    </div>
+                                                </Scrollbars>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group select-group new-select  year-select">
+                                        <label for="reviewFormSelect" class="form-label">*Year</label>
                                         <div class="select-selected">Select</div>
                                     </div>
-                                    <div className="form-group select-group  old-select day-select hide">
-                                        <label for="reviewFormSelect" className="form-label">*Day</label>
+
+                                    <div className="form-group select-group old-select  year-select hide">
+                                        <label for="reviewFormSelect" className="form-label">*Year</label>
+
                                         <div className="select-wrap">
                                             <Scrollbars style={{ height: 200 }}>
-                                                <div className="form-control" id="reviewFormSelectDay">
-                                                    {
-                                                        Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
-                                                            if (day > 0)
-                                                                return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
-                                                        })
-                                                    }
+                                                <div required className="form-control" name="date" id="reviewFormSelectYear">
 
-                                                </div>
-                                            </Scrollbars>
-                                        </div>
-                                    </div>
-                                    <div class="form-group select-group new-select  month-select">
-                                        <label for="reviewFormSelect" class="form-label">*Month</label>
-                                        <div class="select-selected">Select</div>
-                                    </div>
-                                    <div className="form-group select-group old-select  month-select hide">
-                                        <label for="reviewFormSelect" className="form-label">*Month</label>
-                                        <div className="select-wrap" >
-                                            <Scrollbars style={{ height: 200 }}>
-
-                                                <div required className="form-control" name="date" id="reviewFormSelect">
-
-                                                    <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
-                                                    <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
-                                                    <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
-                                                    <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
-                                                    <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
-                                                    <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
-                                                    <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
-                                                    <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
-                                                    <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
-                                                    <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
-                                                    <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
-                                                    <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
-
+                                                    {yearsList.reverse().map((item, index) => {
+                                                        return (
+                                                            <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
+                                                        )
+                                                    })}
                                                 </div>
                                             </Scrollbars>
                                         </div>
                                     </div>
 
                                 </div>
-                                <div class="form-group select-group new-select  year-select">
-                                    <label for="reviewFormSelect" class="form-label">*Year</label>
-                                    <div class="select-selected">Select</div>
+
+                                <div className="group-title">Create Password</div>
+
+
+                                <div className="form-group">
+                                    <label for="pwd">*Password</label>
+                                    <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" data-webform-required-error="Please fill in a password." />
                                 </div>
 
-                                <div className="form-group select-group old-select  year-select hide">
-                                    <label for="reviewFormSelect" className="form-label">*Year</label>
-
-                                    <div className="select-wrap">
-                                        <Scrollbars style={{ height: 200 }}>
-                                            <div required className="form-control" name="date" id="reviewFormSelectYear">
-
-                                                {yearsList.reverse().map((item, index) => {
-                                                    return (
-                                                        <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
-                                                    )
-                                                })}
-                                            </div>
-                                        </Scrollbars>
-                                    </div>
+                                <div className="form-group">
+                                    <label for="confpwd">*Confirm Password</label>
+                                    <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => { setPassConfirm(true) }} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" data-webform-required-error="Please confirm password." />
                                 </div>
 
-                            </div>
+                                <p className={`form-control ${((isPassMatch == false) && passConfirm) ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
+                                <p id="json-errors"></p>
 
-                            <div className="group-title">Create Password</div>
+                                <div className="form-check">
 
-
-                            <div className="form-group">
-                                <label for="pwd">*Password</label>
-                                <input required type="password" className={`form-control password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} name="password" id="pwd" aria-describedby="password" placeholder="" data-webform-required-error="Please fill in a password." />
-                            </div>
-
-                            <div className="form-group">
-                                <label for="confpwd">*Confirm Password</label>
-                                <input required type="password" className={`form-control conf-password ${((isPassMatch == false) && passConfirm) ? 'text-warning' : ''}`} onKeyUp={handlePassword} onBlur={(e) => { setPassConfirm(true) }} name="confirmpassword" id="confpwd" aria-describedby="confirmpassword" placeholder="" data-webform-required-error="Please confirm password." />
-                            </div>
-
-                            <p className={`form-control ${((isPassMatch == false) && passConfirm) ? 'text-warning' : 'd-none'}`}> Password doesn't match</p>
-                            <p id="json-errors"></p>
-
-                            <div className="form-check">
-
-                                <label className="form-check-label terms" for="registerCheck">
-                                    Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
+                                    <label className="form-check-label terms" for="registerCheck">
+                                        Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By registering, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
                                     <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true} />
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </div>
 
-                            <div className="submit-wrapper">
-                                <button type="submit" onClick={ handleSubmit, topFunction}
-                                  
+                                <div className="submit-wrapper">
+                                    <button type="submit" onClick={(e) => { handleSubmit(e); topFunction(e) }}
 
-                                 className="submit-input"  >Create Account</button>
-                            </div>
 
-                        </form>
+                                        className="submit-input"  >Create Account</button>
+                                </div>
+
+                            </form>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-
+            }
         </>
     )
 
