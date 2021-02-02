@@ -112,7 +112,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: process.env.Drupal_URL,
+        baseUrl: process.env.sourceURL,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
         concurrentFileRequests: 1,
         basicAuth: {
