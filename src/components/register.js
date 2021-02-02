@@ -273,7 +273,6 @@ const Register = () => {
     }
     let isFormValid = false;
     let isDateValid = false;
-    console.log("ashhh date", newUser.attributes[0].attribute_value)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -300,7 +299,6 @@ const Register = () => {
         let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
         // check date validality
         if (!isValidDate(newUser.attributes[0].attribute_value) || newUser.attributes[0].attribute_value === today.toString() || newUser.attributes[0].attribute_value.length === 0 || chosenDate > now) {
-            console.log("ashhh date is invalid")
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
                 item.classList.add("error")
