@@ -567,8 +567,8 @@ const ProductHero = ({ data, nodeType }) => {
               <div class="share-wrap  mt-35 mb-50">
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></p>
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></p>
-                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://dev-obagi.azurewebsites.net`} target="_blank"><span><img src={fb} alt="img"/></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
-                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://dev-obagi.azurewebsites.net/`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
+                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img"/></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
+                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
             </div>
           </div>
