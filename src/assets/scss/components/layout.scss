@@ -4571,3 +4571,18 @@ input[type="search"]::-webkit-search-results-decoration {
         margin-bottom: 0;
     }
 }
+
+body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=radio].acsb-shown {
+ 
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    z-index: 0;
+}
+
+.acsb-hidden {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: unset;
+}

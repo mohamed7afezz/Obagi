@@ -1678,7 +1678,8 @@ right: 10px;
 
 /* Show the checkmark when checked */
 .terms input:checked ~ .checkmark:after {
-  display: block;
+  display: block !important;
+  content: "" !important;
 }
 
 /* Style the checkmark/indicator */
