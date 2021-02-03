@@ -4564,12 +4564,15 @@ input[type="search"]::-webkit-search-results-decoration {
 //         top: -0.5em;
 //     }
 // }
-
 .recommendedcon .slick-slide {
-    margin-bottom: 24px;
-    &:last-child {
-        margin-bottom: 0;
-    }
+    padding: 24px;
+}
+
+.recommendedcon .slick-slide img{
+  @include lg-screen {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
 }
 
 body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=radio].acsb-shown {
