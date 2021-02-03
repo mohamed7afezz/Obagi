@@ -40,7 +40,6 @@ const YouMayLike = ({key, node }) => {
             {
               node.relationships.field_product_card.map((item, index) => (
                 <div className={["col-12", productsuggestion.allcon].join(" ")}>
-                    
                   <ProductCard
                       productLink={item.path.alias}
                       producttitle={item.title}
@@ -142,6 +141,9 @@ fragment youMightAlsoLikeMedicalParagrapgh on paragraph__you_might_also_like {
             alias
           }
           relationships {
+            field_medical_rx {
+              name
+            }
             field_medical_image {
               localFile {
                 childImageSharp {

@@ -115,11 +115,11 @@ const ProductHero = ({ data, nodeType }) => {
 
 
 
-          "productImageURL": `${URL.replace('api/','')}${reviewimg}`,
+          "productImageURL": `${URL.replace('/api/','')}${reviewimg}`,
 
           //ex. https:\\site.com\pub\media\mh02-black_main.jpg
 
-          "productPageURL": `${URL.replace('api/','')}${productpath}`,
+          "productPageURL": `${URL.replace('/api/','')}${productpath}`,
 
 
           //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
