@@ -7,9 +7,11 @@ import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 export default function Contact() {
     const baseUrl = process.env.Base_URL;
     const [emailSelected, setEmailSelected] = useState(true);
+    const [selectSelected, setSelect] = useState(false);
 
     function removevaild(e) {
         let item = e.target
+        console.log("ash target removed")
 
         item.parentElement.classList.remove('error')
 
@@ -74,12 +76,21 @@ export default function Contact() {
             text_area1[0].parentElement.classList.add('error')
             text_area1[0].nextSibling.classList.remove('hide')
         }
+        let wrongSelect = false;
+        let selectWrapper = document.querySelector('.needs-validations .select-wrapper select')
+        if (selectWrapper.value == "Select") {
+            wrongSelect = false;
+            document.querySelector('.needs-validations .select-wrapper').parentElement.classList.add('error')
+            document.querySelector('.needs-validations .select-wrapper').nextSibling.classList.remove('hide')
+        } else {
+            wrongSelect = true;
+        }
         if (list.length > 0) {
             for (var item of list) {
                 item.parentElement.classList.add('error')
                 item.nextSibling.classList.remove('hide')
             }
-        } else {
+        } else if(list.length == 0 && text_area1.length == 0 && wrongSelect == true){
             let list2 = document.querySelectorAll('.needs-validations input');
             for (let item of list2) {
 
@@ -89,7 +100,7 @@ export default function Contact() {
             obj['description'] = `${document.querySelector("#contactDesc").value}`
             obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
             let chosenRadio
-            let firstRadios = document.querySelectorAll('.needs-validations .phy-pat input').forEach(item => {
+            document.querySelectorAll('.needs-validations .phy-pat input').forEach(item => {
                 if(item.checked == true) {
                     chosenRadio = item
                 }
@@ -159,19 +170,19 @@ export default function Contact() {
 
                             <div className="form-group form-element-con">
                                 <label for="contactFName" className="form-label">*First name</label>
-                                <input type="text" className="form-control" name="first_name" onClick={removevaild} id="contactFName" aria-describedby="contactFName" placeholder="" required />
+                                <input type="text" className="form-control" name="first_name" onChange={removevaild} id="contactFName" aria-describedby="contactFName" placeholder="" required />
                                 <p className="error-msg hide">Please Enter Your First Name</p>
                             </div>
                             <div className="form-group form-element-con">
                                 <label for="contactLName" className="form-label">*Last name</label>
-                                <input type="text" className="form-control" onClick={removevaild} name="last_name" id="contactLName" aria-describedby="contactLName" placeholder="" required />
-                                <p className="error-msg hide">Please Enter Your First Name</p>
+                                <input type="text" className="form-control" onChange={removevaild} name="last_name" id="contactLName" aria-describedby="contactLName" placeholder="" required />
+                                <p className="error-msg hide">Please Enter Your Last Name</p>
                             </div>
 
                             <div className="form-group select-group">
                                 <label  className="form-label">*Subject</label>
-                                <div className="select-wrapper custom-select">
-                                    <select className="form-control" name="subject" id="subject">
+                                <div className="select-wrapper custom-select"  onClick={removevaild}>
+                                    <select className="form-control" name="subject" id="subject" required >
                                         <option value="Select">Select</option>
                                         <option value="1">Business Center</option>
                                         <option value="2">Customer Service</option>
@@ -192,11 +203,12 @@ export default function Contact() {
 
                                     </select>
                                 </div>
+                                <p className="error-msg hide select-error-msg">Please Select a Subject</p>
                             </div>
 
                             <div className="form-group textarea-group form-element-con">
-                                <label for="contactDesc" className="form-label">Description</label>
-                                <textarea onClick={removevaild} type="text" className="form-control textarea-control" id="contactDesc" aria-describedby="contactDesc" required placeholder="Type here…" />
+                                <label for="contactDesc" className="form-label">*Description</label>
+                                <textarea onChange={removevaild} type="text" className="form-control textarea-control" id="contactDesc" aria-describedby="contactDesc" required placeholder="Type here…" />
                                 <p className="error-msg hide">Please Enter Your Description</p>
 
                             </div>
@@ -222,11 +234,11 @@ export default function Contact() {
 
                             <div className="form-group form-element-con">
                                 <label for="contactPhone" className="form-label">*{emailSelected == true? "Email" : "Phone"}</label>
-                                <input type="text" className="form-control" onClick={removevaild} name="phone" id="contactPhone" aria-describedby="contactPhone" placeholder={emailSelected == true? "Email" : "Phone"} required />
+                                <input type="text" className="form-control" onChange={removevaild} name="phone" id="contactPhone" aria-describedby="contactPhone" placeholder={emailSelected == true? "Email" : "Phone"} required />
                                 <p className="error-msg hide">Please Enter Your {emailSelected == true? "Email" : "Phone"}</p>
                             </div>
 
-                            <div className="footnote">Including area code and/or country code, no spaces or dashes (e.g., 1234567890)</div>
+                            <div className="footnote">{emailSelected == true? "" : "Including area code and/or country code, no spaces or dashes (e.g., 1234567890)"}</div>
                             <button onClick={(e) => { submitforming(e); }} className="button-link" type="submit"  >
                                 Send Message
                             </button>
