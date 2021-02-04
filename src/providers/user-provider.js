@@ -106,7 +106,7 @@ export const UserProvider = ({ children }) => {
 
 
             navigate("/my-account/orders");
-            
+            setErr();
         
 
         } else {

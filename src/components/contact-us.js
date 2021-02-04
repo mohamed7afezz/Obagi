@@ -95,7 +95,6 @@ export default function Contact() {
                 }
             })
             obj[document.querySelector('.needs-validations .phy-pat input').getAttribute("name")] = chosenRadio.value
-            console.log('ashhh object',obj)
             sendFormValues({ obj })
         }
     }
