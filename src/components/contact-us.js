@@ -88,6 +88,14 @@ export default function Contact() {
             }
             obj['description'] = `${document.querySelector("#contactDesc").value}`
             obj[document.querySelector('.needs-validations select').getAttribute("name")] = `${document.querySelector('.needs-validations select').value}`
+            let chosenRadio
+            let firstRadios = document.querySelectorAll('.needs-validations .phy-pat input').forEach(item => {
+                if(item.checked == true) {
+                    chosenRadio = item
+                }
+            })
+            obj[document.querySelector('.needs-validations .phy-pat input').getAttribute("name")] = chosenRadio.value
+            console.log('ashhh object',obj)
             sendFormValues({ obj })
         }
     }
@@ -132,17 +140,17 @@ export default function Contact() {
                             <div className="required-field">*All fields required</div>
 
 
-                            <div className="check-group">
+                            <div className="check-group phy-pat">
                                 <div className="form-check form-element-con">
                                     <label className="radioLabel form-check-label" for="contactFirstRadio" >
-                                        <input className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer" required />
+                                        <input className="form-check-input" onClick={removevaild} type="radio" name="patient_or_physician" id="contactFirstRadio" value="I am a Patient/Consumer" required />
                                         <span class="radiomark"></span>
                                         I am a Patient/Consumer
                                     </label>
                                 </div>
                                 <div className="form-check form-element-con">
                                     <label className="radioLabel form-check-label" for="contactSecondRadio" onChange={removevaild}>
-                                        <input required className="form-check-input" onChange={removevaild} type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
+                                        <input required className="form-check-input" onClick={removevaild} type="radio" name="patient_or_physician" id="contactSecondRadio" value="I am a Physician/Skin Care Professional" />
                                         <span class="radiomark"></span>
                                         I am a Physician/Skin Care Professional
                                     </label>
@@ -215,7 +223,7 @@ export default function Contact() {
 
                             <div className="form-group form-element-con">
                                 <label for="contactPhone" className="form-label">*{emailSelected == true? "Email" : "Phone"}</label>
-                                <input type="text" className="form-control" onClick={removevaild} name="phone" id="contactPhone" aria-describedby="contactPhone" placeholder="" required />
+                                <input type="text" className="form-control" onClick={removevaild} name="phone" id="contactPhone" aria-describedby="contactPhone" placeholder={emailSelected == true? "Email" : "Phone"} required />
                                 <p className="error-msg hide">Please Enter Your {emailSelected == true? "Email" : "Phone"}</p>
                             </div>
 
