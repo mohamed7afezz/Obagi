@@ -11,7 +11,6 @@ export default function Contact() {
 
     function removevaild(e) {
         let item = e.target
-        console.log("ash target removed")
 
         item.parentElement.classList.remove('error')
 
