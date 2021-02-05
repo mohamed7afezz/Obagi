@@ -82,7 +82,14 @@ module.exports = {
           `/blog-coming-soon`, 
           `/placeholder-test`,
           `/search-page/`,
-
+          `/medical/categories/eye-care`,
+          `/medical/skin-concern/acne`,
+          `/medical/ingredients/tretinoin`,
+          `/medical/ingredients/hydroquinone`,
+          `/medical/skin-concern/redness-prone`,
+          `/medical/skin-concern/elasticity-sagging-skin`,
+          `/clinical/skin-care/brightening-skin-care`,
+          `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`
     ],
         
       }
