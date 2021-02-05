@@ -36,6 +36,10 @@ export default function Contact() {
 
 
     }
+    function topFunction() {
+        document.body.scrollTop = 100; // For Safari
+        document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
+    }
 
     function removeError(e) {
         e.target.classList.add('d-none');
@@ -74,6 +78,7 @@ export default function Contact() {
 
 
     function submitforming(e) {
+        topFunction();
         var obj = { webform_id: "contact_us" };
         var list = document.querySelectorAll('.needs-validations input:invalid');
         let text_area1 = document.querySelectorAll('#contactDesc:invalid')
