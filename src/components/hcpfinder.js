@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { phyFinder } from "../assets/js/phy-finder"
-// import "../assets/scss/components/physfinder-old.scss"
-// import "../assets/scss/components/physfinder.scss"
+import "../assets/scss/components/physfinder-old.scss"
+import "../assets/scss/components/physfinder.scss"
 import { CustomSelect } from "../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
 import Layout from "./layout"
