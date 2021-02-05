@@ -16,7 +16,6 @@ import AboveHeader from './above-header'
 
 import '../assets/scss/components/layout.scss'
 
-import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 import Showbag from "./Cart/bag-preview"
 import scrollDown from '../assets/images/scroll-down.png'

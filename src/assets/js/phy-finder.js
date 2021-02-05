@@ -495,8 +495,8 @@ class Map extends Search {
         this.zoom = zoom;
         this.markers = [];
         this.markerIcon ={
-            default: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin_0.png',
-            active: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin-active.png'
+            default: 'https://www.obagi.com/api/sites/default/files/2020-10/pin_0.png',
+            active: 'https://www.obagi.com/api/sites/default/files/2020-10/pin-active.png'
         }
         this.infoWindow = new this.google.maps.InfoWindow({
             content: '',

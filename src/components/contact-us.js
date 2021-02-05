@@ -11,7 +11,7 @@ export default function Contact() {
 
     function removevaild(e) {
         let item = e.target
-
+        console.log("ashh remove valid")
         item.parentElement.classList.remove('error')
 
         let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)
@@ -34,6 +34,12 @@ export default function Contact() {
             }
 
 
+
+    }
+
+    function removeError(e) {
+        e.target.classList.add('d-none');
+        e.target.parentElement.classList.remove('error')
 
     }
     
@@ -180,7 +186,7 @@ export default function Contact() {
 
                             <div className="form-group select-group">
                                 <label  className="form-label">*Subject</label>
-                                <div className="select-wrapper custom-select"  onClick={removevaild}>
+                                <div className="select-wrapper custom-select"  >
                                     <select className="form-control" name="subject" id="subject" required >
                                         <option value="Select">Select</option>
                                         <option value="1">Business Center</option>
@@ -202,7 +208,7 @@ export default function Contact() {
 
                                     </select>
                                 </div>
-                                <p className="error-msg hide select-error-msg">Please Select a Subject</p>
+                                <p className="error-msg hide select-error-msg" onClick={removeError}>Please Select a Subject</p>
                             </div>
 
                             <div className="form-group textarea-group form-element-con">
