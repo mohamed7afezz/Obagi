@@ -1641,6 +1641,7 @@ right: 10px;
   cursor: pointer;
   height: 0;
   width: 0;
+  left: 0;
 }
 
 /* Create a custom checkbox */

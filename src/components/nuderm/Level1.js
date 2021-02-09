@@ -876,11 +876,11 @@ return (
              </p> </div>
             <div className={"col-12 col-lg-6 offset-lg-3"}>
               <label className="terms footnote" >
-                Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi.
-                By registering, your information will be collected and used in the U.S. subject to our <Link to={"/privacy-policy"}> U.S.
-                Privacy Policy</Link> and <Link to={"/terms-of-use"}>Terms of Use</Link>. For U.S. consumers only.
                 <input type="checkbox" defaultChecked={true} required name="yes_agreement" />
                 <span className="checkmark"></span>
+                <span>Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi.
+                By registering, your information will be collected and used in the U.S. subject to our <Link to={"/privacy-policy"}> U.S.
+                Privacy Policy</Link> and <Link to={"/terms-of-use"}>Terms of Use</Link>. For U.S. consumers only.</span>
               </label>
            </div>
            <div className={" col-12 col-lg-2 offset-lg-3"}>

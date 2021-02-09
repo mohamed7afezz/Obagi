@@ -271,13 +271,13 @@ const Footer = ({ siteTitle }) => {
                   </div>
                   <div className={[footerStyles.terms, "formInputCon"].join(" ")}>
                     <label className="terms" onClick={removevaild}>
-                      Yes, I want to receive emails to keep up with the latest
+                      <input type="checkbox" className="newsignup" defaultChecked={true} vlaue="on" required name="want_to_receive_emails" />
+                      <span className="checkmark"></span>
+                      <span>Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the US subject to our US <Link className={footerStyles.termslink} to="/privacy-policy"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="/terms-of-use">Terms
-                      of Use</Link>. For US consumers only.
-                      <input type="checkbox" className="newsignup" defaultChecked={true} vlaue="on" required name="want_to_receive_emails" />
-                      <span className="checkmark"></span>
+                      of Use</Link>. For US consumers only.</span>
                     </label>
                     <button type="button" onClick={(e) => { submitforming(e) }} disabled={submitingForm} className="btn signup-btn d-none d-lg-block">{submitingForm? 'Subcribing...' : 'SIGN UP'}</button>
                   </div>
