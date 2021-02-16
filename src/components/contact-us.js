@@ -11,7 +11,6 @@ export default function Contact() {
 
     function removevaild(e) {
         let item = e.target
-        console.log("ashh remove valid")
         item.parentElement.classList.remove('error')
 
         let i = document.querySelectorAll(`input[name=${item.getAttribute('name')}]`)

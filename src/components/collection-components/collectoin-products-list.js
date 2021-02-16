@@ -834,6 +834,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
+                        productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -854,6 +855,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         
                       ) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
+                        productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -873,6 +875,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         />
                       ) : (
                         <ProductCard
+                        productCat="medical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -937,6 +940,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -955,6 +959,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           Sku={item.field_clinical_sku}
                         />
                       ) : pageNodeType == "ClinicalIngredients" ? ( <ProductCard
+                      productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -972,6 +977,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
                         />): pageNodeType == "clinicalGroups" ? ( <ProductCard
+                        productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -990,6 +996,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           Sku={item.field_clinical_sku}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -1009,6 +1016,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -1029,6 +1037,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                        
                       ): (
                         <ProductCard
+                        productCat="medical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -1107,6 +1116,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                             
                           >
                             <ProductCard
+                            productCat="clinical"
                               productLink={product.path.alias}
                               producttitle={product.title}
                               productdescription={{
@@ -1178,6 +1188,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           
                         >
                           <ProductCard
+                          productCat="medical"
                             productLink={product.path.alias}
                             producttitle={product.title}
                             productdescription={{

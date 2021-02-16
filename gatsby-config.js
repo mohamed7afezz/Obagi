@@ -121,7 +121,7 @@ module.exports = {
       options: {
         baseUrl: process.env.sourceURL,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
-        concurrentFileRequests: 1,
+        concurrentFileRequests: 10,
         basicAuth: {
 					username: 'gatsby-user',
 					password: 'ndVn8Xk7iahMny4'

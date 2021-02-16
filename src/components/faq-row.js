@@ -4,7 +4,6 @@ import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 
 export default function FaqRow({ data }) {
 
-    console.log("ashh", data.relationships.field_question_and_answer)
     return (
         <>
 

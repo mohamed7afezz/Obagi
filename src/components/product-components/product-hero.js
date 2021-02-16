@@ -402,6 +402,7 @@ const ProductHero = ({ data, nodeType }) => {
                   : <button
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-Sku={Sku}
+                    data-skuType={nodeType}
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
@@ -459,6 +460,7 @@ const ProductHero = ({ data, nodeType }) => {
                   : <button
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-Sku={Sku}
+                    data-skuType={nodeType}
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?

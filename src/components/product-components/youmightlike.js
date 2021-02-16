@@ -43,6 +43,7 @@ const YouMayLike = ({key, node }) => {
                   <ProductCard
                       productLink={item.path.alias}
                       producttitle={item.title}
+                      productCat="medical"
                       productdescription={{__html:item.field_medical_description?item.field_medical_description.processed:""}}
                       productimage={ item.relationships.field_medical_image &&  item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                       price={item.field_medical_price}
@@ -67,6 +68,7 @@ const YouMayLike = ({key, node }) => {
                <div className={["col-12", productsuggestion.allcon].join(" ")}>
                     
                  <ProductCard 
+                 productCat="clinical"
                    productLink={item.path.alias}
                    producttitle={item.title}
                    productdescription={{__html:item.field_clinical_description.processed}}

@@ -1,20 +1,39 @@
 import $ from 'jquery';
 
 function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
+  let key = value.sku;
+  let keyIndex = -1;
+
+  for(let i =0; i < self.length; i++) {
+    if(self[i].sku === key) {
+      keyIndex = i;
+      break;
+    }
+  }
+  return keyIndex === index;
 }
+
 export function checkStock(baseUrl,cb) {
 
   var skus = [];
   $.each($('[data-sku]'), function () {
-    skus.push($(this).attr('data-sku'));
+    skus.push({
+      type: $(this).attr('data-skuType'),
+      sku: $(this).attr('data-sku')
+    });
   })
   
   var uniqueSkus = skus.filter(onlyUnique);
   
   var settings = {
-    "url": baseUrl+"bigcommerce/v1/boxouthealth?skus=" + uniqueSkus.join(','),
-    "method": "GET"
+    "url": "https://dev-ecomm.obagi.com/api/bigcommerce/v1/boxouthealth",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({
+      "skus": uniqueSkus
+    })
   };
   if(uniqueSkus.length == 0){
     return;
@@ -23,7 +42,7 @@ export function checkStock(baseUrl,cb) {
     for (var sku in response) {
       if (response.hasOwnProperty(sku)) {
         var skuNumber = response[sku];
-        if (skuNumber < 100) {
+        if (!skuNumber) {
           $.each($('[data-sku=' + sku + ']'), function () {
             $(this).html('Temporarily out of stock');
             $(this).addClass('out-of-stock');

@@ -68,6 +68,7 @@ export default function SysRelatedProducts({node}) {
                                                 <ProductCard 
                                                     key={prod.field_medical_id}
                                                     productId={prod.field_medical_id}
+                                                    productCat="medical"
                                                     productLink={prod.path? prod.path.alias :''}
                                                     producttitle={prod.title? prod.title : ''}
                                                     isrx = {prod.relationships && prod.relationships.field_medical_rx? prod.relationships.field_medical_rx.name : "" }

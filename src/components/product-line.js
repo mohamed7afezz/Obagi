@@ -470,6 +470,7 @@ const ProductLine = ({ node }) => {
                                             productLink={item.path.alias}
                                             producttitle={item.title}
                                             isrx = {item.relationships && item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ""}
+                                            productCat="medical"
                                             productdescription={{
 
                                               __html: item.field_medical_description ? item.field_medical_description.processed : ""
