@@ -277,6 +277,7 @@ class Search extends Temps {
         let gcPromise = new Promise((res, rej) => {
             this.geocoder.geocode(geocodeOptions, (results, st) => {
                     if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
+                        this.emptyParams();
                         this.updateParams(results[0]);
 
                         res();
@@ -454,6 +455,7 @@ class Search extends Temps {
     updateParams(location, paramsFor) {
        
         this.searchBtn.disabled = true;
+        console.log('bahiii', location);
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
                 this.params.zip = item.short_name;
@@ -473,8 +475,8 @@ class Search extends Temps {
         if(paramsFor != 'prod') {
             this.searchBtn.classList.add('pulse');
         }
-        
-        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params.zip + ', ' + this.params.country;
+        console.log('bahiiii', this.params);
+        this.inputLoc.value = (this.params["city"] != ''? this.params["city"] + ', ' : '') + (this.params["state"] != '' ? this.params["state"] + ', ' : '') + (this.params.zip  != '' ? this.params.zip + ', ' : '') + (this.params.country != ''? this.params.country : '');
         document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
 }
@@ -584,6 +586,7 @@ class Map extends Search {
             this.map.panTo(this.currPlace.geometry.location);
             this.map.setZoom(15);
             // update params
+            this.emptyParams();
             this.updateParams(this.currPlace, autoCompFor);
         }
     }

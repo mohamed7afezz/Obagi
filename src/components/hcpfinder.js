@@ -304,7 +304,7 @@ export default function Finder() {
               <div class="col-lg-4 d-flex search-drop">
                 <label class="finder-input showlocation">
                   <span>location </span>
-                  <input id="input-location" type="text" maxlength="5" />
+                  <input id="input-location" type="text" />
                 </label>
                 <label class="finder-input showphysician hide">
                   <span>physician </span>
@@ -628,7 +628,6 @@ export default function Finder() {
                       <input
                         class="appointmentInput"
                         id="prodLoc"
-                        maxLength="5"
                       />
                     </div>
                     <div class="appointment-elemnt advanced-search">
