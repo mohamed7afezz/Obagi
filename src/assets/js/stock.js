@@ -26,7 +26,7 @@ export function checkStock(baseUrl,cb) {
   var uniqueSkus = skus.filter(onlyUnique);
   
   var settings = {
-    "url": "https://dev-ecomm.obagi.com/api/bigcommerce/v1/boxouthealth",
+    "url": baseUrl+"bigcommerce/v1/boxouthealth",
     "method": "POST",
     "headers": {
       "Content-Type": "application/json"

@@ -482,7 +482,7 @@ const OrderStatusDetails = (props) => {
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} onChange={getallcheck} className="form-check-input details-check" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                  <input type="checkbox" data-sku={item.sku} onChange={getallcheck} className="form-check-input details-check" value={productId[index]} id={"productCheck" + productId[index] + index} />
                                   <span className="checkmark"></span>
 
                                 </label>
@@ -547,7 +547,7 @@ const OrderStatusDetails = (props) => {
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input desk-details-check order-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  <input type="checkbox" data-sku={item.sku} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                   <span className="checkmark"></span>
 
                                 </label>

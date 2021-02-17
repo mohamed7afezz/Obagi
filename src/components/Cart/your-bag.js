@@ -181,7 +181,7 @@ const YourBag = (props, { notificationId }) => {
     if(typeof window != undefined ){
       checkStock(baseUrl);
     }
-  }, [])
+  });
   
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -627,6 +627,7 @@ const YourBag = (props, { notificationId }) => {
                   {getRecommendedProducts(lineItems.physical_items).length > 0?getRecommendedProducts(lineItems.physical_items).map(product => {
                     return (
                       <RecommendedProduct
+                        prodCat={isClinical? 'clinical': 'medical'}
                         recId={isClinical? product.field_clinical_id : product.field_medical_id}
                         recTitle={product.title ? product.title : ""}
                         recLink={product.path.alias ? product.path.alias : ""}
@@ -965,6 +966,7 @@ const YourBag = (props, { notificationId }) => {
             <div className={[ShowBagStyle.recommendedTitle, "recommendedTitle"].join(" ")}>Recommended</div>
             <div className="prodrecom">
               <RecommendedProduct
+                prodCat={data.professionalC.field_medical_sku? 'medical': 'clinical'}
                 recId={profProductId}
                 recTitle={data.professionalC.title ? data.professionalC.title : ""}
                 recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
@@ -976,6 +978,7 @@ const YourBag = (props, { notificationId }) => {
               />
 
               <RecommendedProduct
+                prodCat={data.elastiderm.field_medical_sku? 'medical' : 'clinical'}
                 recId={elastiProductId}
                 recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
                 recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}

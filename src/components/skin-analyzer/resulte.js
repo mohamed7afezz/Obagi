@@ -39,14 +39,15 @@ const Resulte = (props) => {
         let ProductsId = [];
         if(props.brandJourney == "Clinical Persona"){
             for (let i = 0; i < clinicalProduct.length; i++) {
-                if (skus[clinicalProduct[i].field_clinical_sku] > 100) {
+                console.log('bahiiii', clinicalProduct[i].field_clinical_sku);
+                if (skus[clinicalProduct[i].field_clinical_sku]) {
                  ProductsId.push(clinicalProduct[i].field_clinical_id)
                 } 
              }
         }
         else{
             for (let i = 0; i < medicalProduct.length; i++) {
-               if (skus[medicalProduct[i].field_medical_sku] > 100) {
+               if (skus[medicalProduct[i].field_medical_sku]) {
                 ProductsId.push(medicalProduct[i].field_medical_id)
                } 
             }

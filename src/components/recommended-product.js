@@ -14,7 +14,9 @@ recId,
 Sku,
 recTitle ,
 premierid,
-feild_preimer}) => {
+feild_preimer,
+prodCat
+}) => {
 
     const value = useContext(CartContext)
     const addToCart = value && value.addToCart
@@ -39,8 +41,9 @@ feild_preimer}) => {
 
                 <div className={ShowBagStyle.miniWrapper}>
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>
-                    <button className={`cartButton ${Sku?'add-btn-ready':""}`}
-                    data-Sku={Sku}
+                    <button className={`cartButton`}
+                    data-sku={Sku}
+                    data-skuType={prodCat}
                         onClick={() => {
                             let quantity = 1;
                             addToCart(recId, false, quantity,recPrice,premierid,feild_preimer, recTitle);
