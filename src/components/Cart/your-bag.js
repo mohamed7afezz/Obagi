@@ -101,7 +101,7 @@ const StandardItem = props => {
                   <div className={[BagStyle.bagCount, "d-flex", "col-lg-7", "col-lg-6"].join(" ")}>
                     <AdjustItem {...props} item={item} cartType={cartType} />
                   </div>
-                  <button type="button" onClick={() => props.removeItemFromCart(item.id)}
+                  <button type="button" onClick={() => {props.removeItemFromCart(item.id)}}
                     className={[ShowBagStyle.removebtn, "col-5"].join(" ")}
                   >
                     Remove
@@ -155,7 +155,7 @@ const StandardItem = props => {
                   </p>
                 </div>
                 <div class="col-md-1 col-4">
-                  <button onClick={() => props.removeItemFromCart(item.id)} className={["btn", BagStyle.action].join(" ")}>
+                  <button onClick={() => {props.removeItemFromCart(item.id)}} className={["btn", BagStyle.action].join(" ")}>
                     Remove
                 </button>
                 </div>
@@ -177,11 +177,7 @@ const StandardItem = props => {
 }
 
 const YourBag = (props, { notificationId }) => {
-  useEffect(() => {
-    if(typeof window != undefined ){
-      checkStock(baseUrl);
-    }
-  });
+  
   
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
@@ -459,7 +455,13 @@ const YourBag = (props, { notificationId }) => {
     redirectUrls,
   } = state.cart
   const { updatingItem } = state;
-  const { cartType } = props
+  const { cartType } = props;
+
+  useEffect(() => {
+    if(typeof window != undefined ){
+      checkStock(baseUrl);
+    }
+  }, [lineItems]);
 
   function seoEvent(e) {
     e.preventDefault();
