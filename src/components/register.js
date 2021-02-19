@@ -107,7 +107,7 @@ const Register = () => {
             {
                 // email subscribtion
                 attribute_id: 4,
-                attribute_value: "no",
+                attribute_value: "yes",
             }
         ]
     })
