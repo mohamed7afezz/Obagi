@@ -46,10 +46,9 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-- task: AzureRmWebAppDeployment@4
+- task: AzureRmWebAppDeployment@3
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
-    appType: 'webApp'
     WebAppName: 'test-obagiecommerce'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    Package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    ConfigurationSettings: '-alwaysOn true'
