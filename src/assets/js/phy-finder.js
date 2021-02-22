@@ -151,6 +151,15 @@ class Search extends Temps {
         });
 
         // add event listener on click update search
+        this.searchBtn.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+              // Cancel the default action, if needed
+              event.preventDefault();
+              // Trigger the button element with a click
+              this.searchBtn.click();
+            }
+          }); 
         this.searchBtn.addEventListener('click', (e) => {
             // get checked radio
             if(this.searchRadios.filter(item => item.checked)[0]) {
