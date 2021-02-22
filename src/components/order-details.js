@@ -31,7 +31,6 @@ const OrderDetails = (props, { node }) => {
     shipments: [],
     shipping_addresses: []});
   const [isLoading, setIsLoading] = useState(true);
-
   getShippingAddresses(props.id);
     useEffect(() => {
  
@@ -503,7 +502,6 @@ async function getShippingAddresses(e) {
 
                     {
                       (alldata.products.map((item, index) => {
-
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
                         return (
                           <div className={orderDetailsStyles.productWrapper}>
@@ -555,7 +553,7 @@ async function getShippingAddresses(e) {
                     </tr>
                   </thead>
                 </table>
-                {
+                { 
                   (alldata.products.map((item, index) => {
                     return (
                       <div className={orderDetailsStyles.productWrapper}>

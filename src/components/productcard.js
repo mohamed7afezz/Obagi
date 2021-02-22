@@ -19,12 +19,12 @@ const ProductCard = ({
   feild_preimer,
   isrx,
   Type,
+  productCat,
   Sku
 }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
-
   const data = useStaticQuery(graphql`
     query {
       smlamb: file(relativePath: { eq: "product-images/smallLamb.png" }) {
@@ -89,7 +89,7 @@ const ProductCard = ({
 
               </div>
             </div>
-             <button data-Sku={Sku} className={["the-new-product-button", "mob-analyzer-btn"].join(" ")}
+             <button data-sku={Sku} data-skuType={productCat} className={["the-new-product-button", "mob-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
                 addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
@@ -126,7 +126,7 @@ const ProductCard = ({
 
                   Locate a Physician
                  </Link>
-                : <button data-Sku={Sku} className={[Productcard.addtocart, `the-product-button ${Sku?'add-btn-ready':""}`].join(" ")}
+                : <button data-sku={Sku} data-skuType={productCat} className={[Productcard.addtocart, `the-product-button`].join(" ")}
                   onClick={() => {
                     let quantity = 1;
                     addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
@@ -139,7 +139,7 @@ const ProductCard = ({
             </div>
           ) : (
               ""
-            )}<button data-Sku={Sku} className={["the-new-product-button desk-analyzer-btn"].join(" ")}
+            )}<button data-sku={Sku} data-skuType={productCat} className={["the-new-product-button desk-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
                 addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);

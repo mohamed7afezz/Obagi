@@ -628,7 +628,6 @@ export default function Finder() {
                       <input
                         class="appointmentInput"
                         id="prodLoc"
-                        maxLength="5"
                       />
                     </div>
                     <div class="appointment-elemnt advanced-search">

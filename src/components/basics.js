@@ -251,7 +251,7 @@ const Basics = ({ node }) => {
                                         rate="0"
                                         Sku={prod.field_medical_sku?prod.field_medical_sku:prod.field_clinical_sku?prod.field_clinical_sku:""}
                                         premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
-                                        
+                                        productCat={prod.field_medical_id? "medical" : "clinical"}
                                         feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
                                         productdescription={prod.field_medical_description ? { __html: prod.field_medical_description.processed } : prod.field_clinical_description ? { __html: prod.field_clinical_description.processed } : ""}
                                         productLink={prod.path ? prod.path.alias : ""}

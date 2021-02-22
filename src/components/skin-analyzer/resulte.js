@@ -39,14 +39,15 @@ const Resulte = (props) => {
         let ProductsId = [];
         if(props.brandJourney == "Clinical Persona"){
             for (let i = 0; i < clinicalProduct.length; i++) {
-                if (skus[clinicalProduct[i].field_clinical_sku] > 100) {
+                console.log('bahiiii', clinicalProduct[i].field_clinical_sku);
+                if (skus[clinicalProduct[i].field_clinical_sku]) {
                  ProductsId.push(clinicalProduct[i].field_clinical_id)
                 } 
              }
         }
         else{
             for (let i = 0; i < medicalProduct.length; i++) {
-               if (skus[medicalProduct[i].field_medical_sku] > 100) {
+               if (skus[medicalProduct[i].field_medical_sku]) {
                 ProductsId.push(medicalProduct[i].field_medical_id)
                } 
             }
@@ -212,6 +213,7 @@ const Resulte = (props) => {
                                                 Type={ClinicalResultType[index]}
                                                 productLink={data.path.alias}
                                                 producttitle={data.title}
+                                                productCat="clinical"
                                                 productdescription={{ __html: data.field_clinical_description.processed }}
                                                 productimage={data.relationships.field_clinical_image && data.relationships.field_clinical_image[0].localFile ? data.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''}
                                                 price={data.field_clinical_price}
@@ -340,6 +342,7 @@ const Resulte = (props) => {
                                                 key={data.field_medical_id}
                                                 productLink={data.path.alias}
                                                 producttitle={data.title}
+                                                productCat="medical"
                                                 productdescription={{ __html: data.field_medical_description.processed }}
                                                 productimage={data.relationships.field_medical_image && data.relationships.field_medical_image[0].localFile ? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                                                 price={data.field_medical_price}

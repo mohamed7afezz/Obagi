@@ -358,6 +358,7 @@ const ProductSuggestion = ({ node }) => {
         <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
    
           <ProductCard
+          productCat={isClinical? "clinical" : "medical"}
           productLink={product.path.alias}
                 producttitle={product.title}
                 productId={isClinical? product.field_clinical_id : product.field_medical_id}
@@ -378,7 +379,8 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.professionalC.relationships?data.professionalC.relationships.field_medical_image[0]?data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
          Sku={data.professionalC.field_medical_sku?data.professionalC.field_medical_sku:"" }
-
+         productCat="medical"
+        
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
          productLink={data.professionalC.path.alias}
          premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
@@ -397,7 +399,7 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.elastiderm.relationships?data.elastiderm.relationships.field_medical_image[0]?data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
          Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
-
+        productCat="medical"
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
          productLink={data.elastiderm.path.alias}
          premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
@@ -414,7 +416,7 @@ const ProductSuggestion = ({ node }) => {
          Sku={data.hydrate.field_medical_sku?data.hydrate.field_medical_sku:"noo" }
          productimage={data.hydrate.relationships?data.hydrate.relationships.field_medical_image[0]?data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
-
+          productCat="medical"
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id:""}
          productLink={data.hydrate.path.alias}
          premierid={data.hydrate.field_medical_premier_points_id?data.hydrate.field_medical_premier_points_id:""}

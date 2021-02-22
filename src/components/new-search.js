@@ -204,6 +204,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                       premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
                        feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                        Sku={data.field_medical_sku?data.field_medical_sku:""}
+                       productCat="medical"
                     />
                   </div> 
                       )) : <div className="col-12 text-center medicalProduct">No results found.</div> }
@@ -228,6 +229,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         price={data.field_clinical_price}
                         productId={data.field_clinical_id}
                         Sku = {data.field_clinical_sku}
+                        productCat= "clinical"
                       />
                            </div> 
                      )) : <div className="col-12 text-center clinicalProduct">No results found.</div> }

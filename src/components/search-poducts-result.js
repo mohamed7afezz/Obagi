@@ -205,6 +205,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
                         productLink={item.path.alias}
+                        productCat="clinical"
                           producttitle={item.title}
                           productdescription={{
                             __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
@@ -222,6 +223,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         
                       ) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
+                        productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           
@@ -241,6 +243,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         />
                       ) : (
                         <ProductCard
+                        productCat="medical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -277,6 +280,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                     >
                       {pageNodeType == "clinicalConcern" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -294,6 +298,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           Sku={item.field_clinical_sku}
                         />
                       ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
+                      productCat="clinical"
                         productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -312,6 +317,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           Sku={item.field_clinical_sku}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -330,6 +336,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
+                        productCat="clinical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -349,6 +356,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                        
                       ): (
                         <ProductCard
+                        productCat="medical"
                           productLink={item.path.alias}
                           producttitle={item.title}
                           productdescription={{
@@ -398,6 +406,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                             data-ingrediant={`vitamin-c-${index}`}
                           >
                             <ProductCard
+                            productCat="clinical"
                               productLink={product.path.alias}
                               producttitle={product.title}
                               productdescription={{
@@ -446,6 +455,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                           data-ingrediant={`vitamin-c-${index}`}
                         >
                           <ProductCard
+                          productCat="medical"
                             productLink={product.path.alias}
                             producttitle={product.title}
                             productdescription={{
