@@ -29,6 +29,54 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
   const image = metaImage
 
   const noindex = process.env.noindex;
+
+  let MetaNoIndex = [
+    {
+      name: `description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:title`,
+      content: ogTitle,
+    },
+    {
+      property: `og:description`,
+      content: ogDescription,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+    {
+      name: `twitter:card`,
+      content: `summary_large_image`,
+    },
+    {
+      name: `twitter:creator`,
+      content: '@Obagi',
+    },
+    {
+      name: `twitter:title`,
+      content: title,
+    },
+    {
+      name: `twitter:description`,
+      content: metaDescription,
+    },
+    {
+      property: "og:image",
+      content: image,
+    },
+    {
+      property: "robots",
+      content: 'noindex,nofollow',
+    }
+  ];
+
+  if(!noindex) {
+    MetaNoIndex.pop();
+  }
+
   return (
     <Helmet
       htmlAttributes={{
@@ -39,53 +87,12 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
       // ogTitle = {ogTitle}
       // ogType = {ogType}
       // titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: ogTitle,
-        },
-        {
-          property: `og:description`,
-          content: ogDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:creator`,
-          content: '@Obagi',
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          property: "og:image",
-          content: image,
-        },
-      ].concat(meta)}
+      meta={MetaNoIndex.concat(meta)}
     >
       <link rel="canonical" href={canonical} />
 
-      {noindex === 'true' ?
-        <meta name="robots" content="noindex,nofollow" />
-        :
-        ""
-        
-      }
+      {/* {noindex === 'true' ? <meta name="robots" content="noindex,nofollow" /> : ""} */}
+
     </Helmet>
   )
 }
