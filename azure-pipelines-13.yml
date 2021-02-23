@@ -15,7 +15,8 @@ steps:
       sed -i 's+https://dev-obagiecommerce.azurewebsites.net/api/+https://obagiprodtwebapp01.azurewebsites.net/api/+g' .env.production
       sed -i 's+https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js+https://apps.bazaarvoice.com/deployments/obagi/main_site/production/en_US/bv.js+g' .env.production
       sed -i 's+https://obagi.extole.io/core.js+https://share.obagi.com/core.js+g' .env.production
-      sed -i 's+359f2fcf-2d57-4b0d-89ac-8c5045c52021-test+359f2fcf-2d57-4b0d-89ac-8c5045c52021+g' .env.production
+      sed -i 's+359f2fcf-2d57-4b0d-89ac-8c5045c52021-test+7ca59c56-5d1e-44ad-985f-57e0837c56f3+g' .env.production
+      sed -i 's+true+false+g' .env.production
       cat .env.production
 - task: Cache@2
   inputs:
