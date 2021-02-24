@@ -72,8 +72,8 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
       content: 'noindex,nofollow',
     }
   ];
-
-  if(!noindex) {
+  
+  if(noindex == 'false') {
     MetaNoIndex.pop();
   }
 
