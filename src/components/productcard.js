@@ -51,7 +51,7 @@ const ProductCard = ({
                     <p>new</p>
                     <img className={Productcard.bulp} src={smlamb}/>
                 </div> */}
-        <h1  className="d-none Productcardtype show-mob-result">{Type}</h1>
+        <p  className="d-none Productcardtype show-mob-result">{Type}</p>
         {productdescription ? (
           <div
             className={[Productcard.productcardcon, "productcardcon", "analyzr"].join(" ")}
@@ -99,7 +99,7 @@ const ProductCard = ({
               {addingToCart === productId ? "Adding to Bag" : "Add to Bag"}
             </button>
           </div> : <div className="analyzer-rate mt-24 h-27"></div>}
-          {Type ? <h1 className="d-none Productcardtype">{Type}</h1> : ''}
+          {Type ? <p className="d-none Productcardtype">{Type}</p> : ''}
 
 
           {producttitle ? (
