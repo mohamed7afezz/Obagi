@@ -413,7 +413,7 @@ const Register = () => {
 
                             <div className="form-group">
                                 <label for="postalcode">*Postal Code</label>
-                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" placeholder="" data-webform-required-error="Please fill in your postal code." />
+                                <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" maxLength="5" minLength="5" placeholder="" data-webform-required-error="Please fill in your correct postal code." />
                             </div>
 
                             <div className="form-group">
