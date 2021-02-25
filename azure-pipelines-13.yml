@@ -55,4 +55,3 @@ steps:
     azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
     WebAppName: 'obagiprodtwebapp01'
     Package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ConfigurationSettings: '-alwaysOn true'
