@@ -50,8 +50,10 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-- task: AzureRmWebAppDeployment@3
+- task: AzureWebApp@1
   inputs:
     azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
-    WebAppName: 'obagiprodtwebapp01'
-    Package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    appType: 'webApp'
+    appName: 'obagiprodtwebapp01'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    deploymentMethod: 'zipDeploy'
