@@ -257,11 +257,13 @@ const Basics = ({ node }) => {
                                         productLink={prod.path ? prod.path.alias : ""}
                                         productimage={prod.relationships &&
                                           prod.relationships.field_medical_image &&
+                                          prod.relationships.field_medical_image[0] &&
                                           prod.relationships.field_medical_image[0].localFile &&
                                           prod.relationships.field_medical_image[0].localFile.childImageSharp ? prod.relationships.field_medical_image[0].localFile.childImageSharp.fluid
                                           :
                                           prod.relationships &&
                                             prod.relationships.field_clinical_image &&
+                                            prod.relationships.field_clinical_image[0] &&
                                             prod.relationships.field_clinical_image[0].localFile &&
                                             prod.relationships.field_clinical_image[0].localFile.childImageSharp ? prod.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                             : ""}
