@@ -67,6 +67,7 @@ const FaqWrapper = ({ node }) => {
 
   return (
     <Customer activeTab="faq">
+      
       <div className={[faqStyles.wrapper, "faq-wrapper"].join(" ")}>
         {/* <div className="container-fluid"> */}
         <div className="d-none d-lg-flex second-title-wrapper">
