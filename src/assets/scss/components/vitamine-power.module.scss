@@ -1,0 +1,191 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+
+
+.vitaminePower{
+    background-color:#FDE6C7;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include md-screen{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+.titleCon{
+   
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @include md-screen{
+  
+        flex-direction: row;
+    }
+    .title{
+        position: relative;
+        color: #F99D25;
+        font-weight: 900;
+        z-index: 9;
+        display: inline-block;
+        @include fontStyle(22, 30);
+        @include md-screen{
+            @include fontStyle(24, 32);
+    
+        }
+        padding-left: 12px;
+        padding-right: 12px;
+        @media md-screen{
+       
+            padding-right: 0;
+        }
+        & + .title{
+            padding-left: 12px;
+            padding-right: 12px;
+            @include md-screen{
+         
+            padding-left: 0;
+        }
+        }
+    &::after{
+        content: '';
+        display: block;
+        background-color: rgba(255, 255, 255, 1);
+        height: 14px;
+        @include md-screen{
+            height: 16px;
+        }
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: -1;
+    }
+}
+}
+.header{
+    font-size: 32px;
+    line-height: 36px;
+    color: #132467;
+    padding-top: 14px;
+    text-align: center;
+    font-weight: 400;
+    @include md-screen{
+        padding-top: 0;
+        font-size: 64px;
+        line-height: 72px;
+    }
+}
+.vitaminContent{
+    padding-top: 30px;
+    padding-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    @include md-screen{
+        padding-top: 50px;
+    }
+}
+.coltitle{
+    font-size: 32px;
+    line-height: 36px;
+    @extend %futurapt-medium;
+    padding-bottom: 30px;
+    @include md-screen{
+        padding-bottom: 17px;
+        font-size: 64px;
+        line-height: 72px;
+    }
+}
+.colcontent{
+    @include fontStyle(16, 24);
+}
+.leftCol{
+    margin-bottom: 30px;
+    @include md-screen{
+        margin-bottom: 0;
+    }
+}
+.vitaminContent {
+    .titleCon{
+        @include md-screen{
+            justify-content: left;
+            text-align: left;
+        }
+    }
+}
+.rightColTitle{
+    font-size: 22px;
+    line-height: 30px;
+    display: inline-block;
+    position: relative;
+    z-index: 9;
+    font-weight: 900;
+    padding-right: 12px;
+    padding-left: 12px;
+    & + .rightColTitle{
+       
+        @include md-screen{
+        padding-left: 0;
+        }
+    }
+    &::after{
+        content: '';
+        display: block;
+        background-color: rgba(255, 255, 255, 1);
+        height: 16px;
+        @include md-screen{
+            height: 26px;
+        }
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: -1;
+    }
+    @include md-screen{
+        font-size: 39px;
+        line-height: 52px;
+    }
+}
+.threeimages{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include md-screen{
+        flex-direction: row;
+        margin-top: 77px;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+}
+.boxcon{
+    text-align: center;
+    flex: 0 0 33%;
+    &+.boxcon{
+    
+        margin-top: 30px;
+        @include md-screen{
+            margin-top: 0;
+        }
+    }
+}
+.text{
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 20px;
+    @include md-screen{
+        margin-top: 44px;
+    font-size: 24px;
+    line-height: 32px;
+}
+    font-weight: 500;
+}

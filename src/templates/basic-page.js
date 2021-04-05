@@ -88,7 +88,7 @@ query($slug: String!) {
                 ...paragrapghCulsionFinalSection
                 ...paragrapghSepratorimg
                 ...paragraphTaxonomyHeroParaprapgh
-              
+                ...paragraphThePowerOfVitamineC
               
                 ...paragraphInternational
                 ...paragraphCustomList
