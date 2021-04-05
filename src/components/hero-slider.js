@@ -54,7 +54,7 @@ const HeroSlider = ({ node }) => {
         ]
     }
 
-    let pageType = node.field_page_type
+    let pageType = node.field_page_type? node.field_page_type : null
 
     function fixlink(changelink) {
 
@@ -79,7 +79,7 @@ const HeroSlider = ({ node }) => {
 
 
 
-        <div className={pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider" : 'container-fluid pl-0 pr-0 hero-slider clinical-slider'}>
+        <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider" : 'container-fluid pl-0 pr-0 hero-slider clinical-slider'}>
             <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : ''}>
                 <div style={{ width: "100%" }}>
                     <Slider {...SliderSetting}>
@@ -92,7 +92,7 @@ const HeroSlider = ({ node }) => {
                                         </div>
                                         <div className={pageType ? (pageType === 'clinical' ? heroSlider.textWrapperClinical : pageType === 'medical' ? heroSlider.textWrapperMedical : '') : ''}>
                                             <div className="col-12 col-lg-4">
-                                                {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
+                                                {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType && pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                 {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : ''}
                                                 {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
                                                 {item.field_slide_button ? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link"].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link></div> : ''}
@@ -105,9 +105,10 @@ const HeroSlider = ({ node }) => {
 
                                             <div className={["col-lg-5"].join(" ")}>
                                                 <div className="col-8 offset-2 col-right-padding">
-                                                    {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
+                                                    {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType && pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                     {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : ''}
                                                     {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
+                                                    {item.field_slide_title_sample ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title_sample.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
                                                     {item.field_slide_button ? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link", heroSlider.link].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link></div> : ''}
                                                 </div>
                                             </div>
@@ -129,11 +130,13 @@ const HeroSlider = ({ node }) => {
                     </Slider>
                 </div>
 
-                <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
-                    {/* {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <button id="slideDownButton" className="scroll-button d-none" onClick={(e) => {scrollUp(e);}}><Img alt="img"  fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></button> : '') : ''} */}
-                    {node.relationships.field_obagi_logo ? (node.relationships.field_obagi_logo.localFile ? <div className={heroSlider.sliderLogo}><Img alt="img"  fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> : '') : ''}
-                </div>
-                <div id="here" className={heroSlider.here}></div>
+                {node.relationships.field_obagi_logo && node.relationships.field_obagi_logo.localFile ?
+                    <div className={["d-none d-lg-block col-lg-5", heroSlider.blueSection].join(" ")}>
+                        {/* {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <button id="slideDownButton" className="scroll-button d-none" onClick={(e) => {scrollUp(e);}}><Img alt="img"  fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></button> : '') : ''} */}
+                        <div className={heroSlider.sliderLogo}><Img alt="img"  fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div> 
+                    </div>
+                : ''}
+                {/* <div id="here" className={heroSlider.here}></div> */}
 
             </div>
         </div>
@@ -147,6 +150,7 @@ export const fragment = graphql`
     fragment paragraphHeroSlider on paragraph__hero_slider {
             field_page_type
             id
+            field_slider_class
                   relationships {
                         field_obagi_logo {
                             localFile {
@@ -180,6 +184,9 @@ export const fragment = graphql`
                                 processed
                             }
                             field_sli {
+                                processed
+                            }
+                            field_slide_title_sample {
                                 processed
                             }
                             field_slide_button {
