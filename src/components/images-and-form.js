@@ -60,7 +60,7 @@ const ImagesForm = ({ node }) => {
     let mm = String(("0" + (today.getMonth() + 1)).slice(-2)); //January is 0!
     let yyyy = today.getFullYear();
 
-    today = yyyy + '/' + mm + '/' + dd;
+    today = dd + '/' + mm + '/' + yyyy;
     const [contestData, setContestData] = useState({
         webform_id: "vitamin_c_form_direction",
         firstname: "",
@@ -68,7 +68,6 @@ const ImagesForm = ({ node }) => {
         email: "",
         date_of_birth: "",
         shipping_zip: "",
-        email_optin: ["receivemail"],
         subscription_date: today
     })
 
@@ -79,10 +78,10 @@ const ImagesForm = ({ node }) => {
         //     return false;
 
         // Parse the date parts to integers
-        var parts = dateString.split("-");
-        var day = parseInt(parts[2], 10);
+        var parts = dateString.split("/");
+        var day = parseInt(parts[0], 10);
         var month = parseInt(parts[1], 10);
-        var year = parseInt(parts[0], 10);
+        var year = parseInt(parts[2], 10);
 
         // Check the ranges of month and year
         if (year < 1000 || year > 3000 || month == 0 || month > 12)
@@ -135,16 +134,16 @@ const ImagesForm = ({ node }) => {
 
             case 'date':
 
-                var dateOfBirth = []
+                var dateOfBirth = contestData.date_of_birth.split('/');
                 if (event.target.classList.contains('day')) {
-                    dateOfBirth[2] = event.target.attributes['data-value'].value;
+                    dateOfBirth[0] = event.target.attributes['data-value'].value;
                 } else if (event.target.classList.contains('month')) {
                     dateOfBirth[1] = event.target.attributes['data-value'].value;
                 } else {
-                    dateOfBirth[0] = event.target.attributes['data-value'].value;
+                    dateOfBirth[2] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('/');
-
+                console.log("ashh full date", dateOfBirth)
                 setContestData({
                     ...contestData,
                     date_of_birth: dateOfBirth
@@ -152,7 +151,7 @@ const ImagesForm = ({ node }) => {
 
 
                 break;
-            case 'postal_code':
+            case 'shipping_zip':
                 setContestData({
                     ...contestData,
                     shipping_zip: event.target.value
@@ -160,14 +159,21 @@ const ImagesForm = ({ node }) => {
 
 
                 break;
-            case 'email_sub':
-                setContestData({
-                    ...contestData,
-                    email_optin: event.target.value
-                })
+            // case 'email_sub':
+                
+            //     if(event.target.value == "on") {
+            //         setContestData({
+            //             ...contestData,
+            //             email_optin: ["receivemail"]
+            //         })
+            //     } else {
+            //         if (contestData.email_optin){ delete contestData.email_optin}
+            //         setContestData({
+            //             ...contestData
+            //         })
+            //     }
 
-
-                break;
+            //     break;
             default:
 
                 break;
@@ -199,6 +205,7 @@ const ImagesForm = ({ node }) => {
         let now = new Date();
         let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
         // check date validality
+        console.log("ashh dob", contestData.date_of_birth)
         if (!isValidDate(contestData.date_of_birth) || contestData.date_of_birth === today.toString() || contestData.date_of_birth.length === 0 || chosenDate > now) {
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
@@ -215,11 +222,11 @@ const ImagesForm = ({ node }) => {
             isDateValid = true;
 
         }
-        console.log("ashh valid", isFormValid, isDateValid)
+        console.log("ashh valid before", isFormValid, isDateValid)
 
         if (isFormValid && isDateValid) {
 
-            
+            console.log("ashh valid after", isFormValid, isDateValid)
             sendFormValues({ obj: contestData });
 
 
@@ -248,7 +255,16 @@ const ImagesForm = ({ node }) => {
     }
 
     const sendFormValues = (updatedItemData) => {
-        console.log("ashhh form", updatedItemData.obj)
+        let dataSubmit = updatedItemData.obj;
+
+        console.log("bahiii2", )
+        if(document.querySelector('#registerCheck').checked) {
+            dataSubmit.email_optin = ["receivemail"];
+        } else {
+            delete dataSubmit.email_optin;
+        }
+
+        
         fetch(
             `${baseUrl}webform_rest/submit`,
             {
@@ -256,18 +272,22 @@ const ImagesForm = ({ node }) => {
                     "Content-Type": "application/json",
                 },
                 method: 'POST',
-                body: JSON.stringify(updatedItemData.obj)
+                body: JSON.stringify(dataSubmit)
             }
         )
             .then(res => res.json())
             .then(response => {
-                console.log("ashh resp", response)
+                console.log("ashh resp", response);
+                // empty form fieldsPropTypes.
+                document.querySelector('.regform').reset();
+                document.querySelectorAll('.regform .select-selected').forEach(el => {
+                    el.textContent = 'Select';
+                })
             })
             .catch(error => {
                 console.log("ashhh error", error)
             });
     };
-    console.log("ash", node)
     return (
 
         <div className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
@@ -336,21 +356,33 @@ const ImagesForm = ({ node }) => {
                             {node.field_form_mini_subtitle ? <div className={ImgForm.miniSubtitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_subtitle.processed }}></div> : ""}
 
                             <div className={ImgForm.formWrapper}>
-
+                                <div className="errors  errors-list">
+                                    {/* <ul>
+                                        {err !== undefined ? Object.entries(err).map(item => <li className="text-danger error-li">{item[1]}</li>) : ''}
+                                    </ul> */}
+                                    {isFormValid && isDateValid ? "" :
+                                        <ul className="error-list-sec"></ul>
+                                    }
+                                    {isToday == true ?
+                                        <ul>
+                                            <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                                        </ul>
+                                        : ""}
+                                </div>
                                 <form noValidate="novalidate" class="regform needs-validation" >
                                     <div className="form-group">
                                         <label for="firstname">*First name</label>
-                                        <input type="text" className="form-control" name="first_name" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
+                                        <input type="text" className="form-control" name="firstname" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
                                     </div>
 
                                     <div className="form-group">
                                         <label for="lastname">*Last name</label>
-                                        <input type="text" className="form-control" name="last_name" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
+                                        <input type="text" className="form-control" name="lastname" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
                                     </div>
 
                                     <div className="form-group">
                                         <label for="postalcode">*Postal Code</label>
-                                        <input type="text" className="form-control" name="postal_code" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" maxLength="5" minLength="5" placeholder="" data-webform-required-error="Please fill in your correct postal code." />
+                                        <input type="text" className="form-control" name="shipping_zip" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" maxLength="5" minLength="5" placeholder="" data-webform-required-error="Please fill in your correct postal code." />
                                     </div>
 
                                     <div className="form-group">
@@ -458,16 +490,16 @@ const ImagesForm = ({ node }) => {
 
                             </div>
                         </div>
-                            
+
                     </div>
                     {node.relationships &&
-                    node.relationships.field_form_background_img &&
-                    node.relationships.field_form_background_img.localFile &&
-                    node.relationships.field_form_background_img.localFile.childImageSharp?
-                    <div className={ImgForm.bgImg}>
-                        <Img fluid={node.relationships.field_form_background_img.localFile.childImageSharp.fluid}/>
-                    </div>
-                    : ""}
+                        node.relationships.field_form_background_img &&
+                        node.relationships.field_form_background_img.localFile &&
+                        node.relationships.field_form_background_img.localFile.childImageSharp ?
+                        <div className={ImgForm.bgImg}>
+                            <Img fluid={node.relationships.field_form_background_img.localFile.childImageSharp.fluid} />
+                        </div>
+                        : ""}
                 </div>
             </div>
         </div>
