@@ -5,59 +5,55 @@ import { useStaticQuery, graphql } from "gatsby"
 import vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
 
 const ThePower = ({ node }) => {
- 
   const data = node.relationships;
   return (
     <div className={vitmaineStyle.vitaminePower}>
-    <div className={["container-fluid "].join(" ")}>
+      <div className={["container-fluid "].join(" ")}>
         <div className={["row "]}>
-            <div className="col-12 ">
-                <div className={vitmaineStyle.titleCon}>
-                    <p className={vitmaineStyle.title}>THE POWER OF&nbsp;</p><p className={vitmaineStyle.title}>VITAMIN C</p>
-                </div>
-                <h2 className={vitmaineStyle.header}>Let your skin drink it in</h2>
+          <div className="col-12 ">
+            <div className={vitmaineStyle.titleCon}>
+              <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
+              <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_sub_title.processed }} className={vitmaineStyle.title}></div>
             </div>
-            <div className={vitmaineStyle.vitaminContent}>
-                <div className={["col-12 offset-md-1 col-md-4", vitmaineStyle.leftCol].join(" ")}>
-                    <h3 className={vitmaineStyle.coltitle}>
-                        Professional-C® Collection
-        </h3>
-                    <p className={vitmaineStyle.colcontent}>
-                        The Professional-C portfolio serves as your second line of defense from environmental assailants that sunscreens often miss. Daily use helps to fortify skin and safeguard a more youthful looking appearance. Formulated with L-Ascorbic Acid, the most powerful form of Vitamin C to optimize efficacy and permeability.
+            <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_title.processed }} className={vitmaineStyle.header}></div>
+          </div>
+          <div className={vitmaineStyle.vitaminContent}>
+            <div className={["col-12 offset-md-1 col-md-4", vitmaineStyle.leftCol].join(" ")}>
+              <div dangerouslySetInnerHTML={{ __html: node.field_left_col_title.processed }} className={vitmaineStyle.coltitle}>
 
-        </p>
-                </div>
-                <div className="col-12 offset-md-1 col-md-5">
-                    <div className={vitmaineStyle.titleCon}>
-                        <p className={vitmaineStyle.rightColTitle}>
-                            Professional-C&nbsp;
-                    </p>
-                        <p className={vitmaineStyle.rightColTitle}>
-                            is ideal for:
-                    </p>
-                    </div>
-                    <div className={vitmaineStyle.threeimages}>
-                        <div className={vitmaineStyle.boxcon}>
-                            <img src={fimg} />
-                            <p className={vitmaineStyle.text}>Daily antioxidant defense</p>
-                        </div>
-                        <div className={vitmaineStyle.boxcon}>
-                            <img src={simg} />
-                            <p className={vitmaineStyle.text}>Fine lines and wrinkles</p>
-                        </div>
-                        <div className={vitmaineStyle.boxcon}>
-                            <img src={timg} />
-                            <p className={vitmaineStyle.text}>Dull, uneven skin tone
-and texture</p>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: node.field_left.processed }} className={vitmaineStyle.colcontent}>
+
+              </div>
             </div>
+            <div className="col-12 offset-md-1 col-md-5">
+              <div className={vitmaineStyle.titleCon}>
+                <div dangerouslySetInnerHTML={{ __html: node.field_right_col_title.processed }}  className={vitmaineStyle.rightColTitle}>
+                    </div>
+                <div dangerouslySetInnerHTML={{ __html: node.field_right_section_title_part_t.processed }} className={vitmaineStyle.rightColTitle}>
+                    </div>
+              </div>
+              <div className={vitmaineStyle.threeimages}>
+                <div className={vitmaineStyle.boxcon}>
+                  <img src={node.relationships.field_first_image.localFile.childImageSharp.original.src} />
+                  <div dangerouslySetInnerHTML={{ __html: node.field_first_image_caption.processed }} className={vitmaineStyle.text}></div>
+                </div>
+                <div className={vitmaineStyle.boxcon}>
+                <img src={node.relationships.field_second_image.localFile.childImageSharp.original.src} />
+                  <div dangerouslySetInnerHTML={{ __html: node.field_second_image_caption.processed }} className={vitmaineStyle.text}></div>
+                </div>
+                <div className={vitmaineStyle.boxcon}>
+                <img src={node.relationships.field_third_image.localFile.childImageSharp.original.src} />
+                  <div dangerouslySetInnerHTML={{ __html: node.field_third_image_caption.processed }} className={vitmaineStyle.text}></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
- )
+  )
 }
 
 export default ThePower;
@@ -88,6 +84,9 @@ export const fragment = graphql`
               fluid {
                 ...GatsbyImageSharpFluid
               }
+              original{
+                src
+            }
             }
           }
         }
@@ -97,6 +96,9 @@ export const fragment = graphql`
                   fluid {
                     ...GatsbyImageSharpFluid
                   }
+                  original{
+                    src
+                }
                 }
               }
         }
@@ -106,6 +108,11 @@ export const fragment = graphql`
                   fluid {
                     ...GatsbyImageSharpFluid
                   }
+
+                  original{
+                    src
+                }
+
                 }
               }
         }

@@ -124,12 +124,12 @@
     position: relative;
     z-index: 9;
     font-weight: 900;
-    padding-right: 12px;
     padding-left: 12px;
     & + .rightColTitle{
        
         @include md-screen{
         padding-left: 0;
+        padding-right: 12px;
         }
     }
     &::after{

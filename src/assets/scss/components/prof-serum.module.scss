@@ -9,7 +9,7 @@ text-align: center;
 @include md-screen{
     text-align: left;
     padding-top: 155px;
-    padding-bottom: 50px;
+   
 }
 }
 .title{
@@ -78,9 +78,10 @@ line-height: 32px;
 .givemargin{
     padding-top: 50px;
   margin-bottom: 30px;
+  padding-bottom: 0 ;
     @include md-screen{
         margin-bottom: 55px;
-        padding-top: 112px;
+        padding-top: 100px;
         padding-right: 20px;
     }
 }
@@ -126,6 +127,7 @@ color: #F99D25;
     padding-bottom: 30px;
     @include md-screen{
         padding-bottom: 25px;
+       
     }
 }
 .percentagecon{
@@ -149,4 +151,30 @@ color: #F99D25;
     line-height: 23px;
     padding-left: 10px;
     font-weight: 500;
+    text-align: left;
+    @include md-screen{
+        max-width: 235px;
+    }
+}
+.mob-col-rev{
+    flex-direction: column-reverse;
+    @include md-screen{
+        flex-direction: row;
+    }
+}
+.bord{
+    border: 1px solid #132466;
+    margin-top: 50px;
+   
+    @include md-screen{
+        margin-top: 100px;
+    }
+}
+.footnote{
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+    @include md-screen{
+        max-width: 285px;
+    }
 }
