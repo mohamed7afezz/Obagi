@@ -69,6 +69,7 @@ import OrderStatus from './Order-Status/Start';
 import ThePower from './ThePower';
 import ProffC from './profc';
 import WhatWeProvide from './whatweprovide';
+import ContestRules from './contest-rules';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -138,7 +139,8 @@ const componentsMap = {
     paragraph__order_status : OrderStatus,
     paragraph__the_power_of_vitamine_c : ThePower,
     paragraph__professional_c_section : ProffC,
-    paragraph__products_we_provide : WhatWeProvide
+    paragraph__products_we_provide : WhatWeProvide,
+    paragraph__customer_care_full_html :ContestRules
 }
 
 export const getParagraph = node => {
