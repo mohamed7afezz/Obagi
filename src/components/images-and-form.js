@@ -126,6 +126,7 @@ const ImagesForm = ({ node }) => {
     }
     let isFormValid = false;
     let isDateValid = false;
+    
 
     function handleAttr(event) {
 
