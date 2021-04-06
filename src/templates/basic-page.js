@@ -89,13 +89,14 @@ query($slug: String!) {
                 ...paragrapghSepratorimg
                 ...paragraphTaxonomyHeroParaprapgh
                 ...paragraphThePowerOfVitamineC
-              ...paragraphProfessionalCSection
+                ...paragraphProfessionalCSection
                 ...paragraphInternational
                 ...paragraphCustomList
                 ...paragraphStoryFinal
                 ...paragraphLeftSubImgRightText
                 ...paragraphOrderStatus
                 ...paragraphProductsWeProvide
+                ...paragraphImagesAndForm
             }
         }
         field_meta_tags {

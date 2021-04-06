@@ -4654,6 +4654,15 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
         left: 0;
         width: 100%;
     }
+    .vitaminc .heroRowWrapper::before {
+        content: '';
+        position: absolute;
+        width: 49px;
+        height: 51px;
+        left: 98px;
+        bottom: 199px;
+        background-color: #fff;
+    }
 }
 
 .vitaminc .button-link {
