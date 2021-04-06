@@ -1,3 +1,151 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 
+.wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @include lg-screen {
+        padding-top: 146px;
+        padding-bottom: 100px;
+    }
+}
+
+.subtitle {
+    margin: 30px auto;
+    text-align: center;
+    @include fontStyle(10, 20);
+    letter-spacing: 1.10px;
+    position: relative;
+    width: max-content;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    @extend %futurapt-medium;
+
+    @include lg-screen {
+        @include fontStyle(16, 32);
+        padding-left: 28px;
+        margin: 0 0 33px;
+    }
+}
+.subtitle::before {
+    position: absolute;
+    content: '';
+    height: 12px;
+    width: 12px;
+    background-color: #F99D25;
+    left: 0;
+    top: 4px;
+
+    @include lg-screen {
+        top: 11px;
+    }
+}
+
+.title {
+    @include fontStyle(32, 48);
+    @extend %futurapt-medium;
+    text-align: center;
+    margin-bottom: 15px;
+
+    @include lg-screen {
+        text-align: left;
+        @include fontStyle(64, 72);
+        margin-bottom: 42px;
+    }
+}
+
+.description {
+    @include fontStyle(16, 24px);
+    text-align: center;
+    margin-bottom: 25px;
+     strong {
+         @extend %futurapt-medium;
+     }
+
+     @include lg-screen {
+         @include fontStyle(24, 40);
+         text-align: left;
+         margin-bottom: 43px;
+     }
+}
+
+
+.mini-title {
+    @include fontStyle(32, 48);
+    @extend %futurapt-medium;
+    text-align: center;
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        text-align: left;
+        @include fontStyle(48, 64);
+        margin-bottom: 27px;
+    }
+}
+
+.mini-subtitle {
+    @include fontStyle(16, 24);
+    @extend %futurapt-medium;
+    text-align: center;
+    margin-bottom: 30px;
+    a {
+        text-decoration: underline;
+        color: #132466;
+    }
+
+    @include lg-screen {
+        margin-bottom: 53px;
+        text-align: left;
+        padding-right: 70px;
+    }
+}
+
+.video-wrapper {
+    @include lg-screen {
+        margin-top: 153px;
+        margin-bottom: 78px;
+ 
+        &::before {
+            position: absolute;
+            content: '';
+            border: 1px solid #132466;
+            width: 534px;
+            height: 456px;
+            z-index: -1;
+            top: 284px;
+            left: 57px;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-color:#132466;
+            width: 103px;
+            height: 103px;
+            z-index: -1;
+            top: 637px;
+            left: 488px;
+        }
+    }
+}
+
+.imgWrapper {
+    position: relative;
+    max-height: 528px;
+    max-width: 528px;
+}
+
+.overlay-img {
+    position: absolute !important;
+    top: 314px;
+    left: 396px;
+    max-height: 323px;
+    max-width: 308px;
+    height: auto;
+    width: 100%;
+
+    z-index: 2;
+}

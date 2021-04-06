@@ -4674,3 +4674,26 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
         color: #132466;
     }
 }
+
+.img-form .submit-wrapper {
+    margin: 18px 0 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.img-form .submit-input{
+    background-color: #132466;
+}
+
+.img-form .group-title {
+    line-height: 24px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    @extend %futurapt-demi;
+}
+
+.img-form .video-wrapper {
+    height: auto;
+    max-width: 501px;
+    max-height: 501px;
+}
