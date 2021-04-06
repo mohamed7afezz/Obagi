@@ -67,8 +67,8 @@ import FinalStory from './final-story';
 import LeftSubimg from './left-sub-img';
 import OrderStatus from './Order-Status/Start';
 import ThePower from './ThePower';
-import ProffC from './ProfC';
-import WhatWeProvide from './WhatWeProvide';
+import ProffC from './profc';
+import WhatWeProvide from './whatweprovide';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
