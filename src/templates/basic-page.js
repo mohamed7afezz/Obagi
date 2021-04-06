@@ -97,6 +97,7 @@ query($slug: String!) {
                 ...paragraphOrderStatus
                 ...paragraphProductsWeProvide
                 ...paragraphImagesAndForm
+                ...paragraphCustomerCareFullHtml
             }
         }
         field_meta_tags {

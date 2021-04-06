@@ -67,9 +67,10 @@ import FinalStory from './final-story';
 import LeftSubimg from './left-sub-img';
 import OrderStatus from './Order-Status/Start';
 import ThePower from './ThePower';
-import ProffC from './ProfC';
-import WhatWeProvide from './WhatWeProvide';
 import ImagesForm from './images-and-form';
+import ProffC from './profc';
+import WhatWeProvide from './whatweprovide';
+import ContestRules from './contest-rules';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -140,7 +141,8 @@ const componentsMap = {
     paragraph__the_power_of_vitamine_c : ThePower,
     paragraph__professional_c_section : ProffC,
     paragraph__products_we_provide : WhatWeProvide,
-    paragraph__images_and_form: ImagesForm
+    paragraph__images_and_form: ImagesForm,
+    paragraph__customer_care_full_html :ContestRules
 }
 
 export const getParagraph = node => {

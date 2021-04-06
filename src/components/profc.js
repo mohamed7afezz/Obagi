@@ -44,33 +44,33 @@ const ProffC = ({ node }) => {
                     </div>
           <div className={["d-flex", profcStyle.mobColRev].join(" ")}>
           <div className={["col-md-4 offset-md-1", profcStyle.leftsec].join(" ")}>
-            <div dangerouslySetInnerHTML={{ __html: node.field_second_subtitle.processed }}  className={profcStyle.seccoltitle}></div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_second_subtitle?node.field_second_subtitle.processed:" " }}  className={profcStyle.seccoltitle}></div>
        
-            <div dangerouslySetInnerHTML={{ __html: node.field_second_describtion.processed }} className={profcStyle.customp}>
+            <div dangerouslySetInnerHTML={{ __html: node.field_second_describtion?node.field_second_describtion.processed :" "}} className={profcStyle.customp}>
                 </div>
 
             
-            {node.relationships.field_percentage_.map((item, index) => (
+            {node.relationships.field_percentage_?node.relationships.field_percentage_.map((item, index) => (
               <>
               <div className={profcStyle.percentage}>
-              <div dangerouslySetInnerHTML={{ __html: item.field_percentage_title.processed }}  className={profcStyle.leftsecsubtitle}></div>
+              <div dangerouslySetInnerHTML={{ __html: item.field_percentage_title?item.field_percentage_title.processed:" " }}  className={profcStyle.leftsecsubtitle}></div>
               <div className={profcStyle.percentagecon}>
-                <div dangerouslySetInnerHTML={{ __html: item.field_percentage_value.processed }} className={profcStyle.per}></div>
-                <div dangerouslySetInnerHTML={{ __html: item.field_percentage_describtion.processed }} className={profcStyle.perdesc}></div>
+                <div dangerouslySetInnerHTML={{ __html: item.field_percentage_value?item.field_percentage_value.processed :" "}} className={profcStyle.per}></div>
+                <div dangerouslySetInnerHTML={{ __html: item.field_percentage_describtion?item.field_percentage_describtion.processed :" "}} className={profcStyle.perdesc}></div>
 
               </div>
               </div>
               </>
             ))
-            }
+            :" "}
               
               
            
-            <div dangerouslySetInnerHTML={{ __html: node.field_section_footnote.processed }} className={profcStyle.footnote}></div>
+            <div dangerouslySetInnerHTML={{ __html: node.field_section_footnote?node.field_section_footnote.processed :"" }} className={profcStyle.footnote}></div>
 
           </div>
           <div className={["col-md-5 ", profcStyle.rightsec].join(" ")}>
-            <img className={"img-fluid"} src={node.relationships.field_profc_right_image.localFile.childImageSharp.original.src} />
+            <img className={"img-fluid"} src={node.relationships.field_profc_right_image?node.relationships.field_profc_right_image.localFile.childImageSharp.original.src:""} />
 
           </div>
           

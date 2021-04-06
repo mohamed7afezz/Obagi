@@ -7,9 +7,11 @@ import vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
 const ThePower = ({ node }) => {
   const data = node.relationships;
   return (
-    <div className={vitmaineStyle.vitaminePower}>
+   
       <div className={["container-fluid "].join(" ")}>
+     
         <div className={["row "]}>
+        <div className={vitmaineStyle.vitaminePower}>
           <div className="col-12 ">
             <div className={vitmaineStyle.titleCon}>
               <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
