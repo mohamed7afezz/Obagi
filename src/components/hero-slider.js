@@ -55,6 +55,7 @@ const HeroSlider = ({ node }) => {
     }
 
     let pageType = node.field_page_type? node.field_page_type : null
+    let heroClass = node.field_slider_class? node.field_slider_class : null
 
     function fixlink(changelink) {
 
@@ -79,7 +80,7 @@ const HeroSlider = ({ node }) => {
 
 
 
-        <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider" : 'container-fluid pl-0 pr-0 hero-slider clinical-slider'}>
+        <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider " : pageType && pageType === 'clinical' ? 'container-fluid pl-0 pr-0 hero-slider clinical-slider ' : 'container-fluid pl-0 pr-0 hero-slider '  + `${heroClass? heroClass : "" }`}>
             <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : ''}>
                 <div style={{ width: "100%" }}>
                     <Slider {...SliderSetting}>
@@ -95,6 +96,7 @@ const HeroSlider = ({ node }) => {
                                                 {/* {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType && pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''} */}
                                                 {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : ''}
                                                 {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
+                                                {item.field_slide_title_sample ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title_sample.processed }} className={[heroSlider.description].join(" ")}></div> : ''}
                                                 {item.field_slide_button ? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link"].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link></div> : ''}
                                             </div>
                                         </div>
@@ -103,7 +105,7 @@ const HeroSlider = ({ node }) => {
                                     <div className="d-none d-lg-block">
                                         <div className="row mr-0 ml-0">
 
-                                            <div className={["col-lg-5"].join(" ")}>
+                                            <div className={["col-lg-5 first-hero-col"].join(" ")}>
                                                 <div className="col-8 offset-2 col-right-padding">
                                                     {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType && pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                     {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title].join(" ")}></div> : ''}
@@ -113,7 +115,7 @@ const HeroSlider = ({ node }) => {
                                                 </div>
                                             </div>
                                             <div className="col-lg-7 col-padding">
-                                                <div className={heroSlider.sliderImg}>
+                                                <div className={[heroSlider.sliderImg, "hero-slider-img"].join(" ")}>
                                                     {item.relationships.field_slide_image ? item.relationships.field_slide_image.localFile ? <img alt="img" src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /> : '' : ""}
                                                 </div>
 
