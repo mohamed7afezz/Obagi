@@ -67,8 +67,9 @@ import FinalStory from './final-story';
 import LeftSubimg from './left-sub-img';
 import OrderStatus from './Order-Status/Start';
 import ThePower from './ThePower';
-import ProfC from './ProfC';
+import ProffC from './ProfC';
 import WhatWeProvide from './WhatWeProvide';
+
 const componentsMap = {
     paragraph__home_hero: HomeHero,
     paragraph__full_html_content: FullHTMLContent,
@@ -136,7 +137,7 @@ const componentsMap = {
     paragraph__left_sub_img_right_text: LeftSubimg,
     paragraph__order_status : OrderStatus,
     paragraph__the_power_of_vitamine_c : ThePower,
-    paragraph__professional_c_section : ProfC,
+    paragraph__professional_c_section : ProffC,
     paragraph__products_we_provide : WhatWeProvide
 }
 

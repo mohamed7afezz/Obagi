@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import profcStyle from "../assets/scss/components/prof-serum.module.scss"
 
-const ProfC = ({ node }) => {
+const ProffC = ({ node }) => {
   console.log('hassan', node)
   return (
     <div className={profcStyle.ProfessionalSerums}>
@@ -86,7 +86,7 @@ const ProfC = ({ node }) => {
   )
 }
 
-export default ProfC;
+export default ProffC;
 export const fragment = graphql`
   fragment paragraphProfessionalCSection on paragraph__professional_c_section{
         
