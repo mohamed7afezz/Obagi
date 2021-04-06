@@ -62,6 +62,7 @@ const ImagesForm = ({ node }) => {
 
     today = yyyy + '/' + mm + '/' + dd;
     const [contestData, setContestData] = useState({
+        webform_id: "vitamin_c_form_direction",
         firstname: "",
         lastname: "",
         email: "",
@@ -175,7 +176,6 @@ const ImagesForm = ({ node }) => {
 
     }
     function handleSubmit(e) {
-        let contestData = { "webform_id": "vitamin_c_form_direction" }
         e.preventDefault();
         var form = document.querySelector('.needs-validation');
         // Loop over them and prevent submission
@@ -195,10 +195,31 @@ const ImagesForm = ({ node }) => {
             $(this).closest('.form-group').removeClass('error');
         })
 
+        let userDate = contestData.date_of_birth.split("/")
+        let now = new Date();
+        let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
+        // check date validality
+        if (!isValidDate(contestData.date_of_birth) || contestData.date_of_birth === today.toString() || contestData.date_of_birth.length === 0 || chosenDate > now) {
+            setIsToday(true);
+            document.querySelectorAll(".form-group.select-group").forEach(item => {
+                item.classList.add("error")
+            });
+            isDateValid = false;
+
+
+        } else {
+            document.querySelectorAll(".form-group.select-group").forEach(item => {
+                item.classList.remove("error")
+            });
+            setIsToday(false);
+            isDateValid = true;
+
+        }
+        console.log("ashh valid", isFormValid, isDateValid)
 
         if (isFormValid && isDateValid) {
 
-
+            
             sendFormValues({ obj: contestData });
 
 
@@ -227,6 +248,7 @@ const ImagesForm = ({ node }) => {
     }
 
     const sendFormValues = (updatedItemData) => {
+        console.log("ashhh form", updatedItemData.obj)
         fetch(
             `${baseUrl}webform_rest/submit`,
             {
@@ -239,10 +261,10 @@ const ImagesForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
-
+                console.log("ashh resp", response)
             })
             .catch(error => {
-
+                console.log("ashhh error", error)
             });
     };
     console.log("ash", node)
@@ -277,7 +299,7 @@ const ImagesForm = ({ node }) => {
                     </div>
 
                     <div className="row d-none d-lg-flex">
-                        <div className="col-lg-10">
+                        <div className="col-lg-10 pl-0">
                             <div className={ImgForm.imgWrapper}>
                                 {node.relationships &&
                                     node.relationships.field_form_left_image &&
@@ -426,7 +448,7 @@ const ImagesForm = ({ node }) => {
                                     </div>
 
                                     <div className="submit-wrapper">
-                                        <button type="submit" onClick={(e) => { handleSubmit(e); topFunction(e) }}
+                                        <button type="submit" onClick={(e) => { handleSubmit(e); }}
 
 
                                             className="submit-input"  >Submit</button>
@@ -436,8 +458,16 @@ const ImagesForm = ({ node }) => {
 
                             </div>
                         </div>
-
+                            
                     </div>
+                    {node.relationships &&
+                    node.relationships.field_form_background_img &&
+                    node.relationships.field_form_background_img.localFile &&
+                    node.relationships.field_form_background_img.localFile.childImageSharp?
+                    <div className={ImgForm.bgImg}>
+                        <Img fluid={node.relationships.field_form_background_img.localFile.childImageSharp.fluid}/>
+                    </div>
+                    : ""}
                 </div>
             </div>
         </div>

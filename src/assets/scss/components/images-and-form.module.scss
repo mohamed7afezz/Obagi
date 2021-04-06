@@ -99,7 +99,7 @@
     @include lg-screen {
         margin-bottom: 53px;
         text-align: left;
-        padding-right: 70px;
+        max-width: 339px;
     }
 }
 
@@ -148,4 +148,24 @@
     width: 100%;
 
     z-index: 2;
+}
+
+.bg-img {
+    display:  none;
+
+    @include lg-screen {
+        display: block;
+        position: absolute;
+        right: -438.5px;
+        top: 410px;
+        max-height: 626px;
+        max-width: 598px;
+        height: auto;
+        width: 100%;
+    }
+}
+
+.bg-img > div {
+    max-height: 626px;
+    max-width: 598px;
 }
