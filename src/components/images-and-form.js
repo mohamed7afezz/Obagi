@@ -27,6 +27,9 @@ function playvideo(event) {
 
 
 }
+function removemodal() {
+    document.querySelector("#youarein").classList.add("hidden");
+}
 let thanksmodal = () => {
     document.querySelector("#youarein").classList.remove('hidden')
     var container = document.querySelector("#youarein .container");
@@ -215,7 +218,7 @@ const ImagesForm = ({ node }) => {
         let now = new Date();
         let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
         // check date validality
-        
+
         if (!isValidDate(contestData.date_of_birth) || contestData.date_of_birth === today.toString() || contestData.date_of_birth.length === 0 || chosenDate > now) {
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
@@ -232,11 +235,11 @@ const ImagesForm = ({ node }) => {
             isDateValid = true;
 
         }
- 
+
 
         if (isFormValid && isDateValid) {
 
-         
+
             sendFormValues({ obj: contestData });
 
 
@@ -298,7 +301,7 @@ const ImagesForm = ({ node }) => {
             })
             .catch(error => {
                 document.querySelector('.submit-input').innerHTML = "SUBMIT"
-              
+
             });
     };
     return (
@@ -516,15 +519,23 @@ const ImagesForm = ({ node }) => {
                     </div>
                 </div>
             </div>
+
             <div class="modal hidden" id="youarein">
                 <div class="container">
+
+
                     <div className={ImgForm.boxes}>
                         <div class="modal-body">
-
+                            <div className="modal-header">
+                                <button onClick={(e) => { removemodal(e) }} className="close"></button>
+                            </div>
                             <div className={ImgForm.Lines}>
                                 <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_title.processed }}></div>
                                 <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
-                                <a className={ImgForm.msgLink} href={node.field_confirmation_massage_url}>
+                                <a
+
+                                    onClick={(e) => { removemodal(e); }}
+                                    className={ImgForm.msgLink} href={node.field_confirmation_massage_url}>
                                     {node.field_confirmation_massage_link_}
 
 
@@ -534,6 +545,7 @@ const ImagesForm = ({ node }) => {
                     </div>
                 </div>
             </div>
+
 
         </>
     )

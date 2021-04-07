@@ -261,8 +261,8 @@ position: relative;
 }
 .boxes::before {
     @include md-screen{
-    width: 77px;
-    height: 77px;
+        width: 77px;
+        height: 76px;
     display: block;
     position: absolute;
     content: " ";
@@ -278,7 +278,7 @@ position: relative;
 .boxes::after {
     @include md-screen{
     width: 77px;
-    height: 77px;
+    height: 76px;
     display: block;
     position: absolute;
     content: " ";
