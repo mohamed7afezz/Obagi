@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    text-transform: uppercase;
     @include md-screen{
   
         flex-direction: row;
@@ -18,12 +19,14 @@
         color: #F99D25;
         font-weight: 900;
         z-index: 9;
+        width: 80%;
         display: inline-block;
         @include fontStyle(22, 30);
         @include md-screen{
             @include fontStyle(24, 32);
-    
+            width: auto;
         }
+
         padding-left: 12px;
         padding-right: 0;
        
@@ -56,14 +59,15 @@
 .sectionheader{
     font-size: 32px;
     line-height: 36px;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
+    padding-top: 19px;
     text-align: center;
     font-weight: 500;
     font-family: "big-caslon-fb";
-    padding-bottom: 36px;
+    
     @include md-screen{
-       
-        padding-top: 20px;
+        padding-bottom: 36px;
+        padding-top: 22px;
         font-size: 64px;
         line-height: 72px;
     }
@@ -79,6 +83,6 @@
 .mobwrap{
     flex-wrap: wrap;
 }
-.ProductsCon{
-    border-bottom: 1px solid #132466;
-}
+// .ProductsCon{
+//     border-bottom: 1px solid #132466;
+// }

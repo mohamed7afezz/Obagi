@@ -4747,6 +4747,14 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
 .profc-serum .profc-img {
     width: 100%;
 }
+
+.productsWeProvide .product-card-con {
+    text-align: center;
+
+    @include lg-screen {
+        text-align: left;
+    }
+}
 .img-form {
     overflow: hidden;
 }

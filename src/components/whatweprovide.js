@@ -16,7 +16,7 @@ const WhatWeProvide = ({ node }) => {
   }, [])
   return (
     <div className={sectionStyle.sectionCon}>
-      <div className={["container-fluid "].join(" ")}>
+      <div className={["container-fluid productsWeProvide"].join(" ")}>
         <div className={["row "]}>
           <div className="col-12 col-lg-8 offset-lg-2 ">
             <div className={sectionStyle.titleCon}>

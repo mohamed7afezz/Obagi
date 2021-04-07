@@ -97,10 +97,10 @@ font-size: 32px;
 line-height: 36px;
 font-weight: 500;
 font-family: "big-caslon-fb";
-padding-bottom: 18px;
+padding-bottom: 25px;
 color: #F99D25;
     @include lg-screen{
-        padding-bottom: 25px;
+        padding-bottom: 18px;
         font-size: 48px;
         line-height: 72px;
     }
@@ -117,9 +117,11 @@ color: #F99D25;
 }
 .leftsecsubtitle{
     font-size: 24px;
-    line-height: 26px;
+    line-height: 26.5px;
     font-weight: 900;
+    text-transform: uppercase;
     padding-bottom: 15px;
+    letter-spacing: 2px;
     @include lg-screen{
         padding-bottom: 25px;
     }
@@ -151,7 +153,7 @@ color: #F99D25;
 .perdesc{
     font-size: 18px;
     line-height: 23px;
-    padding-left: 10px;
+    padding-left: 17px;
     font-weight: 500;
     text-align: left;
     @include lg-screen{
@@ -176,6 +178,7 @@ color: #F99D25;
     font-size: 12px;
     line-height: 14px;
     font-weight: 500;
+    color: #7C858A;
     @include lg-screen{
         max-width: 285px;
     }

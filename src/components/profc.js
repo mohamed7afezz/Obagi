@@ -69,7 +69,7 @@ const ProffC = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_section_footnote?node.field_section_footnote.processed :"" }} className={profcStyle.footnote}></div>
 
           </div>
-          <div className={["col-lg-5 ", profcStyle.rightsec].join(" ")}>
+          <div className={["col-lg-5 mob-p-0", profcStyle.rightsec].join(" ")}>
             <img className={"img-fluid"} src={node.relationships.field_profc_right_image?node.relationships.field_profc_right_image.localFile.childImageSharp.original.src:""} />
 
           </div>
