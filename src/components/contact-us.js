@@ -60,7 +60,7 @@ export default function Contact() {
         )
             .then(res => res.json())
             .then(response => {
-               
+             
             })
             .catch(error => {
              

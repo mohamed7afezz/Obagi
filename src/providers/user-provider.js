@@ -27,6 +27,8 @@ export const UserProvider = ({ children }) => {
 
         if (userData !== "User not login.") {
             setUser(userData[0]);
+            
+           ;
         }
         setIsLoading(false);
 
@@ -100,7 +102,7 @@ export const UserProvider = ({ children }) => {
 
         if (newUserRes.status == 200) {
 
-
+            window.fbq('track', 'CompleteRegistration');
             await getUserData();
 
 

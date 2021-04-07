@@ -46,7 +46,7 @@ prodCat
                     data-skuType={prodCat}
                         onClick={() => {
                             let quantity = 1;
-                            addToCart(recId, false, quantity,recPrice,premierid,feild_preimer, recTitle);
+                            addToCart(recId, false, quantity,recPrice,premierid,feild_preimer, recTitle,prodCat);
                         }}
                         disabled={addingToCart === recId}
                     >

@@ -83,6 +83,12 @@ const Level1 = props => {
         for (let item of list2) {
           if (item.getAttribute("name") !="yes_agreement") {
             obj[item.getAttribute("name")] = item.value;
+          }else{
+            if (item.checked === true) {
+              window.fbq('track', 'Lead');
+              console.log('hassan')
+            }
+         
           }
           
         }

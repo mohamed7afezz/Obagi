@@ -27,6 +27,8 @@ function playvideo(event) {
 
 
 }
+var Submit = false;
+var ischanged = false;
 function removemodal() {
     document.querySelector("#youarein").classList.add("hidden");
 }
@@ -153,7 +155,8 @@ const ImagesForm = ({ node }) => {
                     dateOfBirth[0] = event.target.attributes['data-value'].value;
                 } else if (event.target.classList.contains('month')) {
                     dateOfBirth[1] = event.target.attributes['data-value'].value;
-                } else {
+                } 
+                else{
                     dateOfBirth[2] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('/');
@@ -191,7 +194,8 @@ const ImagesForm = ({ node }) => {
 
                 break;
         }
-
+       
+     
 
     }
     function handleSubmit(e) {
@@ -290,8 +294,11 @@ const ImagesForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
-                document.querySelector('.submit-input').innerHTML = "SUBMIT"
-
+                document.querySelector('.submit-input').innerHTML = "SUBMIT";
+                if (document.querySelector('#registerCheck').checked) {
+                    window.fbq('track', 'Lead');
+                }
+               
                 // empty form fieldsPropTypes.
                 thanksmodal();
                 document.querySelector('.regform').reset();
