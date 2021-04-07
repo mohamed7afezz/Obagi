@@ -27,6 +27,9 @@ function playvideo(event) {
 
 
 }
+function removemodal(){
+    document.querySelector("#youarein").classList.add("hidden");
+}
 let thanksmodal = () => {
     document.querySelector("#youarein").classList.remove('hidden')
     var container = document.querySelector("#youarein .container");
@@ -519,13 +522,20 @@ const ImagesForm = ({ node }) => {
         </div>
         <div class="modal hidden" id="youarein">
             <div class="container">
+
+             
             <div className={ImgForm.boxes}>
                 <div class="modal-body">
-       
+                <div className="modal-header">
+                    <button  onClick={(e) => { removemodal(e)}} className="close"></button>
+                </div>
                     <div className={ImgForm.Lines}>
                     <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{__html: node.field_confirmation_massage_title.processed}}></div>
                     <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{__html: node.field_confirmation_massage_descr.processed}}></div>
-                    <a className={ImgForm.msgLink}  href={node.field_confirmation_massage_url}>
+                    <a
+                    
+                    onClick={(e) => { removemodal(e); }}
+                    className={ImgForm.msgLink}  href={node.field_confirmation_massage_url}>
                         {node.field_confirmation_massage_link_}
           
 
