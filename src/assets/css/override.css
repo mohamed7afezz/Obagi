@@ -2970,7 +2970,7 @@ left: 0;
 }
 #youarein .modal-body::after {
   width: 76px;
-  height: 77px;
+  height: 76px;
   display: block;
   position: absolute;
   content: " ";

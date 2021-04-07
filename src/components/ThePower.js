@@ -20,7 +20,7 @@ const ThePower = ({ node }) => {
             <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_title.processed }} className={vitmaineStyle.header}></div>
           </div>
           <div className={vitmaineStyle.vitaminContent}>
-            <div className={["col-12 offset-md-1 col-md-4", vitmaineStyle.leftCol].join(" ")}>
+            <div className={["col-12 offset-lg-1 col-lg-4", vitmaineStyle.leftCol].join(" ")}>
               <div dangerouslySetInnerHTML={{ __html: node.field_left_col_title.processed }} className={vitmaineStyle.coltitle}>
 
               </div>
@@ -28,7 +28,7 @@ const ThePower = ({ node }) => {
 
               </div>
             </div>
-            <div className="col-12 offset-md-1 col-md-5">
+            <div className="col-12 offset-lg-1 col-lg-5">
               <div className={vitmaineStyle.titleCon}>
                 <div dangerouslySetInnerHTML={{ __html: node.field_right_col_title.processed }}  className={vitmaineStyle.rightColTitle}>
                     </div>

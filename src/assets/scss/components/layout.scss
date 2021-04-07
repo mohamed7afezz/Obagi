@@ -4672,17 +4672,20 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
 }
 
 @include lg-screen {
-    .vitaminc::before {
+    .vitaminc .heroSlideRow {
+        position: relative;
+    }
+    .vitaminc .heroSlideRow::before {
         content: '';
         position: absolute;
         top: 0;
         bottom: 0;
         left: 97px;
-        width: 1px;
-        background-color: #132466;
+        border-left: 1px solid #132466;
+    
     }
 
-    .vitaminc::after {
+    .vitaminc .heroSlideRow::after {
         content: '';
         position: absolute;
         bottom: 99px;
@@ -4716,6 +4719,9 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
         background-color: #132466;
     }
 
+    .vitaminc .slick-initialized .slick-slide {
+        position: relative;
+    }
    
     .vitaminc .heroRowWrapper::before {
         content: '';
@@ -4738,6 +4744,9 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     }
 }
 
+.profc-serum .profc-img {
+    width: 100%;
+}
 .img-form {
     overflow: hidden;
 }

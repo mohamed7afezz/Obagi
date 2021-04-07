@@ -298,6 +298,10 @@ const ImagesForm = ({ node }) => {
                 document.querySelectorAll('.regform .select-selected').forEach(el => {
                     el.textContent = 'Select';
                 })
+                setContestData({
+                    ...contestData,
+                    date_of_birth: ""
+                })
             })
             .catch(error => {
                 document.querySelector('.submit-input').innerHTML = "SUBMIT"

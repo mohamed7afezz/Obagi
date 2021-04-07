@@ -6,7 +6,7 @@ padding-top: 50px;
 padding-bottom: 0;
 text-align: center;
 
-@include md-screen{
+@include lg-screen{
     text-align: left;
     padding-top: 155px;
    
@@ -18,7 +18,7 @@ text-align: center;
     line-height: 40px;
     font-weight: 900;
     text-align: center;
-    @include md-screen{
+    @include lg-screen{
         font-size: 64px;
         line-height: 64px;
         text-align: left;
@@ -30,7 +30,7 @@ text-align: center;
     font-size: 24px;
     line-height: 26.5px;
     padding-bottom: 30px;
-    @include md-screen{
+    @include lg-screen{
         font-size: 30px;
         line-height: 38px;
         padding-top: 0;
@@ -41,17 +41,17 @@ text-align: center;
     line-height: 26.5px;
     color: #F99D25;
     font-weight: 900;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
    
-    @include md-screen{
-    padding-bottom: 15px;    
+    @include lg-screen{
+    padding-bottom: 10px;    
     }
 }
 .secSectionDesc{
     font-size: 24px;
     line-height: 32px;
     margin-bottom: 15px;
-    @include md-screen{
+    @include lg-screen{
         margin-bottom: 30px;
     }
 }
@@ -59,8 +59,8 @@ text-align: center;
     font-weight: 600;
 }
 .subdesc{
-    padding-bottom: 15px;
-    @include md-screen{
+    padding-bottom: 47px;
+    @include lg-screen{
         padding-bottom: 30px;
     }
 }
@@ -68,9 +68,9 @@ text-align: center;
 font-size: 24px;
 line-height: 32px;
     &:last-child{
-    border-bottom: 1px solid #132466;;
-    padding-bottom: 18px;
-    @include md-screen{
+    border-bottom: 2px solid #132466;;
+    padding-bottom: 50px;
+    @include lg-screen{
         border: 0;
         padding-bottom: 0;
     }
@@ -80,7 +80,7 @@ line-height: 32px;
     padding-top: 50px;
   margin-bottom: 30px;
   padding-bottom: 0 ;
-    @include md-screen{
+    @include lg-screen{
         margin-bottom: 55px;
         padding-top: 100px;
         padding-right: 20px;
@@ -88,7 +88,7 @@ line-height: 32px;
 }
 .leftsec{
     padding-top: 30px;
-    @include md-screen{
+    @include lg-screen{
         padding-top: 60px;
     }
 }
@@ -99,7 +99,7 @@ font-weight: 500;
 font-family: "big-caslon-fb";
 padding-bottom: 18px;
 color: #F99D25;
-    @include md-screen{
+    @include lg-screen{
         padding-bottom: 25px;
         font-size: 48px;
         line-height: 72px;
@@ -109,7 +109,7 @@ color: #F99D25;
     font-size: 24px;
     line-height: 26.5px;
     padding-bottom: 80px;
-    @include md-screen{
+    @include lg-screen{
         padding-bottom: 30px;
         font-size: 30px;
         line-height: 38px;
@@ -120,14 +120,14 @@ color: #F99D25;
     line-height: 26px;
     font-weight: 900;
     padding-bottom: 15px;
-    @include md-screen{
+    @include lg-screen{
         padding-bottom: 25px;
     }
    
 }.percentage{
 
     padding-bottom: 30px;
-    @include md-screen{
+    @include lg-screen{
         padding-bottom: 25px;
        
     }
@@ -137,7 +137,7 @@ color: #F99D25;
     align-items: center;
     & + .percentagecon{
         padding-top: 30px;
-        @include md-screen{
+        @include lg-screen{
             padding-top: 25px;
         }
     }
@@ -154,13 +154,13 @@ color: #F99D25;
     padding-left: 10px;
     font-weight: 500;
     text-align: left;
-    @include md-screen{
+    @include lg-screen{
         max-width: 235px;
     }
 }
 .mob-col-rev{
     flex-direction: column-reverse;
-    @include md-screen{
+    @include lg-screen{
         flex-direction: row;
     }
 }
@@ -168,7 +168,7 @@ color: #F99D25;
     border: 1px solid #132466;
     margin-top: 50px;
    
-    @include md-screen{
+    @include lg-screen{
         margin-top: 100px;
     }
 }
@@ -176,7 +176,7 @@ color: #F99D25;
     font-size: 12px;
     line-height: 14px;
     font-weight: 500;
-    @include md-screen{
+    @include lg-screen{
         max-width: 285px;
     }
 }
