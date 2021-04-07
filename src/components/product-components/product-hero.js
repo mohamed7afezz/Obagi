@@ -154,7 +154,7 @@ const ProductHero = ({ data, nodeType }) => {
   }
   /////////////////////////
   useEffect(() => {
-
+    fbpxViewcontent(productId,nodeType,node.title,field_medical_type,[{'id': productId, 'quantity': "3"}],'USD',field_price)
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
@@ -196,6 +196,28 @@ const ProductHero = ({ data, nodeType }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
+
+  function fbpxViewcontent (contentId,contentCat,contentName,contentType,Contents,Currency,Value) {
+    if (typeof window != undefined) {
+  
+
+      window.fbq('track', 'ViewContent',
+    // begin parameter object data
+    {
+      content_ids :  contentId ,
+      content_category : contentCat,
+      content_name : contentName,
+      content_type : contentType,
+      contents : Contents, 
+      currency : Currency, 
+      value : Value,
+    }
+   
+    // end parameter object data
+  );
+}
+  }
+
 
   return (
     <div
