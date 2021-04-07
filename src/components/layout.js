@@ -66,6 +66,12 @@ const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage}) => {
     }
   }
 
+  function FBPX() {
+    if (typeof window != undefined) {
+    window.fbq('track', 'PageView')
+    }
+  }
+  
   // Similar to componentDidMount and componentDidUpdate: 
   return (
     <div className={`node-${nodeType} ${homepage}`}>
@@ -75,8 +81,9 @@ const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage}) => {
       <div>
         <main>
           {children}
-          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} alt="img"/></button></div>
 
+          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} alt="img"/></button></div>
+      {FBPX}
         </main>
         <Showbag />
         <Footer />

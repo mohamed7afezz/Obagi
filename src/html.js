@@ -7,7 +7,7 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
-        
+
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -52,6 +52,28 @@ export default function HTML(props) {
           })(document.location.protocol + "//tag.rmp.rakuten.com/122741.ct.js")
         `
         }}></script>
+
+     <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '678059259599817');
+          fbq('track', 'PageView');
+        `
+        }}></script>
+        
+        <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `
+        <img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=678059259599817&ev=PageView&noscript=1"
+        />`}}></script>
+
         {props.headComponents}
 
 
@@ -66,8 +88,8 @@ export default function HTML(props) {
         {props.postBodyComponents}
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.instagramFeed/1.3.2/jquery.instagramFeed.min.js" ></script> */}
 
- 
-  
+
+       
       </body>
     </html>
   )
