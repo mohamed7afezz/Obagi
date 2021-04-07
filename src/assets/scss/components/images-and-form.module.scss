@@ -173,3 +173,119 @@
     max-height: 626px;
     max-width: 598px;
 }
+.orange{
+    position: relative;
+    .bgImg{
+        display: none;
+        @include lg-screen{
+            position: absolute;
+            width: 300px;
+            height: 420px;
+            top: 21%;
+            display: block;
+            right: -226px;
+            
+            @media (min-width:1100px) and (max-width:1500px) {
+                width: 276px;
+            }
+            img {
+                width: auto;
+                height: 100%;
+            }
+          }
+        }
+}
+
+.msgTitle{
+    font-size: 64px;
+font-weight: 700;
+line-height: 72px;
+margin-bottom: 20px;
+}
+.msgDescrib, .msgDescrib p{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    padding-bottom: 25px;
+}
+.msgDescrib{
+    padding-bottom: 0;
+}
+#youarein .modal-body::before {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    content: " ";
+    background: #132466;
+    top: 0;
+    left: 0;
+}
+#youarein .modal-body::after {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    content: " ";
+    border: 1px solid #132466;
+    top: 0;
+    right:  0;
+}
+.msgLink,.msgLink:hover{
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #132466;
+    padding: 24px 108px 24px 109px;
+    font-weight: 700;
+    display: inline-block;
+    border-radius: 6px;
+}
+.Lines{
+    @include md-screen{
+    padding: 25px;
+    border:1px solid #132466;
+}
+   
+}
+.boxes{
+    max-width: 100%;
+    @include md-screen{
+    max-width: 60%;
+margin-left: auto;
+margin-right: auto;
+}
+position: relative;
+
+}
+.boxes::before {
+    @include md-screen{
+    width: 77px;
+    height: 77px;
+    display: block;
+    position: absolute;
+    content: " ";
+    bottom: 0;
+    left: 0;
+    border: 1px solid #132466;
+
+    z-index: 9;
+    border-bottom: 0;
+    border-left: 0;
+}
+}
+.boxes::after {
+    @include md-screen{
+    width: 77px;
+    height: 77px;
+    display: block;
+    position: absolute;
+    content: " ";
+    border: 1px solid #132466;
+ 
+    bottom: 0;
+    right: 0;
+    border-right: 0;
+    border-bottom: 0;
+}}

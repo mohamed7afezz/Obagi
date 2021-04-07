@@ -27,6 +27,17 @@ function playvideo(event) {
 
 
 }
+let thanksmodal = () => {
+    document.querySelector("#youarein").classList.remove('hidden')
+    var container = document.querySelector("#youarein .container");
+
+    document.querySelector("#youarein").addEventListener("click", function (e) {
+        if (e.target !== document.querySelector("#youarein") && e.target !== container) return;
+        document.querySelector("#youarein").classList.add("hidden");
+    });
+
+
+}
 
 const ImagesForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
@@ -143,7 +154,6 @@ const ImagesForm = ({ node }) => {
                     dateOfBirth[2] = event.target.attributes['data-value'].value;
                 }
                 dateOfBirth = dateOfBirth.join('/');
-                console.log("ashh full date", dateOfBirth)
                 setContestData({
                     ...contestData,
                     date_of_birth: dateOfBirth
@@ -160,7 +170,7 @@ const ImagesForm = ({ node }) => {
 
                 break;
             // case 'email_sub':
-                
+
             //     if(event.target.value == "on") {
             //         setContestData({
             //             ...contestData,
@@ -205,7 +215,7 @@ const ImagesForm = ({ node }) => {
         let now = new Date();
         let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
         // check date validality
-        console.log("ashh dob", contestData.date_of_birth)
+        
         if (!isValidDate(contestData.date_of_birth) || contestData.date_of_birth === today.toString() || contestData.date_of_birth.length === 0 || chosenDate > now) {
             setIsToday(true);
             document.querySelectorAll(".form-group.select-group").forEach(item => {
@@ -222,11 +232,11 @@ const ImagesForm = ({ node }) => {
             isDateValid = true;
 
         }
-        console.log("ashh valid before", isFormValid, isDateValid)
+ 
 
         if (isFormValid && isDateValid) {
 
-            console.log("ashh valid after", isFormValid, isDateValid)
+         
             sendFormValues({ obj: contestData });
 
 
@@ -257,14 +267,14 @@ const ImagesForm = ({ node }) => {
     const sendFormValues = (updatedItemData) => {
         let dataSubmit = updatedItemData.obj;
 
-        console.log("bahiii2", )
-        if(document.querySelector('#registerCheck').checked) {
+        document.querySelector('.submit-input').innerHTML = "SUBMITTING ..."
+        if (document.querySelector('#registerCheck').checked) {
             dataSubmit.email_optin = ["receivemail"];
         } else {
             delete dataSubmit.email_optin;
         }
 
-        
+
         fetch(
             `${baseUrl}webform_rest/submit`,
             {
@@ -277,233 +287,255 @@ const ImagesForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
-                console.log("ashh resp", response);
+                document.querySelector('.submit-input').innerHTML = "SUBMIT"
+
                 // empty form fieldsPropTypes.
+                thanksmodal();
                 document.querySelector('.regform').reset();
                 document.querySelectorAll('.regform .select-selected').forEach(el => {
                     el.textContent = 'Select';
                 })
             })
             .catch(error => {
-                console.log("ashhh error", error)
+                document.querySelector('.submit-input').innerHTML = "SUBMIT"
+              
             });
     };
     return (
-
-        <div id="EnterToWin" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
-            <div className="row">
-                <div className="col-12 col-lg-5">
-                    <div className="row">
-                        <div className="col-12 col-lg-10 offset-lg-2">
-                            <div className="video-wrapper">
-                                <div className={["img-wrap", ImgForm.videoWrapper].join(" ")}>
-                                    {node.relationships.field_form_video ?
-                                        <>
-                                            <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
-                                                <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                                            </a>
-                                            {node.relationships &&
-                                                node.relationships.field_form_video &&
-                                                node.relationships.field_form_video[0] &&
-                                                node.relationships.field_form_video[0].relationships &&
-                                                node.relationships.field_form_video[0].relationships.field_video_poster &&
-                                                node.relationships.field_form_video[0].relationships.field_video_poster.localFile ?
-                                                <Img alt="img" className={ImgForm.videoimg} fluid={node.relationships.field_form_video[0].relationships.field_video_poster.localFile.childImageSharp.fluid} />
-                                                : ""}
-                                        </>
-                                        : ""
-                                    }
+        <>
+            <div id="EnterToWin" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
+                <div className="row">
+                    <div className="col-12 col-lg-5">
+                        <div className="row">
+                            <div className="col-12 col-lg-10 offset-lg-2">
+                                <div className="video-wrapper">
+                                    <div className={["img-wrap", ImgForm.videoWrapper].join(" ")}>
+                                        {node.relationships.field_form_video ?
+                                            <>
+                                                <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
+                                                    <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                                                </a>
+                                                {node.relationships &&
+                                                    node.relationships.field_form_video &&
+                                                    node.relationships.field_form_video[0] &&
+                                                    node.relationships.field_form_video[0].relationships &&
+                                                    node.relationships.field_form_video[0].relationships.field_video_poster &&
+                                                    node.relationships.field_form_video[0].relationships.field_video_poster.localFile ?
+                                                    <Img alt="img" className={ImgForm.videoimg} fluid={node.relationships.field_form_video[0].relationships.field_video_poster.localFile.childImageSharp.fluid} />
+                                                    : ""}
+                                            </>
+                                            : ""
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="row d-none d-lg-flex">
-                        <div className="col-lg-10 pl-0">
-                            <div className={ImgForm.imgWrapper}>
-                                {node.relationships &&
-                                    node.relationships.field_form_left_image &&
-                                    node.relationships.field_form_left_image.localFile &&
-                                    node.relationships.field_form_left_image.localFile.childImageSharp ?
+                        <div className="row d-none d-lg-flex">
+                            <div className="col-lg-10 pl-0">
+                                <div className={ImgForm.imgWrapper}>
+                                    {node.relationships &&
+                                        node.relationships.field_form_left_image &&
+                                        node.relationships.field_form_left_image.localFile &&
+                                        node.relationships.field_form_left_image.localFile.childImageSharp ?
 
-                                    <Img fluid={node.relationships.field_form_left_image.localFile.childImageSharp.fluid} />
+                                        <Img fluid={node.relationships.field_form_left_image.localFile.childImageSharp.fluid} />
 
-                                    : ""}
+                                        : ""}
 
-                                {node.relationships &&
-                                    node.relationships.field_form_overlay_img &&
-                                    node.relationships.field_form_overlay_img.localFile &&
-                                    node.relationships.field_form_overlay_img.localFile.childImageSharp ?
+                                    {node.relationships &&
+                                        node.relationships.field_form_overlay_img &&
+                                        node.relationships.field_form_overlay_img.localFile &&
+                                        node.relationships.field_form_overlay_img.localFile.childImageSharp ?
 
-                                    <div className={ImgForm.overlayImg}>
-                                        <Img fluid={node.relationships.field_form_overlay_img.localFile.childImageSharp.fluid} />
-                                    </div>
-                                    : ""}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="col-12 col-lg-5 offset-lg-1">
-                    <div className="row">
-                        <div className="col-12">
-                            {node.field_form_subtitle ? <div className={ImgForm.subtitle} dangerouslySetInnerHTML={{ __html: node.field_form_subtitle.processed }}></div> : ""}
-                            {node.field_form_title ? <div className={ImgForm.title} dangerouslySetInnerHTML={{ __html: node.field_form_title.processed }}></div> : ""}
-                            {node.field_form_description ? <div className={ImgForm.description} dangerouslySetInnerHTML={{ __html: node.field_form_description.processed }}></div> : ""}
-                        </div>
-                        <div className="col-12 col-lg-10 offset-lg-2">
-                            {node.field_form_mini_title ? <div className={ImgForm.miniTitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_title.processed }}></div> : ""}
-                            {node.field_form_mini_subtitle ? <div className={ImgForm.miniSubtitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_subtitle.processed }}></div> : ""}
-
-                            <div className={ImgForm.formWrapper}>
-                                <div className="errors  errors-list">
-                                    {/* <ul>
-                                        {err !== undefined ? Object.entries(err).map(item => <li className="text-danger error-li">{item[1]}</li>) : ''}
-                                    </ul> */}
-                                    {isFormValid && isDateValid ? "" :
-                                        <ul className="error-list-sec"></ul>
-                                    }
-                                    {isToday == true ?
-                                        <ul>
-                                            <li className="text-danger error-li">Please submit the correct date of birth.</li>
-                                        </ul>
+                                        <div className={ImgForm.overlayImg}>
+                                            <Img fluid={node.relationships.field_form_overlay_img.localFile.childImageSharp.fluid} />
+                                        </div>
                                         : ""}
                                 </div>
-                                <form noValidate="novalidate" class="regform needs-validation" >
-                                    <div className="form-group">
-                                        <label for="firstname">*First name</label>
-                                        <input type="text" className="form-control" name="firstname" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label for="lastname">*Last name</label>
-                                        <input type="text" className="form-control" name="lastname" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label for="postalcode">*Postal Code</label>
-                                        <input type="text" className="form-control" name="shipping_zip" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" maxLength="5" minLength="5" placeholder="" data-webform-required-error="Please fill in your correct postal code." />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label for="mailaddress">*Email Address</label>
-                                        <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email." />
-                                    </div>
-
-                                    <div className="group-title">Date of Birth</div>
-
-                                    <div className="day-mon-year">
-                                        <div className="day-month">
-                                            <div class="form-group select-group new-select  day-select">
-                                                <label for="reviewFormSelect" class="form-label">*Day</label>
-                                                <div class="select-selected">Select</div>
-                                            </div>
-                                            <div className="form-group select-group  old-select day-select hide">
-                                                <label for="reviewFormSelect" className="form-label">*Day</label>
-                                                <div className="select-wrap">
-                                                    <Scrollbars style={{ height: 200 }}>
-                                                        <div className="form-control" id="reviewFormSelectDay">
-                                                            {
-                                                                Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
-                                                                    if (day > 0)
-                                                                        return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
-                                                                })
-                                                            }
-
-                                                        </div>
-                                                    </Scrollbars>
-                                                </div>
-                                            </div>
-                                            <div class="form-group select-group new-select  month-select">
-                                                <label for="reviewFormSelect" class="form-label">*Month</label>
-                                                <div class="select-selected">Select</div>
-                                            </div>
-                                            <div className="form-group select-group old-select  month-select hide">
-                                                <label for="reviewFormSelect" className="form-label">*Month</label>
-                                                <div className="select-wrap" >
-                                                    <Scrollbars style={{ height: 200 }}>
-
-                                                        <div required className="form-control" name="date" id="reviewFormSelect">
-
-                                                            <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
-                                                            <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
-                                                            <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
-                                                            <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
-                                                            <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
-                                                            <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
-                                                            <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
-                                                            <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
-                                                            <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
-                                                            <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
-                                                            <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
-                                                            <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
-
-                                                        </div>
-                                                    </Scrollbars>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group select-group new-select  year-select">
-                                            <label for="reviewFormSelect" class="form-label">*Year</label>
-                                            <div class="select-selected">Select</div>
-                                        </div>
-
-                                        <div className="form-group select-group old-select  year-select hide">
-                                            <label for="reviewFormSelect" className="form-label">*Year</label>
-
-                                            <div className="select-wrap">
-                                                <Scrollbars style={{ height: 200 }}>
-                                                    <div required className="form-control" name="date" id="reviewFormSelectYear">
-
-                                                        {yearsList.reverse().map((item, index) => {
-                                                            return (
-                                                                <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
-                                                            )
-                                                        })}
-                                                    </div>
-                                                </Scrollbars>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-                                    <div className="form-check">
-
-                                        <label className="form-check-label terms" for="registerCheck">
-                                            <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true} />
-                                            <span className="checkmark"></span>
-                                            <span>Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By regarding, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
-                                    </span>
-                                        </label>
-                                    </div>
-
-                                    <div className="submit-wrapper">
-                                        <button type="submit" onClick={(e) => { handleSubmit(e); }}
-
-
-                                            className="submit-input"  >Submit</button>
-                                    </div>
-
-                                </form>
-
                             </div>
                         </div>
 
                     </div>
-                    {node.relationships &&
-                        node.relationships.field_form_background_img &&
-                        node.relationships.field_form_background_img.localFile &&
-                        node.relationships.field_form_background_img.localFile.childImageSharp ?
-                        <div className={ImgForm.bgImg}>
-                            <Img fluid={node.relationships.field_form_background_img.localFile.childImageSharp.fluid} />
+                    <div className={["col-12 col-lg-5 offset-lg-1", ImgForm.orange].join(" ")}>
+                        <div className="row">
+                            <div className="col-12">
+                                {node.field_form_subtitle ? <div className={ImgForm.subtitle} dangerouslySetInnerHTML={{ __html: node.field_form_subtitle.processed }}></div> : ""}
+                                {node.field_form_title ? <div className={ImgForm.title} dangerouslySetInnerHTML={{ __html: node.field_form_title.processed }}></div> : ""}
+                                {node.field_form_description ? <div className={ImgForm.description} dangerouslySetInnerHTML={{ __html: node.field_form_description.processed }}></div> : ""}
+                            </div>
+                            <div className="col-12 col-lg-10 offset-lg-2">
+                                {node.field_form_mini_title ? <div className={ImgForm.miniTitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_title.processed }}></div> : ""}
+                                {node.field_form_mini_subtitle ? <div className={ImgForm.miniSubtitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_subtitle.processed }}></div> : ""}
+
+                                <div className={ImgForm.formWrapper}>
+                                    <div className="errors  errors-list">
+                                        {/* <ul>
+                                        {err !== undefined ? Object.entries(err).map(item => <li className="text-danger error-li">{item[1]}</li>) : ''}
+                                    </ul> */}
+                                        {isFormValid && isDateValid ? "" :
+                                            <ul className="error-list-sec"></ul>
+                                        }
+                                        {isToday == true ?
+                                            <ul>
+                                                <li className="text-danger error-li">Please submit the correct date of birth.</li>
+                                            </ul>
+                                            : ""}
+                                    </div>
+                                    <form noValidate="novalidate" class="regform needs-validation" >
+                                        <div className="form-group">
+                                            <label for="firstname">*First name</label>
+                                            <input type="text" className="form-control" name="firstname" onChange={handleUpdate} id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label for="lastname">*Last name</label>
+                                            <input type="text" className="form-control" name="lastname" onChange={handleUpdate} id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label for="postalcode">*Postal Code</label>
+                                            <input type="text" className="form-control" name="shipping_zip" onChange={handleAttr} id="postalcode" required aria-describedby="postalcode" maxLength="5" minLength="5" placeholder="" data-webform-required-error="Please fill in your correct postal code." />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label for="mailaddress">*Email Address</label>
+                                            <input type="email" className="form-control" name="email" onChange={handleUpdate} id="mailaddress" required aria-describedby="emailHelp" placeholder="" data-webform-required-error="Please fill in your correct email." />
+                                        </div>
+
+                                        <div className="group-title">Date of Birth</div>
+
+                                        <div className="day-mon-year">
+                                            <div className="day-month">
+                                                <div class="form-group select-group new-select  day-select">
+                                                    <label for="reviewFormSelect" class="form-label">*Day</label>
+                                                    <div class="select-selected">Select</div>
+                                                </div>
+                                                <div className="form-group select-group  old-select day-select hide">
+                                                    <label for="reviewFormSelect" className="form-label">*Day</label>
+                                                    <div className="select-wrap">
+                                                        <Scrollbars style={{ height: 200 }}>
+                                                            <div className="form-control" id="reviewFormSelectDay">
+                                                                {
+                                                                    Array.apply(null, { length: 32 }).map(Function.call, Number).map((day) => {
+                                                                        if (day > 0)
+                                                                            return <div className="Give-val day" data-value={day < 10 ? `0${day}` : day} data-name='date' onClick={handleAttr}>{day < 10 ? `0${day}` : day}</div>
+                                                                    })
+                                                                }
+
+                                                            </div>
+                                                        </Scrollbars>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group select-group new-select  month-select">
+                                                    <label for="reviewFormSelect" class="form-label">*Month</label>
+                                                    <div class="select-selected">Select</div>
+                                                </div>
+                                                <div className="form-group select-group old-select  month-select hide">
+                                                    <label for="reviewFormSelect" className="form-label">*Month</label>
+                                                    <div className="select-wrap" >
+                                                        <Scrollbars style={{ height: 200 }}>
+
+                                                            <div required className="form-control" name="date" id="reviewFormSelect">
+
+                                                                <div className="Give-val month" data-value="01" data-name="date" onClick={handleAttr}>January</div >
+                                                                <div className="Give-val month" data-value="02" data-name="date" onClick={handleAttr}>February</div >
+                                                                <div className="Give-val month" data-value="03" data-name="date" onClick={handleAttr}>March</div >
+                                                                <div className="Give-val month" data-value="04" data-name="date" onClick={handleAttr}>April</div >
+                                                                <div className="Give-val month" data-value="05" data-name="date" onClick={handleAttr}>May</div >
+                                                                <div className="Give-val month" data-value="06" data-name="date" onClick={handleAttr}>June</div >
+                                                                <div className="Give-val month" data-value="07" data-name="date" onClick={handleAttr}>July</div >
+                                                                <div className="Give-val month" data-value="08" data-name="date" onClick={handleAttr}>August</div >
+                                                                <div className="Give-val month" data-value="09" data-name="date" onClick={handleAttr}>September</div >
+                                                                <div className="Give-val month" data-value="10" data-name="date" onClick={handleAttr}>October</div >
+                                                                <div className="Give-val month" data-value="11" data-name="date" onClick={handleAttr}>November</div >
+                                                                <div className="Give-val month" data-value="12" data-name="date" onClick={handleAttr}>December</div >
+
+                                                            </div>
+                                                        </Scrollbars>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group select-group new-select  year-select">
+                                                <label for="reviewFormSelect" class="form-label">*Year</label>
+                                                <div class="select-selected">Select</div>
+                                            </div>
+
+                                            <div className="form-group select-group old-select  year-select hide">
+                                                <label for="reviewFormSelect" className="form-label">*Year</label>
+
+                                                <div className="select-wrap">
+                                                    <Scrollbars style={{ height: 200 }}>
+                                                        <div required className="form-control" name="date" id="reviewFormSelectYear">
+
+                                                            {yearsList.reverse().map((item, index) => {
+                                                                return (
+                                                                    <div className="Give-val year" data-value={item} data-name="date" onClick={handleAttr}>{item}</div >
+                                                                )
+                                                            })}
+                                                        </div>
+                                                    </Scrollbars>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="form-check">
+
+                                            <label className="form-check-label terms" for="registerCheck">
+                                                <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true} />
+                                                <span className="checkmark"></span>
+                                                <span>Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By regarding, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
+                                    </span>
+                                            </label>
+                                        </div>
+
+                                        <div className="submit-wrapper">
+                                            <button type="submit" onClick={(e) => { handleSubmit(e); }}
+
+
+                                                className="submit-input"  >Submit</button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
                         </div>
-                        : ""}
+                        {node.relationships &&
+                            node.relationships.field_form_background_img &&
+                            node.relationships.field_form_background_img.localFile &&
+                            node.relationships.field_form_background_img.localFile.childImageSharp ?
+                            <div className={ImgForm.bgImg}>
+                                <img src={node.relationships.field_form_background_img.localFile.childImageSharp.original.src} />
+                            </div>
+                            : ""}
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="modal hidden" id="youarein">
+                <div class="container">
+                    <div className={ImgForm.boxes}>
+                        <div class="modal-body">
 
+                            <div className={ImgForm.Lines}>
+                                <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_title.processed }}></div>
+                                <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
+                                <a className={ImgForm.msgLink} href={node.field_confirmation_massage_url}>
+                                    {node.field_confirmation_massage_link_}
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </>
     )
 }
 
@@ -513,6 +545,14 @@ export const fragment = graphql`
     fragment paragraphImagesAndForm on paragraph__images_and_form {
         id
         field_form_subtitle {
+            processed
+          }
+          field_confirmation_massage_title {
+            processed
+          }
+          field_confirmation_massage_link_
+          field_confirmation_massage_url
+          field_confirmation_massage_descr {
             processed
           }
           field_form_title {
@@ -533,6 +573,9 @@ export const fragment = graphql`
                 childImageSharp {
                   fluid {
                     ...GatsbyImageSharpFluid
+                  }
+                  original{
+                      src
                   }
                 }
               }

@@ -8,7 +8,7 @@ const ThePower = ({ node }) => {
   const data = node.relationships;
   return (
    
-      <div className={["container-fluid "].join(" ")}>
+      <div id="letyourskin" className={["container-fluid "].join(" ")}>
      
         <div className={["row "]}>
         <div className={vitmaineStyle.vitaminePower}>
