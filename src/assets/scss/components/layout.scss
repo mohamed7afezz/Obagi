@@ -3642,12 +3642,20 @@ top: 78.5px !important;
     height: 100%;
     display: table;
   }
-  
-  #formsubmition.hidden ,#moremaxprice.hidden{
+  #youarein {
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+  }
+  #formsubmition.hidden ,#moremaxprice.hidden,#youarein.hidden{
     display: none;
   }
   
-  #formsubmition .container,#moremaxprice .container {
+  #formsubmition .container,#moremaxprice .container ,#youarein .container{
    display: table-cell;
    text-align: center;
    vertical-align: middle;
@@ -3659,7 +3667,7 @@ top: 78.5px !important;
       text-align: center;
   }
 }
-  #formsubmition .modal-body ,#moremaxprice .modal-body {
+  #formsubmition .modal-body ,#moremaxprice .modal-body  {
     box-shadow: 5px 10px #888888;
     display: inline-block;
     background-color: white;
@@ -3671,7 +3679,19 @@ top: 78.5px !important;
         padding: 100px;
     }
   }
+  #youarein .modal-body{
+   
+    display: inline-block;
+    background-color: #fde6c7;
+   
+    padding: 15px;
+  
+    @include md-screen{
+        border: 1px solid #132466; 
+        padding: 75px;
+    }
 
+  }
   .footer-obagi-link {
       color: #132466;
       &:hover {

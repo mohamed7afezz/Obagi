@@ -2951,13 +2951,37 @@ width: 100%;
   padding-bottom: 25px;
   display: none;
 }
-#formsubmition .modal-body,#moremaxprice .modal-body{
+#formsubmition .modal-body,#moremaxprice .modal-body,#youarein .modal-body{
   padding: 100px;
 }
-#formsubmition .container,#moremaxprice .modal-body{
+#formsubmition .container,#moremaxprice .modal-body ,#youarein .modal-body{
   padding-left: 0;
   padding-right: 0;
 }
+#youarein .modal-body::before {
+width: 76px;
+height: 76px;
+display: block;
+position: absolute;
+content: " ";
+background: #132466;
+top: 0;
+left: 0;
+}
+#youarein .modal-body::after {
+  width: 76px;
+  height: 76px;
+  display: block;
+  position: absolute;
+  content: " ";
+  border: 1px solid #132466;
+
+  top: 0;
+  right: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
 .show-mob{
   display: none !important;
 }
@@ -2981,9 +3005,19 @@ width: 100%;
     padding-top: 80px;
     padding-bottom: 80px;
   }
-  #formsubmition h1 ,#moremaxprice h1{
+  
+  #formsubmition h1 ,#moremaxprice h1 ,#youarein h1{
     text-align: center;
   }
+  #youarein .modal-body::before {
+    display: none;
+    }
+    #youarein .modal-body::after {
+     display: none;
+    }
+    
+
+
 }
 #Showbag  .prodsuggest{
   display: none;

@@ -27,7 +27,18 @@ function playvideo(event) {
 
 
 }
-
+let thanksmodal = () => {
+    document.querySelector("#youarein").classList.remove('hidden')
+    var container = document.querySelector("#youarein .container");
+  
+    document.querySelector("#youarein").addEventListener("click", function (e) {
+      if (e.target !== document.querySelector("#youarein") && e.target !== container) return;
+      document.querySelector("#youarein").classList.add("hidden");
+    });
+  
+  
+  }
+  
 const ImagesForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
     useEffect(() => {
@@ -257,7 +268,7 @@ const ImagesForm = ({ node }) => {
     const sendFormValues = (updatedItemData) => {
         let dataSubmit = updatedItemData.obj;
 
-        console.log("bahiii2", )
+        document.querySelector('.submit-input').innerHTML = "SUBMITTING ..."
         if(document.querySelector('#registerCheck').checked) {
             dataSubmit.email_optin = ["receivemail"];
         } else {
@@ -277,19 +288,22 @@ const ImagesForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
-                console.log("ashh resp", response);
+                document.querySelector('.submit-input').innerHTML = "SUBMIT"
+              
                 // empty form fieldsPropTypes.
+                thanksmodal();
                 document.querySelector('.regform').reset();
                 document.querySelectorAll('.regform .select-selected').forEach(el => {
                     el.textContent = 'Select';
                 })
             })
             .catch(error => {
+                document.querySelector('.submit-input').innerHTML = "SUBMIT"
                 console.log("ashhh error", error)
             });
     };
     return (
-
+<>
         <div className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
             <div className="row">
                 <div className="col-12 col-lg-5">
@@ -344,7 +358,7 @@ const ImagesForm = ({ node }) => {
                     </div>
 
                 </div>
-                <div className="col-12 col-lg-5 offset-lg-1">
+                <div className={["col-12 col-lg-5 offset-lg-1",ImgForm.orange].join(" ")}>
                     <div className="row">
                         <div className="col-12">
                             {node.field_form_subtitle ? <div className={ImgForm.subtitle} dangerouslySetInnerHTML={{ __html: node.field_form_subtitle.processed }}></div> : ""}
@@ -497,13 +511,32 @@ const ImagesForm = ({ node }) => {
                         node.relationships.field_form_background_img.localFile &&
                         node.relationships.field_form_background_img.localFile.childImageSharp ?
                         <div className={ImgForm.bgImg}>
-                            <Img fluid={node.relationships.field_form_background_img.localFile.childImageSharp.fluid} />
+                            <img src={node.relationships.field_form_background_img.localFile.childImageSharp.original.src} />
                         </div>
                         : ""}
                 </div>
             </div>
         </div>
+        <div class="modal hidden" id="youarein">
+            <div class="container">
+            <div className={ImgForm.boxes}>
+                <div class="modal-body">
+       
+                    <div className={ImgForm.Lines}>
+                    <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{__html: node.field_confirmation_massage_title.processed}}></div>
+                    <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{__html: node.field_confirmation_massage_descr.processed}}></div>
+                    <a className={ImgForm.msgLink}  href={node.field_confirmation_massage_url}>
+                        {node.field_confirmation_massage_link_}
+          
 
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        </>
     )
 }
 
@@ -513,6 +546,14 @@ export const fragment = graphql`
     fragment paragraphImagesAndForm on paragraph__images_and_form {
         id
         field_form_subtitle {
+            processed
+          }
+          field_confirmation_massage_title {
+            processed
+          }
+          field_confirmation_massage_link_
+          field_confirmation_massage_url
+          field_confirmation_massage_descr {
             processed
           }
           field_form_title {
@@ -533,6 +574,9 @@ export const fragment = graphql`
                 childImageSharp {
                   fluid {
                     ...GatsbyImageSharpFluid
+                  }
+                  original{
+                      src
                   }
                 }
               }
