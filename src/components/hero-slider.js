@@ -81,7 +81,7 @@ const HeroSlider = ({ node }) => {
 
 
         <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider " : pageType && pageType === 'clinical' ? 'container-fluid pl-0 pr-0 hero-slider clinical-slider ' : 'container-fluid pl-0 pr-0 hero-slider '  + `${heroClass? heroClass : "" }`}>
-            <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : 'heroRowWrapper'}>
+            <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : ''}>
                 <div style={{ width: "100%" }}>
                     <Slider {...SliderSetting}>
                         {node.relationships.field_slide.map((item, index) => {
@@ -102,8 +102,8 @@ const HeroSlider = ({ node }) => {
                                         </div>
                                     </div>
 
-                                    <div className="d-none d-lg-block">
-                                        <div className="row mr-0 ml-0">
+                                    <div className="d-none d-lg-block heroRowWrapper">
+                                        <div className="row mr-0 ml-0 heroSlideRow">
 
                                             <div className={["col-lg-5 first-hero-col"].join(" ")}>
                                                 <div className="col-8 offset-2 col-right-padding">

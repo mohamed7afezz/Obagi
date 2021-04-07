@@ -75,10 +75,14 @@
     text-align: center;
     font-weight: 500;
     font-family: 'big-caslon-fb';
+    max-width: 178px;
+    margin: 0 auto;
     @include md-screen{
         padding-top: 0;
         font-size: 64px;
         line-height: 72px;
+        max-width: 100%;
+        margin: 0;
     }
 }
 .vitaminContent{
@@ -95,24 +99,45 @@
     line-height: 36px;
     @extend %futurapt-medium;
     padding-bottom: 30px;
+    max-width: 203px;
+    margin: 0 auto;
+
     @include md-screen{
         padding-bottom: 17px;
         font-size: 64px;
         line-height: 72px;
+        max-width: 100%;
+        margin: 0;
+       
     }
 }
 .colcontent{
     @include fontStyle(16, 24);
+
+    @include lg-screen {
+        @include fontStyle(24, 32);
+    }
 }
 .leftCol{
     margin-bottom: 30px;
+    text-align: center;
+
     @include md-screen{
+        margin-bottom: 50px;
+    }
+    @include lg-screen{
         margin-bottom: 0;
+        text-align: left;
     }
 }
 .vitaminContent {
     .titleCon{
         @include md-screen{
+            justify-content: center;
+            text-align: center;
+        }
+
+        @include lg-screen{
             justify-content: left;
             text-align: left;
         }
@@ -126,6 +151,8 @@
     z-index: 9;
     font-weight: 900;
     padding-left: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
     & + .rightColTitle{
        
         @include md-screen{
