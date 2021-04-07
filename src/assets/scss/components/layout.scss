@@ -4620,8 +4620,55 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     background-color: #FDE6C7;
     position: relative;
 }
+
+.vitaminc .subtitle {
+    @include fontStyle(10, 20);
+    letter-spacing: 1.10px;
+    padding: 44px 0 11px;
+    display: flex;
+    align-items: center;
+
+    @include lg-screen {
+        padding-top: 256px;
+        padding-bottom: 33px;
+        @include fontStyle(16, 32);
+    }
+}
+
+.vitaminc .heroTitle {
+    padding: 0;
+    max-width: 199px;
+    font-family: "big-caslon-fb";
+    font-weight: 500;
+    @include fontStyle(32, 48);
+
+    @include lg-screen {
+        @include fontStyle(64, 72);
+        max-width: 376px;
+    }
+}
 .vitaminc .subtitle::before {
     background-color: #F99D25;
+}
+
+.vitaminc .heroDesc {
+    @include fontStyle(16, 24);
+
+    strong {
+        font-weight: 500;
+    }
+
+    @include lg-screen {
+        @include fontStyle(24, 40);
+        padding-top: 28px;
+    }
+}
+
+.vitaminc .heroLink {
+    @include lg-screen {
+        margin-top: 50px;
+        margin-bottom: 285px;
+    }
 }
 
 @include lg-screen {
@@ -4716,4 +4763,13 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     height: auto;
     max-width: 501px;
     max-height: 501px;
+}
+.img-form .form-check-label {
+    margin-top: 14px;
+    margin-bottom: 50px;
+    @include lg-screen {
+        margin-top: 24px;
+        margin-bottom: 40px;
+        font-weight: 500;
+    }
 }
