@@ -217,6 +217,7 @@ const Register = () => {
                     attributes: newUser.attributes.map(item => {
                         if (item.attribute_id === 4) {
                             item.attribute_value = event.target.checked ? 'yes' : 'no';
+                            
                         }
                         return item;
                     })
@@ -277,6 +278,7 @@ const Register = () => {
     function handleSubmit(e) {
         e.preventDefault();
         var form = document.querySelector('.needs-validation');
+   
         // Loop over them and prevent submission
         if (form.checkValidity() === false) {
             $(".error-list-sec").html(errorList(form))
@@ -319,6 +321,10 @@ const Register = () => {
 
 
             handleRegister(newUser);
+            if (document.querySelector('input[name="email_sub"]')) {
+                
+            window.fbq('track', 'Lead');
+            }
 
 
         }

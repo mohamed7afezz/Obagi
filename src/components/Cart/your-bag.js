@@ -30,6 +30,9 @@ const spinner = css`
   margin: 0 auto;
  
 `;
+if (typeof window != undefined) {
+  window.fbq('track', 'InitiateCheckout')
+}
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -467,13 +470,28 @@ const YourBag = (props, { notificationId }) => {
     e.preventDefault();
 
     if(typeof window !== undefined) {
+
+      let fbqproducts = [];
+      lineItems.physical_items.forEach(prod => {
+        products.push({
+          'content_ids': prod.id,
+          'content_name': prod.name,
+          'content_type' :" ",
+          'contents' : [{id : prod.id , quantity:prod.quantity}],
+          'num_items' : lineItems.physical_items.length,
+          'value': prod.list_price,
+          'currency' :'USD'
+          
+       })
+      });
+      window.fbq('track', 'Purchase ',products);
       let dl = window.dataLayer;
       
       let products = [];
       lineItems.physical_items.forEach(prod => {
         products.push({
           'name': prod.name,
-          'id': prod.sku,
+          'id': prod.id,
           'price': prod.list_price,
           'brand': 'Obagi',
           'category': prod.url.includes('medical')? 'medical' : 'clinical',

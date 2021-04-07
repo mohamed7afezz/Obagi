@@ -40,7 +40,7 @@ const Notification = ({ id, text, type }) => {
   const removeNotification = value && value.removeNotification;
   const {notif, setNotif} = useContext(UserContext);
 
-  
+ 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
@@ -74,7 +74,7 @@ const Notification = ({ id, text, type }) => {
                         value.state.cart &&
                         value.state.cart.numberItems})
               </p>
-              <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => removeNotification(id)}>
+              <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => {removeNotification(id)}}>
                 View Full Cart
               </Link>
             </div> : "" : "" : "" : "" : ""}

@@ -107,7 +107,7 @@ export const CartProvider = ({ children }) => {
 
   };
 
-  const addToCart = async (productId, retry, quantity, price, premierid, feild_preimer, productName) => {
+  const addToCart = async (productId, retry, quantity, price, premierid, feild_preimer, productName ,productCat) => {
     
     let findedProduct;
     if (state.cart.lineItems.physical_items) {
@@ -124,6 +124,7 @@ export const CartProvider = ({ children }) => {
       return
     }
     setState({ ...state, addingToCart: productId });
+  
     let resrouce_url = `${baseUrl}bigcommerce/v1/cart`;
     if (cartId) {
       resrouce_url = `${baseUrl}bigcommerce/v1/cart/${cartId}`;
@@ -158,7 +159,7 @@ export const CartProvider = ({ children }) => {
               window.localStorage.removeItem('cartId')
             }
 
-            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName);
+            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName,productCat);
 
           }
         
@@ -211,6 +212,24 @@ export const CartProvider = ({ children }) => {
                     }
                   }
                 });
+            
+              
+                    window.fbq('track', 'AddToCart',
+                  // begin parameter object data
+                  {
+                    content_ids : item.id,
+                    content_name : item.name, 
+                    content_type : " ",
+                    contents : [ {id: item.id, quantity: item.quantity}],
+                    currency : "USD", 
+                    value : item.list_price
+                  }
+                 
+                  // end parameter object data
+                );
+           
+            
+            
               }
               })
         })
@@ -240,7 +259,7 @@ export const CartProvider = ({ children }) => {
             if (typeof window !== "undefined") {
               window.localStorage.removeItem('cartId')
             }
-            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName);
+            await addToCart(productId, true, quantity, price, premierid, feild_preimer, productName,productCat);
           }
 
           status < 300 && addNotification('Item added successfully');
@@ -252,6 +271,39 @@ export const CartProvider = ({ children }) => {
           if (typeof window !== "undefined") {
             window.localStorage.setItem('cartId', JSON.stringify(cartId));
           }
+          window.dataLayer.push({
+            'event': 'addToCart',
+            'ecommerce': {
+              'currencyCode': 'USD',
+              'add': {                                // 'add' actionFieldObject measures.
+                'products': [{                        //  adding a product to a shopping cart.
+                  'name': productName,
+                  'id': productId,
+                  'price': price,
+                  'brand': 'Obagi',
+                  'category': productCat,
+                  'variant': '',
+                  'quantity': quantity,
+                 }]
+              }
+            }
+          });
+    
+          window.fbq('track', 'AddToCart',
+          // begin parameter object data
+       
+          
+          {
+            content_ids : productId,
+            content_name : productName, 
+            content_type : " ",
+            contents : [ {id: productId, quantity: quantity}],
+            currency : "USD", 
+            value : price
+          }
+         
+          // end parameter object data
+        );
           setState({
             ...state,
             addingToCart: false,
@@ -522,7 +574,22 @@ export const CartProvider = ({ children }) => {
         }
       }
     });
-  }}
+    window.fbq('track', 'AddToCart',
+    // begin parameter object data
+    {
+      content_ids : state.cart.lineItems.physical_items[i].id,
+      content_name : state.cart.lineItems.physical_items[i].name, 
+      content_type : " ",
+      contents : [ {id: state.cart.lineItems.physical_items[i].id, quantity: state.cart.lineItems.physical_items[i].quantity}],
+      currency : "USD", 
+      value : state.cart.lineItems.physical_items[i].list_price
+    }
+   
+    // end parameter object data
+  );
+  }
+  
+}
     }
     setState({ ...state, updatingItem: item.id });
     if (newQuantity < 1) {

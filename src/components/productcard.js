@@ -92,7 +92,7 @@ const ProductCard = ({
              <button data-sku={Sku} data-skuType={productCat} className={["the-new-product-button", "mob-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
-                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
+                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle,productCat);
               }}
               disabled={addingToCart === productId}
             >
@@ -129,7 +129,7 @@ const ProductCard = ({
                 : <button data-sku={Sku} data-skuType={productCat} className={[Productcard.addtocart, `the-product-button`].join(" ")}
                   onClick={() => {
                     let quantity = 1;
-                    addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
+                    addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle,productCat);
                   }}
                   disabled={addingToCart === productId}
                 >
@@ -142,7 +142,7 @@ const ProductCard = ({
             )}<button data-sku={Sku} data-skuType={productCat} className={["the-new-product-button desk-analyzer-btn"].join(" ")}
               onClick={() => {
                 let quantity = 1;
-                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle);
+                addToCart(productId, false, quantity, price, premierid, feild_preimer, producttitle,productCat);
               }}
               disabled={addingToCart === productId}
             >

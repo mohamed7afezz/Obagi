@@ -80,6 +80,7 @@ const Footer = ({ siteTitle }) => {
     var obj = { webform_id: "subscription" };
     var forms = document.getElementsByClassName('needs-valid');
     var list = document.querySelectorAll('.needs-valid input:invalid');
+  
     if (list.length > 0) {
       for (var item of list) {
         item.parentElement.classList.add('error')
@@ -96,7 +97,7 @@ const Footer = ({ siteTitle }) => {
         obj[item.getAttribute("name")] = item.value;
         if (document.querySelector('.newsignup[checked]')) {
           obj["want_to_receive_emails"] = ["on"]
-
+          window.fbq('track', 'Lead')
         }
       }
 
