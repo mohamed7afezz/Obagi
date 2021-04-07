@@ -290,7 +290,7 @@ const ImagesForm = ({ node }) => {
     };
     return (
 
-        <div className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
+        <div id="EnterToWin" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
             <div className="row">
                 <div className="col-12 col-lg-5">
                     <div className="row">
