@@ -490,7 +490,7 @@ const ImagesForm = ({ node }) => {
                                             <label className="form-check-label terms" for="registerCheck">
                                                 <input type="checkbox" name="email_sub" onChange={handleAttr} className="form-check-input" id="registerCheck" defaultChecked={true} />
                                                 <span className="checkmark"></span>
-                                                <span>Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By regarding, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
+                                                <span>Yes, I want to receive emails to keep up with the latest products, skin care trends, and offers from Obagi. By submitting an entry, your information will be collected and used in the US subject to our US <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-use">Terms of Use</Link>. For US consumers only.
                                     </span>
                                             </label>
                                         </div>
