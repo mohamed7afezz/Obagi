@@ -57,6 +57,15 @@ text-align: center;
 }
 .subtitle{
     font-weight: 600;
+    a {
+        color: #132466;
+        text-decoration: none;
+
+        &:hover {
+            color: #132466;
+            text-decoration: none;
+        }
+    }
 }
 .subdesc{
   
@@ -148,7 +157,7 @@ color: #F99D25;
 }
 .per{
     font-size: 72px;
-    line-height: 25px;
+    line-height: 93px;
     color: #F99D25;
     font-weight: 900;
 }

@@ -71,6 +71,11 @@
         font-size: 64px;
         line-height: 72px;
     }
+
+    @include lg-screen {
+        max-width: 1048px;
+        margin: 0 auto;
+    }
 }
 .sectionCon{
     padding-top: 50px;
@@ -82,7 +87,11 @@
 }
 .mobwrap{
     flex-wrap: wrap;
+    padding-bottom: 50px;
+    @include lg-screen {
+        padding-bottom: 100px;
+    }
 }
-// .ProductsCon{
-//     border-bottom: 1px solid #132466;
-// }
+.ProductsCon{
+    border-bottom: 1px solid #132466;
+}
