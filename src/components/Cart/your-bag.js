@@ -30,13 +30,13 @@ const spinner = css`
   margin: 0 auto;
  
 `;
-if (typeof window != undefined) {
-  window.fbq('track', 'InitiateCheckout')
-}
+
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
- 
+  if (typeof window != undefined) {
+    window.fbq('track', 'InitiateCheckout')
+  }
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
       <img alt="img" className={BagStyle.plusicon} src={minusicon} />
@@ -65,7 +65,9 @@ const StandardItem = props => {
   const { items, cartType } = props
   
   function  navigateto(link,e){
-    
+    if (typeof window != undefined) {
+      window.fbq('track', 'InitiateCheckout')
+    }
  e.preventDefault();
   
   
@@ -180,7 +182,9 @@ const StandardItem = props => {
 }
 
 const YourBag = (props, { notificationId }) => {
-  
+  if (typeof window != undefined) {
+    window.fbq('track', 'InitiateCheckout')
+  }
   
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
