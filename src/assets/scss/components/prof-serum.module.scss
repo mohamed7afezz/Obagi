@@ -59,9 +59,11 @@ text-align: center;
     font-weight: 600;
 }
 .subdesc{
+  
     padding-bottom: 47px;
     @include lg-screen{
         padding-bottom: 30px;
+        max-width: 342px;
     }
 }
 .subdesc,.subtitle{

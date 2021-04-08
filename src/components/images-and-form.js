@@ -47,6 +47,16 @@ let thanksmodal = () => {
 const ImagesForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
     useEffect(() => {
+
+
+    
+            document.addEventListener('scroll', _ => 
+            {
+                console.log(document.body.ScrollToTop)
+            }
+            
+            )
+   
         if (typeof window != undefined) {
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
                 this.nextSibling.classList.remove('hide');
@@ -330,6 +340,7 @@ const ImagesForm = ({ node }) => {
                                                     <>
                                                         <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
                                                             <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                                                                <iframe></iframe>
                                                         </a>
                                                         {node.relationships &&
                                                             node.relationships.field_form_video &&
