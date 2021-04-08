@@ -52,7 +52,7 @@ const ImagesForm = ({ node }) => {
     
             document.addEventListener('scroll', _ => 
             {
-                console.log(document.body.ScrollToTop)
+                console.log(document.body.ScrollTop)
             }
             
             )
@@ -340,7 +340,7 @@ const ImagesForm = ({ node }) => {
                                                     <>
                                                         <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
                                                             <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                                                                <iframe></iframe>
+                                                          
                                                         </a>
                                                         {node.relationships &&
                                                             node.relationships.field_form_video &&
@@ -532,7 +532,12 @@ const ImagesForm = ({ node }) => {
                                     </div>
 
                                 </div>
-                                {node.relationships &&
+               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {node.relationships &&
                                     node.relationships.field_form_background_img &&
                                     node.relationships.field_form_background_img.localFile &&
                                     node.relationships.field_form_background_img.localFile.childImageSharp ?
@@ -540,11 +545,6 @@ const ImagesForm = ({ node }) => {
                                         <img src={node.relationships.field_form_background_img.localFile.childImageSharp.original.src} />
                                     </div>
                                     : ""}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="modal hidden" id="youarein">
