@@ -41,7 +41,7 @@ const ProffC = ({ node }) => {
               </div>
 
 
-              <div dangerouslySetInnerHTML={{ __html: node.field_profc_second_title.processed }} className={[profcStyle.title, profcStyle.givemargin, "offset-lg-1 col-lg-8"].join(" ")}>
+              <div dangerouslySetInnerHTML={{ __html: node.field_profc_second_title.processed }} className={[profcStyle.title, profcStyle.givemargin, "offset-lg-1 col-lg-10"].join(" ")}>
 
               </div>
               <div className={["d-flex", profcStyle.mobColRev].join(" ")}>
@@ -71,7 +71,7 @@ const ProffC = ({ node }) => {
                   <div dangerouslySetInnerHTML={{ __html: node.field_section_footnote ? node.field_section_footnote.processed : "" }} className={profcStyle.footnote}></div>
 
                 </div>
-                <div className={["col-lg-5 mob-p-0", profcStyle.rightsec].join(" ")}>
+                <div className={["col-lg-6 mob-p-0", profcStyle.rightsec].join(" ")}>
                   <img className={"img-fluid"} src={node.relationships.field_profc_right_image ? node.relationships.field_profc_right_image.localFile.childImageSharp.original.src : ""} />
 
                 </div>
