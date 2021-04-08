@@ -12,7 +12,7 @@ const ThePower = ({ node }) => {
       <div className="row">
         <div className="container">
           <div className={["row "]}>
-            <div className={}>
+           
               <div className="col-12 ">
                 <div className={vitmaineStyle.titleCon}>
                   <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
@@ -52,7 +52,7 @@ const ThePower = ({ node }) => {
                   </div>
                 </div>
               </div>
-            </div>
+           
           </div>
         </div>
       </div>
