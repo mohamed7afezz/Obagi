@@ -4,7 +4,7 @@
 .wrapper {
     padding-top: 50px;
     padding-bottom: 50px;
-
+    position: relative;
     @include lg-screen {
         padding-top: 146px;
         padding-bottom: 100px;
@@ -63,7 +63,7 @@
     text-align: center;
     margin-bottom: 25px;
      strong {
-         @extend %futurapt-medium;
+         @extend %futurapt-demi;
      }
 
      @include lg-screen {
@@ -173,29 +173,47 @@
     max-height: 626px;
     max-width: 598px;
 }
-.orange{
-    position: relative;
-    .bgImg{
-        display: none;
-        @include lg-screen{
-            position: absolute;
-            width: 300px;
-            height: 420px;
-            top: 21%;
-            display: block;
-            right: -255px;
-            
-            @media (min-width:1100px) and (max-width:1500px) {
-                width: 276px;
-            }
-            img {
-                width: auto;
-                height: 100%;
-            }
-          }
-        }
-}
 
+.bgImg{
+    display: none;
+    @include lg-screen{
+        position: absolute;
+        width: auto;
+        height: 600px;
+        top: 27%;
+        display: block;
+        right: 0;
+     
+        @media (min-width:992px) and (max-width:1200px) {
+            width: 301px;
+height: 330px;
+top: 40%;
+        }
+        @media (min-width:1201px) and (max-width:1500px) {
+        position: absolute;
+        width: auto;
+        height: 407px;
+        top: 36%;
+        display: block;
+        right: 0;
+        }
+        @media (min-width:1501px) and (max-width:1650px) {
+            
+        position: absolute;
+        width: auto;
+        height: 467px;
+        top: 30%;
+        display: block;
+        right: 0;
+        }
+        img {
+            width: auto;
+            height: 100%;
+            margin-left: auto;
+            display: block;
+        }
+      }
+    }
 .msgTitle{
     font-size: 64px;
 font-weight: 700;
@@ -252,7 +270,7 @@ margin-bottom: 20px;
 .boxes{
     max-width: 100%;
     @include md-screen{
-    max-width: 60%;
+    max-width: 90%;
 margin-left: auto;
 margin-right: auto;
 }

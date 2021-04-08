@@ -30,9 +30,7 @@ const spinner = css`
   margin: 0 auto;
  
 `;
-if (typeof window != undefined) {
-  window.fbq('track', 'InitiateCheckout')
-}
+
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
@@ -65,7 +63,7 @@ const StandardItem = props => {
   const { items, cartType } = props
   
   function  navigateto(link,e){
-    
+ 
  e.preventDefault();
   
   
@@ -180,7 +178,7 @@ const StandardItem = props => {
 }
 
 const YourBag = (props, { notificationId }) => {
-  
+
   
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
