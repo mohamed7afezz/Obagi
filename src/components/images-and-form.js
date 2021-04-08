@@ -52,7 +52,7 @@ const ImagesForm = ({ node }) => {
     
             document.addEventListener('scroll', _ => 
             {
-                console.log(document.documentElement.scrollTop)
+                console.log(document.body.ScrollTop)
             }
             
             )
