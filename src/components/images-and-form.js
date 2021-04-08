@@ -50,12 +50,7 @@ const ImagesForm = ({ node }) => {
 
 
     
-            document.addEventListener('scroll', _ => 
-            {
-                console.log(document.body.ScrollTop)
-            }
-            
-            )
+          
    
         if (typeof window != undefined) {
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
