@@ -7,46 +7,49 @@ import vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
 const ThePower = ({ node }) => {
   const data = node.relationships;
   return (
-   
-      <div id="letyourskin" className={["container-fluid "].join(" ")}>
-     
-        <div className={["row "]}>
-        <div className={vitmaineStyle.vitaminePower}>
-          <div className="col-12 ">
-            <div className={vitmaineStyle.titleCon}>
-              <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
-              <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_sub_title.processed }} className={vitmaineStyle.title}></div>
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_title.processed }} className={vitmaineStyle.header}></div>
-          </div>
-          <div className={vitmaineStyle.vitaminContent}>
-            <div className={["col-12 offset-lg-1 col-lg-4", vitmaineStyle.leftCol].join(" ")}>
-              <div dangerouslySetInnerHTML={{ __html: node.field_left_col_title.processed }} className={vitmaineStyle.coltitle}>
 
+    <div id="letyourskin" className={["container-fluid "].join(" ")}>
+      <div className="row">
+        <div className="container">
+          <div className={["row "]}>
+            <div className={vitmaineStyle.vitaminePower}>
+              <div className="col-12 ">
+                <div className={vitmaineStyle.titleCon}>
+                  <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
+                  <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_sub_title.processed }} className={vitmaineStyle.title}></div>
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: node.field_vitaminc_title.processed }} className={vitmaineStyle.header}></div>
               </div>
-              <div dangerouslySetInnerHTML={{ __html: node.field_left.processed }} className={vitmaineStyle.colcontent}>
+              <div className={vitmaineStyle.vitaminContent}>
+                <div className={["col-12 offset-lg-1 col-lg-4", vitmaineStyle.leftCol].join(" ")}>
+                  <div dangerouslySetInnerHTML={{ __html: node.field_left_col_title.processed }} className={vitmaineStyle.coltitle}>
 
-              </div>
-            </div>
-            <div className="col-12 offset-lg-1 col-lg-5">
-              <div className={vitmaineStyle.titleCon}>
-                <div dangerouslySetInnerHTML={{ __html: node.field_right_col_title.processed }}  className={vitmaineStyle.rightColTitle}>
-                    </div>
-                <div dangerouslySetInnerHTML={{ __html: node.field_right_section_title_part_t.processed }} className={vitmaineStyle.rightColTitle}>
-                    </div>
-              </div>
-              <div className={vitmaineStyle.threeimages}>
-                <div className={vitmaineStyle.boxcon}>
-                  <img src={node.relationships.field_first_image.localFile.childImageSharp.original.src} />
-                  <div dangerouslySetInnerHTML={{ __html: node.field_first_image_caption.processed }} className={vitmaineStyle.text}></div>
+                  </div>
+                  <div dangerouslySetInnerHTML={{ __html: node.field_left.processed }} className={vitmaineStyle.colcontent}>
+
+                  </div>
                 </div>
-                <div className={vitmaineStyle.boxcon}>
-                <img src={node.relationships.field_second_image.localFile.childImageSharp.original.src} />
-                  <div dangerouslySetInnerHTML={{ __html: node.field_second_image_caption.processed }} className={vitmaineStyle.text}></div>
-                </div>
-                <div className={vitmaineStyle.boxcon}>
-                <img src={node.relationships.field_third_image.localFile.childImageSharp.original.src} />
-                  <div dangerouslySetInnerHTML={{ __html: node.field_third_image_caption.processed }} className={vitmaineStyle.text}></div>
+                <div className="col-12 offset-lg-1 col-lg-5">
+                  <div className={vitmaineStyle.titleCon}>
+                    <div dangerouslySetInnerHTML={{ __html: node.field_right_col_title.processed }} className={vitmaineStyle.rightColTitle}>
+                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: node.field_right_section_title_part_t.processed }} className={vitmaineStyle.rightColTitle}>
+                    </div>
+                  </div>
+                  <div className={vitmaineStyle.threeimages}>
+                    <div className={vitmaineStyle.boxcon}>
+                      <img src={node.relationships.field_first_image.localFile.childImageSharp.original.src} />
+                      <div dangerouslySetInnerHTML={{ __html: node.field_first_image_caption.processed }} className={vitmaineStyle.text}></div>
+                    </div>
+                    <div className={vitmaineStyle.boxcon}>
+                      <img src={node.relationships.field_second_image.localFile.childImageSharp.original.src} />
+                      <div dangerouslySetInnerHTML={{ __html: node.field_second_image_caption.processed }} className={vitmaineStyle.text}></div>
+                    </div>
+                    <div className={vitmaineStyle.boxcon}>
+                      <img src={node.relationships.field_third_image.localFile.childImageSharp.original.src} />
+                      <div dangerouslySetInnerHTML={{ __html: node.field_third_image_caption.processed }} className={vitmaineStyle.text}></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
