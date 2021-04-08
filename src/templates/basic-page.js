@@ -16,6 +16,7 @@ const BasicPageTemp = (node) => {
     let menutype = data.nodePage.field_menu_type === 'absolute' ? "absolute" : "relative";
     let pageType = data.nodePage.field_page_type ? (data.nodePage.field_page_type === 'clinical' ? 'clinical' : 'medical') : '';
     let hideBar = data.nodePage.field_hide_mob_bar && data.nodePage.field_hide_mob_bar == true? true : false
+    let showBar = data.nodePage.field_force_show_mob_bar && data.nodePage.field_force_show_mob_bar == true? true : false
     let seo = data.path? data.path.alias : node.location.pathname?node.location.pathname:"";
     // let seo1 = seo?seo.split('.com'):""
     let firstImage = paragraphs && paragraphs[0] && paragraphs[0].props && paragraphs[0].props.node && paragraphs[0].props.node.relationships && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile && paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile.url? paragraphs[0].props.node.relationships.field_basic_img_hero_paragrapgh.localFile.url
@@ -27,7 +28,7 @@ const BasicPageTemp = (node) => {
     let defaultLogo =  baseUrl.split('/api/')[0] + obagiLogo;
 
     return (
-        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar} homepage = {ishomepage}>
+        <Layout menuType = {menutype} nodeType={pageType} hideMobBar={hideBar} homepage = {ishomepage} showMobBar = {showBar}>
             <SEO canonical={seo} title={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} ogDescription={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} ogTitle={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.title? data.nodePage.field_meta_tags.title : ""} description={data.nodePage.field_meta_tags && data.nodePage.field_meta_tags.description? data.nodePage.field_meta_tags.description : ""} metaImage={metaImgField? metaImgField : firstImage? firstImage : defaultLogo? defaultLogo : null}/>
             {paragraphs}
         </Layout>
@@ -111,6 +112,7 @@ query($slug: String!) {
         field_menu_type
         field_page_type
         field_hide_mob_bar
+        field_force_show_mob_bar
     }
 }
 `;
