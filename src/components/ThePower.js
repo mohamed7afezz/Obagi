@@ -8,11 +8,11 @@ const ThePower = ({ node }) => {
   const data = node.relationships;
   return (
 
-    <div id="letyourskin" className={["container-fluid "].join(" ")}>
+    <div id="letyourskin" className={["container-fluid ", vitmaineStyle.vitaminePower].join(" ")}>
       <div className="row">
         <div className="container">
           <div className={["row "]}>
-            <div className={vitmaineStyle.vitaminePower}>
+            <div className={}>
               <div className="col-12 ">
                 <div className={vitmaineStyle.titleCon}>
                   <div dangerouslySetInnerHTML={{ __html: node.field_sub_title_part_one.processed }} className={vitmaineStyle.title}></div>
