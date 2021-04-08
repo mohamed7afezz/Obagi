@@ -190,12 +190,21 @@ height: 330px;
 top: 40%;
         }
         @media (min-width:1201px) and (max-width:1500px) {
-            position: absolute;
-            width: auto;
-            height: 407px;
-            top: 36%;
-            display: block;
-            right: 0;
+        position: absolute;
+        width: auto;
+        height: 407px;
+        top: 36%;
+        display: block;
+        right: 0;
+        }
+        @media (min-width:1501px) and (max-width:1650px) {
+            
+        position: absolute;
+        width: auto;
+        height: 467px;
+        top: 30%;
+        display: block;
+        right: 0;
         }
         img {
             width: auto;
