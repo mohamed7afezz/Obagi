@@ -16,7 +16,7 @@ text-align: center;
     padding-bottom: 30px;
     font-size: 34px;
     line-height: 40px;
-    font-weight: 900;
+    font-weight: 600;
     text-align: center;
     @include lg-screen{
         font-size: 64px;
@@ -158,16 +158,17 @@ color: #F99D25;
     font-size: 72px;
     line-height: 93px;
     color: #F99D25;
-    font-weight: 900;
+    font-weight: 600;
 }
 .perdesc{
     font-size: 18px;
     line-height: 23px;
-    padding-left: 17px;
+    padding-left: 15px;
     font-weight: 500;
     text-align: left;
     @include lg-screen{
         max-width: 235px;
+        padding-left: 17px;
     }
 }
 .mob-col-rev{

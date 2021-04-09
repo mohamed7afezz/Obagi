@@ -4659,12 +4659,21 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     @include fontStyle(16, 24);
 
     strong {
-        font-weight: 500;
+        font-weight: 600;
     }
 
     @include lg-screen {
         @include fontStyle(24, 40);
         padding-top: 28px;
+    }
+}
+
+.img-form .form-check-label {
+    @include fontStyle(10, 14);
+    @extend %futurapt-medium;
+
+    @include lg-screen {
+        @include fontStyle(12, 16);
     }
 }
 
@@ -4795,9 +4804,28 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     }
 }
 #EnterToWin .container, 
-
 #letyourskin .container, 
 .profc-serum .container{
     width: 100%;
     max-width: 1586px;
+}
+
+@media (max-width: 767px) {
+    #EnterToWin .col-12, 
+    #letyourskin .col-12, 
+    .profc-serum .col-12,
+    .productsWeProvide .col-12,
+    .vitaminc .col-12{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #EnterToWin .col-12.mob-p-0, 
+    #letyourskin .col-12.mob-p-0, 
+    .profc-serum .col-12.mob-p-0,
+    .productsWeProvide .col-12.mob-p-0,
+    .vitaminc .col-12.mob-p-0{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }

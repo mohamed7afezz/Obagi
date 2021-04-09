@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import profcStyle from "../assets/scss/components/prof-serum.module.scss"
 
 const ProffC = ({ node }) => {
-  console.log('hassan', node)
+  // console.log('hassan', node)
   return (
     <div className={profcStyle.ProfessionalSerums}>
       <div className={["container-fluid profc-serum"].join(" ")}>
@@ -45,7 +45,7 @@ const ProffC = ({ node }) => {
 
               </div>
               <div className={["d-flex", profcStyle.mobColRev].join(" ")}>
-                <div className={["col-lg-4 offset-lg-1", profcStyle.leftsec].join(" ")}>
+                <div className={["col-12 col-lg-4 offset-lg-1", profcStyle.leftsec].join(" ")}>
                   <div dangerouslySetInnerHTML={{ __html: node.field_second_subtitle ? node.field_second_subtitle.processed : " " }} className={profcStyle.seccoltitle}></div>
 
                   <div dangerouslySetInnerHTML={{ __html: node.field_second_describtion ? node.field_second_describtion.processed : " " }} className={profcStyle.customp}>
@@ -71,7 +71,7 @@ const ProffC = ({ node }) => {
                   <div dangerouslySetInnerHTML={{ __html: node.field_section_footnote ? node.field_section_footnote.processed : "" }} className={profcStyle.footnote}></div>
 
                 </div>
-                <div className={["col-lg-6 mob-p-0", profcStyle.rightsec].join(" ")}>
+                <div className={["col-12 col-lg-6 mob-p-0", profcStyle.rightsec].join(" ")}>
                   <img className={"img-fluid"} src={node.relationships.field_profc_right_image ? node.relationships.field_profc_right_image.localFile.childImageSharp.original.src : ""} />
 
                 </div>
