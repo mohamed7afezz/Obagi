@@ -22,7 +22,7 @@ function playvideo(event) {
 
         return;
     } else {
-        document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allow="autoplay" allowfullscreen></iframe>`;
+        document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}?autoplay=1&background=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allow="autoplay" allowfullscreen></iframe>`;
     }
 
     player = new Player(document.querySelector('#v-video iframe'));
