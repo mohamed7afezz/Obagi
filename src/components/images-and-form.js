@@ -18,11 +18,11 @@ function playvideo(event) {
     playerOpts.url = url;
 
     if (playerOpts.url.indexOf('youtube') > -1) {
-        document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allow="autoplay" allowfullscreen></iframe>';
 
         return;
     } else {
-        document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allow="autoplay" allowfullscreen></iframe>`;
     }
 
     player = new Player(document.querySelector('#v-video iframe'));
