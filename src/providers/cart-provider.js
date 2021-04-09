@@ -219,7 +219,7 @@ export const CartProvider = ({ children }) => {
                   {
                     content_ids : item.id,
                     content_name : item.name, 
-                    content_type : " ",
+                    content_type : 'product',
                     contents : [ {id: item.id, quantity: item.quantity}],
                     currency : "USD", 
                     value : item.list_price
@@ -296,7 +296,7 @@ export const CartProvider = ({ children }) => {
           {
             content_ids : productId,
             content_name : productName, 
-            content_type : " ",
+            content_type : 'product',
             contents : [ {id: productId, quantity: quantity}],
             currency : "USD", 
             value : price
@@ -579,7 +579,7 @@ export const CartProvider = ({ children }) => {
     {
       content_ids : state.cart.lineItems.physical_items[i].id,
       content_name : state.cart.lineItems.physical_items[i].name, 
-      content_type : " ",
+      content_type : 'product',
       contents : [ {id: state.cart.lineItems.physical_items[i].id, quantity: state.cart.lineItems.physical_items[i].quantity}],
       currency : "USD", 
       value : state.cart.lineItems.physical_items[i].list_price

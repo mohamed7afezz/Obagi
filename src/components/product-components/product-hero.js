@@ -154,7 +154,7 @@ const ProductHero = ({ data, nodeType }) => {
   }
   /////////////////////////
   useEffect(() => {
-    fbpxViewcontent(productId,nodeType,node.title,field_medical_type,[{'id': productId, 'quantity': "3"}],'USD',field_price)
+    fbpxViewcontent(productId,nodeType,node.title,'product',[{'id': productId, 'quantity': "3"}],'USD',field_price)
     setState({
       nav1: slider1.current,
       nav2: slider2.current,

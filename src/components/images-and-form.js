@@ -8,7 +8,7 @@ import Scrollbars from 'react-custom-scrollbars';
 
 const $ = require("jquery");
 function playvideo(event) {
-    // event.preventDefault();
+    if(event) {event.preventDefault();}
     let iframeContainer, player, playerOpts = {
         url: ''
     }
@@ -25,6 +25,7 @@ function playvideo(event) {
         document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}?autoplay=1&background=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allow="autoplay" allowfullscreen></iframe>`;
     }
 
+    document.querySelector('.video-wrapper').classList.add("played")
     player = new Player(document.querySelector('#v-video iframe'));
 
     player.play();
@@ -59,7 +60,7 @@ const ImagesForm = ({ node }) => {
              
                 if (document.documentElement.scrollTop >= document.querySelector('#EnterToWin').offsetTop) {
                     playvideo();
-                    document.querySelector('.video-wrapper').classList.add("played")
+                    
                 }
             }
            
@@ -353,7 +354,7 @@ const ImagesForm = ({ node }) => {
                                                 {node.relationships.field_form_video ?
                                                     <>
                                                   
-                                                        <a  href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
+                                                        <a  href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn" onClick={playvideo}>
                                                             <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
                                                           
                                                         </a>

@@ -3634,6 +3634,9 @@ display: none;
   opacity: 0;
 
 }
+.played .playbtn {
+  display: none;
+}
 #v-video{
   position: absolute;
   width: 100%;
