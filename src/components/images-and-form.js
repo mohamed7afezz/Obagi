@@ -8,20 +8,24 @@ import Scrollbars from 'react-custom-scrollbars';
 
 const $ = require("jquery");
 function playvideo(event) {
+    // event.preventDefault();
     let iframeContainer, player, playerOpts = {
         url: ''
     }
 
-    let url = event.target.parentNode.getAttribute("href");
+    // let url = event.target.parentNode.getAttribute("href");
+    let url = document.querySelector('.playbtn').getAttribute("href");
     playerOpts.url = url;
 
-    if (!playerOpts.url.indexOf('youtube') > -1) {
+    if (playerOpts.url.indexOf('youtube') > -1) {
         document.querySelector('.video-popup-wrap').innerHTML = '<iframe class="embed-responsive-item" src="' + url + '?rel=0&autoplay=true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
         return;
+    } else {
+        document.querySelector('#v-video').innerHTML = `<iframe class="embed-responsive-item" src="${url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
     }
 
-    player = new Player.Vimeo(document.querySelector('#VideoPopUp iframe'), playerOpts);
+    player = new Player(document.querySelector('#v-video iframe'));
 
     player.play();
 
@@ -48,7 +52,21 @@ const ImagesForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
     useEffect(() => {
 
+        document.addEventListener('scroll', _ => 
+        {
 
+            if (!document.querySelector('.video-wrapper').classList.contains("played")) {
+             
+                if (document.documentElement.scrollTop >= document.querySelector('#EnterToWin').offsetTop) {
+                    playvideo();
+                    document.querySelector('.video-wrapper').classList.add("played")
+                }
+            }
+           
+           
+        }
+        
+        )
     
           
    
@@ -329,11 +347,13 @@ const ImagesForm = ({ node }) => {
                             <div className="col-12 col-lg-5">
                                 <div className="row">
                                     <div className="col-12 col-lg-10 offset-lg-2">
-                                        <div className="video-wrapper">
+                                        <div className="video-wrapper ">
                                             <div className={["img-wrap", ImgForm.videoWrapper].join(" ")}>
+                                                
                                                 {node.relationships.field_form_video ?
                                                     <>
-                                                        <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
+                                                  
+                                                        <a  href={node.relationships.field_form_video && node.relationships.field_form_video[0] ? node.relationships.field_form_video[0].field_video_link : ''} className="playbtn">
                                                             <img className={["playbtnimg", ImgForm.play].join(" ")} src={playbtnimg} alt="videomsg" />
                                                           
                                                         </a>
@@ -343,8 +363,12 @@ const ImagesForm = ({ node }) => {
                                                             node.relationships.field_form_video[0].relationships &&
                                                             node.relationships.field_form_video[0].relationships.field_video_poster &&
                                                             node.relationships.field_form_video[0].relationships.field_video_poster.localFile ?
-                                                            <Img alt="img" className={ImgForm.videoimg} fluid={node.relationships.field_form_video[0].relationships.field_video_poster.localFile.childImageSharp.fluid} />
+                                                            <Img alt="img" className={[ImgForm.videoimg, "videoposterimg"].join(" ")} fluid={node.relationships.field_form_video[0].relationships.field_video_poster.localFile.childImageSharp.fluid} />
                                                             : ""}
+                                                            
+                                                              <div id="v-video">
+                                                  
+                                                                </div>
                                                     </>
                                                     : ""
                                                 }
