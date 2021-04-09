@@ -346,8 +346,8 @@ const ImagesForm = ({ node }) => {
                         <div className="row">
                             <div className="col-12 col-lg-5">
                                 <div className="row">
-                                    <div className="col-12 col-lg-10 offset-lg-2">
-                                        <div className="video-wrapper ">
+                                    <div className="col-12 col-md-10 offset-md-2">
+                                        <div className="video-wrapper">
                                             <div className={["img-wrap", ImgForm.videoWrapper].join(" ")}>
                                                 
                                                 {node.relationships.field_form_video ?

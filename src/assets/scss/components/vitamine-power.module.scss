@@ -20,24 +20,30 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    max-width: 230px;
+    margin: 0 auto;
     @include md-screen{
-  
+        max-width: 100%;
         flex-direction: row;
     }
     @include lg-screen {
         margin-top: 33px;
+        margin-right: 0;
+        margin-left: 0;
     }
     .title{
         position: relative;
         color: #F99D25;
         font-weight: 900;
         z-index: 9;
+        width: 100%;
         display: inline-block;
         @include fontStyle(22, 30);
         @include md-screen{
             @include fontStyle(24, 32);
-    
+            width: auto;
         }
+    
         padding-left: 12px;
         padding-right:  0;
         & + .title{
@@ -131,6 +137,7 @@
 }
 .vitaminContent {
     .titleCon{
+     
         @include md-screen{
             justify-content: center;
             text-align: center;
@@ -151,7 +158,8 @@
     font-weight: 900;
     padding-left: 12px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    width: 100%;
     & + .rightColTitle{
        
         @include md-screen{
@@ -178,6 +186,7 @@
     @include md-screen{
         font-size: 39px;
         line-height: 52px;
+        width: auto;
     }
 }
 .threeimages{
