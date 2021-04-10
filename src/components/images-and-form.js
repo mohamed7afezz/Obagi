@@ -8,6 +8,7 @@ import Scrollbars from 'react-custom-scrollbars';
 
 const $ = require("jquery");
 function playvideo(event) {
+    
     if(event) {event.preventDefault();}
     let iframeContainer, player, playerOpts = {
         url: ''
@@ -295,10 +296,10 @@ const ImagesForm = ({ node }) => {
         yearsList.push(i.toString());
     }
 
-    function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
+    // function topFunction() {
+    //     document.body.scrollTop = 0; // For Safari
+    //     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    // }
 
     const sendFormValues = (updatedItemData) => {
         let dataSubmit = updatedItemData.obj;
@@ -347,6 +348,7 @@ const ImagesForm = ({ node }) => {
     return (
         <>
             <div id="entertowinSection" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
+                
                 <div className="row">
                     <div className="container">
                         <div className="row">
@@ -415,10 +417,11 @@ const ImagesForm = ({ node }) => {
                                         {node.field_form_subtitle ? <div className={ImgForm.subtitle} dangerouslySetInnerHTML={{ __html: node.field_form_subtitle.processed }}></div> : ""}
                                         {node.field_form_title ? <div className={ImgForm.title} dangerouslySetInnerHTML={{ __html: node.field_form_title.processed }}></div> : ""}
                                         {node.field_form_description ? <div className={ImgForm.description} dangerouslySetInnerHTML={{ __html: node.field_form_description.processed }}></div> : ""}
+                                        
                                     </div>
-                                    <div id="entertowin" class="col-12" name="entertowin"></div>
+                                   
                                     <div className="col-12 col-lg-10 offset-lg-2">
-                                        {node.field_form_mini_title ? <div className={ImgForm.miniTitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_title.processed }}></div> : ""}
+                                        {node.field_form_mini_title ? <div id="entertowin" className={ImgForm.miniTitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_title.processed }}></div> : ""}
                                         {node.field_form_mini_subtitle ? <div className={ImgForm.miniSubtitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_subtitle.processed }}></div> : ""}
 
                                         <div className={ImgForm.formWrapper}>
@@ -588,7 +591,7 @@ const ImagesForm = ({ node }) => {
                                 <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
                                 <a
 
-                                    onClick={(e) => { removemodal(e, ture); }}
+                                    onClick={(e) => { removemodal(e, true); }}
                                     className={ImgForm.msgLink} href="#toSection">
                                     {node.field_confirmation_massage_link_}
 

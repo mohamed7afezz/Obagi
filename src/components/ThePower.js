@@ -31,6 +31,7 @@ const ThePower = ({ node }) => {
                   </div>
                 </div>
                 <div className="col-12 offset-lg-1 col-lg-6">
+                  
                   <div className={vitmaineStyle.titleCon}>
                     <div dangerouslySetInnerHTML={{ __html: node.field_right_col_title.processed }} className={vitmaineStyle.rightColTitle}>
                     </div>

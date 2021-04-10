@@ -9,33 +9,40 @@ const $ = require("jquery");
 
 
 const HeroSlider = ({ node }) => {
-    useEffect(() => {
+    function scrollToSection(e, section) {
+        e.preventDefault();
+        let sectionId = section.split('#')[1];
+        
+        window.scroll({ top: $(`#${sectionId}`).offset().top - $('#mob-navigation').height(), behavior: 'smooth' });
+
+    }
+    // useEffect(() => {
        
-            if ($(".scrollto").length) {
-                   // Add smooth scrolling to all links
-                $(".scrollto").on('click', function(event) {
-                    // console.log('site on fire!')
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
-                  // Prevent default anchor click behavior
-                  event.preventDefault();
+    //         if ($(".scrollto").length) {
+    //                // Add smooth scrolling to all links
+    //             $(".scrollto").on('click', function(event) {
+    //                 // console.log('site on fire!')
+    //             // Make sure this.hash has a value before overriding default behavior
+    //             if (this.hash !== "") {
+    //               // Prevent default anchor click behavior
+    //               event.preventDefault();
             
-                  // Store hash
-                  var hash = this.hash;
+    //               // Store hash
+    //               var hash = this.hash;
             
-                  // Using jQuery's animate() method to add smooth page scroll
-                  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                  $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                  }, 500, function(){
+    //               // Using jQuery's animate() method to add smooth page scroll
+    //               // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+    //               $('html, body').animate({
+    //                 scrollTop: $(hash).offset().top
+    //               }, 500, function(){
             
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                  });
-                } // End if
-              });
-            }
-    })
+    //                 // Add hash (#) to URL when done scrolling (default click behavior)
+    //                 window.location.hash = hash;
+    //               });
+    //             } // End if
+    //           });
+    //         }
+    // })
 
     // useEffect(() => {
      
@@ -123,7 +130,12 @@ const HeroSlider = ({ node }) => {
                                                 {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title, "heroTitle"].join(" ")}></div> : ''}
                                                 {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description, "heroDesc"].join(" ")}></div> : ''}
                                                 {item.field_slide_title_sample ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title_sample.processed }} className={[heroSlider.description, "heroDesc"].join(" ")}></div> : ''}
-                                                {item.field_slide_button ? <div className={heroSlider.linkSection}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link", `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link></div> : ''}
+                                                {item.field_slide_button ? <div className={heroSlider.linkSection}>
+                                                    {item.field_slide_button.uri.replace('internal:', '').includes('#')? <a onClick={(e) => {scrollToSection(e, item.field_slide_button.uri.replace('internal:', ''))}} className={["button-link", `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")} href={'#entertowin'}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></a> : 
+                                                        <Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link", `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link>
+                                                    }
+                                                    
+                                                    </div> : ''}
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +149,12 @@ const HeroSlider = ({ node }) => {
                                                     {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title, "heroTitle"].join(" ")}></div> : ''}
                                                     {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description, "heroDesc"].join(" ")}></div> : ''}
                                                     {item.field_slide_title_sample ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title_sample.processed }} className={[heroSlider.description, "heroDesc"].join(" ")}></div> : ''}
-                                                    {item.field_slide_button ? <div className={[heroSlider.linkSection, "heroLink"].join(" ")}><Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link", heroSlider.link, `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link></div> : ''}
+                                                    {item.field_slide_button ? <div className={[heroSlider.linkSection, "heroLink"].join(" ")}>
+                                                        
+                                                        {item.field_slide_button.uri.replace('internal:', '').includes('#')? <a onClick={(e) => {scrollToSection(e, item.field_slide_button.uri.replace('internal:', ''))}} className={["button-link", heroSlider.link, `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")} href={'#entertowin'}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></a> : 
+                                                        <Link to={item.field_slide_button.uri.replace('internal:', '')} className={["button-link", heroSlider.link, `${heroClass === 'vitaminc'? 'scrollto' : ''}`].join(" ")}><span dangerouslySetInnerHTML={{ __html: item.field_slide_button.title }}></span></Link>
+                                                    }
+                                                    </div> : ''}
                                                 </div>
                                             </div>
                                             <div className="col-lg-7 col-padding">
