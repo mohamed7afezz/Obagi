@@ -34,8 +34,13 @@ function playvideo(event) {
 }
 var Submit = false;
 var ischanged = false;
-function removemodal() {
+function removemodal(e, isScroll) {
+    e.preventDefault();
     document.querySelector("#youarein").classList.add("hidden");
+
+    if(isScroll) {
+        window.scroll({ top: $('#letyourskin').offsetTop - $('#mob-navigation').offsetHeight, behavior: 'smooth' });
+    }
 }
 let thanksmodal = () => {
     document.querySelector("#youarein").classList.remove('hidden')
@@ -53,12 +58,12 @@ const ImagesForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
     useEffect(() => {
 
-        document.addEventListener('scroll', _ => 
+        document.addEventListener('scroll', () => 
         {
 
             if (!document.querySelector('.video-wrapper').classList.contains("played")) {
              
-                if (document.documentElement.scrollTop >= document.querySelector('#EnterToWin').offsetTop) {
+                if (document.documentElement.scrollTop >= document.querySelector('#entertowinSection').offsetTop) {
                     playvideo();
                     
                 }
@@ -341,7 +346,7 @@ const ImagesForm = ({ node }) => {
     };
     return (
         <>
-            <div id="EnterToWin" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
+            <div id="entertowinSection" className={["container-fluid register img-form", ImgForm.wrapper].join(" ")}>
                 <div className="row">
                     <div className="container">
                         <div className="row">
@@ -411,6 +416,7 @@ const ImagesForm = ({ node }) => {
                                         {node.field_form_title ? <div className={ImgForm.title} dangerouslySetInnerHTML={{ __html: node.field_form_title.processed }}></div> : ""}
                                         {node.field_form_description ? <div className={ImgForm.description} dangerouslySetInnerHTML={{ __html: node.field_form_description.processed }}></div> : ""}
                                     </div>
+                                    <div id="entertowin" class="col-12" name="entertowin"></div>
                                     <div className="col-12 col-lg-10 offset-lg-2">
                                         {node.field_form_mini_title ? <div className={ImgForm.miniTitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_title.processed }}></div> : ""}
                                         {node.field_form_mini_subtitle ? <div className={ImgForm.miniSubtitle} dangerouslySetInnerHTML={{ __html: node.field_form_mini_subtitle.processed }}></div> : ""}
@@ -538,7 +544,7 @@ const ImagesForm = ({ node }) => {
                                     </span>
                                                     </label>
                                                 </div>
-
+                                                
                                                 <div className="submit-wrapper">
                                                     <button type="submit" onClick={(e) => { handleSubmit(e); }}
 
@@ -565,6 +571,7 @@ const ImagesForm = ({ node }) => {
                                         <img src={node.relationships.field_form_background_img.localFile.childImageSharp.original.src} />
                                     </div>
                                     : ""}
+                  
             </div>
 
             <div class="modal hidden" id="youarein">
@@ -581,8 +588,8 @@ const ImagesForm = ({ node }) => {
                                 <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
                                 <a
 
-                                    onClick={(e) => { removemodal(e); }}
-                                    className={ImgForm.msgLink} href={node.field_confirmation_massage_url}>
+                                    onClick={(e) => { removemodal(e, ture); }}
+                                    className={ImgForm.msgLink} href="#toSection">
                                     {node.field_confirmation_massage_link_}
 
 

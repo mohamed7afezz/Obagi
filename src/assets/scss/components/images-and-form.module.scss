@@ -221,10 +221,16 @@ line-height: 72px;
 margin-bottom: 20px;
 }
 .msgDescrib, .msgDescrib p{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 40px;
+    padding-bottom: 20px;
+@include lg-screen{
     font-size: 32px;
     font-weight: 500;
     line-height: 40px;
     padding-bottom: 25px;
+}
 }
 .msgDescrib{
     padding-bottom: 0;
