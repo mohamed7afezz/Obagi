@@ -171,10 +171,18 @@ color: #F99D25;
         padding-left: 17px;
     }
 }
-.mob-col-rev{
+.mob-col-rev {
     flex-direction: column-reverse;
+
     @include lg-screen{
         flex-direction: row;
+
+    }
+}
+
+@media (max-width: 991px) {
+    .col-auto {
+        flex: 0 0 auto;
     }
 }
 .bord{

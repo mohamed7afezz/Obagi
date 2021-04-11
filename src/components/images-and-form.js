@@ -64,7 +64,7 @@ const ImagesForm = ({ node }) => {
 
             if (!document.querySelector('.video-wrapper').classList.contains("played")) {
              
-                if (document.documentElement.scrollTop >= document.querySelector('#entertowinSection').offsetTop) {
+                if (document.documentElement.scrollTop + 300 >= document.querySelector('#entertowinSection').offsetTop) {
                     playvideo();
                     
                 }
