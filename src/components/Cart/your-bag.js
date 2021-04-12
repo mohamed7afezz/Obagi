@@ -471,8 +471,8 @@ const YourBag = (props, { notificationId }) => {
 
       let fbqproducts = [];
       lineItems.physical_items.forEach(prod => {
-        products.push({
-          'content_ids': prod.id,
+        fbqproducts.push({
+          'content_ids': prod.sku,
           'content_name': prod.name,
           'content_type' :" ",
           'contents' : [{id : prod.id , quantity:prod.quantity}],
@@ -489,7 +489,7 @@ const YourBag = (props, { notificationId }) => {
       lineItems.physical_items.forEach(prod => {
         products.push({
           'name': prod.name,
-          'id': prod.id,
+          'id': prod.sku,
           'price': prod.list_price,
           'brand': 'Obagi',
           'category': prod.url.includes('medical')? 'medical' : 'clinical',
