@@ -4641,10 +4641,9 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
 
 .vitaminc .heroTitle {
     padding: 0;
-    max-width: 199px;
     font-family: "big-caslon-fb";
     font-weight: 500;
-    @include fontStyle(32, 48);
+    @include fontStyle(34, 48);
 
     @include lg-screen {
         @include fontStyle(64, 72);
@@ -4818,6 +4817,11 @@ body.acsb-keynav input[type=checkbox].acsb-shown, body.acsb-keynav input[type=ra
     .vitaminc .col-12{
         padding-left: 24px;
         padding-right: 24px;
+    }
+
+    .hero-slider.vitaminc .col-12.col-lg-7 {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #EnterToWin .col-12.mob-p-0, 
