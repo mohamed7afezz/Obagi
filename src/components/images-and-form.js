@@ -189,6 +189,7 @@ const ImagesForm = ({ node }) => {
                 else {
                     dateOfBirth[2] = event.target.attributes['data-value'].value;
                 }
+               
                 dateOfBirth = dateOfBirth.join('/');
                 setContestData({
                     ...contestData,
@@ -250,6 +251,7 @@ const ImagesForm = ({ node }) => {
 
         let userDate = contestData.date_of_birth.split("/")
         let now = new Date();
+      
         let chosenDate = new Date(`${userDate[2]} ${userDate[1]} ${userDate[0]}`)
         // check date validality
 
@@ -311,7 +313,8 @@ const ImagesForm = ({ node }) => {
             delete dataSubmit.email_optin;
         }
 
-
+        let datefromate = dataSubmit.date_of_birth.split("/");
+        dataSubmit.date_of_birth = [datefromate[1],datefromate[0],[datefromate[2]]].join("/")
         fetch(
             `${baseUrl}webform_rest/submit`,
             {
@@ -330,7 +333,10 @@ const ImagesForm = ({ node }) => {
                 }
 
                 // empty form fieldsPropTypes.
-                thanksmodal();
+                if (response.sid) {
+                           thanksmodal();
+                }
+         
                 document.querySelector('.regform').reset();
                 document.querySelectorAll('.regform .select-selected').forEach(el => {
                     el.textContent = 'Select';
