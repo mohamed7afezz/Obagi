@@ -968,10 +968,10 @@ margin-bottom: 35px;
     top: 108px;
   
   }
-    #Showbag .modal-content {
+  #Showbag .modal-content {
     border: 0;
     border-radius: 0;
-    height: 99.8vh;
+    height: 85.8vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -2308,7 +2308,7 @@ right: 0;
   padding-left: 0;
 }
 .showflex .global-select .product-lines{
-width: 102%;
+width: 101%;
 }
 .global-select .popupFilter{
   margin-bottom: 0;
@@ -3623,9 +3623,7 @@ border: 0;
   height: 25px;
 }
 }
-footer .be-ix-link-block{
-display: none;
-}
+
 .videoplayed .videoimage{
   opacity: 0;
 }

@@ -87,11 +87,11 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         name: item => {
           var name = item.querySelector(".productcarddesc").textContent;
           return name },
-        // price: item => {
-        //   var weight = item.querySelector(".prod-price").textContent;
+        price: item => {
+          var weight = item.querySelector(".prod-price").textContent;
           
-        //   return parseFloat(weight)
-        // },
+          return parseFloat(weight)
+        },
       },
       filter: '*',
       transitionDuration: 0
@@ -239,6 +239,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       break;
       case 'Price: Low - High': 
         isoGrid.arrange({sortBy: 'price', sortAscending: true});
+      
         updateSortView();
       break;
       default:
@@ -262,9 +263,15 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     return item != "";
   }
   function isoFilter(type, val) {
-    let item = val.replace('(',`\\(`)
-    item = item.replace(')','\\)');
-    item = item.replace('+','\\+')
+    let item = val;
+    if (item === ":not(.RX)") {
+       item = val
+    }else{
+       item = val.replace('(',`\\(`)
+      item = item.replace(')','\\)');
+      item = item.replace('+','\\+')
+    }
+   
    
     isoFilterData[type] = item === 'All'? '' : item.split(' ').join('_');
     let p = [];

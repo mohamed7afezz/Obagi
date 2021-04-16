@@ -238,7 +238,7 @@ export const productPageQuery = graphql`
                     ...needToKnowParagrapgh
                     ...sysRelatedProduct
                     ...youMightAlsoLikeMedicalParagrapgh
-                    ...nuDermParagraph
+                   
                 }
             }
             
