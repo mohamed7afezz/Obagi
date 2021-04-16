@@ -35,13 +35,18 @@ function playvideo(event) {
 }
 var Submit = false;
 var ischanged = false;
-function removemodal(e, isScroll) {
+function removemodal(e, isScroll,section) {
     e.preventDefault();
-    document.querySelector("#youarein").classList.add("hidden");
+ 
 
     if(isScroll) {
-        window.scroll({ top: $('#letyourskin').offsetTop - $('#mob-navigation').offsetHeight, behavior: 'smooth' });
+        let sectionId = section.split('#')[1];
+        
+        window.scroll({ top: $(`#${sectionId}`).offset().top - $('#mob-navigation').height(), behavior: 'smooth' });
+
+
     }
+    document.querySelector("#youarein").classList.add("hidden");
 }
 let thanksmodal = () => {
     document.querySelector("#youarein").classList.remove('hidden')
@@ -597,7 +602,7 @@ const ImagesForm = ({ node }) => {
                                 <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
                                 <a
 
-                                    onClick={(e) => { removemodal(e, true); }}
+                                    onClick={(e) => { removemodal(e, true,"#toSection"); }}
                                     className={ImgForm.msgLink} href="#toSection">
                                     {node.field_confirmation_massage_link_}
 
