@@ -41,7 +41,7 @@ const Customer = ({ node, children, activeTab }) => {
                 <div className="col-12">
                     <div className="dropdown">
                         <button className="dropdown-toggle myaccount-toggle" type="button" id="accountDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "order-status"? "Order Status" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "covid-19"? "FAQs" :  activeTab ==="contest-rules" ? "Contest Rules" : activeTab === "my-account"? "My Account" :activeTab === "covid-19"? "COVID-19 Information" : activeTab === "my-account"? "My Account" : activeTab === "faq"? "FAQs" : "Select"}
+                            {activeTab === "covid-19"? "COVID-19 Information" : activeTab === "order-status"? "Order Status" : activeTab === "contact-us"? "Contact Us" : activeTab === "shipping-returns"? "Online Ordering & Returns Policy" : activeTab === "covid-19"? "FAQs" :  activeTab ==="contest-rules" ? "Contest Rules" : activeTab === "my-account"? "My Account" :activeTab === "covid-19"? "COVID-19 Information" : activeTab === "my-account"? "My Account" : activeTab === "faq"? "FAQs" : activeTab === "promotions"? "Promotions" : "Select"}
                         </button>
                         <div className="dropdown-menu myaccount-dropdown" aria-labelledby="accountDropdownButton">
                             <Link to="/covid-19" className={activeTab == "covid-19" ? "active account-tab" : "account-tab"}  id="covid">COVID-19 Information</Link>
@@ -51,6 +51,7 @@ const Customer = ({ node, children, activeTab }) => {
                             <Link to="/FAQ" className={activeTab == "faq" ? "active account-tab" : "account-tab"} id="faqs">FAQs</Link>
                             <Link to="/my-account/orders" className={activeTab == "my-account" ? "active account-tab" : "account-tab"} id="account">My Account</Link>
                             <Link to="/contest-rules" className={activeTab == "contest-rules" ? "active account-tab" : "account-tab"} id="contest-rules">Contest Rules</Link>
+                            <Link to="/promotions" className={activeTab == "promotions" ? "active account-tab" : "account-tab"} id="promotions">Promotions</Link>
 
                         </div>
                     </div>
@@ -68,6 +69,7 @@ const Customer = ({ node, children, activeTab }) => {
                             <Link className={activeTab == "faq" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/FAQ" >FAQs</Link>
                             <Link className={activeTab == "my-account" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/my-account/orders" >My Account</Link>
                             <Link className={activeTab == "contest-rules" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/contest-rules" >Contest Rules</Link>
+                            <Link className={activeTab == "promotions" ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"} to="/promotions" >Promotions</Link>
 
                             
                             <div className={myAccountStyles.csTitle}>Customer Service</div>
