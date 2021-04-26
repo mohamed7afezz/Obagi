@@ -97,7 +97,6 @@ query($slug: String!) {
                 ...paragraphLeftSubImgRightText
                 ...paragraphOrderStatus
                 ...paragraphProductsWeProvide
-                ...paragraphImagesAndForm
                 ...paragraphCustomerCareFullHtml
             }
         }

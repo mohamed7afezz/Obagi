@@ -598,16 +598,16 @@ const ImagesForm = ({ node }) => {
                                 <button onClick={(e) => { removemodal(e) }} className="close"></button>
                             </div>
                             <div className={ImgForm.Lines}>
-                                <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_title.processed }}></div>
-                                <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>
-                                <a
+                         {node.field_confirmation_massage_title ?       <div className={ImgForm.msgTitle} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_title.processed }}></div>
+                           :""}{node.field_confirmation_massage_descr?     <div className={ImgForm.msgDescrib} dangerouslySetInnerHTML={{ __html: node.field_confirmation_massage_descr.processed }}></div>:""}
+                             {node.field_confirmation_massage_link_?   <a
 
                                     onClick={(e) => { removemodal(e, true,"#toSection"); }}
                                     className={ImgForm.msgLink} href="#toSection">
                                     {node.field_confirmation_massage_link_}
 
 
-                                </a>
+                                </a> :""}
                             </div>
                         </div>
                     </div>
@@ -620,82 +620,3 @@ const ImagesForm = ({ node }) => {
 }
 
 export default ImagesForm
-
-export const fragment = graphql`
-    fragment paragraphImagesAndForm on paragraph__images_and_form {
-        id
-        field_form_subtitle {
-            processed
-          }
-          field_confirmation_massage_title {
-            processed
-          }
-          field_confirmation_massage_link_
-          field_confirmation_massage_url
-          field_confirmation_massage_descr {
-            processed
-          }
-          field_form_title {
-            processed
-          }
-          field_form_description {
-            processed
-          }
-          field_form_mini_title {
-            processed
-          }
-          field_form_mini_subtitle {
-            processed
-          }
-          relationships {
-            field_form_background_img {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                  original{
-                      src
-                  }
-                }
-              }
-            }
-            field_form_left_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-            field_form_overlay_img {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-            field_form_video {
-              field_video_link
-              relationships {
-                field_video_poster {
-                  localFile {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            
-          }
-        }
-        
-    }
-      
-      
-`;
