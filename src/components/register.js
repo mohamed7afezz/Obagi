@@ -323,7 +323,7 @@ const Register = () => {
             handleRegister(newUser);
             if (document.querySelector('input[name="email_sub"]')) {
                 
-            window.fbq('track', 'Lead');
+            //window.fbq('track', 'Lead');
             }
 
 

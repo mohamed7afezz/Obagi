@@ -334,7 +334,7 @@ const ImagesForm = ({ node }) => {
             .then(response => {
                 document.querySelector('.submit-input').innerHTML = "SUBMIT";
                 if (document.querySelector('#registerCheck').checked) {
-                    window.fbq('track', 'Lead');
+                    //window.fbq('track', 'Lead');
                 }
 
                 // empty form fieldsPropTypes.

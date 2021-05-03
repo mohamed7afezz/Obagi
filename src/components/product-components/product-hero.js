@@ -201,7 +201,7 @@ const ProductHero = ({ data, nodeType }) => {
     if (typeof window != undefined) {
   
 
-      window.fbq('track', 'ViewContent',
+      /*window.fbq('track', 'ViewContent',
     // begin parameter object data
     {
       content_ids :  contentId ,
@@ -214,7 +214,7 @@ const ProductHero = ({ data, nodeType }) => {
     }
    
     // end parameter object data
-  );
+  );*/
 }
   }
 

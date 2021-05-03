@@ -68,7 +68,7 @@ const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage, showMobBar})
 
   function FBPX() {
     if (typeof window != undefined) {
-    window.fbq('track', 'PageView')
+    //window.fbq('track', 'PageView')
     }
   }
   

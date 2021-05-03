@@ -102,7 +102,7 @@ export const UserProvider = ({ children }) => {
 
         if (newUserRes.status == 200) {
 
-            window.fbq('track', 'CompleteRegistration');
+            //window.fbq('track', 'CompleteRegistration');
             await getUserData();
 
 

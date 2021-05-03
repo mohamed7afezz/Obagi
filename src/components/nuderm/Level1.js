@@ -85,7 +85,7 @@ const Level1 = props => {
             obj[item.getAttribute("name")] = item.value;
           }else{
             if (item.checked === true) {
-              window.fbq('track', 'Lead');
+              //window.fbq('track', 'Lead');
               console.log('hassan')
             }
          

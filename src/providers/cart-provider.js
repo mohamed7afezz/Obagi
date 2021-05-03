@@ -214,7 +214,7 @@ export const CartProvider = ({ children }) => {
                 });
             
               
-                    window.fbq('track', 'AddToCart',
+                    /*window.fbq('track', 'AddToCart',
                   // begin parameter object data
                   {
                     content_ids : item.id,
@@ -226,7 +226,7 @@ export const CartProvider = ({ children }) => {
                   }
                  
                   // end parameter object data
-                );
+                );*/
            
             
             
@@ -289,7 +289,7 @@ export const CartProvider = ({ children }) => {
             }
           });
     
-          window.fbq('track', 'AddToCart',
+          /*window.fbq('track', 'AddToCart',
           // begin parameter object data
        
           
@@ -303,7 +303,7 @@ export const CartProvider = ({ children }) => {
           }
          
           // end parameter object data
-        );
+        );*/
           setState({
             ...state,
             addingToCart: false,
@@ -574,7 +574,7 @@ export const CartProvider = ({ children }) => {
         }
       }
     });
-    window.fbq('track', 'AddToCart',
+    /*window.fbq('track', 'AddToCart',
     // begin parameter object data
     {
       content_ids : state.cart.lineItems.physical_items[i].id,
@@ -586,7 +586,7 @@ export const CartProvider = ({ children }) => {
     }
    
     // end parameter object data
-  );
+  );*/
   }
   
 }

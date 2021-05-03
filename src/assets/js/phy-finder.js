@@ -464,7 +464,6 @@ class Search extends Temps {
     updateParams(location, paramsFor) {
        
         this.searchBtn.disabled = true;
-        console.log("location value");
         console.log('bahiii', location);
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {

@@ -482,7 +482,7 @@ const YourBag = (props, { notificationId }) => {
           
        })
       });
-      window.fbq('track', 'Purchase ',fbqproducts);
+      //window.fbq('track', 'Purchase ',fbqproducts);
       let dl = window.dataLayer;
       
       let products = [];

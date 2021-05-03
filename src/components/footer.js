@@ -97,7 +97,7 @@ const Footer = ({ siteTitle }) => {
         obj[item.getAttribute("name")] = item.value;
         if (document.querySelector('.newsignup[checked]')) {
           obj["want_to_receive_emails"] = ["on"]
-          window.fbq('track', 'Lead')
+          //window.fbq('track', 'Lead')
         }
       }
 
