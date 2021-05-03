@@ -69,6 +69,10 @@ const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage, showMobBar})
   function FBPX() {
     if (typeof window != undefined) {
     //window.fbq('track', 'PageView')
+    window.dataLayer.push({
+      'event': 'fb_tags_trigger',
+      'fb_event_name': 'PageView'
+    });
     }
   }
   

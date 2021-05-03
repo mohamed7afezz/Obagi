@@ -98,6 +98,10 @@ const Footer = ({ siteTitle }) => {
         if (document.querySelector('.newsignup[checked]')) {
           obj["want_to_receive_emails"] = ["on"]
           //window.fbq('track', 'Lead')
+          window.dataLayer.push({
+            'event': 'fb_tags_trigger',
+            'fb_event_name': 'Lead'
+          });
         }
       }
 

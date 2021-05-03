@@ -324,6 +324,11 @@ const Register = () => {
             if (document.querySelector('input[name="email_sub"]')) {
                 
             //window.fbq('track', 'Lead');
+            window.dataLayer.push({
+                'event': 'fb_tags_trigger',
+                'fb_event_name': 'Lead'
+              });
+            
             }
 
 

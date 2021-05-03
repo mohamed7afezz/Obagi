@@ -335,6 +335,10 @@ const ImagesForm = ({ node }) => {
                 document.querySelector('.submit-input').innerHTML = "SUBMIT";
                 if (document.querySelector('#registerCheck').checked) {
                     //window.fbq('track', 'Lead');
+                    window.dataLayer.push({
+                        'event': 'fb_tags_trigger',
+                        'fb_event_name': 'Lead'
+                      });
                 }
 
                 // empty form fieldsPropTypes.

@@ -483,6 +483,12 @@ const YourBag = (props, { notificationId }) => {
        })
       });
       //window.fbq('track', 'Purchase ',fbqproducts);
+      window.dataLayer.push({
+        'event': 'fb_tags_trigger',
+        'fb_event_name': 'Purchase',
+        "fbq_products": fbqproducts
+      });
+      
       let dl = window.dataLayer;
       
       let products = [];

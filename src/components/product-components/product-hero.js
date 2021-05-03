@@ -200,7 +200,20 @@ const ProductHero = ({ data, nodeType }) => {
   function fbpxViewcontent (contentId,contentCat,contentName,contentType,Contents,Currency,Value) {
     if (typeof window != undefined) {
   
-
+      window.dataLayer.push({
+        'event': 'fb_tags_trigger',
+        'fb_event_name': 'ViewContent',
+        'fbq_products':{
+          content_ids :  contentId ,
+          content_category : contentCat,
+          content_name : contentName,
+          content_type : contentType,
+          contents : Contents, 
+          currency : Currency, 
+          value : Value,
+        } 
+      });
+      
       /*window.fbq('track', 'ViewContent',
     // begin parameter object data
     {

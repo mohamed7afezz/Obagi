@@ -86,6 +86,10 @@ const Level1 = props => {
           }else{
             if (item.checked === true) {
               //window.fbq('track', 'Lead');
+              window.dataLayer.push({
+                'event': 'fb_tags_trigger',
+                'fb_event_name': 'Lead'
+              });
               console.log('hassan')
             }
          
