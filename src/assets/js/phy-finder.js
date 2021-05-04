@@ -465,6 +465,7 @@ class Search extends Temps {
        
         this.searchBtn.disabled = true;
         console.log('bahiii', location);
+        console.log('locationvalue');
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
                 this.params.zip = item.short_name;
