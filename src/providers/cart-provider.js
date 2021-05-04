@@ -208,6 +208,7 @@ export const CartProvider = ({ children }) => {
                         'category': item.url.includes('medical')? 'medical' : 'clinical',
                         'variant': '',
                         'quantity': item.quantity,
+                        'product_id': item.product_id
                        }]
                     }
                   }
@@ -570,6 +571,7 @@ export const CartProvider = ({ children }) => {
             'category': state.cart.lineItems.physical_items[i].url.includes('medical')? 'medical' : 'clinical',
             'variant': '',
             'quantity': state.cart.lineItems.physical_items[i].quantity,
+            'product_id': state.cart.lineItems.physical_items[i].product_id
            }]
         }
       }
