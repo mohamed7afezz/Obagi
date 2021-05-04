@@ -53,7 +53,7 @@ export default function HTML(props) {
         `
         }}></script>
 
-     <script type="text/javascript" dangerouslySetInnerHTML={{
+     {/*<script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -66,7 +66,7 @@ export default function HTML(props) {
           fbq('init', '678059259599817');
           fbq('track', 'PageView');
         `
-        }}></script>
+        }}></script>*/}
         
         <script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
