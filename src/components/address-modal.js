@@ -183,7 +183,6 @@ const AddressModal = ({ node,
                                             <option value="OR">Oregon</option>
                                             <option value="PW">Palau</option>
                                             <option value="PA">Pennsylvania</option>
-                                            <option value="PR">Puerto Rico</option>
                                             <option value="RI">Rhode Island</option>
                                             <option value="SC">South Carolina</option>
                                             <option value="SD">South Dakota</option>
