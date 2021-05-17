@@ -106,7 +106,9 @@ const Footer = ({ siteTitle }) => {
       }
 
 
-      sendFormValues({ obj })
+      sendFormValues({ obj });
+      obj["webform_id"] = "subscription_for_newsletter";
+      sendFormValues({ obj });
     }
   }
 
