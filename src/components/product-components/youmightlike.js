@@ -52,6 +52,7 @@ const YouMayLike = ({key, node }) => {
                       premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                        Sku={item.field_medical_sku?item.field_medical_sku:""}
+                       minQuantity={item.field_min_quantity? item.field_min_quantity : ""}
                     />
 
                 </div>
@@ -76,6 +77,7 @@ const YouMayLike = ({key, node }) => {
                    price={item.field_clinical_price}
                    productId={item.field_clinical_id}
                    Sku = {item.field_clinical_sku}
+                   minQuantity={item.field_min_quantity? item.field_min_quantity : ""}
                  />
 
                </div>
@@ -102,6 +104,7 @@ fragment youMightAlsoLikeParagrapgh on paragraph__you_might_also_like {
           title
           field_clinical_price
           field_clinical_sku
+          field_min_quantity
           path {
             alias
           }
@@ -134,6 +137,7 @@ fragment youMightAlsoLikeMedicalParagrapgh on paragraph__you_might_also_like {
           field_medical_id
           field_medical_premier_points
           field_medical_sku
+          field_min_quantity
           field_medical_premier_points_id
           field_medical_description {
             processed

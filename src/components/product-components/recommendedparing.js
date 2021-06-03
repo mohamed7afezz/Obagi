@@ -61,6 +61,7 @@ const Recommendedparing = ({ node }) => {
                     premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                     feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                     Sku={item.field_medical_sku?item.field_medical_sku:"" }
+                    minQuantity={item.field_min_quantity? item.field_min_quantity : ""}
                     productCat="medical"
                     />
  
@@ -80,7 +81,7 @@ const Recommendedparing = ({ node }) => {
               node.relationships.field_croduct_card.map((item, index) => (
                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[index].localFile? item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} productId={item.field_clinical_id} rate="5" />
+                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[index].localFile? item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={item.field_min_quantity? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
 
                 </div>
               ))
@@ -112,6 +113,7 @@ fragment recommendedParingParagrapgh on paragraph__recomended_paring {
               }
               field_clinical_price
               field_clinical_sku
+              field_min_quantity
               field_clinical_description {
                 processed
               }
@@ -152,6 +154,7 @@ fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
                 id
                field_medical_premier_points_id
                field_medical_sku
+               field_min_quantity
                field_medical_premier_points
                 field_medical_id
                 path {

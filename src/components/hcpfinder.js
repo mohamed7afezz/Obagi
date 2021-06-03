@@ -144,6 +144,7 @@ export default function Finder() {
               relationships {
                 products: node__medical_product {
                   field_medical_sku
+                  field_min_quantity
                   title
                   path {
                     alias
@@ -226,7 +227,8 @@ export default function Finder() {
         let newNode = node.relationships.products ? node.relationships.products.map(product => {
           return {
             path: (product.path && product.path.alias) ? product.path.alias : '#',
-            sku: product.field_medical_sku ? product.field_medical_sku : ''
+            sku: product.field_medical_sku ? product.field_medical_sku : '',
+            minQuantity: product.field_min_quantity? product.field_min_quantity : ''
           }
         }) : undefined;
 

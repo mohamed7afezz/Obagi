@@ -20,7 +20,8 @@ const ProductCard = ({
   isrx,
   Type,
   productCat,
-  Sku
+  Sku,
+  minQuantity
 }) => {
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart

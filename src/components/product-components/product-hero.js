@@ -78,7 +78,8 @@ const ProductHero = ({ data, nodeType }) => {
   let key_benfitList = isClincal
     ? node.relationships.field_key_benefits_list ? node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists : ""
     : node.relationships.field_medical_benefits_lists ? node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists : ""
-  const location1 = useLocation()
+  let min_quantity = node.field_min_quantity? node.field_min_quantity : ""
+    const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
   const [state, setState] = useState({

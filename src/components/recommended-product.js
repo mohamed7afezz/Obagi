@@ -15,7 +15,8 @@ Sku,
 recTitle ,
 premierid,
 feild_preimer,
-prodCat
+prodCat,
+minQuantity
 }) => {
 
     const value = useContext(CartContext)

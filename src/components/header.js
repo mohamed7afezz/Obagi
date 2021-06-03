@@ -34,6 +34,7 @@ const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBa
           field_clinical_free_sample
           field_clinical_price
           field_clinical_sku
+          field_min_quantity
           path {
             alias
           }
@@ -61,6 +62,7 @@ const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBa
           field_medical_price
           field_medical_premier_points_id
           field_medical_sku
+          field_min_quantity
           field_medical_premier_points
           path {
             alias
