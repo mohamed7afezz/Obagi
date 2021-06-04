@@ -228,7 +228,7 @@ export default function Finder() {
           return {
             path: (product.path && product.path.alias) ? product.path.alias : '#',
             sku: product.field_medical_sku ? product.field_medical_sku : '',
-            minQuantity: product.field_min_quantity? product.field_min_quantity : ''
+            minQuantity: (product.field_min_quantity == 0 || product.field_min_quantity > 0)? product.field_min_quantity : ''
           }
         }) : undefined;
 

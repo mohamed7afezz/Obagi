@@ -44,6 +44,7 @@ minQuantity
                     <div className={ShowBagStyle.upbp}>${recPrice}</div>
                     <button className={`cartButton`}
                     data-sku={Sku}
+                    data-quantity={minQuantity}
                     data-skuType={prodCat}
                         onClick={() => {
                             let quantity = 1;

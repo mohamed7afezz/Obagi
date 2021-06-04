@@ -19,7 +19,8 @@ export function checkStock(baseUrl,cb) {
   $.each($('[data-sku]'), function () {
     skus.push({
       type: $(this).attr('data-skuType'),
-      sku: $(this).attr('data-sku')
+      sku: $(this).attr('data-sku'),
+      min_quantity: $(this).attr('data-quantity')
     });
   })
   

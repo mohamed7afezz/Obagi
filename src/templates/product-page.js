@@ -100,6 +100,7 @@ export const productPageQuery = graphql`
               }
             field_clinical_price
             field_clinical_sku
+            field_min_quantity
             field_clinical_weight_unit
             field_clinical_upc
             field_clinical_id
@@ -174,6 +175,7 @@ export const productPageQuery = graphql`
             }
             field_medical_premier_points
             field_medical_sku
+            field_min_quantity
             field_medical_price
             field_medical_upc
             field_medical_info

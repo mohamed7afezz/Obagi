@@ -13,7 +13,6 @@ const NewSearchProductsResult = ({ node }) => {
 
   const {clinicalSearchResults} = useContext(SearchContext);
   const {medicalSearchResults} = useContext(SearchContext);
-  console.log('ash results', clinicalSearchResults, medicalSearchResults)
   let products = []
   let isDefultSelectCategoryMedical = medicalSearchResults.length >= clinicalSearchResults.length;
   
@@ -205,7 +204,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                       premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
                        feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                        Sku={data.field_medical_sku?data.field_medical_sku:""}
-                       minQuantity={data.field_min_quantity? data.field_min_quantity : ""}
+                       minQuantity={(data.field_min_quantity == 0 || data.field_min_quantity > 0)? data.field_min_quantity : ""}
                        productCat="medical"
                     />
                   </div> 
@@ -231,7 +230,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         price={data.field_clinical_price}
                         productId={data.field_clinical_id}
                         Sku = {data.field_clinical_sku}
-                        minQuantity={data.field_min_quantity? data.field_min_quantity : ""}
+                        minQuantity={(data.field_min_quantity == 0 || data.field_min_quantity > 0)? data.field_min_quantity : ""}
                         productCat= "clinical"
                       />
                            </div> 

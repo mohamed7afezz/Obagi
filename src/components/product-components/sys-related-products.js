@@ -85,7 +85,7 @@ export default function SysRelatedProducts({node}) {
                                                         )):""
                                                     }
                                                     Sku={prod.field_medical_sku?prod.field_medical_sku:"" }
-                                                    minQuantity={prod.field_min_quantity? prod.field_min_quantity : ""}
+                                                    minQuantity={(prod.field_min_quantity == 0 || prod.field_min_quantity > 0)? prod.field_min_quantity : ""}
                                                     price={prod.field_medical_price}
                                                     premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
                                                    feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}

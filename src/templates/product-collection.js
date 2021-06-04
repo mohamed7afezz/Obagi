@@ -153,6 +153,7 @@ export const productPageQuery = graphql`
                     } 
                     field_clinical_price
                     field_clinical_sku
+                    field_min_quantity
                     title
                     relationships {
                       field_clinical_ingredients {
@@ -297,6 +298,7 @@ export const productPageQuery = graphql`
                   } 
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   title
                   relationships {
                     field_clinical_ingredients {
@@ -425,6 +427,7 @@ export const productPageQuery = graphql`
                 node__medical_product {
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
                   field_medical_premier_points_id
                   field_medical_is_system
                   field_medical_id
@@ -566,6 +569,7 @@ export const productPageQuery = graphql`
             node__medical_product {
               field_medical_premier_points
               field_medical_sku
+              field_min_quantity
               field_medical_premier_points_id
               field_medical_is_system
               field_medical_id
@@ -718,6 +722,7 @@ export const productPageQuery = graphql`
           node__medical_product {
             field_medical_premier_points
             field_medical_sku
+            field_min_quantity
             field_medical_premier_points_id
             title
             path {
@@ -826,6 +831,7 @@ export const productPageQuery = graphql`
                 node__medical_product {
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
                   field_medical_premier_points_id
                     field_medical_is_system
                     field_medical_id
@@ -987,6 +993,7 @@ export const productPageQuery = graphql`
               }
               field_clinical_price
               field_clinical_sku
+              field_min_quantity
               title
               relationships {
                 field_clinical_ingredients {
@@ -1112,6 +1119,7 @@ export const productPageQuery = graphql`
             node__medical_product {
               field_medical_premier_points
               field_medical_sku
+              field_min_quantity
               field_medical_premier_points_id
               id
               field_medical_is_system
@@ -1273,6 +1281,7 @@ export const productPageQuery = graphql`
               }
               field_clinical_price
               field_clinical_sku
+              field_min_quantity
               title
               relationships {
                 field_clinical_image {

@@ -376,7 +376,7 @@ const ProductSuggestion = ({ node }) => {
                 productimage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
                 price={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
                 productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
-                minQuantity={product.field_min_quantity? product.field_min_quantity : ""}
+                minQuantity={(product.field_min_quantity == 0 || product.field_min_quantity > 0)? product.field_min_quantity : ""}
               />
            
        
@@ -390,7 +390,7 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.professionalC.relationships?data.professionalC.relationships.field_medical_image[0]?data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
          Sku={data.professionalC.field_medical_sku?data.professionalC.field_medical_sku:"" }
-         minQuantity={data.professionalC.field_min_quantity? data.professionalC.field_min_quantity : ""}
+         minQuantity={(data.professionalC.field_min_quantity == 0 || data.professionalC.field_min_quantity > 0)? data.professionalC.field_min_quantity : ""}
          productCat="medical"
         
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
@@ -411,7 +411,7 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.elastiderm.relationships?data.elastiderm.relationships.field_medical_image[0]?data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
          Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
-         minQuantity={data.elastiderm.field_min_quantity? data.elastiderm.field_min_quantity : ""}
+         minQuantity={(data.elastiderm.field_min_quantity == 0 || data.elastiderm.field_min_quantity > 0)? data.elastiderm.field_min_quantity : ""}
         productCat="medical"
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
          productLink={data.elastiderm.path.alias}
@@ -427,7 +427,7 @@ const ProductSuggestion = ({ node }) => {
          producttitle={data.hydrate.title?data.hydrate.title:""}
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id :""}
          Sku={data.hydrate.field_medical_sku?data.hydrate.field_medical_sku:"noo" }
-         minQuantity={data.hydrate.field_min_quantity? data.hydrate.field_min_quantity : ""}
+         minQuantity={(data.hydrate.field_min_quantity == 0 || data.hydrate.field_min_quantity > 0)? data.hydrate.field_min_quantity : ""}
          productimage={data.hydrate.relationships?data.hydrate.relationships.field_medical_image[0]?data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
           productCat="medical"

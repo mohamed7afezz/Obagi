@@ -858,7 +858,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                         
                       ) : pageNodeType == "clinicalCategories" ? (
@@ -880,7 +880,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                       ) : (
                         <ProductCard
@@ -904,7 +904,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                           feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                           Sku={item.field_medical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                       )}
                       <div
@@ -967,7 +967,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                       ) : pageNodeType == "ClinicalIngredients" ? ( <ProductCard
                       productCat="clinical"
@@ -987,7 +987,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />): pageNodeType == "clinicalGroups" ? ( <ProductCard
                         productCat="clinical"
                         productLink={item.path.alias}
@@ -1006,7 +1006,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />) : pageNodeType == "clinicalCategories" ? (
                         <ProductCard
                         productCat="clinical"
@@ -1026,7 +1026,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                       )  :  pageNodeType == "skinClinicalType" ? (
                         <ProductCard
@@ -1047,7 +1047,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           rate="0"
                           productId={item.field_clinical_id}
                           Sku={item.field_clinical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                        
                       ): (
@@ -1071,7 +1071,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                           feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                           Sku={item.field_medical_sku}
-                          minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                         />
                       )}
                       <div
@@ -1148,7 +1148,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               rate="0"
                               productId={product.field_clinical_id}
                               Sku={product.field_clinical_sku}
-                              minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                              minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                             />
                             <div
                               class="d-none ingredient"
@@ -1228,7 +1228,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                             premierid={product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
                             feild_preimer={product.field_medical_premier_points?product.field_medical_premier_points:""}
                             Sku={product.field_medical_sku}
-                            minQuantity={item.field_min_quantity? item.field_min_quantity: ""}
+                            minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity: ""}
                           />
                            <div
                         class="d-none ingredient"

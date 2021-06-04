@@ -52,7 +52,7 @@ const WhatWeProvide = ({ node }) => {
                       premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                        Sku={item.field_medical_sku?item.field_medical_sku:""}
-                       minQuantity={item.field_min_quantity? item.field_min_quantity : ""}
+                       minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""}
                        productCat="medical"
                     />
                   </div>

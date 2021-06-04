@@ -517,7 +517,7 @@ async function getShippingAddresses(e) {
                             </form>
                             {/* {item.images.data.map((item, index) => {
                               return ( */}
-                                <img src={item.images.data[0].url_thumbnail} alt="img"/>
+                                <img src={item.images.data[0]? item.images.data[0].url_thumbnail : ''} alt="img"/>
                               {/* )
                             })} */}
                             <div className={orderDetailsStyles.productInfoWrapper}>

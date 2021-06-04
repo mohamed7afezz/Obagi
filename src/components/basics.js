@@ -250,7 +250,7 @@ const Basics = ({ node }) => {
                                         price={prod.field_clinical_price ? prod.field_clinical_price : prod.field_medical_price? prod.field_medical_price : ""}
                                         rate="0"
                                         Sku={prod.field_medical_sku?prod.field_medical_sku:prod.field_clinical_sku?prod.field_clinical_sku:""}
-                                        minQuantity={prod.field_min_quantity? prod.field_min_quantity : ""}
+                                        minQuantity={(prod.field_min_quantity == 0 || prod.field_min_quantity > 0)? prod.field_min_quantity : ""}
                                         premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
                                         productCat={prod.field_medical_id? "medical" : "clinical"}
                                         feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
