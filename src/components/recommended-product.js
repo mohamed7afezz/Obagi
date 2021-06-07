@@ -45,7 +45,7 @@ minQuantity
                     <button className={`cartButton`}
                     data-sku={Sku}
                     data-quantity={minQuantity}
-                    data-skuType={prodCat}
+                    data-skutype={prodCat}
                         onClick={() => {
                             let quantity = 1;
                             addToCart(recId, false, quantity,recPrice,premierid,feild_preimer, recTitle,prodCat);

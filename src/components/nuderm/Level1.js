@@ -90,7 +90,7 @@ const Level1 = props => {
                 'event': 'fb_tags_trigger',
                 'fb_event_name': 'Lead'
               });
-              console.log('hassan')
+           
             }
          
           }

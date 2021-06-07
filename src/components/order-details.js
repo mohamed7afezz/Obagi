@@ -9,6 +9,7 @@ import orderHistoryStyles from "../assets/scss/components/order-history.module.s
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../assets/js/stock';
+import SearchContext from "../providers/search-provider"
 import $ from "jquery"
 // const $ = require('jQuery');
 
@@ -31,6 +32,7 @@ const OrderDetails = (props, { node }) => {
     shipments: [],
     shipping_addresses: []});
   const [isLoading, setIsLoading] = useState(true);
+  const { searchInIndexById } = useContext(SearchContext)
   getShippingAddresses(props.id);
     useEffect(() => {
  
@@ -77,6 +79,26 @@ async function getShippingAddresses(e) {
 
   
   const [saveprod, setprod] = useState({})
+
+  function checkType(id) {
+    
+    var result = searchInIndexById([id]);
+   
+    if(result != undefined){
+      return result[0];
+
+    }
+    else{
+      let res = {
+        field_min_quantity : "",
+        type: ""
+      };
+      res.field_min_quantity = "";
+      res.type = ""; 
+      return res
+    }
+   
+  }
   function arraysEqual(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;
@@ -503,13 +525,14 @@ async function getShippingAddresses(e) {
                     {
                       (alldata.products.map((item, index) => {
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
+                     
                         return (
                           <div className={orderDetailsStyles.productWrapper}>
                             <form>
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input details-check" type="checkbox" onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index] + index} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} onChange={getallcheck} className="form-check-input details-check" value={productId[index]} id={"productCheck" + productId[index] + index} />
+                                  <input type="checkbox" data-Sku={item.sku} data-skutype={checkType(productId[index]).type} data-quantity={checkType(productId[index]).field_min_quantity} onChange={getallcheck} className="form-check-input details-check" value={productId[index]} id={"productCheck" + productId[index] + index} />
                                   <span className="checkmark"></span>
 
                                 </label>
@@ -563,7 +586,7 @@ async function getShippingAddresses(e) {
                               <div class="form-check">
                                 <label className="terms">
                                   {/* <input data-Sku={item.sku} class="form-check-input desk-details-check order-check" type="checkbox" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} /> */}
-                                  <input type="checkbox" data-Sku={item.sku} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
+                                  <input type="checkbox" data-Sku={item.sku} data-skutype={checkType(productId[index]).type} data-quantity={checkType(productId[index]).field_min_quantity} className="form-check-input desk-details-check remove-none order-check" premid={elementId[index]} prempoints={elementPoints[index]} onChange={getallcheck} value={productId[index]} id={"productCheck" + productId[index]} />
                                   <span className="checkmark"></span>
 
                                 </label>

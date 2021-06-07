@@ -33,7 +33,7 @@ export const SearchProvider = ({ children }) => {
             setsearchWord(savekey)
 
             setIsLoading(false);
-          
+
         }
     }
     const setSearchIndex = (ClinicalProduct, MedicalProduct) => {
@@ -45,34 +45,33 @@ export const SearchProvider = ({ children }) => {
         setIsLoading(true);
         setsearchWord(searchkey);
         let filterdClinicalProduct = ProductsIndex.ClinicalProduct.nodes.filter(function (itm) {
-            if (itm.field_clinical_free_sample != true)
-            {
-                let item =  itm.title.replace("<sup>®</sup>","");
-                item = item.replace("<sup>®</sup>","");
-                item= item.replace("<sup>™</sup>","")
-                item = item.replace("<sup>TM</sup>","");
-                item = item.replace("-"," ");
-                let itemkey = searchkey.replace("®","");
-                itemkey = itemkey.replace("™","");
-                itemkey = itemkey.replace("TM","");
-                itemkey = itemkey.replace("-"," ");
+            if (itm.field_clinical_free_sample != true) {
+                let item = itm.title.replace("<sup>®</sup>", "");
+                item = item.replace("<sup>®</sup>", "");
+                item = item.replace("<sup>™</sup>", "")
+                item = item.replace("<sup>TM</sup>", "");
+                item = item.replace("-", " ");
+                let itemkey = searchkey.replace("®", "");
+                itemkey = itemkey.replace("™", "");
+                itemkey = itemkey.replace("TM", "");
+                itemkey = itemkey.replace("-", " ");
                 return item.toLowerCase().includes(itemkey) && itemkey != "";
             }
         });
         let filterdMedicalProduct = ProductsIndex.MedicalProduct.nodes.filter(function (itm) {
             if (itm.field_medical_free_sample != true) {
-                let item =  itm.title.replace("<sup>®</sup>","");
-                item = item.replace("<sup>®</sup>","");
-                item= item.replace("<sup>™</sup>","")
-                item = item.replace("<sup>TM</sup>","");
-                item = item.replace("-"," ");
-                let itemkey = searchkey.replace("®","");
-                itemkey = itemkey.replace("™","");
-                itemkey = itemkey.replace("TM","");
-                itemkey = itemkey.replace("-"," ");
+                let item = itm.title.replace("<sup>®</sup>", "");
+                item = item.replace("<sup>®</sup>", "");
+                item = item.replace("<sup>™</sup>", "")
+                item = item.replace("<sup>TM</sup>", "");
+                item = item.replace("-", " ");
+                let itemkey = searchkey.replace("®", "");
+                itemkey = itemkey.replace("™", "");
+                itemkey = itemkey.replace("TM", "");
+                itemkey = itemkey.replace("-", " ");
                 return item.toLowerCase().includes(itemkey) && itemkey != " ";
             }
-            
+
         });
         setClinicalValue(filterdClinicalProduct);
         setMedicalValue(filterdMedicalProduct);
@@ -81,6 +80,35 @@ export const SearchProvider = ({ children }) => {
     const searchInIndexById = (searchkey, is_medical) => {
         let result = [];
 
+        if (is_medical == undefined || is_medical == null) {
+
+            for (let i = 0; i < searchkey.length; i++) {
+                let productID = searchkey[i];
+                let productType = ProductsIndex.MedicalProduct.nodes.findIndex(item => item.field_medical_id == productID) > -1 ? 'medical'
+                    :
+                    ProductsIndex.ClinicalProduct.nodes.findIndex(item => item.field_clinical_id == productID) > -1 ? 'clinical'
+                        : "";
+                if (productType == "") {
+                    return
+                }
+                else if (productType == 'medical') {
+                    let prodIndex = ProductsIndex.MedicalProduct.nodes.findIndex(item => item.field_medical_id == productID);
+
+                    let prod = ProductsIndex.MedicalProduct.nodes[prodIndex];
+                    prod.type = "medical";
+                    result.push(prod);
+
+                } else {
+                    let prodIndex = ProductsIndex.ClinicalProduct.nodes.findIndex(item => item.field_clinical_id == productID);
+                    let prod = ProductsIndex.ClinicalProduct.nodes[prodIndex];
+                    prod.type = 'clinical';
+                    result.push(prod)
+
+                }
+            }
+
+            return result;
+        }
         if (is_medical == 0) {
             searchkey.forEach(element => {
                 let findedItems = ProductsIndex.ClinicalProduct.nodes.filter(function (itm) {
@@ -91,7 +119,7 @@ export const SearchProvider = ({ children }) => {
                 }
             });
         }
-        if (is_medical != 0) {
+        if (is_medical > 0) {
 
 
             searchkey.forEach(element => {

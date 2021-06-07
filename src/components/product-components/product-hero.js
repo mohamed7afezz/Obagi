@@ -439,7 +439,7 @@ const ProductHero = ({ data, nodeType }) => {
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-sku={Sku}
                     data-quantity={minQuantity}
-                    data-skuType={nodeType}
+                    data-skutype={nodeType}
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
@@ -498,7 +498,7 @@ const ProductHero = ({ data, nodeType }) => {
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-sku={Sku}
                     data-quantity={minQuantity}
-                    data-skuType={nodeType}
+                    data-skutype={nodeType}
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?

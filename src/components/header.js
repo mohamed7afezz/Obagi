@@ -228,6 +228,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
     }
   `)
+ 
   setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
     // if (typeof window !== "undefined") {

@@ -39,7 +39,7 @@ const Resulte = (props) => {
         let ProductsId = [];
         if(props.brandJourney == "Clinical Persona"){
             for (let i = 0; i < clinicalProduct.length; i++) {
-                console.log('bahiiii', clinicalProduct[i].field_clinical_sku);
+
                 if (skus[clinicalProduct[i].field_clinical_sku]) {
                  ProductsId.push(clinicalProduct[i].field_clinical_id)
                 } 
@@ -333,6 +333,7 @@ const Resulte = (props) => {
                                     <div className="col-12 col-md-10 col-lg-7 results-card-container">
                                         {medicalProduct.length > 0 ? medicalProduct.map((data, index) => {
                                             totalprice = parseFloat(totalprice) + parseFloat(data.field_medical_price)
+                                           
                                             productsPremierPoints.push(
                                                 {
                                                     productId: data.field_medical_id,
@@ -349,7 +350,7 @@ const Resulte = (props) => {
                                                 price={data.field_medical_price}
                                                 productId={data.field_medical_id}
                                                 Type={MedicalResultType[index]}
-                                                Sku={data.field_medical_sku ? data.field_medical_sku : ""}
+                                                Sku={data.field_medical_sku ? data.field_medical_sku : "none"}
                                                 minQuantity={(data.field_min_quantity == 0 || data.field_min_quantity > 0)? data.field_min_quantity : ""}
                                                 premierid={data.field_medical_premier_points_id ? data.field_medical_premier_points_id : ""}
                                                 feild_preimer={data.field_medical_premier_points ? data.field_medical_premier_points : ""}

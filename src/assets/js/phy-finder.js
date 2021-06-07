@@ -464,8 +464,7 @@ class Search extends Temps {
     updateParams(location, paramsFor) {
        
         this.searchBtn.disabled = true;
-        console.log('bahiii', location);
-        console.log('locationvalue');
+        
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
                 this.params.zip = item.short_name;
@@ -485,7 +484,7 @@ class Search extends Temps {
         if(paramsFor != 'prod') {
             this.searchBtn.classList.add('pulse');
         }
-        console.log('bahiiii', this.params);
+        
         this.inputLoc.value = (this.params["city"] != ''? this.params["city"] + ', ' : '') + (this.params["state"] != '' ? this.params["state"] + ', ' : '') + (this.params.zip  != '' ? this.params.zip + ', ' : '') + (this.params.country != ''? this.params.country : '');
         document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
