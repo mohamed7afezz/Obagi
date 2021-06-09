@@ -64,7 +64,6 @@ const HeroSlider = ({ node }) => {
     //     }
 
     // }, [])
-    let blogPage = heroClass && heroClass == "blog-lp-hero"? true : false;
 
 
     const SliderSetting = {
@@ -83,7 +82,7 @@ const HeroSlider = ({ node }) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    dots: blogPage,
+                    dots: false,
                 }
             },
         ]
