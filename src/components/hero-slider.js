@@ -64,6 +64,8 @@ const HeroSlider = ({ node }) => {
     //     }
 
     // }, [])
+    let blogPage = heroClass && heroClass == "blog-lp-hero"? true : false;
+
 
     const SliderSetting = {
         infinite: true,
@@ -81,7 +83,7 @@ const HeroSlider = ({ node }) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    dots: false,
+                    dots: blogPage,
                 }
             },
         ]
@@ -89,7 +91,6 @@ const HeroSlider = ({ node }) => {
 
     let pageType = node.field_page_type ? node.field_page_type : null
     let heroClass = node.field_slider_class ? node.field_slider_class : null
-
     function fixlink(changelink) {
 
 

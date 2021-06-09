@@ -71,6 +71,8 @@ import ImagesForm from './images-and-form';
 import ProffC from './profc';
 import WhatWeProvide from './whatweprovide';
 import CustomerCareFullHtml from './contest-rules';
+import ArticleVideo from './article-video';
+import ProductsArticle from './products-article';
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -142,7 +144,9 @@ const componentsMap = {
     paragraph__professional_c_section : ProffC,
     paragraph__products_we_provide : WhatWeProvide,
     paragraph__images_and_form: ImagesForm,
-    paragraph__customer_care_full_html :CustomerCareFullHtml
+    paragraph__customer_care_full_html :CustomerCareFullHtml,
+    paragraph__article_video: ArticleVideo,
+    paragraph__products_article: ProductsArticle
 }
 
 export const getParagraph = node => {

@@ -3098,11 +3098,13 @@ transform: rotate(0);
   z-index: -99;
   opacity: 0;
 }
-.permier-video-link .video-wrapper{
+.permier-video-link .video-wrapper, 
+.article-video-link .video-wrapper{
 position: unset;
 min-height: 0;
 }
-.permier-video-link{
+.permier-video-link,
+.article-video-link{
   position: relative;
 }
 .type-1{

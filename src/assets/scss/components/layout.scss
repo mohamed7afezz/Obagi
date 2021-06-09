@@ -4747,11 +4747,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
 .blog-lp-hero {
   .textWrapperSlider {
-    background-image: linear-gradient(
-      to top,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(91, 140, 164, 0.75)
-    );
+    background-image: linear-gradient(to bottom, #d7e5e8, #fff);
     position: relative;
     &::after {
       content: "";
@@ -4765,6 +4761,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
       @include lg-screen {
         content: none;
+        background-image: linear-gradient(to top, #d7e5e8, #fff);
       }
     }
   }
@@ -4864,9 +4861,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
           content: none;
       }
     }
-    .colored-col-right {
-        padding-right: 15px;
-    }
+ 
     
 
     .colored-title {
@@ -4884,6 +4879,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
         margin-bottom: 34px;
         font-size: 16px;
         line-height: 32px;
+        color: #fefeff;
     }
 
     .colored-link {
@@ -4894,6 +4890,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   @include lg-screen {
       .colored-small-section {
           padding-bottom: 235px;
+      }
+      .colored-small-section::before {
+        height: 158px;
+        width: 157px;
+        left: -142px;
       }
     .colored-small-section::after {
         left: 142px;
@@ -4919,5 +4920,63 @@ body.acsb-keynav input[type="radio"].acsb-shown {
         margin-top: 37px;
         margin-bottom: 50px;
     }
+
+    .colored-image {
+      margin-left: 160px;
+      margin-top: 158px;
+    }
+  }
+}
+
+
+.productsArticle .cardContainerflex {
+  border: 2px solid #e5eaf0;
+  border-radius: 6px;
+}
+
+.blog-hero-header {
+  padding-top: 53px;
+  padding-bottom: 56px;
+  text-align: center;
+
+  @include lg-screen {
+    padding-top: 96px;
+    padding-bottom: 125px;
+  }
+}
+
+.blog-header {
+  font-size: 48px;
+  line-height: 64px;
+  font-weight: 300;
+
+  @include lg-screen {
+    font-size: 72px;
+    line-height: 88px;
+  }
+}
+
+.blog-subheader {
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+.blog-inner-title {
+  padding-top: 80px;
+  padding-bottom: 56px;
+  text-align: center;
+
+  @include lg-screen {
+    padding-top: 127px;
+    padding-bottom: 83px;
+  }
+}
+
+.blog-hr {
+  @include lg-screen {
+    margin-top: 111px;
+    border-top: 2px solid #e5eaf0;
   }
 }
