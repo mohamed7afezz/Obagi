@@ -64,6 +64,11 @@ const HeroSlider = ({ node }) => {
     //     }
 
     // }, [])
+    let pageType = node.field_page_type ? node.field_page_type : null
+    let heroClass = node.field_slider_class ? node.field_slider_class : null
+    let blogPage = (heroClass && (heroClass == "blog-lp-hero"))? true : false;
+
+    console.log('bahi blog', blogPage, heroClass);
 
 
     const SliderSetting = {
@@ -82,14 +87,13 @@ const HeroSlider = ({ node }) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    dots: false,
+                    dots: blogPage,
                 }
             },
         ]
     }
 
-    let pageType = node.field_page_type ? node.field_page_type : null
-    let heroClass = node.field_slider_class ? node.field_slider_class : null
+    
     function fixlink(changelink) {
 
 

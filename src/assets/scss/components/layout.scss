@@ -1211,10 +1211,12 @@ p {
     }
   }
 
-  .slick-dots {
-    width: unset;
-    bottom: 76px;
-    right: 77px;
+  @include lg-screen {
+    .slick-dots {
+      width: unset;
+      bottom: 76px;
+      right: 77px;
+    }
   }
 }
 
