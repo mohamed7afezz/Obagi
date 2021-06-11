@@ -4769,26 +4769,26 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 
   .subtitle {
-      padding-top: 56px;
-      padding-bottom: 0;
-      line-height: 32px;
-      letter-spacing: 1.2px;
+    padding-top: 56px;
+    padding-bottom: 0;
+    line-height: 32px;
+    letter-spacing: 1.2px;
   }
 
   .heroTitle {
-      padding-top: 46px;
-      padding-right: 0;
-      line-height: 56px;
+    padding-top: 46px;
+    padding-right: 0;
+    line-height: 56px;
   }
   .heroDesc {
-      padding-top: 28px;
-      font-size: 16px;
-      line-height: 24px;
+    padding-top: 28px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .heroLink {
-      margin-top: 50px;
-      margin-bottom: 56px;
+    margin-top: 50px;
+    margin-bottom: 56px;
   }
 
   @include lg-screen {
@@ -4808,30 +4808,29 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
 
     .subtitle {
-        padding-top: 110px;
+      padding-top: 110px;
     }
 
     .heroTitle {
-        font-size: 48px;
-        line-height: 64px;
-        padding-top: 40px;
+      font-size: 48px;
+      line-height: 64px;
+      padding-top: 40px;
     }
 
     .heroDesc {
-        font-size: 24px;
-        line-height: 40px;
-        letter-spacing: 1.8px;
-        padding-top: 37px;
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 1.8px;
+      padding-top: 37px;
     }
     .heroLink {
-        margin-top: 50px;
-        margin-bottom: 245px;
+      margin-top: 50px;
+      margin-bottom: 245px;
     }
   }
 }
 
 .blog-lp {
-
   .colored-subtitle::before {
     background-color: #43c6da;
   }
@@ -4840,12 +4839,12 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     padding-bottom: 46px;
     // line-height: 32px;
     letter-spacing: 1.2px;
-}
+  }
 
   @media (max-width: 991px) {
     .colored-image {
-        margin-top: 0;
-      }
+      margin-top: 0;
+    }
     .colored-first-section {
       padding: 0;
       &::after {
@@ -4860,67 +4859,64 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       }
 
       &::before {
-          content: none;
+        content: none;
       }
     }
- 
-    
 
     .colored-title {
-        font-size: 40px;
-        line-height: 56px;
-        margin: 0;
+      font-size: 40px;
+      line-height: 56px;
+      margin: 0;
     }
 
     .colored-description {
-
-        p {
-            padding: 0;
-        }
-        margin-top: 28px;
-        margin-bottom: 34px;
-        font-size: 16px;
-        line-height: 32px;
-        color: #fefeff;
+      p {
+        padding: 0;
+      }
+      margin-top: 28px;
+      margin-bottom: 34px;
+      font-size: 16px;
+      line-height: 32px;
+      color: #fefeff;
     }
 
     .colored-link {
-        margin-bottom: 56px;
+      margin-bottom: 56px;
     }
   }
 
   @include lg-screen {
-      .colored-small-section {
-          padding-bottom: 235px;
-      }
-      .colored-small-section::before {
-        height: 158px;
-        width: 157px;
-        left: -142px;
-      }
+    .colored-small-section {
+      padding-bottom: 235px;
+    }
+    .colored-small-section::before {
+      height: 158px;
+      width: 157px;
+      left: -142px;
+    }
     .colored-small-section::after {
-        left: 142px;
-        height: 235px;
-        width: 117px;
+      left: 142px;
+      height: 235px;
+      width: 117px;
     }
 
     .colored-subtitle {
-        padding-top: 277px;
-        padding-bottom: 40px;
+      padding-top: 277px;
+      padding-bottom: 40px;
     }
 
     .colored-title {
-        font-size: 48px;
-        line-height: 64px;
+      font-size: 48px;
+      line-height: 64px;
     }
-    .colored-description{
-        font-size: 24px;
-        line-height: 40px;
-        letter-spacing: 1.8px;
-        font-weight: 300;
-        color: rgba(254, 254, 254, 0.8);
-        margin-top: 37px;
-        margin-bottom: 50px;
+    .colored-description {
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 1.8px;
+      font-weight: 300;
+      color: rgba(254, 254, 254, 0.8);
+      margin-top: 37px;
+      margin-bottom: 50px;
     }
 
     .colored-image {
@@ -4929,7 +4925,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
   }
 }
-
 
 .productsArticle .cardContainerflex {
   border: 2px solid #e5eaf0;
@@ -4981,4 +4976,199 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     margin-top: 111px;
     border-top: 2px solid #e5eaf0;
   }
+}
+
+.blog-hero {
+  .share-blog {
+    padding: 15px 18px;
+    flex: 0 0 35%;
+    background: transparent;
+    border: 0;
+    color: #132466;
+    font-size: 12px;
+    line-height: 32px;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 6px;
+    border: solid 1px #122466;
+    img {
+      margin-right: 8px;
+    }
+    @include lg-screen {
+      text-align: left;
+      display: flex;
+    }
+  }
+
+  .blog-img-col {
+    padding: 0;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 32px;
+    letter-spacing: 0.9px;
+    margin: 40px 0;
+
+    @include lg-screen {
+      font-size: 16px;
+      letter-spacing: 1.2px;
+      margin: 120px 0 54px;
+    }
+  }
+
+  .blog-header {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 300;
+    margin-bottom: 19px;
+
+    @include lg-screen {
+      font-size: 72px;
+      line-height: 96px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .author-share {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    
+    @include lg-screen {
+      max-width: 300px;
+      margin-bottom: 33px;
+    }
+  }
+
+  .author-name {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 32px;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    font-weight: 900;
+
+    @include lg-screen {
+      font-size: 16px;
+      line-height: 1.2px;
+    }
+  }
+}
+
+.blog-text {
+  font-size: 16px;
+  line-height: 24px;
+
+  @include lg-screen {
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 300;
+  }
+}
+
+.blog-product-card {
+  margin-bottom: 32px;
+  .the-product-card {
+    padding-top: 32px;
+  }
+
+  .cardContainerflex {
+    border-radius: 6px;
+    border: solid 2px #e5eaf0;
+  }
+
+  @include lg-screen {
+    margin-bottom: 0;
+    .the-product-card {
+      padding-top: 0;
+    }
+  }
+}
+
+.blog-tags {
+  margin: 80px 0;
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 900;
+    margin-bottom: 23px;
+  }
+
+  a {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #132466;
+    text-decoration: underline;
+  }
+
+  @include lg-screen {
+    margin: 120px 0 184px;
+  }
+}
+
+.blog-related-title {
+  text-align: center;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 48px;
+  margin-bottom: 50px;
+
+  @include lg-screen {
+    font-size: 48px;
+    line-height: 64px;
+    margin-bottom: 68px;
+  }
+}
+
+.blog-related-section {
+  .the-product-card {
+    padding-top: 0;
+  }
+  .cardContainerflex {
+    border-radius: 6px;
+    border: solid 2px #e5eaf0;
+  }
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide {
+    height: inherit !important;
+    padding: 0;
+    & > div {
+      height: 100%;
+
+      & > div {
+        height: 100%;
+      }
+    }
+
+    @include lg-screen {
+      padding-top: 20px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+.blog-share-title, .blog-share-text {
+
+  font-size: 20px;
+  line-height: 28px;
+  color: #132466;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  @include md-screen{
+      font-size: 24px;
+      line-height: 40px;
+      color: #132466;
+  }
+}
+.blog-share-title {
+  @extend %futurapt-bold;
 }

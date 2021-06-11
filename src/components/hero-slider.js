@@ -68,8 +68,6 @@ const HeroSlider = ({ node }) => {
     let heroClass = node.field_slider_class ? node.field_slider_class : null
     let blogPage = (heroClass && (heroClass == "blog-lp-hero"))? true : false;
 
-    console.log('bahi blog', blogPage, heroClass);
-
 
     const SliderSetting = {
         infinite: true,
