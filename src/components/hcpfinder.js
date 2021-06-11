@@ -384,7 +384,20 @@ export default function Finder() {
           <div className="col map" id="map" style={{ height: "500px" }}></div>
         </div>
         <div class="row">
-          <p class="finder-foot finder-foot-1">
+        <p class="finder-foot finder-foot-1">
+        Obagi Premier Partners are some of the most experienced with the transformative skincare solutions 
+        that Obagi provides. They are also experts in the art of the Obagi patient consultation, 
+        a comfortable, guided, consultative approach during which practitioner and patient work 
+        together to develop a comprehensive skin health plan.
+        </p>
+        <p class="finder-foot">Additionally, Premier Partners have access to unique, curated Obagi offerings
+         and product sets, get exclusive first looks at new Obagi products, and are among 
+         the first to carry new Obagi innovations that may benefit their patients.
+        </p>
+          <p class="finder-foot">
+          Utilize the interactive Physician Finder and look for the Obagi Premier Partner badge to find a top Obagi provider near you !
+          </p>
+          <p class="finder-foot">
             {" "}
             *Products containing hydroquinone are not available in select states
             including MA, MT, NH, NY, and TX, due to state regulations regarding
