@@ -11,7 +11,7 @@ export default function HTML(props) {
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMDERmCDcoEBOALnRcwjdf02Cfsk1r7Q&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXmP0xZjh1n2Zj8P_bS-c_fzMRkGSOU54&libraries=places"></script>
 
 
         {/* <script src="https://dev-obagi.azurewebsites.net/api/core/assets/vendor/jquery/jquery.min.js?v=3.4.1"></script> */}
