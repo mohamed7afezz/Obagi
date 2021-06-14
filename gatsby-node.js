@@ -172,15 +172,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               },
-              allTaxonomyTermBlogs {
-                edges {
-                  node {
-                    path {
-                      alias
-                    }
-                  }
-                }
-              },
+        
               
         }
     `);
