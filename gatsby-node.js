@@ -181,16 +181,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               },
-              allNodeBlogPost {
-                edges {
-                  node {
-                    path {
-                      alias
-                    }
-                    drupal_internal__nid
-                  }
-                }
-              },
+              
         }
     `);
 
@@ -206,17 +197,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   });
 
 
-  result.data.allNodeBlogPost.edges.forEach(({ node }) => {
-    node.path.alias ?
-      createPage({
-        path: node.path.alias,
-        component: blogPostTemp,
-        context: {
-          slug: node.path.alias,
-          nodetype: 'blog'
-        }
-      }) : ""
-  });
+  
 
 
   result.data.allNodeClinicalProduct.edges.forEach(({ node }) => {
