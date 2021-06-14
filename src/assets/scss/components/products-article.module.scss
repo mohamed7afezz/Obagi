@@ -25,8 +25,8 @@
 
   @include lg-screen {
     background-color: transparent;
-    order: 10;
-    top: -160px;
+    // order: 10;
+    top: -212px;
     margin-bottom: -160px;
 
     &::before {
@@ -109,5 +109,18 @@
   &:hover {
     background-color: #fff;
     color: #122466;
+  }
+}
+
+
+.left-padding {
+  @include lg-screen {
+    padding-left: 0;
+  }
+}
+
+.right-padding {
+  @include lg-screen {
+    padding-right: 0;
   }
 }

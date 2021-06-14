@@ -12,12 +12,21 @@ const ProductsArticle = ({ node }) => {
   return (
     <div className={`container-fluid productsArticle ${articleStyles.container}`}>
       <div className={`row`}>
-        <div className={`col-12 col-lg-4 offset-lg-1 ${articleStyles.colPadding}`}>
+        <div className={`col-12 col-lg-4 offset-lg-1 ${articleStyles.colPadding} ${articleStyles.rightPadding}`}>
           {node.relationships
             && node.relationships.field_article_image
             && node.relationships.field_article_image.localFile
             && node.relationships.field_article_image.localFile.childImageSharp ?
             <div className={`${articleStyles.image}`}><Img fluid={node.relationships.field_article_image.localFile.childImageSharp.fluid} /></div> : ""}
+        </div>
+
+        
+        <div className={`col-12 col-lg-6 ${articleStyles.colPadding} ${articleStyles.leftPadding}`}>
+            {node.relationships
+            && node.relationships.field_article_product_image
+            && node.relationships.field_article_product_image.localFile
+            && node.relationships.field_article_product_image.localFile.childImageSharp ?
+              <div className={`${articleStyles.productImg}`}><Img fluid={node.relationships.field_article_product_image.localFile.childImageSharp.fluid} /></div> : ""}
         </div>
 
         <div className={`col-12 col-lg-9 offset-lg-2 ${articleStyles.textCol}`}>
@@ -29,7 +38,8 @@ const ProductsArticle = ({ node }) => {
           </div>
         </div>
 
-        {node.relationships
+
+        {/* {node.relationships
           && node.relationships.field_croduct_card ?
 
           node.relationships.field_croduct_card.map((item, index) => {
@@ -80,7 +90,7 @@ const ProductsArticle = ({ node }) => {
 
           )})
 
-          : ""}
+          : ""} */}
       </div>
     </div>
   )
@@ -106,6 +116,15 @@ export const fragment = graphql`
           }
           relationships {
             field_article_image {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            field_article_product_image {
               localFile {
                 childImageSharp {
                   fluid {
