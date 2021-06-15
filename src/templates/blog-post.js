@@ -151,7 +151,7 @@ const BlogPost = props => {
             <div class="modal-body">
               <div class="share-wrap  mt-35 mb-50">
                 <p className={["text-center blog-share-title"].join(" ")}><span>Share</span></p>
-                <p className={["text-center blog-share-text"].join(" ")}><span dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></span></p>
+                {data.nodeBlogPost.field_title && data.nodeBlogPost.field_title.processed? <p className={["text-center blog-share-text"].join(" ")}><span dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></span></p> : ""}
                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
@@ -169,6 +169,10 @@ export const pageQuery = graphql`
 query($slug: String!) {
     nodeBlogPost (fields: { slug: { eq: $slug } }) {
       id
+      field_blog_type
+      field_blog_summary {
+        processed
+      }
       field_subtitle {
         processed
       }
@@ -185,6 +189,15 @@ query($slug: String!) {
           name
           path {
             alias
+          }
+        }
+        field_blog_thumbnail {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
         field_hero_image {
