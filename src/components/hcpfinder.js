@@ -391,11 +391,19 @@ export default function Finder() {
           </div>
           <div className="col-12 col-lg-10 tab-padding">
             <p class="finder-foot finder-foot-1">
-              *Products containing hydroquinone are not available in select states including MA, MT, NH, NY, and TX, due to state regulations regarding the ability of physicians to dispense prescription drug products in their offices.
+            Obagi Premier Partners are some of the most experienced with the transformative skincare solutions that Obagi provides. They are also experts in the art of the Obagi patient consultation, a comfortable, guided, consultative approach during which practitioner and patient work together to develop a comprehensive skin health plan.
         </p>
-            <p class="finder-foot">Not all locations carry the full Obagi line of skin care products. We recommend contacting the location ahead of time to inquire about product availability to confirm they carry the products.
+            <p class="finder-foot">Additionally, Premier Partners have access to unique, curated Obagi offerings and product sets, get exclusive first looks at new Obagi products, and are among the first to carry new Obagi innovations that may benefit their patients
+        </p>
+            <p class="finder-foot">Utilize the interactive Physician Finder and look for the Obagi Premier Partner badge to find a top Obagi provider near you!
         </p>
           </div>
+          <p class="finder-foot">
+            *Products containing hydroquinone are not available in select states including MA, MT, NH, NY, and TX, due to state regulations regarding the ability of physicians to dispense prescription drug products in their offices.
+          </p>
+           <p class="finder-foot">
+            Not all locations carry the full Obagi line of skin care products. We recommend contacting the location ahead of time to inquire about product availability to confirm they carry the products.
+          </p>
           <p class="finder-foot">
             The names and contact information for physicians that can be found through our “Find an Obagi” physician locator are provided merely as a convenience to you and do not constitute or imply our endorsement or recommendation of the physicians or their services. We make no representations or warranties of any kind as to services provided by any of the physicians listed, and expressly disclaim any and all liability for damages, including without limitation, direct, incidental, special, consequential, indirect, or punitive damages relating to your use of the information provided or the actions of any of the physicians listed.
           </p>
