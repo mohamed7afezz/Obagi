@@ -146,9 +146,9 @@ const componentsMap = {
     paragraph__products_we_provide : WhatWeProvide,
     paragraph__images_and_form: ImagesForm,
     paragraph__customer_care_full_html :CustomerCareFullHtml,
-    // paragraph__article_video: ArticleVideo,
-    // paragraph__products_article: ProductsArticle,
-    // paragraph__blog_product_paragraph: BlogProduct
+    paragraph__article_video: ArticleVideo,
+    paragraph__products_article: ProductsArticle,
+    paragraph__blog_product_paragraph: BlogProduct
 }
 
 export const getParagraph = node => {
