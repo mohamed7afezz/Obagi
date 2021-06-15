@@ -1,436 +1,436 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import { getParagraph } from "../components/paragraphs-helper"
-import Img from 'gatsby-image'
-import share from '../assets/images/product-images/share.svg'
-import ProductCard from '../components/productcard'
-import Slider from "react-slick"
-import fb from "../assets/images/product-images/facebook.svg"
-import tw from "../assets/images/product-images/twitter.svg"
+// import React, { useContext, useEffect, useState } from 'react';
+// import { graphql, Link } from 'gatsby';
+// import Layout from '../components/layout';
+// import SEO from '../components/seo';
+// import { getParagraph } from "../components/paragraphs-helper"
+// import Img from 'gatsby-image'
+// import share from '../assets/images/product-images/share.svg'
+// import ProductCard from '../components/productcard'
+// import Slider from "react-slick"
+// import fb from "../assets/images/product-images/facebook.svg"
+// import tw from "../assets/images/product-images/twitter.svg"
 
-import { checkStock } from '../assets/js/stock';
-const baseUrl = process.env.Base_URL;
+// import { checkStock } from '../assets/js/stock';
+// const baseUrl = process.env.Base_URL;
 
-const BlogPost = props => {
+// const BlogPost = props => {
 
-  useEffect(() => {
-    if(typeof window != undefined ){
-      checkStock(baseUrl);
-    }
-  }, []);
+//   useEffect(() => {
+//     if(typeof window != undefined ){
+//       checkStock(baseUrl);
+//     }
+//   }, []);
 
-  const nodeType = props.pageContext.nodetype;
-  const paragraphs = props.data.nodeBlogPost.relationships.paragraphs.map(getParagraph)
-  const data = props.data
-
-
-
-  const SliderSetting = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    arrows: false,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          dots: true,
-          slidesToShow: 1,
-        }
-      },
-    ]
-  }
+//   const nodeType = props.pageContext.nodetype;
+//   const paragraphs = props.data.nodeBlogPost.relationships.paragraphs.map(getParagraph)
+//   const data = props.data
 
 
 
-  return (
-    <Layout >
-      <div className={`container-fluid blog-hero`}>
-        <div className={`row`}>
-          <div className={`col-12 blog-img-col`}>
-            {data.nodeBlogPost.relationships
-              && data.nodeBlogPost.relationships.field_hero_image
-              && data.nodeBlogPost.relationships.field_hero_image.localFile
-              && data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp ?
-              <Img fluid={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.fluid} /> : ""}
-          </div>
-          <div className={`col-12 col-lg-8 offset-lg-2`}>
-            {data.nodeBlogPost.field_subtitle ? <div className={`subtitle`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_subtitle.processed }}></div> : ""}
-            {data.nodeBlogPost.field_title ? <div className={`blog-header`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></div> : ""}
-            <div className={`author-share`}>
-              {data.nodeBlogPost.field_author_name ? <div className={`author-name`}>By&nbsp;<p dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_author_name.processed }}></p> </div> : ""}
-              <button data-toggle="modal" data-target="#sharing" className={`col-12 share-blog`}>
-                <img alt="img" src={share} /> Share
-            </button>
-            </div>
+//   const SliderSetting = {
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 4,
+//     arrows: false,
+//     dots: true,
+//     responsive: [
+//       {
+//         breakpoint: 1024,
+//         settings: {
+//           dots: true,
+//           slidesToShow: 1,
+//         }
+//       },
+//     ]
+//   }
 
 
-            {paragraphs}
 
-            {data.nodeBlogPost.relationships && data.nodeBlogPost.relationships.field_blog_tag ?
-              <div className={`blog-tags`}>
-                <p>Tags</p>
-                <Link to={data.nodeBlogPost.relationships.field_blog_tag.path.alias ? data.nodeBlogPost.relationships.field_blog_tag.path.alias : '#'}>{data.nodeBlogPost.relationships.field_blog_tag.name}</Link>
-              </div>
-              : ""}
-          </div>
-        </div>
+//   return (
+//     <Layout >
+//       <div className={`container-fluid blog-hero`}>
+//         <div className={`row`}>
+//           <div className={`col-12 blog-img-col`}>
+//             {data.nodeBlogPost.relationships
+//               && data.nodeBlogPost.relationships.field_hero_image
+//               && data.nodeBlogPost.relationships.field_hero_image.localFile
+//               && data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp ?
+//               <Img fluid={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.fluid} /> : ""}
+//           </div>
+//           <div className={`col-12 col-lg-8 offset-lg-2`}>
+//             {data.nodeBlogPost.field_subtitle ? <div className={`subtitle`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_subtitle.processed }}></div> : ""}
+//             {data.nodeBlogPost.field_title ? <div className={`blog-header`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></div> : ""}
+//             <div className={`author-share`}>
+//               {data.nodeBlogPost.field_author_name ? <div className={`author-name`}>By&nbsp;<p dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_author_name.processed }}></p> </div> : ""}
+//               <button data-toggle="modal" data-target="#sharing" className={`col-12 share-blog`}>
+//                 <img alt="img" src={share} /> Share
+//             </button>
+//             </div>
 
-        {data.nodeBlogPost.relationships.field_related_products ?
-          <>
-            <div className={`row`}>
-              <div className={`col-12`}>
-                {data.nodeBlogPost.relationships.field_related_products.field_related_products_title ?
-                  <div className={`blog-related-title`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.relationships.field_related_products.field_related_products_title.processed }}></div> : ""}
-              </div>
-            </div>
-            <div className={`row blog-related-section`}>
-              <div style={{ width: "100%" }}>
-                <Slider {...SliderSetting}>
-                  {data.nodeBlogPost.relationships.field_related_products.relationships && data.nodeBlogPost.relationships.field_related_products.relationships.field_related_products ?
-                    data.nodeBlogPost.relationships.field_related_products.relationships.field_related_products.map((item, index) => {
-                      return (
-                        <div className={`col-12`}>
-                          <ProductCard
-                            producttitle={item.title}
-                            productId={item.field_medical_product ? item.field_medical_product : item.field_clinical_product}
-                            price={item.field_clinical_price ? item.field_clinical_price : item.field_medical_price ? item.field_medical_price : ""}
-                            Sku={item.field_medical_sku ? item.field_medical_sku : item.field_clinical_sku ? item.field_clinical_sku : ""}
-                            minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
-                            premierid={item.field_medical_premier_points_id ? item.field_medical_premier_points_id : ""}
-                            productCat={item.field_medical_id ? "medical" : "clinical"}
-                            feild_preimer={item.field_medical_premier_points ? item.field_medical_premier_points : ""}
-                            productdescription={item.field_medical_description ? { __html: item.field_medical_description.processed } : item.field_clinical_description ? { __html: item.field_clinical_description.processed } : ""}
-                            productLink={item.path ? item.path.alias : ""}
-                            productimage={item.relationships &&
-                              item.relationships.field_medical_image &&
-                              item.relationships.field_medical_image[0] &&
-                              item.relationships.field_medical_image[0].localFile &&
-                              item.relationships.field_medical_image[0].localFile.childImageSharp ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid
-                              :
-                              item.relationships &&
-                                item.relationships.field_clinical_image &&
-                                item.relationships.field_clinical_image[0] &&
-                                item.relationships.field_clinical_image[0].localFile &&
-                                item.relationships.field_clinical_image[0].localFile.childImageSharp ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
-                                : ""}
-                                rate="0"
-                          />
-                        </div>
-                      )
-                    })
 
-                    : ""}
-                </Slider>
-              </div>
-            </div>
-          </>
-          : ""}
-      </div>
-      <div
-        class="modal fade"
-        id="sharing"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="checkModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="share-wrap  mt-35 mb-50">
-                <p className={["text-center blog-share-title"].join(" ")}><span>Share</span></p>
-                <p className={["text-center blog-share-text"].join(" ")}><span dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></span></p>
-                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
-                <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+//             {paragraphs}
 
-    </Layout>
-  )
-}
+//             {data.nodeBlogPost.relationships && data.nodeBlogPost.relationships.field_blog_tag ?
+//               <div className={`blog-tags`}>
+//                 <p>Tags</p>
+//                 <Link to={data.nodeBlogPost.relationships.field_blog_tag.path.alias ? data.nodeBlogPost.relationships.field_blog_tag.path.alias : '#'}>{data.nodeBlogPost.relationships.field_blog_tag.name}</Link>
+//               </div>
+//               : ""}
+//           </div>
+//         </div>
 
-export default BlogPost;
-export const pageQuery = graphql`
-query($slug: String!) {
-    nodeBlogPost (fields: { slug: { eq: $slug } }) {
-      id
-      field_subtitle {
-        processed
-      }
-      field_title {
-        processed
-      }
-      relationships {
-        paragraphs: field_blog_components {
-          type: __typename
-          ...allParagraphBlogProductParagraph
-          ...paragraphFullHtmlContent
-        }
-        field_blog_tag {
-          name
-          path {
-            alias
-          }
-        }
-        field_hero_image {
-          localFile {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        field_related_products {
-          field_related_products_title {
-            processed
-          }
-          relationships {
-            field_related_products {
-              ... on node__clinical_product {
-                id
-                title
-                path {
-                  alias
-                }
-                field_clinical_description {
-                  processed
-                }
-                field_clinical_price
-                field_clinical_sku
-                field_clinical_id
-                field_min_quantity
-                relationships {
-                  field_clinical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              ... on node__medical_product {
-                id
-                field_medical_id
-                field_medical_description {
-                  processed
-                }
-                field_medical_premier_points
-                field_medical_premier_points_id
-                field_medical_price
-                field_medical_sku
-                field_min_quantity
-                path {
-                  alias
-                }
-                title
-                relationships {
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      field_author_name {
-        processed
-      }
-    }
-}
-`;
-/*
-export const blogPostQuery = graphql`
-query($slug: String!) {
-    nodeBlogPost(fields: { slug: { eq: $slug } }) {
+//         {data.nodeBlogPost.relationships.field_related_products ?
+//           <>
+//             <div className={`row`}>
+//               <div className={`col-12`}>
+//                 {data.nodeBlogPost.relationships.field_related_products.field_related_products_title ?
+//                   <div className={`blog-related-title`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.relationships.field_related_products.field_related_products_title.processed }}></div> : ""}
+//               </div>
+//             </div>
+//             <div className={`row blog-related-section`}>
+//               <div style={{ width: "100%" }}>
+//                 <Slider {...SliderSetting}>
+//                   {data.nodeBlogPost.relationships.field_related_products.relationships && data.nodeBlogPost.relationships.field_related_products.relationships.field_related_products ?
+//                     data.nodeBlogPost.relationships.field_related_products.relationships.field_related_products.map((item, index) => {
+//                       return (
+//                         <div className={`col-12`}>
+//                           <ProductCard
+//                             producttitle={item.title}
+//                             productId={item.field_medical_product ? item.field_medical_product : item.field_clinical_product}
+//                             price={item.field_clinical_price ? item.field_clinical_price : item.field_medical_price ? item.field_medical_price : ""}
+//                             Sku={item.field_medical_sku ? item.field_medical_sku : item.field_clinical_sku ? item.field_clinical_sku : ""}
+//                             minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
+//                             premierid={item.field_medical_premier_points_id ? item.field_medical_premier_points_id : ""}
+//                             productCat={item.field_medical_id ? "medical" : "clinical"}
+//                             feild_preimer={item.field_medical_premier_points ? item.field_medical_premier_points : ""}
+//                             productdescription={item.field_medical_description ? { __html: item.field_medical_description.processed } : item.field_clinical_description ? { __html: item.field_clinical_description.processed } : ""}
+//                             productLink={item.path ? item.path.alias : ""}
+//                             productimage={item.relationships &&
+//                               item.relationships.field_medical_image &&
+//                               item.relationships.field_medical_image[0] &&
+//                               item.relationships.field_medical_image[0].localFile &&
+//                               item.relationships.field_medical_image[0].localFile.childImageSharp ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid
+//                               :
+//                               item.relationships &&
+//                                 item.relationships.field_clinical_image &&
+//                                 item.relationships.field_clinical_image[0] &&
+//                                 item.relationships.field_clinical_image[0].localFile &&
+//                                 item.relationships.field_clinical_image[0].localFile.childImageSharp ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
+//                                 : ""}
+//                                 rate="0"
+//                           />
+//                         </div>
+//                       )
+//                     })
 
-          id
-          field_subtitle {
-            processed
-          }
-          field_title {
-            processed
-          }
-          relationships {
-            field_blog_components {
-              ... on paragraph__full_html_content {
-                id
-                field_full_html {
-                  processed
-                }
-              }
-              ... on paragraph__blog_product_paragraph {
-                id
-                field_full_html_content {
-                  processed
-                }
-                relationships {
-                  field_product {
-                    ... on node__clinical_product {
-                      id
-                      field_clinical_id
-                      field_clinical_description {
-                        processed
-                      }
-                      field_clinical_price
-                      field_clinical_sku
-                      field_min_quantity
-                      path {
-                        alias
-                        pid
-                        langcode
-                      }
-                      title
-                      relationships {
-                        field_clinical_image {
-                          localFile {
-                            childImageSharp {
-                              fluid {
-                                src
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    ... on node__medical_product {
-                      id
-                      field_medical_id
-                      field_medical_price
-                      field_medical_premier_points_id
-                      field_medical_premier_points
-                      field_medical_description {
-                        processed
-                      }
-                      field_medical_sku
-                      field_min_quantity
-                      title
-                      path {
-                        alias
-                      }
-                      relationships {
-                        field_medical_image {
-                          localFile {
-                            childImageSharp {
-                              fluid {
-                                src
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            field_blog_tag {
-              name
-              path {
-                alias
-              }
-            }
-            field_hero_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    src
-                  }
-                }
-              }
-            }
-            field_related_products {
-              field_related_products_title {
-                processed
-              }
-              relationships {
-                field_related_products {
-                  ... on node__clinical_product {
-                    id
-                    title
-                    path {
-                      alias
-                    }
-                    field_clinical_description {
-                      processed
-                    }
-                    field_clinical_price
-                    field_clinical_sku
-                    field_clinical_id
-                    field_min_quantity
-                    relationships {
-                      field_clinical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid {
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                  ... on node__medical_product {
-                    id
-                    field_medical_id
-                    field_medical_description {
-                      processed
-                    }
-                    field_medical_premier_points
-                    field_medical_premier_points_id
-                    field_medical_price
-                    field_medical_sku
-                    field_min_quantity
-                    path {
-                      alias
-                    }
-                    title
-                    relationships {
-                      field_medical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid {
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          field_author_name {
-            processed
-          }
-        }
+//                     : ""}
+//                 </Slider>
+//               </div>
+//             </div>
+//           </>
+//           : ""}
+//       </div>
+//       <div
+//         class="modal fade"
+//         id="sharing"
+//         tabindex="-1"
+//         role="dialog"
+//         aria-labelledby="checkModalLabel"
+//         aria-hidden="true"
+//       >
+//         <div class="modal-dialog" role="document">
+//           <div class="modal-content">
+//             <div class="modal-header">
+//               <button
+//                 type="button"
+//                 class="close"
+//                 data-dismiss="modal"
+//                 aria-label="Close"
+//               ></button>
+//             </div>
+//             <div class="modal-body">
+//               <div class="share-wrap  mt-35 mb-50">
+//                 <p className={["text-center blog-share-title"].join(" ")}><span>Share</span></p>
+//                 <p className={["text-center blog-share-text"].join(" ")}><span dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></span></p>
+//                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
+//                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
 
-  }
+//     </Layout>
+//   )
+// }
 
-`*/
+// export default BlogPost;
+// export const pageQuery = graphql`
+// query($slug: String!) {
+//     nodeBlogPost (fields: { slug: { eq: $slug } }) {
+//       id
+//       field_subtitle {
+//         processed
+//       }
+//       field_title {
+//         processed
+//       }
+//       relationships {
+//         paragraphs: field_blog_components {
+//           type: __typename
+//           ...allParagraphBlogProductParagraph
+//           ...paragraphFullHtmlContent
+//         }
+//         field_blog_tag {
+//           name
+//           path {
+//             alias
+//           }
+//         }
+//         field_hero_image {
+//           localFile {
+//             childImageSharp {
+//               fluid {
+//                 ...GatsbyImageSharpFluid
+//               }
+//             }
+//           }
+//         }
+//         field_related_products {
+//           field_related_products_title {
+//             processed
+//           }
+//           relationships {
+//             field_related_products {
+//               ... on node__clinical_product {
+//                 id
+//                 title
+//                 path {
+//                   alias
+//                 }
+//                 field_clinical_description {
+//                   processed
+//                 }
+//                 field_clinical_price
+//                 field_clinical_sku
+//                 field_clinical_id
+//                 field_min_quantity
+//                 relationships {
+//                   field_clinical_image {
+//                     localFile {
+//                       childImageSharp {
+//                         fluid {
+//                           ...GatsbyImageSharpFluid
+//                         }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//               ... on node__medical_product {
+//                 id
+//                 field_medical_id
+//                 field_medical_description {
+//                   processed
+//                 }
+//                 field_medical_premier_points
+//                 field_medical_premier_points_id
+//                 field_medical_price
+//                 field_medical_sku
+//                 field_min_quantity
+//                 path {
+//                   alias
+//                 }
+//                 title
+//                 relationships {
+//                   field_medical_image {
+//                     localFile {
+//                       childImageSharp {
+//                         fluid {
+//                           ...GatsbyImageSharpFluid
+//                         }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//       field_author_name {
+//         processed
+//       }
+//     }
+// }
+// `;
+// /*
+// export const blogPostQuery = graphql`
+// query($slug: String!) {
+//     nodeBlogPost(fields: { slug: { eq: $slug } }) {
+
+//           id
+//           field_subtitle {
+//             processed
+//           }
+//           field_title {
+//             processed
+//           }
+//           relationships {
+//             field_blog_components {
+//               ... on paragraph__full_html_content {
+//                 id
+//                 field_full_html {
+//                   processed
+//                 }
+//               }
+//               ... on paragraph__blog_product_paragraph {
+//                 id
+//                 field_full_html_content {
+//                   processed
+//                 }
+//                 relationships {
+//                   field_product {
+//                     ... on node__clinical_product {
+//                       id
+//                       field_clinical_id
+//                       field_clinical_description {
+//                         processed
+//                       }
+//                       field_clinical_price
+//                       field_clinical_sku
+//                       field_min_quantity
+//                       path {
+//                         alias
+//                         pid
+//                         langcode
+//                       }
+//                       title
+//                       relationships {
+//                         field_clinical_image {
+//                           localFile {
+//                             childImageSharp {
+//                               fluid {
+//                                 src
+//                               }
+//                             }
+//                           }
+//                         }
+//                       }
+//                     }
+//                     ... on node__medical_product {
+//                       id
+//                       field_medical_id
+//                       field_medical_price
+//                       field_medical_premier_points_id
+//                       field_medical_premier_points
+//                       field_medical_description {
+//                         processed
+//                       }
+//                       field_medical_sku
+//                       field_min_quantity
+//                       title
+//                       path {
+//                         alias
+//                       }
+//                       relationships {
+//                         field_medical_image {
+//                           localFile {
+//                             childImageSharp {
+//                               fluid {
+//                                 src
+//                               }
+//                             }
+//                           }
+//                         }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//             field_blog_tag {
+//               name
+//               path {
+//                 alias
+//               }
+//             }
+//             field_hero_image {
+//               localFile {
+//                 childImageSharp {
+//                   fluid {
+//                     src
+//                   }
+//                 }
+//               }
+//             }
+//             field_related_products {
+//               field_related_products_title {
+//                 processed
+//               }
+//               relationships {
+//                 field_related_products {
+//                   ... on node__clinical_product {
+//                     id
+//                     title
+//                     path {
+//                       alias
+//                     }
+//                     field_clinical_description {
+//                       processed
+//                     }
+//                     field_clinical_price
+//                     field_clinical_sku
+//                     field_clinical_id
+//                     field_min_quantity
+//                     relationships {
+//                       field_clinical_image {
+//                         localFile {
+//                           childImageSharp {
+//                             fluid {
+//                               src
+//                             }
+//                           }
+//                         }
+//                       }
+//                     }
+//                   }
+//                   ... on node__medical_product {
+//                     id
+//                     field_medical_id
+//                     field_medical_description {
+//                       processed
+//                     }
+//                     field_medical_premier_points
+//                     field_medical_premier_points_id
+//                     field_medical_price
+//                     field_medical_sku
+//                     field_min_quantity
+//                     path {
+//                       alias
+//                     }
+//                     title
+//                     relationships {
+//                       field_medical_image {
+//                         localFile {
+//                           childImageSharp {
+//                             fluid {
+//                               src
+//                             }
+//                           }
+//                         }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           field_author_name {
+//             processed
+//           }
+//         }
+
+//   }
+
+// `*/
