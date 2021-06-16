@@ -25,7 +25,6 @@ class Temps {
                            <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'Products Available' : 'Product Available'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">View Website</a>` : ''}
                          </div>
                     </div>
-                    <div class="${obj.opp_badge < 1? 'hide' : 'opp_badge col-1'}"></div>
                 </div>
             </div>
 
