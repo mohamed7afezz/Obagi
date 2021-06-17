@@ -5172,3 +5172,361 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 .blog-share-title {
   @extend %futurapt-bold;
 }
+
+
+.blog-card {
+  margin-bottom: 64px;
+  .blog-card-type {
+    margin-top: 40px;
+    line-height: 32px;
+    letter-spacing: 0.9px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    &.medical-blog::before {
+      background-color: #868cd2;
+    }
+
+    &.clinical-blog::before {
+      background-color: #44c4d9;
+    }
+
+
+    @include lg-screen {
+      margin-top: 54px;
+    }
+  }
+
+  .blog-card-title {
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 48px;
+    margin-top: 40px;
+  }
+
+  .blog-card-link {
+    font-size: 12px;
+    // line-height: 56px;
+    letter-spacing: 0.9px;
+    font-weight: 900;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #122466;
+    margin-top: 42px;
+    &::after {
+      position: absolute;
+      content: '\2192';
+      font-size: 17px;
+      right: -34px;
+    }
+  }
+}
+
+.blog-category-page {
+  .slick-initialized {
+    padding-bottom: 0;
+    .slick-slide[data-index="0"] {
+      padding-left: 17px;
+    }
+    @include lg-screen {
+      .slick-slide, .slick-slide[data-index="0"] {
+        padding: 0 38.5px;
+      }
+    }
+  }
+}
+
+.blog-cat-slider {
+  @media (max-width: 991px) {
+    padding-right: 0;
+  }
+  margin-top: 56px;
+  margin-bottom: 48px;
+  padding-top: 34px;
+  padding-bottom: 35px;
+  background-color: #122466;
+
+  @include lg-screen {
+    margin-bottom: 120px;
+    margin-top: 95px;
+  }
+  a {
+    color: #fff;
+    text-transform: uppercase;
+    @include fontStyle(16, 24);
+    letter-spacing: 1.2px;
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      font-weight: 900;
+      text-decoration: none;
+    }
+  }
+
+  a.active-blog {
+    font-weight: 900;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: -17px;
+      height: 8px;
+      width: 8px;
+      background-color: #fff;
+      content: '';
+    }
+
+    @include lg-screen {
+      &::before {
+        left: -25px;
+      }
+    }
+  }
+}
+
+.blog-cat-title {
+  text-align: center;
+  margin-top: 53px;
+  @include fontStyle(48, 64);
+  font-weight: 300;
+  margin-bottom: 14px;
+
+  @include lg-screen {
+    margin-top: 58px;
+    margin-bottom: 30px;
+    @include fontStyle(72, 88);
+
+  }
+}
+
+.blog-cat-desc, .blog-cat-desc h2 {
+  @include fontStyle(16, 24);
+  text-align: center;
+  font-weight: 400;
+
+  @include lg-screen {
+    @include fontStyle(24, 40);
+    font-weight: 300;
+  }
+}
+
+.sidebar-text {
+  background-color: #122466;
+  color: #fff;
+  padding: 39px 26px 16px;
+  @include fontStyle(24, 40);
+  font-weight: 300;
+  text-align: center;
+
+  @include lg-screen {
+    padding-top: 44px;
+    padding-bottom: 17px;
+  }
+}
+
+.sidebar-link {
+  padding: 17px 24px 40px;
+  background-color: #122466;
+  a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 900;
+    display: block;
+    text-align: center;
+    padding: 27px;
+    font-size: 12px;
+    letter-spacing: 0.9px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+
+  }
+  @include md-screen {
+    padding: 18px 76px 49px;
+    a {
+      display: inline-block;
+      padding-left: 100px;
+      padding-right: 100px;
+      &:hover {
+        background-color: #fff;
+        color: #122466;
+      }
+    }
+
+  }
+  @include lg-screen {
+    a {
+      display: block;
+      padding-left: 27px;
+      padding-right: 27px;
+    }
+  }
+}
+
+.blog-filter{
+  position: relative;
+  margin-bottom: 40px;
+
+  @include lg-screen {
+    margin-bottom: 120px;
+  }
+}
+
+.blog-filter-header {
+  
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  padding: 18px 11px 14px;
+  border-radius: 6px;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  color: #122466;
+  text-align: left;
+  border: 0;
+  position: relative;
+  
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 13px;
+    left: 15px;
+    height: 1px;
+    background-color: #000;
+    opacity: 0.2;
+    z-index: 100;
+  }
+  &.collapsed {
+    border: 1px solid #122466;
+    box-shadow: none;
+    &::after {
+      content: none;
+    }
+  }
+
+  @include lg-screen {
+    border: 0;
+    padding: 3px 0 18px;
+    box-shadow: none;
+    @include fontStyle(36, 48);
+    font-weight: 400;
+    &::after {
+      right: 0;
+      left: 0;
+    }
+  }
+}
+
+.blog-filter-body {
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  position: absolute;
+  padding-top: 8px;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  background-color: #fff;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+  &::before {
+    top: -16px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    height: 16px;
+    content: '';
+    position: absolute;
+  }
+  a {
+    @include fontStyle(18, 40);
+    font-weight: 900;
+    padding: 11px 15px 15px 52px;
+    color: #122466;
+    position: relative;
+    display: flex;
+    align-items: center;
+    &::before {
+      position: absolute;
+      content: '';
+      left: 13px;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      border: 1px solid #122466;
+    }
+    &:last-child {
+      border-bottom-right-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &.active-filter {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 16px;
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: #122466;
+      }
+    }
+
+    &:hover {
+      background-color: #122466;
+      color: #fff;
+      text-decoration: none;
+
+      &::before {
+        border-color: #fff;
+      }
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+ 
+  @include lg-screen {
+    box-shadow: none;
+    position: unset;
+    a {
+      padding: 13px 13px 13px 40px;
+      &::before {
+        left: 0;
+      }
+      
+      &:last-child {
+        border-radius: 0;
+      }
+
+      &.active-filter {
+        &::after {
+          left: 3px;
+        }
+
+        &:hover {
+          &::after {
+            background-color: #122466;
+          }
+          &::before {
+            border-color: #122466;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: #fff;
+        color: #122466;
+        &::before {
+          border-color: #122466;
+        }
+     
+      }
+    }
+  }
+}
