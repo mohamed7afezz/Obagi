@@ -5186,13 +5186,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 12px;
     display: flex;
     align-items: center;
-    &.medical-blog::before {
-      background-color: #868cd2;
-    }
 
-    &.clinical-blog::before {
-      background-color: #44c4d9;
-    }
 
 
     @include lg-screen {
@@ -5227,6 +5221,14 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 }
 
+.medical-blog::before {
+  background-color: #868cd2;
+}
+
+.clinical-blog::before {
+  background-color: #44c4d9;
+}
+
 .blog-category-page {
   .slick-initialized {
     padding-bottom: 0;
@@ -5234,9 +5236,9 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       padding-left: 17px;
     }
     @include lg-screen {
-      .slick-slide, .slick-slide[data-index="0"] {
-        padding: 0 38.5px;
-      }
+      // .slick-slide, .slick-slide[data-index="0"] {
+      //   padding: 0 38.5px;
+      // }
     }
   }
 }

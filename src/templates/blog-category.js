@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -14,12 +14,22 @@ const BlogCategory = props => {
   const size = useWindowSize();
   let screenWidth = size.width;
   let largeScreen = 992;
-
+  useEffect(() => {
+    
+    setState({
+      nav1: slider1.current,
+    })
+    
+  }, [])
   console.log('ash blog props', props)
   const nodeType = props.pageContext.nodetype;
   const data = props.data.taxonomyTermBlogs;
   const allData = props.data.allTaxonomyTermBlogs;
-
+  const [chosenFilter, setChosenFilter] = useState(false);
+  const slider1 = useRef()
+  const [state, setState] = useState({
+    nav1: null,
+  })
   const SliderSetting = {
     infinite: false,
     speed: 500,
@@ -50,10 +60,24 @@ const BlogCategory = props => {
   })
 
 
+  function slickGoToslide(int) {
+    slider1.current.slickGoTo(int);
+  }
   console.log('ash category title', parentCategory)
+  console.log('ash chosen', chosenFilter)
   return (
     <Layout>
       <div className={`container-fluid blog-category-page`}>
+        <div className={`row`}>
+          <div className={`col-12`}>
+            <div className={`blog-breadcrumb`}>
+              <Link to="/">Home</Link>/
+              <Link to="/blog-0">Blogs</Link>
+              {parentCategory[0]? <>/<Link to={parentCategory[0].node.path.alias? parentCategory[0].node.path.alias : "#"}>{parentCategory[0].node.name}</Link></> : ""}
+              {chosenFilter? <>/<Link to={chosenFilter.path.alias? chosenFilter.path.alias : "#"}></Link>{chosenFilter.name}</> : ""}
+            </div>
+          </div>
+        </div>
         <div className={`row`}>
           <div className={`col-10 offset-1`}>
             <h1 className={`blog-cat-title`}>{parentCategory[0] ? parentCategory[0].node.name : ""}</h1>
@@ -63,7 +87,7 @@ const BlogCategory = props => {
         <div className={`row`}>
           <div className={`col-12 blog-cat-slider`}>
             <div style={{ width: "100%" }}>
-              <Slider {...SliderSetting}>
+              <Slider ref={slider => (slider1.current = slider)} {...SliderSetting}>
                 {allData.edges.map((item, index) => {
                   {
                     console.log('ash props props', item)
@@ -83,7 +107,7 @@ const BlogCategory = props => {
           </div>
         </div>
         <div className={`row`}>
-          <div className={`col-12 col-lg-3 offset-lg-1 d-lg-none`}>
+          <div className={`col-12 col-lg-3 offset-lg-1 d-lg-none`} id="filterGroup">
             {parentCategory[0]
               && parentCategory[0].node.relationships
               && parentCategory[0].node.relationships.taxonomy_term__blogs
@@ -92,17 +116,18 @@ const BlogCategory = props => {
                 return (
                   <div className={`blog-filter`}>
                     {screenWidth < largeScreen ?
-                      <button className="blog-filter-header collapsed" data-toggle="collapse" data-target="#blogFilter" aria-expanded="false" aria-controls="blogFilter">
+                      <button className="blog-filter-header collapsed" data-toggle="collapse" data-target={`#blogFilter${index}`} aria-expanded="false" aria-controls={`blogFilter${index}`}>
                         {item.name}
                       </button>
                       :
                       <div className="blog-filter-header">{item.name}</div>
                     }
-                    <div id={screenWidth < largeScreen ? "blogFilter" : ""} className={screenWidth < largeScreen ? "collapse blog-filter-body" : "blog-filter-body"} aria-labelledby={screenWidth < largeScreen ? "blogFilter" : ""}>
+                    <div id={screenWidth < largeScreen ? `blogFilter${index}` : ""} className={screenWidth < largeScreen ? "collapse blog-filter-body" : "blog-filter-body"} aria-labelledby={screenWidth < largeScreen ? `blogFilter${index}` : ""} data-parent="#filterGroup">
                       {item.relationships
                         && item.relationships.taxonomy_term__blogs
                         && item.relationships.taxonomy_term__blogs[0] ?
                         item.relationships.taxonomy_term__blogs.map((link, index) => {
+                          // if(link.path.alias && (props.path == link.path.alias)) {setChosenFilter(link)}
                           return (
                             <Link className={link.path.alias && (props.path == link.path.alias) ? `active-filter` : ""} to={link.path.alias ? link.path.alias : "#"}>
                               <span dangerouslySetInnerHTML={{ __html: link.name }}></span>
@@ -133,7 +158,7 @@ const BlogCategory = props => {
                           item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
 
                         type={item.field_blog_type ? item.field_blog_type : ""}
-                        title={item.field_title ? { __html: item.field_title.processed } : ""}
+                        title={item.title ? item.title : ""}
                         url={item.path.alias ? item.path.alias : "#"}
                       />
                     </div>
@@ -162,7 +187,7 @@ const BlogCategory = props => {
                                     item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
 
                                   type={item.field_blog_type ? item.field_blog_type : ""}
-                                  title={item.field_title ? { __html: item.field_title.processed } : ""}
+                                  title={item.title ? item.title : ""}
                                   url={item.path.alias ? item.path.alias : "#"}
                                 />
                               </div>
@@ -353,9 +378,8 @@ query($slug: String!) {
       }
       relationships {
         node__blog_post {
-          field_title {
-            processed
-          }
+          title
+        
           path {
             alias
           }
@@ -382,9 +406,7 @@ query($slug: String!) {
             taxonomy_term__blogs {
               relationships {
                 node__blog_post {
-                  field_title {
-                    processed
-                  }
+                  title
                   field_blog_type
                   path {
                     alias

@@ -58,10 +58,9 @@ const BlogPost = props => {
               <Img fluid={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.fluid} /> : ""}
           </div>
           <div className={`col-12 col-lg-8 offset-lg-2`}>
-            {data.nodeBlogPost.field_subtitle ? <div className={`subtitle`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_subtitle.processed }}></div> : ""}
-            {data.nodeBlogPost.field_title ? <div className={`blog-header`} dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></div> : ""}
+            {data.nodeBlogPost.field_blog_type ? <div className={`subtitle ${data.nodeBlogPost.field_blog_type == "medical"? `medical-blog` : 'clinical-blog'}`}>{data.nodeBlogPost.field_blog_type}</div> : ""}
+            {data.nodeBlogPost.title ? <div className={`blog-header`}>{data.nodeBlogPost.title}</div> : ""}
             <div className={`author-share`}>
-              {/* {data.nodeBlogPost.field_author_name ? <div className={`author-name`}>By&nbsp;<p dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_author_name.processed }}></p> </div> : ""} */}
               <button data-toggle="modal" data-target="#sharing" className={`col-12 share-blog`}>
                 <img alt="img" src={share} /> Share
             </button>
@@ -151,7 +150,7 @@ const BlogPost = props => {
             <div class="modal-body">
               <div class="share-wrap  mt-35 mb-50">
                 <p className={["text-center blog-share-title"].join(" ")}><span>Share</span></p>
-                {data.nodeBlogPost.field_title && data.nodeBlogPost.field_title.processed? <p className={["text-center blog-share-text"].join(" ")}><span dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_title.processed }}></span></p> : ""}
+                {data.nodeBlogPost.title? <p className={["text-center blog-share-text"].join(" ")}><span>{data.nodeBlogPost.title}</span></p> : ""}
                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
@@ -169,16 +168,9 @@ export const pageQuery = graphql`
 query($slug: String!) {
     nodeBlogPost (fields: { slug: { eq: $slug } }) {
       id
+      title
       field_blog_type
-      field_blog_summary {
-        processed
-      }
-      field_subtitle {
-        processed
-      }
-      field_title {
-        processed
-      }
+        
       relationships {
         paragraphs: field_blog_components {
           type: __typename
@@ -271,9 +263,7 @@ query($slug: String!) {
           }
         }
       }
-      field_author_name {
-        processed
-      }
+   
     }
 }
 `;
@@ -439,9 +429,7 @@ query($slug: String!) {
               }
             }
           }
-          field_author_name {
-            processed
-          }
+        
         }
 
   }
