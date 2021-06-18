@@ -98,8 +98,7 @@ query($slug: String!) {
                 ...paragraphOrderStatus
                 ...paragraphProductsWeProvide
                 ...paragraphCustomerCareFullHtml
-                ...paragraphArticleVideo
-                ...paragraphProductsArticle
+          
             }
         }
         field_meta_tags {
