@@ -17,8 +17,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
     node.internal.type === "node__clinical_product" ||
     node.internal.type === "node__medical_product" ||
     node.internal.type === "taxonomy_term__clinical_skin_concern" ||
-    node.internal.type === "node__blog_post" ||
-    node.internal.type === "taxonomy_term__blogs")
+    node.internal.type === "node__blog_post")
     && !node.field_medical_free_sample && !node.field_clinical_free_sample) {
     const slug = `${node.path.alias}`;
     createNodeField({
@@ -48,7 +47,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const productTemp = path.resolve('./src/templates/product-page.js');
   const productCollectionTemp = path.resolve('./src/templates/product-collection.js');
   const blogPostTemp = path.resolve('./src/templates/blog-post.js')
-  const blogCategoryTemp = path.resolve('./src/templates/blog-category.js')
   // 2- get data from node
   const result = await graphql(`
         {
@@ -174,39 +172,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               },
-              allTaxonomyTermBlogs {
-                edges {
-                  node {
-                    path {
-                      alias
-                    }
-                    relationships {
-                      taxonomy_term__blogs {
-                        name
-                        relationships {
-                          taxonomy_term__blogs {
-                            name
-                            path {
-                              alias
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                
-              },
-              allNodeBlogPost {
-                edges {
-                  node {
-                    path {
-                      alias
-                    }
-                    drupal_internal__nid
-                  }
-                }
-              },
+        
+              
         }
     `);
 
@@ -222,42 +189,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   });
 
 
-  result.data.allNodeBlogPost.edges.forEach(({ node }) => {
-    node.path.alias ?
-      createPage({
-        path: node.path.alias,
-        component: blogPostTemp,
-        context: {
-          slug: node.path.alias,
-          nodetype: 'blog'
-        }
-      }) : ""
-  });
-
-  result.data.allTaxonomyTermBlogs.edges.forEach(({ node }) => {
-    node.relationships.taxonomy_term__blogs == null && node.path.alias ?
-      createPage({
-        path: node.path.alias,
-        component: blogCategoryTemp,
-        context: {
-          slug: node.path.alias,
-          nodetype: 'blogSubCategory'
-        }
-      }) :
-      node.relationships.taxonomy_term__blogs
-        && node.relationships.taxonomy_term__blogs[0]
-        && node.relationships.taxonomy_term__blogs[0].relationships
-        && node.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
-        && node.path.alias ?
-        createPage({
-          path: node.path.alias,
-          component: blogCategoryTemp,
-          context: {
-            slug: node.path.alias,
-            nodetype: 'blog'
-          }
-        }) : ""
-  });
+  
 
 
   result.data.allNodeClinicalProduct.edges.forEach(({ node }) => {
