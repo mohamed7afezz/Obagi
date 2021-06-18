@@ -5562,3 +5562,17 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
   }
 }
+
+.blog-breadcrumb {
+  a {
+    color: #122466;
+    @include fontStyle(16, 40);
+
+    &:hover {
+      text-decoration: none;
+    }
+    &.active-breadcrumb {
+      font-weight: 500;
+    }
+  }
+}

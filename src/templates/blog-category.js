@@ -118,13 +118,17 @@ const BlogCategory = props => {
   return (
     <Layout>
       <div className={`container-fluid blog-category-page`}>
-        <div className={`row`}>
+        <div className={`row d-none d-lg-block`}>
           <div className={`col-12`}>
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
               <Link to="/blog-0">Blogs</Link>
-              {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"}>{parentCategory[0].node.name}</Link></> : ""}
-              {chosenFilter ? <>/<Link to={chosenFilter.path.alias ? chosenFilter.path.alias : "#"}></Link>{chosenFilter.name}</> : ""}
+              {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"} className={parentCategory[0].node.path.alias && (parentCategory[0].node.path.alias == props.path)? `active-breadcrumb` : ""}>{parentCategory[0].node.name}</Link></> : ""}
+              {data.path.alias
+               && parentCategory[0]
+                && parentCategory[0].node.path.alias
+                 && (parentCategory[0].node.path.alias != data.path.alias) ?
+                  <>/<Link to={data.path.alias ? data.path.alias : "#"} className={data.path.alias && (data.path.alias == props.path)? `active-breadcrumb` : ""}>{data.name}</Link></> : ""}
             </div>
           </div>
         </div>
