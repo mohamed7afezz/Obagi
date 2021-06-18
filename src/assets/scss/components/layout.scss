@@ -4979,6 +4979,9 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-hero {
+  img {
+    max-width: 100%;
+  }
   .share-blog {
     padding: 15px 18px;
     flex: 0 0 35%;
