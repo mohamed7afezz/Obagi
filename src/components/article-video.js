@@ -74,7 +74,7 @@ const ArticleVideo = ({ node }) => {
             {node.field_article_subtitle ? <div className={`subtitle ${articleStyles.subtitle}`} dangerouslySetInnerHTML={{ __html: node.field_article_subtitle.processed }}></div> : ""}
             {node.field_article_title ? <div className={`${articleStyles.title}`} dangerouslySetInnerHTML={{ __html: node.field_article_title.processed }}></div> : ""}
             {node.field_article_description ? <div className={`${articleStyles.description}`} dangerouslySetInnerHTML={{ __html: node.field_article_description.processed }}></div> : ""}
-            {node.field_article_link.title ? <Link className={`button-link ${articleStyles.link}`} to={node.field_article_link.uri}>{node.field_article_link.title}</Link> : ""}
+            {node.field_article_link.title ? <Link className={`button-link ${articleStyles.link}`} to={node.field_article_link.uri.replace('internal:', '')}>{node.field_article_link.title}</Link> : ""}
           </div>
         </div>
       </div>

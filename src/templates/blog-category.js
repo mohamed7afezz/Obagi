@@ -70,12 +70,12 @@ const BlogCategory = props => {
   }
 
   console.log('ash all posts', allPosts)
-  let currentBlogPath = data.path.alias ? data.path.alias.split('/')[1] : ""
+  let currentBlogPath = data.path.alias ? data.path.alias.split('/')[2] : ""
 
   let parentCategory = allData.edges.filter((item, index) => {
 
-    let categoryPath = item.node.path.alias ? item.node.path.alias.split('/')[1] : ""
-    let isParentCategory = item.node.path.alias && item.node.path.alias.split('/').length < 3 ? true : false
+    let categoryPath = item.node.path.alias ? item.node.path.alias.split('/')[2] : ""
+    let isParentCategory = item.node.path.alias && item.node.path.alias.split('/').length < 4 ? true : false
     console.log('ash cat item', item, categoryPath, currentBlogPath)
     if (currentBlogPath && categoryPath && (currentBlogPath == categoryPath) && isParentCategory) {
       console.log('ash cat true')
@@ -118,11 +118,11 @@ const BlogCategory = props => {
   return (
     <Layout>
       <div className={`container-fluid blog-category-page`}>
-        <div className={`row d-none d-lg-block`}>
-          <div className={`col-12`}>
+        <div className={`d-none d-lg-block`}>
+          <div className={`col-12 pl-0`}>
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
-              <Link to="/blog-0">Blogs</Link>
+              <Link to="/blog-0">Blog</Link>
               {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"} className={parentCategory[0].node.path.alias && (parentCategory[0].node.path.alias == props.path)? `active-breadcrumb` : ""}>{parentCategory[0].node.name}</Link></> : ""}
               {data.path.alias
                && parentCategory[0]
@@ -320,7 +320,7 @@ const BlogCategory = props => {
                 {parentCategory[0]
                   && parentCategory[0].node.field_sidebar_link
                   && parentCategory[0].node.field_sidebar_link.title ?
-                  <div className={`sidebar-link`}><Link to={parentCategory[0].node.field_sidebar_link.uri ? parentCategory[0].node.field_sidebar_link.uri : "#"}>{parentCategory[0].node.field_sidebar_link.title}</Link></div>
+                  <div className={`sidebar-link`}><Link to={parentCategory[0].node.field_sidebar_link.uri ? parentCategory[0].node.field_sidebar_link.uri.replace('internal:', '') : "#"}>{parentCategory[0].node.field_sidebar_link.title}</Link></div>
                   : ""}
 
               </div>
