@@ -4979,6 +4979,21 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-hero {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  
+    @include lg-screen {
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: 300;
+    }
+  }
+  .blog-breadcrumb {
+    margin-top: 21px;
+
+    margin-bottom: 43px;
+  }
   img {
     max-width: 100%;
   }
@@ -5232,13 +5247,10 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 .blog-category-page {
   .slick-initialized {
     padding-bottom: 0;
-    .slick-slide[data-index="0"] {
-      padding-left: 17px;
-    }
-    @include lg-screen {
-      // .slick-slide, .slick-slide[data-index="0"] {
-      //   padding: 0 38.5px;
-      // }
+    @media (max-width: 991px) {
+      .slick-slide {
+        padding-left: 17px;
+      }
     }
   }
 }

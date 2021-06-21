@@ -89,6 +89,13 @@ const BlogCategory = props => {
       nav1: slider1.current,
     })
 
+    let allSlideLinks = document.querySelectorAll('.slick-slide a');
+    let activeSlideIndex;
+    for (let i = 0; i < allSlideLinks.length; i++) {
+      if (allSlideLinks[i].classList.contains('active-blog')) { activeSlideIndex = i }
+    }
+    slickGoToslide(activeSlideIndex);
+
   }, [])
 
   useEffect(() => {
@@ -110,7 +117,9 @@ const BlogCategory = props => {
   }, [list])
 
 
+
   function slickGoToslide(int) {
+    slider1.current.slickGoTo(int);
     slider1.current.slickGoTo(int);
   }
   console.log('ash category title', parentCategory)
@@ -122,13 +131,15 @@ const BlogCategory = props => {
           <div className={`col-12 pl-0`}>
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
-              <Link to="/blog-0">Blog</Link>
-              {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"} className={parentCategory[0].node.path.alias && (parentCategory[0].node.path.alias == props.path)? `active-breadcrumb` : ""}>{parentCategory[0].node.name}</Link></> : ""}
+              <Link to="/blog">Blog</Link>
+              {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"} className={parentCategory[0].node.path.alias && (parentCategory[0].node.path.alias == props.path) ? `active-breadcrumb` : ""}>{parentCategory[0].node.name}</Link></> : ""}
               {data.path.alias
-               && parentCategory[0]
+                && parentCategory[0]
                 && parentCategory[0].node.path.alias
-                 && (parentCategory[0].node.path.alias != data.path.alias) ?
-                  <>/<Link to={data.path.alias ? data.path.alias : "#"} className={data.path.alias && (data.path.alias == props.path)? `active-breadcrumb` : ""}>{data.name}</Link></> : ""}
+                && (parentCategory[0].node.path.alias != data.path.alias) ?
+                <>/<Link to={data.path.alias ? data.path.alias : "#"} className={data.path.alias && (data.path.alias == props.path) ? `active-breadcrumb` : ""}>
+                  <span dangerouslySetInnerHTML={{ __html: data.name }}></span>
+                </Link></> : ""}
             </div>
           </div>
         </div>

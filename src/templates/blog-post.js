@@ -16,7 +16,7 @@ const baseUrl = process.env.Base_URL;
 const BlogPost = props => {
 
   useEffect(() => {
-    if(typeof window != undefined ){
+    if (typeof window != undefined) {
       checkStock(baseUrl);
     }
   }, []);
@@ -49,6 +49,26 @@ const BlogPost = props => {
   return (
     <Layout >
       <div className={`container-fluid blog-hero`}>
+        <div className={`d-none d-lg-block`}>
+          <div className={`col-12 pl-0`}>
+            <div className={`blog-breadcrumb`}>
+              <Link to="/">Home</Link>/
+              <Link to="/blog">Blog</Link>
+              {data.nodeBlogPost.relationships
+                && data.nodeBlogPost.relationships.field_blog_tag
+                && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0]
+                && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0] ?
+                <>/<Link to={data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].path.alias ? data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].path.alias : "#"}>{data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].name}</Link></> : ""}
+
+              {data.nodeBlogPost.relationships
+                && data.nodeBlogPost.relationships.field_blog_tag ?
+                <>/<Link to={data.nodeBlogPost.relationships.field_blog_tag.path.alias ? data.nodeBlogPost.relationships.field_blog_tag.path.alias : "#"}><span dangerouslySetInnerHTML={{__html: data.nodeBlogPost.relationships.field_blog_tag.name}}></span></Link></> : ""}
+
+              <>/<Link to={data.nodeBlogPost.path.alias} className={`active-breadcrumb`}>{data.nodeBlogPost.title}</Link></>
+            </div>
+          </div>
+        </div>
+
         <div className={`row`}>
           <div className={`col-12 blog-img-col`}>
             {data.nodeBlogPost.relationships
@@ -58,12 +78,12 @@ const BlogPost = props => {
               <Img fluid={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.fluid} /> : ""}
           </div>
           <div className={`col-12 col-lg-8 offset-lg-2`}>
-            {data.nodeBlogPost.field_blog_type ? <div className={`subtitle ${data.nodeBlogPost.field_blog_type == "medical"? `medical-blog` : 'clinical-blog'}`}>{data.nodeBlogPost.field_blog_type}</div> : ""}
+            {data.nodeBlogPost.field_blog_type ? <div className={`subtitle ${data.nodeBlogPost.field_blog_type == "medical" ? `medical-blog` : 'clinical-blog'}`}>{data.nodeBlogPost.field_blog_type}</div> : ""}
             {data.nodeBlogPost.title ? <div className={`blog-header`}>{data.nodeBlogPost.title}</div> : ""}
             <div className={`author-share`}>
               <button data-toggle="modal" data-target="#sharing" className={`col-12 share-blog`}>
                 <img alt="img" src={share} /> Share
-            </button>
+              </button>
             </div>
 
 
@@ -116,7 +136,7 @@ const BlogPost = props => {
                                 item.relationships.field_clinical_image[0].localFile &&
                                 item.relationships.field_clinical_image[0].localFile.childImageSharp ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                 : ""}
-                                rate="0"
+                            rate="0"
                           />
                         </div>
                       )
@@ -150,7 +170,7 @@ const BlogPost = props => {
             <div class="modal-body">
               <div class="share-wrap  mt-35 mb-50">
                 <p className={["text-center blog-share-title"].join(" ")}><span>Share</span></p>
-                {data.nodeBlogPost.title? <p className={["text-center blog-share-text"].join(" ")}><span>{data.nodeBlogPost.title}</span></p> : ""}
+                {data.nodeBlogPost.title ? <p className={["text-center blog-share-text"].join(" ")}><span>{data.nodeBlogPost.title}</span></p> : ""}
                 <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
@@ -170,7 +190,9 @@ query($slug: String!) {
       id
       title
       field_blog_type
-        
+      path {
+        alias
+      }
       relationships {
         paragraphs: field_blog_components {
           type: __typename
@@ -182,6 +204,20 @@ query($slug: String!) {
           path {
             alias
           }
+          relationships {
+            parent {
+              name
+              relationships {
+                parent {
+                  name
+                  path {
+                    alias
+                  }
+                }
+              }
+            }
+          }
+         
         }
         field_blog_thumbnail {
           localFile {
@@ -429,7 +465,7 @@ query($slug: String!) {
               }
             }
           }
-        
+
         }
 
   }
