@@ -276,7 +276,7 @@ const ProductHero = ({ data, nodeType }) => {
               return (
                 <React.Fragment>
                   <div class="zoom-mobile" data-arrange={index}>
-                    {item.localFile ? (
+                    {item.localFile && item.localFile.childImageSharp? (
                       <img alt="img"
                         src={item.localFile.childImageSharp.original.src}
                       />
@@ -285,7 +285,7 @@ const ProductHero = ({ data, nodeType }) => {
                       )}
                   </div>
                   <div class="zoom-desk" data-arrange={index}>
-                    {item.localFile ? (
+                    {item.localFile && item.localFile.childImageSharp? (
                       <Zoom
                         img={item.localFile.childImageSharp.original.src}
                         zoomScale={1.5}
@@ -571,7 +571,7 @@ const ProductHero = ({ data, nodeType }) => {
                   slickGoToslide(index)
                 }}
               >
-                {item.localFile ? (
+                {item.localFile && item.localFile.childImageSharp? (
                   <img alt="img"
                     className={["col-3", "pr-0", "pl-0"].join(" ")}
                     src={item.localFile.childImageSharp.original.src}
