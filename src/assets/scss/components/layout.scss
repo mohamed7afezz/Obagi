@@ -5144,6 +5144,13 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-related-section {
+  margin-bottom: 64px;
+  @include lg-screen {
+    margin-bottom: 122px;
+    .slick-initialized {
+      padding-bottom: 0;
+    }
+  }
   .the-product-card {
     padding-top: 0;
   }
@@ -5191,9 +5198,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   @extend %futurapt-bold;
 }
 
+.blog-category-page .blog-card {
+  margin-bottom: 64px;
+}
 
 .blog-card {
-  margin-bottom: 64px;
   .blog-card-type {
     margin-top: 40px;
     line-height: 32px;
@@ -5214,6 +5223,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 32px;
     line-height: 48px;
     margin-top: 40px;
+    color: #122466;
+    display: block;
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .blog-card-link {
@@ -5592,4 +5606,57 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 .reference-text {
   font-size: 14px;
   line-height: 16px;
+}
+
+
+.related-articles {
+  margin-bottom: 58px;
+  .slick-prev, .slick-prev:hover, .slick-prev:active, .slick-prev:focus {
+    left: -106px;
+
+  }
+  .slick-next, .slick-next:hover, .slick-next:active, .slick-next:focus {
+    right: 57px;
+  }
+  .slick-prev, .slick-next {
+    top: 116px;
+  }
+
+  @include lg-screen {
+    margin-bottom: 0;
+    .slick-initialized {
+      padding-bottom: 80px;
+    }
+    .slick-slide {
+      padding-left: 0;
+      padding-right: 40px;
+    }
+  }
+}
+
+.related-articles-border {
+  border-top: 2px solid #e5eaf0;
+  margin-bottom: 64px;
+
+  @include lg-screen {
+    margin-bottom: 126px;
+  }
+}
+
+.related-articles-header {
+  text-align: center;
+  @include fontStyle(40, 48);
+  font-weight: 300;
+  margin-bottom: 42px;
+
+  @include lg-screen {
+    @include fontStyle(48, 64);
+    margin-bottom: 80px;
+  }
+}
+
+.related-col {
+  @include lg-screen {
+    padding-right: 0;
+  }
 }

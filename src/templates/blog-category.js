@@ -57,9 +57,9 @@ const BlogCategory = props => {
                 return (item)
               })
             )
-          })
+          }).flat()
         )
-      })[0].flat() : ""
+      }).flat() : ""
 
 
   const [list, setList] = useState([...allPosts.slice(0, 2)])
