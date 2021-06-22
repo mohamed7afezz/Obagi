@@ -5135,11 +5135,12 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   font-size: 40px;
   line-height: 48px;
   margin-bottom: 50px;
-
+  margin-top: 78px;
   @include lg-screen {
     font-size: 48px;
     line-height: 64px;
     margin-bottom: 68px;
+    margin-top: 184px;
   }
 }
 
