@@ -92,6 +92,13 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
           
           return parseFloat(weight)
         },
+        bestseller: item => {
+            var isBestSeller = item.classList.contains('bestSeller');
+
+            return isBestSeller ? '' : item.querySelector(".productcarddesc").textContent;
+        
+
+        },
       },
       filter: '*',
       transitionDuration: 0
@@ -226,25 +233,22 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     // update sort/filtered view
     switch (e.target.value) {
       case  'BestSeller':
-        isoFilter('bestSeller', 'bestSeller')
+        isoGrid.arrange({sortBy: 'bestseller',sortAscending: true});
+        updateSortView();
       break;
       case 'Alphabetically(A-Z)':
-        isoFilter('bestSeller', 'All');
         isoGrid.arrange({sortBy: 'name',sortAscending: true});
         updateSortView();
         break;
         case 'Alphabetically(Z-A)':
-          isoFilter('bestSeller', 'All');
         isoGrid.arrange({sortBy: 'name',sortAscending: false});
         updateSortView();
         break;
       case 'Price: High - Low':
-        isoFilter('bestSeller', 'All');
         isoGrid.arrange({sortBy: 'price', sortAscending: false});
         updateSortView();
       break;
       case 'Price: Low - High': 
-      isoFilter('bestSeller', 'All');
         isoGrid.arrange({sortBy: 'price', sortAscending: true});
       
         updateSortView();
@@ -830,7 +834,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                 <>
                   {item.field_medical_is_system ? (
                    <>
-                   {console.log(item.field_medical_is_system)}
+                  
                     <div
                       className={[
                         "col-12 col-lg-6 col-md-6 product-element",
@@ -863,7 +867,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
                           `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
-                          `${item.field_is_best_seller? 'bestSeller' : 'aaaaa'}`,
+                          `${item.field_is_best_seller? 'bestSeller' : ''}`,
                       ].join(" ")}
                       
                     >
@@ -941,7 +945,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                       ></div>
                     </div>
                  </> ) : (<>
-                 {console.log('hassan',item)}
+          
                     <div
                       className={[
                         "col-12 col-lg-3 col-md-4 product-element",
@@ -974,7 +978,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
                           `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
-                          `${item.field_is_best_seller? 'bestSeller' : 'baaaaa'}`,
+                          `${item.field_is_best_seller? 'bestSeller' : ''}`,
                       ].join(" ")}
                       
                     >
@@ -1158,7 +1162,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                                 " " +prod.name.split(' ').join('_')+" "
                                )):" "}`,
                                 `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
-                                `${product.field_is_best_seller? 'bestSeller' : 'caaaa'}`,
+                                `${product.field_is_best_seller? 'bestSeller' : ''}`,
                             ].join(" ")}
                             
                           >
@@ -1232,7 +1236,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               " " +prod.name.split(' ').join('_')+" "
                              )):" "}`,
                               `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
-                              `${product.field_is_best_seller? 'bestSeller' : 'daaa'}`,
+                              `${product.field_is_best_seller? 'bestSeller' : ''}`,
                           ].join(" ")}
                           
                         >

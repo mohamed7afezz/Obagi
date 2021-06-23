@@ -62,7 +62,8 @@
 .slick-next:hover,
 .slick-next:active,
 .slick-next:focus {
-  background-image: url(arrow-right.svg);
+  background-image: url(../images/forwardarrow.png);
+  background-size: contain;
   width: 80px;
   height: 80px;
   opacity: 1;
@@ -75,12 +76,13 @@
 .slick-prev:active,
 .slick-prev:focus {
   content: " ";
-  background-image: url(arrow-right.svg);
+  background-image: url(../images/backarrow.png);
+  background-size: contain;
   width: 80px;
   height: 80px;
   opacity: 1;
   display: block;
-  transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) ;
   left: -140px;
 }
 .productHero  .slick-next,
@@ -1148,6 +1150,10 @@ button:focus{
     display: none;
   }
 
+}
+.blog-related-section .slick-track{
+  width: 100% !important;
+  justify-content: center;
 }
 @media (min-width: 768px) {
   .md-pl0{
