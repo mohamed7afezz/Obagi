@@ -23,6 +23,7 @@ import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import {checkStock} from '../../assets/js/stock';
 import quizarrow from '../../assets/images/arrowquize.svg'
+import calcPremierPoints from "../../assets/js/cart-premier"
 
 const baseUrl = process.env.Base_URL;
 const spinner = css`
@@ -51,7 +52,7 @@ const AdjustItem = props => {
   return (
     <>
       {minusBtn}
-      {updatingItem === item.id ? <Loader /> : <p className={BagStyle.productcount}>{item.quantity}</p>}
+      {updatingItem === item.id ? <Loader /> : <p className={`quantatiy-number`}>{item.quantity}</p>}
       {plusBtn}
 
     </>
@@ -94,7 +95,7 @@ const StandardItem = props => {
                 <p className={[ShowBagStyle.BagProductDesc, BagStyle.cartpre].join(" ")}>
                   <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {navigateto(producturl[1],e)}}>
                   <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                {item.premier_points != '' ? <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>Earn {item.premier_points} Premier Points ea.</span> : ''}
+                {item.premier_points != '' ? <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>{item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -135,7 +136,7 @@ const StandardItem = props => {
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
                   <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {navigateto(producturl[1],e)}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                  {item.premier_points != '' ? <span className={BagStyle.premire}>Earn {item.premier_points} Premier Points ea.</span> : ''}
+                  {item.premier_points != '' ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
                 </div>
                 {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
@@ -472,6 +473,7 @@ const YourBag = (props, { notificationId }) => {
     if(typeof window != undefined ){
       checkStock(baseUrl);
     }
+    calcPremierPoints();
   }, [lineItems]);
 
   function seoEvent(e) {
@@ -631,6 +633,14 @@ const YourBag = (props, { notificationId }) => {
                   " "
                 )}
               >
+                <p className={ShowBagStyle.Subtotal}>Points Earned</p>
+                <p className={ShowBagStyle.Subtotal}><span className={"totalPremierPoints"}>0</span> Points</p>
+              </div>
+              <div
+                className={[ShowBagStyle.total, "d-flex", ShowBagStyle.left].join(
+                  " "
+                )}
+              >
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
                 <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
@@ -701,11 +711,11 @@ const YourBag = (props, { notificationId }) => {
               <div className={["offset-lg-1", "col-lg-7"].join(" ")}>
                 <div className="upsection ">
                   <div className="productInBag">
-                    <div class="row alignFlex">
+                    <div class="row alignFlexs">
                       <div class="hide-desk col-12 col-lg-4">
                         <img alt="img" src={freeimg} /></div>
                     </div>
-                    <div class="row alignFlex col-11 col-lg-12">
+                    <div class="row alignFlexs col-11 col-lg-12">
                       <div class="col-md-2 hide-tabmob">
                         <img alt="img" src={freeimg} />
                       </div>
@@ -906,6 +916,20 @@ const YourBag = (props, { notificationId }) => {
                         <strong>${(parseFloat(cartAmount.toFixed(2)) + parseFloat(state.estShipping)).toFixed(2)}</strong>
                       </span>
                     </p>
+                    <p
+                      className={[
+                        BagStyle.Subtotal,
+                        BagStyle.SubtotalFinal,
+                        "d-flex",
+                      ].join(" ")}
+                    >
+                      <span className={BagStyle.subtotalfinal}>
+                        <strong>Points Earned</strong>
+                      </span>{" "}
+                      <span>
+                        <strong><span className={"totalPremierPoints"}>0</span> Points</strong>
+                      </span>
+                    </p>
                     <form
                       action={redirectUrls.checkout_url}
                       method="post"
@@ -934,7 +958,7 @@ const YourBag = (props, { notificationId }) => {
                 <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={BagStyle.csNumber}>1-800-636-7546</span>.</p>
               </div>
             </div>
-
+                         
           </div>
 
           {

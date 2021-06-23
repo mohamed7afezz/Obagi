@@ -1160,7 +1160,7 @@ button:focus{
     max-width: 100%;
   }
 }
-.alignFlex{
+.alignFlex,.alignFlexs{
   align-items: center;
 }
 .productimage .slick-slide div[data-arrange] {

@@ -178,6 +178,7 @@ export const productPageQuery = graphql`
             field_min_quantity
             field_medical_price
             field_medical_upc
+            field_is_best_seller
             field_medical_info
             field_medical_id
             field_medical_type

@@ -425,6 +425,7 @@ export const productPageQuery = graphql`
                 }
               }
                 node__medical_product {
+                  field_is_best_seller
                   field_medical_premier_points
                   field_medical_sku
                   field_min_quantity
@@ -567,6 +568,7 @@ export const productPageQuery = graphql`
             }
           }
             node__medical_product {
+              field_is_best_seller
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
@@ -721,6 +723,7 @@ export const productPageQuery = graphql`
               }
           node__medical_product {
             field_medical_premier_points
+            field_is_best_seller
             field_medical_sku
             field_min_quantity
             field_medical_premier_points_id
@@ -830,6 +833,7 @@ export const productPageQuery = graphql`
               }
                 node__medical_product {
                   field_medical_premier_points
+                  field_is_best_seller
                   field_medical_sku
                   field_min_quantity
                   field_medical_premier_points_id
@@ -1120,6 +1124,7 @@ export const productPageQuery = graphql`
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
+              field_is_best_seller
               field_medical_premier_points_id
               id
               field_medical_is_system
