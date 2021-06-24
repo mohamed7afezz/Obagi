@@ -56,6 +56,7 @@ const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBa
       }
       MedicalProduct: allNodeMedicalProduct {
         nodes {
+          field_is_best_seller
           field_medical_id
           title
           field_medical_free_sample

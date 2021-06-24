@@ -4979,6 +4979,24 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-hero {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  
+    @include lg-screen {
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: 300;
+    }
+  }
+  .blog-breadcrumb {
+    margin-top: 21px;
+
+    margin-bottom: 43px;
+  }
+  img {
+    max-width: 100%;
+  }
   .share-blog {
     padding: 15px 18px;
     flex: 0 0 35%;
@@ -5117,15 +5135,23 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   font-size: 40px;
   line-height: 48px;
   margin-bottom: 50px;
-
+  margin-top: 78px;
   @include lg-screen {
     font-size: 48px;
     line-height: 64px;
     margin-bottom: 68px;
+    margin-top: 184px;
   }
 }
 
 .blog-related-section {
+  margin-bottom: 64px;
+  @include lg-screen {
+    margin-bottom: 122px;
+    .slick-initialized {
+      padding-bottom: 0;
+    }
+  }
   .the-product-card {
     padding-top: 0;
   }
@@ -5173,9 +5199,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   @extend %futurapt-bold;
 }
 
+.blog-category-page .blog-card {
+  margin-bottom: 64px;
+}
 
 .blog-card {
-  margin-bottom: 64px;
   .blog-card-type {
     margin-top: 40px;
     line-height: 32px;
@@ -5183,13 +5211,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 12px;
     display: flex;
     align-items: center;
-    &.medical-blog::before {
-      background-color: #868cd2;
-    }
 
-    &.clinical-blog::before {
-      background-color: #44c4d9;
-    }
 
 
     @include lg-screen {
@@ -5202,6 +5224,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 32px;
     line-height: 48px;
     margin-top: 40px;
+    color: #122466;
+    display: block;
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .blog-card-link {
@@ -5224,15 +5251,20 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 }
 
+.medical-blog::before {
+  background-color: #868cd2;
+}
+
+.clinical-blog::before {
+  background-color: #44c4d9;
+}
+
 .blog-category-page {
   .slick-initialized {
     padding-bottom: 0;
-    .slick-slide[data-index="0"] {
-      padding-left: 17px;
-    }
-    @include lg-screen {
-      .slick-slide, .slick-slide[data-index="0"] {
-        padding: 0 38.5px;
+    @media (max-width: 991px) {
+      .slick-slide {
+        padding-left: 17px;
       }
     }
   }
@@ -5528,5 +5560,104 @@ body.acsb-keynav input[type="radio"].acsb-shown {
      
       }
     }
+  }
+}
+
+.blog-load-more {
+  margin-bottom: 32px;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  color: #122466;
+  font-weight: 900;
+  text-align: center;
+  padding: 19px;
+  border: 1px solid #122466;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.9px;
+
+  @include lg-screen {
+    max-width: 589px;
+    padding: 27px;
+    margin: 0 auto 110px;
+
+    &:hover {
+      background-color: #122466;
+      color: #fff;
+    }
+  }
+}
+
+.blog-breadcrumb {
+  a {
+    color: #122466;
+    @include fontStyle(16, 40);
+
+    &:hover {
+      text-decoration: none;
+    }
+    &.active-breadcrumb {
+      font-weight: 500;
+    }
+  }
+}
+
+.reference-text {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+
+.related-articles {
+  margin-bottom: 58px;
+  .slick-prev, .slick-prev:hover, .slick-prev:active, .slick-prev:focus {
+    left: -106px;
+
+  }
+  .slick-next, .slick-next:hover, .slick-next:active, .slick-next:focus {
+    right: 57px;
+  }
+  .slick-prev, .slick-next {
+    top: 116px;
+  }
+
+  @include lg-screen {
+    margin-bottom: 0;
+    .slick-initialized {
+      padding-bottom: 80px;
+    }
+    .slick-slide {
+      padding-left: 0;
+      padding-right: 40px;
+    }
+  }
+}
+
+.related-articles-border {
+  border-top: 2px solid #e5eaf0;
+  margin-bottom: 64px;
+
+  @include lg-screen {
+    margin-bottom: 126px;
+  }
+}
+
+.related-articles-header {
+  text-align: center;
+  @include fontStyle(40, 48);
+  font-weight: 300;
+  margin-bottom: 42px;
+
+  @include lg-screen {
+    @include fontStyle(48, 64);
+    margin-bottom: 80px;
+  }
+}
+
+.related-col {
+  @include lg-screen {
+    padding-right: 0;
   }
 }

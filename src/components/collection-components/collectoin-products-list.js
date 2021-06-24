@@ -92,6 +92,13 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
           
           return parseFloat(weight)
         },
+        bestseller: item => {
+            var isBestSeller = item.classList.contains('bestSeller');
+
+            return isBestSeller ? '' : item.querySelector(".productcarddesc").textContent;
+        
+
+        },
       },
       filter: '*',
       transitionDuration: 0
@@ -225,6 +232,10 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     sortSearchData();
     // update sort/filtered view
     switch (e.target.value) {
+      case  'BestSeller':
+        isoGrid.arrange({sortBy: 'bestseller',sortAscending: true});
+        updateSortView();
+      break;
       case 'Alphabetically(A-Z)':
         isoGrid.arrange({sortBy: 'name',sortAscending: true});
         updateSortView();
@@ -259,6 +270,16 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
       isoFilter('rx', 'All');
     }
   }
+  function handleBestseller(e) {
+    if(e.target.checked) {
+     
+      isoFilter('bestSeller', 'bestSeller');
+   
+    } else {
+   
+      isoFilter('bestSeller', 'All');
+    }
+  }
   function checkparray(item) {
     return item != "";
   }
@@ -266,7 +287,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
     let item = val;
     if (item === ":not(.RX)") {
        item = val
-    }else{
+    }
+    else{
        item = val.replace('(',`\\(`)
       item = item.replace(')','\\)');
       item = item.replace('+','\\+')
@@ -274,16 +296,16 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
    
    
     isoFilterData[type] = item === 'All'? '' : item.split(' ').join('_');
-    let p = [];
     let newFilter = '';
     for (const key in isoFilterData) {
       if (isoFilterData.hasOwnProperty(key) && key != 'rx') {
         newFilter += isoFilterData[key] !== ''? '.' + isoFilterData[key]  : '';
         isoGrid.arrange({filter:newFilter});
-      } else {
+      }  else {
         newFilter += isoFilterData[key] !== ''? isoFilterData[key] + '' : '';
         isoGrid.arrange({filter:`${newFilter}:not(rx)`});
       }
+      
     }
 
    
@@ -730,6 +752,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
         >
           <label class="terms Prescription">Prescription Not Required<input type="checkbox" name="footer-checkbox" onChange={handlePrescribe}/><span class="checkmark"></span></label>
         </div>
+
+     
         <div
           className={[
             "col-12",
@@ -775,7 +799,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
-                     
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="BestSeller"/>Best Seller
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
                           </ul>
                         </Scrollbars>
                       </div>
@@ -804,6 +833,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
               return (
                 <>
                   {item.field_medical_is_system ? (
+                   <>
+                  
                     <div
                       className={[
                         "col-12 col-lg-6 col-md-6 product-element",
@@ -836,6 +867,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
                           `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
+                          `${item.field_is_best_seller? 'bestSeller' : ''}`,
                       ].join(" ")}
                       
                     >
@@ -912,7 +944,8 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         dangerouslySetInnerHTML={{ __html: ingredient }}
                       ></div>
                     </div>
-                  ) : (
+                 </> ) : (<>
+          
                     <div
                       className={[
                         "col-12 col-lg-3 col-md-4 product-element",
@@ -945,6 +978,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                           " " +prod.name.split(' ').join('_')+" "
                          )):" "}`,
                           `${item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ''}`,
+                          `${item.field_is_best_seller? 'bestSeller' : ''}`,
                       ].join(" ")}
                       
                     >
@@ -1079,7 +1113,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                         dangerouslySetInnerHTML={{ __html: ingredient }}
                       ></div>
                     </div>
-                  )}
+                  </>)}
                 </>
               )
             })
@@ -1128,6 +1162,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                                 " " +prod.name.split(' ').join('_')+" "
                                )):" "}`,
                                 `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
+                                `${product.field_is_best_seller? 'bestSeller' : ''}`,
                             ].join(" ")}
                             
                           >
@@ -1201,6 +1236,7 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               " " +prod.name.split(' ').join('_')+" "
                              )):" "}`,
                               `${product.relationships.field_medical_rx? product.relationships.field_medical_rx.name : ''}`,
+                              `${product.field_is_best_seller? 'bestSeller' : ''}`,
                           ].join(" ")}
                           
                         >
@@ -1303,7 +1339,12 @@ const Collectionproducts = ({ node, nodetype,checktaxonomyType }) => {
                               <span className="checkmarkfinder"></span>
                               </label>
                             </li>
-                     
+                            <li>
+                              <label class="checkcon terms">
+                              <input class="popupVideoInput" onChange={(e) => { sortselect(e)}} name="sort" type="radio" value="BestSeller"/>Best Seller
+                              <span className="checkmarkfinder"></span>
+                              </label>
+                            </li>
                           </ul>
                         </Scrollbars>
                       </div>
@@ -1709,6 +1750,7 @@ export const fragment = graphql`
           
           relationships {
             node__medical_product {
+              field_is_best_seller
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
@@ -1769,6 +1811,7 @@ export const fragment = graphql`
           name
           relationships {
             node__medical_product {
+              field_is_best_seller
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
@@ -1835,6 +1878,7 @@ export const fragment = graphql`
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
+              field_is_best_seller
               field_medical_premier_points_id
               field_medical_id
               field_medical_description {
@@ -1895,6 +1939,7 @@ export const fragment = graphql`
           }
           relationships {
             node__medical_product {
+              field_is_best_seller
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
@@ -1953,6 +1998,7 @@ export const fragment = graphql`
           relationships {
             
             node__medical_product {
+              field_is_best_seller
               field_medical_premier_points
               field_medical_sku
               field_min_quantity

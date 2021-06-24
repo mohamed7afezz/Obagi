@@ -11,8 +11,8 @@ const BlogCard = ({ thumbnail, type, title, url }) => {
             <div className={`blog-card`}>
                 {thumbnail? <div className={`blog-card-img`}><Img fluid={thumbnail}/></div> : ""}
                 {type? <div className={`subtitle blog-card-type ${type == 'medical'? `medical-blog` : `clinical-blog`}`}>{type}</div> : ""}
-                {title? <div className={`blog-card-title`} dangerouslySetInnerHTML={title}></div> : ""}
-                <Link to={url} className={`blog-card-link`}>Read More</Link>
+                {title? <Link to={url}  className={`blog-card-title`}>{title}</Link> : ""}
+                {url? <Link to={url} className={`blog-card-link`}>Read More</Link> : ""}
             </div>
         </>
     )

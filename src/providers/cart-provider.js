@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import calcPremierPoints from '../assets/js/cart-premier';
 
 
 const baseUrl = process.env.Base_URL;
@@ -213,8 +214,15 @@ export const CartProvider = ({ children }) => {
                     }
                   }
                 });
-            
-              
+
+                calcPremierPoints();
+                // console.log('hassan',document.querySelector('.totalpoints').innerHTML)
+                // var $premierValue =parseInt(document.querySelector('.totalPremierPoints').innerHTML);
+                // var $totalPremierValue =parseInt(document.querySelector('.totalpoints').innerHTML);
+                // document.querySelector('.totalPremierPoints').innerHTML= 
+                // ( $totalPremierValue +  ($premierValue * parseInt(quantity)))
+                
+
                     /*window.fbq('track', 'AddToCart',
                   // begin parameter object data
                   {
@@ -467,10 +475,12 @@ export const CartProvider = ({ children }) => {
       .then(res => res.json())
       .then(response => {
         refreshCart(response);
+        calcPremierPoints();
       })
       .catch(error => {
         setState({ ...state, cartLoading: false, cartError: error });
       });
+
   };
 
   const removeItemFromCart = (itemId, product) => {
@@ -522,6 +532,7 @@ export const CartProvider = ({ children }) => {
           
         }
         response && refreshCart(response);
+        calcPremierPoints();
       })
       .catch(error => {
         setState({ ...state, cartLoading: false, cartError: error });
