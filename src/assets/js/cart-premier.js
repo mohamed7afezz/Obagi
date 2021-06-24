@@ -18,12 +18,12 @@ function calcPremierPoints() {
             })
         })
     } else if (document.querySelector('.productInBag') != null) {
-        const productsTable = document.querySelectorAll('.productInBag');
-        productsTable.forEach(table => {
+     
+       
            
-            if (table.querySelectorAll('.row.alignFlex').length>0) {
+            if (document.querySelectorAll('.row.alignFlex').length>0) {
                 let premierPointsTotal = 0;
-            const products = table.querySelectorAll('.row.alignFlex .row.alignFlex');
+            const products = document.querySelectorAll('.row.alignFlex .row.alignFlex');
                
                 products.forEach(prod => {
              
@@ -40,7 +40,6 @@ function calcPremierPoints() {
                 })
             }
           
-        })
     }
 
 
