@@ -171,7 +171,8 @@ const BlogPost = props => {
           </>
           : ""}
 
-        {data.nodeBlogPost.relationships.field_blog_tag
+        {data.nodeBlogPost.field_display_related_articles 
+        && data.nodeBlogPost.relationships.field_blog_tag
           && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0]
           && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0]
           && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0]
@@ -180,7 +181,7 @@ const BlogPost = props => {
           <div className={`row related-articles`}>
             <div className="col-12 col-lg-10 offset-lg-1">
               <div className={` related-articles-border`}></div>
-              <div className={`related-articles-header`}>Related Articles</div>
+              {data.nodeBlogPost.field_related_articles_title? <div dangerouslySetInnerHTML={{__html: data.nodeBlogPost.field_related_articles_title.processed}} className={`related-articles-header`}></div> : ""}
             </div>
             <div className={`col-12 col-lg-11 offset-lg-1 related-col`}>
             
@@ -261,6 +262,10 @@ query($slug: String!) {
       field_blog_type
       path {
         alias
+      }
+      field_display_related_articles
+      field_related_articles_title {
+        processed
       }
       relationships {
         paragraphs: field_blog_components {

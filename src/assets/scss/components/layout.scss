@@ -5162,6 +5162,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
   .slick-track {
     display: flex !important;
+
+    @include lg-screen {
+      width: 100% !important;
+      justify-content: center;
+    }
   }
 
   .slick-slide {

@@ -133,63 +133,7 @@ export const fragment = graphql`
                 }
               }
             }
-            field_croduct_card {
-              ... on node__medical_product {
-                id
-                field_medical_id
-                field_medical_sku
-                field_min_quantity
-                field_medical_description {
-                  processed
-                }
-                title
-                path {
-                  alias
-                }
-                field_medical_price
-                field_medical_premier_points
-                field_medical_premier_points_id
-                relationships {
-                  field_medical_rx {
-                      name
-                    }
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              ... on node__clinical_product {
-                id
-                field_clinical_id
-                field_clinical_sku
-                field_clinical_price
-                field_min_quantity
-                path {
-                  alias
-                }
-                title
-                field_clinical_description {
-                  processed
-                }
-                relationships {
-                  field_clinical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+
           }
         
         

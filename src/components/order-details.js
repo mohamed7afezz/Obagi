@@ -391,6 +391,7 @@ async function getShippingAddresses(e) {
                     </div>
 
                     {alldata.shipping_addresses.map((item, index) => {
+                      console.log('ash it', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
@@ -401,6 +402,7 @@ async function getShippingAddresses(e) {
                             {item.last_name ? item.last_name : ""}
                           </p>
                           <p>{item.street_1 ? item.street_1 : ""}</p>
+                          <p>{item.street_2 ? item.street_2 : ""}</p>
                           <p>
                             {item.city ? item.city : ""},{" "}
                             {item.state ? item.state : ""}{" "}
@@ -638,11 +640,13 @@ async function getShippingAddresses(e) {
                     </div>
 
                     {alldata.shipping_addresses.map((item, index) => {
+                      console.log('ash it', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p>Shipping Address</p>
                           <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
                           <p>{item.street_1 ? item.street_1 : ""}</p>
+                          <p>{item.street_2 ? item.street_2 : ""}</p>
                           <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
                           <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
                         </div>

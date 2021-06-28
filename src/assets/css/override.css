@@ -1151,10 +1151,7 @@ button:focus{
   }
 
 }
-.blog-related-section .slick-track{
-  width: 100% !important;
-  justify-content: center;
-}
+
 @media (min-width: 768px) {
   .md-pl0{
     padding-left: 0;

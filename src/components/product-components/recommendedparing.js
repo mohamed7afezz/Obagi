@@ -81,7 +81,7 @@ const Recommendedparing = ({ node }) => {
               node.relationships.field_croduct_card.map((item, index) => (
                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[index].localFile? item.relationships.field_clinical_image[index].localFile.childImageSharp.fluid : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
+                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[0].localFile? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
 
                 </div>
               ))
