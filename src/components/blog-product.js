@@ -21,7 +21,7 @@ const BlogProduct = ({ node }) => {
                         <div className={`blog-product-card`}>
                             <ProductCard
                                 producttitle={item.title}
-                                productId={item.field_medical_product ? item.field_medical_product : item.field_clinical_product}
+                                productId={item.field_medical_id ? item.field_medical_id : item.field_clinical_id}
                                 price={item.field_clinical_price ? item.field_clinical_price : item.field_medical_price ? item.field_medical_price : ""}
                                 Sku={item.field_medical_sku ? item.field_medical_sku : item.field_clinical_sku ? item.field_clinical_sku : ""}
                                 minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
