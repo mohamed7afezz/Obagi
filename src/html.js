@@ -53,7 +53,7 @@ export default function HTML(props) {
         `
         }}></script>
 
-     {/*<script type="text/javascript" dangerouslySetInnerHTML={{
+        {/*<script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -67,12 +67,17 @@ export default function HTML(props) {
           fbq('track', 'PageView');
         `
         }}></script>*/}
-        
+
         <script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
         <img height="1" width="1" style="display:none"
           src="https://www.facebook.com/tr?id=678059259599817&ev=PageView&noscript=1"
         />`}}></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          (function(){ var s = document.createElement('script'), e = ! document.body ? document.querySelector('head') : document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : '', hideMobile : true, hideTrigger : true, language : 'en', position : 'left', leadColor : '#146ff8', triggerColor : '#146ff8', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'medium', triggerOffsetX : 20, triggerOffsetY : 20, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 10, triggerOffsetY : 10, triggerRadius : '50%' } }); }; e.appendChild(s);}());
+          `
+        }}></script>
 
         {props.headComponents}
 
@@ -89,7 +94,7 @@ export default function HTML(props) {
         {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.instagramFeed/1.3.2/jquery.instagramFeed.min.js" ></script> */}
 
 
-       
+
       </body>
     </html>
   )
