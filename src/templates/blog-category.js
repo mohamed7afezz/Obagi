@@ -42,34 +42,47 @@ const BlogCategory = props => {
   }
 
   const allPosts = data.relationships.node__blog_post ? data.relationships.node__blog_post
-    : data.relationships.taxonomy_term__blogs
-      && data.relationships.taxonomy_term__blogs[0]
-      && data.relationships.taxonomy_term__blogs[0].relationships
-      && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
-      && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships
-      && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post
-      && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post[0] ?
-      data.relationships.taxonomy_term__blogs.map((parent, index) => {
+    :
+    // data.relationships.taxonomy_term__blogs
+    //   && data.relationships.taxonomy_term__blogs[0]
+    //   && data.relationships.taxonomy_term__blogs[0].relationships
+    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
+    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships
+    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post
+    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post[0] ?
+    data.relationships.taxonomy_term__blogs ? data.relationships.taxonomy_term__blogs.map((parent, index) => {
+      if (parent.relationships.taxonomy_term__blogs) {
+        console.log('ash if parent', parent, parent.relationships.taxonomy_term__blogs.flat())
         return (
           parent.relationships.taxonomy_term__blogs.map((blog, index) => {
-            return (
-              blog.relationships.node__blog_post.filter((item, index) => {
-                return (item)
-              })
-            )
+            if (blog.relationships.node__blog_post) {
+              console.log('ash if blog', blog)
+              return (
+                blog.relationships.node__blog_post.map((item, index) => {
+                  console.log('ash if item', item)
+                  if (item) {
+                    return (item)
+                  }
+                })
+              )
+            }
           }).flat()
         )
-      }).flat() : ""
+      }
+    }).flat() : ""
 
+    const allPostsList = allPosts.filter(function(item){
+      return item !== undefined
+    })
 
-  const [list, setList] = useState([...allPosts.slice(0, 2)])
+  const [list, setList] = useState([...allPostsList.slice(0, 2)])
   const [loadMore, setLoadMore] = useState(false)
-  const [hasMore, setHasMore] = useState(allPosts.length > 2)
+  const [hasMore, setHasMore] = useState(allPostsList.length > 2)
   const handleLoadMore = () => {
     setLoadMore(true)
   }
 
-  console.log('ash all posts', allPosts)
+  console.log('ash all posts', allPostsList)
   let currentBlogPath = data.path.alias ? data.path.alias.split('/')[2] : ""
 
   let parentCategory = allData.edges.filter((item, index) => {
@@ -102,9 +115,9 @@ const BlogCategory = props => {
     console.log('load more', loadMore, hasMore);
     if (loadMore && hasMore) {
       const currentLength = list.length
-      const isMore = currentLength < allPosts.length
+      const isMore = currentLength < allPostsList.length
       const nextResults = isMore
-        ? allPosts.slice(currentLength, currentLength + 2)
+        ? allPostsList.slice(currentLength, currentLength + 2)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
@@ -112,7 +125,7 @@ const BlogCategory = props => {
   }, [loadMore, hasMore])
 
   useEffect(() => {
-    const isMore = list.length < allPosts.length
+    const isMore = list.length < allPostsList.length
     setHasMore(isMore)
   }, [list])
 
@@ -211,24 +224,26 @@ const BlogCategory = props => {
 
           <div className={`col-12 col-lg-6 offset-lg-1`}>
             <div className={`row`}>
-              {data.relationships.node__blog_post ?
+              {list ?
                 <>{
                   list.map((item, index) => {
-                    return (
-                      <div className={`col-12 col-md-6`}>
-                        <BlogCard
-                          thumbnail={item.relationships
-                            && item.relationships.field_blog_thumbnail
-                            && item.relationships.field_blog_thumbnail.localFile
-                            && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                            item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
+                    if (item) {
+                      return (
+                        <div className={`col-12 col-md-6`}>
+                          <BlogCard
+                            thumbnail={item.relationships
+                              && item.relationships.field_blog_thumbnail
+                              && item.relationships.field_blog_thumbnail.localFile
+                              && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
+                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
 
-                          type={item.field_blog_type ? item.field_blog_type : ""}
-                          title={item.title ? item.title : ""}
-                          url={item.path.alias ? item.path.alias : "#"}
-                        />
-                      </div>
-                    )
+                            type={item.field_blog_type ? item.field_blog_type : ""}
+                            title={item.title ? item.title : ""}
+                            url={item.path.alias ? item.path.alias : "#"}
+                          />
+                        </div>
+                      )
+                    }
                   })
                 }
                   {hasMore ? (
@@ -238,33 +253,29 @@ const BlogCategory = props => {
                   ) : ""}
                 </>
                 :
-                data.relationships.taxonomy_term__blogs
-                  && data.relationships.taxonomy_term__blogs[0]
-                  && data.relationships.taxonomy_term__blogs[0].relationships
-                  && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
-                  && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships
-                  && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post
-                  && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post[0] ?
+                list ?
                   <>{list.map((item, index) => {
                     // return (
                     //   parent.relationships.taxonomy_term__blogs.map((blog, index) => {
                     //     return (
                     //       blog.relationships.node__blog_post.map((item, index) => {
-                    return (
-                      <div className={`col-12 col-md-6`}>
-                        <BlogCard
-                          thumbnail={item.relationships
-                            && item.relationships.field_blog_thumbnail
-                            && item.relationships.field_blog_thumbnail.localFile
-                            && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                            item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
+                    if (item) {
+                      return (
+                        <div className={`col-12 col-md-6`}>
+                          <BlogCard
+                            thumbnail={item.relationships
+                              && item.relationships.field_blog_thumbnail
+                              && item.relationships.field_blog_thumbnail.localFile
+                              && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
+                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
 
-                          type={item.field_blog_type ? item.field_blog_type : ""}
-                          title={item.title ? item.title : ""}
-                          url={item.path.alias ? item.path.alias : "#"}
-                        />
-                      </div>
-                    )
+                            type={item.field_blog_type ? item.field_blog_type : ""}
+                            title={item.title ? item.title : ""}
+                            url={item.path.alias ? item.path.alias : "#"}
+                          />
+                        </div>
+                      )
+                    }
                     // })
                     //   )
                     // })
