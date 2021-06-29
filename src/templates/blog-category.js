@@ -105,6 +105,12 @@ const BlogCategory = props => {
     }
     slickGoToslide(activeSlideIndex);
 
+    document.querySelectorAll('.blog-filter-body a').forEach(link => {
+      if(link.attributes.href.textContent === props.path) {
+        link.classList.add('active-filter');
+      }
+    })
+
   }, [])
 
   useEffect(() => {
@@ -203,7 +209,7 @@ const BlogCategory = props => {
                         item.relationships.taxonomy_term__blogs.map((link, index) => {
 
                           return (
-                            <Link className={link.path.alias && (props.path == link.path.alias) ? `active-filter` : ""} to={link.path.alias ? link.path.alias : "#"}>
+                            <Link to={link.path.alias ? link.path.alias : "#"}>
                               <span dangerouslySetInnerHTML={{ __html: link.name }}></span>
                             </Link>
                           )
@@ -302,8 +308,9 @@ const BlogCategory = props => {
                             && item.relationships.taxonomy_term__blogs
                             && item.relationships.taxonomy_term__blogs[0] ?
                             item.relationships.taxonomy_term__blogs.map((link, index) => {
+                              console.log('Ash links', link.path.alias, props.path);
                               return (
-                                <Link className={link.path.alias && (props.path == link.path.alias) ? `active-filter` : ""} to={link.path.alias ? link.path.alias : "#"}>
+                                <Link to={link.path.alias ? link.path.alias : "#"}>
                                   <span dangerouslySetInnerHTML={{ __html: link.name }}></span>
                                 </Link>
                               )
