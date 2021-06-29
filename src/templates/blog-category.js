@@ -41,16 +41,10 @@ const BlogCategory = props => {
     ]
   }
 
-  const allPosts = data.relationships.node__blog_post ? data.relationships.node__blog_post
+  const allPosts = data && data.relationships.node__blog_post ? data.relationships.node__blog_post
     :
-    // data.relationships.taxonomy_term__blogs
-    //   && data.relationships.taxonomy_term__blogs[0]
-    //   && data.relationships.taxonomy_term__blogs[0].relationships
-    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
-    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships
-    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post
-    //   && data.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post[0] ?
-    data.relationships.taxonomy_term__blogs ? data.relationships.taxonomy_term__blogs.map((parent, index) => {
+
+    data && data.relationships.taxonomy_term__blogs ? data.relationships.taxonomy_term__blogs.map((parent, index) => {
       if (parent.relationships.taxonomy_term__blogs) {
         console.log('ash if parent', parent, parent.relationships.taxonomy_term__blogs.flat())
         return (
@@ -71,9 +65,9 @@ const BlogCategory = props => {
       }
     }).flat() : ""
 
-    const allPostsList = allPosts.filter(function(item){
-      return item !== undefined
-    })
+  const allPostsList = allPosts.filter(function (item) {
+    return item !== undefined
+  })
 
   const [list, setList] = useState([...allPostsList.slice(0, 2)])
   const [loadMore, setLoadMore] = useState(false)
@@ -85,16 +79,18 @@ const BlogCategory = props => {
   console.log('ash all posts', allPostsList)
   let currentBlogPath = data.path.alias ? data.path.alias.split('/')[2] : ""
 
-  let parentCategory = allData.edges.filter((item, index) => {
+  let parentCategory = data.relationships.parent[0] && data.relationships.parent[0].relationships.parent[0] ? data.relationships.parent[0].relationships.parent[0] : data
 
-    let categoryPath = item.node.path.alias ? item.node.path.alias.split('/')[2] : ""
-    let isParentCategory = item.node.path.alias && item.node.path.alias.split('/').length < 4 ? true : false
-    console.log('ash cat item', item, categoryPath, currentBlogPath)
-    if (currentBlogPath && categoryPath && (currentBlogPath == categoryPath) && isParentCategory) {
-      console.log('ash cat true')
-      return item.node.name
-    }
-  })
+  // .filter((item, index) => {
+
+  //   let categoryPath = item.node.path.alias ? item.node.path.alias.split('/')[2] : ""
+  //   let isParentCategory = item.node.path.alias && item.node.path.alias.split('/').length < 4 ? true : false
+  //   console.log('ash cat item', item, categoryPath, currentBlogPath)
+  //   if (currentBlogPath && categoryPath && (currentBlogPath == categoryPath) && isParentCategory) {
+  //     console.log('ash cat true')
+  //     return item.node.name
+  //   }
+  // })
 
   useEffect(() => {
 
@@ -145,11 +141,11 @@ const BlogCategory = props => {
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
               <Link to="/blog">Blog</Link>
-              {parentCategory[0] ? <>/<Link to={parentCategory[0].node.path.alias ? parentCategory[0].node.path.alias : "#"} className={parentCategory[0].node.path.alias && (parentCategory[0].node.path.alias == props.path) ? `active-breadcrumb` : ""}>{parentCategory[0].node.name}</Link></> : ""}
+              {parentCategory ? <>/<Link to={parentCategory.path.alias ? parentCategory.path.alias : "#"} className={parentCategory.path.alias && (parentCategory.path.alias == props.path) ? `active-breadcrumb` : ""}>{parentCategory.name}</Link></> : ""}
               {data.path.alias
-                && parentCategory[0]
-                && parentCategory[0].node.path.alias
-                && (parentCategory[0].node.path.alias != data.path.alias) ?
+                && parentCategory
+                && parentCategory.path.alias
+                && (parentCategory.path.alias != data.path.alias) ?
                 <>/<Link to={data.path.alias ? data.path.alias : "#"} className={data.path.alias && (data.path.alias == props.path) ? `active-breadcrumb` : ""}>
                   <span dangerouslySetInnerHTML={{ __html: data.name }}></span>
                 </Link></> : ""}
@@ -158,8 +154,8 @@ const BlogCategory = props => {
         </div>
         <div className={`row`}>
           <div className={`col-10 offset-1`}>
-            <h1 className={`blog-cat-title`}>{parentCategory[0] ? parentCategory[0].node.name : ""}</h1>
-            {parentCategory[0] && parentCategory[0].node.description ? <div className={`blog-cat-desc`} dangerouslySetInnerHTML={{ __html: parentCategory[0].node.description.processed }}></div> : ""}
+            <h1 className={`blog-cat-title`}>{parentCategory ? parentCategory.name : ""}</h1>
+            {parentCategory && parentCategory.description ? <div className={`blog-cat-desc`} dangerouslySetInnerHTML={{ __html: parentCategory.description.processed }}></div> : ""}
           </div>
         </div>
         <div className={`row`}>
@@ -175,7 +171,7 @@ const BlogCategory = props => {
                       && item.node.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs) {
                       console.log('ash props props true')
                       return (
-                        <div><Link className={parentCategory[0] && parentCategory[0].node.path && (parentCategory[0].node.path.alias === item.node.path.alias) ? `active-blog` : ""} to={item.node.path.alias ? item.node.path.alias : "#"}>{item.node.name}</Link></div>
+                        <div><Link className={parentCategory && parentCategory.path && (parentCategory.path.alias === item.node.path.alias) ? `active-blog` : ""} to={item.node.path.alias ? item.node.path.alias : "#"}>{item.node.name}</Link></div>
                       )
                     }
                   }
@@ -186,11 +182,11 @@ const BlogCategory = props => {
         </div>
         <div className={`row`}>
           <div className={`col-12 col-lg-3 offset-lg-1 d-lg-none`} id="filterGroup">
-            {parentCategory[0]
-              && parentCategory[0].node.relationships
-              && parentCategory[0].node.relationships.taxonomy_term__blogs
-              && parentCategory[0].node.relationships.taxonomy_term__blogs[0] ?
-              parentCategory[0].node.relationships.taxonomy_term__blogs.map((item, index) => {
+            {parentCategory
+              && parentCategory.relationships
+              && parentCategory.relationships.taxonomy_term__blogs
+              && parentCategory.relationships.taxonomy_term__blogs[0] ?
+              parentCategory.relationships.taxonomy_term__blogs.map((item, index) => {
                 return (
                   <div className={`blog-filter`}>
                     {screenWidth < largeScreen ?
@@ -205,7 +201,7 @@ const BlogCategory = props => {
                         && item.relationships.taxonomy_term__blogs
                         && item.relationships.taxonomy_term__blogs[0] ?
                         item.relationships.taxonomy_term__blogs.map((link, index) => {
-                          // if(link.path.alias && (props.path == link.path.alias)) {setChosenFilter(link)}
+
                           return (
                             <Link className={link.path.alias && (props.path == link.path.alias) ? `active-filter` : ""} to={link.path.alias ? link.path.alias : "#"}>
                               <span dangerouslySetInnerHTML={{ __html: link.name }}></span>
@@ -255,10 +251,7 @@ const BlogCategory = props => {
                 :
                 list ?
                   <>{list.map((item, index) => {
-                    // return (
-                    //   parent.relationships.taxonomy_term__blogs.map((blog, index) => {
-                    //     return (
-                    //       blog.relationships.node__blog_post.map((item, index) => {
+
                     if (item) {
                       return (
                         <div className={`col-12 col-md-6`}>
@@ -276,10 +269,7 @@ const BlogCategory = props => {
                         </div>
                       )
                     }
-                    // })
-                    //   )
-                    // })
-                    // )
+
                   })}
                     {hasMore ? (
                       <div className={`col-12`}>
@@ -293,11 +283,11 @@ const BlogCategory = props => {
           <div className={`col-12 col-lg-3 offset-lg-1`}>
             <div className={`row`}>
               <div className={`col-12 d-none d-lg-block`}>
-                {parentCategory[0]
-                  && parentCategory[0].node.relationships
-                  && parentCategory[0].node.relationships.taxonomy_term__blogs
-                  && parentCategory[0].node.relationships.taxonomy_term__blogs[0] ?
-                  parentCategory[0].node.relationships.taxonomy_term__blogs.map((item, index) => {
+                {parentCategory
+                  && parentCategory.relationships
+                  && parentCategory.relationships.taxonomy_term__blogs
+                  && parentCategory.relationships.taxonomy_term__blogs[0] ?
+                  parentCategory.relationships.taxonomy_term__blogs.map((item, index) => {
                     return (
                       <div className={`blog-filter`}>
                         {screenWidth < largeScreen ?
@@ -329,20 +319,20 @@ const BlogCategory = props => {
               </div>
 
               <div className={`col-12`}>
-                {parentCategory[0]
-                  && parentCategory[0].node.relationships
-                  && parentCategory[0].node.relationships.field_sidebar_image
-                  && parentCategory[0].node.relationships.field_sidebar_image.localFile
-                  && parentCategory[0].node.relationships.field_sidebar_image.localFile.childImageSharp ?
-                  <div><Img fluid={parentCategory[0].node.relationships.field_sidebar_image.localFile.childImageSharp.fluid} /></div> : ""}
+                {parentCategory
+                  && parentCategory.relationships
+                  && parentCategory.relationships.field_sidebar_image
+                  && parentCategory.relationships.field_sidebar_image.localFile
+                  && parentCategory.relationships.field_sidebar_image.localFile.childImageSharp ?
+                  <div><Img fluid={parentCategory.relationships.field_sidebar_image.localFile.childImageSharp.fluid} /></div> : ""}
 
-                {parentCategory[0] && parentCategory[0].node.field_sidebar_text ?
-                  <div className={`sidebar-text`} dangerouslySetInnerHTML={{ __html: parentCategory[0].node.field_sidebar_text.processed }}></div> : ""}
+                {parentCategory && parentCategory.field_sidebar_text ?
+                  <div className={`sidebar-text`} dangerouslySetInnerHTML={{ __html: parentCategory.field_sidebar_text.processed }}></div> : ""}
 
-                {parentCategory[0]
-                  && parentCategory[0].node.field_sidebar_link
-                  && parentCategory[0].node.field_sidebar_link.title ?
-                  <div className={`sidebar-link`}><Link to={parentCategory[0].node.field_sidebar_link.uri ? parentCategory[0].node.field_sidebar_link.uri.replace('internal:', '') : "#"}>{parentCategory[0].node.field_sidebar_link.title}</Link></div>
+                {parentCategory
+                  && parentCategory.field_sidebar_link
+                  && parentCategory.field_sidebar_link.title ?
+                  <div className={`sidebar-link`}><Link to={parentCategory.field_sidebar_link.uri ? parentCategory.field_sidebar_link.uri.replace('internal:', '') : "#"}>{parentCategory.field_sidebar_link.title}</Link></div>
                   : ""}
 
               </div>
@@ -415,15 +405,67 @@ function useWindowSize() {
 export default BlogCategory;
 export const pageQuery = graphql`
 query($slug: String!) {
-    allTaxonomyTermBlogs {
-        edges {
-          node {
-            name
-            description {
-              processed
+  allTaxonomyTermBlogs {
+    edges {
+      node {
+        name
+        description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_sidebar_text {
+          processed
+        }
+        field_sidebar_link {
+          title
+          uri
+        }
+        relationships {
+          field_sidebar_image {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
+          }
+          taxonomy_term__blogs {
+            name
+            relationships {
+              taxonomy_term__blogs {
+                name
+                path {
+                  alias
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  taxonomyTermBlogs(fields: { slug: { eq: $slug } }) {
+    name
+    path {
+      alias
+    }
+    fields {
+      slug
+    }
+    relationships {
+      parent {
+        name
+        relationships {
+          parent {
+            name
             path {
               alias
+            }
+            description {
+              processed
             }
             field_sidebar_text {
               processed
@@ -442,72 +484,68 @@ query($slug: String!) {
                   }
                 }
               }
+
               taxonomy_term__blogs {
                 name
+                path {
+                  alias
+                }
                 relationships {
                   taxonomy_term__blogs {
-                    name
                     path {
                       alias
                     }
+                    name
                   }
                 }
               }
             }
           }
         }
-        
-      },
-    taxonomyTermBlogs (fields: { slug: { eq: $slug } }){
-      name
-      path {
-        alias
       }
-      fields {
-        slug
-      }
-      relationships {
-        node__blog_post {
-          title
-        
-          path {
-            alias
-          }
-          field_blog_type
-          relationships {
-            field_blog_thumbnail {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
+      node__blog_post {
+        title
+
+        path {
+          alias
+        }
+        field_blog_type
+        relationships {
+          field_blog_thumbnail {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
           }
-          
         }
-        taxonomy_term__blogs {
-          name
-          path {
-            alias
-          }
-          relationships {
-            taxonomy_term__blogs {
-              relationships {
-                node__blog_post {
-                  title
-                  field_blog_type
-                  path {
-                    alias
-                  }
-                  relationships {
-                    field_blog_thumbnail {
-                      localFile {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
-                          }
+      }
+      taxonomy_term__blogs {
+        name
+        path {
+          alias
+        }
+        relationships {
+          taxonomy_term__blogs {
+            name
+            path {
+              alias
+            }
+            relationships {
+              node__blog_post {
+                title
+                field_blog_type
+                path {
+                  alias
+                }
+                relationships {
+                  field_blog_thumbnail {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -518,8 +556,9 @@ query($slug: String!) {
           }
         }
       }
-    
-          }
-      
+    }
+  }
 }
+
+
 `;
