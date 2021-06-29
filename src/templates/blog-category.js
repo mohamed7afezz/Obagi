@@ -65,9 +65,9 @@ const BlogCategory = props => {
       }
     }).flat() : ""
 
-  const allPostsList = allPosts.filter(function (item) {
+  const allPostsList = allPosts? allPosts.filter(function (item) {
     return item !== undefined
-  })
+  }) : ""
 
   const [list, setList] = useState([...allPostsList.slice(0, 2)])
   const [loadMore, setLoadMore] = useState(false)
