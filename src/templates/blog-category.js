@@ -15,7 +15,6 @@ const BlogCategory = props => {
   let screenWidth = size.width;
   let largeScreen = 992;
 
-  console.log('ash blog props', props)
   const nodeType = props.pageContext.nodetype;
   const data = props.data.taxonomyTermBlogs;
   const allData = props.data.allTaxonomyTermBlogs;
@@ -46,14 +45,11 @@ const BlogCategory = props => {
 
     data && data.relationships.taxonomy_term__blogs ? data.relationships.taxonomy_term__blogs.map((parent, index) => {
       if (parent.relationships.taxonomy_term__blogs) {
-        console.log('ash if parent', parent, parent.relationships.taxonomy_term__blogs.flat())
         return (
           parent.relationships.taxonomy_term__blogs.map((blog, index) => {
             if (blog.relationships.node__blog_post) {
-              console.log('ash if blog', blog)
               return (
                 blog.relationships.node__blog_post.map((item, index) => {
-                  console.log('ash if item', item)
                   if (item) {
                     return (item)
                   }
@@ -76,7 +72,6 @@ const BlogCategory = props => {
     setLoadMore(true)
   }
 
-  console.log('ash all posts', allPostsList)
   let currentBlogPath = data.path.alias ? data.path.alias.split('/')[2] : ""
 
   let parentCategory = data.relationships.parent[0] && data.relationships.parent[0].relationships.parent[0] ? data.relationships.parent[0].relationships.parent[0] : data
@@ -114,7 +109,6 @@ const BlogCategory = props => {
   }, [])
 
   useEffect(() => {
-    console.log('load more', loadMore, hasMore);
     if (loadMore && hasMore) {
       const currentLength = list.length
       const isMore = currentLength < allPostsList.length
@@ -137,8 +131,7 @@ const BlogCategory = props => {
     slider1.current.slickGoTo(int);
     slider1.current.slickGoTo(int);
   }
-  console.log('ash category title', parentCategory)
-  console.log('ash chosen', chosenFilter)
+
   return (
     <Layout>
       <div className={`container-fluid blog-category-page`}>
@@ -170,12 +163,10 @@ const BlogCategory = props => {
               <Slider ref={slider => (slider1.current = slider)} {...SliderSetting}>
                 {allData.edges.map((item, index) => {
                   {
-                    console.log('ash props props', item)
                     if (item.node.relationships.taxonomy_term__blogs
                       && item.node.relationships.taxonomy_term__blogs[0]
                       && item.node.relationships.taxonomy_term__blogs[0].relationships
                       && item.node.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs) {
-                      console.log('ash props props true')
                       return (
                         <div><Link className={parentCategory && parentCategory.path && (parentCategory.path.alias === item.node.path.alias) ? `active-blog` : ""} to={item.node.path.alias ? item.node.path.alias : "#"}>{item.node.name}</Link></div>
                       )
@@ -308,7 +299,6 @@ const BlogCategory = props => {
                             && item.relationships.taxonomy_term__blogs
                             && item.relationships.taxonomy_term__blogs[0] ?
                             item.relationships.taxonomy_term__blogs.map((link, index) => {
-                              console.log('Ash links', link.path.alias, props.path);
                               return (
                                 <Link to={link.path.alias ? link.path.alias : "#"}>
                                   <span dangerouslySetInnerHTML={{ __html: link.name }}></span>

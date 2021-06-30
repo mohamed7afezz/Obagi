@@ -26,7 +26,6 @@ const BlogPost = props => {
   const paragraphs = props.data.nodeBlogPost.relationships.paragraphs.map(getParagraph)
   const data = props.data
 
-  console.log('ash log', data.nodeBlogPost.relationships.field_blog_tag.relationships)
 
   const SliderSetting = {
     infinite: true,
@@ -171,45 +170,49 @@ const BlogPost = props => {
           </>
           : ""}
 
-        {data.nodeBlogPost.field_display_related_articles 
-        && data.nodeBlogPost.relationships.field_blog_tag
+        {data.nodeBlogPost.field_display_related_articles
+          && data.nodeBlogPost.relationships.field_blog_tag
           && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0]
           && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0]
-          && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0]
-          && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0]
-          && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post ?
+          && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs
+          // && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0]
+          // && data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs[0].relationships.node__blog_post 
+          ?
           <div className={`row related-articles`}>
             <div className="col-12 col-lg-10 offset-lg-1">
               <div className={` related-articles-border`}></div>
-              {data.nodeBlogPost.field_related_articles_title? <div dangerouslySetInnerHTML={{__html: data.nodeBlogPost.field_related_articles_title.processed}} className={`related-articles-header`}></div> : ""}
+              {data.nodeBlogPost.field_related_articles_title ? <div dangerouslySetInnerHTML={{ __html: data.nodeBlogPost.field_related_articles_title.processed }} className={`related-articles-header`}></div> : ""}
             </div>
             <div className={`col-12 col-lg-11 offset-lg-1 related-col`}>
-            
+
               <div style={{ width: "100%" }}>
                 <Slider {...SliderSetting2}>
                   {data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs.map((parent, index) => {
 
-                    return (
-                      parent.relationships.taxonomy_term__blogs.map((blog, ind) => {
-                        return (
-                          blog.relationships.node__blog_post.map((item, inde) => {
-                            console.log('ash blog log', item)
+                    if (parent.relationships.taxonomy_term__blogs) {
+                      return (
+                        parent.relationships.taxonomy_term__blogs.map((blog, ind) => {
+                          if (blog.relationships.node__blog_post) {
                             return (
-                              <BlogCard
-                                title={item.title}
-                                url={item.path.alias? item.path.alias : "#"}
-                                type={item.field_blog_type? item.field_blog_type : ""}
-                                thumbnail={item.relationships
-                                  && item.relationships.field_blog_thumbnail
-                                  && item.relationships.field_blog_thumbnail.localFile
-                                  && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                                  item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
-                              />
+                              blog.relationships.node__blog_post.map((item, inde) => {
+                                return (
+                                  <BlogCard
+                                    title={item.title}
+                                    url={item.path.alias ? item.path.alias : "#"}
+                                    type={item.field_blog_type ? item.field_blog_type : ""}
+                                    thumbnail={item.relationships
+                                      && item.relationships.field_blog_thumbnail
+                                      && item.relationships.field_blog_thumbnail.localFile
+                                      && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
+                                      item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
+                                  />
+                                )
+                              })
                             )
-                          })
-                        )
-                      })
-                    )
+                          }
+                        })
+                      )
+                    }
 
                   })}
                 </Slider>

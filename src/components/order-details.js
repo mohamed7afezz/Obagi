@@ -391,7 +391,6 @@ async function getShippingAddresses(e) {
                     </div>
 
                     {alldata.shipping_addresses.map((item, index) => {
-                      console.log('ash it', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
@@ -640,7 +639,6 @@ async function getShippingAddresses(e) {
                     </div>
 
                     {alldata.shipping_addresses.map((item, index) => {
-                      console.log('ash it', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p>Shipping Address</p>
