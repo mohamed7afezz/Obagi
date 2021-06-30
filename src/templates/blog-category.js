@@ -69,9 +69,9 @@ const BlogCategory = props => {
     return item !== undefined
   }) : ""
 
-  const [list, setList] = useState([...allPostsList.slice(0, 2)])
+  const [list, setList] = useState([...allPostsList.slice(0, 8)])
   const [loadMore, setLoadMore] = useState(false)
-  const [hasMore, setHasMore] = useState(allPostsList.length > 2)
+  const [hasMore, setHasMore] = useState(allPostsList.length > 8)
   const handleLoadMore = () => {
     setLoadMore(true)
   }
@@ -119,7 +119,7 @@ const BlogCategory = props => {
       const currentLength = list.length
       const isMore = currentLength < allPostsList.length
       const nextResults = isMore
-        ? allPostsList.slice(currentLength, currentLength + 2)
+        ? allPostsList.slice(currentLength, currentLength + 8)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
