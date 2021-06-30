@@ -9,7 +9,6 @@ function calcPremierPoints() {
 
                 let nProducts = parseInt(prod.querySelector('.quantatiy-number').innerHTML);
                 let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
-                console.log('bahi', prod, nProducts, points)
                 premierPointsTotal += (nProducts * points);
             })
 
@@ -31,7 +30,6 @@ function calcPremierPoints() {
                     
                     let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
 
-                    console.log(nProducts,points)
                     premierPointsTotal += (nProducts * points);
                 })
     
