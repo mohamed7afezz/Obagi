@@ -229,6 +229,9 @@ const BlogCategory = props => {
               {list ?
                 <>{
                   list.map((item, index) => {
+                    if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                      return
+                    }
                     if (item) {
                       return (
                         <div className={`col-12 col-md-6`}>
@@ -257,7 +260,9 @@ const BlogCategory = props => {
                 :
                 list ?
                   <>{list.map((item, index) => {
-
+                    if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                      return
+                    }
                     if (item) {
                       return (
                         <div className={`col-12 col-md-6`}>

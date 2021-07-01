@@ -223,8 +223,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
 
   result.data.allNodeBlogPost.edges.forEach(({ node }) => {
-    node.path.alias ?
-      createPage({
+    node.path.alias && (node.path.alias == "/skin-simplified/skin-concern/clinical-blog" || node.path.alias == "/behind-the-lines/professional-c/medical-blog")? ""
+      : node.path.alias? createPage({
         path: node.path.alias,
         component: blogPostTemp,
         context: {

@@ -28,7 +28,7 @@ const BlogPost = props => {
 
 
   const SliderSetting = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     arrows: false,
@@ -195,6 +195,9 @@ const BlogPost = props => {
                           if (blog.relationships.node__blog_post) {
                             return (
                               blog.relationships.node__blog_post.map((item, inde) => {
+                                if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                                  return
+                                }
                                 return (
                                   <BlogCard
                                     title={item.title}
