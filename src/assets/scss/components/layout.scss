@@ -326,7 +326,7 @@ p {
         }
       }
 
-      a {
+      a, .AccessiBe {
         @extend %futurapt-book;
         // @include fontStyle(16, 24);
         color: #132466;
@@ -334,6 +334,10 @@ p {
         &::after {
           content: none;
         }
+      }
+
+      .AccessiBe {
+        cursor: pointer;
       }
     }
   }
