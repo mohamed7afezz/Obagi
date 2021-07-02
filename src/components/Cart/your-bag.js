@@ -139,7 +139,7 @@ const StandardItem = props => {
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
                   <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {navigateto(producturl[1],e)}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                  {item.premier_points != '' ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
+                  {item.premier_points ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
                 </div>
                 {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
