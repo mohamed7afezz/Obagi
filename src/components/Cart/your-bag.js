@@ -122,7 +122,7 @@ const StandardItem = props => {
     } else {
       return (
         <>
-          <div className={"productInBag"}>
+          <div className={"productInBag "}>
             <div className={["row", "alignFlex"].join(" ")}>
               <div class="hide-desk col-4">
               <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => {navigateto(producturl[1],e)}}>
@@ -923,7 +923,7 @@ const YourBag = (props, { notificationId }) => {
                       className={[
                         BagStyle.Subtotal,
                         BagStyle.SubtotalFinal,
-                        "d-flex",
+                        "d-flex premierPointsEarned d-none",
                       ].join(" ")}
                     >
                       <span className={BagStyle.subtotalfinal}>

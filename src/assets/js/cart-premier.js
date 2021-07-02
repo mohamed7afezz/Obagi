@@ -31,7 +31,7 @@ function calcPremierPoints() {
              
                     let nProducts = parseInt(prod.querySelector('.quantatiy-number').innerHTML);
                     if (prod.querySelector('.totalpoints')) {
-                        
+                        document.querySelector('.premierPointsEarned ').classList.remove('d-none')
                    
                     let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
 
