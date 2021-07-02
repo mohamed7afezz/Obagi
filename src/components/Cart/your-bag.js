@@ -95,7 +95,10 @@ const StandardItem = props => {
                 <p className={[ShowBagStyle.BagProductDesc, BagStyle.cartpre].join(" ")}>
                   <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {navigateto(producturl[1],e)}}>
                   <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                {item.premier_points != '' ? <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>{item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
+                {item.premier_points ?
+                 <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>
+                   {item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}
+                   </span> Premier Points ea.</>:""}</span> : ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -629,7 +632,7 @@ const YourBag = (props, { notificationId }) => {
             />
             <div className={ShowBagStyle.final}>
               <div
-                className={[ShowBagStyle.total, "d-flex", ShowBagStyle.left].join(
+                className={[ShowBagStyle.total, "d-flex premierPointsEarned d-none", ShowBagStyle.left].join(
                   " "
                 )}
               >

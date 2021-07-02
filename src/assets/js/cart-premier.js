@@ -11,12 +11,14 @@ function calcPremierPoints() {
                 let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
                 console.log('bahi', prod, nProducts, points)
                 premierPointsTotal += (nProducts * points);
+                document.querySelector('.premierPointsEarned ').classList.remove('d-none')
              } })
 
             document.querySelectorAll('.totalPremierPoints').forEach(prod =>{
                 prod.innerHTML = premierPointsTotal;
             })
         })
+        
     } else if (document.querySelector('.productInBag') != null) {
      
        
@@ -29,7 +31,7 @@ function calcPremierPoints() {
              
                     let nProducts = parseInt(prod.querySelector('.quantatiy-number').innerHTML);
                     if (prod.querySelector('.totalpoints')) {
-                        
+                        document.querySelector('.premierPointsEarned ').classList.remove('d-none')
                    
                     let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
 

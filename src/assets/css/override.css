@@ -1151,7 +1151,9 @@ button:focus{
   }
 
 }
-
+.premierPointsEarned.d-none{
+  display: none !important;
+}
 @media (min-width: 768px) {
   .md-pl0{
     padding-left: 0;
