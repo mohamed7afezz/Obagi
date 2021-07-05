@@ -5601,6 +5601,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
 .blog-breadcrumb {
   a {
+    display: inline-block;
     color: #122466;
     @include fontStyle(16, 30);
 
