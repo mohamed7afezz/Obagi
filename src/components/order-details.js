@@ -432,6 +432,11 @@ async function getShippingAddresses(e) {
                       </p>
                       <p>
                         {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.street_2
+                          : ""}
+                      </p>
+                      <p>
+                        {alldata.main_order.billing_address
                           ? alldata.main_order.billing_address.city
                           : ""},{" "}
                         {alldata.main_order.billing_address
@@ -657,6 +662,7 @@ async function getShippingAddresses(e) {
                       <p>Billing Address</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.first_name : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.last_name : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_1 : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_2 : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.city : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.state : ""}, {alldata.main_order.billing_address ? alldata.main_order.billing_address.zip : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.country_iso2 : ""}</p>
                     </div>

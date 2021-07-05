@@ -5602,13 +5602,17 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 .blog-breadcrumb {
   a {
     color: #122466;
-    @include fontStyle(16, 40);
+    @include fontStyle(16, 30);
 
     &:hover {
       text-decoration: none;
     }
     &.active-breadcrumb {
       font-weight: 500;
+    }
+
+    @include lg-screen {
+      line-height: 40px;
     }
   }
 }
