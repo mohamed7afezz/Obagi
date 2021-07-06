@@ -1,0 +1,60 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    &:hover {
+        box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+    }
+}
+
+.image {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.text-wrapper {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #868cd2;
+    padding: 29px 19px 37px;
+    color: #fff;
+
+    @include lg-screen {
+        padding: 37px 59px 45px 42px;
+    }
+}
+
+.title {
+    @include fontStyle(36, 46);
+
+}
+.text {
+    @include fontStyle(26, 32);
+    @extend %futurapt-light;
+    margin-top: 16px;
+
+    @include lg-screen {
+        @include fontStyle(18, 27);
+        margin-top: 19px;
+        font-weight: 400;
+    }
+}
+
+.link {
+    color: #fff;
+    @include fontStyle(16, 16);
+    letter-spacing: 1.6px;
+    @extend %futurapt-bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 23px;
+
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    @include lg-screen {
+        margin-top: 24px;
+    }
+}
