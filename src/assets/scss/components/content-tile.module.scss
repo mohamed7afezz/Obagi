@@ -71,3 +71,13 @@
         margin-top: 24px;
     }
 }
+
+.img-link {
+    height: 100%;
+}
+
+.title-link {
+    &:hover {
+        text-decoration: none;
+    }
+}
