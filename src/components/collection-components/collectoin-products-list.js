@@ -87,7 +87,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       getSortData: {
         name: item => {
           if (item.classList.contains('content-tile')) {
-            return '';
+            return null;
           }
           var name = item.querySelector(".productcarddesc").textContent;
           return name
@@ -122,10 +122,10 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     if (contentTileCol) {
       let allCol = document.querySelectorAll('.products-list .product-element')
       let ind = 1;
-      if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 3 }
-      else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 3 }
-      else if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') || allCol[1].classList.contains('col-lg-6'))) { ind = 4 }
-      else if (allCol[0] && allCol[1] && allCol[2] && allCol[3] && (!allCol[0].classList.contains('col-lg-6') && !allCol[1].classList.contains('col-lg-6') && !allCol[2].classList.contains('col-lg-6') && !allCol[3].classList.contains('col-lg-6'))) { ind = 5 }
+      if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 2 }
+      else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 2 }
+      else if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') || allCol[1].classList.contains('col-lg-6'))) { ind = 3 }
+      else if (allCol[0] && allCol[1] && allCol[2] && allCol[3] && (!allCol[0].classList.contains('col-lg-6') && !allCol[1].classList.contains('col-lg-6') && !allCol[2].classList.contains('col-lg-6') && !allCol[3].classList.contains('col-lg-6'))) { ind = 4 }
   
       isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind])
       

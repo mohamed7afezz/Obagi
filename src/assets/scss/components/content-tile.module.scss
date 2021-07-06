@@ -2,6 +2,9 @@
 @import '../grid/grid.scss';
 
 .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     &:hover {
         box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
     }
@@ -10,6 +13,11 @@
 .image {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    height: 100%;
+
+    & > img {
+        object-fit: unset !important;
+    }
 }
 
 .text-wrapper {
@@ -26,6 +34,11 @@
 
 .title {
     @include fontStyle(36, 46);
+    color: #fff;
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
 
 }
 .text {
