@@ -108,6 +108,29 @@ query($slug: String!) {
     name
     id
     relationships {
+      field_clicat_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       field_footer_two_section_cat {
         relationships {
           field_service_card {
@@ -237,6 +260,29 @@ query($slug: String!) {
       description
     }
     relationships {
+      field_cliing_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       field_footer_two_section_cli_ing {
         id
         field_featured_paragraph_id {
@@ -1030,6 +1076,29 @@ query($slug: String!) {
       }
     }
     relationships {
+      field_cliskintype_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       field_footer_two_section_sk_type {
         relationships {
           field_service_card {
@@ -1328,6 +1397,29 @@ query($slug: String!) {
       alias
     }
     relationships {
+      field_cligroup_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       field_footer_two_sections {
         id
         field_featured_paragraph_id {
@@ -1446,6 +1538,38 @@ query($slug: String!) {
                 field_read_more {
                   field_read_more_content {
                     processed
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  allBlockContentGlobalContentTile {
+    edges {
+      node {
+        field_tile_type
+        relationships {
+          field_content_tile {
+            field_tile_title {
+              processed
+            }
+            field_tile_text {
+              processed
+            }
+            field_tile_link {
+              title
+              uri
+            }
+            relationships {
+              field_tile_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
                   }
                 }
               }

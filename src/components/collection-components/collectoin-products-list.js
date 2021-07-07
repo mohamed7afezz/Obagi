@@ -19,6 +19,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       checkStock(baseUrl);
     }
   }, [])
+  console.log('ash node', node)
   const dataType = checktaxonomyType ? checktaxonomyType : (node.relationships.field_vocabularies[0].path ? (node.relationships.field_vocabularies[0].path.alias.includes('medical') ? 'medical' : 'clinical') : '');
   const filtersDataQuery = useStaticQuery(graphql`
     {
@@ -115,20 +116,20 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       transitionDuration: 0
     });
 
+    let columns = document.querySelectorAll('.products-list .product-element')
+    
     //update view on sort on page load
     updateSortView()
     let contentTileCol = document.querySelector('#contentTile') ? document.querySelector('#contentTile') : ""
 
     if (contentTileCol) {
-      let allCol = document.querySelectorAll('.products-list .product-element')
-      let ind = 1;
-      if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 2 }
-      else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 2 }
-      else if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') || allCol[1].classList.contains('col-lg-6'))) { ind = 3 }
-      else if (allCol[0] && allCol[1] && allCol[2] && allCol[3] && (!allCol[0].classList.contains('col-lg-6') && !allCol[1].classList.contains('col-lg-6') && !allCol[2].classList.contains('col-lg-6') && !allCol[3].classList.contains('col-lg-6'))) { ind = 4 }
-  
-      isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind])
-      
+      let allCol = isoGrid.getFilteredItemElements()
+      console.log('ash col', allCol[0], allCol[1], allCol[2], allCol[3])
+      updateTileCol(allCol, contentTileCol);
+      console.log('ash iso', isoGrid.getFilteredItemElements())
+
+
+
     }
   });
 
@@ -140,6 +141,18 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       document.querySelector(".products-list").appendChild(item)
 
     })
+  }
+
+  function updateTileCol(allCol, contentTileCol) {
+    let ind;
+    if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 2 }
+    else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 2 }
+    else if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') || allCol[1].classList.contains('col-lg-6'))) { ind = 3 }
+    else if (allCol[0] && allCol[1] && allCol[2] && allCol[3] && (!allCol[0].classList.contains('col-lg-6') && !allCol[1].classList.contains('col-lg-6') && !allCol[2].classList.contains('col-lg-6') && !allCol[3].classList.contains('col-lg-6'))) { ind = 4 }
+    else { ind = allCol.length }
+
+    isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind])
+    console.log('ash ind', ind, allCol)
   }
 
 
@@ -197,31 +210,61 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
   let contentTile
 
-  if (pageNodeType == "medicalConcern") {
+  if (pageNodeType == "medicalConcern" && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile) {
 
     contentTile =
       node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile
 
-  } else if (pageNodeType == "medicalCategories") {
+  } else if (pageNodeType == "medicalCategories" && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile) {
     contentTile =
       node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile
 
-  } else if (pageNodeType == 'medicalLine') {
+  } else if (pageNodeType == 'medicalLine' && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile) {
     contentTile =
       node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile
 
-  } else if (pageNodeType == 'skinMedicalType') {
+  } else if (pageNodeType == 'skinMedicalType' && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile) {
     contentTile =
       node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile
 
-  } else if (pageNodeType == 'MedicalIngredients') {
+  } else if (pageNodeType == 'MedicalIngredients' && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile) {
     contentTile =
       node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile
 
-  } else {
-    contentTile = ""
+  } else if (pageNodeType == "clinicalCategories" && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile) {
+    contentTile =
+      node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile
+  } else if (pageNodeType == "clinicalGroups" && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile) {
+    contentTile =
+      node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile
+  } else if (pageNodeType == 'skinClinicalType' && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile) {
+    contentTile =
+      node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile
+  } else if (pageNodeType == "ClinicalIngredients" && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile) {
+    contentTile =
+      node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile
+  }
+  else if (checktaxonomyType == "medical" && node.data.allBlockContentGlobalContentTile) {
+    contentTile = node.data.allBlockContentGlobalContentTile.edges[0]
+      && node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile ?
+
+      node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile : ""
+
+    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile)
+
   }
 
+  else if (checktaxonomyType == "clinical" && node.data.allBlockContentGlobalContentTile) {
+    contentTile = node.data.allBlockContentGlobalContentTile.edges[1]
+      && node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile ?
+
+      node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile : ""
+
+  } else {
+    contentTile = '';
+  }
+
+  console.log('ash content', checktaxonomyType, contentTile, checktaxonomyType == "medical" && node.data.allBlockContentGlobalContentTile)
   function checkProductExisitance(product) {
 
     return products.some(item => product.path.alias == item.path.alias)
@@ -900,7 +943,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             )
             ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
-   
+
               return (
                 <>
 
@@ -1187,7 +1230,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                       </div>
                     </>)}
 
-                  {(contentTile && index == 3) ?
+                  {(contentTile && index == 0) ?
                     <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
                       <ContentTile
                         image={contentTile.relationships.field_tile_image
@@ -1199,6 +1242,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                         title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
                         text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
                         link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
+                        type={checktaxonomyType == "medical"? "medical" : "clinical"}
                       />
                     </div>
                     : ""}

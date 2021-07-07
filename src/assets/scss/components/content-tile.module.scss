@@ -23,13 +23,20 @@
 .text-wrapper {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    background-color: #868cd2;
     padding: 29px 19px 37px;
     color: #fff;
 
     @include lg-screen {
         padding: 37px 59px 45px 42px;
     }
+}
+
+.medical {
+    background-color: #868cd2;
+}
+
+.clinical {
+    background-color: #44c4d9;
 }
 
 .title {
