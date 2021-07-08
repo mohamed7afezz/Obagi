@@ -120,17 +120,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     
     //update view on sort on page load
     updateSortView()
-    let contentTileCol = document.querySelector('#contentTile') ? document.querySelector('#contentTile') : ""
-
-    if (contentTileCol) {
-      let allCol = isoGrid.getFilteredItemElements()
-      console.log('ash col', allCol[0], allCol[1], allCol[2], allCol[3])
-      updateTileCol(allCol, contentTileCol);
-      console.log('ash iso', isoGrid.getFilteredItemElements())
-
-
-
-    }
+    
   });
 
 
@@ -141,6 +131,18 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       document.querySelector(".products-list").appendChild(item)
 
     })
+
+    let contentTileCol = document.querySelector('#contentTile') ? document.querySelector('#contentTile') : ""
+
+    if (contentTileCol !== "" && contentTileCol !== undefined) {
+      let allCol = isoGrid.getFilteredItemElements()
+      console.log('ash col', allCol[0], allCol[1], allCol[2], allCol[3])
+      updateTileCol(allCol, contentTileCol);
+      console.log('ash iso', isoGrid.getFilteredItemElements()[0], isoGrid.getFilteredItemElements()[1]);
+
+
+
+    }
   }
 
   function updateTileCol(allCol, contentTileCol) {
@@ -151,7 +153,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     else if (allCol[0] && allCol[1] && allCol[2] && allCol[3] && (!allCol[0].classList.contains('col-lg-6') && !allCol[1].classList.contains('col-lg-6') && !allCol[2].classList.contains('col-lg-6') && !allCol[3].classList.contains('col-lg-6'))) { ind = 4 }
     else { ind = allCol.length }
 
-    isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind])
+    isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind + 1])
     console.log('ash ind', ind, allCol)
   }
 
@@ -360,6 +362,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
     isoGrid.arrange({ sortBy: 'name', sortAscending: true });
     updateSortView();
+    
   }, [])
   function handlePrescribe(e) {
     if (e.target.checked) {
