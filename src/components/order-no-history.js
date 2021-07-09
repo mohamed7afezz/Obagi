@@ -28,7 +28,7 @@ const OrderNoHistory = ({ node }) => {
             <div className=" d-lg-none">
 
                 <div className={myAccountStyles.topHalf}>
-                    <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
+                    <div className={myAccountStyles.topHalfText}>Looks like you haven't placed an order.</div>
                     <Link to="/" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
                 </div>
 
@@ -43,7 +43,7 @@ const OrderNoHistory = ({ node }) => {
             <div className="d-none d-lg-block list-wrapper">
 
                 <div className={myAccountStyles.topHalf}>
-                    <div className={myAccountStyles.topHalfText}>Looks like you haven't placed and order.</div>
+                    <div className={myAccountStyles.topHalfText}>Looks like you haven't placed an order.</div>
                     <Link to="/" className={myAccountStyles.topHalfLink}>Continue Shopping</Link>
                 </div>
                 <div className="row">
