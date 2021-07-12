@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/General/Search</title>
+    <g id="Icons/General/Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Container" x="0" y="0" width="24" height="24"></rect>
+        <g id="Search" transform="translate(0.000000, -0.000000)" stroke="#fff" stroke-width="1.4375">
+            <circle id="Oval" cx="9.34375" cy="9.34375" r="8.625"></circle>
+            <line x1="23" y1="23" x2="15.884738" y2="15.884738" id="Path" stroke-linecap="round" stroke-linejoin="round"></line>
+        </g>
+    </g>
+</svg>

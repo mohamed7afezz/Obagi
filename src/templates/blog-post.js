@@ -28,7 +28,7 @@ const BlogPost = props => {
 
 
   const SliderSetting = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     arrows: false,
@@ -67,7 +67,7 @@ const BlogPost = props => {
   return (
     <Layout >
       <div className={`container-fluid blog-hero`}>
-        <div className={`d-none d-lg-block`}>
+      
           <div className={`col-12 pl-0`}>
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
@@ -85,7 +85,7 @@ const BlogPost = props => {
               <>/<Link to={data.nodeBlogPost.path.alias} className={`active-breadcrumb`}>{data.nodeBlogPost.title}</Link></>
             </div>
           </div>
-        </div>
+ 
 
         <div className={`row`}>
           <div className={`col-12 blog-img-col`}>
@@ -195,6 +195,9 @@ const BlogPost = props => {
                           if (blog.relationships.node__blog_post) {
                             return (
                               blog.relationships.node__blog_post.map((item, inde) => {
+                                if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                                  return
+                                }
                                 return (
                                   <BlogCard
                                     title={item.title}

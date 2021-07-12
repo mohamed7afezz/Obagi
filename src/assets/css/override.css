@@ -10,6 +10,9 @@
 .productimage .slick-dots {
   bottom: -70px;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 .slick-dots li button::before {
   font-family: "slick";
   font-size: 6px;
@@ -1151,7 +1154,9 @@ button:focus{
   }
 
 }
-
+.premierPointsEarned.d-none{
+  display: none !important;
+}
 @media (min-width: 768px) {
   .md-pl0{
     padding-left: 0;

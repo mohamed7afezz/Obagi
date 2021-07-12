@@ -62,7 +62,7 @@ const StandardItem = props => {
   const value = useContext(CartContext)
   const removeNotification = value && value.removeNotification;
   const { items, cartType } = props
-  
+  console.log(items,'ash bag')
   function  navigateto(link,e){
  
  e.preventDefault();
@@ -75,27 +75,31 @@ const StandardItem = props => {
   }
   const { searchInIndexById } = useContext(SearchContext)
   let itemsContent = items.map(item => {
+    console.log('ash price', item)
     let findedProduct = searchInIndexById([item.product_id], 1);
     item.premier_points = '';
     if (findedProduct.length > 0) {
       item.premier_points = findedProduct[0].field_medical_premier_points;
     }
-    var producturl = item.url.split(".com")
+    var producturl = item.list_price == 0? "" : item.url.split(".com")
     if (cartType === "overlay") {
       return (
         <>
           <div className={["row", ShowBagStyle.selectedproductsCard, "selectedproductsCard"].join(" ")}>
             <div className={["col-4", "mob-pl-0"].join(" ")}>
-            <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={() => {navigateto(producturl[1])}}>
+            <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={() => {if(producturl){navigateto(producturl[1])}}}>
                 <img  src={item.image_url} alt={`${item.name}`} />
               </a>
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
                 <p className={[ShowBagStyle.BagProductDesc, BagStyle.cartpre].join(" ")}>
-                  <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {navigateto(producturl[1],e)}}>
+                  <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
                   <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                {item.premier_points != '' ? <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>{item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
+                {item.premier_points ?
+                 <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>
+                   {item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}
+                   </span> Premier Points ea.</>:""}</span> : ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -119,10 +123,10 @@ const StandardItem = props => {
     } else {
       return (
         <>
-          <div className={"productInBag"}>
+          <div className={"productInBag "}>
             <div className={["row", "alignFlex"].join(" ")}>
               <div class="hide-desk col-4">
-              <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => {navigateto(producturl[1],e)}}>
+              <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
                   <img  src={item.image_url} alt={`${item.name}`} />
                 </a>
               </div>
@@ -130,13 +134,13 @@ const StandardItem = props => {
                 className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
               >
                 <div className={["col-md-2", "hide-tabmob"].join(" ")}>
-                  <a onClick={(e) => {navigateto(producturl[1],e)}} href={`${producturl[1]}`}>
+                  <a className="cursor-pointer" onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
                     <img src={item.image_url} alt={`${item.name}`} />
                   </a>
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
-                  <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {navigateto(producturl[1],e)}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                  {item.premier_points != '' ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
+                  <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
+                  {item.premier_points ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
                 </div>
                 {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
@@ -629,7 +633,7 @@ const YourBag = (props, { notificationId }) => {
             />
             <div className={ShowBagStyle.final}>
               <div
-                className={[ShowBagStyle.total, "d-flex", ShowBagStyle.left].join(
+                className={[ShowBagStyle.total, "d-flex premierPointsEarned d-none", ShowBagStyle.left].join(
                   " "
                 )}
               >
@@ -920,7 +924,7 @@ const YourBag = (props, { notificationId }) => {
                       className={[
                         BagStyle.Subtotal,
                         BagStyle.SubtotalFinal,
-                        "d-flex",
+                        "d-flex premierPointsEarned d-none",
                       ].join(" ")}
                     >
                       <span className={BagStyle.subtotalfinal}>

@@ -6,16 +6,18 @@ function calcPremierPoints() {
             let premierPointsTotal = 0;
 
             products.forEach(prod => {
-
+                if (prod.querySelector('.totalpoints')){
                 let nProducts = parseInt(prod.querySelector('.quantatiy-number').innerHTML);
                 let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
                 premierPointsTotal += (nProducts * points);
-            })
+                document.querySelector('.premierPointsEarned ').classList.remove('d-none')
+             } })
 
             document.querySelectorAll('.totalPremierPoints').forEach(prod =>{
                 prod.innerHTML = premierPointsTotal;
             })
         })
+        
     } else if (document.querySelector('.productInBag') != null) {
      
        
@@ -27,10 +29,13 @@ function calcPremierPoints() {
                 products.forEach(prod => {
              
                     let nProducts = parseInt(prod.querySelector('.quantatiy-number').innerHTML);
-                    
+                    if (prod.querySelector('.totalpoints')) {
+                        document.querySelector('.premierPointsEarned ').classList.remove('d-none')
+                   
                     let points = parseInt(prod.querySelector('.totalpoints').innerHTML);
 
                     premierPointsTotal += (nProducts * points);
+                }
                 })
     
                 document.querySelectorAll('.totalPremierPoints').forEach(prod =>{

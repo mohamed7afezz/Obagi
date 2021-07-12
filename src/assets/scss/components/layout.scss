@@ -326,7 +326,7 @@ p {
         }
       }
 
-      a {
+      a, .AccessiBe {
         @extend %futurapt-book;
         // @include fontStyle(16, 24);
         color: #132466;
@@ -334,6 +334,10 @@ p {
         &::after {
           content: none;
         }
+      }
+
+      .AccessiBe {
+        cursor: pointer;
       }
     }
   }
@@ -5004,18 +5008,23 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     border: 0;
     color: #132466;
     font-size: 12px;
-    line-height: 32px;
+    line-height: 16px;
     letter-spacing: 0.9px;
     text-transform: uppercase;
     font-weight: 900;
     border-radius: 6px;
     border: solid 1px #122466;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 104px;
     img {
       margin-right: 8px;
     }
     @include lg-screen {
       text-align: left;
-      display: flex;
+      // display: flex;
+      // align-items: center;
     }
   }
 
@@ -5597,14 +5606,19 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
 .blog-breadcrumb {
   a {
+    display: inline-block;
     color: #122466;
-    @include fontStyle(16, 40);
+    @include fontStyle(16, 30);
 
     &:hover {
       text-decoration: none;
     }
     &.active-breadcrumb {
       font-weight: 500;
+    }
+
+    @include lg-screen {
+      line-height: 40px;
     }
   }
 }

@@ -353,6 +353,7 @@ const OrderStatusDetails = (props) => {
                     </div>
 
                     {adressesorder.map((item, index) => {
+                      console.log('ash add', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
@@ -388,6 +389,11 @@ const OrderStatusDetails = (props) => {
                       <p>
                         {detailorder.billing_address
                           ? detailorder.billing_address.street_1
+                          : ""}
+                      </p>
+                      <p>
+                        {detailorder.billing_address
+                          ? detailorder.billing_address.street_2
                           : ""}
                       </p>
                       <p>
@@ -512,7 +518,7 @@ const OrderStatusDetails = (props) => {
                             </form>
                             {/* {item.images.data.map((item, index) => {
                               return ( */}
-                                <img alt="img" src={item.images.data[0].url_thumbnail} />
+                                <img alt="img" src={item.images.data[0]?item.images.data[0].url_thumbnail : ""} />
                               {/* )
                             })} */}
                             <div className={orderDetailsStyles.productInfoWrapper}>
@@ -629,11 +635,13 @@ const OrderStatusDetails = (props) => {
                     </div>
 
                     {adressesorder.map((item, index) => {
+                      console.log('ash add', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
                           <p>Shipping Address</p>
                           <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
                           <p>{item.street_1 ? item.street_1 : ""}</p>
+                          <p>{item.street_2 ? item.street_2 : ""}</p>
                           <p>{item.city ? item.city : ""} {item.state ? item.state : ""}, {item.zip ? item.zip : ""}</p>
                           <p>{item.country_iso2 ? item.country_iso2 : ""}</p>
                         </div>
@@ -641,9 +649,11 @@ const OrderStatusDetails = (props) => {
                     })}
 
                     <div className={orderDetailsStyles.detailPart}>
+                      {console.log('ash add bill', detailorder.billing_address)}
                       <p>Billing Address</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.first_name : ""} {detailorder.billing_address ? detailorder.billing_address.last_name : ""}</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.street_1 : ""}</p>
+                      <p>{detailorder.billing_address ? detailorder.billing_address.street_2 : ""}</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.city : ""} {detailorder.billing_address ? detailorder.billing_address.state : ""}, {detailorder.billing_address ? detailorder.billing_address.zip : ""}</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.country_iso2 : ""}</p>
                     </div>

@@ -65,9 +65,9 @@ const BlogCategory = props => {
     return item !== undefined
   }) : ""
 
-  const [list, setList] = useState([...allPostsList.slice(0, 2)])
+  const [list, setList] = useState([...allPostsList.slice(0, 8)])
   const [loadMore, setLoadMore] = useState(false)
-  const [hasMore, setHasMore] = useState(allPostsList.length > 2)
+  const [hasMore, setHasMore] = useState(allPostsList.length > 8)
   const handleLoadMore = () => {
     setLoadMore(true)
   }
@@ -106,6 +106,12 @@ const BlogCategory = props => {
       }
     })
 
+    document.querySelectorAll('.blog-breadcrumb a').forEach(link => {
+      if(link.attributes.href.textContent === props.path) {
+        link.classList.add('active-breadcrumb');
+      }
+    })
+
   }, [])
 
   useEffect(() => {
@@ -113,7 +119,7 @@ const BlogCategory = props => {
       const currentLength = list.length
       const isMore = currentLength < allPostsList.length
       const nextResults = isMore
-        ? allPostsList.slice(currentLength, currentLength + 2)
+        ? allPostsList.slice(currentLength, currentLength + 8)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
@@ -135,22 +141,22 @@ const BlogCategory = props => {
   return (
     <Layout>
       <div className={`container-fluid blog-category-page`}>
-        <div className={`d-none d-lg-block`}>
+       
           <div className={`col-12 pl-0`}>
             <div className={`blog-breadcrumb`}>
               <Link to="/">Home</Link>/
               <Link to="/blog">Blog</Link>
-              {parentCategory ? <>/<Link to={parentCategory.path.alias ? parentCategory.path.alias : "#"} className={parentCategory.path.alias && (parentCategory.path.alias == props.path) ? `active-breadcrumb` : ""}>{parentCategory.name}</Link></> : ""}
+              {parentCategory ? <>/<Link to={parentCategory.path.alias ? parentCategory.path.alias : "#"}>{parentCategory.name}</Link></> : ""}
               {data.path.alias
                 && parentCategory
                 && parentCategory.path.alias
                 && (parentCategory.path.alias != data.path.alias) ?
-                <>/<Link to={data.path.alias ? data.path.alias : "#"} className={data.path.alias && (data.path.alias == props.path) ? `active-breadcrumb` : ""}>
+                <>/<Link to={data.path.alias ? data.path.alias : "#"}>
                   <span dangerouslySetInnerHTML={{ __html: data.name }}></span>
                 </Link></> : ""}
             </div>
           </div>
-        </div>
+  
         <div className={`row`}>
           <div className={`col-10 offset-1`}>
             <h1 className={`blog-cat-title`}>{parentCategory ? parentCategory.name : ""}</h1>
@@ -220,6 +226,9 @@ const BlogCategory = props => {
               {list ?
                 <>{
                   list.map((item, index) => {
+                    if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                      return
+                    }
                     if (item) {
                       return (
                         <div className={`col-12 col-md-6`}>
@@ -248,7 +257,9 @@ const BlogCategory = props => {
                 :
                 list ?
                   <>{list.map((item, index) => {
-
+                    if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                      return
+                    }
                     if (item) {
                       return (
                         <div className={`col-12 col-md-6`}>

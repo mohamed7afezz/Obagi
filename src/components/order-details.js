@@ -300,7 +300,7 @@ async function getShippingAddresses(e) {
                                         </div>
                                         
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {item.status}
+                                        {item.status == "Manual Verification Required"? "Processing" : item.status}
                                       </div>
                                          
                                       </div>
@@ -338,7 +338,7 @@ async function getShippingAddresses(e) {
                                   
                                    
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {alldata.main_order.status}
+                                        {alldata.main_order.status == "Manual Verification Required"? "Processing" : alldata.main_order.status}
                                       </div>
                                    
                                    
@@ -376,7 +376,7 @@ async function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Status</p>
-                      <p>{alldata.main_order.status ? alldata.main_order.status : ""}</p>
+                      <p>{alldata.main_order.status && alldata.main_order.status == "Manual Verification Required" ? "Processing" : alldata.main_order.status ? alldata.main_order.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -427,6 +427,11 @@ async function getShippingAddresses(e) {
                       <p>
                         {alldata.main_order.billing_address
                           ? alldata.main_order.billing_address.street_1
+                          : ""}
+                      </p>
+                      <p>
+                        {alldata.main_order.billing_address
+                          ? alldata.main_order.billing_address.street_2
                           : ""}
                       </p>
                       <p>
@@ -551,7 +556,7 @@ async function getShippingAddresses(e) {
                                 <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
                                
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {item.status}
+                                        {item.status == "Manual Verification Required"? "Processing" : item.status}
                                       </div>
                               </div>
                             </div>
@@ -609,7 +614,7 @@ async function getShippingAddresses(e) {
                             {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
                           </div>
                        
-                          <div className={orderDetailsStyles.productstatus}>{alldata.main_order.custom_status}</div> 
+                          <div className={orderDetailsStyles.productstatus}>{alldata.main_order.custom_status == "Manual Verification Required"? "Processing" : alldata.main_order.custom_status}</div> 
                                 
                               
                         </div>
@@ -630,7 +635,7 @@ async function getShippingAddresses(e) {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p>Status</p>
-                      <p>{alldata.main_order.status ? alldata.main_order.status : ""}</p>
+                      <p>{alldata.main_order.status && alldata.main_order.status == "Manual Verification Required"? "Processing" : alldata.main_order.status? alldata.main_order.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -655,6 +660,7 @@ async function getShippingAddresses(e) {
                       <p>Billing Address</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.first_name : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.last_name : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_1 : ""}</p>
+                      <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_2 : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.city : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.state : ""}, {alldata.main_order.billing_address ? alldata.main_order.billing_address.zip : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.country_iso2 : ""}</p>
                     </div>

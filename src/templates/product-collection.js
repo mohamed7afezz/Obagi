@@ -66,52 +66,72 @@ const ClinicalCollectionTemp = (props, data) => {
 }
 export default ClinicalCollectionTemp
 export const productPageQuery = graphql`
-    query($slug: String!) {
-    
-
-        taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
-          path {
-            alias
-          }
+query($slug: String!) {
+  taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    ...collectionhero
+    ...collectionproducts
+    relationships {
+      node__clinical_product {
+        relationships {
+          field_clinical_ingredients {
             name
-            ...collectionhero
-            ...collectionproducts
-            relationships {
-            
-              node__clinical_product {
-            relationships {
-              field_clinical_ingredients {
-                name
-              }
-              field_clinical_skin_concern {
-                name
-              }
-              field_clinical_skin_type {
-                name
-              }
-              field_clinical_categories {
-                name
-              }
-              field_clinical_groups {
-                name
+          }
+          field_clinical_skin_concern {
+            name
+          }
+          field_clinical_skin_type {
+            name
+          }
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+        }
+      }
+    }
+    field_taxonomy_footer {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermClinicalCategories(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    id
+    relationships {
+      field_clicat_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
-            field_taxonomy_footer {
-                settings {
-                  label
-                }
-            }
-        },
-        taxonomyTermClinicalCategories(path: {alias: {eq: $slug}}) {
-          path {
-            alias
-          }
-            name
-            id
-            relationships {
-              field_footer_two_section_cat {
+      }
+      field_footer_two_section_cat {
         relationships {
           field_service_card {
             field_service_name {
@@ -121,9 +141,10 @@ export const productPageQuery = graphql`
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid (quality: 100) {
+                    fluid(quality: 100) {
                       ...GatsbyImageSharpFluid
-                    } original{
+                    }
+                    original {
                       src
                     }
                   }
@@ -143,1193 +164,1421 @@ export const productPageQuery = graphql`
           }
         }
       }
-                node__clinical_product {     
-                    field_clinical_id   
-                    field_clinical_description {
-                      processed
-                    }
-                    path {
-                      alias
-                    } 
-                    field_clinical_price
-                    field_clinical_sku
-                    field_min_quantity
-                    title
-                    relationships {
-                      field_clinical_ingredients {
-                        name
-                      }
-                      field_clinical_skin_concern {
-                        name
-                      }
-                      field_clinical_skin_type {
-                        name
-                      }
-                      field_clinical_categories {
-                        name
-                      }
-                      field_clinical_groups {
-                        name
-                      }
-                        field_clinical_components {
-                          ... on paragraph__ingredient {
-                            
-                           relationships {
-                            field_read_more {
-                              field_read_more_content {
-                                processed
-                              }
-                            }
-                          }
-                         }
-                       }
-                      
-                      field_clinical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100){
-                              ...GatsbyImageSharpFluid
-                            } original{
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                field_hero_categories_taxonomy {
-                  field_taxonomy_page_url
-                  field_taxonomy_page_title
-                field_taxonomy_hero_para_title
-                field_taxonomy_hero_para_descrip {
-                  processed
-                }
-                field_taxonomy_hero_paraprapgh_t
-                relationships {
-                  field_taxonomy_hero_paraprapgh_i {
-                    localFile {
-                      url
-                      childImageSharp {
-                        fluid (quality: 100){
-                            ...GatsbyImageSharpFluid
-                        } original{
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            field_taxonomy_footer_category {
-                settings {
-                  label
-                }
-            }
-        },   
-           taxonomyTermClinicalIngredients(path: {alias: {eq: $slug}}) {
-            path {
-              alias
-            }
-          name
-          id
-          field_meta_tag {
-            title
-            description
-          }
-          relationships {
-            field_footer_two_section_cli_ing {
-    
-              id
-                 field_featured_paragraph_id {
-                   processed
-                 }
-                 field_featured_button {
-                   title
-                   uri
-                 }
-                 field_featured_description {
-                   processed
-                 }
-                 field_featured_title {
-                   processed
-                 }
-                 field_featured_perfect_title {
-                   processed
-                 }
-                 field_featured_products_title {
-                   processed
-                 }
-                 field_featured_subtitle {
-                   processed
-                 }
-                 field_image_right
-                 
-                 relationships {
-                   
-                   field_featured_video {
-                     field_video_link
-                     relationships {
-                       field_video_poster {
-                         localFile {
-                           childImageSharp {
-                             fluid (quality: 100) {
-                              src
-                             }
-                             original{
-                               src
-                             }
-                           }
-                         }
-                       }
-                     }
-                   }
-                 }
-               
-             }
-
-              node__clinical_product {     
-                  field_clinical_id   
-                  field_clinical_description {
-                    processed
-                  }
-                  path {
-                    alias
-                  } 
-                  field_clinical_price
-                  field_clinical_sku
-                  field_min_quantity
-                  title
-                  relationships {
-                    field_clinical_ingredients {
-                      name
-                    }
-                    field_clinical_skin_concern {
-                      name
-                    }
-                    field_clinical_skin_type {
-                      name
-                    }
-                    field_clinical_categories {
-                      name
-                    }
-                    field_clinical_groups {
-                      name
-                    }
-                      field_clinical_components {
-                        ... on paragraph__ingredient {
-                          
-                         relationships {
-                          field_read_more {
-                            field_read_more_content {
-                              processed
-                            }
-                          }
-                        }
-                       }
-                     }
-                    
-                    field_clinical_image {
-                      localFile {
-                        childImageSharp {
-                          fluid (quality: 100){
-                            ...GatsbyImageSharpFluid
-                          } original{
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-               field_hero_ingredients_taxonomy {
-              field_taxonomy_hero_para_title
-              field_taxonomy_page_url
-              field_taxonomy_page_title
-              field_taxonomy_hero_para_descrip {
-                processed
-              }
-              field_taxonomy_hero_paraprapgh_t
-              relationships {
-                field_taxonomy_hero_paraprapgh_i {
-                  localFile {
-                    url
-                    childImageSharp {
-                      fluid (quality: 100){
-                          ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          field_taxonomy_ingredient_footer {
-              settings {
-                label
-              }
-          }
-      },
-        taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
-          path {
-            alias
-          }
+      node__clinical_product {
+        field_clinical_id
+        field_clinical_description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_clinical_price
+        field_clinical_sku
+        field_min_quantity
+        title
+        relationships {
+          field_clinical_ingredients {
             name
-            field_need_to_know_second_descri {
-              processed
-            }
-            field_need_know_title {
-              processed
-            }
-            field_need__know_description {
-              processed
-            }
-            field_medicla_skin_con_meta_tags {
-              description
-              title
-              canonical_url
-            }
-            relationships {
-              field_footer_two_section_med_ski {
-                relationships {
-                  field_service_card {
-                    field_service_name {
-                      processed
-                    }
-                    field_service_description {
-                      processed
-                    }
-                    field_se {
-                      title
-                      uri
-                    }
-                    field_service_title {
-                      processed
-                    }
-                    relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                                fluid (quality: 100) {
-                                  ...GatsbyImageSharpFluid
-                                } original{
-                                  src
-                                }
-                              }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-                node__medical_product {
-                  field_is_best_seller
-                  field_medical_premier_points
-                  field_medical_sku
-                  field_min_quantity
-                  field_medical_premier_points_id
-                  field_medical_is_system
-                  field_medical_id
-                    field_medical_description {
-                      processed
-                    }
-                    path {
-                      alias
-                    } 
-                    
-                    field_medical_price
-                    title
-                    relationships {
-                      field_medical_ingredients {
-                        id
-                        name
-                      }
-                      field_medical_skin_concern {
-                        name
-                      }
-                      field_medical_skin_type {
-                        name
-                      }
-                      field_medical_categories {
-                        name
-                      }
-                      field_medical_components {
-                        ... on paragraph__ingredient {
-                          id
-                          relationships {
-                            field_read_more {
-                              field_read_more_content {
-                                processed
-                              }
-                            }
-                          }
-                        }
-                      }
-                      field_medical_rx {
-                        name
-                      }
-                      field_medical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100){
-                                ...GatsbyImageSharpFluid
-                            } original{
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                field_hero_taxonomy {
-                  field_taxonomy_hero_para_title
-                  field_taxonomy_page_url
-                  field_taxonomy_page_title
-                  field_taxonomy_hero_para_descrip {
+          }
+          field_clinical_skin_concern {
+            name
+          }
+          field_clinical_skin_type {
+            name
+          }
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+          field_clinical_components {
+            ... on paragraph__ingredient {
+              relationships {
+                field_read_more {
+                  field_read_more_content {
                     processed
                   }
-                  field_taxonomy_hero_paraprapgh_t
-                  relationships {
-                    field_taxonomy_hero_paraprapgh_i {
-                      localFile {
-                        url
-                        childImageSharp {
-                          fluid (quality: 100){
-                              ...GatsbyImageSharpFluid
-                          } original{
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
-            field_taxonomy_footer_medical {
-                settings {
-                  label
-                }
             }
-      },
-      
-      taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
-        path {
-          alias
+          }
+
+          field_clinical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
         }
-        name
-        field_need__to_know__title {
+      }
+      field_hero_categories_taxonomy {
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_title
+        field_taxonomy_hero_para_descrip {
           processed
         }
-        field_need_to__know__description {
-          processed
-        }
-        field_need_sec__know_description {
-          processed
-        }
-        field_medical_ingr_meta_tags {
-          canonical_url
-          title
-          description
-        }
-       
+        field_taxonomy_hero_paraprapgh_t
         relationships {
-          field_footer_two_section_med_ing{
-            relationships {
-              field_service_card {
-                field_service_name {
-                  processed
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
                 }
-                relationships {
-                  field_service_image {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100) {
-                          ...GatsbyImageSharpFluid
-                        } original{
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-                field_service_title {
-                  processed
-                }
-                field_service_description {
-                  processed
-                }
-                field_se {
-                  title
-                  uri
+                original {
+                  src
                 }
               }
             }
           }
-            node__medical_product {
-              field_is_best_seller
-              field_medical_premier_points
-              field_medical_sku
-              field_min_quantity
-              field_medical_premier_points_id
-              field_medical_is_system
-              field_medical_id
-                field_medical_description {
-                  processed
-                }
-                path {
-                  alias
-                } 
-                field_medical_price
-                title
-                relationships {
-                  field_medical_ingredients {
-                    id
-                    name
-                  }
-                  field_medical_skin_concern {
-                    name
-                  }
-                  field_medical_skin_type {
-                    name
-                  }
-                  field_medical_categories {
-                    name
-                  }
-                  field_medical_components {
-                    ... on paragraph__ingredient {
-                      id
-                      relationships {
-                        field_read_more {
-                          field_read_more_content {
-                            processed
-                          }
-                        }
-                      }
-                    }
-                  }
-                  field_medical_rx {
-                    name
-                  }
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100){
-                            ...GatsbyImageSharpFluid
-                        } original{
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              field_hero_clinical_ing_taxonomy {
-              field_taxonomy_hero_para_title
-              field_taxonomy_page_url
-              field_taxonomy_page_title
-              field_taxonomy_hero_para_descrip {
-                processed
-              }
-              field_taxonomy_hero_paraprapgh_t
-              relationships {
-                field_taxonomy_hero_paraprapgh_i {
-                  localFile {
-                    url
-                    childImageSharp {
-                      fluid (quality: 100){
-                          ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          field_taxonomy_ing_footer {
-            settings {
-              label
-            }
         }
-  },
-      taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
-        name
-        field_medical_skin_type_meta_tag {
-          description
+      }
+    }
+    field_taxonomy_footer_category {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermClinicalIngredients(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    id
+    field_meta_tag {
+      title
+      description
+    }
+    relationships {
+      field_cliing_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
           title
+          uri
         }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_cli_ing {
         id
-        path {
-          alias
+        field_featured_paragraph_id {
+          processed
         }
+        field_featured_button {
+          title
+          uri
+        }
+        field_featured_description {
+          processed
+        }
+        field_featured_title {
+          processed
+        }
+        field_featured_perfect_title {
+          processed
+        }
+        field_featured_products_title {
+          processed
+        }
+        field_featured_subtitle {
+          processed
+        }
+        field_image_right
+
         relationships {
-          field_taxonomy_footer_two {
+          field_featured_video {
+            field_video_link
             relationships {
-              field_service_card {
-                field_service_title {
-                  processed
-                }
-                field_service_name {
-                  processed
-                }
-                field_service_description {
-                  processed
-                }
-                field_se {
-                  uri
-                  title
-                }
-               relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            } original{
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-              }
-            }
-          }
-              field_hero_parag_taxonomy {
-                field_taxonomy_hero_para_title
-                field_taxonomy_page_url
-                field_taxonomy_page_title
-                field_taxonomy_hero_paraprapgh_t
-                field_taxonomy_hero_para_descrip {
-                  processed
-                }
-                relationships {
-                  field_taxonomy_hero_paraprapgh_i {
-                    localFile {
-                      url
-                      childImageSharp {
-                        fluid (quality: 100) {
-                          ...GatsbyImageSharpFluid
-                        } original{
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-          node__medical_product {
-            field_medical_premier_points
-            field_is_best_seller
-            field_medical_sku
-            field_min_quantity
-            field_medical_premier_points_id
-            title
-            path {
-              alias
-            }
-            relationships {
-              field_medical_ingredients {
-                id
-                name
-              }
-              field_medical_skin_concern {
-                name
-              }
-              field_medical_skin_type {
-                name
-              }
-              field_medical_categories {
-                name
-              }
-              field_medical_components {
-                ... on paragraph__ingredient {
-                  relationships {
-                    field_read_more {
-                      field_read_more_content {
-                        processed
-                      }
-                    }
-                  }
-                }
-              }
-              field_medical_rx {
-                name
-              }
-              field_medical_image {
+              field_video_poster {
                 localFile {
                   childImageSharp {
-                    fluid (quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    } original{
+                    fluid(quality: 100) {
+                      src
+                    }
+                    original {
                       src
                     }
                   }
                 }
               }
             }
-            field_medical_price
-            field_medical_id
-            field_medical_description {
-              processed
+          }
+        }
+      }
+
+      node__clinical_product {
+        field_clinical_id
+        field_clinical_description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_clinical_price
+        field_clinical_sku
+        field_min_quantity
+        title
+        relationships {
+          field_clinical_ingredients {
+            name
+          }
+          field_clinical_skin_concern {
+            name
+          }
+          field_clinical_skin_type {
+            name
+          }
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+          field_clinical_components {
+            ... on paragraph__ingredient {
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+
+          field_clinical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
             }
           }
         }
-      },
-         taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
-          path {
-            alias
-          }
-            name
-            field_need_to_know_title {
-              processed
-            }
-            field_need_to_know_description {
-              processed
-            }
-          
-            field_medical_cat_meta_tags {
-              description
-              title
-              canonical_url
-            }
-           
-            relationships {
-              field_footer_two_section_med_cat {
-                relationships {
-                  field_service_card {
-                    field_service_title {
-                      processed
-                    }
-                    field_service_name {
-                      processed
-                    }
-                    field_service_description {
-                      processed
-                    }
-                    field_se {
-                      uri
-                      title
-                    }
-                    relationships {
-                      field_service_image {
-                        localFile {
-                          childImageSharp {
-                            fluid(quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            }
-                            original {
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+      }
+      field_hero_ingredients_taxonomy {
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        field_taxonomy_hero_paraprapgh_t
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
                 }
-              }
-                node__medical_product {
-                  field_medical_premier_points
-                  field_is_best_seller
-                  field_medical_sku
-                  field_min_quantity
-                  field_medical_premier_points_id
-                    field_medical_is_system
-                    field_medical_id
-                    field_medical_description {
-                      processed
-                    }
-                    field_medical_price
-                    title
-                    path {
-                      alias
-                    }
-                    relationships {
-                      field_medical_ingredients {
-                        id
-                        name
-                      }
-                      field_medical_skin_concern {
-                        name
-                      }
-                      field_medical_skin_type {
-                        name
-                      }
-                      field_medical_categories {
-                        name
-                      }
-                      field_medical_components {
-                        ... on paragraph__ingredient {
-                          id
-                          relationships {
-                            field_read_more {
-                              field_read_more_content {
-                                processed
-                              }
-                            }
-                          }
-                        }
-                      }
-                      field_medical_rx {
-                        name
-                      }
-                      field_medical_image {
-                        localFile {
-                          childImageSharp {
-                            fluid (quality: 100) {
-                              ...GatsbyImageSharpFluid
-                            } original{
-                              src
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                field_hero_category_taxonomy {
-                  field_taxonomy_page_url
-                  field_taxonomy_page_title
-                  field_taxonomy_hero_para_title
-                  field_taxonomy_hero_para_descrip {
-                    processed
-                  }
-                  field_taxonomy_hero_paraprapgh_t
-                  relationships {
-                    field_taxonomy_hero_paraprapgh_i {
-                      localFile {
-                        url
-                        childImageSharp {
-                          fluid (quality: 100) {
-                            ...GatsbyImageSharpFluid
-                          } original{
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            field_taxonomy_medical_footer {
-                settings {
-                  label
-                }
-            }
-         },
-         taxonomyTermClinicalSkinType(path: {alias: {eq: $slug}}) {
-          name
-          path {
-            alias
-          }
-          field_taxonomy_footer_skin_type {
-            settings {
-              label
-            }
-          }
-          relationships {
-            field_footer_two_section_sk_type{
-
-              relationships {
-                field_service_card {
-                  field_service_name {
-                    processed
-                  }
-                  relationships {
-                    field_service_image {
-                      localFile {
-                        childImageSharp {
-                          fluid (quality: 100) {
-                            ...GatsbyImageSharpFluid
-                          } original{
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
-                  field_service_title {
-                    processed
-                  }
-                  field_service_description {
-                    processed
-                  }
-                  field_se {
-                    title
-                    uri
-                  }
-                }
-              }
-            }
-            field_hero_taxonomy_skintype {
-              field_taxonomy_hero_paraprapgh_t
-              field_taxonomy_hero_para_title
-              field_taxonomy_page_url
-              field_taxonomy_page_title
-              field_taxonomy_hero_para_descrip {
-                processed
-              }
-              relationships {
-                field_taxonomy_hero_paraprapgh_i {
-                  localFile {
-                    url
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                      original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            node__clinical_product {
-              field_clinical_id
-              field_clinical_description {
-                processed
-              }
-              path {
-                alias
-              }
-              field_clinical_price
-              field_clinical_sku
-              field_min_quantity
-              title
-              relationships {
-                field_clinical_ingredients {
-                  name
-                }
-                field_clinical_skin_concern {
-                  name
-                }
-                field_clinical_skin_type {
-                  name
-                }
-                field_clinical_categories {
-                  name
-                }
-                field_clinical_groups {
-                  name
-                }
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-                field_clinical_ingredients {
-                  name
-                }
-                field_clinical_components {
-                  
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
+                original {
+                  src
                 }
               }
             }
           }
-        },
-         taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
-          path {
-            alias
-          }
-          field_medical_prod_lines_meta_ta {
-            description
-            title
-          }
-          field_tax_description_second_par {
-            processed
-          }
-          field_tax_need_to_know_descripti {
-            processed
-          }
-          field_tax_needtoknow {
-            processed
-          }
-          relationships {
-            field_footer_two_section_title {
-              relationships {
-                field_service_card {
-                  field_service_title {
-                    processed
-                  }
-                  field_service_name {
-                    processed
-                  }
-                  field_se {
-                    uri
-                    title
-                  }
-                  field_service_description {
-                    processed
-                  }
-                  relationships {
-                    field_service_image {
-                      localFile {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
-                          }
-                          original {
-                            src
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            field_hero_productline_taxonomy {
-              field_taxonomy_hero_paraprapgh_t
-              field_taxonomy_hero_para_title
-              field_taxonomy_page_url
-              field_taxonomy_page_title
-              field_taxonomy_hero_para_descrip {
-                processed
-              }
-              relationships {
-                field_taxonomy_hero_paraprapgh_i {
-                  localFile {
-                    url
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            node__medical_product {
-              field_medical_premier_points
-              field_medical_sku
-              field_min_quantity
-              field_is_best_seller
-              field_medical_premier_points_id
-              id
-              field_medical_is_system
-              field_medical_id
-              field_medical_description {
-                processed
-              }
-              field_medical_price
-              title
-              path {
-                alias
-              }
-              relationships {
-                field_medical_ingredients {
-                  name
-                }
-                field_medical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-                field_medical_rx {
-                  name
-                }
-                field_medical_ingredients {
-                  id
-                  name
-                }
-                field_medical_skin_concern {
-                  name
-                }
-                field_medical_skin_type {
-                  name
-                }
-                field_medical_categories {
-                  name
-                }
-                field_medical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-         
-          name
-          field_taxonomy_line_footer {
-            settings {
-              label
-            }
-          }
-        },
-        taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
-          
-          id
-          name
-          field_clinical_groups_meta_tags {
-            title
-            description
-            canonical_url
-          }
-          path {
-            alias
-          }
-          relationships {
-            field_footer_two_sections {
-              id
-                 field_featured_paragraph_id {
-                   processed
-                 }
-                 field_featured_button {
-                   title
-                   uri
-                 }
-                 field_featured_description {
-                   processed
-                 }
-                 field_featured_title {
-                   processed
-                 }
-                 field_featured_perfect_title {
-                   processed
-                 }
-                 field_featured_products_title {
-                   processed
-                 }
-                 field_featured_subtitle {
-                   processed
-                 }
-                 field_image_right
-                 
-                 relationships {
-                 
-                   field_featured_video {
-                     field_video_link
-                     relationships {
-                       field_video_poster {
-                         localFile {
-                           childImageSharp {
-                             fluid (quality: 100) {
-                              src
-                             }
-                             original{
-                               src
-                             }
-                           }
-                         }
-                       }
-                     }
-                   }
-                 }
-               }
-            field_taxonomy_hero {
-              field_taxonomy_hero_para_descrip {
-                processed
-              }
-              field_taxonomy_hero_para_title
-              field_taxonomy_page_url
-              field_taxonomy_page_title
-              field_taxonomy_hero_paraprapgh_t
-              relationships {
-                field_taxonomy_hero_paraprapgh_i {
-                  localFile {
-                    url
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-      
-
-            node__clinical_product {
-              field_clinical_id
-              field_clinical_description {
-                processed
-              }
-              path {
-                alias
-              }
-              field_clinical_price
-              field_clinical_sku
-              field_min_quantity
-              title
-              relationships {
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      } original{
-                        src
-                      }
-                    }
-                  }
-                }
-                field_clinical_ingredients {
-                  name
-                }
-                field_clinical_skin_concern {
-                  name
-                }
-                field_clinical_skin_type {
-                  name
-                }
-                field_clinical_categories {
-                  name
-                }
-                field_clinical_groups {
-                  name
-                }
-                field_clinical_components {
-                  ... on paragraph__ingredient {
-                    id
-                    relationships {
-                      field_read_more {
-                        field_read_more_content {
-                          processed
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
+        }
+      }
     }
+    field_taxonomy_ingredient_footer {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermMedicalSkinConcern(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    field_need_to_know_second_descri {
+      processed
+    }
+    field_need_know_title {
+      processed
+    }
+    field_need__know_description {
+      processed
+    }
+    field_medicla_skin_con_meta_tags {
+      description
+      title
+      canonical_url
+    }
+    relationships {
+      field_skinconc_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_med_ski {
+        relationships {
+          field_service_card {
+            field_service_name {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              title
+              uri
+            }
+            field_service_title {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      node__medical_product {
+        field_is_best_seller
+        field_medical_premier_points
+        field_medical_sku
+        field_min_quantity
+        field_medical_premier_points_id
+        field_medical_is_system
+        field_medical_id
+        field_medical_description {
+          processed
+        }
+        path {
+          alias
+        }
+
+        field_medical_price
+        title
+        relationships {
+          field_medical_ingredients {
+            id
+            name
+          }
+          field_medical_skin_concern {
+            name
+          }
+          field_medical_skin_type {
+            name
+          }
+          field_medical_categories {
+            name
+          }
+          field_medical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+          field_medical_rx {
+            name
+          }
+          field_medical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      field_hero_taxonomy {
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        field_taxonomy_hero_paraprapgh_t
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    field_taxonomy_footer_medical {
+      settings {
+        label
+      }
+    }
+  }
+
+  taxonomyTermMedicalIngredients(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    field_need__to_know__title {
+      processed
+    }
+    field_need_to__know__description {
+      processed
+    }
+    field_need_sec__know_description {
+      processed
+    }
+    field_medical_ingr_meta_tags {
+      canonical_url
+      title
+      description
+    }
+
+    relationships {
+      field_meding_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          uri
+          title
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_med_ing {
+        relationships {
+          field_service_card {
+            field_service_name {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+            field_service_title {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              title
+              uri
+            }
+          }
+        }
+      }
+      node__medical_product {
+        field_is_best_seller
+        field_medical_premier_points
+        field_medical_sku
+        field_min_quantity
+        field_medical_premier_points_id
+        field_medical_is_system
+        field_medical_id
+        field_medical_description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_medical_price
+        title
+        relationships {
+          field_medical_ingredients {
+            id
+            name
+          }
+          field_medical_skin_concern {
+            name
+          }
+          field_medical_skin_type {
+            name
+          }
+          field_medical_categories {
+            name
+          }
+          field_medical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+          field_medical_rx {
+            name
+          }
+          field_medical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      field_hero_clinical_ing_taxonomy {
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        field_taxonomy_hero_paraprapgh_t
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    field_taxonomy_ing_footer {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermMedicalSkinType(path: { alias: { eq: $slug } }) {
+    name
+    field_medical_skin_type_meta_tag {
+      description
+      title
+    }
+    id
+    path {
+      alias
+    }
+    relationships {
+      field_skintype_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_taxonomy_footer_two {
+        relationships {
+          field_service_card {
+            field_service_title {
+              processed
+            }
+            field_service_name {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              uri
+              title
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      field_hero_parag_taxonomy {
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_paraprapgh_t
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      node__medical_product {
+        field_medical_premier_points
+        field_is_best_seller
+        field_medical_sku
+        field_min_quantity
+        field_medical_premier_points_id
+        title
+        path {
+          alias
+        }
+        relationships {
+          field_medical_ingredients {
+            id
+            name
+          }
+          field_medical_skin_concern {
+            name
+          }
+          field_medical_skin_type {
+            name
+          }
+          field_medical_categories {
+            name
+          }
+          field_medical_components {
+            ... on paragraph__ingredient {
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+          field_medical_rx {
+            name
+          }
+          field_medical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+        field_medical_price
+        field_medical_id
+        field_medical_description {
+          processed
+        }
+      }
+    }
+  }
+  taxonomyTermMedicalCategories(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    name
+    field_need_to_know_title {
+      processed
+    }
+    field_need_to_know_description {
+      processed
+    }
+
+    field_medical_cat_meta_tags {
+      description
+      title
+      canonical_url
+    }
+
+    relationships {
+      field_medcat_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_med_cat {
+        relationships {
+          field_service_card {
+            field_service_title {
+              processed
+            }
+            field_service_name {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              uri
+              title
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      node__medical_product {
+        field_medical_premier_points
+        field_is_best_seller
+        field_medical_sku
+        field_min_quantity
+        field_medical_premier_points_id
+        field_medical_is_system
+        field_medical_id
+        field_medical_description {
+          processed
+        }
+        field_medical_price
+        title
+        path {
+          alias
+        }
+        relationships {
+          field_medical_ingredients {
+            id
+            name
+          }
+          field_medical_skin_concern {
+            name
+          }
+          field_medical_skin_type {
+            name
+          }
+          field_medical_categories {
+            name
+          }
+          field_medical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+          field_medical_rx {
+            name
+          }
+          field_medical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      field_hero_category_taxonomy {
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        field_taxonomy_hero_paraprapgh_t
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    field_taxonomy_medical_footer {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermClinicalSkinType(path: { alias: { eq: $slug } }) {
+    name
+    path {
+      alias
+    }
+    field_taxonomy_footer_skin_type {
+      settings {
+        label
+      }
+    }
+    relationships {
+      field_cliskintype_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_sk_type {
+        relationships {
+          field_service_card {
+            field_service_name {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+            field_service_title {
+              processed
+            }
+            field_service_description {
+              processed
+            }
+            field_se {
+              title
+              uri
+            }
+          }
+        }
+      }
+      field_hero_taxonomy_skintype {
+        field_taxonomy_hero_paraprapgh_t
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      node__clinical_product {
+        field_clinical_id
+        field_clinical_description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_clinical_price
+        field_clinical_sku
+        field_min_quantity
+        title
+        relationships {
+          field_clinical_ingredients {
+            name
+          }
+          field_clinical_skin_concern {
+            name
+          }
+          field_clinical_skin_type {
+            name
+          }
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+          field_clinical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+          field_clinical_ingredients {
+            name
+          }
+          field_clinical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  taxonomyTermMedicalProductLines(path: { alias: { eq: $slug } }) {
+    path {
+      alias
+    }
+    field_medical_prod_lines_meta_ta {
+      description
+      title
+    }
+    field_tax_description_second_par {
+      processed
+    }
+    field_tax_need_to_know_descripti {
+      processed
+    }
+    field_tax_needtoknow {
+      processed
+    }
+    relationships {
+      field_prodline_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_section_title {
+        relationships {
+          field_service_card {
+            field_service_title {
+              processed
+            }
+            field_service_name {
+              processed
+            }
+            field_se {
+              uri
+              title
+            }
+            field_service_description {
+              processed
+            }
+            relationships {
+              field_service_image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      field_hero_productline_taxonomy {
+        field_taxonomy_hero_paraprapgh_t
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+      node__medical_product {
+        field_medical_premier_points
+        field_medical_sku
+        field_min_quantity
+        field_is_best_seller
+        field_medical_premier_points_id
+        id
+        field_medical_is_system
+        field_medical_id
+        field_medical_description {
+          processed
+        }
+        field_medical_price
+        title
+        path {
+          alias
+        }
+        relationships {
+          field_medical_ingredients {
+            name
+          }
+          field_medical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+          field_medical_rx {
+            name
+          }
+          field_medical_ingredients {
+            id
+            name
+          }
+          field_medical_skin_concern {
+            name
+          }
+          field_medical_skin_type {
+            name
+          }
+          field_medical_categories {
+            name
+          }
+          field_medical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    name
+    field_taxonomy_line_footer {
+      settings {
+        label
+      }
+    }
+  }
+  taxonomyTermClinicalGroups(path: { alias: { eq: $slug } }) {
+    id
+    name
+    field_clinical_groups_meta_tags {
+      title
+      description
+      canonical_url
+    }
+    path {
+      alias
+    }
+    relationships {
+      field_cligroup_content_tile {
+        field_tile_title {
+          processed
+        }
+        field_tile_text {
+          processed
+        }
+        field_tile_link {
+          title
+          uri
+        }
+        relationships {
+          field_tile_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      field_footer_two_sections {
+        id
+        field_featured_paragraph_id {
+          processed
+        }
+        field_featured_button {
+          title
+          uri
+        }
+        field_featured_description {
+          processed
+        }
+        field_featured_title {
+          processed
+        }
+        field_featured_perfect_title {
+          processed
+        }
+        field_featured_products_title {
+          processed
+        }
+        field_featured_subtitle {
+          processed
+        }
+        field_image_right
+
+        relationships {
+          field_featured_video {
+            field_video_link
+            relationships {
+              field_video_poster {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      src
+                    }
+                    original {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      field_taxonomy_hero {
+        field_taxonomy_hero_para_descrip {
+          processed
+        }
+        field_taxonomy_hero_para_title
+        field_taxonomy_page_url
+        field_taxonomy_page_title
+        field_taxonomy_hero_paraprapgh_t
+        relationships {
+          field_taxonomy_hero_paraprapgh_i {
+            localFile {
+              url
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+
+      node__clinical_product {
+        field_clinical_id
+        field_clinical_description {
+          processed
+        }
+        path {
+          alias
+        }
+        field_clinical_price
+        field_clinical_sku
+        field_min_quantity
+        title
+        relationships {
+          field_clinical_image {
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+                original {
+                  src
+                }
+              }
+            }
+          }
+          field_clinical_ingredients {
+            name
+          }
+          field_clinical_skin_concern {
+            name
+          }
+          field_clinical_skin_type {
+            name
+          }
+          field_clinical_categories {
+            name
+          }
+          field_clinical_groups {
+            name
+          }
+          field_clinical_components {
+            ... on paragraph__ingredient {
+              id
+              relationships {
+                field_read_more {
+                  field_read_more_content {
+                    processed
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  allBlockContentGlobalContentTile {
+    edges {
+      node {
+        field_tile_type
+        relationships {
+          field_content_tile {
+            field_tile_title {
+              processed
+            }
+            field_tile_text {
+              processed
+            }
+            field_tile_link {
+              title
+              uri
+            }
+            relationships {
+              field_tile_image {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 `;

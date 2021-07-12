@@ -300,7 +300,7 @@ export default function Finder() {
 
                 <label class="checkcon" onClick={searchBy}>
                   <input type="radio" name="search-radio" value="phy" />
-                  <span class="checkmarkfinder"></span>By Physician
+                  <span class="checkmarkfinder"></span>By Practice
                 </label>
               </div>
               <div class="col-lg-4 d-flex search-drop">
@@ -309,7 +309,7 @@ export default function Finder() {
                   <input id="input-location" type="text" />
                 </label>
                 <label class="finder-input showphysician hide">
-                  <span>physician </span>
+                  <span>Practice </span>
                   <input id="input-physician" type="text" />
                 </label>
                 <div class="miles ">

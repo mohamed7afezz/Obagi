@@ -15,6 +15,11 @@ import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import SearchContext from "../providers/search-provider"
 import AboveHeader from './above-header'
+import mobLogo from '../assets/images/Obagi.svg'
+import searchImg from '../assets/images/Search.svg'
+import bagImg from '../assets/images/Bag.svg'
+import menuImg from '../assets/images/Menu.svg'
+
 const baseUrl = process.env.Base_URL;
 const $ = require("jquery");
 const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBar }) => {
@@ -496,19 +501,19 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img alt="img"  fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><img alt="img"  src={mobLogo} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><img alt="img"  src={searchImg} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                         return (
                           <div className={headerStyles.cartWrapper}>
                             <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
-                              <Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                              <img alt="img"  src={bagImg} className={headerStyles.iconImg} />
                               {value &&
                                 value.state.cart &&
                                 value.state.cart.numberItems > 0 && (

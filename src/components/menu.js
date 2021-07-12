@@ -250,7 +250,7 @@ function buildMenu(menuArray, isExpandable, menuName) {
             <li><Link className="single-tab" to="/my-account/orders">
               My Account
             </Link></li>
-            <li><span data-acsb-custom-trigger="true">Accessibility </ span></li>
+            <li><span data-acsb-custom-trigger="true" className="AccessiBe">Accessibility </ span></li>
             </> : ""}
           </ul>
         </li>)

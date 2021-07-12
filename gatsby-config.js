@@ -89,7 +89,9 @@ module.exports = {
           `/medical/skin-concern/redness-prone`,
           `/medical/skin-concern/elasticity-sagging-skin`,
           `/clinical/skin-care/brightening-skin-care`,
-          `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`
+          `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`,
+          `/skin-simplified/skin-concern/clinical-blog`,
+          `/behind-the-lines/professional-c/medical-blog`
     ],
         
       }

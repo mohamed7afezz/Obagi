@@ -15,7 +15,7 @@ const OrderHistoryRow = ({ data,
     lastUpdated = data.date_modified;
     itemsNum = data.items_total;
     total = parseFloat(data.total_inc_tax).toFixed(2);
-    status = data.status;
+    status = data.status == "Manual Verification Required"? "Processing" : data.status;
 
     const placedOnDate = new Date(placedOn)
         .toLocaleDateString({},
@@ -26,7 +26,7 @@ const OrderHistoryRow = ({ data,
         .toLocaleDateString({},
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
-
+        console.log('ash status', status)
     return (
         <>
             <div className={["d-lg-none", orderHistoryRowStyles.orderWrapper].join(" ")}>
