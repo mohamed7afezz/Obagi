@@ -134,7 +134,7 @@ const StandardItem = props => {
                 className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
               >
                 <div className={["col-md-2", "hide-tabmob"].join(" ")}>
-                  <a onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}} href={`${producturl[1]}`}>
+                  <a className="cursor-pointer" onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
                     <img src={item.image_url} alt={`${item.name}`} />
                   </a>
                 </div>

@@ -10,6 +10,9 @@
 .productimage .slick-dots {
   bottom: -70px;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 .slick-dots li button::before {
   font-family: "slick";
   font-size: 6px;
