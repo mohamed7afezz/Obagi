@@ -146,6 +146,8 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
   }
 
   function updateTileCol(allCol, contentTileCol) {
+    // TODO: remove return
+    return;
     let ind;
     if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 2 }
     else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 2 }
@@ -1234,20 +1236,21 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                     </>)}
 
                   {(contentTile && index == 0) ?
-                    <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
-                      <ContentTile
-                        image={contentTile.relationships.field_tile_image
-                          && contentTile.relationships.field_tile_image.localFile
-                          && contentTile.relationships.field_tile_image.localFile.childImageSharp
-                          && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
-                          contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
+                    // <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
+                    //   <ContentTile
+                    //     image={contentTile.relationships.field_tile_image
+                    //       && contentTile.relationships.field_tile_image.localFile
+                    //       && contentTile.relationships.field_tile_image.localFile.childImageSharp
+                    //       && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
+                    //       contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
 
-                        title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
-                        text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
-                        link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
-                        type={checktaxonomyType == "medical"? "medical" : "clinical"}
-                      />
-                    </div>
+                    //     title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
+                    //     text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
+                    //     link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
+                    //     type={checktaxonomyType == "medical"? "medical" : "clinical"}
+                    //   />
+                    // </div>
+                    ""
                     : ""}
                 </>
               )
