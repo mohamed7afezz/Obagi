@@ -105,10 +105,10 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
           if (item.classList.contains('content-tile')) {
             return null;
           }
-          var isBestSeller = item.classList.contains('bestSeller');
+          // var isBestSeller = item.classList.contains('bestSeller');
+          // console.log('bahiii item', item.dataset.rateOrder);
 
-          return isBestSeller ? '' : item.querySelector(".productcarddesc").textContent;
-
+          return parseInt(item.dataset.rateOrder);
 
         },
       },
@@ -146,8 +146,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
   }
 
   function updateTileCol(allCol, contentTileCol) {
-    // TODO: remove return
-    return;
     let ind;
     if (allCol[0] && allCol[1] && (allCol[0].classList.contains('col-lg-6') && allCol[1].classList.contains('col-lg-6'))) { ind = 2 }
     else if (allCol[1] && allCol[2] && (allCol[1].classList.contains('col-lg-6') && allCol[2].classList.contains('col-lg-6'))) { ind = 2 }
@@ -177,11 +175,11 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
     checkTaxonomy =
       node.data.taxonomyTermMedicalSkinConcern.relationships
-        .node__medical_product
+        .node__medical_product;
   } else if (pageNodeType == "medicalCategories") {
     checkTaxonomy =
       node.data.taxonomyTermMedicalCategories.relationships
-        .node__medical_product
+        .node__medical_product;
   } else if (pageNodeType == "clinicalGroups") {
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
@@ -190,6 +188,9 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
         .node__medical_product
+        
+        
+        console.log('bahi tax', checkTaxonomy);
   } else if (pageNodeType == 'skinClinicalType') {
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
@@ -948,7 +949,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             )
             ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
-
+              console.log('bahi best', item, checkTaxonomy)
               return (
                 <>
 
@@ -987,9 +988,9 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                             " " + prod.name.split(' ').join('_') + " "
                           )) : " "}`,
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
-                          `${item.field_is_best_seller ? 'bestSeller' : ''}`,
+                          `${item.field_is_best_seller ? 'bestSeller' : ''}`
                         ].join(" ")}
-
+                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
                       >
                         {pageNodeType == "clinicalConcern" ? (
                           <ProductCard
@@ -1100,6 +1101,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`,
                         ].join(" ")}
+                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
 
                       >
                         {pageNodeType == "clinicalConcern" ? (
@@ -1236,21 +1238,20 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                     </>)}
 
                   {(contentTile && index == 0) ?
-                    // <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
-                    //   <ContentTile
-                    //     image={contentTile.relationships.field_tile_image
-                    //       && contentTile.relationships.field_tile_image.localFile
-                    //       && contentTile.relationships.field_tile_image.localFile.childImageSharp
-                    //       && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
-                    //       contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
+                    <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
+                      <ContentTile
+                        image={contentTile.relationships.field_tile_image
+                          && contentTile.relationships.field_tile_image.localFile
+                          && contentTile.relationships.field_tile_image.localFile.childImageSharp
+                          && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
+                          contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
 
-                    //     title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
-                    //     text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
-                    //     link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
-                    //     type={checktaxonomyType == "medical"? "medical" : "clinical"}
-                    //   />
-                    // </div>
-                    ""
+                        title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
+                        text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
+                        link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
+                        type={checktaxonomyType == "medical"? "medical" : "clinical"}
+                      />
+                    </div>
                     : ""}
                 </>
               )
@@ -1302,7 +1303,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                               `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                             ].join(" ")}
-
+                            data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
                           >
                             <ProductCard
                               productCat="clinical"
@@ -1337,11 +1338,11 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                   : (item.relationships && item.relationships.node__medical_product)
                     ? item.relationships.node__medical_product.map(
                       (product, index) => {
-
                         if (!checkProductExisitance(product)) {
                           products.push(product)
                           let ingredient = getIngredient(product);
                           // Back Here Agian same As 168
+                          
                           return (
                             <div
                               className={[
@@ -1377,7 +1378,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                                 `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                                 `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                               ].join(" ")}
-
+                              data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
                             >
                               <ProductCard
                                 productCat="medical"
@@ -1889,6 +1890,7 @@ export const fragment = graphql`
           
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -1950,6 +1952,7 @@ export const fragment = graphql`
           name
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -2017,6 +2020,7 @@ export const fragment = graphql`
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points_id
               field_medical_id
@@ -2078,6 +2082,7 @@ export const fragment = graphql`
           }
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -2137,6 +2142,7 @@ export const fragment = graphql`
           relationships {
             
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
