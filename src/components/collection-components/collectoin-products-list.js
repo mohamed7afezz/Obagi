@@ -106,7 +106,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             return null;
           }
           // var isBestSeller = item.classList.contains('bestSeller');
-          // console.log('bahiii item', item.dataset.rateOrder);
+          console.log('bahiii item', item, item.dataset.rateOrder);
 
           return parseInt(item.dataset.rateOrder);
 
@@ -1263,7 +1263,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                   ? item.relationships.node__clinical_product.map(
                     (product, index) => {
                       let ingredient = getIngredient(product);
-
+                      console.log('bahi best', product)
 
                       if (!checkProductExisitance(product)) {
 
@@ -1303,7 +1303,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                               `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                             ].join(" ")}
-                            data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
+                            data-rate-order = {product.field_medical_best_seller_rate? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate? product.field_clinical_best_seller_rate : '99'}
                           >
                             <ProductCard
                               productCat="clinical"
@@ -1378,7 +1378,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                                 `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                                 `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                               ].join(" ")}
-                              data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
+                              data-rate-order = {product.field_medical_best_seller_rate? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate? product.field_clinical_best_seller_rate : '99'}
                             >
                               <ProductCard
                                 productCat="medical"
@@ -1696,6 +1696,8 @@ export const fragment = graphql`
       node__clinical_product {
         
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -1762,6 +1764,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               title
               field_clinical_description {
                 processed
@@ -1827,6 +1831,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               title
               field_clinical_description {
                 processed
@@ -2209,6 +2215,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               field_clinical_price
               field_clinical_sku
               field_min_quantity
