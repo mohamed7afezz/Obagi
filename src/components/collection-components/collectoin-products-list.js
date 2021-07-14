@@ -106,7 +106,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             return null;
           }
           // var isBestSeller = item.classList.contains('bestSeller');
-          // console.log('bahiii item', item.dataset.rateOrder);
+          console.log('bahiii item', item.dataset.rateOrder);
 
           return parseInt(item.dataset.rateOrder);
 
@@ -251,17 +251,17 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
   }
   else if (checktaxonomyType == "medical" && node.data.allBlockContentGlobalContentTile) {
     contentTile = node.data.allBlockContentGlobalContentTile.edges[0]
-      && node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile ?
+      && node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile.field_tile_title ?
 
       node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile : ""
 
-    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile)
+    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships)
 
   }
 
   else if (checktaxonomyType == "clinical" && node.data.allBlockContentGlobalContentTile) {
     contentTile = node.data.allBlockContentGlobalContentTile.edges[1]
-      && node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile ?
+      && node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile.field_tile_title ?
 
       node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile : ""
 
@@ -990,7 +990,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`
                         ].join(" ")}
-                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
+                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
                       >
                         {pageNodeType == "clinicalConcern" ? (
                           <ProductCard
@@ -1101,7 +1101,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`,
                         ].join(" ")}
-                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
+                        data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
 
                       >
                         {pageNodeType == "clinicalConcern" ? (
@@ -1246,8 +1246,8 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
                           contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
 
-                        title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
-                        text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
+                        title={{ __html: contentTile.field_tile_title ? contentTile.field_tile_title.processed : ""}}
+                        text={ { __html: contentTile.field_tile_text ? contentTile.field_tile_text.processed : ""}}
                         link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
                         type={checktaxonomyType == "medical"? "medical" : "clinical"}
                       />
@@ -1303,7 +1303,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                               `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                             ].join(" ")}
-                            data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
+                            data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
                           >
                             <ProductCard
                               productCat="clinical"
@@ -1378,7 +1378,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                                 `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                                 `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                               ].join(" ")}
-                              data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
+                              data-rate-order = {item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate? item.field_clinical_best_seller_rate : '99'}
                             >
                               <ProductCard
                                 productCat="medical"

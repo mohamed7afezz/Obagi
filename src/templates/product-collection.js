@@ -76,6 +76,8 @@ query($slug: String!) {
     ...collectionproducts
     relationships {
       node__clinical_product {
+        field_is_best_seller
+        field_clinical_best_seller_rate
         relationships {
           field_clinical_ingredients {
             name
@@ -166,6 +168,8 @@ query($slug: String!) {
       }
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -332,6 +336,8 @@ query($slug: String!) {
 
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -1162,6 +1168,8 @@ query($slug: String!) {
       }
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -1498,6 +1506,8 @@ query($slug: String!) {
 
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }

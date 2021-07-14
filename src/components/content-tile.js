@@ -16,11 +16,11 @@ const ContentTile = ({
 
     return (
         <div className={styles.wrapper}>
-            <Link to={link.uri? link.uri : "#"} className={styles.imgLink}><Img className={styles.image} fluid={image}/></Link>
+            {image? <Link to={link.uri? link.uri.replace('internal:', '') : "#"} className={styles.imgLink}><Img className={styles.image} fluid={image}/></Link> : ""}
             <div className={`${styles.textWrapper} ${type == 'medical'? styles.medical : styles.clinical}`}>
-                <Link to={link.uri? link.uri : "#"} className={styles.titleLink}><div className={styles.title} dangerouslySetInnerHTML={title}></div></Link>
+                <Link to={link.uri? link.uri.replace('internal:', '') : "#"} className={styles.titleLink}><div className={styles.title} dangerouslySetInnerHTML={title}></div></Link>
                 <div className={styles.text} dangerouslySetInnerHTML={text}></div>
-                <Link className={styles.link} to={link.uri? link.uri : "#"}>{link.title? link.title : "Read More"}</Link>
+                <Link className={styles.link} to={link.uri? link.uri.replace('internal:', '') : "#"}>{link.title? link.title : "Read More"}</Link>
             </div>
         </div>
     )
