@@ -106,7 +106,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             return null;
           }
           // var isBestSeller = item.classList.contains('bestSeller');
-          console.log('bahiii item', item.dataset.rateOrder);
+          // console.log('bahiii item', item.dataset.rateOrder);
 
           return parseInt(item.dataset.rateOrder);
 
