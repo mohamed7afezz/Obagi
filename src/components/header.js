@@ -525,7 +525,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     </CartContext.Consumer>
 
                   </div>
-                  <button id="mobNavButton" style={{display: "none"}} className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
+                  <button id="mobNavButton" style={{display: "none"}} className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeCategory(); }}></button>
                 </div>
               </div>
             </div>

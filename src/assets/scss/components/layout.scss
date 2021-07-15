@@ -1056,7 +1056,7 @@ p {
   @extend %futurapt-book;
   padding-bottom: 12px;
   padding-top: 14px;
-  padding-left: 24px;
+  // padding-left: 24px;
   text-transform: capitalize;
   @include md-screen {
     padding-left: 40px;

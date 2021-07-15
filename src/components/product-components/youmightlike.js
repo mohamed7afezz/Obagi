@@ -5,9 +5,9 @@ import Slider from "react-slick"
 import { useStaticQuery, graphql } from "gatsby"
 const YouMayLike = ({key, node }) => {
   var settings = {
-    infinite: true,
+    infinite: false,
     
-    slidesToShow: node.relationships.field_product_card.length <= 3?node.relationships.field_product_card.length  : 3,
+    slidesToShow: 3,
 
     responsive: [
       {
