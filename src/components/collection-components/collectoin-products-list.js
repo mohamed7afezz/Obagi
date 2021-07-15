@@ -1237,7 +1237,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                       </div>
                     </>)}
 
-                  {(contentTile && index == 0) ?
+                  {(contentTile && contentTile.field_tile_title && index == 0) ?
                     <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
                       <ContentTile
                         image={contentTile.relationships.field_tile_image
