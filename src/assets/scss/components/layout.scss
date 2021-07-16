@@ -5213,19 +5213,21 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   font-weight: 300;
   font-size: 40px;
   line-height: 48px;
-  margin-bottom: 50px;
+  
   margin-top: 78px;
   @include lg-screen {
     font-size: 48px;
     line-height: 64px;
-    margin-bottom: 68px;
+    
     margin-top: 184px;
   }
 }
 
 .blog-related-section {
+  margin-top: 50px;
   margin-bottom: 64px;
   @include lg-screen {
+    margin-top: 68px;
     margin-bottom: 122px;
     .slick-initialized {
       padding-bottom: 0;
