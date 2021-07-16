@@ -215,37 +215,37 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
   let contentTile
 
-  if (pageNodeType == "medicalConcern" && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile) {
+  if (pageNodeType == "medicalConcern" && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile.field_tile_title) {
 
     contentTile =
       node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile
 
-  } else if (pageNodeType == "medicalCategories" && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile) {
+  } else if (pageNodeType == "medicalCategories" && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile
 
-  } else if (pageNodeType == 'medicalLine' && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile) {
+  } else if (pageNodeType == 'medicalLine' && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile
 
-  } else if (pageNodeType == 'skinMedicalType' && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile) {
+  } else if (pageNodeType == 'skinMedicalType' && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile
 
-  } else if (pageNodeType == 'MedicalIngredients' && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile) {
+  } else if (pageNodeType == 'MedicalIngredients' && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile
 
-  } else if (pageNodeType == "clinicalCategories" && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile) {
+  } else if (pageNodeType == "clinicalCategories" && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile
-  } else if (pageNodeType == "clinicalGroups" && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile) {
+  } else if (pageNodeType == "clinicalGroups" && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile
-  } else if (pageNodeType == 'skinClinicalType' && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile) {
+  } else if (pageNodeType == 'skinClinicalType' && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile
-  } else if (pageNodeType == "ClinicalIngredients" && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile) {
+  } else if (pageNodeType == "ClinicalIngredients" && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile
   }
