@@ -1,12 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-const FullHTMLContent = ({node}) => (
-    <div>
-        {node.field_full_html?
-        <div dangerouslySetInnerHTML={{__html: node.field_full_html.processed}}></div>
-    :""}
-        </div>
+const FullHTMLContent = ({ node }) => (
+    <div className="full-html-component">
+        {node.field_full_html ?
+            <div dangerouslySetInnerHTML={{ __html: node.field_full_html.processed }}></div>
+            : ""}
+    </div>
 );
 
 export default FullHTMLContent;
