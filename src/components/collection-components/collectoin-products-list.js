@@ -335,7 +335,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     sortSearchData();
     // update sort/filtered view
     switch (e.target.value) {
-      case 'BestSeller':
+      case 'Best Seller':
         isoGrid.arrange({ sortBy: 'bestseller', sortAscending: true });
         updateSortView();
         break;
@@ -921,7 +921,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                       </li>
                       <li>
                         <label class="checkcon terms">
-                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="BestSeller" />Best Seller
+                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" />Best Seller
                           <span className="checkmarkfinder"></span>
                         </label>
                       </li>
@@ -1481,7 +1481,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                             </li>
                             <li>
                               <label class="checkcon terms">
-                                <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="BestSeller" />Best Seller
+                                <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" />Best Seller
                                 <span className="checkmarkfinder"></span>
                               </label>
                             </li>
