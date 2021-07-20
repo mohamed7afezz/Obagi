@@ -1695,17 +1695,17 @@
   cursor: pointer;
 }
 .badgeImg {
-  max-width: 100%;
+  max-width: 150px;
   height: auto;
   margin-right: auto;
   margin-left: auto;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   @include lg-screen {
-    margin-top: 39px;
-    margin-right: 0;
-    margin-left: 0;
+    margin: 39px 0 0;
     margin-bottom: 0;
+    max-width:100%;
   }
 }
 
