@@ -113,7 +113,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
         },
       },
       filter: '*',
-      transitionDuration: 0
+      transitionDuration: 0,
     });
 
     let columns = document.querySelectorAll('.products-list .product-element')
@@ -363,7 +363,8 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
   }
   useEffect(() => {
 
-    isoGrid.arrange({ sortBy: 'name', sortAscending: true });
+    // isoGrid.arrange({ sortBy: 'name', sortAscending: true });
+    isoGrid.arrange({ sortBy: 'bestseller', sortAscending: true });
     updateSortView();
     
   }, [])
@@ -894,7 +895,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                     <ul class="popupUl popupFilter">
                       <li>
                         <label class="checkcon terms">
-                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Alphabetically(A-Z)" defaultChecked={true} />Alphabetically(A-Z)
+                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Alphabetically(A-Z)" />Alphabetically(A-Z)
 
                           <span className="checkmarkfinder"></span>
                         </label>
@@ -921,7 +922,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                       </li>
                       <li>
                         <label class="checkcon terms">
-                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" />Best Seller
+                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" defaultChecked={true} />Best Seller
                           <span className="checkmarkfinder"></span>
                         </label>
                       </li>
