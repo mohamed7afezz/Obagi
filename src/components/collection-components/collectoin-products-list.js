@@ -887,7 +887,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             <label className={[productsliststyle.filter, "hide", "sortlabel", "d-block"].join(" ")}>Sort by:</label>
 
             <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
-              <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Select One</p>
+              <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Best Seller</p>
               <div id="prodLinesSelected">
 
                 <div class="product-lines hide" id="sortCon">
