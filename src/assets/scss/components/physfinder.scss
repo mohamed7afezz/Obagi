@@ -1056,12 +1056,17 @@
 .finder-foot {
   font-size: 16px;
   line-height: 24px;
-  padding-top: 48px;
+  padding-top: 20px;
   padding-left: 16px;
   padding-right: 16px;
+
   @include md-screen {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  &.finder-foot-1 {
+    padding-top: 48px;
   }
 }
 #pf-location-error {
@@ -1148,7 +1153,7 @@
   margin-bottom: 16px;
 }
 @media (max-width: 1024px) {
-  .finder-foot-1 {
+  .finder-foot.finder-foot-1 {
     padding-top: 0;
   }
   #pf-submit {
@@ -1705,15 +1710,13 @@
   @include lg-screen {
     margin: 39px 0 0;
     margin-bottom: 0;
-    max-width:100%;
+    max-width: 100%;
   }
 }
 
 .tab-padding {
-
-    padding-right: 0;
-    padding-left: 0;
-  
+  padding-right: 0;
+  padding-left: 0;
 }
 .result-con-1.active {
   background-color: #f8f8f8;
