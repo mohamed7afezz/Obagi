@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import BagStyle from "../../assets/scss/components/yourbag.module.scss"
 import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
@@ -12,19 +12,20 @@ import $ from 'jquery'
 import CartContext from "../../providers/cart-provider"
 import Showbag from "./bag-preview"
 import { parse } from "@fortawesome/fontawesome-svg-core"
-import paypal from "../../assets/images/product-images/paypal.png"
+import paypal from "../../assets/images/paypal-yellow-cta_x2.png"
 import appelpay from "../../assets/images/product-images/appelPay.png"
 import visa from "../../assets/images/product-images/visa.png"
-import paycred from '../../assets/images/ppcredit-logo-large.png'
+import paycred from '../../assets/images/paypal-credit-blue_x2.png'
 import freeimg from "../../assets/images/tag.png"
 import ProductSuggestion from "../product-components/productsuggestion"
 import SearchContext from "../../providers/search-provider"
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import {checkStock} from '../../assets/js/stock';
+import { checkStock } from '../../assets/js/stock';
 import quizarrow from '../../assets/images/arrowquize.svg'
 import calcPremierPoints from "../../assets/js/cart-premier"
-
+// import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
+// import paypalImg from '../../assets/images/PayPal-logo.svg'
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -35,7 +36,7 @@ const spinner = css`
 const AdjustItem = props => {
   const { item, updatingItem, cartType } = props;
   let minusBtn, plusBtn;
- 
+
   minusBtn = (
     <button onClick={() => props.updateCartItemQuantity(item, 'minus')} className={["btn", BagStyle.minus].join(" ")}>
       <img alt="img" className={BagStyle.plusicon} src={minusicon} />
@@ -62,16 +63,16 @@ const StandardItem = props => {
   const value = useContext(CartContext)
   const removeNotification = value && value.removeNotification;
   const { items, cartType } = props
-  console.log(items,'ash bag')
-  function  navigateto(link,e){
- 
- e.preventDefault();
-  
-  
-      removeNotification([]);
-    
+  console.log(items, 'ash bag')
+  function navigateto(link, e) {
+
+    e.preventDefault();
+
+
+    removeNotification([]);
+
     navigate(link)
-  
+
   }
   const { searchInIndexById } = useContext(SearchContext)
   let itemsContent = items.map(item => {
@@ -81,25 +82,25 @@ const StandardItem = props => {
     if (findedProduct.length > 0) {
       item.premier_points = findedProduct[0].field_medical_premier_points;
     }
-    var producturl = item.list_price == 0? "" : item.url.split(".com")
+    var producturl = item.list_price == 0 ? "" : item.url.split(".com")
     if (cartType === "overlay") {
       return (
         <>
           <div className={["row", ShowBagStyle.selectedproductsCard, "selectedproductsCard"].join(" ")}>
             <div className={["col-4", "mob-pl-0"].join(" ")}>
-            <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={() => {if(producturl){navigateto(producturl[1])}}}>
-                <img  src={item.image_url} alt={`${item.name}`} />
+              <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={() => { if (producturl) { navigateto(producturl[1]) } }}>
+                <img src={item.image_url} alt={`${item.name}`} />
               </a>
             </div>
             <div className={["col-8", "mob-pr-0"].join(" ")}>
               <div className={"w-100"}>
                 <p className={[ShowBagStyle.BagProductDesc, BagStyle.cartpre].join(" ")}>
-                  <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
-                  <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
+                  <a href={producturl[1]} className={ShowBagStyle.cartProductTitle} onClick={(e) => { if (producturl) { navigateto(producturl[1], e) } }}>
+                    <span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
                 {item.premier_points ?
-                 <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>
-                   {item.premier_points?<>Earn <span className="totalpoints">{item.premier_points}
-                   </span> Premier Points ea.</>:""}</span> : ''}
+                  <span className={[BagStyle.premire, BagStyle.premirecart].join(" ")}>
+                    {item.premier_points ? <>Earn <span className="totalpoints">{item.premier_points}
+                    </span> Premier Points ea.</> : ""}</span> : ''}
               </div>
 
               <div className={["col-12", "row", "d-flex", ShowBagStyle.left, "mobsetpadding"].join(" ")}>
@@ -107,13 +108,13 @@ const StandardItem = props => {
                   <div className={[BagStyle.bagCount, "d-flex", "col-lg-7", "col-lg-6"].join(" ")}>
                     <AdjustItem {...props} item={item} cartType={cartType} />
                   </div>
-                  <button type="button" onClick={() => {props.removeItemFromCart(item.id)}}
+                  <button type="button" onClick={() => { props.removeItemFromCart(item.id) }}
                     className={[ShowBagStyle.removebtn, "col-5"].join(" ")}
                   >
                     Remove
-                    </button>
+                  </button>
                 </div>
-                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center", `${item.list_price === "0"? "price-opacity" : ""}`].join(" ")}>${parseFloat(item.list_price).toFixed(2)}</p>
+                <p className={[ShowBagStyle.Price, "col-3", "mob-pr-0", "mob-text-center", `${item.list_price === "0" ? "price-opacity" : ""}`].join(" ")}>${parseFloat(item.list_price).toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -126,21 +127,21 @@ const StandardItem = props => {
           <div className={"productInBag "}>
             <div className={["row", "alignFlex"].join(" ")}>
               <div class="hide-desk col-4">
-              <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
-                  <img  src={item.image_url} alt={`${item.name}`} />
+                <a href={producturl[1]} className={ShowBagStyle.pointer} onClick={(e) => { if (producturl) { navigateto(producturl[1], e) } }}>
+                  <img src={item.image_url} alt={`${item.name}`} />
                 </a>
               </div>
               <div
                 className={["row", "alignFlex", "col-8", "col-lg-12"].join(" ")}
               >
                 <div className={["col-md-2", "hide-tabmob"].join(" ")}>
-                  <a className="cursor-pointer" onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}}>
+                  <a className="cursor-pointer" onClick={(e) => { if (producturl) { navigateto(producturl[1], e) } }}>
                     <img src={item.image_url} alt={`${item.name}`} />
                   </a>
                 </div>
                 <div className={"col-md-5 mob-p-0"}>
-                  <p className={BagStyle.prouductBagDesc}><a onClick={(e) => {if(producturl){navigateto(producturl[1],e)}}} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
-                  {item.premier_points ? <span className={BagStyle.premire}>{item.premier_points?<>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</>:""}</span> : ''}
+                  <p className={BagStyle.prouductBagDesc}><a onClick={(e) => { if (producturl) { navigateto(producturl[1], e) } }} className={ShowBagStyle.cartProductTitle} ><span dangerouslySetInnerHTML={{ __html: item.name }}></span></a> </p>
+                  {item.premier_points ? <span className={BagStyle.premire}>{item.premier_points ? <>Earn <span className="totalpoints"> {item.premier_points}</span> Premier Points ea.</> : ""}</span> : ''}
                 </div>
                 {/* <div className={"col-md-2"}>
                 <p className={BagStyle.prouductPoints}> Premier Points: 20</p>
@@ -161,9 +162,9 @@ const StandardItem = props => {
                   </p>
                 </div>
                 <div class="col-md-1 col-4">
-                  <button onClick={() => {props.removeItemFromCart(item.id)}} className={["btn", BagStyle.action].join(" ")}>
+                  <button onClick={() => { props.removeItemFromCart(item.id) }} className={["btn", BagStyle.action].join(" ")}>
                     Remove
-                </button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -184,7 +185,7 @@ const StandardItem = props => {
 
 const YourBag = (props, { notificationId }) => {
 
-  
+
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
@@ -474,7 +475,7 @@ const YourBag = (props, { notificationId }) => {
   const { cartType } = props;
 
   useEffect(() => {
-    if(typeof window != undefined ){
+    if (typeof window != undefined) {
       checkStock(baseUrl);
     }
     calcPremierPoints();
@@ -483,20 +484,20 @@ const YourBag = (props, { notificationId }) => {
   function seoEvent(e) {
     e.preventDefault();
 
-    if(typeof window !== undefined) {
+    if (typeof window !== undefined) {
 
       let fbqproducts = [];
       lineItems.physical_items.forEach(prod => {
         fbqproducts.push({
           'content_ids': prod.sku,
           'content_name': prod.name,
-          'content_type' :" ",
-          'contents' : [{id : prod.id , quantity:prod.quantity}],
-          'num_items' : lineItems.physical_items.length,
+          'content_type': " ",
+          'contents': [{ id: prod.id, quantity: prod.quantity }],
+          'num_items': lineItems.physical_items.length,
           'value': prod.list_price,
-          'currency' :'USD'
-          
-       })
+          'currency': 'USD'
+
+        })
       });
       //window.fbq('track', 'Purchase ',fbqproducts);
       window.dataLayer.push({
@@ -504,9 +505,9 @@ const YourBag = (props, { notificationId }) => {
         'fb_event_name': 'Purchase',
         "fbq_products": fbqproducts
       });
-      
+
       let dl = window.dataLayer;
-      
+
       let products = [];
       lineItems.physical_items.forEach(prod => {
         products.push({
@@ -514,25 +515,25 @@ const YourBag = (props, { notificationId }) => {
           'id': prod.sku,
           'price': prod.list_price,
           'brand': 'Obagi',
-          'category': prod.url.includes('medical')? 'medical' : 'clinical',
+          'category': prod.url.includes('medical') ? 'medical' : 'clinical',
           'variant': '',
           'quantity': prod.quantity
-       })
+        })
       });
 
       dl.push({
         'event': 'checkout',
         'ecommerce': {
           'checkout': {
-            'actionField': {'step': 1, 'option': ''},
+            'actionField': { 'step': 1, 'option': '' },
             'products': products
-         }
-       }
+          }
+        }
       });
 
       // submit form after pushing data to dataLayer
       e.target.closest('form').submit()
-    
+
     }
   }
 
@@ -550,7 +551,7 @@ const YourBag = (props, { notificationId }) => {
     e.preventDefault()
   }
 
-  
+
   var checkProduct = lineItems.physical_items ? lineItems.physical_items.filter(product => (product.product_id === profProductId)) : "";
 
 
@@ -619,10 +620,10 @@ const YourBag = (props, { notificationId }) => {
         //showpage content
         bagContent = (
           <>
-          {125 - parseFloat(cartAmount).toFixed(2) > 0 ?
-                        <div className={BagStyle.FfreeShipping}>
-                        Spend <span>${(125 - parseFloat(cartAmount).toFixed(2)).toFixed(2)}</span> more for FREE shipping!
-                                          </div>:""}
+            {125 - parseFloat(cartAmount).toFixed(2) > 0 ?
+              <div className={BagStyle.FfreeShipping}>
+                Spend <span>${(125 - parseFloat(cartAmount).toFixed(2)).toFixed(2)}</span> more for FREE shipping!
+              </div> : ""}
             <StandardItem
               currency={currency}
               updatingItem={updatingItem}
@@ -648,6 +649,7 @@ const YourBag = (props, { notificationId }) => {
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
                 <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
+              {/* <div className={BagStyle.afterPay}>Or 4 interest-free installments of $294.50 by&nbsp; <img src={afterpayImg}/></div> */}
               <form
                 action={redirectUrls.checkout_url}
                 method="post"
@@ -658,37 +660,37 @@ const YourBag = (props, { notificationId }) => {
                   className={`${BagStyle.Checkout} checkout-seo`}
                   type="submit" onClick={seoEvent}>
                   Checkout
-                  </button>
+                </button>
               </form>
 
               <div className={BagStyle.freeShipping}>
                 Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
-                  </div>
+              </div>
               {/* {lineItems.physical_items.filter(product => (product.product_id === profProductId)) ? */}
               {/* recommended products section */}
-          
+
               {/* : ""} */}
               {
                 <div className={[ShowBagStyle.recommendedWrapper, "recommendedWrapper"].join(' ')}>
                   {(lineItems.physical_items).length <= 3 ? <div className={[ShowBagStyle.recommendedTitle, "recommendedTitle"].join(" ")}>Recommended</div> : ""}
                   <div className="prodrecom">
-                  {getRecommendedProducts(lineItems.physical_items).length > 0?getRecommendedProducts(lineItems.physical_items).map(product => {
-                    return (
-                      <RecommendedProduct
-                        prodCat={isClinical? 'clinical': 'medical'}
-                        recId={isClinical? product.field_clinical_id : product.field_medical_id}
-                        recTitle={product.title ? product.title : ""}
-                        recLink={product.path.alias ? product.path.alias : ""}
-                        recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
-                        recPrice={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
-                        premierid={isClinical ?"": product.field_medical_premier_points_id?product.field_medical_premier_points_id:""}
-                        feild_preimer={isClinical ?"": product.field_medical_premier_points?product.field_medical_premier_points:""}
-                        Sku={isClinical ? product.field_clinical_sku ? product.field_clinical_sku : "": product.field_medical_sku}
-                        minQuantity={(product.field_min_quantity == 0 || product.field_min_quantity > 0)? product.field_min_quantity : ""}
+                    {getRecommendedProducts(lineItems.physical_items).length > 0 ? getRecommendedProducts(lineItems.physical_items).map(product => {
+                      return (
+                        <RecommendedProduct
+                          prodCat={isClinical ? 'clinical' : 'medical'}
+                          recId={isClinical ? product.field_clinical_id : product.field_medical_id}
+                          recTitle={product.title ? product.title : ""}
+                          recLink={product.path.alias ? product.path.alias : ""}
+                          recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '') : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
+                          recPrice={isClinical ? (product.field_clinical_price ? product.field_clinical_price : "") : (product.field_medical_price ? product.field_medical_price : "")}
+                          premierid={isClinical ? "" : product.field_medical_premier_points_id ? product.field_medical_premier_points_id : ""}
+                          feild_preimer={isClinical ? "" : product.field_medical_premier_points ? product.field_medical_premier_points : ""}
+                          Sku={isClinical ? product.field_clinical_sku ? product.field_clinical_sku : "" : product.field_medical_sku}
+                          minQuantity={(product.field_min_quantity == 0 || product.field_min_quantity > 0) ? product.field_min_quantity : ""}
                         />
-                    )
-                  })  : ''
-                }
+                      )
+                    }) : ''
+                    }
                   </div>
 
                 </div>
@@ -726,7 +728,7 @@ const YourBag = (props, { notificationId }) => {
                       <div class="col-12 col-lg-10">
                         <p className={BagStyle.exclusiveOffertitle}>
                           COMPLIMENTARY SHIPPING
-                            </p>
+                        </p>
                         <p className={BagStyle.exclusiveOfferdesc}>
                           Obagi Members Receive Complimentary Free Shipping on Orders $125 or more</p>
 
@@ -791,43 +793,43 @@ const YourBag = (props, { notificationId }) => {
                       </div>
                       {state.showShippingMethods ?
                         <div className={"showinfp"}>
-                         
+
                           {!state.shippingLoading ?
                             <>
                               {state.shippingMethods.length > 0 ? state.shippingMethods
                                 .map(method => (
-                               
-                               <>
-                                
+
+                                  <>
+
                                     {
-                                     
-                                    (method.settings
-                                      && method.settings.carrier_options
-                                      && method.settings.carrier_options.minimum_sub_total
-                                      && cartAmount < parseFloat(method.settings.carrier_options.minimum_sub_total)) ?
-                                      ''
-                                      :
-                                      <>
-                                      {(method.id === 2 || method.id === 4 || method.id ===5)?
-                                        <div class="d-flex shipping-flex">
-                                          <label class="radioLabel">
-                                            <input type="radio" id={method.id}
-                                              name="me" value={method.settings.rate ? method.settings.rate : 0}
-                                              checked={state.selectedShippingMethodsId == method.id}
-                                              onClick={changeShippingMethods}
-                                            />
-                                            {method.name}
-                                            <span class="radiomark"></span>
-                                          </label>
-                                          <label >{method.settings.rate ? '$' + method.settings.rate : 'FREE'}</label>
-                                        </div>
-                                      :""}  <p className="shipmenttxt">{shipmenttext(method.id)}</p>
-                                      </>
-                                  
-                                  }
-                                    
+
+                                      (method.settings
+                                        && method.settings.carrier_options
+                                        && method.settings.carrier_options.minimum_sub_total
+                                        && cartAmount < parseFloat(method.settings.carrier_options.minimum_sub_total)) ?
+                                        ''
+                                        :
+                                        <>
+                                          {(method.id === 2 || method.id === 4 || method.id === 5) ?
+                                            <div class="d-flex shipping-flex">
+                                              <label class="radioLabel">
+                                                <input type="radio" id={method.id}
+                                                  name="me" value={method.settings.rate ? method.settings.rate : 0}
+                                                  checked={state.selectedShippingMethodsId == method.id}
+                                                  onClick={changeShippingMethods}
+                                                />
+                                                {method.name}
+                                                <span class="radiomark"></span>
+                                              </label>
+                                              <label >{method.settings.rate ? '$' + method.settings.rate : 'FREE'}</label>
+                                            </div>
+                                            : ""}  <p className="shipmenttxt">{shipmenttext(method.id)}</p>
+                                        </>
+
+                                    }
+
                                   </>
-                                
+
                                 )) : ''}
                               <p class="shipping-footnote">*Please allow for up to 1 business day for order processing.</p>
 
@@ -862,7 +864,7 @@ const YourBag = (props, { notificationId }) => {
                             ].join(" ")}
                           >
                             Add Coupon
-                        </button>
+                          </button>
                           <button
                             onClick={e => coupon(e)}
                             className={[
@@ -872,7 +874,7 @@ const YourBag = (props, { notificationId }) => {
                             ].join(" ")}
                           >
                             Cancel
-                        </button>
+                          </button>
                         </span>
                         <span className={"aplliedDiscound"}>15% OFF APPLIED</span>
                       </div>
@@ -887,7 +889,7 @@ const YourBag = (props, { notificationId }) => {
                           className={["btn", BagStyle.shippingbtn].join(" ")}
                         >
                           Apply Code
-                      </button>
+                        </button>
                       </div>
                       <div
                         className={[
@@ -945,14 +947,18 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
+                      <div className={BagStyle.checkoutAfterpay}>Or 4 interest-free installments of $25.00 by&nbsp; <img src={afterpayImg} /></div>
                       <div
                         className={BagStyle.buttonImg}
                       >
-                        <img alt="img" src={paypal} />
-                   
-                        <img alt="img" src={paycred} />
-                
-                        <img alt="img" src={visa} />
+                        <div className={BagStyle.paypalImgs}>
+                          {/* <img alt="img" src={paypalImg} /> */}
+                          <img alt="img" src={paypal} />
+
+                          <img alt="img" src={paycred} />
+                        </div>
+                        <p className={BagStyle.paypalText}>Two easy ways to pay</p>
+                        <img className={BagStyle.cardsImg} alt="img" src={visa} />
                       </div>
                     </form>
 
@@ -962,7 +968,7 @@ const YourBag = (props, { notificationId }) => {
                 <p className={BagStyle.paytext}>Our Customer Service Representatives are available to assist you Monday through Friday, from 7am – 4pm PST at <span className={BagStyle.csNumber}>1-800-636-7546</span>.</p>
               </div>
             </div>
-                         
+
           </div>
 
           {
@@ -973,7 +979,7 @@ const YourBag = (props, { notificationId }) => {
         )
       }
     } else {
-      
+
       //if cart have no items show empty cart
       bagContent = (
         <div
@@ -989,35 +995,35 @@ const YourBag = (props, { notificationId }) => {
             >
               Your Obagi shopping bag is empty.
             </p>
-            {cartType === "overlay"? <button type="button" onClick={() => { removeNotification(notificationId); }}
+            {cartType === "overlay" ? <button type="button" onClick={() => { removeNotification(notificationId); }}
               className={ShowBagStyle.empatyLink}
             >
               Continue Shopping
             </button>
-            :
-            <Link to="/" className={ShowBagStyle.empatyLink}>Continue Shopping</Link>}
+              :
+              <Link to="/" className={ShowBagStyle.empatyLink}>Continue Shopping</Link>}
           </div>
 
           <div className="d-lg-none">
             <div className={ShowBagStyle.bottomHalf}>
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-              <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow} class="iconsvg"/></span></a></div>
-              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img alt="img"  fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
+              <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow} class="iconsvg" /></span></a></div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img alt="img" fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
             </div>
           </div>
 
           <div className="d-none d-lg-block">
             <div className={[ShowBagStyle.bottomWrapper].join(" ")}>
               {/* <div className="col-4 pr-0"> */}
-              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <Img alt="img"  fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <Img alt="img" fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
               {/* </div> */}
               {/* <div className="col-8 pl-0"> */}
               {/* <div className="d-flex align-items-center h-100"> */}
               <div className={ShowBagStyle.bottomHalf}>
                 <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
                 <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
-                <a data-dismiss="modal" aria-label="Close" href="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow} class="iconsvg"/></span></a>
+                <a data-dismiss="modal" aria-label="Close" href="/skin-analyzer" className={ShowBagStyle.bottomLink}>TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow} class="iconsvg" /></span></a>
                 {/* </div> */}
                 {/* </div> */}
               </div>
@@ -1029,29 +1035,29 @@ const YourBag = (props, { notificationId }) => {
             <div className={[ShowBagStyle.recommendedTitle, "recommendedTitle"].join(" ")}>Recommended</div>
             <div className="prodrecom">
               <RecommendedProduct
-                prodCat={data.professionalC.field_medical_sku? 'medical': 'clinical'}
+                prodCat={data.professionalC.field_medical_sku ? 'medical' : 'clinical'}
                 recId={profProductId}
                 recTitle={data.professionalC.title ? data.professionalC.title : ""}
                 recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
                 recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
-                premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
-                Sku={data.professionalC.field_medical_sku?data.professionalC.field_medical_sku:""}
-                minQuantity={(data.professionalC.field_min_quantity == 0 || data.professionalC.field_min_quantity > 0)? data.professionalC.field_min_quantity : ""}
-                feild_preimer={data.professionalC.field_medical_premier_points?data.professionalC.field_medical_premier_points:""}
+                premierid={data.professionalC.field_medical_premier_points_id ? data.professionalC.field_medical_premier_points_id : ""}
+                Sku={data.professionalC.field_medical_sku ? data.professionalC.field_medical_sku : ""}
+                minQuantity={(data.professionalC.field_min_quantity == 0 || data.professionalC.field_min_quantity > 0) ? data.professionalC.field_min_quantity : ""}
+                feild_preimer={data.professionalC.field_medical_premier_points ? data.professionalC.field_medical_premier_points : ""}
               />
 
               <RecommendedProduct
-                prodCat={data.elastiderm.field_medical_sku? 'medical' : 'clinical'}
+                prodCat={data.elastiderm.field_medical_sku ? 'medical' : 'clinical'}
                 recId={elastiProductId}
                 recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
                 recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
                 recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
                 recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
-                premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
-                Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:""}
-                minQuantity={(data.elastiderm.field_min_quantity == 0 || data.elastiderm.field_min_quantity > 0)? data.elastiderm.field_min_quantity : ""}
-                feild_preimer={data.elastiderm.field_medical_premier_points?data.elastiderm.field_medical_premier_points:""}
+                premierid={data.elastiderm.field_medical_premier_points_id ? data.elastiderm.field_medical_premier_points_id : ""}
+                Sku={data.elastiderm.field_medical_sku ? data.elastiderm.field_medical_sku : ""}
+                minQuantity={(data.elastiderm.field_min_quantity == 0 || data.elastiderm.field_min_quantity > 0) ? data.elastiderm.field_min_quantity : ""}
+                feild_preimer={data.elastiderm.field_medical_premier_points ? data.elastiderm.field_medical_premier_points : ""}
               />
             </div>
             <div className="prodsuggest">

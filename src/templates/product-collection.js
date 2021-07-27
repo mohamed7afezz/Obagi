@@ -76,6 +76,8 @@ query($slug: String!) {
     ...collectionproducts
     relationships {
       node__clinical_product {
+        field_is_best_seller
+        field_clinical_best_seller_rate
         relationships {
           field_clinical_ingredients {
             name
@@ -166,6 +168,8 @@ query($slug: String!) {
       }
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -332,6 +336,8 @@ query($slug: String!) {
 
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -493,6 +499,7 @@ query($slug: String!) {
       }
       node__medical_product {
         field_is_best_seller
+        field_medical_best_seller_rate
         field_medical_premier_points
         field_medical_sku
         field_min_quantity
@@ -662,6 +669,7 @@ query($slug: String!) {
       }
       node__medical_product {
         field_is_best_seller
+        field_medical_best_seller_rate
         field_medical_premier_points
         field_medical_sku
         field_min_quantity
@@ -844,6 +852,7 @@ query($slug: String!) {
       node__medical_product {
         field_medical_premier_points
         field_is_best_seller
+        field_medical_best_seller_rate
         field_medical_sku
         field_min_quantity
         field_medical_premier_points_id
@@ -978,6 +987,7 @@ query($slug: String!) {
       node__medical_product {
         field_medical_premier_points
         field_is_best_seller
+        field_medical_best_seller_rate
         field_medical_sku
         field_min_quantity
         field_medical_premier_points_id
@@ -1158,6 +1168,8 @@ query($slug: String!) {
       }
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -1318,6 +1330,7 @@ query($slug: String!) {
         field_medical_sku
         field_min_quantity
         field_is_best_seller
+        field_medical_best_seller_rate
         field_medical_premier_points_id
         id
         field_medical_is_system
@@ -1493,6 +1506,8 @@ query($slug: String!) {
 
       node__clinical_product {
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }

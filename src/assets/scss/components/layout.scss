@@ -973,6 +973,26 @@ p {
       a {
         color: #fff;
       }
+
+      &.header-referral-span {
+        @media only screen and (min-width: $lg-screen) and (max-width: 1200px) {
+          font-size:1.333vw;
+          line-height:2vw;
+          letter-spacing:0.133vw;
+          padding: 20px 0;
+
+          div > a {
+            font-size:1.333vw;
+            line-height:2vw;
+            letter-spacing:0.133vw;
+            padding: 20px 1.643vw;
+          }
+
+          img {
+            width:2vw;
+          }
+        }
+      }
     }
 
     li {
@@ -985,6 +1005,16 @@ p {
         white-space: nowrap;
         &:hover {
           text-decoration: none;
+        }
+
+        @media only screen and (min-width: $lg-screen) and (max-width: 1400px) {
+          padding: 20px 1.643vw;
+        }
+
+        @media only screen and (min-width: $lg-screen) and (max-width: 1200px) {
+          font-size:1.333vw;
+          line-height:2vw;
+          letter-spacing:0.133vw;
         }
       }
       &:hover .nav-container-desk {
@@ -1056,7 +1086,7 @@ p {
   @extend %futurapt-book;
   padding-bottom: 12px;
   padding-top: 14px;
-  padding-left: 24px;
+  // padding-left: 24px;
   text-transform: capitalize;
   @include md-screen {
     padding-left: 40px;
@@ -1095,6 +1125,12 @@ p {
         letter-spacing: 1.6px;
         color: #132466;
 
+        @media only screen and (min-width: $lg-screen) and (max-width: 1400px) {
+          font-size: 1.143vw;
+          line-height: 1.714vw;
+          letter-spacing: 0.114vw;
+        }
+
         // &:hover {
         //     color: #132466;
         // }
@@ -1111,6 +1147,8 @@ p {
           margin: 0;
           padding: 0 0 16px;
 
+          
+
           a {
             color: #132466;
             letter-spacing: 0;
@@ -1120,7 +1158,18 @@ p {
             padding-bottom: 0;
           }
         }
+
+        
       }
+
+      @media only screen and (min-width: $lg-screen) and (max-width: 1820px) {
+        padding: 2.857vw 0 1.758vw 3.077vw;
+        li {
+          padding: 0 0 0.879vw;
+        }
+      }
+
+
       &:hover {
         .submenu {
           display: block;
@@ -1131,6 +1180,11 @@ p {
           // justify-content: space-between;
           width: 548px;
         }
+      }
+
+      @media only screen and (min-width: $lg-screen) and (max-width: 1820px) {
+        margin: 0 0.948vw;
+        padding: 0 0.599vw;
       }
     }
   }
@@ -2755,6 +2809,22 @@ p {
   text-transform: uppercase;
   padding: 20px 0;
   // white-space: nowrap;
+
+  div > a {
+    @media only screen and (min-width: $lg-screen) and (max-width: 1400px) {
+      font-size: 1.143vw;
+      line-height: 1.714vw;
+      letter-spacing: 0.114vw;
+  
+      img {
+        width:1.600vw;
+      }
+    }
+
+    @media only screen and (min-width: $lg-screen) and (max-width: 1820px) {
+      padding: 1.264vw;
+    }
+  }
 }
 
 .footer-referral-span {
@@ -4983,7 +5053,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-hero {
-  p {
+  .full-html-component p {
     font-size: 16px;
     line-height: 24px;
   
@@ -5143,19 +5213,21 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   font-weight: 300;
   font-size: 40px;
   line-height: 48px;
-  margin-bottom: 50px;
+  
   margin-top: 78px;
   @include lg-screen {
     font-size: 48px;
     line-height: 64px;
-    margin-bottom: 68px;
+    
     margin-top: 184px;
   }
 }
 
 .blog-related-section {
+  margin-top: 50px;
   margin-bottom: 64px;
   @include lg-screen {
+    margin-top: 68px;
     margin-bottom: 122px;
     .slick-initialized {
       padding-bottom: 0;

@@ -5,6 +5,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-radius: 6px;
     &:hover {
         box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
     }
@@ -13,7 +14,6 @@
 .image {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    height: 100%;
 
     & > img {
         object-fit: unset !important;
@@ -24,10 +24,13 @@
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     padding: 29px 19px 37px;
-    color: #fff;
+    // color: #fff;
+    background-color:#fff;
+    
 
     @include lg-screen {
         padding: 37px 59px 45px 42px;
+        height: 100%;
     }
 }
 
@@ -41,9 +44,11 @@
 
 .title {
     @include fontStyle(36, 46);
-    color: #fff;
+    // color: #fff;
+    color: #132466;
     &:hover {
-        color: #fff;
+        // color: #fff;
+        color: #132466;
         text-decoration: none;
     }
 
@@ -61,7 +66,8 @@
 }
 
 .link {
-    color: #fff;
+    // color: #fff;
+    color: #132466;
     @include fontStyle(16, 16);
     letter-spacing: 1.6px;
     @extend %futurapt-bold;
@@ -70,7 +76,8 @@
     margin-top: 23px;
 
     &:hover {
-        color: #fff;
+        // color: #fff;
+        color: #132466;
         text-decoration: none;
     }
 
@@ -79,9 +86,6 @@
     }
 }
 
-.img-link {
-    height: 100%;
-}
 
 .title-link {
     &:hover {

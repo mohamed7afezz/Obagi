@@ -18,6 +18,7 @@ import { func } from "prop-types"
 import { checkStock } from '../../assets/js/stock';
 import fb from "../../assets/images/product-images/facebook.svg"
 import tw from "../../assets/images/product-images/twitter.svg"
+// import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
 const baseUrl = process.env.Base_URL;
 const URL = process.env.Drupal_URL;
 const ProductHero = ({ data, nodeType }) => {
@@ -410,6 +411,7 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
+          {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
           {feild_preimer && field_medical_rx !== "RX" ?
             <div
               className={[ProductStyles.codeoff].join(

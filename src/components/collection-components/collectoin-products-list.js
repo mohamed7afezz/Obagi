@@ -66,6 +66,38 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
           }
         }
       }
+      allBlockContentGlobalContentTile {
+        edges {
+          node {
+            field_tile_type
+            relationships {
+              field_content_tile {
+                field_tile_title {
+                  processed
+                }
+                field_tile_text {
+                  processed
+                }
+                field_tile_link {
+                  title
+                  uri
+                }
+                relationships {
+                  field_tile_image {
+                    localFile {
+                      childImageSharp {
+                        fluid(quality: 100) {
+                          ...GatsbyImageSharpFluid
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -105,22 +137,22 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
           if (item.classList.contains('content-tile')) {
             return null;
           }
-          var isBestSeller = item.classList.contains('bestSeller');
+          // var isBestSeller = item.classList.contains('bestSeller');
+          console.log('bahiii item', item, item.dataset.rateOrder);
 
-          return isBestSeller ? '' : item.querySelector(".productcarddesc").textContent;
-
+          return parseInt(item.dataset.rateOrder);
 
         },
       },
       filter: '*',
-      transitionDuration: 0
+      transitionDuration: 0,
     });
 
     let columns = document.querySelectorAll('.products-list .product-element')
-    
+
     //update view on sort on page load
     updateSortView()
-    
+
   });
 
 
@@ -175,11 +207,11 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
     checkTaxonomy =
       node.data.taxonomyTermMedicalSkinConcern.relationships
-        .node__medical_product
+        .node__medical_product;
   } else if (pageNodeType == "medicalCategories") {
     checkTaxonomy =
       node.data.taxonomyTermMedicalCategories.relationships
-        .node__medical_product
+        .node__medical_product;
   } else if (pageNodeType == "clinicalGroups") {
     checkTaxonomy =
       node.data.taxonomyTermClinicalGroups.relationships
@@ -188,6 +220,9 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     checkTaxonomy =
       node.data.taxonomyTermMedicalProductLines.relationships
         .node__medical_product
+
+
+    console.log('bahi tax', checkTaxonomy);
   } else if (pageNodeType == 'skinClinicalType') {
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
@@ -212,61 +247,71 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
   let contentTile
 
-  if (pageNodeType == "medicalConcern" && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile) {
+  if (pageNodeType == "medicalConcern" && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile && node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile.field_tile_title) {
 
     contentTile =
       node.data.taxonomyTermMedicalSkinConcern.relationships.field_skinconc_content_tile
 
-  } else if (pageNodeType == "medicalCategories" && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile) {
+  } else if (pageNodeType == "medicalCategories" && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile && node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalCategories.relationships.field_medcat_content_tile
 
-  } else if (pageNodeType == 'medicalLine' && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile) {
+  } else if (pageNodeType == 'medicalLine' && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile && node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalProductLines.relationships.field_prodline_content_tile
 
-  } else if (pageNodeType == 'skinMedicalType' && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile) {
+  } else if (pageNodeType == 'skinMedicalType' && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile && node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalSkinType.relationships.field_skintype_content_tile
 
-  } else if (pageNodeType == 'MedicalIngredients' && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile) {
+  } else if (pageNodeType == 'MedicalIngredients' && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile && node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermMedicalIngredients.relationships.field_meding_content_tile
 
-  } else if (pageNodeType == "clinicalCategories" && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile) {
+  } else if (pageNodeType == "clinicalCategories" && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile && node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalCategories.relationships.field_clicat_content_tile
-  } else if (pageNodeType == "clinicalGroups" && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile) {
+  } else if (pageNodeType == "clinicalGroups" && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile && node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalGroups.relationships.field_cligroup_content_tile
-  } else if (pageNodeType == 'skinClinicalType' && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile) {
+  } else if (pageNodeType == 'skinClinicalType' && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile && node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalSkinType.relationships.field_cliskintype_content_tile
-  } else if (pageNodeType == "ClinicalIngredients" && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile) {
+  } else if (pageNodeType == "ClinicalIngredients" && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile && node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile.field_tile_title) {
     contentTile =
       node.data.taxonomyTermClinicalIngredients.relationships.field_cliing_content_tile
   }
   else if (checktaxonomyType == "medical" && node.data.allBlockContentGlobalContentTile) {
     contentTile = node.data.allBlockContentGlobalContentTile.edges[0]
-      && node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile ?
+      && node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile.field_tile_title ?
 
       node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile : ""
 
-    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile)
+    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships)
 
   }
 
   else if (checktaxonomyType == "clinical" && node.data.allBlockContentGlobalContentTile) {
     contentTile = node.data.allBlockContentGlobalContentTile.edges[1]
-      && node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile ?
+      && node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile.field_tile_title ?
 
       node.data.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile : ""
 
+  } else if (dataType == 'medical' && filtersDataQuery.allBlockContentGlobalContentTile) {
+    contentTile = filtersDataQuery.allBlockContentGlobalContentTile.edges[0]
+      && filtersDataQuery.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile.field_tile_title ?
+
+      filtersDataQuery.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile : ""
+  } else if (dataType == 'clinical' && filtersDataQuery.allBlockContentGlobalContentTile) {
+    contentTile = filtersDataQuery.allBlockContentGlobalContentTile.edges[1]
+      && filtersDataQuery.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile.field_tile_title ?
+
+      filtersDataQuery.allBlockContentGlobalContentTile.edges[1].node.relationships.field_content_tile : ""
   } else {
     contentTile = '';
   }
 
-  console.log('ash content', checktaxonomyType, contentTile, checktaxonomyType == "medical" && node.data.allBlockContentGlobalContentTile)
+  console.log('ash content', dataType, checktaxonomyType, contentTile)
   function checkProductExisitance(product) {
 
     return products.some(item => product.path.alias == item.path.alias)
@@ -332,7 +377,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     sortSearchData();
     // update sort/filtered view
     switch (e.target.value) {
-      case 'BestSeller':
+      case 'Best Seller':
         isoGrid.arrange({ sortBy: 'bestseller', sortAscending: true });
         updateSortView();
         break;
@@ -360,9 +405,10 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
   }
   useEffect(() => {
 
-    isoGrid.arrange({ sortBy: 'name', sortAscending: true });
+    // isoGrid.arrange({ sortBy: 'name', sortAscending: true });
+    isoGrid.arrange({ sortBy: 'bestseller', sortAscending: true });
     updateSortView();
-    
+
   }, [])
   function handlePrescribe(e) {
     if (e.target.checked) {
@@ -883,7 +929,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             <label className={[productsliststyle.filter, "hide", "sortlabel", "d-block"].join(" ")}>Sort by:</label>
 
             <div class="appointment-elemnt advanced-search sortprodline transparent-bg">
-              <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Select One</p>
+              <p class="input-name sortsearch" onClick={() => { sortSearchData(); }}>Best Seller</p>
               <div id="prodLinesSelected">
 
                 <div class="product-lines hide" id="sortCon">
@@ -891,7 +937,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                     <ul class="popupUl popupFilter">
                       <li>
                         <label class="checkcon terms">
-                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Alphabetically(A-Z)" defaultChecked={true} />Alphabetically(A-Z)
+                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Alphabetically(A-Z)" />Alphabetically(A-Z)
 
                           <span className="checkmarkfinder"></span>
                         </label>
@@ -918,7 +964,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                       </li>
                       <li>
                         <label class="checkcon terms">
-                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="BestSeller" />Best Seller
+                          <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" defaultChecked={true} />Best Seller
                           <span className="checkmarkfinder"></span>
                         </label>
                       </li>
@@ -946,7 +992,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             )
             ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
-
+              console.log('bahi best', item, checkTaxonomy)
               return (
                 <>
 
@@ -985,9 +1031,9 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                             " " + prod.name.split(' ').join('_') + " "
                           )) : " "}`,
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
-                          `${item.field_is_best_seller ? 'bestSeller' : ''}`,
+                          `${item.field_is_best_seller ? 'bestSeller' : ''}`
                         ].join(" ")}
-
+                        data-rate-order={item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
                       >
                         {pageNodeType == "clinicalConcern" ? (
                           <ProductCard
@@ -1098,6 +1144,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`,
                         ].join(" ")}
+                        data-rate-order={item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
 
                       >
                         {pageNodeType == "clinicalConcern" ? (
@@ -1242,10 +1289,10 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
                           contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
 
-                        title={contentTile.field_tile_title ? { __html: contentTile.field_tile_title.processed } : ""}
-                        text={contentTile.field_tile_text ? { __html: contentTile.field_tile_text.processed } : ""}
+                        title={{ __html: contentTile.field_tile_title ? contentTile.field_tile_title.processed : "" }}
+                        text={{ __html: contentTile.field_tile_text ? contentTile.field_tile_text.processed : "" }}
                         link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
-                        type={checktaxonomyType == "medical"? "medical" : "clinical"}
+                        type={checktaxonomyType == "medical" ? "medical" : "clinical"}
                       />
                     </div>
                     : ""}
@@ -1253,18 +1300,19 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
               )
             })
             : checkTaxonomy
-              ? checkTaxonomy.relationships.field_vocabularies.map(item =>
+              ? checkTaxonomy.relationships.field_vocabularies.map((item, indd) =>
 
                 (item.relationships && item.relationships.node__clinical_product)
                   ? item.relationships.node__clinical_product.map(
                     (product, index) => {
                       let ingredient = getIngredient(product);
-
+                      console.log('bahi best', product)
 
                       if (!checkProductExisitance(product)) {
 
                         products.push(product)
                         return (
+                          <>
                           <div
                             className={[
                               "col-12 col-lg-3 col-md-4 product-element",
@@ -1299,7 +1347,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                               `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                             ].join(" ")}
-
+                            data-rate-order={product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
                           >
                             <ProductCard
                               productCat="clinical"
@@ -1320,12 +1368,30 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               Sku={product.field_clinical_sku}
                               minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
                             />
+                            
 
                             <div
                               class="d-none ingredient"
                               dangerouslySetInnerHTML={{ __html: ingredient }}
                             ></div>
                           </div>
+                          {(contentTile && indd == 0 && index == 0) ?
+                              <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
+                                <ContentTile
+                                  image={contentTile.relationships.field_tile_image
+                                    && contentTile.relationships.field_tile_image.localFile
+                                    && contentTile.relationships.field_tile_image.localFile.childImageSharp
+                                    && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
+                                    contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
+
+                                  title={{ __html: contentTile.field_tile_title ? contentTile.field_tile_title.processed : "" }}
+                                  text={{ __html: contentTile.field_tile_text ? contentTile.field_tile_text.processed : "" }}
+                                  link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
+                                  type={dataType}
+                                />
+                              </div>
+                              : ""}
+                          </>
                         )
                       }
                       return;
@@ -1334,80 +1400,100 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                   : (item.relationships && item.relationships.node__medical_product)
                     ? item.relationships.node__medical_product.map(
                       (product, index) => {
-
+                        console.log('ash vocab', index)
                         if (!checkProductExisitance(product)) {
                           products.push(product)
                           let ingredient = getIngredient(product);
                           // Back Here Agian same As 168
+
                           return (
-                            <div
-                              className={[
-                                "col-12 col-lg-3 col-md-4 product-element",
-                                `${item.name.split(' ').join('_')}`,
-                                productsliststyle.productview,
-                                "productview", `${product.relationships.field_medical_skin_type ? product.relationships.field_medical_skin_type.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_medical_skin_concern ? product.relationships.field_medical_skin_concern.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_medical_ingredients ? product.relationships.field_medical_ingredients.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_clinical_skin_type ? product.relationships.field_clinical_skin_type.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_clinical_skin_concern ? product.relationships.field_clinical_skin_concern.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_clinical_ingredients ? product.relationships.field_clinical_ingredients.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-
-                                `${product.relationships.taxonomy_term__clinical_categories ? product.relationships.taxonomy_term__clinical_categories.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-
-                                `${product.relationships.taxonomy_term__clinical_skin_concern ? product.relationships.taxonomy_term__clinical_skin_concern.map(prod => (
-                                  " " + prod.name.split(' ').join('_') + " "
-                                )) : " "}`,
-                                `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
-                                `${product.field_is_best_seller ? 'bestSeller' : ''}`,
-                              ].join(" ")}
-
-                            >
-                              <ProductCard
-                                productCat="medical"
-                                productLink={product.path.alias}
-                                producttitle={product.title}
-                                productdescription={{
-                                  __html:
-                                    product.field_medical_description ? product.field_medical_description.processed : '',
-                                }}
-                                productimage={
-                                  product.relationships.field_medical_image[0]
-                                    ? product.relationships.field_medical_image[
-                                      0
-                                    ].localFile ? product.relationships.field_medical_image[
-                                      0
-                                    ].localFile.childImageSharp.fluid
-                                      : "" : ""
-                                }
-                                isrx={product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ""}
-                                price={product.field_medical_price}
-                                rate="0"
-                                productId={product.field_medical_id}
-                                premierid={product.field_medical_premier_points_id ? product.field_medical_premier_points_id : ""}
-                                feild_preimer={product.field_medical_premier_points ? product.field_medical_premier_points : ""}
-                                Sku={product.field_medical_sku}
-                                minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
-                              />
+                            <>
                               <div
-                                class="d-none ingredient"
-                                dangerouslySetInnerHTML={{ __html: ingredient }}
-                              ></div>
-                            </div>
+                                className={[
+                                  "col-12 col-lg-3 col-md-4 product-element",
+                                  `${item.name.split(' ').join('_')}`,
+                                  productsliststyle.productview,
+                                  "productview", `${product.relationships.field_medical_skin_type ? product.relationships.field_medical_skin_type.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_medical_skin_concern ? product.relationships.field_medical_skin_concern.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_medical_ingredients ? product.relationships.field_medical_ingredients.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_clinical_skin_type ? product.relationships.field_clinical_skin_type.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_clinical_skin_concern ? product.relationships.field_clinical_skin_concern.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_clinical_ingredients ? product.relationships.field_clinical_ingredients.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
 
+                                  `${product.relationships.taxonomy_term__clinical_categories ? product.relationships.taxonomy_term__clinical_categories.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+
+                                  `${product.relationships.taxonomy_term__clinical_skin_concern ? product.relationships.taxonomy_term__clinical_skin_concern.map(prod => (
+                                    " " + prod.name.split(' ').join('_') + " "
+                                  )) : " "}`,
+                                  `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
+                                  `${product.field_is_best_seller ? 'bestSeller' : ''}`,
+                                ].join(" ")}
+                                data-rate-order={product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
+                              >
+                                <ProductCard
+                                  productCat="medical"
+                                  productLink={product.path.alias}
+                                  producttitle={product.title}
+                                  productdescription={{
+                                    __html:
+                                      product.field_medical_description ? product.field_medical_description.processed : '',
+                                  }}
+                                  productimage={
+                                    product.relationships.field_medical_image[0]
+                                      ? product.relationships.field_medical_image[
+                                        0
+                                      ].localFile ? product.relationships.field_medical_image[
+                                        0
+                                      ].localFile.childImageSharp.fluid
+                                        : "" : ""
+                                  }
+                                  isrx={product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ""}
+                                  price={product.field_medical_price}
+                                  rate="0"
+                                  productId={product.field_medical_id}
+                                  premierid={product.field_medical_premier_points_id ? product.field_medical_premier_points_id : ""}
+                                  feild_preimer={product.field_medical_premier_points ? product.field_medical_premier_points : ""}
+                                  Sku={product.field_medical_sku}
+                                  minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
+                                />
+
+
+                                <div
+                                  class="d-none ingredient"
+                                  dangerouslySetInnerHTML={{ __html: ingredient }}
+                                ></div>
+                              </div>
+                              {(contentTile && indd == 0 && index == 0) ?
+                                <div id="contentTile" className={`col-12 col-lg-3 col-md-4 content-tile product-element ${productsliststyle.productview}`}>
+                                  <ContentTile
+                                    image={contentTile.relationships.field_tile_image
+                                      && contentTile.relationships.field_tile_image.localFile
+                                      && contentTile.relationships.field_tile_image.localFile.childImageSharp
+                                      && contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid ?
+                                      contentTile.relationships.field_tile_image.localFile.childImageSharp.fluid : ""}
+
+                                    title={{ __html: contentTile.field_tile_title ? contentTile.field_tile_title.processed : "" }}
+                                    text={{ __html: contentTile.field_tile_text ? contentTile.field_tile_text.processed : "" }}
+                                    link={contentTile.field_tile_link ? contentTile.field_tile_link : ""}
+                                    type={dataType}
+                                  />
+                                </div>
+                                : ""}
+                            </>
                           )
                         }
                       }
@@ -1477,7 +1563,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                             </li>
                             <li>
                               <label class="checkcon terms">
-                                <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="BestSeller" />Best Seller
+                                <input class="popupVideoInput" onChange={(e) => { sortselect(e) }} name="sort" type="radio" value="Best Seller" />Best Seller
                                 <span className="checkmarkfinder"></span>
                               </label>
                             </li>
@@ -1692,6 +1778,8 @@ export const fragment = graphql`
       node__clinical_product {
         
         field_clinical_id
+        field_is_best_seller
+        field_clinical_best_seller_rate
         field_clinical_description {
           processed
         }
@@ -1758,6 +1846,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               title
               field_clinical_description {
                 processed
@@ -1823,6 +1913,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               title
               field_clinical_description {
                 processed
@@ -1886,6 +1978,7 @@ export const fragment = graphql`
           
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -1947,6 +2040,7 @@ export const fragment = graphql`
           name
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -2014,6 +2108,7 @@ export const fragment = graphql`
               field_medical_premier_points
               field_medical_sku
               field_min_quantity
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points_id
               field_medical_id
@@ -2075,6 +2170,7 @@ export const fragment = graphql`
           }
           relationships {
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -2134,6 +2230,7 @@ export const fragment = graphql`
           relationships {
             
             node__medical_product {
+              field_medical_best_seller_rate
               field_is_best_seller
               field_medical_premier_points
               field_medical_sku
@@ -2200,6 +2297,8 @@ export const fragment = graphql`
           relationships {
             node__clinical_product {
               field_clinical_id
+              field_is_best_seller
+              field_clinical_best_seller_rate
               field_clinical_price
               field_clinical_sku
               field_min_quantity
