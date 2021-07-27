@@ -947,7 +947,7 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      <div className={BagStyle.checkoutAfterpay}>Or 4 interest-free installments of $25.00 by&nbsp; <img src={afterpayImg} /></div>
+                      {/* <div className={BagStyle.checkoutAfterpay}>Or 4 interest-free installments of $25.00 by&nbsp; <img src={afterpayImg} /></div> */}
                       <div
                         className={BagStyle.buttonImg}
                       >

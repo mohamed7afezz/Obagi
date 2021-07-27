@@ -433,11 +433,13 @@
 
 .paypal-imgs {
   display: flex;
-  border: 1px solid #132466;
-  border-radius: 6px;
-  padding: 5px;
+  // border: 1px solid #132466;
+  // border-radius: 6px;
+  // padding: 5px;
 }
-
+.paypal-imgs img:first-child {
+  margin-right: 8px;
+}
 .paypal-text {
   font-size: 16px;
   line-height: 24px;
