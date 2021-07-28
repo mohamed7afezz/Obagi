@@ -174,7 +174,7 @@ async function getShippingAddresses(e) {
       { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
     )
     .split(" ")
-
+      console.log('ash all data', alldata)
   return (
     <>
     {isLoading ?
@@ -451,6 +451,43 @@ async function getShippingAddresses(e) {
                       </p>
                     </div>
 
+                   
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Tax
+                  </p>
+                      <p>
+                        {alldata.subtotal_tax
+                          ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+                    
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Shipping Cost
+                  </p>
+                      <p>
+                        {alldata.shipping_cost_inc_tax
+                          ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Discount Amount
+                  </p>
+                      <p>
+                        {alldata.discount_amount
+                          ? "$" + parseFloat(alldata.discount_amount).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
                     {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
@@ -634,19 +671,19 @@ async function getShippingAddresses(e) {
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
-                      <p>Status</p>
+                      <p className={orderDetailsStyles.informdetail}>Status</p>
                       <p>{alldata.main_order.status && alldata.main_order.status == "Manual Verification Required"? "Processing" : alldata.main_order.status? alldata.main_order.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
-                      <p>Order Placed</p>
+                      <p className={orderDetailsStyles.informdetail}>Order Placed</p>
                       <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
                     </div>
 
                     {alldata.shipping_addresses.map((item, index) => {
                       return (
                         <div className={orderDetailsStyles.detailPart}>
-                          <p>Shipping Address</p>
+                          <p className={orderDetailsStyles.informdetail}>Shipping Address</p>
                           <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
                           <p>{item.street_1 ? item.street_1 : ""}</p>
                           <p>{item.street_2 ? item.street_2 : ""}</p>
@@ -657,7 +694,7 @@ async function getShippingAddresses(e) {
                     })}
 
                     <div className={orderDetailsStyles.detailPart}>
-                      <p>Billing Address</p>
+                      <p className={orderDetailsStyles.informdetail}>Billing Address</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.first_name : ""} {alldata.main_order.billing_address ? alldata.main_order.billing_address.last_name : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_1 : ""}</p>
                       <p>{alldata.main_order.billing_address ? alldata.main_order.billing_address.street_2 : ""}</p>
@@ -674,6 +711,44 @@ async function getShippingAddresses(e) {
                       <p>Actions</p>
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
+
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Tax
+                  </p>
+                      <p>
+                        {alldata.subtotal_tax
+                          ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+                    
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Shipping Cost
+                  </p>
+                      <p>
+                        {alldata.shipping_cost_inc_tax
+                          ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Discount Amount
+                  </p>
+                      <p>
+                        {alldata.discount_amount
+                          ? "$" + parseFloat(alldata.discount_amount).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
 
 
                     <div className={orderDetailsStyles.totalWrapper}>
