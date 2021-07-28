@@ -95,7 +95,23 @@ function addOverview(e) {
 
 
   }
+}
 
+function addViewAll(e) {
+  var skinCareLink = document.querySelector("a#skin-care-lines");
+  var skinCareOV = document.getElementById("overview-skin-care-lines");
+
+  // document.querySelector(".mob-menu-lower-section").classList.toggle("d-none");
+
+  if (e.currentTarget === skinCareLink) {
+    console.log("matches")
+    if (skinCareOV.style.display === "none") {
+      skinCareOV.style.display = "inline-block";
+    } else {
+      skinCareOV.style.display = "none";
+    }
+    // skinCareLink.parentElement.classList.toggle("medical-menu-link");
+  } 
 }
 
 
@@ -159,7 +175,8 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     }
   }
   else if (itemId && collapseTarget && isExpandable) {
-
+    console.log(link)
+     console.log("top link expanded: ", link.expanded)
     if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
       let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
       return (
@@ -170,10 +187,23 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
           {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
         </>
       )
+    } else if (link.title === 'SKIN CARE LINES') {
+      let linkNameTwo = link.title.replace(/\s+/g, '-').toLowerCase();
+      console.log("Link name 2: ", linkNameTwo);
+      console.log("exapanded??: ", link.expanded)
+      return (
+        <>
+          <a data-toggle="collapse" id={linkNameTwo} href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+          </a>
+           <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
+           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameTwo} style={{ display: "none" }}>View All</Link> : ''}
+        </>
+      )
     } else {
       return (
         <>
-          <a data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+          <a data-toggle="collapse" id={itemId} href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
             <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
 
           </a>

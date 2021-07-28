@@ -326,7 +326,8 @@ p {
         }
       }
 
-      a, .AccessiBe {
+      a,
+      .AccessiBe {
         @extend %futurapt-book;
         // @include fontStyle(16, 24);
         color: #132466;
@@ -692,6 +693,19 @@ p {
         background: #fff;
         border: 0;
       }
+
+      a {
+        span.view-all {
+          text-decoration: underline;
+          float: right;
+          padding-right: 24px;
+
+          a {
+            padding-bottom: 0 !important;
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 
@@ -747,6 +761,11 @@ p {
 
   &:hover {
     text-decoration: underline !important;
+  }
+
+  &.sub {
+    top: 0;
+    right: 60px;
   }
 }
 
@@ -976,20 +995,20 @@ p {
 
       &.header-referral-span {
         @media only screen and (min-width: $lg-screen) and (max-width: 1200px) {
-          font-size:1.333vw;
-          line-height:2vw;
-          letter-spacing:0.133vw;
+          font-size: 1.333vw;
+          line-height: 2vw;
+          letter-spacing: 0.133vw;
           padding: 20px 0;
 
           div > a {
-            font-size:1.333vw;
-            line-height:2vw;
-            letter-spacing:0.133vw;
+            font-size: 1.333vw;
+            line-height: 2vw;
+            letter-spacing: 0.133vw;
             padding: 20px 1.643vw;
           }
 
           img {
-            width:2vw;
+            width: 2vw;
           }
         }
       }
@@ -1012,9 +1031,9 @@ p {
         }
 
         @media only screen and (min-width: $lg-screen) and (max-width: 1200px) {
-          font-size:1.333vw;
-          line-height:2vw;
-          letter-spacing:0.133vw;
+          font-size: 1.333vw;
+          line-height: 2vw;
+          letter-spacing: 0.133vw;
         }
       }
       &:hover .nav-container-desk {
@@ -1147,8 +1166,6 @@ p {
           margin: 0;
           padding: 0 0 16px;
 
-          
-
           a {
             color: #132466;
             letter-spacing: 0;
@@ -1158,8 +1175,6 @@ p {
             padding-bottom: 0;
           }
         }
-
-        
       }
 
       @media only screen and (min-width: $lg-screen) and (max-width: 1820px) {
@@ -1168,7 +1183,6 @@ p {
           padding: 0 0 0.879vw;
         }
       }
-
 
       &:hover {
         .submenu {
@@ -2815,9 +2829,9 @@ p {
       font-size: 1.143vw;
       line-height: 1.714vw;
       letter-spacing: 0.114vw;
-  
+
       img {
-        width:1.600vw;
+        width: 1.6vw;
       }
     }
 
@@ -5056,7 +5070,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   .full-html-component p {
     font-size: 16px;
     line-height: 24px;
-  
+
     @include lg-screen {
       font-size: 24px;
       line-height: 40px;
@@ -5133,7 +5147,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 56px;
-    
+
     @include lg-screen {
       max-width: 300px;
       margin-bottom: 33px;
@@ -5213,12 +5227,12 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   font-weight: 300;
   font-size: 40px;
   line-height: 48px;
-  
+
   margin-top: 78px;
   @include lg-screen {
     font-size: 48px;
     line-height: 64px;
-    
+
     margin-top: 184px;
   }
 }
@@ -5268,17 +5282,17 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 }
 
-.blog-share-title, .blog-share-text {
-
+.blog-share-title,
+.blog-share-text {
   font-size: 20px;
   line-height: 28px;
   color: #132466;
   margin-top: 12px;
   margin-bottom: 8px;
-  @include md-screen{
-      font-size: 24px;
-      line-height: 40px;
-      color: #132466;
+  @include md-screen {
+    font-size: 24px;
+    line-height: 40px;
+    color: #132466;
   }
 }
 .blog-share-title {
@@ -5297,8 +5311,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 12px;
     display: flex;
     align-items: center;
-
-
 
     @include lg-screen {
       margin-top: 54px;
@@ -5330,7 +5342,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     margin-top: 42px;
     &::after {
       position: absolute;
-      content: '\2192';
+      content: "\2192";
       font-size: 17px;
       right: -34px;
     }
@@ -5393,7 +5405,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       height: 8px;
       width: 8px;
       background-color: #fff;
-      content: '';
+      content: "";
     }
 
     @include lg-screen {
@@ -5415,11 +5427,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     margin-top: 58px;
     margin-bottom: 30px;
     @include fontStyle(72, 88);
-
   }
 }
 
-.blog-cat-desc, .blog-cat-desc h2 {
+.blog-cat-desc,
+.blog-cat-desc h2 {
   @include fontStyle(16, 24);
   text-align: center;
   font-weight: 400;
@@ -5459,7 +5471,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     letter-spacing: 0.9px;
     border: 1px solid #fff;
     border-radius: 6px;
-
   }
   @include md-screen {
     padding: 18px 76px 49px;
@@ -5472,7 +5483,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
         color: #122466;
       }
     }
-
   }
   @include lg-screen {
     a {
@@ -5483,7 +5493,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 }
 
-.blog-filter{
+.blog-filter {
   position: relative;
   margin-bottom: 40px;
 
@@ -5493,7 +5503,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 }
 
 .blog-filter-header {
-  
   font-size: 16px;
   letter-spacing: 0.4px;
   font-weight: 600;
@@ -5506,10 +5515,10 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   text-align: left;
   border: 0;
   position: relative;
-  
+
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     right: 13px;
@@ -5558,7 +5567,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     right: 0;
     background-color: #fff;
     height: 16px;
-    content: '';
+    content: "";
     position: absolute;
   }
   a {
@@ -5571,7 +5580,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     align-items: center;
     &::before {
       position: absolute;
-      content: '';
+      content: "";
       left: 13px;
       height: 14px;
       width: 14px;
@@ -5585,7 +5594,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
     &.active-filter {
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         left: 16px;
         height: 8px;
@@ -5608,7 +5617,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       }
     }
   }
- 
+
   @include lg-screen {
     box-shadow: none;
     position: unset;
@@ -5617,7 +5626,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       &::before {
         left: 0;
       }
-      
+
       &:last-child {
         border-radius: 0;
       }
@@ -5643,7 +5652,6 @@ body.acsb-keynav input[type="radio"].acsb-shown {
         &::before {
           border-color: #122466;
         }
-     
       }
     }
   }
@@ -5700,17 +5708,22 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   line-height: 16px;
 }
 
-
 .related-articles {
   margin-bottom: 58px;
-  .slick-prev, .slick-prev:hover, .slick-prev:active, .slick-prev:focus {
+  .slick-prev,
+  .slick-prev:hover,
+  .slick-prev:active,
+  .slick-prev:focus {
     left: -106px;
-
   }
-  .slick-next, .slick-next:hover, .slick-next:active, .slick-next:focus {
+  .slick-next,
+  .slick-next:hover,
+  .slick-next:active,
+  .slick-next:focus {
     right: 57px;
   }
-  .slick-prev, .slick-next {
+  .slick-prev,
+  .slick-next {
     top: 116px;
   }
 
