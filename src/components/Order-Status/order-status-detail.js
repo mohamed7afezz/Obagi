@@ -139,6 +139,8 @@ const OrderStatusDetails = (props) => {
 
     return item.product_options[0] ? item.product_options[0].value : ""
   })
+
+  console.log('ash it', detailorder)
   return (
     <>
     <Customer activeTab="order-status">
@@ -421,6 +423,44 @@ const OrderStatusDetails = (props) => {
                   </p>
                     </div> */}
 
+                    
+<div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Tax
+                  </p>
+                      <p>
+                        {detailorder.subtotal_tax
+                          ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+                    
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Shipping Cost
+                  </p>
+                      <p>
+                        {detailorder.shipping_cost_inc_tax
+                          ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Discount Amount
+                  </p>
+                      <p>
+                        {detailorder.discount_amount
+                          ? "$" + parseFloat(detailorder.discount_amount).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
+
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
                       <div className={orderDetailsStyles.totalPrice}>
@@ -625,12 +665,12 @@ const OrderStatusDetails = (props) => {
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
-                      <p>Status</p>
+                      <p className={orderDetailsStyles.informdetail}>Status</p>
                       <p>{detailorder.status ? detailorder.status : ""}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
-                      <p>Order Placed</p>
+                      <p className={orderDetailsStyles.informdetail}>Order Placed</p>
                       <p>{placedOnDate ? `${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}` : ""}</p>
                     </div>
 
@@ -638,7 +678,7 @@ const OrderStatusDetails = (props) => {
                       console.log('ash add', item)
                       return (
                         <div className={orderDetailsStyles.detailPart}>
-                          <p>Shipping Address</p>
+                          <p className={orderDetailsStyles.informdetail}>Shipping Address</p>
                           <p>{item.first_name ? item.first_name : ""} {item.last_name ? item.last_name : ""}</p>
                           <p>{item.street_1 ? item.street_1 : ""}</p>
                           <p>{item.street_2 ? item.street_2 : ""}</p>
@@ -650,7 +690,7 @@ const OrderStatusDetails = (props) => {
 
                     <div className={orderDetailsStyles.detailPart}>
                       {console.log('ash add bill', detailorder.billing_address)}
-                      <p>Billing Address</p>
+                      <p className={orderDetailsStyles.informdetail}>Billing Address</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.first_name : ""} {detailorder.billing_address ? detailorder.billing_address.last_name : ""}</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.street_1 : ""}</p>
                       <p>{detailorder.billing_address ? detailorder.billing_address.street_2 : ""}</p>
@@ -667,6 +707,44 @@ const OrderStatusDetails = (props) => {
                       <p>Actions</p>
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
+
+                    
+<div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Tax
+                  </p>
+                      <p>
+                        {detailorder.subtotal_tax
+                          ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+                    
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Shipping Cost
+                  </p>
+                      <p>
+                        {detailorder.shipping_cost_inc_tax
+                          ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
+                    <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>
+                        Discount Amount
+                  </p>
+                      <p>
+                        {detailorder.discount_amount
+                          ? "$" + parseFloat(detailorder.discount_amount).toFixed(2)
+                          : ""}
+                      </p>
+                    
+                    </div>
+
 
 
                     <div className={orderDetailsStyles.totalWrapper}>

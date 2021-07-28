@@ -87,6 +87,10 @@ const ProductHero = ({ data, nodeType }) => {
     nav1: null,
     nav2: null,
   })
+  const urlSearchParams = new URLSearchParams(location1.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  const physicianUrl = params.physician == "true"? true : false;
+  console.log('ash path', location1, params)
   const slider1 = useRef()
   const slider2 = useRef()
   // document.querySelector('body').addEventListener('click',function(){
@@ -412,7 +416,7 @@ const ProductHero = ({ data, nodeType }) => {
             </ul> : ""}
           </div>
           {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
-          {feild_preimer && field_medical_rx !== "RX" ?
+          {feild_preimer && field_medical_rx !== "RX" && !physicianUrl ?
             <div
               className={[ProductStyles.codeoff].join(
                 " "
@@ -425,13 +429,13 @@ const ProductHero = ({ data, nodeType }) => {
 
             </div> : ""
           }
-          {field_medical_rx == "RX" ?
+          {field_medical_rx == "RX" || physicianUrl?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
 
 
 
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-md-10", "md-pl0"].join(" ")}>
-                {field_medical_rx == "RX" ?
+                {field_medical_rx == "RX" || physicianUrl ?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart", "locate-physician"].join(" ")}
                     to="/medical/hcpfinder">
@@ -490,7 +494,7 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12 col-md-6", "col-lg-6"].join(" ")}>
-                {field_medical_rx == "RX" ?
+                {field_medical_rx == "RX" || physicianUrl?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     to="/medical/hcpfinder">
@@ -538,7 +542,7 @@ const ProductHero = ({ data, nodeType }) => {
        </button>
             </div>
           }
-          {field_medical_rx == "RX" ? "" :
+          {field_medical_rx == "RX" || physicianUrl ? "" :
             <div className={ProductStyles.offer}>
               <div className={["col-3", ProductStyles.offerimg].join(" ")}>
                 <img alt="img" src={freeimg} />
