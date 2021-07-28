@@ -1686,8 +1686,8 @@
 }
 .opp_badge {
   background: url(../../images/product-images/PremierPartnership_Badge-01.png);
-  width: 75px;
-  height: 75px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1695,6 +1695,7 @@
   padding: 0;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: right;
 }
 .tray-result-number {
   cursor: pointer;
