@@ -140,7 +140,7 @@ const OrderStatusDetails = (props) => {
     return item.product_options[0] ? item.product_options[0].value : ""
   })
 
-  console.log('ash it', detailorder)
+  console.log('ash it', detailorder, productorder)
   return (
     <>
     <Customer activeTab="order-status">
@@ -255,7 +255,7 @@ const OrderStatusDetails = (props) => {
                                         </div>
                                         
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {item.status}
+                                        {item.status == "Manual Verification Required"? "Processing" : item.status}
                                       </div>
                                          
                                       </div>
@@ -293,7 +293,7 @@ const OrderStatusDetails = (props) => {
                                   
                                    
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {detailorder.status}
+                                        {detailorder.status == "Manual Verification Required"? "Processing" : detailorder.status}
                                       </div>
                                    
                                    
@@ -340,7 +340,7 @@ const OrderStatusDetails = (props) => {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Status</p>
-                      <p>{detailorder.status ? detailorder.status : ""}</p>
+                      <p>{detailorder.status == "Manual Verification Required"? "Processing" : detailorder.status}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -425,40 +425,53 @@ const OrderStatusDetails = (props) => {
 
                     
 <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Tax
-                  </p>
-                      <p>
-                        {detailorder.subtotal_tax
-                          ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-                    
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Shipping Cost
-                  </p>
-                      <p>
-                        {detailorder.shipping_cost_inc_tax
-                          ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Subtotal
+                          </p>
+                          <p>
+                            {detailorder.subtotal_ex_tax
+                              ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
+                              : ""}
+                          </p>
 
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Discount Amount
-                  </p>
-                      <p>
-                        {detailorder.discount_amount
-                          ? "$" + parseFloat(detailorder.discount_amount).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                        </div>
+
+                        {productorder[0].applied_discounts.length > 0?
+                         <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Coupon Code ({productorder[0].applied_discounts[0].code})
+                          </p>
+                          <p>
+                            {detailorder.coupon_discount
+                              ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div> : ""}
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Shipping
+                          </p>
+                          <p>
+                            {detailorder.shipping_cost_inc_tax
+                              ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Tax
+                          </p>
+                          <p>
+                            {detailorder.subtotal_tax
+                              ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
 
 
                     <div className={orderDetailsStyles.totalWrapper}>
@@ -467,6 +480,15 @@ const OrderStatusDetails = (props) => {
                         {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
                       </div>
                     </div>
+
+                    {detailorder.refunded_amount > 0?
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Refunded</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+                      </div>
+                    </div> : ""}
+                    
 
                     <div
                       className={[
@@ -565,10 +587,10 @@ const OrderStatusDetails = (props) => {
                               <div className={orderDetailsStyles.productName}>{item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}</div>
                               <div className={orderDetailsStyles.priceAndQuantity}>
                                 <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
-                                <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
+                                <div className={orderDetailsStyles.productPrice}>{item.total_ex_tax ? "$" + parseFloat(item.total_ex_tax).toFixed(2) : ""}</div>
                                
                                         <div className={orderDetailsStyles.productstatus}>
-                                        {item.status}
+                                        {item.status == "Manual Verification Required"? "Processing" : item.status}
                                       </div>
                               </div>
                             </div>
@@ -634,10 +656,10 @@ const OrderStatusDetails = (props) => {
                             {item.quantity ? "Qty. " + item.quantity : ""}
                           </div>
                           <div className={orderDetailsStyles.productPrice}>
-                            {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
+                            {item.total_ex_tax ? "$" + parseFloat(item.total_ex_tax).toFixed(2) : ""}
                           </div>
                        
-                          <div className={orderDetailsStyles.productstatus}>{detailorder.custom_status}</div> 
+                          <div className={orderDetailsStyles.productstatus}>{detailorder.custom_status == "Manual Verification Required"? "Processing" : detailorder.custom_status}</div> 
                                 
                               
                         </div>
@@ -666,7 +688,7 @@ const OrderStatusDetails = (props) => {
 
                     <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Status</p>
-                      <p>{detailorder.status ? detailorder.status : ""}</p>
+                      <p>{detailorder.status == "Manual Verification Required"? "Processing" : detailorder.status}</p>
                     </div>
 
                     <div className={orderDetailsStyles.detailPart}>
@@ -708,42 +730,54 @@ const OrderStatusDetails = (props) => {
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
 
-                    
 <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Tax
-                  </p>
-                      <p>
-                        {detailorder.subtotal_tax
-                          ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-                    
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Shipping Cost
-                  </p>
-                      <p>
-                        {detailorder.shipping_cost_inc_tax
-                          ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Subtotal
+                          </p>
+                          <p>
+                            {detailorder.subtotal_ex_tax
+                              ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
+                              : ""}
+                          </p>
 
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Discount Amount
-                  </p>
-                      <p>
-                        {detailorder.discount_amount
-                          ? "$" + parseFloat(detailorder.discount_amount).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                        </div>
+
+                        {productorder[0].applied_discounts.length > 0?
+                         <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Coupon Code ({productorder[0].applied_discounts[0].code})
+                          </p>
+                          <p>
+                            {detailorder.coupon_discount
+                              ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div> : ""}
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Shipping
+                          </p>
+                          <p>
+                            {detailorder.shipping_cost_inc_tax
+                              ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Tax
+                          </p>
+                          <p>
+                            {detailorder.subtotal_tax
+                              ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
 
 
 
@@ -751,6 +785,15 @@ const OrderStatusDetails = (props) => {
                       <div>Order Total</div>
                       <div className={orderDetailsStyles.totalPrice}>{detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}</div>
                     </div>
+
+                    {detailorder.refunded_amount > 0?
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Refunded</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+                      </div>
+                    </div> : ""}
+                    
 
                     <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
                       <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}

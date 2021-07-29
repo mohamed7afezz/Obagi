@@ -239,6 +239,7 @@ async function getShippingAddresses(e) {
                     
                       return ( alldata.products.map((item, index)=> {
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
+                        console.log('ash this', item)
                         return (
                            
                           parseFloat(getProdId.order_product_id) === parseFloat(item.id) ?
@@ -294,8 +295,8 @@ async function getShippingAddresses(e) {
                                         </div>
                               
                                         <div className={orderDetailsStyles.productPrice}>
-                                          {item.total_inc_tax
-                                            ? "$" + parseFloat(item.total_inc_tax).toFixed(2)
+                                          {item.total_ex_tax
+                                            ? "$" + parseFloat(item.total_ex_tax).toFixed(2)
                                             : ""}
                                         </div>
                                         
@@ -333,7 +334,7 @@ async function getShippingAddresses(e) {
                                       {item.quantity ? "Qty. " + item.quantity : ""}
                                     </div>
                                     <div className={orderDetailsStyles.productPrice}>
-                                      {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
+                                      {item.total_ex_tax ? "$" + parseFloat(item.total_ex_tax).toFixed(2) : ""}
                                     </div>
                                   
                                    
@@ -451,42 +452,54 @@ async function getShippingAddresses(e) {
                       </p>
                     </div>
 
-                   
                     <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Tax
-                  </p>
-                      <p>
-                        {alldata.subtotal_tax
-                          ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-                    
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Shipping Cost
-                  </p>
-                      <p>
-                        {alldata.shipping_cost_inc_tax
-                          ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Subtotal
+                          </p>
+                          <p>
+                            {alldata.subtotal_ex_tax
+                              ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
+                              : ""}
+                          </p>
 
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Discount Amount
-                  </p>
-                      <p>
-                        {alldata.discount_amount
-                          ? "$" + parseFloat(alldata.discount_amount).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
+                        </div>
+
+                        {alldata.products[0].applied_discounts.length > 0?
+                         <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Coupon Code ({alldata.products[0].applied_discounts[0].code})
+                          </p>
+                          <p>
+                            {alldata.coupon_discount
+                              ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div> : ""}
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Shipping
+                          </p>
+                          <p>
+                            {alldata.shipping_cost_inc_tax
+                              ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Tax
+                          </p>
+                          <p>
+                            {alldata.subtotal_tax
+                              ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
 
                     {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
@@ -503,6 +516,13 @@ async function getShippingAddresses(e) {
                       </div>
                     </div>
 
+                   {alldata.refunded_amount > 0?
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Refunded</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                      </div>
+                    </div> : ""}
                     <div
                       className={[
                         orderDetailsStyles.orderButtonSection,
@@ -568,7 +588,7 @@ async function getShippingAddresses(e) {
                     {
                       (alldata.products.map((item, index) => {
                         { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
-                     
+                        console.log('ash this', item)
                         return (
                           <div className={orderDetailsStyles.productWrapper}>
                             <form>
@@ -590,7 +610,7 @@ async function getShippingAddresses(e) {
                               <div className={orderDetailsStyles.productName}>{item.name ? <span dangerouslySetInnerHTML={{ __html: item.name }}></span> : ""}</div>
                               <div className={orderDetailsStyles.priceAndQuantity}>
                                 <div className={orderDetailsStyles.productQuantity}>Qty. {item.quantity ? item.quantity : ""}</div>
-                                <div className={orderDetailsStyles.productPrice}>{item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}</div>
+                                <div className={orderDetailsStyles.productPrice}>{item.total_ex_tax ? "$" + parseFloat(item.total_ex_tax).toFixed(2) : ""}</div>
                                
                                         <div className={orderDetailsStyles.productstatus}>
                                         {item.status == "Manual Verification Required"? "Processing" : item.status}
@@ -648,7 +668,7 @@ async function getShippingAddresses(e) {
                             {item.quantity ? "Qty. " + item.quantity : ""}
                           </div>
                           <div className={orderDetailsStyles.productPrice}>
-                            {item.total_inc_tax ? "$" + parseFloat(item.total_inc_tax).toFixed(2) : ""}
+                            {item.total_ex_tax ? "$" + parseFloat(item.total_ex_tax).toFixed(2) : ""}
                           </div>
                        
                           <div className={orderDetailsStyles.productstatus}>{alldata.main_order.custom_status == "Manual Verification Required"? "Processing" : alldata.main_order.custom_status}</div> 
@@ -712,50 +732,79 @@ async function getShippingAddresses(e) {
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
 
+<div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Subtotal
+                          </p>
+                          <p>
+                            {alldata.subtotal_ex_tax
+                              ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
+                              : ""}
+                          </p>
 
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Tax
-                  </p>
+                        </div>
+
+                        {alldata.products[0].applied_discounts.length > 0?
+                         <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Coupon Code ({alldata.products[0].applied_discounts[0].code})
+                          </p>
+                          <p>
+                            {alldata.coupon_discount
+                              ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div> : ""}
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Shipping
+                          </p>
+                          <p>
+                            {alldata.shipping_cost_inc_tax
+                              ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
+
+                        <div className={orderDetailsStyles.detailPart}>
+                          <p className={orderDetailsStyles.informdetail}>
+                            Tax
+                          </p>
+                          <p>
+                            {alldata.subtotal_tax
+                              ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                              : ""}
+                          </p>
+
+                        </div>
+
+                    
+                    {/* <div className={orderDetailsStyles.detailPart}>
+                      <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
-                        {alldata.subtotal_tax
-                          ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-                    
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Shipping Cost
+                        {alldata.main_order.payment_method ? alldata.main_order.payment_method : ""}:
+                    ending in 7320
                   </p>
-                      <p>
-                        {alldata.shipping_cost_inc_tax
-                          ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-
-                    <div className={orderDetailsStyles.detailPart}>
-                      <p className={orderDetailsStyles.informdetail}>
-                        Discount Amount
-                  </p>
-                      <p>
-                        {alldata.discount_amount
-                          ? "$" + parseFloat(alldata.discount_amount).toFixed(2)
-                          : ""}
-                      </p>
-                    
-                    </div>
-
-
+                    </div> */}
 
                     <div className={orderDetailsStyles.totalWrapper}>
                       <div>Order Total</div>
-                      <div className={orderDetailsStyles.totalPrice}>{alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
+                      </div>
                     </div>
 
+                   {alldata.refunded_amount > 0?
+                    <div className={orderDetailsStyles.totalWrapper}>
+                      <div>Refunded</div>
+                      <div className={orderDetailsStyles.totalPrice}>
+                        {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                      </div>
+                    </div> : ""}
+                    
                     <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>
                       <button type="button" id="mob-reorder-button" className={orderDetailsStyles.orderButton}
                         onClick={() => {
