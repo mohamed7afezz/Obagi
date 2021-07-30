@@ -464,7 +464,7 @@ async function getShippingAddresses(e) {
 
                         </div>
 
-                        {alldata.products[0].applied_discounts.length > 0?
+                        {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0?
                          <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
                             Coupon Code ({alldata.products[0].applied_discounts[0].code})
@@ -744,7 +744,7 @@ async function getShippingAddresses(e) {
 
                         </div>
 
-                        {alldata.products[0].applied_discounts.length > 0?
+                        {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0?
                          <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
                             Coupon Code ({alldata.products[0].applied_discounts[0].code})

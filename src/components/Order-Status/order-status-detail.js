@@ -436,7 +436,7 @@ const OrderStatusDetails = (props) => {
 
                         </div>
 
-                        {productorder[0].applied_discounts.length > 0?
+                        {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0?
                          <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
                             Coupon Code ({productorder[0].applied_discounts[0].code})
@@ -742,7 +742,7 @@ const OrderStatusDetails = (props) => {
 
                         </div>
 
-                        {productorder[0].applied_discounts.length > 0?
+                        {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0?
                          <div className={orderDetailsStyles.detailPart}>
                           <p className={orderDetailsStyles.informdetail}>
                             Coupon Code ({productorder[0].applied_discounts[0].code})
