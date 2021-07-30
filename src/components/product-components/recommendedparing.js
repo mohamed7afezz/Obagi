@@ -139,49 +139,6 @@ fragment recommendedParingParagrapgh on paragraph__recomended_paring {
         parent_field_name
   
 }
-fragment recommendedMedicalParingParagrapgh on paragraph__recomended_paring {
-  
-          id
-          parent_field_name
-          field_section_title
-          field_question
-          field_product_type
-          field_product_inform
-          field_product_description
-          relationships {
-            field_croduct_card {
-              ... on node__medical_product {
-                id
-               field_medical_premier_points_id
-               field_medical_sku
-               field_min_quantity
-               field_medical_premier_points
-                field_medical_id
-                path {
-                  alias
-                }
-                fields {
-                  slug
-                }
-                title
-                field_medical_price
-                relationships {
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-                field_medical_description {
-                  processed
-                }
-              }
-            }
-          }
-        }
+
  
 `;

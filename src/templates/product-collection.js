@@ -65,7 +65,7 @@ const ClinicalCollectionTemp = (props, data) => {
   )
 }
 export default ClinicalCollectionTemp
-export const productPageQuery = graphql`
+export const productCollectionPageQuery = graphql`
 query($slug: String!) {
   taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
     path {
