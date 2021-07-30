@@ -210,7 +210,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    professionalC: nodeMedicalProduct(field_medical_id: {eq: "349"}) {
+    professionalC: nodeMedicalProduct(field_medical_id: {eq: "202"}) {
       id
       field_medical_price
       field_medical_id
@@ -762,7 +762,7 @@ const YourBag = (props, { notificationId }) => {
                       </span>
                       <span>${parseFloat(cartAmount).toFixed(2)}</span>
                     </p>
-                    <div>
+                    {/* <div>
                       <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>
                         <span className={BagStyle.bagtitles}>
                           <strong>Shipping</strong>
@@ -788,7 +788,7 @@ const YourBag = (props, { notificationId }) => {
                             ].join(" ")}
                           >
                             Cancel
-                        </button> */}
+                        </button>
                         </span>
                       </div>
                       {state.showShippingMethods ?
@@ -845,6 +845,7 @@ const YourBag = (props, { notificationId }) => {
                         </div>
                         : ''}
                     </div>
+                     */}
                     <div className={"couponContainer"}>
                       <div
                         className={[BagStyle.Coupon, "Coupon", "d-flex"].join(
