@@ -263,7 +263,14 @@ background-color: #fff;
 
 .description {
   margin: 18px 0 45px;
+  a {
+    color: #fff;
+    text-decoration: underline;
 
+    &:hover {
+      color: #fff;
+    }
+  }
   @include lg-screen {
     margin: 16px auto 40px;
     max-width: 587px;
