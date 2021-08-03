@@ -416,13 +416,13 @@ const ProductHero = ({ data, nodeType }) => {
             </ul> : ""}
           </div>
           {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
-          {feild_preimer && field_medical_rx !== "RX" && !physicianUrl ?
-            <div className={ProductStyles.codeoff}>
+          { (physicianUrl == false) && feild_preimer && field_medical_rx !== "RX"  ?
+            <div className={`${ProductStyles.codeoff} another-class`}>
               <img alt="img" src={modal} />
               <p>
                 Earn {feild_preimer} Premier Points
               </p>
-
+      
            </div>
              : ""
           }

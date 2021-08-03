@@ -424,70 +424,67 @@ const OrderStatusDetails = (props) => {
                     </div> */}
 
 
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Subtotal
-                        </p>
-                        <p>
-                          {detailorder.subtotal_ex_tax
-                            ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
-                      {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0 ?
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Coupon Code ({productorder[0].applied_discounts[0].code})
-                          </p>
-                          <p>
-                            {detailorder.coupon_discount
-                              ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div> : ""}
-
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Shipping
-                        </p>
-                        <p>
-                          {detailorder.shipping_cost_inc_tax
-                            ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Tax
-                        </p>
-                        <p>
-                          {detailorder.subtotal_tax
-                            ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
+                  
 
                       <div className={orderDetailsStyles.totalWrapper}>
-                        <div>Order Total</div>
-                        <div className={orderDetailsStyles.totalPrice}>
-                          {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
-                        </div>
-                      </div>
 
-                      {detailorder.refunded_amount > 0 ?
-                        <div className={orderDetailsStyles.totalWrapper}>
-                          <div>Refunded</div>
-                          <div className={orderDetailsStyles.totalPrice}>
-                            {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+
+                          <div>
+                            <div>Subtotal</div>
+                            <div>
+                              {detailorder.subtotal_ex_tax
+                                ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
+                                : ""}
+                            </div>
                           </div>
-                        </div> : ""}
+
+                          {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0 ?
+                            <div>
+                              <div>Coupon Code<br/>({productorder[0].applied_discounts[0].code})</div>
+                              <div>
+                                {detailorder.coupon_discount
+                                  ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
+                                  : ""}
+                              </div>
+                            </div>
+                            : ""}
+
+                          <div>
+                            <div>Shipping</div>
+                            <div>
+                              {detailorder.shipping_cost_inc_tax
+                                ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Tax</div>
+                            <div>
+                              {detailorder.subtotal_tax
+                                ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Order Total</div>
+                            <div className={orderDetailsStyles.totalPrice}>
+                              {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
+                            </div>
+                          </div>
+                        </div>
+
+                        {detailorder.refunded_amount > 0 ?
+                          <div className={orderDetailsStyles.totalWrapper}>
+                            <div>
+                              <div>Refunded</div>
+                              <div className={orderDetailsStyles.totalPrice}>
+                                {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+                              </div>
+                            </div>
+
+                          </div> : ""}
 
 
                       <div
@@ -730,69 +727,68 @@ const OrderStatusDetails = (props) => {
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
 
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Subtotal
-                        </p>
-                        <p>
-                          {detailorder.subtotal_ex_tax
-                            ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
-                      {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0 ?
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Coupon Code ({productorder[0].applied_discounts[0].code})
-                          </p>
-                          <p>
-                            {detailorder.coupon_discount
-                              ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div> : ""}
-
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Shipping
-                        </p>
-                        <p>
-                          {detailorder.shipping_cost_inc_tax
-                            ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
-                      <div className={orderDetailsStyles.detailPart}>
-                        <p className={orderDetailsStyles.informdetail}>
-                          Tax
-                        </p>
-                        <p>
-                          {detailorder.subtotal_tax
-                            ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
-                            : ""}
-                        </p>
-
-                      </div>
-
+                
 
 
                       <div className={orderDetailsStyles.totalWrapper}>
-                        <div>Order Total</div>
-                        <div className={orderDetailsStyles.totalPrice}>{detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}</div>
-                      </div>
 
-                      {detailorder.refunded_amount > 0 ?
-                        <div className={orderDetailsStyles.totalWrapper}>
-                          <div>Refunded</div>
-                          <div className={orderDetailsStyles.totalPrice}>
-                            {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+
+                          <div>
+                            <div>Subtotal</div>
+                            <div>
+                              {detailorder.subtotal_ex_tax
+                                ? "$" + parseFloat(detailorder.subtotal_ex_tax).toFixed(2)
+                                : ""}
+                            </div>
                           </div>
-                        </div> : ""}
+
+                          {productorder[0].applied_discounts.length > 0 && detailorder.coupon_discount > 0 ?
+                            <div>
+                              <div>Coupon Code<br/>({productorder[0].applied_discounts[0].code})</div>
+                              <div>
+                                {detailorder.coupon_discount
+                                  ? "-$" + parseFloat(detailorder.coupon_discount).toFixed(2)
+                                  : ""}
+                              </div>
+                            </div>
+                            : ""}
+
+                          <div>
+                            <div>Shipping</div>
+                            <div>
+                              {detailorder.shipping_cost_inc_tax
+                                ? "$" + parseFloat(detailorder.shipping_cost_inc_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Tax</div>
+                            <div>
+                              {detailorder.subtotal_tax
+                                ? "$" + parseFloat(detailorder.subtotal_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Order Total</div>
+                            <div className={orderDetailsStyles.totalPrice}>
+                              {detailorder.total_inc_tax ? "$" + parseFloat(detailorder.total_inc_tax).toFixed(2) : ""}
+                            </div>
+                          </div>
+                        </div>
+
+                        {detailorder.refunded_amount > 0 ?
+                          <div className={orderDetailsStyles.totalWrapper}>
+                            <div>
+                              <div>Refunded</div>
+                              <div className={orderDetailsStyles.totalPrice}>
+                                {detailorder.refunded_amount ? "-$" + parseFloat(detailorder.refunded_amount).toFixed(2) : ""}
+                              </div>
+                            </div>
+
+                          </div> : ""}
 
 
                       <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>

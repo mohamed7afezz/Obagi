@@ -454,55 +454,7 @@ const OrderDetails = (props, { node }) => {
                           </p>
                         </div>
 
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Subtotal
-                          </p>
-                          <p>
-                            {alldata.subtotal_ex_tax
-                              ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
-                        {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0 ?
-                          <div className={orderDetailsStyles.detailPart}>
-                            <p className={orderDetailsStyles.informdetail}>
-                              Coupon Code ({alldata.products[0].applied_discounts[0].code})
-                            </p>
-                            <p>
-                              {alldata.coupon_discount
-                                ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
-                                : ""}
-                            </p>
-
-                          </div> : ""}
-
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Shipping
-                          </p>
-                          <p>
-                            {alldata.shipping_cost_inc_tax
-                              ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Tax
-                          </p>
-                          <p>
-                            {alldata.subtotal_tax
-                              ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
+                    
                         {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
                       <p>
@@ -512,18 +464,64 @@ const OrderDetails = (props, { node }) => {
                     </div> */}
 
                         <div className={orderDetailsStyles.totalWrapper}>
-                          <div>Order Total</div>
-                          <div className={orderDetailsStyles.totalPrice}>
-                            {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
+
+
+                          <div>
+                            <div>Subtotal</div>
+                            <div>
+                              {alldata.subtotal_ex_tax
+                                ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0 ?
+                            <div>
+                              <div>Coupon Code<br/>({alldata.products[0].applied_discounts[0].code})</div>
+                              <div>
+                                {alldata.coupon_discount
+                                  ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
+                                  : ""}
+                              </div>
+                            </div>
+                            : ""}
+
+                          <div>
+                            <div>Shipping</div>
+                            <div>
+                              {alldata.shipping_cost_inc_tax
+                                ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Tax</div>
+                            <div>
+                              {alldata.subtotal_tax
+                                ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Order Total</div>
+                            <div className={orderDetailsStyles.totalPrice}>
+                              {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
+                            </div>
                           </div>
                         </div>
 
+
                         {alldata.refunded_amount > 0 ?
                           <div className={orderDetailsStyles.totalWrapper}>
-                            <div>Refunded</div>
-                            <div className={orderDetailsStyles.totalPrice}>
-                              {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                            <div>
+                              <div>Refunded</div>
+                              <div className={orderDetailsStyles.totalPrice}>
+                                {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                              </div>
                             </div>
+
                           </div> : ""}
                         <div
                           className={[
@@ -734,55 +732,7 @@ const OrderDetails = (props, { node }) => {
                       <p className={orderDetailsStyles.warning}>Payment method has failed. Please call (800) 345-6789 to complete your order.</p>
                     </div> */}
 
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Subtotal
-                          </p>
-                          <p>
-                            {alldata.subtotal_ex_tax
-                              ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
-                        {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0 ?
-                          <div className={orderDetailsStyles.detailPart}>
-                            <p className={orderDetailsStyles.informdetail}>
-                              Coupon Code ({alldata.products[0].applied_discounts[0].code})
-                            </p>
-                            <p>
-                              {alldata.coupon_discount
-                                ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
-                                : ""}
-                            </p>
-
-                          </div> : ""}
-
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Shipping
-                          </p>
-                          <p>
-                            {alldata.shipping_cost_inc_tax
-                              ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
-                        <div className={orderDetailsStyles.detailPart}>
-                          <p className={orderDetailsStyles.informdetail}>
-                            Tax
-                          </p>
-                          <p>
-                            {alldata.subtotal_tax
-                              ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
-                              : ""}
-                          </p>
-
-                        </div>
-
+                  
 
                         {/* <div className={orderDetailsStyles.detailPart}>
                       <p className={orderDetailsStyles.informdetail}>Payment</p>
@@ -793,18 +743,63 @@ const OrderDetails = (props, { node }) => {
                     </div> */}
 
                         <div className={orderDetailsStyles.totalWrapper}>
-                          <div>Order Total</div>
-                          <div className={orderDetailsStyles.totalPrice}>
-                            {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
+
+
+                          <div>
+                            <div>Subtotal</div>
+                            <div>
+                              {alldata.subtotal_ex_tax
+                                ? "$" + parseFloat(alldata.subtotal_ex_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          {alldata.products[0].applied_discounts.length > 0 && alldata.coupon_discount > 0 ?
+                            <div>
+                              <div>Coupon Code<br/>({alldata.products[0].applied_discounts[0].code})</div>
+                              <div>
+                                {alldata.coupon_discount
+                                  ? "-$" + parseFloat(alldata.coupon_discount).toFixed(2)
+                                  : ""}
+                              </div>
+                            </div>
+                            : ""}
+
+                          <div>
+                            <div>Shipping</div>
+                            <div>
+                              {alldata.shipping_cost_inc_tax
+                                ? "$" + parseFloat(alldata.shipping_cost_inc_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Tax</div>
+                            <div>
+                              {alldata.subtotal_tax
+                                ? "$" + parseFloat(alldata.subtotal_tax).toFixed(2)
+                                : ""}
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>Order Total</div>
+                            <div className={orderDetailsStyles.totalPrice}>
+                              {alldata.main_order.total_inc_tax ? "$" + parseFloat(alldata.main_order.total_inc_tax).toFixed(2) : ""}
+                            </div>
                           </div>
                         </div>
 
                         {alldata.refunded_amount > 0 ?
                           <div className={orderDetailsStyles.totalWrapper}>
-                            <div>Refunded</div>
-                            <div className={orderDetailsStyles.totalPrice}>
-                              {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                            <div>
+                              <div>Refunded</div>
+                              <div className={orderDetailsStyles.totalPrice}>
+                                {alldata.refunded_amount ? "-$" + parseFloat(alldata.refunded_amount).toFixed(2) : ""}
+                              </div>
                             </div>
+
                           </div> : ""}
 
                         <div className={[orderDetailsStyles.orderButtonSection, "d-lg-none"].join(" ")}>

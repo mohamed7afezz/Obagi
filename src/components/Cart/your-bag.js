@@ -756,12 +756,12 @@ const YourBag = (props, { notificationId }) => {
                 <p className={BagStyle.ordersummary}>Order Summary</p>
                 <div className={BagStyle.giveBorder}>
                   <div class="bagDataConten Showshipping">
-                    <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
+                    {/* <p className={[BagStyle.Subtotal, "d-flex"].join(" ")}>
                       <span className={BagStyle.bagtitles}>
                         <strong>Subtotal</strong>
                       </span>
                       <span>${parseFloat(cartAmount).toFixed(2)}</span>
-                    </p>
+                    </p> */}
                     {/* <div>
                       <div className={[BagStyle.Shipping, "d-flex"].join(" ")}>
                         <span className={BagStyle.bagtitles}>
