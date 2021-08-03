@@ -136,6 +136,7 @@ export default function Finder() {
   const [prodLines, setProductLines] = useState([]);
   const [lines, setLines] = useState([]);
   const [productResultsNumber, setProductResultsNumber] = useState(0);
+
   const data = useStaticQuery(graphql`
       query{
         productLines: allTaxonomyTermMedicalProductLines {
@@ -156,6 +157,23 @@ export default function Finder() {
             }
           }
         }
+
+        customProducts: allTaxonomyTermPhysicianCustomProductLines {
+          edges {
+            node {
+              id
+              name
+              relationships {
+                products: node__physician_custom_product {
+                  id
+                  title
+                  field_custom_upc
+                  field_custom_sku
+                }
+              }
+            }
+          }
+        }
 }
 `)
 
@@ -171,6 +189,7 @@ export default function Finder() {
       savechecked.push(e.target.value);
       document.querySelector("#prod-search-btn").classList.remove("disable")
       document.querySelector("#submit-search-physician").classList.remove("disable");
+      console.log('ash arr', prodLines, newProdLines)
 
 
     } else {
@@ -209,11 +228,14 @@ export default function Finder() {
     document.getElementById('prod-err-msg').classList.add('d-none');
     e.target.disabled = true;
     let searchLines = data.productLines.edges.filter(({ node }) => prodLines.includes(node.name));
-    let resultsNumber = searchLines.map(({ node }) => node.relationships.products ? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum);
-    setProductResultsNumber(resultsNumber);
-    setLines(searchLines);
+    let customLines = data.customProducts.edges.filter(({ node }) => prodLines.includes(node.name))
+    let resultsNumber = searchLines.map(({ node }) => node && node.relationships && node.relationships.products ? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum, 0);
+    let customResultsNumber = customLines.map(({ node }) => node && node.relationships && node.relationships.products ? node.relationships.products.length : 0).reduce((acc, sum) => acc + sum, 0);
+    setProductResultsNumber(resultsNumber + customResultsNumber);
+    setLines([...searchLines, ...customLines]);
     document.querySelector('#prodLines').classList.add('d-none');
     e.target.disabled = false
+    console.log('ash search',searchLines, resultsNumber )
   }
 
   function clearSelected(e) {
@@ -237,7 +259,21 @@ export default function Finder() {
         return newNode;
       }).filter(item => item != undefined).flat();
 
-      phyFinder(google, finderURL, productsData);
+      const customProductsData = data.customProducts.edges.map(({ node }) => {
+        let newNode = node.relationships.products ? node.relationships.products.map(product => {
+          return {
+            path: (product.path && product.path.alias) ? product.path.alias : '#',
+            sku: product.field_custom_sku ? product.field_custom_sku : '',
+            minQuantity: product.field_min_quantity && (product.field_min_quantity == 0 || product.field_min_quantity > 0) ? product.field_min_quantity : ''
+          }
+        }) : undefined;
+
+        return newNode;
+      }).filter(item => item != undefined).flat();
+
+      const allProductsData = productsData.concat(customProductsData)
+      console.log('ash finder', allProductsData)
+      phyFinder(google, finderURL, allProductsData);
     }
     if (
       document.querySelectorAll(".custom-select .select-selected").length < 1
@@ -704,6 +740,19 @@ export default function Finder() {
                                   </li>
                                 )
                               }
+                            })}
+                            {data.customProducts.edges.map(({ node }) => {
+                                 if (node.relationships.products) {
+                                  return (
+                                    <li key={node.id}>
+                                      <label class="terms">
+                                        <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                        <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
+                                        <span className="checkmark"></span>
+                                      </label>
+                                    </li>
+                                  )
+                                }
                             })}
                           </ul>
                         </Scrollbars>
