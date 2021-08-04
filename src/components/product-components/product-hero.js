@@ -414,23 +414,18 @@ const ProductHero = ({ data, nodeType }) => {
               {" "}
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
-          </div>
-          {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
+          </div>         
           {feild_preimer && field_medical_rx !== "RX" && params.physician !== "true"?
-            <div className={`${ProductStyles.codeoff} another-class`}> test MG
+            <div className={ProductStyles.codeoff}>
               <img alt="img" src={modal} />
               <p>
                 Earn {feild_preimer} Premier Points
               </p>
-      test MG 1
-           </div>
+            </div>
              : ""
           }
           {field_medical_rx == "RX" || params.physician == "true"?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-
-          test MG 2
-
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-md-10", "md-pl0"].join(" ")}>
                 {field_medical_rx == "RX" || physicianUrl ?
                   <Link
@@ -495,7 +490,7 @@ const ProductHero = ({ data, nodeType }) => {
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     to="/medical/hcpfinder">
-                    Find a Physician
+                    Locate a Physician
       </Link>
                   : <button
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
