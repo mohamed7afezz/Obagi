@@ -435,7 +435,15 @@
   display: flex;
   border: 1px solid #132466;
   border-radius: 6px;
-  padding: 5px;
+  padding: 10px 5px;
+
+  &.cart-paypal {
+    margin-top: 24px;
+  }
+  img {
+    height: 29px;
+    margin: 0 auto;
+  }
 }
 // .paypal-imgs img:first-child {
 //   margin-right: 8px;

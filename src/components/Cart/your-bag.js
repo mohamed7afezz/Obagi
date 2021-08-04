@@ -63,7 +63,6 @@ const StandardItem = props => {
   const value = useContext(CartContext)
   const removeNotification = value && value.removeNotification;
   const { items, cartType } = props
-  console.log(items, 'ash bag')
   function navigateto(link, e) {
 
     e.preventDefault();
@@ -76,7 +75,6 @@ const StandardItem = props => {
   }
   const { searchInIndexById } = useContext(SearchContext)
   let itemsContent = items.map(item => {
-    console.log('ash price', item)
     let findedProduct = searchInIndexById([item.product_id], 1);
     item.premier_points = '';
     if (findedProduct.length > 0) {
@@ -666,7 +664,12 @@ const YourBag = (props, { notificationId }) => {
                   Checkout
                 </button>
               </form>
+              <div className={`${BagStyle.paypalImgs} ${BagStyle.cartPaypal}`}>
+                <img alt="img" src={paypalImg} />
+                {/* <img alt="img" src={paypal} />
 
+                <img alt="img" src={paycred} /> */}
+              </div>
               <div className={BagStyle.freeShipping}>
                 Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
               </div>
