@@ -40,8 +40,8 @@ const ProductHero = ({ data, nodeType }) => {
     : node.relationships.field_medical_image[0] ? (node.relationships.field_medical_image[0].localFile ? node.relationships.field_medical_image[0].localFile.childImageSharp.original.src : "") : ""
   let field_medical_rx = isClincal
     ? ""
-    : node.relationships?node.relationships.field_medical_rx?node.relationships.field_medical_rx.name:""
-:""
+    : node.relationships ? node.relationships.field_medical_rx ? node.relationships.field_medical_rx.name : ""
+      : ""
   let field_description = isClincal
     ? node.field_clinical_description.processed
     : node.field_medical_description ? node.field_medical_description.processed : ''
@@ -79,8 +79,8 @@ const ProductHero = ({ data, nodeType }) => {
   let key_benfitList = isClincal
     ? node.relationships.field_key_benefits_list ? node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists : ""
     : node.relationships.field_medical_benefits_lists ? node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists : ""
-  let minQuantity = (node.field_min_quantity == 0 || node.field_min_quantity > 0)? node.field_min_quantity : ""
-    const location1 = useLocation()
+  let minQuantity = (node.field_min_quantity == 0 || node.field_min_quantity > 0) ? node.field_min_quantity : ""
+  const location1 = useLocation()
   const path = location1.pathname
   const path1 = path.split("/")
   const [state, setState] = useState({
@@ -89,7 +89,7 @@ const ProductHero = ({ data, nodeType }) => {
   })
   const urlSearchParams = new URLSearchParams(location1.search);
   const params = Object.fromEntries(urlSearchParams.entries());
-  const physicianUrl = params.physician == "true"? true : false;
+  const physicianUrl = params.physician == "true" ? true : false;
   console.log('ash path', location1, params, !physicianUrl)
   const slider1 = useRef()
   const slider2 = useRef()
@@ -121,11 +121,11 @@ const ProductHero = ({ data, nodeType }) => {
 
 
 
-          "productImageURL": `${URL.replace('/api/','')}${reviewimg}`,
+          "productImageURL": `${URL.replace('/api/', '')}${reviewimg}`,
 
           //ex. https:\\site.com\pub\media\mh02-black_main.jpg
 
-          "productPageURL": `${URL.replace('/api/','')}${productpath}`,
+          "productPageURL": `${URL.replace('/api/', '')}${productpath}`,
 
 
           //ex: https:\\mywebsite.com\teton-pullover-hoodie.html
@@ -160,14 +160,14 @@ const ProductHero = ({ data, nodeType }) => {
   }
   /////////////////////////
   useEffect(() => {
-    fbpxViewcontent(productId,nodeType,node.title,'product',[{'id': productId, 'quantity': "3"}],'USD',field_price)
+    fbpxViewcontent(productId, nodeType, node.title, 'product', [{ 'id': productId, 'quantity': "3" }], 'USD', field_price)
     setState({
       nav1: slider1.current,
       nav2: slider2.current,
     })
   }, [])
   const { nav1, nav2 } = state;
-  let slidercount = field_image.length >1 ? 1.05 :1;
+  let slidercount = field_image.length > 1 ? 1.05 : 1;
   const SliderSetting = {
     infinite: true,
     speed: 500,
@@ -203,23 +203,23 @@ const ProductHero = ({ data, nodeType }) => {
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
 
-  function fbpxViewcontent (contentId,contentCat,contentName,contentType,Contents,Currency,Value) {
+  function fbpxViewcontent(contentId, contentCat, contentName, contentType, Contents, Currency, Value) {
     if (typeof window != undefined) {
-  
+
       window.dataLayer.push({
         'event': 'fb_tags_trigger',
         'fb_event_name': 'ViewContent',
-        'fbq_products':{
-          content_ids :  contentId ,
-          content_category : contentCat,
-          content_name : contentName,
-          content_type : contentType,
-          contents : Contents, 
-          currency : Currency, 
-          value : Value,
-        } 
+        'fbq_products': {
+          content_ids: contentId,
+          content_category: contentCat,
+          content_name: contentName,
+          content_type: contentType,
+          contents: Contents,
+          currency: Currency,
+          value: Value,
+        }
       });
-      
+
       /*window.fbq('track', 'ViewContent',
     // begin parameter object data
     {
@@ -234,7 +234,7 @@ const ProductHero = ({ data, nodeType }) => {
    
     // end parameter object data
   );*/
-}
+    }
   }
 
 
@@ -281,16 +281,16 @@ const ProductHero = ({ data, nodeType }) => {
               return (
                 <React.Fragment>
                   <div class="zoom-mobile" data-arrange={index}>
-                    {item.localFile && item.localFile.childImageSharp? (
+                    {item.localFile && item.localFile.childImageSharp ? (
                       <img alt="img"
                         src={item.localFile.childImageSharp.original.src}
                       />
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                   </div>
                   <div class="zoom-desk" data-arrange={index}>
-                    {item.localFile && item.localFile.childImageSharp? (
+                    {item.localFile && item.localFile.childImageSharp ? (
                       <Zoom
                         img={item.localFile.childImageSharp.original.src}
                         zoomScale={1.5}
@@ -298,8 +298,8 @@ const ProductHero = ({ data, nodeType }) => {
                         height={615}
                       />
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                   </div>
                 </React.Fragment>
               )
@@ -341,7 +341,7 @@ const ProductHero = ({ data, nodeType }) => {
           {key_benefit || key_benfitList ? <div className={ProductStyles.keyBenefitcon}>
             {key_benefit ? <p className={ProductStyles.key_benefittitle}>{key_benefit}</p>
               : ""}
-            {key_benfitList[0]?key_benfitList[0].field_list_item ? <ul className={ProductStyles.keyBenefitul}>
+            {key_benfitList[0] ? key_benfitList[0].field_list_item ? <ul className={ProductStyles.keyBenefitul}>
               {key_benfitList ? key_benfitList.map((item, index) => {
                 return (
 
@@ -351,19 +351,19 @@ const ProductHero = ({ data, nodeType }) => {
 
                 )
               }) : ""}
-            </ul> : "":""}
+            </ul> : "" : ""}
           </div> : ""}
           <div className={ProductStyles.skintypes}>
             {field_skin_type.length > 0 ? <p className={ProductStyles.canuse}>
               Skin Type:
               {isClincal ? <>      {field_skin_type.map((item, index) => {
-              return (
-                <span className={ProductStyles.canusedata}>
-                  {item.name}
-                  {index === field_skin_type.length - 1 ? "" : ", "}
-                </span>
-              )
-            })} </> :
+                return (
+                  <span className={ProductStyles.canusedata}>
+                    {item.name}
+                    {index === field_skin_type.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })} </> :
                 <>
                   {field_skin_type.map((item, index) => {
                     return (
@@ -378,14 +378,14 @@ const ProductHero = ({ data, nodeType }) => {
             </p> : ""}
             {field_skin_concern.length > 0 ? <p className={ProductStyles.Indications}>
               Skin Concerns:
-            {isClincal ? <>   {field_skin_concern.map((item, index) => {
-              return (
-                <span className={ProductStyles.Indicationsdata}>
-                  {item.name}
-                  {index === field_skin_concern.length - 1 ? "" : ", "}
-                </span>
-              )
-            })}</>
+              {isClincal ? <>   {field_skin_concern.map((item, index) => {
+                return (
+                  <span className={ProductStyles.Indicationsdata}>
+                    {item.name}
+                    {index === field_skin_concern.length - 1 ? "" : ", "}
+                  </span>
+                )
+              })}</>
                 : <>
                   {field_skin_concern.map((item, index) => {
                     return (
@@ -403,11 +403,11 @@ const ProductHero = ({ data, nodeType }) => {
 
           </div>
           <div className={["d-flex", ProductStyles.type].join(" ")}>
-            
-              <p className={[ProductStyles.price, `${!field_price || field_price === "0" ? "hide" : ""}`].join(" ")}>
-                <span>${field_price}</span>
-              </p>
-             
+
+            <p className={[ProductStyles.price, `${!field_price || field_price === "0" ? "hide" : ""}`].join(" ")}>
+              <span>${field_price}</span>
+            </p>
+
 
             <p className={ProductStyles.producttype}>{field_medical_type}</p>
             {field_weight !== "0" ? <ul>
@@ -416,17 +416,19 @@ const ProductHero = ({ data, nodeType }) => {
             </ul> : ""}
           </div>
           {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
-          { (physicianUrl == false) && feild_preimer && field_medical_rx !== "RX"  ?
-            <div className={`${ProductStyles.codeoff} another-class`}>
+          {(physicianUrl == false) && feild_preimer && field_medical_rx !== "RX" ?
+
+            <div className={`${ProductStyles.codeOff} another-class`}>
               <img alt="img" src={modal} />
               <p>
                 Earn {feild_preimer} Premier Points
               </p>
-      
-           </div>
-             : ""
+
+
+            </div>
+            : ""
           }
-          {field_medical_rx == "RX" || physicianUrl?
+          {field_medical_rx == "RX" || physicianUrl ?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
 
 
@@ -437,7 +439,7 @@ const ProductHero = ({ data, nodeType }) => {
                     className={["btn", ProductStyles.btnCart, "btnCart", "locate-physician"].join(" ")}
                     to="/medical/hcpfinder">
                     Locate a Physician
-         </Link>
+                  </Link>
                   : <button
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-sku={Sku}
@@ -446,7 +448,7 @@ const ProductHero = ({ data, nodeType }) => {
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
-                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title,nodeType) : addToCart(productId, false, quantity, field_price,"","",node.title,nodeType)
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title, nodeType) : addToCart(productId, false, quantity, field_price, "", "", node.title, nodeType)
                     }}
                     disabled={addingToCart === productId}
                   >
@@ -461,7 +463,7 @@ const ProductHero = ({ data, nodeType }) => {
                     <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
                       <img alt="img" src={info} className={[ProductStyles.info, "info"].join(" ")} />
                       <img
-                      alt="img"
+                        alt="img"
                         src={infoselected}
                         className={[ProductStyles.infoselected, "infoselected"].join(" ")}
                       />
@@ -476,7 +478,7 @@ const ProductHero = ({ data, nodeType }) => {
               >
 
                 <img alt="img" src={share} /> Share
-          </button>
+              </button>
             </div>
             : <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
 
@@ -491,12 +493,12 @@ const ProductHero = ({ data, nodeType }) => {
               </div>
 
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12 col-md-6", "col-lg-6"].join(" ")}>
-                {field_medical_rx == "RX" || physicianUrl?
+                {field_medical_rx == "RX" || physicianUrl ?
                   <Link
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     to="/medical/hcpfinder">
                     Find a Physician
-      </Link>
+                  </Link>
                   : <button
                     className={["btn", ProductStyles.btnCart, "btnCart"].join(" ")}
                     data-sku={Sku}
@@ -505,7 +507,7 @@ const ProductHero = ({ data, nodeType }) => {
                     onClick={() => {
                       let quantity = document.querySelector("#quantityBox").value;
                       premierid && feild_preimer ?
-                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title,nodeType) : addToCart(productId, false, quantity, field_price,"","",node.title,nodeType)
+                        addToCart(productId, false, quantity, field_price, premierid, feild_preimer, node.title, nodeType) : addToCart(productId, false, quantity, field_price, "", "", node.title, nodeType)
                     }}
                     disabled={addingToCart === productId}
                   >
@@ -521,7 +523,7 @@ const ProductHero = ({ data, nodeType }) => {
                     <button onClick={(e) => { showpopover(e) }} className={[ProductStyles.popover, "popover"].join(" ")}>
                       <img alt="img" src={info} className={[ProductStyles.info, "info"].join(" ")} />
                       <img
-                      alt="img"
+                        alt="img"
                         src={infoselected}
                         className={[ProductStyles.infoselected, "infoselected"].join(" ")}
                       />
@@ -536,7 +538,7 @@ const ProductHero = ({ data, nodeType }) => {
               >
 
                 <img alt="img" src={share} /> Share
-       </button>
+              </button>
             </div>
           }
           {field_medical_rx == "RX" || physicianUrl ? "" :
@@ -547,10 +549,10 @@ const ProductHero = ({ data, nodeType }) => {
               <div className={["col-9", ProductStyles.offercontent, "offercontent"].join(" ")}>
                 <p className={ProductStyles.offertitle}>
                   COMPLIMENTARY SHIPPING
-            </p>
+                </p>
                 <p className={ProductStyles.offerdesc}>Sign up for a free Obagi account and receive free ground shipping on orders $125 or more.</p>
                 <p className={ProductStyles.offersignin}><Link className={ProductStyles.linkText} to="/my-account/signin"> Sign In</Link> or <Link className={ProductStyles.linkText} to="/registration">Register</Link> to receive offer at checkout
-            </p>
+                </p>
 
                 {/* <p className={ProductStyles.offerfooter}>Adds at checkout. While supplies last.</p> */}
               </div>
@@ -574,14 +576,14 @@ const ProductHero = ({ data, nodeType }) => {
                   slickGoToslide(index)
                 }}
               >
-                {item.localFile && item.localFile.childImageSharp? (
+                {item.localFile && item.localFile.childImageSharp ? (
                   <img alt="img"
                     className={["col-3", "pr-0", "pl-0"].join(" ")}
                     src={item.localFile.childImageSharp.original.src}
                   />
                 ) : (
-                    ""
-                  )}
+                  ""
+                )}
               </div>
             )
           })}
@@ -610,7 +612,7 @@ const ProductHero = ({ data, nodeType }) => {
               <div class="share-wrap  mt-35 mb-50">
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span>Share the</span></p>
                 <p className={[ProductStyles.productname, "text-center"].join(" ")}><span dangerouslySetInnerHTML={{ __html: node.title }}></span></p>
-                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img"/></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
+                <div><a class="social-link face-share" href={`https://www.facebook.com/sharer/sharer.php?u=https://www.obagi.com`} target="_blank"><span><img src={fb} alt="img" /></span><span class="d-block text-center">SHARE ON FACEBOOK</span></a></div>
                 <div><a class="social-link twitter-share" href={`https://twitter.com/intent/tweet?text=https://www.obagi.com`} target="_blank"><span><img src={tw} alt="img" /></span><span class="d-block text-center">SHARE ON TWITTER</span></a></div>
               </div>
             </div>

@@ -177,7 +177,7 @@ const ProductHero = ({ node, props }) => {
                 <option>6</option>
               </select>
             </div>
-            <div className={["col-12", "col-lg-6", ProductStyles.codeoff].join(" ")}> <p >Apply 20% off with code <span>Covid </span></p>   <img src={modal} alt="img"/> </div>
+            <div className={["col-12", "col-lg-6", ProductStyles.codeOff].join(" ")}> <p >Apply 20% off with code <span>Covid </span></p>   <img src={modal} alt="img"/> </div>
             <p className={["col-12", "col-lg-2", ProductStyles.share].join(" ")}> <img src={share} alt="img"/> Share </p>
 
           </div>

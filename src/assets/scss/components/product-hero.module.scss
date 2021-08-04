@@ -225,7 +225,7 @@
   text-decoration: underline;
   @extend %futurapt-medium;
 }
-.codeoff {
+.code-off {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 1.2px;
@@ -258,7 +258,7 @@
     margin-top: 0;
   }
 }
-.codeoff span {
+.code-off span {
   @extend %futurapt-bold;
 }
 .btn-cart {
