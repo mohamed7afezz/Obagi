@@ -416,7 +416,7 @@ const ProductHero = ({ data, nodeType }) => {
             </ul> : ""}
           </div>
           {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
-          {feild_preimer && field_medical_rx !== "RX" && physicianUrl !== true ?
+          {feild_preimer && field_medical_rx !== "RX" && params.physician !== "true"?
             <div className={`${ProductStyles.codeoff} another-class`}>
               <img alt="img" src={modal} />
               <p>
@@ -426,7 +426,7 @@ const ProductHero = ({ data, nodeType }) => {
            </div>
              : ""
           }
-          {field_medical_rx == "RX" || physicianUrl?
+          {field_medical_rx == "RX" || params.physician == "true"?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
 
 
