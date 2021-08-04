@@ -7,6 +7,12 @@ import Logo from '../assets/images/200x200.png'
 
 const $ = require("jquery");
 
+if (typeof window !== "undefined") {
+    var pathname = window.location.href;
+    var geturi = pathname.split('/')
+    var first_url = geturi[3];
+  }
+
 
 const HeroSlider = ({ node }) => {
     function scrollToSection(e, section) {
@@ -16,6 +22,8 @@ const HeroSlider = ({ node }) => {
         window.scroll({ top: $(`#${sectionId}`).offset().top - $('#mob-navigation').height(), behavior: 'smooth' });
 
     }
+
+
     // useEffect(() => {
 
     //         if ($(".scrollto").length) {
@@ -116,12 +124,18 @@ const HeroSlider = ({ node }) => {
 
 
         <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider " : pageType && pageType === 'clinical' ? 'container-fluid pl-0 pr-0 hero-slider clinical-slider ' : 'container-fluid pl-0 pr-0 hero-slider ' + `${heroClass ? heroClass : ""}`}>
+              {/* <div className={[" breadcramp-con  col-12 pb-0",`${node.field_brea?node.field_brea:""}`].join(" ")}>
+                <p className="breadcramp">
+                   <Link to="/">Home</Link>{" "}
+                    / <span>{first_url}</span>
+                </p>
+              </div> */}
             <div className={pageType ? (pageType === 'clinical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperClinical : pageType === 'medical' ? "row mr-0 ml-0 " + heroSlider.rowWrapper + " " + heroSlider.textWrapperMedical : '') : "row mr-0 ml-0 " + heroSlider.rowWrapper}>
                 <div style={{ width: "100%" }}>
                     <Slider {...SliderSetting}>
                         {node.relationships.field_slide.map((item, index) => {
                             return (
-                                <div>
+                                <div>                               
                                     <div className="d-lg-none">
                                         <div className="col-12 col-lg-7 col-padding">
                                             {item.relationships.field_slide_image ? item.relationships.field_slide_image.localFile ? <div><img alt="img" className={heroSlider.mobImage} src={item.relationships.field_slide_image.localFile.childImageSharp.original.src} /></div> : '' : ""}
@@ -184,7 +198,12 @@ const HeroSlider = ({ node }) => {
                         <div className={heroSlider.sliderLogo}><Img alt="img" fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div>
                         : ''}
                 </div>
-
+            <div className={[" breadcramp-con  col-12 pb-0",`${node.field_brea?node.field_brea:""}`].join(" ")}>
+                <p className="breadcramp">
+                   <Link to="/">Home</Link>{" "}
+                    / <span>{pageType}</span>
+                </p>
+            </div>
                 {/* <div id="here" className={heroSlider.here}></div> */}
 
             </div>

@@ -33,7 +33,7 @@ const ProductSuggestion = ({ node }) => {
         }
       }
     
-      professionalC: nodeMedicalProduct(field_medical_id: {eq: "349"}) {
+      professionalC: nodeMedicalProduct(field_medical_id: {eq: "202"}) {
         id
         field_medical_price
         field_medical_sku

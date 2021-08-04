@@ -80,12 +80,12 @@ export const CartProvider = ({ children }) => {
   useEffect(() => fetchCart(), []);
 
   const refreshCart = response => {
-
+    console.log('ash cart', response)
     if (response.status === 204 || response.status === 404) {
       setState({ ...state, cartLoading: false });
     } else {
       const lineItems = response.data.line_items;
-      const cartAmount = response.data.cart_amount;
+      const cartAmount = response.data.base_amount;
       const currency = response.data.currency;
 
       setState({
@@ -169,7 +169,7 @@ export const CartProvider = ({ children }) => {
           status < 300 && addNotification('Item added successfully');
 
           const lineItems = response.data.line_items;
-          const cartAmount = response.data.cart_amount;
+          const cartAmount = response.data.base_amount;
           const currency = response.data.currency;
           cartId = response.data.id;
           if (typeof window !== "undefined") {
@@ -274,7 +274,7 @@ export const CartProvider = ({ children }) => {
           status < 300 && addNotification('Item added successfully');
 
           const lineItems = response.data.line_items;
-          const cartAmount = response.data.cart_amount;
+          const cartAmount = response.data.base_amount;
           const currency = response.data.currency;
           cartId = response.data.id;
           if (typeof window !== "undefined") {
@@ -432,7 +432,7 @@ export const CartProvider = ({ children }) => {
         status < 300 && addNotification('Item added successfully');
 
         const lineItems = response.data.line_items;
-        const cartAmount = response.data.cart_amount;
+        const cartAmount = response.data.base_amount;
         const currency = response.data.currency;
         cartId = response.data.id;
         if (typeof window !== "undefined") {

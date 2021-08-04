@@ -14,7 +14,7 @@ class Temps {
                         <span class="tray-result-number">${index + 1}</span>
                         <br>${isPhy? '' : (obj.distance.toFixed(2) + '<br>miles')}
                     </div>
-                    <div class="info info-list col-8">
+                    <div class="info info-list ${obj.opp_badge < 1? 'col-8' : 'col-7'}">
                         <h2 class="row clinic-name">${obj.name}</h2>
                        <div class="row email"><button   class="make-appointment req-appointment" > Request Appointment</button></div>
                        <div class="row address-one">${obj.address1}</div>
@@ -25,7 +25,7 @@ class Temps {
                            <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'Products Available' : 'Product Available'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">View Website</a>` : ''}
                          </div>
                     </div>
-                    <div class="${obj.opp_badge < 1? 'hide' : 'opp_badge col-2'}"></div>
+                    <div class="${obj.opp_badge < 1? 'hide' : 'opp_badge col-3'}"></div>
                 </div>
             </div>
 

@@ -157,14 +157,29 @@
     padding: 24px 0;
     border-top: 1px solid #d6d6d6;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+
     @include fontStyle(18, 32);
 
     @include lg-screen {
         margin: 0 24px;
     }
 
+}
+
+.total-wrapper > div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    word-wrap: anywhere;
+}
+
+.total-wrapper div div:last-child {
+    margin-left: auto
 }
 
 .total-price {

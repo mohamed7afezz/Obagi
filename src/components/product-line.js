@@ -215,6 +215,7 @@ const ProductLine = ({ node }) => {
               node__medical_product {
                 title
                 field_is_best_seller
+                field_medical_best_seller_rate
                 field_medical_price
                 field_medical_id
                 field_medical_premier_points
@@ -259,6 +260,31 @@ const ProductLine = ({ node }) => {
   let systemName = data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
     return (item.node.name)
   })
+
+  function bubbleSort(arr, par) {
+    var swapped;
+    do {
+      swapped = false;
+      for (var i = 0; i < arr.length - 1; i++) {
+        console.log('ash arr it', arr[i][par])
+        if(!arr[i][par]) {
+          arr[i][par] = 99;
+        }
+        if(!arr[i + 1][par]) {
+          arr[i + 1][par] = 99;
+        }
+        if (arr[i][par] > arr[i + 1][par]) {
+          var temp = arr[i];
+          arr[i] = arr[i + 1];
+          arr[i + 1] = temp;
+          swapped = true;
+        }
+      }
+    } while (swapped);
+    console.log('ash arr', arr)
+    return arr;
+  }
+
 
 
   // let productCount = 0
@@ -458,15 +484,18 @@ const ProductLine = ({ node }) => {
                                   newSlides[index] = curr;
                                   setSlidesCurr(newSlides);
                                 }}>
+                                
                                 {item.node.relationships.node__medical_product
-                                  ? item.node.relationships.node__medical_product.map(
+                                  ? bubbleSort(item.node.relationships.node__medical_product, 'field_medical_best_seller_rate').map(
                                     (item, index) => {
+                                      console.log('ash item', item)
                                       return (
                                         <div
                                           className={[
                                             "col-12",
                                             productsuggestion.allcon,
                                           ].join(" ")}
+                                          data-rate-order={item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
                                         >
                                           <ProductCard
                                             productLink={item.path.alias}
