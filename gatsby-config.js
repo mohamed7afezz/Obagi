@@ -156,6 +156,12 @@ module.exports = {
         },
     },
     {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://js.afterpay.com/afterpay-1.x.js'
+      }
+    },
+    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-58FFST8",

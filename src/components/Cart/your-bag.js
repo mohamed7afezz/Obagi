@@ -649,7 +649,11 @@ const YourBag = (props, { notificationId }) => {
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
                 <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
-              <div className={BagStyle.afterPay}>Or 4 interest-free installments of $294.50 by&nbsp; <img src={afterpayImg}/></div>
+              <afterpay-placement
+                data-locale="en_US"
+                data-currency="USD"
+                data-amount={cartAmount}
+              ></afterpay-placement>
               <form
                 action={redirectUrls.checkout_url}
                 method="post"
@@ -947,7 +951,11 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      <div className={BagStyle.checkoutAfterpay}>Or 4 interest-free installments of $25.00 by&nbsp; <img src={afterpayImg} /></div>
+                      <afterpay-placement
+                        data-locale="en_US"
+                        data-currency="USD"
+                        data-amount={cartAmount}
+                      ></afterpay-placement>
                       <div
                         className={BagStyle.buttonImg}
                       >
