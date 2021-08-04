@@ -90,7 +90,7 @@ const ProductHero = ({ data, nodeType }) => {
   const urlSearchParams = new URLSearchParams(location1.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   const physicianUrl = params.physician == "true"? true : false;
-  console.log('ash path', location1, params, !physicianUrl)
+  console.log('ash path MG', location1, params, !physicianUrl, params.physician)
   const slider1 = useRef()
   const slider2 = useRef()
   // document.querySelector('body').addEventListener('click',function(){
@@ -417,19 +417,19 @@ const ProductHero = ({ data, nodeType }) => {
           </div>
           {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
           {feild_preimer && field_medical_rx !== "RX" && params.physician !== "true"?
-            <div className={`${ProductStyles.codeoff} another-class`}>
+            <div className={`${ProductStyles.codeoff} another-class`}> test MG
               <img alt="img" src={modal} />
               <p>
                 Earn {feild_preimer} Premier Points
               </p>
-      
+      test MG 1
            </div>
              : ""
           }
           {field_medical_rx == "RX" || params.physician == "true"?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
 
-
+          test MG 2
 
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-md-10", "md-pl0"].join(" ")}>
                 {field_medical_rx == "RX" || physicianUrl ?
