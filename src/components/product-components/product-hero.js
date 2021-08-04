@@ -22,11 +22,47 @@ import tw from "../../assets/images/product-images/twitter.svg"
 const baseUrl = process.env.Base_URL;
 const URL = process.env.Drupal_URL;
 const ProductHero = ({ data, nodeType }) => {
+  const [physicianUrl, setPhysicianUrl] = useState(false);
+  const location1 = useLocation()
+  const path = location1.pathname
   useEffect(() => {
     if (typeof window != undefined) {
       checkStock(baseUrl);
+
+      var query = window.location.search.substring(1);
+      var qs = parse_query_string(query);
+      
+
+      if (qs.physician === "true") {
+        setPhysicianUrl(true);
+      } else {
+        setPhysicianUrl(false);
+      };
+
+      console.log('ash params',qs, qs.physician, physicianUrl)
     }
   }, [])
+  function parse_query_string(query) {
+    var vars = query.split("&");
+    var query_string = {};
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      var key = decodeURIComponent(pair[0]);
+      var value = decodeURIComponent(pair[1]);
+      // If first entry with this name
+      if (typeof query_string[key] === "undefined") {
+        query_string[key] = decodeURIComponent(value);
+        // If second entry with this name
+      } else if (typeof query_string[key] === "string") {
+        var arr = [query_string[key], decodeURIComponent(value)];
+        query_string[key] = arr;
+        // If third or later entry with this name
+      } else {
+        query_string[key].push(decodeURIComponent(value));
+      }
+    }
+    return query_string;
+  }
   const isClincal = nodeType == "clinical";
   let node = isClincal ? data.nodeClinicalProduct : data.nodeMedicalProduct
 
@@ -80,17 +116,14 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.relationships.field_key_benefits_list ? node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists : ""
     : node.relationships.field_medical_benefits_lists ? node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists : ""
   let minQuantity = (node.field_min_quantity == 0 || node.field_min_quantity > 0) ? node.field_min_quantity : ""
-  const location1 = useLocation()
-  const path = location1.pathname
+
   const path1 = path.split("/")
   const [state, setState] = useState({
     nav1: null,
     nav2: null,
   })
-  const urlSearchParams = new URLSearchParams(location1.search);
-  const params = Object.fromEntries(urlSearchParams.entries());
-  const physicianUrl = params.physician == "true" ? true : false;
-  console.log('ash path', location1, params, !physicianUrl)
+
+  console.log('ash path', location1, !physicianUrl)
   const slider1 = useRef()
   const slider2 = useRef()
   // document.querySelector('body').addEventListener('click',function(){
