@@ -116,7 +116,6 @@ function addViewAll(e) {
     }
 
   } else if (e.currentTarget === ourProductsLink || e.currentTarget === ourProductsLinkArrow) {
-    console.log("matches")
  if (ourProductsOV.style.display === "none") {
       ourProductsOV.style.display = "inline-block";
     } else {
@@ -186,8 +185,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
     }
   }
   else if (itemId && collapseTarget && isExpandable) {
-    console.log(link)
-     console.log("top link expanded: ", link.link)
+   
     if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
       let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
       return (

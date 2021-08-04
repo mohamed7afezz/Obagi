@@ -140,7 +140,6 @@ const OrderStatusDetails = (props) => {
     return item.product_options[0] ? item.product_options[0].value : ""
   })
 
-  console.log('ash it', detailorder, productorder)
   return (
     <>
       <Customer activeTab="order-status">
@@ -355,7 +354,6 @@ const OrderStatusDetails = (props) => {
                       </div>
 
                       {adressesorder.map((item, index) => {
-                        console.log('ash add', item)
                         return (
                           <div className={orderDetailsStyles.detailPart}>
                             <p className={orderDetailsStyles.informdetail}>
@@ -694,7 +692,6 @@ const OrderStatusDetails = (props) => {
                       </div>
 
                       {adressesorder.map((item, index) => {
-                        console.log('ash add', item)
                         return (
                           <div className={orderDetailsStyles.detailPart}>
                             <p className={orderDetailsStyles.informdetail}>Shipping Address</p>
@@ -708,7 +705,6 @@ const OrderStatusDetails = (props) => {
                       })}
 
                       <div className={orderDetailsStyles.detailPart}>
-                        {console.log('ash add bill', detailorder.billing_address)}
                         <p className={orderDetailsStyles.informdetail}>Billing Address</p>
                         <p>{detailorder.billing_address ? detailorder.billing_address.first_name : ""} {detailorder.billing_address ? detailorder.billing_address.last_name : ""}</p>
                         <p>{detailorder.billing_address ? detailorder.billing_address.street_1 : ""}</p>

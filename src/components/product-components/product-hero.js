@@ -39,7 +39,6 @@ const ProductHero = ({ data, nodeType }) => {
         setPhysicianUrl(false);
       };
 
-      console.log('ash params',qs, qs.physician, physicianUrl)
     }
   }, [])
   function parse_query_string(query) {
@@ -123,7 +122,6 @@ const ProductHero = ({ data, nodeType }) => {
     nav2: null,
   })
 
-  console.log('ash path', location1, !physicianUrl)
   const slider1 = useRef()
   const slider2 = useRef()
   // document.querySelector('body').addEventListener('click',function(){

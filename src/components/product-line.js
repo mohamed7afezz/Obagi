@@ -266,7 +266,6 @@ const ProductLine = ({ node }) => {
     do {
       swapped = false;
       for (var i = 0; i < arr.length - 1; i++) {
-        console.log('ash arr it', arr[i][par])
         if(!arr[i][par]) {
           arr[i][par] = 99;
         }
@@ -281,7 +280,6 @@ const ProductLine = ({ node }) => {
         }
       }
     } while (swapped);
-    console.log('ash arr', arr)
     return arr;
   }
 
@@ -488,7 +486,6 @@ const ProductLine = ({ node }) => {
                                 {item.node.relationships.node__medical_product
                                   ? bubbleSort(item.node.relationships.node__medical_product, 'field_medical_best_seller_rate').map(
                                     (item, index) => {
-                                      console.log('ash item', item)
                                       return (
                                         <div
                                           className={[

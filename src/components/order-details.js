@@ -176,7 +176,6 @@ const OrderDetails = (props, { node }) => {
       { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
     )
     .split(" ")
-  console.log('ash all data', alldata)
   return (
     <>
       {isLoading ?
@@ -241,7 +240,6 @@ const OrderDetails = (props, { node }) => {
 
                           return (alldata.products.map((item, index) => {
                             { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
-                            console.log('ash this', item)
                             return (
 
                               parseFloat(getProdId.order_product_id) === parseFloat(item.id) ?
@@ -588,7 +586,6 @@ const OrderDetails = (props, { node }) => {
                         {
                           (alldata.products.map((item, index) => {
                             { total = parseFloat(total).toFixed(2) + parseFloat(item.total_inc_taxtotal).toFixed(2) }
-                            console.log('ash this', item)
                             return (
                               <div className={orderDetailsStyles.productWrapper}>
                                 <form>

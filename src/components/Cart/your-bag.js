@@ -63,7 +63,6 @@ const StandardItem = props => {
   const value = useContext(CartContext)
   const removeNotification = value && value.removeNotification;
   const { items, cartType } = props
-  console.log(items, 'ash bag')
   function navigateto(link, e) {
 
     e.preventDefault();
@@ -76,7 +75,6 @@ const StandardItem = props => {
   }
   const { searchInIndexById } = useContext(SearchContext)
   let itemsContent = items.map(item => {
-    console.log('ash price', item)
     let findedProduct = searchInIndexById([item.product_id], 1);
     item.premier_points = '';
     if (findedProduct.length > 0) {

@@ -19,7 +19,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
       checkStock(baseUrl);
     }
   }, [])
-  console.log('ash node', node)
   const dataType = checktaxonomyType ? checktaxonomyType : (node.relationships.field_vocabularies[0].path ? (node.relationships.field_vocabularies[0].path.alias.includes('medical') ? 'medical' : 'clinical') : '');
   const filtersDataQuery = useStaticQuery(graphql`
     {
@@ -138,7 +137,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             return null;
           }
           // var isBestSeller = item.classList.contains('bestSeller');
-          console.log('bahiii item', item, item.dataset.rateOrder);
 
           return parseInt(item.dataset.rateOrder);
 
@@ -168,9 +166,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
     if (contentTileCol !== "" && contentTileCol !== undefined) {
       let allCol = isoGrid.getFilteredItemElements()
-      console.log('ash col', allCol[0], allCol[1], allCol[2], allCol[3])
       updateTileCol(allCol, contentTileCol);
-      console.log('ash iso', isoGrid.getFilteredItemElements()[0], isoGrid.getFilteredItemElements()[1]);
 
 
 
@@ -186,7 +182,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     else { ind = allCol.length }
 
     isoGrid.element.insertBefore(contentTileCol, isoGrid.element.childNodes[ind + 1])
-    console.log('ash ind', ind, allCol)
   }
 
 
@@ -222,7 +217,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
         .node__medical_product
 
 
-    console.log('bahi tax', checkTaxonomy);
   } else if (pageNodeType == 'skinClinicalType') {
     checkTaxonomy =
       node.data.taxonomyTermClinicalSkinType.relationships
@@ -287,7 +281,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
 
       node.data.allBlockContentGlobalContentTile.edges[0].node.relationships.field_content_tile : ""
 
-    console.log('ash content this medical', node.data.allBlockContentGlobalContentTile.edges[0].node.relationships)
 
   }
 
@@ -311,7 +304,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
     contentTile = '';
   }
 
-  console.log('ash content', dataType, checktaxonomyType, contentTile)
   function checkProductExisitance(product) {
 
     return products.some(item => product.path.alias == item.path.alias)
@@ -992,7 +984,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             )
             ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
-              console.log('bahi best', item, checkTaxonomy)
               return (
                 <>
 
@@ -1306,7 +1297,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                   ? item.relationships.node__clinical_product.map(
                     (product, index) => {
                       let ingredient = getIngredient(product);
-                      console.log('bahi best', product)
 
                       if (!checkProductExisitance(product)) {
 
@@ -1400,7 +1390,6 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                   : (item.relationships && item.relationships.node__medical_product)
                     ? item.relationships.node__medical_product.map(
                       (product, index) => {
-                        console.log('ash vocab', index)
                         if (!checkProductExisitance(product)) {
                           products.push(product)
                           let ingredient = getIngredient(product);

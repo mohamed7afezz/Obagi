@@ -80,7 +80,6 @@ export const CartProvider = ({ children }) => {
   useEffect(() => fetchCart(), []);
 
   const refreshCart = response => {
-    console.log('ash cart', response)
     if (response.status === 204 || response.status === 404) {
       setState({ ...state, cartLoading: false });
     } else {

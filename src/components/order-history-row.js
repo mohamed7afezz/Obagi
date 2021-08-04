@@ -26,7 +26,6 @@ const OrderHistoryRow = ({ data,
         .toLocaleDateString({},
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
-        console.log('ash status', status)
     return (
         <>
             <div className={["d-lg-none", orderHistoryRowStyles.orderWrapper].join(" ")}>
