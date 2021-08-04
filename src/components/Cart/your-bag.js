@@ -651,6 +651,7 @@ const YourBag = (props, { notificationId }) => {
                 data-locale="en_US"
                 data-currency="USD"
                 data-amount={cartAmount}
+                data-modal-theme="white"
               ></afterpay-placement>
               <form
                 action={redirectUrls.checkout_url}
@@ -959,6 +960,7 @@ const YourBag = (props, { notificationId }) => {
                         data-locale="en_US"
                         data-currency="USD"
                         data-amount={cartAmount}
+                        data-modal-theme="white"
                       ></afterpay-placement>
                       <div
                         className={BagStyle.buttonImg}

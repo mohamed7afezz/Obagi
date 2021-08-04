@@ -451,6 +451,7 @@ const ProductHero = ({ data, nodeType }) => {
             data-locale="en_US"
             data-currency="USD"
             data-amount={field_price}
+            data-modal-theme="white"
           ></afterpay-placement> : ""}
           {(physicianUrl == false) && feild_preimer && field_medical_rx !== "RX" ?
 
