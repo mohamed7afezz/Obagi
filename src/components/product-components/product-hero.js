@@ -430,9 +430,6 @@ const ProductHero = ({ data, nodeType }) => {
           }
           {field_medical_rx == "RX" || physicianUrl ?
             <div className={[ProductStyles.quantity, "d-flex"].join(" ")}>
-
-
-
               <div className={["d-flex", ProductStyles.centeralign, "centeralign", "col-12", "col-md-10", "md-pl0"].join(" ")}>
                 {field_medical_rx == "RX" || physicianUrl ?
                   <Link
