@@ -208,7 +208,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    professionalC: nodeMedicalProduct(field_medical_id: {eq: "202"}) {
+    professionalC: nodeMedicalProduct(field_medical_sku: {eq: "OMD50539"}) {
       id
       field_medical_price
       field_medical_id
@@ -233,7 +233,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    elastiderm: nodeMedicalProduct(field_medical_id: {eq: "373"}) {
+    elastiderm: nodeMedicalProduct(field_medical_sku: {eq: "OMD65007"}) {
       id
       field_medical_price
       field_medical_id
@@ -258,7 +258,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    hydrate: nodeMedicalProduct(field_medical_id: {eq: "352"}) {
+    hydrate: nodeMedicalProduct(field_medical_sku: {eq: "OMD70209"}) {
       id
       field_medical_price
       field_medical_id
@@ -308,7 +308,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    spf: nodeMedicalProduct(field_medical_id: {eq: "383"}) {
+    spf: nodeMedicalProduct(field_medical_sku: {eq: "OMD40094"}) {
       id
       field_medical_price
       field_medical_id
@@ -333,7 +333,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    product1: nodeClinicalProduct(field_clinical_id: {eq: "339"}) {
+    product1: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00016"}) {
       id
       field_clinical_price
       field_clinical_sku
@@ -357,7 +357,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    product2: nodeClinicalProduct(field_clinical_id: {eq: "346"}) {
+    product2: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00061"}) {
       id
       field_clinical_price
       field_clinical_sku
@@ -380,7 +380,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    product3: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
+    product3: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00054"}) {
       id
       field_clinical_price
       field_clinical_sku
@@ -403,7 +403,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    product4: nodeClinicalProduct(field_clinical_id: {eq: "345"}) {
+    product4: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00023"}) {
       id
       field_clinical_price
       field_clinical_sku
@@ -426,7 +426,7 @@ const YourBag = (props, { notificationId }) => {
       }
     }
 
-    product5: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
+    product5: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00030"}) {
       id
       field_clinical_price
       field_clinical_sku
