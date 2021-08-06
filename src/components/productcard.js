@@ -61,7 +61,7 @@ const ProductCard = ({
         ) : (
             ""
           )}
-          {isrx == 'RX' ? <div className={Productcard.rxIconCon}>
+          {Sku == "OMD65205"? "" : isrx == 'RX' ? <div className={Productcard.rxIconCon}>
             <img className={Productcard.rxIcon} src={rxIcon} alt=""/>
           </div>:""}
         <div className={"product-card-img"}>

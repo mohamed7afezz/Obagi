@@ -197,7 +197,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         productLink={data.path.alias}
                       producttitle={data.title}
                       productdescription={{__html:data.field_medical_description.processed}}
-                      productimage={ data.relationships.field_medical_image &&  data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      productimage={ data.relationships.field_medical_image && data.relationships.field_medical_image[0] && data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                       price={data.field_medical_price}
                       productId={data.field_medical_id}
                       isrx={data.relationships.field_medical_rx?data.relationships.field_medical_rx.name :""}
