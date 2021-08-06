@@ -160,7 +160,7 @@ const HeroSlider = ({ node }) => {
                                         <div className="row mr-0 ml-0 heroSlideRow">
 
                                             <div className={["col-lg-5 first-hero-col"].join(" ")}>
-                                                <div className="col-8 offset-2 col-right-padding">
+                                                <div className="col-9 offset-2 col-right-padding">
                                                     {item.field_slide_type ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_type.processed }} className={["subtitle", heroSlider.subtitle, pageType && pageType.includes('medical') ? heroSlider.medical : ''].join(" ")}></div> : ''}
                                                     {item.field_slide_title ? <div dangerouslySetInnerHTML={{ __html: item.field_slide_title.processed }} className={[heroSlider.title, "heroTitle"].join(" ")}></div> : ''}
                                                     {item.field_sli ? <div dangerouslySetInnerHTML={{ __html: item.field_sli.processed }} className={[heroSlider.description, "heroDesc"].join(" ")}></div> : ''}
