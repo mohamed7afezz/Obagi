@@ -510,14 +510,15 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><img alt="img"  src={searchImg} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
+                          let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
+                          .filter(product => product != undefined)
+                          .reduce((acc, i) => acc + i, 0)
                         return (
                           <div className={headerStyles.cartWrapper}>
                             <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
                               <img alt="img"  src={bagImg} className={headerStyles.iconImg} />
-                              {value &&
-                                value.state.cart &&
-                                value.state.cart.numberItems > 0 && (
-                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                              {productsQuantity > 0 && (
+                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                 )}
                             </button></div>
                         );
@@ -627,14 +628,15 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
+                          let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
+                          .filter(product => product != undefined)
+                          .reduce((acc, i) => acc + i, 0)
                         return (
                           <div className={headerStyles.navButton}>
                             <div className={headerStyles.cartWrapper}>
                               <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
-                                {value &&
-                                  value.state.cart &&
-                                  value.state.cart.numberItems > 0 && (
-                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                                {productsQuantity > 0 && (
+                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                   )}
                               </button></div></div>
                         );
