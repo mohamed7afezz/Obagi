@@ -5765,3 +5765,64 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     padding-right: 0;
   }
 }
+
+// Responsive fixes for clinical and medical her sliders 
+@media (min-width: $lg-screen) and (max-width:1400px) {
+  .hero-slider.medical-slider,
+  .hero-slider.clinical-slider {
+    
+    .first-hero-col {
+      .subtitle {
+        font-size:1.143vw;
+        line-height:1.714vw;
+        letter-spacing:0.114vw;
+        padding-bottom:2.857vw;
+      }
+
+      // .heroDesc {
+      //   font-size:1.714vw!important;
+      //   line-height: 2.857vw!important;
+      // }
+
+      .heroLink {
+        margin-top:2.198vw;
+      }
+    }
+  }
+}
+
+@media (min-width: $lg-screen) and (max-width:1820px) {
+  .hero-slider.medical-slider,
+  .hero-slider.clinical-slider {
+    
+    .first-hero-col {
+      .heroTitle {
+        font-size:3.516vw;
+        line-height:3.956vw;
+      }
+
+      .heroDesc {
+        font-size:1.319vw;
+        line-height:2.198vw;
+      }
+
+      .heroLink {
+        margin-bottom:19.341vw;
+        .button-link {
+          padding: 1.714vw 3.786vw;
+        }
+      }
+    }
+  }
+
+  // .hero-slider.medical-slider {
+  //   .slick-slide[data-index="0"] {
+  //     .hero-slider-img img {
+  //         width: 100%;
+  //         height: auto;
+  //         top:50%;
+  //         transform: translate(-50%, -50%);
+  //     }
+  //   }
+  // }
+}

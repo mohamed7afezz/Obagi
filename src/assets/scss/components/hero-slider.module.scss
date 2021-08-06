@@ -38,13 +38,15 @@
         font-family:  futura-pt,   sans-serif; 
         font-weight:  300; 
         font-style:  normal;
+        padding-right:25px;
     }
 }
 .link-section {
     margin: 40px 0 48px;
 
     @include lg-screen {
-        margin: 40px 0 352px;
+        // margin: 40px 0 352px;
+        margin: 40px 0 280px;
     }
 }
 
