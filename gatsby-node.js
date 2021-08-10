@@ -423,3 +423,27 @@ module.exports.createPages = async ({ graphql, actions }) => {
     });
   });
 }
+
+
+const glob = require('glob')
+const fs = require('fs-extra')
+ 
+exports.onPostBuild = async () => {
+ const publicPath = path.join(__dirname, 'public')
+ const hash = `${new Date().getTime()}`
+ 
+ const htmlAndJSFiles = glob.sync(`${publicPath}/**/*.{html,js}`)
+ console.log(
+ '[onPostBuild] Replacing page-data.json references in the following files:'
+ )
+ for (let file of htmlAndJSFiles) {
+ const stats = await fs.stat(file, 'utf8')
+ if (!stats.isFile()) continue
+ console.log(file)
+ var content = await fs.readFile(file, 'utf8')
+ var result = content
+ .replace(/page-data.json/g, `page-data.json?${hash}`)
+ .replace(/app-data.json/g, `app-data.json?${hash}`)
+ await fs.writeFile(file, result, 'utf8')
+ }
+}
