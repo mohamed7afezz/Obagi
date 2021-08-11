@@ -24,8 +24,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../../assets/js/stock';
 import quizarrow from '../../assets/images/arrowquize.svg'
 import calcPremierPoints from "../../assets/js/cart-premier"
-// import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
-// import paypalImg from '../../assets/images/PayPal-logo.svg'
+import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
+import paypalImg from '../../assets/images/PayPal-logo.svg'
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;
@@ -647,7 +647,12 @@ const YourBag = (props, { notificationId }) => {
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
                 <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
-              {/* <div className={BagStyle.afterPay}>Or 4 interest-free installments of $294.50 by&nbsp; <img src={afterpayImg}/></div> */}
+              <afterpay-placement
+                data-locale="en_US"
+                data-currency="USD"
+                data-amount={cartAmount}
+                data-modal-theme="white"
+              ></afterpay-placement>
               <form
                 action={redirectUrls.checkout_url}
                 method="post"
@@ -660,7 +665,12 @@ const YourBag = (props, { notificationId }) => {
                   Checkout
                 </button>
               </form>
+              <div className={`${BagStyle.paypalImgs} ${BagStyle.cartPaypal}`}>
+                <img alt="img" src={paypalImg} />
+                {/* <img alt="img" src={paypal} />
 
+                <img alt="img" src={paycred} /> */}
+              </div>
               <div className={BagStyle.freeShipping}>
                 Obagi Members Receive Complimentary Free Shipping on Orders $125 or more
               </div>
@@ -946,15 +956,20 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      {/* <div className={BagStyle.checkoutAfterpay}>Or 4 interest-free installments of $25.00 by&nbsp; <img src={afterpayImg} /></div> */}
+                      <afterpay-placement
+                        data-locale="en_US"
+                        data-currency="USD"
+                        data-amount={cartAmount}
+                        data-modal-theme="white"
+                      ></afterpay-placement>
                       <div
                         className={BagStyle.buttonImg}
                       >
                         <div className={BagStyle.paypalImgs}>
-                          {/* <img alt="img" src={paypalImg} /> */}
-                          <img alt="img" src={paypal} />
+                          <img alt="img" src={paypalImg} />
+                          {/* <img alt="img" src={paypal} />
 
-                          <img alt="img" src={paycred} />
+                          <img alt="img" src={paycred} /> */}
                         </div>
                         <p className={BagStyle.paypalText}>Two easy ways to pay</p>
                         <img className={BagStyle.cardsImg} alt="img" src={visa} />
