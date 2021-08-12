@@ -124,6 +124,12 @@ function addViewAll(e) {
   } 
 }
 
+function closeNavbar(e) {
+  document.querySelector('#navbar').classList.remove('show');
+  document.querySelector('#mobNavButton').classList.add('collapsed');
+  document.querySelector('#mobNavButton').setAttribute("aria-expanded", "false");
+}
+
 
 function createMenuHierarchy(menuData, menuName) {
   let tree = [],
@@ -174,12 +180,12 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
   } else if (!collapseTarget && itemId) {
     if(link.link.uri=="internal:#"){
       return (
-      <a className="single-tab" href="#" id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+      <a className="single-tab" href="#" id={itemId} onClick={closeNavbar} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
         <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
       </a>)
     }else{
       return (
-      <Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+      <Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onClick={closeNavbar} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
         <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
       </Link>)
     }
@@ -193,7 +199,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
           <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
             <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
           </a>
-          {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
+          {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }} onClick={closeNavbar}>Overview</Link> : ''}
         </>
       )
     } else if (link.title === 'SKIN CARE LINES') {
@@ -204,7 +210,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
             <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
           </a>
            <a className="collapsed link-arrow" id={linkNameTwo + '-arrow'} data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}></a>
-           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameTwo} style={{ display: "none" }}>View All</Link> : ''}
+           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameTwo} style={{ display: "none" }} onClick={closeNavbar}>View All</Link> : ''}
         </>
       )
     }  else if (link.title === 'OUR PRODUCTS' && link.link.uri === 'internal:/clinical/skin-care') {
@@ -215,7 +221,7 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
             <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
           </a>
            <a className="collapsed link-arrow" id={linkNameThree + '-arrow'} data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}></a>
-           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameThree} style={{ display: "none" }}>View All</Link> : ''}
+           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameThree} style={{ display: "none" }} onClick={closeNavbar}>View All</Link> : ''}
         </>
       )
     } else {
