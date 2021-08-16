@@ -1,6 +1,7 @@
 $md-screen: 768px;
 $lg-screen: 992px;
 $xl-screen: 1200px;
+$xxl-screen: 1700px;
 
 @mixin md-screen {
     @media only screen and (min-width: #{$md-screen}) {
@@ -20,8 +21,20 @@ $xl-screen: 1200px;
     }
 }
 
+@mixin xxl-screen {
+    @media only screen and (min-width: #{$xxl-screen}) {
+        @content;
+    }
+}
+
 @mixin md-screen-only {
     @media only screen and (min-width: #{$md-screen}) and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin mobile-screen-only {
+    @media only screen and (max-width: 767px) {
         @content;
     }
 }

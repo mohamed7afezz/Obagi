@@ -9,6 +9,10 @@
         padding-top: 80px;
         padding-bottom: 80px;
     }
+    a{
+      color: #fff;
+      text-decoration: underline;
+    }
     p{
         font-size: 18px;
         line-height: 32px;
@@ -21,7 +25,8 @@
         font-size: 16px;
         line-height: 24px;
         margin-top: 24px;
-      @include md-screen{
+        letter-spacing: 1.6px;
+      @include lg-screen{
         margin-top: 0;
         margin-bottom: 16px;
       }
@@ -29,16 +34,17 @@
     }
 }
 
-.read-more {
+.needtoknowcontent .read-more {
   color: #fff;
-  display: block;
+  display: inline-block;
   padding-top: 24px;
   @include fontStyle(12, 16);
   letter-spacing: 1.2px;
   @extend %futurapt-bold;
   text-transform: uppercase;
+  text-decoration: none;
   &:hover {
     color: #fff;
-    text-decoration: none;
+    
   }
 }

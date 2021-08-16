@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React, { useState } from 'react'
 import ProgressBar from '../../components/progress-bar'
 
@@ -11,9 +12,11 @@ const Q7 = (props) => {
     }
     function sendBackData(e) {
         props.passChildData('q7', ingredients, 8);
+        topFunction();
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function checkDataCondition(condition, data) {
         if (condition) {
@@ -22,7 +25,19 @@ const Q7 = (props) => {
             return '';
         }
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
+        <>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper last-question-progress d-lg-none justify-content-center">
                 <div className="col-auto">
@@ -44,8 +59,13 @@ const Q7 = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">What product types or ingredients are you looking for?</div>
-                    <div className="question-text">Tell us what ingedients you are interesting in finding in your Skin care products when searching for the perfect Skin care solution.</div>
+                    <div className="question-header">Which key ingredient would you like to include in your skin care regimen?</div>
+                </div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-12 col-lg-auto">
+                    <div className="question-text">Please specify the one, main key ingredient you are interested in adding to your daily skin care regimen.</div>
+
                 </div>
             </div>
 
@@ -68,10 +88,10 @@ const Q7 = (props) => {
                                 <label htmlFor="SalicylicAcidC">Salicylic Acid</label>
                             </div>
 
-                            
+
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="LacticAcidC" name="q" value="Lactic Acid" onChange={handleInputChange} />
                                 <label htmlFor="LacticAcidC">Lactic Acid</label>
                             </div>
@@ -86,20 +106,20 @@ const Q7 = (props) => {
                                 <label htmlFor="KinetinGrowthFactorsC">Kinetin (Growth Factors)</label>
                             </div>
 
-                            
-                            
+
+
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="ArbutinC" name="q" value="Arbutin" onChange={handleInputChange} />
                                 <label htmlFor="ArbutinC">Arbutin</label>
                             </div>
-                        <div className="col-12 col-lg-auto label-wrapper">
-                            <div className="empty-option"></div>
-                        </div>
-                        <div className="col-12 col-lg-auto label-wrapper">
-                            <div className="empty-option"></div>
-                        </div>
+                            <div className="col-12 col-lg-auto label-wrapper">
+                                <div className="empty-option"></div>
+                            </div>
+                            <div className="col-12 col-lg-auto label-wrapper">
+                                <div className="empty-option"></div>
+                            </div>
                         </div>
                     </>
                 )}
@@ -121,12 +141,12 @@ const Q7 = (props) => {
                                 <label htmlFor="Niacinamide">Niacinamide</label>
                             </div>
 
-                            
+
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Salicylicacid" name="q" value="Salicylic acid" onChange={handleInputChange} />
-                                <label htmlFor="Salicylicacid">Salicylic acid</label>
+                                <label htmlFor="Salicylicacid">Salicylic Acid</label>
                             </div>
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Caffeine" name="q" value="Caffeine" onChange={handleInputChange} />
@@ -138,17 +158,17 @@ const Q7 = (props) => {
                                 <label htmlFor="Hydroquinone">Hydroquinone</label>
                             </div>
 
-                            
 
-                           
+
+
 
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Lacticacid" name="q" value="Lactic acid" onChange={handleInputChange} />
-                                <label htmlFor="Lacticacid">Lactic acid</label>
+                                <label htmlFor="Lacticacid">Lactic Acid</label>
                             </div>
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="BenzoylPeroxide" name="q" value="Benzoyl Peroxide" onChange={handleInputChange} />
                                 <label htmlFor="BenzoylPeroxide">Benzoyl Peroxide</label>
                             </div>
@@ -157,16 +177,16 @@ const Q7 = (props) => {
                                 <label htmlFor="Glycerin">Glycerin</label>
                             </div>
 
-                            
 
-                           
+
+
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Peptides" name="q" value="Peptides" onChange={handleInputChange} />
                                 <label htmlFor="Peptides">Peptides</label>
                             </div>
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Arbutin" name="q" value="Arbutin" onChange={handleInputChange} />
                                 <label htmlFor="Arbutin">Arbutin</label>
                             </div>
@@ -175,16 +195,16 @@ const Q7 = (props) => {
                                 <input type="radio" id="AHAsBHAsPHAs" name="q" value="AHAs / BHAs / PHAs" onChange={handleInputChange} />
                                 <label htmlFor="AHAsBHAsPHAs">AHAs / BHAs / PHAs</label>
                             </div>
-                           
 
-                            
+
+
                         </div>
                         <div className="row justify-content-center">
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="VitaminC" name="q" value="Vitamin-C" onChange={handleInputChange} />
                                 <label htmlFor="VitaminC">Vitamin-C</label>
                             </div>
-                        <div className="col-12 col-lg-auto label-wrapper">
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="Retinol" name="q" value="Retinol" onChange={handleInputChange} />
                                 <label htmlFor="Retinol">Retinol</label>
                             </div>
@@ -193,14 +213,14 @@ const Q7 = (props) => {
                                 <input type="radio" id="Antioxidants" name="q" value="Antioxidants" onChange={handleInputChange} />
                                 <label htmlFor="Antioxidants">Antioxidants</label>
                             </div>
-                        
+
                         </div>
                     </>
                 )}
             </>
             <div className="row seventh-question justify-content-center">
                 <div className="col-12 col-lg-auto">
-                    <button onClick={sendBackData} className="button-link" disabled={ingredients==''}>See Your Results</button>
+                    <button onClick={sendBackData} className="button-link" disabled={ingredients == ''}>See Your Results</button>
                 </div>
             </div>
 
@@ -214,6 +234,7 @@ const Q7 = (props) => {
                 </div>
             </div> */}
         </div>
+            </>
     )
 }
 export default Q7

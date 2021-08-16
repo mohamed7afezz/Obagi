@@ -60,11 +60,11 @@
 
 .description {
     @include fontStyle(16, 24);
-    padding: 19px 0 15px;
+    padding: 19px 0 20px;
 
     @include lg-screen {
         @include fontStyle(18, 32);
-        padding: 24px 0 32px
+        padding: 24px 0 0px;
     }
 }
 
@@ -75,6 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     text-transform: uppercase;
+    display: none;
 }
 
 .category {
@@ -96,7 +97,7 @@
     padding: 32px 0 41px;
 
     @include lg-screen {
-        padding: 48px 0 195px;
+        padding: 28px 0 195px;
     }
 }
 
@@ -155,7 +156,7 @@
 .image-wrap {
     position: relative !important;
     width: auto !important;
-
+height: auto;
     // .gatsby-image-wrapper {
     //     height: 100%;
     // }

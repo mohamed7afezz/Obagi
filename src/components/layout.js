@@ -16,11 +16,14 @@ import AboveHeader from './above-header'
 
 import '../assets/scss/components/layout.scss'
 
-import NavBlocks from "../assets/scss/components/nav-blocks"
 import Popup from "./videopopup"
 import Showbag from "./Cart/bag-preview"
+import scrollDown from '../assets/images/scroll-down.png'
+import ConfirmationMsg from "./confirmation-msg"
 
-const Layout = ({ children,nodeType,menuType}) => {
+const $ = require("jquery");
+
+const Layout = ({ children,nodeType,menuType, hideMobBar ,homepage, showMobBar}) => {
   if(!nodeType){
     nodeType='home';
   }
@@ -33,32 +36,70 @@ const Layout = ({ children,nodeType,menuType}) => {
       }
     }
   `)
+
+  
+  useEffect(() => {
+
+    let scrollSection = window.innerHeight
+    let scrollButton = document.querySelector("#slideDownButton");
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > (scrollSection)) {
+          scrollButton.classList.remove("d-none");
+          scrollButton.classList.add("upsideButton");
+
+
+        } else {
+          scrollButton.classList.add("d-none");
+          scrollButton.classList.remove("upsideButton");
+        }
+
+      })
+    }
+  }, [])
+
+  function scrollUp(e, id) {
+    e.preventDefault();
+
+    if (typeof window != undefined) {
+      $('html,body').animate({ scrollTop: 0 });
+    }
+  }
+
+  function FBPX() {
+    if (typeof window != undefined) {
+    //window.fbq('track', 'PageView')
+    window.dataLayer.push({
+      'event': 'fb_tags_trigger',
+      'fb_event_name': 'PageView'
+    });
+    }
+  }
+  
   // Similar to componentDidMount and componentDidUpdate: 
   return (
-    <div className={`node-${nodeType}`}>
+    <div className={`node-${nodeType} ${homepage}`}>
       <AboveHeader menuType={menuType} notifClass="d-none d-lg-block" id="notificationDesk"/>
-      <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType}/>
+      <Header siteTitle={data.site.siteMetadata.title} nodeType={nodeType} menuType={menuType} hideMobBar={hideMobBar} showMobBar={showMobBar}/>
       {/* <NavBlocks /> */}
       <div>
-        <main>{children}</main>
+        <main>
+          {children}
+
+          <div className="d-none d-lg-block"><button id="slideDownButton" className="scroll-button d-none" onClick={(e) => { scrollUp(e); }}><img src={scrollDown} alt="img"/></button></div>
+      {FBPX}
+        </main>
         <Showbag />
         <Footer />
         <Popup/>
       </div>
-          <div class="modal hidden" id="formsubmition">
-           <div class="container">
-              <div class="modal-body">
-                  <h1>Thank you for your submission</h1>
-                  <p>Your request has been submitted</p>
-              </div>
-           </div>
-         </div>
+          <ConfirmationMsg />
 
          <div class="modal hidden" id="moremaxprice">
            <div class="container">
               <div class="modal-body">
-                  <h1>Your total cart value <br/>reached to maximum allowed.</h1>
-              
+                  <h3>Obagi Maximum Purchase Policy</h3>
+                  <h5>Orders placed on Obagi.com are limited to 3 units per product, with a maximum allowable purchase of $750 per order.</h5>
               </div>
            </div>
          </div>

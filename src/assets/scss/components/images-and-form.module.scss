@@ -1,0 +1,315 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    @include lg-screen {
+        padding-top: 146px;
+        padding-bottom: 100px;
+    }
+}
+
+.subtitle {
+    margin: 30px auto;
+    text-align: center;
+    @include fontStyle(10, 20);
+    letter-spacing: 1.10px;
+    position: relative;
+    width: max-content;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 800;
+
+    @include lg-screen {
+        @include fontStyle(16, 32);
+        padding-left: 28px;
+        margin: 0 0 33px;
+    }
+}
+.subtitle::before {
+    position: absolute;
+    content: '';
+    height: 12px;
+    width: 12px;
+    background-color: #F99D25;
+    left: 0;
+    top: 4px;
+
+    @include lg-screen {
+        top: 11px;
+    }
+}
+
+.title {
+    @include fontStyle(32, 48);
+    font-family: "big-caslon-fb";
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+
+    @include lg-screen {
+        text-align: left;
+        @include fontStyle(64, 72);
+        margin-bottom: 42px;
+    }
+}
+
+.description {
+    @include fontStyle(16, 24);
+    text-align: center;
+    margin-bottom: 25px;
+     strong {
+         @extend %futurapt-demi;
+     }
+
+     @include lg-screen {
+         @include fontStyle(24, 40);
+         text-align: left;
+         margin-bottom: 43px;
+     }
+}
+
+
+.mini-title {
+    @include fontStyle(32, 48);
+    font-family: "big-caslon-fb";
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 16px;
+
+    @include lg-screen {
+        text-align: left;
+        @include fontStyle(48, 64);
+        margin-bottom: 27px;
+    }
+}
+
+.mini-subtitle {
+    @include fontStyle(16, 24);
+    @extend %futurapt-medium;
+    text-align: center;
+    margin-bottom: 30px;
+    a {
+        text-decoration: underline;
+        color: #132466;
+        @extend %futurapt-medium;
+    }
+
+    @include lg-screen {
+        margin-bottom: 53px;
+        text-align: left;
+        max-width: 339px;
+    }
+}
+
+.video-wrapper {
+    @include lg-screen {
+        margin-top: 153px;
+        margin-bottom: 78px;
+ 
+        &::before {
+            position: absolute;
+            content: '';
+            border: 1px solid #132466;
+            width: 534px;
+            height: 456px;
+            z-index: -1;
+            top: 284px;
+            left: 57px;
+            max-width: 100%;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-color:#132466;
+            width: 103px;
+            height: 103px;
+            z-index: -1;
+            top: 637px;
+            right: -57px;
+        }
+    }
+}
+
+.imgWrapper {
+    position: relative;
+    max-height: 528px;
+    max-width: 528px;
+}
+
+.overlay-img {
+    position: absolute !important;
+    top: 314px;
+    right: -190px;
+    max-height: 323px;
+    max-width: 308px;
+    height: auto;
+    width: 100%;
+
+    z-index: 2;
+}
+
+.bg-img {
+    display:  none;
+
+    @include lg-screen {
+        display: block;
+        position: absolute;
+        right: -438.5px;
+        top: 410px;
+        max-height: 626px;
+        max-width: 598px;
+        height: auto;
+        width: 100%;
+    }
+}
+
+.bg-img > div {
+    max-height: 626px;
+    max-width: 598px;
+}
+
+.bgImg{
+    display: none;
+    @include lg-screen{
+        position: absolute;
+        width: auto;
+        height: 600px;
+        top: 27%;
+        display: block;
+        right: 0;
+     
+        @media (min-width:992px) and (max-width:1200px) {
+            width: 301px;
+height: 330px;
+top: 40%;
+        }
+        @media (min-width:1201px) and (max-width:1500px) {
+        position: absolute;
+        width: auto;
+        height: 407px;
+        top: 36%;
+        display: block;
+        right: 0;
+        }
+        @media (min-width:1501px) and (max-width:1650px) {
+            
+        position: absolute;
+        width: auto;
+        height: 467px;
+        top: 30%;
+        display: block;
+        right: 0;
+        }
+        img {
+            width: auto;
+            height: 100%;
+            margin-left: auto;
+            display: block;
+        }
+      }
+    }
+.msgTitle{
+    font-size: 64px;
+font-weight: 700;
+line-height: 72px;
+margin-bottom: 20px;
+}
+.msgDescrib, .msgDescrib p{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 40px;
+    padding-bottom: 20px;
+@include lg-screen{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    padding-bottom: 25px;
+}
+}
+.msgDescrib{
+    padding-bottom: 0;
+}
+#youarein .modal-body::before {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    content: " ";
+    background: #132466;
+    top: 0;
+    left: 0;
+}
+#youarein .modal-body::after {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    content: " ";
+    border: 1px solid #132466;
+    top: 0;
+    right:  0;
+}
+.msgLink,.msgLink:hover{
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #132466;
+    padding: 24px 108px 24px 109px;
+    font-weight: 700;
+    display: inline-block;
+    border-radius: 6px;
+}
+.Lines{
+    @include md-screen{
+    padding: 25px;
+    border:1px solid #132466;
+}
+   
+}
+.boxes{
+    max-width: 100%;
+    @include md-screen{
+    max-width: 90%;
+margin-left: auto;
+margin-right: auto;
+}
+position: relative;
+
+}
+.boxes::before {
+    @include md-screen{
+        width: 77px;
+        height: 77px;
+    display: block;
+    position: absolute;
+    content: " ";
+    bottom: 0;
+    left: 0;
+    border: 1px solid #132466;
+
+    z-index: 9;
+    border-bottom: 0;
+    border-left: 0;
+}
+}
+.boxes::after {
+    @include md-screen{
+    width: 77px;
+    height: 77px;
+    display: block;
+    position: absolute;
+    content: " ";
+    border: 1px solid #132466;
+ 
+    bottom: 0;
+    right: 0;
+    border-right: 0;
+    border-bottom: 0;
+}}

@@ -18,6 +18,10 @@
     font-size: 40px;
     padding-right: 12px;
     padding-top: 16px;
+    sup {
+        font-size: 35%;
+        top:-1.5em;
+    }
     @include lg-screen {
         padding-top: 0;
         padding-right: 0;
@@ -34,13 +38,15 @@
         font-family:  futura-pt,   sans-serif; 
         font-weight:  300; 
         font-style:  normal;
+        padding-right:25px;
     }
 }
 .link-section {
     margin: 40px 0 48px;
 
     @include lg-screen {
-        margin: 40px 0 352px;
+        // margin: 40px 0 352px;
+        margin: 40px 0 280px;
     }
 }
 
@@ -101,6 +107,10 @@
     height: 100%;
     width: auto;
  }
+
+ @include lg-screen {
+     z-index: 2;
+ }
 }
 
 .slider-img > div {
@@ -124,6 +134,7 @@
 
 .row-wrapper {
     position: relative;
+    z-index: 9;
 }
 .yellow-square {
     position: absolute;
@@ -149,4 +160,11 @@
 .here {
     position: absolute;
     bottom: 0;
+}
+
+.slide-down {
+    position: fixed;
+    bottom: 100px;
+    background-color: #132466;
+    height: 48px;
 }

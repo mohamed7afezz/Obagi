@@ -12,8 +12,8 @@ const Ingredient = ({ node }) => {
 
     <div className={["container-fluid", ingredient.ingredientcontent,"ingredientcontent"].join(" ")}>
       <div className={["row","mobdcol"].join(" ")}>
-        <div className={["col-12", "col-lg-4", "offset-lg-1", ingredient.leftcol].join(" ")}>
-          <h1 className={ingredient.ingredienthead}>{node.field_ingredienthead?node.field_ingredienthead.processed:''}</h1>
+        <div id="ing" className={["col-12", "col-lg-4", "offset-lg-1","collapse", "multi-collapse", ingredient.leftcol].join(" ")}>
+          <div className={ingredient.ingredienthead}>{node.field_ingredienthead?node.field_ingredienthead.processed:''}</div>
           {
             data.field_ingredientdescription.map(item => (
               <div>
@@ -37,11 +37,16 @@ const Ingredient = ({ node }) => {
           }
         </div>
         <div className={["col-12", "col-lg-5", "offset-lg-1", ingredient.ingredientorder].join(" ")}>
-          <h1 className={ingredient.ingredientimagehead}>{node.field_ingredienthead?node.field_ingredienthead.processed:''}</h1>
+          <div className="show-mob-d-flex mob-colap">
+          <div className={ingredient.ingredientimagehead}>{node.field_ingredienthead?node.field_ingredienthead.processed:''}</div>
+          <a className={[ingredient.ingredienttitle,ingredient.expand, ingredient.ftitle, "expand readmorefix collapsed mt-0"].join(" ")}  data-toggle="collapse" href="#ing" role="button" aria-expanded="false" aria-controls="ing"></a> 
+         </div>
           {
             data.field_ingredient_image?
-            (data.field_ingredient_image.relationships.field_section_image? <Img fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)? data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid : ''} alt="ingredientimg" /> : '')
-            :
+            (data.field_ingredient_image.relationships.field_section_image?
+              <div id="ing" className={"collapse multi-collapse show-block-desk mob-mt-24"}>  <Img alt="img"   fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
+                 data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid : ''} alt="ingredientimg" /></div> : '')
+               :
             ''
           }
           </div>

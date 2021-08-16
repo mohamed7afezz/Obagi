@@ -10,9 +10,9 @@ const Beforeafterimages = ({ node , beforeimage, afterimage}) => {
     })
     return (
 <div class="ba-slider">
-<img src={beforeimage} />
+<img alt="img" src={beforeimage} />
 <div class="resize">
-    <img src={afterimage} />
+    <img alt="img" src={afterimage} />
 </div>
 <span class="handle"></span>
 </div>

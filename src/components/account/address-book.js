@@ -5,6 +5,7 @@ import AddressBox from '../../components/address-box'
 import AddressModal from '../../components/address-modal'
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import SEO from "../seo"
 const spinner = css`
   display: block;
   margin: 0 auto;
@@ -70,12 +71,13 @@ export default function AddressBook() {
     }
 
     return (
+        <>
         <UserAccount activeTab="address-book">
-
+            <SEO title="Address Book | Obagi" ogTitle="Address Book | Obagi" />
             <div className="tab-pane active" id="address-book" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
-                    <div className={myAccountStyles.secondTitle}>Address Book</div>
+                    <h2 className={myAccountStyles.secondTitle}>Address Book</h2>
                     <button type="button" className={myAccountStyles.addressButton} data-toggle="modal" data-target="#address-modal" onClick={() => { removeData(); addAddress(); }}>Add Address</button>
                 </div>
                         {isLoading ?
@@ -121,7 +123,9 @@ export default function AddressBook() {
 
 
 
-            <AddressModal />
         </UserAccount>
+        <AddressModal />
+
+        </>
     )
 }

@@ -29,7 +29,7 @@
 }
 }
 .addtobagheadbtn{
-    display: none;
+   
     @include md-screen{
         display: inline-block;
     }
@@ -143,10 +143,23 @@ border: 1px solid #fff;
     background-color: #132466;
     color: #fff;
 }
-.collapseContainer + .collapseContainer{
+.cardDesc{
+    font-size: 18px;
+    line-height: 32px;
+  
+
+}
+.cardtitle{
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    @extend %futurapt-bold;
+    margin-top: 16px;
+}
+ .collapseContainer{
   
     margin-bottom: 24px;
-    margin-top: 0px;
+
    
 }
 .addtobagcondata{
@@ -189,6 +202,13 @@ border: 1px solid #fff;
     font-size: 16px;
     line-height: 24px;
     color: #132466;
+    a {
+        color: #132466;
+        text-decoration: underline;
+        &:hover {
+            color: #132466;
+        }
+    }
     @include md-screen{
         margin-top: 80px;
     }
@@ -202,5 +222,6 @@ border: 1px solid #fff;
     line-height: 32px;
     a{
         color: #fff;
+        text-decoration: underline;
     }
 }

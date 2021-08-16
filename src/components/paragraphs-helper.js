@@ -12,6 +12,7 @@ import ImagesBoxes from './images-boxes'
 import Details from './product-components/thedetails'
 import Needtoknow from './product-components/needtoknow'
 import Ingredient from './product-components/ingredient';
+import Nuderm from './product-components/nu-Derm';
 import Howtouse from './product-components/howtouse';
 import Beforeafter from './product-components/beforeafter';
 import RecommendedParing from './product-components/recommendedparing'
@@ -59,7 +60,20 @@ import CulsionFinalSection from './CulsionFinalSection';
 import Sepratorimg from './seprator';
 import TwoCol from './scientific-two-col';
 import SintificFooter from './scientific-big-desc';
-
+import International from './international'
+import FullWidthWithImage from './full-width-with-image';
+import CustomList from './List-Paragrapgh';
+import FinalStory from './final-story';
+import LeftSubimg from './left-sub-img';
+import OrderStatus from './Order-Status/Start';
+import ThePower from './ThePower';
+import ImagesForm from './images-and-form';
+import ProffC from './profc';
+import WhatWeProvide from './whatweprovide';
+import CustomerCareFullHtml from './contest-rules';
+import ArticleVideo from './article-video';
+import ProductsArticle from './products-article';
+import BlogProduct from './blog-product'
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -90,6 +104,7 @@ const componentsMap = {
     paragraph__how_to_use: Howtouse,
     paragraph__before_after: Beforeafter,
     paragraph__recomended_paring : RecommendedParing,
+    paragraph__nu_derm : Nuderm,
     paragraph__you_might_also_like : YouMayLike,
     paragraph__faq_hero: FaqHero,
     paragraph__faq_wrapper: FaqWrapper,
@@ -120,6 +135,20 @@ const componentsMap = {
     paragraph__separator_image:Sepratorimg,
     paragraph__scientific_innovation_two_col:TwoCol,
     paragraph__scientific_describtion_big_link:SintificFooter,
+    paragraph__international: International,
+    paragraph__full_width_with_image: FullWidthWithImage,
+    paragraph__list : CustomList,
+    paragraph__story_final : FinalStory,
+    paragraph__left_sub_img_right_text: LeftSubimg,
+    paragraph__order_status : OrderStatus,
+    paragraph__the_power_of_vitamine_c : ThePower,
+    paragraph__professional_c_section : ProffC,
+    paragraph__products_we_provide : WhatWeProvide,
+    paragraph__images_and_form: ImagesForm,
+    paragraph__customer_care_full_html :CustomerCareFullHtml,
+    paragraph__article_video: ArticleVideo,
+    paragraph__products_article: ProductsArticle,
+    paragraph__blog_product_paragraph: BlogProduct
 }
 
 export const getParagraph = node => {

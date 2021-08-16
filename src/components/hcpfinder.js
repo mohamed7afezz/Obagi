@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { phyFinder } from "../assets/js/phy-finder"
-// import "../assets/scss/components/physfinder-old.scss"
-// import "../assets/scss/components/physfinder.scss"
+import "../assets/scss/components/physfinder-old.scss"
+import "../assets/scss/components/physfinder.scss"
 import { CustomSelect } from "../assets/js/custom-select"
 import { Scrollbars } from "react-custom-scrollbars"
 import Layout from "./layout"
 import SEO from './seo';
+import badgeImg from '../assets/images/product-images/PremierPartnership_Badge-01.png'
 
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -28,8 +30,9 @@ function removevaild(e) {
 
   item.classList.add('hide')
 }
+let savechecked = [];
 const sendFormValues = (updatedItemData) => {
-  console.log(updatedItemData)
+
   fetch(
     `${baseUrl}webform_rest/submit`,
     {
@@ -42,14 +45,25 @@ const sendFormValues = (updatedItemData) => {
   )
     .then(res => res.json())
     .then(response => {
-      console.log(response)
+
     })
     .catch(error => {
-      console.log('error', error)
+
     });
 };
 
+const createFullPostMarkup = (data) => {
+  return { __html: `${data}` }
+}
+const createFullPostMarkup2 = (data, data2) => {
+  return { __html: `${data} + ${data2}` }
+}
+function changeselect(e) {
 
+  document.querySelector('#miles').value = document.querySelector('#prodDistance').value;
+  document.querySelector('.miles .select-selected').innerText = e.target.innerText;
+
+}
 function submitforming(e) {
   var obj = { webform_id: "request_appointment" };
   var forms = document.getElementsByClassName('needs-validations');
@@ -85,41 +99,35 @@ function submitforming(e) {
       document.querySelector("#formsubmition").classList.add("hidden");
     });
     document.querySelector(".modal-backdrop.fade.show").remove();
-   
-  
+
+
   }
 
 }
-export const ProductLineComp = ({line}) => {
+export const ProductLineComp = ({ line }) => {
 
-    //form validation
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-   
-    
+  //form validation
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
 
-    return (
-      <>
-        
-          <p class="result-tax">{line.name}</p>
-          <div class="d-flex d-col results-input-list">
-            {(line.relationships && line.relationships.products)? line.relationships.products.map(product => {
-                return (
-                    <label class="terms">
-                        <input className="product-check-box" type="checkbox" value={product.field_medical_sku}/>
-                        <span dangerouslySetInnerHTML={{__html: product.title}}></span>
-                        <div class="checkmark"></div>
-                    </label>
-                )
-            }) : ''}
-            
-          </div>
-          <p class="not-ava">
-            Not available in select states including MA, MT, NH, NY, and TX, due
-            to state regulations regarding the ability of physicians to dispense
-            prescription drug products in their offices. For an effective,
-            cosmetic skin-brightening option, learn about the Obagi-C<sup>®</sup> Fx
-            System.
-          </p>
+
+
+  return (
+    <>
+
+      <div dangerouslySetInnerHTML={createFullPostMarkup(line.name)} class="result-tax"></div>
+      <div class="d-flex d-col results-input-list">
+        {(line.relationships && line.relationships.products) ? line.relationships.products.map(product => {
+          return (
+            <label class="terms">
+              <input className="product-check-box" type="checkbox" value={product.field_medical_sku} />
+              <span dangerouslySetInnerHTML={{ __html: product.title }}></span>
+              <div class="checkmark"></div>
+            </label>
+          )
+        }) : ''}
+
+      </div>
+
     </>
   )
 };
@@ -138,6 +146,7 @@ export default function Finder() {
               relationships {
                 products: node__medical_product {
                   field_medical_sku
+                  field_min_quantity
                   title
                   path {
                     alias
@@ -151,18 +160,41 @@ export default function Finder() {
 `)
 
   function updateProductLines(e) {
+    document.querySelector('.product-lines').classList.add('d-none')
     if (e.target.checked) {
+
+
       let newProdLines = [...prodLines];
       newProdLines.push(e.target.value);
+
       setProductLines(newProdLines);
+      savechecked.push(e.target.value);
+      document.querySelector("#prod-search-btn").classList.remove("disable")
+      document.querySelector("#submit-search-physician").classList.remove("disable");
+
+
     } else {
       setProductLines(prodLines.filter(item => item !== e.target.value));
+
+      for (let i = 0; i < savechecked.length; i++) {
+        if (savechecked[i] === e.target.value) {
+          savechecked.splice(i, 1);
+          i--
+        }
+        if (savechecked.length === 0) {
+          document.querySelector("#prod-search-btn").classList.add("disable")
+          document.querySelector("#submit-search-physician").classList.add("disable")
+
+        }
+
+      }
     }
     //TODO: add masonry style
 
   }
 
   function searchProducts(e) {
+
     if (document.getElementById('prodLoc').value.length < 5) {
       document.getElementById('prod-err-msg').classList.remove('d-none');
       document.getElementById('prod-err-msg').innerHTML = 'Invalid Zip Code';
@@ -197,7 +229,8 @@ export default function Finder() {
         let newNode = node.relationships.products ? node.relationships.products.map(product => {
           return {
             path: (product.path && product.path.alias) ? product.path.alias : '#',
-            sku: product.field_medical_sku ? product.field_medical_sku : ''
+            sku: product.field_medical_sku ? product.field_medical_sku : '',
+            minQuantity: (product.field_min_quantity == 0 || product.field_min_quantity > 0) ? product.field_min_quantity : ''
           }
         }) : undefined;
 
@@ -225,23 +258,30 @@ export default function Finder() {
 
   return (
     <>
+      {<div className={["blue-color give-padding breadcramp-con", "col-12"].join(" ")}>
+        <p className="breadcramp">
+          <Link to="/">Home</Link>{" "} /
+                <Link to={'/medical'}> medical</Link>
+               / <span>Physician Finder</span>
+        </p>
 
-      <div className="container">
+      </div>}
+      <div className="container phy-container">
         <div className="row">
           <div className="col">
-            <h2 class="finder-title text-center">
-              Locate an Obagi Skin Care Professional
-            </h2>
+            <h1 class="finder-title phy-title text-center">
+              Locate an Obagi<sup>®</sup> Skin Care Professional
+            </h1>
             <p class="finder-subtitle text-center">
               Use this interactive physician finder to request a skin care
-              consultation with a professional in your area. A certified skin
-              care advisor will consult with you to develop a completely
+              consultation with a professional in your area. A skincare physician will consult with you to develop a completely
               personalized Obagi skin care regimen.
             </p>
 
             <p class="finder-subtitle lastfind text-center">
               Looking for specific product? Try our{" "}
-              <Link to="#">Advanced Search</Link> option.*
+              <a href="#" data-toggle="modal"
+                data-target="#advancedSearch" to="#">Advanced Search</a> option.*
             </p>
           </div>
         </div>
@@ -249,7 +289,7 @@ export default function Finder() {
           <div className="col search-filters">
             <div class="row">
               <div class="col-lg-4 d-flex search-con">
-                <p class="selctfinder"> search by: </p>
+                <p class="selctfinder"> Search by: </p>
                 <label class="checkcon" onClick={searchBy}>
                   <input
                     type="radio"
@@ -257,42 +297,42 @@ export default function Finder() {
                     name="search-radio"
                     value="loc"
                   />
-                  <span class="checkmarkfinder"></span>by location
+                  <span class="checkmarkfinder"></span>By Location
                 </label>
 
                 <label class="checkcon" onClick={searchBy}>
                   <input type="radio" name="search-radio" value="phy" />
-                  <span class="checkmarkfinder"></span>by physician
+                  <span class="checkmarkfinder"></span>By Practice
                 </label>
               </div>
               <div class="col-lg-4 d-flex search-drop">
                 <label class="finder-input showlocation">
                   <span>location </span>
-                  <input id="input-location" type="text" maxlength="5" />
+                  <input id="input-location" type="text" />
                 </label>
                 <label class="finder-input showphysician hide">
-                  <span>physician </span>
+                  <span>Practice </span>
                   <input id="input-physician" type="text" />
                 </label>
                 <div class="miles ">
-                  <span>miles </span>
-                  <div class="custom-select">
+                  <span>DISTANCE </span>
+                  <div class="custom-select f-select">
                     <select id="miles">
-                      <option value="1">1</option>
-                      <option value="5">5</option>
+                      <option value="1">1 miles</option>
+                      <option value="5">5 miles</option>
                       <option value="10" selected>
-                        10
+                        10 miles
                       </option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
+                      <option value="25">25 miles</option>
+                      <option value="50">50 miles</option>
+                      <option value="100">100 miles</option>
                     </select>
                   </div>
                 </div>
               </div>
               <p class="covid show-mob">
-                -19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                COVID-19 UPDATE: Skin care professional partners' openings and
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
@@ -304,12 +344,12 @@ export default function Finder() {
                   data-toggle="modal"
                   data-target="#advancedSearch"
                 >
-                  Revise Product Search
+                  Search By Product
                 </button>
               </div>
               <p class="covid hide-mob">
                 COVID-19 UPDATE: Skin care professional partners' openings and
-                hours may vary based on location. Please contact your Skin care
+                hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
             </div>
@@ -328,7 +368,7 @@ export default function Finder() {
           </div>
         </div>
 
-        <div className="row result-con">
+        <div className="row result-con pb-0">
           <div className="col results-wrapper hide" id="results-wrapper">
             <div id="results-info">
               <p>
@@ -346,14 +386,32 @@ export default function Finder() {
           <div className="col map" id="map" style={{ height: "500px" }}></div>
         </div>
         <div class="row">
-          <p class="finder-foot finder-foot-1">
-            {" "}
-            *Products containing hydroquinone are not available in select states
-            including MA, MT, NH, NY, and TX, due to state regulations regarding
-            the ability of physicians to dispense prescription drug products in
-            their offices.
+          <div className="col-12 col-lg-2">
+            <img className="badgeImg" src={badgeImg} />
+          </div>
+          <div className="col-12 col-lg-10 tab-padding">
+            <p class="finder-foot finder-foot-1">
+            Obagi Premier Partners are some of the most experienced with the transformative skincare solutions that Obagi provides. They are also experts in the art of the Obagi patient consultation, a comfortable, guided, consultative approach during which practitioner and patient work together to develop a comprehensive skin health plan.
+        </p>
+            <p class="finder-foot">Additionally, Premier Partners have access to unique, curated Obagi offerings and product sets, get exclusive first looks at new Obagi products, and are among the first to carry new Obagi innovations that may benefit their patients
+        </p>
+            <p class="finder-foot">Utilize the interactive Physician Finder and look for the Obagi Premier Partner badge to find a top Obagi provider near you!
+        </p>
+          </div>
+          <p class="finder-foot">
+            *Products containing hydroquinone are not available in select states including MA, MT, NH, NY, and TX, due to state regulations regarding the ability of physicians to dispense prescription drug products in their offices.
+          </p>
+           <p class="finder-foot">
+            Not all locations carry the full Obagi line of skin care products. We recommend contacting the location ahead of time to inquire about product availability to confirm they carry the products.
           </p>
           <p class="finder-foot">
+            The names and contact information for physicians that can be found through our “Find an Obagi” physician locator are provided merely as a convenience to you and do not constitute or imply our endorsement or recommendation of the physicians or their services. We make no representations or warranties of any kind as to services provided by any of the physicians listed, and expressly disclaim any and all liability for damages, including without limitation, direct, incidental, special, consequential, indirect, or punitive damages relating to your use of the information provided or the actions of any of the physicians listed.
+          </p>
+          <p class="finder-foot">
+            {" "}
+            If you are a physician and would like to request a change to your contact information as it appears on this website or be added to this list, please email us or contact your sales representative.
+          </p>
+          {/* <p class="finder-foot">
             Not all locations carry the full Obagi line of skin care products.
             We recommend contacting the location ahead of time to inquire about
             product availability to confirm they carry the products.
@@ -374,7 +432,7 @@ export default function Finder() {
             If you are a physician and would like to request a change to your
             contact information as it appears on this website or be added to
             this list, please email us or contact your sales representative.
-          </p>
+          </p> */}
         </div>
       </div>
       {/* Request Appointment Modal */}
@@ -535,7 +593,7 @@ export default function Finder() {
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Postal Code</p>
 
                     </div>
-                   <div id="hidden-fields"></div>
+                    <div id="hidden-fields"></div>
                   </div>
                   <div class="d-flex Submit-btns">
                     <button class="appointment-cancel">Cancel</button>
@@ -588,35 +646,49 @@ export default function Finder() {
                 <form onSubmit={(e) => { e.preventDefault(); }}>
                   <div class="d-flex inputs-con">
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Location</p>
+                      <p class="input-name">LOCATION</p>
                       <input
                         class="appointmentInput"
                         id="prodLoc"
-                        maxLength="5"
                       />
                     </div>
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Distance</p>
-                      <div class="custom-select">
+                      <p class="input-name">DISTANCE</p>
+                      <div class="custom-select f-select"
+                        onClick={changeselect}>
                         <select
                           id="prodDistance"
                           className="state"
                           defaultValue="10"
+
                         >
                           <option value="5">5 miles</option>
                           <option value="10">10 miles</option>
-                          <option value="20">25 miles</option>
+                          <option value="25">25 miles</option>
                           <option value="50">50 miles</option>
-                          <option value="50">100 miles</option>
+                          <option value="100">100 miles</option>
                         </select>
                       </div>
                     </div>
                     <div class="appointment-elemnt advanced-search">
-                      <p class="input-name">Product Lines</p>
-                      <div id="prodLinesSelected" onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
-                        {prodLines.length > 0 ? prodLines[0] : 'Select Product Line'} {prodLines.length > 1 ? '+' + (prodLines.length - 1) : ''}
+                      <p class="input-name">PRODUCT LINES</p>
 
-                      </div>
+
+                      {prodLines.length > 1 ?
+                        <div dangerouslySetInnerHTML={createFullPostMarkup2(prodLines[0], (prodLines.length - 1))} id="prodLinesSelected" className="ProdprodLinesSelected " onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                        </div>
+                        : prodLines.length > 0 ?
+                          <div dangerouslySetInnerHTML={createFullPostMarkup(prodLines[0])} id="prodLinesSelected" className="ProdprodLinesSelected " onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                          </div>
+                          :
+                          <div id="prodLinesSelected" className="ProdprodLinesSelected changetogray" onClick={(e) => { document.querySelector('#prodLines').classList.contains('d-none') ? document.querySelector('#prodLines').classList.remove('d-none') : document.querySelector('#prodLines').classList.add('d-none') }}>
+                            Select
+                        </div>
+
+                      }
+
+
+
                       <div class="product-lines d-none" id="prodLines">
                         <Scrollbars style={{ height: 250 }}>
                           <ul class="popupUl">
@@ -626,7 +698,7 @@ export default function Finder() {
                                   <li key={node.id}>
                                     <label class="terms">
                                       <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
-                                      <span dangerouslySetInnerHTML={{__html: node.name}}></span>
+                                      <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
                                       <span className="checkmark"></span>
                                     </label>
                                   </li>
@@ -639,9 +711,10 @@ export default function Finder() {
                     </div>
                     <div class="advanced-search">
                       <button
-                        class="appointment-Submit"
+                        class="appointment-Submit disable"
                         id="prod-search-btn"
                         type="button"
+
                         onClick={searchProducts}
                       >
                         APPLY
@@ -668,16 +741,16 @@ export default function Finder() {
                         {
                           lines.length > 0 ? lines.map(({ node }) => (
                             <div class="product-line-masonry" key={node.id + '1'}>
-                              <ProductLineComp line={node} />)
+                              <ProductLineComp line={node} />
                             </div>
-                          )) : '<div class="search-res left-res product-line-masonry"></dvi>'
+                          )) : '<div class="search-res left-res product-line-masonry"></div>'
                         }
                       </div>
                     </div>
                   </Scrollbars>
                 </div>
                 <div class="">
-                  <button class="submit-search-physician" type="button" id="submit-search-physician" data-dismiss="modal" >
+                  <button class="submit-search-physician disable" type="button" id="submit-search-physician" data-dismiss="modal" >
                     Search for a physician
                   </button>
                 </div>
@@ -700,7 +773,7 @@ export default function Finder() {
               </button>
             </div>
             <div class="modal-body">
-              <h5 class="modal-title">Related products</h5>
+              <h5 class="modal-title">Products available through:</h5>
 
               <div id="related-phy-info"></div>
               <Scrollbars style={{ height: 300 }}>

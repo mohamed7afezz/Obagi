@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect , useState} from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -10,31 +10,77 @@ import ProductHero from '../components/product-components/product-hero';
 import ViewedProductsContext from '../providers/latestview-provider';
 
 const ProductPage = props => {
+  
+
     let data = props.data;
     const nodeType = props.pageContext.nodetype;
-    const product = nodeType === 'clinical'? data.nodeClinicalProduct : data.nodeMedicalProduct;
-    const storageName = nodeType === 'clinical'? 'clinicalViewedProducts' : 'medicalViewedProducts';
+    const product = nodeType === 'clinical' ? data.nodeClinicalProduct : data.nodeMedicalProduct;
+    const storageName = nodeType === 'clinical' ? 'clinicalViewedProducts' : 'medicalViewedProducts';
+    const paragraphs = nodeType === 'clinical' ?
+        data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
 
-    const paragraphs = nodeType === 'clinical'?
-    data.nodeClinicalProduct.relationships.paragraphs.map(getProductParagraph) : data.nodeMedicalProduct.relationships.paragraphs.map(getProductParagraph);
-    
     const { updateProductsViewedStorage } = useContext(ViewedProductsContext);
     updateProductsViewedStorage(storageName, nodeType, product);
-
+    let seo = product.path? product.path.alias : props.location.pathname?props.location.pathname:"";
+    // let seo1 = seo?seo.split('.com'):""
     return (
         <Layout nodeType={nodeType} menuType="relative">
-        <SEO title={nodeType === "clinical"? (data.nodeClinicalProduct && data.nodeClinicalProduct.field_clinical_metatags && data.nodeClinicalProduct.field_clinical_metatags.title? data.nodeClinicalProduct.field_clinical_metatags.title : "" )
-        : nodeType === "medical"? (data.nodeMedicalProduct && data.nodeMedicalProduct.field_medical_metatags && data.nodeMedicalProduct.field_medical_metatags.title? data.nodeMedicalProduct.field_medical_metatags.title : "" ) : ""} />
+            <SEO canonical={seo}
+                title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
+                    : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
 
-        <div itemscope="" itemtype="https://schema.org/Product">
-          <ProductHero data={data} nodeType={nodeType} />
-          {paragraphs}
-          {/*Review widget BV */      
-           <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
-          <div data-bv-show="reviews" data-bv-product-id= {nodeType === 'clinical'? data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}></div>
-        </div></div></div>       
-           /*Review widget BV*/  }
-          </div>
+                description={product.field_clinical_metatags && product.field_clinical_metatags.description ? product.field_clinical_metatags.description
+                    : product.field_medical_metatags && product.field_medical_metatags.description ? product.field_medical_metatags.description : ""}
+
+                ogTitle={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
+                    : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
+
+                ogDescription={product.field_clinical_metatags && product.field_clinical_metatags.description ? product.field_clinical_metatags.description
+                    : product.field_medical_metatags && product.field_medical_metatags.description ? product.field_medical_metatags.description : ""}
+
+                metaImage={(product.relationships && product.relationships.field_clinical_image && product.relationships.field_clinical_image[0] && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.url
+                    : (product.relationships && product.relationships.field_medical_image && product.relationships.field_medical_image[0] && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.url : ""}
+
+            />
+
+            <div itemscope="" itemtype="https://schema.org/Product">
+                <ProductHero data={data} nodeType={nodeType}  />
+                {paragraphs}
+                {/*Review widget BV */
+            
+                data.nodeMedicalProduct?
+                data.nodeMedicalProduct.relationships?
+                data.nodeMedicalProduct.relationships.field_medical_rx?
+                data.nodeMedicalProduct.relationships.field_medical_rx.name === "RX"? ""
+                :<div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+                : <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+                :
+                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+                :
+                <div class="container-fluid"><div class="row"><div class="offset-md-1 col-md-10">
+                <div data-bv-show="reviews" data-bv-product-id={nodeType === 'clinical' ?
+                 data.nodeClinicalProduct.field_clinical_id : data.nodeMedicalProduct.field_medical_id}>
+
+                 </div>
+            </div></div></div>
+               
+           /*Review widget BV*/}
+            </div>
         </Layout>
     )
 }
@@ -48,9 +94,13 @@ export const productPageQuery = graphql`
             field_clinical_metatags {
                 description
                 title
+                og_title
+                og_description
+                og_image
               }
             field_clinical_price
             field_clinical_sku
+            field_min_quantity
             field_clinical_weight_unit
             field_clinical_upc
             field_clinical_id
@@ -79,7 +129,11 @@ export const productPageQuery = graphql`
                 }
 
                 field_clinical_image {
+                    uri {
+                        url
+                    }
                     localFile {
+                        url
                         childImageSharp {
                         original {
                                 src
@@ -115,11 +169,16 @@ export const productPageQuery = graphql`
             field_medical_metatags {
                 description
                 title
-              }
+                og_title
+                og_description
+                og_image
+            }
             field_medical_premier_points
             field_medical_sku
+            field_min_quantity
             field_medical_price
             field_medical_upc
+            field_is_best_seller
             field_medical_info
             field_medical_id
             field_medical_type
@@ -154,7 +213,11 @@ export const productPageQuery = graphql`
                     name
                   }
                 field_medical_image {
+                    uri {
+                        url
+                    }
                     localFile {
+                        url
                         childImageSharp {
                         original {
                                 src
@@ -177,7 +240,8 @@ export const productPageQuery = graphql`
                     ...beforeAfterParagraph
                     ...needToKnowParagrapgh
                     ...sysRelatedProduct
-  
+                    ...youMightAlsoLikeMedicalParagrapgh
+                   
                 }
             }
             

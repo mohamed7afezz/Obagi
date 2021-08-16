@@ -1,5 +1,5 @@
-import React , { useContext,useEffect } from "react"
-import { useStaticQuery, graphql,Link } from "gatsby"
+import React, { useContext, useEffect } from "react"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import YourBag from "./your-bag"
 import CartContext from "../../providers/cart-provider"
 import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
@@ -12,7 +12,7 @@ const Showbag = () => {
   const notifications = value && value.notifications;
   const hasNotifications = Array.isArray(notifications) && notifications.length;
 
-  
+
   return hasNotifications ? (
     <section className="Notify">
       {notifications.map(note => (
@@ -38,9 +38,16 @@ const Notification = ({ id, text, type }) => {
 `)
   const value = useContext(CartContext);
   const removeNotification = value && value.removeNotification;
-  const {notif, setNotif} = useContext(UserContext);
+  const { notif, setNotif } = useContext(UserContext);
 
-  // console.log("val", value)
+  console.log('ash val', value, value &&
+    value.state.cart &&
+    value.state.cart.numberItems)
+
+  let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
+  .filter(product => product != undefined)
+  .reduce((acc, i) => acc + i, 0)
+
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     removeNotification(id);
@@ -48,54 +55,52 @@ const Notification = ({ id, text, type }) => {
   //   return () => clearTimeout(timer);
   //   // eslint-disable-next-line
   // }, []);
-// console.log("notif", notif)
+
   return (
-    
+
     <div
-    className={notif === false?"d-block showbag-top" : "d-block"}
-    id="Showbag"
-    role="dialog"
+      className={notif === false ? "d-block showbag-top" : "d-block"}
+      id="Showbag"
+      role="dialog"
     >
-    <div class="modal-dialog modal-data mr-0 " role="document">
-      <div class="modal-content">
-        <div className={value.state? value.state.cart? value.state.cart.lineItems? value.state.cart.lineItems.physical_items? value.state.cart.lineItems.physical_items.length > 0? "modal-header show-bag-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header"}>
-          <div
-            className={["d-flex", ShowBagStyle.left, "w100"].join(" ")}
-          >
-            {value.state? value.state.cart? value.state.cart.lineItems? value.state.cart.lineItems.physical_items? value.state.cart.lineItems.physical_items.length > 0? <div
-              className={[
-                ShowBagStyle.productCounter,
-                "d-flex",
-                ShowBagStyle.left,
-              ].join(" ")}
+      <div class="modal-dialog modal-data mr-0 " role="document">
+        <div class="modal-content">
+          <div className={value.state ? value.state.cart ? value.state.cart.lineItems ? value.state.cart.lineItems.physical_items ? value.state.cart.lineItems.physical_items.length > 0 ? "modal-header show-bag-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header" : "modal-header"}>
+            <div
+              className={["d-flex", ShowBagStyle.left, "w100"].join(" ")}
             >
-              <p className={ShowBagStyle.shoppingBag}>
-                Shopping Bag ({value &&
-                        value.state.cart &&
-                        value.state.cart.numberItems})
-              </p>
-              <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => removeNotification(id)}>
-                View Full Cart
-              </Link>
-            </div> : "" : "" : "" : "" : ""}
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onClick={() => removeNotification(id)}
-            >
-              <span aria-hidden="true">&nbsp;</span>
-            </button>
+              {value.state ? value.state.cart ? value.state.cart.lineItems ? value.state.cart.lineItems.physical_items ? value.state.cart.lineItems.physical_items.length > 0 ? <div
+                className={[
+                  ShowBagStyle.productCounter,
+                  "d-flex",
+                  ShowBagStyle.left,
+                ].join(" ")}
+              >
+                <p className={ShowBagStyle.shoppingBag}>
+                  Shopping Bag ({productsQuantity})
+                </p>
+                <Link class={ShowBagStyle.viewcart} to="/cart" onClick={() => { removeNotification(id) }}>
+                  View Full Cart
+                </Link>
+              </div> : "" : "" : "" : "" : ""}
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={() => removeNotification(id)}
+              >
+                <span aria-hidden="true">&nbsp;</span>
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="modal-body ">
-          <YourBag cartType="overlay" notificationId = {id}/>
-        </div>
-        {/* <div class="modal-footer">
+          <div class="modal-body ">
+            <YourBag cartType="overlay" notificationId={id} />
+          </div>
+          {/* <div class="modal-footer">
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
-              <Img
+              <Img alt="img" 
                 className={ShowBagStyle.prodThumb}
                 fluid={data.prouduct.childImageSharp.fluid}
               />
@@ -120,7 +125,7 @@ const Notification = ({ id, text, type }) => {
 
           <div className={["row", ShowBagStyle.prouductCard].join(" ")}>
             <div className={"col-4"}>
-              <Img
+              <Img alt="img" 
                 className={ShowBagStyle.prodThumb}
                 fluid={data.prouduct.childImageSharp.fluid}
               />
@@ -143,10 +148,10 @@ const Notification = ({ id, text, type }) => {
             </div>
           </div>
         </div> */}
+        </div>
       </div>
     </div>
-  </div>
-        
+
   );
 };
 

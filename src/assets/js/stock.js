@@ -1,20 +1,40 @@
 import $ from 'jquery';
 
 function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
+  let key = value.sku;
+  let keyIndex = -1;
+
+  for(let i =0; i < self.length; i++) {
+    if(self[i].sku === key) {
+      keyIndex = i;
+      break;
+    }
+  }
+  return keyIndex === index;
 }
-export function checkStock(baseUrl) {
+
+export function checkStock(baseUrl,cb) {
 
   var skus = [];
-  $.each($('button[data-sku]'), function () {
-    skus.push($(this).attr('data-sku'));
+  $.each($('[data-sku]'), function () {
+    skus.push({
+      type: $(this).attr('data-skutype'),
+      sku: $(this).attr('data-sku'),
+      min_quantity: $(this).attr('data-quantity')
+    });
   })
   
   var uniqueSkus = skus.filter(onlyUnique);
   
   var settings = {
-    "url": baseUrl+"bigcommerce/v1/boxouthealth?skus=" + uniqueSkus.join(','),
-    "method": "GET"
+    "url": baseUrl+"bigcommerce/v1/boxouthealth",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({
+      "skus": uniqueSkus
+    })
   };
   if(uniqueSkus.length == 0){
     return;
@@ -23,8 +43,8 @@ export function checkStock(baseUrl) {
     for (var sku in response) {
       if (response.hasOwnProperty(sku)) {
         var skuNumber = response[sku];
-        if (skuNumber < 100) {
-          $.each($('button[data-sku=' + sku + ']'), function () {
+        if (!skuNumber) {
+          $.each($('[data-sku=' + sku + ']'), function () {
             $(this).html('Temporarily out of stock');
             $(this).addClass('out-of-stock');
             this.onclick = function (e) { e.stopPropagation(); return false };
@@ -34,7 +54,11 @@ export function checkStock(baseUrl) {
       }
     }
     
-    $('button[data-sku]').addClass('add-btn-ready');
-    $('button[data-sku]').removeAttr("data-sku");
+    $('[data-sku]').addClass('add-btn-ready');
+    $('[data-sku]').removeAttr("data-sku");
+
+    if(cb){
+      cb(response);
+    }
   });
 }

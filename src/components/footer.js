@@ -31,6 +31,8 @@ let thanksmodal = () => {
 
 const Footer = ({ siteTitle }) => {
 
+  const [submitingForm, setSubmitingForm] = useState(false);
+
   function removevaild(e) {
     let item = e.target
 
@@ -43,6 +45,7 @@ const Footer = ({ siteTitle }) => {
      }
    }
     const sendFormValues = (updatedItemData) => {
+      setSubmitingForm(true);
      fetch(
        `${baseUrl}webform_rest/submit`,
        {
@@ -54,12 +57,21 @@ const Footer = ({ siteTitle }) => {
         body: JSON.stringify(updatedItemData.obj)
       }
     )
+      .then(res => {
+        if(res.status === 200) {
+          thanksmodal();
+          setSubmitingForm(false);
+        } else {
+          alert('Something went wrong! please try again or contact us.');
+          setSubmitingForm(false);
+        }
+      })
       .then(res => res.json())
       .then(response => {
-        console.log(response)
+    
       })
       .catch(error => {
-        console.log('error', error)
+    
       });
   };
 
@@ -68,6 +80,7 @@ const Footer = ({ siteTitle }) => {
     var obj = { webform_id: "subscription" };
     var forms = document.getElementsByClassName('needs-valid');
     var list = document.querySelectorAll('.needs-valid input:invalid');
+  
     if (list.length > 0) {
       for (var item of list) {
         item.parentElement.classList.add('error')
@@ -82,7 +95,14 @@ const Footer = ({ siteTitle }) => {
         }
 
         obj[item.getAttribute("name")] = item.value;
-        thanksmodal();
+        if (document.querySelector('.newsignup[checked]')) {
+          obj["want_to_receive_emails"] = ["on"]
+          //window.fbq('track', 'Lead')
+          window.dataLayer.push({
+            'event': 'fb_tags_trigger',
+            'fb_event_name': 'Lead'
+          });
+        }
       }
 
 
@@ -111,6 +131,8 @@ const Footer = ({ siteTitle }) => {
 
   // Hook
 
+  let fullDate = new Date();
+  let thisYear = fullDate.getFullYear();
 
 
 
@@ -118,13 +140,15 @@ const Footer = ({ siteTitle }) => {
 
   return (
     <footer>
+    
+
       <div className="container-fluid footer">
         <div className={footerStyles.footerSection}>
           <div className="row">
             <div className={["col-12 offset-lg-1 col-lg-2", footerStyles.firstCol].join(" ")}>
 
               <div className={footerStyles.obagiLogo}>
-                <Img className="d-none d-lg-block" fluid={data.placeholderImage.childImageSharp.fluid} />
+                <Img alt="img"  className="d-none d-lg-block" fluid={data.placeholderImage.childImageSharp.fluid} />
                 <div
                   className={[
                     footerStyles.socialMedia,
@@ -248,26 +272,26 @@ const Footer = ({ siteTitle }) => {
                       <p onClick={removevaild} className="error-msg hide">Please Enter Your Email Address</p>
 
                     </div>
-                    <button type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
+                    <button onClick={(e) => { submitforming(e) }} type="button" className="btn signup-btn d-lg-none">SUBSCRIBE</button>
                   </div>
                   <div className={[footerStyles.terms, "formInputCon"].join(" ")}>
                     <label className="terms" onClick={removevaild}>
-                      Yes, I want to receive emails to keep up with the latest
+                      <input type="checkbox" className="newsignup" defaultChecked={true} vlaue="on" required name="want_to_receive_emails" />
+                      <span className="checkmark"></span>
+                      <span>Yes, I want to receive emails to keep up with the latest
                       products, skin care trends, and offers from Obagi. By
                       registering, your information will be collected and used
                       in the US subject to our US <Link className={footerStyles.termslink} to="/privacy-policy"> Privacy Policy</Link> and <Link className={footerStyles.termslink} to="/terms-of-use">Terms
-                      of Use</Link>. For US consumers only.
-                      <input type="checkbox" defaultChecked={true} required name="yes_i_want_to_receive_emails_to_keep_up_with_the_latest_products" />
-                      <span className="checkmark"></span>
+                      of Use</Link>. For US consumers only.</span>
                     </label>
-                    <button type="button" onClick={(e) => { submitforming(e) }} className="btn signup-btn d-none d-lg-block">SIGN UP</button>
+                    <button type="button" onClick={(e) => { submitforming(e) }} disabled={submitingForm} className="btn signup-btn d-none d-lg-block">{submitingForm? 'Subcribing...' : 'SIGN UP'}</button>
                   </div>
                 </div>
               </form>
             </div>
             <div className={["col-12 col-lg-10 offset-lg-1 d-flex spaceBetween", footerStyles.fifthCol].join(" ")}>
               <p className={footerStyles.footerNote}>
-                ©2020 <Link className="footer-obagi-link" to="/">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
+                ©{thisYear} <Link className="footer-obagi-link" to="/">www.obagi.com</Link> Cosmeceuticals LLC. All rights reserved.
                 OBG.02313.USA.16
               </p>
               <ul className="footerprivacy">
@@ -282,6 +306,7 @@ const Footer = ({ siteTitle }) => {
           </div>
         </div>
       </div>
+      <div class="be-ix-link-block"></div>
     </footer>
   )
 }

@@ -1,0 +1,97 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.titleCon{
+   
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    text-transform: uppercase;
+    @include md-screen{
+  
+        flex-direction: row;
+    }
+    .rightColTitle{
+        position: relative;
+        color: #F99D25;
+        font-weight: 900;
+        z-index: 9;
+        width: 80%;
+        display: inline-block;
+        @include fontStyle(22, 30);
+        @include md-screen{
+            @include fontStyle(24, 32);
+            width: auto;
+        }
+
+        padding-left: 12px;
+        padding-right: 0;
+       
+        & + .rightColTitle{
+            padding-left: 12px;
+            padding-right: 12px;
+            @include md-screen{
+         
+            padding-left: 0;
+        }
+        }
+    &::after{
+        content: '';
+        display: block;
+        background-color: rgba(249, 157, 37,.25);
+        height: 14px;
+        @include md-screen{
+            height: 16px;
+        }
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: -1;
+    }
+}
+}
+.sectionheader{
+    font-size: 32px;
+    line-height: 36px;
+    padding-bottom: 12px;
+    padding-top: 19px;
+    text-align: center;
+    font-weight: 500;
+    font-family: "big-caslon-fb";
+    
+    @include md-screen{
+        padding-bottom: 36px;
+        padding-top: 22px;
+        font-size: 64px;
+        line-height: 72px;
+    }
+
+    @include lg-screen {
+        max-width: 1048px;
+        margin: 0 auto;
+    }
+}
+.sectionCon{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include md-screen{
+        padding-bottom: 100px;
+        padding-top: 100px;
+    }
+}
+.mobwrap{
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+    @include lg-screen {
+        padding-bottom: 100px;
+    }
+}
+.ProductsCon{
+    border-bottom: 1px solid #132466;
+}

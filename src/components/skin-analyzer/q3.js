@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react'
 import ProgressBar from '../../components/progress-bar'
 
@@ -7,8 +8,21 @@ const Q3 = (props) => {
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
+        <>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
                 <div className="col-auto">
@@ -30,20 +44,20 @@ const Q3 = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">Are you looking for a preventative solution or corrective solution?</div>
-                    <div className="question-text">The difference between the two is important when determining your Skin care routine. Lorem ipsum dolor sit amet consectetur adipiscing hasellus .</div>
+                    <div className="question-header">Are You Looking for a Preventative Solution or Corrective Solution?</div>
+                    <div className="question-text">The difference between the two is important when determining your skin care routine.</div>
                 </div>
             </div>
 
             <div className="row first-three justify-content-center">
                 <div className="col-12 col-lg-auto">
                     <input type="radio" id="Preventative" name="q" value="Preventative" onChange={sendBackData} />
-                    <label htmlFor="Preventative">Preventative</label>
+                    <label onClick={topFunction}  htmlFor="Preventative">Preventative</label>
                 </div>
 
                 <div className="col-12 col-lg-auto">
                     <input type="radio" id="Corrective" name="q" value="Corrective" onChange={sendBackData} />
-                    <label htmlFor="Corrective">Corrective</label>
+                    <label onClick={topFunction}  htmlFor="Corrective">Corrective</label>
                 </div>
             </div>
 
@@ -63,6 +77,7 @@ const Q3 = (props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default Q3

@@ -37,7 +37,7 @@ function addMainStyles(e) {
 
   if (e.target.closest(".extended-nav > ul > li > a")) {
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-    document.querySelector(".extended-nav ul span").classList.add("not-selected");
+    document.querySelector(".extended-nav ul > span").classList.add("not-selected");
 
 
     document.querySelectorAll(".extended-nav ul li .submenu li a").forEach(Elem => Elem.classList.remove("not-selected"));
@@ -51,7 +51,7 @@ function addMainStyles(e) {
   if (e.target.closest(".extended-nav > ul > span")) {
 
     document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.add("not-selected"));
-    document.querySelector(".extended-nav ul span").classList.add("not-selected");
+    document.querySelector(".extended-nav ul > span").classList.add("not-selected");
 
     let selectedSpan = e.target.closest(".extended-nav > ul > span");
     selectedSpan.classList.remove("not-selected");
@@ -64,30 +64,64 @@ function removeMainStyles() {
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("hovered"));
   document.querySelectorAll(".extended-nav ul li a").forEach(Elem => Elem.classList.remove("not-selected"));
 
-  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("hovered"));
-  document.querySelectorAll(".extended-nav ul span").forEach(Elem => Elem.classList.remove("not-selected"));
+  document.querySelectorAll(".extended-nav ul > span").forEach(Elem => Elem.classList.remove("hovered"));
+  document.querySelectorAll(".extended-nav ul > span").forEach(Elem => Elem.classList.remove("not-selected"));
 }
 
 function addOverview(e) {
-  var medicalLink = document.getElementById("medicalLink");
-  var clinicalLink = document.getElementById("clinicalLink");
+  var medicalLink = document.querySelector("a#medicalLink");
+  var clinicalLink = document.querySelector("a#clinicalLink");
 
   var medicalOV = document.getElementById("overview-medicalLink");
   var clinicalOV = document.getElementById("overview-clinicalLink")
 
-  if (e.target === medicalLink) {
+  document.querySelector(".mob-menu-lower-section").classList.toggle("d-none");
+
+  if (e.currentTarget === medicalLink) {
     if (medicalOV.style.display === "none") {
       medicalOV.style.display = "inline-block";
     } else {
       medicalOV.style.display = "none";
     }
-  } else if (e.target === clinicalLink) {
+    medicalLink.parentElement.classList.toggle("medical-menu-link");
+  } else if (e.currentTarget === clinicalLink) {
     if (clinicalOV.style.display === "none") {
       clinicalOV.style.display = "inline-block";
     } else {
       clinicalOV.style.display = "none";
     }
+    clinicalLink.parentElement.classList.toggle("clinical-menu-link");
+    clinicalLink.parentElement.previousSibling.classList.toggle("d-none");
+
+
   }
+}
+
+function addViewAll(e) {
+  var skinCareLink = document.querySelector("a#skin-care-lines");
+  var skinCareLinkArrow = document.querySelector("a#skin-care-lines-arrow");
+  var skinCareOV = document.getElementById("overview-skin-care-lines");
+
+  var ourProductsLink = document.querySelector("a#our-products");
+  var ourProductsLinkArrow = document.querySelector("a#our-products-arrow");
+  var ourProductsOV = document.getElementById("overview-our-products");
+
+  // document.querySelector(".mob-menu-lower-section").classList.toggle("d-none");
+
+  if (e.currentTarget === skinCareLink || e.currentTarget === skinCareLinkArrow) {
+    if (skinCareOV.style.display === "none") {
+      skinCareOV.style.display = "inline-block";
+    } else {
+      skinCareOV.style.display = "none";
+    }
+
+  } else if (e.currentTarget === ourProductsLink || e.currentTarget === ourProductsLinkArrow) {
+ if (ourProductsOV.style.display === "none") {
+      ourProductsOV.style.display = "inline-block";
+    } else {
+      ourProductsOV.style.display = "none";
+    }
+  } 
 }
 
 
@@ -115,8 +149,8 @@ function createMenuHierarchy(menuData, menuName) {
       mappedElem = mappedArr[id]
       // If the element is not at the root level, add it to its parent array of children.
       if (mappedElem.drupal_parent_menu_item) {
-        if(mappedArr[mappedElem.drupal_parent_menu_item] == undefined){
-          console.log("Menu items that not have parent",mappedElem)
+        if (mappedArr[mappedElem.drupal_parent_menu_item] == undefined) {
+   
         }
         mappedArr[mappedElem.drupal_parent_menu_item]['children'].push(mappedElem)
       }
@@ -135,65 +169,95 @@ function buildLink(link, itemId, collapseTarget, isExpandable) {
 
   if (isExpandable == false) {
     return (<Link to={link.link.uri.replace('internal:', '')}>
-      {link.title}
+      <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
     </Link>)
-  } else {
-    if (!collapseTarget && itemId) {
-      return (<Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
-        {link.title}
+  } else if (!collapseTarget && itemId) {
+    if(link.link.uri=="internal:#"){
+      return (
+      <a className="single-tab" href="#" id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+        <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+      </a>)
+    }else{
+      return (
+      <Link className="single-tab" to={link.link.uri.replace('internal:', '')} id={itemId} onMouseEnter={(e) => { addStyles(e); addMainStyles(e); }} onMouseLeave={() => { removeStyles(); removeMainStyles(); }}>
+        <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
       </Link>)
     }
-    else if (itemId && collapseTarget && isExpandable) {
-
-      if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
-        let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
-        return (
-          <>
-            <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
-              {link.title}
-            </a>
-            {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
-          </>
-        )
-      } else {
-        return (
-          <>
-            <Link to={link.link.uri.replace('internal:', '')}>
-              {link.title}
-
-            </Link>
-            {/* <span className=""> */}
-            <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
-            {/* </span> */}
-          </>
-        )
-      }
+  }
+  else if (itemId && collapseTarget && isExpandable) {
+   
+    if (link.link.uri.replace('internal:', '') === '/medical' || link.link.uri.replace('internal:', '') === '/clinical') {
+      let linkName = link.link.uri.replace('internal:', '').slice(1) + "Link";
+      return (
+        <>
+          <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} id={linkName} onClick={(e) => { addOverview(e); }}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+          </a>
+          {link.expanded == true ? <Link to={link.link.uri.replace('internal:', '')} className="overview" id={"overview-" + linkName} style={{ display: "none" }}>Overview</Link> : ''}
+        </>
+      )
+    } else if (link.title === 'SKIN CARE LINES') {
+      let linkNameTwo = link.title.replace(/\s+/g, '-').toLowerCase();
+      return (
+        <>
+          <a data-toggle="collapse" id={linkNameTwo} href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+          </a>
+           <a className="collapsed link-arrow" id={linkNameTwo + '-arrow'} data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}></a>
+           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameTwo} style={{ display: "none" }}>View All</Link> : ''}
+        </>
+      )
+    }  else if (link.title === 'OUR PRODUCTS' && link.link.uri === 'internal:/clinical/skin-care') {
+      let linkNameThree = link.title.replace(/\s+/g, '-').toLowerCase();
+      return (
+        <>
+          <a data-toggle="collapse" id={linkNameThree} href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+          </a>
+           <a className="collapsed link-arrow" id={linkNameThree + '-arrow'} data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget} onClick={(e) => { addViewAll(e); }}></a>
+           {link.expanded == false ? <Link to={link.link.uri.replace('internal:', '')} className="overview sub" id={"overview-" + linkNameThree} style={{ display: "none" }}>View All</Link> : ''}
+        </>
+      )
     } else {
       return (
         <>
-          <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
-            {link.title}
+          <a data-toggle="collapse" id={itemId} href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+
           </a>
+          {/* <span className=""> */}
+          <a className="collapsed link-arrow" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}></a>
+          {/* </span> */}
         </>
       )
     }
+  } else {
+    return (
+      <>
+        <a className="collapsed" data-toggle="collapse" href={collapseTarget} role="button" aria-expanded="false" aria-controls={collapseTarget}>
+          <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+        </a>
+      </>
+    )
   }
 
-  if (!link.external && link.link.uri) {
-    return (<Link activeClassName="active" to={link.link.uri}>
-      {link.title}
-    </Link>)
-  } else if (!link.external && link.link.uri.includes('internal:')) {
-    return (<Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
-      {link.title}
-    </Link>)
-  } else {
-    return (<a href={link.link.uri} className={'external'}>
-      {link.title}
-    </a>)
-  }
+  // if (!link.external && link.link.uri) {
+  //   return (<Link activeClassName="active" to={link.link.uri}>
+  //     {link.title}
+  //   </Link>)
+  // } else if (!link.external && link.link.uri.includes('internal:')) {
+  //   return (<Link activeClassName="active" to={link.link.uri.replace('internal:', '')}>
+  //     {link.title}
+  //   </Link>)
+  // } else {
+  //   return (<a href={link.link.uri} className={'external'}>
+  //     {link.title}
+  //   </a>)
+  // }
 
 }
+
+
 
 // function _onHeaderClick(event) {
 //   event.preventDefault();
@@ -220,16 +284,22 @@ function buildMenu(menuArray, isExpandable, menuName) {
               ((menuName == 'first-footer' && isExpandable === true) || (menuName == 'second-footer' && isExpandable === true) || (menuName == 'third-footer' && isExpandable === true) || (menuName == 'fourth-footer' && isExpandable === true)) ?
                 buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id, "#menuItem" + menuArray[item].drupal_id)
                 :
-                buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
+                ((menuName == 'first-footer' && isExpandable === false) || (menuName == 'second-footer' && isExpandable === false) || (menuName == 'third-footer' && isExpandable === false) || (menuName == 'fourth-footer' && isExpandable === false)) ?
+                  <span className="single-tab">{menuArray[item].title}</span>
+                  :
+                  buildLink(menuArray[item], "itemLink" + menuArray[item].drupal_id)
           }
           <ul className={"submenu " + (isExpandable === true ? 'collapse ' : ' ')} id={(isExpandable === true ? "menuItem" + menuArray[item].drupal_id : menuArray[item].drupal_id)}>
             {buildMenu(menuArray[item].children, true, menuName)}
             {typeof window !== "undefined" && menuName === "third-footer" && isExpandable === true ? <span id="extole_zone_mobile_footer" className="footer-referral-span"></span>
               : typeof window !== "undefined" && menuName === "third-footer" && isExpandable === false ? <span id="extole_zone_global_footer" className="footer-referral-span"></span>
                 : ""}
-            {menuName === "fourth-footer" ? <li><Link className="single-tab" to="/my-account/orders">
+            {menuName === "fourth-footer" ? <>
+            <li><Link className="single-tab" to="/my-account/orders">
               My Account
-            </Link></li> : ""}
+            </Link></li>
+            <li><span data-acsb-custom-trigger="true" className="AccessiBe">Accessibility </ span></li>
+            </> : ""}
           </ul>
         </li>)
     } else {

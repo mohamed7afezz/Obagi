@@ -3,18 +3,28 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+trigger:
+- master
+
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      cat .env.production
+      sed -i 's/dev-obagiecommerce/dev-obagiecommerce/g' .env.production
+      cat .env.production
 - task: Cache@2
   inputs:
-    key: 'gatsby-cache-folder'
+    key: $(gatsby-cache-folder)
     path: .cache
   displayName: Cache gatsby-cache-folder
 - task: Cache@2
   inputs:
-    key: 'gatsby-public-folder'
+    key: $(gatsby-public-folder)
     path: public
   displayName: Cache gatsby-public-folder
 - task: NodeTool@0
@@ -34,13 +44,13 @@ steps:
     TargetFolder: '$(build.artifactstagingdirectory)'
 - task: FtpUpload@2
   inputs:
-    credentialsOption: inputs
-    serverUrl: ftps://waws-prod-dm1-121.ftp.azurewebsites.windows.net
-    username: test-obagi\$test-obagi
-    password: t1wnEvT3M5tpE0EyAK6xiGQDxEGSxTNpNMYDvc5xWWPjaXiAgNzuhBmf8l3k
-    rootDirectory: $(build.artifactstagingdirectory)
+    credentialsOption: 'inputs'
+    serverUrl: $(FTPserverUrl)
+    username: $(FTPusername)
+    password: $(FTPpassword)
+    rootDirectory: '$(build.artifactstagingdirectory)'
     filePatterns: '**'
-    remoteDirectory: /site/wwwroot/storefront 
+    remoteDirectory: /site/wwwroot/storefront1
     clean: true
     cleanContents: false
     preservePaths: true

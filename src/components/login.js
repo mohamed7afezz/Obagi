@@ -5,6 +5,7 @@ import UserContext from "../providers/user-provider"
 import LoginMenu from '../components/login-menu'
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import SEO from "./seo";
 const spinner = css`
   display: block;
   margin: 0 auto;
@@ -56,6 +57,7 @@ const Login = () => {
 
   return (
     <>
+    <SEO title="Account Signin | Obagi" ogTitle="Account Signin | Obagi" canonical="/my-account/signin" />
       <LoginMenu currentPage="login" />
       {isLoading ?
         <div>
@@ -81,7 +83,7 @@ const Login = () => {
                 Your password has been successfully updated.
               </div>
               <div className="d-none d-lg-block">
-                <div className="desk-signin">Sign In</div>
+                <h1 className="desk-signin">Sign In</h1>
                 <div className="desk-instruction">Enter your email address and password below to sign in.</div>
               </div>
 
@@ -105,7 +107,7 @@ const Login = () => {
                   <label for="password">Password</label>
                   <input type="password" class="form-control" id="password" placeholder="" name="password" onChange={handleUpdate} />
                 </div>
-                <p className={`form-control ${matchEmail == false ? 'text-warning' : 'd-none'}`}> Email or Password is incorrect.</p>
+                <p className={`form-control ${matchEmail == false ? 'text-danger' : 'd-none'}`}> Email or Password is incorrect.</p>
                 <div className="check-wrapper">
                   {/* <div class="form-check">
 
@@ -116,7 +118,7 @@ const Login = () => {
                     </label>
                   </div> */}
 
-                  <a href="https://gtotest.mybigcommerce.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
+                  <a href="https://secure.obagi.com/login.php?action=reset_password" className="forgot-pw">Forgot Password</a>
                 </div>
 
                 <input className="submit-input" type="submit" value="Sign In" />

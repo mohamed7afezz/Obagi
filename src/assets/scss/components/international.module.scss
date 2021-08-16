@@ -1,0 +1,137 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+
+    @include lg-screen {
+        padding-top: 112px;
+        padding-bottom: 39px;
+    }
+}
+
+.column-wrapper div {
+    border-bottom: 1px solid rgba(19,36,102,0.3);
+    padding: 24px 0;
+
+   @include lg-screen {
+       padding: 48px 0;
+       max-width: 424px;
+    &:last-child {
+        border: 0;
+    }
+   }
+}
+.column-wrapper div div {
+    border: 0;
+    padding: 0;
+    max-width: unset;
+}
+.column-wrapper div div div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.column-wrapper div div div p {
+    padding-bottom: 0;
+    padding-left: 5px;
+}
+.column-wrapper div div div h4 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+// .column-wrapper div div span {
+//     @include lg-screen {
+//         display: none;
+//     }
+// }
+.column-wrapper h3{
+    @extend %futurapt-medium;
+    @include fontStyle(24, 40);
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    @include lg-screen {
+        cursor: initial;
+
+    }
+}
+.column-wrapper h3::after{
+    position: absolute;
+    content: '';
+    background-position: center;
+    background-image: url('../../images/path-copy.png');
+    right: 0;
+    top: 17px;
+    transform: rotate(180deg);
+    transition: all ease 300ms;
+    height: 10px;
+    width: 10px;
+    background-repeat: no-repeat;
+
+    @include lg-screen {
+        content: none;
+    }
+}
+
+.column-wrapper h3.open::after {
+    position: absolute;
+    content: '';
+    background-position: center;
+    background-image: url('../../images/path-copy.png');
+    right: 0;
+    top: 17px;
+    transform: none;
+    transition: all ease 300ms;
+    height: 10px;
+    width: 10px;
+    background-repeat: no-repeat;
+
+    @include lg-screen {
+        content: none;
+    }
+}
+.column-wrapper h2 {
+    @extend %futurapt-light;
+    @include fontStyle(40, 56);
+    padding-top: 40px;
+    padding-bottom: 8px;
+    margin: 0;
+
+    @include lg-screen {
+        padding-top: 24px;
+    }
+}
+
+.column-wrapper h4 {
+    font-size: 16px;
+    @extend %futurapt-bold;
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 6px;
+
+}
+
+.column-wrapper p {
+    @include fontStyle(16, 24);
+    padding-bottom: 20px;
+    @include lg-screen {
+        padding-bottom: 24px;
+    }
+}
+.column-wrapper a {
+    color: #132466;
+    text-decoration: underline;
+}
+
+.column-wrapper h5 {
+    margin: 0;
+    font-size: 16px;
+    @extend %futurapt-bold;
+}
+
+.column-wrapper div div div h5 ~ p a {
+    text-decoration: none;
+}

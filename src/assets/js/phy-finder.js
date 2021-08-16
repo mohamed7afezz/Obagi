@@ -14,7 +14,7 @@ class Temps {
                         <span class="tray-result-number">${index + 1}</span>
                         <br>${isPhy? '' : (obj.distance.toFixed(2) + '<br>miles')}
                     </div>
-                    <div class="info info-list col-9">
+                    <div class="info info-list ${obj.opp_badge < 1? 'col-8' : 'col-7'}">
                         <h2 class="row clinic-name">${obj.name}</h2>
                        <div class="row email"><button   class="make-appointment req-appointment" > Request Appointment</button></div>
                        <div class="row address-one">${obj.address1}</div>
@@ -25,6 +25,7 @@ class Temps {
                            <button class="btn btn-link related-products ${obj.numProducts < 1? 'hide': ''}" data-toggle="modal" data-target="#related-products">${obj.numProducts} ${obj.numProducts > 1? 'Products Available' : 'Product Available'}</button> <a href="https://maps.google.com?daddr=${obj.address1}+${obj.city}+${obj.state}+${obj.zip}" target="_blank">Get Directions</a>   ${obj.website != '' ? `<a href="${obj.website}" class="link-website" target="_blank">View Website</a>` : ''}
                          </div>
                     </div>
+                    <div class="${obj.opp_badge < 1? 'hide' : 'opp_badge col-3'}"></div>
                 </div>
             </div>
 
@@ -64,7 +65,7 @@ class Temps {
                 <p class="doctitle">${obj.name}</p>
                 <div class="address-res-wrap">
                     <span class="address-one">${obj.address1}</span>
-                    <ul><li class="city">${obj.city}, ${obj.state} ${obj.zip}</li><li class="phone"><a href="tel:${obj.phone}">${obj.phone}</a></li></ul>
+                    <span class="city"> •  ${obj.city}, ${obj.state} ${obj.zip}</span><span class="phone"> •  <a href="tel:${obj.phone}"> ${obj.phone}</a></span>
                 </div>
                 </div>
                 ${isProd? `<button   class="make-appointment req-appointment" id="req-app-rel-pro" > Request Appointment</button>` : ''}
@@ -151,6 +152,15 @@ class Search extends Temps {
         });
 
         // add event listener on click update search
+        this.searchBtn.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+              // Cancel the default action, if needed
+              event.preventDefault();
+              // Trigger the button element with a click
+              this.searchBtn.click();
+            }
+          }); 
         this.searchBtn.addEventListener('click', (e) => {
             // get checked radio
             if(this.searchRadios.filter(item => item.checked)[0]) {
@@ -215,7 +225,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                console.log(err)
+              
             });
 
         } else if(searchOptions.location) {
@@ -227,7 +237,7 @@ class Search extends Temps {
             // update Params
             await this.gcPromise(geocodeOptions).catch(err => {
                 this.setLoading(false);
-                console.log(err)
+              
             });
 
         } else {
@@ -277,6 +287,7 @@ class Search extends Temps {
         let gcPromise = new Promise((res, rej) => {
             this.geocoder.geocode(geocodeOptions, (results, st) => {
                     if(st == this.google.maps.GeocoderStatus.OK && results.length > 0) {
+                        this.emptyParams();
                         this.updateParams(results[0]);
 
                         res();
@@ -355,7 +366,7 @@ class Search extends Temps {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); document.getElementById('related-products-list').innerHTML = 'Please contact us, something went wrong!';});
+        }).catch(err => { document.getElementById('related-products-list').innerHTML = 'Please contact us, something went wrong!';});
         
         let res = [];
         if(req.status == 200) {
@@ -376,7 +387,7 @@ class Search extends Temps {
     }
 
     getRelatedProductLink(id) {
-        // console.log('bahiii', this.productsDataObj);
+       
         let prodIndex = this.productsDataObj.findIndex(item => item.sku == id);
         if (prodIndex > -1) {
             return this.productsDataObj[prodIndex].path
@@ -399,7 +410,7 @@ class Search extends Temps {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: qs
-        }).catch(err => {console.log(err); this.setLoading(false)});
+        }).catch(err => { this.setLoading(false)});
 
         let res = {};
         if(req.status === 200) {
@@ -452,8 +463,9 @@ class Search extends Temps {
     }
 
     updateParams(location, paramsFor) {
-        // console.log('update Params')
+       
         this.searchBtn.disabled = true;
+        
         location.address_components.forEach(item => {
             if(item.types.includes('postal_code')) {
                 this.params.zip = item.short_name;
@@ -474,7 +486,7 @@ class Search extends Temps {
             this.searchBtn.classList.add('pulse');
         }
         
-        this.inputLoc.value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params.zip + ', ' + this.params.country;
+        this.inputLoc.value = (this.params["city"] != ''? this.params["city"] + ', ' : '') + (this.params["state"] != '' ? this.params["state"] + ', ' : '') + (this.params.zip  != '' ? this.params.zip + ', ' : '') + (this.params.country != ''? this.params.country : '');
         document.getElementById('prodLoc').value = this.params["city"] + ', ' + this.params["state"] + ', ' + this.params["country"];
     }
 }
@@ -495,8 +507,8 @@ class Map extends Search {
         this.zoom = zoom;
         this.markers = [];
         this.markerIcon ={
-            default: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin_0.png',
-            active: 'https://dev-obagi.azurewebsites.net/api/sites/default/files/2020-10/pin-active.png'
+            default: 'https://www.obagi.com/api/sites/default/files/2020-10/pin_0.png',
+            active: 'https://www.obagi.com/api/sites/default/files/2020-10/pin-active.png'
         }
         this.infoWindow = new this.google.maps.InfoWindow({
             content: '',
@@ -584,6 +596,7 @@ class Map extends Search {
             this.map.panTo(this.currPlace.geometry.location);
             this.map.setZoom(15);
             // update params
+            this.emptyParams();
             this.updateParams(this.currPlace, autoCompFor);
         }
     }

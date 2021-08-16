@@ -30,15 +30,19 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
 
     function gotoPage(e, pageNumber) {
         e.preventDefault();
-        document.querySelectorAll('.pages-wrapper .page').forEach(link => link.classList.add('d-none'));
-        document.querySelector(`.pages-wrapper .page-${pageNumber}`).classList.remove('d-none');
+        
+        const pagesWrapper = e.target.closest('.pager-wrapper').previousSibling;
+        const pagerWrapper = e.target.closest('.pager-wrapper');
 
-        document.querySelectorAll('.pager-wrapper .page-link').forEach(link => link.classList.remove('active'));
-        document.querySelector(`.pager-wrapper .page-link-${pageNumber}`).classList.add('active');
+        pagesWrapper.querySelectorAll('.page').forEach(link => link.classList.add('d-none'));
+        pagesWrapper.querySelector(`.page-${pageNumber}`).classList.remove('d-none');
+
+        pagerWrapper.querySelectorAll('.page-link').forEach(link => link.classList.remove('active'));
+        pagerWrapper.querySelector(`.page-link-${pageNumber}`).classList.add('active');
         updateCurrPage(pageNumber);
 
         // scroll to page top
-        document.querySelector('.pages-wrapper').scrollIntoView();
+        pagesWrapper.scrollIntoView();
     }
 
     function prevPage(e) {
@@ -87,15 +91,15 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
                 {/* pages navigator */}
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
-                         <li className={`page-item ${currPage == 1? 'd-none' : ''}`}>
+                         {/* <li className={`page-item ${currPage == 1? 'd-none' : ''}`}>
                             <a class="page-link first-link" href="first" aria-label="First" onClick={firstPage}>
                                 <span aria-hidden="true">first</span>
                                 <span class="sr-only">First Page</span>
                             </a>
-                        </li>
+                        </li> */}
                         <li className={`page-item ${currPage == 1? 'd-none' : ''}`}>
                             <a class="page-link prev-link" href="prev" aria-label="Previous" onClick={prevPage}>
-                                <span aria-hidden="true">&laquo;</span>
+                                <span aria-hidden="true">&#60;</span>
                                 <span class="sr-only">Previous</span>
                             </a>
                         </li>
@@ -108,16 +112,16 @@ export default function Paginator({pagerData, rowComponent, rowsPerPage}) {
                         
                         <li className={`page-item ${currPage == pager.length ? 'd-none' : ''}`}>
                             <a class="page-link next-link" href="next" aria-label="Next" onClick={nextPage}>
-                                <span aria-hidden="true">&raquo;</span>
+                                <span aria-hidden="true">&#62;</span>
                                 <span class="sr-only">Next</span>
                             </a>
                         </li>
-                        <li className={`page-item ${currPage == pager.length ? 'd-none' : ''}`}>
+                        {/* <li className={`page-item ${currPage == pager.length ? 'd-none' : ''}`}>
                             <a class="page-link last-link" href="last" aria-label="last" onClick={lastPage}>
                                 <span aria-hidden="true">last</span>
                                 <span class="sr-only">Last Page</span>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>          

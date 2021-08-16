@@ -53,7 +53,7 @@ const Ingredient = ({ node }) => {
         </div>
         <div className={["col-12", "col-lg-5", "offset-lg-1", ingredient.ingredientorder].join(" ")}>
           <h1 className={ingredient.ingredientimagehead}>Key Ingredients</h1>
-          <Img fluid={data.ingredientimg.childImageSharp.fluid} alt="ingredientimg" />
+          <Img alt="img"  fluid={data.ingredientimg.childImageSharp.fluid} alt="ingredientimg" />
         </div>
       </div>
     </div>

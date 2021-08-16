@@ -3,9 +3,9 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import finalSection from '../assets/scss/components/final-section.module.scss'
 const CulsionFinalSection = ({ node }) => {
-  console.log('hassan',node)
+
     return (
-      <div className={finalSection.final}>
+      <div className={[finalSection.final,"finalpa"].join(" ")}>
       <div className={["container-fluid "].join(" ")}>
       <div className={"row "}>
      <div className="col-12 col-lg-8 offset-lg-2">
@@ -14,8 +14,9 @@ const CulsionFinalSection = ({ node }) => {
     return  <div className={finalSection.describtion} dangerouslySetInnerHTML={{ __html: item.processed }}></div>
 
     })}
-    <Link className={[finalSection.link,"col-12","col-lg-4"].join(" ")} to={node.field_final_section_link.uri.replace('internal:', '')}>{node.field_final_section_link.title}</Link>
-     </div>
+    {node.field_final_section_link?
+    <Link className={[finalSection.link,"col-12","col-lg-auto"].join(" ")} to={node.field_final_section_link.uri.replace('internal:', '')}>{node.field_final_section_link.title}</Link>
+   :""}  </div>
           
         </div>
         </div>

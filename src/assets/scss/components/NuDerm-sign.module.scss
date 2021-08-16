@@ -1,0 +1,321 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+.pagehero{
+  margin-top: 40px;
+}
+.title{
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 400;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d6d6d6;
+    @include lg-screen{
+    font-weight: 300;
+    font-size: 52px;
+    line-height: 64px;
+    text-align: center;
+    padding-bottom: 40px;
+    
+    }
+}
+.subtitle{
+    font-size: 24px;
+    line-height: 40px;
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+    @include lg-screen{
+    font-size: 32px;
+    line-height: 48px;
+    }
+}
+.desc{
+    font-size: 18px;
+    line-height: 32px;
+    color: #060076;
+    sup{
+        font-size: 12px;
+    }
+}
+.brief{
+    font-size: 14px;
+    line-height: 16px;
+    color: #0b116f;
+    sup{
+        font-size: 10px;
+    }
+    margin-top: 16px;
+    margin-bottom: 26px;
+}
+.secondSec{
+    margin-bottom: 72px;
+    margin-top: 24px;
+    @include lg-screen{
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+}
+.reqField{
+    font-size: 16px;
+    line-height: 24px;
+    color: #7c858a;
+    margin-bottom: 15px;
+    @include lg-screen{
+margin-bottom: 24px;
+    }
+}
+.RadioLabel{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    @include md-screen{
+        margin-bottom: 16px;
+    }
+}
+.underselect{
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 40px;
+    color: #132466;
+    a{
+        color: #132466;
+        text-decoration: underline;
+    }
+
+}
+.CustomSelect{
+    padding: 0;
+    border: 0;
+    border:1px solid #d6d6d6;
+    background: none;
+    height: 100%;
+   
+}
+.customlabel{
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 16px;
+    @extend %futurapt-bold;
+    letter-spacing: 1.2px;
+    padding-left: 16px;
+padding-right: 16px;
+    
+}
+.inputfield{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    display: flex;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    padding: 16px;
+    padding-bottom: 4px;
+    flex-direction: column;
+    input{
+        font-size: 16px;
+        border: 0;
+        margin-bottom: 12px;
+        @extend %futurapt-book;
+        color: #132466;
+    }
+}
+.inputfield + .inputfield{
+margin-top: 24px;
+   @include md-screen{
+    margin-top: 16px;
+   }
+}
+.calenderName{
+    margin-top: 32px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    @extend %futurapt-bold;
+}
+.showflex{
+    display: flex;
+    flex-direction: column;
+    @include md-screen{
+        flex-direction: row;
+    }
+    justify-content: space-between;
+}
+.optional{
+    position: relative;
+    display: flex;
+    font-size: 18px;
+    line-height: 32px;
+    @extend %futurapt-bold;
+    margin-top: 48px;
+    margin-bottom: 36px;
+    padding-left: 36px;
+    align-items: baseline;
+    @include lg-screen{
+        margin-top: 48px;
+        margin-bottom: 32px;
+    }
+}
+.optional::before{
+    content: "";
+   margin-left: -36px;
+   margin-right: 30px;
+    width: 8px;
+    position: relative;
+    top: -1px;
+    height: 8px;
+    background-color: #ffcd00;
+}
+.optionalWrap + .optionalWrap{
+margin-top: 24px;
+}
+.inputfield{
+    text-transform: uppercase;
+}
+.mt24{
+    margin-top: 24px !important;
+}
+.formnNote{
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+.signup{
+    background-color: #132466;
+    border-color: #132466;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    @extend %futurapt-bold;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    text-transform: uppercase;
+    @include md-screen{
+        margin-bottom: 32px;
+        
+    }
+    margin-bottom: 40px;
+    display: block;
+    width: 100%;
+}
+.ffootnote{
+    font-size: 14px;
+    line-height: 16px;
+}
+.ffootnote +.ffootnote{
+    margin-top: 16px;
+}
+.thankYou{
+    @extend %futurapt-bold;
+    font-size: 24px;
+    line-height: 40px;
+    margin-bottom: 8px;
+  
+    @include lg-screen{
+        font-size: 32px;
+        line-height: 48px;
+    }
+}
+.servayDesc{
+    font-size: 18px;
+    line-height: 32px;
+}
+.Qtitle{
+    font-size: 18px;
+    line-height: 32px;
+    @include md-screen{
+        font-size: 24px;
+        line-height: 40px;
+    }
+    margin-bottom: 24px;
+    sup{
+        font-size: 12px;
+        line-height: 40px;
+    }
+}
+.Servayform{
+    margin-top: 48px;
+    width: 100%;
+    @include md-screen{
+        margin-top: 80px;
+    }
+}
+.QuestionContainer{margin-bottom: 40px;}
+.textarea{
+    @include md-screen{
+    display: inline-block;
+}
+    label{
+        display: block;
+    }
+    textarea{
+        resize: both;
+        font-size: 18px;
+        line-height: 32px;
+        @extend %futurapt-book;
+    width: 100%;
+    }
+}
+.formfooter{
+    margin-top: 24px;
+    a{
+        color: #132466;
+        text-decoration: underline;
+    }
+}
+.formfooter +.formfooter{
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 40px;
+    margin-top: 8px;
+}
+.textarea{
+    padding-right: 4px;
+}
+.thanks{
+    margin-top: 24px;
+    font-size: 24px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    text-align: center;
+    @extend %futurapt-bold;
+
+    @include md-screen{
+        margin-top: 40px;
+font-size: 32px;
+line-height: 48px;
+margin-bottom: 8px;
+    }
+}
+.thanksDescs{
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+}
+.seeBtn,.seeBtn:hover{
+    text-transform: uppercase;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color: #fff;
+    background-color: #132466;
+    border-radius: 6px;
+    @extend %futurapt-bold;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 1.2px;
+display: inline-block;
+text-decoration: none;
+    @include md-screen{
+        padding-top: 24px;
+        padding-bottom: 24px;
+        max-width: 274px;
+    }
+}

@@ -56,7 +56,7 @@ const ReviewModal = ({ node }) => {
                                         <div className="thankyou-note d-lg-none">Thank you for reviewing your recent purchase!</div>
                                         <div className="thankyou-footnote d-lg-none">We will send you an email when your review is live.</div>
 
-                                        <div className="review-product-image"><Img fluid={data.productImage.childImageSharp.fluid} /></div>
+                                        <div className="review-product-image"><Img alt="img"  fluid={data.productImage.childImageSharp.fluid} /></div>
                                     </div>
 
 

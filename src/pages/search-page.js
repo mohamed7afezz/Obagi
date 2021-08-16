@@ -7,10 +7,10 @@ import SearchResult from "../components/search-results"
 import SEO from '../components/seo';
 
 
-const products = ({ data }) => (
+const products = ({ data, nodeType }) => (
  
-    <Layout menuType = "relative" nodeType="clinical"> 
-      <SEO title="Search" description="Search Page Description" />
+    <Layout menuType = "relative" nodeType={nodeType}> 
+      <SEO title="Search Results" description="Search Results" />
       <SearchResult/>
     </Layout>
         

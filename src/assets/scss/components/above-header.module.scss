@@ -25,6 +25,14 @@
         display: flex;
         justify-content: center;
         text-align: center;
+        padding-right: 0;
+    @media (max-width:370px) {
+        padding-right: 0px;
+    }
+    @include md-screen{
+        padding-right: 15px;
+    }
+    
         .text {
             margin-left: auto;
             

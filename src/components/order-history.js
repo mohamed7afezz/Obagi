@@ -5,82 +5,35 @@ import orderHistoryStyles from '../assets/scss/components/order-history.module.s
 import OrderHistoryRow from "./order-history-row"
 import Paginator from './paginator'
 import OrderNoHistory from "./order-no-history"
-import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
-const spinner = css`
-  display: block;
-  margin: 0 auto;
- 
-`;
+
 const baseUrl = process.env.Base_URL;
 
-const OrderHistory = ({ node }) => {
+const OrderHistory = ({ ordersList }) => {
 
-    const [isLoading, setIsLoading] = useState(false);
 
-    const [orders, setOrders] = useState({});
-
-    async function getOrders() {
-
-        setIsLoading(true);
-        const ordersData =  await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
-            method: 'GET',
-            credentials: 'include',
-        })
-
-        if(ordersData.status == 200) {
-            let ordersResponse = await ordersData.json();
-
-            if (ordersResponse !== "User not login.") {
-                setOrders(ordersResponse);
-            }
+    let orders = ordersList;
+   
+    function isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
         }
-
-      
-        setIsLoading(false);
-        
+        return true;
     }
 
-    useEffect(() => {
-        getOrders();
-    }, [])
 
-    // console.log("orders", orders)
-    
-
-    if(isLoading) {
-        return    <div>
-        <ClipLoader
-    css={spinner}
-     size={150}
-     color={"#123abc"}
-/>           
-</div>   
-    }
-
-    else if(orders === "undefined" || Object.keys(orders).length == 0 || orders.length == 0) {
-
-        return (<OrderNoHistory />)
+    if (orders === "undefined" || Object.keys(orders).length == "0" || orders.length == 0 ) {
+        return <OrderNoHistory />
 
     } else {
 
         return (
             <div>
                 <div className="d-lg-none">
-                {orders === "undefined" || Object.keys(orders).length == 0? "": <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
-                    {orders.map((item, index) => {
-                        return (
-                            <OrderHistoryRow 
-                            orderNum = {item.id}
-                            placedOn = {item.date_created}
-                            lastUpdated = {item.date_modified}
-                            itemsNum = {item.items_total}
-                            total = {parseFloat(item.total_inc_tax).toFixed(2)}
-                            status = {item.status}
-                        
-                        />
-                        )
-                    })}
+                    {orders === "undefined" || Object.keys(orders).length == "0" || orders.length == 0 ? "" : <div className={orderHistoryStyles.ordersCount}>{orders.length} Orders</div>}
+
+                    <Paginator pagerData={orders} rowComponent={OrderHistoryRow} rowsPerPage={4} />
+
                 </div>
 
                 <div className={["d-none d-lg-block"].join(" ")}>
@@ -98,20 +51,12 @@ const OrderHistory = ({ node }) => {
                         </thead>
 
                         <tbody>
-                            {orders.map((item, index) => {
-                                
-                                return (
-                                    <OrderHistoryRow 
-                                        orderNum = {item.id}
-                                        placedOn = {item.date_created}
-                                        lastUpdated = {item.date_modified}
-                                        itemsNum = {item.items_total}
-                                        total = {parseFloat(item.total_inc_tax).toFixed(2)}
-                                        status = {item.status}
-                                    
-                                    />
-                                )
-                            })}
+                            <tr>
+                                <td colSpan="7">
+                                    <Paginator pagerData={orders} rowComponent={OrderHistoryRow} rowsPerPage={8} />
+                                </td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>

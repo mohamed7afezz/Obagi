@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage }) {
+function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage, canonical, ogType }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,7 +18,6 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
           siteMetadata {
             title
             description
-            author
           }
         }
       }
@@ -29,7 +28,54 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
   // const image = metaImage && metaImage.src ? `${site.siteMetadata.siteUrl}${metaImage.src}` : null
   const image = metaImage
 
+  const noindex = process.env.noindex;
+
+  let MetaNoIndex = [
+    {
+      name: `description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:title`,
+      content: ogTitle,
+    },
+    {
+      property: `og:description`,
+      content: ogDescription,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+    {
+      name: `twitter:card`,
+      content: `summary_large_image`,
+    },
+    {
+      name: `twitter:creator`,
+      content: '@Obagi',
+    },
+    {
+      name: `twitter:title`,
+      content: title,
+    },
+    {
+      name: `twitter:description`,
+      content: metaDescription,
+    },
+    {
+      property: "og:image",
+      content: image,
+    },
+    {
+      property: "robots",
+      content: 'noindex,nofollow',
+    }
+  ];
   
+  if(noindex == 'false') {
+    MetaNoIndex.pop();
+  }
 
   return (
     <Helmet
@@ -37,50 +83,20 @@ function SEO({ description, lang, meta, title, ogDescription, ogTitle, metaImage
         lang,
       }}
       title={title}
-      ogDescription={ogDescription}
-      ogTitle = {ogTitle}
+      // ogDescription={ogDescription}
+      // ogTitle = {ogTitle}
+      // ogType = {ogType}
       // titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: ogTitle,
-        },
-        {
-          property: `og:description`,
-          content: ogDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          property: "og:image",
-          content: image,
-        },
-      ].concat(meta)}
-    />
+      meta={MetaNoIndex.concat(meta)}
+    >
+      <link rel="canonical" href={canonical} />
+
+      {/* {noindex === 'true' ? <meta name="robots" content="noindex,nofollow" /> : ""} */}
+
+    </Helmet>
   )
 }
+
 
 SEO.defaultProps = {
   lang: `en`,

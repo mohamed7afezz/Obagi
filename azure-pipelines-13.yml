@@ -1,0 +1,59 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      cat .env.production
+      sed -i 's+https://dev-obagiecommerce.azurewebsites.net/api/+https://obagiprodtwebapp01.azurewebsites.net/api/+g' .env.production
+      sed -i 's+https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js+https://apps.bazaarvoice.com/deployments/obagi/main_site/production/en_US/bv.js+g' .env.production
+      sed -i 's+https://obagi.extole.io/core.js+https://share.obagi.com/core.js+g' .env.production
+      sed -i 's+359f2fcf-2d57-4b0d-89ac-8c5045c52021-test+7ca59c56-5d1e-44ad-985f-57e0837c56f3+g' .env.production
+      sed -i 's+true+false+g' .env.production
+      cat .env.production
+- task: Cache@2
+  inputs:
+    key: $(gatsby-cache-folder)
+    path: .cache
+  displayName: Cache gatsby-cache-folder
+- task: Cache@2
+  inputs:
+    key: $(gatsby-public-folder)
+    path: public
+  displayName: Cache gatsby-public-folder
+- task: NodeTool@0
+  inputs:
+    versionSpec: '>=10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm install -g gatsby-cli
+    gatsby build --no-uglify
+  displayName: 'npm install and build'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'public/'
+    Contents: '**'
+    TargetFolder: 'storefront'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: 'storefront'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Microsoft Azure(7c8e8a91-3e25-4e8b-a655-efa83686087b)'
+    appType: 'webApp'
+    appName: 'obagiprodtwebapp01'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    deploymentMethod: 'zipDeploy'

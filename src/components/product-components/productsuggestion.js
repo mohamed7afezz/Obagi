@@ -15,7 +15,7 @@ const ProductSuggestion = ({ node }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.05,
           slidesToScroll: 1,
           dots: true,
           arrows:false,
@@ -33,10 +33,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
     
-      professionalC: nodeMedicalProduct(field_medical_id: {eq: "349"}) {
+      professionalC: nodeMedicalProduct(field_medical_sku: {eq: "OMD50539"}) {
         id
         field_medical_price
         field_medical_sku
+        field_min_quantity
         field_medical_id
         title
         path {
@@ -58,10 +59,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      elastiderm: nodeMedicalProduct(field_medical_id: {eq: "373"}) {
+      elastiderm: nodeMedicalProduct(field_medical_sku: {eq: "OMD65007"}) {
         id
         field_medical_price
         field_medical_sku
+        field_min_quantity
         field_medical_id
         title
         path {
@@ -83,10 +85,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      hydrate: nodeMedicalProduct(field_medical_id: {eq: "352"}) {
+      hydrate: nodeMedicalProduct(field_medical_sku: {eq: "OMD70209"}) {
         id
         field_medical_price
         field_medical_sku
+        field_min_quantity
         field_medical_id
         title
         path {
@@ -108,10 +111,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      cMicro: nodeMedicalProduct(field_medical_id: {eq: "356"}) {
+      cMicro: nodeMedicalProduct(field_medical_sku: {eq: "OMD50591"}) {
         id
         field_medical_price
         field_medical_sku
+        field_min_quantity
         field_medical_id
         title
         path {
@@ -133,10 +137,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      spf: nodeMedicalProduct(field_medical_id: {eq: "383"}) {
+      spf: nodeMedicalProduct(field_medical_sku: {eq: "OMD40094"}) {
         id
         field_medical_price
         field_medical_sku
+        field_min_quantity
         field_medical_id
         title
         path {
@@ -158,10 +163,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      product1: nodeClinicalProduct(field_clinical_id: {eq: "339"}) {
+      product1: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00016"}) {
         id
         field_clinical_price
         field_clinical_sku
+        field_min_quantity
         field_clinical_id
         title
         path {
@@ -183,10 +189,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      product2: nodeClinicalProduct(field_clinical_id: {eq: "346"}) {
+      product2: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00061"}) {
         id
         field_clinical_price
         field_clinical_sku
+        field_min_quantity
         field_clinical_id
         title
         path {
@@ -208,10 +215,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      product3: nodeClinicalProduct(field_clinical_id: {eq: "343"}) {
+      product3: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00054"}) {
         id
         field_clinical_price
         field_clinical_sku
+        field_min_quantity
         field_clinical_id
         title
         path {
@@ -233,10 +241,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      product4: nodeClinicalProduct(field_clinical_id: {eq: "345"}) {
+      product4: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00023"}) {
         id
         field_clinical_price
         field_clinical_sku
+        field_min_quantity
         field_clinical_id
         title
         path {
@@ -258,10 +267,11 @@ const ProductSuggestion = ({ node }) => {
         }
       }
   
-      product5: nodeClinicalProduct(field_clinical_id: {eq: "347"}) {
+      product5: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00030"}) {
         id
         field_clinical_price
         field_clinical_sku
+        field_min_quantity
         field_clinical_id
         title
         path {
@@ -349,7 +359,7 @@ const ProductSuggestion = ({ node }) => {
       ].join(" ")}
     >
       <h1 className={productsuggestion.productsuggestionhead}>
-        You might Also Like
+        You might also like
       </h1>
       <div className={["row", productsuggestion.ordering].join(" ")}>
       {
@@ -358,12 +368,15 @@ const ProductSuggestion = ({ node }) => {
         <div className={`col-lg-3 col-12 ${productsuggestion.slickcon}`}>
    
           <ProductCard
+          productCat={isClinical? "clinical" : "medical"}
+          productLink={product.path.alias}
                 producttitle={product.title}
                 productId={isClinical? product.field_clinical_id : product.field_medical_id}
                 Sku={isClinical? product.field_clinical_sku : product.field_medical_sku}
                 productimage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '' ) : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
                 price={isClinical ? (product.field_clinical_price? product.field_clinical_price : "") : (product.field_medical_price? product.field_medical_price : "")}
-                 productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
+                productdescription={isClinical ? (product.field_clinical_description? {__html: product.field_clinical_description.processed} : "") : (product.field_medical_description? {__html: product.field_medical_description.processed} : "")}
+                minQuantity={(product.field_min_quantity == 0 || product.field_min_quantity > 0)? product.field_min_quantity : ""}
               />
            
        
@@ -377,7 +390,9 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.professionalC.relationships?data.professionalC.relationships.field_medical_image[0]?data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.professionalC.field_medical_price?data.professionalC.field_medical_price:"" }
          Sku={data.professionalC.field_medical_sku?data.professionalC.field_medical_sku:"" }
-
+         minQuantity={(data.professionalC.field_min_quantity == 0 || data.professionalC.field_min_quantity > 0)? data.professionalC.field_min_quantity : ""}
+         productCat="medical"
+        
          productId={data.professionalC.field_medical_id?data.professionalC.field_medical_id:""}
          productLink={data.professionalC.path.alias}
          premierid={data.professionalC.field_medical_premier_points_id?data.professionalC.field_medical_premier_points_id:""}
@@ -396,7 +411,8 @@ const ProductSuggestion = ({ node }) => {
          productimage={data.elastiderm.relationships?data.elastiderm.relationships.field_medical_image[0]?data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.elastiderm.field_medical_price?data.elastiderm.field_medical_price:"" }
          Sku={data.elastiderm.field_medical_sku?data.elastiderm.field_medical_sku:"" }
-
+         minQuantity={(data.elastiderm.field_min_quantity == 0 || data.elastiderm.field_min_quantity > 0)? data.elastiderm.field_min_quantity : ""}
+        productCat="medical"
          productId={data.elastiderm.field_medical_id?data.elastiderm.field_medical_id:""}
          productLink={data.elastiderm.path.alias}
          premierid={data.elastiderm.field_medical_premier_points_id?data.elastiderm.field_medical_premier_points_id:""}
@@ -411,9 +427,10 @@ const ProductSuggestion = ({ node }) => {
          producttitle={data.hydrate.title?data.hydrate.title:""}
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id :""}
          Sku={data.hydrate.field_medical_sku?data.hydrate.field_medical_sku:"noo" }
+         minQuantity={(data.hydrate.field_min_quantity == 0 || data.hydrate.field_min_quantity > 0)? data.hydrate.field_min_quantity : ""}
          productimage={data.hydrate.relationships?data.hydrate.relationships.field_medical_image[0]?data.hydrate.relationships.field_medical_image[0].localFile.childImageSharp.fluid:"":"" }
          price={data.hydrate.field_medical_price?data.hydrate.field_medical_price:"" }
-
+          productCat="medical"
          productId={data.hydrate.field_medical_id?data.hydrate.field_medical_id:""}
          productLink={data.hydrate.path.alias}
          premierid={data.hydrate.field_medical_premier_points_id?data.hydrate.field_medical_premier_points_id:""}

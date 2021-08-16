@@ -1,8 +1,13 @@
 @import '../typography/typography.scss';
 @import '../grid/grid.scss';
 .ingredientcontent{
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+    }
       @include md-screen{
         padding-top: 112px;
         padding-bottom: 112px;
@@ -73,12 +78,18 @@
         line-height: 32px;
         color: #fff;
     }
+    @include lg-screen {
+        font-family:  futura-pt,   sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        @include fontStyle(64, 72);
+    }
 }
 .ingredientimagehead{
     display: block;
-    margin-bottom: 24px;
+   
     @include md-screen {
-        
+        margin-bottom: 24px;
         display: none;
     }
 }
@@ -90,12 +101,13 @@
 .ingredientcontent .ingredienttitle{
     margin-top: 20px;
     @extend %futurapt-bold ;
+    text-decoration: none;
     @include md-screen {
         margin-top: 40px;  
     }
 }
 .ingredientcontent .ftitle{
-    margin-top: 0;
+    margin-top: 28px;
     @include md-screen {
         margin-top: 40px;  
     }
@@ -104,9 +116,12 @@
     max-width: 100%;
 }
 .ingredientimagehead{
-    font-size: 48px;
-    line-height: 64px;
+    font-size: 40px;
+    line-height: 56px;
+    @extend %futurapt-light;
     color: #fff;
+
+ 
 }
 .ingredientorder{
     order: -1;

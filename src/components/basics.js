@@ -58,9 +58,9 @@ const Basics = ({ node }) => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1.05,
-          dots: false,
+          dots: true,
           arrows: false,
-          adaptiveHeight: true,
+          // adaptiveHeight: true,
         },
       },
     ]
@@ -225,7 +225,7 @@ const Basics = ({ node }) => {
                             </div>
                             {/* Start of slider  */}
                             <div
-                              className={index % 2? "col-12 col-lg-6 " + basicsStyles.whiteWrapper + " " + basicsStyles.evenSection : "col-12 col-lg-6 " + basicsStyles.whiteWrapper}
+                              className={index % 2? "col-12 col-lg-6 whiteWrapper " + basicsStyles.whiteWrapper + " " + basicsStyles.evenSection : "col-12 col-lg-6 whiteWrapper " + basicsStyles.whiteWrapper}
                             >
                               <div
                                 className={[
@@ -250,18 +250,21 @@ const Basics = ({ node }) => {
                                         price={prod.field_clinical_price ? prod.field_clinical_price : prod.field_medical_price? prod.field_medical_price : ""}
                                         rate="0"
                                         Sku={prod.field_medical_sku?prod.field_medical_sku:prod.field_clinical_sku?prod.field_clinical_sku:""}
+                                        minQuantity={(prod.field_min_quantity == 0 || prod.field_min_quantity > 0)? prod.field_min_quantity : ""}
                                         premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
-                                        
+                                        productCat={prod.field_medical_id? "medical" : "clinical"}
                                         feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
                                         productdescription={prod.field_medical_description ? { __html: prod.field_medical_description.processed } : prod.field_clinical_description ? { __html: prod.field_clinical_description.processed } : ""}
                                         productLink={prod.path ? prod.path.alias : ""}
                                         productimage={prod.relationships &&
                                           prod.relationships.field_medical_image &&
+                                          prod.relationships.field_medical_image[0] &&
                                           prod.relationships.field_medical_image[0].localFile &&
                                           prod.relationships.field_medical_image[0].localFile.childImageSharp ? prod.relationships.field_medical_image[0].localFile.childImageSharp.fluid
                                           :
                                           prod.relationships &&
                                             prod.relationships.field_clinical_image &&
+                                            prod.relationships.field_clinical_image[0] &&
                                             prod.relationships.field_clinical_image[0].localFile &&
                                             prod.relationships.field_clinical_image[0].localFile.childImageSharp ? prod.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
                                             : ""}
@@ -400,6 +403,7 @@ export const fragment = graphql`
                   field_clinical_id
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   field_clinical_type
                   field_clinical_description {
                     processed
@@ -427,6 +431,7 @@ export const fragment = graphql`
                   field_clinical_id
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   field_clinical_type
                   path {
                     alias
@@ -457,6 +462,7 @@ export const fragment = graphql`
                   field_clinical_id
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   field_clinical_type
                   path {
                     alias
@@ -487,6 +493,7 @@ export const fragment = graphql`
                   field_clinical_id
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   field_clinical_type
                   path {
                     alias
@@ -517,6 +524,7 @@ export const fragment = graphql`
                   field_clinical_id
                   field_clinical_price
                   field_clinical_sku
+                  field_min_quantity
                   field_clinical_type
                   path {
                     alias
@@ -548,6 +556,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
                   field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -579,6 +588,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
                   field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -610,6 +620,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -641,6 +652,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -672,6 +684,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
               field_medical_premier_points_id
                   field_medical_description {
                     processed
@@ -703,6 +716,7 @@ export const fragment = graphql`
                   field_medical_id
                   field_medical_premier_points
                   field_medical_sku
+                  field_min_quantity
               field_medical_premier_points_id
                   field_medical_description {
                     processed

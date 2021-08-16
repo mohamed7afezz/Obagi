@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import basichero from '../assets/scss/components/basic-hero.module.scss'
 const Sepratorimg = ({ node }) => {
-  console.log('hassan',node)
+
     return (
       <div className={basichero.Sepratorimg}>
       <div className={["container-fluid "].join(" ")}>
@@ -11,7 +11,7 @@ const Sepratorimg = ({ node }) => {
      <div className="col-12 col-lg-10 offset-lg-1">
        {
          node.relationships?node.relationships.field_divieder_image?
-         <Img className={basichero.Sepimg} fluid={node.relationships.field_divieder_image.localFile.childImageSharp.fluid}/>:"":""
+         <Img alt="img"  className={basichero.Sepimg} fluid={node.relationships.field_divieder_image.localFile.childImageSharp.fluid}/>:"":""
        }
      </div>
           

@@ -14,11 +14,15 @@ import ShowAccount from './show-account'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import SearchContext from "../providers/search-provider"
-import $ from 'jquery'
 import AboveHeader from './above-header'
-const baseUrl = process.env.Base_URL;
+import mobLogo from '../assets/images/Obagi.svg'
+import searchImg from '../assets/images/Search.svg'
+import bagImg from '../assets/images/Bag.svg'
+import menuImg from '../assets/images/Menu.svg'
 
-const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
+const baseUrl = process.env.Base_URL;
+const $ = require("jquery");
+const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBar }) => {
 
   const { search, setSearchIndex, searchInIndex } = useContext(SearchContext)
 
@@ -32,8 +36,10 @@ const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
         nodes {
           field_clinical_id
           title
+          field_clinical_free_sample
           field_clinical_price
           field_clinical_sku
+          field_min_quantity
           path {
             alias
           }
@@ -55,11 +61,14 @@ const Header = ({ siteTitle, nodeType, menuType, fragment }) => {
       }
       MedicalProduct: allNodeMedicalProduct {
         nodes {
+          field_is_best_seller
           field_medical_id
           title
+          field_medical_free_sample
           field_medical_price
           field_medical_premier_points_id
           field_medical_sku
+          field_min_quantity
           field_medical_premier_points
           path {
             alias
@@ -225,23 +234,28 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
     }
   `)
+ 
   setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    // if (typeof window !== "undefined") {
 
-      (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
-      window.extole.createZone({
-        name: "mobile_menu",
-        element_id: 'extole_zone_mobile_menu',
-        data: {
-          "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
-          "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
-          "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
-          "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
-        }
-      });
+    //   (function (c, b, f, k, a) { c[b] = c[b] || {}; for (c[b].q = c[b].q || []; a < k.length;)f(k[a++], c[b]) })(window, "extole", function (c, b) { b[c] = b[c] || function () { b.q.push([c, arguments]) } }, ["createZone"], 0);
+    //   window.extole.createZone({
+    //     name: "mobile_menu",
+    //     element_id: 'extole_zone_mobile_menu',
+    //     data: {
+    //       "partner_user_id": user ? user.id : "", // RECOMMENDED IF AVAILABLE
+    //       "email": user ? user.email : "", // RECOMMENDED IF AVAILABLE
+    //       "first_name": user ? user.first_name : "", // RECOMMENDED IF AVAILABLE
+    //       "last_name": user ? user.last_name : "" // RECOMMENDED IF AVAILABLE
+    //     }
+    //   });
 
-    }
+
+    // }
+      adjustHeight();
+
+      $('#mobNavButton').css('display','block');
 
   }, []);
 
@@ -283,16 +297,14 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       document.querySelector(".Notify").style.display = "block";
     }
   }
-
   function removeCategory() {
-    var y = document.getElementById("category-section");
-    if (y.style.display === "none") {
+    let y = document.querySelector("#category-section");
+    if (y.style.display === "none" &&  (!nodeType.includes('medical') && !nodeType.includes('clinical') )) {
       y.style.display = "block";
     } else {
       y.style.display = "none";
     }
   }
-
 
   function openSearch() {
     var search = document.getElementById("search-wrapper");
@@ -429,18 +441,18 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //   homeMargin = $(".node-home").css('margin-top');
 //   clinicalMargin = $(".node-clinical").css('margin-top');
 //   medicalMargin = $(".node-medical").css('margin-top');
-//   console.log("css", homeMargin, clinicalMargin, medicalMargin)
 
-//   function adjustHeight() {
-//     let headerHeight
-//     if ($(window).width() < 992) {
-//       headerHeight = $("header").outerHeight() + 'px';
-//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", headerHeight);
-//     } else {
-//       $("#gatsby-focus-wrapper > div > div > main > div:first-child").css("padding-top", '0');
-//     }
-//     console.log("ashhhh", headerHeight, $("#gatsby-focus-wrapper > div > div > main > div:first-child"))
-//   }
+
+  function adjustHeight() {
+    let headerHeight
+    if ($(window).width() < 992) {
+      headerHeight = $("#mob-navigation").outerHeight() + 'px';
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", headerHeight);
+    } else {
+      $("#gatsby-focus-wrapper > div > div > main > div").first().css("padding-top", '0');
+    }
+  
+  }
 
 //   function defer(method) {
 //     if (window.jQuery) {
@@ -449,14 +461,12 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 //         setTimeout(function() { defer(method) }, 50);
 //     }
 // }
-//   $(window).on('load', function () {
-//     defer(adjustHeight())
 
-//   })
-
-//   $(window).on('resize', function () {
-//     defer(adjustHeight())
-//   })
+  if(typeof window !== "undefined") {  
+    $(window).on('resize', function () {
+      adjustHeight();
+    })
+  }
 
   // $(window).on('resize', function () {
 
@@ -469,7 +479,6 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //     $(".node-clinical").css("margin-top", homeMargin);
   // //     $(".node-medical").css("margin-top", clinicalMargin);
   // //     $(".node-home").css("margin-top", medicalMargin);
-  // //     console.log("cssss", homeMargin, clinicalMargin, medicalMargin)
   // //   }
   // //   // if ($(window).width() <= 768) {
 
@@ -479,6 +488,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   // //   // }
   // // })
 
+  
 
   return (
 
@@ -491,23 +501,24 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
           <div className="row">
             <div className={headerStyles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><Img fixed={data.logo.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><img alt="img"  src={mobLogo} className={headerStyles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
                 <div className={headerStyles.icons}>
                   <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><Link to="#" className={headerStyles.navButton}><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></Link></div>
+                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><img alt="img"  src={searchImg} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
+                          let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
+                          .filter(product => product != undefined)
+                          .reduce((acc, i) => acc + i, 0)
                         return (
                           <div className={headerStyles.cartWrapper}>
                             <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
-                              <Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
-                              {value &&
-                                value.state.cart &&
-                                value.state.cart.numberItems > 0 && (
-                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                              <img alt="img"  src={bagImg} className={headerStyles.iconImg} />
+                              {productsQuantity > 0 && (
+                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                 )}
                             </button></div>
                         );
@@ -515,7 +526,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     </CartContext.Consumer>
 
                   </div>
-                  <button className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeFirstIcons(); removeCategory(); }}></button>
+                  <button id="mobNavButton" style={{display: "none"}} className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeCategory(); }}></button>
                 </div>
               </div>
             </div>
@@ -527,8 +538,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
               <div className="collapse navbar-collapse nav-container" id="navbar">
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
-                <div className={headerStyles.lowerSection}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} />{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
+                <div className={[headerStyles.lowerSection, "mob-menu-lower-section"].join(" ")}>
+                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} alt="img"/>{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
                   <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
                 </div>
 
@@ -538,7 +549,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
 
 
-          <div className={headerStyles.categorySection} id="category-section" style={{ display: (nodeType ? (nodeType.includes('medical') || nodeType.includes('clinical') ? "none" : "block") : "block") }} >
+          <div className={headerStyles.categorySection} id="category-section" style={{ display: (showMobBar? "block" : nodeType.includes('medical') || nodeType.includes('clinical') || hideMobBar ? "none" : "block" )}} >
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
                 <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
@@ -558,10 +569,10 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
                 <div className={headerStyles.searchSection}>
-                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img fixed={data.searchIcon.childImageSharp.fixed} /></Link>
+                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img alt="img"  fixed={data.searchIcon.childImageSharp.fixed} /></Link>
                   <input type="search" onKeyUp={inputval} className={[headerStyles.searchInput, "searchInputm"].join(" ")}></input>
-                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
-                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img fixed={data.close.childImageSharp.fixed} /></button>
+                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
+                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
                 </div>
               </div>
             </div>
@@ -584,7 +595,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
-              <div className="row mr-0 ml-0">
+              <div className="row mr-0">
 
 
 
@@ -596,7 +607,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                 </div>
 
                 <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                  <Link to="/" ><Img alt="img"  fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
                 </div>
 
                 <div className="col col-padding">
@@ -606,7 +617,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                         user ?
                           <>
                             <button type="button" data-toggle="modal" data-target="#show-account">
-                              <Img fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
+                              <Img alt="img"  fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
                             </button>
                             {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
@@ -614,17 +625,18 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                           <Link to="/my-account/signin">SIGN IN</Link>
                       }
                     </p>
-                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
+                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
+                          let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
+                          .filter(product => product != undefined)
+                          .reduce((acc, i) => acc + i, 0)
                         return (
                           <div className={headerStyles.navButton}>
                             <div className={headerStyles.cartWrapper}>
-                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
-                                {value &&
-                                  value.state.cart &&
-                                  value.state.cart.numberItems > 0 && (
-                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{value.state.cart.numberItems}</p>
+                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                                {productsQuantity > 0 && (
+                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                   )}
                               </button></div></div>
                         );

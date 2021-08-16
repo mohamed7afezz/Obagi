@@ -27,6 +27,8 @@ export const UserProvider = ({ children }) => {
 
         if (userData !== "User not login.") {
             setUser(userData[0]);
+            
+           ;
         }
         setIsLoading(false);
 
@@ -80,7 +82,7 @@ export const UserProvider = ({ children }) => {
             mode: 'cors'
         });
 
-        fetch('https://gtotest.mybigcommerce.com/login.php?action=logout', {
+        fetch('https://secure.obagi.com/login.php?action=logout', {
             method: 'GET', mode: 'no-cors', credentials: 'include'
         });
 
@@ -91,29 +93,35 @@ export const UserProvider = ({ children }) => {
 
     // register
     async function handleRegister(user) {
-
+        setIsLoading(true);
 
         const newUserRes = await fetch(`${baseUrl}bigcommerce/v1/customer`, {
             method: "POST",
-            credentials: 'include',
             body: JSON.stringify([user])
         })
-        
 
         if (newUserRes.status == 200) {
 
-
+            //window.fbq('track', 'CompleteRegistration');
+            window.dataLayer.push({
+                'event': 'fb_tags_trigger',
+                'fb_event_name': 'CompleteRegistration'
+            });
             await getUserData();
 
 
 
             navigate("/my-account/orders");
-
+            setErr();
+        
 
         } else {
             let res = await newUserRes.json();
             setErr(res.errors);
+         
         }
+        setIsLoading(false);
+
     }
 
     return (

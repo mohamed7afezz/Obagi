@@ -10,27 +10,29 @@
 const path = require('path');
 
 module.exports.onCreateNode = ({ node, actions }) => {
-    const { createNodeField } = actions;
-    
-    // create slug for each node
-    if (node.internal.type === "node__page" || 
-        node.internal.type === "node__clinical_product" || 
-        node.internal.type === "node__medical_product"  ||
-        node.internal.type === "taxonomy_term__clinical_skin_concern"
-        ) {
-        const slug = `${node.path.alias}`;
-        createNodeField({
-            node,
-            name: `slug`,
-            value: slug
-        });
-    }
+  const { createNodeField } = actions;
+
+  // create slug for each node
+  if ((node.internal.type === "node__page" ||
+    node.internal.type === "node__clinical_product" ||
+    node.internal.type === "node__medical_product" ||
+    node.internal.type === "taxonomy_term__clinical_skin_concern" ||
+    node.internal.type === "node__blog_post" ||
+    node.internal.type === "taxonomy_term__blogs")
+    && !node.field_medical_free_sample && !node.field_clinical_free_sample) {
+    const slug = `${node.path.alias}`;
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug
+    });
+  }
 }
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
 
-  
+
   if (page.path.match(/^\/my-account/)) {
     page.matchPath = "/my-account/*"
 
@@ -39,14 +41,16 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 }
 module.exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions;
- 
-    // 1- get path to template
-    const temp = path.resolve('./src/templates/basic-page.js');
-    const productTemp = path.resolve('./src/templates/product-page.js');
-    const productCollectionTemp = path.resolve('./src/templates/product-collection.js');
-    // 2- get data from node
-    const result = await graphql(`
+  const { createPage } = actions;
+
+  // 1- get path to template
+  const temp = path.resolve('./src/templates/basic-page.js');
+  const productTemp = path.resolve('./src/templates/product-page.js');
+  const productCollectionTemp = path.resolve('./src/templates/product-collection.js');
+  const blogPostTemp = path.resolve('./src/templates/blog-post.js')
+  const blogCategoryTemp = path.resolve('./src/templates/blog-category.js')
+  // 2- get data from node
+  const result = await graphql(`
         {
             allNodePage {
                 edges {
@@ -61,6 +65,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
             allNodeClinicalProduct {
                 edges {
                     node {
+                      field_clinical_free_sample
                         fields {
                             slug
                         }
@@ -71,6 +76,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
             allNodeMedicalProduct {
                 edges {
                     node {
+                      field_medical_free_sample
                         fields {
                             slug
                         }
@@ -168,176 +174,276 @@ module.exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               },
+              allTaxonomyTermBlogs {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                    relationships {
+                      taxonomy_term__blogs {
+                        name
+                        relationships {
+                          taxonomy_term__blogs {
+                            name
+                            path {
+                              alias
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                
+              },
+              allNodeBlogPost {
+                edges {
+                  node {
+                    path {
+                      alias
+                    }
+                    drupal_internal__nid
+                  }
+                }
+              },
         }
     `);
-    
-    result.data.allNodePage.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug === '/homepage' ? '/' : node.fields.slug,
-            component: temp,
-            context: {
-                slug: node.fields.slug,
-                nodetype: 'basic'
-            }
-        });
-    });
 
-    result.data.allNodeClinicalProduct.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug,
-            component: productTemp,
-            context: {
-                slug: node.fields.slug,
-                collectionName: 'all clinical Products',
-                collectionUrl: '/clinical/all',
-                nodetype: 'clinical'
-            }
-        });
+  result.data.allNodePage.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug === '/homepage' ? '/' : node.fields.slug,
+      component: temp,
+      context: {
+        slug: node.fields.slug,
+        nodetype: 'basic'
+      }
     });
+  });
 
-    result.data.allNodeMedicalProduct.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug,
-            component: productTemp,
-            context: {
-                slug: node.fields.slug,
-                collectionName: 'all medical Products',
-                collectionUrl: '/medical/all',
-                nodetype: 'medical'
-                
-            }
-        });
-    });
 
-    result.data.allTaxonomyTermClinicalSkinConcern.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug ,
-            component: productCollectionTemp,
-            context: {
-                slug: node.fields.slug,
-                nodetype: 'clinicalConcern',
-                collectionName: 'clinical skin concern',
-                collectionUrl: '/clinical/skin-concerns',
-                checktaxonomyType: 'clinical'
-            }
-        });
-    });
-    result.data.allTaxonomyTermClinicalCategories.edges.forEach(({ node }) => {
-        createPage({
-            path:   node.path.alias ,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'clinicalCategories',
-                collectionName: 'Clinical Categories',
-                collectionUrl: '/clinical/category',
-                checktaxonomyType: 'clinical'
-            }
-        });
-    });
-    result.data.allTaxonomyTermMedicalSkinConcern.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'medicalConcern',
-                collectionName: 'Medical skin concerns',
-                collectionUrl: '/medical/skin-concerns',
-                checktaxonomyType: 'medical'
-            }
-        });
-    });
-    result.data.allTaxonomyTermMedicalCategories.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'medicalCategories',
-                collectionName: 'medical Categories',
-                collectionUrl: '/medical/category',
-                checktaxonomyType: 'medical'
+  result.data.allNodeBlogPost.edges.forEach(({ node }) => {
+    node.path.alias && (node.path.alias == "/skin-simplified/skin-concern/clinical-blog" || node.path.alias == "/behind-the-lines/professional-c/medical-blog")? ""
+      : node.path.alias? createPage({
+        path: node.path.alias,
+        component: blogPostTemp,
+        context: {
+          slug: node.path.alias,
+          nodetype: 'blog'
+        }
+      }) : ""
+  });
 
-            }
-        });
-    });
-    result.data.allTaxonomyTermClinicalGroups.edges.forEach(({ node }) => {
+  result.data.allTaxonomyTermBlogs.edges.forEach(({ node }) => {
+    node.relationships.taxonomy_term__blogs == null && node.path.alias ?
+      createPage({
+        path: node.path.alias,
+        component: blogCategoryTemp,
+        context: {
+          slug: node.path.alias,
+          nodetype: 'blogSubCategory'
+        }
+      }) :
+      node.relationships.taxonomy_term__blogs
+        && node.relationships.taxonomy_term__blogs[0]
+        && node.relationships.taxonomy_term__blogs[0].relationships
+        && node.relationships.taxonomy_term__blogs[0].relationships.taxonomy_term__blogs
+        && node.path.alias ?
         createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'clinicalGroups',
-                collectionName: 'Clinical Categories',
-                collectionUrl: '/clinical/skin-care',
-                checktaxonomyType: 'clinical'
+          path: node.path.alias,
+          component: blogCategoryTemp,
+          context: {
+            slug: node.path.alias,
+            nodetype: 'blog'
+          }
+        }) : ""
+  });
 
-            }
-        });
-    });
-    result.data.allTaxonomyTermMedicalProductLines.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'medicalLine',
-                collectionName: 'Medical Product lines',
-                collectionUrl: '/medical/product-lines',
-                checktaxonomyType: 'medical'
-            }
-        });
-    });
-    result.data.allTaxonomyTermClinicalSkinType.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'skinClinicalType',
-                collectionName: 'Clinical Categories',
-                collectionUrl: '/clinical/category',
-                checktaxonomyType: 'clinical'
-            }
-        });
-    });
-    result.data.allTaxonomyTermMedicalSkinType.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'skinMedicalType',
-                checktaxonomyType: 'medical'
 
-            }
-        });
-    });
-    result.data.allTaxonomyTermClinicalIngredients.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'ClinicalIngredients',
-                collectionName: 'Clinical Ingredient',
-                collectionUrl: '/clinical/ingredients',
-                checktaxonomyType: 'clinical'
+  result.data.allNodeClinicalProduct.edges.forEach(({ node }) => {
+    node.field_clinical_free_sample == true ? "" :
+      createPage({
+        path: node.fields.slug,
+        component: productTemp,
+        context: {
+          slug: node.fields.slug,
+          collectionName: 'all clinical Products',
+          collectionUrl: '/clinical/all',
+          nodetype: 'clinical'
+        }
+      });
+  });
 
-            }
-        });
-    });
-    result.data.allTaxonomyTermMedicalIngredients.edges.forEach(({ node }) => {
-        createPage({
-            path: node.path.alias,
-            component: productCollectionTemp,
-            context: {
-                slug: node.path.alias,
-                nodetype: 'MedicalIngredients',
-                checktaxonomyType: 'medical'
 
-            }
-        });
+
+  result.data.allNodeMedicalProduct.edges.forEach(({ node }) => {
+    node.field_medical_free_sample == true ? "" :
+      createPage({
+        path: node.fields.slug,
+        component: productTemp,
+        context: {
+          slug: node.fields.slug,
+          collectionName: 'all medical Products',
+          collectionUrl: '/medical/all',
+          nodetype: 'medical'
+
+        }
+      });
+  });
+
+  result.data.allTaxonomyTermClinicalSkinConcern.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: productCollectionTemp,
+      context: {
+        slug: node.fields.slug,
+        nodetype: 'clinicalConcern',
+        collectionName: 'clinical skin concern',
+        collectionUrl: '/clinical/skin-concerns',
+        checktaxonomyType: 'clinical'
+      }
     });
+  });
+  result.data.allTaxonomyTermClinicalCategories.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'clinicalCategories',
+        collectionName: 'Clinical Categories',
+        collectionUrl: '/clinical/category',
+        checktaxonomyType: 'clinical'
+      }
+    });
+  });
+  result.data.allTaxonomyTermMedicalSkinConcern.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'medicalConcern',
+        collectionName: 'Medical skin concerns',
+        collectionUrl: '/medical/skin-concerns',
+        checktaxonomyType: 'medical'
+      }
+    });
+  });
+  result.data.allTaxonomyTermMedicalCategories.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'medicalCategories',
+        collectionName: 'medical Categories',
+        collectionUrl: '/medical/category',
+        checktaxonomyType: 'medical'
+
+      }
+    });
+  });
+  result.data.allTaxonomyTermClinicalGroups.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'clinicalGroups',
+        collectionName: 'Clinical Categories',
+        collectionUrl: '/clinical/skin-care',
+        checktaxonomyType: 'clinical'
+
+      }
+    });
+  });
+  result.data.allTaxonomyTermMedicalProductLines.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'medicalLine',
+        collectionName: 'Medical Product lines',
+        collectionUrl: '/medical/product-lines',
+        checktaxonomyType: 'medical'
+      }
+    });
+  });
+  result.data.allTaxonomyTermClinicalSkinType.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'skinClinicalType',
+        collectionName: 'Clinical Categories',
+        collectionUrl: '/clinical/category',
+        checktaxonomyType: 'clinical'
+      }
+    });
+  });
+  result.data.allTaxonomyTermMedicalSkinType.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'skinMedicalType',
+        checktaxonomyType: 'medical'
+
+      }
+    });
+  });
+  result.data.allTaxonomyTermClinicalIngredients.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'ClinicalIngredients',
+        collectionName: 'Clinical Ingredient',
+        collectionUrl: '/clinical/ingredients',
+        checktaxonomyType: 'clinical'
+
+      }
+    });
+  });
+  result.data.allTaxonomyTermMedicalIngredients.edges.forEach(({ node }) => {
+    createPage({
+      path: node.path.alias,
+      component: productCollectionTemp,
+      context: {
+        slug: node.path.alias,
+        nodetype: 'MedicalIngredients',
+        checktaxonomyType: 'medical'
+
+      }
+    });
+  });
+}
+
+
+const glob = require('glob')
+const fs = require('fs-extra')
+ 
+exports.onPostBuild = async () => {
+ const publicPath = path.join(__dirname, 'public')
+ const hash = `${new Date().getTime()}`
+ 
+ const htmlAndJSFiles = glob.sync(`${publicPath}/**/*.{html,js}`)
+ console.log(
+ '[onPostBuild] Replacing page-data.json references in the following files:'
+ )
+ for (let file of htmlAndJSFiles) {
+ const stats = await fs.stat(file, 'utf8')
+ if (!stats.isFile()) continue
+ console.log(file)
+ var content = await fs.readFile(file, 'utf8')
+ var result = content
+ .replace(/page-data.json/g, `page-data.json?${hash}`)
+ .replace(/app-data.json/g, `app-data.json?${hash}`)
+ await fs.writeFile(file, result, 'utf8')
+ }
 }

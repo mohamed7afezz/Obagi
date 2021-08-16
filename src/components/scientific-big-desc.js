@@ -5,18 +5,18 @@ import Img from 'gatsby-image'
 const SintificFooter = ({ node }) => {
 
   return (
-      <div className={[sientificStyle.paddingfooter].join(' ')}>
-    <div className={["container-fluid"].join(" ")}>
-      <div className="row">
-        <div className={["col-12 offset-lg-1 col-lg-6",sientificStyle.leftsecfooter].join(" ")}>
-      <div className dangerouslySetInnerHTML={{ __html: node.field__scientific_left_describti.processed }}></div>
-       </div>
-       <div className="col-12 offset-lg-1 col-lg-4">
-                  <h1 className={[sientificStyle.link].join(' ')}><Link to={node.field_scientific_link_url}>{node.field_scientific_link_title_}</Link></h1>
-            </div>
-      
+    <div className={[sientificStyle.paddingfooter].join(' ')}>
+      <div className={["container-fluid"].join(" ")}>
+        <div className="row">
+          <div className={["col-12 offset-lg-1 col-lg-6", sientificStyle.leftsecfooter].join(" ")}>
+            <div className={sientificStyle.description} dangerouslySetInnerHTML={{ __html: node.field__scientific_left_describti.processed }}></div>
+          </div>
+          <div className="col-12 col-md-6 col-lg-4">
+            <h1 className={[sientificStyle.link].join(' ')}><Link to={node.field_scientific_link_url}>{node.field_scientific_link_title_}</Link></h1>
+          </div>
+
+        </div>
       </div>
-    </div>
     </div>
   )
 }

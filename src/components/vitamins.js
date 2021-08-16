@@ -6,7 +6,6 @@ import vitaminsStyles from '../assets/scss/components/vitamins.module.scss'
 
 const Vitamins = ({ node }) => {
 
-  // console.log("vit", node.relationships)
     return (
         <>
           <div className={["container-fluid", vitaminsStyles.wrapper].join(" ")}>
@@ -14,7 +13,7 @@ const Vitamins = ({ node }) => {
               <div className="col-12 col-lg-5 offset-lg-1">
                 {node.field_paragraph_title? <div className={vitaminsStyles.title} dangerouslySetInnerHTML={{__html: node.field_paragraph_title.processed}}></div> : ""}
                 {node.field_vitamins_subtitle? <div className={vitaminsStyles.subtitle} dangerouslySetInnerHTML={{__html: node.field_vitamins_subtitle.processed}}></div> : ""}
-                {node.relationships && node.relationships.field_paragraph_image && node.relationships.field_paragraph_image.localFile? <Img className={[vitaminsStyles.image, "d-none d-lg-block"].join(" ")} fluid={node.relationships.field_paragraph_image.localFile.childImageSharp.fluid}/> : ""}
+                {node.relationships && node.relationships.field_paragraph_image && node.relationships.field_paragraph_image.localFile? <Img alt="img"  className={[vitaminsStyles.image, "d-none d-lg-block"].join(" ")} fluid={node.relationships.field_paragraph_image.localFile.childImageSharp.fluid}/> : ""}
               </div>
               <div className="col-12 col-lg-4 offset-lg-1">
                 { node.relationships?

@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react'
 import ProgressBar from '../../components/progress-bar'
 
@@ -9,6 +10,7 @@ const Q6 = (props) => {
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function checkDataCondition(condition, data) {
         if (condition) {
@@ -17,7 +19,19 @@ const Q6 = (props) => {
             return '';
         }
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
+        <>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
         <div className="skinanalyzer-questions-wrapper sixth-question-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
                 <div className="col-auto">
@@ -40,12 +54,12 @@ const Q6 = (props) => {
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
                     <div className="question-header">
-                        What is your skin tone on the Fitzpatrick Scale?
+                        What Is Your Skin Tone on the Fitzspatrick Scale?
                         <button type="button" className="analyzer-info-button" data-toggle="modal" data-target="#infoModal">
                             &#8520;
                         </button>
                     </div>
-                    <div className="question-text">The fitzpatrick is a universal scale that allows us to lorem ipsum dolor sit amet consectetur adipiscing elitp hasellus sodales ipsum commodo euismod.</div>
+                    <div className="question-text">The Fitzpatrick Skin Tone Scale classifies skin by pigmentation and reaction to sun exposure. Type I skin generally burns; Type VI skin rarely burns.</div>
                 </div>
             </div>
 
@@ -55,32 +69,32 @@ const Q6 = (props) => {
                         <div className="row sixth-question">
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIC" name="q" value="Type I" onChange={sendBackData} />
-                                <label htmlFor="TypeIC" id="firstColorC">Type I</label>
+                                <label onClick={topFunction}  htmlFor="TypeIC" id="firstColorC">Type I</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIIC" name="q" value="Type II" onChange={sendBackData} />
-                                <label htmlFor="TypeIIC" id="secondColorC">Type II</label>
+                                <label onClick={topFunction}  htmlFor="TypeIIC" id="secondColorC">Type II</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIIIC" name="q" value="Type III" onChange={sendBackData} />
-                                <label htmlFor="TypeIIIC" id="thirdColorC">Type III</label>
+                                <label onClick={topFunction}  htmlFor="TypeIIIC" id="thirdColorC">Type III</label>
                             </div>
 
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIVC" name="q" value="Type IV" onChange={sendBackData} />
-                                <label htmlFor="TypeIVC" id="fourthColorC">Type IV</label>
+                                <label onClick={topFunction}  htmlFor="TypeIVC" id="fourthColorC">Type IV</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVC" name="q" value="Type V" onChange={sendBackData} />
-                                <label htmlFor="TypeVC" id="fifthColorC">Type V</label>
+                                <label onClick={topFunction}  htmlFor="TypeVC" id="fifthColorC">Type V</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVIC" name="q" value="Type VI" onChange={sendBackData} />
-                                <label htmlFor="TypeVIC" id="sixthColorC">Type VI</label>
+                                <label onClick={topFunction}  htmlFor="TypeVIC" id="sixthColorC">Type VI</label>
                             </div>
                         </div>
                     </>
@@ -90,32 +104,32 @@ const Q6 = (props) => {
                         <div className="row sixth-question">
                             <div className="col-6  col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeI" name="q" value="Type I" onChange={sendBackData} />
-                                <label htmlFor="TypeI" id="firstColor">Type I</label>
+                                <label onClick={topFunction}  htmlFor="TypeI" id="firstColor">Type I</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeII" name="q" value="Type II" onChange={sendBackData} />
-                                <label htmlFor="TypeII" id="secondColor">Type II</label>
+                                <label onClick={topFunction}  htmlFor="TypeII" id="secondColor">Type II</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeIII" name="q" value="Type III" onChange={sendBackData} />
-                                <label htmlFor="TypeIII" id="thirdColor">Type III</label>
+                                <label onClick={topFunction}  htmlFor="TypeIII" id="thirdColor">Type III</label>
                             </div>
 
                             <div className="col-6 col-lg-2 offset-lg-3">
                                 <input type="radio" id="TypeIV" name="q" value="Type IV" onChange={sendBackData} />
-                                <label htmlFor="TypeIV" id="fourthColor">Type IV</label>
+                                <label onClick={topFunction}  htmlFor="TypeIV" id="fourthColor">Type IV</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeV" name="q" value="Type V" onChange={sendBackData} />
-                                <label htmlFor="TypeV" id="fifthColor">Type V</label>
+                                <label onClick={topFunction}  htmlFor="TypeV" id="fifthColor">Type V</label>
                             </div>
 
                             <div className="col-6 col-lg-2">
                                 <input type="radio" id="TypeVI" name="q" value="Type VI" onChange={sendBackData} />
-                                <label htmlFor="TypeVI" id="sixthColor">Type VI</label>
+                                <label onClick={topFunction}  htmlFor="TypeVI" id="sixthColor">Type VI</label>
                             </div>
                         </div>
                     </>
@@ -138,45 +152,51 @@ const Q6 = (props) => {
                         </div>
                         <div class="modal-body">
                             <div className="skin-type-title">Skin Type I</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): ivory
-                            Eye Color: light blue, light gray, or light green
-                            Natural Hair Color: red or light blonde
-                            Sun Reaction: skin always freckles, always burns and peels, and never tans
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): ivory</p>
+                                <p>Eye Color: light blue, light gray, or light green</p>
+                                <p>Natural Hair Color: red or light blonde</p>
+                                <p>Sun Reaction: skin always freckles, always burns and peels, and never tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type II</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): fair or pale
-                            Eye Color: blue, gray, or green
-                            Natural Hair Color: blonde
-                            Sun Reaction: skin usually freckles, burns and peels often, and rarely tans
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): fair or pale</p>
+                                <p>Eye Color: blue, gray, or green</p>
+                                <p>Natural Hair Color: blonde</p>
+                                <p>Sun Reaction: skin usually freckles, burns and peels often, and rarely tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type III</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): fair to beige, with golden undertones
-                            Eye Color: hazel or light brown
-                            Natural Hair Color: dark blonde or light brown
-                            Sun Reaction: skin might freckle, burns on occasion, and sometimes tans
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): fair to beige, with golden undertones</p>
+                                <p>Eye Color: hazel or light brown</p>
+                                <p>Natural Hair Color: dark blonde or light brown</p>
+                                <p>Sun Reaction: skin might freckle, burns on occasion, and sometimes tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type IV</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): olive or light brown
-                            Eye Color: dark brown
-                            Natural Hair Color: dark brown
-                            Sun Reaction: doesn’t really freckle, burns rarely, and tans often
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): olive or light brown</p>
+                                <p>Eye Color: dark brown</p>
+                                <p>Natural Hair Color: dark brown</p>
+                                <p>Sun Reaction: doesn’t really freckle, burns rarely, and tans often</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type V</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): dark brown
-                            Eye Color: dark brown to black
-                            Natural Hair Color: dark brown to black
-                            Sun Reaction: rarely freckles, almost never burns, and always tans
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): dark brown</p>
+                                <p>Eye Color: dark brown to black</p>
+                                <p>Natural Hair Color: dark brown to black</p>
+                                <p>Sun Reaction: rarely freckles, almost never burns, and always tans</p>
                             </div>
 
                             <div className="skin-type-title">Skin Type VI</div>
-                            <div className="skin-type-desc">Skin Color (before sun exposure): deeply pigmented dark brown to darkest brown
-                            Eye Color: brownish black
-                            Natural Hair Color: black
-                            Sun Reaction: never freckles, never burns, and always tans darkly
+                            <div className="skin-type-desc">
+                                <p>Skin Color (before sun exposure): deeply pigmented dark brown to darkest brown</p>
+                                <p>Eye Color: brownish black</p>
+                                <p>Natural Hair Color: black</p>
+                                <p>Sun Reaction: never freckles, never burns, and always tans darkly</p>
                             </div>
                         </div>
                     </div>
@@ -185,7 +205,7 @@ const Q6 = (props) => {
 
             <div className="row question-progress-wrapper d-none d-lg-flex">
                 <div className="col-auto">
-                    <ProgressBar 
+                    <ProgressBar
                         percentage="85.71428571428571%"
                         index="6"
                         total="7"
@@ -193,6 +213,7 @@ const Q6 = (props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default Q6

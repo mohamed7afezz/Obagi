@@ -6,25 +6,48 @@
     text-align: center;
     // background-repeat: no-repeat;
     background: no-repeat center center;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
+    padding-bottom: 65px;
 
-    @include lg-screen {
+
+    @include md-screen {
         // padding-left: 196px;
         background: no-repeat center center fixed;
-        position: relative;
         margin-bottom: 308px;
+        padding-bottom: 0;
 
+   
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-style {
+        margin: 0;
+        height: 100%;
     }
 }
 
 .container-wrapper {
-    padding-bottom: 65px;
+    padding-bottom: 0;
+    margin-bottom: 142px;
+    position: relative;
 
-    @include lg-screen {
-        position: relative;
+    
+    &::after {
+        height: 99px;
+        width: 103px;
+        content: '';
+        background: #44c4d9;
+        position: absolute;
+        left: 0;
+        bottom: -99px;
+        z-index: 99;
+    }
+
+    @include md-screen {
         padding-bottom: 180px;
-
+        margin-bottom: 0;
         &::after {
             height: 196px;
             width: 197px;
@@ -38,28 +61,28 @@
     }
 }
 
-.box-margin {
-    margin-bottom: 115px;
-
-    @include md-screen {
-        margin-bottom: 0;
-    }
-}
+// .box-margin {
+//     margin-bottom: 40px;
+//     @include md-screen {
+//         margin-bottom: 0;
+//     }
+// }
 
 
 .header ,.header h1{
     @include fontStyle(40, 56);
     text-align: center;
     @extend %futurapt-light;
-    margin: 248px 0 8px;
+    margin: 64px 0 8px;
 
 
     @include lg-screen {
         margin: 232px 0 30px;
-
+        @include fontStyle(40, 56);
     }
 }
-.subtitle h2{
+
+.subtitle h2, .subtitle{
     @include fontStyle(18, 24);
     margin-bottom: 15px;
     @extend %futurapt-book;
@@ -70,13 +93,13 @@
 
 }
 .subtitle {
-    @extend %futurapt-book;
-    margin-bottom: 56px;
 
     @include lg-screen {
         max-width: 870px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 56px;
+
     }
 }
 

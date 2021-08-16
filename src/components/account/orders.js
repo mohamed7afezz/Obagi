@@ -3,7 +3,14 @@ import UserAccount from '../../components/user-account'
 import OrderNoHistory from '../../components/order-no-history'
 import OrderHistory from '../../components/order-history'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
-
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/core";
+import SEO from "../seo"
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const baseUrl = process.env.Base_URL;
 
 
@@ -12,17 +19,30 @@ export default function Orders() {
 
     const [orders, setOrders] = useState({});
 
+    const [isLoading, setIsLoading] = useState(false);
     async function getOrders() {
+        setIsLoading(true);
 
-        const ordersData = await (await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
+        const ordersDataRequest = await fetch(`${baseUrl}bigcommerce/v1/customer_orders`, {
             method: 'GET',
             credentials: 'include',
             mode: 'cors'
-        })).json();
-
-        if (ordersData !== "User not login.") {
-            setOrders(ordersData);
+        }).catch(error => {
+        
+            setIsLoading(false);
+        })
+        
+        if (ordersDataRequest.status === 204 || ordersDataRequest.status === 404) {
+   
+        } else {
+            const ordersData = await ordersDataRequest.json();
+            if (ordersData !== "User not login.") {
+                setOrders(ordersData);
+            }
         }
+        setIsLoading(false);
+
+        
     }
 
     useEffect(() => {
@@ -31,12 +51,13 @@ export default function Orders() {
 
     return (
         <UserAccount activeTab="orders">
-            <div className="tab-pane active" id="orders" role="tabpanel">
+            <SEO title="Orders | Obagi" ogTitle="Orders | Obagi" />
+            <div className="tab-pane active orders-comp" id="orders" role="tabpanel">
 
                 <div className={[myAccountStyles.secondTitleWrapper, "d-none d-lg-flex"].join(" ")}>
-                    <div className={myAccountStyles.secondTitle}>Order History</div>
+                    <h2 className={myAccountStyles.secondTitle}>Order History</h2>
 
-                    {orders !== "undefined" || Object.keys(orders).length != 0 ?
+                    {orders !== "undefined" && Object.keys(orders).length != 0 && orders.length != 0?
                         <div className={myAccountStyles.ordersCount}>{orders.length} {orders.length > 1? "Orders" : "Order"}</div>
                         : ""
                     }
@@ -44,7 +65,13 @@ export default function Orders() {
 
                 </div>
                 {/* <OrderNoHistory /> */}
-                <OrderHistory />
+                {isLoading? 
+                    <div>
+                        <ClipLoader css={spinner} size={150} color={"#123abc"}/>           
+                    </div> 
+                    : 
+                    <OrderHistory ordersList={orders} />
+                }
             </div>
         </UserAccount>
     )

@@ -1,0 +1,40 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm install -g gatsby-cli
+    gatsby build --no-uglify
+  displayName: 'npm install and build'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'public/'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+- task: FtpUpload@2
+  inputs:
+    credentialsOption: 'inputs'
+    serverUrl: 'ftps://waws-prod-dm1-121.ftp.azurewebsites.windows.net'
+    username: dev-obagi\$dev-obagi
+    password: sLjsGJxjcCRrburkoYi40xpCPtQcRfhNsd0amnZtTNC10sPovrFz7eYBtsAo
+    rootDirectory: '$(build.artifactstagingdirectory)'
+    filePatterns: '**'
+    remoteDirectory: /site/wwwroot/storefront
+    clean: true
+    cleanContents: false
+    preservePaths: true
+    trustSSL: false

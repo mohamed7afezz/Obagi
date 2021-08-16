@@ -53,15 +53,17 @@ const Featured = ({ node }) => {
 `)
 
 
-let currentName = node.field_featured_title.processed;
+
+let currentName = node.field_featured_title? node.field_featured_title.processed : null;
 let productCount = 0;
 let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
-  return currentName.includes(item.node.name.split(' ')[0])
+  if (currentName) {
+    return currentName.includes(item.node.name.split(' ')[0])
+
+  }
 })[0];
 let paragraphId = node.field_featured_paragraph_id? node.field_featured_paragraph_id.processed : null;
-console.log("ash", paragraphId)
 
-//console.log('current', currentName)
 
 productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.length : 0;
 
@@ -74,21 +76,27 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
 
             <div className="video-wrapper">
 
-              <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+              <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>    
+              {node.relationships.field_featured_video ?  
+                <>
                 <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                   <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                </a>
-                {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : "") : ''}
+                </a>   
+                 {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
+                 <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster?
+                 node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid:""} /> : ""}</>
+                  : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                    node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
               </div>
             </div>
           </div>
           <div className="col-12">
             <div className={featuredStyles.textWrapper}>
               {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-              <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+              {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
               {node.field_featured_products_title? <div className={featuredStyles.products}><Link to={node.field_featured_button.uri.replace('internal:', '')} ><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>)</Link></div> : ""}
               <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-              {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
+              {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : " "}
               {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className="button-link">{node.field_featured_button.title}</Link></div> : ""}
@@ -105,10 +113,10 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
             <div className={["col-lg-5", "offset-lg-1", featuredStyles.columnsWrapper].join(" ")}>
               <div className="col-lg-7 offset-lg-2">
                 {node.field_featured_subtitle ? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-                <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+                {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                 {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div>(<span className={featuredStyles.productsNo}>{ " " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                 <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                {node.field_featured_perfect_title ? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
+                {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div>{node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {" " + item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : ""}
                 {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
@@ -118,10 +126,15 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
             <div className={["col-lg-5", "col-right-padding", "pl-0", featuredStyles.columnsWrapper].join(" ")}>
               <div className="video-wrapper">
                 <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                  <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                {node.relationships.field_featured_video ? 
+                <>
+                <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                     <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                  </a>
-                  {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
+                  </a>              
+                  {node.relationships.field_featured_video.relationships.field_video_poster.localFile? 
+                  <Img alt="img"  className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+                  : ""}</> : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                    node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                 </div>
               </div>
             </div>
@@ -135,10 +148,16 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
               <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
                 <div className="video-wrapper">
                   <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+                  {node.relationships.field_featured_video ? 
+                    <>
                     <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                       <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                     </a>
-                    {node.relationships.field_featured_video ? (node.relationships.field_featured_video.relationships.field_video_poster.localFile? <Img className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
+                    
+                    {node.relationships.field_featured_video.relationships.field_video_poster.localFile?
+                     <Img alt="img"  className={featuredStyles.videoimg}  fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> 
+                     : ""}</> : <Img alt="img"  className={featuredStyles.videoimg} fluid={node.relationships.field_featured_image?
+                      node.relationships.field_featured_image.localFile.childImageSharp.fluid:""} />}
                   </div>
                 </div>
               </div>
@@ -146,10 +165,10 @@ productCount = taxonomy? taxonomy.node.relationships.node__clinical_product.leng
               <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
                 <div className="col-lg-7 offset-lg-2">
                   {node.field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: node.field_featured_subtitle.processed}}></div> : ""}
-                  <div dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></div>
+                  {node.field_featured_title? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                   {node.field_featured_products_title? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{__html: node.field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
                   <div dangerouslySetInnerHTML={{ __html: node.field_featured_description.processed }} className={featuredStyles.description}></div>
-                  {node.field_featured_perfect_title? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div> {node.relationships.field_issues_categories.map((item, index) => {
+                  {node.field_featured_perfect_title && node.relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: node.field_featured_perfect_title.processed}}></div> {node.relationships.field_issues_categories.map((item, index) => {
                   return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === node.relationships.field_issues_categories.length - 1? '' : ', '}</span>
               })} </div> : ""}
                   {node.field_featured_button? <div className={featuredStyles.linkSection}><Link to={node.field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{node.field_featured_button.title}</Link></div> : ""}
@@ -182,6 +201,7 @@ export const fragment = graphql`
           field_featured_title {
             processed
           }
+      
           field_featured_perfect_title {
             processed
           }
@@ -194,15 +214,19 @@ export const fragment = graphql`
           field_image_right
           
           relationships {
-            field_issues_categories {
-              path {
-                alias
-              }
-              ... on taxonomy_term__clinical_skin_concern {
-                id
-                name
+            field_featured_image {
+              localFile {
+                childImageSharp {
+                  fluid (quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                  original {
+                    src
+                  }
+                }
               }
             }
+       
             field_featured_video {
               field_video_link
               relationships {

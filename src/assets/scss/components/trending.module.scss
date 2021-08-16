@@ -21,7 +21,10 @@
     @include md-screen {
         margin-bottom: 0;
         height: 100%;
-
+        img {
+            border-top-right-radius: 6px;
+            border-top-left-radius: 6px;
+        }
 
     }
 
@@ -67,6 +70,7 @@
 
     @include lg-screen {
         position: absolute;
+        padding: 0;
         top: 29px;
         left: 24px;
         z-index: 99;
@@ -78,7 +82,7 @@
     @extend %futurapt-light;
     text-transform: uppercase;
     padding-left: 24px;
-
+    margin-bottom: 0;
     @include lg-screen {
         @include fontStyle(32, 48);
         text-align: center;

@@ -28,7 +28,7 @@ const Blog = ({ node }) => {
                     {node.relationships.field_card.map((item, index) => {
                         return (
                             <div className="col-12 col-lg-3">
-                                {item.relationships.field_card_image.localFile ? <div className={blogStyles.cardImage}><Img fluid={item.relationships.field_card_image.localFile.childImageSharp.fluid} /></div> : ''}
+                                {item.relationships.field_card_image.localFile ? <div className={blogStyles.cardImage}><Img alt="img"  fluid={item.relationships.field_card_image.localFile.childImageSharp.fluid} /></div> : ''}
                                 {item.field_card_title ? <div dangerouslySetInnerHTML={{ __html: item.field_card_title.processed }} className={blogStyles.cardTitle}></div> : ''}
                                 {item.field_card_description ?
                                     <div className={blogStyles.cardDesc}>

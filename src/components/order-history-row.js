@@ -3,14 +3,19 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
 import orderHistoryRowStyles from '../assets/scss/components/order-history-row.module.scss'
 
-const OrderHistoryRow = ({ node,
+const OrderHistoryRow = ({ data,
     orderNum,
     placedOn,
     lastUpdated,
     itemsNum,
     total,
     status }) => {
- 
+    orderNum = data.id;
+    placedOn = data.date_created;
+    lastUpdated = data.date_modified;
+    itemsNum = data.items_total;
+    total = parseFloat(data.total_inc_tax).toFixed(2);
+    status = data.status == "Manual Verification Required"? "Processing" : data.status;
 
     const placedOnDate = new Date(placedOn)
         .toLocaleDateString({},
@@ -21,11 +26,6 @@ const OrderHistoryRow = ({ node,
         .toLocaleDateString({},
             { timeZone: "UTC", month: "long", day: "2-digit", year: "numeric" }
         ).split(' ')
-
-console.log("date", placedOn, lastUpdated)
-
-
- 
     return (
         <>
             <div className={["d-lg-none", orderHistoryRowStyles.orderWrapper].join(" ")}>
@@ -59,7 +59,7 @@ console.log("date", placedOn, lastUpdated)
                 </div>
             </div>
 
-            <tr className={["d-none d-lg-table-row"].join(" ")}>
+            <tr className={["d-none d-lg-table", orderHistoryRowStyles.tRow].join(" ")}>
                 <td scope="row">{orderNum}</td>
                 <td>{`${placedOnDate[0]} ${placedOnDate[1]} ${placedOnDate[2]}`}</td>
                 <td>{`${lastUpdatedDate[0]} ${lastUpdatedDate[1]} ${lastUpdatedDate[2]}`}</td>

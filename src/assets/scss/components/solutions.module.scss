@@ -22,6 +22,7 @@
     @extend %futurapt-light;
     @include fontStyle(32, 48);
     padding-bottom: 40px;
+    margin-bottom: 0;
 
     @include lg-screen {
         @include fontStyle(64, 72);
@@ -55,6 +56,7 @@
                     background-repeat: no-repeat;
                     content: '';
                     background-image: url('../../images/small-right.png');
+                    filter: brightness(100);
                     left: -48px;
                     top: 50%;
                     height: 32px;
@@ -76,6 +78,19 @@
         border-radius: unset;
         border: unset;
         padding: 28px 26px 27px 27px;
+    }
+}
+
+@media (max-width: 991px) {
+    .icon-wrapper > div {
+        width: 41px !important;
+        height: 41px !important;
+    }
+    .icon-wrapper:hover, 
+    .icon-wrapper:active, 
+    .solution-wrapper:hover .icon-wrapper, 
+    .solution-wrapper:active .icon-wrapper {
+        background: #00c7d8;
     }
 }
 
@@ -109,5 +124,14 @@
 
     @include lg-screen {
         padding: 0;
+    }
+}
+.describtion{
+    font-size: 16px;
+    line-height: 24px;
+    padding-bottom: 40px;
+    @include lg-screen{
+        font-size: 24px;
+        line-height: 32px;
     }
 }

@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react'
 import ProgressBar from '../../components/progress-bar'
 
@@ -8,6 +9,7 @@ const Q5 = (props) => {
     }
     function startOver(e) {
         props.passChildData('q2', '', 1);
+        topFunction();
     }
     function checkDataCondition(condition, data) {
         if (condition) {
@@ -15,8 +17,19 @@ const Q5 = (props) => {
         } else {
             return '';
         }
-    }
+    }  function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
     return (
+        <>
+        {<div className={["white-color Analyzer-padding breadcramp-con", "col-12"].join(" ")}>
+              <p className="breadcramp">
+                <Link to="/">Home</Link>{" "}
+               / <span>Skin Analyzer</span>
+                    </p>
+            
+              </div>}
         <div className="skinanalyzer-questions-wrapper">
             <div className="row question-progress-wrapper d-lg-none justify-content-center">
                 <div className="col-auto">
@@ -38,8 +51,8 @@ const Q5 = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-6 offset-lg-3">
-                    <div className="question-header">What is your skin type?</div>
-                    <div className="question-text">All Skin care products will react differently depending on your skin type. Lorem ipsum dolor sit amet consectetur adipiscing elitp hasellus sodales.</div>
+                    <div className="question-header">What Is Your Skin Type?</div>
+                    <div className="question-text">How you care for your skin depends largely on your skin type. Would you say your skin is normal, dry, oily, or combination?</div>
                 </div>
             </div>
 
@@ -48,26 +61,28 @@ const Q5 = (props) => {
                     <>
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
+                                <input type="radio" id="NormalSkinC" name="q" value="Normal Skin" onChange={sendBackData} />
+                                <label onClick={topFunction}  htmlFor="NormalSkinC">Normal Skin</label>
+                            </div>
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkinC" name="q" value="Dry Skin" onChange={sendBackData} />
-                                <label htmlFor="DrySkinC">Dry Skin</label>
+                                <label onClick={topFunction}  htmlFor="DrySkinC">Dry Skin</label>
                             </div>
 
+
+                        </div>
+                        <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
-                                <input type="radio" id="NormalSkinC" name="q" value="Normal Skin" onChange={sendBackData} />
-                                <label htmlFor="NormalSkinC">Normal Skin</label>
+                                <input type="radio" id="OilySkinC" name="q" value="Oily Skin" onChange={sendBackData} />
+                                <label onClick={topFunction}  htmlFor="OilySkinC">Oily Skin</label>
                             </div>
-                            </div>
-                            <div className="row justify-content-center">
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkinC" name="q" value="Combination Skin" onChange={sendBackData} />
-                                <label htmlFor="CombinationSkinC">Combination Skin</label>
+                                <label onClick={topFunction}  htmlFor="CombinationSkinC">Combination Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-auto label-wrapper">
-                                <input type="radio" id="OilySkinC" name="q" value="Oily Skin" onChange={sendBackData} />
-                                <label htmlFor="OilySkinC">Oily Skin</label>
-                            </div>
+
                         </div>
                     </>
                 )}
@@ -75,27 +90,29 @@ const Q5 = (props) => {
                     <>
                         <div className="row justify-content-center">
                             <div className="col-12 col-lg-auto label-wrapper">
+                                <input type="radio" id="NormalSkin" name="q" value="Normal Skin" onChange={sendBackData} />
+                                <label onClick={topFunction}  htmlFor="NormalSkin">Normal Skin</label>
+                            </div>
+                            <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="DrySkin" name="q" value="Dry Skin" onChange={sendBackData} />
-                                <label htmlFor="DrySkin">Dry Skin</label>
+                                <label onClick={topFunction}  htmlFor="DrySkin">Dry Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-auto label-wrapper">
-                                <input type="radio" id="NormalSkin" name="q" value="Normal Skin" onChange={sendBackData} />
-                                <label htmlFor="NormalSkin">Normal Skin</label>
-                            </div>
+
 
                         </div>
                         <div className="row justify-content-center">
+                            <div className="col-12 col-lg-auto label-wrapper">
+                                <input type="radio" id="OilySkin" name="q" value="Oily Skin" onChange={sendBackData} />
+                                <label onClick={topFunction}  htmlFor="OilySkin">Oily Skin</label>
+                            </div>
 
                             <div className="col-12 col-lg-auto label-wrapper">
                                 <input type="radio" id="CombinationSkin" name="q" value="Combination Skin" onChange={sendBackData} />
-                                <label htmlFor="CombinationSkin">Combination Skin</label>
+                                <label onClick={topFunction}  htmlFor="CombinationSkin">Combination Skin</label>
                             </div>
 
-                            <div className="col-12 col-lg-auto label-wrapper">
-                                <input type="radio" id="OilySkin" name="q" value="Oily Skin" onChange={sendBackData} />
-                                <label htmlFor="OilySkin">Oily Skin</label>
-                            </div>
+
                         </div>
                     </>
                 )}
@@ -109,7 +126,7 @@ const Q5 = (props) => {
 
             <div className="row question-progress-wrapper d-none d-lg-flex">
                 <div className="col-auto">
-                    <ProgressBar 
+                    <ProgressBar
                         percentage="71.42857142857143%"
                         index="5"
                         total="7"
@@ -117,6 +134,7 @@ const Q5 = (props) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default Q5

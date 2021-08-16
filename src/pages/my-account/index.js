@@ -14,7 +14,7 @@ import Premier from '../../components/account/premier-points';
 
 export default function MyAccount() {
     return (
-        <Layout>
+        <Layout hideMobBar={true}>
             <Router>
                 <PrivateRoute path="/my-account" component={UserAccount} />
                 <PrivateRoute path="/my-account/show-account" component={ShowAccount}/>

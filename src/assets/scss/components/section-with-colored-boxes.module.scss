@@ -1,301 +1,527 @@
-@import '../typography/typography.scss';
-@import '../grid/grid.scss';
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
 
 .col-left-padding {
-    padding-left: 0;
+  padding-left: 0;
 }
 .col-right-padding {
-    padding-right: 0;
+  padding-right: 0;
 }
 
 .big-section {
-    background: #132466;
-    
-    @include lg-screen {
-        background: transparent;
-    }
+  background: #132466;
+
+  @include lg-screen {
+    background: transparent;
+  }
+}
+.ctabtn a{
+  color: #fff;
+padding: 28px 92px;
+border: 1px solid #fff;
+border-radius: 6px;
+background-color: transparent;
+text-decoration: none;
+text-transform: uppercase;
+font-weight: 700;
+display: inline-block;
+letter-spacing: 1.2px;
+width: 100%;
+font-size: 12px;
+text-align: center;
+transition: all ease 300ms;
+line-height: 16px;
+@include lg-screen{
+width: auto;
+
+}
 }
 
+.ctabtn a:hover{
+  color: #132466;
+padding: 28px 92px;
+border: 1px solid #fff;
+border-radius: 6px;
+background-color: #fff;
+}
+.ctabtn {
+  margin-top: 10px;
+}
 .small-section {
-    color: #fff;
+  color: #fff;
+  background: #132466;
+  @include lg-screen {
     background: #132466;
-    @include lg-screen {
-        background: #132466;
-        padding: 0 30px 244px 187px;
-        &::before {
-            height: 118px;
-            width: 118px;
-            content: '';
-            background: #ffcd00;
-            position: absolute;
-            left: -103px;
-            z-index: 99;
-        }
-
-        &::after {
-            background: #44c4d9;
-            content: '';
-            position: absolute;
-            z-index: 999;
-            left: 0;
-            bottom: 0;
-            height: 196px;
-            width: 197px;
-        }
+    padding: 0 30px 244px 187px;
+    &::before {
+      height: 118px;
+      width: 118px;
+      content: "";
+      background: #ffcd00;
+      position: absolute;
+      left: -103px;
+      z-index: 99;
     }
 
-    @include xl-screen {
-            // margin-bottom: 196px;
+    &::after {
+      background: #44c4d9;
+      content: "";
+      position: absolute;
+      z-index: 999;
+      left: 0;
+      bottom: 0;
+      height: 196px;
+      width: 197px;
     }
+  }
+
+  @include xl-screen {
+    // margin-bottom: 196px;
+  }
 }
 
 .not-home .small-section {
-    @include lg-screen {
-        &::before {
-            height: 157px;
-            width: 157px;
-        }
-        &::after {
-            background: #44c4d9;
-            content: '';
-            position: absolute;
-            z-index: 999;
-            left: 50px;
-            bottom: 0;
-            height: 273px;
-            width: 273px;
-        }
+  @include lg-screen {
+    &::before {
+      height: 157px;
+      width: 157px;
     }
-
-    @include xl-screen {
-        padding-right: 117px;
-
+    &::after {
+      background: #44c4d9;
+      content: "";
+      position: absolute;
+      z-index: 999;
+      left: 50px;
+      bottom: 0;
+      height: 273px;
+      width: 273px;
     }
+  }
+
+  @include xl-screen {
+    padding-right: 117px;
+  }
 }
 
 .image-right .small-section {
-    @include lg-screen {
-        padding: 0 187px 244px 30px;
+  @include lg-screen {
+    padding: 0 187px 244px 30px;
 
-        &::before {
-            left: unset;
-            right: -142px;
-   
-        }
-        &::after {
-            left: unset;
-            right: 50px;
-        }
+    &::before {
+      left: unset;
+      right: -142px;
     }
-    @include xl-screen {
-        padding-left: 117px;
+    &::after {
+      left: unset;
+      right: 50px;
     }
-
+  }
+  @include xl-screen {
+    padding-left: 117px;
+  }
 }
 
 .first-section {
-    background: #132466;
-    position: relative;
+  background: #132466;
+  position: relative;
+  &::before {
+    height: 44px;
+    width: 44px;
+    content: "";
+    background: #ffcd00;
+    position: absolute;
+    z-index: 99;
+  }
+  @include lg-screen {
+    background: #fff;
     &::before {
-        height: 44px;
-        width: 44px;
-        content: '';
-        background: #ffcd00;
-        position: absolute;
-        z-index: 99;
+      display: none;
     }
-    @include lg-screen {
-        background: #fff;
-        &::before {
-            display: none;
-        }
-        
-    }
+  }
 }
 
 .not-home .first-section {
-    order: 2;
+  order: 2;
 
-    @include lg-screen {
-        order: 0;
-    }
+  @include lg-screen {
+    order: 0;
+  }
 }
 
 .image-right .first-section {
-    order: 2;
+  order: 2;
 
-    &::before {
-        width: 46px;
-        height: 47px;
-    }
+  &::before {
+    width: 46px;
+    height: 47px;
+    left: unset;
+    right: 0;
+  }
 }
 
 .image {
-    margin-top: 44px;
-    position: relative;
-    z-index: 80;
+  margin-top: 44px;
+  position: relative;
+  z-index: 80;
+
+  &::after {
+    @include lg-screen {
+      background: #44c4d9;
+      content: "";
+      position: absolute;
+      z-index: 999;
+      right: -60px;
+      bottom: -44px;
+      height: 105px;
+      width: 104px;
+    }
+  }
+  @include lg-screen {
+    margin: 118px -157px 0 157px;
 
     &::after {
-        background: #44c4d9;
-        content: '';
-        position: absolute;
-        z-index: 999;
-        right: -60px;
-        bottom: -44px;
-        height: 105px;
-        width: 104px;
+      content: none;
     }
-    
-    @include lg-screen {
-        margin: 118px -157px 0 157px;
-        
-        &::after {
-            content: none;
-        }
-    }
+  }
+}
 
+.final-story .image{
+  @include lg-screen {
+    height: 100%;
+    & > div {
+      height: calc(100% + 79px);
+    }
+  }
 }
 
 .not-home .image {
-    margin-top: 0;
-    &::after {
-        bottom: 0;
-        right: 0;
-        width: 82px;
-        height: 82px;
-    }
-    @include lg-screen {
-        margin-top: 157px;
-        
-    }
+  margin-top: 0;
+  &::after {
+    bottom: 0;
+    right: 0;
+    width: 82px;
+    height: 82px;
+  }
+  @include lg-screen {
+    margin-top: 157px;
+  }
 }
 
 .image-right .image {
-    @include lg-screen {
-        margin-right: 157px;
-        margin-left: -157px;
-    }
+  &::after {
+    right: unset;
+    left: 0;
+  }
+  @include lg-screen {
+    margin-right: 157px;
+    margin-left: -157px;
+  }
 }
 
 .subtitle {
-    @extend %futurapt-bold;
-    @include fontStyle(16, 24);
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    padding: 61px 0 9px;
+  @extend %futurapt-bold;
+  @include fontStyle(16, 24);
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  padding: 61px 0 9px;
 
-    &::before {
-        width: 12px;
-        height: 12px;
-        margin-right: 16px;
-        background: #ffcd00;
-        content: '';
-        display: inline-block;
-    }
+  &::before {
+    width: 12px;
+    height: 12px;
+    margin-right: 16px;
+    background: #ffcd00;
+    content: "";
+    display: inline-block;
+  }
 
-    @include lg-screen {
-        padding: 158px 0 32px;
-        max-width: 592px;
-        margin: 0 auto;
-    }
+  @include lg-screen {
+    padding: 158px 0 32px;
+    max-width: 592px;
+    margin: 0 auto;
+  }
 }
 
 .title {
-    @extend %futurapt-light;
+  @extend %futurapt-light;
 
-    @include lg-screen {
-        max-width: 592px;
-        margin: 0 auto;
-    }
+  @include lg-screen {
+    max-width: 592px;
+    margin: 0 auto;
+  }
 }
 
 .not-home .title {
-    padding-top: 40px;
-    margin: 0;
-    @include fontStyle(32, 48);
+  padding-top: 40px;
+  margin: 0;
+  @include fontStyle(32, 48);
 
-    @include lg-screen {
-        padding-top: 197px;
-        @include fontStyle(64, 72)
-    }
+  @include lg-screen {
+    padding-top: 197px;
+    @include fontStyle(64, 72);
+  }
 }
 
 .description {
-    margin: 18px 0 45px;
+  margin: 18px 0 45px;
+  a {
+    color: #fff;
+    text-decoration: underline;
 
-    @include lg-screen {
-        margin: 16px auto 40px;
-        max-width: 587px;
+    &:hover {
+      color: #fff;
     }
+  }
+  @include lg-screen {
+    margin: 16px auto 40px;
+    max-width: 587px;
+  }
+  p {
+    padding-bottom: 25px;
+  }
+  li {
+    padding-bottom: 20px;
+  }
 }
 
 .not-home .description {
-    margin: 16px 0 40px;
-    @include fontStyle(16, 24);
+  margin: 16px 0 40px;
+  @include fontStyle(16, 24);
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  @include lg-screen {
+    @include fontStyle(24, 40);
+    margin: 32px 0 0 0;
+    font-family: futura-pt, sans-serif;
+    font-weight: 300;
+    font-style: normal;
 
     p {
-        margin-bottom: 20px;
+      margin-bottom: 30px;
     }
-
-    @include lg-screen {
-        @include fontStyle(24, 40);
-        margin: 32px 0 0 0;
-        font-family:  futura-pt,   sans-serif;
-        font-weight: 300;
-        font-style: normal;
-
-        p {
-            margin-bottom: 30px;
-        }
-    }
+  }
 }
 
 .link {
-    border-radius: 6px;
-    border: solid 1px #fff;
-    display: block;
-    text-align: center;
-    color: #fff;
-    letter-spacing: 1.2px;
-    padding: 20px 65px;
+  border-radius: 6px;
+  border: solid 1px #fff;
+  display: block;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 1.2px;
+  padding: 20px 65px;
+  text-transform: uppercase;
+  @extend %futurapt-bold;
+  @include fontStyle(12, 16);
 
-    @extend %futurapt-bold;
-    @include fontStyle(12, 16);
+  &:hover {
+    text-decoration: none;
+    color: #132466;
+    background: #fff;
+  }
+  @include md-screen {
+    display: inline-block;
+  }
 
+  @include lg-screen {
+    padding: 15px 25px;
+  }
 
-    &:hover {
-        text-decoration: none;
-        color : #132466;
-        background: #fff;
-
-        
-    }
-    @include md-screen {
-        display: inline-block;
-    }
-
-    @include lg-screen {
-        padding: 15px 25px;
-    }
-    
-    @include xl-screen {
-        padding: 28px 92px;
-    }
+  @include xl-screen {
+    padding: 28px 92px;
+  }
 }
 
 .link-section {
-    margin-bottom: 51px;
+  margin-bottom: 51px;
 
-    @include lg-screen {
-        margin: 0 auto auto;
-        max-width: 592px;
-
-    }
+  @include lg-screen {
+    margin: 0 auto auto;
+    max-width: 592px;
+  }
 }
 
 .not-home {
+  @include lg-screen {
+    margin-top: 186px;
+  }
+}
+.ourStory .title {
+  font-size: 40px;
+  line-height: 56px;
+  @include lg-screen {
+    font-size: 72px;
+    line-height: 88px;
+  }
+}
+.ourStory {
+  position: relative;
+  &::after {
+    content: " ";
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    bottom: 65px;
+    left: 0;
+    display: block;
+    background: #868cd2;
 
     @include lg-screen {
-        margin-top: 186px;
+      display: none;
     }
+  }
+  .big-section {
+    flex-direction: column-reverse;
+    background-color: #fff;
+    @include lg-screen {
+      flex-direction: row;
+      margin-left: -40px !important;
+    }
+  }
+  .col-right-padding {
+    padding-right: 15px;
+    padding-bottom: 75px;
+    background-color: #132466;
+
+    @include lg-screen {
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+  }
+  .col-left-padding {
+    padding-right: 0;
+    @include lg-screen {
+      padding-right: 15px;
+    }
+  }
+  .title {
+    margin-left: 0;
+  }
+  .subtitle {
+    margin-left: 0;
+    padding-top: 70px;
+    padding-bottom: 16px;
+    @include fontStyle(12, 16);
+    letter-spacing: 1.2px;
+
+    &::before {
+      margin-bottom: -2px;
+    }
+
+    @include lg-screen {
+      padding-top: 238px;
+      padding-bottom: 28px;
+      @include fontStyle(16, 24);
+      letter-spacing: 1.6px;
+
+      &::before {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .description {
+    margin-left: 0;
+    @include fontStyle(16, 24);
+    margin-top: 16px;
+    max-width: 600px;
+    margin-bottom: 0;
+    p {
+      padding-bottom: 0;
+    }
+
+    @include lg-screen {
+      margin-top: 40px;
+      @include fontStyle(28, 40);
+
+      p {
+          font-weight: 300;
+
+      }
+    }
+  }
+  .image {
+    margin: 0;
+    @include lg-screen {
+      margin: 118px 157px 0 -157px;
+
+      & > div {
+        // height: 100%;
+      }
+    }
+  }
+  .first-section {
+    &::before {
+      height: 65px;
+      width: 62px;
+      content: "";
+      background: #ffcd00;
+      position: absolute;
+      right: -62px;
+      z-index: 99;
+      left: auto;
+      bottom: 0;
+    }
+  }
+  .small-section {
+    color: #fff;
+    background: #132466;
+    position: relative;
+
+    @include lg-screen {
+      background: #132466;
+      padding: 0 157px 237px 30px;
+      height: 100%;
+      &::before {
+        height: 118px;
+        width: 118px;
+        content: "";
+        background: #ffcd00;
+        position: absolute;
+        right: -103px;
+        z-index: 99;
+        left: auto;
+      }
+
+      &::after {
+        background: #868cd2;
+        content: "";
+        position: absolute;
+        z-index: 999;
+        right: 157px;
+        bottom: -196px;
+        height: 196px;
+        width: 197px;
+        left: auto;
+      }
+    }
+
+    @include xl-screen {
+      // margin-bottom: 196px;
+      padding: 0 30px 237px 187px;
+    }
+  }
+}
+@media (min-width: 1120px) and (max-width: 1710px) {
+  .ourStory {
+    .image {
+      margin: 118px 0 0 -15px;
+      .gatsby-image-wrapper {
+        height: 100vh;
+      }
+    }
+  }
+  .ourStory .small-section::after {
+    right: 15px;
+  }
+}
+.ourStory {
+  padding-top: 0;
+  padding-bottom: 130px;
+  @include lg-screen {
+    padding-top: 192px;
+    padding-bottom: 196px;
+    margin-bottom: 160px;
+  }
 }

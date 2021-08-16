@@ -1,8 +1,13 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Obagi`,
+    description: `Obagi`,
+    author: `@Obagi`,
+    siteUrl:  `https://www.obagi.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,6 +19,92 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+      
+        exclude: [
+          `/test-page`,
+          `/press-releases`,
+          `/obagi-story`,
+          `/community`,
+          `/our-science`,
+          `/our-products`,
+          `/full-data-basic-page`,
+          `/clinical/skin-concerns`,
+          `/medical/product-lines`,
+          `/medical/ingredients`,
+          `/clinical/ingredients`,
+          `/clinical/category`,
+          `/customer-care`,
+          `/medical/categories`,
+          `/medical/skin-concern`,
+          `/medical/skin-care-lines`,
+          `/clinical/skin-concerns`,
+          `/clinical/skin-concern/*`,
+          `/clinical/categories/antioxidants`,
+          `/clinical/categories/sunscreens`,
+          `/clinical/categories/retinol`,
+          `/clinical/categories/moisturizers`,
+          `/clinical/categories/anti-aging`,
+          `/clinical/categories/facial-cleansers`,
+          `/clinical/categories/facial-exfoliators`,
+          `/clinical/categories/eye-care`,
+          `/clinical/categories/peels`,
+          `/clinical-categories/hydrator`,
+          `/clinical/ingredients/retinol`,
+          `/clinical/ingredients/glycolic-acid`,
+          `/clinical/ingredients/salicylic-acid`,
+          `/clinical/ingredients/lactic-acid`,
+          `/medical/ingredients/antioxidants`,
+          `/medical/ingredients/hyaluronic-acid`,
+          `/medical/ingredients/arbutin`,
+          `/medical/categories/limited-edition-kits`,
+          `/medical/skin-care-lines/obagi-medical`,
+          `/medical/skin-care-lines/obagi-medical-rx`,
+          `/clinical/skin-type/*`,
+          `/Physician-finder/`,
+          `/cart/`,
+          `/forgot-password/`,
+          `/main/`,
+          `/page-2/`,
+          `/phy-finder/`,
+          `/products/`,
+          `/using-typescript/`,
+          `/my-account`,
+          `/my-account/`,
+          `/my-account/account-settings`,
+          `/my-account/address-book`,
+          `/my-account/orders`,
+          `/my-account/premier-points`,
+          `/my-account/signin`,
+          `/blog`,
+          `/blog-coming-soon`, 
+          `/placeholder-test`,
+          `/search-page/`,
+          `/medical/categories/eye-care`,
+          `/medical/skin-concern/acne`,
+          `/medical/ingredients/tretinoin`,
+          `/medical/ingredients/hydroquinone`,
+          `/medical/skin-concern/redness-prone`,
+          `/medical/skin-concern/elasticity-sagging-skin`,
+          `/clinical/skin-care/brightening-skin-care`,
+          `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`,
+          `/skin-simplified/skin-concern/clinical-blog`,
+          `/behind-the-lines/professional-c/medical-blog`
+    ],
+        
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.obagi.com',
+        sitemap: 'https://www.obagi.com/sitemap.xml',
+        policy: [{ userAgent: '*', disallow:'' }],
+       
+      }
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -24,14 +115,19 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/android-icon-192x192.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/Obagi_Favicon.jpg`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://dev-obagi.azurewebsites.net/api/`,
+        baseUrl: process.env.sourceURL,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+        concurrentFileRequests: 1,
+        basicAuth: {
+					username: 'gatsby-user',
+					password: 'ndVn8Xk7iahMny4'
+				}
       },
     },
  {
@@ -43,14 +139,21 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        src: 'https://apps.bazaarvoice.com/deployments/obagi/main_site/staging/en_US/bv.js', // Change to the script filename
+        src: '//cdn.bc0a.com/autopilot/f00000000218233/autopilot_sdk.js', // Change to the script filename
       },
     },
     {
       resolve: 'gatsby-plugin-load-script',
       options: {
-        src: 'https://obagi.extole.io/core.js', // Change to the script filename
+        src: process.env.Bazaarvoice_URL,
       },
+    },
+    
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: process.env.Extole_URL,
+        },
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",
@@ -75,6 +178,6 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
   ],
 }

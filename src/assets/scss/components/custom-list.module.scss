@@ -1,0 +1,36 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.ListCon{
+    text-align: center;
+    width: 100%;
+    ul{
+    @include lg-screen{
+    padding-left: 0;
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    -o-colums:3;
+    }
+    padding-left: 20px;
+}
+    li{
+        text-align: left;
+       font-size: 18px;
+       line-height: 24px;
+    color: #d00;
+    flex: 0 0 100%;
+ 
+
+       
+ margin-bottom: 16px;
+    @include md-screen{
+        margin-bottom: 0;
+        flex: 0 0 31%;
+        padding-top: 16px;
+    }
+    }
+}.ListTitle{
+    margin-bottom: 0;
+    padding-bottom: 16px;
+}

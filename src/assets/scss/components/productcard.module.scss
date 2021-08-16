@@ -10,6 +10,24 @@
     padding-top: 25px;
     padding-bottom: 25px;
 }
+.rxIcon{
+max-width: 100%;
+
+}
+.rxIconCon{
+    width: 52px;
+height: 52px;
+margin-left: auto;
+margin-right: 23px;
+margin-top: 16px;
+position: absolute;
+right: 0;
+z-index: 98;
+@include lg-screen {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+}
 .cardname p {
     font-size: 12px;
     line-height: 16px;
@@ -29,20 +47,27 @@
 .productCardHero{
     background-color: #fff;
     height: 100%;
-  
+    border-radius: 6px;
+
+    &:hover {
+        box-shadow: 0 8px 30px 0 rgba(54, 75, 95, 0.15);
+    }  
 }
 .productCardHero .starspd{
-    padding-left: 16px;
+    // padding-left: 16px;
     padding-top: 24px;
 }
 .productCardHero{
-    padding-top: 25px;
+    // padding: 60px 0 0;
+    @include lg-screen {
+        padding: 0;
+    }
 }
 
 .productcarddesc{
     padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
+    // padding-left: 16px;
+    // padding-right: 16px;
     font-size: 18px;
     line-height: 32px;
     @extend %futurapt-bold;
@@ -59,7 +84,7 @@
     line-height: 24px;
     @extend %futurapt-book;
     padding-top: 8px;
-    padding-left: 16px;
+    // padding-left: 16px;
     padding-bottom: 16px;
     margin-top: auto;
 }
@@ -72,6 +97,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 .price{
     padding-top: 16px;
@@ -116,4 +143,5 @@
     margin-bottom: 25px;
     position: relative;
     margin-top: auto;
+
 }

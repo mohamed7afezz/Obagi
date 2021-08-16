@@ -1,0 +1,116 @@
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
+
+@media (max-width: 991px) {
+  .col-padding {
+    padding: 0;
+  }
+}
+
+.text-col {
+  background-color: #122466;
+  color: #fff;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #ffcd00;
+    width: 66px;
+    height: 33px;
+    left: 0;
+    top: -33px;
+  }
+
+
+  @include lg-screen {
+    
+    top: -188px;
+    margin-bottom: -188px;
+    background-color: transparent;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+.desk-text {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  position: relative;
+
+  @include lg-screen {
+    background-color: #122466;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 157px;
+    padding-right: 157px;
+    &::before {
+      right: 0;
+      content: "";
+      position: absolute;
+      background-color: #ffcd00;
+      width: 66px;
+      height: 33px;
+      top: -33px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: #ffcd00;
+        width: 40px;
+        height: 40px;
+        left: -40px;
+        top: 188px;
+    }
+  }
+}
+.subtitle {
+  letter-spacing: 1.2px;
+  margin-bottom: 46px;
+
+  @include lg-screen {
+      margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 40px;
+  line-height: 56px;
+  font-weight: 300;
+
+  @include lg-screen {
+      font-size: 48px;
+      line-height: 64px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  line-height: 32px;
+  margin-top: 28px;
+  margin-bottom: 34px;
+  color: #fefeff;
+  
+
+  @include lg-screen {
+    color: rgba(254, 254, 254, 0.8);
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 1.8px;
+    margin-top: 37px;
+    margin-bottom: 42px;
+  }
+}
+
+.link {
+  border-color: #fff;
+  color: #fff;
+
+  &:hover {
+      background-color: #fff;
+      color: #122466;
+  }
+}

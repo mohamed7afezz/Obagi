@@ -45,9 +45,13 @@
         min-height: 88px;
       }
   }
+  .pointer{
+    cursor: pointer;
+  }
   .BagProductDesc,.cartProductTitle,.cartProductTitle:hover{
       font-size: 14px;
       border: 0;
+      cursor: pointer;
       text-decoration: none;
       color: #132466;
       line-height: 16px;
@@ -74,6 +78,12 @@
       overflow: visible;
   }
   .productCounter{
+      padding-top: 15px;
+      padding-bottom: 15px;
+      @include lg-screen{
+          padding-top: 0;
+          padding-bottom: 0;
+      }
       width: 100%;
     a{
     background-color: transparent;
@@ -112,8 +122,11 @@
         }
   }
   .selectedproductsCard{
-      padding-bottom: 16px;
+      padding-bottom: 24px;
       align-items: center;
+  }
+  .selectedproductsCard + .selectedproductsCard{
+      padding-top: 24px;
   }
   .prouductCard{
       padding-bottom: 25px;
@@ -169,10 +182,11 @@
       padding-bottom: 24px;
   }
   .selectedproductsCard{
-      padding-top: 24px;
+      padding-top: 40px;
       padding-left: 24px;
       padding-right: 24px;
       @include md-screen{
+          padding-top: 0;
         padding-left: 40px;
       }
   }
@@ -257,7 +271,9 @@
 
     }
 }
-
+.bottomArrow{
+    font-size: 18px;
+}
 .bottom-link {
     @include fontStyle(12, 16);
     @extend %futurapt-bold;

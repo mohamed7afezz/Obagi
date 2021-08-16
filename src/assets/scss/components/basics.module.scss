@@ -35,7 +35,8 @@
     background: #f3f4fb;
 
     @include lg-screen {
-
+        margin-left: -40px;
+        margin-right: -40px;
         padding-bottom: 112px;
 
         &:first-of-type {
@@ -187,6 +188,7 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 40px;
+        flex-wrap: wrap;
         a {
             margin: 0;
         }

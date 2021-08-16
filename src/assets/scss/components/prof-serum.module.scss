@@ -1,0 +1,204 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.ProfessionalSerums{
+padding-top: 50px;
+padding-bottom: 0;
+text-align: center;
+
+@include lg-screen{
+    text-align: left;
+    padding-top: 155px;
+   
+}
+}
+.title{
+    padding-bottom: 30px;
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 600;
+    text-align: center;
+    @include lg-screen{
+        font-size: 64px;
+        line-height: 64px;
+        text-align: left;
+        padding-bottom: 55px;
+    }
+}
+.sectionDesc{
+    padding-top: 30px;
+    font-size: 24px;
+    line-height: 26.5px;
+    padding-bottom: 30px;
+    @include lg-screen{
+        font-size: 30px;
+        line-height: 38px;
+        padding-top: 0;
+    }
+}
+.secSectionTitle{
+    font-size: 24px;
+    line-height: 26.5px;
+    color: #F99D25;
+    font-weight: 900;
+    padding-bottom: 15px;
+   
+    @include lg-screen{
+    padding-bottom: 10px;    
+    }
+}
+.secSectionDesc{
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 15px;
+    @include lg-screen{
+        margin-bottom: 30px;
+    }
+}
+.subtitle{
+    font-weight: 600;
+    a {
+        color: #132466;
+        text-decoration: none;
+
+        &:hover {
+            color: #132466;
+            text-decoration: none;
+        }
+    }
+}
+.subdesc{
+  
+    padding-bottom: 47px;
+    @include lg-screen{
+        padding-bottom: 30px;
+        max-width: 342px;
+    }
+}
+.subdesc,.subtitle{
+font-size: 24px;
+line-height: 32px;
+    &:last-child{
+    border-bottom: 2px solid #132466;;
+    padding-bottom: 50px;
+    @include lg-screen{
+        border: 0;
+        padding-bottom: 0;
+    }
+}
+}
+.givemargin{
+    padding-top: 50px;
+  margin-bottom: 30px;
+  padding-bottom: 0 ;
+    @include lg-screen{
+        margin-bottom: 55px;
+        padding-top: 100px;
+    }
+}
+.leftsec{
+    padding-top: 30px;
+    @include lg-screen{
+        padding-top: 60px;
+    }
+}
+.seccoltitle{
+font-size: 32px;
+line-height: 36px;
+font-weight: 500;
+font-family: "big-caslon-fb";
+padding-bottom: 25px;
+color: #F99D25;
+    @include lg-screen{
+        padding-bottom: 18px;
+        font-size: 48px;
+        line-height: 72px;
+    }
+}
+.customp{
+    font-size: 24px;
+    line-height: 26.5px;
+    padding-bottom: 80px;
+    @include lg-screen{
+        padding-bottom: 30px;
+        font-size: 30px;
+        line-height: 38px;
+    }
+}
+.leftsecsubtitle{
+    font-size: 24px;
+    line-height: 26.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    letter-spacing: 2px;
+    @include lg-screen{
+        padding-bottom: 25px;
+    }
+   
+}.percentage{
+
+    padding-bottom: 30px;
+    @include lg-screen{
+        padding-bottom: 25px;
+       
+    }
+}
+.percentagecon{
+    display: flex;
+    align-items: center;
+    & + .percentagecon{
+        padding-top: 30px;
+        @include lg-screen{
+            padding-top: 25px;
+        }
+    }
+}
+.per{
+    font-size: 72px;
+    line-height: 93px;
+    color: #F99D25;
+    font-weight: 600;
+}
+.perdesc{
+    font-size: 18px;
+    line-height: 23px;
+    padding-left: 15px;
+    font-weight: 500;
+    text-align: left;
+    @include lg-screen{
+        max-width: 235px;
+        padding-left: 17px;
+    }
+}
+.mob-col-rev {
+    flex-direction: column-reverse;
+
+    @include lg-screen{
+        flex-direction: row;
+
+    }
+}
+
+@media (max-width: 991px) {
+    .col-auto {
+        flex: 0 0 auto;
+    }
+}
+.bord{
+    border: 1px solid #132466;
+    margin-top: 50px;
+   
+    @include lg-screen{
+        margin-top: 100px;
+    }
+}
+.footnote{
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #7C858A;
+    @include lg-screen{
+        max-width: 285px;
+    }
+}

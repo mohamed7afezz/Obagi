@@ -1,0 +1,21 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+
+.wrapper {
+    @include lg-screen {
+        margin-top: 88px;
+        margin-bottom: 44px;
+    }
+}
+.text {
+    margin-top: 32px;
+
+    @include lg-screen {
+        margin-top: 0;
+    }
+}
+
+.text-col {
+    order: 5;
+}

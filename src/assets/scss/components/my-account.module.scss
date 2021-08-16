@@ -177,6 +177,10 @@
         }
 }
 
+.image > div {
+    border-radius: 6px;
+}
+
 .address-button {
     display: block;
     width: 100%;
@@ -208,4 +212,103 @@
 
 .cs-number {
     white-space: nowrap;
+}
+.FsectionWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttonWrapper{
+    text-decoration: underline;
+    color: #132466 !important;
+  font-weight: 300;
+    @include lg-screen{
+        text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+   font-weight: 300;
+    padding: 16px 32px;
+    border: 1px solid #132466;
+    font-weight: 700;
+    border-radius: 6px;
+    text-decoration: none; 
+    }
+}
+.buttonWrapper:hover{
+    background-color:  #132466;
+    color: #fff !important;
+}
+.fsubtitle{
+    font-size: 32px;
+line-height: 48px;
+margin-top: 32px;
+margin-bottom: 8px;
+display: none;
+@include lg-screen{
+    display: block;
+}
+@extend %futurapt-light;
+}
+.formContainer{
+    margin-top: 32px;
+    @include lg-screen{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+}
+.formNote{
+    font-size: 14px;
+    color: #7c858a;
+
+margin-bottom: 16px;
+    @include lg-screen{
+    margin-bottom: 24px;
+}
+}
+.orderButton{
+    color: #fff;
+    background-color: #132466;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 16px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: 1px solid #132466;
+    padding-top: 16px;
+    padding-bottom: 16px;
+ width: 100%;
+    @include lg-screen{
+    width: 280px;
+}
+    @extend %futurapt-bold;
+
+}
+.alAccount{
+    font-weight: 300;
+}
+.Needpara{
+    
+    max-width: 224px;
+margin-top: 25px;
+font-weight: 500;
+    @include lg-screen{
+        max-width: none;
+     
+    }
+}
+.orderButtonContainer{
+    width: 100%;
+    display: inline-block;
+    @include lg-screen{
+     width: auto;
+    }
+}
+.removemobpadding{
+    padding-left: 0;
+    padding-right: 0;
+    @include lg-screen{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
 }

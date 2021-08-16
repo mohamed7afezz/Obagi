@@ -48,7 +48,7 @@ const HorizontalCard = ({
                 <div className="row">
                     <div className="col-lg-6">
         {productimage ? (
-          <Img className={Productcard.cardimg} fluid={productimage} />
+          <Img alt="img"  className={Productcard.cardimg} fluid={productimage} />
         ) : (
           ""
         )}
@@ -84,7 +84,7 @@ const HorizontalCard = ({
         )}
         {price ? (
           <div className={Productcard.priceCon}>
-            <p className={Productcard.price}>
+            <p className={[Productcard.price, `${price === "0"? "price-opacity" : ""}`].join(" ")}>
               $ <span className="prod-price">{price}</span>
             </p>
             {isrx == 'RX'?
@@ -92,7 +92,7 @@ const HorizontalCard = ({
               
              Locate a Physician
           </Link>
-            :<button className={[Productcard.addtocart, "the-product-button"].join(" ")} 
+            :<button className={[Productcard.addtocart, `the-product-button`].join(" ")} 
             onClick={() => {
               let quantity = 1;
               addToCart(productId,false,quantity);

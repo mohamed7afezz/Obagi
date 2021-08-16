@@ -14,7 +14,7 @@ const NewSearchProductsResult = ({ node }) => {
   const {clinicalSearchResults} = useContext(SearchContext);
   const {medicalSearchResults} = useContext(SearchContext);
   let products = []
-  let isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
+  let isDefultSelectCategoryMedical = medicalSearchResults.length >= clinicalSearchResults.length;
   
   function clinicalbg (){
     document.querySelector('.collectionList').classList.remove('medicalbg')
@@ -32,7 +32,7 @@ const NewSearchProductsResult = ({ node }) => {
     if(typeof window != undefined ){
       checkStock(baseUrl);
     }
-    isDefultSelectCategoryMedical = medicalSearchResults.length > clinicalSearchResults.length;
+    isDefultSelectCategoryMedical = medicalSearchResults.length >= clinicalSearchResults.length;
     if(document.querySelectorAll('.custom-select .select-selected').length < 1) {
       CustomSelect();
     }
@@ -103,7 +103,7 @@ sortPriceSelect.addEventListener("change", function (event) {
  
   return (
     <div
-      className={medicalSearchResults? (clinicalSearchResults? ( medicalSearchResults.length > clinicalSearchResults.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
+      className={medicalSearchResults? (clinicalSearchResults? ( medicalSearchResults.length >= clinicalSearchResults.length? "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList :  "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 medicalbg " + productsliststyle.collectionList) : "container-fluid collectionhero collectionList mt-48 " + productsliststyle.collectionList}>
       <div
         className={[
           "row",
@@ -197,13 +197,15 @@ sortPriceSelect.addEventListener("change", function (event) {
                         productLink={data.path.alias}
                       producttitle={data.title}
                       productdescription={{__html:data.field_medical_description.processed}}
-                      productimage={ data.relationships.field_medical_image &&  data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      productimage={ data.relationships.field_medical_image && data.relationships.field_medical_image[0] && data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
                       price={data.field_medical_price}
                       productId={data.field_medical_id}
                       isrx={data.relationships.field_medical_rx?data.relationships.field_medical_rx.name :""}
                       premierid={data.field_medical_premier_points_id?data.field_medical_premier_points_id:""}
                        feild_preimer={data.field_medical_premier_points?data.field_medical_premier_points:""}
                        Sku={data.field_medical_sku?data.field_medical_sku:""}
+                       minQuantity={(data.field_min_quantity == 0 || data.field_min_quantity > 0)? data.field_min_quantity : ""}
+                       productCat="medical"
                     />
                   </div> 
                       )) : <div className="col-12 text-center medicalProduct">No results found.</div> }
@@ -228,6 +230,8 @@ sortPriceSelect.addEventListener("change", function (event) {
                         price={data.field_clinical_price}
                         productId={data.field_clinical_id}
                         Sku = {data.field_clinical_sku}
+                        minQuantity={(data.field_min_quantity == 0 || data.field_min_quantity > 0)? data.field_min_quantity : ""}
+                        productCat= "clinical"
                       />
                            </div> 
                      )) : <div className="col-12 text-center clinicalProduct">No results found.</div> }

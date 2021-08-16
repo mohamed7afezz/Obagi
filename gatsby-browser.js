@@ -26,12 +26,10 @@ import { SearchProvider } from './src/providers/search-provider';
 const scrollTo = (id) => () => {
   const els = document.querySelectorAll(id)
   if (els) {
-    console.log("ash", els)
 
     for(let i = 0; i < els.length; i++) {
       if(els.item(i).offsetTop > 0) {
 
-        console.log("ash", els.item(i).offsetTop)
         return window.scroll({ top: els.item(i).offsetTop, behavior: 'smooth' });
 
       }
@@ -41,9 +39,6 @@ const scrollTo = (id) => () => {
 }
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  console.log("ash", location)
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.hash : null)
   if (location.hash) {
     window.setTimeout(scrollTo(location.hash), 1000)
   }

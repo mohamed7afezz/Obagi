@@ -46,7 +46,7 @@ background-color: transparent;
 }
 .howtousecon {
     background-color: rgba(68,196,217,.1);
-    padding-top: 48px;
+    padding-top: 32px;
     padding-bottom: 54px;
     
     @include md-screen {
@@ -74,12 +74,13 @@ background-color: transparent;
 
 
 .howtouseheadimage{
-    margin-bottom: 32px;
-    font-size: 48px;
-    line-height: 64px;
+    margin-bottom: 24px;
+    font-size: 40px;
+    line-height: 56px;
     display: block;
     @extend  %futurapt-light ;
     @include md-screen{
+        margin-bottom: 32px;
         font-size: 64px;
         line-height: 72px;
         display: none;
@@ -89,13 +90,7 @@ background-color: transparent;
     padding-left: 15px;
     padding-right: 15px;
 }
-.howtousecon {
-    .howrightcol img {
-        max-width: 100%;
-        height: auto;
-   
-}
-}
+
 .tabTitle{
     font-size: 18px;
     line-height: 32px;
@@ -125,7 +120,7 @@ background-color: transparent;
     padding-left: 0;
     padding-right: 0;
     order: -1;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
   
     background-color: #ecf9fb;
     @include md-screen {
