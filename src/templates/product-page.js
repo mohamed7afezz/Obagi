@@ -134,6 +134,7 @@ export const productPageQuery = graphql`
                     }
                     localFile {
                         url
+                        publicURL
                         childImageSharp {
                         original {
                                 src
@@ -218,6 +219,7 @@ export const productPageQuery = graphql`
                     }
                     localFile {
                         url
+                        publicURL
                         childImageSharp {
                         original {
                                 src

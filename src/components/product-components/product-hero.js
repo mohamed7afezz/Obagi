@@ -315,9 +315,11 @@ const ProductHero = ({ data, nodeType }) => {
                       <img alt="img"
                         src={item.localFile.childImageSharp.original.src}
                       />
-                    ) : (
-                      ""
-                    )}
+                    ) : item.localFile && item.localFile.publicURL? (
+                      <img alt="img"
+                        src={item.localFile.publicURL}
+                      />
+                    ) : ""}
                   </div>
                   <div class="zoom-desk" data-arrange={index}>
                     {item.localFile && item.localFile.childImageSharp ? (
@@ -327,9 +329,14 @@ const ProductHero = ({ data, nodeType }) => {
                         width={745}
                         height={615}
                       />
-                    ) : (
-                      ""
-                    )}
+                    ) : item.localFile && item.localFile.publicURL? (
+                      <Zoom
+                        img={item.localFile.publicURL}
+                        zoomScale={1.5}
+                        width={745}
+                        height={615}
+                      />
+                    ) : ""}
                   </div>
                 </React.Fragment>
               )

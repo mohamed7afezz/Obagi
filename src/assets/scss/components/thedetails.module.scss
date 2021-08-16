@@ -26,6 +26,10 @@
     text-transform: uppercase;
     display: inline-flex;
 
+    &:hover {
+        color: #132466;
+        text-decoration: none;
+    }
     @include md-screen{
         margin-bottom: 0;}
 }
