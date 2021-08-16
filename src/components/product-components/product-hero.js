@@ -620,9 +620,11 @@ const ProductHero = ({ data, nodeType }) => {
                     className={["col-3", "pr-0", "pl-0"].join(" ")}
                     src={item.localFile.childImageSharp.original.src}
                   />
-                ) : (
-                  ""
-                )}
+                ) : item.localFile && item.localFile.publicURL? (
+                  <img alt="img" className={["col-3", "pr-0", "pl-0"].join(" ")}
+                    src={item.localFile.publicURL}
+                  />
+                ) : ""}
               </div>
             )
           })}
