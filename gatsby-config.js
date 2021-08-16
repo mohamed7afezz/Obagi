@@ -123,7 +123,7 @@ module.exports = {
       options: {
         baseUrl: process.env.sourceURL,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
-        concurrentFileRequests: 1,
+        concurrentFileRequests: 10,
         basicAuth: {
 					username: 'gatsby-user',
 					password: 'ndVn8Xk7iahMny4'
@@ -154,6 +154,12 @@ module.exports = {
       options: {
         src: process.env.Extole_URL,
         },
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://js.afterpay.com/afterpay-1.x.js'
+      }
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",

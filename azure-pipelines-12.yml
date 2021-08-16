@@ -28,13 +28,12 @@ steps:
   inputs:
     versionSpec: '>=10.x'
   displayName: 'Install Node.js'
-  timeoutInMinutes: 30
+
 - script: |
     npm install
     npm install -g gatsby-cli
     gatsby build --no-uglify
   displayName: 'npm install and build'
-  timeoutInMinutes: 30
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'public/'

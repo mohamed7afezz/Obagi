@@ -18,7 +18,7 @@ import { func } from "prop-types"
 import { checkStock } from '../../assets/js/stock';
 import fb from "../../assets/images/product-images/facebook.svg"
 import tw from "../../assets/images/product-images/twitter.svg"
-// import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
+import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
 const baseUrl = process.env.Base_URL;
 const URL = process.env.Drupal_URL;
 const ProductHero = ({ data, nodeType }) => {
@@ -115,7 +115,6 @@ const ProductHero = ({ data, nodeType }) => {
     ? node.relationships.field_key_benefits_list ? node.relationships.field_key_benefits_list.relationships.field_key_benefits_lists : ""
     : node.relationships.field_medical_benefits_lists ? node.relationships.field_medical_benefits_lists.relationships.field_key_benefits_lists : ""
   let minQuantity = (node.field_min_quantity == 0 || node.field_min_quantity > 0) ? node.field_min_quantity : ""
-
   const path1 = path.split("/")
   const [state, setState] = useState({
     nav1: null,
@@ -316,9 +315,11 @@ const ProductHero = ({ data, nodeType }) => {
                       <img alt="img"
                         src={item.localFile.childImageSharp.original.src}
                       />
-                    ) : (
-                      ""
-                    )}
+                    ) : item.localFile && item.localFile.publicURL? (
+                      <img alt="img"
+                        src={item.localFile.publicURL}
+                      />
+                    ) : ""}
                   </div>
                   <div class="zoom-desk" data-arrange={index}>
                     {item.localFile && item.localFile.childImageSharp ? (
@@ -328,9 +329,14 @@ const ProductHero = ({ data, nodeType }) => {
                         width={745}
                         height={615}
                       />
-                    ) : (
-                      ""
-                    )}
+                    ) : item.localFile && item.localFile.publicURL? (
+                      <Zoom
+                        img={item.localFile.publicURL}
+                        zoomScale={1.5}
+                        width={745}
+                        height={615}
+                      />
+                    ) : ""}
                   </div>
                 </React.Fragment>
               )
@@ -446,7 +452,12 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
-          {/* {field_medical_rx !== "RX"? <div className={`${ProductStyles.afterpay}`}>or 4 interest-free installments of $25.00 by&nbsp;<img src={afterpayImg}/></div> : ""} */}
+          {field_medical_rx !== "RX" ? <afterpay-placement
+            data-locale="en_US"
+            data-currency="USD"
+            data-amount={field_price}
+            data-modal-theme="white"
+          ></afterpay-placement> : ""}
           {(physicianUrl == false) && feild_preimer && field_medical_rx !== "RX" ?
 
             <div className={`${ProductStyles.codeOff} another-class`}>
@@ -609,9 +620,11 @@ const ProductHero = ({ data, nodeType }) => {
                     className={["col-3", "pr-0", "pl-0"].join(" ")}
                     src={item.localFile.childImageSharp.original.src}
                   />
-                ) : (
-                  ""
-                )}
+                ) : item.localFile && item.localFile.publicURL? (
+                  <img alt="img" className={["col-3", "pr-0", "pl-0"].join(" ")}
+                    src={item.localFile.publicURL}
+                  />
+                ) : ""}
               </div>
             )
           })}

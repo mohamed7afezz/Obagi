@@ -433,13 +433,21 @@
 
 .paypal-imgs {
   display: flex;
-  // border: 1px solid #132466;
-  // border-radius: 6px;
-  // padding: 5px;
+  border: 1px solid #132466;
+  border-radius: 6px;
+  padding: 10px 5px;
+
+  &.cart-paypal {
+    margin-top: 24px;
+  }
+  img {
+    height: 29px;
+    margin: 0 auto;
+  }
 }
-.paypal-imgs img:first-child {
-  margin-right: 8px;
-}
+// .paypal-imgs img:first-child {
+//   margin-right: 8px;
+// }
 .paypal-text {
   font-size: 16px;
   line-height: 24px;
