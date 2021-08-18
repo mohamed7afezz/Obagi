@@ -127,8 +127,7 @@ module.exports = {
         basicAuth: {
 					username: 'gatsby-user',
 					password: 'ndVn8Xk7iahMny4'
-				},
-        fastBuilds: true,
+				}
       },
     },
  {
