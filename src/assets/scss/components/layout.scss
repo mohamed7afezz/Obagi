@@ -1381,8 +1381,8 @@ p {
     right: 0;
     top: 27px;
     background-image: url("../../images/minus.png");
-
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
     &.collapsed {
       background-image: url("../../images/plus.png");
     }
@@ -5737,7 +5737,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
     .slick-slide {
       padding-left: 0;
-      padding-right: 40px;
+      padding-right: 2.083vw;
     }
   }
 }
@@ -5828,4 +5828,192 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   //     }
   //   }
   // }
+}
+
+
+.white-bg {
+  background-color: #fff !important;
+}
+
+.related-blogs {
+  margin-bottom: 0;
+
+  .slick-dots li.slick-active button::before {
+    background-color: #44c4d9;
+  }
+
+  @include md-screen {
+    margin-top: 2.969vw;
+
+    .slick-initialized {
+      padding-bottom: 3.854vw;
+    }
+
+  }
+}
+.images-slider {
+  margin-bottom: 40px;
+  .slick-dots li.slick-active button::before {
+    background-color: #44c4d9;
+  }
+
+  @include md-screen {
+    margin-bottom: 2.083vw;
+    .slick-initialized {
+      padding-bottom: 5.833vw;
+    }
+  }
+
+  @include lg-screen {
+    margin-bottom: 0;
+  }
+}
+.related-blogs-header, 
+.images-slider-header, 
+.custom-header {
+  @include fontStyle(40, 56);
+  @extend %futurapt-light;
+  margin-bottom: 32px;
+  text-align: center;
+
+  @include md-screen {
+    font-size: 4.5vw;
+    line-height: 5vw;
+    margin-bottom: 3.333vw;
+  }
+
+  @include lg-screen {
+      font-size: 3.333vw;
+      line-height: 3.750vw;
+  }
+}
+
+.images-slider-header {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(19, 36, 102, 0.19);
+
+  @include lg-screen {
+    margin-top: 5.781vw;
+    margin-bottom: 1.250vw;
+    padding-top: 5.365vw;
+  }
+}
+
+.images-slider-subtitle {
+  @include fontStyle(18, 32);
+  margin-bottom: 24px;
+  text-align: center;
+
+  
+  @include md-screen {
+    font-size: 1.3vw;
+    line-height: 2vw;
+  }
+
+  @include lg-screen {
+    font-size: 0.938vw;
+    line-height: 1.667vw;
+  }
+}
+
+.custom-header {
+  margin-bottom: 24px;
+  text-align: left;
+  @include md-screen {
+    margin-bottom: 0.833vw;
+  }
+
+}
+
+.custom-text, ul.custom-text {
+  @include fontStyle(16, 24);
+
+  .strong {
+    font-weight: 600;
+  }
+
+  ul {
+    padding-left: 9px;
+  }
+  @include md-screen {
+    font-size: 0.833vw;
+    line-height: 1.250vw;
+  }
+}
+
+.imgWrapper {
+  position: relative;
+
+  .igIcon {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+
+  }
+}
+
+.mainVideoSlider {
+  .slick-initialized {
+    padding-bottom: 40px;
+  }
+  .slick-slide {
+    padding: 0;
+  }
+}
+
+.secVidSlider {
+
+  @media (max-width: 991px) {
+    .slick-track {
+      display: flex !important;
+    }
+
+    .slick-slide {
+      height: inherit !important;
+      padding: 0;
+  
+      & > div {
+        height: 100%;
+  
+        & > div {
+          height: 100%;
+          
+          &:last-child {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  
+
+ 
+  .slick-dots li.slick-active button::before {
+    background-color: #44c4d9;
+  }
+
+  @include lg-screen {
+    .slick-prev, .slick-next {
+      right: unset;
+      left: 6.771vw;
+    }
+
+    .slick-prev {
+      top: -1.042vw;
+    }
+    .slick-next {
+      bottom: -1.042vw;
+      top: unset;
+    }
+  }
 }

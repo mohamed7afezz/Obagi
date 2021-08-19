@@ -2,13 +2,13 @@ import React from 'react'
 
 import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 
-export default function FaqRow({ data }) {
+export default function FaqRow({ data, productPage }) {
 
     return (
         <>
 
             <div>
-                {data.field_faq_title ? <div dangerouslySetInnerHTML={{ __html: data.field_faq_title.processed }} className={faqStyles.title}></div> : ''}
+                {data.field_faq_title ? <div dangerouslySetInnerHTML={{ __html: data.field_faq_title.processed }} className={productPage? faqStyles.productPageTitle : faqStyles.title}></div> : ''}
 
                 <div className={faqStyles.largeWrapper}>
                     {data.relationships.field_question_and_answer ? data.relationships.field_question_and_answer.map((item, index, array) => {

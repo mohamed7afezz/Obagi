@@ -243,6 +243,11 @@ export const productPageQuery = graphql`
                     ...needToKnowParagrapgh
                     ...sysRelatedProduct
                     ...youMightAlsoLikeMedicalParagrapgh
+                    ...paragraphFeaturedSection
+                    ...paragraphProductFaqs
+                    ...paragraphRelatedBlogs
+                    ...paragraphImagesSlider
+                
                    
                 }
             }

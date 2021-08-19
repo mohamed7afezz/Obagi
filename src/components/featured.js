@@ -53,7 +53,6 @@ const Featured = ({ node }) => {
 `)
 
 
-
   let currentName = node.field_featured_title ? node.field_featured_title.processed : null;
   let productCount = 0;
   let taxonomy = data.allTaxonomyTermClinicalGroups.edges.filter(item => {
@@ -67,10 +66,13 @@ const Featured = ({ node }) => {
 
   productCount = taxonomy ? taxonomy.node.relationships.node__clinical_product.length : 0;
 
+  let isMedicalProduct = node.relationships && node.relationships.node__medical_product? true : false
+  let customClass = node.field_featured_custom_class? node.field_featured_custom_class : "" 
+
   return (
 
     <>
-      <div name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} className={["container-fluid", "d-lg-none", featuredStyles.wrapper].join(" ")}>
+      <div name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} className={`container-fluid d-lg-none ${featuredStyles.wrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`}>
         <div className="row">
           <div className="col-12">
 
@@ -110,11 +112,11 @@ const Featured = ({ node }) => {
 
 
       {node.field_image_right == true ?
-        <div className={["container-fluid d-none d-lg-block", featuredStyles.containerWrapper].join(" ")} name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} >
+        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`} name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} >
           <div className="row">
 
             <div className={["col-lg-5", "offset-lg-1", featuredStyles.columnsWrapper].join(" ")}>
-              <div className="col-lg-7 offset-lg-2">
+              <div className={`col-lg-7 offset-lg-2 ${featuredStyles.textCol}`}>
                 {node.field_featured_subtitle ? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{ __html: node.field_featured_subtitle.processed }}></div> : ""}
                 {node.field_featured_title ? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                 {node.field_featured_products_title ? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{ __html: node.field_featured_products_title.processed }}></div>(<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button ? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
@@ -134,7 +136,7 @@ const Featured = ({ node }) => {
                       <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={node.relationships && node.relationships.field_featured_video ? node.relationships.field_featured_video.field_video_link : ''} className="playbtn">
                         <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                       </a>
-                      {node.relationships.field_featured_video.relationships.field_video_poster.localFile ?
+                      {node.relationships.field_featured_video.relationships.field_video_poster &&node.relationships.field_featured_video.relationships.field_video_poster.localFile ?
                         <Img alt="img" className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
                         : ""}
                     </>
@@ -148,7 +150,7 @@ const Featured = ({ node }) => {
         </div>
         :
 
-        <div className={["container-fluid d-none d-lg-block", featuredStyles.containerWrapper].join(" ")} name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""}>
+        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`}  name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""}>
           <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
             <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
@@ -160,7 +162,7 @@ const Featured = ({ node }) => {
                         <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
                       </a>
 
-                      {node.relationships && node.relationships.field_featured_video.relationships.field_video_poster.localFile ?
+                      {node.relationships && node.relationships.field_featured_video.relationships.field_video_poster && node.relationships.field_featured_video.relationships.field_video_poster.localFile ?
                         <Img alt="img" className={featuredStyles.videoimg} fluid={node.relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
                         : ""}</>
                     :
@@ -172,7 +174,7 @@ const Featured = ({ node }) => {
             </div>
 
             <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
-              <div className="col-lg-7 offset-lg-2">
+              <div className={`col-lg-7 offset-lg-2 ${featuredStyles.textCol}`}>
                 {node.field_featured_subtitle ? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{ __html: node.field_featured_subtitle.processed }}></div> : ""}
                 {node.field_featured_title ? <h3 dangerouslySetInnerHTML={{ __html: node.field_featured_title.processed }} className={featuredStyles.title}></h3> : ""}
                 {node.field_featured_products_title ? <div className={featuredStyles.products}><div dangerouslySetInnerHTML={{ __html: node.field_featured_products_title.processed }}></div> (<span className={featuredStyles.productsNo}>{" " + productCount}</span>) {node.field_featured_button ? <span className={featuredStyles.view}><Link to={node.field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
@@ -200,6 +202,7 @@ export const fragment = graphql`
           field_featured_paragraph_id {
             processed
           }
+          field_featured_custom_class
           field_featured_button {
             title
             uri
@@ -223,6 +226,9 @@ export const fragment = graphql`
           field_image_right
           
           relationships {
+            node__medical_product {
+              field_medical_id
+            }
             field_featured_image {
               localFile {
                 childImageSharp {

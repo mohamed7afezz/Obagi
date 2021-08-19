@@ -1,0 +1,65 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background-color: #868cd2;
+    padding: 32px 0 40px;
+    color: #fff;
+}
+
+.vid-poster {
+    position: relative;
+}
+
+.play-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.sliders-row {
+    @include lg-screen {
+        max-height: 618px;
+    }
+}
+
+.header {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin-bottom: 15px;
+}
+
+.main-title {
+    @include fontStyle(24, 40);
+    font-weight: 900;
+    margin-top: 24px;
+}
+
+.sec-vid-wrapper {
+    align-items: center;
+}
+
+.sec-vid-data {
+    display:  flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+.sec-title {
+    @include fontStyle(16, 24);
+    font-weight: 900;
+    margin-top: 20px;
+}
+
+.bottom-border {
+    margin-top: auto;
+    div {
+    }
+}

@@ -89,7 +89,7 @@ const Howtouse = ({ node }) => {
                     <div class="row">
 
                         {node.field_media_right == false ?
-                            <div id="accordion" className="col-12 d-flex mobflexwrap">
+                            <div id="accordion" className="col-12 d-flex d-md-block d-lg-flex mobflexwrap">
                                 <div className={["col-12", "col-lg-4", "offset-lg-1", howto.howLeftcol].join(" ")}>
                                     <div className={howto.howtousehead}>{node.field_how_to_use_title.processed}</div>
                                     {/* steps btns */}
