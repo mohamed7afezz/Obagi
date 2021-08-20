@@ -91,7 +91,8 @@ module.exports = {
           `/clinical/skin-care/brightening-skin-care`,
           `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`,
           `/skin-simplified/skin-concern/clinical-blog`,
-          `/behind-the-lines/professional-c/medical-blog`
+          `/behind-the-lines/professional-c/medical-blog`,
+          `/medical/nu-cil-eyelash-enhancing-serum`,
     ],
         
       }
