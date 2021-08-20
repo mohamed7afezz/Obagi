@@ -70,7 +70,7 @@ const VideoSlider = ({ node }) => {
 
     return (
         <>
-{/* 
+
             <div className={`container-fluid ${styles.wrapper}`}>
                 <div className={`row`}>
                     <div className={`col-12 col-lg-10 offset-lg-1`}>
@@ -152,7 +152,9 @@ const VideoSlider = ({ node }) => {
 
                                                             </div>
                                                         </div>
-                                                    
+                                                        {/* <div className={`col-12 col-lg-6 ${styles.bottomBorder}`}>
+                                                            <div></div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             )
@@ -164,7 +166,7 @@ const VideoSlider = ({ node }) => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

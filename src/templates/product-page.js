@@ -247,7 +247,7 @@ export const productPageQuery = graphql`
                     ...paragraphProductFaqs
                     ...paragraphRelatedBlogs
                     ...paragraphImagesSlider
-                
+                  
                    
                 }
             }
