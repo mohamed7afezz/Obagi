@@ -16,6 +16,9 @@ steps:
     script: |
       cat .env.production
       sed -i 's/dev-obagiecommerce/dev-obagiecommerce/g' .env.production
+      sed -i "s+disallow:''+disallow:'/'+g" gatsby-config.js
+      sed -i "s+host: 'https://www.obagi.com',++g" gatsby-config.js
+      sed -i "s+sitemap: 'https://www.obagi.com/sitemap.xml',++g" gatsby-config.js
       cat .env.production
 - task: Cache@2
   inputs:
