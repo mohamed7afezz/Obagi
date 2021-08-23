@@ -64,7 +64,9 @@
     @include lg-screen {
         padding-bottom: 16px;
         padding-top: 44px;
-        @include fontStyle(64, 72);
+      
+        font-size: 3.333vw;
+        line-height: 3.750vw;
     }
 }
 
@@ -93,7 +95,8 @@
     padding: 19px 0 20px;
 
     @include lg-screen {
-        @include fontStyle(18, 32);
+        font-size: 0.938vw;
+        line-height: 1.667vw;
         padding: 24px 0 0px;
     }
 }

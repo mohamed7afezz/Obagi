@@ -463,7 +463,26 @@ query($slug: String!) {
     fields {
       slug
     }
+    description {
+      processed
+    }
+    field_sidebar_text {
+      processed
+    }
+    field_sidebar_link {
+      title
+      uri
+    }
     relationships {
+      field_sidebar_image {
+        localFile {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
       parent {
         name
         relationships {
@@ -502,6 +521,9 @@ query($slug: String!) {
                   taxonomy_term__blogs {
                     path {
                       alias
+                    }
+                    description {
+                      processed
                     }
                     name
                   }
