@@ -5850,6 +5850,34 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
 
   }
+
+  @include lg-screen {
+    .slick-track {
+      display:  flex !important;
+    }
+
+    .slick-slide {
+      height: inherit !important;
+
+      & > div {
+        height: 100%;
+      }
+    }
+
+    .blog-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .blog-card-title {
+        margin-bottom: auto;
+      }
+
+      .blog-card-link {
+        width: max-content;
+      }
+    }
+  }
 }
 .images-slider {
   margin-bottom: 88px;
