@@ -5878,6 +5878,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       font-size: 3.333vw;
       line-height: 3.750vw;
   }
+
+  @media (min-width: 1921px) {
+    @include fontStyle(64, 72);
+
+  }
 }
 
 .images-slider-header {
@@ -5932,6 +5937,10 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   @include md-screen {
     font-size: 0.833vw;
     line-height: 1.250vw;
+  }
+
+  @media (min-width: 1921px) {
+    @include fontStyle(16, 24);
   }
 }
 
