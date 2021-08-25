@@ -157,7 +157,7 @@ const componentsMap = {
     paragraph__product_faqs: ProductFaqs,
     paragraph__related_blogs: RelatedBlogs,
     paragraph__images_slider: ImagesSlider,
-  //  paragraph__video_slider: VideoSlider,
+    paragraph__video_slider: VideoSlider,
     paragraph__form_section: MultiStepForm,
 }
 

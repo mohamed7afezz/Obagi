@@ -163,6 +163,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://www.youtube.com/iframe_api'
+      }
+    },
+    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-58FFST8",
