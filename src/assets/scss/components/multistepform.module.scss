@@ -219,8 +219,55 @@ font-weight: 700;
     top: 8px !important;
 }
 .sectionWrapper{
-    margin-top: 35px;
+    margin: 40px 0;
     @include md-screen{
-        margin-top: 80px;
+        margin: 5.833vw 0;
+    }
+}
+
+.main-header {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+
+    @include md-screen{
+        font-size: 4vw;
+        line-height: 4.5vw;
+        margin-bottom: 0.833vw;
+        text-align: center
+    }
+
+    @include lg-screen{
+        font-size: 3.333vw;
+        line-height: 3.750vw;
+        margin-bottom: 0.833vw;
+        text-align: center
+    }
+}
+
+.main-subheader {
+    @include fontStyle(18, 32);
+    margin-bottom: 40px;
+
+    @include md-screen {
+        font-size: 1.5vw;
+        line-height: 2.2vw;
+        margin-bottom: 3.333vw;
+        text-align: center;
+    }
+
+    @include lg-screen {
+        font-size: 0.938vw;
+        line-height: 1.667vw;
+        margin-bottom: 3.333vw;
+    }
+}
+
+.main-separator {
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 35px;
+
+    @include md-screen {
+        margin-bottom: 3.333vw;
     }
 }

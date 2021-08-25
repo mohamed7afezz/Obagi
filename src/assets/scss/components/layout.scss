@@ -6011,8 +6011,8 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     .slick-prev, .slick-next {
       right: unset;
       left: 6.771vw;
-      height: 16px;
-      width: 16px;
+      height: auto;
+      width: auto;
       background-image: none;
 
       &::before, &::after {
@@ -6021,11 +6021,11 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
 
     .slick-prev {
-      top: -1.042vw;
+      top: -1.667vw;
       transform: rotate(-90deg);
     }
     .slick-next {
-      bottom: -1.042vw;
+      bottom: -0.885vw;
       top: unset;
       transform: rotate(90deg);
     }

@@ -42,7 +42,18 @@ const MultiStepForm = ({ node }) => {
     }
     return (
         <div className={["container-fluid", multistepformStyles.sectionWrapper].join(" ")}>
-            <form noValidate="novalidate" class={["register needs-validation", multistepformStyles.FormStyle].join(" ")}>
+            <div className={`row`}>
+                <div className={`col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2`}>
+                    {node.field_form_header? <div className={multistepformStyles.mainHeader} dangerouslySetInnerHTML={{__html: node.field_form_header.processed}}></div> : ""}
+                    {node.field_form_subheader? <div className={multistepformStyles.mainSubheader} dangerouslySetInnerHTML={{__html: node.field_form_subheader.processed}}></div> : ""}
+                </div>
+                <div className={`col-12 col-md-10 offset-md-1 ${multistepformStyles.mainSeparator}`}>
+                    <div></div>
+                </div>
+            </div>
+            <div className={'row'}>
+                <div className={'col-12'}>
+                <form noValidate="novalidate" class={["register needs-validation", multistepformStyles.FormStyle].join(" ")}>
                 <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                     <div className={"col-12 col-md-11 offset-md-1"}>
                         <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
@@ -84,8 +95,8 @@ const MultiStepForm = ({ node }) => {
                         </div>
 
                     </div>
-                    <div className={["col-12 col-md-10 offset-md-1", multistepformStyles.seprator].join(" ")}>
-
+                    <div className={["col-12 col-md-10 offset-md-1"].join(" ")}>
+                        <div className={multistepformStyles.seprator}></div>
                     </div>
                 </div>
                 <div className={["row", multistepformStyles.Formwrap].join(" ")}>
@@ -185,8 +196,8 @@ const MultiStepForm = ({ node }) => {
                             </div>
                         </div>
                     </div>
-                    <div className={["col-12 col-md-10 offset-md-1", multistepformStyles.seprator].join(" ")}>
-
+                    <div className={["col-12 col-md-10 offset-md-1"].join(" ")}>
+                        <div className={multistepformStyles.seprator}></div>
                     </div>
                 </div>
                 <div className={["row", multistepformStyles.Formwrap].join(" ")}>
@@ -215,6 +226,8 @@ const MultiStepForm = ({ node }) => {
 
                 </div>
             </form>
+                </div>
+            </div>
         </div>
 
     )
@@ -225,6 +238,12 @@ export default MultiStepForm;
 export const fragment = graphql`
     fragment formSectionParagraph on paragraph__form_section {
         id
+        field_form_header {
+            processed
+        }
+        field_form_subheader {
+            processed
+        }
         field_form_before_after_title {
           processed
         }
