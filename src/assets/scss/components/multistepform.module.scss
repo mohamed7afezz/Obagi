@@ -264,10 +264,12 @@ font-weight: 700;
 }
 
 .main-separator {
-    border-bottom: 1px solid #d6d6d6;
-    margin-bottom: 35px;
-
-    @include md-screen {
-        margin-bottom: 3.333vw;
+    div {
+        border-bottom: 1px solid #d6d6d6;
+        margin-bottom: 35px;
+    
+        @include md-screen {
+            margin-bottom: 3.333vw;
+        }
     }
 }
