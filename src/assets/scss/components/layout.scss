@@ -5957,6 +5957,10 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 .mainVideoSlider {
   .slick-initialized {
     padding-bottom: 40px;
+
+    @include lg-screen {
+      padding-bottom: 0;
+    }
   }
   .slick-slide {
     padding: 0;
@@ -5992,20 +5996,38 @@ body.acsb-keynav input[type="radio"].acsb-shown {
  
   .slick-dots li.slick-active button::before {
     background-color: #44c4d9;
+
+    @include lg-screen {
+      .slick-slide {
+        padding: 0;
+      }
+    }
   }
 
   @include lg-screen {
+    .slick-initialized {
+      padding-bottom: 0;
+    }
     .slick-prev, .slick-next {
       right: unset;
       left: 6.771vw;
+      height: 16px;
+      width: 16px;
+      background-image: none;
+
+      &::before, &::after {
+        content: '\203A';
+      }
     }
 
     .slick-prev {
       top: -1.042vw;
+      transform: rotate(-90deg);
     }
     .slick-next {
       bottom: -1.042vw;
       top: unset;
+      transform: rotate(90deg);
     }
   }
 }
