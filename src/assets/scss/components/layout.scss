@@ -5852,21 +5852,13 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 }
 .images-slider {
-  margin-bottom: 40px;
-  .slick-dots li.slick-active button::before {
-    background-color: #44c4d9;
-  }
+  margin-bottom: 88px;
 
   @include md-screen {
-    margin-bottom: 2.083vw;
-    .slick-initialized {
-      padding-bottom: 5.833vw;
-    }
+    margin-bottom: 5.833vw;
+
   }
 
-  @include lg-screen {
-    margin-bottom: 0;
-  }
 }
 .related-blogs-header, 
 .images-slider-header, 
