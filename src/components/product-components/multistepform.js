@@ -20,29 +20,90 @@ const MultiStepForm = ({ node }) => {
             document.querySelectorAll('.Give-val').forEach(item => item.addEventListener('click', function (e) {
                 this.closest('.select-group').previousSibling.classList.remove('hide');
                 this.closest('.select-group').classList.add('hide');
-             
+
                 if (this.closest('.Age-select')) {
                     this.closest('.Age-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
-                } else if(this.closest('.Skin-select')){
+                } else if (this.closest('.Skin-select')) {
                     this.closest('.Skin-select').previousSibling.querySelector('.select-selected').innerHTML = this.innerHTML;
 
                 }
             }));
         }
     });
-    function choosefile(e){
+    function choosefile(e) {
         e.target.parentElement.nextSibling.classList.remove('d-none')
         e.target.parentElement.nextSibling.innerHTML = e.target.value;
     }
-    function submitforming(e) {
+    var checkinput = true;
+    var checkselect = true;
+    var checkterms = true;
+    function validateForm(e) {
+        e.preventDefault();
      
-  
-        var obj = { webform_id: "nu_cil_form" };
-        
+        var form = document.querySelector('.needs-validation');
+        if (form.checkValidity() === false) {
+            $(form).find('.select-selected').each(function () { 
+                
+                if ($(this)[0].innerHTML === "Select") {
+                    $(this).closest('.form-group').addClass('error');
+                    
+                    checkselect = false;
+                }else{
+                    $(this).closest('.form-group').removeClass('error');
+                  
+                }
+            })
+
+            $(form).find(':invalid').each(function () {
+                $(this).closest('.form-group').addClass('error');
+                checkinput = false;
+            })
+            if(!document.querySelector('#registerCheck').checked){
+                checkterms= false;
+                document.querySelector('#registerCheck').parentElement.classList.add('error');
+            }else{
+                checkterms = true;
+                 document.querySelector('#registerCheck').parentElement.classList.remove('error');
+                 
+            }
+        }
+       
+        // if (checkinput && checkselect && checkterms ) {
+        //     var obj = { webform_id: "nu_cil_form" };
+        //     if (document.querySelectorAll(".needs-validation .error").length > 0) {
+              
+        //     }else{
+        //     var savevalidinput = document.querySelectorAll('.nu_cli input');
+        //     savevalidinput.forEach(item => {
+               
+        //             obj[item.getAttribute("name")] = item.value;
+             
+        //     });
+            
+        //     var savevalidselect = document.querySelectorAll('.nu_cli select');
+        //     savevalidselect.forEach(item => {
+               
+        //         obj[item.getAttribute("name")] = item.value;
+         
+        // });
+        //     obj['tell_us_about_your_story']=document.querySelector('.nu_cli textarea').value;
+        // }}
+       
+    
+    }
+   
+    function handlechange(e) {
+        $(e.target).closest('.error').removeClass('error');
+        checkinput = true;
+    }
+    function handleSelect(e) {
+        checkselect = true;
+        $(e.currentTarget).removeClass('error');
+    
     }
     return (
         <div className={["container-fluid", multistepformStyles.sectionWrapper].join(" ")}>
-            <form noValidate="novalidate" class={["register needs-validation", multistepformStyles.FormStyle].join(" ")}>
+            <form noValidate="novalidate" class={["register nu_cli needs-validation", multistepformStyles.FormStyle].join(" ")}>
                 <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                     <div className={"col-12 col-md-11 offset-md-1"}>
                         <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
@@ -105,32 +166,32 @@ const MultiStepForm = ({ node }) => {
                         <div className={multistepformStyles.dFlex}>
                             <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
                                 <label for="firstname">*First name</label>
-                                <input type="text" className="form-control" name="first_name" id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
+                                <input type="text" onChange={handlechange} className="form-control" name="first_name" id="firstname" required aria-describedby="firstname" placeholder="" data-webform-required-error="Please fill in your first name." />
                             </div>
                             <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
                                 <label for="lastname">*Last name</label>
-                                <input type="text" className="form-control" name="last_name" id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
+                                <input type="text" onChange={handlechange} className="form-control" name="last_name" id="lastname" required aria-describedby="lastname" placeholder="" data-webform-required-error="Please fill in your last name." />
                             </div>
                             <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
                                 <label for="email">*Email Address</label>
-                                <input type="text" className="form-control" name="eamil_address" id="eamil" required aria-describedby="eamil" placeholder="" data-webform-required-error="Please fill in your eamil address." />
+                                <input type="email" onChange={handlechange} className="form-control" name="email_address" id="eamil" required aria-describedby="eamil" placeholder="" data-webform-required-error="Please fill in your eamil address." />
                             </div>
                             <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
-                                <label for="Phone">Phone Number</label>
-                                <input type="text" className="form-control" name="phone_number" id="Phone" required aria-describedby="phonenumber" placeholder="" data-webform-required-error="Please fill in your phone number." />
+                                <label for="Phone">*Phone Number</label>
+                                <input type="text" onChange={handlechange} className="form-control" name="phone_number" id="Phone" required aria-describedby="phonenumber" placeholder="" data-webform-required-error="Please fill in your phone number." />
                             </div>
                             <div className={["", multistepformStyles.formGroup].join(" ")}>
 
 
-                                <div class={["form-group select-group new-select  Age-select", multistepformStyles.formGroup].join(" ")}>
+                                <div onClick={handleSelect} class={["form-group select-group new-select  Age-select", multistepformStyles.formGroup].join(" ")}>
                                     <label for="reviewFormSelect" class="form-label">*Age Range</label>
-                                    <div class="select-selected">Select</div>
+                                    <div name="age_range" class="select-selected">Select</div>
                                 </div>
 
-                                <div className={[" select-group Age-select  age-select hide",multistepformStyles.selectGroup].join(" ")}>
+                                <div className={[" select-group Age-select  age-select hide", multistepformStyles.selectGroup].join(" ")}>
                                     <label for="reviewFormSelect" className="form-label">*Age Range</label>
 
-                                    <div className={["select-wrap",multistepformStyles.selectWrap].join(" ")}>
+                                    <div className={["select-wrap", multistepformStyles.selectWrap].join(" ")}>
                                         <Scrollbars style={{ height: 200 }}>
                                             <div required className="form-control" name="date" >
 
@@ -150,15 +211,15 @@ const MultiStepForm = ({ node }) => {
                             <div className={["", multistepformStyles.formGroup].join(" ")}>
 
 
-                                <div class={["form-group select-group new-select  Skin-select", multistepformStyles.formGroup].join(" ")}>
+                                <div  onClick={handleSelect} class={["form-group select-group new-select  Skin-select", multistepformStyles.formGroup].join(" ")}>
                                     <label for="reviewFormSelect" class="form-label">*Skin Type</label>
-                                    <div class="select-selected">Select</div>
+                                    <div name="skin_type" class="select-selected">Select</div>
                                 </div>
 
-                                <div className={[" select-group skintype-select  Skin-select hide",multistepformStyles.selectGroup].join(" ")}>
+                                <div className={[" select-group skintype-select  Skin-select hide", multistepformStyles.selectGroup].join(" ")}>
                                     <label for="reviewFormSelect" className="form-label">*Skin Type</label>
 
-                                    <div className={["select-wrap",multistepformStyles.selectWrap].join(" ")}>
+                                    <div className={["select-wrap", multistepformStyles.selectWrap].join(" ")}>
                                         <Scrollbars style={{ height: 200 }}>
                                             <div required className="form-control" name="skintype" >
 
@@ -177,9 +238,9 @@ const MultiStepForm = ({ node }) => {
                             </div>
                             <div className={multistepformStyles.massageStyle}>
                                 <p className={multistepformStyles.feildTitle}>Tell us about your story.</p>
-                                <div className={["form-group ", multistepformStyles.w100,multistepformStyles.formGroup,multistepformStyles.mb0].join(" ")}>
-                                <label for="firstname">Add Message</label>
-                                <textarea type="text" className="" name="Massage" id="Massage"  placeholder="" data-webform-required-error="Please fill in your first name." />
+                                <div className={["form-group ", multistepformStyles.w100, multistepformStyles.formGroup, multistepformStyles.mb0].join(" ")}>
+                                    <label for="firstname">Add Message</label>
+                                    <textarea type="text" className="" name="tell_us_about_your_story" id="Massage" placeholder="" data-webform-required-error="Please fill in your first name." />
 
                                 </div>
                             </div>
@@ -201,16 +262,16 @@ const MultiStepForm = ({ node }) => {
                         <p className={[multistepformStyles.formDescription]}>Once you submit your entries, we'll review them for potential inclusion in future materials. </p>
                     </div>
                     <div className={["col-12", "col-md-6", "offset-md-1", multistepformStyles.rightSection].join(" ")}>
-                           <div className="form-check">
+                        <div className="form-check">
 
-                                <label className={["form-check-label terms",multistepformStyles.termsWrapper].join(" ")} for="registerCheck">
-                                    <input type="checkbox" name="email_sub"  className="form-check-input" id="registerCheck" defaultChecked={true} />
-                                    <span className={["checkmark",multistepformStyles.checkMark].join(" ")}></span>
-                                    <span className={multistepformStyles.termsNote}>*I have read and agree to the <Link to="/terms-of-use">Terms & Conditions</Link> and grant Obagi® permission to use my submitted information to be featured in future Nu-Cil® communications.
-                                    </span>
-                                </label>
-                                <button onClick={submitforming} type="submit" className={multistepformStyles.submitForm}>Submit Your Story</button>
-                            </div>
+                            <label className={["form-check-label terms", multistepformStyles.termsWrapper].join(" ")} for="registerCheck">
+                                <input type="checkbox" name="terms_and_condition" required className="form-check-input" id="registerCheck" defaultChecked={true} />
+                                <span className={["checkmark", multistepformStyles.checkMark].join(" ")}></span>
+                                <span className={multistepformStyles.termsNote}>*I have read and agree to the <Link to="/terms-of-use">Terms & Conditions</Link> and grant Obagi® permission to use my submitted information to be featured in future Nu-Cil® communications.
+                                </span>
+                            </label>
+                            <button onClick={validateForm} type="submit" className={multistepformStyles.submitForm}>Submit Your Story</button>
+                        </div>
                     </div>
 
                 </div>
