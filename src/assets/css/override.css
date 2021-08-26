@@ -2157,9 +2157,27 @@ button:focus {
 
 /* Breadcrumb styles for Medical and Clinical landing pages */
 .hero-slider.clinical-slider .breadcramp-con,
-.hero-slider.medical-slider .breadcramp-con {
+.hero-slider.medical-slider .breadcramp-con,
+.node-home .hero-slider .breadcramp-con,
+.node-medical .hero-slider .breadcramp-con {
   position: absolute;
   top: 8px;
+  z-index: 9;
+}
+
+.node-home .hero-slider .breadcramp-con {
+  top: 220px;
+}
+.node-home .hero-slider .breadcramp-con a {
+  color: #132466;
+}
+
+.node-home .hero-slider > .row {
+  position: unset;
+}
+
+#notificationDesk {
+  z-index: 999;
 }
 
 #appointment .select-items div:hover,

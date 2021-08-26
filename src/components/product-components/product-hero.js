@@ -452,12 +452,13 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
-          {field_medical_rx !== "RX" ? <afterpay-placement
+          {/* {field_medical_rx !== "RX" ? <afterpay-placement
             data-locale="en_US"
             data-currency="USD"
             data-amount={field_price}
             data-modal-theme="white"
-          ></afterpay-placement> : ""}
+            data-min = "100"
+          ></afterpay-placement> : ""} */}
           {(physicianUrl == false) && feild_preimer && field_medical_rx !== "RX" ?
 
             <div className={`${ProductStyles.codeOff} another-class`}>

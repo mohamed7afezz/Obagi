@@ -5941,6 +5941,10 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     font-size: 0.938vw;
     line-height: 1.667vw;
   }
+  @media (min-width: 1921px) {
+    font-size: 18px;
+    line-height: 32px;
+  }
 }
 
 .custom-header {
