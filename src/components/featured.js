@@ -67,12 +67,12 @@ const Featured = ({ node }) => {
   productCount = taxonomy ? taxonomy.node.relationships.node__clinical_product.length : 0;
 
   let isMedicalProduct = node.relationships && node.relationships.node__medical_product? true : false
-  let customClass = node.field_featured_custom_class? node.field_featured_custom_class : "" 
+ 
 
   return (
 
     <>
-      <div name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} className={`container-fluid d-lg-none ${featuredStyles.wrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`}>
+      <div name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} className={`container-fluid d-lg-none ${featuredStyles.wrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper}`}>
         <div className="row">
           <div className="col-12">
 
@@ -112,7 +112,7 @@ const Featured = ({ node }) => {
 
 
       {node.field_image_right == true ?
-        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`} name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} >
+        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper}`} name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""} >
           <div className="row">
 
             <div className={["col-lg-5", "offset-lg-1", featuredStyles.columnsWrapper].join(" ")}>
@@ -150,7 +150,7 @@ const Featured = ({ node }) => {
         </div>
         :
 
-        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper} ${customClass}`}  name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""}>
+        <div className={`container-fluid d-none d-lg-block ${featuredStyles.containerWrapper} ${isMedicalProduct? featuredStyles.medicalWrapper : featuredStyles.clinicalWrapper}`}  name={paragraphId ? paragraphId : ""} id={paragraphId ? paragraphId : ""}>
           <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
             <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
@@ -202,7 +202,7 @@ export const fragment = graphql`
           field_featured_paragraph_id {
             processed
           }
-          field_featured_custom_class
+       
           field_featured_button {
             title
             uri

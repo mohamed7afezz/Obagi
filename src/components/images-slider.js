@@ -4,28 +4,19 @@ import Slider from "react-slick"
 import Img from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { useEffect } from 'react'
 
 const ImagesSlider = ({ node }) => {
 
-    const SliderSetting2 = {
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3.8,
-        arrows: true,
-        dots: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    arrows: false,
-                    dots: true,
-                    slidesToShow: 1,
-                }
-            },
-        ]
-    }
 
-    console.log('ash node', node)
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            const scriptTag = document.createElement('script');
+            scriptTag.src = "https://commerce.taggbox.com/embed.min.js";
+
+            document.body.appendChild(scriptTag);
+        }
+    })
     return (
         <>
 
@@ -38,24 +29,13 @@ const ImagesSlider = ({ node }) => {
                     <div className={`col-12 col-lg-11 offset-lg-1 related-col`}>
 
                         <div style={{ width: "100%" }}>
-                            <Slider {...SliderSetting2}>
-                                {node.relationships
-                                    && node.relationships.field_slider_image ?
-                                    node.relationships.field_slider_image.map((item, index) => {
+                            <div class="taggbox-container" style={{ width: "100%", height: "100%", overflow: "auto" }}>
+                                <div className="taggbox-socialwall" data-wall-id="68607" view-url="https://commerce.taggbox.com/68607"></div>
+                            </div>
 
-                                        return (
-                                            (item.localFile && item.localFile.childImageSharp ?
-                                                <div className={`imgWrapper`}>
-                                                    <Img fluid={item.localFile.childImageSharp.fluid} />
-                                                    <div className={`igIcon`}><FontAwesomeIcon icon={faInstagram} /></div>
-                                                </div>
-                                                : "")
-                                        )
-
-                                    }) : ""}
-                            </Slider>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -74,16 +54,5 @@ export const fragment = graphql`
           }
           field_slider_subtitle {
             processed
-          }
-          relationships {
-            field_slider_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
           }
     }`
