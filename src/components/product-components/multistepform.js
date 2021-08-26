@@ -9,6 +9,7 @@ import { graphql, Link } from 'gatsby'
 import Scrollbars from 'react-custom-scrollbars'
 const $ = require('jquery')
 const MultiStepForm = ({ node }) => {
+    const baseUrl = process.env.Base_URL;
     let ageList = ["51-60", "41-50", "31-40", "20-30"];
     let skinList = ["Dry Skin", "Oily Skin", "Combination Skin", "Normal Skin"];
     useEffect(() => {
@@ -32,7 +33,7 @@ const MultiStepForm = ({ node }) => {
     });
     function choosefile(e) {
         e.target.parentElement.nextSibling.classList.remove('d-none')
-        e.target.parentElement.nextSibling.innerHTML = e.target.value;
+        e.target.parentElement.nextSibling.innerHTML = e.target.files[0].name;
     }
     var checkinput = true;
     var checkselect = true;
@@ -67,31 +68,58 @@ const MultiStepForm = ({ node }) => {
 
             }
         }
-
-        // if (checkinput && checkselect && checkterms ) {
-        //     var obj = { webform_id: "nu_cil_form" };
-        //     if (document.querySelectorAll(".needs-validation .error").length > 0) {
-
-        //     }else{
-        //     var savevalidinput = document.querySelectorAll('.nu_cli input');
-        //     savevalidinput.forEach(item => {
-
-        //             obj[item.getAttribute("name")] = item.value;
-
-        //     });
-
-        //     var savevalidselect = document.querySelectorAll('.nu_cli select');
-        //     savevalidselect.forEach(item => {
-
-        //         obj[item.getAttribute("name")] = item.value;
-
-        // });
-        //     obj['tell_us_about_your_story']=document.querySelector('.nu_cli textarea').value;
-        // }}
-
-
+       
+        if (checkinput && checkselect && checkterms ) {
+            var obj = { webform_id: "nu_cil_form" };
+            if (document.querySelectorAll(".needs-validation .error").length > 0) {
+              
+            }else{
+            var savevalidinput = document.querySelectorAll('.nu_cli input');
+            savevalidinput.forEach(item => {
+               if (item.getAttribute("type") != 'file') {
+                obj[item.getAttribute("name")] = item.value;
+               }
+                  
+             
+            });
+            
+            var savevalidselect = document.querySelectorAll('.nu_cli select');
+            savevalidselect.forEach(item => {
+               
+                obj[item.getAttribute("name")] = item.value;
+         
+        });
+            obj['tell_us_about_your_story']=document.querySelector('.nu_cli textarea').value;
+            var formData = new FormData();
+            console.log( document.querySelector("#beforeImage").files[0]);
+            formData.append("file", document.querySelector("#beforeImage").files[0]);
+            obj["before_image"]=formData;
+            sendFormValues({ obj });
+        }}
+       
+    
     }
-
+    const sendFormValues = (updatedItemData) => {
+        fetch(
+            `${baseUrl}webform_rest/submit`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: 'POST',
+                body: JSON.stringify(updatedItemData.obj)
+            }
+        )
+            .then(res => res.json())
+            .then(response => {
+              if (response["sid"]) {
+           
+               
+               }          })
+            .catch(error => {
+           
+            });
+    };
     function handlechange(e) {
         $(e.target).closest('.error').removeClass('error');
         checkinput = true;
