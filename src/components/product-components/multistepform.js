@@ -273,7 +273,7 @@ const MultiStepForm = ({ node }) => {
                                     <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
                                     <span className={multistepformStyles.inputContainer}>
 
-                                        <input id="before_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/*" data-webform-required-error="Please choose a file." />
+                                        <input id="before_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg, image/jpg" data-webform-required-error="Please choose a file." />
                                     </span>
                                     <span className={[multistepformStyles.inputValue, "inputValue"].join(" ")}>
                                         No file chosen
@@ -286,7 +286,7 @@ const MultiStepForm = ({ node }) => {
                                     <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
                                     <span className={multistepformStyles.inputContainer}>
 
-                                        <input id="after_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg" data-webform-required-error="Please choose a file." />
+                                        <input id="after_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg, image/jpg" data-webform-required-error="Please choose a file." />
 
                                     </span>
                                     <span className={[multistepformStyles.inputValue, "inputValue"].join(" ")}>
