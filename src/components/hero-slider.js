@@ -73,9 +73,9 @@ const HeroSlider = ({ node }) => {
 
     // }, [])
     let pageType = node.field_page_type ? node.field_page_type : null
+    let basicPageType = node.relationships && node.relationships.node__page && node.relationships.node__page[0]? node.relationships.node__page[0] : null
     let heroClass = node.field_slider_class ? node.field_slider_class : null
     let blogPage = (heroClass && (heroClass == "blog-lp-hero"))? true : false;
-
 
     const SliderSetting = {
         infinite: true,
@@ -201,7 +201,10 @@ const HeroSlider = ({ node }) => {
             <div className={[" breadcramp-con  col-12 pb-0",`${node.field_brea?node.field_brea:""}`].join(" ")}>
                 <p className="breadcramp">
                    <Link to="/">Home</Link>{" "}
-                    / <span>{pageType}</span>
+                   {pageType? 
+                   <span>{`/ ${pageType}`}</span>
+                    : basicPageType? <span>{`/ ${basicPageType.title}`}</span>
+                         : ""}
                 </p>
             </div>
                 {/* <div id="here" className={heroSlider.here}></div> */}
@@ -220,6 +223,12 @@ export const fragment = graphql`
             id
             field_slider_class
                   relationships {
+                    node__page {
+                        title
+                        path {
+                          alias
+                        }
+                    }
                         field_obagi_logo {
                             localFile {
                                 childImageSharp {

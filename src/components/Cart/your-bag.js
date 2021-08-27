@@ -647,12 +647,13 @@ const YourBag = (props, { notificationId }) => {
                 <p className={ShowBagStyle.Subtotal}>Subtotal:</p>
                 <p className={ShowBagStyle.Subtotal}>${parseFloat(cartAmount).toFixed(2)}</p>
               </div>
-              <afterpay-placement
+              {/* <afterpay-placement
                 data-locale="en_US"
                 data-currency="USD"
                 data-amount={cartAmount}
                 data-modal-theme="white"
-              ></afterpay-placement>
+                data-min = "100"
+              ></afterpay-placement> */}
               <form
                 action={redirectUrls.checkout_url}
                 method="post"
@@ -956,12 +957,13 @@ const YourBag = (props, { notificationId }) => {
                         type="submit" onClick={seoEvent}>
                         Checkout
                       </button>
-                      <afterpay-placement
+                      {/* <afterpay-placement
                         data-locale="en_US"
                         data-currency="USD"
                         data-amount={cartAmount}
                         data-modal-theme="white"
-                      ></afterpay-placement>
+                        data-min = "100"
+                      ></afterpay-placement> */}
                       <div
                         className={BagStyle.buttonImg}
                       >

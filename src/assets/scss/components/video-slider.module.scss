@@ -45,6 +45,10 @@
         font-size: 3.333vw;
         line-height: 4.167vw;
     }
+    @media (min-width: 1921px) {
+        font-size: 64px;
+        line-height: 80px;
+    }
 }
 
 .main-title {
@@ -63,6 +67,13 @@
         line-height: 2.917vw;
         margin-top: 1.719vw;
     }
+
+    @media (min-width: 1921px) {
+        font-size: 32px;
+        line-height: 56px;
+    }
+
+
 }
 
 .sec-vid-wrapper {
@@ -104,6 +115,10 @@
     @include lg-screen {
         font-size: 0.938vw;
         line-height: 1.667vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 18px;
+        line-height: 32px;
     }
 }
 
