@@ -44,7 +44,7 @@ const MultiStepForm = ({ node }) => {
         // e.target.parentElement.nextSibling.classList.remove('d-none')
         e.target.classList.add('file-uploaded');
         e.target.parentElement.nextSibling.innerHTML = e.target.files[0].name;
-
+        e.target.parentElement.nextSibling.classList.remove('error-text');
         handlechange(e);
     }
     var checkinput = true;

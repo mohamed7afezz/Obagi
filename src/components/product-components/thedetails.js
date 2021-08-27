@@ -5,6 +5,14 @@ import plus from '../../assets/images/product-images/plus.svg'
 import { graphql } from 'gatsby'
 const Details = ({ node }) => {
     const data = node.relationships;
+    function changeText(e) {
+        if (e.target.getAttribute('aria-expanded') === "true") {
+          e.target.innerHTML = "Read Less";
+        } else {
+          e.target.innerHTML = "Read More"
+        }
+      }
+    
     return (
         <div className={["container-fluid", "detailHero" ,detailsStyles.detailHero].join(" ")}>
             <div className={"row"}>
@@ -24,7 +32,7 @@ const Details = ({ node }) => {
                             <div  className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription?item.field_sectiondescription.processed:""}}></div>
                             {item.field_read_more_extra?
                                    <> {index ===0?  
-                                    <a className={[detailsStyles.expand, detailsStyles.theDetail, "collapsed","mt-0 ","mob-mb-40"].join(" ")}   data-toggle="collapse" href="#read" role="button" aria-expanded="false" aria-controls="read">Read More </a> 
+                                    <a className={[detailsStyles.expand, detailsStyles.theDetail, "collapsed","mt-0 ","mob-mb-40"].join(" ")}   data-toggle="collapse" href="#read" role="button" aria-expanded="false" aria-controls="read" onClick={changeText}>Read More </a> 
                                     :  
                                     <a className={[detailsStyles.expand, detailsStyles.theSafe, "collapsed","mt-0"].join(" ")} data-toggle="collapse" href="#read" role="button" aria-expanded="false" aria-controls="read">Full List </a> 
                                 }
@@ -38,7 +46,7 @@ const Details = ({ node }) => {
                             <div   className={detailsStyles.safe} dangerouslySetInnerHTML={{__html: item.field_sectiondescription?item.field_sectiondescription.processed:""}}></div>
                             {item.field_read_more_extra?
                                    <> {index ===0?  
-                                    <a className={[detailsStyles.expand, detailsStyles.theDetail, "collapsed","mt-0 ","mob-mb-40"].join(" ")}   data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="List">Read More </a> 
+                                    <a className={[detailsStyles.expand, detailsStyles.theDetail, "collapsed","mt-0 ","mob-mb-40"].join(" ")}   data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="List" onClick={changeText}>Read More </a> 
                                     :  
                                     <a className={[detailsStyles.expand, detailsStyles.theSafe, "collapsed","mt-0"].join(" ")} data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="List">Full List </a> 
                                 }
