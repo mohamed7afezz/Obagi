@@ -10,8 +10,9 @@ import Scrollbars from 'react-custom-scrollbars'
 const $ = require('jquery')
 const MultiStepForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
-    let ageList = ["51-60", "41-50", "31-40", "20-30"];
+    let ageList = ["51-60", "41-50", "31-40", "21-30", "10-20"];
     let skinList = ["Dry Skin", "Oily Skin", "Combination Skin", "Normal Skin"];
+   
     useEffect(() => {
         if (typeof window != undefined) {
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
@@ -31,14 +32,29 @@ const MultiStepForm = ({ node }) => {
             }));
         }
     });
+    function scrollUp(e, id) { 
+        e.preventDefault()   ;
+        if (typeof window != undefined) {
+          $('html,body').animate({ scrollTop: $('.error').offset().top - 200 });
+          console.log('ash scroll')
+
+        }
+      }
     function choosefile(e) {
-        e.target.parentElement.nextSibling.classList.remove('d-none')
+        // e.target.parentElement.nextSibling.classList.remove('d-none')
+        e.target.classList.add('file-uploaded');
         e.target.parentElement.nextSibling.innerHTML = e.target.files[0].name;
+
+        handlechange(e);
     }
     var checkinput = true;
     var checkselect = true;
     var checkterms = true;
-    function validateForm(e) {
+    var checkfile = true;
+    const [uploadImage, setUploadImage] = useState(false);
+    var _validFileExtensions = [".jpg", ".jpeg",".png", ".gif"]; 
+    
+    async function validateForm(e) {
         e.preventDefault();
 
         var form = document.querySelector('.needs-validation');
@@ -55,8 +71,44 @@ const MultiStepForm = ({ node }) => {
                 }
             })
 
+            var arrInputs = form.getElementsByTagName("input");
+            for (var i = 0; i < arrInputs.length; i++) {
+                var oInput = arrInputs[i];
+                console.log('ash type', oInput)
+                if (oInput.type == "file") {
+                    var sFileName = oInput.value;
+                    if (sFileName.length > 0) {
+                        var blnValid = false;
+                        for (var j = 0; j < _validFileExtensions.length; j++) {
+                            var sCurExtension = _validFileExtensions[j];
+                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                blnValid = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!blnValid) {
+                            oInput.classList.add('error-upload');
+                            oInput.classList.add('error');
+                            oInput.classList.remove('file-uploaded');
+
+                            oInput.parentElement.nextSibling.innerHTML = "Please choose an image with an extension of JPG/JPEG/PNG/GIF.";
+                            oInput.parentElement.nextSibling.classList.add('error-text')
+                            checkfile = false;
+                            console.log('ash this',checkfile)
+
+                        }
+                    }
+                }
+            }
+
             $(form).find(':invalid').each(function () {
                 $(this).closest('.form-group').addClass('error');
+                if(this.getAttribute('type') == "file") {
+                    $(this).addClass('error-upload');
+                    $(this).addClass('error');
+                    $(this).removeClass('file-uploaded');
+                }
                 checkinput = false;
             })
             if (!document.querySelector('#registerCheck').checked) {
@@ -68,37 +120,89 @@ const MultiStepForm = ({ node }) => {
 
             }
         }
-       
-        if (checkinput && checkselect && checkterms ) {
+
+        console.log('ash check', checkfile)
+        if (checkinput && checkselect && checkterms && checkfile) {
             var obj = { webform_id: "nu_cil_form" };
             if (document.querySelectorAll(".needs-validation .error").length > 0) {
-              
-            }else{
-            var savevalidinput = document.querySelectorAll('.nu_cli input');
-            savevalidinput.forEach(item => {
-               if (item.getAttribute("type") != 'file') {
-                obj[item.getAttribute("name")] = item.value;
-               }
-                  
-             
-            });
-            
-            var savevalidselect = document.querySelectorAll('.nu_cli select');
-            savevalidselect.forEach(item => {
-               
-                obj[item.getAttribute("name")] = item.value;
-         
-        });
-            obj['tell_us_about_your_story']=document.querySelector('.nu_cli textarea').value;
-            var formData = new FormData();
-            console.log( document.querySelector("#beforeImage").files[0]);
-            formData.append("file", document.querySelector("#beforeImage").files[0]);
-            obj["before_image"]=formData;
-            sendFormValues({ obj });
-        }}
-       
-    
+
+            } else {
+                var savevalidinput = document.querySelectorAll('.nu_cli input');
+                savevalidinput.forEach(item => {
+                    if (item.getAttribute("type") != 'file') {
+                        obj[item.getAttribute("name")] = item.value;
+                    }
+
+
+                });
+
+                var savevalidselect = document.querySelectorAll('.nu_cli .select-selected');
+                savevalidselect.forEach(item => {
+
+                    obj[item.getAttribute("name")] = item.innerHTML.toLowerCase();
+
+                });
+                obj['tell_us_about_your_story'] = document.querySelector('.nu_cli textarea').value;
+                // var formData = new FormData();
+                // console.log( document.querySelector("#beforeImage").files[0]);
+                // formData.append("file", document.querySelector("#beforeImage").files[0]);
+                // obj["before_image"]=formData;
+                let beforeImgId = await sendBeforeImage();
+                let afterImgId = await sendAfterImage();
+                obj["before_image"] = beforeImgId.Id;
+                obj["after_image"] = afterImgId.Id;
+                console.log('ash img', beforeImgId, afterImgId, obj)
+                sendFormValues({ obj });
+            }
+        } else {
+            scrollUp(e)
+        }
+
+
     }
+    function uploadImages() {
+        setUploadImage(true);
+
+    }
+
+    const sendBeforeImage = async (image) => {
+        let before = document.querySelector('#before_image').files[0];
+        let res;
+        const beforeFile = await fetch(
+            `${baseUrl}webform_rest/nu_cil_form/upload/before_image?_format=json`,
+            {
+                headers: {
+                    "Content-Type": "application/octet-stream",
+                    "Content-Disposition": `${before}; filename=\"${before.name}\"`
+                },
+                method: 'POST',
+                body: before
+            }
+        )
+        var beforeFileRes = await beforeFile.json()
+        res = beforeFileRes
+        return res;
+    };
+    const sendAfterImage = async (image) => {
+        let after = document.querySelector('#after_image').files[0];
+        let res;
+
+        const afterFile = await fetch(
+            `${baseUrl}webform_rest/nu_cil_form/upload/after_image?_format=json`,
+            {
+                headers: {
+                    "Content-Type": "application/octet-stream",
+                    "Content-Disposition": `${after}; filename=\"${after.name}\"`
+                },
+                method: 'POST',
+                body: after
+            }
+        )
+        var afterFileRes = await afterFile.json()
+        res = afterFileRes
+        return res;
+    };
+
     const sendFormValues = (updatedItemData) => {
         fetch(
             `${baseUrl}webform_rest/submit`,
@@ -112,17 +216,24 @@ const MultiStepForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
-              if (response["sid"]) {
-           
-               
-               }          })
+                if (response["sid"]) {
+
+
+                }
+            })
             .catch(error => {
-           
+
             });
     };
     function handlechange(e) {
         $(e.target).closest('.error').removeClass('error');
         checkinput = true;
+
+        if (e.target.getAttribute('type') == 'file') {
+            $(e.target).removeClass('error-upload');
+            $(e.target).removeClass('error');
+            checkfile = true;
+        }
     }
     function handleSelect(e) {
         checkselect = true;
@@ -162,10 +273,10 @@ const MultiStepForm = ({ node }) => {
                                     <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
                                     <span className={multistepformStyles.inputContainer}>
 
-                                        <input className={multistepformStyles.inputUpload} onChange={choosefile} type="file" name="myImage" accept="image/png, image/gif, image/jpeg" />
+                                        <input id="before_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/*" data-webform-required-error="Please choose a file." />
                                     </span>
-                                    <span className={[multistepformStyles.inputValue, "d-none inputValue"].join(" ")}>
-
+                                    <span className={[multistepformStyles.inputValue, "inputValue"].join(" ")}>
+                                        No file chosen
                                     </span>
                                 </div>
                                 <div className={multistepformStyles.uploadWrapper}>
@@ -175,11 +286,11 @@ const MultiStepForm = ({ node }) => {
                                     <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
                                     <span className={multistepformStyles.inputContainer}>
 
-                                        <input className={multistepformStyles.inputUpload} onChange={choosefile} type="file" name="myImage" accept="image/png, image/gif, image/jpeg" />
+                                        <input id="after_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg" data-webform-required-error="Please choose a file." />
 
                                     </span>
-                                    <span className={[multistepformStyles.inputValue, "d-none inputValue"].join(" ")}>
-
+                                    <span className={[multistepformStyles.inputValue, "inputValue"].join(" ")}>
+                                        No file chosen
                                     </span>
                                 </div>
 

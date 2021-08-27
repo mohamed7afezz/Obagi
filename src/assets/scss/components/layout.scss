@@ -6068,3 +6068,15 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     }
   }
 }
+
+.error-upload {
+  border-color: #dc3545 !important;
+}
+
+.error-text {
+  color: #dc3545;
+}
+
+.file-uploaded {
+  opacity: 0.2;
+}
