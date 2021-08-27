@@ -92,7 +92,7 @@ const MultiStepForm = ({ node }) => {
                             oInput.classList.add('error');
                             oInput.classList.remove('file-uploaded');
 
-                            oInput.parentElement.nextSibling.innerHTML = "Please choose an image with an extension of JPG/JPEG/PNG/GIF.";
+                            oInput.parentElement.nextSibling.innerHTML = "Please only upload these types of files: JPG, JPEG, PNG, or GIF.";
                             oInput.parentElement.nextSibling.classList.add('error-text')
                             checkfile = false;
                             console.log('ash this',checkfile)
