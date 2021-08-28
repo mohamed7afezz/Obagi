@@ -413,3 +413,35 @@ font-weight: 700;
         }
     }
 }
+.titlecontainer{
+    align-items: center;
+    justify-content: space-between;
+}
+.collabsebutton{
+    margin-bottom: 26px;
+    &[aria-expanded="true"]{
+        .collapse{
+            display: block;
+        }
+        .expand{
+            display: none;
+        }
+    }
+    &[aria-expanded="false"]{
+        .collapse{
+            display: none;
+        }
+        .expand{
+            display: block;
+        }
+        
+    }
+}
+
+.collapse.rightSection  + .seprators{
+
+ 
+        .seprator{
+            margin-top: 0 !important;
+        }
+}

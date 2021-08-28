@@ -256,16 +256,22 @@ const MultiStepForm = ({ node }) => {
                     <form noValidate="novalidate" class={["register nu_cli needs-validation", multistepformStyles.FormStyle].join(" ")}>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
+                                <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
                                 <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
                                     <span><img src={stepIcon} className="img-fluid" /></span>
                                     Submit Your Photos
                                 </h3>
+                                <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" className={multistepformStyles.collabsebutton}>
+                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
+                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
+                                </a>
                             </div>
-                            <div className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2", multistepformStyles.leftSection].join(" ")}>
+                            </div>
+                            <div id="collapse1" className={[" col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 show", multistepformStyles.leftSection].join(" ")}>
 
                                 <p className={[multistepformStyles.formDescription]}>Upload one “before“ photo (week 0 or any time pre-treatment) and one “after“ photo (taken at least 16 weeks or later). Make sure we can see the real you! No mascara or eye makeup, just pure you. Be sure to fill out all the fields and keep contact information consistent. </p>
                             </div>
-                            <div className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse1" className={["col-12 ", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 show", multistepformStyles.rightSection].join(" ")}>
                                 <div className={multistepformStyles.uploadWrapper}>
                                     <p className={[multistepformStyles.formsteptitle].join(" ")}>Before Using Nu-Cil Photo (Week 0)</p>
                                     <p className={[multistepformStyles.formstepdescription].join(" ")}>
@@ -295,23 +301,29 @@ const MultiStepForm = ({ node }) => {
                                 </div>
 
                             </div>
-                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2"].join(" ")}>
+                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 seprators",multistepformStyles.seprators].join(" ")}>
                                 <div className={multistepformStyles.seprator}></div>
                             </div>
                         </div>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
+                            <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
                                 <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>2</span>
 
                                     Tell Us Your Story
                                 </h3>
+                                <a href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" className={multistepformStyles.collabsebutton}>
+                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
+                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
+                                </a>
                             </div>
-                            <div className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2", multistepformStyles.leftSection].join(" ")}>
+                            </div>
+                            <div id="collapse2"  className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 collapse", multistepformStyles.leftSection].join(" ")}>
 
                                 <p className={[multistepformStyles.formDescription]}>We want to know why you chose Nu-Cil and how the product has helped you and your lashes. When it comes to beauty, everyone's story is unique—so tell us yours!
                                     Please feel free to share as much or as little as you want. </p>
                             </div>
-                            <div className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse2"  className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 collapse", multistepformStyles.rightSection].join(" ")}>
                                 <p className={multistepformStyles.required}>*Required fileds</p>
                                 <div className={multistepformStyles.dFlex}>
                                     <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
@@ -396,22 +408,28 @@ const MultiStepForm = ({ node }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2"].join(" ")}>
+                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 seprators",multistepformStyles.seprators].join(" ")}>
                                 <div className={multistepformStyles.seprator}></div>
                             </div>
                         </div>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
+                            <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
                                 <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>3</span>
 
                                     Confirm and Submit
                                 </h3>
+                                <a href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3" className={multistepformStyles.collabsebutton}>
+                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
+                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
+                                </a>
                             </div>
-                            <div className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2", multistepformStyles.leftSection].join(" ")}>
+                            </div>
+                            <div id="collapse3" className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 collapse", multistepformStyles.leftSection].join(" ")}>
 
                                 <p className={[multistepformStyles.formDescription]}>Once you submit your entries, we'll review them for potential inclusion in future materials. </p>
                             </div>
-                            <div className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse3" className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 collapse", multistepformStyles.rightSection].join(" ")}>
                                 <div className="form-check">
 
                                     <label className={["form-check-label terms", multistepformStyles.termsWrapper].join(" ")} for="registerCheck">

@@ -3703,3 +3703,6 @@ input.order-check.out-of-stock ~ .checkmark {
   width: 100%;
   height: 100%;
 }
+.collapse:not(.show) + .seprators div{
+  margin-top: 0;
+}
