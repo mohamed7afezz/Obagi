@@ -7,11 +7,23 @@ import iconsGeneralplus from '../../assets/images/product-images/iconsGeneralPlu
 
 import { graphql, Link } from 'gatsby'
 import Scrollbars from 'react-custom-scrollbars'
+
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+
 const $ = require('jquery')
+
+const spinner = css`
+  display: block;
+  margin: 0 auto;
+ 
+`;
 const MultiStepForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
-    let ageList = ["51-60", "41-50", "31-40", "21-30", "10-20"];
+    let ageList = ["65+", "55-64", "45-54", "35-44", "25-34", "18-24"];
     let skinList = ["Dry Skin", "Oily Skin", "Combination Skin", "Normal Skin"];
+    const [isLoading, setIsLoading] = useState(false);
+
 
     useEffect(() => {
         if (typeof window != undefined) {
@@ -32,20 +44,35 @@ const MultiStepForm = ({ node }) => {
             }));
         }
     });
-    function scrollUp(e, id) {
-        e.preventDefault();
+    function scrollUp(div) {
+        // e.preventDefault();
         if (typeof window != undefined) {
-            $('html,body').animate({ scrollTop: $('.error').offset().top - 200 });
-            console.log('ash scroll')
+            $('html,body').animate({ scrollTop: $(`.${div}`).offset().top - 200 });
+            
 
         }
     }
+    var sizeInMB;
+
     function choosefile(e) {
         // e.target.parentElement.nextSibling.classList.remove('d-none')
-        e.target.classList.add('file-uploaded');
-        e.target.parentElement.nextSibling.innerHTML = e.target.files[0].name;
-        e.target.parentElement.nextSibling.classList.remove('error-text');
-        handlechange(e);
+        sizeInMB = e.target.files[0].size;
+        if (sizeInMB > 8388608) {
+            e.target.parentElement.nextSibling.innerHTML = "Maximum image size allowed is 8MB."
+            e.target.parentElement.nextSibling.classList.add('error-text');
+
+            e.target.classList.add('error-upload');
+            e.target.classList.add('error');
+            e.target.parentElement.classList.remove('file-uploaded');
+            checkfile = false;
+        } else {
+            e.target.parentElement.classList.add('file-uploaded');
+            e.target.parentElement.nextSibling.innerHTML = e.target.files[0].name;
+            e.target.parentElement.nextSibling.classList.remove('error-text');
+            handlechange(e);
+
+        }
+  
     }
     var checkinput = true;
     var checkselect = true;
@@ -56,7 +83,6 @@ const MultiStepForm = ({ node }) => {
 
     async function validateForm(e) {
         e.preventDefault();
-
         var form = document.querySelector('.needs-validation');
         if (form.checkValidity() === false) {
             $(form).find('.select-selected').each(function () {
@@ -74,7 +100,7 @@ const MultiStepForm = ({ node }) => {
             var arrInputs = form.getElementsByTagName("input");
             for (var i = 0; i < arrInputs.length; i++) {
                 var oInput = arrInputs[i];
-                console.log('ash type', oInput)
+           
                 if (oInput.type == "file") {
                     var sFileName = oInput.value;
                     if (sFileName.length > 0) {
@@ -90,12 +116,12 @@ const MultiStepForm = ({ node }) => {
                         if (!blnValid) {
                             oInput.classList.add('error-upload');
                             oInput.classList.add('error');
-                            oInput.classList.remove('file-uploaded');
+                            oInput.parentElement.classList.remove('file-uploaded');
 
                             oInput.parentElement.nextSibling.innerHTML = "Please only upload these types of files: JPG, JPEG, PNG, or GIF.";
                             oInput.parentElement.nextSibling.classList.add('error-text')
                             checkfile = false;
-                            console.log('ash this', checkfile)
+                        
 
                         }
                     }
@@ -107,7 +133,10 @@ const MultiStepForm = ({ node }) => {
                 if (this.getAttribute('type') == "file") {
                     $(this).addClass('error-upload');
                     $(this).addClass('error');
-                    $(this).removeClass('file-uploaded');
+                  
+                    $(this).parent().removeClass('file-uploaded');
+                    
+                    
                 }
                 checkinput = false;
             })
@@ -123,8 +152,8 @@ const MultiStepForm = ({ node }) => {
 
         if (checkinput && checkselect && checkterms && checkfile) {
             var obj = { webform_id: "nu_cil_form" };
-            if (document.querySelectorAll(".needs-validation .error").length > 0) {
-
+            if ((document.querySelectorAll(".needs-validation .error").length > 0)) {
+                scrollUp('error');
             } else {
                 var savevalidinput = document.querySelectorAll('.nu_cli input');
                 savevalidinput.forEach(item => {
@@ -146,15 +175,17 @@ const MultiStepForm = ({ node }) => {
                 // console.log( document.querySelector("#beforeImage").files[0]);
                 // formData.append("file", document.querySelector("#beforeImage").files[0]);
                 // obj["before_image"]=formData;
+                setIsLoading(true);
+
                 let beforeImgId = await sendBeforeImage();
                 let afterImgId = await sendAfterImage();
                 obj["before_image"] = beforeImgId.Id;
                 obj["after_image"] = afterImgId.Id;
-                console.log('ash img', beforeImgId, afterImgId, obj)
+             
                 sendFormValues({ obj });
             }
         } else {
-            scrollUp(e)
+            scrollUp('error')
         }
 
 
@@ -203,6 +234,7 @@ const MultiStepForm = ({ node }) => {
     };
 
     const sendFormValues = (updatedItemData) => {
+
         fetch(
             `${baseUrl}webform_rest/submit`,
             {
@@ -215,14 +247,18 @@ const MultiStepForm = ({ node }) => {
         )
             .then(res => res.json())
             .then(response => {
+
                 if (response["sid"]) {
                     document.querySelector('.thank-you').classList.remove('d-none');
                     document.querySelector('.form-sction').classList.add('d-none');
+                    scrollUp('thank-you');
                 }
             })
             .catch(error => {
 
             });
+            // setIsLoading(false);
+
     };
     function handlechange(e) {
         $(e.target).closest('.error').removeClass('error');
@@ -256,7 +292,7 @@ const MultiStepForm = ({ node }) => {
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-10 offset-md-1"}>
                                 <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
-                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
+                                    <h3 className={`${multistepformStyles.formHeader} nucilFormHeader`}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
                                         <span><img src={stepIcon} className="img-fluid" /></span>
                                        {node.field_form_before_after_title?node.field_form_before_after_title.processed:""}
                                     </h3>
@@ -320,7 +356,7 @@ const MultiStepForm = ({ node }) => {
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-10 offset-md-1"}>
                                 <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
-                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>2</span>
+                                    <h3 className={`${multistepformStyles.formHeader} nucilFormHeader`}> <span className={[multistepformStyles.stepnumber].join(" ")}>2</span>
 
                                       {node.field_story?node.field_story?.processed :"" }
                                     </h3>
@@ -426,7 +462,7 @@ const MultiStepForm = ({ node }) => {
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
                             <div className={"col-12 col-md-10 offset-md-1 "}>
                                 <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
-                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>3</span>
+                                    <h3 className={`${multistepformStyles.formHeader} nucilFormHeader`}> <span className={[multistepformStyles.stepnumber].join(" ")}>3</span>
 
                                        {node.field_form_terms_title?node.field_form_terms_title.processed:""}
                                     </h3>
@@ -449,7 +485,17 @@ const MultiStepForm = ({ node }) => {
                                         <span className={multistepformStyles.termsNote}>*I have read and agree to the <Link to="/terms-of-use">Terms & Conditions</Link> and grant Obagi® permission to use my submitted information to be featured in future Nu-Cil® communications.
                                         </span>
                                     </label>
-                                    <button onClick={validateForm} type="submit" className={multistepformStyles.submitForm}>Submit Your Story</button>
+                                    <button onClick={validateForm} type="submit" className={multistepformStyles.submitForm} disabled={isLoading}>
+                                        {isLoading? 
+                                            <ClipLoader
+                                            css={spinner}
+                                            size={20}
+                                            color={"#fff"}
+                      
+                                          />
+                                        : 'Submit Your Story'}
+                                    </button>
+
                                 </div>
                             </div>
 
