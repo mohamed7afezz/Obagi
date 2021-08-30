@@ -6088,3 +6088,20 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     content: 'Change File' !important;
   }
 }
+
+.file-uploaded + .inputValue {
+  position: relative;
+  padding-left: 28px;
+  &::before {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 18px;
+    width: 9px;
+    border-bottom: 2px solid #132466;
+    border-right: 2px solid #132466;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
