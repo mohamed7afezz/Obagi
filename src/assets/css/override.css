@@ -3706,3 +3706,16 @@ input.order-check.out-of-stock ~ .checkmark {
 .collapse:not(.show) + .seprators div{
   margin-top: 0;
 }
+
+.accordionTips[aria-expanded="false"] .moretips{
+display: block;
+}
+.accordionTips[aria-expanded="false"] .lesstips{
+  display: none;
+}
+.accordionTips[aria-expanded="true"] .moretips{
+  display: none;
+}
+.accordionTips[aria-expanded="true"] .lesstips{
+  display: block;
+}

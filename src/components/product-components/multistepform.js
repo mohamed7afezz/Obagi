@@ -12,7 +12,7 @@ const MultiStepForm = ({ node }) => {
     const baseUrl = process.env.Base_URL;
     let ageList = ["51-60", "41-50", "31-40", "21-30", "10-20"];
     let skinList = ["Dry Skin", "Oily Skin", "Combination Skin", "Normal Skin"];
-   
+
     useEffect(() => {
         if (typeof window != undefined) {
             document.querySelectorAll('.new-select').forEach(select => select.addEventListener('click', function () {
@@ -32,14 +32,14 @@ const MultiStepForm = ({ node }) => {
             }));
         }
     });
-    function scrollUp(e, id) { 
-        e.preventDefault()   ;
+    function scrollUp(e, id) {
+        e.preventDefault();
         if (typeof window != undefined) {
-          $('html,body').animate({ scrollTop: $('.error').offset().top - 200 });
-          console.log('ash scroll')
+            $('html,body').animate({ scrollTop: $('.error').offset().top - 200 });
+            console.log('ash scroll')
 
         }
-      }
+    }
     function choosefile(e) {
         // e.target.parentElement.nextSibling.classList.remove('d-none')
         e.target.classList.add('file-uploaded');
@@ -52,8 +52,8 @@ const MultiStepForm = ({ node }) => {
     var checkterms = true;
     var checkfile = true;
     const [uploadImage, setUploadImage] = useState(false);
-    var _validFileExtensions = [".jpg", ".jpeg",".png", ".gif"]; 
-    
+    var _validFileExtensions = [".jpg", ".jpeg", ".png", ".gif"];
+
     async function validateForm(e) {
         e.preventDefault();
 
@@ -86,7 +86,7 @@ const MultiStepForm = ({ node }) => {
                                 break;
                             }
                         }
-                        
+
                         if (!blnValid) {
                             oInput.classList.add('error-upload');
                             oInput.classList.add('error');
@@ -95,7 +95,7 @@ const MultiStepForm = ({ node }) => {
                             oInput.parentElement.nextSibling.innerHTML = "Please only upload these types of files: JPG, JPEG, PNG, or GIF.";
                             oInput.parentElement.nextSibling.classList.add('error-text')
                             checkfile = false;
-                            console.log('ash this',checkfile)
+                            console.log('ash this', checkfile)
 
                         }
                     }
@@ -104,7 +104,7 @@ const MultiStepForm = ({ node }) => {
 
             $(form).find(':invalid').each(function () {
                 $(this).closest('.form-group').addClass('error');
-                if(this.getAttribute('type') == "file") {
+                if (this.getAttribute('type') == "file") {
                     $(this).addClass('error-upload');
                     $(this).addClass('error');
                     $(this).removeClass('file-uploaded');
@@ -121,7 +121,6 @@ const MultiStepForm = ({ node }) => {
             }
         }
 
-        console.log('ash check', checkfile)
         if (checkinput && checkselect && checkterms && checkfile) {
             var obj = { webform_id: "nu_cil_form" };
             if (document.querySelectorAll(".needs-validation .error").length > 0) {
@@ -217,8 +216,8 @@ const MultiStepForm = ({ node }) => {
             .then(res => res.json())
             .then(response => {
                 if (response["sid"]) {
-
-
+                    document.querySelector('.thank-you').classList.remove('d-none');
+                    document.querySelector('.form-sction').classList.add('d-none');
                 }
             })
             .catch(error => {
@@ -247,36 +246,44 @@ const MultiStepForm = ({ node }) => {
                     {node.field_form_header ? <div className={multistepformStyles.mainHeader} dangerouslySetInnerHTML={{ __html: node.field_form_header.processed }}></div> : ""}
                     {node.field_form_subheader ? <div className={multistepformStyles.mainSubheader} dangerouslySetInnerHTML={{ __html: node.field_form_subheader.processed }}></div> : ""}
                 </div>
-                <div className={`col-12 col-md-10 offset-md-1 ${multistepformStyles.mainSeparator}`}>
-                    <div></div>
-                </div>
+             
             </div>
-            <div className={'row'}>
+           
+            <div className="row"><div className={["offset-md-1 col-12 col-md-10",multistepformStyles.giverborder].join(" ")}>
+            <div className={'row form-sction'}>
                 <div className={'col-12'}>
                     <form noValidate="novalidate" class={["register nu_cli needs-validation", multistepformStyles.FormStyle].join(" ")}>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
-                            <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
-                                <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
-                                <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
-                                    <span><img src={stepIcon} className="img-fluid" /></span>
-                                    Submit Your Photos
-                                </h3>
-                                <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" className={multistepformStyles.collabsebutton}>
-                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
-                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
-                                </a>
+                            <div className={"col-12 col-md-10 offset-md-1"}>
+                                <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
+                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber, "d-none"].join(" ")}>1</span>
+                                        <span><img src={stepIcon} className="img-fluid" /></span>
+                                       {node.field_form_before_after_title?node.field_form_before_after_title.processed:""}
+                                    </h3>
+                                    <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" className={multistepformStyles.collabsebutton}>
+                                        <img className={[multistepformStyles.expand, "img-fluid"].join(" ")} src={iconsGeneralplus} />
+                                        <img className={[multistepformStyles.collapse, "img-fluid"].join(" ")} src={iconsGeneralMinus} />
+                                    </a>
+                                </div>
                             </div>
-                            </div>
-                            <div id="collapse1" className={[" col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 show", multistepformStyles.leftSection].join(" ")}>
+                            <div id="collapse1" className={[" col-12", "offset-md-1 col-md-3  show", multistepformStyles.leftSection].join(" ")}>
 
-                                <p className={[multistepformStyles.formDescription]}>Upload one “before“ photo (week 0 or any time pre-treatment) and one “after“ photo (taken at least 16 weeks or later). Make sure we can see the real you! No mascara or eye makeup, just pure you. Be sure to fill out all the fields and keep contact information consistent. </p>
+                            {node.field_form_before_after_descript?       <div dangerouslySetInnerHTML={{ __html: node.field_form_before_after_descript.processed }} className={[multistepformStyles.formDescription]}></div>:""}
                             </div>
-                            <div id="collapse1" className={["col-12 ", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 show", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse1" className={["col-12 ", "col-md-6", "offset-md-1 offset-lg-1 show", multistepformStyles.rightSection].join(" ")}>
                                 <div className={multistepformStyles.uploadWrapper}>
                                     <p className={[multistepformStyles.formsteptitle].join(" ")}>Before Using Nu-Cil Photo (Week 0)</p>
                                     <p className={[multistepformStyles.formstepdescription].join(" ")}>
                                         Photograph your lashes from the same angle each time. Try a frontal view with your eyes open or a superior view with your eyes closed.     </p>
-                                    <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
+                                    <p className={"mb-24"}>
+                                        <a href="#" className="accordionTips" data-toggle="collapse" data-target="#moretips" aria-expanded="false" aria-controls="moretips">
+                                            <span className="moretips"> More Tips +</span>
+                                            <span className="lesstips"> less Tips -</span>
+                                        </a>
+
+                                    </p>
+                                    {node.field_form_before_tips ? <div id="moretips" className={[multistepformStyles.formstepdescription, multistepformStyles.tip, "collapse mb-24"].join(" ")} dangerouslySetInnerHTML={{ __html: node.field_form_before_tips.processed }}></div> : ""}
+
                                     <span className={multistepformStyles.inputContainer}>
 
                                         <input id="before_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg, image/jpg" data-webform-required-error="Please choose a file." />
@@ -289,7 +296,12 @@ const MultiStepForm = ({ node }) => {
                                     <p className={[multistepformStyles.formsteptitle].join(" ")}>After Using Nu-Cil Photo (Week 16)</p>
                                     <p className={[multistepformStyles.formstepdescription].join(" ")}>
                                         Photograph your lashes from the same angle each time. Try a frontal view with your eyes open or a superior view with your eyes closed.     </p>
-                                    <p className={"mb-24"}> <Link to="#">More Tips +</Link></p>
+                                    <p className={"mb-24"}> <a href="#" className="accordionTips" data-toggle="collapse" data-target="#moretips2" aria-expanded="false" aria-controls="moretips2">
+                                        <span className="moretips"> More Tips +</span>
+                                        <span className="lesstips"> less Tips -</span>
+                                    </a></p>
+                                    {node.field_form_after_tips ? <div id="moretips2" className={[multistepformStyles.formstepdescription, multistepformStyles.tip, "collapse mb-24"].join(" ")} dangerouslySetInnerHTML={{ __html: node.field_form_after_tips.processed }}></div> : ""}
+
                                     <span className={multistepformStyles.inputContainer}>
 
                                         <input id="after_image" className={multistepformStyles.inputUpload} onChange={choosefile} required type="file" name="myImage" accept="image/png, image/gif, image/jpeg, image/jpg" data-webform-required-error="Please choose a file." />
@@ -301,29 +313,28 @@ const MultiStepForm = ({ node }) => {
                                 </div>
 
                             </div>
-                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 seprators",multistepformStyles.seprators].join(" ")}>
+                            <div className={["col-12 col-md-10 offset-md-1  seprators", multistepformStyles.seprators].join(" ")}>
                                 <div className={multistepformStyles.seprator}></div>
                             </div>
                         </div>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
-                            <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
-                            <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
-                                <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>2</span>
+                            <div className={"col-12 col-md-10 offset-md-1"}>
+                                <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
+                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>2</span>
 
-                                    Tell Us Your Story
-                                </h3>
-                                <a href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" className={multistepformStyles.collabsebutton}>
-                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
-                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
-                                </a>
+                                      {node.field_story?node.field_story?.processed :"" }
+                                    </h3>
+                                    <a href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" className={multistepformStyles.collabsebutton}>
+                                        <img className={[multistepformStyles.expand, "img-fluid"].join(" ")} src={iconsGeneralplus} />
+                                        <img className={[multistepformStyles.collapse, "img-fluid"].join(" ")} src={iconsGeneralMinus} />
+                                    </a>
+                                </div>
                             </div>
-                            </div>
-                            <div id="collapse2"  className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 collapse", multistepformStyles.leftSection].join(" ")}>
+                            <div id="collapse2" className={["col-12", "offset-md-1 col-md-3  collapse", multistepformStyles.leftSection].join(" ")}>
 
-                                <p className={[multistepformStyles.formDescription]}>We want to know why you chose Nu-Cil and how the product has helped you and your lashes. When it comes to beauty, everyone's story is unique—so tell us yours!
-                                    Please feel free to share as much or as little as you want. </p>
+                              {node.field_story_description?  <div dangerouslySetInnerHTML={{ __html: node.field_story_description.processed }} className={[multistepformStyles.formDescription]}></div>:""}
                             </div>
-                            <div id="collapse2"  className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 collapse", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse2" className={["col-12", "col-md-6", "offset-md-1 collapse", multistepformStyles.rightSection].join(" ")}>
                                 <p className={multistepformStyles.required}>*Required fileds</p>
                                 <div className={multistepformStyles.dFlex}>
                                     <div className={["form-group", multistepformStyles.formGroup].join(" ")}>
@@ -399,7 +410,7 @@ const MultiStepForm = ({ node }) => {
 
                                     </div>
                                     <div className={multistepformStyles.massageStyle}>
-                                        <p className={multistepformStyles.feildTitle}>Tell us about your story.</p>
+                                        <d className={multistepformStyles.feildTitle}>Tell us about your story.</d>
                                         <div className={["form-group ", multistepformStyles.w100, multistepformStyles.formGroup, multistepformStyles.mb0].join(" ")}>
                                             <label for="firstname">Add Message</label>
                                             <textarea type="text" className="" name="tell_us_about_your_story" id="Massage" placeholder="" data-webform-required-error="Please fill in your first name." />
@@ -408,28 +419,28 @@ const MultiStepForm = ({ node }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={["col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 seprators",multistepformStyles.seprators].join(" ")}>
+                            <div className={["col-12 col-md-10 offset-md-1  seprators", multistepformStyles.seprators].join(" ")}>
                                 <div className={multistepformStyles.seprator}></div>
                             </div>
                         </div>
                         <div className={["row", multistepformStyles.Formwrap].join(" ")}>
-                            <div className={"col-12 col-md-11 offset-md-1 col-lg-8 offset-lg-2"}>
-                            <div className={["d-flex",multistepformStyles.titlecontainer].join(" ")}>
-                                <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>3</span>
+                            <div className={"col-12 col-md-10 offset-md-1 "}>
+                                <div className={["d-flex", multistepformStyles.titlecontainer].join(" ")}>
+                                    <h3 className={[multistepformStyles.formHeader]}> <span className={[multistepformStyles.stepnumber].join(" ")}>3</span>
 
-                                    Confirm and Submit
-                                </h3>
-                                <a href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3" className={multistepformStyles.collabsebutton}>
-                                <img className={[multistepformStyles.expand,"img-fluid"].join(" ")} src={iconsGeneralplus}/>
-                                <img className={[multistepformStyles.collapse,"img-fluid"].join(" ")} src={iconsGeneralMinus}/>
-                                </a>
+                                       {node.field_form_terms_title?node.field_form_terms_title.processed:""}
+                                    </h3>
+                                    <a href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3" className={multistepformStyles.collabsebutton}>
+                                        <img className={[multistepformStyles.expand, "img-fluid"].join(" ")} src={iconsGeneralplus} />
+                                        <img className={[multistepformStyles.collapse, "img-fluid"].join(" ")} src={iconsGeneralMinus} />
+                                    </a>
+                                </div>
                             </div>
-                            </div>
-                            <div id="collapse3" className={["col-12", "offset-md-1 col-md-3 col-lg-2 offset-lg-2 collapse", multistepformStyles.leftSection].join(" ")}>
+                            <div id="collapse3" className={["col-12", "offset-md-1 col-md-3 collapse", multistepformStyles.leftSection].join(" ")}>
 
-                                <p className={[multistepformStyles.formDescription]}>Once you submit your entries, we'll review them for potential inclusion in future materials. </p>
+                               {node.field_form_terms_description? <div dangerouslySetInnerHTML={{ __html: node.field_form_terms_description.processed }}  className={[multistepformStyles.formDescription]}></div>:""}
                             </div>
-                            <div id="collapse3" className={["col-12", "col-md-6", "offset-md-1 col-lg-5 offset-lg-1 collapse", multistepformStyles.rightSection].join(" ")}>
+                            <div id="collapse3" className={["col-12", "col-md-6", "offset-md-1  collapse", multistepformStyles.rightSection].join(" ")}>
                                 <div className="form-check">
 
                                     <label className={["form-check-label terms", multistepformStyles.termsWrapper].join(" ")} for="registerCheck">
@@ -446,8 +457,17 @@ const MultiStepForm = ({ node }) => {
                     </form>
                 </div>
             </div>
+            <div className="thank-you d-none">
+                <div className="row">
+                <div className="col-12">
+                    <h2 className={multistepformStyles.thankTitle}>Thank You</h2>
+                    <p className={multistepformStyles.thankdesc}>Your Form Has Been Submitted</p>
+                </div>
+                </div>
+            </div>
         </div>
-
+        </div>
+        </div>
     )
 }
 
@@ -470,6 +490,12 @@ export const fragment = graphql`
         }
         field_story {
           processed
+        }
+        field_form_after_tips {
+            processed
+        }
+        field_form_before_tips {
+            processed
         }
         field_story_description {
           processed

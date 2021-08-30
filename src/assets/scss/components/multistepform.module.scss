@@ -437,11 +437,48 @@ font-weight: 700;
         
     }
 }
-
+.tip{
+    margin-bottom: 24px;
+    @include md-screen{
+        margin-bottom: 32px;
+    }
+}
 .collapse.rightSection  + .seprators{
 
  
         .seprator{
             margin-top: 0 !important;
         }
+}
+.thank-you{
+    text-align: center;
+}
+.thankTitle{
+    font-size: 32px;
+    text-transform: uppercase;
+    @include md-screen{
+        font-size: 54px;
+        font-weight: 700;
+    }
+    
+}
+.thankdesc{
+    font-size: 16px;
+    @include md-screen{
+        font-size: 24px;
+    } 
+}
+.giverborder{
+    border: 0;
+    border-radius: 6px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border-top: 1px solid #D6D6D6;;
+    padding-bottom: 1px solid #D6D6D6;;
+    @include md-screen{
+       border: 1px solid #D6D6D6;
+       padding-top: 65px;
+       padding-bottom: 65px;
+
+    }
 }
