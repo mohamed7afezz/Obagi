@@ -5625,7 +5625,7 @@ body.acsb-keynav input[type="radio"].acsb-shown {
     box-shadow: none;
     position: unset;
     a {
-      padding: 13px 13px 13px 40px;
+      padding: 13px 13px 0 40px;
       &::before {
         left: 0;
       }
@@ -6046,6 +6046,9 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   }
 
   @include lg-screen {
+    .slick-track {
+      height: auto !important;
+    }
     .slick-initialized {
       padding-bottom: 0;
     }
