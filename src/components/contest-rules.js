@@ -14,7 +14,7 @@ const CustomerCareFullHtml = ({ node }) => (
 
                 <div class="row">
                     <div class="col-12 col-md-8 " >
-                        <div dangerouslySetInnerHTML={{ __html: node.field_full_html_text.processed }}></div>
+                        {node.field_full_html_text? <div dangerouslySetInnerHTML={{ __html: node.field_full_html_text.processed }}></div> : ""}
 
                     </div>
                 </div>
