@@ -6010,6 +6010,20 @@ body.acsb-keynav input[type="radio"].acsb-shown {
 
 .secVidSlider {
 
+  .slick-track {
+    height: auto !important;
+  }
+ 
+  .slick-dots li.slick-active button::before {
+    background-color: #44c4d9;
+
+    @include lg-screen {
+      .slick-slide {
+        padding: 0;
+      }
+    }
+  }
+
   @media (max-width: 991px) {
     .slick-track {
       display: flex !important;
@@ -6032,23 +6046,9 @@ body.acsb-keynav input[type="radio"].acsb-shown {
       }
     }
   }
-  
-
- 
-  .slick-dots li.slick-active button::before {
-    background-color: #44c4d9;
-
-    @include lg-screen {
-      .slick-slide {
-        padding: 0;
-      }
-    }
-  }
 
   @include lg-screen {
-    .slick-track {
-      height: auto !important;
-    }
+
     .slick-initialized {
       padding-bottom: 0;
     }
