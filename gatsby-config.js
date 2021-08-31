@@ -93,6 +93,7 @@ module.exports = {
           `/skin-simplified/skin-concern/clinical-blog`,
           `/behind-the-lines/professional-c/medical-blog`,
           `/medical/nu-cil-eyelash-enhancing-serum`,
+          `/medical/medical-product-do-not-unpublish`
     ],
         
       }
