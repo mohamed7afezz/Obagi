@@ -119,7 +119,7 @@ export const ProductLineComp = ({ line }) => {
         {(line.relationships && line.relationships.products) ? line.relationships.products.map(product => {
           return (
             <label class="terms">
-              <input className="product-check-box" type="checkbox" value={product.field_medical_sku} />
+              <input className="product-check-box" type="checkbox" value={product.field_medical_sku? product.field_medical_sku : product.field_custom_sku} />
               <span dangerouslySetInnerHTML={{ __html: product.title }}></span>
               <div class="checkmark"></div>
             </label>
