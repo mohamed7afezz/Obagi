@@ -34,7 +34,8 @@ class Temps {
     }
 
     infoWindowTemp(obj) {
-        return `
+        if (obj) {
+            return `
             <div>
                 <h2 class="clinic-name">${obj.name}</h2>
                 <button   class="make-appointment" id="req-appointment-info" > Request Appointment</button>
@@ -48,6 +49,7 @@ class Temps {
                   </div>
                 </div>
         `;
+        }
     }
 
     relatedProduct(name, link) {
@@ -172,9 +174,9 @@ class Search extends Temps {
                         return;
                     }
                     if(isNaN(this.inputLoc.value)) {
-                        this.searchByLocation({useParams: true})
+                        this.searchByLocation({useParams: true}, true)
                     } else {
-                        this.searchByLocation({address: this.inputLoc.value})
+                        this.searchByLocation({address: this.inputLoc.value}, true)
                     }
                     
                 } else {
@@ -213,7 +215,7 @@ class Search extends Temps {
     async searchByLocation(searchOptions, isProd) {
         this.err.hideErr();
         this.setLoading(true);
-        
+        console.log('ash search', searchOptions, isProd)
         let geocodeOptions = {};
         
         if(searchOptions.address) {
@@ -242,6 +244,7 @@ class Search extends Temps {
 
         } else {
             // params are already there.
+    
         }
 
         this.params.distance = this.inputMiles.value;
@@ -252,9 +255,16 @@ class Search extends Temps {
 
             for(let i = 0; i < document.getElementsByClassName('product-check-box').length; i++) {
                 let item = document.getElementsByClassName('product-check-box').item(i);
+                console.log('ash item', item)
                 if(item.checked) {
                     products.push(item.value)
                 }
+                //  else {
+                //     const index = products.indexOf(item.value);
+                //     if (index > -1) {
+                //         products.splice(index, 1);
+                //     }
+                // }
             }
             this.params.product = '';
             this.params.product = products.length > 0? products.join(',') : '';
@@ -346,6 +356,11 @@ class Search extends Temps {
 
         } else {
             this.err.showErr('noRes');
+            document.getElementById('results-wrapper').classList.add('hide');
+            this.markers.forEach(marker => {
+                marker.setMap(null);
+                marker=null;
+            })
         }
     }
 
@@ -554,23 +569,26 @@ class Map extends Search {
             // clear old markers
             this.markers.forEach(marker => {
                 marker.setMap(null);
+                marker=null;
             })
             this.markers= [];
 
-            this.results.clinics.forEach((clinic, index) => {
-                const marker = new this.google.maps.Marker({
-                    map: this.map,
-                    draggable: false,
-                    label: {text: index + 1 + '', color: '#132466'},
-                    icon: this.markerIcon.default,
-                    animation: this.google.maps.Animation.DROP,
-                    position: new this.google.maps.LatLng(parseFloat(clinic.lat), parseFloat(clinic.lng))
-                });
-                marker.addListener('click', () => {
-                    this.openClinic(index)
+            if (this.results.clinics.length > 0) {
+                this.results.clinics.forEach((clinic, index) => {
+                    const marker = new this.google.maps.Marker({
+                        map: this.map,
+                        draggable: false,
+                        label: {text: index + 1 + '', color: '#132466'},
+                        icon: this.markerIcon.default,
+                        animation: this.google.maps.Animation.DROP,
+                        position: new this.google.maps.LatLng(parseFloat(clinic.lat), parseFloat(clinic.lng))
+                    });
+                    marker.addListener('click', () => {
+                        this.openClinic(index)
+                    })
+                    this.markers.push(marker)
                 })
-                this.markers.push(marker)
-            })
+            }
 
             // this.openClinic(0);
             // new this.google.maps.event.trigger( this.markers[0], 'click' );
@@ -579,9 +597,11 @@ class Map extends Search {
             for(let i = 0; i < document.getElementsByClassName('tray-result-number').length; i++) {
                 document.getElementsByClassName('tray-result-number')[i].addEventListener('click', (e) => {
                     
-                    this.openClinic(i, true)
-                    this.map.panTo(new this.google.maps.LatLng(this.results.clinics[i].lat, this.results.clinics[i].lng));
-                    this.map.setZoom(15)
+                    if (this.results.clinics.length > 0) {
+                        this.openClinic(i, true)
+                        this.map.panTo(new this.google.maps.LatLng(this.results.clinics[i].lat, this.results.clinics[i].lng));
+                        this.map.setZoom(15)
+                    }
                 })
             }
             
@@ -627,8 +647,9 @@ class Map extends Search {
         }
 
         // document.getElementById('req-appointment-info').removeEventListener('click', clickInfoReq);
-        document.getElementById('req-appointment-info').addEventListener('click', clickInfoReq);
-
+        if (document.getElementById('req-appointment-info')) {
+            document.getElementById('req-appointment-info').addEventListener('click', clickInfoReq);
+        }
 
 
         

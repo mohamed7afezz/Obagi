@@ -372,7 +372,7 @@ export default function Finder() {
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
-                <button className="btn btn-primary" id="search-btn">
+                <button className="btn btn-primary" id="search-btn" onClick={searchProducts}>
                   Update Search
                 </button>
                 <button
