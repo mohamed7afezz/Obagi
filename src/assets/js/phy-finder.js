@@ -215,7 +215,6 @@ class Search extends Temps {
     async searchByLocation(searchOptions, isProd) {
         this.err.hideErr();
         this.setLoading(true);
-        console.log('ash search', searchOptions, isProd)
         let geocodeOptions = {};
         
         if(searchOptions.address) {
@@ -255,16 +254,9 @@ class Search extends Temps {
 
             for(let i = 0; i < document.getElementsByClassName('product-check-box').length; i++) {
                 let item = document.getElementsByClassName('product-check-box').item(i);
-                console.log('ash item', item)
                 if(item.checked) {
                     products.push(item.value)
                 }
-                //  else {
-                //     const index = products.indexOf(item.value);
-                //     if (index > -1) {
-                //         products.splice(index, 1);
-                //     }
-                // }
             }
             this.params.product = '';
             this.params.product = products.length > 0? products.join(',') : '';

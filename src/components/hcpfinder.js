@@ -189,7 +189,6 @@ export default function Finder() {
       savechecked.push(e.target.value);
       document.querySelector("#prod-search-btn").classList.remove("disable")
       document.querySelector("#submit-search-physician").classList.remove("disable");
-      console.log('ash arr', prodLines, newProdLines)
 
 
     } else {
@@ -235,7 +234,6 @@ export default function Finder() {
     setLines([...searchLines, ...customLines]);
     document.querySelector('#prodLines').classList.add('d-none');
     e.target.disabled = false
-    console.log('ash search',searchLines, resultsNumber )
   }
 
   function clearSelected(e) {
@@ -272,7 +270,6 @@ export default function Finder() {
       }).filter(item => item != undefined).flat();
 
       const allProductsData = productsData.concat(customProductsData)
-      console.log('ash finder', allProductsData)
       phyFinder(google, finderURL, allProductsData);
     }
     if (
