@@ -984,6 +984,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
             )
             ? checkTaxonomy.map((item, index) => {
               let ingredient = getIngredient(item);
+              console.log('ash item', item)
               return (
                 <>
 
@@ -1024,7 +1025,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`
                         ].join(" ")}
-                        data-rate-order={item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
+                        data-rate-order={item.relationships.field_medical_rx && item.relationships.field_medical_rx.name=="RX"? '100' : item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
                       >
                         {pageNodeType == "clinicalConcern" ? (
                           <ProductCard
@@ -1135,7 +1136,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                           `${item.relationships.field_medical_rx ? item.relationships.field_medical_rx.name : ''}`,
                           `${item.field_is_best_seller ? 'bestSeller' : ''}`,
                         ].join(" ")}
-                        data-rate-order={item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
+                        data-rate-order={item.relationships.field_medical_rx && item.relationships.field_medical_rx.name=="RX"? '100' : item.field_medical_best_seller_rate ? item.field_medical_best_seller_rate : item.field_clinical_best_seller_rate ? item.field_clinical_best_seller_rate : '99'}
 
                       >
                         {pageNodeType == "clinicalConcern" ? (
@@ -1337,7 +1338,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                               `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                               `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                             ].join(" ")}
-                            data-rate-order={product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
+                            data-rate-order={product.relationships.field_medical_rx && product.relationships.field_medical_rx.name=="RX"? '100' : product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
                           >
                             <ProductCard
                               productCat="clinical"
@@ -1431,7 +1432,7 @@ const Collectionproducts = ({ node, nodetype, checktaxonomyType }) => {
                                   `${product.relationships.field_medical_rx ? product.relationships.field_medical_rx.name : ''}`,
                                   `${product.field_is_best_seller ? 'bestSeller' : ''}`,
                                 ].join(" ")}
-                                data-rate-order={product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
+                                data-rate-order={product.relationships.field_medical_rx && product.relationships.field_medical_rx.name=="RX"? '100' : product.field_medical_best_seller_rate ? product.field_medical_best_seller_rate : product.field_clinical_best_seller_rate ? product.field_clinical_best_seller_rate : '99'}
                               >
                                 <ProductCard
                                   productCat="medical"

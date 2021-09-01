@@ -1388,8 +1388,10 @@ p {
     }
 
     @include lg-screen {
-      width: 24px;
-      height: 24px;
+      width: 27px;
+      height: 29px;
+      background-size: unset;
+      background-position: center;
       top: 39px;
     }
   }
