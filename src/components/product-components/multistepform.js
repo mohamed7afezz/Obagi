@@ -232,7 +232,17 @@ const MultiStepForm = ({ node }) => {
         res = afterFileRes
         return res;
     };
-
+    let storythanksmodal = () => {
+        document.querySelector("#storyformthank").classList.remove('hidden')
+        var container = document.querySelector("#storyformthank .container");
+      
+        document.querySelector("#storyformthank").addEventListener("click", function (e) {
+          if (e.target !== document.querySelector("#storyformthank") && e.target !== container) return;
+          document.querySelector("#storyformthank").classList.add("hidden");
+        });
+      
+      
+      }
     const sendFormValues = (updatedItemData) => {
 
         fetch(
@@ -249,13 +259,12 @@ const MultiStepForm = ({ node }) => {
             .then(response => {
 
                 if (response["sid"]) {
-                    document.querySelector('.thank-you').classList.remove('d-none');
-                    document.querySelector('.form-sction').classList.add('d-none');
-                    scrollUp('thank-you');
+                    storythanksmodal();
+                    setIsLoading(false)
                 }
             })
             .catch(error => {
-
+                
             });
             // setIsLoading(false);
 
@@ -276,6 +285,7 @@ const MultiStepForm = ({ node }) => {
 
     }
     return (
+        <>
         <div className={["container-fluid", multistepformStyles.sectionWrapper].join(" ")}>
             <div className={`row`}>
                 <div className={`col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2`}>
@@ -503,17 +513,21 @@ const MultiStepForm = ({ node }) => {
                     </form>
                 </div>
             </div>
-            <div className="thank-you d-none">
-                <div className="row">
-                <div className="col-12">
-                    <h2 className={multistepformStyles.thankTitle}>Thank You</h2>
-                    <p className={multistepformStyles.thankdesc}>Your Form Has Been Submitted</p>
-                </div>
+          
+        </div>
+        </div>
+        </div>
+        <div class="modal hidden" id="storyformthank">
+            <div class="container">
+                <div class="modal-body">
+                <p>Thank you for submitting your story.</p>
+                <p>
+                    Our team will reach out if they have any further questions.</p>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+   
+        </>
     )
 }
 

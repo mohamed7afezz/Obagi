@@ -122,28 +122,45 @@ padding-top: 22px;
 }
 
 .box {
-    background-color: rgba(83, 208, 228, 0.1);
-    
     margin-bottom: 18px;
-    padding: 18px;
-
     @include md-screen {
-        padding-top: 24px;
-        padding-bottom: 24px;
-        padding-left: 32px;
         margin-bottom: 40px;
     }
-
-    h1 {
-        font-size: 48px;
-        line-height: 64px;
-        @extend %futurapt-book;
-
-    }
-
-    p {
-        @extend %futurapt-book;
-
+    .boxwrap{
+        background-color: rgba(83, 208, 228, 0.1);
+       
+       height: 100%;
+        padding: 18px;
+    
+        @include md-screen {
+            margin-top: 24px;
+            margin-bottom: 24px;
+            padding-left: 22px;
+         
+        }
+    
+        h1 {
+            font-size: 48px;
+            line-height: 64px;
+            @extend %futurapt-book;
+    
+        }
+        .boxheadertext{
+            font-size: 34px;
+            line-height: 40px;
+            padding-top: 16px;
+            padding-bottom: 1px;
+            @include lg-screen{
+                padding-bottom: 0;
+                padding-top: 0;
+                font-size: 48px;
+                line-height: 64px;
+            }
+        }
+        p {
+            @extend %futurapt-book;
+    
+        }
     }
 }
 

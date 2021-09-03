@@ -86,9 +86,9 @@
     justify-content: space-between;
 }
 @media (max-width:767px){
-    .beforeaftercontainer  .col-5 {
-        flex: 0 0 46%;
-        max-width: none;
+    .beforeaftercontainer  .col-6 {
+       padding-left: 8px;
+      padding-right: 8px;
     }
     .beforeaftercontainer .card-body {
         padding-left: 0;

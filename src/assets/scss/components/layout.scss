@@ -1376,22 +1376,21 @@ p {
   .faq-sign {
     position: absolute;
     content: "";
-    width: 16px;
-    height: 16px;
+    width: 27px;
+    height: 29px;
+    background-size: unset;
+    background-position: center;
     right: 0;
     top: 27px;
     background-image: url("../../images/minus.png");
     background-repeat: no-repeat;
-    background-size: contain;
+
     &.collapsed {
       background-image: url("../../images/plus.png");
     }
 
     @include lg-screen {
-      width: 27px;
-      height: 29px;
-      background-size: unset;
-      background-position: center;
+   
       top: 39px;
     }
   }
@@ -3656,6 +3655,7 @@ p {
   }
 }
 #formsubmition,
+#storyformthank,
 #moremaxprice {
   background-color: rgba(0, 0, 0, 0.4); /* Transparent dimmed overlay */
   position: fixed;
@@ -3676,11 +3676,13 @@ p {
 }
 #formsubmition.hidden,
 #moremaxprice.hidden,
+#storyformthank.hidden,
 #youarein.hidden {
   display: none;
 }
 
 #formsubmition .container,
+#storyformthank .container,
 #moremaxprice .container,
 #youarein .container {
   display: table-cell;
@@ -3695,6 +3697,7 @@ p {
   }
 }
 #formsubmition .modal-body,
+#storyformthank .modal-body,
 #moremaxprice .modal-body {
   box-shadow: 5px 10px #888888;
   display: inline-block;
@@ -5920,12 +5923,25 @@ body.acsb-keynav input[type="radio"].acsb-shown {
   margin-bottom: 16px;
   padding-top: 40px;
   border-top: 1px solid rgba(19, 36, 102, 0.19);
+font-size: 32px;
+
+@include md-screen {
+  font-size: 4.5vw;
+
+}
+
 
   @include lg-screen {
+    font-size: 3.333vw;
     margin-top: 5.781vw;
     margin-bottom: 1.250vw;
     padding-top: 5.365vw;
   }
+  
+@media (min-width: 1921px) {
+  @include fontStyle(64, 72);
+
+}
 }
 
 .images-slider-subtitle {

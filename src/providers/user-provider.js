@@ -39,12 +39,12 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         getUserData();
         
-        if(typeof window !== undefined && sitePass === 'true') {
-            var pass = prompt('Please enter the site password');
-            if(pass != 'ProductsNow656!') {
-                window.location.reload();
-            }
-        }
+        // if(typeof window !== undefined && sitePass === 'true') {
+        //     var pass = prompt('Please enter the site password');
+        //     if(pass != 'ProductsNow656!') {
+        //         window.location.reload();
+        //     }
+        // }
     }, []);
 
     // Login

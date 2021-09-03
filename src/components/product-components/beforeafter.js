@@ -104,10 +104,12 @@ const Beforeafter = ({ node }) => {
                                             item.relationships.field_boxes.map(item => (
                                                 
                                                 item.field_box_des ?
-                                                    <div className={[beforeafter.box, "box", "col-5"].join(" ")}>
-                                                        <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>
+                                                    <div className={[beforeafter.box,  "col-6"].join(" ")}>
+                                                        <div className={[beforeafter.boxwrap,"box"].join(" ")}>
+                                                     {item.field_percentage.processed.includes("eek")?   <h1 className={beforeafter.boxheadertext} dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>:
+                                                     <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>}
                                                         <div dangerouslySetInnerHTML={{ __html: item.field_box_des ? item.field_box_des.processed : '' }}></div>
-                                                    </div> : ""
+                                                    </div> </div>: ""
                                             )
                                             )
                                         }
