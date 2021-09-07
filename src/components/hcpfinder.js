@@ -380,11 +380,39 @@ export default function Finder() {
                   Search By Product
                 </button>
               </div>
+          
+              {data.customProducts.edges.map(({ node }) => {
+                  if (node.relationships.products) {
+                    return (
+                      <div className="col-12">
+                  <p className="proServices">Obagi is proud to offer premium professional services in a select number of physician locations.</p>
+
+                      <div className="customProducts">
+                        <p>Sort by {node.name}:</p>
+                       {node.relationships.products.map(product => {
+                         return (
+                           <label class="terms">
+                             <input className="product-check-box" type="checkbox" value={product.field_medical_sku ? product.field_medical_sku : product.field_custom_sku} />
+                             <span dangerouslySetInnerHTML={{ __html: product.title }}></span>
+                             <div class="checkmark"></div>
+                           </label>
+                         )
+                       })
+                        }
+                      </div>
+                  </div>
+                    )
+                  }
+                })}
+          
               <p class="covid hide-mob">
                 COVID-19 UPDATE: Skin care professional partners' openings and
                 hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
+ 
+                
+        
             </div>
             <div id="loader" className="d-none">
               <div class="d-mob-none">
@@ -730,7 +758,7 @@ export default function Finder() {
                                 return (
                                   <li key={node.id}>
                                     <label class="terms">
-                                      <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                      <input class="popupVideoInput" name="product" type="checkbox" value={node.name} onClick={updateProductLines} />
                                       <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
                                       <span className="checkmark"></span>
                                     </label>
@@ -738,19 +766,19 @@ export default function Finder() {
                                 )
                               }
                             })}
-                            {data.customProducts.edges.map(({ node }) => {
+                            {/* {data.customProducts.edges.map(({ node }) => {
                                  if (node.relationships.products) {
                                   return (
                                     <li key={node.id}>
                                       <label class="terms">
-                                        <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                        <input class="popupVideoInput" name="product" type="checkbox" value={node.name} onClick={updateProductLines} />
                                         <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
                                         <span className="checkmark"></span>
                                       </label>
                                     </li>
                                   )
                                 }
-                            })}
+                            })} */}
                           </ul>
                         </Scrollbars>
                       </div>
