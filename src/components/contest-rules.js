@@ -31,7 +31,6 @@ export const fragment = graphql`
         field_full_html_text {
             processed
         }
-        field_active_tab
         relationships {
             node__page {
                 title
