@@ -8,7 +8,7 @@ import Customer from "../components/customer-care";
 const CustomerCareFullHtml = ({ node }) => (
     <>
         {/* <SEO title="Our COVID-19 Response | Obagi" description="In our 30+ years as Obagi, we have seen the world change many times and have evolved with the changes to support our physicians, communities, and employees. When COVID-19 began, we pivoted again to further assist our partners and consumers." canonical="/covid-19" /> */}
-        <Customer activeTab={node.field_active_tab? node.field_active_tab : ""}>
+        <Customer activeTab={node.relationships && node.relationships.node__page && node.relationships.node__page[0].path && node.relationships.node__page[0].path.alias? node.relationships.node__page[0].path.alias : ""} currentPage={node.relationships && node.relationships.node__page && node.relationships.node__page[0].title? node.relationships.node__page[0].title : "" }>
             <div class="container-fluid">
 
 
@@ -32,4 +32,12 @@ export const fragment = graphql`
             processed
         }
         field_active_tab
+        relationships {
+            node__page {
+                title
+                path {
+                    alias
+                }
+            }
+        }
     }`

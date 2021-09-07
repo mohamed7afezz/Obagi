@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react"
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Customer from '../components/customer-care'
 import { CustomSelect } from '../assets/js/custom-select'
 import myAccountStyles from '../assets/scss/components/my-account.module.scss'
 
-export default function Contact() {
+export default function Contact({ node }) {
     const baseUrl = process.env.Base_URL;
     const [emailSelected, setEmailSelected] = useState(true);
     const [selectSelected, setSelect] = useState(false);
@@ -126,9 +126,9 @@ export default function Contact() {
     })
 
 
-
+    console.log('ash pa', node)
     return (
-        <Customer activeTab="contact-us">
+        <Customer activeTab={node.relationships && node.relationships.node__page && node.relationships.node__page[0].path && node.relationships.node__page[0].path.alias? node.relationships.node__page[0].path.alias : ""} currentPage={node.relationships && node.relationships.node__page && node.relationships.node__page[0].title? node.relationships.node__page[0].title : "" }>
             <div className="contact-us">
                 <div className="row">
                     <div className="col-12 col-lg-8">
@@ -286,3 +286,16 @@ export default function Contact() {
         </Customer>
     )
 }
+
+export const fragment = graphql`
+    fragment paragraphContactUs on paragraph__contact_us {
+        id
+        relationships {
+            node__page {
+                title
+                path {
+                    alias
+                }
+            }
+        }
+    }`

@@ -100,6 +100,7 @@ query($slug: String!) {
                 ...paragraphCustomerCareFullHtml
                 ...paragraphArticleVideo
                 ...paragraphProductsArticle
+                ...paragraphContactUs
             }
         }
         field_meta_tags {
