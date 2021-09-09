@@ -153,7 +153,7 @@ const MultiStepForm = ({ node }) => {
             document.querySelector('#registerCheck').parentElement.classList.remove('error');
 
         }
-
+        console.log('ash check', checkinput , checkselect , checkterms , checkfile)
         if (checkinput && checkselect && checkterms && checkfile) {
             var obj = { webform_id: "nu_cil_form" };
             if ((document.querySelectorAll(".needs-validation .error").length > 0)) {
@@ -189,7 +189,9 @@ const MultiStepForm = ({ node }) => {
                 sendFormValues({ obj });
             }
         } else {
-            scrollUp('needs-validation')
+            if ((document.querySelectorAll(".needs-validation .error").length > 0)) {
+                scrollUp('error');
+            }
         }
 
 
@@ -494,7 +496,7 @@ const MultiStepForm = ({ node }) => {
                                 <div className="form-check">
 
                                     <label className={["form-check-label terms", multistepformStyles.termsWrapper].join(" ")} for="registerCheck">
-                                        <input type="checkbox" name="terms_and_condition" required className="form-check-input" id="registerCheck" defaultChecked={true} />
+                                        <input type="checkbox" name="terms_and_condition" required className="form-check-input" id="registerCheck" defaultChecked={true} onChange={handlechange} />
                                         <span className={["checkmark", multistepformStyles.checkMark].join(" ")}></span>
                                         <span className={multistepformStyles.termsNote}>*I have read and agree to the <Link to="/terms-of-use">Terms & Conditions</Link> and grant Obagi® permission to use my submitted information to be featured in future Nu-Cil® communications.
                                         </span>
