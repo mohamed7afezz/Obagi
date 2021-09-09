@@ -6165,3 +6165,9 @@ font-size: 32px;
     margin-top: 40px;
   }
 }
+
+.PDP .footer > div {
+  @include mobile-screen-only {
+    padding-bottom: 79px;
+  }
+}
