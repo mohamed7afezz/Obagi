@@ -148,6 +148,10 @@ const MultiStepForm = ({ node }) => {
                 document.querySelector('#registerCheck').parentElement.classList.remove('error');
 
             }
+        } else {
+            checkterms = true;
+            document.querySelector('#registerCheck').parentElement.classList.remove('error');
+
         }
 
         if (checkinput && checkselect && checkterms && checkfile) {
@@ -185,7 +189,7 @@ const MultiStepForm = ({ node }) => {
                 sendFormValues({ obj });
             }
         } else {
-            scrollUp('error')
+            scrollUp('needs-validation')
         }
 
 
