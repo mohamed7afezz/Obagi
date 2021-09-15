@@ -23,7 +23,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
       
-        exclude: [
+        excludes: [
           `/test-page`,
           `/press-releases`,
           `/obagi-story`,
