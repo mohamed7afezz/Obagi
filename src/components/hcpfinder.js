@@ -10,7 +10,7 @@ import Layout from "./layout"
 import SEO from './seo';
 import badgeImg from '../assets/images/product-images/PremierPartnership_Badge-01.png'
 
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 const spinner = css`
   display: block;

@@ -2,7 +2,7 @@ import React ,{useContext, useState} from 'react'
 import { graphql, Link,navigate } from 'gatsby'
 import { useLocation } from "@reach/router"
 import Img from 'gatsby-image'
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Customer from '../customer-care'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'

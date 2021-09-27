@@ -19,7 +19,7 @@ import paycred from '../../assets/images/paypal-credit-blue_x2.png'
 import freeimg from "../../assets/images/tag.png"
 import ProductSuggestion from "../product-components/productsuggestion"
 import SearchContext from "../../providers/search-provider"
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../../assets/js/stock';
 import quizarrow from '../../assets/images/arrowquize.svg'

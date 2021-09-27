@@ -6,7 +6,7 @@ import UserContext from "../../providers/user-provider"
 import { useLocation } from "@reach/router"
 import CartContext from "../../providers/cart-provider"
 import orderHistoryStyles from "../../assets/scss/components/order-history.module.scss"
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../../assets/js/stock';
 import $ from "jquery"

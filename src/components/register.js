@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { navigate, Link } from "gatsby"
 import UserContext from '../providers/user-provider';
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 // import $ from 'jquery'
 import '../assets/css/override.css';

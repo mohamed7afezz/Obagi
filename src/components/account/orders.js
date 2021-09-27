@@ -4,7 +4,7 @@ import OrderNoHistory from '../../components/order-no-history'
 import OrderHistory from '../../components/order-history'
 import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import SEO from "../seo"
 const spinner = css`
   display: block;

@@ -8,7 +8,7 @@ import iconsGeneralplus from '../../assets/images/product-images/iconsGeneralPlu
 import { graphql, Link } from 'gatsby'
 import Scrollbars from 'react-custom-scrollbars'
 
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const $ = require('jquery')

@@ -585,7 +585,7 @@ const ImagesForm = ({ node }) => {
                                     node.relationships.field_form_background_img &&
                                     node.relationships.field_form_background_img.localFile &&
                                     node.relationships.field_form_background_img.localFile.childImageSharp ?
-                                    <div className={ImgForm.bgImg}>
+                                    <div className={ImgForm.bcgImg}>
                                         <img src={node.relationships.field_form_background_img.localFile.childImageSharp.original.src} />
                                     </div>
                                     : ""}

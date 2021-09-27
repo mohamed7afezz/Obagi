@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import ProductCard from "../../components/productcard"
 import recommendedparing from '../../assets/scss/components/recommendedparing.module.scss'
 import ProductStyles from '../../assets/scss/components/product-hero.module.scss'

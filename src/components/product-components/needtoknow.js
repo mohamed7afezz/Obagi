@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { graphql } from 'gatsby'
 import needtoknow from '../../assets/scss/components/needtoknow.module.scss'
 
 import lightblub from '../../assets/images/product-images/light-bulb-icon.svg'

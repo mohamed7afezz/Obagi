@@ -3,7 +3,7 @@ import { navigate, Link } from "gatsby"
 // import { handleLogin, isLoggedIn } from "../services/auth"
 import UserContext from "../providers/user-provider"
 import LoginMenu from '../components/login-menu'
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import SEO from "./seo";
 const spinner = css`
