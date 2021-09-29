@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import primerstyle from '../assets/scss/components/preimer-img-left.module.scss'
+import * as primerstyle from '../assets/scss/components/preimer-img-left.module.scss'
 
 const ImageLeftDescRight = ({ node }) => {
 

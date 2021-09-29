@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from "../components/productcard"
-import recommendedparing from '../assets/scss/components/recommendedparing.module.scss'
-import ProductStyles from '../assets/scss/components/product-hero.module.scss'
+import * as recommendedparing from '../assets/scss/components/recommendedparing.module.scss'
+import * as ProductStyles from '../assets/scss/components/product-hero.module.scss'
 import Slider from "react-slick";
 
 const Recommendedparing = ({ node }) => {

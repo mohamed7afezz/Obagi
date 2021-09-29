@@ -1,13 +1,13 @@
 import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import ProductCard from "../../components/productcard"
-import productsliststyle from "../../assets/scss/components/collection-list.module.scss"
+import * as productsliststyle from "../../assets/scss/components/collection-list.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 import { Scrollbars } from "react-custom-scrollbars"
 import { checkDataCondition } from "../paragraphs-helper"
 import { checkStock } from '../../assets/js/stock';
 import $ from 'jquery'
-import needtoknow from '../../assets/scss/components/needtoknow.module.scss'
+import * as needtoknow from '../../assets/scss/components/needtoknow.module.scss'
 import lightblub from '../../assets/images/product-images/light-bulb-icon.svg'
 import blueblub from '../../assets/images/product-images/bluelamb.svg'
 import ContentTile from "../content-tile"

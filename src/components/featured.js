@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
-import featuredStyles from '../assets/scss/components/featured.module.scss'
+import * as featuredStyles from '../assets/scss/components/featured.module.scss'
 import Img from 'gatsby-image'
 import Player from '@vimeo/player'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"

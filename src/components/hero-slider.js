@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Slider from "react-slick"
-import heroSlider from '../assets/scss/components/hero-slider.module.scss'
+import * as heroSlider from '../assets/scss/components/hero-slider.module.scss'
 import Logo from '../assets/images/200x200.png'
 
 const $ = require("jquery");
@@ -244,7 +244,7 @@ export const fragment = graphql`
                         field_slider_scroll_down {
                             localFile {
                                 childImageSharp {
-                                fixed {
+                                fixed (quality: 100) {
                                     ...GatsbyImageSharpFixed
                                 }
                                 original {

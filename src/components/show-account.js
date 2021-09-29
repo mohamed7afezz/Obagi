@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import ShowAccountStyle from "../assets/scss/components/show-account.module.scss"
+import * as ShowAccountStyle from "../assets/scss/components/show-account.module.scss"
 import Img from "gatsby-image"
 import UserContext from '../providers/user-provider'
 import $ from 'jquery'

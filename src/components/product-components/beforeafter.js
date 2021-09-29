@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import beforeafter from '../../assets/scss/components/before-after.module.scss'
+import * as beforeafter from '../../assets/scss/components/before-after.module.scss'
 import beforeimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_BEFORE.jpg"
 import afterimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
 import Beforeafterimages from "./beforeafterimages"

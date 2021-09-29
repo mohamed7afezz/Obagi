@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-import vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
+import * as vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
 
 const ThePower = ({ node }) => {
   const data = node.relationships;

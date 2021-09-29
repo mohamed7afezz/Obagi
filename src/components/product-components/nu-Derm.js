@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import NudermStyles from '../../assets/scss/components/nud-derm.module.scss'
+import * as NudermStyles from '../../assets/scss/components/nud-derm.module.scss'
 
 import { graphql } from 'gatsby'
 const Nuderm = ({ node }) => {

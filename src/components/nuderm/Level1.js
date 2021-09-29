@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
-import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
+import * as nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 import Scrollbars from "react-custom-scrollbars"
 const Level1 = props => {

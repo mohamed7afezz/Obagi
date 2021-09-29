@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from "react"
 import { Link } from "gatsby"
-import ProductStyles from "../../assets/scss/components/product-hero.module.scss"
+import * as ProductStyles from "../../assets/scss/components/product-hero.module.scss"
 import Img from "gatsby-image"
 import Stars from "../../components/stars"
 import modal from "../../assets/images/diamond.png"

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import solutionsStyles from '../assets/scss/components/solutions.module.scss'
+import * as solutionsStyles from '../assets/scss/components/solutions.module.scss'
 
 const Solutions = ({ node }) => {
     function fixlink(changelink) {

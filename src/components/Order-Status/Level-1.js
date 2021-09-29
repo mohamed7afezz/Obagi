@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Customer from '../customer-care'
-import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import UserContext from "../../providers/user-provider"
 const baseUrl = process.env.Base_URL;
 const spinner = css`

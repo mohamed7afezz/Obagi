@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import careersHeroStyles from '../assets/scss/components/careers-hero.module.scss'
+import  careersHeroStyles from '../assets/scss/components/careers-hero.module.scss'
 
 const CareersHero = ({ node }) => {
     if (typeof window !== "undefined") {

@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import Productcard from "../assets/scss/components/productcard.module.scss"
+import * as Productcard from "../assets/scss/components/productcard.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"

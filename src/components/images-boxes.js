@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scss'
+import * as imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scss'
 
 const ImagesBoxes = ({ node }) => {
   

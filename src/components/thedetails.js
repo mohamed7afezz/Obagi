@@ -1,6 +1,6 @@
 import React from 'react'
 
-import detailsStyles from '../assets/scss/components/thedetails.module.scss'
+import * as detailsStyles from '../assets/scss/components/thedetails.module.scss'
 import plus from '../assets/images/product-images/plus.svg'
 const Details = ({ node }) => {
     return (

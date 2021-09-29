@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import blogStyles from '../assets/scss/components/blog.module.scss'
+import * as blogStyles from '../assets/scss/components/blog.module.scss'
 
 
 const Blog = ({ node }) => {

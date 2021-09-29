@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import trendingStyles from '../assets/scss/components/trending.module.scss'
+import * as trendingStyles from '../assets/scss/components/trending.module.scss'
 
 
 const Trending = ({ node }) => {

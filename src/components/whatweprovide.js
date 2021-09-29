@@ -2,8 +2,8 @@ import React, { useContext,useEffect } from "react"
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-import sectionStyle from "../assets/scss/components/products-we-provide.module.scss"
-import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import * as sectionStyle from "../assets/scss/components/products-we-provide.module.scss"
+import * as productsliststyle from "../assets/scss/components/collection-list.module.scss"
 import {checkStock} from '../assets/js/stock';
 import ProductCard from './productcard'
 

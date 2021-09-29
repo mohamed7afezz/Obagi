@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import CollectionFooter from './collection-components/collection-footer'
-// import servicesStyles from '../assets/scss/components/services.module.scss'
+// import * as servicesStyles from '../assets/scss/components/services.module.scss'
 
 const CustomBlock = ({ node }) => {
     return (

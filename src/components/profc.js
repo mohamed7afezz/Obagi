@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-import profcStyle from "../assets/scss/components/prof-serum.module.scss"
+import * as profcStyle from "../assets/scss/components/prof-serum.module.scss"
 
 const ProffC = ({ node }) => {
   // console.log('hassan', node)

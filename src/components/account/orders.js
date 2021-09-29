@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import UserAccount from '../../components/user-account'
 import OrderNoHistory from '../../components/order-no-history'
 import OrderHistory from '../../components/order-history'
-import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import SEO from "../seo"

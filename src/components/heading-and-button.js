@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import headingStyles from '../assets/scss/components/heading-and-button.module.scss'
+import * as headingStyles from '../assets/scss/components/heading-and-button.module.scss'
 
 const HeadingAndButton = ({ node }) => {
     return (

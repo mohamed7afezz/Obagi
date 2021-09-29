@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react"
 import Slider from "react-slick"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import lineStyles from "../assets/scss/components/product-line.module.scss"
-import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
+import * as lineStyles from "../assets/scss/components/product-line.module.scss"
+import * as productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
 import ProductCard from "../components/productcard"
 import { checkStock } from '../assets/js/stock';
 const baseUrl = process.env.Base_URL;
@@ -235,9 +235,7 @@ const ProductLine = ({ node }) => {
                   field_medical_image {
                     localFile {
                       childImageSharp {
-                        fluid (quality: 100){
-                          ...GatsbyImageSharpFluid
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH)
                       }
                     }
                   }
@@ -507,7 +505,7 @@ const ProductLine = ({ node }) => {
                                               item.relationships.field_medical_image[0]
                                                 ? (item.relationships.field_medical_image[0]
                                                   .localFile ? item.relationships.field_medical_image[0]
-                                                    .localFile.childImageSharp.fluid : '')
+                                                    .localFile.childImageSharp.gatsbyImageData : '')
                                                 : ""
                                             }
                                             price={item.field_medical_price}

@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import basichero from '../assets/scss/components/basic-hero.module.scss'
+import * as basichero from '../assets/scss/components/basic-hero.module.scss'
 const BigText = ({ node }) => {
 
     return (

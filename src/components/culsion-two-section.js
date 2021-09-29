@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import twoSection from '../assets/scss/components/two-sections.module.scss'
+import * as twoSection from '../assets/scss/components/two-sections.module.scss'
 const CulsionFlexTwoSections = ({ node }) => {
     return (
       <div className={twoSection.twoSectionCon}>

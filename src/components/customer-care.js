@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import myAccountStyles from '../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 import Slider from "react-slick"
 import Stars from './stars'
 import OrderNoHistory from "./order-no-history"

@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import skinClusionStyle from '../assets/scss/components/skin-clusion-img-left.module.scss'
+import * as skinClusionStyle from '../assets/scss/components/skin-clusion-img-left.module.scss'
 
 
 

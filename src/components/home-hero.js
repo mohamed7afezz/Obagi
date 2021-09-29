@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { getParagraph } from './paragraphs-helper';
-import homeHero from '../assets/scss/components/home-hero.module.scss'
+import * as homeHero from '../assets/scss/components/home-hero.module.scss'
 import HeroBox from './hero-box'
 import Slider from "react-slick"
 import Img from 'gatsby-image'

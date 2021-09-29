@@ -1,6 +1,6 @@
 import React from 'react'
 
-import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
+import * as faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 
 export default function FaqRow({ data, productPage }) {
 

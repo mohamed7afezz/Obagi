@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import CustomListStyle from '../assets/scss/components/custom-list.module.scss'
-// import servicesStyles from '../assets/scss/components/services.module.scss'
+import * as CustomListStyle from '../assets/scss/components/custom-list.module.scss'
+// import * as servicesStyles from '../assets/scss/components/services.module.scss'
 
 const CustomList = ({ node }) => {
     return (

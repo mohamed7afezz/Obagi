@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import '../assets/scss/components/section-with-colored-boxes.module.scss'
-import coloredBoxesStyle from '../assets/scss/components/section-with-colored-boxes.module.scss'
+// import '../assets/scss/components/section-with-colored-boxes.module.scss'
+import * as coloredBoxesStyle from '../assets/scss/components/section-with-colored-boxes.module.scss'
 
 
 const SectionWithColoredBoxes = ({ node }) => {

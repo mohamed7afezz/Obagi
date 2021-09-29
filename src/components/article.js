@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import articleStyles from '../assets/scss/components/article.module.scss'
+import * as articleStyles from '../assets/scss/components/article.module.scss'
 
 const Article = ({ node }) => {
     return (

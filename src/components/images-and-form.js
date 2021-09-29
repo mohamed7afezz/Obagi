@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import ImgForm from '../assets/scss/components/images-and-form.module.scss'
+import * as ImgForm from '../assets/scss/components/images-and-form.module.scss'
 import Player from '@vimeo/player'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Scrollbars from 'react-custom-scrollbars';

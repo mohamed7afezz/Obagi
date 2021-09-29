@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import faqHeroStyles from '../assets/scss/components/faq-hero.module.scss'
+import * as faqHeroStyles from '../assets/scss/components/faq-hero.module.scss'
 
 const FaqHero = ({ node }) => {
     return (

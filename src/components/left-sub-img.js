@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import Style from '../assets/scss/components/leftimgsub.module.scss'
+import * as Style from '../assets/scss/components/leftimgsub.module.scss'
 const LeftSubimg = ({ node }) => {
 
   return (

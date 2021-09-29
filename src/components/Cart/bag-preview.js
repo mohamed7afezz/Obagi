@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import YourBag from "./your-bag"
 import CartContext from "../../providers/cart-provider"
-import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
+import * as ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
 import Img from "gatsby-image"
 import UserContext from '../../providers/user-provider'
 

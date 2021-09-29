@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import Slider from "react-slick"
 import Img from 'gatsby-image'
-import styles from '../assets/scss/components/video-slider.module.scss'
+import * as styles from '../assets/scss/components/video-slider.module.scss'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 
 var player;

@@ -2,7 +2,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import Menu from "./menu"
-import footerStyles from "../assets/scss/components/footer.module.scss"
+import * as footerStyles from "../assets/scss/components/footer.module.scss"
 import Img from "gatsby-image"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

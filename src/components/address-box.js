@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import addressBoxStyles from '../assets/scss/components/address-box.module.scss'
+import * as addressBoxStyles from '../assets/scss/components/address-box.module.scss'
 import AddressModal from "./address-modal"
 
 

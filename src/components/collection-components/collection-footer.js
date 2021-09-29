@@ -1,8 +1,8 @@
 import React  from 'react'
 import { useStaticQuery,graphql, Link } from "gatsby"
-import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
-import servicesStyles from '../../assets/scss/components/services.module.scss'
-import featuredStyles from '../../assets/scss/components/featured.module.scss'
+import * as Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
+import * as servicesStyles from '../../assets/scss/components/services.module.scss'
+import * as featuredStyles from '../../assets/scss/components/featured.module.scss'
 import Img from 'gatsby-image'
 import Player from '@vimeo/player'
 import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"

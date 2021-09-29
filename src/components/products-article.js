@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import articleStyles from '../assets/scss/components/products-article.module.scss'
+import * as articleStyles from '../assets/scss/components/products-article.module.scss'
 import Img from 'gatsby-image'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';

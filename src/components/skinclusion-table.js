@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import tableStyle from '../assets/scss/components/table.module.scss'
+import * as tableStyle from '../assets/scss/components/table.module.scss'
 
 
 

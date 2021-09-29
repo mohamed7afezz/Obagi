@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
-import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
+import * as nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 
 const ThankYou = props => {
  

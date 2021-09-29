@@ -3,7 +3,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import ProductCard from '../productcard'
 
-import compStyles from '../../assets/scss/components/sys-related-products.module.scss';
+import * as compStyles from '../../assets/scss/components/sys-related-products.module.scss';
 
 export default function SysRelatedProducts({node}) {
     const system = node.relationships.node__medical_product[0];

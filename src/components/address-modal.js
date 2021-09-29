@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import addressModalStyles from '../assets/scss/components/address-modal.module.scss'
+import * as addressModalStyles from '../assets/scss/components/address-modal.module.scss'
 import { CustomSelect } from '../assets/js/custom-select'
 
 const baseUrl = process.env.Base_URL;

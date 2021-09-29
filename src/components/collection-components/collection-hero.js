@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { graphql, Link } from "gatsby"
-import Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
+import * as Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
 import Img from "gatsby-image"
 const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;

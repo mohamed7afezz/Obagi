@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import aboveHeader from '../assets/scss/components/above-header.module.scss'
+import * as aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
 import $ from 'jquery'
@@ -18,7 +18,7 @@ const AboveHeader = ({ menuType, id, notifClass, node }) => {
             }
           }
         }
-        allBlockContentBasic(filter: {id: {eq: "a869412d-dd07-5c0a-89a5-12d82d1493e4"}}) {
+        allBlockContentBasic(filter: {id: {eq: "70bd6afc-73c2-5f78-a233-05cba3341f39"}}) {
           edges {
             node {
               id

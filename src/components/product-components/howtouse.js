@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import howto from '../../assets/scss/components/howtouse.module.scss'
+import * as howto from '../../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
 import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';

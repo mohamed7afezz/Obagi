@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import multistepformStyles from '../../assets/scss/components/multistepform.module.scss'
+import * as multistepformStyles from '../../assets/scss/components/multistepform.module.scss'
 import stepIcon from '../../assets/images/product-images/stepIcon.svg'
 import iconsGeneralMinus from '../../assets/images/product-images/iconsGeneralMinus.svg'
 import iconsGeneralplus from '../../assets/images/product-images/iconsGeneralPlus.svg'

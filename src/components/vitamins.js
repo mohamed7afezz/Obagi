@@ -2,7 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import vitaminsStyles from '../assets/scss/components/vitamins.module.scss'
+import * as vitaminsStyles from '../assets/scss/components/vitamins.module.scss'
 
 const Vitamins = ({ node }) => {
 

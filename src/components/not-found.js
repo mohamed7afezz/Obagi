@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-// import servicesStyles from '../assets/scss/components/services.module.scss'
+// import * as servicesStyles from '../assets/scss/components/services.module.scss'
 
 const NotFound = ({ node }) => {
     return (

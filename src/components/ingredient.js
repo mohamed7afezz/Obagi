@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-import ingredient from '../assets/scss/components/ingredient.module.scss'
+import * as ingredient from '../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../assets/images/product-images/plus-white.svg'
 
 const Ingredient = ({ node }) => {

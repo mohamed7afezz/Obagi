@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import UserAccount from "../../components/user-account"
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import premierStyles from "../../assets/scss/components/premier-points.module.scss"
+import * as premierStyles from "../../assets/scss/components/premier-points.module.scss"
 import Img from 'gatsby-image'
 import SEO from "../seo"
 

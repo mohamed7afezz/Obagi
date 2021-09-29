@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import styles from '../assets/scss/components/blog-product.module.scss'
+import * as styles from '../assets/scss/components/blog-product.module.scss'
 
 const BlogCard = ({ thumbnail, type, title, url }) => {
 

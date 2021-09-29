@@ -1,7 +1,8 @@
 import React, { useContext } from "react"
-import Productcard from "../assets/scss/components/productcard.module.scss"
+import * as Productcard from "../assets/scss/components/productcard.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"
 import Stars from "../components/stars"
 import CartContext from "../providers/cart-provider"
@@ -44,6 +45,7 @@ const ProductCard = ({
       }
     }
   `)
+  const image = getImage(productimage)
   return (
     <div className={["container-fluid the-product-card", Productcard.productCardHero].join(" ")}>
 
@@ -66,7 +68,10 @@ const ProductCard = ({
           </div>:""}
         <div className={"product-card-img"}>
           {productimage ? (
-            <Link to={productLink}><Img alt="img"  className={[Productcard.cardimg, 'custom-img'].join(" ")} fluid={productimage} /></Link>
+            <Link to={productLink}>
+              {/* <Img alt="img"  className={[Productcard.cardimg, 'custom-img'].join(" ")} fluid={productimage} /> */}
+              <GatsbyImage alt="img" className={[Productcard.cardimg, 'custom-img'].join(" ")}  image={image}/>
+              </Link>
           ) : (
               ""
             )}

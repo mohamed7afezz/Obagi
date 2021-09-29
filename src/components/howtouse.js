@@ -1,6 +1,6 @@
 import React from 'react'
 
-import howto from '../assets/scss/components/howtouse.module.scss'
+import * as howto from '../assets/scss/components/howtouse.module.scss'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from "gatsby"
 const Howtouse = ({ node }) => {

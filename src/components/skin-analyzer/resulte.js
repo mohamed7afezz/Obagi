@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import SearchContext from "../../providers/search-provider"
 import ProductCard from '../productcard';
-import resulteSkinStyle from "../../assets/scss/components/skin-analyzer.module.scss"
+import * as resulteSkinStyle from "../../assets/scss/components/skin-analyzer.module.scss"
 import { Link } from 'gatsby';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";

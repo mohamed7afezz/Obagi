@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image'
-import basichero from '../assets/scss/components/basic-hero.module.scss'
+import * as basichero from '../assets/scss/components/basic-hero.module.scss'
 const Basichero = ({ node }) => {
   if (typeof window !== "undefined") {
     var pathname = window.location.href;

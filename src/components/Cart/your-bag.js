@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import BagStyle from "../../assets/scss/components/yourbag.module.scss"
-import ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
+import * as ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
 import Img from 'gatsby-image'
 import plusicon from "../../assets/images/product-images/plus1.svg"
 import minusicon from "../../assets/images/product-images/minus.svg"

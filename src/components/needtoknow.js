@@ -1,6 +1,6 @@
 import React from 'react'
 
-import needtoknow from '../assets/scss/components/needtoknow.module.scss'
+import * as needtoknow from '../assets/scss/components/needtoknow.module.scss'
 
 import lightblub from '../assets/images/product-images/light-bulb-icon.svg'
 import blueblub from '../assets/images/product-images/bluelamb.svg'

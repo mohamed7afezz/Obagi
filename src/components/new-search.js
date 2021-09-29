@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import ProductCard from "../components/productcard"
-import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import * as productsliststyle from "../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../assets/js/custom-select'
-import searchResultStyle from '../assets/scss/components/search-results.module.scss'
+import * as searchResultStyle from '../assets/scss/components/search-results.module.scss'
 import SearchContext from "../providers/search-provider"
 import $ from "jquery"
 import {checkStock} from '../assets/js/stock';

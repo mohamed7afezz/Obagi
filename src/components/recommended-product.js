@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
-import ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
+import * as ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import CartContext from "../providers/cart-provider"
 
 const $ = require("jquery");

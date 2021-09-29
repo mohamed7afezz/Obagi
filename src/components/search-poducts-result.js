@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import ProductCard from "../components/productcard"
-import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import * as productsliststyle from "../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../assets/js/custom-select'
 
 const SearchProductsResult = ({ searchResult, node, nodetype }) => {

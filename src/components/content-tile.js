@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import styles from "../assets/scss/components/content-tile.module.scss"
+import * as styles from "../assets/scss/components/content-tile.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 

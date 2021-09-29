@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import fullWidthStyles from '../assets/scss/components/full-width-with-image.module.scss'
+import * as fullWidthStyles from '../assets/scss/components/full-width-with-image.module.scss'
 
 const FullWidthWithImage = ({ node }) => {
     return (

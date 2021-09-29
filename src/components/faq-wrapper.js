@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
+import * as faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 import Paginator from './paginator'
 import FaqRow from './faq-row'
 import Customer from '../components/customer-care'
-import myAccountStyles from '../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 const FaqWrapper = ({ node }) => {
 
  

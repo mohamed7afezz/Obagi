@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import imageAndText from '../assets/scss/components/section-with-image-and-text.module.scss'
+import * as imageAndText from '../assets/scss/components/section-with-image-and-text.module.scss'
 
 const SectionWithImageAndText = ({ node }) => {
   return (

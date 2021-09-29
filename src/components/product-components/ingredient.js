@@ -1,8 +1,9 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-import ingredient from '../../assets/scss/components/ingredient.module.scss'
+import * as ingredient from '../../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../../assets/images/product-images/plus-white.svg'
 
 const Ingredient = ({ node }) => {
@@ -44,8 +45,12 @@ const Ingredient = ({ node }) => {
           {
             data.field_ingredient_image?
             (data.field_ingredient_image.relationships.field_section_image?
-              <div id="ing" className={"collapse multi-collapse show-block-desk mob-mt-24"}>  <Img alt="img"   fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
-                 data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid : ''} alt="ingredientimg" /></div> : '')
+              <div id="ing" className={"collapse multi-collapse show-block-desk mob-mt-24"}>
+                  {/* <Img fluid={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
+                 data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.fluid : ''} alt="ingredientimg" /> */}
+                 <GatsbyImage alt="ingredientimg" image={(data.field_ingredient_image.relationships.field_section_image && data.field_ingredient_image.relationships.field_section_image.localFile)?
+                 data.field_ingredient_image.relationships.field_section_image.localFile.childImageSharp.gatsbyImageData : ''} />
+                 </div> : '')
                :
             ''
           }
@@ -65,9 +70,7 @@ export const fragment = graphql`
           field_section_image {
             localFile {
               childImageSharp {
-                fluid (quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }

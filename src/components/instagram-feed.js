@@ -1,7 +1,7 @@
 import React,{ useEffect } from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import instagramStyles from '../assets/scss/components/instagram-feed.module.scss'
+import * as instagramStyles from '../assets/scss/components/instagram-feed.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faInstagram, faFacebook, faPinterest } from '@fortawesome/free-brands-svg-icons'
 

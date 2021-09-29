@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image'
-import reviewStyles from '../assets/scss/components/reviews.module.scss'
+import * as reviewStyles from '../assets/scss/components/reviews.module.scss'
 import Stars from './stars'
 const ReviewBox = ({ node }) => {
 
