@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import CollectionFooter from './collection-components/collection-footer'
 // import * as servicesStyles from '../assets/scss/components/services.module.scss'
 

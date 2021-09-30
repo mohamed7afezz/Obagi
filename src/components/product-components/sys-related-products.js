@@ -47,101 +47,95 @@ export default function SysRelatedProducts({node}) {
 //         document.querySelector('.sysRelatedComp .slick-slide').style.minHeight=`${stHeight}px`
 //         }
 //     }
-    return (
-        <>
-            {
-                checkDataCondition((node.field_enabled && products.length > 0), (
-                    <div className={`container-fluid ${compStyles.sysRelatedComp} sysRelatedComp`}>
-                        <div className="row">
-                            <div className="col">
-                                <h2 className={`${compStyles.sysRelHeader}`}>
-                                    Product Set Includes
-                                </h2>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col offset-lg-2 col-lg-8">
-                                <Slider {...sliderSettings}>            
-                                    {
-                                        checkDataCondition((products.length > 0), (
-                                            products.map(prod => (
-                                                <ProductCard 
-                                                    key={prod.field_medical_id}
-                                                    productId={prod.field_medical_id}
-                                                    productCat="medical"
-                                                    productLink={prod.path? prod.path.alias :''}
-                                                    producttitle={prod.title? prod.title : ''}
-                                                    isrx = {prod.relationships && prod.relationships.field_medical_rx? prod.relationships.field_medical_rx.name : "" }
-                                                    productdescription={{
-                                                        __html: prod.field_medical_description? prod.field_medical_description.processed : ''
-                                                    }}
-                                                    productimage={
-                                                        prod?checkDataCondition((prod.relationships && 
-                                                                prod.relationships.field_medical_image && 
-                                                                prod.relationships.field_medical_image[0].localFile &&
-                                                                prod.relationships.field_medical_image[0].localFile.childImageSharp
-                                                            ), (
-                                                            prod.relationships.field_medical_image[0].localFile.childImageSharp.fluid
-                                                        )):""
-                                                    }
-                                                    Sku={prod.field_medical_sku?prod.field_medical_sku:"" }
-                                                    minQuantity={(prod.field_min_quantity == 0 || prod.field_min_quantity > 0)? prod.field_min_quantity : ""}
-                                                    price={prod.field_medical_price}
-                                                    premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
-                                                   feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
-                                                />
-                                            ))
-                                        ))
-                                    }
-                                </Slider>
-                            </div>
+    return <>
+        {
+            checkDataCondition((node.field_enabled && products.length > 0), (
+                <div className={`container-fluid ${compStyles.sysRelatedComp} sysRelatedComp`}>
+                    <div className="row">
+                        <div className="col">
+                            <h2 className={`${compStyles.sysRelHeader}`}>
+                                Product Set Includes
+                            </h2>
                         </div>
                     </div>
-                ))
-            }
-        </>
-    )
+                    <div className="row">
+                        <div className="col offset-lg-2 col-lg-8">
+                            <Slider {...sliderSettings}>            
+                                {
+                                    checkDataCondition((products.length > 0), (
+                                        products.map(prod => (
+                                            <ProductCard 
+                                                key={prod.field_medical_id}
+                                                productId={prod.field_medical_id}
+                                                productCat="medical"
+                                                productLink={prod.path? prod.path.alias :''}
+                                                producttitle={prod.title? prod.title : ''}
+                                                isrx = {prod.relationships && prod.relationships.field_medical_rx? prod.relationships.field_medical_rx.name : "" }
+                                                productdescription={{
+                                                    __html: prod.field_medical_description? prod.field_medical_description.processed : ''
+                                                }}
+                                                productimage={
+                                                    prod?checkDataCondition((prod.relationships && 
+                                                            prod.relationships.field_medical_image && 
+                                                            prod.relationships.field_medical_image[0].localFile &&
+                                                            prod.relationships.field_medical_image[0].localFile.childImageSharp
+                                                        ), (
+                                                        prod.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData
+                                                    )):""
+                                                }
+                                                Sku={prod.field_medical_sku?prod.field_medical_sku:"" }
+                                                minQuantity={(prod.field_min_quantity == 0 || prod.field_min_quantity > 0)? prod.field_min_quantity : ""}
+                                                price={prod.field_medical_price}
+                                                premierid={prod.field_medical_premier_points_id?prod.field_medical_premier_points_id:""}
+                                               feild_preimer={prod.field_medical_premier_points?prod.field_medical_premier_points:""}
+                                            />
+                                        ))
+                                    ))
+                                }
+                            </Slider>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </>;
 }
 
 // fragment
-export const fragment = graphql`
-  fragment sysRelatedProduct on paragraph__sys_related_products {
-    id
-    field_enabled
-    relationships {
-      node__medical_product {
-        title
-        field_medical_is_system
-        relationships {
-          field_medical_system {
-            field_product_system_id
-            relationships {
-              node__medical_product {
-                title
-                field_medical_is_system
-                field_medical_id
-                field_medical_premier_points
-                field_medical_sku
-                field_min_quantity
+export const fragment = graphql`fragment sysRelatedProduct on paragraph__sys_related_products {
+  id
+  field_enabled
+  relationships {
+    node__medical_product {
+      title
+      field_medical_is_system
+      relationships {
+        field_medical_system {
+          field_product_system_id
+          relationships {
+            node__medical_product {
+              title
+              field_medical_is_system
+              field_medical_id
+              field_medical_premier_points
+              field_medical_sku
+              field_min_quantity
               field_medical_premier_points_id
-                path {
-                  alias
+              path {
+                alias
+              }
+              field_medical_description {
+                processed
+              }
+              field_medical_price
+              relationships {
+                field_medical_rx {
+                  name
                 }
-                field_medical_description {
-                  processed
-                }
-                field_medical_price
-                relationships {
-                  field_medical_rx {
-                    name
-                  }
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid(quality: 100) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     }
                   }
                 }
@@ -152,4 +146,5 @@ export const fragment = graphql`
       }
     }
   }
+}
 `

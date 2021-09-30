@@ -2,7 +2,7 @@
 import React , {useEffect} from 'react'
 import {beforeAfter} from '../../assets/js/before-after'
 import '../../assets/css/before-after.css'
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 const Beforeafterimages = ({ node, beforeimage, afterimage}) => {
     
     useEffect(() => {

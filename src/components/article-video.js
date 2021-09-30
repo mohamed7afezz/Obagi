@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import * as articleStyles from '../assets/scss/components/article-video.module.scss'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';
 
@@ -48,7 +48,10 @@ const ArticleVideo = ({ node }) => {
         <div className={`col-12 col-lg-10 offset-lg-1 ${articleStyles.videoCol} ${articleStyles.colPadding}`}>
           <div className="video-link article-video-link">
             {videoPoster ?
-              <Img alt="img" className="video-img-mob" fluid={node.relationships.field_article_video.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+              <GatsbyImage
+                image={node.relationships.field_article_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                alt="img"
+                className="video-img-mob" />
               : ""}
             {videoLink ?
               <div className="video-wrapper">
@@ -79,42 +82,39 @@ const ArticleVideo = ({ node }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ArticleVideo
 
-export const fragment = graphql`
-    fragment paragraphArticleVideo on paragraph__article_video {
-        id
-        field_article_subtitle {
-            processed
-          }
-          field_article_title {
-            processed
-          }
-          field_article_description {
-            processed
-          }
-          field_article_link {
-            title
-            uri
-          }
-          relationships {
-            field_article_video {
-              field_video_link
-              relationships {
-                field_video_poster {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
+export const fragment = graphql`fragment paragraphArticleVideo on paragraph__article_video {
+  id
+  field_article_subtitle {
+    processed
+  }
+  field_article_title {
+    processed
+  }
+  field_article_description {
+    processed
+  }
+  field_article_link {
+    title
+    uri
+  }
+  relationships {
+    field_article_video {
+      field_video_link
+      relationships {
+        field_video_poster {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
           }
-        
-    }`
+        }
+      }
+    }
+  }
+}
+`

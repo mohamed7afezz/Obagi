@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes, { func } from "prop-types"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import UserContext from '../providers/user-provider'
 
 // import { info } from "node-sass";
@@ -62,19 +62,26 @@ function getBlock(item) {
   let maxwidthVar = numberOfitems == 1 ? 654 : (numberOfitems * 383);
   // let widthVar = ((maxwidthVar/1920)*100);
 
-  return <div className="d-flex main-nav-containers" style={{ maxWidth: maxwidthVar + 'px' }}>
-    {
-      megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
-        <div className="nav-container-desk">
-          {item.field_mega_block_title ? <Link className={'titleLink'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><div dangerouslySetInnerHTML={{ __html: item.field_mega_block_title.processed }}></div> </Link> : ''}
-          {item.field_mega_block_subtitle ? <div dangerouslySetInnerHTML={{ __html: item.field_mega_block_subtitle.processed }}></div> : ''}
-          {item.relationships.field_mega_block_image ? <div style={{ width: '100%' }} className="nav-img-desk">
-            {item.relationships.field_mega_block_image.localFile ? <div to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><Link className={'d-block'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}> <Img alt="img"  className={"img-mega"} fluid={item.relationships.field_mega_block_image.localFile.childImageSharp.fluid} /></Link> </div> : ''}</div> : ''}
-          <div className="nav-arrow-desk"><Link to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}>{item.relationships.field_mega_block_arrow_image.localFile ? <Img alt="img"  fixed={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.fixed} /> : ''}</Link></div>
-        </div>
-      ))
-    }
-  </div>
+  return (
+    <div className="d-flex main-nav-containers" style={{ maxWidth: maxwidthVar + 'px' }}>
+      {
+        megaMenuBlocks[blockIndex].relationships.field_mega_block.map(item => (
+          <div className="nav-container-desk">
+            {item.field_mega_block_title ? <Link className={'titleLink'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><div dangerouslySetInnerHTML={{ __html: item.field_mega_block_title.processed }}></div> </Link> : ''}
+            {item.field_mega_block_subtitle ? <div dangerouslySetInnerHTML={{ __html: item.field_mega_block_subtitle.processed }}></div> : ''}
+            {item.relationships.field_mega_block_image ? <div style={{ width: '100%' }} className="nav-img-desk">
+              {item.relationships.field_mega_block_image.localFile ? <div to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}><Link className={'d-block'} to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}> <GatsbyImage
+                image={item.relationships.field_mega_block_image.localFile.childImageSharp.gatsbyImageData}
+                alt="img"
+                className={"img-mega"} /></Link> </div> : ''}</div> : ''}
+            <div className="nav-arrow-desk"><Link to={item.field_mega_block_link ? fixlink(item.field_mega_block_link) : ''}>{item.relationships.field_mega_block_arrow_image.localFile ? <GatsbyImage
+              image={item.relationships.field_mega_block_arrow_image.localFile.childImageSharp.gatsbyImageData}
+              alt="img" /> : ''}</Link></div>
+          </div>
+        ))
+      }
+    </div>
+  );
 }
 
 function createMenuHierarchy(menuData, menuName) {
@@ -196,75 +203,69 @@ const MegaMenu = ({ menuName, menuClass, isExpandable }) =>
 
   
 return (
-
   <StaticQuery
-    query={graphql`
-            query {
-                allBlockContentMegaMenuItems {
-                    edges {
-                        node {
-                            id
-                            info
-                            relationships {
-                                field_mega_block {
-                                    field_mega_block_title {
-                                        processed
-                                    }
-                                    field_mega_block_subtitle {
-                                        processed
-                                    }
-                                    field_mega_block_link {
-                                      uri
-                                    }
-                                    relationships {
-                                        field_mega_block_image {
-                                        localFile {
-                                            childImageSharp {
-                                              fluid (quality: 100){
-                                                ...GatsbyImageSharpFluid
-                                              }
-                                            }
-                                        }
-                                        }
-                                        field_mega_block_arrow_image {
-                                        localFile {
-                                            childImageSharp {
-                                                fixed {
-                                                    ...GatsbyImageSharpFixed
-                                                }
-                                            }
-                                        }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
-                    edges {
-                      node {
-                            enabled
-                            title
-                            expanded
-                            external
-                            langcode
-                            weight
-                            link {
-                                uri
-                            }
-                            drupal_parent_menu_item
-                            bundle
-                            drupal_id
-                            menu_name
-                      }
-                    }
-                  }
+    query={graphql`{
+  allBlockContentMegaMenuItems {
+    edges {
+      node {
+        id
+        info
+        relationships {
+          field_mega_block {
+            field_mega_block_title {
+              processed
             }
-        `}
+            field_mega_block_subtitle {
+              processed
+            }
+            field_mega_block_link {
+              uri
+            }
+            relationships {
+              field_mega_block_image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+                  }
+                }
+              }
+              field_mega_block_arrow_image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(layout: FIXED)
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  allMenuLinkContentMenuLinkContent(sort: {order: ASC, fields: weight}) {
+    edges {
+      node {
+        enabled
+        title
+        expanded
+        external
+        langcode
+        weight
+        link {
+          uri
+        }
+        drupal_parent_menu_item
+        bundle
+        drupal_id
+        menu_name
+      }
+    }
+  }
+}
+`}
 
     render={data => (
-      <nav className={menuName, menuClass}>
+      <nav className={(menuName, menuClass)}>
         {fillMegaMenuBlocksArr(data)}
         <ul >
           {generateMenu(data, menuName, isExpandable)}
@@ -275,7 +276,7 @@ return (
 
     )}
   />
-)}
+);}
 
 MegaMenu.propTypes = {
   menuName: PropTypes.string,

@@ -2,40 +2,32 @@ import React, { useEffect, useState } from "react"
 import UserAccount from "../../components/user-account"
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import * as premierStyles from "../../assets/scss/components/premier-points.module.scss"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import SEO from "../seo"
 
 
 export default function Premier() {
 
-  const data = useStaticQuery(graphql`
-  query {
-    bitmap: file(relativePath: { eq: "bitmap.png" }) {
-      childImageSharp {
-        fluid (quality: 100){
-          ...GatsbyImageSharpFluid
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  bitmap: file(relativePath: {eq: "bitmap.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-
-    google: file(relativePath: { eq: "google-play-badge.png" }) {
-      childImageSharp {
-        fixed {
-          ...GatsbyImageSharpFixed
-        }
-      }
+  }
+  google: file(relativePath: {eq: "google-play-badge.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
     }
-
-    appstore: file(relativePath: { eq: "download-on-the-app-store-badge-us-uk-rgb-blk-092917.png" }) {
-      childImageSharp {
-        fixed {
-          ...GatsbyImageSharpFixed
-        }
-      }
+  }
+  appstore: file(
+    relativePath: {eq: "download-on-the-app-store-badge-us-uk-rgb-blk-092917.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
     }
-
-
-  }`)
+  }
+}
+`)
 
   return (
     <UserAccount activeTab="premier-points">
@@ -59,10 +51,13 @@ export default function Premier() {
                         </h1>
                         <p className={premierStyles.Premiersubtitle}>Earn reward points with every purchase of Obagi Medical<sup>&reg;</sup> and receive free products*</p>
                      </div>
-                <Img alt="img"  className="mobileImg" fluid={data.bitmap.childImageSharp.fluid}/>
+                <GatsbyImage
+                  image={data.bitmap.childImageSharp.gatsbyImageData}
+                  alt="img"
+                  className="mobileImg" />
                 <div className={[premierStyles.centerimages].join(" ")}>
-                <a href="https://apps.apple.com/us/app/obagi-premier-points/id1056761689" target="_blank"><div className="mobileImg"><Img alt="img"  fixed={data.appstore.childImageSharp.fixed}/></div></a>
-                <a href="https://play.google.com/store/apps/details?id=com.obagi.premierepoints&hl=en" target="_blank"><div className="mobileImg"><Img alt="img"  fixed={data.google.childImageSharp.fixed}/></div></a>
+                <a href="https://apps.apple.com/us/app/obagi-premier-points/id1056761689" target="_blank"><div className="mobileImg"><GatsbyImage image={data.appstore.childImageSharp.gatsbyImageData} alt="img" /></div></a>
+                <a href="https://play.google.com/store/apps/details?id=com.obagi.premierepoints&hl=en" target="_blank"><div className="mobileImg"><GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="img" /></div></a>
                 </div>
             </div>
             <div className="col-12 col-lg-6 mob-p-0">
@@ -102,5 +97,5 @@ export default function Premier() {
         </div>
       </div>
     </UserAccount>
-  )
+  );
 }

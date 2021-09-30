@@ -190,199 +190,197 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
               let ingredient = getIngredient(item);
               
 
-              return (
-                <>
-                  {item.field_medical_is_system ? (
-                    <div
-                      className={[
-                        "col-12 col-lg-6 col-md-6 product-element",
-                        `vitamin-c-${index}`,
-                        productsliststyle.productview,
-                        "productview",
-                      ].join(" ")}
-                      data-ingrediant={`vitamin-c-${index}`}
-                    >
-                      {pageNodeType == "clinicalConcern" ? (
-                        <ProductCard
-                        productLink={item.path.alias}
-                        productCat="clinical"
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
-                        />
+              return <>
+                {item.field_medical_is_system ? (
+                  <div
+                    className={[
+                      "col-12 col-lg-6 col-md-6 product-element",
+                      `vitamin-c-${index}`,
+                      productsliststyle.productview,
+                      "productview",
+                    ].join(" ")}
+                    data-ingrediant={`vitamin-c-${index}`}
+                  >
+                    {pageNodeType == "clinicalConcern" ? (
+                      <ProductCard
+                      productLink={item.path.alias}
+                      productCat="clinical"
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />
+                      
+                    ) : pageNodeType == "clinicalCategories" ? (
+                      <ProductCard
+                      productCat="clinical"
+                      productLink={item.path.alias}
+                        producttitle={item.title}
                         
-                      ) : pageNodeType == "clinicalCategories" ? (
-                        <ProductCard
-                        productCat="clinical"
-                        productLink={item.path.alias}
-                          producttitle={item.title}
-                          
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
-                        />
-                      ) : (
-                        <ProductCard
-                        productCat="medical"
-                        productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_medical_description?item.field_medical_description.processed:""
-                          }}
-                          productimage={
-                            item.relationships.field_medical_image[0]
-                              ? item.relationships.field_medical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_medical_price}
-                          rate="0"
-                          productId={item.field_medical_id}
-                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                          Sku={item.field_medical_sku}
-                                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
-                        />
-                      )}
-                      <div
-                        class="d-none ingredient"
-                        dangerouslySetInnerHTML={{ __html: ingredient }}
-                      ></div>
-                    </div>
-                  ) : (
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />
+                    ) : (
+                      <ProductCard
+                      productCat="medical"
+                      productLink={item.path.alias}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_medical_description?item.field_medical_description.processed:""
+                        }}
+                        productimage={
+                          item.relationships.field_medical_image[0]
+                            ? item.relationships.field_medical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_medical_price}
+                        rate="0"
+                        productId={item.field_medical_id}
+                        premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                        Sku={item.field_medical_sku}
+                                      feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
+                      />
+                    )}
                     <div
-                      className={[
-                        "col-12 col-lg-3 col-md-4 product-element",
-                        `vitamin-c-${index}`,
-                        productsliststyle.productview,
-                        "productview",
-                      ].join(" ")}
-                      data-ingrediant={`vitamin-c-${index}`}
-                    >
-                      {pageNodeType == "clinicalConcern" ? (
-                        <ProductCard
-                        productCat="clinical"
-                          productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
-                        />
-                      ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
+                      class="d-none ingredient"
+                      dangerouslySetInnerHTML={{ __html: ingredient }}
+                    ></div>
+                  </div>
+                ) : (
+                  <div
+                    className={[
+                      "col-12 col-lg-3 col-md-4 product-element",
+                      `vitamin-c-${index}`,
+                      productsliststyle.productview,
+                      "productview",
+                    ].join(" ")}
+                    data-ingrediant={`vitamin-c-${index}`}
+                  >
+                    {pageNodeType == "clinicalConcern" ? (
+                      <ProductCard
                       productCat="clinical"
                         productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? (item.relationships.field_clinical_image[0]
-                                  .localFile? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid : '')
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
-                        />) : pageNodeType == "clinicalCategories" ? (
-                        <ProductCard
-                        productCat="clinical"
-                          productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />
+                    ) : pageNodeType == "clinicalGroups" ? ( <ProductCard
+                    productCat="clinical"
+                      productLink={item.path.alias}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? (item.relationships.field_clinical_image[0]
+                                .localFile? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData : '')
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />) : pageNodeType == "clinicalCategories" ? (
+                      <ProductCard
+                      productCat="clinical"
+                        productLink={item.path.alias}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />
+                    )  :  pageNodeType == "skinClinicalType" ? (
+                      <ProductCard
+                      productCat="clinical"
+                        productLink={item.path.alias}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
+                        }}
+                        productimage={
+                          (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
+                            ? item.relationships.field_clinical_image[0]
+                                .localFile.childImageSharp.gatsbyImageData
+                            : ""
+                        }
+                        price={item.field_clinical_price}
+                        rate="0"
+                        productId={item.field_clinical_id}
+                        Sku={item.field_clinical_sku}
+                      />
+                     
+                    ): (
+                      <ProductCard
+                      productCat="medical"
+                        productLink={item.path.alias}
+                        producttitle={item.title}
+                        productdescription={{
+                          __html: item.field_medical_description?item.field_medical_description.processed:""
+                        }}
+                        productimage={
+                          item.relationships.field_medical_image[0]
+                            ? (item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : '')
+                            : ""
+                        }
+                        price={item.field_medical_price}
+                        rate="0"
+                        productId={item.field_medical_id}
+                        premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
+                        Sku={item.field_medical_sku}
+                        feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
                         />
-                      )  :  pageNodeType == "skinClinicalType" ? (
-                        <ProductCard
-                        productCat="clinical"
-                          productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_clinical_description?item.field_clinical_description.processed?item.field_clinical_description.processed:"":"",
-                          }}
-                          productimage={
-                            (item.relationships.field_clinical_image[0] &&item.relationships.field_clinical_image[0].localFile)
-                              ? item.relationships.field_clinical_image[0]
-                                  .localFile.childImageSharp.fluid
-                              : ""
-                          }
-                          price={item.field_clinical_price}
-                          rate="0"
-                          productId={item.field_clinical_id}
-                          Sku={item.field_clinical_sku}
-                        />
-                       
-                      ): (
-                        <ProductCard
-                        productCat="medical"
-                          productLink={item.path.alias}
-                          producttitle={item.title}
-                          productdescription={{
-                            __html: item.field_medical_description?item.field_medical_description.processed:""
-                          }}
-                          productimage={
-                            item.relationships.field_medical_image[0]
-                              ? (item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')
-                              : ""
-                          }
-                          price={item.field_medical_price}
-                          rate="0"
-                          productId={item.field_medical_id}
-                          premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                          Sku={item.field_medical_sku}
-                          feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
-                          />
-                      )}
-                      <div
-                        class="d-none ingredient"
-                        dangerouslySetInnerHTML={{ __html: ingredient }}
-                      ></div>
-                    </div>
-                  )}
-                </>
-              )
+                    )}
+                    <div
+                      class="d-none ingredient"
+                      dangerouslySetInnerHTML={{ __html: ingredient }}
+                    ></div>
+                  </div>
+                )}
+              </>;
             })
           : checkTaxonomy
           ? checkTaxonomy.relationships.field_vocabularies.map(item =>
@@ -419,7 +417,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                                 ]
                                   ? product.relationships.field_clinical_image[
                                       0
-                                    ].localFile.childImageSharp.fluid
+                                    ].localFile.childImageSharp.gatsbyImageData
                                   : ""
                               }
                               price={product.field_clinical_price}
@@ -432,7 +430,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                               dangerouslySetInnerHTML={{ __html: ingredient }}
                             ></div>
                           </div>
-                        )
+                        );
                       }
                       return;
                     }
@@ -466,7 +464,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                               product.relationships.field_medical_image[0]
                                 ? product.relationships.field_medical_image[
                                     0
-                                  ].localFile.childImageSharp.fluid
+                                  ].localFile.childImageSharp.gatsbyImageData
                                 : ""
                             }
                             price={product.field_medical_price}
@@ -481,8 +479,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
                         dangerouslySetInnerHTML={{ __html: ingredient }}
                       ></div>
                         </div>
-                        
-                      )
+                      );
                     }
                   }
                   )
@@ -491,7 +488,7 @@ const SearchProductsResult = ({ searchResult, node, nodetype }) => {
           : ""}
       </div>
     </div>
-  )
+  );
 }
 
 export default SearchProductsResult

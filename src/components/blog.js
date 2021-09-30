@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as blogStyles from '../assets/scss/components/blog.module.scss'
 
 
@@ -28,7 +28,9 @@ const Blog = ({ node }) => {
                     {node.relationships.field_card.map((item, index) => {
                         return (
                             <div className="col-12 col-lg-3">
-                                {item.relationships.field_card_image.localFile ? <div className={blogStyles.cardImage}><Img alt="img"  fluid={item.relationships.field_card_image.localFile.childImageSharp.fluid} /></div> : ''}
+                                {item.relationships.field_card_image.localFile ? <div className={blogStyles.cardImage}><GatsbyImage
+                                    image={item.relationships.field_card_image.localFile.childImageSharp.gatsbyImageData}
+                                    alt="img" /></div> : ''}
                                 {item.field_card_title ? <div dangerouslySetInnerHTML={{ __html: item.field_card_title.processed }} className={blogStyles.cardTitle}></div> : ''}
                                 {item.field_card_description ?
                                     <div className={blogStyles.cardDesc}>
@@ -38,48 +40,45 @@ const Blog = ({ node }) => {
                                     : ''}
                                 {/* <button type="button" id={"readBtn" + index} className={blogStyles.readMore} onClick={() => { expand(index); }}>Read More</button> */}
                             </div>
-                        )
+                        );
                     })}
                 </div>
 
         </div>
-
-    )
+    );
 }
 
 export default Blog
 
-export const fragment = graphql`
-    fragment paragraphBlog on paragraph__blog {
-        id
-        field_blog_title {
-          processed
+export const fragment = graphql`fragment paragraphBlog on paragraph__blog {
+  id
+  field_blog_title {
+    processed
+  }
+  field_blog_subtitle {
+    processed
+  }
+  relationships {
+    field_card {
+      field_card_title {
+        processed
+      }
+      field_card_description {
+        processed
+      }
+      field_card_complete_description {
+        processed
+      }
+      relationships {
+        field_card_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            }
+          }
         }
-        field_blog_subtitle {
-          processed
-        }
-        relationships {
-            field_card {
-                field_card_title {
-                processed
-                }
-                field_card_description {
-                processed
-                }
-                field_card_complete_description {
-                processed
-                }
-                relationships {
-                    field_card_image {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100){
-                                    ...GatsbyImageSharpFluid
-                                  }
-                            }
-                        }
-                    }
-                }
-                }
-        }
-    }`
+      }
+    }
+  }
+}
+`

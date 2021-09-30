@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import * as Collectionherostyle from "../../assets/scss/components/collection-hero.module.scss"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checktaxonomyType }) => {
   let checkTaxonomy;
   let getname;
@@ -1245,43 +1245,37 @@ const CollectionHero = ({ node, nodetype, collectionName, collectionUrl, checkta
 }
 
 export default CollectionHero
-export const fragment = graphql`
-  fragment paragraphTaxonomyHeroParaprapgh on paragraph__taxonomy_hero_paraprapgh {
-    id
-    field_taxonomy_hero_link {
-      title
-      uri
-    }
-    field_bread_cramp_title
-    field_bread_cramp_class
-    field_taxonomy_page_url
-    
-    field_taxonomy_page_title
+export const fragment = graphql`fragment paragraphTaxonomyHeroParaprapgh on paragraph__taxonomy_hero_paraprapgh {
+  id
+  field_taxonomy_hero_link {
+    title
+    uri
   }
+  field_bread_cramp_title
+  field_bread_cramp_class
+  field_taxonomy_page_url
+  field_taxonomy_page_title
+}
 
-  fragment collectionhero on taxonomy_term__clinical_skin_concern {
-    id
-    relationships {
-      field_hero_paraprapgh_taxonomy {
-        field_taxonomy_page_url
-        field_taxonomy_page_title
-        field_taxonomy_hero_para_title
-        field_taxonomy_hero_para_descrip{
-            processed
-        }
-        field_taxonomy_hero_paraprapgh_t
-        relationships {
-          field_taxonomy_hero_paraprapgh_i {
-            localFile {
-              url
-              childImageSharp {
-                fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
-                  
-                }
-                original {
-                  src
-                }
+fragment collectionhero on taxonomy_term__clinical_skin_concern {
+  id
+  relationships {
+    field_hero_paraprapgh_taxonomy {
+      field_taxonomy_page_url
+      field_taxonomy_page_title
+      field_taxonomy_hero_para_title
+      field_taxonomy_hero_para_descrip {
+        processed
+      }
+      field_taxonomy_hero_paraprapgh_t
+      relationships {
+        field_taxonomy_hero_paraprapgh_i {
+          localFile {
+            url
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+              original {
+                src
               }
             }
           }
@@ -1289,35 +1283,34 @@ export const fragment = graphql`
       }
     }
   }
+}
 
-  fragment vocabularySkinConcerHero on paragraph__taxonomy_hero_paraprapgh {
-    id
-    field_taxonomy_hero_para_descrip{
-        processed
-    }
-    field_bread_cramp_title
-    field_bread_cramp_class
-    field_taxonomy_hero_link {
-      title
-    }
-    field_taxonomy_hero_para_title
-    field_taxonomy_hero_paraprapgh_t
-    field_taxonomy_page_url
-    field_taxonomy_page_title
-    relationships {
-      field_taxonomy_hero_paraprapgh_i {
-        localFile {
-          url
-          childImageSharp {
-            original {
-              src
-            }
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
+fragment vocabularySkinConcerHero on paragraph__taxonomy_hero_paraprapgh {
+  id
+  field_taxonomy_hero_para_descrip {
+    processed
+  }
+  field_bread_cramp_title
+  field_bread_cramp_class
+  field_taxonomy_hero_link {
+    title
+  }
+  field_taxonomy_hero_para_title
+  field_taxonomy_hero_paraprapgh_t
+  field_taxonomy_page_url
+  field_taxonomy_page_title
+  relationships {
+    field_taxonomy_hero_paraprapgh_i {
+      localFile {
+        url
+        childImageSharp {
+          original {
+            src
           }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   }
+}
 `;

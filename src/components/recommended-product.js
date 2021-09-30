@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
 import * as ShowBagStyle from "../assets/scss/components/show-bag.module.scss"
 import CartContext from "../providers/cart-provider"
@@ -31,11 +31,10 @@ minQuantity
       navigate(link)
     }
     return (
-
         <div className={ShowBagStyle.productWrapper}>
             <div className={ShowBagStyle.productImage}>
                 <a href={recLink} onClick={(e) => {navigateto(recLink,e)}} className={ShowBagStyle.pointer}  >
-                <Img alt="img"  fluid={recImage? recImage: ''} /></a></div>
+                <GatsbyImage image={recImage? recImage: ''} alt="img" /></a></div>
 
             <div className={ShowBagStyle.smallWrapper}>
                 <a href={recLink} className={[ShowBagStyle.productName,ShowBagStyle.pointer].join(" ")}  onClick={(e) => {navigateto(recLink,e)}}><div dangerouslySetInnerHTML={{__html: recTitle}}></div></a>
@@ -58,7 +57,7 @@ minQuantity
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default RecommendedProduct;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import Slider from "react-slick"
 import * as heroSlider from '../assets/scss/components/hero-slider.module.scss'
 import Logo from '../assets/images/200x200.png'
@@ -120,9 +120,6 @@ const HeroSlider = ({ node }) => {
     //     }
     // }
     return (
-
-
-
         <div className={pageType && pageType === 'medical' ? "container-fluid pl-0 pr-0 hero-slider medical-slider " : pageType && pageType === 'clinical' ? 'container-fluid pl-0 pr-0 hero-slider clinical-slider ' : 'container-fluid pl-0 pr-0 hero-slider ' + `${heroClass ? heroClass : ""}`}>
               {/* <div className={[" breadcramp-con  col-12 pb-0",`${node.field_brea?node.field_brea:""}`].join(" ")}>
                 <p className="breadcramp">
@@ -195,7 +192,9 @@ const HeroSlider = ({ node }) => {
                 <div className={["d-none d-lg-block col-lg-5 heroSliderBlue", heroSlider.blueSection].join(" ")}>
                     {/* {node.relationships.field_slider_scroll_down ? (node.relationships.field_slider_scroll_down.localFile ? <button id="slideDownButton" className="scroll-button d-none" onClick={(e) => {scrollUp(e);}}><Img alt="img"  fixed={node.relationships.field_slider_scroll_down.localFile.childImageSharp.fixed} /></button> : '') : ''} */}
                     {node.relationships.field_obagi_logo && node.relationships.field_obagi_logo.localFile ?
-                        <div className={heroSlider.sliderLogo}><Img alt="img" fixed={node.relationships.field_obagi_logo.localFile.childImageSharp.fixed} /></div>
+                        <div className={heroSlider.sliderLogo}><GatsbyImage
+                            image={node.relationships.field_obagi_logo.localFile.childImageSharp.gatsbyImageData}
+                            alt="img" /></div>
                         : ''}
                 </div>
             <div className={[" breadcramp-con  col-12 pb-0",`${node.field_brea?node.field_brea:""}`].join(" ")}>
@@ -211,84 +210,73 @@ const HeroSlider = ({ node }) => {
 
             </div>
         </div>
-
-    )
+    );
 }
 
 export default HeroSlider
 
-export const fragment = graphql`
-    fragment paragraphHeroSlider on paragraph__hero_slider {
-            field_page_type
-            id
-            field_slider_class
-                  relationships {
-                    node__page {
-                        title
-                        path {
-                          alias
-                        }
-                    }
-                        field_obagi_logo {
-                            localFile {
-                                childImageSharp {
-                                    fixed {
-                                        ...GatsbyImageSharpFixed
-                                    }
-                                    original {
-                                        src
-                                    }
-                                }
-                            }
-                        }
-                        field_slider_scroll_down {
-                            localFile {
-                                childImageSharp {
-                                fixed (quality: 100) {
-                                    ...GatsbyImageSharpFixed
-                                }
-                                original {
-                                    src
-                                }
-                                }
-                            }
-                        }
-                        field_slide {
-                            field_slide_type {
-                                processed
-                            }
-                            field_slide_title {
-                                processed
-                            }
-                            field_sli {
-                                processed
-                            }
-                            field_slide_title_sample {
-                                processed
-                            }
-                            field_slide_button {
-                                title
-                                uri
-                            }
-                            relationships {
-                                field_slide_image {
-                                    localFile {
-                                        url
-                                        childImageSharp {
-                                            fluid (quality: 100){
-                                                ...GatsbyImageSharpFluid
-                                              }
-                                              original {
-                                                src
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            }
-                    }
-
+export const fragment = graphql`fragment paragraphHeroSlider on paragraph__hero_slider {
+  field_page_type
+  id
+  field_slider_class
+  relationships {
+    node__page {
+      title
+      path {
+        alias
+      }
+    }
+    field_obagi_logo {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FIXED)
+          original {
+            src
           }
-      
-      
+        }
+      }
+    }
+    field_slider_scroll_down {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FIXED)
+          original {
+            src
+          }
+        }
+      }
+    }
+    field_slide {
+      field_slide_type {
+        processed
+      }
+      field_slide_title {
+        processed
+      }
+      field_sli {
+        processed
+      }
+      field_slide_title_sample {
+        processed
+      }
+      field_slide_button {
+        title
+        uri
+      }
+      relationships {
+        field_slide_image {
+          localFile {
+            url
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 `;

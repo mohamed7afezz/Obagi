@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import * as howto from '../../assets/scss/components/howtouse.module.scss'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';
 import { useStaticQuery, graphql } from "gatsby"
@@ -152,7 +152,10 @@ const Howtouse = ({ node }) => {
                                                                              <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                          </a>
                                                                          { item.relationships.field_video.relationships.field_video_poster.localFile? 
-                                                                             <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                             <GatsbyImage
+                                                                                 image={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                                                                                 alt="img"
+                                                                                 className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                          :''}
                                                                      </div>
                                                                      :
@@ -183,7 +186,10 @@ const Howtouse = ({ node }) => {
                                                                        <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                    </a>
                                                                    { item.relationships.field_video.relationships.field_video_poster.localFile? 
-                                                                       <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                       <GatsbyImage
+                                                                           image={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                                                                           alt="img"
+                                                                           className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                    :''}
                                                                </div>
                                                                :
@@ -213,7 +219,10 @@ const Howtouse = ({ node }) => {
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
                                                                             { item.relationships.field_video.relationships.field_video_poster.localFile? 
-                                                                                <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                                <GatsbyImage
+                                                                                    image={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                                                                                    alt="img"
+                                                                                    className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                             :''}
                                                                         </div>
                                                                         :
@@ -262,7 +271,10 @@ const Howtouse = ({ node }) => {
                                                                                 <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                             </a>
                                                                             {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile?
-                                                                                <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                                <GatsbyImage
+                                                                                    image={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                                                                                    alt="img"
+                                                                                    className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                             :''}
                                                                         </div>
                                                                         :
@@ -292,7 +304,10 @@ const Howtouse = ({ node }) => {
                                                                        <img class="playbtnimg" src={playbtnimg} alt="videomsg" />
                                                                    </a>
                                                                    {item.relationships.field_video.relationships.field_video_poster && item.relationships.field_video.relationships.field_video_poster.localFile?
-                                                                       <Img alt="img"  fluid={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                                                                       <GatsbyImage
+                                                                           image={item.relationships.field_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                                                                           alt="img"
+                                                                           className={["col-12", "pr-0", "pl-0"].join(" ")} />
                                                                    :''}
                                                                </div>
                                                                :
@@ -344,69 +359,62 @@ const Howtouse = ({ node }) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export default Howtouse
 
-export const fragment = graphql`
-    fragment howToUseParagraph on paragraph__how_to_use {
-        id
-        field_media_right
-        field_how_to_use_title {
-            processed
+export const fragment = graphql`fragment howToUseParagraph on paragraph__how_to_use {
+  id
+  field_media_right
+  field_how_to_use_title {
+    processed
+  }
+  relationships {
+    field_general_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
+          }
         }
-        relationships {
-            field_general_image {
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid
-                    }
-                    original {
-                        src
-                    }
+      }
+    }
+    field_step_paragragh {
+      field_step_all_content {
+        processed
+      }
+      field_step_title {
+        processed
+      }
+      relationships {
+        field_video {
+          relationships {
+            field_video_poster {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+                  original {
+                    src
                   }
                 }
               }
-            field_step_paragragh {
-                field_step_all_content {
-                    processed
-                }
-                field_step_title {
-                    processed
-                }
-                relationships {
-                    field_video {
-                        relationships {
-                          field_video_poster {
-                            localFile {
-                              childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                              }
-                            }
-                          }
-                        }
-                        field_video_link
-                      }
-                    field_step_image {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                }
             }
+          }
+          field_video_link
         }
+        field_step_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
 `;

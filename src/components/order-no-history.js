@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 import Slider from "react-slick"
 import Stars from './stars'
@@ -8,22 +8,17 @@ import quizarrow from '../assets/images/arrowquize.svg'
 const OrderNoHistory = ({ node }) => {
 
 
-    const data = useStaticQuery(graphql`
-    query {
-      skinanalyzer: file(relativePath: { eq: "Skin_Analyzer_6.jpg" }) {
-        childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-        }
-      }
+    const data = useStaticQuery(graphql`{
+  skinanalyzer: file(relativePath: {eq: "Skin_Analyzer_6.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-    `)
+  }
+}
+`)
 
 
     return (
-
-
         <div className="my-account">
             <div className=" d-lg-none">
 
@@ -36,7 +31,7 @@ const OrderNoHistory = ({ node }) => {
                     <div className={myAccountStyles.bottomTitle}>Try our Skin Analyzer</div>
                     <div className={myAccountStyles.bottomText}>Find the best Obagi solution for you</div>
                     <div className={myAccountStyles.bottomLink}><Link  to="/skin-analyzer"> TAKE THE QUIZ <span className={myAccountStyles.bottomArrow} ><img src={quizarrow} class="iconsvg"/></span></Link></div>
-                    <div className={myAccountStyles.image}><Img alt="img"  fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+                    <div className={myAccountStyles.image}><GatsbyImage image={data.skinanalyzer.childImageSharp.gatsbyImageData} alt="img" /></div>
                 </div>
             </div>
 
@@ -48,7 +43,7 @@ const OrderNoHistory = ({ node }) => {
                 </div>
                 <div className="row">
                     <div className="col-4 pr-0">
-                        <div className={myAccountStyles.image}><Img alt="img"  fluid={data.skinanalyzer.childImageSharp.fluid} /></div>
+                        <div className={myAccountStyles.image}><GatsbyImage image={data.skinanalyzer.childImageSharp.gatsbyImageData} alt="img" /></div>
                     </div>
                     <div className="col-8 pl-0">
                         <div className="d-flex align-items-center h-100">
@@ -62,8 +57,6 @@ const OrderNoHistory = ({ node }) => {
                 </div>
             </div>
         </div>
-
-
-    )
+    );
 }
 export default OrderNoHistory;

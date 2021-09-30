@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
-import BagStyle from "../../assets/scss/components/yourbag.module.scss"
+import * as BagStyle from "../../assets/scss/components/yourbag.module.scss"
 import * as ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import plusicon from "../../assets/images/product-images/plus1.svg"
 import minusicon from "../../assets/images/product-images/minus.svg"
 import ProductCard from '../productcard'
@@ -190,268 +190,229 @@ const YourBag = (props, { notificationId }) => {
 
   const removeNotification = value && value.removeNotification;
 
-  const data = useStaticQuery(graphql`
-  query {
-    skinanalyzerMob: file(relativePath: { eq: "Skin_Analyzer295.jpg" }) {
-      childImageSharp {
-          fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-      }
+  const data = useStaticQuery(graphql`{
+  skinanalyzerMob: file(relativePath: {eq: "Skin_Analyzer295.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-
-    skinanalyzerDesk: file(relativePath: { eq: "Skin_Analyzer166.jpg" }) {
-      childImageSharp {
-          fixed{
-              ...GatsbyImageSharpFixed
-            }
-      }
-    }
-
-    professionalC: nodeMedicalProduct(field_medical_sku: {eq: "OMD50539"}) {
-      id
-      field_medical_price
-      field_medical_id
-      field_medical_premier_points_id
-      field_medical_sku
-      field_min_quantity
-      field_medical_premier_points
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_medical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-
-    elastiderm: nodeMedicalProduct(field_medical_sku: {eq: "OMD65007"}) {
-      id
-      field_medical_price
-      field_medical_id
-      field_medical_premier_points_id
-      field_medical_sku
-      field_min_quantity
-      field_medical_premier_points
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_medical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-
-    hydrate: nodeMedicalProduct(field_medical_sku: {eq: "OMD70209"}) {
-      id
-      field_medical_price
-      field_medical_id
-      field_medical_sku
-      field_min_quantity
-      field_medical_premier_points_id
-      field_medical_premier_points
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_medical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-
-    cMicro: nodeMedicalProduct(field_medical_id: {eq: "356"}) {
-      id
-      field_medical_price
-      field_medical_id
-      field_medical_premier_points_id
-      field_medical_sku
-      field_min_quantity
-      field_medical_premier_points
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_medical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-
-    spf: nodeMedicalProduct(field_medical_sku: {eq: "OMD40094"}) {
-      id
-      field_medical_price
-      field_medical_id
-      field_medical_premier_points_id
-      field_medical_sku
-      field_min_quantity
-      field_medical_premier_points
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_medical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-
-    product1: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00016"}) {
-      id
-      field_clinical_price
-      field_clinical_sku
-      field_min_quantity
-      field_clinical_id
-  
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_clinical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    }
-
-    product2: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00061"}) {
-      id
-      field_clinical_price
-      field_clinical_sku
-      field_min_quantity
-      field_clinical_id
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_clinical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    }
-
-    product3: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00054"}) {
-      id
-      field_clinical_price
-      field_clinical_sku
-      field_min_quantity
-      field_clinical_id
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_clinical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    }
-
-    product4: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00023"}) {
-      id
-      field_clinical_price
-      field_clinical_sku
-      field_min_quantity
-      field_clinical_id
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_clinical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    }
-
-    product5: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00030"}) {
-      id
-      field_clinical_price
-      field_clinical_sku
-      field_min_quantity
-      field_clinical_id
-      title
-      path {
-        alias
-      }
-      relationships {
-        field_clinical_image {
-          localFile {
-            childImageSharp {
-              fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    }
-
   }
-
-  `);
+  skinanalyzerDesk: file(relativePath: {eq: "Skin_Analyzer166.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
+    }
+  }
+  professionalC: nodeMedicalProduct(field_medical_sku: {eq: "OMD50539"}) {
+    id
+    field_medical_price
+    field_medical_id
+    field_medical_premier_points_id
+    field_medical_sku
+    field_min_quantity
+    field_medical_premier_points
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_medical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  elastiderm: nodeMedicalProduct(field_medical_sku: {eq: "OMD65007"}) {
+    id
+    field_medical_price
+    field_medical_id
+    field_medical_premier_points_id
+    field_medical_sku
+    field_min_quantity
+    field_medical_premier_points
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_medical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  hydrate: nodeMedicalProduct(field_medical_sku: {eq: "OMD70209"}) {
+    id
+    field_medical_price
+    field_medical_id
+    field_medical_sku
+    field_min_quantity
+    field_medical_premier_points_id
+    field_medical_premier_points
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_medical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  cMicro: nodeMedicalProduct(field_medical_id: {eq: "356"}) {
+    id
+    field_medical_price
+    field_medical_id
+    field_medical_premier_points_id
+    field_medical_sku
+    field_min_quantity
+    field_medical_premier_points
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_medical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  spf: nodeMedicalProduct(field_medical_sku: {eq: "OMD40094"}) {
+    id
+    field_medical_price
+    field_medical_id
+    field_medical_premier_points_id
+    field_medical_sku
+    field_min_quantity
+    field_medical_premier_points
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_medical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  product1: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00016"}) {
+    id
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_id
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_clinical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  product2: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00061"}) {
+    id
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_id
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_clinical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  product3: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00054"}) {
+    id
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_id
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_clinical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  product4: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00023"}) {
+    id
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_id
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_clinical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  product5: nodeClinicalProduct(field_clinical_sku: {eq: "OMD00030"}) {
+    id
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_id
+    title
+    path {
+      alias
+    }
+    relationships {
+      field_clinical_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+}
+`);
 
 
   let profProductId = data.professionalC.field_medical_id ? data.professionalC.field_medical_id : "";
@@ -690,14 +651,14 @@ const YourBag = (props, { notificationId }) => {
                           recId={isClinical ? product.field_clinical_id : product.field_medical_id}
                           recTitle={product.title ? product.title : ""}
                           recLink={product.path.alias ? product.path.alias : ""}
-                          recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : '') : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.fluid : '')}
+                          recImage={isClinical ? ((product.relationships.field_clinical_image && product.relationships.field_clinical_image[0].localFile) ? product.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData : '') : ((product.relationships.field_medical_image && product.relationships.field_medical_image[0].localFile) ? product.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : '')}
                           recPrice={isClinical ? (product.field_clinical_price ? product.field_clinical_price : "") : (product.field_medical_price ? product.field_medical_price : "")}
                           premierid={isClinical ? "" : product.field_medical_premier_points_id ? product.field_medical_premier_points_id : ""}
                           feild_preimer={isClinical ? "" : product.field_medical_premier_points ? product.field_medical_premier_points : ""}
                           Sku={isClinical ? product.field_clinical_sku ? product.field_clinical_sku : "" : product.field_medical_sku}
                           minQuantity={(product.field_min_quantity == 0 || product.field_min_quantity > 0) ? product.field_min_quantity : ""}
                         />
-                      )
+                      );
                     }) : ''
                     }
                   </div>
@@ -1025,14 +986,14 @@ const YourBag = (props, { notificationId }) => {
               <div className={ShowBagStyle.bottomTitle}>Try our Skin Analyzer</div>
               <div className={ShowBagStyle.bottomText}>Find the best Obagi solution for you</div>
               <div className={ShowBagStyle.bottomLink}><a data-dismiss="modal" aria-label="Close" href="/skin-analyzer"> TAKE THE QUIZ <span className={ShowBagStyle.bottomArrow} ><img src={quizarrow} class="iconsvg" /></span></a></div>
-              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <Img alt="img" fluid={data.skinanalyzerMob.childImageSharp.fluid} /> : "" : ""}</div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerMob ? data.skinanalyzerMob.childImageSharp ? <GatsbyImage image={data.skinanalyzerMob.childImageSharp.gatsbyImageData} alt="img" /> : "" : ""}</div>
             </div>
           </div>
 
           <div className="d-none d-lg-block">
             <div className={[ShowBagStyle.bottomWrapper].join(" ")}>
               {/* <div className="col-4 pr-0"> */}
-              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <Img alt="img" fixed={data.skinanalyzerDesk.childImageSharp.fixed} /> : "" : ""}</div>
+              <div className={ShowBagStyle.image}>{data.skinanalyzerDesk ? data.skinanalyzerDesk.childImageSharp ? <GatsbyImage image={data.skinanalyzerDesk.childImageSharp.gatsbyImageData} alt="img" /> : "" : ""}</div>
               {/* </div> */}
               {/* <div className="col-8 pl-0"> */}
               {/* <div className="d-flex align-items-center h-100"> */}
@@ -1055,7 +1016,7 @@ const YourBag = (props, { notificationId }) => {
                 recId={profProductId}
                 recTitle={data.professionalC.title ? data.professionalC.title : ""}
                 recLink={data.professionalC.path.alias ? data.professionalC.path.alias : ""}
-                recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+                recImage={data.professionalC.relationships ? data.professionalC.relationships.field_medical_image[0] ? data.professionalC.relationships.field_medical_image[0].localFile ? data.professionalC.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : "" : "" : ""}
                 recPrice={data.professionalC.field_medical_price ? data.professionalC.field_medical_price : ""}
                 premierid={data.professionalC.field_medical_premier_points_id ? data.professionalC.field_medical_premier_points_id : ""}
                 Sku={data.professionalC.field_medical_sku ? data.professionalC.field_medical_sku : ""}
@@ -1068,7 +1029,7 @@ const YourBag = (props, { notificationId }) => {
                 recId={elastiProductId}
                 recTitle={data.elastiderm.title ? data.elastiderm.title : ""}
                 recLink={data.elastiderm.path.alias ? data.elastiderm.path.alias : ""}
-                recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.fluid : "" : "" : ""}
+                recImage={data.elastiderm.relationships ? data.elastiderm.relationships.field_medical_image[0] ? data.elastiderm.relationships.field_medical_image[0].localFile ? data.elastiderm.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : "" : "" : ""}
                 recPrice={data.elastiderm.field_medical_price ? data.elastiderm.field_medical_price : ""}
                 premierid={data.elastiderm.field_medical_premier_points_id ? data.elastiderm.field_medical_premier_points_id : ""}
                 Sku={data.elastiderm.field_medical_sku ? data.elastiderm.field_medical_sku : ""}

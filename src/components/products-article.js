@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import * as articleStyles from '../assets/scss/components/products-article.module.scss'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';
 import ProductCard from './productcard'
@@ -17,7 +17,8 @@ const ProductsArticle = ({ node }) => {
             && node.relationships.field_article_image
             && node.relationships.field_article_image.localFile
             && node.relationships.field_article_image.localFile.childImageSharp ?
-            <div className={`${articleStyles.image}`}><Img fluid={node.relationships.field_article_image.localFile.childImageSharp.fluid} /></div> : ""}
+            <div className={`${articleStyles.image}`}><GatsbyImage
+              image={node.relationships.field_article_image.localFile.childImageSharp.gatsbyImageData} /></div> : ""}
         </div>
 
         
@@ -26,7 +27,8 @@ const ProductsArticle = ({ node }) => {
             && node.relationships.field_article_product_image
             && node.relationships.field_article_product_image.localFile
             && node.relationships.field_article_product_image.localFile.childImageSharp ?
-              <div className={`${articleStyles.productImg}`}><Img fluid={node.relationships.field_article_product_image.localFile.childImageSharp.fluid} /></div> : ""}
+              <div className={`${articleStyles.productImg}`}><GatsbyImage
+                image={node.relationships.field_article_product_image.localFile.childImageSharp.gatsbyImageData} /></div> : ""}
         </div>
 
         <div className={`col-12 col-lg-9 offset-lg-2 ${articleStyles.textCol}`}>
@@ -93,48 +95,41 @@ const ProductsArticle = ({ node }) => {
           : ""} */}
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductsArticle
 
-export const fragment = graphql`
-    fragment paragraphProductsArticle on paragraph__products_article {
-        id
-        field_article_subtitle {
-            processed
-          }
-          field_article_title {
-            processed
-          }
-          field_article_description {
-            processed
-          }
-          field_article_link {
-            title
-            uri
-          }
-          relationships {
-            field_article_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-            field_article_product_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-
-          }
-        
-        
-    }`
+export const fragment = graphql`fragment paragraphProductsArticle on paragraph__products_article {
+  id
+  field_article_subtitle {
+    processed
+  }
+  field_article_title {
+    processed
+  }
+  field_article_description {
+    processed
+  }
+  field_article_link {
+    title
+    uri
+  }
+  relationships {
+    field_article_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+    field_article_product_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+}
+`

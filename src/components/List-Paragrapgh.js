@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as CustomListStyle from '../assets/scss/components/custom-list.module.scss'
 // import * as servicesStyles from '../assets/scss/components/services.module.scss'
 

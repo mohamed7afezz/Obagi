@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react"
 import { Link } from "gatsby"
 import * as ProductStyles from "../../assets/scss/components/product-hero.module.scss"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import Stars from "../../components/stars"
 import modal from "../../assets/images/diamond.png"
 import share from "../../assets/images/product-images/share.svg"

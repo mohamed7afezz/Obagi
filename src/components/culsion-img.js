@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as basichero from '../assets/scss/components/basic-hero.module.scss'
 const CulsionImage = ({ node }) => {
 
@@ -19,22 +19,19 @@ const CulsionImage = ({ node }) => {
 
 export default CulsionImage
 
-export const fragment = graphql`
-fragment paragrapghCulsionImage on paragraph__culsion_image {
-    id
-    relationships {
-      field_culsion_image {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-            }
-            original{
-                src
-            }
+export const fragment = graphql`fragment paragrapghCulsionImage on paragraph__culsion_image {
+  id
+  relationships {
+    field_culsion_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          original {
+            src
           }
         }
       }
     }
   }
-  `
+}
+`

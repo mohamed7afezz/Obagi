@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as imagesBoxesStyles from '../assets/scss/components/images-boxes.module.scss'
 
 const ImagesBoxes = ({ node }) => {
@@ -16,7 +16,10 @@ const ImagesBoxes = ({ node }) => {
             {/* <div><Img alt="img"  fluid={node.relationships.field_first_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.medicalLogo} /></div> */}
             <div>
               {(node.relationships.field_box_image && node.relationships.field_box_image.localFile)? 
-              <Img alt="img"  fluid={node.relationships.field_box_image.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
+              <GatsbyImage
+                image={node.relationships.field_box_image.localFile.childImageSharp.gatsbyImageData}
+                alt="img"
+                className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
           </Link>
@@ -30,7 +33,10 @@ const ImagesBoxes = ({ node }) => {
             {/* <div><Img alt="img"  fluid={node.relationships.field_second_box_title_logo.localFile.childImageSharp.fluid} className={imagesBoxesStyles.clinicalLogo} /></div> */}
             <div>
               {(node.relationships.field_second_b && node.relationships.field_second_b.localFile)?
-              <Img alt="img"  fluid={node.relationships.field_second_b.localFile.childImageSharp.fluid} className={imagesBoxesStyles.boxImage} />:''}
+              <GatsbyImage
+                image={node.relationships.field_second_b.localFile.childImageSharp.gatsbyImageData}
+                alt="img"
+                className={imagesBoxesStyles.boxImage} />:''}
             </div>
           </div>
           </Link>
@@ -40,57 +46,50 @@ const ImagesBoxes = ({ node }) => {
 
 
     </div>
-  )
+  );
 }
 
 export default ImagesBoxes;
 
 
-export const fragment = graphql`
-  fragment paragraphImagesBoxes on paragraph__images_boxes {
-    id
-    field_box_subtitle {
-      processed
+export const fragment = graphql`fragment paragraphImagesBoxes on paragraph__images_boxes {
+  id
+  field_box_subtitle {
+    processed
+  }
+  field_second_b {
+    alt
+  }
+  field_first_box_link {
+    uri
+  }
+  field_second_box_link {
+    uri
+  }
+  field_second_box_subtitle {
+    processed
+  }
+  field_first_box_title {
+    processed
+  }
+  field_second_box_title {
+    processed
+  }
+  relationships {
+    field_box_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+        }
+      }
     }
     field_second_b {
-      alt
-    }
-    field_first_box_link {
-      uri
-    }
-    field_second_box_link {
-      uri
-    }
-    field_second_box_subtitle {
-      processed
-    }
-    field_first_box_title {
-      processed
-    }
-    field_second_box_title {
-      processed
-    }
-    relationships {
-      field_box_image {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
-      field_second_b {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-   
-    
     }
   }
+}
 `

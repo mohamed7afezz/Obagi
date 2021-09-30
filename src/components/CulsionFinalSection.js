@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as finalSection from '../assets/scss/components/final-section.module.scss'
 const CulsionFinalSection = ({ node }) => {
 

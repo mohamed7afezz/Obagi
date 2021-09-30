@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as aboveHeader from '../assets/scss/components/above-header.module.scss'
 import { isLoggedIn } from '../services/auth'
 import UserContext from '../providers/user-provider'
@@ -9,27 +9,24 @@ import $ from 'jquery'
 const AboveHeader = ({ menuType, id, notifClass, node }) => {
 
   const { notif, setNotif } = useContext(UserContext);
-  const data = useStaticQuery(graphql`
-      query {
-        close: file(relativePath: { eq: "close.png" }) {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        allBlockContentBasic(filter: {id: {eq: "70bd6afc-73c2-5f78-a233-05cba3341f39"}}) {
-          edges {
-            node {
-              id
-              body {
-                processed
-              }
-            }
-          }
+  const data = useStaticQuery(graphql`{
+  close: file(relativePath: {eq: "close.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  allBlockContentBasic(filter: {id: {eq: "70bd6afc-73c2-5f78-a233-05cba3341f39"}}) {
+    edges {
+      node {
+        id
+        body {
+          processed
         }
       }
-    `)
+    }
+  }
+}
+`)
 
   function closeNotification() {
 
@@ -104,13 +101,16 @@ const AboveHeader = ({ menuType, id, notifClass, node }) => {
       <div className={[aboveHeader.wrapper, "row"].join(" ")}>
         <div className={["col", aboveHeader.columnWrapper].join(" ")}>
           <div className={aboveHeader.text} dangerouslySetInnerHTML={{__html: data.allBlockContentBasic.edges[0].node.body.processed}}></div>
-          <div className={aboveHeader.closeButton}><button type="button" onClick={() => { closeNotification(); }}><Img alt="img"  fluid={data.close.childImageSharp.fluid} className={aboveHeader.closeImg} /></button></div>
+          <div className={aboveHeader.closeButton}><button type="button" onClick={() => { closeNotification(); }}><GatsbyImage
+            image={data.close.childImageSharp.gatsbyImageData}
+            alt="img"
+            className={aboveHeader.closeImg} /></button></div>
         </div>
       </div>
       {/* </div> */}
 
     </div>
-  )
+  );
 }
 
 export default AboveHeader

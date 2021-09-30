@@ -1,20 +1,17 @@
 import React from 'react'
 
 import * as howto from '../assets/scss/components/howtouse.module.scss'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby"
 const Howtouse = ({ node }) => {
-    const data = useStaticQuery(graphql`
-    query {
-        videoimg: file(relativePath: { eq: "product-images/how-to-use.png" }) {
-        childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-        }
-      }
-     
-    }`
+    const data = useStaticQuery(graphql`{
+  videoimg: file(relativePath: {eq: "product-images/how-to-use.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`
     )
     return (
         <div className={["container-fluid", howto.howtousecon].join(" ")} >
@@ -45,12 +42,15 @@ const Howtouse = ({ node }) => {
                         </div>
                         <div className={["col-12", "col-lg-6", "offset-lg-1", howto.howrightcol].join(" ")}>
                             <h1 className={howto.howtouseheadimage}>How to Use</h1>
-                            <Img alt="img"  fluid={data.videoimg.childImageSharp.fluid} className={["col-12", "pr-0", "pl-0"].join(" ")} />
+                            <GatsbyImage
+                                image={data.videoimg.childImageSharp.gatsbyImageData}
+                                alt="img"
+                                className={["col-12", "pr-0", "pl-0"].join(" ")} />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export default Howtouse

@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import * as Productcard from "../assets/scss/components/productcard.module.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import smlamb from "../assets/images/product-images/smallLamb.png"
 import Stars from "../components/stars"
@@ -27,24 +26,19 @@ const ProductCard = ({
   const value = useContext(CartContext)
   const addToCart = value && value.addToCart
   const addingToCart = value && value.state.addingToCart
-  const data = useStaticQuery(graphql`
-    query {
-      smlamb: file(relativePath: { eq: "product-images/smallLamb.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  smlamb: file(relativePath: {eq: "product-images/smallLamb.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-  `)
+  }
+  cardimg: file(relativePath: {eq: "product-images/main-image.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`)
   const image = getImage(productimage)
   return (
     <div className={["container-fluid the-product-card", Productcard.productCardHero].join(" ")}>

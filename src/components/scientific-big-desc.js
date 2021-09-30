@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import * as sientificStyle from '../assets/scss/components/scientific-two-col.module.scss'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 const SintificFooter = ({ node }) => {
 
   return (

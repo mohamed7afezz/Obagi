@@ -4,7 +4,7 @@ import beforeimg from "../../assets/images/product-images/Clinical-VitaminCEyeBr
 import afterimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
 import Beforeafterimages from "./beforeafterimages"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Beforeafter = ({ node }) => {
     function bcollapse(e) {
@@ -136,61 +136,56 @@ const Beforeafter = ({ node }) => {
 }
 export default Beforeafter;
 
-export const fragment = graphql`
-    fragment beforeAfterParagraph on paragraph__before_after {
-        id
-        field_before_meet_after {
+export const fragment = graphql`fragment beforeAfterParagraph on paragraph__before_after {
+  id
+  field_before_meet_after {
+    processed
+  }
+  field_before_meet_after_subtitle {
+    processed
+  }
+  relationships {
+    field_before_meet_after_example {
+      field_example_title {
+        processed
+      }
+      field_study_type {
+        processed
+      }
+      field_before_after_footnote {
+        processed
+      }
+      relationships {
+        field_boxes {
+          field_box_des {
             processed
-        }
-        field_before_meet_after_subtitle {
+          }
+          field_percentage {
             processed
+          }
         }
-        relationships {
-            field_before_meet_after_example {
-                field_example_title {
-                    processed
-                }
-                field_study_type {
-                    processed
-                }
-                field_before_after_footnote {
-                    processed
-                }
-                relationships {
-                    field_boxes {
-                        field_box_des {
-                            processed
-                        }
-                        field_percentage {
-                            processed
-                        }
-                    }
-                    field_before_image {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                    field_after_im {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                }
+        field_before_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
             }
+          }
         }
+        field_after_im {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
 `;

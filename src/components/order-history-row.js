@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as orderHistoryRowStyles from '../assets/scss/components/order-history-row.module.scss'
 
 const OrderHistoryRow = ({ data,

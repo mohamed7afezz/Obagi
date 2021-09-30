@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -19,28 +19,28 @@ const Image = ({ node }) => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-8 offset-2">
-          <div>{(node && node.relationships)? <Img alt="img"  fluid={(node.relationships.field_section_image && node.relationships.field_section_image.localFile)? node.relationships.field_section_image.localFile.childImageSharp.fluid : ''} className="img-divider"/> : ""}</div>  
+          <div>{(node && node.relationships)? <GatsbyImage
+            image={(node.relationships.field_section_image && node.relationships.field_section_image.localFile)? node.relationships.field_section_image.localFile.childImageSharp.gatsbyImageData : ''}
+            alt="img"
+            className="img-divider" /> : ""}</div>  
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Image
 
-export const fragment = graphql`
-  fragment paragraphImage on paragraph__image {
-    id
-    relationships {
-      field_section_image {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
+export const fragment = graphql`fragment paragraphImage on paragraph__image {
+  id
+  relationships {
+    field_section_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
     }
   }
-  `
+}
+`

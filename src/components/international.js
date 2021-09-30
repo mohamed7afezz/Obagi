@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as internationalStyles from '../assets/scss/components/international.module.scss'
 import $ from 'jquery'
 

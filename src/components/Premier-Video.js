@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Player from '@vimeo/player';
 
@@ -40,7 +40,10 @@ const PremierVideo = ({ node }) => {
   return (
     <div className="permier-video-link video-link">
       {node.relationships && node.relationships.field_video_poster && node.relationships.field_video_poster.localFile && node.relationships.field_video_poster.localFile.childImageSharp ?
-        <Img alt="img"  className="video-img-mob" fluid={node.relationships.field_video_poster.localFile.childImageSharp.fluid} />
+        <GatsbyImage
+          image={node.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+          alt="img"
+          className="video-img-mob" />
         : ""}
       <div className="video-wrapper">
         {
@@ -54,29 +57,26 @@ const PremierVideo = ({ node }) => {
         }
       </div>
     </div>
-  )
+  );
 }
 
 export default PremierVideo
 
-export const fragment = graphql`
-  fragment paragraphPremierVideo on paragraph__video {
-    id
-    field_video_link
-    field_video_txt
-    relationships {
-      field_video_poster {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-            } 
-            original{
-                src
-            }
+export const fragment = graphql`fragment paragraphPremierVideo on paragraph__video {
+  id
+  field_video_link
+  field_video_txt
+  relationships {
+    field_video_poster {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          original {
+            src
           }
         }
       }
     }
   }
-  `
+}
+`

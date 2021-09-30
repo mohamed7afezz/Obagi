@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import Slider from "react-slick"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as styles from '../assets/scss/components/video-slider.module.scss'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 
@@ -144,131 +144,125 @@ const VideoSlider = ({ node }) => {
    
 
 
-    return (
-        <>
+    return <>
 
-            <div className={`container-fluid ${styles.wrapper}`}>
-                <div className={`row`}>
-                    <div className={`col-12 col-lg-10 offset-lg-1`}>
-                        {node.field_main_video_header ? <div className={`${styles.header}`} dangerouslySetInnerHTML={{ __html: node.field_main_video_header.processed }}></div> : ""}
+        <div className={`container-fluid ${styles.wrapper}`}>
+            <div className={`row`}>
+                <div className={`col-12 col-lg-10 offset-lg-1`}>
+                    {node.field_main_video_header ? <div className={`${styles.header}`} dangerouslySetInnerHTML={{ __html: node.field_main_video_header.processed }}></div> : ""}
+                </div>
+            </div>
+
+            <div className={`row ${styles.slidersRow}`}>
+                <div className={`col-12 col-lg-6 offset-lg-1 mainVideoSlider`}>
+                    <div className={`row`}>
+                        <div className={`col-12`}>
+
+
+                            <div className={`${styles.videoWrapper}`}>
+                                <div id="ytplayer"></div>
+                            </div>
+                        </div>
+                        <div style={{ width: "100%" }}>
+                            <Slider
+                                asNavFor={nav2}
+                                ref={slider => (slider1 = slider)}
+                                {...SingleSliderSettings}
+                            >
+
+                                {node.relationships && node.relationships.field_video_section ?
+                                    node.relationships.field_video_section.map((item, index) => {
+                                        return (
+                                            <div className={`col-12`}>
+                                                <div className={`${styles.mainVidWrapper}`}>
+
+                                                    {item.field_video_sec_title ? <div className={`${styles.mainTitle}`} dangerouslySetInnerHTML={{ __html: item.field_video_sec_title.processed }}></div> : ""}
+
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+
+                                    : ""}
+                            </Slider>
+                        </div>
+
                     </div>
                 </div>
-
-                <div className={`row ${styles.slidersRow}`}>
-                    <div className={`col-12 col-lg-6 offset-lg-1 mainVideoSlider`}>
-                        <div className={`row`}>
-                            <div className={`col-12`}>
+                <div className={`col-12 col-lg-4 secVidSlider`}>
 
 
-                                <div className={`${styles.videoWrapper}`}>
-                                    <div id="ytplayer"></div>
-                                </div>
-                            </div>
-                            <div style={{ width: "100%" }}>
-                                <Slider
-                                    asNavFor={nav2}
-                                    ref={slider => (slider1 = slider)}
-                                    {...SingleSliderSettings}
-                                >
-
-                                    {node.relationships && node.relationships.field_video_section ?
-                                        node.relationships.field_video_section.map((item, index) => {
-                                            return (
-                                                <div className={`col-12`}>
-                                                    <div className={`${styles.mainVidWrapper}`}>
-
-                                                        {item.field_video_sec_title ? <div className={`${styles.mainTitle}`} dangerouslySetInnerHTML={{ __html: item.field_video_sec_title.processed }}></div> : ""}
-
+                    <div className={`row`}>
+                        <div style={{ width: "100%" }}>
+                            <Slider
+                                {...MultiSliderSettings}
+                                asNavFor={nav1}
+                                ref={slider => (slider2 = slider)}
+                            >
+                                {node.relationships && node.relationships.field_video_section ?
+                                    node.relationships.field_video_section.map((item, index) => {
+                                        return <>
+                                            <div className={`col-12 ${styles.secVidWrapper}`} onClick={(e) => {slickGoToslide(index); getVideoId(item.field_video_sec_link? item.field_video_sec_link : '')}}>
+                                               
+                                                {item.relationships
+                                                    && item.relationships.field_video_sec_thumb
+                                                    && item.relationships.field_video_sec_thumb.localFile
+                                                    && item.relationships.field_video_sec_thumb.localFile.childImageSharp ?
+                                                    <div className={`${styles.vidPoster}`}>
+                                                        <GatsbyImage
+                                                            image={item.relationships.field_video_sec_thumb.localFile.childImageSharp.gatsbyImageData} />
+                                                        <img class={`${styles.playBtn}`} src={playbtnimg} alt="videomsg" />
                                                     </div>
+                                                    : ""}
+                                          
+                                                <div className={`${styles.secVidData}`}>
+                                                    {item.field_video_sec_title ? <div className={`${styles.secTitle}`} dangerouslySetInnerHTML={{ __html: item.field_video_sec_title.processed }}></div> : ""}
+
                                                 </div>
-                                            )
-                                        })
 
-                                        : ""}
-                                </Slider>
-                            </div>
+                                    
+                                            </div>
+                                            <div className={`${styles.bottomBorder} d-none d-lg-block col-lg-6 offset-lg-6`}>
+                                                <div></div>
+                                            </div>
 
-                        </div>
-                    </div>
-                    <div className={`col-12 col-lg-4 secVidSlider`}>
+                                        </>;
+                                    })
 
-
-                        <div className={`row`}>
-                            <div style={{ width: "100%" }}>
-                                <Slider
-                                    {...MultiSliderSettings}
-                                    asNavFor={nav1}
-                                    ref={slider => (slider2 = slider)}
-                                >
-                                    {node.relationships && node.relationships.field_video_section ?
-                                        node.relationships.field_video_section.map((item, index) => {
-                                            return (
-                                                <>
-                                                    <div className={`col-12 ${styles.secVidWrapper}`} onClick={(e) => {slickGoToslide(index); getVideoId(item.field_video_sec_link? item.field_video_sec_link : '')}}>
-                                                       
-                                                        {item.relationships
-                                                            && item.relationships.field_video_sec_thumb
-                                                            && item.relationships.field_video_sec_thumb.localFile
-                                                            && item.relationships.field_video_sec_thumb.localFile.childImageSharp ?
-                                                            <div className={`${styles.vidPoster}`}>
-                                                                <Img fluid={item.relationships.field_video_sec_thumb.localFile.childImageSharp.fluid} />
-                                                                <img class={`${styles.playBtn}`} src={playbtnimg} alt="videomsg" />
-                                                            </div>
-                                                            : ""}
-                                                  
-                                                        <div className={`${styles.secVidData}`}>
-                                                            {item.field_video_sec_title ? <div className={`${styles.secTitle}`} dangerouslySetInnerHTML={{ __html: item.field_video_sec_title.processed }}></div> : ""}
-
-                                                        </div>
-
-                                            
-                                                    </div>
-                                                    <div className={`${styles.bottomBorder} d-none d-lg-block col-lg-6 offset-lg-6`}>
-                                                        <div></div>
-                                                    </div>
-
-                                                </>
-
-                                            )
-                                        })
-
-                                        : ""}
-                                </Slider>
-                            </div>
+                                    : ""}
+                            </Slider>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
-    )
+        </div>
+    </>;
 }
 
 
 export default VideoSlider
 
-export const fragment = graphql`
-    fragment paragraphVideoSlider on paragraph__video_slider {
-        id
-        field_main_video_header {
-            processed
-          }
-          relationships {
-            field_video_section {
-              field_video_sec_link
-              field_video_sec_title {
-                processed
-              }
-              relationships {
-                field_video_sec_thumb {
-                  localFile {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
+export const fragment = graphql`fragment paragraphVideoSlider on paragraph__video_slider {
+  id
+  field_main_video_header {
+    processed
+  }
+  relationships {
+    field_video_section {
+      field_video_sec_link
+      field_video_sec_title {
+        processed
+      }
+      relationships {
+        field_video_sec_thumb {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
-    }`
+        }
+      }
+    }
+  }
+}
+`

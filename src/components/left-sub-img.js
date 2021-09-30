@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as Style from '../assets/scss/components/leftimgsub.module.scss'
 const LeftSubimg = ({ node }) => {
 
@@ -18,42 +18,42 @@ const LeftSubimg = ({ node }) => {
 
         </div>
         <div className={[Style.imgContainer, "offset-2 offset-lg-1 col-lg-5 col-10"].join(" ")}>
-          <Img alt="img" fluid={node.relationships.field_left_image.localFile.childImageSharp.fluid} />
+          <GatsbyImage
+            image={node.relationships.field_left_image.localFile.childImageSharp.gatsbyImageData}
+            alt="img" />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default LeftSubimg
 
-export const fragment = graphql`
-fragment paragraphLeftSubImgRightText on  paragraph__left_sub_img_right_text {
+export const fragment = graphql`fragment paragraphLeftSubImgRightText on paragraph__left_sub_img_right_text {
   field_left_link {
     title
     uri
   }
-    field_describtion {
-      processed
-    }
-    field_title_title {
-      processed
-    }
-    field_topic {
-      processed
-    }
-    relationships {
-      field_left_image {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-            original {
-              src
-            }
+  field_describtion {
+    processed
+  }
+  field_title_title {
+    processed
+  }
+  field_topic {
+    processed
+  }
+  relationships {
+    field_left_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          original {
+            src
           }
         }
       }
     }
-  }`
+  }
+}
+`

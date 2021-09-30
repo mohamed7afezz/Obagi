@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import Menu from "./menu"
 import * as footerStyles from "../assets/scss/components/footer.module.scss"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -110,17 +110,14 @@ const Footer = ({ siteTitle }) => {
     }
   }
 
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "general1.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  placeholderImage: file(relativePath: {eq: "general1.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-  `)
+  }
+}
+`)
 
 
 
@@ -148,7 +145,10 @@ const Footer = ({ siteTitle }) => {
             <div className={["col-12 offset-lg-1 col-lg-2", footerStyles.firstCol].join(" ")}>
 
               <div className={footerStyles.obagiLogo}>
-                <Img alt="img"  className="d-none d-lg-block" fluid={data.placeholderImage.childImageSharp.fluid} />
+                <GatsbyImage
+                  image={data.placeholderImage.childImageSharp.gatsbyImageData}
+                  alt="img"
+                  className="d-none d-lg-block" />
                 <div
                   className={[
                     footerStyles.socialMedia,
@@ -308,7 +308,7 @@ const Footer = ({ siteTitle }) => {
       </div>
       <div class="be-ix-link-block"></div>
     </footer>
-  )
+  );
 }
 
 function useWindowSize() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as faqHeroStyles from '../assets/scss/components/faq-hero.module.scss'
 
 const FaqHero = ({ node }) => {

@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { getParagraph } from "../components/paragraphs-helper"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import share from '../assets/images/product-images/share.svg'
 import ProductCard from '../components/productcard'
 import Slider from "react-slick"
@@ -93,7 +93,8 @@ const BlogPost = props => {
               && data.nodeBlogPost.relationships.field_hero_image
               && data.nodeBlogPost.relationships.field_hero_image.localFile
               && data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp ?
-              <Img fluid={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.fluid} /> : ""}
+              <GatsbyImage
+                image={data.nodeBlogPost.relationships.field_hero_image.localFile.childImageSharp.gatsbyImageData} /> : ""}
           </div>
           <div className={`col-12 col-lg-8 offset-lg-2`}>
             {data.nodeBlogPost.field_blog_type ? <div className={`subtitle ${data.nodeBlogPost.field_blog_type == "medical" ? `medical-blog` : 'clinical-blog'}`}>{data.nodeBlogPost.field_blog_type}</div> : ""}
@@ -147,18 +148,18 @@ const BlogPost = props => {
                               item.relationships.field_medical_image &&
                               item.relationships.field_medical_image[0] &&
                               item.relationships.field_medical_image[0].localFile &&
-                              item.relationships.field_medical_image[0].localFile.childImageSharp ? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid
+                              item.relationships.field_medical_image[0].localFile.childImageSharp ? item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData
                               :
                               item.relationships &&
                                 item.relationships.field_clinical_image &&
                                 item.relationships.field_clinical_image[0] &&
                                 item.relationships.field_clinical_image[0].localFile &&
-                                item.relationships.field_clinical_image[0].localFile.childImageSharp ? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid
+                                item.relationships.field_clinical_image[0].localFile.childImageSharp ? item.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData
                                 : ""}
                             rate="0"
                           />
                         </div>
-                      )
+                      );
                     })
 
                     }
@@ -190,31 +191,27 @@ const BlogPost = props => {
                   {data.nodeBlogPost.relationships.field_blog_tag.relationships.parent[0].relationships.parent[0].relationships.taxonomy_term__blogs.map((parent, index) => {
 
                     if (parent.relationships.taxonomy_term__blogs) {
-                      return (
-                        parent.relationships.taxonomy_term__blogs.map((blog, ind) => {
-                          if (blog.relationships.node__blog_post) {
+                      return parent.relationships.taxonomy_term__blogs.map((blog, ind) => {
+                        if (blog.relationships.node__blog_post) {
+                          return blog.relationships.node__blog_post.map((item, inde) => {
+                            if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
+                              return
+                            }
                             return (
-                              blog.relationships.node__blog_post.map((item, inde) => {
-                                if(item && item.path.alias && (item.path.alias == "/skin-simplified/skin-concern/clinical-blog" || item.path.alias == "/behind-the-lines/professional-c/medical-blog")) {
-                                  return
-                                }
-                                return (
-                                  <BlogCard
-                                    title={item.title}
-                                    url={item.path.alias ? item.path.alias : "#"}
-                                    type={item.field_blog_type ? item.field_blog_type : ""}
-                                    thumbnail={item.relationships
-                                      && item.relationships.field_blog_thumbnail
-                                      && item.relationships.field_blog_thumbnail.localFile
-                                      && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                                      item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
-                                  />
-                                )
-                              })
-                            )
-                          }
-                        })
-                      )
+                              <BlogCard
+                                title={item.title}
+                                url={item.path.alias ? item.path.alias : "#"}
+                                type={item.field_blog_type ? item.field_blog_type : ""}
+                                thumbnail={item.relationships
+                                  && item.relationships.field_blog_thumbnail
+                                  && item.relationships.field_blog_thumbnail.localFile
+                                  && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
+                                  item.relationships.field_blog_thumbnail.localFile.childImageSharp.gatsbyImageData : ""}
+                              />
+                            );
+                          });
+                        }
+                      });
                     }
 
                   })}
@@ -256,62 +253,58 @@ const BlogPost = props => {
       </div>
 
     </Layout>
-  )
+  );
 }
 
 export default BlogPost;
-export const pageQuery = graphql`
-query($slug: String!) {
-    nodeBlogPost (fields: { slug: { eq: $slug } }) {
-      id
-      title
-      field_blog_type
-      path {
-        alias
+export const pageQuery = graphql`query ($slug: String!) {
+  nodeBlogPost(fields: {slug: {eq: $slug}}) {
+    id
+    title
+    field_blog_type
+    path {
+      alias
+    }
+    field_display_related_articles
+    field_related_articles_title {
+      processed
+    }
+    relationships {
+      paragraphs: field_blog_components {
+        type: __typename
+        ...allParagraphBlogProductParagraph
+        ...paragraphFullHtmlContent
       }
-      field_display_related_articles
-      field_related_articles_title {
-        processed
-      }
-      relationships {
-        paragraphs: field_blog_components {
-          type: __typename
-          ...allParagraphBlogProductParagraph
-          ...paragraphFullHtmlContent
+      field_blog_tag {
+        name
+        path {
+          alias
         }
-        field_blog_tag {
-          name
-          path {
-            alias
-          }
-          relationships {
-            parent {
-              name
-              relationships {
-                parent {
-                  name
-                  path {
-                    alias
-                  }
-                  relationships {
-                    taxonomy_term__blogs {
-                      relationships {
-                        taxonomy_term__blogs {
-                          relationships {
-                            node__blog_post {
-                              title
-                              field_blog_type
-                              path {
-                                alias
-                              }
-                              relationships {
-                                field_blog_thumbnail {
-                                  localFile {
-                                    childImageSharp {
-                                      fluid {
-                                        ...GatsbyImageSharpFluid
-                                      }
-                                    }
+        relationships {
+          parent {
+            name
+            relationships {
+              parent {
+                name
+                path {
+                  alias
+                }
+                relationships {
+                  taxonomy_term__blogs {
+                    relationships {
+                      taxonomy_term__blogs {
+                        relationships {
+                          node__blog_post {
+                            title
+                            field_blog_type
+                            path {
+                              alias
+                            }
+                            relationships {
+                              field_blog_thumbnail {
+                                localFile {
+                                  childImageSharp {
+                                    gatsbyImageData(layout: FULL_WIDTH)
                                   }
                                 }
                               }
@@ -325,80 +318,71 @@ query($slug: String!) {
               }
             }
           }
-         
         }
-        field_blog_thumbnail {
-          localFile {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+      }
+      field_blog_thumbnail {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
+      field_hero_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
+      field_related_products {
+        field_related_products_title {
+          processed
+        }
+        relationships {
+          field_related_products {
+            ... on node__clinical_product {
+              id
+              title
+              path {
+                alias
               }
-            }
-          }
-        }
-        field_hero_image {
-          localFile {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              field_clinical_description {
+                processed
               }
-            }
-          }
-        }
-        field_related_products {
-          field_related_products_title {
-            processed
-          }
-          relationships {
-            field_related_products {
-              ... on node__clinical_product {
-                id
-                title
-                path {
-                  alias
-                }
-                field_clinical_description {
-                  processed
-                }
-                field_clinical_price
-                field_clinical_sku
-                field_clinical_id
-                field_min_quantity
-                relationships {
-                  field_clinical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
+              field_clinical_price
+              field_clinical_sku
+              field_clinical_id
+              field_min_quantity
+              relationships {
+                field_clinical_image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(layout: FULL_WIDTH)
                     }
                   }
                 }
               }
-              ... on node__medical_product {
-                id
-                field_medical_id
-                field_medical_description {
-                  processed
-                }
-                field_medical_premier_points
-                field_medical_premier_points_id
-                field_medical_price
-                field_medical_sku
-                field_min_quantity
-                path {
-                  alias
-                }
-                title
-                relationships {
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
+            }
+            ... on node__medical_product {
+              id
+              field_medical_id
+              field_medical_description {
+                processed
+              }
+              field_medical_premier_points
+              field_medical_premier_points_id
+              field_medical_price
+              field_medical_sku
+              field_min_quantity
+              path {
+                alias
+              }
+              title
+              relationships {
+                field_medical_image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(layout: FULL_WIDTH)
                     }
                   }
                 }
@@ -407,8 +391,8 @@ query($slug: String!) {
           }
         }
       }
-   
     }
+  }
 }
 `;
 /*

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { phyFinder } from "../assets/js/phy-finder"
 import "../assets/scss/components/physfinder-old.scss"
 import "../assets/scss/components/physfinder.scss"

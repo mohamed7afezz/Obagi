@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 import Slider from "react-slick"
 import Stars from './stars'
@@ -168,17 +168,14 @@ const UserAccount = ({ node, children, activeTab }) => {
 
 
 
-    const data = useStaticQuery(graphql`
-    query {
-      skinanalyzer: file(relativePath: { eq: "image.png" }) {
-        childImageSharp {
-          fluid (quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+    const data = useStaticQuery(graphql`{
+  skinanalyzer: file(relativePath: {eq: "image.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-    `)
+  }
+}
+`)
 
     return (
 

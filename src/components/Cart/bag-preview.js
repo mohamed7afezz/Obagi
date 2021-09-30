@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import YourBag from "./your-bag"
 import CartContext from "../../providers/cart-provider"
 import * as ShowBagStyle from "../../assets/scss/components/show-bag.module.scss"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import UserContext from '../../providers/user-provider'
 
 
@@ -23,18 +23,13 @@ const Showbag = () => {
 }
 
 const Notification = ({ id, text, type }) => {
-  const data = useStaticQuery(graphql`
-  query {
-    prouduct: file(
-      relativePath: { eq: "product-images/prouduct-thumb.png" }
-    ) {
-      childImageSharp {
-        fluid (quality: 100){
-          ...GatsbyImageSharpFluid
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  prouduct: file(relativePath: {eq: "product-images/prouduct-thumb.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
   }
+}
 `)
   const value = useContext(CartContext);
   const removeNotification = value && value.removeNotification;

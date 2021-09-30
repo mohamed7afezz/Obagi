@@ -5,7 +5,7 @@ import { getParagraph } from './paragraphs-helper';
 import * as homeHero from '../assets/scss/components/home-hero.module.scss'
 import HeroBox from './hero-box'
 import Slider from "react-slick"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 const $ = require("jquery");
 
 const HomeHero = ({ node }) => {
@@ -165,41 +165,34 @@ const HomeHero = ({ node }) => {
 
 export default HomeHero;
 
-export const fragment = graphql`
-    fragment paragraphHomeHero on paragraph__home_hero {
-        id
-        field_main_header
-        field_main_subtitle {
-          processed
-        }
-        
-      
-        relationships {
-          field_box {
-            type: __typename
-            ...paragraphHeroBox
-          }
-          field_default_bg {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-                original {
-                    src
-                }
-              }
-            }
-          }
-          field_scroll_down {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
+export const fragment = graphql`fragment paragraphHomeHero on paragraph__home_hero {
+  id
+  field_main_header
+  field_main_subtitle {
+    processed
+  }
+  relationships {
+    field_box {
+      type: __typename
+      ...paragraphHeroBox
     }
+    field_default_bg {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          original {
+            src
+          }
+        }
+      }
+    }
+    field_scroll_down {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+}
 `;
