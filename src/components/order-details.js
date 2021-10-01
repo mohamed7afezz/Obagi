@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react"
 import { useStaticQuery, graphql, Link, navigate } from "gatsby"
-import Img from "gatsby-image"
-import orderDetailsStyles from "../assets/scss/components/order-details.module.scss"
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as orderDetailsStyles from "../assets/scss/components/order-details.module.scss"
 import UserContext from "../providers/user-provider"
 import { useLocation } from "@reach/router"
 import CartContext from "../providers/cart-provider"
-import orderHistoryStyles from "../assets/scss/components/order-history.module.scss"
-import { css } from "@emotion/core";
+import * as orderHistoryStyles from "../assets/scss/components/order-history.module.scss"
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../assets/js/stock';
 import SearchContext from "../providers/search-provider"
@@ -128,17 +128,14 @@ const OrderDetails = (props, { node }) => {
 
     return item.product_options[0] ? item.product_options[0].value : ""
   })
-  const data = useStaticQuery(graphql`
-    query {
-      product: file(relativePath: { eq: "117x92.png" }) {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  product: file(relativePath: {eq: "117x92.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
     }
-  `)
+  }
+}
+`)
 
   const location = useLocation()
   const { user } = useContext(UserContext)

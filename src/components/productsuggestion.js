@@ -1,5 +1,5 @@
 import React from 'react'
-import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
+import * as productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
 import ProductCard from "../components/productcard"
 import Slider from "react-slick";
 

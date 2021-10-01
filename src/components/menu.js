@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import PropTypes, { func } from "prop-types";
-import footerStyles from '../assets/scss/components/footer.module.scss'
+import * as footerStyles from '../assets/scss/components/footer.module.scss'
 import UserContext from '../providers/user-provider'
 
 // const $ = require(jQuery);

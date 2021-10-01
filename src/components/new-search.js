@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import ProductCard from "../components/productcard"
-import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import * as productsliststyle from "../assets/scss/components/collection-list.module.scss"
 import {CustomSelect} from '../assets/js/custom-select'
-import searchResultStyle from '../assets/scss/components/search-results.module.scss'
+import * as searchResultStyle from '../assets/scss/components/search-results.module.scss'
 import SearchContext from "../providers/search-provider"
 import $ from "jquery"
 import {checkStock} from '../assets/js/stock';
@@ -197,7 +197,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                         productLink={data.path.alias}
                       producttitle={data.title}
                       productdescription={{__html:data.field_medical_description.processed}}
-                      productimage={ data.relationships.field_medical_image && data.relationships.field_medical_image[0] && data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      productimage={ data.relationships.field_medical_image && data.relationships.field_medical_image[0] && data.relationships.field_medical_image[0].localFile? data.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : ""}
                       price={data.field_medical_price}
                       productId={data.field_medical_id}
                       isrx={data.relationships.field_medical_rx?data.relationships.field_medical_rx.name :""}
@@ -226,7 +226,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                          productLink={data.path.alias}
                         producttitle={data.title}
                         productdescription={{__html:data.field_clinical_description.processed}}
-                        productimage={data.relationships.field_clinical_image && data.relationships.field_clinical_image[0].localFile?data.relationships.field_clinical_image[0].localFile.childImageSharp.fluid:''}
+                        productimage={data.relationships.field_clinical_image && data.relationships.field_clinical_image[0].localFile?data.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData:''}
                         price={data.field_clinical_price}
                         productId={data.field_clinical_id}
                         Sku = {data.field_clinical_sku}
@@ -237,7 +237,7 @@ sortPriceSelect.addEventListener("change", function (event) {
                      )) : <div className="col-12 text-center clinicalProduct">No results found.</div> }
             </div>
     </div>
-  )
+  );
 }
 
 export default NewSearchProductsResult

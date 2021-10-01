@@ -1,9 +1,9 @@
 import React, { useContext,useEffect } from "react"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby"
 
-import sectionStyle from "../assets/scss/components/products-we-provide.module.scss"
-import productsliststyle from "../assets/scss/components/collection-list.module.scss"
+import * as sectionStyle from "../assets/scss/components/products-we-provide.module.scss"
+import * as productsliststyle from "../assets/scss/components/collection-list.module.scss"
 import {checkStock} from '../assets/js/stock';
 import ProductCard from './productcard'
 
@@ -45,7 +45,7 @@ const WhatWeProvide = ({ node }) => {
                         productLink={item.path.alias}
                       producttitle={item.title}
                       productdescription={{__html:item.field_medical_description.processed}}
-                      productimage={ item.relationships.field_medical_image &&  item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.fluid : ""}
+                      productimage={ item.relationships.field_medical_image &&  item.relationships.field_medical_image[0].localFile? item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData : ""}
                       price={item.field_medical_price}
                       productId={item.field_medical_id}
                       isrx={item.relationships.field_medical_rx?item.relationships.field_medical_rx.name :""}
@@ -63,53 +63,47 @@ const WhatWeProvide = ({ node }) => {
        
       </div>
     </div>
-
-  )
+  );
 }
 
 export default WhatWeProvide;
-export const fragment = graphql`
-  fragment paragraphProductsWeProvide on paragraph__products_we_provide{
-   
-      field_title_part_one {
+export const fragment = graphql`fragment paragraphProductsWeProvide on paragraph__products_we_provide {
+  field_title_part_one {
+    processed
+  }
+  field_title_part_two {
+    processed
+  }
+  field_what_we_provide_header {
+    processed
+  }
+  relationships {
+    field_products_we_provide {
+      title
+      field_medical_price
+      field_medical_id
+      field_medical_sku
+      field_min_quantity
+      field_medical_premier_points_id
+      field_medical_description {
         processed
       }
-      field_title_part_two {
-        processed
-      }
-      field_what_we_provide_header {
-        processed
+      path {
+        alias
       }
       relationships {
-        field_products_we_provide {
-          title
-          field_medical_price
-          field_medical_id
-          field_medical_sku
-          field_min_quantity
-          field_medical_premier_points_id
-          field_medical_description {
-            processed
-          }
-          path {
-            alias
-          }
-          relationships {
-            field_medical_rx {
-              name
-            }
-            field_medical_image {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+        field_medical_rx {
+          name
+        }
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
       }
     }
- 
+  }
+}
 `;

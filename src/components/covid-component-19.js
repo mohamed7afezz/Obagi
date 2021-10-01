@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from "react"
 import { Link } from 'gatsby'
 import Customer from '../components/customer-care'
 import { CustomSelect } from '../assets/js/custom-select'
-import myAccountStyles from '../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 export default function Covid19() {
-    <Customer activeTab="covid-19">
+    <Customer activeTab="covid-19" currentPage="COVID-19 Information">
 <div class="container-fluid">
 
 

@@ -1,14 +1,13 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
-import tableStyle from '../assets/scss/components/table.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as tableStyle from '../assets/scss/components/table.module.scss'
 
 
 
 const SkinClusionTable = ({ node }) => {
 
   return (
-
     <div className={tableStyle.tableContainer}>
       <div className='container-fluid'>
         <div dangerouslySetInnerHTML={{ __html: node.field_table_title.processed }} className={["offset-lg-3", tableStyle.tabletitle].join(" ")}></div>
@@ -21,7 +20,10 @@ const SkinClusionTable = ({ node }) => {
 
                   <div className={[tableStyle.tabelImage, "tabelImage"].join(" ")}>
                     {item.relationships && item.relationships.field_cell_image && item.relationships.field_cell_image.localFile && item.relationships.field_cell_image.localFile.childImageSharp?
-                      <Img alt="img"  className={[tableStyle.tableimg, "tableimg"].join(" ")} fluid={item.relationships.field_cell_image.localFile.childImageSharp.fluid} /> : ""}
+                      <GatsbyImage
+                        image={item.relationships.field_cell_image.localFile.childImageSharp.gatsbyImageData}
+                        alt="img"
+                        className={[tableStyle.tableimg, "tableimg"].join(" ")} /> : ""}
                     <div className={tableStyle.skinType}>
                       {item.field_tabel_type_cell_desc ?
                         <div className={[tableStyle.tableCell, tableStyle.skincolor, `type-${index}`].join(" ")} dangerouslySetInnerHTML={{ __html: item.field_tabel_type_cell_desc.processed }}></div> : ""
@@ -73,44 +75,40 @@ const SkinClusionTable = ({ node }) => {
             </tr>
         </table> */}
     </div>
-
-
-  )
+  );
 }
 export default SkinClusionTable
 
 
-export const fragment = graphql`
-    fragment paragraphSkinClusionTable on   paragraph__skin_culsion_tabel {
-        id
-        field_table_title {
-          processed
-        }
-        relationships {
-          field_skin_culsion_tabel_cells {
-            field_first_cell_text {
-              processed
-            }
-            field_second_cell {
-              processed
-            }
-            field_tabel_type_cell_desc {
-              processed
-            }
-            relationships {
-              field_cell_image {
-                localFile {
-                  childImageSharp {
-                    fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                    }
-                    original{
-                        src
-                    }
-                  }
-                }
+export const fragment = graphql`fragment paragraphSkinClusionTable on paragraph__skin_culsion_tabel {
+  id
+  field_table_title {
+    processed
+  }
+  relationships {
+    field_skin_culsion_tabel_cells {
+      field_first_cell_text {
+        processed
+      }
+      field_second_cell {
+        processed
+      }
+      field_tabel_type_cell_desc {
+        processed
+      }
+      relationships {
+        field_cell_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
               }
             }
           }
         }
-      }`
+      }
+    }
+  }
+}
+`

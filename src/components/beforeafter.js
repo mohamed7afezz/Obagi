@@ -1,28 +1,24 @@
 import React , {useEffect} from 'react'
-import beforeafter from '../assets/scss/components/before-after.module.scss'
+import * as beforeafter from '../assets/scss/components/before-after.module.scss'
 import beforeimg from "../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_BEFORE.jpg"
 import afterimg from "../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
 import Beforeafterimages from "../components/beforeafterimages"
 import { useStaticQuery, graphql } from "gatsby"
 
 const Beforeafter = ({ node }) => {
-    const data = useStaticQuery(graphql`
-    query {
-        afterimg: file(relativePath: { eq: "product-images/smallLamb.png" }) {
-        childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-        }
-      }
-      cardimg: file(relativePath: { eq: "product-images/main-image.png" }) {
-        childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-        }
-      }
-    }`
+    const data = useStaticQuery(graphql`{
+  afterimg: file(relativePath: {eq: "product-images/smallLamb.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  cardimg: file(relativePath: {eq: "product-images/main-image.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`
     )
     return (
         <div className={["container-fluid","beforeaftercontainer", beforeafter.beforeaftercontainer].join(" ")}>

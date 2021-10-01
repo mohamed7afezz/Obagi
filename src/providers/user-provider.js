@@ -4,6 +4,7 @@ import { navigate } from 'gatsby';
 const UserContext = createContext();
 
 const baseUrl = process.env.Base_URL;
+const sitePass = process.env.sitePass;
 
 const isBrowser = () => typeof window !== "undefined"
 
@@ -37,6 +38,13 @@ export const UserProvider = ({ children }) => {
     //get user data
     useEffect(() => {
         getUserData();
+        
+        // if(typeof window !== undefined && sitePass === 'true') {
+        //     var pass = prompt('Please enter the site password');
+        //     if(pass != 'ProductsNow656!') {
+        //         window.location.reload();
+        //     }
+        // }
     }, []);
 
     // Login

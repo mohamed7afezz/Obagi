@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
-import skinClusionStyle from '../assets/scss/components/skin-clusion-img-left.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as skinClusionStyle from '../assets/scss/components/skin-clusion-img-left.module.scss'
 
 
 
@@ -36,29 +36,27 @@ const SkinClusionTextLeft = ({ node }) => {
   )
              }
 export default SkinClusionTextLeft
-export const fragment = graphql`
-    fragment paragraphSkinClusionTextLeft on   paragraph__skin_clusion_text_left_image {
-        id
-        field_skin_clusion_left_title {
-          processed
-        }
-        field_skinclusion_left_describti {
-          processed
-        }
-        relationships {
-          field_skin_clusion_left_image {
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid (quality: 100){
-                    ...GatsbyImageSharpFluid
-                }
-                original{
-                    src
-                }
-              }
-            }
+export const fragment = graphql`fragment paragraphSkinClusionTextLeft on paragraph__skin_clusion_text_left_image {
+  id
+  field_skin_clusion_left_title {
+    processed
+  }
+  field_skinclusion_left_describti {
+    processed
+  }
+  relationships {
+    field_skin_clusion_left_image {
+      localFile {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          original {
+            src
           }
         }
-      }`
+      }
+    }
+  }
+}
+`
         

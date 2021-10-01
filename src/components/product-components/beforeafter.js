@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import beforeafter from '../../assets/scss/components/before-after.module.scss'
+import * as beforeafter from '../../assets/scss/components/before-after.module.scss'
 import beforeimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_BEFORE.jpg"
 import afterimg from "../../assets/images/product-images/Clinical-VitaminCEyeBrightener-BeforeAfter1_After.jpg"
 import Beforeafterimages from "./beforeafterimages"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Beforeafter = ({ node }) => {
     function bcollapse(e) {
@@ -104,10 +104,12 @@ const Beforeafter = ({ node }) => {
                                             item.relationships.field_boxes.map(item => (
                                                 
                                                 item.field_box_des ?
-                                                    <div className={[beforeafter.box, "box", "col-5"].join(" ")}>
-                                                        <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>
+                                                    <div className={[beforeafter.box,  "col-6"].join(" ")}>
+                                                        <div className={[beforeafter.boxwrap,"box"].join(" ")}>
+                                                     {item.field_percentage.processed.includes("eek")?   <h1 className={beforeafter.boxheadertext} dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>:
+                                                     <h1 dangerouslySetInnerHTML={{ __html: item.field_percentage ? item.field_percentage.processed : '' }}></h1>}
                                                         <div dangerouslySetInnerHTML={{ __html: item.field_box_des ? item.field_box_des.processed : '' }}></div>
-                                                    </div> : ""
+                                                    </div> </div>: ""
                                             )
                                             )
                                         }
@@ -134,61 +136,56 @@ const Beforeafter = ({ node }) => {
 }
 export default Beforeafter;
 
-export const fragment = graphql`
-    fragment beforeAfterParagraph on paragraph__before_after {
-        id
-        field_before_meet_after {
+export const fragment = graphql`fragment beforeAfterParagraph on paragraph__before_after {
+  id
+  field_before_meet_after {
+    processed
+  }
+  field_before_meet_after_subtitle {
+    processed
+  }
+  relationships {
+    field_before_meet_after_example {
+      field_example_title {
+        processed
+      }
+      field_study_type {
+        processed
+      }
+      field_before_after_footnote {
+        processed
+      }
+      relationships {
+        field_boxes {
+          field_box_des {
             processed
-        }
-        field_before_meet_after_subtitle {
+          }
+          field_percentage {
             processed
+          }
         }
-        relationships {
-            field_before_meet_after_example {
-                field_example_title {
-                    processed
-                }
-                field_study_type {
-                    processed
-                }
-                field_before_after_footnote {
-                    processed
-                }
-                relationships {
-                    field_boxes {
-                        field_box_des {
-                            processed
-                        }
-                        field_percentage {
-                            processed
-                        }
-                    }
-                    field_before_image {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                    field_after_im {
-                        localFile {
-                            childImageSharp {
-                                fluid (quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                                original {
-                                    src
-                                }
-                            }
-                        }
-                    }
-                }
+        field_before_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
             }
+          }
         }
+        field_after_im {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
 `;

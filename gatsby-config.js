@@ -23,7 +23,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
       
-        exclude: [
+        excludes: [
           `/test-page`,
           `/press-releases`,
           `/obagi-story`,
@@ -91,7 +91,9 @@ module.exports = {
           `/clinical/skin-care/brightening-skin-care`,
           `/clinical/skin-care/fine-lines-and-wrinkles-skin-care`,
           `/skin-simplified/skin-concern/clinical-blog`,
-          `/behind-the-lines/professional-c/medical-blog`
+          `/behind-the-lines/professional-c/medical-blog`,
+          `/medical/nu-cil-eyelash-enhancing-serum`,
+          `/medical/medical-product-do-not-unpublish`
     ],
         
       }
@@ -162,6 +164,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: 'https://www.youtube.com/iframe_api'
+      }
+    },
+    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-58FFST8",
@@ -180,7 +188,12 @@ module.exports = {
       },
     },
 
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("node-sass"),
+      },
+    },
     `gatsby-plugin-fontawesome-css`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

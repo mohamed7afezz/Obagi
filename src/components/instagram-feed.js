@@ -1,7 +1,7 @@
 import React,{ useEffect } from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import instagramStyles from '../assets/scss/components/instagram-feed.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as instagramStyles from '../assets/scss/components/instagram-feed.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faInstagram, faFacebook, faPinterest } from '@fortawesome/free-brands-svg-icons'
 
@@ -55,11 +55,11 @@ const InstagramFeed = ({ node }) => {
                         return (
                             <div className={["col-12 col-lg-4", instagramStyles.image].join(" ")}>
                                 <div className={instagramStyles.imageWrapper}>
-                                    {item.localFile ? <div><Img alt="img"  fluid={item.localFile.childImageSharp.fluid} /></div> : ''}
+                                    {item.localFile ? <div><GatsbyImage image={item.localFile.childImageSharp.gatsbyImageData} alt="img" /></div> : ''}
                                     <div className={instagramStyles.instagramIcon}><FontAwesomeIcon icon={faInstagram} className={instagramStyles.imageIcon} /></div>
                                 </div>
                             </div>
-                        )
+                        );
                     })}
                 </div>
                 <div className="row">
@@ -76,29 +76,24 @@ const InstagramFeed = ({ node }) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default InstagramFeed
 
-export const fragment = graphql`
-    fragment paragraphInstagramFeed on paragraph__instagram_feed {
-        id
-      
-   
-        field_feed_title {
-            processed
+export const fragment = graphql`fragment paragraphInstagramFeed on paragraph__instagram_feed {
+  id
+  field_feed_title {
+    processed
+  }
+  relationships {
+    field_feed_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
-   
-        relationships {
-            field_feed_image {
-                localFile {
-                    childImageSharp {
-                        fluid (quality: 100){
-                            ...GatsbyImageSharpFluid
-                          }
-                    }
-                }
-            }
-          }
-    }`
+      }
+    }
+  }
+}
+`

@@ -1,0 +1,490 @@
+@import "../typography/typography.scss";
+@import "../grid/grid.scss";
+
+.stepnumber {
+  padding: 4px 12px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  font-family: "AvenirNext";
+  vertical-align: middle;
+  background-color: #132466;
+  border-radius: 50%;
+
+  @include md-screen {
+      font-size: 1.3vw;
+      line-height: 1.8vw;
+  }
+
+  @include lg-screen {
+    font-size: 0.833vw;
+    line-height: 1.250vw;
+}
+@media (min-width: 1921px) {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+}
+.formHeader {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 16px;
+  }
+  @include md-screen {
+    font-size: 2vw;
+    line-height: 3.5vw;
+    margin-bottom: 30px;
+  }
+  @include lg-screen {
+      font-size: 1.667vw;
+      line-height: 2.917vw;
+  }
+  @media (min-width: 1921px) {
+      font-size: 32px;
+      line-height: 56px;
+  }
+}
+.formDescription {
+  font-size: 18px;
+  line-height: 32px;
+
+  @include md-screen {
+      font-size: 1.3vw;
+      line-height: 2vw;
+  }
+
+  @include lg-screen {
+    font-size: 0.938vw;
+    line-height: 1.667vw;
+}
+@media (min-width: 1921px) {
+    font-size: 18px;
+    line-height: 32px;
+}
+}
+.seprator {
+  border-bottom: 1px solid #d6d6d6;
+  margin-top: 24px;
+  @include md-screen {
+    margin-top: 64px;
+  }
+}
+.Formwrap + .Formwrap {
+  margin-top: 24px;
+  @include md-screen {
+    margin-top: 32px;
+  }
+}
+
+.formsteptitle{
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    font-weight: 700;
+ 
+    @include md-screen {
+        margin-bottom: 16px;
+        font-size: 1.3vw;
+        line-height: 1.8vw;
+    }
+  
+    @include lg-screen {
+      font-size: 0.833vw;
+      line-height: 1.250vw;
+  }
+  @media (min-width: 1921px) {
+      font-size: 16px;
+      line-height: 24px;
+  }
+}
+.formstepdescription{
+
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    a{
+        font-weight: 500;
+        color: #132466;
+        text-decoration: underline;
+    }
+    & + p {
+        margin-bottom: 24px;
+        a{
+            font-weight: 500;
+            color: #132466;
+            text-decoration: underline;
+        }
+   
+        @include md-screen {
+            margin-bottom: 32px;
+            font-size: 1.3vw;
+            line-height: 1.8vw;
+        }
+      
+        @include lg-screen {
+          font-size: 0.833vw;
+          line-height: 1.250vw;
+      }
+      @media (min-width: 1921px) {
+          font-size: 16px;
+          line-height: 24px;
+      }
+        
+    }
+ 
+}
+.inputUpload{
+    text-indent: -9999px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #132466;
+    padding: 16px 95px;
+    border-radius: 6px;
+    cursor: pointer;
+    max-width: 100%;
+    width: max-content;
+    text-align: unset;
+    @include md-screen{
+        padding: 16px 105px;
+    }
+}
+.inputContainer{
+    position: relative;
+    cursor: pointer;
+    &::before{
+        content: "Choose File";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        right: 1px;
+        left: 1px;
+        text-align: center;
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+.uploadWrapper{
+    padding-bottom: 14px;
+    @include md-screen{
+        padding-bottom: 32px;
+    }
+    & + .uploadWrapper{
+        border-top: 1px dotted #d6d6d6;
+        padding-top: 14px;
+        @include md-screen{
+            padding-top: 32px;
+        }
+    }
+}
+.inputValue{
+    display: inline-block;
+    margin-left: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size: 16px;
+    margin-bottom: 4px;
+    @include md-screen {
+        font-size: 1.3vw;
+        line-height: 1.8vw;
+    }
+  
+    @include lg-screen {
+      font-size: 0.833vw;
+      line-height: 1.250vw;
+  }
+  @media (min-width: 1921px) {
+      font-size: 16px;
+      line-height: 24px;
+  }
+}
+.required{
+    font-size: 16px;
+    line-height: 24px;
+    color: #7c858a;
+    font-weight: 400;
+    margin-bottom: 24px;
+    @include md-screen {
+        font-size: 1.3vw;
+        line-height: 1.8vw;
+    }
+  
+    @include lg-screen {
+      font-size: 0.833vw;
+      line-height: 1.250vw;
+  }
+  @media (min-width: 1921px) {
+      font-size: 16px;
+      line-height: 24px;
+  }
+}
+
+.d-flex{
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}.formGroup{
+    flex: 0 0 100%;
+    position: relative;
+    @include md-screen{
+        flex: 0 0 48%;   
+    }
+}
+.FormStyle .formGroup input:invalid,.FormStyle .formGroup textarea:invalid{
+    border: 1px solid #ff3737;
+    background: rgba(255, 55, 55, 0.1);
+
+}
+.FormStyle .formGroup input:required,.FormStyle .formGroup textarea:required{
+    background: transparent;
+    border: 0;
+}
+.feildTitle{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 24px;
+
+    @include md-screen {
+        font-size: 1.3vw;
+        line-height: 1.8vw;
+    }
+  
+    @include lg-screen {
+      font-size: 0.833vw;
+      line-height: 1.250vw;
+  }
+  @media (min-width: 1921px) {
+      font-size: 16px;
+      line-height: 24px;
+  }
+}
+.massageStyle,.FormStyle .formGroup textarea{
+    width: 100%;
+    border: 0;
+}
+.mb0{
+    margin-bottom: 0 !important;
+
+}
+.submitForm{
+    text-align: center;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 1.2px;
+color: #fff;
+width: 100%;
+
+padding: 24px 64px;
+
+background-color: #132466;
+border: 1px solid #132466;
+display: block;
+border-radius: 6px;
+text-transform: uppercase;
+transition: all ease 100ms;
+font-weight: 700;
+@include md-screen {
+    width: auto;
+    margin-left: auto;
+    margin-bottom: 16px;
+    font-size: 1vw;
+    line-height: 1.2vw;
+}
+
+@include lg-screen {
+  font-size: 0.625vw;
+  line-height: 0.833vw;
+}
+@media (min-width: 1921px) {
+  font-size: 12px;
+  line-height: 16px;
+}
+}
+.selectGroup{
+    position: unset;
+    padding: 16px 11px 12px 16px;
+    border: 1px solid #d6d6d6;
+    border-bottom: 0;
+}
+.selectWrap{
+    left: 0px;
+    right: 0;
+    top: 49px;
+}
+.termsNote{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 400;
+    a{
+        font-weight: 500;
+    }
+
+    @include md-screen {
+        font-size: 1.3vw;
+        line-height: 2vw;
+    }
+  
+    @include lg-screen {
+      font-size: 0.938vw;
+      line-height: 1.667vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 18px;
+        line-height: 32px;
+    }
+}
+.termsWrapper{
+    margin-top: 0 !important;
+}
+.checkMark{
+    top: 8px !important;
+}
+.sectionWrapper{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    @include md-screen{
+
+        margin-top: 5.833vw;
+        margin-bottom: 5.833vw;
+    }
+}
+
+.main-header {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin-bottom: 8px;
+
+    @include md-screen{
+        font-size: 4vw;
+        line-height: 4.5vw;
+        margin-bottom: 0.833vw;
+        text-align: center
+    }
+
+    @include lg-screen{
+        font-size: 3.333vw;
+        line-height: 3.750vw;
+        margin-bottom: 0.833vw;
+        text-align: center
+    }
+
+    @media (min-width: 1921px) {
+        font-size: 64px;
+        line-height: 72px;
+    }
+}
+
+.main-subheader {
+    @include fontStyle(18, 32);
+    margin-bottom: 40px;
+
+    @include md-screen {
+        font-size: 1.5vw;
+        line-height: 2.2vw;
+        margin-bottom: 3.333vw;
+        text-align: center;
+    }
+
+    @include lg-screen {
+        font-size: 0.938vw;
+        line-height: 1.667vw;
+        margin-bottom: 3.333vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 18px;
+        line-height: 32px;
+    }
+}
+
+.main-separator {
+    div {
+        border-bottom: 1px solid #d6d6d6;
+        margin-bottom: 35px;
+    
+        @include md-screen {
+            margin-bottom: 3.333vw;
+        }
+    }
+}
+.titlecontainer{
+    align-items: center;
+    justify-content: space-between;
+}
+.collabsebutton{
+    margin-bottom: 26px;
+    &[aria-expanded="true"]{
+        .collapse{
+            display: block;
+        }
+        .expand{
+            display: none;
+        }
+    }
+    &[aria-expanded="false"]{
+        .collapse{
+            display: none;
+        }
+        .expand{
+            display: block;
+        }
+        
+    }
+}
+.tip{
+    margin-bottom: 24px;
+    @include md-screen{
+        margin-bottom: 32px;
+    }
+}
+.collapse.rightSection  + .seprators{
+
+ 
+        .seprator{
+            margin-top: 0 !important;
+        }
+}
+.thank-you{
+    text-align: center;
+}
+.thankTitle{
+    font-size: 32px;
+    text-transform: uppercase;
+    @include md-screen{
+        font-size: 54px;
+        font-weight: 700;
+    }
+    
+}
+.thankdesc{
+    font-size: 16px;
+    @include md-screen{
+        font-size: 24px;
+    } 
+}
+.giverborder{
+    border: 0;
+    border-radius: 6px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border-top: 1px solid #D6D6D6;;
+    padding-bottom: 1px solid #D6D6D6;;
+    @include md-screen{
+       border: 1px solid #D6D6D6;
+       padding-top: 65px;
+       padding-bottom: 65px;
+
+    }
+}

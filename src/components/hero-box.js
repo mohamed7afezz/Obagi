@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import boxStyle from '../assets/scss/components/hero-box.module.scss';
+import * as boxStyle from '../assets/scss/components/hero-box.module.scss';
 const $ = require('jquery');
 const HeroBox = ({ node, id, desktopTag }) => {
     let link;

@@ -1,9 +1,9 @@
 import React  from 'react'
 import { useStaticQuery,graphql, Link } from "gatsby"
-import Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
-import servicesStyles from '../../assets/scss/components/services.module.scss'
-import featuredStyles from '../../assets/scss/components/featured.module.scss'
-import Img from 'gatsby-image'
+import * as Collectionfooterstyle from "../../assets/scss/components/collectionfooterstyle.module.scss"
+import * as servicesStyles from '../../assets/scss/components/services.module.scss'
+import * as featuredStyles from '../../assets/scss/components/featured.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
 import Player from '@vimeo/player'
 import playbtnimg from "../../assets/images/product-images/PlayVideo.svg"
 function playvideo(event) {
@@ -28,37 +28,33 @@ function playvideo(event) {
 }
 const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
 
-  const FooterBlockList = useStaticQuery(graphql`
-    query{
-      allBlockContentTaxonomyFooterBlock {
-          edges {
-            node {
-              drupal_id
-              info
-              field_taxonomy_footer_type
-              field_taxonomy_footer_title
-         
-              field_taxonomy_footer_button
-              field_button_url
-              relationships {
-                field_taxonomy_footer_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-              body {
-                processed
+  const FooterBlockList = useStaticQuery(graphql`{
+  allBlockContentTaxonomyFooterBlock {
+    edges {
+      node {
+        drupal_id
+        info
+        field_taxonomy_footer_type
+        field_taxonomy_footer_title
+        field_taxonomy_footer_button
+        field_button_url
+        relationships {
+          field_taxonomy_footer_image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
         }
+        body {
+          processed
+        }
+      }
     }
-  `);
+  }
+}
+`);
 
   let checkfooter = "";
   let pageNodeType = nodetype ? nodetype : ""
@@ -160,136 +156,144 @@ const CollectionFooter = ({ node, nodetype,checktaxonomyType })=> {
  
   }
  
-return (
-  <>
-    {getfeature[0] ?   
-     <div className={["container-fluid d-lg-block colectionBrand", featuredStyles.containerWrapper].join(" ")} name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""}>
-            <div className={["row", featuredStyles.imageLeft].join(" ")}>
+return <>
+  {getfeature[0] ?   
+   <div className={["container-fluid d-lg-block colectionBrand", featuredStyles.containerWrapper].join(" ")} name={paragraphId? paragraphId : ""} id={paragraphId? paragraphId : ""}>
+          <div className={["row", featuredStyles.imageLeft].join(" ")}>
 
-              <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
-                <div className="video-wrapper">
-                  <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
-                    <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={getfeature[0].relationships.field_featured_video ? getfeature[0].relationships.field_featured_video.field_video_link : ''} className="playbtn">
-                      <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
-                    </a>
-                    {getfeature[0].relationships.field_featured_video ? (getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile?
-                       <Img alt="img"  className={featuredStyles.videoimg}  fluid={getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.fluid} /> : "") : ''}
-                  </div>
+            <div className={["col-lg-5", "offset-lg-1", "col-left-padding", "pr-0", featuredStyles.columnsWrapper].join(" ")}>
+              <div className="video-wrapper">
+                <div className={["img-wrap", featuredStyles.imageWrap].join(" ")}>
+                  <a className="popupvideo" data-toggle="modal" data-target="#VideoPopUp" onClick={(e) => { playvideo(e) }} href={getfeature[0].relationships.field_featured_video ? getfeature[0].relationships.field_featured_video.field_video_link : ''} className="playbtn">
+                    <img className={["playbtnimg", featuredStyles.play].join(" ")} src={playbtnimg} alt="videomsg" />
+                  </a>
+                  {getfeature[0].relationships.field_featured_video ? (getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile?
+                     <GatsbyImage
+                       image={getfeature[0].relationships.field_featured_video.relationships.field_video_poster.localFile.childImageSharp.gatsbyImageData}
+                       alt="img"
+                       className={featuredStyles.videoimg} /> : "") : ''}
                 </div>
               </div>
-
-              <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
-                <div className="col-lg-7 offset-lg-2">
-                  {getfeature[0].field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_subtitle.processed}}></div> : ""}
-                  {getfeature[0].field_featured_title?
-                  <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_title.processed }} className={featuredStyles.title}></div>
-                    :""}
-                  {getfeature[0].field_featured_products_title? <div className={featuredStyles.products}>
-                    <div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}></span>) 
-                    {getfeature[0].field_featured_button? <span className={featuredStyles.view}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
-                  <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_description.processed }} className={featuredStyles.description}></div>
-                  {getfeature[0].field_featured_perfect_title && getfeature[0].relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_perfect_title.processed}}></div>
-                  {getfeature[0].relationships.field_issues_categories.map((item, index) => {
-                  return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === getfeature[0].relationships.field_issues_categories.length - 1? '' : ', '}</span>
-              })} </div> : ""}
-                  {getfeature[0].field_featured_button? <div className={featuredStyles.linkSection}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{getfeature[0].field_featured_button.title}</Link></div> : ""}
-                </div>
-              </div>
-
-
             </div>
+
+            <div className={["col-lg-5", featuredStyles.columnsWrapper, featuredStyles.imageLeft].join(" ")}>
+              <div className="col-lg-7 offset-lg-2">
+                {getfeature[0].field_featured_subtitle? <div className={["subtitle", featuredStyles.subtitle].join(" ")} dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_subtitle.processed}}></div> : ""}
+                {getfeature[0].field_featured_title?
+                <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_title.processed }} className={featuredStyles.title}></div>
+                  :""}
+                {getfeature[0].field_featured_products_title? <div className={featuredStyles.products}>
+                  <div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_products_title.processed}}></div> (<span className={featuredStyles.productsNo}></span>) 
+                  {getfeature[0].field_featured_button? <span className={featuredStyles.view}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')}>VIEW ALL</Link></span> : ""}</div> : ""}
+                <div dangerouslySetInnerHTML={{ __html: getfeature[0].field_featured_description.processed }} className={featuredStyles.description}></div>
+                {getfeature[0].field_featured_perfect_title && getfeature[0].relationships.field_issues_categories? <div className={featuredStyles.perfect}><div dangerouslySetInnerHTML={{__html: getfeature[0].field_featured_perfect_title.processed}}></div>
+                {getfeature[0].relationships.field_issues_categories.map((item, index) => {
+                return <span className={featuredStyles.category}><Link to={item.path.alias}> {item.name}</Link>{index === getfeature[0].relationships.field_issues_categories.length - 1? '' : ', '}</span>
+            })} </div> : ""}
+                {getfeature[0].field_featured_button? <div className={featuredStyles.linkSection}><Link to={getfeature[0].field_featured_button.uri.replace('internal:', '')} className={["button-link", featuredStyles.link].join(" ")}>{getfeature[0].field_featured_button.title}</Link></div> : ""}
+              </div>
+            </div>
+
+
           </div>
-       
-    
-    :getTwoSection?
-    <div 
-    className={
-    "container-fluid   " + Collectionfooterstyle.TwoSection 
-    }
-   >
-    <div className={["row",servicesStyles.twoCards,].join(" ")} >
-       
-           
-    {getTwoSection?getTwoSection.map((item, index) => {
-                 return (
-                     <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding}>
-                         <div className={servicesStyles.cardWrapper}>
-                             {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name?item.field_service_name.processed:"" }} className={item.field_card_type === "clinical"? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
-                             {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img alt="img"  fluid={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.fluid:"":"":""} /></div>:"" : "":''}
-                             {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
-                             {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
-                             {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri.replace('internal:', '')} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
-                         </div>
+        </div>
+     
+  
+  :getTwoSection?
+  <div 
+  className={
+  "container-fluid   " + Collectionfooterstyle.TwoSection 
+  }
+ >
+  <div className={["row",servicesStyles.twoCards,].join(" ")} >
+     
+         
+  {getTwoSection?getTwoSection.map((item, index) => {
+               return (
+                 <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper + servicesStyles.giveservicePadding}>
+                     <div className={servicesStyles.cardWrapper}>
+                         {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name?item.field_service_name.processed:"" }} className={item.field_card_type === "clinical"? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
+                         {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><GatsbyImage
+                           image={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.gatsbyImageData:"":"":""}
+                           alt="img" /></div>:"" : "":''}
+                         {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
+                         {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
+                         {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri.replace('internal:', '')} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
                      </div>
-                 )
-             }):""}
-  </div>
-  </div>:
-    
-    <div>   
-   <div 
-   className={checktaxonomyType === "clinical"? 
-    "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
-    : checktaxonomyType === "medical"? "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter
-    : "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerGeneralBg + " " + Collectionfooterstyle.collectionfooter}
-  >
-        <div className={["row",servicesStyles.twoCards].join(" ")} >
-          <div className={checktaxonomyType === "clinical" || checktaxonomyType === "medical"? "col-12 col-lg-10 row offset-lg-1 collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer : "col-12 col-lg-10 row offset-lg-1 general-collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer}>
+                 </div>
+               );
+           }):""}
+</div>
+</div>:
+  
+  <div>   
+ <div 
+ className={checktaxonomyType === "clinical"? 
+  "container-fluid collectionhero collectionfooter " + Collectionfooterstyle.collectionfooter
+  : checktaxonomyType === "medical"? "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerMedicalBg + " " + Collectionfooterstyle.collectionfooter
+  : "container-fluid collectionhero collectionfooter  " + Collectionfooterstyle.footerGeneralBg + " " + Collectionfooterstyle.collectionfooter}
+>
+      <div className={["row",servicesStyles.twoCards].join(" ")} >
+        <div className={checktaxonomyType === "clinical" || checktaxonomyType === "medical"? "col-12 col-lg-10 row offset-lg-1 collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer : "col-12 col-lg-10 row offset-lg-1 general-collection-footer-container " + Collectionfooterstyle.CollectionFooterContainer}>
 
-            <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
-            <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
-            {getdata.relationships.field_taxonomy_footer_image.localFile?
-            getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp?
-             <Img alt="img"  className={Collectionfooterstyle.fullheightimg} fluid={getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp.fluid}/>
-            :"":""
-            }
-            </div>
-            <div className={['col-12 offset-lg-1','col-lg-4',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
-                      <p className={[Collectionfooterstyle.typecon, "collection-footer-typecon"].join(" ")}>{getdata.field_taxonomy_footer_type}</p>
-                      <h1 className={[Collectionfooterstyle.collectionFooterTitle, "collection-footer-title"].join(" ")}>{getdata.field_taxonomy_footer_title}</h1>
-                      {getdata.field_taxonomy_footer_subtitle?<p className={Collectionfooterstyle.subtitle}>{getdata.field_taxonomy_footer_subtitle}</p>:""}
-                      <div className={[Collectionfooterstyle.description, "collection-footer-desc"].join(" ")} dangerouslySetInnerHTML={{__html: getdata.body.processed}}></div>
-                      <div className={[Collectionfooterstyle.linkcontainer,"CollectionFooterContainer"].join(' ')}>
-                      <a className={[Collectionfooterstyle.link, "collection-footer-link"].join(" ")} href={getdata.field_button_url}>{getdata.field_taxonomy_footer_button}</a>
-                      </div>
-                  </div>
-               </div>
-           
-               {getTwoSection?getTwoSection.map((item, index) => {
-                            return (
-                                <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper}>
-                                    <div className={servicesStyles.cardWrapper}>
-                                        {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name?item.field_service_name.processed:"" }} className={item.field_card_type === "clinical"? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
-                                        {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><Img alt="img"  fluid={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.fluid:"":"":""} /></div>:"" : "":''}
-                                        {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
-                                        {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
-                                        {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
-                                    </div>
-                                </div>
-                            )
-                        }):""}
-             </div>
-            
+          <div className={['col-12','col-lg-6',Collectionfooterstyle.collectionFooterleftcol,"collectionFooterleftcol"].join(' ')}>
+          <p className={Collectionfooterstyle.typeimg}>{getdata.field_taxonomy_footer_type}</p>
+          {getdata.relationships.field_taxonomy_footer_image.localFile?
+          getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp?
+           <GatsbyImage
+             image={getdata.relationships.field_taxonomy_footer_image.localFile.childImageSharp.gatsbyImageData}
+             alt="img"
+             className={Collectionfooterstyle.fullheightimg} />
+          :"":""
+          }
           </div>
-          {checktaxonomyType === 'clinical'? ""
-               :checkfooter?
-               <div className={Collectionfooterstyle.footerModCon}>
-                 <div className={["container-fluid"]}>
-                 <div className="row">
-               <div className="col-12 col-lg-8 offset-lg-1">
-               <div className={Collectionfooterstyle.footerMod} 
-               dangerouslySetInnerHTML={{ __html: checkfooter }}
-
-               >
+          <div className={['col-12 offset-lg-1','col-lg-4',Collectionfooterstyle.collectionFooterRightcol,"collectionFooterRightcol"].join(' ')}>
+                    <p className={[Collectionfooterstyle.typecon, "collection-footer-typecon"].join(" ")}>{getdata.field_taxonomy_footer_type}</p>
+                    <h1 className={[Collectionfooterstyle.collectionFooterTitle, "collection-footer-title"].join(" ")}>{getdata.field_taxonomy_footer_title}</h1>
+                    {getdata.field_taxonomy_footer_subtitle?<p className={Collectionfooterstyle.subtitle}>{getdata.field_taxonomy_footer_subtitle}</p>:""}
+                    <div className={[Collectionfooterstyle.description, "collection-footer-desc"].join(" ")} dangerouslySetInnerHTML={{__html: getdata.body.processed}}></div>
+                    <div className={[Collectionfooterstyle.linkcontainer,"CollectionFooterContainer"].join(' ')}>
+                    <a className={[Collectionfooterstyle.link, "collection-footer-link"].join(" ")} href={getdata.field_button_url}>{getdata.field_taxonomy_footer_button}</a>
+                    </div>
                 </div>
-               </div>
-               </div>
-               </div>
-               </div>:""
-               }
-          </div>
-   } </>
-    )
+             </div>
+         
+             {getTwoSection?getTwoSection.map((item, index) => {
+                          return (
+                            <div className={index == 0 || index % 2 == 0? "col-12 col-md-6 col-lg-5 offset-lg-1 " +  servicesStyles.columnWrapper: "col-12 col-md-6 col-lg-5 " +  servicesStyles.columnWrapper}>
+                                <div className={servicesStyles.cardWrapper}>
+                                    {item.field_service_name ? <div dangerouslySetInnerHTML={{ __html: item.field_service_name?item.field_service_name.processed:"" }} className={item.field_card_type === "clinical"? servicesStyles.clinicalSub + " subtitle services-subtitle " + servicesStyles.subtitle : servicesStyles.medicalSub + " subtitle services-subtitle " + servicesStyles.subtitle}></div> : ''}
+                                    {item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile ? <div className={index == 2 || index == 3 ? servicesStyles.image + ' services-image ' + servicesStyles.specialImage : servicesStyles.image + " services-image"}><GatsbyImage
+                                      image={item.relationships?item.relationships.field_service_image?item.relationships.field_service_image.localFile?item.relationships.field_service_image.localFile.childImageSharp.gatsbyImageData:"":"":""}
+                                      alt="img" /></div>:"" : "":''}
+                                    {item.field_service_title ? <div dangerouslySetInnerHTML={{ __html: item.field_service_title?item.field_service_title.processed:"" }} className={servicesStyles.title}></div> : ''}
+                                    {item.field_service_description ? <div dangerouslySetInnerHTML={{ __html: item.field_service_description.processed }} className={servicesStyles.description}></div> : ''}
+                                    {item.field_se ? <div className={servicesStyles.buttonWrapper}><Link to={item.field_se.uri} className={["button-link", servicesStyles.link].join(" ")}>{item.field_se.title}</Link></div> : ''}
+                                </div>
+                            </div>
+                          );
+                      }):""}
+           </div>
+          
+        </div>
+        {checktaxonomyType === 'clinical'? ""
+             :checkfooter?
+             <div className={Collectionfooterstyle.footerModCon}>
+               <div className={["container-fluid"]}>
+               <div className="row">
+             <div className="col-12 col-lg-8 offset-lg-1">
+             <div className={Collectionfooterstyle.footerMod} 
+             dangerouslySetInnerHTML={{ __html: checkfooter }}
+
+             >
+              </div>
+             </div>
+             </div>
+             </div>
+             </div>:""
+             }
+        </div>
+ } </>;
 }
 
 

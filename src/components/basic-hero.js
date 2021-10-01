@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
-import basichero from '../assets/scss/components/basic-hero.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as basichero from '../assets/scss/components/basic-hero.module.scss'
 const Basichero = ({ node }) => {
   if (typeof window !== "undefined") {
     var pathname = window.location.href;
@@ -110,45 +110,41 @@ const Basichero = ({ node }) => {
 
 export default Basichero
 
-export const fragment = graphql`
-fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
-    id
-    field_basic_hero_custom_class_
-    field_basic_hero_title_paragrapg {
-      processed
-    }
-    field_bread_crumb {
-      title
-    }
-    field_brea
-    field_basic_hero_desc_paragrapgh {
-      processed
-    }
-    relationships {
-      field_basic_hero_left_img_paragr {
-        localFile {
-          childImageSharp {
-            fluid {
-              src
-            }
-            original{
-                src
-            }
-          }
-        }
-      }
-      field_basic_img_hero_paragrapgh {
-        localFile {
-          url
-          childImageSharp {
-            fluid {
-              src
-            }
-            original{
-                src
-            }
+export const fragment = graphql`fragment paragrapghBasicHero on paragraph__basic_hero_paragrapgh {
+  id
+  field_basic_hero_custom_class_
+  field_basic_hero_title_paragrapg {
+    processed
+  }
+  field_bread_crumb {
+    title
+  }
+  field_brea
+  field_basic_hero_desc_paragrapgh {
+    processed
+  }
+  relationships {
+    field_basic_hero_left_img_paragr {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          original {
+            src
           }
         }
       }
     }
-  }`
+    field_basic_img_hero_paragrapgh {
+      localFile {
+        url
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          original {
+            src
+          }
+        }
+      }
+    }
+  }
+}
+`

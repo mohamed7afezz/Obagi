@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import careersHeroStyles from '../assets/scss/components/careers-hero.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as careersHeroStyles from '../assets/scss/components/careers-hero.module.scss'
 
 const CareersHero = ({ node }) => {
     if (typeof window !== "undefined") {
@@ -17,7 +17,9 @@ const CareersHero = ({ node }) => {
             <div className="container-fluid d-lg-none">
                 <div className="row">
                     <div className="col-12 p-0">
-                        {node.relationships.field_careers_image ? <div><Img alt="img"  fluid={node.relationships.field_careers_image.localFile.childImageSharp.fluid} /></div> : ''}
+                        {node.relationships.field_careers_image ? <div><GatsbyImage
+                            image={node.relationships.field_careers_image.localFile.childImageSharp.gatsbyImageData}
+                            alt="img" /></div> : ''}
                     </div>
 
                     <div className="breadcramp-con d-block col-12">
@@ -60,49 +62,50 @@ const CareersHero = ({ node }) => {
                             </div>
                         </div>
                         <div className="col-lg-5 offset-lg-1 p-0">
-                            {node.relationships && node.relationships.field_careers_image && node.relationships.field_careers_image.localFile && node.relationships.field_careers_image.localFile.childImageSharp ? <div className={careersHeroStyles.imageWrapper}><Img alt="img"  fluid={node.relationships.field_careers_image.localFile.childImageSharp.fluid} className={careersHeroStyles.image} /></div> : ''}
+                            {node.relationships && node.relationships.field_careers_image && node.relationships.field_careers_image.localFile && node.relationships.field_careers_image.localFile.childImageSharp ? <div className={careersHeroStyles.imageWrapper}><GatsbyImage
+                                image={node.relationships.field_careers_image.localFile.childImageSharp.gatsbyImageData}
+                                alt="img"
+                                className={careersHeroStyles.image} /></div> : ''}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default CareersHero
 
-export const fragment = graphql`
-    fragment paragraphCareersHero on paragraph__careers_hero {
-        id
-        field_headline {
-            processed
+export const fragment = graphql`fragment paragraphCareersHero on paragraph__careers_hero {
+  id
+  field_headline {
+    processed
+  }
+  field_description {
+    processed
+  }
+  field_button {
+    title
+    uri
+  }
+  relationships {
+    field_background_image {
+      localFile {
+        childImageSharp {
+          original {
+            src
           }
-          field_description {
-            processed
-          }
-          field_button {
-            title
-            uri
-          }
-          relationships {
-            field_background_image {
-              localFile {
-                childImageSharp {
-                    original {
-                        src
-                    }
-                }
-              }
-            }
-            field_careers_image {
-              localFile {
-                  url
-                childImageSharp {
-                    fluid (quality: 100){
-                        ...GatsbyImageSharpFluid
-                      }
-                }
-              }
-            }
-          }
-    }`
+        }
+      }
+    }
+    field_careers_image {
+      localFile {
+        url
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+}
+`

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import imageAndText from '../assets/scss/components/section-with-image-and-text.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as imageAndText from '../assets/scss/components/section-with-image-and-text.module.scss'
 
 const SectionWithImageAndText = ({ node }) => {
   return (
@@ -17,7 +17,9 @@ const SectionWithImageAndText = ({ node }) => {
         </div>
 
         <div className={[`${node.field_custom_class? "col-12 col-lg-7 imageTextColPadding " + imageAndText.colPadding : "col-12 col-lg-6 imageTextColPadding " + imageAndText.colPadding}`].join(" ")}>
-          {node.relationships && node.relationships.field_image && node.relationships.field_image.localFile && node.relationships.field_image.localFile.childImageSharp? <div className={imageAndText.image}><Img alt="img"  fluid={node.relationships.field_image.localFile.childImageSharp.fluid} /></div> : ""}
+          {node.relationships && node.relationships.field_image && node.relationships.field_image.localFile && node.relationships.field_image.localFile.childImageSharp? <div className={imageAndText.image}><GatsbyImage
+            image={node.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
+            alt="img" /></div> : ""}
         </div>
 
         {/* <div className="col-8 offset-2 col-md-4 col-lg-2 offset-lg-1 d-lg-none">
@@ -26,42 +28,39 @@ const SectionWithImageAndText = ({ node }) => {
 
       </div>
     </div>
-  )
+  );
 }
 
 export default SectionWithImageAndText;
 
 
-export const fragment = graphql`
-  fragment paragraphSectionWithImageAndText on paragraph__section_with_image_and_text {
-    id
+export const fragment = graphql`fragment paragraphSectionWithImageAndText on paragraph__section_with_image_and_text {
+  id
+  field_image {
+    alt
+  }
+  field_sub_title {
+    processed
+  }
+  field_text_button {
+    title
+    uri
+  }
+  field_text_paragraph {
+    processed
+  }
+  field_text_title {
+    processed
+  }
+  field_custom_class
+  relationships {
     field_image {
-      alt
-    }
-    field_sub_title {
-      processed
-    }
-    field_text_button {
-      title
-      uri
-    }
-    field_text_paragraph {
-      processed
-    }
-    field_text_title {
-      processed
-    }
-    field_custom_class
-    relationships {
-      field_image {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
     }
   }
+}
 `

@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
-import nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
+import * as nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 import Level1 from "./Level1"
 import Level2 from "./Level2"
 import ThankYou from "./thank-You"

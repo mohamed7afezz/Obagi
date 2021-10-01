@@ -1,7 +1,8 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import ProductCard from "../../components/productcard"
-import recommendedparing from '../../assets/scss/components/recommendedparing.module.scss'
-import ProductStyles from '../../assets/scss/components/product-hero.module.scss'
+import * as recommendedparing from '../../assets/scss/components/recommendedparing.module.scss'
+import * as ProductStyles from '../../assets/scss/components/product-hero.module.scss'
 import Slider from "react-slick";
 
 const Recommendedparing = ({ node }) => {
@@ -55,7 +56,7 @@ const Recommendedparing = ({ node }) => {
                     productLink={item.path.alias}
                     producttitle={item.title}
                     productdescription={{ __html: item.field_medical_description?item.field_medical_description.processed:"" }} 
-                    productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.fluid} 
+                    productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData} 
                     price={item.field_medical_price} 
                     productId={item.field_medical_id} rate="5"
                     premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
@@ -81,7 +82,7 @@ const Recommendedparing = ({ node }) => {
               node.relationships.field_croduct_card.map((item, index) => (
                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[0].localFile? item.relationships.field_clinical_image[0].localFile.childImageSharp.fluid : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
+                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[0].localFile? item.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
 
                 </div>
               ))
@@ -95,50 +96,44 @@ const Recommendedparing = ({ node }) => {
       </div>
       </div>
     </div>
-  )
+  );
 }
 export default Recommendedparing;
 
-export const fragment = graphql`
-fragment recommendedParingParagrapgh on paragraph__recomended_paring {
+export const fragment = graphql`fragment recommendedParingParagrapgh on paragraph__recomended_paring {
+  id
+  relationships {
+    field_croduct_card {
+      ... on node__clinical_product {
         id
+        field_clinical_id
+        title
+        path {
+          alias
+        }
+        field_clinical_price
+        field_clinical_sku
+        field_min_quantity
+        field_clinical_description {
+          processed
+        }
         relationships {
-          field_croduct_card {
-            ... on node__clinical_product {
-              id
-              field_clinical_id
-              title
-              path {
-                alias
-              }
-              field_clinical_price
-              field_clinical_sku
-              field_min_quantity
-              field_clinical_description {
-                processed
-              }
-              relationships {
-                field_clinical_image {
-                  localFile {
-                    childImageSharp {
-                      fluid (quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
+          field_clinical_image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
         }
-        field_section_title
-        field_question
-        field_product_type
-        field_product_inform
-        field_product_description
-        parent_field_name
-  
+      }
+    }
+  }
+  field_section_title
+  field_question
+  field_product_type
+  field_product_inform
+  field_product_description
+  parent_field_name
 }
-
- 
 `;

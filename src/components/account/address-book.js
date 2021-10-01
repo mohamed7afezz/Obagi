@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import UserAccount from '../../components/user-account'
-import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import AddressBox from '../../components/address-box'
 import AddressModal from '../../components/address-modal'
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import SEO from "../seo"
 const spinner = css`

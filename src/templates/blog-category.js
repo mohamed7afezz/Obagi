@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { getParagraph } from "../components/paragraphs-helper"
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import BlogCard from '../components/blog-card'
 import Slider from "react-slick"
 
@@ -237,14 +237,14 @@ const BlogCategory = props => {
                               && item.relationships.field_blog_thumbnail
                               && item.relationships.field_blog_thumbnail.localFile
                               && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
+                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.gatsbyImageData : ""}
 
                             type={item.field_blog_type ? item.field_blog_type : ""}
                             title={item.title ? item.title : ""}
                             url={item.path.alias ? item.path.alias : "#"}
                           />
                         </div>
-                      )
+                      );
                     }
                   })
                 }
@@ -268,14 +268,14 @@ const BlogCategory = props => {
                               && item.relationships.field_blog_thumbnail
                               && item.relationships.field_blog_thumbnail.localFile
                               && item.relationships.field_blog_thumbnail.localFile.childImageSharp ?
-                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.fluid : ""}
+                              item.relationships.field_blog_thumbnail.localFile.childImageSharp.gatsbyImageData : ""}
 
                             type={item.field_blog_type ? item.field_blog_type : ""}
                             title={item.title ? item.title : ""}
                             url={item.path.alias ? item.path.alias : "#"}
                           />
                         </div>
-                      )
+                      );
                     }
 
                   })}
@@ -332,7 +332,8 @@ const BlogCategory = props => {
                   && parentCategory.relationships.field_sidebar_image
                   && parentCategory.relationships.field_sidebar_image.localFile
                   && parentCategory.relationships.field_sidebar_image.localFile.childImageSharp ?
-                  <div><Img fluid={parentCategory.relationships.field_sidebar_image.localFile.childImageSharp.fluid} /></div> : ""}
+                  <div><GatsbyImage
+                    image={parentCategory.relationships.field_sidebar_image.localFile.childImageSharp.gatsbyImageData} /></div> : ""}
 
                 {parentCategory && parentCategory.field_sidebar_text ?
                   <div className={`sidebar-text`} dangerouslySetInnerHTML={{ __html: parentCategory.field_sidebar_text.processed }}></div> : ""}
@@ -350,7 +351,7 @@ const BlogCategory = props => {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 function useWindowSize() {
@@ -411,8 +412,7 @@ function useWindowSize() {
 }
 
 export default BlogCategory;
-export const pageQuery = graphql`
-query($slug: String!) {
+export const pageQuery = graphql`query ($slug: String!) {
   allTaxonomyTermBlogs {
     edges {
       node {
@@ -434,9 +434,7 @@ query($slug: String!) {
           field_sidebar_image {
             localFile {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }
@@ -455,7 +453,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermBlogs(fields: { slug: { eq: $slug } }) {
+  taxonomyTermBlogs(fields: {slug: {eq: $slug}}) {
     name
     path {
       alias
@@ -463,7 +461,24 @@ query($slug: String!) {
     fields {
       slug
     }
+    description {
+      processed
+    }
+    field_sidebar_text {
+      processed
+    }
+    field_sidebar_link {
+      title
+      uri
+    }
     relationships {
+      field_sidebar_image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
       parent {
         name
         relationships {
@@ -486,13 +501,10 @@ query($slug: String!) {
               field_sidebar_image {
                 localFile {
                   childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(layout: FULL_WIDTH)
                   }
                 }
               }
-
               taxonomy_term__blogs {
                 name
                 path {
@@ -502,6 +514,9 @@ query($slug: String!) {
                   taxonomy_term__blogs {
                     path {
                       alias
+                    }
+                    description {
+                      processed
                     }
                     name
                   }
@@ -513,7 +528,6 @@ query($slug: String!) {
       }
       node__blog_post {
         title
-
         path {
           alias
         }
@@ -522,9 +536,7 @@ query($slug: String!) {
           field_blog_thumbnail {
             localFile {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }
@@ -552,9 +564,7 @@ query($slug: String!) {
                   field_blog_thumbnail {
                     localFile {
                       childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH)
                       }
                     }
                   }
@@ -567,6 +577,4 @@ query($slug: String!) {
     }
   }
 }
-
-
 `;

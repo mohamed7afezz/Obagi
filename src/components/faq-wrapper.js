@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
+import * as faqStyles from '../assets/scss/components/faq-wrapper.module.scss'
 import Paginator from './paginator'
 import FaqRow from './faq-row'
 import Customer from '../components/customer-care'
-import myAccountStyles from '../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
 const FaqWrapper = ({ node }) => {
 
  
@@ -66,7 +66,7 @@ const FaqWrapper = ({ node }) => {
  
 
   return (
-    <Customer activeTab="faq">
+    <Customer activeTab={node.relationships && node.relationships.node__page && node.relationships.node__page[0].path && node.relationships.node__page[0].path.alias? node.relationships.node__page[0].path.alias : ""} currentPage={node.relationships && node.relationships.node__page && node.relationships.node__page[0].title? node.relationships.node__page[0].title : "" }>
       
       <div className={[faqStyles.wrapper, "faq-wrapper"].join(" ")}>
         {/* <div className="container-fluid"> */}
@@ -103,6 +103,12 @@ export const fragment = graphql`
     fragment paragraphFaqWrapper on paragraph__faq_wrapper {
         id
         relationships {
+          node__page {
+            title
+            path {
+                alias
+            }
+        }
             field_faq_section {
               field_faq_title {
                 processed

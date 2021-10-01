@@ -74,6 +74,12 @@ import CustomerCareFullHtml from './contest-rules';
 import ArticleVideo from './article-video';
 import ProductsArticle from './products-article';
 import BlogProduct from './blog-product'
+import ProductFaqs from './product-faqs';
+import RelatedBlogs from './related-blogs';
+import ImagesSlider from './images-slider';
+import VideoSlider from './video-slider';
+import MultiStepForm from './product-components/multistepform';
+
 
 const componentsMap = {
     paragraph__home_hero: HomeHero,
@@ -148,7 +154,12 @@ const componentsMap = {
     paragraph__customer_care_full_html :CustomerCareFullHtml,
     paragraph__article_video: ArticleVideo,
     paragraph__products_article: ProductsArticle,
-    paragraph__blog_product_paragraph: BlogProduct
+    paragraph__blog_product_paragraph: BlogProduct,
+    paragraph__product_faqs: ProductFaqs,
+    paragraph__related_blogs: RelatedBlogs,
+    paragraph__images_slider: ImagesSlider,
+    paragraph__video_slider: VideoSlider,
+    paragraph__form_section: MultiStepForm
 }
 
 export const getParagraph = node => {

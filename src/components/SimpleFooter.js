@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import primerfooter from '../assets/scss/components/simple-footer.module.scss'
+import * as primerfooter from '../assets/scss/components/simple-footer.module.scss'
 
 const SimpleFooter = ({ node }) => {
 

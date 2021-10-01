@@ -1,5 +1,5 @@
 import React from 'react'
-import carouselproduct from '../assets/scss/components/carouselproducts.module.scss'
+import * as carouselproduct from '../assets/scss/components/carouselproducts.module.scss'
 import ProductCard from "../components/productcard"
 import Slider from "react-slick";
 

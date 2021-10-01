@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import UserAccount from "../../components/user-account"
 import { Link } from 'gatsby'
-import accountsettings from "../../assets/scss/components/myaccountsettings.module.scss"
+import * as accountsettings from "../../assets/scss/components/myaccountsettings.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 import Scrollbars from 'react-custom-scrollbars';
 import UserContext from '../../providers/user-provider';

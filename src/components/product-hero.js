@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
-import ProductStyles from '../assets/scss/components/product-hero.module.scss'
-import Img from 'gatsby-image'
+import * as ProductStyles from '../assets/scss/components/product-hero.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
 import Stars from '../components/stars'
 import modal from '../assets/images/product-images/modal.svg'
 import share from '../assets/images/product-images/share.svg'
@@ -69,68 +69,61 @@ const ProductHero = ({ node, props }) => {
    slider1.current.slickGoTo(int);
   
   }
-  const data = useStaticQuery(graphql`
-    query {
-
-      
-      retinol: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
-        childImageSharp {
-          fixed(width: 480, height: 270) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      vitamins: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
-        childImageSharp {
-          fixed(width: 480, height: 270) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      ob: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
-        childImageSharp {
-          fixed(width: 480, height: 270) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      f4: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
-        childImageSharp {
-          fixed(width: 480, height: 270) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      retinol1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      vitamins1: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      ob1: file(relativePath: { eq: "product-images/2019-ob-08-retinol-0110-3.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      f41: file(relativePath: { eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-
-    }`
+  const data = useStaticQuery(graphql`{
+  retinol: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 480, height: 270, layout: FIXED)
+    }
+  }
+  vitamins: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 480, height: 270, layout: FIXED)
+    }
+  }
+  ob: file(relativePath: {eq: "product-images/2019-ob-08-retinol-0110-3.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 480, height: 270, layout: FIXED)
+    }
+  }
+  f4: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 480, height: 270, layout: FIXED)
+    }
+  }
+  retinol1: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-HeroProduct_PPD2-001.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  vitamins1: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-003.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  ob1: file(relativePath: {eq: "product-images/2019-ob-08-retinol-0110-3.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  f41: file(
+    relativePath: {eq: "product-images/Clinical-VitaminCEyeBrightener-Lifestyle-002.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`
     
   )
     
@@ -140,15 +133,15 @@ const ProductHero = ({ node, props }) => {
         <div className={["col-12", "col-lg-5", "offset-lg-1","productimage", ProductStyles.productimage].join(" ")}>
           <Slider ref={slider => (slider1.current = slider)}  {...SliderSetting}>
    
-          <Img alt="img"   fluid={data.retinol1.childImageSharp.fluid}/>
+          <GatsbyImage image={data.retinol1.childImageSharp.gatsbyImageData} alt="img" />
 
      
-          <Img alt="img"   fluid={data.vitamins1.childImageSharp.fluid}/>
+          <GatsbyImage image={data.vitamins1.childImageSharp.gatsbyImageData} alt="img" />
 
  
-          <Img alt="img"   fluid={data.ob1.childImageSharp.fluid}/>
+          <GatsbyImage image={data.ob1.childImageSharp.gatsbyImageData} alt="img" />
 
-          <Img alt="img"   fluid={data.f41.childImageSharp.fluid}/>
+          <GatsbyImage image={data.f41.childImageSharp.gatsbyImageData} alt="img" />
 
      
           </Slider>
@@ -187,30 +180,29 @@ const ProductHero = ({ node, props }) => {
 
             <div onClick={() => slickGoToslide(0)} className={["imageContainer",ProductStyles.imageContainer,"Active"].join(" ")}>
           
-            <Img alt="img"   fixed={data.retinol.childImageSharp.fixed}/>
+            <GatsbyImage image={data.retinol.childImageSharp.gatsbyImageData} alt="img" />
 
             </div>
             <div onClick={() => slickGoToslide(1) } className={["imageContainer",ProductStyles.imageContainer,].join(" ")}>
 
-            <Img alt="img"   fixed={data.vitamins.childImageSharp.fixed}/>
+            <GatsbyImage image={data.vitamins.childImageSharp.gatsbyImageData} alt="img" />
 
             </div>
             <div onClick={() => slickGoToslide(2)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
 
-            <Img alt="img"   fixed={data.ob.childImageSharp.fixed}/>
+            <GatsbyImage image={data.ob.childImageSharp.gatsbyImageData} alt="img" />
 
             </div>
             <div onClick={() => slickGoToslide(3)} className={["imageContainer",ProductStyles.imageContainer].join(" ")}>
 
-            <Img alt="img"   fixed={data.f4.childImageSharp.fixed}/>
+            <GatsbyImage image={data.f4.childImageSharp.gatsbyImageData} alt="img" />
 
         </div>
         </div>
       </div>
 
     </div>
-
-  )
+  );
 };
 
 export default ProductHero;

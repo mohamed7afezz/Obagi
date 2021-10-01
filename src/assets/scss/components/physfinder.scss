@@ -1152,10 +1152,13 @@
 .right-side .make-appointment {
   margin-bottom: 16px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
   .finder-foot.finder-foot-1 {
     padding-top: 0;
   }
+}
+@media (max-width: 1024px) {
+
   #pf-submit {
     margin-bottom: 16px;
   }

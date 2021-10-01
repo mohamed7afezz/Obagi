@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from 'gatsby-image'
-import orderHistoryStyles from '../assets/scss/components/order-history.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as orderHistoryStyles from '../assets/scss/components/order-history.module.scss'
 import OrderHistoryRow from "./order-history-row"
 import Paginator from './paginator'
 import OrderNoHistory from "./order-no-history"

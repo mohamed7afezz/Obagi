@@ -1,5 +1,5 @@
 import React, {  useContext} from "react"
-import searchResultStyle from '../assets/scss/components/search-results.module.scss'
+import * as searchResultStyle from '../assets/scss/components/search-results.module.scss'
 import NewSearchProductsResult from "./new-search"
 import SearchContext from "../providers/search-provider"
 const SearchResult = () => {

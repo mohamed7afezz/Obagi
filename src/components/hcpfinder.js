@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { phyFinder } from "../assets/js/phy-finder"
 import "../assets/scss/components/physfinder-old.scss"
 import "../assets/scss/components/physfinder.scss"
@@ -10,7 +10,7 @@ import Layout from "./layout"
 import SEO from './seo';
 import badgeImg from '../assets/images/product-images/PremierPartnership_Badge-01.png'
 
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 const spinner = css`
   display: block;
@@ -119,7 +119,7 @@ export const ProductLineComp = ({ line }) => {
         {(line.relationships && line.relationships.products) ? line.relationships.products.map(product => {
           return (
             <label class="terms">
-              <input className="product-check-box" type="checkbox" value={product.field_medical_sku} />
+              <input className="product-check-box" type="checkbox" value={product.field_medical_sku? product.field_medical_sku : product.field_custom_sku} />
               <span dangerouslySetInnerHTML={{ __html: product.title }}></span>
               <div class="checkmark"></div>
             </label>
@@ -189,7 +189,6 @@ export default function Finder() {
       savechecked.push(e.target.value);
       document.querySelector("#prod-search-btn").classList.remove("disable")
       document.querySelector("#submit-search-physician").classList.remove("disable");
-      console.log('ash arr', prodLines, newProdLines)
 
 
     } else {
@@ -235,7 +234,6 @@ export default function Finder() {
     setLines([...searchLines, ...customLines]);
     document.querySelector('#prodLines').classList.add('d-none');
     e.target.disabled = false
-    console.log('ash search',searchLines, resultsNumber )
   }
 
   function clearSelected(e) {
@@ -272,7 +270,6 @@ export default function Finder() {
       }).filter(item => item != undefined).flat();
 
       const allProductsData = productsData.concat(customProductsData)
-      console.log('ash finder', allProductsData)
       phyFinder(google, finderURL, allProductsData);
     }
     if (
@@ -372,7 +369,7 @@ export default function Finder() {
                 professional directly to learn more.
               </p>
               <div class="col-lg-4 d-flex f-buttons">
-                <button className="btn btn-primary" id="search-btn">
+                <button className="btn btn-primary" id="search-btn" onClick={searchProducts}>
                   Update Search
                 </button>
                 <button
@@ -383,11 +380,39 @@ export default function Finder() {
                   Search By Product
                 </button>
               </div>
+          
+              {data.customProducts.edges.map(({ node }) => {
+                  if (node.relationships.products) {
+                    return (
+                      <div className="col-12">
+                  <p className="proServices">Obagi is proud to offer premium professional services in a select number of physician locations.</p>
+
+                      <div className="customProducts">
+                        <p>Sort by {node.name}:</p>
+                       {node.relationships.products.map(product => {
+                         return (
+                           <label class="terms">
+                             <input className="product-check-box" type="checkbox" value={product.field_medical_sku ? product.field_medical_sku : product.field_custom_sku} />
+                             <span dangerouslySetInnerHTML={{ __html: product.title }}></span>
+                             <div class="checkmark"></div>
+                           </label>
+                         )
+                       })
+                        }
+                      </div>
+                  </div>
+                    )
+                  }
+                })}
+          
               <p class="covid hide-mob">
                 COVID-19 UPDATE: Skin care professional partners' openings and
                 hours may vary based on location. Please contact your skin care
                 professional directly to learn more.
               </p>
+ 
+                
+        
             </div>
             <div id="loader" className="d-none">
               <div class="d-mob-none">
@@ -733,7 +758,7 @@ export default function Finder() {
                                 return (
                                   <li key={node.id}>
                                     <label class="terms">
-                                      <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                      <input class="popupVideoInput" name="product" type="checkbox" value={node.name} onClick={updateProductLines} />
                                       <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
                                       <span className="checkmark"></span>
                                     </label>
@@ -741,19 +766,19 @@ export default function Finder() {
                                 )
                               }
                             })}
-                            {data.customProducts.edges.map(({ node }) => {
+                            {/* {data.customProducts.edges.map(({ node }) => {
                                  if (node.relationships.products) {
                                   return (
                                     <li key={node.id}>
                                       <label class="terms">
-                                        <input class="popupVideoInput" naem="product" type="checkbox" value={node.name} onClick={updateProductLines} />
+                                        <input class="popupVideoInput" name="product" type="checkbox" value={node.name} onClick={updateProductLines} />
                                         <span dangerouslySetInnerHTML={{ __html: node.name }}></span>
                                         <span className="checkmark"></span>
                                       </label>
                                     </li>
                                   )
                                 }
-                            })}
+                            })} */}
                           </ul>
                         </Scrollbars>
                       </div>

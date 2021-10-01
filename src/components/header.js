@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes, { func } from "prop-types"
 
-import headerStyles from '../assets/scss/components/header.module.scss'
+import * as styles from '../assets/scss/components/header.module.scss'
 import Menu from './menu'
 import MegaMenu from './mega-menu'
 import { useLocation } from "@reach/router"
@@ -30,210 +30,162 @@ const Header = ({ siteTitle, nodeType, menuType, fragment, hideMobBar, showMobBa
 
   const location = useLocation();
 
-  const data = useStaticQuery(graphql`
-    query {
-      ClinicalProduct: allNodeClinicalProduct {
-        nodes {
-          field_clinical_id
-          title
-          field_clinical_free_sample
-          field_clinical_price
-          field_clinical_sku
-          field_min_quantity
-          path {
-            alias
-          }
-          field_clinical_description {
-            processed
-          }
-          relationships {
-            field_clinical_image {
-              localFile {
-                childImageSharp {
-                  fluid (quality: 100){
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+  const data = useStaticQuery(graphql`{
+  ClinicalProduct: allNodeClinicalProduct {
+    nodes {
+      field_clinical_id
+      title
+      field_clinical_free_sample
+      field_clinical_price
+      field_clinical_sku
+      field_min_quantity
+      path {
+        alias
+      }
+      field_clinical_description {
+        processed
+      }
+      relationships {
+        field_clinical_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
           }
         }
       }
-      MedicalProduct: allNodeMedicalProduct {
-        nodes {
-          field_is_best_seller
-          field_medical_id
-          title
-          field_medical_free_sample
-          field_medical_price
-          field_medical_premier_points_id
-          field_medical_sku
-          field_min_quantity
-          field_medical_premier_points
-          path {
-            alias
-          }
-          field_medical_description {
-            processed
-          }
-          relationships {
-            field_medical_rx {
-              name
-            }
-            field_medical_image {
-              localFile {
-                childImageSharp {
-                  fluid (quality: 100){
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      logo: file(relativePath: { eq: "obagi.png" }) {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      logoDesk: file(relativePath: { eq: "obagi-logo1.png" }) {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      search: file(relativePath: { eq: "search.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      searchIcon: file(relativePath: { eq: "search.png" }) {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      close: file(relativePath: { eq: "close.png" }) {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      cart: file(relativePath: { eq: "bag.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      menu: file(relativePath: { eq: "menu.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-
-
-      medical: file(relativePath: { eq: "11-29-201841057.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
     }
-    clinical: file(relativePath: { eq: "2022-ob-02-0076-group-shot.png" }) {
-      childImageSharp {
-        fluid (quality: 100){
-          ...GatsbyImageSharpFluid
+  }
+  MedicalProduct: allNodeMedicalProduct {
+    nodes {
+      field_is_best_seller
+      field_medical_id
+      title
+      field_medical_free_sample
+      field_medical_price
+      field_medical_premier_points_id
+      field_medical_sku
+      field_min_quantity
+      field_medical_premier_points
+      path {
+        alias
+      }
+      field_medical_description {
+        processed
+      }
+      relationships {
+        field_medical_rx {
+          name
+        }
+        field_medical_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            }
+          }
         }
       }
+    }
   }
-  ourstory: file(relativePath: { eq: "01-0576-copy.png" }) {
+  logo: file(relativePath: {eq: "obagi.png"}) {
     childImageSharp {
-      fluid (quality: 100){
-        ...GatsbyImageSharpFluid
-      }
+      gatsbyImageData(layout: FIXED)
     }
-}
-innovation: file(relativePath: { eq: "2019-ob-14-petri-dish-0242-copy.png" }) {
-  childImageSharp {
-    fluid (quality: 100){
-      ...GatsbyImageSharpFluid
+  }
+  logoDesk: file(relativePath: {eq: "obagi-logo1.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
+    }
+  }
+  search: file(relativePath: {eq: "search.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  searchIcon: file(relativePath: {eq: "search.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
+    }
+  }
+  close: file(relativePath: {eq: "close.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FIXED)
+    }
+  }
+  cart: file(relativePath: {eq: "bag.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  menu: file(relativePath: {eq: "menu.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  medical: file(relativePath: {eq: "11-29-201841057.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  clinical: file(relativePath: {eq: "2022-ob-02-0076-group-shot.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  ourstory: file(relativePath: {eq: "01-0576-copy.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  innovation: file(relativePath: {eq: "2019-ob-14-petri-dish-0242-copy.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  skincare: file(relativePath: {eq: "04-0868-copy.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  istocksmall: file(relativePath: {eq: "i-stock-985783976.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  blog: file(relativePath: {eq: "blog-clenziderm-model.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  press: file(relativePath: {eq: "11-29-201841195.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  personIcon: file(relativePath: {eq: "user-type.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FIXED)
+    }
+  }
+  istock: file(relativePath: {eq: "2-i-stock-985783976.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  testarrow: file(relativePath: {eq: "small-right.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  skinclusion: file(
+    relativePath: {eq: "skinclusion-logo-2019-tag-outlined-sm-tm.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
   }
 }
-skincare: file(relativePath: { eq: "04-0868-copy.png" }) {
-  childImageSharp {
-    fluid (quality: 100){
-      ...GatsbyImageSharpFluid
-    }
-  }
-}
-istocksmall: file(relativePath: { eq: "i-stock-985783976.png" }) {
-  childImageSharp {
-    fluid (quality: 100){
-      ...GatsbyImageSharpFluid
-    }
-  }
-}
-
-blog: file(relativePath: { eq: "blog-clenziderm-model.png" }) {
-  childImageSharp {
-    fluid (quality: 100){
-      ...GatsbyImageSharpFluid
-    }
-  }
-}
-
-press: file(relativePath: { eq: "11-29-201841195.png" }) {
-  childImageSharp {
-    fluid (quality: 100){
-      ...GatsbyImageSharpFluid
-    }
-  }
-}
-personIcon: file(relativePath: { eq: "user-type.png" }) {
-  childImageSharp {
-    fixed (quality: 100){
-      ...GatsbyImageSharpFixed
-    }
-  }
-}
-
-    istock: file(relativePath: { eq: "2-i-stock-985783976.png" }) {
-      childImageSharp {
-        fluid (quality: 100){
-          ...GatsbyImageSharpFluid
-        }
-      }
-  }
-    testarrow: file(relativePath: { eq: "small-right.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-    }
-    skinclusion: file(relativePath: { eq: "skinclusion-logo-2019-tag-outlined-sm-tm.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-    }
-
-
-    }
-  `)
+`)
  
   setSearchIndex(data.ClinicalProduct, data.MedicalProduct)
   useEffect(() => {
@@ -491,34 +443,32 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
   
 
   return (
-
-
     <header>
-      <div className={[headerStyles.header, "d-lg-none"].join(" ")} id="mob-navigation">
-        <div className={["container-fluid", headerStyles.navContainer].join(" ")}>
+      <div className={[styles.header, "d-lg-none"].join(" ")} id="mob-navigation">
+        <div className={["container-fluid", styles.navContainer].join(" ")}>
           <AboveHeader menuType={menuType} id="notificationMob" className="d-lg-none" />
 
           <div className="row">
-            <div className={headerStyles.topNav}>
+            <div className={styles.topNav}>
               <div className="col-4 offset-0">
-                <Link to="/" ><img alt="img"  src={mobLogo} className={headerStyles.obagiLogo} /></Link>
+                <Link to="/" ><img alt="img"  src={mobLogo} className={styles.obagiLogo} /></Link>
               </div>
 
               <div className="col-6 offset-2">
-                <div className={headerStyles.icons}>
-                  <div className={headerStyles.firstIcons} id="first-icons">
-                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={headerStyles.navButton}><img alt="img"  src={searchImg} className={headerStyles.iconImg} /></button></div>
+                <div className={styles.icons}>
+                  <div className={styles.firstIcons} id="first-icons">
+                    <div id="search-button" onClick={() => { openSearch(); }}><button type="button" className={styles.navButton}><img alt="img"  src={searchImg} className={styles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                           let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
                           .filter(product => product != undefined)
                           .reduce((acc, i) => acc + i, 0)
                         return (
-                          <div className={headerStyles.cartWrapper}>
-                            <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={headerStyles.navButton}>
-                              <img alt="img"  src={bagImg} className={headerStyles.iconImg} />
+                          <div className={styles.cartWrapper}>
+                            <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }} className={styles.navButton}>
+                              <img alt="img"  src={bagImg} className={styles.iconImg} />
                               {productsQuantity > 0 && (
-                                  <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
+                                  <p className={[styles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                 )}
                             </button></div>
                         );
@@ -526,7 +476,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                     </CartContext.Consumer>
 
                   </div>
-                  <button id="mobNavButton" style={{display: "none"}} className={[headerStyles.navButton, headerStyles.iconImg, headerStyles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeCategory(); }}></button>
+                  <button id="mobNavButton" style={{display: "none"}} className={[styles.navButton, styles.iconImg, styles.menuButton, "navbar-toggler"].join(" ")} type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" onClick={() => { removeCategory(); }}></button>
                 </div>
               </div>
             </div>
@@ -538,9 +488,9 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
               <div className="collapse navbar-collapse nav-container" id="navbar">
                 <Menu menuName={`main-nav-mobile`} menuClass={`navbar navbar-expand-lg nav-mobile`} isExpandable={true} />
 
-                <div className={[headerStyles.lowerSection, "mob-menu-lower-section"].join(" ")}>
-                  <span className={[headerStyles.spacebetween, "d-flex"].join(" ")}><img src={human} alt="img"/>{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
-                  <span id='extole_zone_mobile_menu' className={headerStyles.mobileReferralSpan}>Refer a friend</span>
+                <div className={[styles.lowerSection, "mob-menu-lower-section"].join(" ")}>
+                  <span className={[styles.spacebetween, "d-flex"].join(" ")}><img src={human} alt="img"/>{user ? <Link to="/my-account/orders">Welcome, {user.first_name}</Link> : <Link to="/my-account/signin">SIGN IN</Link>}</span>
+                  <span id='extole_zone_mobile_menu' className={styles.mobileReferralSpan}>Refer a friend</span>
                 </div>
 
               </div>
@@ -549,13 +499,13 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
 
 
-          <div className={headerStyles.categorySection} id="category-section" style={{ display: (showMobBar? "block" : nodeType.includes('medical') || nodeType.includes('clinical') || hideMobBar ? "none" : "block" )}} >
+          <div className={styles.categorySection} id="category-section" style={{ display: (showMobBar? "block" : nodeType.includes('medical') || nodeType.includes('clinical') || hideMobBar ? "none" : "block" )}} >
             <div className="row">
               <div className="col-6 col-md-3 offset-md-3">
-                <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>MEDICAL</div></Link>
+                <Link to="/medical"><div className={nodeType ? (nodeType.includes('medical') ? styles.category + ' ' + styles.activeSubmenu : styles.category) : styles.category}>MEDICAL</div></Link>
               </div>
               <div className="col-6 col-md-3">
-                <Link to="/clinical"><div className={nodeType ? (nodeType.includes('clinical') ? headerStyles.category + ' ' + headerStyles.activeSubmenu : headerStyles.category) : headerStyles.category}>CLINICAL</div></Link>
+                <Link to="/clinical"><div className={nodeType ? (nodeType.includes('clinical') ? styles.category + ' ' + styles.activeSubmenu : styles.category) : styles.category}>CLINICAL</div></Link>
               </div>
             </div>
           </div>
@@ -563,24 +513,24 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       </div>
 
 
-      <div className={headerStyles.searchWrapper} id="search-wrapper" style={{ display: "none" }}>
+      <div className={styles.searchWrapper} id="search-wrapper" style={{ display: "none" }}>
         <div>
-          <div className={["container-fluid", headerStyles.relativeSearch].join(" ")}>
+          <div className={["container-fluid", styles.relativeSearch].join(" ")}>
             <div className="row">
               <div className="col-12 col-lg-10 offset-lg-1">
-                <div className={headerStyles.searchSection}>
-                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[headerStyles.searchIcon, "searchIcon"].join(" ")} ><Img alt="img"  fixed={data.searchIcon.childImageSharp.fixed} /></Link>
-                  <input type="search" onKeyUp={inputval} className={[headerStyles.searchInput, "searchInputm"].join(" ")}></input>
-                  <button className={[headerStyles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
-                  <button type="button" className={[headerStyles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><Img alt="img"  fixed={data.close.childImageSharp.fixed} /></button>
+                <div className={styles.searchSection}>
+                  <Link onClick={() => { deskOpenSearch(); }} to="/search-page" className={[styles.searchIcon, "searchIcon"].join(" ")} ><GatsbyImage image={data.searchIcon.childImageSharp.gatsbyImageData} alt="img" /></Link>
+                  <input type="search" onKeyUp={inputval} className={[styles.searchInput, "searchInputm"].join(" ")}></input>
+                  <button className={[styles.closeIcon, "d-lg-none"].join(" ")} onClick={() => { openSearch(); }}><GatsbyImage image={data.close.childImageSharp.gatsbyImageData} alt="img" /></button>
+                  <button type="button" className={[styles.closeIcon, "d-none d-lg-block "].join(" ")} onClick={() => { deskOpenSearch(); }}><GatsbyImage image={data.close.childImageSharp.gatsbyImageData} alt="img" /></button>
                 </div>
               </div>
             </div>
 
 
-            <div className={["row", headerStyles.searchResultWrapper].join(" ")}>
+            <div className={["row", styles.searchResultWrapper].join(" ")}>
               <div className="col-12 col-lg-10 offset-lg-1">
-                <div className={[headerStyles.results, "pb-48"].join(" ")}>
+                <div className={[styles.results, "pb-48"].join(" ")}>
                   <Search />
                 </div>
               </div>
@@ -590,8 +540,8 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
       </div>
 
 
-      <div className={["d-none d-lg-block col-padding ", headerStyles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + headerStyles.topStyles : ' relative-general-nav ' + headerStyles.generalNav)].join(" ")} id="desk-navigation">
-        <div className={headerStyles.upperNav}>
+      <div className={["d-none d-lg-block col-padding ", styles.navigationBarDesk, (menuType === 'absolute' ? 'absolute-extended ' + styles.topStyles : ' relative-general-nav ' + styles.generalNav)].join(" ")} id="desk-navigation">
+        <div className={styles.upperNav}>
 
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
@@ -600,24 +550,27 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
 
                 <div className="col col-padding">
-                  <div className={headerStyles.mainLinks}>
-                    <Link to="/medical" className={nodeType ? (nodeType.includes('medical') ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>MEDICAL</Link>
-                    <Link to="/clinical" className={nodeType ? (nodeType.includes('clinical') ? headerStyles.navSubmenu + ' ' + headerStyles.activeSubmenu : headerStyles.navSubmenu) : headerStyles.navSubmenu}>CLINICAL</Link>
+                  <div className={styles.mainLinks}>
+                    <Link to="/medical" className={nodeType ? (nodeType.includes('medical') ? styles.navSubmenu + ' ' + styles.activeSubmenu : styles.navSubmenu) : styles.navSubmenu}>MEDICAL</Link>
+                    <Link to="/clinical" className={nodeType ? (nodeType.includes('clinical') ? styles.navSubmenu + ' ' + styles.activeSubmenu : styles.navSubmenu) : styles.navSubmenu}>CLINICAL</Link>
                   </div>
                 </div>
 
-                <div className={["col", headerStyles.logoSection].join(" ")}>
-                  <Link to="/" ><Img alt="img"  fixed={data.logoDesk.childImageSharp.fixed} className={headerStyles.obagiLogo} /></Link>
+                <div className={["col", styles.logoSection].join(" ")}>
+                  <Link to="/" ><GatsbyImage
+                    image={data.logoDesk.childImageSharp.gatsbyImageData}
+                    alt="img"
+                    className={styles.obagiLogo} /></Link>
                 </div>
 
                 <div className="col col-padding">
-                  <div className={headerStyles.navLastSection}>
+                  <div className={styles.navLastSection}>
                     <p>
                       {
                         user ?
                           <>
                             <button type="button" data-toggle="modal" data-target="#show-account">
-                              <Img alt="img"  fixed={data.personIcon.childImageSharp.fixed} /> Welcome, {user.first_name}
+                              <GatsbyImage image={data.personIcon.childImageSharp.gatsbyImageData} alt="img" /> Welcome, {user.first_name}
                             </button>
                             {/* <button type="button" onClick={handleLogout}>Logout</button> */}
                           </>
@@ -625,18 +578,24 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
                           <Link to="/my-account/signin">SIGN IN</Link>
                       }
                     </p>
-                    <div className={headerStyles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><Img alt="img"  fluid={data.search.childImageSharp.fluid} className={headerStyles.iconImg} /></button></div>
+                    <div className={styles.navButton} onClick={() => { deskOpenSearch(); }}><button type="button" ><GatsbyImage
+                      image={data.search.childImageSharp.gatsbyImageData}
+                      alt="img"
+                      className={styles.iconImg} /></button></div>
                     <CartContext.Consumer>
                       {value => {
                           let productsQuantity = value && value.state.cart && value.state.cart.lineItems && value.state.cart.lineItems.physical_items && value.state.cart.lineItems.physical_items.map(item => item.quantity)
                           .filter(product => product != undefined)
                           .reduce((acc, i) => acc + i, 0)
                         return (
-                          <div className={headerStyles.navButton}>
-                            <div className={headerStyles.cartWrapper}>
-                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><Img alt="img"  fluid={data.cart.childImageSharp.fluid} className={headerStyles.iconImg} />
+                          <div className={styles.navButton}>
+                            <div className={styles.cartWrapper}>
+                              <button type="button" className={'locker'} onClick={() => { value.addNotification('Item added successfully'); openBag(); }}><GatsbyImage
+                                image={data.cart.childImageSharp.gatsbyImageData}
+                                alt="img"
+                                className={styles.iconImg} />
                                 {productsQuantity > 0 && (
-                                    <p className={[headerStyles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
+                                    <p className={[styles.cartCounter, "cahngepos"].join(" ")}>{productsQuantity}</p>
                                   )}
                               </button></div></div>
                         );
@@ -651,7 +610,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
         </div>
 
 
-        <div className={headerStyles.lowerNav}>
+        <div className={styles.lowerNav}>
           <div className="row mr-0 ml-0">
             <div className="container-fluid">
               <div className="row mr-0 ml-0">
@@ -681,9 +640,7 @@ personIcon: file(relativePath: { eq: "user-type.png" }) {
 
 
     </header>
-
-
-  )
+  );
 }
 
 Header.propTypes = {

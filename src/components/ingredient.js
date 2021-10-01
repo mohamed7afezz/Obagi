@@ -1,31 +1,25 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby"
 
-import ingredient from '../assets/scss/components/ingredient.module.scss'
+import * as ingredient from '../assets/scss/components/ingredient.module.scss'
 import pluswhite from '../assets/images/product-images/plus-white.svg'
 
 const Ingredient = ({ node }) => {
-  const data = useStaticQuery(graphql`
-    query {
-        ingredientimg: file(relativePath: { eq: "product-images/key-ingredients.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      pluswhite: file(relativePath: { eq: "product-images/iplus-white.svg" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  ingredientimg: file(relativePath: {eq: "product-images/key-ingredients.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
     }
-      `)
+  }
+  pluswhite: file(relativePath: {eq: "product-images/iplus-white.svg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`)
   return (
-
     <div className={["container-fluid", ingredient.ingredientcontent,"ingredientcontent"].join(" ")}>
       <div className={"row"}>
         <div className={["col-12", "col-lg-4", "offset-lg-1", ingredient.leftcol].join(" ")}>
@@ -53,11 +47,14 @@ const Ingredient = ({ node }) => {
         </div>
         <div className={["col-12", "col-lg-5", "offset-lg-1", ingredient.ingredientorder].join(" ")}>
           <h1 className={ingredient.ingredientimagehead}>Key Ingredients</h1>
-          <Img alt="img"  fluid={data.ingredientimg.childImageSharp.fluid} alt="ingredientimg" />
+          <GatsbyImage
+            image={data.ingredientimg.childImageSharp.gatsbyImageData}
+            alt="img"
+            alt="ingredientimg" />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Ingredient;

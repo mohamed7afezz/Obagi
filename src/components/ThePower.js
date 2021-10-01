@@ -1,8 +1,8 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby"
 
-import vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
+import * as vitmaineStyle from "../assets/scss/components/vitamine-power.module.scss"
 
 const ThePower = ({ node }) => {
   const data = node.relationships;
@@ -64,77 +64,68 @@ const ThePower = ({ node }) => {
 }
 
 export default ThePower;
-export const fragment = graphql`
-  fragment paragraphThePowerOfVitamineC on paragraph__the_power_of_vitamine_c{
-    field_sub_title_part_one {
-        processed
-      }
-      field_vitaminc_sub_title {
-        processed
-      }
-      field_vitaminc_title {
-        processed
-      }
-      field_left_col_title {
-        processed
-      }
-      field_right_col_title {
-        processed
-      }
-      field_right_section_title_part_t {
-        processed
-      }
-      relationships {
-        field_first_image {
-          localFile {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-              original{
-                src
-            }
-            }
+export const fragment = graphql`fragment paragraphThePowerOfVitamineC on paragraph__the_power_of_vitamine_c {
+  field_sub_title_part_one {
+    processed
+  }
+  field_vitaminc_sub_title {
+    processed
+  }
+  field_vitaminc_title {
+    processed
+  }
+  field_left_col_title {
+    processed
+  }
+  field_right_col_title {
+    processed
+  }
+  field_right_section_title_part_t {
+    processed
+  }
+  relationships {
+    field_first_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
           }
         }
-        field_second_image {
-            localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-                  original{
-                    src
-                }
-                }
-              }
-        }
-        field_third_image {
-            localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
-
-                  original{
-                    src
-                }
-
-                }
-              }
+      }
+    }
+    field_second_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
+          }
         }
       }
-      field_left {
-        processed
+    }
+    field_third_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
+          }
+        }
       }
-      field_first_image_caption {
-        processed
-      }
-      field_second_image_caption {
-        processed
-      }
-      field_third_image_caption {
-        processed
-      }
-  } 
+    }
+  }
+  field_left {
+    processed
+  }
+  field_first_image_caption {
+    processed
+  }
+  field_second_image_caption {
+    processed
+  }
+  field_third_image_caption {
+    processed
+  }
+}
 `;

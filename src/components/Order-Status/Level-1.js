@@ -1,11 +1,11 @@
 import React ,{useContext, useState} from 'react'
 import { graphql, Link,navigate } from 'gatsby'
 import { useLocation } from "@reach/router"
-import Img from 'gatsby-image'
-import { css } from "@emotion/core";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Customer from '../customer-care'
-import myAccountStyles from '../../assets/scss/components/my-account.module.scss'
+import * as myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import UserContext from "../../providers/user-provider"
 const baseUrl = process.env.Base_URL;
 const spinner = css`
@@ -14,6 +14,7 @@ const spinner = css`
  
 `;
 const StartOrderStatus = props => {
+    const node = props.node
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(false)
     const { user } = useContext(UserContext);
@@ -93,7 +94,7 @@ const StartOrderStatus = props => {
     }
    
     return (
-        <Customer activeTab="order-status">
+        <Customer activeTab={node.relationships && node.relationships.node__page && node.relationships.node__page[0].path && node.relationships.node__page[0].path.alias? node.relationships.node__page[0].path.alias : ""} currentPage={node.relationships && node.relationships.node__page && node.relationships.node__page[0].title? node.relationships.node__page[0].title : "" }>
             { isLoading ?
  
  <ClipLoader
@@ -143,9 +144,3 @@ const StartOrderStatus = props => {
 }
 
 export default StartOrderStatus
-
-export const fragment = graphql`
-    fragment paragraphOrderStatus on paragraph__order_status {
-        id
-        
-    }`

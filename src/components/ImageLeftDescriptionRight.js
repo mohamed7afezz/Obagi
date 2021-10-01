@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from 'gatsby-image'
-import primerstyle from '../assets/scss/components/preimer-img-left.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as primerstyle from '../assets/scss/components/preimer-img-left.module.scss'
 
 const ImageLeftDescRight = ({ node }) => {
 
@@ -12,7 +12,10 @@ const ImageLeftDescRight = ({ node }) => {
           <div className="col-lg-4 col-12 offset-lg-1 ">
             <div dangerouslySetInnerHTML={{ __html: node.field_premier_title.processed }} className={[primerstyle.title, "show-mob"].join(' ')}></div>
 
-            <Img alt="img"  className={primerstyle.leftimg} fluid={node.relationships.field_images_left ? node.relationships.field_images_left.localFile ? node.relationships.field_images_left.localFile.childImageSharp ? node.relationships.field_images_left.localFile.childImageSharp.fluid : "" : "" : ""} />
+            <GatsbyImage
+              image={node.relationships.field_images_left ? node.relationships.field_images_left.localFile ? node.relationships.field_images_left.localFile.childImageSharp ? node.relationships.field_images_left.localFile.childImageSharp.gatsbyImageData : "" : "" : ""}
+              alt="img"
+              className={primerstyle.leftimg} />
           </div>
           <div className="col-lg-5 colg-12 offset-lg-1">
             {/* {node.relationships.field_premier_cards_section.map(item => {
@@ -46,51 +49,46 @@ const ImageLeftDescRight = ({ node }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ImageLeftDescRight
 
-export const fragment = graphql`
-  fragment paragraphImageLeftDescriptionRight on paragraph__image_left_description_right_ {
-    id
-    field_premier_title {
-      processed
-    }
-    field_play_store_link
-    field_app_store_link_
-    relationships {
-      field_premier_cards_section {
-        field_premier_card_title {
-          processed
-        }
-        field_premier_cards_desc {
-          processed
-        }
-        relationships {
-          field_premier_cards_images {
-            localFile {
-              childImageSharp {
-                fluid (quality: 100){
-                    ...GatsbyImageSharpFluid
-                }
-                original{
-                    src
-                }
+export const fragment = graphql`fragment paragraphImageLeftDescriptionRight on paragraph__image_left_description_right_ {
+  id
+  field_premier_title {
+    processed
+  }
+  field_play_store_link
+  field_app_store_link_
+  relationships {
+    field_premier_cards_section {
+      field_premier_card_title {
+        processed
+      }
+      field_premier_cards_desc {
+        processed
+      }
+      relationships {
+        field_premier_cards_images {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+              original {
+                src
               }
             }
           }
         }
       }
-      field_images_left {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-                ...GatsbyImageSharpFluid
-              }
-          }
+    }
+    field_images_left {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
     }
   }
-  `
+}
+`

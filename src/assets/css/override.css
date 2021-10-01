@@ -2157,9 +2157,27 @@ button:focus {
 
 /* Breadcrumb styles for Medical and Clinical landing pages */
 .hero-slider.clinical-slider .breadcramp-con,
-.hero-slider.medical-slider .breadcramp-con {
+.hero-slider.medical-slider .breadcramp-con,
+.node-home .hero-slider .breadcramp-con,
+.node-medical .hero-slider .breadcramp-con {
   position: absolute;
   top: 8px;
+  z-index: 9;
+}
+
+.node-home .hero-slider .breadcramp-con {
+  top: 220px;
+}
+.node-home .hero-slider .breadcramp-con a {
+  color: #132466;
+}
+
+.node-home .hero-slider > .row {
+  position: unset;
+}
+
+#notificationDesk {
+  z-index: 999;
 }
 
 #appointment .select-items div:hover,
@@ -2976,11 +2994,13 @@ textarea:invalid {
   display: none;
 }
 #formsubmition .modal-body,
+#storyformthank .modal-body,
 #moremaxprice .modal-body,
 #youarein .modal-body {
   padding: 100px;
 }
 #formsubmition .container,
+#storyformthank .container,
 #moremaxprice .modal-body,
 #youarein .modal-body {
   padding-left: 0;
@@ -3016,6 +3036,9 @@ textarea:invalid {
 #needReadMore.collapse.show {
   margin-top: 16px;
 }
+#storyformthank p {
+  margin-bottom: 24px;
+}
 @media (max-width: 767px) {
   .mob-mb-40 {
     margin-bottom: 40px;
@@ -3028,6 +3051,8 @@ textarea:invalid {
     align-items: center;
     justify-content: center;
   }
+  
+#storyformthank .modal-body,
   #formsubmition .modal-body,
   #moremaxprice .modal-body {
     padding: 50px;
@@ -3040,6 +3065,7 @@ textarea:invalid {
   #youarein h1 {
     text-align: center;
   }
+  
   #youarein .modal-body::before {
     display: none;
   }
@@ -3681,7 +3707,26 @@ input.order-check.out-of-stock ~ .checkmark {
   height: 100%;
   top: 0;
 }
+.thank-you{
+  text-align: center;
+}
 #v-video iframe {
   width: 100%;
   height: 100%;
+}
+.collapse:not(.show) + .seprators div{
+  margin-top: 0;
+}
+
+.accordionTips[aria-expanded="false"] .moretips{
+display: block;
+}
+.accordionTips[aria-expanded="false"] .lesstips{
+  display: none;
+}
+.accordionTips[aria-expanded="true"] .moretips{
+  display: none;
+}
+.accordionTips[aria-expanded="true"] .lesstips{
+  display: block;
 }

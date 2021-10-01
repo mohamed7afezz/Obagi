@@ -1,8 +1,8 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby"
 
-import profcStyle from "../assets/scss/components/prof-serum.module.scss"
+import * as profcStyle from "../assets/scss/components/prof-serum.module.scss"
 
 const ProffC = ({ node }) => {
   // console.log('hassan', node)
@@ -91,81 +91,72 @@ const ProffC = ({ node }) => {
 }
 
 export default ProffC;
-export const fragment = graphql`
-  fragment paragraphProfessionalCSection on paragraph__professional_c_section{
-        
-          field_profc_title {
-            processed
-          }
-          field_right_section_describtion {
-            processed
-          }
-          field_right_section_small_title {
-            processed
-          }
-          field_right_col_describtion {
-            processed
-          }
-          relationships {
-            field_small_title_and_describtio {
-              field_small_title {
-                processed
-              }
-              field_small_describtion {
-                processed
-              }
-            }
-            field_percentage_ {
-              field_percentage_title {
-                processed
-              }
-              field_percentage_describtion {
-                processed
-              }
-              field_percentage_value {
-                processed
-              }
-            }
-            field_profc_left_image {
-              id
-              localFile {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-    
-                      original{
-                        src
-                    }
-                }
-              }
-            }
-            field_profc_right_image {
-                localFile {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid
-                          }
-        
-                          original{
-                            src
-                        }
-                    }
-                  }
-            }
-          }
-          field_profc_second_title {
-            processed
-          }
-          field_second_subtitle {
-            processed
-          }
-          field_second_describtion {
-            processed
-          }
-          field_section_footnote {
-            processed
+export const fragment = graphql`fragment paragraphProfessionalCSection on paragraph__professional_c_section {
+  field_profc_title {
+    processed
+  }
+  field_right_section_describtion {
+    processed
+  }
+  field_right_section_small_title {
+    processed
+  }
+  field_right_col_describtion {
+    processed
+  }
+  relationships {
+    field_small_title_and_describtio {
+      field_small_title {
+        processed
+      }
+      field_small_describtion {
+        processed
+      }
+    }
+    field_percentage_ {
+      field_percentage_title {
+        processed
+      }
+      field_percentage_describtion {
+        processed
+      }
+      field_percentage_value {
+        processed
+      }
+    }
+    field_profc_left_image {
+      id
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
           }
         }
-      
+      }
+    }
+    field_profc_right_image {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+          original {
+            src
+          }
+        }
+      }
+    }
+  }
+  field_profc_second_title {
+    processed
+  }
+  field_second_subtitle {
+    processed
+  }
+  field_second_describtion {
+    processed
+  }
+  field_section_footnote {
+    processed
+  }
+}
 `;

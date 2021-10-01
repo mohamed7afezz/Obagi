@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import bigParagraphStyles from '../assets/scss/components/big-paragraph.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as bigParagraphStyles from '../assets/scss/components/big-paragraph.module.scss'
 
 const BigParagraph = ({ node }) => {
   return (

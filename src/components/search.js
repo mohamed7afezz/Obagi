@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import searchStyles from "../assets/scss/components/search.module.scss"
+import * as searchStyles from "../assets/scss/components/search.module.scss"
 import SearchContext from "../providers/search-provider"
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 const spinner = css`
   display: block;

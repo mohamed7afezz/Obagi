@@ -1,5 +1,5 @@
 import React from 'react';
-// import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import CollectionHero from '../components/collection-components/collection-hero'
@@ -65,9 +65,8 @@ const ClinicalCollectionTemp = (props, data) => {
   )
 }
 export default ClinicalCollectionTemp
-export const productCollectionPageQuery = graphql`
-query($slug: String!) {
-  taxonomyTermClinicalSkinConcern(fields: { slug: { eq: $slug } }) {
+export const productCollectionPageQuery = graphql`query ($slug: String!) {
+  taxonomyTermClinicalSkinConcern(fields: {slug: {eq: $slug}}) {
     path {
       alias
     }
@@ -103,7 +102,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermClinicalCategories(path: { alias: { eq: $slug } }) {
+  taxonomyTermClinicalCategories(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -125,9 +124,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -143,9 +140,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -207,13 +202,10 @@ query($slug: String!) {
               }
             }
           }
-
           field_clinical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -235,9 +227,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -253,7 +243,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermClinicalIngredients(path: { alias: { eq: $slug } }) {
+  taxonomyTermClinicalIngredients(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -279,9 +269,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -312,7 +300,6 @@ query($slug: String!) {
           processed
         }
         field_image_right
-
         relationships {
           field_featured_video {
             field_video_link
@@ -320,9 +307,7 @@ query($slug: String!) {
               field_video_poster {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      src
-                    }
+                    gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -333,7 +318,6 @@ query($slug: String!) {
           }
         }
       }
-
       node__clinical_product {
         field_clinical_id
         field_is_best_seller
@@ -375,13 +359,10 @@ query($slug: String!) {
               }
             }
           }
-
           field_clinical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -403,9 +384,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -421,7 +400,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermMedicalSkinConcern(path: { alias: { eq: $slug } }) {
+  taxonomyTermMedicalSkinConcern(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -456,9 +435,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -484,9 +461,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -512,7 +487,6 @@ query($slug: String!) {
         path {
           alias
         }
-
         field_medical_price
         title
         relationships {
@@ -547,9 +521,7 @@ query($slug: String!) {
           field_medical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -571,9 +543,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -589,8 +559,7 @@ query($slug: String!) {
       }
     }
   }
-
-  taxonomyTermMedicalIngredients(path: { alias: { eq: $slug } }) {
+  taxonomyTermMedicalIngredients(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -609,7 +578,6 @@ query($slug: String!) {
       title
       description
     }
-
     relationships {
       field_meding_content_tile {
         field_tile_title {
@@ -626,9 +594,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -644,9 +610,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -716,9 +680,7 @@ query($slug: String!) {
           field_medical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -740,9 +702,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -758,7 +718,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermMedicalSkinType(path: { alias: { eq: $slug } }) {
+  taxonomyTermMedicalSkinType(path: {alias: {eq: $slug}}) {
     name
     field_medical_skin_type_meta_tag {
       description
@@ -784,9 +744,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -812,9 +770,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -838,9 +794,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -891,9 +845,7 @@ query($slug: String!) {
           field_medical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -909,7 +861,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermMedicalCategories(path: { alias: { eq: $slug } }) {
+  taxonomyTermMedicalCategories(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -920,13 +872,11 @@ query($slug: String!) {
     field_need_to_know_description {
       processed
     }
-
     field_medical_cat_meta_tags {
       description
       title
       canonical_url
     }
-
     relationships {
       field_medcat_content_tile {
         field_tile_title {
@@ -943,9 +893,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -971,9 +919,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -1033,9 +979,7 @@ query($slug: String!) {
           field_medical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1057,9 +1001,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1075,7 +1017,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermClinicalSkinType(path: { alias: { eq: $slug } }) {
+  taxonomyTermClinicalSkinType(path: {alias: {eq: $slug}}) {
     name
     path {
       alias
@@ -1101,9 +1043,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -1119,9 +1059,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -1155,9 +1093,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1199,9 +1135,7 @@ query($slug: String!) {
           field_clinical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1227,7 +1161,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermMedicalProductLines(path: { alias: { eq: $slug } }) {
+  taxonomyTermMedicalProductLines(path: {alias: {eq: $slug}}) {
     path {
       alias
     }
@@ -1260,9 +1194,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -1288,9 +1220,7 @@ query($slug: String!) {
               field_service_image {
                 localFile {
                   childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -1314,9 +1244,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1378,9 +1306,7 @@ query($slug: String!) {
           field_medical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1390,7 +1316,6 @@ query($slug: String!) {
         }
       }
     }
-
     name
     field_taxonomy_line_footer {
       settings {
@@ -1398,7 +1323,7 @@ query($slug: String!) {
       }
     }
   }
-  taxonomyTermClinicalGroups(path: { alias: { eq: $slug } }) {
+  taxonomyTermClinicalGroups(path: {alias: {eq: $slug}}) {
     id
     name
     field_clinical_groups_meta_tags {
@@ -1425,9 +1350,7 @@ query($slug: String!) {
           field_tile_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -1458,7 +1381,6 @@ query($slug: String!) {
           processed
         }
         field_image_right
-
         relationships {
           field_featured_video {
             field_video_link
@@ -1466,9 +1388,7 @@ query($slug: String!) {
               field_video_poster {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      src
-                    }
+                    gatsbyImageData(quality: 100, placeholder: BLURRED, layout: FULL_WIDTH)
                     original {
                       src
                     }
@@ -1492,9 +1412,7 @@ query($slug: String!) {
             localFile {
               url
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1503,7 +1421,6 @@ query($slug: String!) {
           }
         }
       }
-
       node__clinical_product {
         field_clinical_id
         field_is_best_seller
@@ -1522,9 +1439,7 @@ query($slug: String!) {
           field_clinical_image {
             localFile {
               childImageSharp {
-                fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                 original {
                   src
                 }
@@ -1582,9 +1497,7 @@ query($slug: String!) {
               field_tile_image {
                 localFile {
                   childImageSharp {
-                    fluid(quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                   }
                 }
               }
@@ -1595,5 +1508,4 @@ query($slug: String!) {
     }
   }
 }
-
 `;

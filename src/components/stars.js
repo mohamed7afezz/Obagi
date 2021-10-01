@@ -1,5 +1,5 @@
 import React from 'react'
-import stars from '../assets/scss/components/stars.module.scss'
+import * as stars from '../assets/scss/components/stars.module.scss'
 
 const Stars = ({ node,value }) => {
   return ( 

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
 import Slider from "react-slick"
 import { graphql, Link, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import lineStyles from "../assets/scss/components/product-line.module.scss"
-import productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as lineStyles from "../assets/scss/components/product-line.module.scss"
+import * as productsuggestion from '../assets/scss/components/productsuggestion.module.scss'
 import ProductCard from "../components/productcard"
 import { checkStock } from '../assets/js/stock';
 const baseUrl = process.env.Base_URL;
@@ -176,86 +176,78 @@ const ProductLine = ({ node }) => {
     active.classList.add("active")
   }
 
-  const data = useStaticQuery(graphql`
-    query My {
-      allTaxonomyTermMedicalProductLines (sort: {fields: weight, order: ASC}){
-        edges {
-          node {
-            name
-            field_product_line_button_title
-            field_product_lines_cta_title
-            field_product_line_perfect_for {
-              title
-              uri
-            }
-            description {
+  const data = useStaticQuery(graphql`query My {
+  allTaxonomyTermMedicalProductLines(sort: {fields: weight, order: ASC}) {
+    edges {
+      node {
+        name
+        field_product_line_button_title
+        field_product_lines_cta_title
+        field_product_line_perfect_for {
+          title
+          uri
+        }
+        description {
+          processed
+        }
+        path {
+          alias
+        }
+        relationships {
+          field_hero_productline_taxonomy {
+            field_taxonomy_hero_para_descrip {
               processed
             }
-            path {
-              alias
-            }
             relationships {
-             
-              field_hero_productline_taxonomy {
-                field_taxonomy_hero_para_descrip {
-                  processed
-                }
-                relationships {
-                  field_taxonomy_hero_paraprapgh_i {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100){
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              node__medical_product {
-                title
-                field_is_best_seller
-                field_medical_best_seller_rate
-                field_medical_price
-                field_medical_id
-                field_medical_premier_points
-                field_medical_sku
-                field_min_quantity
-                field_medical_premier_points_id
-                path {
-                  alias
-                }
-                field_medical_description {
-                  processed
-                }
-                relationships {
-                  field_medical_rx {
-                    name
-                  }
-                  field_medical_image {
-                    localFile {
-                      childImageSharp {
-                        fluid (quality: 100){
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
+              field_taxonomy_hero_paraprapgh_i {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
                   }
                 }
               }
             }
           }
-        }
-      }
-      image: file(relativePath: { eq: "252x193.png" }) {
-        childImageSharp {
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
+          node__medical_product {
+            title
+            field_is_best_seller
+            field_medical_best_seller_rate
+            field_medical_price
+            field_medical_id
+            field_medical_premier_points
+            field_medical_sku
+            field_min_quantity
+            field_medical_premier_points_id
+            path {
+              alias
+            }
+            field_medical_description {
+              processed
+            }
+            relationships {
+              field_medical_rx {
+                name
+              }
+              field_medical_image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(layout: FULL_WIDTH)
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
-  `)
+  }
+  image: file(relativePath: {eq: "252x193.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+}
+`)
 
   let systemName = data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
     return (item.node.name)
@@ -364,98 +356,86 @@ const ProductLine = ({ node }) => {
                 {data.allTaxonomyTermMedicalProductLines
                   ? data.allTaxonomyTermMedicalProductLines.edges.map((item, index) => {
 
-                    return (
-                      (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
+                    return (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
 
-                        (<div className={["row prodLineSlidFlex", lineStyles.sliderFlex].join(" ")}>
+                      (<div className={["row prodLineSlidFlex", lineStyles.sliderFlex].join(" ")}>
+                        <div
+                          className={["col-12", "col-lg-6", lineStyles.cardWrapper, "cardWrapper"].join(
+                            " "
+                          )}
+                        >
                           <div
-                            className={["col-12", "col-lg-6", lineStyles.cardWrapper, "cardWrapper"].join(
-                              " "
-                            )}
-                          >
-                            <div
-                              className={["subtitle", lineStyles.subtitle].join(" ")}
-                            >FEATURED</div>
+                            className={["subtitle", lineStyles.subtitle].join(" ")}
+                          >FEATURED</div>
 
-                            <div className={["offset-lg-2", "col-lg-8", "pr-0", "pl-0", lineStyles.leftSliderwapper].join(" ")}>
-                              {item.node.name ? (
-                                (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
-                                  (
-                                    <div
-                                      className={lineStyles.cardTitle}
-                                    ><span dangerouslySetInnerHTML={{ __html: item.node.name }}></span></div>
-                                  )) : (
-                                  ""
-                                )}
-                              <div className={lineStyles.products}>
-                                PRODUCTS (
-                            <span className={lineStyles.productsNo}>
-                                  {item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : '0'}
-                                </span>
-                            )
-                          </div>
-                              <div
-                                className={lineStyles.description}
-                              >
-
-                                {item.node.description ? <div dangerouslySetInnerHTML={{ __html: item.node.description.processed }}></div> : ""}
-                                {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae. */}
-                              </div>
-
-                              {item.node.field_product_line_perfect_for &&
-                                item.node.field_product_line_perfect_for.length > 0 ?
-                                <div className={lineStyles.perfect}>
-                                  <span>PERFECT FOR:&nbsp;</span>
-                                  <span>
-                                    {item.node.field_product_line_perfect_for.map(
-                                      (it, index) => {
-                                        return (
-                                          <>
-                                            {index === 1 ? " " : ""}
-                                            <Link to={it.uri.replace('internal:', '')}>
-                                              {it.title}
-                                            </Link>
-                                            {index ===
-                                              item.node
-                                                .field_product_line_perfect_for
-                                                .length -
-                                              1
-                                              ? ""
-                                              : ", "}
-                                          </>
-                                        )
-                                      }
-                                    )}
-                                  </span>
-                                </div> : ""}
-                              {item.node.relationships
-                                && item.node.relationships.field_hero_productline_taxonomy
-                                && item.node.relationships.field_hero_productline_taxonomy.relationships
-                                && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i
-                                && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile
-                                && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp ?
+                          <div className={["offset-lg-2", "col-lg-8", "pr-0", "pl-0", lineStyles.leftSliderwapper].join(" ")}>
+                            {item.node.name ? (
+                              (item.node.name === "Obagi MEDICAL" || item.node.name === "Obagi MEDICAL Rx") ? "" :
                                 (
-                                  <div className={lineStyles.imageWrapper}>
-                                    <Img alt="img"  fluid={item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.fluid} />
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              {item.node.field_product_line_button_title ? (
-                                <div className={lineStyles.linkSection}>
-                                  <Link
-                                    to={item.node.path.alias}
-                                    className={[
-                                      "button-link",
-                                      lineStyles.link,
-                                    ].join(" ")}
-                                  >
-                                    {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
-                                     <span dangerouslySetInnerHTML={{ __html: item.node.field_product_line_button_title }}></span>
-                                  </Link>
+                                  <div
+                                    className={lineStyles.cardTitle}
+                                  ><span dangerouslySetInnerHTML={{ __html: item.node.name }}></span></div>
+                                )) : (
+                                ""
+                              )}
+                            <div className={lineStyles.products}>
+                              PRODUCTS (
+                          <span className={lineStyles.productsNo}>
+                                {item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : '0'}
+                              </span>
+                          )
+                        </div>
+                            <div
+                              className={lineStyles.description}
+                            >
+
+                              {item.node.description ? <div dangerouslySetInnerHTML={{ __html: item.node.description.processed }}></div> : ""}
+                              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies ipsum quis ipsum rutrum, id lobortis massa laoreet. Praesent at arcu mauris. Duis aliquet euismod erat et tincidunt. In quis odio non dui facilisis bibendum eget vitae. */}
+                            </div>
+
+                            {item.node.field_product_line_perfect_for &&
+                              item.node.field_product_line_perfect_for.length > 0 ?
+                              <div className={lineStyles.perfect}>
+                                <span>PERFECT FOR:&nbsp;</span>
+                                <span>
+                                  {item.node.field_product_line_perfect_for.map(
+                                    (it, index) => {
+                                      return (
+                                        <>
+                                          {index === 1 ? " " : ""}
+                                          <Link to={it.uri.replace('internal:', '')}>
+                                            {it.title}
+                                          </Link>
+                                          {index ===
+                                            item.node
+                                              .field_product_line_perfect_for
+                                              .length -
+                                            1
+                                            ? ""
+                                            : ", "}
+                                        </>
+                                      )
+                                    }
+                                  )}
+                                </span>
+                              </div> : ""}
+                            {item.node.relationships
+                              && item.node.relationships.field_hero_productline_taxonomy
+                              && item.node.relationships.field_hero_productline_taxonomy.relationships
+                              && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i
+                              && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile
+                              && item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp ?
+                              (
+                                <div className={lineStyles.imageWrapper}>
+                                  <GatsbyImage
+                                    image={item.node.relationships.field_hero_productline_taxonomy.relationships.field_taxonomy_hero_paraprapgh_i.localFile.childImageSharp.gatsbyImageData}
+                                    alt="img" />
                                 </div>
                               ) : (
-                                <div className={lineStyles.linkSection}>
+                                ""
+                              )}
+                            {item.node.field_product_line_button_title ? (
+                              <div className={lineStyles.linkSection}>
                                 <Link
                                   to={item.node.path.alias}
                                   className={[
@@ -464,78 +444,90 @@ const ProductLine = ({ node }) => {
                                   ].join(" ")}
                                 >
                                   {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
-                                    Shop <span dangerouslySetInnerHTML={{ __html: item.node.name }}></span>
+                                   <span dangerouslySetInnerHTML={{ __html: item.node.field_product_line_button_title }}></span>
                                 </Link>
                               </div>
-                                )}
+                            ) : (
+                              <div className={lineStyles.linkSection}>
+                              <Link
+                                to={item.node.path.alias}
+                                className={[
+                                  "button-link",
+                                  lineStyles.link,
+                                ].join(" ")}
+                              >
+                                {/* {item.node.field_product_lines_cta_title ? item.node.field_product_lines_cta_title : "Shop " + systemName[index]} */}
+                                  Shop <span dangerouslySetInnerHTML={{ __html: item.node.name }}></span>
+                              </Link>
                             </div>
+                              )}
                           </div>
-                          <div
-                            className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider, "productInlineSlider"].join(" ")}
-                          >
-                            {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
-                            <div className={[productsuggestion.slickcon, "pt-45 product-line-product-slider"].join(" ")}>
-                              <Slider   {...SliderSetting2}
-                                style={{ 'position': 'relative', 'z-index': '1' }}
-                                afterChange={(curr) => {
-                                  let newSlides = [...slidesCurr];
-                                  newSlides[index] = curr;
-                                  setSlidesCurr(newSlides);
-                                }}>
-                                
-                                {item.node.relationships.node__medical_product
-                                  ? bubbleSort(item.node.relationships.node__medical_product, 'field_medical_best_seller_rate').map(
-                                    (item, index) => {
-                                      return (
-                                        <div
-                                          className={[
-                                            "col-12",
-                                            productsuggestion.allcon,
-                                          ].join(" ")}
-                                          data-rate-order={item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
-                                        >
-                                          <ProductCard
-                                            productLink={item.path.alias}
-                                            producttitle={item.title}
-                                            isrx = {item.relationships && item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ""}
-                                            productCat="medical"
-                                            productdescription={{
+                        </div>
+                        <div
+                          className={["col-lg-4", "col-12", "offset-lg-1", lineStyles.productInlineSlider, "productInlineSlider"].join(" ")}
+                        >
+                          {/* <div className="product-slider-pager">{ '0/' + (item.node.relationships.node__medical_product? item.node.relationships.node__medical_product.length : '0')}</div> */}
+                          <div className={[productsuggestion.slickcon, "pt-45 product-line-product-slider"].join(" ")}>
+                            <Slider   {...SliderSetting2}
+                              style={{ 'position': 'relative', 'z-index': '1' }}
+                              afterChange={(curr) => {
+                                let newSlides = [...slidesCurr];
+                                newSlides[index] = curr;
+                                setSlidesCurr(newSlides);
+                              }}>
+                              
+                              {item.node.relationships.node__medical_product
+                                ? bubbleSort(item.node.relationships.node__medical_product, 'field_medical_best_seller_rate').map(
+                                  (item, index) => {
+                                    return (
+                                      <div
+                                        className={[
+                                          "col-12",
+                                          productsuggestion.allcon,
+                                        ].join(" ")}
+                                        data-rate-order={item.field_medical_best_seller_rate? item.field_medical_best_seller_rate : '99'}
+                                      >
+                                        <ProductCard
+                                          productLink={item.path.alias}
+                                          producttitle={item.title}
+                                          isrx = {item.relationships && item.relationships.field_medical_rx? item.relationships.field_medical_rx.name : ""}
+                                          productCat="medical"
+                                          productdescription={{
 
-                                              __html: item.field_medical_description ? item.field_medical_description.processed : ""
-                                            }}
-                                            productimage={
-                                              item.relationships.field_medical_image[0]
-                                                ? (item.relationships.field_medical_image[0]
-                                                  .localFile ? item.relationships.field_medical_image[0]
-                                                    .localFile.childImageSharp.fluid : '')
-                                                : ""
-                                            }
-                                            price={item.field_medical_price}
-                                            rate="0"
-                                            Sku={item.field_medical_sku}
-                                            minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""}
-                                            productId={item.field_medical_id}
-                                            premierid={item.field_medical_premier_points_id ? item.field_medical_premier_points_id : ""}
-                                            feild_preimer={item.field_medical_premier_points ? item.field_medical_premier_points : ""}
-                                          />
-                                        </div>
-                                      )
-                                    }
-                                  )
-                                  : ""}
-                              </Slider>
-                              <div className="slides-number" style={{
-                                'position': 'absolute',
-                                'bottom': '49px',
-                                'left': '0',
-                                'right': '12px',
-                                'text-align': 'center',
-                                'z-index': '0'
-                              }}>{slidesCurr[index] ? (slidesCurr[index] + 1) : '1'}/{item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : "1"}</div>
-                            </div>
+                                            __html: item.field_medical_description ? item.field_medical_description.processed : ""
+                                          }}
+                                          productimage={
+                                            item.relationships.field_medical_image[0]
+                                              ? (item.relationships.field_medical_image[0]
+                                                .localFile ? item.relationships.field_medical_image[0]
+                                                  .localFile.childImageSharp.gatsbyImageData : '')
+                                              : ""
+                                          }
+                                          price={item.field_medical_price}
+                                          rate="0"
+                                          Sku={item.field_medical_sku}
+                                          minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""}
+                                          productId={item.field_medical_id}
+                                          premierid={item.field_medical_premier_points_id ? item.field_medical_premier_points_id : ""}
+                                          feild_preimer={item.field_medical_premier_points ? item.field_medical_premier_points : ""}
+                                        />
+                                      </div>
+                                    )
+                                  }
+                                )
+                                : ""}
+                            </Slider>
+                            <div className="slides-number" style={{
+                              'position': 'absolute',
+                              'bottom': '49px',
+                              'left': '0',
+                              'right': '12px',
+                              'text-align': 'center',
+                              'z-index': '0'
+                            }}>{slidesCurr[index] ? (slidesCurr[index] + 1) : '1'}/{item.node.relationships.node__medical_product ? item.node.relationships.node__medical_product.length : "1"}</div>
                           </div>
-                        </div>)
-                    )
+                        </div>
+                      </div>);
                   })
                   : ""}
               </Slider>
@@ -544,7 +536,7 @@ const ProductLine = ({ node }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductLine

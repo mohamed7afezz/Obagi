@@ -150,3 +150,25 @@
 .cs-number {
     white-space: nowrap;
 }
+
+.product-page-title {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin: 40px 0 21px;
+    text-align: center;
+
+    @include md-screen {
+        font-size: 4.5vw;
+        line-height: 5vw;
+        margin: 5.807vw 0 1.719vw;
+    }
+
+    @include lg-screen {
+        font-size: 3.333vw;
+        line-height: 3.750vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 64px;
+        line-height: 72px;
+    }
+}

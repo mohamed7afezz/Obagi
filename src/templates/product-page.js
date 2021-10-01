@@ -24,7 +24,7 @@ const ProductPage = props => {
     let seo = product.path? product.path.alias : props.location.pathname?props.location.pathname:"";
     // let seo1 = seo?seo.split('.com'):""
     return (
-        <Layout nodeType={nodeType} menuType="relative">
+        <Layout nodeType={nodeType} menuType="relative" customClass="PDP">
             <SEO canonical={seo}
                 title={product.field_clinical_metatags && product.field_clinical_metatags.title ? product.field_clinical_metatags.title
                     : product.field_medical_metatags && product.field_medical_metatags.title ? product.field_medical_metatags.title : ""}
@@ -87,166 +87,159 @@ const ProductPage = props => {
 
 export default ProductPage;
 
-export const productPageQuery = graphql`
-    query($slug: String!) {
-        nodeClinicalProduct(fields: { slug: { eq: $slug } }) {
-            title
-            field_clinical_metatags {
-                description
-                title
-                og_title
-                og_description
-                og_image
-              }
-            field_clinical_price
-            field_clinical_sku
-            field_min_quantity
-            field_clinical_weight_unit
-            field_clinical_upc
-            field_clinical_id
-            field_clinical_medical_type
-            field_clinical_weight
-            path {
-                alias
-              }
-            field_clinical_description {
-                processed
-            }
-            
-            relationships {
-                field_key_benefits_list {
-                    relationships {
-                      field_key_benefits_lists {
-                        field_list_item
-                      }
-                    }
-                  }
-                field_clinical_skin_concern {
-                    name
-                    path {
-                        alias
-                    }
-                }
-
-                field_clinical_image {
-                    uri {
-                        url
-                    }
-                    localFile {
-                        url
-                        publicURL
-                        childImageSharp {
-                        original {
-                                src
-                           }
-                           fluid (quality: 100) {
-                            ...GatsbyImageSharpFluid
-                        }
-                        }
-                    }
-                }
-                field_clinical_skin_type {
-                    name
-                    path {
-                        alias
-                    }
-                }
-
-                paragraphs: field_clinical_components {
-                    type: __typename
-                    ...detailsSafeParagraph
-                    ...ingredientParagraph
-                    ...howToUseParagraph
-                    ...beforeAfterParagraph
-                    
-                    ...recommendedParingParagrapgh
-                    
-                }
-            }
-            
-        },
-        nodeMedicalProduct(fields: { slug: { eq: $slug } }) {
-            title
-            field_medical_metatags {
-                description
-                title
-                og_title
-                og_description
-                og_image
-            }
-            field_medical_premier_points
-            field_medical_sku
-            field_min_quantity
-            field_medical_price
-            field_medical_upc
-            field_is_best_seller
-            field_medical_info
-            field_medical_id
-            field_medical_type
-            field_medical_weight
-            field_medical_weight_unit
-            field_medical_key_benefits
-            field_medical_premier_points_id
-            field_medical_form_list
-            field_medical_description_sub
-            path {
-                alias
-              }
-            field_medical_description {
-                processed
-            }
-            relationships {
-                field_medical_benefits_lists {
-                    relationships {
-                      field_key_benefits_lists {
-                        field_list_item
-                      }
-                    }
-                  }
-                field_medical_skin_concern {
-                    name
-                    path {
-                        alias
-                    }
-                    
-                }
-                field_medical_rx {
-                    name
-                  }
-                field_medical_image {
-                    uri {
-                        url
-                    }
-                    localFile {
-                        url
-                        publicURL
-                        childImageSharp {
-                        original {
-                                src
-                           }
-                        }
-                    }
-                }
-                field_medical_skin_type {
-                    name
-                    path {
-                        alias
-                    }
-                }
-
-                paragraphs: field_medical_components {
-                    type: __typename
-                    ...detailsSafeParagraph
-                    ...ingredientParagraph
-                    ...howToUseParagraph
-                    ...beforeAfterParagraph
-                    ...needToKnowParagrapgh
-                    ...sysRelatedProduct
-                    ...youMightAlsoLikeMedicalParagrapgh
-                   
-                }
-            }
-            
-        }
+export const productPageQuery = graphql`query ($slug: String!) {
+  nodeClinicalProduct(fields: {slug: {eq: $slug}}) {
+    title
+    field_clinical_metatags {
+      description
+      title
+      og_title
+      og_description
+      og_image
     }
+    field_clinical_price
+    field_clinical_sku
+    field_min_quantity
+    field_clinical_weight_unit
+    field_clinical_upc
+    field_clinical_id
+    field_clinical_medical_type
+    field_clinical_weight
+    path {
+      alias
+    }
+    field_clinical_description {
+      processed
+    }
+    relationships {
+      field_key_benefits_list {
+        relationships {
+          field_key_benefits_lists {
+            field_list_item
+          }
+        }
+      }
+      field_clinical_skin_concern {
+        name
+        path {
+          alias
+        }
+      }
+      field_clinical_image {
+        uri {
+          url
+        }
+        localFile {
+          url
+          publicURL
+          childImageSharp {
+            original {
+              src
+            }
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+          }
+        }
+      }
+      field_clinical_skin_type {
+        name
+        path {
+          alias
+        }
+      }
+      paragraphs: field_clinical_components {
+        type: __typename
+        ...detailsSafeParagraph
+        ...ingredientParagraph
+        ...howToUseParagraph
+        ...beforeAfterParagraph
+        ...recommendedParingParagrapgh
+      }
+    }
+  }
+  nodeMedicalProduct(fields: {slug: {eq: $slug}}) {
+    title
+    field_medical_metatags {
+      description
+      title
+      og_title
+      og_description
+      og_image
+    }
+    field_medical_premier_points
+    field_medical_sku
+    field_min_quantity
+    field_medical_price
+    field_medical_upc
+    field_is_best_seller
+    field_medical_info
+    field_medical_id
+    field_medical_type
+    field_medical_weight
+    field_medical_weight_unit
+    field_medical_key_benefits
+    field_medical_premier_points_id
+    field_medical_form_list
+    field_medical_description_sub
+    path {
+      alias
+    }
+    field_medical_description {
+      processed
+    }
+    relationships {
+      field_medical_benefits_lists {
+        relationships {
+          field_key_benefits_lists {
+            field_list_item
+          }
+        }
+      }
+      field_medical_skin_concern {
+        name
+        path {
+          alias
+        }
+      }
+      field_medical_rx {
+        name
+      }
+      field_medical_image {
+        uri {
+          url
+        }
+        localFile {
+          url
+          publicURL
+          childImageSharp {
+            original {
+              src
+            }
+          }
+        }
+      }
+      field_medical_skin_type {
+        name
+        path {
+          alias
+        }
+      }
+      paragraphs: field_medical_components {
+        type: __typename
+        ...detailsSafeParagraph
+        ...ingredientParagraph
+        ...howToUseParagraph
+        ...beforeAfterParagraph
+        ...needToKnowParagrapgh
+        ...sysRelatedProduct
+        ...youMightAlsoLikeMedicalParagrapgh
+        ...paragraphFeaturedSection
+        ...paragraphProductFaqs
+        ...paragraphRelatedBlogs
+        ...paragraphImagesSlider
+        ...paragraphVideoSlider
+        ...formSectionParagraph
+      }
+    }
+  }
+}
 `;

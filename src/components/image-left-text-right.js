@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import imageLeft from '../assets/scss/components/image-left-text-right.module.scss'
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as imageLeft from '../assets/scss/components/image-left-text-right.module.scss'
 
 const ImageLeftTextRight = ({ node }) => {
   return (
@@ -9,7 +9,9 @@ const ImageLeftTextRight = ({ node }) => {
       <div className="row">
         <div className={[`${node.field_text_custom_class? "col-10 col-lg-5 text-first-section" : "col-12 col-lg-5 text-first-section " + imageLeft.colPadding}`, imageLeft.firstSection ].join(" ")}>
           
-          <div className={[imageLeft.image, "text-image"].join(" ")}><Img alt="img"  fluid={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.fluid : ''} /></div>
+          <div className={[imageLeft.image, "text-image"].join(" ")}><GatsbyImage
+            image={node.relationships.field_image_left.localFile? node.relationships.field_image_left.localFile.childImageSharp.gatsbyImageData : ''}
+            alt="img" /></div>
         </div>
 
           <div className={["col-12 col-lg-6 offset-lg-1", `${node.field_text_custom_class? "text-second-section" : imageLeft.colFullPadding}`].join(" ")}>
@@ -23,43 +25,39 @@ const ImageLeftTextRight = ({ node }) => {
 
       </div>
     </div>
-
-  )
+  );
 }
 
 export default ImageLeftTextRight;
 
 
-export const fragment = graphql`
-  fragment paragraphImageLeftTextRight on paragraph__image_left_text_right {
-    id
-    field_image_left_button {
-      title
-      uri
-    }
-    field_image_left_paragraph {
-      processed
-    }
-    field_image_left_subtitle {
-      processed
-    }
-    field_image_left_title {
-      processed
-    }
+export const fragment = graphql`fragment paragraphImageLeftTextRight on paragraph__image_left_text_right {
+  id
+  field_image_left_button {
+    title
+    uri
+  }
+  field_image_left_paragraph {
+    processed
+  }
+  field_image_left_subtitle {
+    processed
+  }
+  field_image_left_title {
+    processed
+  }
+  field_image_left {
+    alt
+  }
+  field_text_custom_class
+  relationships {
     field_image_left {
-      alt
-    }
-    field_text_custom_class
-    relationships {
-      field_image_left {
-        localFile {
-          childImageSharp {
-            fluid (quality: 100){
-              ...GatsbyImageSharpFluid
-            }
-          }
+      localFile {
+        childImageSharp {
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
     }
   }
+}
 `

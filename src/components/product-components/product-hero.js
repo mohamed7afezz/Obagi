@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react"
 import { Link } from "gatsby"
-import ProductStyles from "../../assets/scss/components/product-hero.module.scss"
-import Img from "gatsby-image"
+import * as ProductStyles from "../../assets/scss/components/product-hero.module.scss"
+import { GatsbyImage } from "gatsby-plugin-image";
 import Stars from "../../components/stars"
 import modal from "../../assets/images/diamond.png"
 import share from "../../assets/images/product-images/share.svg"
@@ -452,12 +452,13 @@ const ProductHero = ({ data, nodeType }) => {
               <li> Size {field_weight}  {field_weight_unit} </li>
             </ul> : ""}
           </div>
-          {field_medical_rx !== "RX" ? <afterpay-placement
+          {/* {field_medical_rx !== "RX" ? <afterpay-placement
             data-locale="en_US"
             data-currency="USD"
             data-amount={field_price}
             data-modal-theme="white"
-          ></afterpay-placement> : ""}
+            data-min = "100"
+          ></afterpay-placement> : ""} */}
           {(physicianUrl == false) && feild_preimer && field_medical_rx !== "RX" ?
 
             <div className={`${ProductStyles.codeOff} another-class`}>

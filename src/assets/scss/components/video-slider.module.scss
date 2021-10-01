@@ -1,0 +1,154 @@
+@import '../typography/typography.scss';
+@import '../grid/grid.scss';
+
+.wrapper {
+    background-color: #868cd2;
+    padding: 32px 0 40px;
+    color: #fff;
+
+    @include md-screen {
+        padding: 5.833vw 0 5.833vw;
+    }
+}
+
+.vid-poster {
+    position: relative;
+
+    @include lg-screen {
+        flex: 1;
+    }
+}
+
+.play-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+
+.header {
+    @include fontStyle(40, 56);
+    @extend %futurapt-light;
+    margin-bottom: 15px;
+
+    @include md-screen {
+        font-size: 4vw;
+        line-height: 5vw;
+        margin-bottom: 3.333vw;
+    }
+
+    @include lg-screen {
+        font-size: 3.333vw;
+        line-height: 4.167vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 64px;
+        line-height: 80px;
+    }
+}
+
+.main-title {
+    @include fontStyle(24, 40);
+    font-weight: 900;
+    margin-top: 24px;
+
+    @include md-screen {
+        font-size: 2vw;
+        line-height: 3.3vw;
+        margin-top: 1.719vw;
+    }
+
+    @include lg-screen {
+        font-size: 1.667vw;
+        line-height: 2.917vw;
+        margin-top: 1.719vw;
+    }
+
+    @media (min-width: 1921px) {
+        font-size: 32px;
+        line-height: 56px;
+    }
+
+
+}
+
+.sec-vid-wrapper {
+    display: flex !important;
+    flex-direction: column;
+
+    @include lg-screen {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.sec-vid-data {
+    display:  flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+
+    @include lg-screen {
+        flex: 1;
+        margin-left: 2.083vw;
+        margin-top: 0;
+        border-bottom: 0;
+    }
+
+}
+
+.sec-title {
+    @include fontStyle(16, 24);
+    font-weight: 900;
+
+    @include md-screen {
+        font-size: 1.3vw;
+        line-height: 2vw;
+    }
+
+    @include lg-screen {
+        font-size: 0.938vw;
+        line-height: 1.667vw;
+    }
+    @media (min-width: 1921px) {
+        font-size: 18px;
+        line-height: 32px;
+    }
+}
+
+.bottom-border {
+    margin-top: auto;
+    margin-bottom: 1.042vw;
+     div {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+     }
+
+}
+
+.thumbnail {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
