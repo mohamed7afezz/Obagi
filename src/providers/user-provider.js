@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
-
+require('isomorphic-fetch');
 const UserContext = createContext();
 
 const baseUrl = process.env.Base_URL;

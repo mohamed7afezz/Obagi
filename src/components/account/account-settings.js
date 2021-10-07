@@ -7,7 +7,7 @@ import Scrollbars from 'react-custom-scrollbars';
 import UserContext from '../../providers/user-provider';
 import $ from 'jquery'
 import SEO from "../seo"
-
+require('isomorphic-fetch');
 const baseUrl = process.env.Base_URL
 
 export default function AccountSettings() {

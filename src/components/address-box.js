@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as addressBoxStyles from '../assets/scss/components/address-box.module.scss'
 import AddressModal from "./address-modal"
-
+require('isomorphic-fetch');
 
 const baseUrl = process.env.Base_URL;
 

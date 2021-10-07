@@ -10,7 +10,7 @@ import Scrollbars from 'react-custom-scrollbars'
 
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
-
+require('isomorphic-fetch');
 const $ = require('jquery')
 
 const spinner = css`

@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Customer from '../customer-care'
 import * as myAccountStyles from '../../assets/scss/components/my-account.module.scss'
 import UserContext from "../../providers/user-provider"
+require('isomorphic-fetch');
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;

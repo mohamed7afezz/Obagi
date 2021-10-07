@@ -6,6 +6,7 @@ import * as myAccountStyles from '../../assets/scss/components/my-account.module
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import SEO from "../seo"
+require('isomorphic-fetch');
 const spinner = css`
   display: block;
   margin: 0 auto;

@@ -1,3 +1,4 @@
+require('isomorphic-fetch');
 export const isBrowser = () => typeof window !== "undefined"
 
 export const getUser = async () => {

@@ -7,9 +7,9 @@ import Slider from "react-slick";
 
 const Recommendedparing = ({ node }) => {
   if (node.parent_field_name === 'field_medical_components') {
-    var checkCardType 
+    var checkCardType
   }
-  
+
   const settings = {
 
     dots: true,
@@ -28,72 +28,76 @@ const Recommendedparing = ({ node }) => {
       },
     ]
   };
- 
+
   return (
     <div className={["container-fluid", recommendedparing.recommendedcon, "recommendedcon"].join(" ")} >
       <div className={["row", recommendedparing.ordering].join(" ")}>
         <div className={["col-12", "col-lg-12", recommendedparing.allcontainer].join(" ")}>
-     <div class="row">
+          <div class="row">
 
-      <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
+            <div className={["col-12", "col-lg-3", "offset-lg-1", recommendedparing.recommendedparingLeftcol].join(" ")}>
 
-        <p className={ProductStyles.productcat}>{node.field_section_title}</p>
-        <div className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</div>
-        <p className={recommendedparing.recommendedparingdesc}>{node.field_product_description}</p>
-        <p className={recommendedparing.recommendedparingsec}><span>{node.field_question}</span> {node.field_product_inform}</p>
-      </div>
-      {node.parent_field_name === 'field_medical_components'?
-         
-         <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
-         <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
- 
-           <Slider {...settings}>
-             {
-               node.relationships.field_croduct_card.map((item, index) => (
-                 <div className={["col-12", recommendedparing.allcon].join(" ")}>
- 
-                   <ProductCard 
-                    productLink={item.path.alias}
-                    producttitle={item.title}
-                    productdescription={{ __html: item.field_medical_description?item.field_medical_description.processed:"" }} 
-                    productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData} 
-                    price={item.field_medical_price} 
-                    productId={item.field_medical_id} rate="5"
-                    premierid={item.field_medical_premier_points_id?item.field_medical_premier_points_id:""}
-                    feild_preimer={item.field_medical_premier_points?item.field_medical_premier_points:""}
-                    Sku={item.field_medical_sku?item.field_medical_sku:"" }
-                    minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""}
-                    productCat="medical"
-                    />
- 
-                 </div>
-               ))
-             }
- 
-           </Slider>
-           </div>
-           </div>
-     : 
-      <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
-        <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
+              <p className={ProductStyles.productcat}>{node.field_section_title}</p>
+              <div className={recommendedparing.recommendedparingtitle}>{node.field_product_type}</div>
+              <p className={recommendedparing.recommendedparingdesc}>{node.field_product_description}</p>
+              <p className={recommendedparing.recommendedparingsec}><span>{node.field_question}</span> {node.field_product_inform}</p>
+            </div>
+            {node.parent_field_name === 'field_medical_components' ?
 
-          <Slider {...settings}>
-            {
-              node.relationships.field_croduct_card.map((item, index) => (
-                <div className={["col-12", recommendedparing.allcon].join(" ")}>
+              <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
+                <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
 
-                  <ProductCard  productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description?item.field_clinical_description.processed:"" }} productimage={item.relationships.field_clinical_image[0].localFile? item.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0)? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
+                  {node.relationships && node.relationships.field_croduct_card ?
+                    <Slider {...settings}>
+                      {
+                        node.relationships.field_croduct_card.map((item, index) => (
+                          <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
+                            <ProductCard
+                              productLink={item.path.alias}
+                              producttitle={item.title}
+                              productdescription={{ __html: item.field_medical_description ? item.field_medical_description.processed : "" }}
+                              productimage={item.relationships.field_medical_image[0].localFile.childImageSharp.gatsbyImageData}
+                              price={item.field_medical_price}
+                              productId={item.field_medical_id} rate="5"
+                              premierid={item.field_medical_premier_points_id ? item.field_medical_premier_points_id : ""}
+                              feild_preimer={item.field_medical_premier_points ? item.field_medical_premier_points : ""}
+                              Sku={item.field_medical_sku ? item.field_medical_sku : ""}
+                              minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""}
+                              productCat="medical"
+                            />
+
+                          </div>
+                        ))
+                      }
+
+                    </Slider>
+
+                    : ''}
                 </div>
-              ))
-            }
+              </div>
+              :
+              <div className={["col-12", "col-lg-7", "offset-lg-1", recommendedparing.recommendedparingrightcol, "recommendedparingrightcol"].join(" ")}>
+                <div className={[recommendedparing.parseing, "col-lg-6", "offset-lg-3"].join(" ")}>
+                  {node.relationships && node.relationships.field_croduct_card ?
+                    <Slider {...settings}>
+                      {
+                        node.relationships.field_croduct_card.map((item, index) => (
+                          <div className={["col-12", recommendedparing.allcon].join(" ")}>
 
-          </Slider>
+                            <ProductCard productLink={item.path.alias} producttitle={item.title} productdescription={{ __html: item.field_clinical_description ? item.field_clinical_description.processed : "" }} productimage={item.relationships.field_clinical_image[0].localFile ? item.relationships.field_clinical_image[0].localFile.childImageSharp.gatsbyImageData : ''} productCat="medical" price={item.field_clinical_price} Sku={item.field_clinical_sku} minQuantity={(item.field_min_quantity == 0 || item.field_min_quantity > 0) ? item.field_min_quantity : ""} productId={item.field_clinical_id} rate="5" />
+
+                          </div>
+                        ))
+                      }
+
+                    </Slider>
+                    : ''}
+                </div>
+              </div>
+            }
+          </div>
         </div>
-      </div>
-}
-    </div>  
-      </div>
       </div>
     </div>
   );

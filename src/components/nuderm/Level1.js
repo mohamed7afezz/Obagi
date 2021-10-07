@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import * as nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
 import { CustomSelect } from '../../assets/js/custom-select'
 import Scrollbars from "react-custom-scrollbars"
+require('isomorphic-fetch');
 const Level1 = props => {
   const baseUrl = process.env.Base_URL;
   const [level, setLevel] = useState(1)

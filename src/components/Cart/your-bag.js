@@ -26,6 +26,7 @@ import quizarrow from '../../assets/images/arrowquize.svg'
 import calcPremierPoints from "../../assets/js/cart-premier"
 import afterpayImg from '../../assets/images/afterpay-badge-blackonmint100x21@2x.png'
 import paypalImg from '../../assets/images/PayPal-logo.svg'
+require('isomorphic-fetch');
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;

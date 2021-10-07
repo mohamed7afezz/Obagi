@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-
+require('isomorphic-fetch');
 const SearchContext = createContext();
 const baseUrl = process.env.Base_URL;
 const ProductsIndex = {};

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import calcPremierPoints from '../assets/js/cart-premier';
-
+require('isomorphic-fetch');
 
 const baseUrl = process.env.Base_URL;
 let cartId = undefined;

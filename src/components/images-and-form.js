@@ -5,7 +5,7 @@ import * as ImgForm from '../assets/scss/components/images-and-form.module.scss'
 import Player from '@vimeo/player'
 import playbtnimg from "../assets/images/product-images/PlayVideo.svg"
 import Scrollbars from 'react-custom-scrollbars';
-
+require('isomorphic-fetch');
 const $ = require("jquery");
 function playvideo(event) {
     

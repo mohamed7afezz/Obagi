@@ -30,6 +30,7 @@
     "gatsby-source-drupal": "^4.13.1",
     "gatsby-source-filesystem": "^3.13.0",
     "gatsby-transformer-sharp": "^3.13.0",
+    "isomorphic-fetch": "^3.0.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.6.0",
     "js-search": "^2.0.0",

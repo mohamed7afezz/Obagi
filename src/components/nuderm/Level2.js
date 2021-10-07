@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import * as nudermStyle from "../../assets/scss/components/NuDerm-sign.module.scss"
+require('isomorphic-fetch');
 const Level2 = props => {
   const baseUrl = process.env.Base_URL;
 

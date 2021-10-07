@@ -6,6 +6,7 @@ import AddressModal from '../../components/address-modal'
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import SEO from "../seo"
+require('isomorphic-fetch');
 const spinner = css`
   display: block;
   margin: 0 auto;

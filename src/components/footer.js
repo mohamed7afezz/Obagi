@@ -13,6 +13,7 @@ import {
   faTwitter,
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons"
+require('isomorphic-fetch');
 
 const baseUrl = process.env.Base_URL;
 

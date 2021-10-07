@@ -8,6 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import CartContext from '../../providers/cart-provider';
 import { MedicalResultType, ClinicalResultType } from './brandJourney';
 import { checkStock } from '../../assets/js/stock';
+require('isomorphic-fetch');
 const baseUrl = process.env.Base_URL;
 const spinner = css`
   display: block;

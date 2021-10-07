@@ -11,6 +11,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { checkStock } from '../assets/js/stock';
 import SearchContext from "../providers/search-provider"
 import $ from "jquery"
+require('isomorphic-fetch');
 // const $ = require('jQuery');
 
 const baseUrl = process.env.Base_URL;

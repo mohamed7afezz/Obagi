@@ -12,6 +12,7 @@ import badgeImg from '../assets/images/product-images/PremierPartnership_Badge-0
 
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+require('isomorphic-fetch');
 const spinner = css`
   display: block;
   left:35%;

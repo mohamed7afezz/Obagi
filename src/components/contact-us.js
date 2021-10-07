@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Customer from '../components/customer-care'
 import { CustomSelect } from '../assets/js/custom-select'
 import * as myAccountStyles from '../assets/scss/components/my-account.module.scss'
-
+require('isomorphic-fetch');
 export default function Contact({ node }) {
     const baseUrl = process.env.Base_URL;
     const [emailSelected, setEmailSelected] = useState(true);

@@ -1,3 +1,4 @@
+require('isomorphic-fetch');
 export function phyFinder(google, finderURL, productsDataObj) {
     const map = new Map(finderURL, productsDataObj, google, 'map', {lat: 37.9820046, lng: -96.8954686}, 5)
     map.initMap();
