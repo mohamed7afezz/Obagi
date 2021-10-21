@@ -2,6 +2,9 @@ require('isomorphic-fetch');
 export const isBrowser = () => typeof window !== "undefined"
 
 export const getUser = async () => {
+  
+  if (!isBrowser()) return {};
+
   const userData = await (await fetch(`${baseUrl}bigcommerce/v1/customer`,{
     method: 'GET',
     credentials: 'include',

@@ -9,7 +9,6 @@ const Recommendedparing = ({ node }) => {
   if (node.parent_field_name === 'field_medical_components') {
     var checkCardType
   }
-
   const settings = {
 
     dots: true,
@@ -28,7 +27,6 @@ const Recommendedparing = ({ node }) => {
       },
     ]
   };
-
   return (
     <div className={["container-fluid", recommendedparing.recommendedcon, "recommendedcon"].join(" ")} >
       <div className={["row", recommendedparing.ordering].join(" ")}>

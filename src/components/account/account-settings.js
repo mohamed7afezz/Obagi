@@ -69,6 +69,17 @@ export default function AccountSettings() {
 
   const [userAccount, setData] = useState({});
 
+  const [isToday, setIsToday] = useState();
+
+
+  let yearsList = [];
+  let currentYear = new Date().getFullYear()
+  for (let i = 1900; i <= currentYear; i++) {
+    yearsList.push(i.toString());
+  }
+
+  const [userAccount, setData] = useState({});
+
   function checkvaild() {
 
     if (!document.querySelector(".regform").checkValidity()) {
